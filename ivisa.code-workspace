@@ -1,0 +1,30 @@
+{
+  "folders": [
+    {
+      "name": "ivisa-tamagui",
+      "path": "ivisa-tamagui"
+    },
+    {
+      "name": "_reference",
+      "path": "_reference"
+    }
+  ],
+  "settings": {
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.tamagui": true,
+      "_reference/**/dist": true,
+      "_reference/**/build": true,
+      "_reference/**/.next": true,
+      "_reference/**/public": true,
+      "_reference/**/docs": true
+    },
+    "files.exclude": {
+      "**/node_modules": true,
+      "_reference/**/.git": true
+    },
+    "files.watcherExclude": {
+      "_reference/**": true
+    }
+  }
+}

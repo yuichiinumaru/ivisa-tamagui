@@ -1,0 +1,23 @@
+{
+  "theme": {
+    "colors": {
+      "background": "0 0% 100%",
+      "foreground": "222.2 47.4% 11.2%",
+      "primary": "#111111",
+      "primaryHover": "#222222",
+      "accent": "#ff00ff"
+    },
+    "spacing": {
+      "1": "0.25rem",
+      "2": "0.5rem"
+    },
+    "borderRadius": {
+      "DEFAULT": "0.5rem",
+      "lg": "1rem"
+    },
+    "fontSize": {
+      "base": "16px",
+      "lg": "18px"
+    }
+  }
+}

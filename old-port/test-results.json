@@ -1,0 +1,58 @@
+
+> @vivi/tamagui-components-complete@1.0.0 test /home/suportesaude/YUICHI/04-shadcn2tamagui/tamagui-components-final
+> vitest --run -- --coverage --reporter=json
+
+
+ RUN  v1.6.1 /home/suportesaude/YUICHI/04-shadcn2tamagui/tamagui-components-final
+
+ ❯ tests/native-primitives.spec.tsx  (0 test)
+ ❯ tests/Tooltip.spec.tsx  (0 test)
+ ❯ tests/native/Select.spec.tsx  (0 test)
+ ❯ tests/native/Popover.spec.tsx  (0 test)
+ ❯ tests/config.test.ts  (4 tests | 3 failed) 21ms
+   ❯ tests/config.test.ts > shadcn Tamagui configuration constants > defines shadcn color tokens matching root theme
+     → expected { background: '0 0% 100%', …(22) } to deeply equal { background: '0 0% 100%', …(20) }
+   ❯ tests/config.test.ts > shadcn Tamagui configuration constants > defines shadcn light theme values
+     → expected { background: '0 0% 100%', …(22) } to deeply equal { background: '0 0% 100%', …(20) }
+   ❯ tests/config.test.ts > shadcn Tamagui configuration constants > defines shadcn dark theme values
+     → expected { background: '224 71% 4%', …(22) } to deeply equal { background: '224 71% 4%', …(20) }
+ ❯ tests/web/Radio.spec.tsx  (3 tests | 3 failed) 107ms
+   ❯ tests/web/Radio.spec.tsx > RadioGroup > renders items and allows changing the selection
+     → Missing theme.
+   ❯ tests/web/Radio.spec.tsx > RadioGroup > invokes onValueChange when the value changes
+     → Missing theme.
+   ❯ tests/web/Radio.spec.tsx > RadioGroup > logs a warning when rendered without a visible label
+     → Missing theme.
+ ✓ tests/providers.spec.tsx  (3 tests) 110ms
+ ❯ tests/web/Button.spec.tsx  (1 test | 1 failed) 89ms
+   ❯ tests/web/Button.spec.tsx > Button (Web) > should render with providers and apply theme correctly
+     → Missing theme.
+ ✓ tests/web/forms/textarea.spec.tsx  (2 tests) 220ms
+ ❯ tests/web/button.spec.tsx  (1 test | 1 failed) 64ms
+   ❯ tests/web/button.spec.tsx > Button > renders primary variant inside providers
+     → Missing theme.
+ ❯ tests/web/select.spec.tsx  (2 tests | 2 failed) 91ms
+   ❯ tests/web/select.spec.tsx > Select > renders and allows selecting an item
+     → Missing theme.
+   ❯ tests/web/select.spec.tsx > Select > logs a warning when Select.Content receives no options
+     → Missing theme.
+ ❯ tests/web/typography.spec.tsx  (2 tests | 2 failed) 151ms
+   ❯ tests/web/typography.spec.tsx > Typography primitives > renders heading with default level
+     → Snapshot `Typography primitives > renders heading with default level 1` mismatched
+   ❯ tests/web/typography.spec.tsx > Typography primitives > renders text variations
+     → Snapshot `Typography primitives > renders text variations 1` mismatched
+ ❯ tests/web/stack.spec.tsx  (2 tests | 1 failed) 210ms
+   ❯ tests/web/stack.spec.tsx > Stack primitives > renders vertical stack by default
+     → Snapshot `Stack primitives > renders vertical stack by default 1` mismatched
+ ❯ tests/web/gallery.spec.tsx  (1 test | 1 failed) 419ms
+   ❯ tests/web/gallery.spec.tsx > TamaguiGallery > lists implemented components
+     → Missing theme.
+
+  Snapshots  3 failed
+ Test Files  12 failed | 2 passed (14)
+      Tests  14 failed | 7 passed (21)
+   Start at  19:44:02
+   Duration  9.00s (transform 4.69s, setup 1.88s, collect 38.19s, tests 1.48s, environment 11.41s, prepare 2.29s)
+
+[tamagui] 🔄 Worker cache cleared (config changed)
+ ELIFECYCLE  Test failed. See above for more details.

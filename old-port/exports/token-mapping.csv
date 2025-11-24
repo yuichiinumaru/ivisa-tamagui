@@ -1,0 +1,16 @@
+# file managed by script, not hand-edited
+category,tailwind_token,tailwind_value,tamagui_token,tamagui_value,status
+colors,background,0 0% 100%,background,0 0% 100%,match
+colors,foreground,222.2 47.4% 11.2%,foreground,222.2 47.4% 11.2%,match
+colors,primary,#111111,primary,#111111,match
+colors,primaryHover,#222222,primaryHover,#333333,value-diff
+colors,accent,#ff00ff,accent,#00ffff,value-diff
+spacing,1,0.25rem,1,0.25rem,match
+spacing,2,0.5rem,2,0.5rem,match
+borderRadius,DEFAULT,0.5rem,$1,0.5rem,alias-match
+borderRadius,lg,1rem,$2,1rem,alias-match
+fontSize,base,16px,base,16px,match
+fontSize,lg,18px,,,unmapped
+colors,,,extra,#123456,extra
+spacing,,,3,1rem,extra
+fontSize,,,xl,20px,extra

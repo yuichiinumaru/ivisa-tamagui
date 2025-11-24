@@ -1,0 +1,33 @@
+{
+  "name": "tamagui-design-system",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@9.12.2",
+  "scripts": {
+    "build": "pnpm --filter ./packages/ui build",
+    "lint": "pnpm --filter ./packages/ui lint",
+    "test": "pnpm --filter ./packages/ui test",
+    "typecheck": "pnpm --filter ./packages/ui lint"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@tamagui/animations-react-native": "^1.138.0",
+    "@tamagui/config": "^1.138.0",
+    "@tamagui/core": "^1.138.0",
+    "@tamagui/portal": "^1.138.0",
+    "@tamagui/ui": "^1.93.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.66.1",
+    "react-native-web": "^0.21.2",
+    "tamagui": "^1.138.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.3.3"
+  }
+}

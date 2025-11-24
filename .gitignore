@@ -1,0 +1,29 @@
+# Gemini-Flow
+.gemini-flow/cache/
+.gemini-flow/logs/
+.gemini-flow/temp/
+*.log
+
+# Dependencies
+node_modules/
+.pnpm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+*.tsbuildinfo
