@@ -2,6 +2,19 @@
 
 All notable changes to this design system and its documentation will be recorded here.
 
+## [0.2.0] - Component Porting & Visual Testing
+- **Ported Core Primitives**: Re-implemented `Button`, `Input`, `Textarea`, and `Checkbox` using Tamagui primitives with our new token system.
+- **Ported Components**:
+  - `Card`: Added support for `default` and `elevated` variants.
+  - `Dialog`: Implemented full modal with animations and overlay using `@tamagui/dialog`.
+  - `Popover`: Implemented contextual popups with custom animations using `@tamagui/popover`.
+  - `Select`: Implemented adaptative select (Sheet on mobile) using `@tamagui/select`.
+- **Visual Testing**: 
+  - Created `scripts/visual-check.js` for automated Storybook screenshotting via Playwright.
+  - Configured Storybook for React Native Web compatibility (`process.env` polyfill).
+  - Fixed token scaling issues (added `true` keys) discovered via testing.
+- **Cleanup**: Removed legacy `migrated/` folder to streamline the codebase.
+
 ## [Unreleased]
 - Captured the new research-driven strategy for building a Tamagui-based design system in `docs/00-draft-new-research.md`.
 - Created `docs/01-plan.md` to define the vision, methodologies, and phased roadmap for a "Frankenstein Controlado 100% Free" design system built on Tamagui, Bento Free, and headless libraries.

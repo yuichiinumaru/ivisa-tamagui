@@ -1,5 +1,6 @@
 import { createTamagui } from 'tamagui';
-import { colorTokens } from './theme/tokens';
+import { createAnimations } from '@tamagui/animations-react-native';
+import { tokens } from './theme/tokens';
 import { themes } from './theme';
 
 // Import the Tamagui fonts and create a font configuration
@@ -9,8 +10,31 @@ import { createInterFont } from '@tamagui/font-inter';
 const headingFont = createInterFont();
 const bodyFont = createInterFont();
 
+const animations = createAnimations({
+  bouncy: {
+    type: 'spring',
+    damping: 10,
+    mass: 0.9,
+    stiffness: 100,
+  },
+  lazy: {
+    type: 'spring',
+    damping: 20,
+    stiffness: 60,
+  },
+  quick: {
+    type: 'spring',
+    damping: 20,
+    mass: 1.2,
+    stiffness: 250,
+  },
+});
+
 // This is the main configuration object for Tamagui
 const config = createTamagui({
+  // Animations
+  animations,
+
   // Fonts
   fonts: {
     heading: headingFont,
@@ -18,7 +42,7 @@ const config = createTamagui({
   },
 
   // Tokens
-  tokens: colorTokens,
+  tokens,
 
   // Themes
   themes,

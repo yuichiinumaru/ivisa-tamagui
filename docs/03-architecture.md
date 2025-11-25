@@ -21,24 +21,27 @@
 
 ## 4. Design System Package Layout (`packages/ui`)
 
-The shared UI lives in a dedicated package (e.g. `packages/ui`), structured as:
+The shared UI lives in a dedicated package (e.g. `packages/ui`) and follows the **Atomic Design** methodology:
 
 - `theme/`
   - `tokens.ts` – Raw token definitions (colors, radius, spacing, typography).
   - `index.ts` – Tamagui config + `createTheme` calls; exports theme objects and helpers.
-- `primitives/`
-  - Thin wrappers around `tamagui/ui` components (Button, Card, Dialog, Form, Tabs, Toast, Skeleton, etc.).
-  - Optionally add project-specific defaults (e.g. variant presets, icon slots) while keeping APIs close to upstream.
-- `composites/`
-  - Higher-level components that integrate headless libraries with Tamagui primitives.
-  - Examples: `DataTable`, `DatePicker`, `CommandPalette`, `Carousel`, `OTPInput`, `Pagination`, `Breadcrumb`, `NavigationMenu`, `Menubar`, `ContextMenu`.
-  - Each composite has its own folder and may expose hooks, types, and subcomponents.
-- `bento/`
+- `atoms/`
+  - Basic building blocks. Can't be broken down further.
+  - Examples: `Button`, `Input`, `Textarea`, `Checkbox`, `Label`.
+  - Thin wrappers around `tamagui/ui` primitives with project-specific defaults.
+- `molecules/`
+  - Groups of atoms functioning together.
+  - Examples: `Card` (Header, Content, Footer), `Dialog`, `Popover`, `Select`, `Calendar`, `DatePicker`.
+- `organisms/`
+  - Complex, distinct sections of an interface.
+  - Examples: `DataTable`, `Form` (wraps `react-hook-form` logic + atoms), `CommandPalette`.
+- `bento/` (Optional)
   - Components copied from Tamagui Bento Free (Hero, FeatureGrid, Stats blocks, etc.), adjusted to consume the shared theme.
 - `index.ts`
-  - Re-exports grouped entrypoints for `theme`, `primitives`, `composites`, and `bento`.
+  - Re-exports grouped entrypoints for `theme`, `atoms`, `molecules`, `organisms`.
 
-This separation keeps the system understandable: theme → primitives → composites → application usage.
+This separation keeps the system understandable: theme → atoms → molecules → organisms → application usage.
 
 ## 5. Headless Integration Pattern
 
@@ -74,6 +77,9 @@ To avoid polluting the main project, external references live in a separate fold
 - **Storybook (or similar):**
   - Runs against `packages/ui` to visualize each component in isolation.
   - Serves as living documentation for developers and designers.
+  - Commands:
+    - `pnpm storybook` – launches the local catalog (default port `6006`, falls back to the next open port).
+    - `pnpm build-storybook` – generates the static Storybook build for preview/handoff.
 - **Docs alignment:**
   - `docs/01-plan.md` captures high-level direction and phases.
   - `docs/02-tasks.md` tracks concrete tasks and status.

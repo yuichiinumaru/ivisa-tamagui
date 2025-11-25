@@ -1,13 +1,13 @@
 
 import { createTheme } from 'tamagui';
-import { colorTokens } from './tokens';
+import { lightColors, darkColors } from './tokens';
 
 const lightTheme = createTheme({
-  ...colorTokens.light,
+  ...lightColors,
 });
 
 const darkTheme = createTheme({
-  ...colorTokens.dark,
+  ...darkColors,
 });
 
 export const themes = {
