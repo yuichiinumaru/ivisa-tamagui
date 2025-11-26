@@ -1,0 +1,96 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`RadioGroup > renders with items and allows selection 1`] = `
+<DocumentFragment>
+  <span
+    class=""
+    style="display: contents;"
+  >
+    <span
+      class=" "
+      style="display: contents;"
+    >
+      <span
+        class=" t_light is_Theme"
+        style="color: var(--color); display: contents;"
+      >
+        <div
+          class="_dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0"
+          data-orientation="vertical"
+          style="outline-color: none; outline-style: none; outline-width: initial;"
+          tabindex="0"
+        >
+          <div
+            aria-orientation="vertical"
+            class="is_RadioGroup _dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-column is_RadioGroup "
+            data-disable-theme="true"
+            role="radiogroup"
+          >
+            <button
+              aria-checked="false"
+              aria-required="false"
+              class="is_RadioGroupItem _btc-0hover-primaryHove114 _brc-0hover-primaryHove114 _borderBottomColor-0hover-primaryHove114 _borderLeftColor-0hover-primaryHove114 _backgroundColor-0hover-backgroundH3423444 _btc-0focus-borderColor69916956 _brc-0focus-borderColor69916956 _borderBottomColor-0focus-borderColor69916956 _borderLeftColor-0focus-borderColor69916956 _backgroundColor-0focus-backgroundH3423444 _outlineStyle-0focus-visible-solid _outlineWidth-0focus-visible-2px _btc-0active-borderColor68052152 _brc-0active-borderColor68052152 _borderBottomColor-0active-borderColor68052152 _borderLeftColor-0active-borderColor68052152 _backgroundColor-0active-backgroundF3405682 _outlineColor-0focus-ring _outlineStyle-0focus-solid _outlineWidth-0focus-2px _outlineOffset-0focus-2px _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-column _w-16px _h-16px _btlr-1000px _btrr-1000px _bbrr-1000px _bblr-1000px _backgroundColor-background _ai-center _jc-center _btw-1px _brw-1px _borderBottomWidth-1px _borderLeftWidth-1px _btc-primary _brc-primary _borderBottomColor-primary _borderLeftColor-primary _pt-0px _pr-0px _pb-0px _pl-0px _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid is_RadioGroupItem "
+              data-collection-item=""
+              data-disable-theme="true"
+              data-orientation="vertical"
+              data-state="unchecked"
+              role="radio"
+              tabindex="-1"
+              type="button"
+              value="apple"
+            >
+              <span
+                class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color"
+              >
+                Apple
+              </span>
+            </button>
+            <input
+              aria-hidden="true"
+              style="position: absolute; pointer-events: none; opacity: 0; margin: 0px;"
+              tabindex="-1"
+              type="radio"
+              value="apple"
+            />
+            <button
+              aria-checked="true"
+              aria-required="false"
+              class="is_RadioGroupItem _btc-0hover-primaryHove114 _brc-0hover-primaryHove114 _borderBottomColor-0hover-primaryHove114 _borderLeftColor-0hover-primaryHove114 _backgroundColor-0hover-backgroundH3423444 _btc-0focus-borderColor69916956 _brc-0focus-borderColor69916956 _borderBottomColor-0focus-borderColor69916956 _borderLeftColor-0focus-borderColor69916956 _backgroundColor-0focus-backgroundH3423444 _outlineStyle-0focus-visible-solid _outlineWidth-0focus-visible-2px _btc-0active-borderColor68052152 _brc-0active-borderColor68052152 _borderBottomColor-0active-borderColor68052152 _borderLeftColor-0active-borderColor68052152 _backgroundColor-0active-backgroundF3405682 _outlineColor-0focus-ring _outlineStyle-0focus-solid _outlineWidth-0focus-2px _outlineOffset-0focus-2px _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-column _w-16px _h-16px _btlr-1000px _btrr-1000px _bbrr-1000px _bblr-1000px _backgroundColor-background _ai-center _jc-center _btw-1px _brw-1px _borderBottomWidth-1px _borderLeftWidth-1px _btc-primary _brc-primary _borderBottomColor-primary _borderLeftColor-primary _pt-0px _pr-0px _pb-0px _pl-0px _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid is_RadioGroupItem "
+              data-collection-item=""
+              data-disable-theme="true"
+              data-orientation="vertical"
+              data-state="checked"
+              role="radio"
+              tabindex="-1"
+              type="button"
+              value="banana"
+            >
+              <div
+                class="is_RadioGroupIndicator _backgroundColor-0active-backgroundP3496915 _btc-0active-borderColor77378595 _brc-0active-borderColor77378595 _borderBottomColor-0active-borderColor77378595 _borderLeftColor-0active-borderColor77378595 _dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-column _w-8px _h-8px _btlr-1000px _btrr-1000px _bbrr-1000px _bblr-1000px _backgroundColor-primary _cur-pointer is_RadioGroupIndicator "
+                data-disable-theme="true"
+                data-state="checked"
+              />
+              <span
+                class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color"
+              >
+                Banana
+              </span>
+            </button>
+            <input
+              aria-hidden="true"
+              checked=""
+              style="position: absolute; pointer-events: none; opacity: 0; margin: 0px;"
+              tabindex="-1"
+              type="radio"
+              value="banana"
+            />
+          </div>
+        </div>
+        <div
+          style="display: contents;"
+        />
+      </span>
+    </span>
+  </span>
+</DocumentFragment>
+`;
