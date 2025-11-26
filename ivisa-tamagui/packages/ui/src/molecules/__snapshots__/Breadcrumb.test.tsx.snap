@@ -1,0 +1,84 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`IvisaBreadcrumb > renders snapshot 1`] = `
+<DocumentFragment>
+  <span
+    class=""
+    style="display: contents;"
+  >
+    <span
+      class=" "
+      style="display: contents;"
+    >
+      <span
+        class=" t_light is_Theme"
+        style="color: var(--color); display: contents;"
+      >
+        <div
+          aria-label="Breadcrumb"
+          class="is_BreadcrumbRoot _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
+          role="navigation"
+        >
+          <div
+            class="is_BreadcrumbList _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _fw-wrap"
+            role="list"
+          >
+            <div
+              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
+              role="listitem"
+            >
+              <a
+                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-500 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color is_BreadcrumbLink "
+                data-disable-theme="true"
+                href="#"
+                role="link"
+              >
+                Home
+              </a>
+              <span
+                aria-hidden="true"
+                class="is_BreadcrumbSeparator font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
+              >
+                /
+              </span>
+            </div>
+            <div
+              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
+              role="listitem"
+            >
+              <a
+                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-500 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color is_BreadcrumbLink "
+                data-disable-theme="true"
+                href="#"
+                role="link"
+              >
+                Section
+              </a>
+              <span
+                aria-hidden="true"
+                class="is_BreadcrumbSeparator font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
+              >
+                /
+              </span>
+            </div>
+            <div
+              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
+              role="listitem"
+            >
+              <span
+                aria-current="page"
+                class="is_BreadcrumbCurrent font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748 _fontWeight-600"
+              >
+                Page
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          style="display: contents;"
+        />
+      </span>
+    </span>
+  </span>
+</DocumentFragment>
+`;

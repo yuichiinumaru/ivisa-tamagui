@@ -92,35 +92,54 @@
   - [x] 16b – Implement `IvisaBreadcrumb` for web navigation.
   - [x] 16c – Add snapshot/interaction tests for both components.
 
+16 - [x] `IvisaPagination` & `IvisaBreadcrumb` (TDD, UX)
+  - [x] 16a – Implement `IvisaPagination` purely with Tamagui primitives.
+  - [x] 16b – Implement `IvisaBreadcrumb` for web navigation.
+  - [x] 16c – Add snapshot/interaction tests for both components.
+
+17 - [ ] `Sidebar` (Organism) (TDD, UX)
+  - [ ] 17a – Implement `Sidebar` as a composite component using `Sheet` for mobile and `YStack` for desktop.
+  - [ ] 17b – Add stories for collapsible and fixed variations.
+
+18 - [ ] `Charts` (Organism) (TDD, UX)
+    - [ ] 18a – Research and decide on a cross-platform charting library (e.g., Victory Native).
+    - [ ] 18b – Implement a wrapper for the chosen library.
+
+19 - [ ] Missing Atoms & Molecules (TDD, UX)
+    - [ ] 19a – Implement `HoverCard`.
+    - [ ] 19b – Implement `Collapsible`.
+    - [ ] 19c – Implement `AspectRatio`.
+    - [ ] 19d – Implement `DropdownMenu`.
+
 ---
 
 ## Phase 4 – Web-Specific UX & Full Documentation
 
-17 - [x] Navigation Menu / Menubar (TDD, UX)
+20 - [x] Navigation Menu / Menubar (TDD, UX)
   - [x] 17a – Prototype Navigation Menu and Menubar using Radix Primitives and Tamagui styling.
   - [x] 17b – Validate keyboard and screen reader behavior on desktop web.
   - [x] 17c – Exported in `index.ts`.
 
-18 - [x] Context Menu (TDD, UX)
+21 - [x] Context Menu (TDD, UX)
   - [x] 18a – Implement `IvisaContextMenu` using `react-right-click-context-menu` or Radix Dropdown.
   - [x] 18b – Add tests for right-click behavior on web.
   - [x] 18c – Exported in `index.ts`.
 
-19 - [x] Core Primitives Sprint (P1) (TDD, UX)
+22 - [x] Core Primitives Sprint (P1) (TDD, UX)
   - [x] 19a – Implement `Alert` (Atom).
   - [x] 19b – Implement `Badge` (Atom).
   - [x] 19c – Implement `Switch` (Atom).
   - [x] 19d – Implement `Sheet` (Molecule).
-  - [x] 19e – Implement `Toast` (Molecule).
+  - [x] 19e – Implement `Toast` (Molecule). **Note:** Decision needed: use Tamagui's native Toast or implement a wrapper for `Sonner` to align with shadcn's latest implementation.
   - [x] 19f – Implement `Avatar` (Atom).
 
-20 - [x] Secondary Components Sprint (P2) (TDD, UX)
+23 - [x] Secondary Components Sprint (P2) (TDD, UX)
   - [x] 20a – Implement `Tabs` (Molecule).
   - [x] 20b – Implement `Accordion` (Molecule).
   - [x] 20c – Implement `Slider` (Atom).
   - [x] 20d – Implement `RadioGroup` (Molecule).
 
-21 - [x] Polish Sprint (P3) (TDD, UX)
+24 - [x] Polish Sprint (P3) (TDD, UX)
   - [x] 21a – Implement `Skeleton` (Atom).
   - [x] 21b – Implement `Progress` (Atom).
   - [x] 21c – Implement `Separator` (Atom).
@@ -129,12 +148,12 @@
   - [x] 21f – Implement `Resizable` (Molecule).
   - [x] 21g – Implement `Drawer` (Molecule).
 
-22 - [ ] Populate Storybook with full documentation (DOC)
+25 - [ ] Populate Storybook with full documentation (DOC)
   - [ ] 22a – Create stories for all primitives and composites, covering variants and states.
   - [ ] 22b – Write usage notes and document props for each component within Storybook.
   - [ ] 22c – Document Storybook usage in `docs/03-architecture.md`.
 
-23 - [ ] Documentation passes (DOC)
+26 - [ ] Documentation passes (DOC)
   - [ ] 23a – Ensure `docs/01-plan.md`, `docs/02-tasks.md`, and `docs/03-architecture.md` are in sync with current implementation.
   - [ ] 23b – Record major milestones and decisions in `docs/04-changelog.md`.
 
@@ -142,15 +161,15 @@
 
 ## Phase 5 – Integration & Handoff
 
-24 - [ ] Integrate design system into flows (FDD, UX)
+27 - [ ] Integrate design system into flows (FDD, UX)
   - [ ] 24a – Replace ad-hoc UI in chat, settings, and key dashboards with `packages/ui` components.
   - [ ] 24b – Add end-to-end tests for at least one representative flow per area.
 
-25 - [ ] Finalize accessibility and cross-platform checks (TDD, UX)
+28 - [ ] Finalize accessibility and cross-platform checks (TDD, UX)
   - [ ] 25a – Run accessibility inspections on web.
   - [ ] 25b – Validate main components on iOS/Android using Expo.
 
-26 - [ ] Handoff package and docs (DOC)
+29 - [ ] Handoff package and docs (DOC)
   - [ ] 26a – Write "How to add a new component" guide for `packages/ui`.
   - [ ] 26b – Summarize headless integrations and upgrade strategy.
   - [ ] 26c – Capture future ideas in `docs/05-ideas.md` if needed.
