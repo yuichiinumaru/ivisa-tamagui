@@ -12,6 +12,7 @@
   - **Space & size tokens:** Consistent spacing and sizing scales for layout primitives.
   - **Typography tokens:** Heading/body scales and weights aligned with the desired visual style.
 - Tokens are composed into themes (light/dark, potentially per-brand variants) via `createTheme` and exported for use in apps and Storybook.
+- **Shared company palette:** The palette + component theme scales are defined by the design team’s canonical Tamagui config (`docs/tamaguiconfig.txt`). Our current `tamagui.config.ts` still wires simple light/dark themes from `tokens.ts`; **Task 14** in `docs/02-tasks.md` will evolve this to more closely match the shared config (likely using `@tamagui/theme-builder`) without breaking existing token names.
 
 ## 3. Providers & Entry Points
 - Host apps (Next.js web, Expo native, or others) wrap their root layouts with:

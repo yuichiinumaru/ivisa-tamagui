@@ -1,37 +1,26 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
+import { tamaguiPlugin } from '@tamagui/vite-plugin'
+import path from 'path'
 
-import { defineConfig } from 'vitest/config';
-
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-
-import { playwright } from '@vitest/browser-playwright';
-
-const dirname =
-  typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
-
-// More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  plugins: [
+    react(),
+    // tamaguiPlugin({
+    //   config: './packages/ui/src/tamagui.config.ts',
+    //   components: ['tamagui'],
+    // }),
+  ],
   test: {
-    projects: [
-      {
-        extends: true,
-        plugins: [
-          // The plugin will run tests for the stories defined in your Storybook config
-          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-          storybookTest({ configDir: path.join(dirname, '.storybook') }),
-        ],
-        test: {
-          name: 'storybook',
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({}),
-            instances: [{ browser: 'chromium' }],
-          },
-          setupFiles: ['.storybook/vitest.setup.ts'],
-        },
-      },
-    ],
+    environment: 'happy-dom',
+    include: ['**/*.test.{ts,tsx}'],
+    exclude: ['**/node_modules/**', '**/dist/**'],
+    globals: true,
   },
-});
+  resolve: {
+    alias: {
+      '@ivisa/ui': path.resolve(__dirname, './packages/ui/src'),
+      'react-native': 'react-native-web',
+    },
+  },
+})

@@ -46,6 +46,11 @@
 5. **Headless integration isolation:** For each headless integration (Table, Datepicker, Command Palette, Carousel, etc.), isolate logic into small wrappers/hooks within the design system. Feature code should use simple, well-typed props and not depend directly on headless APIs.
 6. **Testing Stack and Strategy:** Maintain tests for all components using **Vitest** and **React Testing Library**. This includes unit/render tests for primitives and interaction tests for composites that integrate headless logic (table, calendar, command palette).
 
+### 5.1 Shared Tamagui Config Directive
+- The design team’s reference config at `docs/tamaguiconfig.txt` is the **canonical source of palette and theme scales** for the company.
+- This project currently uses a local `tokens.ts` + `tamagui.config.ts` implementation for light/dark themes; **Task 14** in `docs/02-tasks.md` tracks the work to align those tokens/themes with the shared config (potentially via `@tamagui/theme-builder`).
+- Rationale: we keep the design system stable while we migrate toward the shared config in a controlled way, preserving existing component contracts and Atomic Design documentation.
+
 ## 6. Phase Roadmap
 
 ### Phase 0 – Research & Scoping (completed)

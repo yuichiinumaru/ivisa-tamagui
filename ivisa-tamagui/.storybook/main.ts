@@ -22,6 +22,20 @@ const config: StorybookConfig = {
     options: {}
   },
   viteFinal: async (config) => {
+    const { tamaguiPlugin } = await import('@tamagui/vite-plugin')
+
+    config.plugins ??= []
+    config.plugins.push(
+      tamaguiPlugin({
+        config: './packages/ui/src/tamagui.config.ts',
+        components: ['tamagui'],
+        // themeBuilder: {
+        //   input: './packages/ui/src/theme/themes.ts',
+        //   output: './packages/ui/src/theme/themes-out.ts',
+        // },
+      })
+    )
+
     config.resolve ??= {};
     config.resolve.alias = {
       ...config.resolve.alias,

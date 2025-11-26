@@ -78,49 +78,79 @@
   - [x] 13a – Build `IvisaCarousel` with `embla-carousel` and Tamagui layout primitives (Implemented in `src/organisms/Carousel.tsx`).
   - [x] 13b – Add tests for basic navigation (next/prev) and loop behavior (Covered by visual tests).
 
-14 - [ ] `IvisaOTPInput` composite (TDD, UX)
-  - [ ] 14a – Implement `IvisaOTPInput` based on `input-otp` or `pogiii/sushi` patterns.
-  - [ ] 14b – Add tests for focus management and paste handling.
+14 - [x] Shared Tamagui config adoption (SDD, DOC)
+  - [x] 14a – Merge the design team’s palette/themes (`docs/tamaguiconfig.txt`) into `packages/ui/src/tamagui.config.ts` using `@tamagui/theme-builder`.
+  - [x] 14b – Keep local `tokens.ts` spacing/sizing/radius scales and semantic color keys to avoid breaking existing components.
+  - [x] 14c – Run Storybook + `scripts/visual-check.js`, then document the change in `docs/04-changelog.md`.
 
-15 - [ ] `IvisaPagination` & `IvisaBreadcrumb` (TDD, UX)
-  - [ ] 15a – Implement `IvisaPagination` purely with Tamagui primitives.
-  - [ ] 15b – Implement `IvisaBreadcrumb` for web navigation.
-  - [ ] 15c – Add snapshot/interaction tests for both components.
+15 - [x] `IvisaOTPInput` composite (TDD, UX)
+  - [x] 15a – Implemented `IvisaOTPInput` based on `input-otp` patterns with Tamagui styling (see `packages/ui/src/molecules/OTPInput.tsx`).
+  - [x] 15b – Added focus traversal + paste handling coverage via Storybook demos/tests.
+
+16 - [x] `IvisaPagination` & `IvisaBreadcrumb` (TDD, UX)
+  - [x] 16a – Implement `IvisaPagination` purely with Tamagui primitives.
+  - [x] 16b – Implement `IvisaBreadcrumb` for web navigation.
+  - [x] 16c – Add snapshot/interaction tests for both components.
 
 ---
 
 ## Phase 4 – Web-Specific UX & Full Documentation
 
-16 - [ ] Navigation Menu / Menubar (TDD, UX)
-  - [ ] 16a – Prototype Navigation Menu and Menubar using Radix Primitives and Tamagui styling.
-  - [ ] 16b – Validate keyboard and screen reader behavior on desktop web.
+17 - [x] Navigation Menu / Menubar (TDD, UX)
+  - [x] 17a – Prototype Navigation Menu and Menubar using Radix Primitives and Tamagui styling.
+  - [x] 17b – Validate keyboard and screen reader behavior on desktop web.
+  - [x] 17c – Exported in `index.ts`.
 
-17 - [ ] Context Menu (TDD, UX)
-  - [ ] 17a – Implement `IvisaContextMenu` using `react-right-click-context-menu` or Radix Dropdown.
-  - [ ] 17b – Add tests for right-click behavior on web.
+18 - [x] Context Menu (TDD, UX)
+  - [x] 18a – Implement `IvisaContextMenu` using `react-right-click-context-menu` or Radix Dropdown.
+  - [x] 18b – Add tests for right-click behavior on web.
+  - [x] 18c – Exported in `index.ts`.
 
-18 - [ ] Populate Storybook with full documentation (DOC)
-  - [ ] 18a – Create stories for all primitives and composites, covering variants and states.
-  - [ ] 18b – Write usage notes and document props for each component within Storybook.
-  - [ ] 18c – Document Storybook usage in `docs/03-architecture.md`.
+19 - [x] Core Primitives Sprint (P1) (TDD, UX)
+  - [x] 19a – Implement `Alert` (Atom).
+  - [x] 19b – Implement `Badge` (Atom).
+  - [x] 19c – Implement `Switch` (Atom).
+  - [x] 19d – Implement `Sheet` (Molecule).
+  - [x] 19e – Implement `Toast` (Molecule).
+  - [x] 19f – Implement `Avatar` (Atom).
 
-19 - [ ] Documentation passes (DOC)
-  - [ ] 19a – Ensure `docs/01-plan.md`, `docs/02-tasks.md`, and `docs/03-architecture.md` are in sync with current implementation.
-  - [ ] 19b – Record major milestones and decisions in `docs/04-changelog.md`.
+20 - [x] Secondary Components Sprint (P2) (TDD, UX)
+  - [x] 20a – Implement `Tabs` (Molecule).
+  - [x] 20b – Implement `Accordion` (Molecule).
+  - [x] 20c – Implement `Slider` (Atom).
+  - [x] 20d – Implement `RadioGroup` (Molecule).
+
+21 - [x] Polish Sprint (P3) (TDD, UX)
+  - [x] 21a – Implement `Skeleton` (Atom).
+  - [x] 21b – Implement `Progress` (Atom).
+  - [x] 21c – Implement `Separator` (Atom).
+  - [x] 21d – Implement `Toggle` & `ToggleGroup` (Atom).
+  - [x] 21e – Implement `ScrollArea` (Atom).
+  - [x] 21f – Implement `Resizable` (Molecule).
+  - [x] 21g – Implement `Drawer` (Molecule).
+
+22 - [ ] Populate Storybook with full documentation (DOC)
+  - [ ] 22a – Create stories for all primitives and composites, covering variants and states.
+  - [ ] 22b – Write usage notes and document props for each component within Storybook.
+  - [ ] 22c – Document Storybook usage in `docs/03-architecture.md`.
+
+23 - [ ] Documentation passes (DOC)
+  - [ ] 23a – Ensure `docs/01-plan.md`, `docs/02-tasks.md`, and `docs/03-architecture.md` are in sync with current implementation.
+  - [ ] 23b – Record major milestones and decisions in `docs/04-changelog.md`.
 
 ---
 
 ## Phase 5 – Integration & Handoff
 
-20 - [ ] Integrate design system into flows (FDD, UX)
-  - [ ] 20a – Replace ad-hoc UI in chat, settings, and key dashboards with `packages/ui` components.
-  - [ ] 20b – Add end-to-end tests for at least one representative flow per area.
+24 - [ ] Integrate design system into flows (FDD, UX)
+  - [ ] 24a – Replace ad-hoc UI in chat, settings, and key dashboards with `packages/ui` components.
+  - [ ] 24b – Add end-to-end tests for at least one representative flow per area.
 
-21 - [ ] Finalize accessibility and cross-platform checks (TDD, UX)
-  - [ ] 21a – Run accessibility inspections on web.
-  - [ ] 21b – Validate main components on iOS/Android using Expo.
+25 - [ ] Finalize accessibility and cross-platform checks (TDD, UX)
+  - [ ] 25a – Run accessibility inspections on web.
+  - [ ] 25b – Validate main components on iOS/Android using Expo.
 
-22 - [ ] Handoff package and docs (DOC)
-  - [ ] 22a – Write "How to add a new component" guide for `packages/ui`.
-  - [ ] 22b – Summarize headless integrations and upgrade strategy.
-  - [ ] 22c – Capture future ideas in `docs/05-ideas.md` if needed.
+26 - [ ] Handoff package and docs (DOC)
+  - [ ] 26a – Write "How to add a new component" guide for `packages/ui`.
+  - [ ] 26b – Summarize headless integrations and upgrade strategy.
+  - [ ] 26c – Capture future ideas in `docs/05-ideas.md` if needed.
