@@ -9,6 +9,7 @@
     "lint": "pnpm --filter ./packages/ui lint",
     "test": "pnpm --filter ./packages/ui test",
     "typecheck": "pnpm --filter ./packages/ui lint",
+    "scan:security": "pnpm audit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

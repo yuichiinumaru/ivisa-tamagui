@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '../../../vitest.setup'
 import { vi } from 'vitest'
 
-import { Dialog } from '../../../src/components/overlays/Dialog'
-import { Button } from '../../../src/components/primitives/Button'
+import { Dialog } from '../../../../src/molecules/Dialog/Dialog'
+import { Button } from '../../../../src/atoms/Button/Button'
 
 const DialogTestComponent = ({ onOpenChange }: { onOpenChange: (open: boolean) => void }) => (
   <Dialog

@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { render } from '../utils/render-native';
-import { Select } from '../../src/components/forms/Select';
+import { Select } from '../../../src/molecules/Select/Select';
 
 describe('Select', () => {
   const items = [

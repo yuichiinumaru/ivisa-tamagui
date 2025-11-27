@@ -4,7 +4,7 @@ import {
   shadcnDarkTheme,
   shadcnLightTheme,
   shadcnRadiusTokens,
-} from '../src/tamagui.config'
+} from '../../src/tamagui.config'
 
 describe('shadcn Tamagui configuration constants', () => {
   it('defines shadcn color tokens matching root theme', () => {

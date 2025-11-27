@@ -1,5 +1,5 @@
 import { render, screen } from '../../utils/render'
-import { Textarea } from '../../../src/components/forms/Textarea'
+import { Textarea } from '../../../../src/atoms/Textarea/Textarea'
 
 describe('Textarea', () => {
   it('renders multiline textbox with accessible label and default styles', () => {

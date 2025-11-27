@@ -1565,18 +1565,18 @@ Aquele `packages/ui/composites/` que eu sugeri na organização do VSCode? O `po
 
 | Component / Gap | Headless Logic (Primary) | Reference Repo(s) in `_reference/` | Target Composite (packages/ui) |
 | --- | --- | --- | --- |
-| `IvisaDataTable` | `@tanstack/react-table` (`TanStack/table`) | shadcn docs, `shadcn-admin` table example | `composites/data-table/IvisaDataTable.tsx` |
-| `IvisaCalendar` / `IvisaDatePicker` | `@rehookify/datepicker` | `tamagui/tamagui` calendar examples, Bento date blocks | `composites/date-picker/IvisaDatePicker.tsx` |
-| `IvisaCommandPalette` | `cmdk` (`pacocoursey/cmdk`) | Bento command palette, shadcn command docs | `composites/command-palette/IvisaCommandPalette.tsx` |
-| `IvisaCarousel` | `embla-carousel` | Bento carousels, `pogiii/sushi` stepper (navigation) | `composites/carousel/IvisaCarousel.tsx` |
+| `DataTable` | `@tanstack/react-table` (`TanStack/table`) | shadcn docs, `shadcn-admin` table example | `composites/data-table/DataTable.tsx` |
+| `Calendar` / `DatePicker` | `@rehookify/datepicker` | `tamagui/tamagui` calendar examples, Bento date blocks | `composites/date-picker/DatePicker.tsx` |
+| `CommandPalette` | `cmdk` (`pacocoursey/cmdk`) | Bento command palette, shadcn command docs | `composites/command-palette/CommandPalette.tsx` |
+| `Carousel` | `embla-carousel` | Bento carousels, `pogiii/sushi` stepper (navigation) | `composites/carousel/Carousel.tsx` |
 | `IvisaNavigationMenu` | Radix Navigation Menu | `radix-ui/primitives`, Bento headers | `composites/navigation-menu/IvisaNavigationMenu.tsx` |
 | `IvisaMenubar` | Radix Dropdown/Menu | `radix-ui/primitives`, React Native Reusables docs | `composites/menubar/IvisaMenubar.tsx` |
 | `IvisaContextMenu` | `react-right-click-context-menu` or Radix Dropdown | shadcn docs | `composites/context-menu/IvisaContextMenu.tsx` |
-| `IvisaOTPInput` | `input-otp` | `pogiii/sushi` (`registery/components/inputs/OTPInput.tsx`) | `composites/otp-input/IvisaOTPInput.tsx` |
-| `IvisaPagination` | DIY (Tamagui primitives) | shadcn table example | `composites/pagination/IvisaPagination.tsx` |
-| `IvisaBreadcrumb` | DIY (Tamagui primitives) | Bento navigation blocks | `composites/breadcrumb/IvisaBreadcrumb.tsx` |
+| `OTPInput` | `input-otp` | `pogiii/sushi` (`registery/components/inputs/OTPInput.tsx`) | `composites/otp-input/OTPInput.tsx` |
+| `Pagination` | DIY (Tamagui primitives) | shadcn table example | `composites/pagination/Pagination.tsx` |
+| `Breadcrumb` | DIY (Tamagui primitives) | Bento navigation blocks | `composites/breadcrumb/Breadcrumb.tsx` |
 | `IvisaBento*` Marketing Blocks | N/A (copy Bento) | `tamagui.dev/bento` free components | `bento/*` |
-| `IvisaInput` (composed) | N/A (Tamagui primitives) | `pogiii/sushi` (`registery/components/inputs/Input.tsx`) | `primitives/input/IvisaInput.tsx` + derived composites |
+| `Input` (composed) | N/A (Tamagui primitives) | `pogiii/sushi` (`registery/components/inputs/Input.tsx`) | `primitives/input/Input.tsx` + derived composites |
 
 **Process:**
 1. For cada linha, copiar apenas a lógica necessária do headless library e reescrever a UI com Tamagui (tokens + variants).

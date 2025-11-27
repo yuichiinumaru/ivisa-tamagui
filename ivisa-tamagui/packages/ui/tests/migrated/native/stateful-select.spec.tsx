@@ -3,7 +3,7 @@ import React from 'react';
 
 import { render } from '../utils/render-native';
 import { StatefulSelect } from '../../src/components/forms/StatefulSelect';
-import { Select } from '../../src/components/forms/Select';
+import { Select } from '../../../src/molecules/Select/Select';
 
 describe('StatefulSelect', () => {
   it('renders correctly with a placeholder', () => {
