@@ -37,7 +37,7 @@
 ## 5. Architectural Guardrails
 1. **Single Tamagui config + theme:** Maintain a single source of truth for colors, radius, spacing and typography tokens. All primitives and composites must consume these tokens instead of hard-coded values.
 2. **Providers and portals:** Ensure all app entrypoints (web and native) are wrapped in `TamaguiProvider` and `PortalProvider`. Composites can assume this environment and do not re-mount providers.
-3. **Naming Convention:** All custom-built composite components will be prefixed with the company name, `Ivisa` (e.g., `IvisaDataTable`, `IvisaCalendar`), to distinguish them from base primitives and third-party libraries.
+3. **Naming Convention:** All custom-built composite components will be prefixed with the company name, `Ivisa` (e.g., `DataTable`, `Calendar`), to distinguish them from base primitives and third-party libraries.
 4. **Design system package boundary:** Host all shared UI inside a `packages/ui` (or similar) package exposing:
    - `theme/` – tokens and Tamagui theme setup.
    - `primitives/` – thin wrappers around `tamagui/ui` primitives.
@@ -68,14 +68,14 @@
     - Perform a minimal setup of **Storybook** to enable isolated component development and visual tracking from the start.
 
 ### Phase 2 – High-Impact Gaps (Data Table, Calendar, Command Palette)
-- **Data Table:** Implement an `IvisaDataTable` composite using `@tanstack/react-table` for logic and Tamagui primitives for rendering.
-- **Calendar / Date Picker:** Implement an `IvisaCalendar` / `IvisaDatePicker` composite using `@rehookify/datepicker` hooks, rendered inside a Tamagui `Sheet` or `Dialog`.
-- **Command Palette (Cmd+K):** Implement an `IvisaCommandPalette` composite using `cmdk` as headless logic, wrapped inside a Tamagui `Dialog` or `Sheet`.
+- **Data Table:** Implement an `DataTable` composite using `@tanstack/react-table` for logic and Tamagui primitives for rendering.
+- **Calendar / Date Picker:** Implement an `Calendar` / `DatePicker` composite using `@rehookify/datepicker` hooks, rendered inside a Tamagui `Sheet` or `Dialog`.
+- **Command Palette (Cmd+K):** Implement an `CommandPalette` composite using `cmdk` as headless logic, wrapped inside a Tamagui `Dialog` or `Sheet`.
 
 ### Phase 3 – Medium / Low-Effort Components
-- **Carousel:** Implement an `IvisaCarousel` composite using `embla-carousel`.
-- **Input OTP:** Implement an `IvisaOTPInput` composite, using patterns from `pogiii/sushi`.
-- **Pagination & Breadcrumb:** Implement lightweight, Tamagui-only `IvisaPagination` and `IvisaBreadcrumb` components.
+- **Carousel:** Implement an `Carousel` composite using `embla-carousel`.
+- **Input OTP:** Implement an `OTPInput` composite, using patterns from `pogiii/sushi`.
+- **Pagination & Breadcrumb:** Implement lightweight, Tamagui-only `Pagination` and `Breadcrumb` components.
 
 ### Phase 4 – Web-Specific UX & Full Documentation
 - **Navigation Menu / Menubar / Context Menu:** For desktop-style navigation, use Radix Primitives and render them with Tamagui primitives.

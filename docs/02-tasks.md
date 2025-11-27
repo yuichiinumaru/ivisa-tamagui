@@ -55,18 +55,18 @@
 
 ## Phase 2 – High-Impact Gaps (Data Table, Calendar, Command Palette)
 
-10 - [x] `IvisaDataTable` composite (TDD, FDD)
-  - [x] 10a – Design `IvisaDataTable` API (props for columns, data, sorting, pagination).
+10 - [x] `DataTable` composite (TDD, FDD)
+  - [x] 10a – Design `DataTable` API (props for columns, data, sorting, pagination).
   - [x] 10b – Integrate `@tanstack/react-table` logic with Tamagui primitives (Implemented in `src/organisms/DataTable.tsx`).
   - [x] 10c – Add tests for sorting, pagination, and empty state (Covered by visual tests and stories).
 
-11 - [x] `IvisaCalendar` / `IvisaDatePicker` composite (TDD, FDD)
-  - [x] 11a – Design `IvisaCalendar` / `IvisaDatePicker` component API.
+11 - [x] `Calendar` / `DatePicker` composite (TDD, FDD)
+  - [x] 11a – Design `Calendar` / `DatePicker` component API.
   - [x] 11b – Integrate `@rehookify/datepicker` hooks with Tamagui (Implemented in `src/molecules/Calendar.tsx` and `DatePicker.tsx`).
   - [x] 11c – Add tests for selecting single date and ranges (Covered by visual tests).
 
-12 - [x] `IvisaCommandPalette` (Cmd+K) composite (TDD, UX)
-  - [x] 12a – Define `IvisaCommandPalette` API and keyboard shortcuts.
+12 - [x] `CommandPalette` (Cmd+K) composite (TDD, UX)
+  - [x] 12a – Define `CommandPalette` API and keyboard shortcuts.
   - [x] 12b – Integrate `cmdk` logic with Tamagui Dialog/Sheet UI (Implemented in `src/organisms/Command.tsx`).
   - [x] 12c – Add tests for filtering, keyboard navigation, and closing/opening flows (Covered by visual tests).
 
@@ -74,8 +74,8 @@
 
 ## Phase 3 – Medium / Low-Effort Components
 
-13 - [x] `IvisaCarousel` composite (TDD, UX)
-  - [x] 13a – Build `IvisaCarousel` with `embla-carousel` and Tamagui layout primitives (Implemented in `src/organisms/Carousel.tsx`).
+13 - [x] `Carousel` composite (TDD, UX)
+  - [x] 13a – Build `Carousel` with `embla-carousel` and Tamagui layout primitives (Implemented in `src/organisms/Carousel.tsx`).
   - [x] 13b – Add tests for basic navigation (next/prev) and loop behavior (Covered by visual tests).
 
 14 - [x] Shared Tamagui config adoption (SDD, DOC)
@@ -83,18 +83,18 @@
   - [x] 14b – Keep local `tokens.ts` spacing/sizing/radius scales and semantic color keys to avoid breaking existing components.
   - [x] 14c – Run Storybook + `scripts/visual-check.js`, then document the change in `docs/04-changelog.md`.
 
-15 - [x] `IvisaOTPInput` composite (TDD, UX)
-  - [x] 15a – Implemented `IvisaOTPInput` based on `input-otp` patterns with Tamagui styling (see `packages/ui/src/molecules/OTPInput.tsx`).
+15 - [x] `OTPInput` composite (TDD, UX)
+  - [x] 15a – Implemented `OTPInput` based on `input-otp` patterns with Tamagui styling (see `packages/ui/src/molecules/OTPInput.tsx`).
   - [x] 15b – Added focus traversal + paste handling coverage via Storybook demos/tests.
 
-16 - [x] `IvisaPagination` & `IvisaBreadcrumb` (TDD, UX)
-  - [x] 16a – Implement `IvisaPagination` purely with Tamagui primitives.
-  - [x] 16b – Implement `IvisaBreadcrumb` for web navigation.
+16 - [x] `Pagination` & `Breadcrumb` (TDD, UX)
+  - [x] 16a – Implement `Pagination` purely with Tamagui primitives.
+  - [x] 16b – Implement `Breadcrumb` for web navigation.
   - [x] 16c – Add snapshot/interaction tests for both components.
 
-16 - [x] `IvisaPagination` & `IvisaBreadcrumb` (TDD, UX)
-  - [x] 16a – Implement `IvisaPagination` purely with Tamagui primitives.
-  - [x] 16b – Implement `IvisaBreadcrumb` for web navigation.
+16 - [x] `Pagination` & `Breadcrumb` (TDD, UX)
+  - [x] 16a – Implement `Pagination` purely with Tamagui primitives.
+  - [x] 16b – Implement `Breadcrumb` for web navigation.
   - [x] 16c – Add snapshot/interaction tests for both components.
 
 17 - [ ] `Sidebar` (Organism) (Composition, UX)

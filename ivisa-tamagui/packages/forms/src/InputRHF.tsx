@@ -1,7 +1,7 @@
 import { Controller, FieldValues, UseControllerProps } from 'react-hook-form';
-import { IvisaInput, IvisaInputProps } from '@ivisa/ui'; // Assuming IvisaInput is exported from @ivisa/ui
+import { Input, InputProps } from '@ivisa/ui'; // Assuming Input is exported from @ivisa/ui
 
-export type InputRHFProps<T extends FieldValues = FieldValues> = IvisaInputProps & UseControllerProps<T>;
+export type InputRHFProps<T extends FieldValues = FieldValues> = InputProps & UseControllerProps<T>;
 
 export function InputRHF<T extends FieldValues = FieldValues>({
   name,
@@ -17,7 +17,7 @@ export function InputRHF<T extends FieldValues = FieldValues>({
       rules={rules}
       defaultValue={defaultValue}
       render={({ field: { onChange, onBlur, value, ref }, fieldState: { error } }) => (
-        <IvisaInput
+        <Input
           {...inputProps}
           ref={ref}
           value={value ?? ''}
