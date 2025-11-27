@@ -1,0 +1,192 @@
+import { config } from '@tamagui/config/v3';
+import { createTamagui } from 'tamagui';
+import { createThemes, defaultComponentThemes } from '@tamagui/theme-builder';
+import * as Colors from '@tamagui/colors';
+
+const darkPalette = [
+	'hsla(208, 72%, 8%, 1)',
+	'hsla(206, 74%, 16%, 1)',
+	'hsla(205, 77%, 25%, 1)',
+	'hsla(204, 79%, 33%, 1)',
+	'hsla(203, 82%, 41%, 1)',
+	'hsla(201, 85%, 50%, 1)',
+	'hsla(200, 87%, 58%, 1)',
+	'hsla(199, 90%, 67%, 1)',
+	'hsla(198, 92%, 75%, 1)',
+	'hsla(196, 95%, 83%, 1)',
+	'hsla(195, 97%, 92%, 1)',
+	'hsla(194, 100%, 100%, 1)'
+];
+const lightPalette = [
+	'hsla(208, 72%, 100%, 1)',
+	'hsla(208, 66%, 93%, 1)',
+	'hsla(209, 60%, 85%, 1)',
+	'hsla(209, 54%, 78%, 1)',
+	'hsla(210, 47%, 71%, 1)',
+	'hsla(210, 41%, 63%, 1)',
+	'hsla(211, 35%, 56%, 1)',
+	'hsla(211, 29%, 48%, 1)',
+	'hsla(212, 23%, 41%, 1)',
+	'hsla(212, 17%, 34%, 1)',
+	'hsla(213, 11%, 26%, 1)',
+	'hsla(213, 5%, 19%, 1)'
+];
+
+const lightShadows = {
+	shadow1: 'rgba(0,0,0,0.04)',
+	shadow2: 'rgba(0,0,0,0.08)',
+	shadow3: 'rgba(0,0,0,0.16)',
+	shadow4: 'rgba(0,0,0,0.24)',
+	shadow5: 'rgba(0,0,0,0.32)',
+	shadow6: 'rgba(0,0,0,0.4)'
+};
+
+const darkShadows = {
+	shadow1: 'rgba(0,0,0,0.2)',
+	shadow2: 'rgba(0,0,0,0.3)',
+	shadow3: 'rgba(0,0,0,0.4)',
+	shadow4: 'rgba(0,0,0,0.5)',
+	shadow5: 'rgba(0,0,0,0.6)',
+	shadow6: 'rgba(0,0,0,0.7)'
+};
+
+const builtThemes = createThemes({
+	componentThemes: defaultComponentThemes,
+	base: {
+		palette: {
+			dark: darkPalette,
+			light: lightPalette
+		},
+		extra: {
+			light: {
+				light: 'hsla(208, 72%, 100%, 1)',
+				...Colors.green,
+				...Colors.red,
+				...Colors.yellow,
+				...lightShadows,
+				shadowColor: lightShadows.shadow1
+			},
+			dark: {
+				...Colors.greenDark,
+				...Colors.redDark,
+				...Colors.yellowDark,
+				...darkShadows,
+				shadowColor: darkShadows.shadow1
+			}
+		}
+	},
+	accent: {
+		palette: {
+			dark: [
+				'hsla(220, 60%, 23%, 1)',
+				'hsla(216, 60%, 30%, 1)',
+				'hsla(213, 59%, 37%, 1)',
+				'hsla(209, 59%, 44%, 1)',
+				'hsla(205, 59%, 51%, 1)',
+				'hsla(202, 58%, 58%, 1)',
+				'hsla(198, 58%, 65%, 1)',
+				'hsla(195, 57%, 72%, 1)',
+				'hsla(191, 57%, 79%, 1)',
+				'hsla(187, 57%, 86%, 1)',
+				'hsla(184, 56%, 93%, 1)',
+				'hsla(180, 56%, 100%, 1)',
+				'hsla(180, 56%, 74%, 1)'
+			],
+			light: [
+				'hsla(220, 60%, 23%, 1)',
+				'hsla(218, 60%, 30%, 1)',
+				'hsla(215, 59%, 37%, 1)',
+				'hsla(213, 59%, 44%, 1)',
+				'hsla(210, 59%, 51%, 1)',
+				'hsla(208, 58%, 58%, 1)',
+				'hsla(205, 58%, 65%, 1)',
+				'hsla(203, 57%, 72%, 1)',
+				'hsla(200, 57%, 79%, 1)',
+				'hsla(198, 57%, 86%, 1)',
+				'hsla(195, 56%, 93%, 1)',
+				'hsla(193, 56%, 100%, 1)',
+				'hsla(193, 56%, 74%, 1)'
+			]
+		}
+	},
+	childrenThemes: {
+		warning: {
+			palette: {
+				dark: Object.values(Colors.yellowDark),
+				light: Object.values(Colors.yellow)
+			}
+		},
+		error: {
+			palette: {
+				dark: Object.values(Colors.redDark),
+				light: Object.values(Colors.red)
+			}
+		},
+		success: {
+			palette: {
+				dark: Object.values(Colors.greenDark),
+				light: Object.values(Colors.green)
+			}
+		}
+	}
+});
+
+export type Themes = typeof builtThemes;
+
+export const themes: Themes = builtThemes as any;
+
+const appConfig = createTamagui({
+	...config,
+	themes,
+	defaultTheme: 'light',
+	shouldAddPrefersColorThemes: false,
+	disableRootThemeClass: false
+});
+
+// ✅ ADICIONAR ESTILOS GLOBAIS AQUI
+if (typeof document !== 'undefined') {
+	const styleId = 'tamagui-global-styles';
+
+	// Evitar duplicar estilos
+	if (!document.getElementById(styleId)) {
+		const style = document.createElement('style');
+		style.id = styleId;
+		style.innerHTML = `
+      /* Scrollbar Webkit (Chrome, Safari, Edge, Opera) */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f5f5f5;
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #003686;
+        border-radius: 10px;
+        transition: background 0.2s ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #002555;
+      }
+
+      /* Scrollbar Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #003686 #f5f5f5;
+      }
+    `;
+		document.head.appendChild(style);
+	}
+}
+
+export type AppConfig = typeof appConfig;
+
+declare module 'tamagui' {
+	interface TamaguiCustomConfig extends AppConfig {}
+}
+
+export default appConfig;
