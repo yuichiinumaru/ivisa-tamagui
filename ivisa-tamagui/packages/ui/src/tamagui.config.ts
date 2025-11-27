@@ -1,4 +1,4 @@
-import { createTamagui } from 'tamagui';
+import { createTamagui, createFont } from 'tamagui';
 import { createAnimations } from '@tamagui/animations-react-native';
 import { tokens } from './theme/tokens';
 import { themes } from './theme';
@@ -9,6 +9,48 @@ import { createInterFont } from '@tamagui/font-inter';
 
 const headingFont = createInterFont();
 const bodyFont = createInterFont();
+
+// Cera Pro Font Configuration (IVISA Brand)
+const ceraProFont = createFont({
+  family: 'Cera Pro',
+  size: {
+    1: 12,
+    2: 14,
+    3: 16,
+    4: 18,
+    5: 20,
+    6: 24,
+    7: 32,
+    8: 48,
+    9: 64,
+  },
+  lineHeight: {
+    1: 16,
+    2: 20,
+    3: 24,
+    4: 28,
+    5: 32,
+    6: 40,
+    7: 48,
+    8: 64,
+    9: 80,
+  },
+  weight: {
+    4: '400', // Regular
+    5: '500', // Medium
+    9: '900', // Black
+  },
+  letterSpacing: {
+    4: 0,
+    7: -0.5, // Tighter for large titles
+    9: -1,
+  },
+  face: {
+    400: { normal: 'CeraPro-Regular' },
+    500: { normal: 'CeraPro-Medium' },
+    900: { normal: 'CeraPro-Black' },
+  },
+});
 
 const animations = createAnimations({
   bouncy: {
@@ -39,6 +81,8 @@ const config = createTamagui({
   fonts: {
     heading: headingFont,
     body: bodyFont,
+    brandHeading: ceraProFont,
+    brandBody: ceraProFont,
   },
 
   // Tokens
@@ -101,7 +145,7 @@ const config = createTamagui({
 // This is necessary for TypeScript to understand the Tamagui configuration
 type Conf = typeof config;
 declare module 'tamagui' {
-  interface TamaguiCustomConfig extends Conf {}
+  interface TamaguiCustomConfig extends Conf { }
 }
 
 export default config;

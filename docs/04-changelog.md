@@ -2,6 +2,16 @@
 
 All notable changes to this design system and its documentation will be recorded here.
 
+## [0.4.0] - Brand Identity & Strategic Refinement
+- **Brand Identity**:
+  - Added IVISA color palette (Blue/Teal) to `tokens.ts`.
+  - Configured **Cera Pro** font in `tamagui.config.ts`.
+  - Created `ivisa_light` and `ivisa_dark` themes.
+- **Strategy**:
+  - Documented **Git Submodule** strategy in `docs/08-submodule-strategy.md`.
+  - Established strict "No Framework" rule (no Next.js/Expo dependencies).
+  - Refined "Frankenstein" strategy: **Sidebar** is now explicitly a **Composition** (Sheet + YStack), not a wrapper.
+
 ## [0.3.0] - Theme Merge & Phase 4 Completion
 - **Theme Integration**: Merged design team's palette (Blue/Cyan) into `packages/ui` using `@tamagui/theme-builder`.
   - Updated `themes.ts` to use `createThemes` with the new palette.

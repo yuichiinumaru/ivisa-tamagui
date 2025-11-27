@@ -97,19 +97,15 @@
   - [x] 16b – Implement `IvisaBreadcrumb` for web navigation.
   - [x] 16c – Add snapshot/interaction tests for both components.
 
-17 - [ ] `Sidebar` (Organism) (TDD, UX)
-  - [ ] 17a – Implement `Sidebar` as a composite component using `Sheet` for mobile and `YStack` for desktop.
-  - [ ] 17b – Add stories for collapsible and fixed variations.
+17 - [ ] `Sidebar` (Organism) (Composition, UX)
+  - [ ] 17a – Implement `Sidebar` as a **Composition** (not a wrapper). Use `Sheet` for mobile and `YStack` + `AnimatePresence` for desktop.
+  - [ ] 17b – Implement "App Sidebar" pattern (Collapsible, Fixed, Floating variants).
 
 18 - [ ] `Charts` (Organism) (TDD, UX)
     - [ ] 18a – Research and decide on a cross-platform charting library (e.g., Victory Native).
     - [ ] 18b – Implement a wrapper for the chosen library.
 
-19 - [ ] Missing Atoms & Molecules (TDD, UX)
-    - [ ] 19a – Implement `HoverCard`.
-    - [ ] 19b – Implement `Collapsible`.
-    - [ ] 19c – Implement `AspectRatio`.
-    - [ ] 19d – Implement `DropdownMenu`.
+
 
 ---
 
@@ -173,3 +169,12 @@
   - [ ] 26a – Write "How to add a new component" guide for `packages/ui`.
   - [ ] 26b – Summarize headless integrations and upgrade strategy.
   - [ ] 26c – Capture future ideas in `docs/05-ideas.md` if needed.
+
+30 - [x] IVISA Brand Integration (Design System)
+  - [x] 30a – Add IVISA color palette to `tokens.ts`.
+  - [x] 30b – Configure Cera Pro font in `tamagui.config.ts`.
+  - [x] 30c – Create `ivisa_light` and `ivisa_dark` themes in `themes.ts`.
+
+31 - [x] Submodule Strategy & Documentation
+  - [x] 31a – Document Git Submodule strategy in `docs/08-submodule-strategy.md`.
+  - [x] 31b – Update Architecture and README to reflect "No Framework" rule.

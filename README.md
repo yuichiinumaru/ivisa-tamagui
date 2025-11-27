@@ -81,6 +81,7 @@ python scripts/migrate_old_port.py --help  # tooling to import legacy assets
 - [`docs/03-architecture.md`](./docs/03-architecture.md) – Atomic layout, headless integration rules.
 - [`docs/04-changelog.md`](./docs/04-changelog.md) – Release log + notable changes.
 - [`docs/06-testing-process.md`](./docs/06-testing-process.md) – Storybook + Playwright workflow, troubleshooting.
+- [`docs/08-submodule-strategy.md`](./docs/08-submodule-strategy.md) – Git Submodule usage & framework-agnostic rules.
 
 Keep these files synchronized with code changes to maintain a reliable onboarding trail.
 

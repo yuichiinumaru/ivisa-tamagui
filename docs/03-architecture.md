@@ -93,3 +93,9 @@ To avoid polluting the main project, external references live in a separate fold
 - Over time, additional composites from references like `rn-primitives` or `pogiii/sushi` can be adopted by following the same pattern:
   - Understand the logic → wrap it with Tamagui primitives → expose a clean API from `packages/ui` → cover with tests.
 - This keeps the system flexible and maintainable while still benefiting from the broader open-source ecosystem.
+
+## 9. Framework Agnosticism & Submodule Strategy
+
+- **Strict Rule:** This repository must remain framework-agnostic. It cannot depend on `next`, `expo`, or `remix`.
+- **Integration:** It is designed to be consumed as a Git Submodule.
+- **Details:** See [`docs/08-submodule-strategy.md`](./08-submodule-strategy.md) for the full strategy and integration workflows.

@@ -43,7 +43,20 @@ When asked to build a component (e.g., "Build a Carousel"):
 2. **Create File:** `packages/ui/src/[molecules|organisms]/Carousel.tsx`.
 3. **Create Story:** `packages/ui/src/[molecules|organisms]/Carousel.stories.tsx`.
 4. **Export:** Add to `packages/ui/src/index.ts`.
+4. **Export:** Add to `packages/ui/src/index.ts`.
 5. **Verify:** Run `pnpm storybook` and `node scripts/visual-check.js`.
+
+### 4️⃣ Component Strategy (The "Frankenstein" Model)
+
+We categorize components into three types:
+
+| Type | Description | Examples |
+| :--- | :--- | :--- |
+| **Native** | Direct styling of Tamagui primitives. No extra libs. | `Button`, `Card`, `Sheet`, `Dialog`, `Avatar`. |
+| **Wrapper** | Wraps a headless library (Hook/Logic) with Tamagui UI. | `DataTable` (@tanstack), `Calendar` (@rehookify), `Carousel` (embla). |
+| **Composition** | Complex UI built by assembling existing Atoms/Molecules. | **`Sidebar`** (Sheet + YStack), `DashboardLayout`. |
+
+> **Note on Sidebar:** The "App Sidebar" is a **Composition**. Do not look for a `@sidebar/react` library. Build it using `Sheet` (mobile), `YStack` (desktop), and `AnimatePresence`.
 
 ---
 
