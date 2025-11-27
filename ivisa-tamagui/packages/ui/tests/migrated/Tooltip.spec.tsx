@@ -3,7 +3,7 @@ import React from 'react'
 import { render } from './utils/render-native'
 import { afterEach, vi } from 'vitest'
 
-import { Tooltip } from '@/components/overlays/Tooltip'
+import { Tooltip } from '../../src/molecules/Tooltip/Tooltip'
 import { Button, Text, Tooltip as TamaguiTooltip } from 'tamagui'
 
 afterEach(() => {

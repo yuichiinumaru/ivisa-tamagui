@@ -1,12 +1,12 @@
 import renderer from 'react-test-renderer';
-import { AppProviders } from '../../src/providers';
+import { AppProviders } from '../../../src/providers/AppProviders';
 import {
   Heading,
   TypographyText,
   MutedText,
   LeadText,
   Blockquote,
-} from '../../src/components/typography/Typography';
+} from '../../../src/atoms/Typography';
 
 describe('Typography (Native)', () => {
   it('renders a Heading with default level', () => {

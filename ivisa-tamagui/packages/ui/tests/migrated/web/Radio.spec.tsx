@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '../../vitest.setup'
 import { vi } from 'vitest'
 
-import { RadioGroup, RadioGroupItem } from '../../src/components/forms/Radio'
+import { RadioGroup, RadioGroupItem } from '../../../src/molecules/RadioGroup'
 
 describe('RadioGroup', () => {
   it('renders items and allows changing the selection', () => {

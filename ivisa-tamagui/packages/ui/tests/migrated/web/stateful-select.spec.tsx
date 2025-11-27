@@ -3,7 +3,7 @@ import { render, screen, fireEvent, act } from '../../vitest.setup'
 import { vi } from 'vitest'
 
 import { StatefulSelect } from '../../src/components/forms/StatefulSelect'
-import { Select } from '../../src/components/forms/Select'
+import { Select } from '../../../src/molecules/Select/Select'
 
 describe('StatefulSelect', () => {
   it('renders and allows selecting an item', () => {

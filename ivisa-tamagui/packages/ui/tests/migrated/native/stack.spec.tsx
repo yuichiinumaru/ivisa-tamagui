@@ -1,7 +1,7 @@
 import { Text } from 'react-native';
 
 import { render } from '../utils/render-native';
-import { Stack, HStack, VStack } from '../../src/components/primitives/Stack';
+import { Stack, HStack, VStack } from '../../../src/atoms/Stack';
 
 describe('Stack (Native)', () => {
   it('renders a vertical stack by default', () => {

@@ -6,8 +6,8 @@ import {
   PopoverContent,
   PopoverClose,
   PopoverArrow,
-} from '../../../src/components/overlays/Popover'
-import { Button } from '../../../src/components/primitives/Button'
+} from '../../../../src/molecules/Popover/Popover'
+import { Button } from '../../../../src/atoms/Button/Button'
 
 describe('Popover', () => {
   it('opens and closes the popover', () => {

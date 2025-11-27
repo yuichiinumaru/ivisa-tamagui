@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { fireEvent, render, screen } from '../utils/render'
 
-import { Button } from '../../src/components/primitives/Button'
+import { Button } from '../../../src/atoms/Button/Button'
 
 describe('Button (Web)', () => {
   it('renders default variant with Tamagui providers', () => {

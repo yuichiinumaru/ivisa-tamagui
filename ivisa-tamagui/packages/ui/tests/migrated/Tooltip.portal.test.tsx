@@ -2,7 +2,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 import { TamaguiProvider, Button, Text } from 'tamagui'
-import { Tooltip } from '@/components/overlays/Tooltip'
+import { Tooltip } from '../src/molecules/Tooltip/Tooltip'
 import config from '@/tamagui.config'
 
 describe('Tooltip Portal', () => {

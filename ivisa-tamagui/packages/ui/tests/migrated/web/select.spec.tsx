@@ -2,7 +2,7 @@
 import { fireEvent, render, screen } from '../utils/render'
 import { vi } from 'vitest'
 
-import { Select } from '../../src/components/forms/Select'
+import { Select } from '../../../src/molecules/Select/Select'
 
 describe('Select', () => {
   it('renders and allows selecting an item', () => {

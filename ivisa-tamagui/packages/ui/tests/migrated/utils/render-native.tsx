@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, type RenderOptions } from '@testing-library/react-native'
 
-import { AppProviders, type AppProvidersProps } from '../../src/providers'
+import { AppProviders, type AppProvidersProps } from '../../../src/providers/AppProviders'
 
 type NativeRenderOptions = RenderOptions & {
   theme?: AppProvidersProps['theme']

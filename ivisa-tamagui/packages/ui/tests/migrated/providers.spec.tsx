@@ -2,8 +2,8 @@ import { render, screen } from '../vitest.setup'
 import { Text } from 'tamagui'
 import { vi } from 'vitest'
 
-import { AppProviders } from '../src/providers'
-import { TamaguiGallery } from '../src/gallery/TamaguiGallery'
+import { AppProviders } from '../../src/providers/AppProviders'
+import { TamaguiGallery } from '../../src/gallery/TamaguiGallery'
 
 describe('AppProviders', () => {
   it('renders children with default theme', () => {

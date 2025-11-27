@@ -1,5 +1,5 @@
 import { render } from '../utils/render-native';
-import { Button } from '../../src/components/primitives/Button';
+import { Button } from '../../../src/atoms/Button/Button';
 
 describe('Button (Native)', () => {
   it('renders default variant', () => {

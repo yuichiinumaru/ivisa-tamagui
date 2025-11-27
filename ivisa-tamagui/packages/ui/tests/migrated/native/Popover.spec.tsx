@@ -2,7 +2,7 @@
 import React from 'react';
 
 import { render } from '../utils/render-native';
-import { Popover } from '@/components/overlays/Popover';
+import { Popover } from '../../../src/molecules/Popover/Popover';
 import { Button } from 'tamagui';
 
 describe('Popover', () => {
