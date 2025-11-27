@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Popover, PopoverTrigger, PopoverContent } from '../molecules/Popover'
 import { Calendar } from '../molecules/Calendar'
-import { IvisaButton } from '../atoms/Button'
-import { IvisaInput } from '../atoms/Input'
+import { Button } from '../atoms/Button'
+import { Input } from '../atoms/Input'
 import { format } from 'date-fns'
 import { XStack } from 'tamagui'
 
@@ -27,7 +27,7 @@ export const DatePicker = ({
   return (
     <Popover open={open} onOpenChange={setOpen} placement="bottom-start">
       <PopoverTrigger asChild>
-        <IvisaButton
+        <Button
           variant="outline"
           justifyContent="flex-start"
           textAlign="left"
@@ -41,7 +41,7 @@ export const DatePicker = ({
                 {date ? format(date, "PPP") : placeholder}
              </Text>
           </XStack>
-        </IvisaButton>
+        </Button>
       </PopoverTrigger>
       <PopoverContent padding={0} width="auto">
         <Calendar

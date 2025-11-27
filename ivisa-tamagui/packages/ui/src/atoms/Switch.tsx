@@ -44,7 +44,7 @@ const SwitchThumb = styled(TamaguiSwitch.Thumb, {
     // We just need to ensure the thumb size and color are correct.
 })
 
-export const Switch = SwitchFrame
+export const SwitchFrameExport = SwitchFrame
 export const SwitchThumbComponent = SwitchThumb // Exporting if needed for composition
 
 // We can also create a composed component to ensure Thumb is always present
@@ -66,5 +66,5 @@ export { SwitchComponent as SwitchWithThumb }
 // Let's stick to the parts pattern or a simple wrapper. 
 // Shadcn is just <Switch />, so let's export the wrapper as `Switch`.
 
-export const IvisaSwitch = SwitchComponent
+export const Switch = SwitchComponent
 export type SwitchProps = GetProps<typeof SwitchFrame>
