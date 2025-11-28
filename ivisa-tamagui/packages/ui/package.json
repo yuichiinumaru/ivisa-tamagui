@@ -30,6 +30,7 @@
     "@tamagui/colors": "^1.138.3",
     "@tamagui/config": "^1.138.3",
     "@tamagui/core": "^1.138.0",
+    "@tamagui/lucide-icons": "^1.138.5",
     "@tamagui/portal": "^1.138.0",
     "@tamagui/sheet": "^1.138.5",
     "@tamagui/theme-builder": "^1.138.3",
@@ -39,8 +40,10 @@
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
     "react-hook-form": "^7.66.1",
+    "react-native-svg": "^15.15.0",
     "tamagui": "^1.138.0",
-    "zod": "^4.1.13",
-    "@tamagui/lucide-icons": "^1.138.5"
+    "victory": "^37.3.6",
+    "victory-native": "^41.20.2",
+    "zod": "^4.1.13"
   }
 }

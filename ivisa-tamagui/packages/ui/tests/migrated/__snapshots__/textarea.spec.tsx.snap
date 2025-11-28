@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Textarea > renders multiline textbox with accessible label and default styles 1`] = `
+<DocumentFragment>
+  <span
+    class=""
+    style="display: contents;"
+  >
+    <span
+      class=" "
+      style="display: contents;"
+    >
+      <span
+        class=" t_dark is_Theme"
+        style="display: contents;"
+      >
+        <textarea
+          aria-label="Description"
+          class="is_Textarea "
+          font-family="$body"
+          font-size="var(--c-space-3)"
+          px="$3"
+          py="$2"
+          rows="4"
+          style="color: var(--foreground); background-color: var(--background); border-top-color: var(--borderColor); border-right-color: var(--borderColor); border-bottom-color: var(--borderColor); border-left-color: var(--borderColor); border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-top-left-radius: var(--c-radius-3); border-top-right-radius: var(--c-radius-3); border-bottom-right-radius: var(--c-radius-3); border-bottom-left-radius: var(--c-radius-3); width: 100%; min-height: 124px; outline-style: none; transition: border-color 0.15s ease, box-shadow 0.15s ease; opacity: 1; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; resize: vertical;"
+        >
+          Initial value
+        </textarea>
+        <div
+          style="display: contents;"
+        />
+        <div
+          style="display: contents;"
+        />
+      </span>
+    </span>
+  </span>
+</DocumentFragment>
+`;

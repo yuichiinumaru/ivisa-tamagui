@@ -1,0 +1,189 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`IvisaPagination > renders pagination snapshot 1`] = `
+<DocumentFragment>
+  <span
+    class=""
+    style="display: contents;"
+  >
+    <span
+      class=" "
+      style="display: contents;"
+    >
+      <span
+        class=" t_light is_Theme"
+        style="color: var(--color); display: contents;"
+      >
+        <div
+          aria-label="Pagination"
+          class="is_PaginationRoot _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
+          role="navigation"
+        >
+          <button
+            aria-label="First page"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            <span
+              class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _pos-absolute _w-1px _h-1px _mt--1px _mr--1px _mb--1px _ml--1px _zIndex--10000 _ox-hidden _oy-hidden _o-1e-8 _pe-none"
+            >
+              First page
+            </span>
+            <span
+              class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
+            />
+            <span
+              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+            >
+              «
+            </span>
+          </button>
+          <button
+            aria-label="Previous page"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            <span
+              class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _pos-absolute _w-1px _h-1px _mt--1px _mr--1px _mb--1px _ml--1px _zIndex--10000 _ox-hidden _oy-hidden _o-1e-8 _pe-none"
+            >
+              Previous page
+            </span>
+            <span
+              class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
+            />
+            <span
+              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+            >
+              ‹
+            </span>
+          </button>
+          <button
+            aria-label="Go to page 1"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            1
+          </button>
+          <button
+            aria-current="page"
+            aria-label="Go to page 2"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: var(--primary); opacity: 1; min-width: 40px; align-items: center; justify-content: center; color: var(--background); border-width: 1px; border-style: solid; border-color: var(--primary); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            2
+          </button>
+          <button
+            aria-label="Go to page 3"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            3
+          </button>
+          <button
+            aria-label="Go to page 4"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            4
+          </button>
+          <button
+            aria-label="Go to page 5"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            5
+          </button>
+          <button
+            aria-label="Go to page 6"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            6
+          </button>
+          <button
+            aria-label="Go to page 7"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            7
+          </button>
+          <button
+            aria-label="Next page"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            <span
+              class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _pos-absolute _w-1px _h-1px _mt--1px _mr--1px _mb--1px _ml--1px _zIndex--10000 _ox-hidden _oy-hidden _o-1e-8 _pe-none"
+            >
+              Next page
+            </span>
+            <span
+              class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
+            />
+            <span
+              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+            >
+              ›
+            </span>
+          </button>
+          <button
+            aria-label="Last page"
+            class="is_Button "
+            data-disable-theme="true"
+            role="button"
+            style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; flex-shrink: 0; flex-direction: column; background-color: transparent; opacity: 1; min-width: 40px; align-items: center; justify-content: center; border-width: 1px; border-style: solid; border-color: var(--borderColor); border-radius: var(--t-radius-full);"
+            tabindex="0"
+          >
+            <span
+              class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _pos-absolute _w-1px _h-1px _mt--1px _mr--1px _mb--1px _ml--1px _zIndex--10000 _ox-hidden _oy-hidden _o-1e-8 _pe-none"
+            >
+              Last page
+            </span>
+            <span
+              class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
+            />
+            <span
+              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+            >
+              »
+            </span>
+          </button>
+        </div>
+        <div
+          style="display: contents;"
+        />
+      </span>
+    </span>
+  </span>
+</DocumentFragment>
+`;

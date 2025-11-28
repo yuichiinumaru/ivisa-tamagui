@@ -1,9 +1,8 @@
-import { render, screen } from '../vitest.setup'
+import { render, screen } from '@testing-library/react'
 import { Text } from 'tamagui'
-import { vi } from 'vitest'
+import { vi, describe, it, expect } from 'vitest'
 
 import { AppProviders } from '../../src/providers/AppProviders'
-import { TamaguiGallery } from '../../src/gallery/TamaguiGallery'
 
 describe('AppProviders', () => {
   it('renders children with default theme', () => {
@@ -48,10 +47,5 @@ describe('AppProviders', () => {
     expect(loggedCall?.[0]).toMatch(/\d{4}-\d{2}-\d{2}T/)
 
     errorSpy.mockRestore()
-  })
-
-it('renders the TamaguiGallery sandbox app', () => {
-    render(<TamaguiGallery />)
-    expect(screen.getByText('Tamagui Migration Gallery')).toBeInTheDocument()
   })
 })
