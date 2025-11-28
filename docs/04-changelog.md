@@ -52,6 +52,7 @@ All notable changes to this design system and its documentation will be recorded
 - Exported implemented but hidden components: `Menubar`, `ToggleGroup`, `Tooltip`.
 - Verified and marked `Sidebar` as complete.
 - Updated `TASKS.md` to reflect current state.
+- Implemented `BarChart` organism using `victory` (Web) and `victory-native` (Native/Skia).
 
 [Unreleased]: ./04-changelog.md
 [0.1.0]: ./04-changelog.md#010--initial-documentation-pivot

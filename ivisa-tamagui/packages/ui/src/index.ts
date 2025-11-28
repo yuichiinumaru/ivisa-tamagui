@@ -39,5 +39,6 @@ export * from './organisms/DataTable';
 export * from './organisms/Carousel';
 export * from './organisms/Command';
 export * from './organisms/Sidebar';
+export * from './organisms/Charts';
 export * from './providers/AppProviders';
 export { default as config } from './tamagui.config';

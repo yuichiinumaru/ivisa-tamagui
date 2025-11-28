@@ -101,9 +101,9 @@
   - [x] 17a – Implement `Sidebar` as a **Composition** (not a wrapper). Use `Sheet` for mobile and `YStack` + `AnimatePresence` for desktop.
   - [x] 17b – Implement "App Sidebar" pattern (Collapsible, Fixed, Floating variants).
 
-18 - [ ] `Charts` (Organism) (TDD, UX)
-    - [ ] 18a – Research and decide on a cross-platform charting library (e.g., Victory Native).
-    - [ ] 18b – Implement a wrapper for the chosen library.
+18 - [x] `Charts` (Organism) (TDD, UX)
+    - [x] 18a – Research and decide on a cross-platform charting library (e.g., Victory Native).
+    - [x] 18b – Implement a wrapper for the chosen library.
 
 
 
