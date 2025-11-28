@@ -6,10 +6,10 @@ import path from 'path'
 export default defineConfig({
   plugins: [
     react(),
-    // tamaguiPlugin({
-    //   config: './packages/ui/src/tamagui.config.ts',
-    //   components: ['tamagui'],
-    // }),
+    tamaguiPlugin({
+      config: './packages/ui/src/tamagui.config.ts',
+      components: ['tamagui'],
+    }),
   ],
   test: {
     environment: 'happy-dom',
