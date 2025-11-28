@@ -85,6 +85,7 @@ const ButtonImpl = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         variant={variant}
         size={size}
+        type="button"
         {...props}
       />
     )

@@ -30114,7 +30114,87 @@ var palette = {
   red700: "#B91C1C",
   sky500: "#0EA5E9",
   sky600: "#0284C7",
-  sky700: "#0369A1"
+  sky700: "#0369A1",
+  // IVISA Brand Palette
+  // Primary (Azul Prefeitura)
+  ivisaPrimary50: "#EEF8FF",
+  ivisaPrimary100: "#DCF1FF",
+  ivisaPrimary200: "#B2E5FF",
+  ivisaPrimary300: "#6DD1FF",
+  ivisaPrimary400: "#20BAFF",
+  ivisaPrimary500: "#00A1FF",
+  ivisaPrimary600: "#0080DF",
+  // Main Logo Color
+  ivisaPrimary700: "#0065B4",
+  ivisaPrimary800: "#005694",
+  ivisaPrimary900: "#004A80",
+  // Dark Logo Color
+  ivisaPrimary950: "#002D51",
+  // Secondary (Ciano/Teal - Apoio IVISA)
+  ivisaSecondary50: "#F1F8FA",
+  ivisaSecondary100: "#C5FFF9",
+  ivisaSecondary200: "#8BFFF5",
+  ivisaSecondary300: "#49FFEF",
+  ivisaSecondary400: "#14EDE1",
+  ivisaSecondary500: "#00D1C8",
+  ivisaSecondary600: "#00A9A4",
+  ivisaSecondary700: "#056A6A",
+  ivisaSecondary800: "#0A5757",
+  ivisaSecondary900: "#003436",
+  // Semantic: Success (Green)
+  ivisaSuccess50: "#E9FFE6",
+  ivisaSuccess100: "#CCFFC8",
+  ivisaSuccess200: "#9DFF97",
+  ivisaSuccess300: "#60FB5B",
+  ivisaSuccess400: "#2FF12A",
+  ivisaSuccess500: "#0CDC0B",
+  ivisaSuccess600: "#04AC06",
+  ivisaSuccess700: "#08830C",
+  ivisaSuccess800: "#105715",
+  ivisaSuccess900: "#023106",
+  // Semantic: Error (Red)
+  ivisaError50: "#FFF0F0",
+  ivisaError100: "#FFDDDD",
+  ivisaError200: "#FFC0C0",
+  ivisaError300: "#FF9494",
+  ivisaError400: "#FF5757",
+  ivisaError500: "#FF2323",
+  ivisaError600: "#FF0000",
+  ivisaError700: "#D70000",
+  ivisaError800: "#B10303",
+  ivisaError900: "#920A0A",
+  ivisaError950: "#500000",
+  // Semantic: Warning (Yellow/Gold)
+  ivisaWarning50: "#FAFEE8",
+  ivisaWarning100: "#F4FFC2",
+  ivisaWarning200: "#EDFF87",
+  ivisaWarning300: "#EBFF43",
+  ivisaWarning400: "#F2FF0E",
+  ivisaWarning500: "#ECEF03",
+  ivisaWarning600: "#CEC000",
+  ivisaWarning700: "#A48C04",
+  ivisaWarning800: "#886D0B",
+  ivisaWarning900: "#735810",
+  ivisaWarning950: "#433005",
+  // Gray (Alternative)
+  ivisaGray50: "#F6F6F6",
+  ivisaGray100: "#E7E7E7",
+  ivisaGray200: "#D1D1D1",
+  ivisaGray300: "#B0B0B0",
+  ivisaGray400: "#888888",
+  ivisaGray500: "#6D6D6D",
+  ivisaGray600: "#5D5D5D",
+  ivisaGray700: "#4F4F4F",
+  ivisaGray800: "#454545",
+  ivisaGray900: "#3D3D3D",
+  ivisaGray950: "#262626",
+  // Dark Blue Gray (Dark)
+  ivisaDarkBlueGray100: "#DDEDF0",
+  ivisaDarkBlueGray300: "#91C1CF",
+  ivisaDarkBlueGray500: "#418199",
+  ivisaDarkBlueGray700: "#314B59",
+  ivisaDarkBlueGray900: "#263742",
+  ivisaDarkBlueGray950: "#192833"
 };
 var spaceScale = {
   0: 0,
@@ -30344,6 +30424,50 @@ var defaultSizes = {
 // packages/ui/src/tamagui.config.ts
 var headingFont = createInterFont();
 var bodyFont = createInterFont();
+var ceraProFont = (0, import_core23.createFont)({
+  family: "Cera Pro",
+  size: {
+    1: 12,
+    2: 14,
+    3: 16,
+    4: 18,
+    5: 20,
+    6: 24,
+    7: 32,
+    8: 48,
+    9: 64
+  },
+  lineHeight: {
+    1: 16,
+    2: 20,
+    3: 24,
+    4: 28,
+    5: 32,
+    6: 40,
+    7: 48,
+    8: 64,
+    9: 80
+  },
+  weight: {
+    4: "400",
+    // Regular
+    5: "500",
+    // Medium
+    9: "900"
+    // Black
+  },
+  letterSpacing: {
+    4: 0,
+    7: -0.5,
+    // Tighter for large titles
+    9: -1
+  },
+  face: {
+    400: { normal: "CeraPro-Regular" },
+    500: { normal: "CeraPro-Medium" },
+    900: { normal: "CeraPro-Black" }
+  }
+});
 var animations = createAnimations({
   bouncy: {
     type: "spring",
@@ -30369,7 +30493,9 @@ var config = createTamagui({
   // Fonts
   fonts: {
     heading: headingFont,
-    body: bodyFont
+    body: bodyFont,
+    brandHeading: ceraProFont,
+    brandBody: ceraProFont
   },
   // Tokens
   tokens,
