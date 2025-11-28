@@ -47,5 +47,12 @@ All notable changes to this design system and its documentation will be recorded
 - Reset the active `docs/` folder to focus solely on the new Tamagui-first design system direction.
 - Confirmed that automation, agent orchestration, and rate-limiting concerns belong to other initiatives and are out of scope for this design system documentation.
 
+[Unreleased]
+- Fixed broken test suite imports and missing dependencies (`react-test-renderer`).
+- Exported implemented but hidden components: `Menubar`, `ToggleGroup`, `Tooltip`.
+- Verified and marked `Sidebar` as complete.
+- Updated `TASKS.md` to reflect current state.
+- Implemented `BarChart` organism using `victory` (Web) and `victory-native` (Native/Skia).
+
 [Unreleased]: ./04-changelog.md
 [0.1.0]: ./04-changelog.md#010--initial-documentation-pivot
