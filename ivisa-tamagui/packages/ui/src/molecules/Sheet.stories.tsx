@@ -37,6 +37,9 @@ const meta: Meta<typeof Sheet> = {
   },
   render: (args) => (
     <Sheet {...args}>
+      <SheetTrigger asChild>
+        <Button>Open Sheet</Button>
+      </SheetTrigger>
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
@@ -72,8 +75,6 @@ type Story = StoryObj<typeof Sheet>
 export const Default: Story = {
   args: {
     animation: 'quick',
-    modal: false,
-    open: true,
   },
 }
 
