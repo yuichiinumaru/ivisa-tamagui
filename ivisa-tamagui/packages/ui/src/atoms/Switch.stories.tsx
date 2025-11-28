@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Checkbox } from './Checkbox'
+import { Switch } from './Switch'
 
-const meta: Meta<typeof Checkbox> = {
-  title: 'atoms/Checkbox',
-  component: Checkbox,
+const meta: Meta<typeof Switch> = {
+  title: 'atoms/Switch',
+  component: Switch,
   tags: ['autodocs'],
   argTypes: {
     checked: {
@@ -17,7 +17,7 @@ const meta: Meta<typeof Checkbox> = {
 
 export default meta
 
-type Story = StoryObj<typeof Checkbox>
+type Story = StoryObj<typeof Switch>
 
 export const Default: Story = {
   args: {
@@ -40,9 +40,9 @@ export const Disabled: Story = {
 }
 
 export const DisabledChecked: Story = {
-  args: {
-    ...Default.args,
-    checked: true,
-    disabled: true,
-  },
-}
+    args: {
+      ...Default.args,
+      checked: true,
+      disabled: true,
+    },
+  }

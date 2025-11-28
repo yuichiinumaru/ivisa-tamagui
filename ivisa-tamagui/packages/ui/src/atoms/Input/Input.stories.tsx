@@ -1,50 +1,64 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Input } from './Input';
+import type { Meta, StoryObj } from '@storybook/react'
+import { Input } from './Input'
 
 const meta: Meta<typeof Input> = {
-  title: 'Atoms/Input',
+  title: 'atoms/Input',
   component: Input,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
   argTypes: {
-    placeholder: { control: 'text' },
+    variant: {
+      control: { type: 'select' },
+      options: ['default', 'filled'],
+    },
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'default', 'lg'],
+    },
+    disabled: {
+      control: { type: 'boolean' },
+    },
+    placeholder: {
+      control: { type: 'text' },
+    }
   },
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Input>
 
 export const Default: Story = {
   args: {
-    placeholder: 'Type something...',
-    width: 300,
     variant: 'default',
+    size: 'default',
+    placeholder: 'Type something...'
   },
-};
+}
 
 export const Filled: Story = {
   args: {
-    placeholder: 'Filled input...',
-    width: 300,
+    ...Default.args,
     variant: 'filled',
   },
-};
+}
 
 export const Small: Story = {
   args: {
-    placeholder: 'Small input',
-    width: 200,
+    ...Default.args,
     size: 'sm',
   },
-};
+}
 
 export const Large: Story = {
   args: {
-    placeholder: 'Large input',
-    width: 350,
+    ...Default.args,
     size: 'lg',
   },
-};
+}
+
+export const Disabled: Story = {
+  args: {
+    ...Default.args,
+    disabled: true,
+  },
+}

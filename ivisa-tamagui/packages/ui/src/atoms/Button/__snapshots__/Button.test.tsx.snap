@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`IvisaButton > should render correctly and match snapshot 1`] = `
+exports[`Button > should render correctly and match snapshot 1`] = `
 <DocumentFragment>
   <span
     class=""

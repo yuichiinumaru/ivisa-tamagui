@@ -1,0 +1,45 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Select > renders and allows selecting an item 1`] = `
+<DocumentFragment>
+  <span
+    class=""
+    style="display: contents;"
+  >
+    <span
+      class=" "
+      style="display: contents;"
+    >
+      <span
+        class=" t_dark is_Theme"
+        style="color: var(--color); display: contents;"
+      >
+        <button
+          aria-autocomplete="none"
+          aria-controls=":r3:"
+          aria-expanded="true"
+          aria-haspopup="listbox"
+          class="is_ListItem _backgroundColor-0hover-backgroundH3423444 _btc-0hover-borderColor69916956 _brc-0hover-borderColor69916956 _borderBottomColor-0hover-borderColor69916956 _borderLeftColor-0hover-borderColor69916956 _backgroundColor-0active-backgroundP3496915 _btc-0active-borderColor77378595 _brc-0active-borderColor77378595 _borderBottomColor-0active-borderColor77378595 _borderLeftColor-0active-borderColor77378595 _outlineStyle-0focus-visible-solid _outlineWidth-0focus-visible-2px _dsp-flex _ai-center _fb-auto _bxs-border-box _pos-relative _minHeight-t-size-true _minWidth-0px _fs-0 _fd-row _pr-t-space-tru101 _pl-t-space-tru101 _pt-t-space-0 _pb-t-space-0 _jc-space-betwe3241 _fw-nowrap _w-10037 _btc-borderColor _brc-borderColor _borderBottomColor-borderColor _borderLeftColor-borderColor _maxWidth-10037 _ox-hidden _oy-hidden _backgroundColor-background _cur-pointer _btw-1px _brw-1px _borderBottomWidth-1px _borderLeftWidth-1px _borderTopStyle-solid _borderRightStyle-solid _borderBottomStyle-solid _borderLeftStyle-solid"
+          data-disable-theme="true"
+          role="combobox"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="is_SelectValue font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color _userSelect-none _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis _pe-none"
+            data-disable-theme="true"
+          >
+            Select a fruit
+          </span>
+        </button>
+        <div
+          style="display: contents;"
+        />
+        <div
+          style="display: contents;"
+        />
+      </span>
+    </span>
+  </span>
+</DocumentFragment>
+`;
