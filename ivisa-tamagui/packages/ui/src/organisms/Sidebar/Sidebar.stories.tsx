@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Sidebar } from './Sidebar';
-import { Text } from 'tamagui';
+import { Button } from '../../atoms/Button';
+import { XStack, YStack, Text, Paragraph } from 'tamagui';
 
 const meta = {
-  title: 'organisms/Sidebar',
+  title: 'Organisms/Sidebar',
   component: Sidebar,
   parameters: {
     layout: 'fullscreen',
@@ -16,6 +17,7 @@ const meta = {
       },
     },
   },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Sidebar>;
 
 export default meta;
