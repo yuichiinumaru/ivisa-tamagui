@@ -100,6 +100,8 @@ const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, 
         variant={variant}
         size={size}
         invalid={invalid || undefined}
+        aria-invalid={invalid}
+        style={{ resize: 'vertical' } as any}
         {...props}
       />
     )
