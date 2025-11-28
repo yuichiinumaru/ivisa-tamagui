@@ -40,12 +40,29 @@ const config: StorybookConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@ivisa/ui': path.resolve(__dirname, '../packages/ui/src'),
-      'react-native-web': path.resolve(__dirname, '../node_modules/react-native-web')
+      'react-native': 'react-native-web'
     };
 
     config.define = {
       'process.env': {},
       ...config.define,
+    };
+
+    config.optimizeDeps ??= {};
+    config.optimizeDeps.include = [
+      ...(config.optimizeDeps.include || []),
+      'react-native-web',
+      'tamagui',
+      '@tamagui/core',
+    ]
+    config.optimizeDeps.esbuildOptions = {
+      ...config.optimizeDeps.esbuildOptions,
+      // Add this to support JSX in JS files for react-native-web
+      loader: {
+        '.js': 'jsx',
+      },
+      // Tamagui recommends this
+      resolveExtensions: ['.web.js', '.js', '.ts', '.tsx'],
     };
 
     return config;

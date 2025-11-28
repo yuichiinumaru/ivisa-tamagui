@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`IvisaBreadcrumb > renders snapshot 1`] = `
+exports[`Breadcrumb > renders snapshot 1`] = `
 <DocumentFragment>
   <span
     class=""
