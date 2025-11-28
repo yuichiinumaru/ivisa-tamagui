@@ -29,6 +29,14 @@ const STORIES_TO_CHECK = [
   'organisms-form--login',
   'organisms-form--complex',
   'organisms-datatable--default',
+  'molecules-accordion--default',
+  'molecules-contextmenu--default',
+  'molecules-navigationmenu--default',
+  'molecules-radiogroup--default',
+  'molecules-resizable--default',
+  'molecules-sheet--default',
+  'molecules-tabs--default',
+  'molecules-toast--default'
 ];
 
 async function runHealthCheck() {
