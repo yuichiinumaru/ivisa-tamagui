@@ -144,10 +144,10 @@
   - [x] 21f – Implement `Resizable` (Molecule).
   - [x] 21g – Implement `Drawer` (Molecule).
 
-25 - [ ] Populate Storybook with full documentation (DOC)
-  - [ ] 22a – Create stories for all primitives and composites, covering variants and states.
-  - [ ] 22b – Write usage notes and document props for each component within Storybook.
-  - [ ] 22c – Document Storybook usage in `docs/03-architecture.md`.
+25 - [x] Populate Storybook with full documentation (DOC)
+  - [x] 22a – Create stories for all primitives and composites, covering variants and states.
+  - [x] 22b – Write usage notes and document props for each component within Storybook.
+  - [x] 22c – Document Storybook usage in `docs/03-architecture.md`.
 
 26 - [ ] Documentation passes (DOC)
   - [ ] 23a – Ensure `docs/01-plan.md`, `docs/02-tasks.md`, and `docs/03-architecture.md` are in sync with current implementation.

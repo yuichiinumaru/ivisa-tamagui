@@ -2,6 +2,15 @@
 
 All notable changes to this design system and its documentation will be recorded here.
 
+## [0.5.0] - Storybook Population & Fixes
+- **Storybook Coverage**:
+  - Created new stories for `Accordion`, `DatePicker`, `NavigationMenu`, `RadioGroup`, `Resizable`, `Sheet`, `Tabs`, and `Toast`.
+  - Updated `docs/02-tasks.md` to reflect completion of Storybook population (Task 25).
+- **Fixes**:
+  - Resolved duplicate imports in `Calendar` and `DataTable`.
+  - Fixed missing `Button` and `Label` imports in Storybook stories.
+  - Updated `package.json` dependencies for Storybook add-ons.
+
 ## [0.4.0] - Brand Identity & Strategic Refinement
 - **Brand Identity**:
   - Added IVISA color palette (Blue/Teal) to `tokens.ts`.
