@@ -18,26 +18,24 @@ exports[`Native snapshot coverage > renders primitives consistently across nativ
     }
   >
     <span
-      className=" t_dark is_Theme"
+      className=" t_light is_Theme"
       style={
         {
-          "color": "",
+          "color": "var(--color)",
           "display": "contents",
         }
       }
     >
       <span
-        aria-level={3}
-        className="is_Heading font_heading _display-inline _boxSizing-border-box _wordWrap-break-word _whiteSpace-pre-wrap _marginTop-0px _marginRight-0px _marginBottom-c-space-3 _marginLeft-0px _fontFamily-f-family _fontWeight-600 _color-foreground _letterSpacing--0--5px _textAlign-left _fontSize-f-size-6 _lineHeight-32px"
+        className="is_Heading font_heading _dsp-inline _bxs-border-box _ww-break-word _ff-f-family _fontWeight-f-weight-8 _ls-f-letterSpa1360334198 _fontSize-f-size-8 _lh-f-lineHeigh112927 _col-color _userSelect-auto _ws-normal _mt-0px _mr-0px _mb-0px _ml-0px"
+        level={3}
         role="heading"
         style={{}}
       >
         Snapshot Heading
       </span>
       <div
-        aria-orientation="vertical"
-        className="is_Stack _alignItems-flex-start _flexDirection-column _flexBasis-auto _boxSizing-border-box _position-relative _minHeight-0px _minWidth-0px _flexShrink-0 _display-flex _justifyContent-flex-start"
-        role="group"
+        className="_dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0"
         style={{}}
       >
         <button
@@ -52,7 +50,6 @@ exports[`Native snapshot coverage > renders primitives consistently across nativ
           onMouseUp={[Function]}
           onTouchEnd={[Function]}
           onTouchStart={[Function]}
-          px="var(--c-space-4)"
           role="button"
           style={
             {
@@ -78,28 +75,31 @@ exports[`Native snapshot coverage > renders primitives consistently across nativ
               "flexDirection": "row",
               "flexShrink": 0,
               "flexWrap": "nowrap",
-              "height": "var(--c-size-10)",
+              "height": "var(--t-size-true)",
               "justifyContent": "center",
               "minHeight": "0px",
               "minWidth": "0px",
+              "paddingLeft": "var(--t-space-true)",
+              "paddingRight": "var(--t-space-true)",
               "position": "relative",
             }
           }
           tabIndex="0"
+          type="button"
         >
           <span
-            className="is_Button font_body _display-inline _boxSizing-border-box _wordWrap-break-word _whiteSpace-nowrap _marginTop-0px _marginRight-0px _marginBottom-0px _marginLeft-0px _fontFamily-f-family _color-background _fontSize-c-space-3 _lineHeight-f-lineHeigh112923 _userSelect-none _cursor-pointer _flexGrow-0 _flexShrink-1 _maxWidth-10037 _overflowX-hidden _overflowY-hidden _textOverflow-ellipsis"
+            className="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-background _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
             style={{}}
           >
             CTA
           </span>
         </button>
-        <p
-          className="is_TypographyText font_body _display-inline _boxSizing-border-box _wordWrap-break-word _marginTop-0px _marginRight-0px _marginBottom-c-space-3 _marginLeft-0px _userSelect-auto _whiteSpace-normal _fontFamily-f-family _color-foreground _lineHeight-24px _fontSize-f-size-3 _fontWeight-400 _textAlign-left"
+        <span
+          className="is_TypographyText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color"
           style={{}}
         >
           Body copy
-        </p>
+        </span>
       </div>
       <div
         style={

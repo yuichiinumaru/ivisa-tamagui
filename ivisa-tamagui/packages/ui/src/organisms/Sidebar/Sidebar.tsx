@@ -1,37 +1,29 @@
-import React from 'react';
-import { YStack, useMedia } from 'tamagui';
+import React, { useState } from 'react';
+import { YStack, AnimatePresence, useMedia } from 'tamagui';
 import { Sheet, SheetTrigger, SheetContent } from '../../molecules/Sheet';
 import { Button } from '../../atoms/Button';
+import { ChevronLeft, ChevronRight, Menu } from '@tamagui/lucide-icons';
 
-// A simple hamburger icon for the trigger
-const MenuIcon = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <line x1="3" y1="12" x2="21" y2="12" />
-    <line x1="3" y1="6" x2="21" y2="6" />
-    <line x1="3" y1="18" x2="21" y2="18" />
-  </svg>
-);
+// Defining the props interface for the Sidebar component
+interface SidebarProps {
+  children: React.ReactNode;
+  variant?: 'collapsible' | 'fixed' | 'floating';
+}
 
-export const Sidebar = ({ children }) => {
+export const Sidebar = ({ children, variant = 'fixed' }: SidebarProps) => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const media = useMedia();
+
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
 
   // On small screens (mobile), render a Sheet with a trigger button
   if (media.sm) {
     return (
       <Sheet>
         <SheetTrigger asChild>
-          <Button icon={MenuIcon} circular />
+          <Button icon={Menu} circular />
         </SheetTrigger>
         <SheetContent position="left" size="$20">
           <YStack space="$4" paddingTop="$8">
@@ -42,16 +34,40 @@ export const Sidebar = ({ children }) => {
     );
   }
 
-  // On larger screens (desktop), render a fixed YStack
-  return (
-    <YStack
-      width={280}
-      borderRightWidth={1}
-      borderColor="$borderColor"
-      padding="$4"
-      space="$2"
-    >
-      {children}
-    </YStack>
+  // Desktop view
+  const desktopSidebar = (
+    <AnimatePresence>
+      <YStack
+        animation="medium"
+        width={isCollapsed && variant === 'collapsible' ? 60 : 280}
+        borderRightWidth={1}
+        borderColor="$borderColor"
+        padding="$4"
+        space="$2"
+        {...(variant === 'floating' && {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          backgroundColor: '$background',
+          zIndex: 10,
+        })}
+      >
+        {children}
+        {variant === 'collapsible' && (
+          <Button
+            icon={isCollapsed ? ChevronRight : ChevronLeft}
+            onPress={toggleSidebar}
+            circular
+            position="absolute"
+            top={20}
+            right={-15}
+            zIndex={20}
+          />
+        )}
+      </YStack>
+    </AnimatePresence>
   );
+
+  return desktopSidebar;
 };

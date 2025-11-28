@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Checkbox } from './Checkbox'
+import { Toggle } from './Toggle'
+import { Bold } from '@tamagui/lucide-icons'
 
-const meta: Meta<typeof Checkbox> = {
-  title: 'atoms/Checkbox',
-  component: Checkbox,
+const meta: Meta<typeof Toggle> = {
+  title: 'atoms/Toggle',
+  component: Toggle,
   tags: ['autodocs'],
   argTypes: {
-    checked: {
+    pressed: {
       control: { type: 'boolean' },
     },
     disabled: {
@@ -17,32 +18,24 @@ const meta: Meta<typeof Checkbox> = {
 
 export default meta
 
-type Story = StoryObj<typeof Checkbox>
+type Story = StoryObj<typeof Toggle>
 
 export const Default: Story = {
   args: {
-    checked: false,
+    children: <Bold />,
   },
 }
 
-export const Checked: Story = {
+export const Pressed: Story = {
   args: {
     ...Default.args,
-    checked: true,
+    pressed: true,
   },
 }
 
 export const Disabled: Story = {
   args: {
     ...Default.args,
-    disabled: true,
-  },
-}
-
-export const DisabledChecked: Story = {
-  args: {
-    ...Default.args,
-    checked: true,
     disabled: true,
   },
 }
