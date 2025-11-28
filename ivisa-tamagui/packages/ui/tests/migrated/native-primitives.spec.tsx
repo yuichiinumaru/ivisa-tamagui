@@ -1,9 +1,9 @@
 import renderer from 'react-test-renderer'
 
-import { AppProviders } from '../src/providers'
-import { Button } from '../src/components/primitives/Button'
-import { Stack } from '../src/components/primitives/Stack'
-import { Heading, TypographyText } from '../src/components/typography/Typography'
+import { AppProviders } from '../../src/providers/AppProviders'
+import { Button } from '../../src/atoms/Button/Button'
+import { Stack } from '../../src/atoms/Stack'
+import { Heading, TypographyText } from '../../src/atoms/Typography'
 
 describe('Native snapshot coverage', () => {
   it('renders primitives consistently across native renderer', () => {

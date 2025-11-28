@@ -97,9 +97,9 @@
   - [x] 16b – Implement `Breadcrumb` for web navigation.
   - [x] 16c – Add snapshot/interaction tests for both components.
 
-17 - [ ] `Sidebar` (Organism) (Composition, UX)
-  - [ ] 17a – Implement `Sidebar` as a **Composition** (not a wrapper). Use `Sheet` for mobile and `YStack` + `AnimatePresence` for desktop.
-  - [ ] 17b – Implement "App Sidebar" pattern (Collapsible, Fixed, Floating variants).
+17 - [x] `Sidebar` (Organism) (Composition, UX)
+  - [x] 17a – Implement `Sidebar` as a **Composition** (not a wrapper). Use `Sheet` for mobile and `YStack` + `AnimatePresence` for desktop.
+  - [x] 17b – Implement "App Sidebar" pattern (Collapsible, Fixed, Floating variants).
 
 18 - [ ] `Charts` (Organism) (TDD, UX)
     - [ ] 18a – Research and decide on a cross-platform charting library (e.g., Victory Native).
