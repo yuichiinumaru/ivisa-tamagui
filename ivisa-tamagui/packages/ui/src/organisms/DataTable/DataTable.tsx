@@ -17,8 +17,6 @@ import {
   styled,
   ScrollView,
   View,
-  Button,
-  Input,
 } from 'tamagui'
 import { Button } from '../../atoms/Button'
 import { Input } from '../../atoms/Input'
