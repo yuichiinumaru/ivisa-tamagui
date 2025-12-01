@@ -2265,21 +2265,10 @@ __export(index_exports, {
   FormMessage: () => FormMessage,
   IndicatorArrow: () => IndicatorArrow,
   Input: () => Input,
-  Menubar: () => MenubarFrame,
-  MenubarCheckboxItem: () => MenubarCheckboxItem,
+  Menubar: () => Menubar,
   MenubarContent: () => MenubarContent,
-  MenubarGroup: () => MenubarGroup,
   MenubarItem: () => MenubarItem,
-  MenubarLabel: () => MenubarLabelWithInset,
   MenubarMenu: () => MenubarMenu,
-  MenubarPortal: () => MenubarPortal,
-  MenubarRadioGroup: () => MenubarRadioGroup,
-  MenubarRadioItem: () => MenubarRadioItem,
-  MenubarSeparator: () => MenubarSeparator,
-  MenubarShortcut: () => MenubarShortcut,
-  MenubarSub: () => MenubarSub,
-  MenubarSubContent: () => MenubarSubContent,
-  MenubarSubTrigger: () => MenubarSubTrigger,
   MenubarTrigger: () => MenubarTrigger,
   NavigationMenu: () => NavigationMenu,
   NavigationMenuContent: () => NavigationMenuContent,
@@ -3001,7 +2990,7 @@ var ScrollBar = (0, import_tamagui13.styled)(import_tamagui13.ScrollView, {
   // This is a placeholder. In Radix, ScrollBar is a separate interactive element.
   // In Native/Tamagui, scrollbars are usually native.
   // We can't easily implement a custom cross-platform scrollbar without a dedicated library.
-  // So we will just export a stub or a styled view that does nothing for now,
+  // So we will just export a stub or a styled view that does nothing for now, 
   // or we can omit it and just let ScrollArea handle scrolling.
   name: "ScrollBar",
   display: "none"
@@ -4706,292 +4695,33 @@ var NavigationMenuViewport = (0, import_tamagui31.styled)(NavigationMenuPrimitiv
 });
 
 // src/molecules/Menubar/Menubar.tsx
-var MenubarPrimitive = __toESM(require("@radix-ui/react-menubar"));
-var import_lucide_icons = require("@tamagui/lucide-icons");
-var import_react23 = __toESM(require("react"));
 var import_tamagui32 = require("tamagui");
+var import_react23 = __toESM(require("react"));
 var import_jsx_runtime23 = require("react/jsx-runtime");
-var MenubarFrame = (0, import_tamagui32.styled)(MenubarPrimitive.Root, {
+var MenubarFrame = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
   name: "Menubar",
-  display: "flex",
-  flexDirection: "row",
-  height: "auto",
-  alignItems: "center",
-  gap: "$1",
-  borderRadius: "$md",
+  backgroundColor: "$background",
   borderWidth: 1,
   borderColor: "$borderColor",
-  backgroundColor: "$background",
-  padding: "$1"
-});
-var MenubarMenu = MenubarPrimitive.Menu;
-var MenubarGroup = MenubarPrimitive.Group;
-var MenubarPortal = MenubarPrimitive.Portal;
-var MenubarTriggerFrame = (0, import_tamagui32.styled)(MenubarPrimitive.Trigger, {
-  name: "MenubarTrigger",
-  display: "flex",
-  alignItems: "center",
-  paddingVertical: "$1.5",
-  paddingHorizontal: "$3",
-  borderRadius: "$sm",
-  outlineWidth: 0,
-  cursor: "default",
-  userSelect: "none",
-  fontSize: "$3",
-  fontWeight: "500",
-  color: "$foreground",
-  backgroundColor: "transparent",
-  borderWidth: 0,
-  hoverStyle: {
-    backgroundColor: "$muted",
-    color: "$foreground"
-  },
-  focusStyle: {
-    backgroundColor: "$muted",
-    color: "$foreground"
-  },
-  pressStyle: {
-    backgroundColor: "$muted",
-    color: "$foreground"
-  },
-  "$platform-web": {
-    '&[data-state="open"]': {
-      backgroundColor: "$muted",
-      color: "$foreground"
-    }
-  }
-});
-var MenubarTrigger = import_react23.default.forwardRef((props, ref) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(MenubarTriggerFrame, { ref, ...props }));
-MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName;
-var MenubarContentFrame = (0, import_tamagui32.styled)(MenubarPrimitive.Content, {
-  name: "MenubarContent",
-  minWidth: 192,
-  overflow: "hidden",
   borderRadius: "$md",
-  borderWidth: 1,
-  borderColor: "$borderColor",
-  backgroundColor: "$background",
   padding: "$1",
-  zIndex: 50,
-  shadowColor: "$shadowColor",
-  shadowRadius: 10,
-  shadowOffset: { width: 0, height: 4 },
-  shadowOpacity: 0.1
+  gap: "$1"
 });
-var MenubarContent = import_react23.default.forwardRef(({ align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(MenubarPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
-  MenubarContentFrame,
-  {
-    ref,
-    align,
-    alignOffset,
-    sideOffset,
-    ...props
-  }
-) }));
-MenubarContent.displayName = MenubarPrimitive.Content.displayName;
-var MenubarItemFrame = (0, import_tamagui32.styled)(MenubarPrimitive.Item, {
-  name: "MenubarItem",
-  position: "relative",
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  borderRadius: "$sm",
-  paddingVertical: "$1.5",
-  paddingHorizontal: "$2",
-  outlineWidth: 0,
-  userSelect: "none",
-  cursor: "default",
-  fontSize: "$3",
-  color: "$foreground",
+var Menubar = import_react23.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(MenubarFrame, { ref, ...props, children: props.children });
+});
+Menubar.displayName = "Menubar";
+var MenubarMenu = (0, import_tamagui32.styled)(import_tamagui32.XStack, {});
+var MenubarTrigger = (0, import_tamagui32.styled)(import_tamagui32.Paragraph, {
+  padding: "$2",
+  cursor: "pointer",
   hoverStyle: {
-    backgroundColor: "$accent",
-    color: "$accentForeground"
-  },
-  focusStyle: {
-    backgroundColor: "$accent",
-    color: "$accentForeground"
-  },
-  "$platform-web": {
-    "&[data-disabled]": {
-      pointerEvents: "none",
-      opacity: 0.5
-    }
+    backgroundColor: "$muted",
+    borderRadius: "$sm"
   }
 });
-var MenubarItem = import_react23.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
-  MenubarItemFrame,
-  {
-    ref,
-    paddingLeft: inset ? "$8" : "$2",
-    ...props
-  }
-));
-MenubarItem.displayName = MenubarPrimitive.Item.displayName;
-var MenubarCheckboxItemFrame = (0, import_tamagui32.styled)(MenubarPrimitive.CheckboxItem, {
-  name: "MenubarCheckboxItem",
-  position: "relative",
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  borderRadius: "$sm",
-  paddingVertical: "$1.5",
-  paddingLeft: "$8",
-  paddingRight: "$2",
-  outlineWidth: 0,
-  userSelect: "none",
-  cursor: "default",
-  fontSize: "$3",
-  color: "$foreground",
-  hoverStyle: {
-    backgroundColor: "$accent",
-    color: "$accentForeground"
-  },
-  focusStyle: {
-    backgroundColor: "$accent",
-    color: "$accentForeground"
-  },
-  "$platform-web": {
-    "&[data-disabled]": {
-      pointerEvents: "none",
-      opacity: 0.5
-    }
-  }
-});
-var MenubarItemIndicator = (0, import_tamagui32.styled)(MenubarPrimitive.ItemIndicator, {
-  position: "absolute",
-  left: "$2",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "$4",
-  height: "$4"
-});
-var MenubarCheckboxItem = import_react23.default.forwardRef(({ children, checked, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(MenubarCheckboxItemFrame, { ref, checked, ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(MenubarItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_icons.Check, { size: 14 }) }),
-  children
-] }));
-MenubarCheckboxItem.displayName = MenubarPrimitive.CheckboxItem.displayName;
-var MenubarRadioItemFrame = (0, import_tamagui32.styled)(MenubarPrimitive.RadioItem, {
-  name: "MenubarRadioItem",
-  position: "relative",
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  borderRadius: "$sm",
-  paddingVertical: "$1.5",
-  paddingLeft: "$8",
-  paddingRight: "$2",
-  outlineWidth: 0,
-  userSelect: "none",
-  cursor: "default",
-  fontSize: "$3",
-  color: "$foreground",
-  hoverStyle: {
-    backgroundColor: "$accent",
-    color: "$accentForeground"
-  },
-  focusStyle: {
-    backgroundColor: "$accent",
-    color: "$accentForeground"
-  },
-  "$platform-web": {
-    "&[data-disabled]": {
-      pointerEvents: "none",
-      opacity: 0.5
-    }
-  }
-});
-var MenubarRadioItem = import_react23.default.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(MenubarRadioItemFrame, { ref, ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(MenubarItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_icons.Circle, { size: 8, fill: "currentColor" }) }),
-  children
-] }));
-MenubarRadioItem.displayName = MenubarPrimitive.RadioItem.displayName;
-var MenubarLabel = (0, import_tamagui32.styled)(MenubarPrimitive.Label, {
-  name: "MenubarLabel",
-  paddingHorizontal: "$2",
-  paddingVertical: "$1.5",
-  fontSize: "$3",
-  fontWeight: "600",
-  color: "$foreground",
-  paddingLeft: "$2"
-});
-var MenubarLabelWithInset = import_react23.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(MenubarLabel, { ref, paddingLeft: inset ? "$8" : "$2", ...props }));
-MenubarLabelWithInset.displayName = MenubarPrimitive.Label.displayName;
-var MenubarSeparator = (0, import_tamagui32.styled)(MenubarPrimitive.Separator, {
-  name: "MenubarSeparator",
-  height: 1,
-  backgroundColor: "$muted",
-  // or $border
-  marginVertical: "$1",
-  marginHorizontal: "-$1"
-});
-var MenubarShortcut = (0, import_tamagui32.styled)(import_tamagui32.Paragraph, {
-  name: "MenubarShortcut",
-  marginLeft: "auto",
-  fontSize: "$1",
-  color: "$mutedForeground",
-  letterSpacing: "$1"
-});
-var MenubarSubTriggerFrame = (0, import_tamagui32.styled)(MenubarPrimitive.SubTrigger, {
-  name: "MenubarSubTrigger",
-  display: "flex",
-  flexDirection: "row",
-  alignItems: "center",
-  borderRadius: "$sm",
-  paddingVertical: "$1.5",
-  paddingHorizontal: "$2",
-  outlineWidth: 0,
-  userSelect: "none",
-  cursor: "default",
-  fontSize: "$3",
-  color: "$foreground",
-  hoverStyle: {
-    backgroundColor: "$accent",
-    color: "$accentForeground"
-  },
-  focusStyle: {
-    backgroundColor: "$accent",
-    color: "$accentForeground"
-  },
-  "$platform-web": {
-    '&[data-state="open"]': {
-      backgroundColor: "$accent",
-      color: "$accentForeground"
-    }
-  }
-});
-var MenubarSubTrigger = import_react23.default.forwardRef(({ children, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
-  MenubarSubTriggerFrame,
-  {
-    ref,
-    paddingLeft: inset ? "$8" : "$2",
-    ...props,
-    children: [
-      children,
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_lucide_icons.ChevronRight, { size: 14, style: { marginLeft: "auto" } })
-    ]
-  }
-));
-MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName;
-var MenubarSubContentFrame = (0, import_tamagui32.styled)(MenubarPrimitive.SubContent, {
-  name: "MenubarSubContent",
-  minWidth: 128,
-  overflow: "hidden",
-  borderRadius: "$md",
-  borderWidth: 1,
-  borderColor: "$borderColor",
-  backgroundColor: "$background",
-  padding: "$1",
-  shadowColor: "$shadowColor",
-  shadowRadius: 10,
-  shadowOffset: { width: 0, height: 4 },
-  shadowOpacity: 0.1,
-  zIndex: 50
-});
-var MenubarSubContent = import_react23.default.forwardRef(({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(MenubarSubContentFrame, { ref, ...props }));
-MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName;
-var MenubarSub = MenubarPrimitive.Sub;
-var MenubarRadioGroup = MenubarPrimitive.RadioGroup;
+var MenubarContent = (0, import_tamagui32.styled)(import_tamagui32.XStack, {});
+var MenubarItem = (0, import_tamagui32.styled)(import_tamagui32.Paragraph, {});
 
 // src/molecules/ToggleGroup/ToggleGroup.tsx
 var import_tamagui33 = require("tamagui");
@@ -5638,7 +5368,7 @@ var CommandShortcut = (0, import_tamagui38.styled)(import_tamagui38.Text, {
 // src/organisms/Sidebar/Sidebar.tsx
 var import_react28 = require("react");
 var import_tamagui39 = require("tamagui");
-var import_lucide_icons2 = require("@tamagui/lucide-icons");
+var import_lucide_icons = require("@tamagui/lucide-icons");
 var import_jsx_runtime29 = require("react/jsx-runtime");
 var Sidebar = ({ children, variant = "fixed" }) => {
   const [isCollapsed, setIsCollapsed] = (0, import_react28.useState)(false);
@@ -5648,7 +5378,7 @@ var Sidebar = ({ children, variant = "fixed" }) => {
   };
   if (media.sm) {
     return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(Sheet2, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(SheetTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Button, { icon: import_lucide_icons2.Menu, circular: true }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(SheetTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Button, { icon: import_lucide_icons.Menu, circular: true }) }),
       /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(SheetContent, { position: "left", size: "$20", children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_tamagui39.YStack, { space: "$4", paddingTop: "$8", children }) })
     ] });
   }
@@ -5674,7 +5404,7 @@ var Sidebar = ({ children, variant = "fixed" }) => {
         variant === "collapsible" && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
           Button,
           {
-            icon: isCollapsed ? import_lucide_icons2.ChevronRight : import_lucide_icons2.ChevronLeft,
+            icon: isCollapsed ? import_lucide_icons.ChevronRight : import_lucide_icons.ChevronLeft,
             onPress: toggleSidebar,
             circular: true,
             position: "absolute",
@@ -18225,20 +17955,9 @@ var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import
   IndicatorArrow,
   Input,
   Menubar,
-  MenubarCheckboxItem,
   MenubarContent,
-  MenubarGroup,
   MenubarItem,
-  MenubarLabel,
   MenubarMenu,
-  MenubarPortal,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
   MenubarTrigger,
   NavigationMenu,
   NavigationMenuContent,

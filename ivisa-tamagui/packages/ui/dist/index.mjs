@@ -2840,7 +2840,7 @@ var ScrollBar = styled13(TamaguiScrollView, {
   // This is a placeholder. In Radix, ScrollBar is a separate interactive element.
   // In Native/Tamagui, scrollbars are usually native.
   // We can't easily implement a custom cross-platform scrollbar without a dedicated library.
-  // So we will just export a stub or a styled view that does nothing for now,
+  // So we will just export a stub or a styled view that does nothing for now, 
   // or we can omit it and just let ScrollArea handle scrolling.
   name: "ScrollBar",
   display: "none"
@@ -4912,6 +4912,217 @@ var Tooltip = React24.forwardRef(({ children, content, ...props }, ref) => {
 });
 Tooltip.displayName = "Tooltip";
 
+// src/molecules/NavigationMenu.tsx
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import { styled as styled29, YStack as YStack9 } from "tamagui";
+var NavigationMenu = styled29(NavigationMenuPrimitive.Root, {
+  name: "NavigationMenu",
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  width: "100%"
+});
+var NavigationMenuList = styled29(NavigationMenuPrimitive.List, {
+  name: "NavigationMenuList",
+  display: "flex",
+  gap: "$2",
+  m: 0,
+  px: "$1",
+  py: "$1",
+  borderRadius: "$lg",
+  backgroundColor: "$background",
+  borderWidth: 1,
+  borderColor: "$borderColor"
+});
+var NavigationMenuItem = NavigationMenuPrimitive.Item;
+var NavigationMenuTrigger = styled29(NavigationMenuPrimitive.Trigger, {
+  name: "NavigationMenuTrigger",
+  borderRadius: "$md",
+  paddingHorizontal: "$4",
+  paddingVertical: "$2",
+  color: "$foreground",
+  backgroundColor: "transparent",
+  borderWidth: 1,
+  borderColor: "transparent",
+  transition: "all 150ms ease",
+  hoverStyle: {
+    backgroundColor: "$muted"
+  },
+  pressStyle: {
+    backgroundColor: "$muted"
+  },
+  focusVisibleStyle: {
+    borderColor: "$primary"
+  }
+});
+var NavigationMenuContent = styled29(NavigationMenuPrimitive.Content, {
+  name: "NavigationMenuContent",
+  position: "absolute",
+  top: "calc(100% + 0.5rem)",
+  left: 0,
+  backgroundColor: "$background",
+  borderRadius: "$xl",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  padding: "$4",
+  minWidth: 320,
+  zIndex: 20
+});
+var NavigationMenuLink = styled29(NavigationMenuPrimitive.Link, {
+  name: "NavigationMenuLink",
+  display: "block",
+  borderRadius: "$lg",
+  padding: "$4",
+  color: "$foreground",
+  hoverStyle: {
+    backgroundColor: "$muted"
+  },
+  focusVisibleStyle: {
+    outlineWidth: 2,
+    outlineStyle: "solid",
+    outlineColor: "$primary"
+  }
+});
+var NavigationMenuIndicator = styled29(NavigationMenuPrimitive.Indicator, {
+  name: "NavigationMenuIndicator",
+  display: "flex",
+  alignItems: "flex-end",
+  justifyContent: "center",
+  height: 10,
+  top: "100%",
+  transition: "width, transform 200ms ease"
+});
+var IndicatorArrow = styled29(YStack9, {
+  width: 20,
+  height: 20,
+  backgroundColor: "$background",
+  borderLeftWidth: 1,
+  borderRightWidth: 1,
+  borderTopWidth: 1,
+  borderColor: "$borderColor",
+  transform: "rotate(45deg)",
+  marginTop: -8
+});
+var NavigationMenuViewport = styled29(NavigationMenuPrimitive.Viewport, {
+  name: "NavigationMenuViewport",
+  position: "absolute",
+  top: "100%",
+  left: 0,
+  width: "100%",
+  backgroundColor: "$background",
+  borderRadius: "$xl",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  marginTop: "$2",
+  overflow: "hidden"
+});
+
+// src/molecules/Menubar/Menubar.tsx
+import { XStack as XStack11, styled as styled30, Paragraph as Paragraph3 } from "tamagui";
+import React23 from "react";
+import { jsx as jsx23 } from "react/jsx-runtime";
+var MenubarFrame = styled30(XStack11, {
+  name: "Menubar",
+  backgroundColor: "$background",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  borderRadius: "$md",
+  padding: "$1",
+  gap: "$1"
+});
+var Menubar = React23.forwardRef((props, ref) => {
+  return /* @__PURE__ */ jsx23(MenubarFrame, { ref, ...props, children: props.children });
+});
+Menubar.displayName = "Menubar";
+var MenubarMenu = styled30(XStack11, {});
+var MenubarTrigger = styled30(Paragraph3, {
+  padding: "$2",
+  cursor: "pointer",
+  hoverStyle: {
+    backgroundColor: "$muted",
+    borderRadius: "$sm"
+  }
+});
+var MenubarContent = styled30(XStack11, {});
+var MenubarItem = styled30(Paragraph3, {});
+
+// src/molecules/ToggleGroup/ToggleGroup.tsx
+import { ToggleGroup as TamaguiToggleGroup, styled as styled31 } from "tamagui";
+var ToggleGroupFrame = styled31(TamaguiToggleGroup, {
+  name: "ToggleGroup",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$1"
+});
+var ToggleGroupItemFrame = styled31(TamaguiToggleGroup.Item, {
+  name: "ToggleGroupItem",
+  backgroundColor: "transparent",
+  borderRadius: "$4",
+  paddingHorizontal: "$3",
+  height: 40,
+  // h-10
+  alignItems: "center",
+  justifyContent: "center",
+  hoverStyle: {
+    backgroundColor: "$muted",
+    color: "$mutedForeground"
+  },
+  focusStyle: {
+    outlineColor: "$ring",
+    outlineStyle: "solid",
+    outlineWidth: 2,
+    outlineOffset: 2
+  },
+  // Active/On state
+  variants: {
+    active: {
+      true: {
+        backgroundColor: "$accent",
+        color: "$accentForeground"
+      }
+    }
+  }
+});
+
+// src/molecules/Tooltip/Tooltip.tsx
+import { Tooltip as TamaguiTooltip, styled as styled32, Paragraph as Paragraph4 } from "tamagui";
+import React24 from "react";
+import { jsx as jsx24, jsxs as jsxs12 } from "react/jsx-runtime";
+var TooltipContent = styled32(TamaguiTooltip.Content, {
+  name: "TooltipContent",
+  enterStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
+  exitStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
+  scale: 1,
+  x: 0,
+  y: 0,
+  opacity: 1,
+  animation: "quick",
+  maxWidth: 350,
+  padding: "$2",
+  backgroundColor: "$background",
+  borderColor: "$borderColor",
+  borderWidth: 1,
+  borderRadius: "$md",
+  zIndex: 1e3
+});
+var TooltipArrow = styled32(TamaguiTooltip.Arrow, {
+  name: "TooltipArrow",
+  borderColor: "$borderColor",
+  borderWidth: 1,
+  backgroundColor: "$background"
+});
+var Tooltip = React24.forwardRef(({ children, content, ...props }, ref) => {
+  return /* @__PURE__ */ jsxs12(TamaguiTooltip, { ...props, children: [
+    /* @__PURE__ */ jsx24(TamaguiTooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ jsxs12(TooltipContent, { children: [
+      /* @__PURE__ */ jsx24(TooltipArrow, {}),
+      typeof content === "string" ? /* @__PURE__ */ jsx24(Paragraph4, { size: "$2", children: content }) : content
+    ] })
+  ] });
+});
+Tooltip.displayName = "Tooltip";
+
 // src/organisms/Form/Form.tsx
 import * as React25 from "react";
 import {
@@ -4919,7 +5130,7 @@ import {
   FormProvider,
   useFormContext
 } from "react-hook-form";
-import { View as View5, Label as Label2, Text as Text12, styled as styled33, YStack as YStack10 } from "tamagui";
+import { View as View5, Label, Text as Text12, styled as styled33, YStack as YStack10 } from "tamagui";
 import { jsx as jsx25 } from "react/jsx-runtime";
 var Form = FormProvider;
 var FormFieldContext = React25.createContext(
@@ -4962,7 +5173,7 @@ var FormItem = React25.forwardRef(
   }
 );
 FormItem.displayName = "FormItem";
-var FormLabelFrame = styled33(Label2, {
+var FormLabelFrame = styled33(Label, {
   name: "FormLabel",
   color: "$color",
   fontWeight: "500",
@@ -5063,13 +5274,13 @@ import {
 } from "@tanstack/react-table";
 import {
   YStack as YStack11,
-  XStack as XStack11,
+  XStack as XStack12,
   Text as Text13,
   styled as styled34,
   ScrollView,
   View as View6
 } from "tamagui";
-import { jsx as jsx26, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx26, jsxs as jsxs13 } from "react/jsx-runtime";
 var TableContainer = styled34(YStack11, {
   borderColor: "$borderColor",
   borderWidth: 1,
@@ -5082,7 +5293,7 @@ var TableHeader = styled34(YStack11, {
   borderBottomWidth: 1,
   borderColor: "$borderColor"
 });
-var TableRow = styled34(XStack11, {
+var TableRow = styled34(XStack12, {
   borderBottomWidth: 1,
   borderColor: "$borderColor",
   paddingVertical: "$3",
@@ -5121,8 +5332,8 @@ function DataTable({
       columnFilters
     }
   });
-  return /* @__PURE__ */ jsxs14(YStack11, { gap: "$4", width: "100%", children: [
-    /* @__PURE__ */ jsx26(TableContainer, { children: /* @__PURE__ */ jsx26(ScrollView, { horizontal: true, showsHorizontalScrollIndicator: true, children: /* @__PURE__ */ jsxs14(YStack11, { minWidth: "100%", children: [
+  return /* @__PURE__ */ jsxs13(YStack11, { gap: "$4", width: "100%", children: [
+    /* @__PURE__ */ jsx26(TableContainer, { children: /* @__PURE__ */ jsx26(ScrollView, { horizontal: true, showsHorizontalScrollIndicator: true, children: /* @__PURE__ */ jsxs13(YStack11, { minWidth: "100%", children: [
       /* @__PURE__ */ jsx26(TableHeader, { children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ jsx26(TableRow, { borderBottomWidth: 1, paddingVertical: "$3", children: headerGroup.headers.map((header) => {
         return /* @__PURE__ */ jsx26(View6, { style: { flex: 1, minWidth: 100 }, children: header.isPlaceholder ? null : flexRender(
           header.column.columnDef.header,
@@ -5131,7 +5342,7 @@ function DataTable({
       }) }, headerGroup.id)) }),
       /* @__PURE__ */ jsx26(YStack11, { children: table.getRowModel().rows?.length ? table.getRowModel().rows.map((row) => /* @__PURE__ */ jsx26(TableRow, { "data-state": row.getIsSelected() && "selected", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ jsx26(View6, { style: { flex: 1, minWidth: 100 }, children: flexRender(cell.column.columnDef.cell, cell.getContext()) }, cell.id)) }, row.id)) : /* @__PURE__ */ jsx26(TableRow, { children: /* @__PURE__ */ jsx26(View6, { style: { flex: 1, alignItems: "center", padding: 20 }, children: /* @__PURE__ */ jsx26(TableHeadText, { children: "No results." }) }) }) })
     ] }) }) }),
-    /* @__PURE__ */ jsxs14(XStack11, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
+    /* @__PURE__ */ jsxs13(XStack12, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
       /* @__PURE__ */ jsx26(
         Button,
         {
@@ -5166,7 +5377,7 @@ var Table = {
 // src/organisms/Carousel/Carousel.tsx
 import React27, { useCallback as useCallback2, useEffect, useState as useState5 } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { styled as styled35, YStack as YStack12, XStack as XStack12, View as View7, Text as Text14 } from "tamagui";
+import { styled as styled35, YStack as YStack12, XStack as XStack13, View as View7, Text as Text14 } from "tamagui";
 import { jsx as jsx27 } from "react/jsx-runtime";
 var CarouselContext = React27.createContext(null);
 function useCarousel() {
@@ -5250,7 +5461,7 @@ var Carousel = React27.forwardRef(
   }
 );
 Carousel.displayName = "Carousel";
-var CarouselContentFrame = styled35(XStack12, {
+var CarouselContentFrame = styled35(XStack13, {
   display: "flex"
 });
 var CarouselContent = React27.forwardRef(
@@ -5363,7 +5574,7 @@ CarouselNext.displayName = "CarouselNext";
 import React28 from "react";
 import { Command as CommandPrimitive } from "cmdk";
 import { styled as styled36, View as View8, Text as Text15 } from "tamagui";
-import { jsx as jsx28, jsxs as jsxs15 } from "react/jsx-runtime";
+import { jsx as jsx28, jsxs as jsxs14 } from "react/jsx-runtime";
 var CommandFrame = styled36(View8, {
   name: "Command",
   flexDirection: "column",
@@ -5396,7 +5607,7 @@ var CommandInputFrame = styled36(View8, {
 });
 var SearchIcon = () => /* @__PURE__ */ jsx28(Text15, { fontSize: "$4", marginRight: "$2", children: "\u{1F50D}" });
 var CommandInput = React28.forwardRef(
-  ({ ...props }, ref) => /* @__PURE__ */ jsxs15(CommandInputFrame, { children: [
+  ({ ...props }, ref) => /* @__PURE__ */ jsxs14(CommandInputFrame, { children: [
     /* @__PURE__ */ jsx28(SearchIcon, {}),
     /* @__PURE__ */ jsx28(
       CommandPrimitive.Input,
@@ -5498,8 +5709,8 @@ var CommandShortcut = styled36(Text15, {
 // src/organisms/Sidebar/Sidebar.tsx
 import { useState as useState6 } from "react";
 import { YStack as YStack13, AnimatePresence as AnimatePresence3, useMedia } from "tamagui";
-import { ChevronLeft, ChevronRight as ChevronRight2, Menu as Menu2 } from "@tamagui/lucide-icons";
-import { jsx as jsx29, jsxs as jsxs16 } from "react/jsx-runtime";
+import { ChevronLeft, ChevronRight, Menu } from "@tamagui/lucide-icons";
+import { jsx as jsx29, jsxs as jsxs15 } from "react/jsx-runtime";
 var Sidebar = ({ children, variant = "fixed" }) => {
   const [isCollapsed, setIsCollapsed] = useState6(false);
   const media = useMedia();
@@ -5507,12 +5718,12 @@ var Sidebar = ({ children, variant = "fixed" }) => {
     setIsCollapsed(!isCollapsed);
   };
   if (media.sm) {
-    return /* @__PURE__ */ jsxs16(Sheet2, { children: [
-      /* @__PURE__ */ jsx29(SheetTrigger, { asChild: true, children: /* @__PURE__ */ jsx29(Button, { icon: Menu2, circular: true }) }),
+    return /* @__PURE__ */ jsxs15(Sheet2, { children: [
+      /* @__PURE__ */ jsx29(SheetTrigger, { asChild: true, children: /* @__PURE__ */ jsx29(Button, { icon: Menu, circular: true }) }),
       /* @__PURE__ */ jsx29(SheetContent, { position: "left", size: "$20", children: /* @__PURE__ */ jsx29(YStack13, { space: "$4", paddingTop: "$8", children }) })
     ] });
   }
-  const desktopSidebar = /* @__PURE__ */ jsx29(AnimatePresence3, { children: /* @__PURE__ */ jsxs16(
+  const desktopSidebar = /* @__PURE__ */ jsx29(AnimatePresence3, { children: /* @__PURE__ */ jsxs15(
     YStack13,
     {
       animation: "medium",
@@ -5534,7 +5745,7 @@ var Sidebar = ({ children, variant = "fixed" }) => {
         variant === "collapsible" && /* @__PURE__ */ jsx29(
           Button,
           {
-            icon: isCollapsed ? ChevronRight2 : ChevronLeft,
+            icon: isCollapsed ? ChevronRight : ChevronLeft,
             onPress: toggleSidebar,
             circular: true,
             position: "absolute",
@@ -5552,7 +5763,7 @@ var Sidebar = ({ children, variant = "fixed" }) => {
 // src/organisms/Charts/BarChart.tsx
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryContainer } from "victory";
 import { useTheme } from "tamagui";
-import { jsx as jsx30, jsxs as jsxs17 } from "react/jsx-runtime";
+import { jsx as jsx30, jsxs as jsxs16 } from "react/jsx-runtime";
 var BarChart = ({
   data,
   xKey,
@@ -5566,7 +5777,7 @@ var BarChart = ({
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
-  return /* @__PURE__ */ jsx30("div", { style: { height, width: width || "100%" }, children: /* @__PURE__ */ jsxs17(
+  return /* @__PURE__ */ jsx30("div", { style: { height, width: width || "100%" }, children: /* @__PURE__ */ jsxs16(
     VictoryChart,
     {
       domainPadding: { x: 20 },
@@ -18083,21 +18294,10 @@ export {
   FormMessage,
   IndicatorArrow,
   Input,
-  MenubarFrame as Menubar,
-  MenubarCheckboxItem,
+  Menubar,
   MenubarContent,
-  MenubarGroup,
   MenubarItem,
-  MenubarLabelWithInset as MenubarLabel,
   MenubarMenu,
-  MenubarPortal,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
   MenubarTrigger,
   NavigationMenu,
   NavigationMenuContent,
