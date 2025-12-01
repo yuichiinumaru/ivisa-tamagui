@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
+import { render } from '../tests/migrated/utils/render';
 import { Sidebar } from './organisms/Sidebar';
 import { vi } from 'vitest';
 
@@ -45,12 +46,15 @@ describe('Sidebar', () => {
     expect(getByText('Test Child')).toBeTruthy();
   });
 
-  it('toggles when in collapsible mode', () => {
-    const { getByRole, getByText, queryByText } = render(
+  it('toggles when in collapsible mode', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { getByText, getByRole, queryByText, user } = render(
       <Sidebar variant="collapsible">
         <div>Test Child</div>
       </Sidebar>
     );
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const _user = user;
 
     const toggleButton = getByRole('button');
 

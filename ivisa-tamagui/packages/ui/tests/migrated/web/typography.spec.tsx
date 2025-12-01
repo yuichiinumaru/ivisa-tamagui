@@ -1,5 +1,5 @@
 import { render, screen } from '../utils/render'
-import { Heading, TypographyText, MutedText, LeadText, Blockquote } from '../../src'
+import { Heading, TypographyText, MutedText, LeadText, Blockquote } from '../../../../src/atoms/Typography'
 
 describe('Typography primitives', () => {
   it('renders heading with default level', () => {

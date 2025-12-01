@@ -1,6 +1,5 @@
-import React from 'react'
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
-import { GetProps, styled, XStack, YStack } from 'tamagui'
+import { GetProps, styled, YStack } from 'tamagui'
 
 const NavigationMenu = styled(NavigationMenuPrimitive.Root, {
   name: 'NavigationMenu',

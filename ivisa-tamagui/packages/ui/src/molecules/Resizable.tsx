@@ -57,6 +57,7 @@ const ResizablePanelGroup = React.forwardRef<React.ElementRef<typeof ResizablePa
 ResizablePanelGroup.displayName = 'ResizablePanelGroup'
 
 const ResizablePanel = React.forwardRef<React.ElementRef<typeof ResizablePanelFrame>, GetProps<typeof ResizablePanelFrame> & { defaultSize?: number }>((props, ref) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { defaultSize, ...rest } = props
     // In a real implementation, defaultSize would control flex-basis or width/height
     return <ResizablePanelFrame ref={ref} {...rest} />

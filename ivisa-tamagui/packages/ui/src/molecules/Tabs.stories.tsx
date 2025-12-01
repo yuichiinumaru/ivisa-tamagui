@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './Tabs'
-import { YStack, Text } from 'tamagui'
+import { YStack } from 'tamagui'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './Card'
 import { Label, Input } from 'tamagui'
 import { Button } from '../atoms/Button'

@@ -1,4 +1,4 @@
-import { GetProps, styled, Text, XStack, YStack } from 'tamagui'
+import { GetProps, styled, Text, XStack } from 'tamagui'
 
 const AlertFrame = styled(XStack, {
     name: 'Alert',

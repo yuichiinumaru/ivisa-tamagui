@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input as TamaguiInput, InputProps as TamaguiInputProps, styled, GetProps } from 'tamagui';
+import { Input as TamaguiInput, styled, GetProps } from 'tamagui';
 
 import { withErrorLogging } from '../../utils/withErrorLogging';
 

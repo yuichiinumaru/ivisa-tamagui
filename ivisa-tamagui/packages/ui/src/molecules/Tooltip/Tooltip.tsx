@@ -31,7 +31,9 @@ export interface TooltipProps extends TamaguiTooltipProps {
   trigger?: React.ReactNode
 }
 
-export const Tooltip = React.forwardRef<any, TooltipProps>(({ children, content, ...props }, ref) => {
+export const Tooltip = React.forwardRef<unknown, TooltipProps>(({ children, content, ...props }, ref) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _ = ref
   return (
     <TamaguiTooltip {...props}>
       <TamaguiTooltip.Trigger asChild>

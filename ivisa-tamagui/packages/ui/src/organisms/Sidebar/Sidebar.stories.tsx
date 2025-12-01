@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Sidebar } from './Sidebar';
-import { Button } from '../../atoms/Button';
-import { XStack, YStack, Text, Paragraph } from 'tamagui';
+import { Text } from 'tamagui';
 
 const meta = {
   title: 'Organisms/Sidebar',

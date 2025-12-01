@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react'
-import { styled, XStack, YStack, Text, Button, GetProps, AnimatePresence } from 'tamagui'
-import { PortalProvider, Portal } from '@tamagui/portal'
+import { styled, XStack, YStack, Text, Button, AnimatePresence } from 'tamagui'
+import { Portal } from '@tamagui/portal'
 
 // --- Types ---
 

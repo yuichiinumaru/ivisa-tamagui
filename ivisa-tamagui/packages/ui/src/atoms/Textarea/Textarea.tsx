@@ -101,6 +101,7 @@ const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, 
         size={size}
         invalid={invalid || undefined}
         aria-invalid={invalid}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         style={{ resize: 'vertical' } as any}
         {...props}
       />

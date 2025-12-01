@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button as TamaguiButton, ButtonProps as TamaguiButtonProps, styled, GetProps } from 'tamagui'
+import { Button as TamaguiButton, styled, GetProps } from 'tamagui'
 
 import { withErrorLogging } from '../../utils/withErrorLogging'
 

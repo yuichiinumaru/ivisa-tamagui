@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import { useDatePicker } from '@rehookify/datepicker'
-import { YStack, XStack, Text, styled, AnimatePresence, Theme } from 'tamagui'
+import { YStack, XStack, Text, styled } from 'tamagui'
 import { Button } from '../../atoms/Button'
 
 const CalendarContainer = styled(YStack, {
@@ -94,7 +94,7 @@ export const Calendar = ({
   const [selectedDates, onDatesChange] = useState<Date[]>(selectedDate ? [selectedDate] : [])
 
   const {
-    data: { calendars, weekDays, months },
+    data: { calendars, weekDays },
     propGetters: { dayButton, subtractOffset, addOffset },
   } = useDatePicker({
     selectedDates,
@@ -115,7 +115,7 @@ export const Calendar = ({
 
   // We usually only display one month at a time
   const currentMonth = calendars[0]
-  const currentMonthData = months[0]
+  // const currentMonthData = months[0]
 
   if (!currentMonth) return null
 
@@ -131,7 +131,7 @@ export const Calendar = ({
           circular
           size="sm"
           variant="ghost"
-          // @ts-ignore
+          // @ts-expect-error - rehookify props mismatch with tamagui
           onPress={prevBtn.onClick}
         >
           {'<'}
@@ -145,7 +145,7 @@ export const Calendar = ({
           circular
           size="sm"
           variant="ghost"
-          // @ts-ignore
+          // @ts-expect-error - rehookify props mismatch with tamagui
           onPress={nextBtn.onClick}
         >
           {'>'}
@@ -165,6 +165,7 @@ export const Calendar = ({
       <DaysGrid>
         {currentMonth.days.map((day, index) => {
             // rehookify provides props, but we need to adapt them to Tamagui
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { onClick, ...dayProps } = dayButton(day)
             
             return (
@@ -175,7 +176,7 @@ export const Calendar = ({
                 outside={!day.inCurrentMonth}
                 disabled={day.disabled}
                 onPress={(e) => {
-                  // @ts-ignore
+                  // @ts-expect-error - rehookify props mismatch with tamagui
                   onClick?.(e) 
                 }}
               >

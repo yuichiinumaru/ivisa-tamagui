@@ -19,7 +19,6 @@ import {
   View,
 } from 'tamagui'
 import { Button } from '../../atoms/Button'
-import { Input } from '../../atoms/Input'
 
 // --- Styled Primitives for the Table ---
 
