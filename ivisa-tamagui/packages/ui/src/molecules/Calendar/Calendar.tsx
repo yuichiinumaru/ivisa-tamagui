@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { useDatePicker } from '@rehookify/datepicker'
-import { YStack, XStack, Button, Text, styled, AnimatePresence, Theme } from 'tamagui'
+import { YStack, XStack, Text, styled, AnimatePresence, Theme } from 'tamagui'
 import { Button } from '../../atoms/Button'
 
 const CalendarContainer = styled(YStack, {
