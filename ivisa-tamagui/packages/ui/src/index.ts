@@ -34,6 +34,7 @@ export * from './molecules/NavigationMenu';
 export * from './molecules/Menubar';
 export * from './molecules/ToggleGroup';
 export * from './molecules/Tooltip';
+export * from './molecules/Stepper';
 export * from './organisms/Form';
 export * from './organisms/DataTable';
 export * from './organisms/Carousel';
