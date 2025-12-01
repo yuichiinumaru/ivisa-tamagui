@@ -1,78 +1,78 @@
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Button, YStack, Text } from 'tamagui'
-import { ToastProvider, useToast, Toast } from './Toast' // Import Toast and ToastProvider
-import { PortalProvider } from '@tamagui/portal' // Needed for ToastProvider
+import { Button } from '../atoms/Button'
+import { ToastProvider, useToast } from './Toast'
+import { YStack } from 'tamagui'
 
-const meta: Meta<typeof Toast> = { // Use ToastFrame as the component for Storybook
-  title: 'molecules/Toast',
-  component: Toast,
-  tags: ['autodocs'],
-  argTypes: {},
+const meta: Meta = {
+  title: 'Molecules/Toast',
+  decorators: [
+    (Story) => (
+      <ToastProvider>
+        <Story />
+      </ToastProvider>
+    ),
+  ],
   parameters: {
-    layout: 'fullscreen', // To properly see the toast position
-  },
-  render: (args) => {
-    const ToastTrigger = () => {
-      const { toast } = useToast()
-
-      return (
-        <YStack gap="$2">
-          <Button onPress={() => toast({
-            title: 'Event Scheduled',
-            description: 'Your event has been successfully scheduled.',
-          })}>
-            Show Default Toast
-          </Button>
-
-          <Button theme="red" onPress={() => toast({
-            title: 'Uh oh! Something went wrong.',
-            description: 'There was a problem with your request.',
-            variant: 'destructive',
-          })}>
-            Show Destructive Toast
-          </Button>
-
-          <Button theme="green" onPress={() => toast({
-            title: 'Success!',
-            description: 'Your changes have been saved.',
-            variant: 'success',
-          })}>
-            Show Success Toast
-          </Button>
-
-          <Button onPress={() => toast({
-            title: 'Unsaved Changes',
-            description: 'You have unsaved changes. Would you like to save them?',
-            action: (
-                <Button variant="outline" size="$2" onPress={() => console.log('Saved!')}>
-                    <Text>Save</Text>
-                </Button>
-            ),
-            duration: 0, // Make it persistent until dismissed
-          })}>
-            Show Toast With Action (Persistent)
-          </Button>
-          <Text fontSize="$1" theme="alt1">Toasts will appear in the bottom right.</Text>
-        </YStack>
-      )
-    }
-
-    return (
-      <PortalProvider>
-        <ToastProvider>
-          <YStack flex={1} alignItems="center" justifyContent="center">
-            <ToastTrigger />
-          </YStack>
-        </ToastProvider>
-      </PortalProvider>
-    )
+    layout: 'centered',
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof Toast>
+const ToastDemo = () => {
+  const { toast } = useToast()
 
-export const Default: Story = {
-  args: {},
+  return (
+    <YStack space>
+      <Button
+        onPress={() =>
+          toast({
+            title: 'Scheduled: Catch up',
+            description: 'Friday, February 10, 2023 at 5:57 PM',
+          })
+        }
+      >
+        Show Toast
+      </Button>
+      <Button
+        variant="destructive"
+        onPress={() =>
+          toast({
+            title: 'Uh oh! Something went wrong.',
+            description: 'There was a problem with your request.',
+            variant: 'destructive',
+          })
+        }
+      >
+        Show Destructive Toast
+      </Button>
+      <Button
+        onPress={() =>
+          toast({
+            title: 'Success!',
+            description: 'Your changes have been saved.',
+            variant: 'success',
+          })
+        }
+      >
+        Show Success Toast
+      </Button>
+      <Button
+        onPress={() =>
+          toast({
+            title: 'Event has been created',
+            description: 'You can view it in your calendar.',
+            action: <Button size="$1">Undo</Button>,
+          })
+        }
+      >
+        Show Toast with Action
+      </Button>
+    </YStack>
+  )
+}
+
+export const Default: StoryObj = {
+  render: () => <ToastDemo />,
 }

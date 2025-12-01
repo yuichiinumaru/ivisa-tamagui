@@ -29,6 +29,7 @@ export * from './molecules/OTPInput';
 export * from './molecules/Pagination';
 export * from './molecules/Breadcrumb';
 export * from './molecules/ComponentErrorBoundary';
+// export * from './molecules/ContextMenu';
 export * from './molecules/NavigationMenu';
 export * from './molecules/Menubar';
 export * from './molecules/ToggleGroup';
