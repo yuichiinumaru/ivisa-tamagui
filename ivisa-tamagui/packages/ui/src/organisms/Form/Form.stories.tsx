@@ -15,7 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from './Form'
-import { YStack, H3, Text } from 'tamagui'
+import { YStack, H3 } from 'tamagui'
 
 const meta: Meta = {
   title: 'Organisms/Form',
@@ -39,7 +39,7 @@ const loginSchema = z.object({
 
 const LoginForm = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
-    // @ts-ignore - zod version mismatch workaround
+    // @ts-expect-error - zod version mismatch workaround
     resolver: zodResolver(loginSchema),
     defaultValues: {
       username: "",
@@ -111,7 +111,7 @@ const profileSchema = z.object({
 
 const ProfileForm = () => {
   const form = useForm<z.infer<typeof profileSchema>>({
-    // @ts-ignore - zod version mismatch workaround
+    // @ts-expect-error - zod version mismatch workaround
     resolver: zodResolver(profileSchema),
     defaultValues: {
       email: "",

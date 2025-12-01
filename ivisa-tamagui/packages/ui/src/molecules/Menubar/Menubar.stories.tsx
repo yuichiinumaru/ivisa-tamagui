@@ -13,7 +13,6 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-  MenubarLabel,
 } from './Menubar'
 import React from 'react'
 

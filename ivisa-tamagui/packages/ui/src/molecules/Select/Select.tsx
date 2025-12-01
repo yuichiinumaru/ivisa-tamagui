@@ -49,6 +49,7 @@ const SelectImpl = React.forwardRef<React.ElementRef<typeof TamaguiSelect>, Sele
       disablePreventBodyScroll = true,
       ...props
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     ref
   ) => {
     const hasCustomChildren = React.Children.count(children) > 0

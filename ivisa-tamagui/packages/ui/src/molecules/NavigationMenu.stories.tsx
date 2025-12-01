@@ -8,7 +8,7 @@ import {
   NavigationMenuContent,
   NavigationMenuLink,
 } from './NavigationMenu'
-import { YStack, Text } from 'tamagui'
+import { YStack } from 'tamagui'
 
 const meta: Meta<typeof NavigationMenu> = {
   title: 'Molecules/NavigationMenu',

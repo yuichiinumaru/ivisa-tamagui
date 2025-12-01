@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Popover, PopoverTrigger, PopoverContent, PopoverClose } from './Popover'
+import { Popover, PopoverTrigger, PopoverContent } from './Popover'
 import { Button } from '../../atoms/Button'
 import { Input } from '../../atoms/Input'
 import { Text, Label, XStack, YStack } from 'tamagui'

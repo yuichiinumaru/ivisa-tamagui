@@ -1,7 +1,7 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { RadioGroup, RadioGroupItem } from './RadioGroup'
-import { YStack, XStack, Label } from 'tamagui'
+import { XStack, Label } from 'tamagui'
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Molecules/RadioGroup',

@@ -4,6 +4,7 @@ import { useTheme } from 'tamagui'
 import { View } from 'react-native'
 
 export interface BarChartProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: Record<string, any>[]
   xKey: string
   yKey: string
@@ -21,6 +22,7 @@ export const BarChart = ({
   width,
 }: BarChartProps) => {
   const theme = useTheme()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const barColor = (theme[color as any] as any)?.get() || color
 
   // Note: Axis labels require a Skia Font object.

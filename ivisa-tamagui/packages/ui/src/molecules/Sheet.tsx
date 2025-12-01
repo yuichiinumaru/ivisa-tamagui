@@ -1,5 +1,5 @@
 import { Sheet as TamaguiSheet } from '@tamagui/sheet'
-import { styled, GetProps, XStack, YStack, Text, H2, Paragraph } from 'tamagui'
+import { styled, GetProps, XStack, YStack, H2, Paragraph } from 'tamagui'
 import React from 'react'
 
 /* 

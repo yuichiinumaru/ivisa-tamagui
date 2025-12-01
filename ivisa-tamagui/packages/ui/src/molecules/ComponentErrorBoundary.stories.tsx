@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { ComponentErrorBoundary } from './ComponentErrorBoundary'
 import { Text, YStack, Button } from 'tamagui'

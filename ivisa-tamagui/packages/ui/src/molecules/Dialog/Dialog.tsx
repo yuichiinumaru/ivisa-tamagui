@@ -1,7 +1,5 @@
 import React from 'react'
-import { Dialog as TamaguiDialog, DialogContentProps, DialogOverlayProps, DialogProps, styled, Unspaced, Button, XStack, GetProps, Adapt, Sheet, Text } from 'tamagui'
-
-import { withErrorLogging } from '../../utils/withErrorLogging'
+import { Dialog as TamaguiDialog, DialogContentProps, styled, Unspaced, Button, XStack, Text } from 'tamagui'
 
 // Styled Components matching Shadcn
 const DialogOverlay = styled(TamaguiDialog.Overlay, {

@@ -18,54 +18,19 @@ exports[`Typography (Native) > renders Blockquote 1`] = `
     }
   >
     <span
-      className=" t_dark is_Theme"
+      className=" t_light is_Theme"
       style={
         {
-          "color": "",
+          "color": "var(--color)",
           "display": "contents",
         }
       }
     >
       <span
-        className=" "
-        style={
-          {
-            "display": "contents",
-          }
-        }
+        className="is_Blockquote font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color _borderLeftWidth-2px _borderLeftColor-borderColor _fst-italic _borderLeftStyle-solid"
+        style={{}}
       >
-        <span
-          className="t_sub_theme t_dark is_Theme"
-          style={
-            {
-              "color": "",
-              "display": "contents",
-            }
-          }
-        >
-          <blockquote
-            className="is_Blockquote "
-            fontStyle="italic"
-            role="region"
-            style={
-              {
-                "backgroundColor": "var(--muted)",
-                "borderLeftColor": "var(--primary)",
-                "borderLeftStyle": "solid",
-                "borderLeftWidth": "4px",
-                "color": "var(--foreground)",
-                "marginBottom": "var(--c-space-3)",
-                "marginTop": "var(--c-space-3)",
-                "paddingBottom": "var(--c-space-3)",
-                "paddingLeft": "var(--c-space-4)",
-                "paddingRight": "var(--c-space-4)",
-                "paddingTop": "var(--c-space-3)",
-              }
-            }
-          >
-            Blockquote
-          </blockquote>
-        </span>
+        Blockquote
       </span>
       <div
         style={
@@ -104,38 +69,19 @@ exports[`Typography (Native) > renders LeadText 1`] = `
     }
   >
     <span
-      className=" t_dark is_Theme"
+      className=" t_light is_Theme"
       style={
         {
-          "color": "",
+          "color": "var(--color)",
           "display": "contents",
         }
       }
     >
       <span
-        className=" "
-        style={
-          {
-            "display": "contents",
-          }
-        }
+        className="is_LeadText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
+        style={{}}
       >
-        <span
-          className="t_sub_theme t_dark is_Theme"
-          style={
-            {
-              "color": "",
-              "display": "contents",
-            }
-          }
-        >
-          <p
-            className="is_LeadText font_body _display-inline _boxSizing-border-box _wordWrap-break-word _marginTop-0px _marginRight-0px _marginBottom-c-space-3 _marginLeft-0px _userSelect-auto _whiteSpace-normal _fontFamily-f-family _color-mutedForegr3422748 _fontSize-f-size-5 _lineHeight-32px _fontWeight-400 _textAlign-left"
-            style={{}}
-          >
-            Lead text
-          </p>
-        </span>
+        Lead text
       </span>
       <div
         style={
@@ -174,38 +120,19 @@ exports[`Typography (Native) > renders MutedText 1`] = `
     }
   >
     <span
-      className=" t_dark is_Theme"
+      className=" t_light is_Theme"
       style={
         {
-          "color": "",
+          "color": "var(--color)",
           "display": "contents",
         }
       }
     >
       <span
-        className=" "
-        style={
-          {
-            "display": "contents",
-          }
-        }
+        className="is_MutedText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
+        style={{}}
       >
-        <span
-          className="t_sub_theme t_dark is_Theme"
-          style={
-            {
-              "color": "",
-              "display": "contents",
-            }
-          }
-        >
-          <p
-            className="is_MutedText font_body _display-inline _boxSizing-border-box _wordWrap-break-word _marginTop-0px _marginRight-0px _marginBottom-c-space-3 _marginLeft-0px _userSelect-auto _whiteSpace-normal _fontFamily-f-family _color-mutedForegr3422748 _lineHeight-24px _fontSize-f-size-3 _fontWeight-400 _textAlign-left"
-            style={{}}
-          >
-            Muted text
-          </p>
-        </span>
+        Muted text
       </span>
       <div
         style={
@@ -244,38 +171,19 @@ exports[`Typography (Native) > renders TypographyText 1`] = `
     }
   >
     <span
-      className=" t_dark is_Theme"
+      className=" t_light is_Theme"
       style={
         {
-          "color": "",
+          "color": "var(--color)",
           "display": "contents",
         }
       }
     >
       <span
-        className=" "
-        style={
-          {
-            "display": "contents",
-          }
-        }
+        className="is_TypographyText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color"
+        style={{}}
       >
-        <span
-          className="t_sub_theme t_dark is_Theme"
-          style={
-            {
-              "color": "",
-              "display": "contents",
-            }
-          }
-        >
-          <p
-            className="is_TypographyText font_body _display-inline _boxSizing-border-box _wordWrap-break-word _marginTop-0px _marginRight-0px _marginBottom-c-space-3 _marginLeft-0px _userSelect-auto _whiteSpace-normal _fontFamily-f-family _color-foreground _lineHeight-24px _fontSize-f-size-3 _fontWeight-400 _textAlign-left"
-            style={{}}
-          >
-            Some text
-          </p>
-        </span>
+        Some text
       </span>
       <div
         style={
@@ -314,40 +222,20 @@ exports[`Typography (Native) > renders a Heading with default level 1`] = `
     }
   >
     <span
-      className=" t_dark is_Theme"
+      className=" t_light is_Theme"
       style={
         {
-          "color": "",
+          "color": "var(--color)",
           "display": "contents",
         }
       }
     >
       <span
-        className=" "
-        style={
-          {
-            "display": "contents",
-          }
-        }
+        className="is_Heading font_heading _dsp-inline _bxs-border-box _ww-break-word _ff-f-family _fontWeight-f-weight-8 _ls-f-letterSpa1360334198 _fontSize-f-size-8 _lh-f-lineHeigh112927 _col-color _userSelect-auto _ws-normal _mt-0px _mr-0px _mb-0px _ml-0px"
+        role="heading"
+        style={{}}
       >
-        <span
-          className="t_sub_theme t_dark is_Theme"
-          style={
-            {
-              "color": "",
-              "display": "contents",
-            }
-          }
-        >
-          <span
-            aria-level={2}
-            className="is_Heading font_heading _display-inline _boxSizing-border-box _wordWrap-break-word _whiteSpace-pre-wrap _marginTop-0px _marginRight-0px _marginBottom-c-space-3 _marginLeft-0px _fontFamily-f-family _fontWeight-600 _color-foreground _letterSpacing--0--5px _textAlign-left _fontSize-f-size-7 _lineHeight-40px"
-            role="heading"
-            style={{}}
-          >
-            Heading
-          </span>
-        </span>
+        Heading
       </span>
       <div
         style={
@@ -386,40 +274,21 @@ exports[`Typography (Native) > renders a Heading with level 1 1`] = `
     }
   >
     <span
-      className=" t_dark is_Theme"
+      className=" t_light is_Theme"
       style={
         {
-          "color": "",
+          "color": "var(--color)",
           "display": "contents",
         }
       }
     >
       <span
-        className=" "
-        style={
-          {
-            "display": "contents",
-          }
-        }
+        className="is_Heading font_heading _dsp-inline _bxs-border-box _ww-break-word _ff-f-family _fontWeight-f-weight-8 _ls-f-letterSpa1360334198 _fontSize-f-size-8 _lh-f-lineHeigh112927 _col-color _userSelect-auto _ws-normal _mt-0px _mr-0px _mb-0px _ml-0px"
+        level={1}
+        role="heading"
+        style={{}}
       >
-        <span
-          className="t_sub_theme t_dark is_Theme"
-          style={
-            {
-              "color": "",
-              "display": "contents",
-            }
-          }
-        >
-          <span
-            aria-level={1}
-            className="is_Heading font_heading _display-inline _boxSizing-border-box _wordWrap-break-word _whiteSpace-pre-wrap _marginTop-0px _marginRight-0px _marginBottom-c-space-3 _marginLeft-0px _fontFamily-f-family _fontWeight-600 _color-foreground _letterSpacing--0--5px _textAlign-left _fontSize-f-size-8 _lineHeight-44px"
-            role="heading"
-            style={{}}
-          >
-            Heading
-          </span>
-        </span>
+        Heading
       </span>
       <div
         style={

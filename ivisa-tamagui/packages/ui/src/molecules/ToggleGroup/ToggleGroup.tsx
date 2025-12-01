@@ -1,5 +1,4 @@
 import { ToggleGroup as TamaguiToggleGroup, styled, GetProps } from 'tamagui'
-import React from 'react'
 
 const ToggleGroupFrame = styled(TamaguiToggleGroup, {
     name: 'ToggleGroup',

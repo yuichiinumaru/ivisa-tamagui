@@ -19,17 +19,17 @@
   - Re-create `scripts/visual-check.js` (uses Storybook + Playwright) which is currently missing.
 
 ### Missing / Incomplete Components
-21 - [ ] `ContextMenu` (TDD, UX)
-  - [ ] 21a – Implement `ContextMenu` using `react-right-click-context-menu` or Radix Dropdown. (File `molecules/ContextMenu.tsx` is missing despite stories existing).
-  - [ ] 21b – Add tests for right-click behavior on web.
-  - [ ] 21c – Export in `index.ts`.
+21 - [x] `ContextMenu` (TDD, UX)
+  - [x] 21a – Implement `ContextMenu` using `react-right-click-context-menu` or Radix Dropdown. (File `molecules/ContextMenu.tsx` is missing despite stories existing).
+  - [x] 21b – Add tests for right-click behavior on web.
+  - [x] 21c – Export in `index.ts`.
 
-20 - [ ] `Menubar` (TDD, UX)
-  - [ ] 20a – Complete `Menubar` implementation. (Current implementation is skeletal `XStack` wrapper, needs Dropdown logic).
+20 - [x] `Menubar` (TDD, UX)
+  - [x] 20a – Complete `Menubar` implementation. (Current implementation is skeletal `XStack` wrapper, needs Dropdown logic).
   - [x] 20b – `NavigationMenu` is implemented (see Completed section).
 
-New - [ ] `ComponentErrorBoundary` (DOC)
-  - [ ] Create Storybook stories for `ComponentErrorBoundary`. (File exists but stories are missing).
+New - [x] `ComponentErrorBoundary` (DOC)
+  - [x] Create Storybook stories for `ComponentErrorBoundary`. (File exists but stories are missing).
 
 ### Phase 4: Web-Specific UX & Full Documentation (Remaining)
 25 - [ ] Populate Storybook with full documentation (DOC)

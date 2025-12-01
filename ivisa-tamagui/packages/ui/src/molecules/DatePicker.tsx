@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Popover, PopoverTrigger, PopoverContent } from '../molecules/Popover'
 import { Calendar } from '../molecules/Calendar'
 import { Button } from '../atoms/Button'
-import { Input } from '../atoms/Input'
 import { format } from 'date-fns'
 import { XStack } from 'tamagui'
 
