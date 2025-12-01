@@ -23,3 +23,6 @@ build/
 *.tsbuildinfo
 *storybook.log
 storybook-static
+
+# Reference
+referencias/
