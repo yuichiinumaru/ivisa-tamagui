@@ -19,6 +19,11 @@
   - Re-create `scripts/visual-check.js` (uses Storybook + Playwright) which is currently missing.
 
 ### Missing / Incomplete Components
+21 - [ ] `ContextMenu` (TDD, UX)
+  - [ ] 21a – Implement `ContextMenu` using `react-right-click-context-menu` or Radix Dropdown. (File `molecules/ContextMenu.tsx` is missing despite stories existing).
+  - [ ] 21b – Add tests for right-click behavior on web.
+  - [ ] 21c – Export in `index.ts`.
+
 20 - [ ] `Menubar` (TDD, UX)
   - [ ] 20a – Complete `Menubar` implementation. (Current implementation is skeletal `XStack` wrapper, needs Dropdown logic).
   - [x] 20b – `NavigationMenu` is implemented (see Completed section).
@@ -83,11 +88,7 @@ New - [ ] `ComponentErrorBoundary` (DOC)
 ### Phase 4 – Web-Specific UX (Completed Parts)
 20 - [x] `NavigationMenu` (TDD, UX)
   - [x] Implemented using Radix Primitives and Tamagui styling.
-21 - [x] `ContextMenu` (TDD, UX)
-  - [x] 21a – Implemented `ContextMenu` using `@radix-ui/react-context-menu` (Web) and stub (Native).
-  - [x] 21b – Added tests for right-click behavior on web.
-  - [x] 21c – Exported in `index.ts`.
-New - [x] `ToggleGroup` (TDD, UX)
+21 - [x] `ToggleGroup` (TDD, UX)
   - [x] Implemented wrapper for Tamagui ToggleGroup.
 22 - [x] Core Primitives Sprint (P1) (TDD, UX)
   - [x] 22a – Implement `Alert` (Atom).
