@@ -7,7 +7,7 @@ import {
   FormProvider,
   useFormContext,
 } from "react-hook-form"
-import { View, Label, Text, styled, YStack, ViewProps, GetProps, TamaguiElement } from "tamagui"
+import { View, Label, Text, styled, YStack, GetProps } from "tamagui"
 
 const Form = FormProvider
 
@@ -68,6 +68,7 @@ const FormItemFrame = styled(YStack, {
   space: '$2',
 })
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const FormItem = React.forwardRef<any, GetProps<typeof FormItemFrame>>(
   ({ ...props }, ref) => {
     const id = React.useId()
@@ -95,6 +96,7 @@ const FormLabelFrame = styled(Label, {
   }
 })
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const FormLabel = React.forwardRef<any, GetProps<typeof FormLabelFrame>>(
   ({ ...props }, ref) => {
     const { error, formItemId } = useFormField()
@@ -111,6 +113,7 @@ const FormLabel = React.forwardRef<any, GetProps<typeof FormLabelFrame>>(
 )
 FormLabel.displayName = "FormLabel"
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const FormControl = React.forwardRef<any, GetProps<typeof View>>(
   ({ ...props }, ref) => {
     const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
@@ -138,6 +141,7 @@ const FormDescriptionFrame = styled(Text, {
   color: '$mutedForeground',
 })
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const FormDescription = React.forwardRef<any, GetProps<typeof FormDescriptionFrame>>(
   ({ ...props }, ref) => {
     const { formDescriptionId } = useFormField()
@@ -160,6 +164,7 @@ const FormMessageFrame = styled(Text, {
   color: '$destructive',
 })
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const FormMessage = React.forwardRef<any, GetProps<typeof FormMessageFrame>>(
   ({ children, ...props }, ref) => {
     const { error, formMessageId } = useFormField()

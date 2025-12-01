@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogClose } from './Dialog'
 import { Button } from '../../atoms/Button'
 import { Input } from '../../atoms/Input'
-import { Label, XStack, YStack, Text } from 'tamagui'
+import { Label, XStack, YStack } from 'tamagui'
 
 const meta: Meta<typeof Dialog> = {
   title: 'Molecules/Dialog',

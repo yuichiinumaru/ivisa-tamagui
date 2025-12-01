@@ -1,5 +1,5 @@
 import React from 'react'
-import { Checkbox as TamaguiCheckbox, CheckboxProps as TamaguiCheckboxProps, styled, GetProps, View } from 'tamagui'
+import { Checkbox as TamaguiCheckbox, styled, GetProps, View } from 'tamagui'
 import { withErrorLogging } from '../../utils/withErrorLogging'
 
 // Custom CheckIcon using simple View/CSS for now since we don't have icons yet

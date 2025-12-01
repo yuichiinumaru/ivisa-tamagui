@@ -1,34 +1,366 @@
-import { XStack, styled, Paragraph } from 'tamagui'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import {
+  Root,
+  Menu,
+  Group,
+  Portal,
+  Trigger,
+  Content,
+  Item,
+  CheckboxItem,
+  ItemIndicator,
+  RadioItem,
+  Label,
+  Separator,
+  SubTrigger,
+  SubContent,
+  Sub,
+  RadioGroup,
+} from '@radix-ui/react-menubar'
+import { Check, ChevronRight, Circle } from '@tamagui/lucide-icons'
 import React from 'react'
+import { styled, Paragraph } from 'tamagui'
 
-const MenubarFrame = styled(XStack, {
+const MenubarFrame = styled(Root, {
   name: 'Menubar',
-  backgroundColor: '$background',
+  display: 'flex',
+  flexDirection: 'row',
+  height: 'auto',
+  alignItems: 'center',
+  gap: '$1',
+  borderRadius: '$md',
   borderWidth: 1,
   borderColor: '$borderColor',
-  borderRadius: '$md',
+  backgroundColor: '$background',
   padding: '$1',
-  gap: '$1',
 })
 
-export const Menubar = React.forwardRef<any, any>((props, ref) => {
-  return (
-    <MenubarFrame ref={ref} {...props}>
-      {props.children}
-    </MenubarFrame>
-  )
-})
+const MenubarMenu = Menu
+const MenubarGroup = Group
+const MenubarPortal = Portal
 
-Menubar.displayName = 'Menubar'
+const MenubarTriggerFrame = styled(Trigger, {
+  name: 'MenubarTrigger',
+  display: 'flex',
+  alignItems: 'center',
+  paddingVertical: '$1.5',
+  paddingHorizontal: '$3',
+  borderRadius: '$sm',
+  outlineWidth: 0,
+  cursor: 'default',
+  userSelect: 'none',
+  fontSize: '$3',
+  fontWeight: '500',
+  color: '$foreground',
+  backgroundColor: 'transparent',
+  borderWidth: 0,
 
-export const MenubarMenu = styled(XStack, {})
-export const MenubarTrigger = styled(Paragraph, {
-  padding: '$2',
-  cursor: 'pointer',
   hoverStyle: {
     backgroundColor: '$muted',
-    borderRadius: '$sm',
+    color: '$foreground',
+  },
+  focusStyle: {
+    backgroundColor: '$muted',
+    color: '$foreground',
+  },
+  pressStyle: {
+    backgroundColor: '$muted',
+    color: '$foreground',
+  },
+
+  '$platform-web': {
+    '&[data-state="open"]': {
+      backgroundColor: '$muted',
+      color: '$foreground',
+    }
   }
 })
-export const MenubarContent = styled(XStack, {})
-export const MenubarItem = styled(Paragraph, {})
+
+const MenubarTrigger = React.forwardRef<any, any>((props, ref) => (
+  <MenubarTriggerFrame ref={ref} {...props} />
+))
+MenubarTrigger.displayName = Trigger.displayName
+
+const MenubarContentFrame = styled(Content, {
+  name: 'MenubarContent',
+  minWidth: 192,
+  overflow: 'hidden',
+  borderRadius: '$md',
+  borderWidth: 1,
+  borderColor: '$borderColor',
+  backgroundColor: '$background',
+  padding: '$1',
+  zIndex: 50,
+  shadowColor: '$shadowColor',
+  shadowRadius: 10,
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.1,
+})
+
+const MenubarContent = React.forwardRef<any, any>(({ align = 'start', alignOffset = -4, sideOffset = 8, ...props }, ref) => (
+  <Portal>
+    <MenubarContentFrame
+      ref={ref}
+      align={align}
+      alignOffset={alignOffset}
+      sideOffset={sideOffset}
+      {...props}
+    />
+  </Portal>
+))
+MenubarContent.displayName = Content.displayName
+
+const MenubarItemFrame = styled(Item, {
+  name: 'MenubarItem',
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderRadius: '$sm',
+  paddingVertical: '$1.5',
+  paddingHorizontal: '$2',
+  outlineWidth: 0,
+  userSelect: 'none',
+  cursor: 'default',
+  fontSize: '$3',
+  color: '$foreground',
+
+  hoverStyle: {
+    backgroundColor: '$accent',
+    color: '$accentForeground',
+  },
+  focusStyle: {
+    backgroundColor: '$accent',
+    color: '$accentForeground',
+  },
+
+  '$platform-web': {
+    '&[data-disabled]': {
+      pointerEvents: 'none',
+      opacity: 0.5,
+    }
+  }
+})
+
+const MenubarItem = React.forwardRef<any, any>(({ inset, ...props }, ref) => (
+  <MenubarItemFrame
+    ref={ref}
+    paddingLeft={inset ? '$8' : '$2'}
+    {...props}
+  />
+))
+MenubarItem.displayName = Item.displayName
+
+const MenubarCheckboxItemFrame = styled(CheckboxItem, {
+  name: 'MenubarCheckboxItem',
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderRadius: '$sm',
+  paddingVertical: '$1.5',
+  paddingLeft: '$8',
+  paddingRight: '$2',
+  outlineWidth: 0,
+  userSelect: 'none',
+  cursor: 'default',
+  fontSize: '$3',
+  color: '$foreground',
+
+  hoverStyle: {
+    backgroundColor: '$accent',
+    color: '$accentForeground',
+  },
+  focusStyle: {
+    backgroundColor: '$accent',
+    color: '$accentForeground',
+  },
+
+  '$platform-web': {
+    '&[data-disabled]': {
+      pointerEvents: 'none',
+      opacity: 0.5,
+    }
+  }
+})
+
+const MenubarItemIndicatorFrame = styled(ItemIndicator, {
+  position: 'absolute',
+  left: '$2',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '$4',
+  height: '$4',
+})
+
+const MenubarCheckboxItem = React.forwardRef<any, any>(({ children, checked, ...props }, ref) => (
+  <MenubarCheckboxItemFrame ref={ref} checked={checked} {...props}>
+    <MenubarItemIndicatorFrame>
+      <Check size={14} />
+    </MenubarItemIndicatorFrame>
+    {children}
+  </MenubarCheckboxItemFrame>
+))
+MenubarCheckboxItem.displayName = CheckboxItem.displayName
+
+const MenubarRadioItemFrame = styled(RadioItem, {
+  name: 'MenubarRadioItem',
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderRadius: '$sm',
+  paddingVertical: '$1.5',
+  paddingLeft: '$8',
+  paddingRight: '$2',
+  outlineWidth: 0,
+  userSelect: 'none',
+  cursor: 'default',
+  fontSize: '$3',
+  color: '$foreground',
+
+  hoverStyle: {
+    backgroundColor: '$accent',
+    color: '$accentForeground',
+  },
+  focusStyle: {
+    backgroundColor: '$accent',
+    color: '$accentForeground',
+  },
+
+  '$platform-web': {
+    '&[data-disabled]': {
+      pointerEvents: 'none',
+      opacity: 0.5,
+    }
+  }
+})
+
+const MenubarRadioItem = React.forwardRef<any, any>(({ children, ...props }, ref) => (
+  <MenubarRadioItemFrame ref={ref} {...props}>
+    <MenubarItemIndicatorFrame>
+      <Circle size={8} fill="currentColor" />
+    </MenubarItemIndicatorFrame>
+    {children}
+  </MenubarRadioItemFrame>
+))
+MenubarRadioItem.displayName = RadioItem.displayName
+
+const MenubarLabelFrame = styled(Label, {
+  name: 'MenubarLabel',
+  paddingHorizontal: '$2',
+  paddingVertical: '$1.5',
+  fontSize: '$3',
+  fontWeight: '600',
+  color: '$foreground',
+  paddingLeft: '$2',
+})
+
+const MenubarLabelWithInset = React.forwardRef<any, any>(({ inset, ...props }, ref) => (
+    <MenubarLabelFrame ref={ref} paddingLeft={inset ? '$8' : '$2'} {...props} />
+))
+MenubarLabelWithInset.displayName = Label.displayName
+
+
+const MenubarSeparator = styled(Separator, {
+  name: 'MenubarSeparator',
+  height: 1,
+  backgroundColor: '$muted', // or $border
+  marginVertical: '$1',
+  marginHorizontal: '-$1',
+})
+
+const MenubarShortcut = styled(Paragraph, {
+  name: 'MenubarShortcut',
+  marginLeft: 'auto',
+  fontSize: '$1',
+  color: '$mutedForeground',
+  letterSpacing: '$1',
+})
+
+const MenubarSubTriggerFrame = styled(SubTrigger, {
+  name: 'MenubarSubTrigger',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderRadius: '$sm',
+  paddingVertical: '$1.5',
+  paddingHorizontal: '$2',
+  outlineWidth: 0,
+  userSelect: 'none',
+  cursor: 'default',
+  fontSize: '$3',
+  color: '$foreground',
+
+  hoverStyle: {
+    backgroundColor: '$accent',
+    color: '$accentForeground',
+  },
+  focusStyle: {
+    backgroundColor: '$accent',
+    color: '$accentForeground',
+  },
+
+  '$platform-web': {
+    '&[data-state="open"]': {
+      backgroundColor: '$accent',
+      color: '$accentForeground',
+    }
+  }
+})
+
+const MenubarSubTrigger = React.forwardRef<any, any>(({ children, inset, ...props }, ref) => (
+  <MenubarSubTriggerFrame
+    ref={ref}
+    paddingLeft={inset ? '$8' : '$2'}
+    {...props}
+  >
+    {children}
+    <ChevronRight size={14} style={{ marginLeft: 'auto' }} />
+  </MenubarSubTriggerFrame>
+))
+MenubarSubTrigger.displayName = SubTrigger.displayName
+
+const MenubarSubContentFrame = styled(SubContent, {
+  name: 'MenubarSubContent',
+  minWidth: 128,
+  overflow: 'hidden',
+  borderRadius: '$md',
+  borderWidth: 1,
+  borderColor: '$borderColor',
+  backgroundColor: '$background',
+  padding: '$1',
+  shadowColor: '$shadowColor',
+  shadowRadius: 10,
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.1,
+  zIndex: 50,
+})
+
+const MenubarSubContent = React.forwardRef<any, any>(({ ...props }, ref) => (
+  <MenubarSubContentFrame ref={ref} {...props} />
+))
+MenubarSubContent.displayName = SubContent.displayName
+
+const MenubarSub = Sub
+const MenubarRadioGroup = RadioGroup
+
+export {
+  MenubarFrame as Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarSeparator,
+  MenubarLabelWithInset as MenubarLabel,
+  MenubarCheckboxItem,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarPortal,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarGroup,
+  MenubarSub,
+  MenubarShortcut,
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, type RenderOptions } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 
 import { AppProviders, type AppProvidersProps } from '../../../src/providers/AppProviders'
 
@@ -18,10 +19,13 @@ export const renderWithTamaguiProviders = (
 ) => {
   const { theme = 'dark', ...renderOptions } = options ?? {}
 
-  return render(ui, {
-    wrapper: withProviders(theme),
-    ...renderOptions,
-  })
+  return {
+    user: userEvent.setup(),
+    ...render(ui, {
+      wrapper: withProviders(theme),
+      ...renderOptions,
+    }),
+  }
 }
 
 export * from '@testing-library/react'

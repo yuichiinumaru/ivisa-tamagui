@@ -1,12 +1,8 @@
 import React from 'react'
 import {
-  Adapt,
   Popover as TamaguiPopover,
-  PopoverProps as TamaguiPopoverProps,
   PopoverContentProps,
   styled,
-  YStack,
-  GetProps
 } from 'tamagui'
 
 const PopoverContentFrame = styled(TamaguiPopover.Content, {

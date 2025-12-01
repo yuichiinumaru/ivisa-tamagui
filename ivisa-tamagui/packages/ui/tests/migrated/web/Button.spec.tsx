@@ -26,16 +26,15 @@ describe('Button (Web)', () => {
     expect(styleAttr.toLowerCase()).toContain('height')
   })
 
-  it('responds to hover and focus interactions', () => {
-    render(<Button>Hover me</Button>)
+  it('responds to hover and focus interactions', async () => {
+    const { user } = render(<Button>Hover me</Button>)
     const buttonElement = screen.getByRole('button', { name: /hover me/i })
 
-    fireEvent.mouseEnter(buttonElement)
-    fireEvent.focus(buttonElement)
+    await user.hover(buttonElement)
+    await user.tab()
     expect(buttonElement).toHaveFocus()
 
-    fireEvent.blur(buttonElement)
-    fireEvent.mouseLeave(buttonElement)
+    await user.tab()
     expect(buttonElement).not.toHaveFocus()
   })
 })

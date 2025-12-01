@@ -18,15 +18,20 @@ const CommandFrame = styled(View, {
 })
 
 const Command = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive> & GetProps<typeof CommandFrame>>(
-  ({ className, ...props }, ref) => (
-    <CommandFrame ref={ref} asChild>
-      <CommandPrimitive {...props} />
-    </CommandFrame>
-  )
+  ({ className: _className, ...props }, ref) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const _ = _className
+    return (
+      <CommandFrame ref={ref} asChild>
+        <CommandPrimitive {...props} />
+      </CommandFrame>
+    )
+  }
 )
 Command.displayName = CommandPrimitive.displayName
 
 // Command Dialog
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface CommandDialogProps extends React.ComponentPropsWithoutRef<typeof Dialog> {}
 
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
@@ -59,6 +64,7 @@ const CommandInput = React.forwardRef<TamaguiElement, React.ComponentPropsWithou
     <CommandInputFrame>
       <SearchIcon />
       <CommandPrimitive.Input
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         style={{
             flex: 1,
@@ -96,6 +102,7 @@ CommandList.displayName = CommandPrimitive.List.displayName
 const CommandEmpty = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>>(
   (props, ref) => (
     <CommandPrimitive.Empty
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       style={{
           padding: 24,

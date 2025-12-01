@@ -4548,6 +4548,476 @@ var NavigationMenuViewport = styled29(NavigationMenuPrimitive.Viewport, {
 });
 
 // src/molecules/Menubar/Menubar.tsx
+import * as MenubarPrimitive from "@radix-ui/react-menubar";
+import { Check, ChevronRight, Circle } from "@tamagui/lucide-icons";
+import React23 from "react";
+import { styled as styled30, Paragraph as Paragraph3 } from "tamagui";
+import { jsx as jsx23, jsxs as jsxs12 } from "react/jsx-runtime";
+var MenubarFrame = styled30(MenubarPrimitive.Root, {
+  name: "Menubar",
+  display: "flex",
+  flexDirection: "row",
+  height: "auto",
+  alignItems: "center",
+  gap: "$1",
+  borderRadius: "$md",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  backgroundColor: "$background",
+  padding: "$1"
+});
+var MenubarMenu = MenubarPrimitive.Menu;
+var MenubarGroup = MenubarPrimitive.Group;
+var MenubarPortal = MenubarPrimitive.Portal;
+var MenubarTriggerFrame = styled30(MenubarPrimitive.Trigger, {
+  name: "MenubarTrigger",
+  display: "flex",
+  alignItems: "center",
+  paddingVertical: "$1.5",
+  paddingHorizontal: "$3",
+  borderRadius: "$sm",
+  outlineWidth: 0,
+  cursor: "default",
+  userSelect: "none",
+  fontSize: "$3",
+  fontWeight: "500",
+  color: "$foreground",
+  backgroundColor: "transparent",
+  borderWidth: 0,
+  hoverStyle: {
+    backgroundColor: "$muted",
+    color: "$foreground"
+  },
+  focusStyle: {
+    backgroundColor: "$muted",
+    color: "$foreground"
+  },
+  pressStyle: {
+    backgroundColor: "$muted",
+    color: "$foreground"
+  },
+  "$platform-web": {
+    '&[data-state="open"]': {
+      backgroundColor: "$muted",
+      color: "$foreground"
+    }
+  }
+});
+var MenubarTrigger = React23.forwardRef((props, ref) => /* @__PURE__ */ jsx23(MenubarTriggerFrame, { ref, ...props }));
+MenubarTrigger.displayName = MenubarPrimitive.Trigger.displayName;
+var MenubarContentFrame = styled30(MenubarPrimitive.Content, {
+  name: "MenubarContent",
+  minWidth: 192,
+  overflow: "hidden",
+  borderRadius: "$md",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  backgroundColor: "$background",
+  padding: "$1",
+  zIndex: 50,
+  shadowColor: "$shadowColor",
+  shadowRadius: 10,
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.1
+});
+var MenubarContent = React23.forwardRef(({ align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => /* @__PURE__ */ jsx23(MenubarPrimitive.Portal, { children: /* @__PURE__ */ jsx23(
+  MenubarContentFrame,
+  {
+    ref,
+    align,
+    alignOffset,
+    sideOffset,
+    ...props
+  }
+) }));
+MenubarContent.displayName = MenubarPrimitive.Content.displayName;
+var MenubarItemFrame = styled30(MenubarPrimitive.Item, {
+  name: "MenubarItem",
+  position: "relative",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  borderRadius: "$sm",
+  paddingVertical: "$1.5",
+  paddingHorizontal: "$2",
+  outlineWidth: 0,
+  userSelect: "none",
+  cursor: "default",
+  fontSize: "$3",
+  color: "$foreground",
+  hoverStyle: {
+    backgroundColor: "$accent",
+    color: "$accentForeground"
+  },
+  focusStyle: {
+    backgroundColor: "$accent",
+    color: "$accentForeground"
+  },
+  "$platform-web": {
+    "&[data-disabled]": {
+      pointerEvents: "none",
+      opacity: 0.5
+    }
+  }
+});
+var MenubarItem = React23.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ jsx23(
+  MenubarItemFrame,
+  {
+    ref,
+    paddingLeft: inset ? "$8" : "$2",
+    ...props
+  }
+));
+MenubarItem.displayName = MenubarPrimitive.Item.displayName;
+var MenubarCheckboxItemFrame = styled30(MenubarPrimitive.CheckboxItem, {
+  name: "MenubarCheckboxItem",
+  position: "relative",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  borderRadius: "$sm",
+  paddingVertical: "$1.5",
+  paddingLeft: "$8",
+  paddingRight: "$2",
+  outlineWidth: 0,
+  userSelect: "none",
+  cursor: "default",
+  fontSize: "$3",
+  color: "$foreground",
+  hoverStyle: {
+    backgroundColor: "$accent",
+    color: "$accentForeground"
+  },
+  focusStyle: {
+    backgroundColor: "$accent",
+    color: "$accentForeground"
+  },
+  "$platform-web": {
+    "&[data-disabled]": {
+      pointerEvents: "none",
+      opacity: 0.5
+    }
+  }
+});
+var MenubarItemIndicator = styled30(MenubarPrimitive.ItemIndicator, {
+  position: "absolute",
+  left: "$2",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "$4",
+  height: "$4"
+});
+var MenubarCheckboxItem = React23.forwardRef(({ children, checked, ...props }, ref) => /* @__PURE__ */ jsxs12(MenubarCheckboxItemFrame, { ref, checked, ...props, children: [
+  /* @__PURE__ */ jsx23(MenubarItemIndicator, { children: /* @__PURE__ */ jsx23(Check, { size: 14 }) }),
+  children
+] }));
+MenubarCheckboxItem.displayName = MenubarPrimitive.CheckboxItem.displayName;
+var MenubarRadioItemFrame = styled30(MenubarPrimitive.RadioItem, {
+  name: "MenubarRadioItem",
+  position: "relative",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  borderRadius: "$sm",
+  paddingVertical: "$1.5",
+  paddingLeft: "$8",
+  paddingRight: "$2",
+  outlineWidth: 0,
+  userSelect: "none",
+  cursor: "default",
+  fontSize: "$3",
+  color: "$foreground",
+  hoverStyle: {
+    backgroundColor: "$accent",
+    color: "$accentForeground"
+  },
+  focusStyle: {
+    backgroundColor: "$accent",
+    color: "$accentForeground"
+  },
+  "$platform-web": {
+    "&[data-disabled]": {
+      pointerEvents: "none",
+      opacity: 0.5
+    }
+  }
+});
+var MenubarRadioItem = React23.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ jsxs12(MenubarRadioItemFrame, { ref, ...props, children: [
+  /* @__PURE__ */ jsx23(MenubarItemIndicator, { children: /* @__PURE__ */ jsx23(Circle, { size: 8, fill: "currentColor" }) }),
+  children
+] }));
+MenubarRadioItem.displayName = MenubarPrimitive.RadioItem.displayName;
+var MenubarLabel = styled30(MenubarPrimitive.Label, {
+  name: "MenubarLabel",
+  paddingHorizontal: "$2",
+  paddingVertical: "$1.5",
+  fontSize: "$3",
+  fontWeight: "600",
+  color: "$foreground",
+  paddingLeft: "$2"
+});
+var MenubarLabelWithInset = React23.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ jsx23(MenubarLabel, { ref, paddingLeft: inset ? "$8" : "$2", ...props }));
+MenubarLabelWithInset.displayName = MenubarPrimitive.Label.displayName;
+var MenubarSeparator = styled30(MenubarPrimitive.Separator, {
+  name: "MenubarSeparator",
+  height: 1,
+  backgroundColor: "$muted",
+  // or $border
+  marginVertical: "$1",
+  marginHorizontal: "-$1"
+});
+var MenubarShortcut = styled30(Paragraph3, {
+  name: "MenubarShortcut",
+  marginLeft: "auto",
+  fontSize: "$1",
+  color: "$mutedForeground",
+  letterSpacing: "$1"
+});
+var MenubarSubTriggerFrame = styled30(MenubarPrimitive.SubTrigger, {
+  name: "MenubarSubTrigger",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  borderRadius: "$sm",
+  paddingVertical: "$1.5",
+  paddingHorizontal: "$2",
+  outlineWidth: 0,
+  userSelect: "none",
+  cursor: "default",
+  fontSize: "$3",
+  color: "$foreground",
+  hoverStyle: {
+    backgroundColor: "$accent",
+    color: "$accentForeground"
+  },
+  focusStyle: {
+    backgroundColor: "$accent",
+    color: "$accentForeground"
+  },
+  "$platform-web": {
+    '&[data-state="open"]': {
+      backgroundColor: "$accent",
+      color: "$accentForeground"
+    }
+  }
+});
+var MenubarSubTrigger = React23.forwardRef(({ children, inset, ...props }, ref) => /* @__PURE__ */ jsxs12(
+  MenubarSubTriggerFrame,
+  {
+    ref,
+    paddingLeft: inset ? "$8" : "$2",
+    ...props,
+    children: [
+      children,
+      /* @__PURE__ */ jsx23(ChevronRight, { size: 14, style: { marginLeft: "auto" } })
+    ]
+  }
+));
+MenubarSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName;
+var MenubarSubContentFrame = styled30(MenubarPrimitive.SubContent, {
+  name: "MenubarSubContent",
+  minWidth: 128,
+  overflow: "hidden",
+  borderRadius: "$md",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  backgroundColor: "$background",
+  padding: "$1",
+  shadowColor: "$shadowColor",
+  shadowRadius: 10,
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.1,
+  zIndex: 50
+});
+var MenubarSubContent = React23.forwardRef(({ ...props }, ref) => /* @__PURE__ */ jsx23(MenubarSubContentFrame, { ref, ...props }));
+MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName;
+var MenubarSub = MenubarPrimitive.Sub;
+var MenubarRadioGroup = MenubarPrimitive.RadioGroup;
+
+// src/molecules/ToggleGroup/ToggleGroup.tsx
+import { ToggleGroup as TamaguiToggleGroup, styled as styled31 } from "tamagui";
+var ToggleGroupFrame = styled31(TamaguiToggleGroup, {
+  name: "ToggleGroup",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$1"
+});
+var ToggleGroupItemFrame = styled31(TamaguiToggleGroup.Item, {
+  name: "ToggleGroupItem",
+  backgroundColor: "transparent",
+  borderRadius: "$4",
+  paddingHorizontal: "$3",
+  height: 40,
+  // h-10
+  alignItems: "center",
+  justifyContent: "center",
+  hoverStyle: {
+    backgroundColor: "$muted",
+    color: "$mutedForeground"
+  },
+  focusStyle: {
+    outlineColor: "$ring",
+    outlineStyle: "solid",
+    outlineWidth: 2,
+    outlineOffset: 2
+  },
+  // Active/On state
+  variants: {
+    active: {
+      true: {
+        backgroundColor: "$accent",
+        color: "$accentForeground"
+      }
+    }
+  }
+});
+
+// src/molecules/Tooltip/Tooltip.tsx
+import { Tooltip as TamaguiTooltip, styled as styled32, Paragraph as Paragraph4 } from "tamagui";
+import React24 from "react";
+import { jsx as jsx24, jsxs as jsxs13 } from "react/jsx-runtime";
+var TooltipContent = styled32(TamaguiTooltip.Content, {
+  name: "TooltipContent",
+  enterStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
+  exitStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
+  scale: 1,
+  x: 0,
+  y: 0,
+  opacity: 1,
+  animation: "quick",
+  maxWidth: 350,
+  padding: "$2",
+  backgroundColor: "$background",
+  borderColor: "$borderColor",
+  borderWidth: 1,
+  borderRadius: "$md",
+  zIndex: 1e3
+});
+var TooltipArrow = styled32(TamaguiTooltip.Arrow, {
+  name: "TooltipArrow",
+  borderColor: "$borderColor",
+  borderWidth: 1,
+  backgroundColor: "$background"
+});
+var Tooltip = React24.forwardRef(({ children, content, ...props }, ref) => {
+  return /* @__PURE__ */ jsxs13(TamaguiTooltip, { ...props, children: [
+    /* @__PURE__ */ jsx24(TamaguiTooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ jsxs13(TooltipContent, { children: [
+      /* @__PURE__ */ jsx24(TooltipArrow, {}),
+      typeof content === "string" ? /* @__PURE__ */ jsx24(Paragraph4, { size: "$2", children: content }) : content
+    ] })
+  ] });
+});
+Tooltip.displayName = "Tooltip";
+
+// src/molecules/NavigationMenu.tsx
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import { styled as styled29, YStack as YStack9 } from "tamagui";
+var NavigationMenu = styled29(NavigationMenuPrimitive.Root, {
+  name: "NavigationMenu",
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  width: "100%"
+});
+var NavigationMenuList = styled29(NavigationMenuPrimitive.List, {
+  name: "NavigationMenuList",
+  display: "flex",
+  gap: "$2",
+  m: 0,
+  px: "$1",
+  py: "$1",
+  borderRadius: "$lg",
+  backgroundColor: "$background",
+  borderWidth: 1,
+  borderColor: "$borderColor"
+});
+var NavigationMenuItem = NavigationMenuPrimitive.Item;
+var NavigationMenuTrigger = styled29(NavigationMenuPrimitive.Trigger, {
+  name: "NavigationMenuTrigger",
+  borderRadius: "$md",
+  paddingHorizontal: "$4",
+  paddingVertical: "$2",
+  color: "$foreground",
+  backgroundColor: "transparent",
+  borderWidth: 1,
+  borderColor: "transparent",
+  transition: "all 150ms ease",
+  hoverStyle: {
+    backgroundColor: "$muted"
+  },
+  pressStyle: {
+    backgroundColor: "$muted"
+  },
+  focusVisibleStyle: {
+    borderColor: "$primary"
+  }
+});
+var NavigationMenuContent = styled29(NavigationMenuPrimitive.Content, {
+  name: "NavigationMenuContent",
+  position: "absolute",
+  top: "calc(100% + 0.5rem)",
+  left: 0,
+  backgroundColor: "$background",
+  borderRadius: "$xl",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  padding: "$4",
+  minWidth: 320,
+  zIndex: 20
+});
+var NavigationMenuLink = styled29(NavigationMenuPrimitive.Link, {
+  name: "NavigationMenuLink",
+  display: "block",
+  borderRadius: "$lg",
+  padding: "$4",
+  color: "$foreground",
+  hoverStyle: {
+    backgroundColor: "$muted"
+  },
+  focusVisibleStyle: {
+    outlineWidth: 2,
+    outlineStyle: "solid",
+    outlineColor: "$primary"
+  }
+});
+var NavigationMenuIndicator = styled29(NavigationMenuPrimitive.Indicator, {
+  name: "NavigationMenuIndicator",
+  display: "flex",
+  alignItems: "flex-end",
+  justifyContent: "center",
+  height: 10,
+  top: "100%",
+  transition: "width, transform 200ms ease"
+});
+var IndicatorArrow = styled29(YStack9, {
+  width: 20,
+  height: 20,
+  backgroundColor: "$background",
+  borderLeftWidth: 1,
+  borderRightWidth: 1,
+  borderTopWidth: 1,
+  borderColor: "$borderColor",
+  transform: "rotate(45deg)",
+  marginTop: -8
+});
+var NavigationMenuViewport = styled29(NavigationMenuPrimitive.Viewport, {
+  name: "NavigationMenuViewport",
+  position: "absolute",
+  top: "100%",
+  left: 0,
+  width: "100%",
+  backgroundColor: "$background",
+  borderRadius: "$xl",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  marginTop: "$2",
+  overflow: "hidden"
+});
+
+// src/molecules/Menubar/Menubar.tsx
 import { XStack as XStack11, styled as styled30, Paragraph as Paragraph3 } from "tamagui";
 import React23 from "react";
 import { jsx as jsx23 } from "react/jsx-runtime";

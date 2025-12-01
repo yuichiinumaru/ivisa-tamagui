@@ -1,96 +1,73 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs'
-import { Paragraph, YStack } from 'tamagui'
 import React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from './Tabs'
+import { YStack } from 'tamagui'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './Card'
+import { Label, Input } from 'tamagui'
+import { Button } from '../atoms/Button'
 
 const meta: Meta<typeof Tabs> = {
-  title: 'molecules/Tabs',
+  title: 'Molecules/Tabs',
   component: Tabs,
-  tags: ['autodocs'],
-  argTypes: {
-    defaultValue: {
-      control: 'text',
-      description: 'The value of the tab that should be active when initially rendered.',
-    },
-    orientation: {
-      control: 'select',
-      options: ['horizontal', 'vertical'],
-      description: 'The orientation of the tabs.',
-    },
-    // Add other TamaguiTabs props as needed, e.g., value, onValueChange, activationMode
+  parameters: {
+    layout: 'centered',
   },
-  render: (args) => (
-    <Tabs {...args}>
-      <TabsList>
-        <TabsTrigger value="tab1">
-          <Paragraph>Account</Paragraph>
-        </TabsTrigger>
-        <TabsTrigger value="tab2">
-          <Paragraph>Password</Paragraph>
-        </TabsTrigger>
-      </TabsList>
-      <TabsContent value="tab1">
-        <YStack>
-          <Paragraph>Make changes to your account here.</Paragraph>
-        </YStack>
-      </TabsContent>
-      <TabsContent value="tab2">
-        <YStack>
-          <Paragraph>Change your password here.</Paragraph>
-        </YStack>
-      </TabsContent>
-    </Tabs>
-  ),
+  tags: ['autodocs'],
 }
 
 export default meta
 
-type Story = StoryObj<typeof Tabs>
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {
-    defaultValue: 'tab1',
-    orientation: 'horizontal',
-  },
-}
-
-export const Vertical: Story = {
-  args: {
-    defaultValue: 'tab1',
-    orientation: 'vertical',
-    // Override the render function to adjust layout for vertical tabs
-    render: (args) => (
-      <Tabs {...args}>
-        <YStack flexDirection="row" gap="$4"> {/* Use YStack for vertical layout */}
-          <TabsList flexDirection="column"> {/* Make TabsList vertical */}
-            <TabsTrigger value="tab1">
-              <Paragraph>Account</Paragraph>
-            </TabsTrigger>
-            <TabsTrigger value="tab2">
-              <Paragraph>Password</Paragraph>
-            </TabsTrigger>
-          </TabsList>
-          <YStack flex={1}>
-            <TabsContent value="tab1">
-              <YStack>
-                <Paragraph>Make changes to your account here.</Paragraph>
-              </YStack>
-            </TabsContent>
-            <TabsContent value="tab2">
-              <YStack>
-                <Paragraph>Change your password here.</Paragraph>
-              </YStack>
-            </TabsContent>
-          </YStack>
-        </YStack>
-      </Tabs>
-    ),
-  },
-}
-
-export const InitiallySelectedTab: Story = {
-  args: {
-    defaultValue: 'tab2',
-    orientation: 'horizontal',
-  },
+  render: () => (
+    <Tabs defaultValue="account" width={400}>
+      <TabsList>
+        <TabsTrigger value="account">Account</TabsTrigger>
+        <TabsTrigger value="password">Password</TabsTrigger>
+      </TabsList>
+      <TabsContent value="account">
+        <Card>
+          <CardHeader>
+            <CardTitle>Account</CardTitle>
+            <CardDescription>
+              Make changes to your account here. Click save when you're done.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <YStack space="$2">
+              <Label htmlFor="name">Name</Label>
+              <Input id="name" defaultValue="Pedro Duarte" />
+              <Label htmlFor="username">Username</Label>
+              <Input id="username" defaultValue="@peduarte" />
+            </YStack>
+          </CardContent>
+          <CardFooter>
+            <Button>Save changes</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+      <TabsContent value="password">
+        <Card>
+          <CardHeader>
+            <CardTitle>Password</CardTitle>
+            <CardDescription>
+              Change your password here. After saving, you'll be logged out.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <YStack space="$2">
+              <Label htmlFor="current">Current password</Label>
+              <Input id="current" type="password" />
+              <Label htmlFor="new">New password</Label>
+              <Input id="new" type="password" />
+            </YStack>
+          </CardContent>
+          <CardFooter>
+            <Button>Save password</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  ),
 }
