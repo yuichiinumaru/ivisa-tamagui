@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
-import { render } from '../tests/migrated/utils/render';
-import { Sidebar } from './organisms/Sidebar';
+import { render } from '../../../vitest.setup';
+import { Sidebar } from './Sidebar';
 import { vi } from 'vitest';
 
 vi.mock('tamagui', async () => {
@@ -15,15 +15,15 @@ vi.mock('tamagui', async () => {
   };
 });
 
-vi.mock('./molecules/Sheet', () => ({
+vi.mock('../../molecules/Sheet', () => ({
     Sheet: ({ children }) => <>{children}</>,
     SheetTrigger: ({ children }) => <>{children}</>,
     SheetContent: ({ children }) => <>{children}</>,
 }));
 
-vi.mock('./atoms/Button', () => ({
-    Button: React.forwardRef(({ icon: Icon, ...props }, ref) => (
-      <button ref={ref} {...props}>
+vi.mock('../../atoms/Button', () => ({
+    Button: React.forwardRef(({ icon: Icon, onPress, ...props }, ref) => (
+      <button ref={ref} onClick={onPress} {...props}>
         {Icon && <Icon />}
       </button>
     )),
