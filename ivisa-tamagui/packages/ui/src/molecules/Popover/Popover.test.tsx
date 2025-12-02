@@ -6,7 +6,7 @@ import {
   PopoverContent,
   PopoverClose,
 } from './Popover'
-import { Button } from '../../../atoms/Button/Button'
+import { Button } from '../../atoms/Button/Button'
 
 describe('Popover', () => {
   it('opens and closes the popover', () => {

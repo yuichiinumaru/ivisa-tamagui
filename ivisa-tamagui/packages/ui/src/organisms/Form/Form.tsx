@@ -7,7 +7,7 @@ import {
   FormProvider,
   useFormContext,
 } from "react-hook-form"
-import { View, Label, Text, styled, YStack, GetProps } from "tamagui"
+import { View, Label, Text, styled, YStack, GetProps, TamaguiElement } from "tamagui"
 
 const Form = FormProvider
 
@@ -68,8 +68,7 @@ const FormItemFrame = styled(YStack, {
   space: '$2',
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const FormItem = React.forwardRef<any, GetProps<typeof FormItemFrame>>(
+const FormItem = React.forwardRef<TamaguiElement, GetProps<typeof FormItemFrame>>(
   ({ ...props }, ref) => {
     const id = React.useId()
 
@@ -96,8 +95,7 @@ const FormLabelFrame = styled(Label, {
   }
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const FormLabel = React.forwardRef<any, GetProps<typeof FormLabelFrame>>(
+const FormLabel = React.forwardRef<TamaguiElement, GetProps<typeof FormLabelFrame>>(
   ({ ...props }, ref) => {
     const { error, formItemId } = useFormField()
 
@@ -113,8 +111,7 @@ const FormLabel = React.forwardRef<any, GetProps<typeof FormLabelFrame>>(
 )
 FormLabel.displayName = "FormLabel"
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const FormControl = React.forwardRef<any, GetProps<typeof View>>(
+const FormControl = React.forwardRef<TamaguiElement, GetProps<typeof View>>(
   ({ ...props }, ref) => {
     const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
@@ -141,8 +138,7 @@ const FormDescriptionFrame = styled(Text, {
   color: '$mutedForeground',
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const FormDescription = React.forwardRef<any, GetProps<typeof FormDescriptionFrame>>(
+const FormDescription = React.forwardRef<TamaguiElement, GetProps<typeof FormDescriptionFrame>>(
   ({ ...props }, ref) => {
     const { formDescriptionId } = useFormField()
 
@@ -164,8 +160,7 @@ const FormMessageFrame = styled(Text, {
   color: '$destructive',
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const FormMessage = React.forwardRef<any, GetProps<typeof FormMessageFrame>>(
+const FormMessage = React.forwardRef<TamaguiElement, GetProps<typeof FormMessageFrame>>(
   ({ children, ...props }, ref) => {
     const { error, formMessageId } = useFormField()
     const body = error ? String(error?.message) : children
