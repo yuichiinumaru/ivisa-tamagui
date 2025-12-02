@@ -20,6 +20,7 @@ export * from './molecules/Card';
 export * from './molecules/Collapsible';
 export * from './molecules/Dialog';
 export * from './molecules/Drawer';
+export * from './molecules/DropdownMenu';
 export * from './molecules/Popover';
 export * from './molecules/HoverCard';
 export * from './molecules/RadioGroup';

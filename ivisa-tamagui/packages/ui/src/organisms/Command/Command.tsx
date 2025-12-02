@@ -1,6 +1,7 @@
 import React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
-import { styled, View, Text, GetProps, TamaguiElement } from 'tamagui'
+import { styled, View, Text, GetProps, TamaguiElement, useTheme } from 'tamagui'
+import { Search } from '@tamagui/lucide-icons'
 import { Dialog, DialogContent } from '../../molecules/Dialog'
 
 // --- Styled Wrappers ---
@@ -12,18 +13,15 @@ const CommandFrame = styled(View, {
   overflow: 'hidden',
   backgroundColor: '$background',
   borderRadius: '$md',
-  // We need to target the [cmdk-root] if possible, but styling the wrapper is usually enough
   width: '100%',
   height: '100%',
 })
 
 const Command = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive> & GetProps<typeof CommandFrame>>(
-  ({ className: _className, ...props }, ref) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const _ = _className
+  ({ className, ...props }, ref) => {
     return (
       <CommandFrame ref={ref} asChild>
-        <CommandPrimitive {...props} />
+        <CommandPrimitive className={className} {...props} />
       </CommandFrame>
     )
   }
@@ -38,9 +36,7 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
     <Dialog {...props}>
       <DialogContent padding={0} overflow="hidden" maxWidth={600}>
-        <Command
-          className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
-        >
+        <Command>
           {children}
         </Command>
       </DialogContent>
@@ -57,35 +53,35 @@ const CommandInputFrame = styled(View, {
   paddingHorizontal: '$3',
 })
 
-const SearchIcon = () => <Text fontSize="$4" marginRight="$2">🔍</Text>
-
 const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & GetProps<typeof CommandInputFrame>>(
-  ({ ...props }, ref) => (
-    <CommandInputFrame>
-      <SearchIcon />
-      <CommandPrimitive.Input
-        ref={ref}
-        style={{
-            flex: 1,
-            height: 44,
-            fontSize: 14,
-            outline: 'none',
-            border: 'none',
-            background: 'transparent',
-            color: 'var(--color-foreground)', // Need to ensure colors work
-        }}
-        {...props}
-      />
-    </CommandInputFrame>
-  )
+  ({ ...props }, ref) => {
+    const theme = useTheme()
+    return (
+      <CommandInputFrame>
+        <Search size={20} color="$mutedForeground" marginRight="$2" />
+        <CommandPrimitive.Input
+          ref={ref}
+          style={{
+              flex: 1,
+              height: 44,
+              fontSize: 14,
+              outline: 'none',
+              border: 'none',
+              background: 'transparent',
+              color: theme.foreground?.val || '#000',
+          }}
+          {...props}
+        />
+      </CommandInputFrame>
+    )
+  }
 )
 CommandInput.displayName = CommandPrimitive.Input.displayName
 
 // Command List
 const CommandListFrame = styled(View, {
   maxHeight: 300,
-  overflowY: 'auto',
-  overflowX: 'hidden',
+  overflow: 'scroll',
 })
 
 const CommandList = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.List> & GetProps<typeof CommandListFrame>>(
@@ -117,8 +113,6 @@ CommandEmpty.displayName = CommandPrimitive.Empty.displayName
 const CommandGroupFrame = styled(View, {
   overflow: 'hidden',
   padding: '$1',
-  // Styling the label text is tricky with pure styled wrapper around Group
-  // cmdk renders the label itself
 })
 
 const CommandGroup = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group> & GetProps<typeof CommandGroupFrame>>(
@@ -153,8 +147,6 @@ const CommandItemFrame = styled(View, {
   padding: '$2',
   borderRadius: '$sm',
   cursor: 'pointer',
-  // Hover/Selected styles handled by cmdk data attributes usually
-  // but we can add default hover
   hoverStyle: {
       backgroundColor: '$muted',
   },
@@ -164,12 +156,11 @@ const CommandItem = React.forwardRef<TamaguiElement, React.ComponentPropsWithout
   ({ ...props }, ref) => (
     <CommandItemFrame ref={ref} asChild>
       <CommandPrimitive.Item
-        className="aria-selected:bg-muted aria-selected:text-accent-foreground"
         style={{
              display: 'flex',
              flexDirection: 'row',
              alignItems: 'center',
-             // Styles for cmdk selection usually need CSS or classNames
+             userSelect: 'none',
         }}
         {...props}
       />
