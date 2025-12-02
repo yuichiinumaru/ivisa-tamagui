@@ -18,6 +18,11 @@ describe('Button', () => {
       </Button>
     )
 
+    // const buttonElement = screen.getByRole('button', { name: /call to action/i })
+    // Tamagui styles end up in class or style. Checking style attribute presence is a rough check.
+    // Ideally we check specific styles but that depends on compiler.
+    // The migrated test checked style attribute.
+    // const styleAttr = buttonElement.getAttribute('style') ?? ''
     const buttonElement = screen.getByRole('button', { name: /call to action/i })
     // Tamagui styles end up in class or style. Checking style attribute presence is a rough check.
     // Ideally we check specific styles but that depends on compiler.

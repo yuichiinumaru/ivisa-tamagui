@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm",
     "dev": "tsup src/index.ts --format cjs,esm --watch",
-    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "lint": "eslint .",
     "test": "vitest --run",
     "typecheck": "tsc --noEmit"
   },

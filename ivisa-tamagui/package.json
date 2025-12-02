@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm --filter ./packages/ui build",
-    "lint": "pnpm --filter ./packages/ui lint",
+    "lint": "eslint .",
     "test": "pnpm --filter ./packages/ui test",
     "typecheck": "pnpm --filter ./packages/ui lint",
     "scan:security": "pnpm audit",
@@ -47,6 +47,7 @@
     "@vitest/coverage-v8": "^4.0.13",
     "eslint": "^9.39.1",
     "eslint-plugin-storybook": "^10.0.8",
+    "globals": "^16.5.0",
     "happy-dom": "^20.0.10",
     "playwright": "^1.56.1",
     "react-test-renderer": "^18.3.1",
