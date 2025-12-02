@@ -87,6 +87,26 @@ To avoid polluting the main project, external references live in a separate fold
   - `docs/03-architecture.md` (this file) describes how the design system is structured and how headless integrations are wired.
   - `docs/04-changelog.md` records significant changes to the design system and docs.
 
+### Storybook Usage
+
+Storybook is the primary environment for developing, testing, and documenting UI components.
+
+- **Run Storybook:**
+  ```bash
+  cd ivisa-tamagui
+  pnpm storybook
+  ```
+  This starts the development server at `http://localhost:6006`.
+
+- **Structure:**
+  Stories are co-located with components (e.g., `src/atoms/Button/Button.stories.tsx`).
+  They follow the Component Story Format (CSF) using `@storybook/react`.
+
+- **Documentation:**
+  Each component should have a description in `parameters.docs.description.component`.
+  Props are automatically documented from TypeScript interfaces.
+  Use `argTypes` to control controls and add descriptions to specific props if needed.
+
 ## 8. Evolution
 
 - The architecture is intentionally conservative: Tamagui is the foundation, headless libs are plugged in only where needed, and external registries are treated as inspiration.

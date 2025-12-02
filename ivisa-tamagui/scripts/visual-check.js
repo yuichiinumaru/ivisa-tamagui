@@ -1,6 +1,10 @@
-const { chromium } = require('playwright');
-const fs = require('fs');
-const path = require('path');
+import { chromium } from 'playwright';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const STORYBOOK_URL = 'http://localhost:6006';
 const OUTPUT_DIR = path.join(__dirname, '../tests/visual-checks');
@@ -36,11 +40,14 @@ const STORIES_TO_CHECK = [
   'molecules-resizable--default',
   'molecules-sheet--default',
   'molecules-tabs--default',
-  'molecules-toast--default'
+  'molecules-toast--default',
+  // New components
+  'organisms-sidebar--default',
+  'organisms-charts--bar'
 ];
 
-async function runHealthCheck() {
-  console.log('🏥 Starting Storybook Health Check...');
+async function runVisualCheck() {
+  console.log('🏥 Starting Storybook Visual Check...');
 
   // Ensure output dir exists
   if (!fs.existsSync(OUTPUT_DIR)) {
@@ -64,7 +71,9 @@ async function runHealthCheck() {
     console.log('✅ Storybook is reachable');
   } catch (error) {
     console.error('❌ Failed to reach Storybook:', error.message);
+    console.log('⚠️  Make sure Storybook is running (pnpm storybook)');
     await browser.close();
+    process.exit(1);
     return;
   }
 
@@ -77,20 +86,24 @@ async function runHealthCheck() {
     const pageErrors = [];
 
     // listeners
-    page.on('console', msg => {
+    const consoleListener = msg => {
       if (msg.type() === 'error' || msg.type() === 'warning') {
         consoleLogs.push(`[${msg.type()}] ${msg.text()}`);
       }
-    });
-    page.on('pageerror', err => {
+    };
+
+    const errorListener = err => {
       pageErrors.push(err.message);
-    });
+    };
+
+    page.on('console', consoleListener);
+    page.on('pageerror', errorListener);
 
     try {
       await page.goto(storyUrl, { waitUntil: 'networkidle' });
       
       // Wait a tiny bit for animations/mounting
-      await page.waitForTimeout(500);
+      await new Promise(resolve => setTimeout(resolve, 500));
 
       // Visual Check: Screenshot
       const screenshotPath = path.join(OUTPUT_DIR, `${storyId}.png`);
@@ -112,11 +125,11 @@ async function runHealthCheck() {
     } catch (err) {
       console.error(`❌ Failed to check ${storyId}:`, err.message);
       results.failed++;
+    } finally {
+      // Remove listeners
+      page.off('console', consoleListener);
+      page.off('pageerror', errorListener);
     }
-    
-    // Remove listeners for next iteration to avoid duplicate logging if we reused them (though we recreate mostly)
-    page.removeAllListeners('console');
-    page.removeAllListeners('pageerror');
   }
 
   await browser.close();
@@ -125,6 +138,10 @@ async function runHealthCheck() {
   console.log(`   Passed: ${results.success}`);
   console.log(`   Failed: ${results.failed}`);
   console.log(`   Stories with Console Errors: ${results.errors.length}`);
+
+  if (results.failed > 0) {
+    process.exit(1);
+  }
 }
 
-runHealthCheck();
+runVisualCheck();

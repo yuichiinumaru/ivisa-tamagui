@@ -1,5 +1,37 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Typography primitives > renders heading with default level 1`] = `
+<DocumentFragment>
+  <span
+    class=""
+    style="display: contents;"
+  >
+    <span
+      class=" "
+      style="display: contents;"
+    >
+      <span
+        class=" t_dark is_Theme"
+        style="color: var(--color); display: contents;"
+      >
+        <span
+          class="is_Heading font_heading _dsp-inline _bxs-border-box _ww-break-word _ff-f-family _fontWeight-f-weight-8 _ls-f-letterSpa1360334198 _fontSize-f-size-8 _lh-f-lineHeigh112927 _col-color _userSelect-auto _ws-normal _mt-0px _mr-0px _mb-0px _ml-0px"
+          role="heading"
+        >
+          Heading Title
+        </span>
+        <div
+          style="display: contents;"
+        />
+        <div
+          style="display: contents;"
+        />
+      </span>
+    </span>
+  </span>
+</DocumentFragment>
+`;
+
 exports[`Typography primitives > renders text variations 1`] = `
 <div>
   <span

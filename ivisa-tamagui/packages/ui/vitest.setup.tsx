@@ -11,13 +11,6 @@ vi.mock('react-native', () => ({
   },
 }));
 
-global.IntersectionObserver = class IntersectionObserver {
-  constructor() {}
-  observe() { return null; }
-  disconnect() { return null; }
-  unobserve() { return null; }
-};
-
 export function render(ui, options = {}) {
   const { theme = 'dark', ...renderOptions } = options;
   return {
