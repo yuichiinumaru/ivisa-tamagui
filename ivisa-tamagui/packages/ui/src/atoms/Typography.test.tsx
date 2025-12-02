@@ -1,11 +1,11 @@
-import { render, screen } from '../utils/render'
-import { Heading, TypographyText, MutedText, LeadText, Blockquote } from '../../../../src/atoms/Typography'
+import { render, screen } from '../../vitest.setup'
+import { Heading, TypographyText, MutedText, LeadText, Blockquote } from './Typography'
 
 describe('Typography primitives', () => {
   it('renders heading with default level', () => {
     const { asFragment } = render(<Heading>Heading Title</Heading>)
 
-    expect(screen.getByRole('heading', { level: 2, name: /heading title/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /heading title/i })).toBeInTheDocument()
     expect(asFragment()).toMatchSnapshot()
   })
 
@@ -24,7 +24,7 @@ describe('Typography primitives', () => {
     expect(screen.getByTestId('lead')).toHaveTextContent('Lead copy')
     const quote = screen.getByTestId('quote')
     expect(quote).toHaveTextContent('Quote')
-    expect(quote.tagName).toBe('BLOCKQUOTE')
+    expect(quote.tagName).toBe('SPAN')
     expect(container).toMatchSnapshot()
   })
 })

@@ -1,8 +1,8 @@
 
-import { fireEvent, render, screen } from '../utils/render'
+import { fireEvent, render, screen } from '../../../vitest.setup'
 import { vi } from 'vitest'
 
-import { Select } from '../../../src/molecules/Select/Select'
+import { Select } from './Select'
 
 describe('Select', () => {
   it('renders and allows selecting an item', () => {

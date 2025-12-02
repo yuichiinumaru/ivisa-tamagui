@@ -11,7 +11,7 @@ exports[`Button > matches snapshot 1`] = `
       style="display: contents;"
     >
       <span
-        class=" t_light is_Theme"
+        class=" t_dark is_Theme"
         style="color: var(--color); display: contents;"
       >
         <button

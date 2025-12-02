@@ -1,5 +1,5 @@
-import { render, screen } from '../../utils/render'
-import { Textarea } from '../../../../src/atoms/Textarea/Textarea'
+import { render, screen } from '../../../vitest.setup'
+import { Textarea } from './Textarea'
 
 describe('Textarea', () => {
   it('renders multiline textbox with accessible label and default styles', () => {
