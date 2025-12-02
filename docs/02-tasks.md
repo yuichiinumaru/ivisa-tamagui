@@ -23,10 +23,10 @@
   - [ ] 32a – **Harvest `pogiii/sushi`**: Clone `pogiii/sushi` into `referencias/` and harvest the `Input` (Composed) and `OTPInput` patterns.
   - [ ] 32b – **Harvest `tamagui-kitchen-sink`**: Run `scripts/convert_component.py` to auto-convert `LmStarRating` as `StarRating`.
 
-33 - [ ] **ShadCN Gap Fill - High Priority**
-  - [ ] 33a – **Command Palette**: Implement `Command` using `cmdk` + `Dialog` wrapper.
-  - [ ] 33b – **Date Picker**: Implement `Calendar` using `@rehookify/datepicker` + `Sheet`/`Popover`.
-  - [ ] 33c – **DropdownMenu**: Implement `DropdownMenu` using Radix (Web) and `Sheet` (Native).
+33 - [x] **ShadCN Gap Fill - High Priority**
+  - [x] 33a – **Command Palette**: Implement `Command` using `cmdk` + `Dialog` wrapper.
+  - [x] 33b – **Date Picker**: Implement `Calendar` using `@rehookify/datepicker` + `Sheet`/`Popover`.
+  - [x] 33c – **DropdownMenu**: Implement `DropdownMenu` using Radix (Web) and `Sheet` (Native).
 
 34 - [ ] **ShadCN Gap Fill - Medium/Low Priority**
   - [ ] 34a – **AspectRatio**: Implement `AspectRatio` (Atom) using Tamagui Stack.

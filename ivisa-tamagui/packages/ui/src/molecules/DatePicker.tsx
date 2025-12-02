@@ -3,7 +3,9 @@ import { Popover, PopoverTrigger, PopoverContent } from '../molecules/Popover'
 import { Calendar } from '../molecules/Calendar'
 import { Button } from '../atoms/Button'
 import { format } from 'date-fns'
-import { XStack } from 'tamagui'
+import { XStack, Adapt, Text } from 'tamagui'
+import { Sheet } from '../molecules/Sheet'
+import { Calendar as CalendarIcon } from '@tamagui/lucide-icons'
 
 export interface DatePickerProps {
   date?: Date
@@ -25,6 +27,19 @@ export const DatePicker = ({
 
   return (
     <Popover open={open} onOpenChange={setOpen} placement="bottom-start">
+      <Adapt when="sm" platform="touch">
+        <Sheet animation="medium" modal dismissOnSnapToBottom>
+          <Sheet.Frame padding="$4" gap="$4">
+             <Adapt.Contents />
+          </Sheet.Frame>
+          <Sheet.Overlay
+            animation="lazy"
+            enterStyle={{ opacity: 0 }}
+            exitStyle={{ opacity: 0 }}
+          />
+        </Sheet>
+      </Adapt>
+
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -32,14 +47,11 @@ export const DatePicker = ({
           textAlign="left"
           width={240}
           paddingLeft="$3"
+          icon={<CalendarIcon size={16} />}
         >
-          {/* Ideally use an Icon here */}
-          <XStack gap="$2" alignItems="center">
-             <Text>📅</Text>
              <Text color={date ? '$foreground' : '$mutedForeground'}>
                 {date ? format(date, "PPP") : placeholder}
              </Text>
-          </XStack>
         </Button>
       </PopoverTrigger>
       <PopoverContent padding={0} width="auto">
@@ -51,6 +63,3 @@ export const DatePicker = ({
     </Popover>
   )
 }
-
-// Helper Text component since we removed imports to avoid conflicts
-import { Text } from 'tamagui'

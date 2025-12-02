@@ -16,6 +16,7 @@ export * from './atoms/Checkbox';
 export * from './molecules/Card';
 export * from './molecules/Dialog';
 export * from './molecules/Drawer';
+export * from './molecules/DropdownMenu';
 export * from './molecules/Popover';
 export * from './molecules/RadioGroup';
 export * from './molecules/Resizable';
