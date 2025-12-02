@@ -43,6 +43,8 @@ All notable changes to this design system and its documentation will be recorded
 - **Cleanup**: Removed legacy `migrated/` folder to streamline the codebase.
 
 ## [Unreleased]
+- Implemented `AspectRatio` atom using Tamagui `Stack`.
+- Implemented `Collapsible` molecule using `@radix-ui/react-collapsible` and `react-animate-height`.
 - Captured the new research-driven strategy for building a Tamagui-based design system in `docs/00-draft-new-research.md`.
 - Created `docs/01-plan.md` to define the vision, methodologies, and phased roadmap for a "Frankenstein Controlado 100% Free" design system built on Tamagui, Bento Free, and headless libraries.
 - Added `docs/02-tasks.md` as the primary task board, organizing work by phases (research, foundation, high-impact gaps, medium/low-effort components, web-specific UX, integration/handoff).
