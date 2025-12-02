@@ -1,4 +1,5 @@
 export * from './atoms/Alert';
+export * from './atoms/AspectRatio';
 export * from './atoms/Avatar';
 export * from './molecules/Accordion';
 export * from './molecules/AlertDialog';
@@ -16,6 +17,7 @@ export * from './atoms/ScrollArea';
 export * from './atoms/Textarea';
 export * from './atoms/Checkbox';
 export * from './molecules/Card';
+export * from './molecules/Collapsible';
 export * from './molecules/Dialog';
 export * from './molecules/Drawer';
 export * from './molecules/Popover';
