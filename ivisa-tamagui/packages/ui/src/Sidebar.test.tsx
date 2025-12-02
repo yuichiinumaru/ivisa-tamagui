@@ -1,6 +1,7 @@
+// @vitest-environment jsdom
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
-import { render } from '../tests/migrated/utils/render';
+import { render } from '../vitest.setup';
 import { Sidebar } from './organisms/Sidebar';
 import { vi } from 'vitest';
 
@@ -22,17 +23,17 @@ vi.mock('./molecules/Sheet', () => ({
 }));
 
 vi.mock('./atoms/Button', () => ({
-    Button: React.forwardRef(({ icon: Icon, ...props }, ref) => (
-      <button ref={ref} {...props}>
+    Button: React.forwardRef(({ icon: Icon, onPress, ...props }, ref) => (
+      <button ref={ref} onClick={onPress} {...props}>
         {Icon && <Icon />}
       </button>
     )),
 }));
 
 vi.mock('@tamagui/lucide-icons', () => ({
-    ChevronLeft: () => 'ChevronLeft',
-    ChevronRight: () => 'ChevronRight',
-    Menu: () => 'Menu',
+    ChevronLeft: () => <span>ChevronLeft</span>,
+    ChevronRight: () => <span>ChevronRight</span>,
+    Menu: () => <span>Menu</span>,
 }));
 
 

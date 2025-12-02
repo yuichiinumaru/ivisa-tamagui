@@ -1,6 +1,6 @@
+// @vitest-environment jsdom
 import React from 'react'
-import { render, screen } from '../../../tests/migrated/utils/render'
-import userEvent from '@testing-library/user-event'
+import { render, screen } from '../../../vitest.setup'
 import {
   ContextMenu,
   ContextMenuContent,
@@ -10,8 +10,7 @@ import {
 
 describe('ContextMenu', () => {
   it('renders context menu on right click', async () => {
-    const user = userEvent.setup()
-    render(
+    const { user } = render(
       <ContextMenu>
         <ContextMenuTrigger>
           <div style={{ padding: 50, border: '1px solid black' }}>Right click me</div>

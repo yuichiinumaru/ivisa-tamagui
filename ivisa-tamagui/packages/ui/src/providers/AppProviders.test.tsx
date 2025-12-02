@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { render, screen } from '@testing-library/react'
 import { Text } from 'tamagui'
 import { vi, describe, it, expect } from 'vitest'
@@ -41,11 +42,13 @@ describe('AppProviders', () => {
     ).toThrow('boom')
 
     expect(errorSpy).toHaveBeenCalled()
+    // Look for a log that starts with a timestamp bracket, which is our custom log
     const loggedCall = errorSpy.mock.calls.find((call) =>
-      typeof call[0] === 'string' && call[0].includes('AppProvidersRoot')
+      typeof call[0] === 'string' && /^\[\d{4}-\d{2}-\d{2}T/.test(call[0])
     )
 
-    expect(loggedCall?.[0]).toMatch(/\d{4}-\d{2}-\d{2}T/)
+    expect(loggedCall?.[0]).toBeDefined()
+    expect(loggedCall?.[0]).toMatch(/\[AppProviders\]/)
 
     errorSpy.mockRestore()
   })
