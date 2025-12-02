@@ -147,10 +147,8 @@ const OTPInputImpl = React.forwardRef<ContainerRef, OTPInputProps>(
       const node = inputRefs.current[index] as unknown as HTMLInputElement | undefined
       if (node && typeof node.select === 'function') {
         node.select()
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } else if (node && typeof (node as any)?.setSelectionRange === 'function') {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ;(node as any).setSelectionRange(0, (node as any).value?.length ?? 0)
+      } else if (node && typeof node.setSelectionRange === 'function') {
+        node.setSelectionRange(0, node.value?.length ?? 0)
       }
     }, [])
 
@@ -257,8 +255,11 @@ const OTPInputImpl = React.forwardRef<ContainerRef, OTPInputProps>(
               inputRefs.current[index] = node
             }}
             value={char}
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            onChange={event => handleInputChange(index, (event as any)?.target?.value ?? '')}
+            onChange={(event) => {
+              // Tamagui Input types match Native, but on web we get a React event
+              const e = event as unknown as React.ChangeEvent<HTMLInputElement>
+              handleInputChange(index, e.target?.value ?? '')
+            }}
             onChangeText={text => handleInputChange(index, text ?? '')}
             {...(isWeb
               ? ({

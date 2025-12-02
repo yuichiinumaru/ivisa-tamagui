@@ -3,8 +3,7 @@ import { VictoryBar, VictoryChart, VictoryAxis, VictoryContainer } from 'victory
 import { useTheme } from 'tamagui'
 
 export interface BarChartProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: Record<string, any>[]
+  data: Record<string, unknown>[]
   xKey: string
   yKey: string
   color?: string
@@ -21,8 +20,8 @@ export const BarChart = ({
   width,
 }: BarChartProps) => {
   const theme = useTheme()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const barColor = (theme[color as any] as any)?.get() || color
+  const themeColor = theme[color as keyof typeof theme]
+  const barColor = themeColor ? (themeColor as unknown as { get: () => string }).get() : color
   const axisColor = theme.borderColor?.get() || '#ccc'
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
