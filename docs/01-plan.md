@@ -98,3 +98,11 @@
 - **Maintainability:** Headless integrations are confined to a small number of well-documented composites; app feature code depends only on the design system, not on external headless APIs.
 - **Documentation:** `docs/01-plan.md`, `docs/02-tasks.md`, `docs/03-architecture.md` and `docs/04-changelog.md` remain accurate and are updated as new components and patterns are introduced.
 - **Storybook readiness:** A final Storybook build exists with coverage for all primitives/composites, along with instructions for running/updating it as the design system evolves.
+
+## 8. Development Workflow: Multi-Root Workspace
+To efficiently manage external references without polluting the main codebase, we use a VSCode Multi-Root Workspace.
+- **Structure:**
+  - Root 1: `ivisa-tamagui` (Main Project)
+  - Root 2: `referencias` (External Clones like `sushi`, `tamagui-kitchen-sink`)
+- **Configuration:** Use a `.code-workspace` file to exclude reference `node_modules` from search and watchers.
+- **Process:** Clone reference repos into `referencias/` but do NOT commit them to the main repo (they are gitignored). Use them solely for code harvesting and pattern analysis.

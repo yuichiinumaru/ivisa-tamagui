@@ -18,18 +18,22 @@
 - [ ] **Restore Visual Testing Capabilities (P2)**
   - Re-create `scripts/visual-check.js` (uses Storybook + Playwright) which is currently missing.
 
-### Missing / Incomplete Components
-21 - [x] `ContextMenu` (TDD, UX)
-  - [x] 21a – Implement `ContextMenu` using `react-right-click-context-menu` or Radix Dropdown. (File `molecules/ContextMenu.tsx` is missing despite stories existing).
-  - [x] 21b – Add tests for right-click behavior on web.
-  - [x] 21c – Export in `index.ts`.
+### Missing / Incomplete Components (Frankenstein Strategy)
+32 - [ ] **Component Acceleration Phase (Harvest & Headless)**
+  - [ ] 32a – **Harvest `pogiii/sushi`**: Clone `pogiii/sushi` into `referencias/` and harvest the `Input` (Composed) and `OTPInput` patterns.
+  - [ ] 32b – **Harvest `tamagui-kitchen-sink`**: Run `scripts/convert_component.py` to auto-convert `LmStarRating` as `StarRating`.
 
-20 - [x] `Menubar` (TDD, UX)
-  - [x] 20a – Complete `Menubar` implementation. (Current implementation is skeletal `XStack` wrapper, needs Dropdown logic).
-  - [x] 20b – `NavigationMenu` is implemented (see Completed section).
+33 - [ ] **ShadCN Gap Fill - High Priority**
+  - [ ] 33a – **Command Palette**: Implement `Command` using `cmdk` + `Dialog` wrapper.
+  - [ ] 33b – **Date Picker**: Implement `Calendar` using `@rehookify/datepicker` + `Sheet`/`Popover`.
+  - [ ] 33c – **DropdownMenu**: Implement `DropdownMenu` using Radix (Web) and `Sheet` (Native).
 
-New - [x] `ComponentErrorBoundary` (DOC)
-  - [x] Create Storybook stories for `ComponentErrorBoundary`. (File exists but stories are missing).
+34 - [ ] **ShadCN Gap Fill - Medium/Low Priority**
+  - [ ] 34a – **AspectRatio**: Implement `AspectRatio` (Atom) using Tamagui Stack.
+  - [ ] 34b – **Collapsible**: Implement `Collapsible` (Molecule) using `AnimateHeight`.
+  - [ ] 34c – **HoverCard**: Implement `HoverCard` using `Popover` with hover trigger.
+  - [ ] 34d – **Carousel**: Implement `Carousel` using `embla-carousel`.
+  - [ ] 34e – **Spinner**: Implement `Spinner` (Atom) ensuring consistent theming.
 
 ### Phase 4: Web-Specific UX & Full Documentation (Remaining)
 25 - [ ] Populate Storybook with full documentation (DOC)
@@ -40,6 +44,7 @@ New - [x] `ComponentErrorBoundary` (DOC)
 26 - [ ] Documentation passes (DOC)
   - [ ] 26a – Ensure `docs/01-plan.md`, `docs/02-tasks.md`, and `docs/03-architecture.md` are in sync with current implementation.
   - [ ] 26b – Record major milestones and decisions in `docs/04-changelog.md`.
+  - [ ] 26c – **Document Multi-Root Workspace**: Add instructions for setting up VSCode Multi-Root Workspace for referencing `sushi` and `tamagui-kitchen-sink`.
 
 ### Phase 5: Integration & Handoff
 27 - [ ] Integrate design system into flows (FDD, UX)
@@ -72,15 +77,15 @@ New - [x] `ComponentErrorBoundary` (DOC)
 8 - [x] Set up testing framework (TDD)
 9 - [x] Perform minimal Storybook setup (DOC, UX)
 
-### Phase 2 – High-Impact Gaps
+### Phase 2 – High-Impact Gaps (Completed)
 10 - [x] `DataTable` composite (TDD, FDD)
-11 - [x] `Calendar` / `DatePicker` composite (TDD, FDD)
-12 - [x] `CommandPalette` (Cmd+K) composite (TDD, UX)
+11 - [x] `Calendar` / `DatePicker` composite (TDD, FDD) - *Initial version done, needs refinement per Task 33b*
+12 - [x] `CommandPalette` (Cmd+K) composite (TDD, UX) - *Initial version done, needs refinement per Task 33a*
 
-### Phase 3 – Medium / Low-Effort Components
-13 - [x] `Carousel` composite (TDD, UX)
+### Phase 3 – Medium / Low-Effort Components (Completed)
+13 - [x] `Carousel` composite (TDD, UX) - *Initial version done, needs embla-carousel integration per Task 34d*
 14 - [x] Shared Tamagui config adoption (SDD, DOC)
-15 - [x] `OTPInput` composite (TDD, UX)
+15 - [x] `OTPInput` composite (TDD, UX) - *Implemented, to be refined with Sushi patterns*
 16 - [x] `Pagination` & `Breadcrumb` (TDD, UX)
 17 - [x] `Sidebar` (Organism) (Composition, UX)
 18 - [x] `Charts` (Organism) (TDD, UX)
@@ -113,6 +118,7 @@ New - [x] `ComponentErrorBoundary` (DOC)
   - [x] 24f – Implement `Resizable` (Molecule).
   - [x] 24g – Implement `Drawer` (Molecule).
   - [x] 24h - Implement `Tooltip` (Molecule).
+  - [x] 21 (Revisited) - `ContextMenu` and `Menubar` (Implemented).
 
 ### Additional Completions
 30 - [x] IVISA Brand Integration (Design System)
