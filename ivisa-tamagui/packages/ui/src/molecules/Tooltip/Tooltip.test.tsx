@@ -4,7 +4,7 @@ import { render, screen, waitFor } from '../../../vitest.setup'
 import { afterEach, vi, describe, it, expect } from 'vitest'
 
 import { Tooltip } from './Tooltip'
-import { Button, Text, Tooltip as TamaguiTooltip } from 'tamagui'
+import { Button, Text } from 'tamagui'
 
 afterEach(() => {
   vi.restoreAllMocks()

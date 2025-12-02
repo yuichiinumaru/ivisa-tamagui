@@ -16,7 +16,7 @@ vi.mock('tamagui', async () => {
   };
 });
 
-vi.mock('./molecules/Sheet', () => ({
+vi.mock('../../molecules/Sheet', () => ({
     Sheet: ({ children }) => <>{children}</>,
     SheetTrigger: ({ children }) => <>{children}</>,
     SheetContent: ({ children }) => <>{children}</>,

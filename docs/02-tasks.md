@@ -11,11 +11,11 @@
 ### Q_bug: Critical Bug Fixes (From Audit)
 - [ ] **Fix the Entire Unit Test Suite (P0)**
   - All 28 test files in `packages/ui/tests/migrated` are failing due to incorrect relative import paths.
-- [ ] **Implement Security Scanning (P1)**
+- [x] **Implement Security Scanning (P1)**
   - Integrate a security scanner (e.g., `snyk`, `npm audit`) into the CI/CD pipeline.
 - [ ] **Resolve All Linting Errors (P1)**
   - Fix 74 ESLint errors (unused variables, `any` types).
-- [ ] **Restore Visual Testing Capabilities (P2)**
+- [x] **Restore Visual Testing Capabilities (P2)**
   - Re-create `scripts/visual-check.js` (uses Storybook + Playwright) which is currently missing.
 
 ### Missing / Incomplete Components

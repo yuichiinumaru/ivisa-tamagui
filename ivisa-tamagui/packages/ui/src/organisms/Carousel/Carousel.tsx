@@ -41,8 +41,7 @@ const CarouselFrame = styled(YStack, {
   position: 'relative',
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Carousel = React.forwardRef<any, StackProps & CarouselProps>(
+const Carousel = React.forwardRef<React.ElementRef<typeof CarouselFrame>, StackProps & CarouselProps>(
   (
     {
       orientation = 'horizontal',
@@ -125,8 +124,7 @@ const CarouselContentFrame = styled(XStack, {
   display: 'flex',
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CarouselContent = React.forwardRef<any, StackProps>(
+const CarouselContent = React.forwardRef<React.ElementRef<typeof CarouselContentFrame>, StackProps>(
   ({ ...props }, ref) => {
     const { carouselRef, orientation } = useCarousel()
 
@@ -154,8 +152,7 @@ const CarouselItemFrame = styled(YStack, {
   flexBasis: '100%',
 })
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CarouselItem = React.forwardRef<any, StackProps>(
+const CarouselItem = React.forwardRef<React.ElementRef<typeof CarouselItemFrame>, StackProps>(
   ({ ...props }, ref) => {
     const { orientation } = useCarousel()
 
@@ -177,8 +174,7 @@ CarouselItem.displayName = 'CarouselItem'
 const ArrowLeft = () => <Text>{'<'}</Text>
 const ArrowRight = () => <Text>{'>'}</Text>
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CarouselPrevious = React.forwardRef<any, GetProps<typeof Button>>(
+const CarouselPrevious = React.forwardRef<React.ElementRef<typeof Button>, GetProps<typeof Button>>(
   ({ variant = 'outline', size = 'icon', ...props }, ref) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
@@ -212,8 +208,7 @@ const CarouselPrevious = React.forwardRef<any, GetProps<typeof Button>>(
 )
 CarouselPrevious.displayName = 'CarouselPrevious'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CarouselNext = React.forwardRef<any, GetProps<typeof Button>>(
+const CarouselNext = React.forwardRef<React.ElementRef<typeof Button>, GetProps<typeof Button>>(
   ({ variant = 'outline', size = 'icon', ...props }, ref) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel()
 

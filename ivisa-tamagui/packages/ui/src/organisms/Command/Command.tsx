@@ -59,13 +59,12 @@ const CommandInputFrame = styled(View, {
 
 const SearchIcon = () => <Text fontSize="$4" marginRight="$2">🔍</Text>
 
-const CommandInput = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & GetProps<typeof CommandInputFrame>>(
+const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & GetProps<typeof CommandInputFrame>>(
   ({ ...props }, ref) => (
     <CommandInputFrame>
       <SearchIcon />
       <CommandPrimitive.Input
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ref={ref as any}
+        ref={ref}
         style={{
             flex: 1,
             height: 44,
@@ -99,11 +98,10 @@ const CommandList = React.forwardRef<TamaguiElement, React.ComponentPropsWithout
 CommandList.displayName = CommandPrimitive.List.displayName
 
 // Command Empty
-const CommandEmpty = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>>(
+const CommandEmpty = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Empty>, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>>(
   (props, ref) => (
     <CommandPrimitive.Empty
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ref={ref as any}
+      ref={ref}
       style={{
           padding: 24,
           textAlign: 'center',
