@@ -154,6 +154,7 @@ const InputImpl = React.forwardRef<React.ElementRef<typeof TamaguiInput>, InputP
     if (children) {
       return (
         <InputContext.Provider value={{ size }}>
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           <InputFrame ref={ref as any} variant={variant} size={size}>
             {children}
           </InputFrame>

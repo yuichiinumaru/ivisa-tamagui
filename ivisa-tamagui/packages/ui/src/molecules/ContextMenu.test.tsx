@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent, screen, waitFor } from '@testing-library/react'
+import { render, fireEvent, screen } from '@testing-library/react'
 import { ContextMenu, ContextMenuEntry } from './ContextMenu'
 import { vi, describe, it, expect } from 'vitest'
 
@@ -8,7 +8,9 @@ vi.mock('tamagui', async () => {
   const actual = await vi.importActual('tamagui')
   return {
     ...actual,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     styled: (Component: any) => Component, // Pass through
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Text: ({ children, ...props }: any) => <span {...props}>{children}</span>,
     Separator: () => <hr />,
   }

@@ -47,14 +47,11 @@ describe('Sidebar', () => {
   });
 
   it('toggles when in collapsible mode', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { getByText, getByRole, queryByText, user } = render(
+    const { getByText, getByRole, queryByText } = render(
       <Sidebar variant="collapsible">
         <div>Test Child</div>
       </Sidebar>
     );
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const _user = user;
 
     const toggleButton = getByRole('button');
 

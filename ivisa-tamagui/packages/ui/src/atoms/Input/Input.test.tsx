@@ -1,7 +1,6 @@
 import { render } from '../../../vitest.setup';
 import { describe, it, expect } from 'vitest';
 import { Input } from './Input';
-import { Button } from '../Button';
 
 describe('Input', () => {
   it('renders standard input', () => {
