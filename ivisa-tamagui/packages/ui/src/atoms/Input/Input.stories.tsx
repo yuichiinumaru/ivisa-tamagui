@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Search, Eye } from '@tamagui/lucide-icons'
-import { YStack, Text, XStack } from 'tamagui'
+import { Search } from '@tamagui/lucide-icons'
+import { YStack, Text } from 'tamagui'
 import { Input } from './Input'
 
 const meta: Meta<typeof Input> = {

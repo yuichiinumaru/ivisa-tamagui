@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useRef, useState } from 'react'
 import { LayoutChangeEvent, ScrollView as ScrollViewNative } from 'react-native'
-import { ScrollView, styled, View, ViewProps, ScrollViewProps } from 'tamagui'
+import { ScrollView, View, ViewProps, ScrollViewProps } from 'tamagui'
 import { withErrorLogging } from '../../utils/withErrorLogging'
 
 type StepperContextObject = {

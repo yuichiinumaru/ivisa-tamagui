@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom';
+import React from 'react';
 import { render as baseRender } from '@testing-library/react';
-import { TamaguiProvider } from 'tamagui';
-import config from './src/tamagui.config';
+import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
+import { AppProviders } from './src/providers/AppProviders';
 
 vi.mock('react-native', () => ({
   StyleSheet: {
@@ -10,12 +11,17 @@ vi.mock('react-native', () => ({
   },
 }));
 
-export function render(ui) {
-  return baseRender(ui, {
-    wrapper: ({ children }) => (
-      <TamaguiProvider config={config}>{children}</TamaguiProvider>
-    ),
-  });
+export function render(ui, options = {}) {
+  const { theme = 'light', ...renderOptions } = options;
+  return {
+    user: userEvent.setup(),
+    ...baseRender(ui, {
+      wrapper: ({ children }) => (
+        <AppProviders theme={theme}>{children}</AppProviders>
+      ),
+      ...renderOptions,
+    }),
+  };
 }
 
 export * from '@testing-library/react';

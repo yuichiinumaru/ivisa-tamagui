@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "main": "src/index.ts",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "vitest run"
+  },
   "dependencies": {
     "@ivisa/ui": "workspace:*",
     "@hookform/resolvers": "^3.3.4",
