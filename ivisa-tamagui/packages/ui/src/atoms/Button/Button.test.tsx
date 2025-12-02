@@ -27,7 +27,8 @@ describe('Button', () => {
     // Note: In JSDOM with Tamagui, styles might be applied via classnames or style tags.
     // But let's keep the assertion if it was working in migrated.
     // If it fails, we will adjust.
-    // expect(styleAttr).toContain('background-color') // This might be flaky if classes are used.
+    expect(styleAttr).toContain('background-color')
+    expect(styleAttr.toLowerCase()).toContain('height')
   })
 
   it('responds to hover and focus interactions', async () => {
