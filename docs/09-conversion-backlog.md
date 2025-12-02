@@ -1,22 +1,41 @@
 # 09 – Conversion Backlog & Reference Analysis
 
-This document tracks the component inventory from our reference repositories (`pogiii/sushi` and `dohomi/tamagui-kitchen-sink`) and compares them with our current implementation in `ivisa-tamagui/packages/ui`. It serves as a backlog for components that need to be converted or adapted.
+This document tracks the component inventory from our reference repositories (`pogiii/sushi` and `dohomi/tamagui-kitchen-sink`) and compares them with our current implementation in `ivisa-tamagui/packages/ui`. It also tracks ShadCN component parity gaps.
 
-## 1. Reference: `pogiii/sushi`
+## 1. Reference: `pogiii/sushi` (Source: Harvesting)
 
 Located in: `ivisa-tamagui/referencias/sushi`
 
-| Component | Status | Location in Project | Reference Location | Complexity |
+| Component | Status | Location in Project | Reference Location | Strategy |
 | :--- | :--- | :--- | :--- | :--- |
-| `Input` | ✅ Done | `packages/ui/src/atoms/Input` | `registery/components/inputs/Input.tsx` | Medium |
-| `OTPInput` | ✅ Done | `packages/ui/src/molecules/OTPInput` | `registery/components/inputs/OTPInput.tsx` | Medium |
-| `Stepper` | ✅ Done | `packages/ui/src/molecules/Stepper` | `registery/layouts/Stepper.tsx` | High |
+| `Input` (Composed) | ✅ Done | `packages/ui/src/atoms/Input` | `registery/components/inputs/Input.tsx` | Adopt composition pattern (Field/Icon/Button) |
+| `OTPInput` | ✅ Done | `packages/ui/src/molecules/OTPInput` | `registery/components/inputs/OTPInput.tsx` | Copy & Adapt |
+| `Stepper` | ✅ Done | `packages/ui/src/molecules/Stepper` | `registery/layouts/Stepper.tsx` | Copy & Adapt |
 
-**Summary**: All components found in `sushi` have been successfully migrated.
+**Summary**: All components found in `sushi` have been successfully migrated. This repo is a key source for composite patterns.
 
 ---
 
-## 2. Reference: `dohomi/tamagui-kitchen-sink`
+## 2. ShadCN Parity Gaps (Source: Frankenstein Strategy)
+
+These components are present in ShadCN but missing in Tamagui Free. Implementation strategy involves using headless libraries or Tamagui primitives.
+
+| Component | Status | Priority | Implementation Strategy | Complexity |
+| :--- | :--- | :--- | :--- | :--- |
+| `AspectRatio` | ❌ Pending | Low | Tamagui `Stack` with aspect-ratio prop or simple wrapper. | Low |
+| `Collapsible` | ❌ Pending | Medium | Tamagui `Stack` + `AnimateHeight` or Radix Collapsible. | Low |
+| `HoverCard` | ❌ Pending | Low | Tamagui `Popover` with hover trigger or Radix HoverCard. | Medium |
+| `DropdownMenu` | ❌ Pending | High | Wrap Radix DropdownMenu (Web) / Tamagui Popover/Sheet (Native). | Medium |
+| `Spinner` | ❌ Pending | Low | Tamagui `Spinner` (Native). Needs ShadCN styling. | Low |
+| `Command` | ❌ Pending | High | Headless: `cmdk`. Wrapper: `Dialog`. | Medium |
+| `Calendar` | ❌ Pending | High | Headless: `@rehookify/datepicker` or `react-day-picker`. Wrapper: `Sheet`. | High |
+| `Carousel` | ❌ Pending | Medium | Headless: `embla-carousel`. | Medium |
+| `Menubar` | ❌ Pending | Low | Headless: Radix Menubar. (Desktop only). | High |
+| `NavigationMenu`| ❌ Pending | Low | Headless: Radix Navigation Menu. (Desktop only). | High |
+
+---
+
+## 3. Reference: `dohomi/tamagui-kitchen-sink` (Source: Legacy/Rich Components)
 
 Located in: `ivisa-tamagui/referencias/tamagui-kitchen-sink`
 
@@ -43,7 +62,7 @@ Key packages analyzed: `packages/core`, `packages/form`, `packages/date`, `packa
 
 ---
 
-## 3. Prioritized Conversion Queue
+## 4. Prioritized Conversion Queue
 
 The following components are identified as missing and are prioritized by complexity (Low -> High):
 
