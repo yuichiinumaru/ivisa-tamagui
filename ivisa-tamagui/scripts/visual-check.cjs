@@ -7,14 +7,14 @@ const OUTPUT_DIR = path.join(__dirname, '../tests/visual-checks');
 
 // Component IDs to check (based on Storybook auto-generated IDs)
 // Format: <kind>-<name>--<story>
-// Usually: primitives-ivisabutton--default
+// Usually: primitives-button--default
 const STORIES_TO_CHECK = [
-  'atoms-ivisabutton--primary',
-  'atoms-ivisabutton--secondary',
-  'atoms-ivisainput--default',
-  'atoms-ivisainput--filled',
-  'atoms-ivisatextarea--default',
-  'atoms-ivisacheckbox--default',
+  'atoms-button--default',
+  'atoms-button--secondary',
+  'atoms-input--default',
+  'atoms-input--filled',
+  'atoms-textarea--default',
+  'atoms-checkbox--default',
   'molecules-card--default',
   'molecules-card--elevated',
   'molecules-dialog--default',
