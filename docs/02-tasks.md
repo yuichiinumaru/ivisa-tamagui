@@ -29,8 +29,8 @@
   - [ ] 33c – **DropdownMenu**: Implement `DropdownMenu` using Radix (Web) and `Sheet` (Native).
 
 34 - [ ] **ShadCN Gap Fill - Medium/Low Priority**
-  - [ ] 34a – **AspectRatio**: Implement `AspectRatio` (Atom) using Tamagui Stack.
-  - [ ] 34b – **Collapsible**: Implement `Collapsible` (Molecule) using `AnimateHeight`.
+  - [x] 34a – **AspectRatio**: Implement `AspectRatio` (Atom) using Tamagui Stack.
+  - [x] 34b – **Collapsible**: Implement `Collapsible` (Molecule) using `AnimateHeight`.
   - [ ] 34c – **HoverCard**: Implement `HoverCard` using `Popover` with hover trigger.
   - [ ] 34d – **Carousel**: Implement `Carousel` using `embla-carousel`.
   - [ ] 34e – **Spinner**: Implement `Spinner` (Atom) ensuring consistent theming.
