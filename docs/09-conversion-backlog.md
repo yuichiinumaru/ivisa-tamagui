@@ -26,7 +26,7 @@ These components are present in ShadCN but missing in Tamagui Free. Implementati
 | `Collapsible` | ❌ Pending | Medium | Tamagui `Stack` + `AnimateHeight` or Radix Collapsible. | Low |
 | `HoverCard` | ❌ Pending | Low | Tamagui `Popover` with hover trigger or Radix HoverCard. | Medium |
 | `DropdownMenu` | ❌ Pending | High | Wrap Radix DropdownMenu (Web) / Tamagui Popover/Sheet (Native). | Medium |
-| `Spinner` | ❌ Pending | Low | Tamagui `Spinner` (Native). Needs ShadCN styling. | Low |
+| `Spinner` | ✅ Done | Low | Tamagui `Spinner` (Native). Needs ShadCN styling. | Low |
 | `Command` | ❌ Pending | High | Headless: `cmdk`. Wrapper: `Dialog`. | Medium |
 | `Calendar` | ❌ Pending | High | Headless: `@rehookify/datepicker` or `react-day-picker`. Wrapper: `Sheet`. | High |
 | `Carousel` | ❌ Pending | Medium | Headless: `embla-carousel`. | Medium |
@@ -44,21 +44,21 @@ Key packages analyzed: `packages/core`, `packages/form`, `packages/date`, `packa
 | Component | Status | Location in Project | Reference Location | Complexity |
 | :--- | :--- | :--- | :--- | :--- |
 | `LmButton` | ✅ Done (as `Button`) | `packages/ui/src/atoms/Button` | `packages/core/src/core/form/LmButton.tsx` | Low |
-| `LmAlertDialog` | ❌ Pending | - | `packages/core/src/core/panels/LmAlertDialog.tsx` | Medium |
+| `LmAlertDialog` | ✅ Done (as `AlertDialog`) | `packages/ui/src/molecules/AlertDialog` | `packages/core/src/core/panels/LmAlertDialog.tsx` | Medium |
 | `LmDialog` | ✅ Done (as `Dialog`) | `packages/ui/src/molecules/Dialog` | `packages/core/src/core/panels/LmDialog.tsx` | Medium |
 | `LmPopover` | ✅ Done (as `Popover`) | `packages/ui/src/molecules/Popover` | `packages/core/src/core/panels/LmPopover.tsx` | Medium |
 | `LmSheet` | ✅ Done (as `Sheet`) | `packages/ui/src/molecules/Sheet.tsx` | `packages/core/src/core/panels/LmSheet.tsx` | High |
-| `LmAutocomplete` | ❌ Pending | - | `packages/form/src/LmAutocomplete.tsx` | High |
+| `LmAutocomplete` | ✅ Done (as `Autocomplete`) | `packages/ui/src/organisms/Autocomplete` | `packages/form/src/LmAutocomplete.tsx` | High |
 | `LmCheckbox` | ✅ Done (as `Checkbox`) | `packages/ui/src/atoms/Checkbox` | `packages/form/src/LmCheckbox.tsx` | Low |
 | `LmInput` | ✅ Done (as `Input`) | `packages/ui/src/atoms/Input` | `packages/form/src/LmInput.tsx` | Low |
 | `LmRadioGroup` | ✅ Done (as `RadioGroup`) | `packages/ui/src/molecules/RadioGroup.tsx` | `packages/form/src/LmRadioGroup.tsx` | Medium |
 | `LmSelect` | ✅ Done (as `Select`) | `packages/ui/src/molecules/Select` | `packages/form/src/LmSelect.tsx` | High |
 | `LmSlider` | ✅ Done (as `Slider`) | `packages/ui/src/atoms/Slider.tsx` | `packages/form/src/LmSlider.tsx` | Medium |
-| `LmStarRating` | ❌ Pending | - | `packages/form/src/LmStarRating.tsx` | Low |
+| `LmStarRating` | ✅ Done (as `StarRating`) | `packages/ui/src/molecules/StarRating` | `packages/form/src/LmStarRating.tsx` | Low |
 | `LmSwitch` | ✅ Done (as `Switch`) | `packages/ui/src/atoms/Switch.tsx` | `packages/form/src/LmSwitch.tsx` | Low |
-| `LmMonthsPicker` | ❌ Pending | - | `packages/date/src/LmMonthsPicker.tsx` | Medium |
-| `LmVideo` | ❌ Pending | - | `packages/video/src/LmVideo.tsx` | High |
-| `LmRichText` | ❌ Pending | - | `packages/rich-text/src/LmRichText.tsx` | Very High |
+| `LmMonthsPicker` | ✅ Done (as `MonthsPicker`) | `packages/ui/src/molecules/MonthsPicker` | `packages/date/src/LmMonthsPicker.tsx` | Medium |
+| `LmVideo` | ✅ Done (as `Video`) | `packages/ui/src/organisms/Video` | `packages/video/src/LmVideo.tsx` | High |
+| `LmRichText` | ✅ Done (as `RichText`) | `packages/ui/src/organisms/RichText` | `packages/rich-text/src/LmRichText.tsx` | Very High |
 
 ---
 
