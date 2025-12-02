@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { Text } from 'tamagui'
 import { vi, describe, it, expect } from 'vitest'
+import '../../vitest.setup'
 
-import { AppProviders } from '../../src/providers/AppProviders'
+import { AppProviders } from './AppProviders'
 
 describe('AppProviders', () => {
   it('renders children with default theme', () => {

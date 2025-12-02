@@ -1,0 +1,51 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Typography primitives > renders text variations 1`] = `
+<div>
+  <span
+    class=""
+    style="display: contents;"
+  >
+    <span
+      class=" "
+      style="display: contents;"
+    >
+      <span
+        class=" t_dark is_Theme"
+        style="color: var(--color); display: contents;"
+      >
+        <span
+          class="is_TypographyText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color"
+          data-testid="body"
+        >
+          Body copy
+        </span>
+        <span
+          class="is_MutedText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
+          data-testid="muted"
+        >
+          Muted copy
+        </span>
+        <span
+          class="is_LeadText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
+          data-testid="lead"
+        >
+          Lead copy
+        </span>
+        <span
+          class="is_Blockquote font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color _borderLeftWidth-2px _borderLeftColor-borderColor _fst-italic _borderLeftStyle-solid"
+          data-testid="quote"
+        >
+          Quote
+        </span>
+        <div
+          style="display: contents;"
+        />
+        <div
+          style="display: contents;"
+        />
+      </span>
+    </span>
+  </span>
+</div>
+`;

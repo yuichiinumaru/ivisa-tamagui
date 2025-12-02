@@ -1,12 +1,12 @@
-import { render, screen, fireEvent } from '../../utils/render'
+import { render, screen, fireEvent } from '../../../vitest.setup'
 
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
   PopoverClose,
-} from '../../../../src/molecules/Popover/Popover'
-import { Button } from '../../../../src/atoms/Button/Button'
+} from './Popover'
+import { Button } from '../../../atoms/Button/Button'
 
 describe('Popover', () => {
   it('opens and closes the popover', () => {
