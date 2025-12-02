@@ -1,7 +1,8 @@
+// @vitest-environment jsdom
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
-import { render } from '../../../vitest.setup';
-import { Sidebar } from './Sidebar';
+import { render } from '../vitest.setup';
+import { Sidebar } from './organisms/Sidebar';
 import { vi } from 'vitest';
 
 vi.mock('tamagui', async () => {
@@ -21,7 +22,7 @@ vi.mock('../../molecules/Sheet', () => ({
     SheetContent: ({ children }) => <>{children}</>,
 }));
 
-vi.mock('../../atoms/Button', () => ({
+vi.mock('./atoms/Button', () => ({
     Button: React.forwardRef(({ icon: Icon, onPress, ...props }, ref) => (
       <button ref={ref} onClick={onPress} {...props}>
         {Icon && <Icon />}
@@ -30,9 +31,9 @@ vi.mock('../../atoms/Button', () => ({
 }));
 
 vi.mock('@tamagui/lucide-icons', () => ({
-    ChevronLeft: () => 'ChevronLeft',
-    ChevronRight: () => 'ChevronRight',
-    Menu: () => 'Menu',
+    ChevronLeft: () => <span>ChevronLeft</span>,
+    ChevronRight: () => <span>ChevronRight</span>,
+    Menu: () => <span>Menu</span>,
 }));
 
 
