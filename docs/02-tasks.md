@@ -21,7 +21,8 @@
 ### Missing / Incomplete Components (Frankenstein Strategy)
 32 - [ ] **Component Acceleration Phase (Harvest & Headless)**
   - [ ] 32a – **Harvest `pogiii/sushi`**: Clone `pogiii/sushi` into `referencias/` and harvest the `Input` (Composed) and `OTPInput` patterns.
-  - [ ] 32b – **Harvest `tamagui-kitchen-sink`**: Run `scripts/convert_component.py` to auto-convert `LmStarRating` as `StarRating`.
+  - [x] 32b – **Harvest `tamagui-kitchen-sink`**: Run `scripts/convert_component.py` to auto-convert `LmStarRating` as `StarRating`.
+    - Also implemented `AlertDialog`, `MonthsPicker`, `Autocomplete`, `Video`, `RichText`.
 
 33 - [ ] **ShadCN Gap Fill - High Priority**
   - [ ] 33a – **Command Palette**: Implement `Command` using `cmdk` + `Dialog` wrapper.
@@ -33,7 +34,7 @@
   - [x] 34b – **Collapsible**: Implement `Collapsible` (Molecule) using `AnimateHeight`.
   - [ ] 34c – **HoverCard**: Implement `HoverCard` using `Popover` with hover trigger.
   - [ ] 34d – **Carousel**: Implement `Carousel` using `embla-carousel`.
-  - [ ] 34e – **Spinner**: Implement `Spinner` (Atom) ensuring consistent theming.
+  - [x] 34e – **Spinner**: Implement `Spinner` (Atom) ensuring consistent theming.
 
 ### Phase 4: Web-Specific UX & Full Documentation (Remaining)
 25 - [ ] Populate Storybook with full documentation (DOC)
