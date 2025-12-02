@@ -23,6 +23,11 @@ describe('Button', () => {
     // Ideally we check specific styles but that depends on compiler.
     // The migrated test checked style attribute.
     // const styleAttr = buttonElement.getAttribute('style') ?? ''
+    const buttonElement = screen.getByRole('button', { name: /call to action/i })
+    // Tamagui styles end up in class or style. Checking style attribute presence is a rough check.
+    // Ideally we check specific styles but that depends on compiler.
+    // The migrated test checked style attribute.
+    const styleAttr = buttonElement.getAttribute('style') ?? ''
 
     // Note: In JSDOM with Tamagui, styles might be applied via classnames or style tags.
     // But let's keep the assertion if it was working in migrated.
