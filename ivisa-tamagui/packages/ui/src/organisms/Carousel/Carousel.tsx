@@ -37,7 +37,7 @@ function useCarousel() {
 }
 
 const CarouselFrame = styled(YStack, {
-  width: '100%',
+  marginHorizontal: '$true',
   position: 'relative',
 })
 
