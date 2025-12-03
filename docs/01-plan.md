@@ -72,14 +72,17 @@
 - **Calendar / Date Picker:** Implement an `Calendar` / `DatePicker` composite using `@rehookify/datepicker` hooks, rendered inside a Tamagui `Sheet` or `Dialog`.
 - **Command Palette (Cmd+K):** Implement an `CommandPalette` composite using `cmdk` as headless logic, wrapped inside a Tamagui `Dialog` or `Sheet`.
 
-### Phase 3 – Medium / Low-Effort Components
+### Phase 3 – Medium / Low-Effort Components (Completed)
 - **Carousel:** Implement an `Carousel` composite using `embla-carousel`.
 - **Input OTP:** Implement an `OTPInput` composite, using patterns from `pogiii/sushi`.
 - **Pagination & Breadcrumb:** Implement lightweight, Tamagui-only `Pagination` and `Breadcrumb` components.
+- **Sidebar & Charts:** Implemented as Organisms.
 
 ### Phase 4 – Web-Specific UX & Full Documentation
-- **Navigation Menu / Menubar / Context Menu:** For desktop-style navigation, use Radix Primitives and render them with Tamagui primitives.
-- **Populate Storybook Content:** Using the minimal setup from Phase 1, flesh out Storybook with comprehensive stories for every component, covering variants, states, and platform-specific notes.
+- **Navigation Menu / Menubar / Context Menu:** For desktop-style navigation, use Radix Primitives and render them with Tamagui primitives. (Completed)
+- **Missing Atoms (Parity):** Implement `Label` and `Kbd`.
+- **Populate Storybook Content (Primary Documentation):** Since markdown specs are deprecated, Storybook is the source of truth. Flesh out Storybook with comprehensive stories for every component.
+- **Spec Cleanup:** Remove empty markdown templates.
 - Document sourcing decisions for each composite.
 
 ### Phase 5 – Integration & Handoff
