@@ -61,6 +61,29 @@
   - [ ] 29b – Summarize headless integrations and upgrade strategy.
   - [ ] 29c – Capture future ideas in `docs/05-ideas.md` if needed.
 
+### Phase 6: Gap Fill (From Audit)
+35 - [ ] **Missing Documentation Specs (Implemented but no Spec)** (DOC)
+  - [ ] 35a – Create specs for `ComponentErrorBoundary`
+  - [ ] 35b – Create specs for `DatePicker` & `MonthsPicker`
+  - [ ] 35c – Create specs for `StarRating`
+  - [ ] 35d – Create specs for `Stepper`
+  - [ ] 35e – Create specs for `Autocomplete`
+  - [ ] 35f – Create specs for `DataTable`
+  - [ ] 35g – Create specs for `RichText`
+  - [ ] 35h – Create specs for `Video`
+
+36 - [ ] **Missing Implementations (Spec exists but no Code)** (TDD)
+  - [ ] 36a – Implement `button-group`
+  - [ ] 36b – Implement `empty` state component
+  - [ ] 36c – Implement `field` component
+  - [ ] 36d – Implement `input-group`
+  - [ ] 36e – Implement `item` component
+  - [ ] 36f – Implement `kbd` (Keyboard shortcut display)
+  - [ ] 36g – Implement `label`
+  - [ ] 36h – Implement `native-select`
+  - [ ] 36i – Implement `sonner` (Toast alternative)
+  - [ ] 36j – Implement `table` (Basic table, distinct from DataTable)
+
 ---
 
 ## ✅ Completed Tasks
