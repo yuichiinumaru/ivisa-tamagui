@@ -40,7 +40,7 @@ pnpm install                # install workspace deps
 pnpm storybook              # launch Storybook (default: http://localhost:6006)
 pnpm test                   # run unit + interaction tests (Vitest)
 pnpm lint                   # run eslint/ruff (see package.json scripts)
-node scripts/visual-check   # Playwright screenshots + console log scanning
+# node scripts/visual-check   # Playwright screenshots (Pending restoration)
 python scripts/migrate_old_port.py --help  # tooling to import legacy assets
 ```
 
@@ -58,7 +58,7 @@ python scripts/migrate_old_port.py --help  # tooling to import legacy assets
    - Export from `packages/ui/src/index.ts` and update accompanying stories under the same folder.
 3. **Testing**
    - Prefer TDD for new composites (Vitest + React Testing Library).
-   - Verify visually through Storybook + `scripts/visual-check.js` (see `docs/06-testing-process.md`).
+   - Verify visually through Storybook (Visual check script pending).
 4. **Documentation**
    - Log noteworthy changes in `docs/04-changelog.md`.
    - Update task status and any architecture impacts immediately.
