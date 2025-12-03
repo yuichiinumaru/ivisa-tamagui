@@ -6,6 +6,10 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
-    setupFiles: ['./test-setup.ts', './vitest.setup.tsx'],
+    setupFiles: [
+      './test-setup.ts',
+      './vitest.setup.tsx',
+      'react-native-testing-mocks',
+    ],
   },
 });

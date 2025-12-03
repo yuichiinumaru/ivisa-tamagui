@@ -36,11 +36,19 @@
   - [x] 34b – **Collapsible**: Implement `Collapsible` (Molecule) using `AnimateHeight`.
   - [x] 34e – **Spinner**: Implement `Spinner` (Atom) ensuring consistent theming.
 
+35 - [ ] **Missing Atoms (Parity)**
+  - [ ] 35a – **Label**: Implement `Label` atom (wrapping Tamagui Label) for standalone usage.
+  - [ ] 35b – **Kbd**: Implement `Kbd` atom (styled Text/View) for keyboard shortcuts.
+
+36 - [ ] **Documentation Cleanup**
+  - [ ] 36a – **Archive Empty Specs**: Delete or archive empty markdown templates in `docs/specs/` that do not match implemented code (e.g., `sonner.md`, `table.md`).
+  - [ ] 36b – **Sync Specs**: Ensure existing components like `StarRating` and `Stepper` have either a Storybook entry or a populated spec.
+
 ### Phase 4: Web-Specific UX & Full Documentation (Remaining)
-25 - [ ] Populate Storybook with full documentation (DOC)
-  - [ ] 25a – Create stories for all primitives and composites, covering variants and states.
-  - [ ] 25b – Write usage notes and document props for each component within Storybook.
-  - [ ] 25c – Document Storybook usage in `docs/03-architecture.md`.
+25 - [ ] Populate Storybook as Source of Truth (DOC)
+  - [ ] 25a – **Primary Docs**: Ensure every component has a Storybook entry with full description and props documentation.
+  - [ ] 25b – **Visual States**: Create stories for all variants and states (hover, press, error).
+  - [ ] 25c – **Usage Notes**: Add usage guidelines directly in Storybook MDX or description fields.
 
 26 - [ ] Documentation passes (DOC)
   - [ ] 26a – Ensure `docs/01-plan.md`, `docs/02-tasks.md`, and `docs/03-architecture.md` are in sync with current implementation.

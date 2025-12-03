@@ -60,10 +60,11 @@ We categorize components into three types:
 
 ---
 
-## 4. Current Status (As of Phase 2)
+## 4. Current Status (As of Phase 4)
 - **Phase 1 (Foundation):** ✅ Complete. Theme, Primitives (Atoms) ready.
 - **Phase 2 (High-Impact):** ✅ Complete. Forms, DataTable, Calendar/DatePicker.
-- **Phase 3 (Expansion):** 🚧 Pending. Carousel, Command Palette, etc.
+- **Phase 3 (Expansion):** ✅ Complete. Carousel, Command Palette, Menubar, etc.
+- **Phase 4 (Docs & Polish):** 🚧 In Progress. Storybook population, Spec cleanup, and missing Atoms (`Label`, `Kbd`).
 
 ---
 
