@@ -31,31 +31,37 @@ const palette = {
   sky600: '#0284C7',
   sky700: '#0369A1',
 
-  // IVISA Brand Palette
-  // Primary (Azul Prefeitura)
-  ivisaPrimary50: '#EEF8FF',
-  ivisaPrimary100: '#DCF1FF',
-  ivisaPrimary200: '#B2E5FF',
-  ivisaPrimary300: '#6DD1FF',
-  ivisaPrimary400: '#20BAFF',
-  ivisaPrimary500: '#00A1FF',
-  ivisaPrimary600: '#0080DF', // Main Logo Color
-  ivisaPrimary700: '#0065B4',
-  ivisaPrimary800: '#005694',
-  ivisaPrimary900: '#004A80', // Dark Logo Color
-  ivisaPrimary950: '#002D51',
+  // Rio Brand Palette
+  rioDeepBlue: '#13335A',
+  rioLightGray: '#ECEDED',
+  rioGradientStart: '#2A688F',
+  rioGradientEnd: '#42B9EB',
 
-  // Secondary (Ciano/Teal - Apoio IVISA)
-  ivisaSecondary50: '#F1F8FA',
-  ivisaSecondary100: '#C5FFF9',
-  ivisaSecondary200: '#8BFFF5',
-  ivisaSecondary300: '#49FFEF',
-  ivisaSecondary400: '#14EDE1',
-  ivisaSecondary500: '#00D1C8',
-  ivisaSecondary600: '#00A9A4',
-  ivisaSecondary700: '#056A6A',
-  ivisaSecondary800: '#0A5757',
-  ivisaSecondary900: '#003436',
+  // IVISA Brand Palette (Legacy/Mapped)
+  // Primary (Rio Deep Blue based)
+  ivisaPrimary50: '#E0E5EB', // Lighter version
+  ivisaPrimary100: '#B3C0CF',
+  ivisaPrimary200: '#809AB3',
+  ivisaPrimary300: '#4D7596',
+  ivisaPrimary400: '#265980',
+  ivisaPrimary500: '#13335A', // Base Color
+  ivisaPrimary600: '#112E51',
+  ivisaPrimary700: '#0E2643',
+  ivisaPrimary800: '#0B1F36',
+  ivisaPrimary900: '#081728',
+  ivisaPrimary950: '#050E19',
+
+  // Secondary (Rio Light Gray / Gradient Blue)
+  ivisaSecondary50: '#F9F9F9',
+  ivisaSecondary100: '#ECEDED', // Base Light Gray
+  ivisaSecondary200: '#D1D3D3',
+  ivisaSecondary300: '#B6BABA',
+  ivisaSecondary400: '#9CA0A0',
+  ivisaSecondary500: '#2A688F', // Gradient Start
+  ivisaSecondary600: '#255D80',
+  ivisaSecondary700: '#205170',
+  ivisaSecondary800: '#1A4560',
+  ivisaSecondary900: '#153A50',
 
   // Semantic: Success (Green)
   ivisaSuccess50: '#E9FFE6',
@@ -191,16 +197,16 @@ export const lightColors = {
   placeholderColor: palette.slate500,
   shadowColor: 'rgba(15,23,42,0.08)',
   shadowColorHover: 'rgba(15,23,42,0.12)',
-  primary: palette.violet500,
-  primaryHover: palette.violet600,
-  primaryPress: palette.violet700,
-  primaryFocus: palette.violet700,
+  primary: palette.rioDeepBlue,
+  primaryHover: palette.rioGradientStart,
+  primaryPress: palette.rioGradientEnd,
+  primaryFocus: palette.rioGradientStart,
   primaryForeground: palette.white,
-  secondary: palette.slate100,
+  secondary: palette.rioLightGray,
   secondaryHover: palette.slate200,
   secondaryPress: palette.slate200,
   secondaryFocus: palette.slate300,
-  secondaryForeground: palette.slate900,
+  secondaryForeground: palette.rioDeepBlue,
   accent: '#EEF2FF',
   accentHover: '#E0E7FF',
   accentPress: '#C7D2FE',
@@ -228,7 +234,7 @@ export const lightColors = {
   infoForeground: palette.white,
   muted: palette.slate100,
   mutedForeground: palette.slate500,
-  ring: palette.violet500,
+  ring: palette.rioDeepBlue,
 };
 
 export const darkColors = {
@@ -241,7 +247,7 @@ export const darkColors = {
   borderColor: palette.slate700,
   borderColorHover: palette.slate600,
   borderColorPress: palette.slate600,
-  borderColorFocus: palette.violet500,
+  borderColorFocus: palette.rioDeepBlue,
   color: palette.slate100,
   colorHover: palette.white,
   colorPress: palette.white,
@@ -250,11 +256,11 @@ export const darkColors = {
   placeholderColor: palette.slate400,
   shadowColor: 'rgba(15,23,42,0.45)',
   shadowColorHover: 'rgba(15,23,42,0.55)',
-  primary: palette.violet500,
-  primaryHover: palette.violet600,
-  primaryPress: palette.violet700,
-  primaryFocus: palette.violet600,
-  primaryForeground: palette.white,
+  primary: palette.rioGradientEnd,
+  primaryHover: palette.rioGradientStart,
+  primaryPress: palette.rioGradientStart,
+  primaryFocus: palette.rioGradientStart,
+  primaryForeground: palette.slate900,
   secondary: palette.slate800,
   secondaryHover: palette.slate700,
   secondaryPress: palette.slate700,
@@ -287,7 +293,7 @@ export const darkColors = {
   infoForeground: palette.white,
   muted: palette.slate800,
   mutedForeground: palette.slate400,
-  ring: palette.violet500,
+  ring: palette.rioGradientEnd,
 };
 
 export const colorTokens = {

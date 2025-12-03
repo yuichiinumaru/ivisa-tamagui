@@ -36,3 +36,6 @@ storybook.log
 _archive
 junit.xml
 .tamagui
+
+# Assets
+/packages/ui/src/assets/fonts/
