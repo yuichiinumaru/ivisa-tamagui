@@ -72,8 +72,8 @@
 ### Phase 6: Gap Fill (From Audit)
 35 - [ ] **Missing Documentation Specs (Implemented but no Spec)** (DOC)
   - [ ] 35a – Create specs for `ComponentErrorBoundary`
-  - [ ] 35b – Create specs for `DatePicker` & `MonthsPicker`
-  - [ ] 35c – Create specs for `StarRating`
+  - [x] 35b – Create specs for `DatePicker` & `MonthsPicker`
+  - [x] 35c – Create specs for `StarRating`
   - [ ] 35d – Create specs for `Stepper`
   - [ ] 35e – Create specs for `Autocomplete`
   - [ ] 35f – Create specs for `DataTable`

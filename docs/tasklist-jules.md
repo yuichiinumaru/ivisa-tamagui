@@ -7,8 +7,8 @@ This document groups pending tasks from `docs/02-tasks.md` into batches suitable
 **Goal:** Create `docs/specs/COMPONENT.md` for each.
 
 - [ ] **Task 35a**: Create specs for `ComponentErrorBoundary`
-- [ ] **Task 35b**: Create specs for `DatePicker` & `MonthsPicker`
-- [ ] **Task 35c**: Create specs for `StarRating`
+- [x] **Task 35b**: Create specs for `DatePicker` & `MonthsPicker`
+- [x] **Task 35c**: Create specs for `StarRating`
 - [ ] **Task 35d**: Create specs for `Stepper`
 - [ ] **Task 35e**: Create specs for `Autocomplete`
 
