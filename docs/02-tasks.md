@@ -9,8 +9,8 @@
 ## 🚨 Critical Remediation & Pending Features
 
 ### Q_bug: Critical Bug Fixes (From Audit)
-- [ ] **Fix the Entire Unit Test Suite (P0)**
-  - All 28 test files in `packages/ui/tests/migrated` are failing due to incorrect relative import paths.
+- [ ] **Fix Current Unit Test Failures (P0)**
+  - Fix snapshot and style mismatches in `Button`, `Typography`, `Breadcrumb`, `Pagination`, `Textarea`.
 - [x] **Implement Security Scanning (P1)**
   - Integrate a security scanner (e.g., `snyk`, `npm audit`) into the CI/CD pipeline.
 - [ ] **Resolve All Linting Errors (P1)**
@@ -69,7 +69,18 @@
   - [ ] 29b – Summarize headless integrations and upgrade strategy.
   - [ ] 29c – Capture future ideas in `docs/05-ideas.md` if needed.
 
-### Phase 6: Gap Fill (From Audit)
+### Phase 6: Gap Fill & QA (From Audit)
+37 - [ ] **QA & Cleanup**
+  - [ ] 37a – **Resolve Linting Errors**: Fix 32 lint errors in `packages/ui`.
+  - [ ] 37b – **Standardize Structure**: Move `Sidebar.test.tsx` to `organisms/Sidebar` and clean up `Sheet.test.tsx.disabled`.
+  - [ ] 37c – **Restore Visual Check**: Re-implement `scripts/visual-check.js`.
+
+38 - [ ] **Missing Unit Tests (Implemented but no Test)** (TDD)
+  - [ ] 38a – **Atoms**: `Alert`, `Avatar`, `Badge`, `Checkbox`, `Progress`, `ScrollArea`, `Separator`, `Skeleton`, `Slider`, `Spinner`, `Stack`, `Switch`, `Toggle`.
+  - [ ] 38b – **Molecules**: `Accordion`, `AlertDialog`, `Calendar`, `Card`, `ComponentErrorBoundary`, `Drawer`, `DropdownMenu`, `HoverCard`, `Menubar`, `NavigationMenu`, `OTPInput`, `RadioGroup`, `Resizable`, `Tabs`, `Toast`, `ToggleGroup`.
+  - [ ] 38c – **Organisms**: `Carousel`, `Command`, `DataTable`.
+  - [ ] 38d – **Fix Autocomplete Tests**: `Autocomplete.test.tsx` is currently disabled due to syntax/environment errors.
+
 35 - [ ] **Missing Documentation Specs (Implemented but no Spec)** (DOC)
   - [ ] 35a – Create specs for `ComponentErrorBoundary`
   - [x] 35b – Create specs for `DatePicker` & `MonthsPicker`
