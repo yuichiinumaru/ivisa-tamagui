@@ -39,9 +39,9 @@ var require_typeof = __commonJS({
     "use strict";
     function _typeof2(o) {
       "@babel/helpers - typeof";
-      return module2.exports = _typeof2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
+      return module2.exports = _typeof2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o2) {
         return typeof o2;
-      } : function(o2) {
+      } : function (o2) {
         return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
       }, module2.exports.__esModule = true, module2.exports["default"] = module2.exports, _typeof2(o);
     }
@@ -108,7 +108,7 @@ var require_objectSpread2 = __commonJS({
       var t = Object.keys(e);
       if (Object.getOwnPropertySymbols) {
         var o = Object.getOwnPropertySymbols(e);
-        r && (o = o.filter(function(r2) {
+        r && (o = o.filter(function (r2) {
           return Object.getOwnPropertyDescriptor(e, r2).enumerable;
         })), t.push.apply(t, o);
       }
@@ -117,9 +117,9 @@ var require_objectSpread2 = __commonJS({
     function _objectSpread24(e) {
       for (var r = 1; r < arguments.length; r++) {
         var t = null != arguments[r] ? arguments[r] : {};
-        r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
+        r % 2 ? ownKeys(Object(t), true).forEach(function (r2) {
           defineProperty(e, r2, t[r2]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r2) {
           Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
         });
       }
@@ -171,24 +171,24 @@ var require_normalize_colors = __commonJS({
       }
       if (match = matchers.rgb.exec(color)) {
         return (parse255(match[1]) << 24 | // r
-        parse255(match[2]) << 16 | // g
-        parse255(match[3]) << 8 | // b
-        255) >>> // a
-        0;
+          parse255(match[2]) << 16 | // g
+          parse255(match[3]) << 8 | // b
+          255) >>> // a
+          0;
       }
       if (match = matchers.rgba.exec(color)) {
         if (match[6] !== void 0) {
           return (parse255(match[6]) << 24 | // r
-          parse255(match[7]) << 16 | // g
-          parse255(match[8]) << 8 | // b
-          parse1(match[9])) >>> // a
-          0;
+            parse255(match[7]) << 16 | // g
+            parse255(match[8]) << 8 | // b
+            parse1(match[9])) >>> // a
+            0;
         }
         return (parse255(match[2]) << 24 | // r
-        parse255(match[3]) << 16 | // g
-        parse255(match[4]) << 8 | // b
-        parse1(match[5])) >>> // a
-        0;
+          parse255(match[3]) << 16 | // g
+          parse255(match[4]) << 8 | // b
+          parse1(match[5])) >>> // a
+          0;
       }
       if (match = matchers.hex3.exec(color)) {
         return parseInt(
@@ -222,7 +222,7 @@ var require_normalize_colors = __commonJS({
           parsePercentage(match[3])
           // l
         ) | 255) >>> // a
-        0;
+          0;
       }
       if (match = matchers.hsla.exec(color)) {
         if (match[6] !== void 0) {
@@ -234,7 +234,7 @@ var require_normalize_colors = __commonJS({
             parsePercentage(match[8])
             // l
           ) | parse1(match[9])) >>> // a
-          0;
+            0;
         }
         return (hslToRgb(
           parse360(match[2]),
@@ -244,7 +244,7 @@ var require_normalize_colors = __commonJS({
           parsePercentage(match[4])
           // l
         ) | parse1(match[5])) >>> // a
-        0;
+          0;
       }
       if (match = matchers.hwb.exec(color)) {
         return (hwbToRgb(
@@ -255,7 +255,7 @@ var require_normalize_colors = __commonJS({
           parsePercentage(match[3])
           // b
         ) | 255) >>> // a
-        0;
+          0;
       }
       return null;
     }
@@ -863,7 +863,7 @@ function _arrayLikeToArray(arr, len) {
   return arr2;
 }
 function filterUniqueArray(arr) {
-  return arr.filter(function(val, index) {
+  return arr.filter(function (val, index) {
     return arr.lastIndexOf(val) === index;
   });
 }
@@ -1161,7 +1161,7 @@ var require_crossFade = __commonJS({
     var prefixes4 = ["-webkit-", ""];
     function crossFade2(property, value) {
       if (typeof value === "string" && !(0, _cssInJsUtils.isPrefixedValue)(value) && value.indexOf("cross-fade(") !== -1) {
-        return prefixes4.map(function(prefix) {
+        return prefixes4.map(function (prefix) {
           return value.replace(CROSS_FADE_REGEX, prefix + "cross-fade(");
         });
       }
@@ -1200,7 +1200,7 @@ var require_imageSet = __commonJS({
     var prefixes4 = ["-webkit-", ""];
     function imageSet2(property, value) {
       if (typeof value === "string" && !(0, _isPrefixedValue2.default)(value) && value.indexOf("image-set(") > -1) {
-        return prefixes4.map(function(prefix) {
+        return prefixes4.map(function (prefix) {
           return value.replace(/image-set\(/g, prefix + "image-set(");
         });
       }
@@ -1296,7 +1296,7 @@ var require_sizing = __commonJS({
     };
     function sizing2(property, value) {
       if (properties.hasOwnProperty(property) && values.hasOwnProperty(value)) {
-        return prefixes4.map(function(prefix) {
+        return prefixes4.map(function (prefix) {
           return prefix + value;
         });
       }
@@ -1377,13 +1377,13 @@ var require_transition = __commonJS({
     function transition2(property, value, style, propertyPrefixMap) {
       if (typeof value === "string" && properties.hasOwnProperty(property)) {
         var outputValue = prefixValue(value, propertyPrefixMap);
-        var webkitOutput = outputValue.split(/,(?![^()]*(?:\([^()]*\))?\))/g).filter(function(val) {
+        var webkitOutput = outputValue.split(/,(?![^()]*(?:\([^()]*\))?\))/g).filter(function (val) {
           return !/-moz-|-ms-/.test(val);
         }).join(",");
         if (property.indexOf("Webkit") > -1) {
           return webkitOutput;
         }
-        var mozOutput = outputValue.split(/,(?![^()]*(?:\([^()]*\))?\))/g).filter(function(val) {
+        var mozOutput = outputValue.split(/,(?![^()]*(?:\([^()]*\))?\))/g).filter(function (val) {
           return !/-webkit-|-ms-/.test(val);
         }).join(",");
         if (property.indexOf("Moz") > -1) {
@@ -1589,7 +1589,7 @@ var require_parse = __commonJS({
     var uUpper = "U".charCodeAt(0);
     var plus = "+".charCodeAt(0);
     var isUnicodeRange = /^[a-f0-9?-]+$/i;
-    module2.exports = function(input) {
+    module2.exports = function (input) {
       var tokens2 = [];
       var value = input;
       var next, quote, prev, token, escape, escapePos, whitespacePos, parenthesesOpenPos;
@@ -1924,7 +1924,7 @@ var require_unit = __commonJS({
       }
       return false;
     }
-    module2.exports = function(value) {
+    module2.exports = function (value) {
       var pos = 0;
       var length = value.length;
       var code;
@@ -1991,10 +1991,10 @@ var require_lib = __commonJS({
       }
       return new ValueParser(value);
     }
-    ValueParser.prototype.toString = function() {
+    ValueParser.prototype.toString = function () {
       return Array.isArray(this.nodes) ? stringify(this.nodes) : "";
     };
-    ValueParser.prototype.walk = function(cb, bubble) {
+    ValueParser.prototype.walk = function (cb, bubble) {
       walk(this.nodes, cb, bubble);
       return this;
     };
@@ -2010,7 +2010,7 @@ var require_extends = __commonJS({
   "../../node_modules/.pnpm/@babel+runtime@7.28.4/node_modules/@babel/runtime/helpers/extends.js"(exports2, module2) {
     "use strict";
     function _extends13() {
-      return module2.exports = _extends13 = Object.assign ? Object.assign.bind() : function(n) {
+      return module2.exports = _extends13 = Object.assign ? Object.assign.bind() : function (n) {
         for (var e = 1; e < arguments.length; e++) {
           var t = arguments[e];
           for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
@@ -2026,11 +2026,11 @@ var require_extends = __commonJS({
 var require_invariant = __commonJS({
   "../../node_modules/.pnpm/fbjs@3.0.5/node_modules/fbjs/lib/invariant.js"(exports2, module2) {
     "use strict";
-    var validateFormat = process.env.NODE_ENV !== "production" ? function(format2) {
+    var validateFormat = process.env.NODE_ENV !== "production" ? function (format2) {
       if (format2 === void 0) {
         throw new Error("invariant(...): Second argument must be a string.");
       }
-    } : function(format2) {
+    } : function (format2) {
     };
     function invariant22(condition, format2) {
       for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
@@ -2043,7 +2043,7 @@ var require_invariant = __commonJS({
           error2 = new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");
         } else {
           var argIndex = 0;
-          error2 = new Error(format2.replace(/%s/g, function() {
+          error2 = new Error(format2.replace(/%s/g, function () {
             return String(args[argIndex++]);
           }));
           error2.name = "Invariant Violation";
@@ -2096,7 +2096,7 @@ var require_createForOfIteratorHelperLoose = __commonJS({
       if (Array.isArray(r) || (t = unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) {
         t && (r = t);
         var o = 0;
-        return function() {
+        return function () {
           return o >= r.length ? {
             done: true
           } : {
@@ -2116,7 +2116,7 @@ var require_emptyFunction = __commonJS({
   "../../node_modules/.pnpm/fbjs@3.0.5/node_modules/fbjs/lib/emptyFunction.js"(exports2, module2) {
     "use strict";
     function makeEmptyFunction(arg) {
-      return function() {
+      return function () {
         return arg;
       };
     }
@@ -2126,10 +2126,10 @@ var require_emptyFunction = __commonJS({
     emptyFunction2.thatReturnsFalse = makeEmptyFunction(false);
     emptyFunction2.thatReturnsTrue = makeEmptyFunction(true);
     emptyFunction2.thatReturnsNull = makeEmptyFunction(null);
-    emptyFunction2.thatReturnsThis = function() {
+    emptyFunction2.thatReturnsThis = function () {
       return this;
     };
-    emptyFunction2.thatReturnsArgument = function(arg) {
+    emptyFunction2.thatReturnsArgument = function (arg) {
       return arg;
     };
     module2.exports = emptyFunction2;
@@ -2146,7 +2146,7 @@ var require_warning = __commonJS({
         args[_key - 1] = arguments[_key];
       }
       var argIndex = 0;
-      var message = "Warning: " + format2.replace(/%s/g, function() {
+      var message = "Warning: " + format2.replace(/%s/g, function () {
         return args[argIndex++];
       });
       if (typeof console !== "undefined") {
@@ -2157,7 +2157,7 @@ var require_warning = __commonJS({
       } catch (x) {
       }
     }
-    var warning2 = process.env.NODE_ENV !== "production" ? function(condition, format2) {
+    var warning2 = process.env.NODE_ENV !== "production" ? function (condition, format2) {
       if (format2 === void 0) {
         throw new Error("`warning(condition, format, ...args)` requires a warning message argument");
       }
@@ -2343,6 +2343,7 @@ __export(index_exports, {
   SliderRange: () => SliderRange,
   SliderThumb: () => SliderThumb,
   SliderTrack: () => SliderTrack,
+  StarRating: () => StarRating,
   Stepper: () => Stepper,
   Switch: () => Switch,
   SwitchComponent: () => SwitchComponent,
@@ -2534,10 +2535,12 @@ var AccordionContentFrame = (0, import_tamagui4.styled)(import_tamagui4.Accordio
   exitStyle: { opacity: 0, height: 0 }
 });
 var AccordionTrigger = import_react2.default.forwardRef(({ children, ...props }, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(AccordionTriggerFrame, { ref, ...props, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(AccordionTriggerFrame, {
+    ref, ...props, children: [
     /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_tamagui4.Accordion.Header, { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_tamagui4.Paragraph, { fontWeight: "500", fontSize: "$3", children }) }),
     /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_tamagui4.Square, { animation: "quick", rotate: "0deg", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_tamagui4.Paragraph, { fontSize: "$2", children: "\u25BC" }) })
-  ] });
+    ]
+  });
 });
 AccordionTrigger.displayName = "AccordionTrigger";
 var AccordionContent = import_react2.default.forwardRef(({ children, ...props }, ref) => {
@@ -2982,10 +2985,12 @@ var SliderThumb = (0, import_tamagui9.styled)(import_tamagui9.Slider.Thumb, {
   }
 });
 var Slider = import_react7.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(SliderFrame, { ref, ...props, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(SliderFrame, {
+    ref, ...props, children: [
     /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SliderTrack, { children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SliderRange, {}) }),
     /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SliderThumb, {})
-  ] });
+    ]
+  });
 });
 Slider.displayName = "Slider";
 
@@ -3224,7 +3229,7 @@ var Textarea = withErrorLogging(
 var import_react11 = __toESM(require("react"));
 var import_tamagui16 = require("tamagui");
 var import_jsx_runtime11 = require("react/jsx-runtime");
-var CheckIcon = () => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+var CheckIcon = () => /* @__PURE__ */(0, import_jsx_runtime11.jsx)(
   import_tamagui16.View,
   {
     width: 8,
@@ -3456,25 +3461,33 @@ var DialogTrigger = import_tamagui19.Dialog.Trigger;
 var DialogPortal = import_tamagui19.Dialog.Portal;
 var DialogClose = import_tamagui19.Dialog.Close;
 var DialogContentComposite = import_react13.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DialogPortal, { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DialogPortal, {
+    children: [
     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(DialogOverlay, {}, "overlay"),
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DialogContent, { ref, ...props, children: [
-      props.children,
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui19.Unspaced, { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui19.Dialog.Close, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-        import_tamagui19.Button,
-        {
-          position: "absolute",
-          top: "$3",
-          right: "$3",
-          size: "$2",
-          circular: true,
-          backgroundColor: "transparent",
-          pressStyle: { backgroundColor: "$muted" },
-          children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui19.Text, { color: "$mutedForeground", children: "\u2715" })
-        }
-      ) }) })
-    ] }, "content")
-  ] });
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DialogContent, {
+      ref, ...props, children: [
+        props.children,
+      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui19.Unspaced, {
+          children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui19.Dialog.Close, {
+            asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+              import_tamagui19.Button,
+              {
+                position: "absolute",
+                top: "$3",
+                right: "$3",
+                size: "$2",
+                circular: true,
+                backgroundColor: "transparent",
+                pressStyle: { backgroundColor: "$muted" },
+                children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui19.Text, { color: "$mutedForeground", children: "\u2715" })
+              }
+            )
+          })
+        })
+      ]
+    }, "content")
+    ]
+  });
 });
 DialogContentComposite.displayName = "DialogContent";
 
@@ -3511,11 +3524,13 @@ var SheetContentFrame = (0, import_tamagui20.styled)(import_sheet.Sheet.Frame, {
   elevation: 5
 });
 var SheetContent = import_react14.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, {
+    children: [
     /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SheetOverlay, {}),
     /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SheetHandle, {}),
     /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SheetContentFrame, { ref, ...props })
-  ] });
+    ]
+  });
 });
 SheetContent.displayName = "SheetContent";
 var SheetHeader = (0, import_tamagui20.styled)(import_tamagui20.YStack, {
@@ -3591,10 +3606,12 @@ var PopoverArrow = (0, import_tamagui21.styled)(import_tamagui21.Popover.Arrow, 
 });
 var PopoverContent = import_react15.default.forwardRef(
   ({ children, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(PopoverContentFrame, { ref, ...props, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(PopoverContentFrame, {
+      ref, ...props, children: [
       /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(PopoverArrow, { size: "$3" }),
-      children
-    ] });
+        children
+      ]
+    });
   }
 );
 PopoverContent.displayName = "PopoverContent";
@@ -3737,8 +3754,8 @@ var SelectIconFrame = (0, import_tamagui24.styled)(import_tamagui24.View, {
   name: "SelectIcon",
   marginLeft: "$2"
 });
-var ChevronDownIcon = () => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Text, { fontSize: "$1", color: "$mutedForeground", children: "\u25BC" });
-var CheckIcon2 = () => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Text, { fontSize: "$3", color: "$primary", children: "\u2713" });
+var ChevronDownIcon = () => /* @__PURE__ */(0, import_jsx_runtime18.jsx)(import_tamagui24.Text, { fontSize: "$1", color: "$mutedForeground", children: "\u25BC" });
+var CheckIcon2 = () => /* @__PURE__ */(0, import_jsx_runtime18.jsx)(import_tamagui24.Text, { fontSize: "$3", color: "$primary", children: "\u2713" });
 var SelectImpl = import_react18.default.forwardRef(
   ({
     items,
@@ -3751,21 +3768,23 @@ var SelectImpl = import_react18.default.forwardRef(
     const content = (0, import_react18.useMemo)(() => {
       if (hasCustomChildren) return children;
       if (!items || items.length === 0) return null;
-      return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_jsx_runtime18.Fragment, { children: [
+      return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_jsx_runtime18.Fragment, {
+        children: [
         /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Trigger, { icon: ChevronDownIcon, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SelectTriggerFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Value, { placeholder }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
-          import_tamagui24.Sheet,
-          {
-            native: !import_tamagui24.isWeb,
-            modal: true,
-            dismissOnSnapToBottom: true,
-            animationConfig: {
-              type: "spring",
-              damping: 20,
-              mass: 1.2,
-              stiffness: 250
-            },
-            children: [
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Adapt, {
+          when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
+            import_tamagui24.Sheet,
+            {
+              native: !import_tamagui24.isWeb,
+              modal: true,
+              dismissOnSnapToBottom: true,
+              animationConfig: {
+                type: "spring",
+                damping: 20,
+                mass: 1.2,
+                stiffness: 250
+              },
+              children: [
               /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Sheet.Frame, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Sheet.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Adapt.Contents, {}) }) }),
               /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
                 import_tamagui24.Sheet.Overlay,
@@ -3775,21 +3794,31 @@ var SelectImpl = import_react18.default.forwardRef(
                   exitStyle: { opacity: 0 }
                 }
               )
-            ]
-          }
-        ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_tamagui24.Select.Content, { zIndex: 2e5, children: [
+              ]
+            }
+          )
+        }),
+        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_tamagui24.Select.Content, {
+          zIndex: 2e5, children: [
           /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.ScrollUpButton, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Viewport, { minWidth: 200, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_tamagui24.Select.Group, { children: [
-            props.label && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Label, { children: props.label }),
-            items.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_tamagui24.Select.Item, { value: item.value, index, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Viewport, {
+            minWidth: 200, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_tamagui24.Select.Group, {
+              children: [
+                props.label && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Label, { children: props.label }),
+                items.map((item, index) => /* @__PURE__ */(0, import_jsx_runtime18.jsxs)(import_tamagui24.Select.Item, {
+                  value: item.value, index, children: [
               /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.ItemText, { children: item.label }),
               /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.ItemIndicator, { marginLeft: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(CheckIcon2, {}) })
-            ] }, item.value))
-          ] }) }),
+                  ]
+                }, item.value))
+              ]
+            })
+          }),
           /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.ScrollDownButton, {})
-        ] })
-      ] });
+          ]
+        })
+        ]
+      });
     }, [items, placeholder, props.label, children, hasCustomChildren]);
     return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
       import_tamagui24.Select,
@@ -3935,10 +3964,12 @@ var ToastProvider = ({ children }) => {
   const dismiss = (0, import_react19.useCallback)((id2) => {
     setToasts((prev) => prev.filter((t) => t.id !== id2));
   }, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(ToastContext.Provider, { value: { toasts, toast, dismiss }, children: [
-    children,
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_portal.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastViewportFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_tamagui25.AnimatePresence, { children: toasts.map((t) => /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastItem, { toast: t, onDismiss: () => dismiss(t.id) }, t.id)) }) }) })
-  ] });
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(ToastContext.Provider, {
+    value: { toasts, toast, dismiss }, children: [
+      children,
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_portal.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastViewportFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_tamagui25.AnimatePresence, { children: toasts.map((t) => /* @__PURE__ */(0, import_jsx_runtime19.jsx)(ToastItem, { toast: t, onDismiss: () => dismiss(t.id) }, t.id)) }) }) })
+    ]
+  });
 };
 var ToastItem = ({ toast, onDismiss }) => {
   return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
@@ -3952,10 +3983,12 @@ var ToastItem = ({ toast, onDismiss }) => {
       scale: 1,
       y: 0,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(import_tamagui25.YStack, { flex: 1, gap: "$1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(import_tamagui25.YStack, {
+        flex: 1, gap: "$1", children: [
           toast.title && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastTitle, { variant: toast.variant, children: toast.title }),
           toast.description && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastDescription, { variant: toast.variant, children: toast.description })
-        ] }),
+        ]
+      }),
         toast.action,
         /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastCloseButton, { onPress: onDismiss, children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_tamagui25.Text, { children: "\u2715" }) })
       ]
@@ -4133,8 +4166,10 @@ var Calendar = ({
   if (!currentMonth) return null;
   const prevBtn = subtractOffset({ months: 1 });
   const nextBtn = addOffset({ months: 1 });
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(CalendarContainer, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_tamagui27.XStack, { justifyContent: "space-between", alignItems: "center", marginBottom: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(CalendarContainer, {
+    children: [
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_tamagui27.XStack, {
+      justifyContent: "space-between", alignItems: "center", marginBottom: "$4", children: [
       /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
         Button,
         {
@@ -4145,11 +4180,13 @@ var Calendar = ({
           children: "<"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(HeaderText, { children: [
-        currentMonth.month,
-        " ",
-        currentMonth.year
-      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(HeaderText, {
+        children: [
+          currentMonth.month,
+          " ",
+          currentMonth.year
+        ]
+      }),
       /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
         Button,
         {
@@ -4160,26 +4197,30 @@ var Calendar = ({
           children: ">"
         }
       )
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(WeekDaysGrid, { children: weekDays.map((day) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_tamagui27.Text, { width: 40, textAlign: "center", color: "$mutedForeground", fontSize: "$2", children: day.substring(0, 2) }, day)) }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(DaysGrid, { children: currentMonth.days.map((day, index) => {
-      const { onClick, ...dayProps } = dayButton(day);
-      return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
-        DayCell,
-        {
-          selected: day.selected,
-          today: day.now,
-          outside: !day.inCurrentMonth,
-          disabled: day.disabled,
-          onPress: (e) => {
-            onClick?.(e);
+      ]
+    }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(WeekDaysGrid, { children: weekDays.map((day) => /* @__PURE__ */(0, import_jsx_runtime20.jsx)(import_tamagui27.Text, { width: 40, textAlign: "center", color: "$mutedForeground", fontSize: "$2", children: day.substring(0, 2) }, day)) }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(DaysGrid, {
+      children: currentMonth.days.map((day, index) => {
+        const { onClick, ...dayProps } = dayButton(day);
+        return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+          DayCell,
+          {
+            selected: day.selected,
+            today: day.now,
+            outside: !day.inCurrentMonth,
+            disabled: day.disabled,
+            onPress: (e) => {
+              onClick?.(e);
+            },
+            children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(DayText, { selected: day.selected, children: day.day })
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(DayText, { selected: day.selected, children: day.day })
-        },
-        index
-      );
-    }) })
-  ] });
+          index
+        );
+      })
+    })
+    ]
+  });
 };
 
 // src/molecules/DatePicker.tsx
@@ -4198,29 +4239,37 @@ var DatePicker = ({
     onDateChange?.(newDate);
     setOpen(false);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(Popover, { open, onOpenChange: setOpen, placement: "bottom-start", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
-      Button,
-      {
-        variant: "outline",
-        justifyContent: "flex-start",
-        textAlign: "left",
-        width: 240,
-        paddingLeft: "$3",
-        children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(import_tamagui28.XStack, { gap: "$2", alignItems: "center", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(Popover, {
+    open, onOpenChange: setOpen, placement: "bottom-start", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(PopoverTrigger, {
+      asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+        Button,
+        {
+          variant: "outline",
+          justifyContent: "flex-start",
+          textAlign: "left",
+          width: 240,
+          paddingLeft: "$3",
+          children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(import_tamagui28.XStack, {
+            gap: "$2", alignItems: "center", children: [
           /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui29.Text, { children: "\u{1F4C5}" }),
           /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui29.Text, { color: date ? "$foreground" : "$mutedForeground", children: date ? (0, import_date_fns.format)(date, "PPP") : placeholder })
-        ] })
-      }
-    ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(PopoverContent, { padding: 0, width: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
-      Calendar,
-      {
-        selectedDate: date,
-        onDateChange: handleSelect
-      }
-    ) })
-  ] });
+            ]
+          })
+        }
+      )
+    }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(PopoverContent, {
+      padding: 0, width: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+        Calendar,
+        {
+          selectedDate: date,
+          onDateChange: handleSelect
+        }
+      )
+    })
+    ]
+  });
 };
 
 // src/molecules/OTPInput/OTPInput.tsx
@@ -4402,37 +4451,39 @@ var OTPInputImpl = import_react22.default.forwardRef(
         selectInput(0);
       }
     }, [autoFocus, focusInput, selectInput]);
-    return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(OTPInputFrame, { ref, ...frameProps, children: valueArray.map((char, index) => /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
-      OTPCellInput,
-      {
-        ref: (node) => {
-          inputRefs.current[index] = node;
+    return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(OTPInputFrame, {
+      ref, ...frameProps, children: valueArray.map((char, index) => /* @__PURE__ */(0, import_jsx_runtime22.jsx)(
+        OTPCellInput,
+        {
+          ref: (node) => {
+            inputRefs.current[index] = node;
+          },
+          value: char,
+          onChange: (event3) => {
+            const e = event3;
+            handleInputChange(index, e.target?.value ?? "");
+          },
+          onChangeText: (text) => handleInputChange(index, text ?? ""),
+          ...import_tamagui30.isWeb ? {
+            onKeyDown: (event3) => handleKeyDown(index, event3),
+            onPaste: (event3) => handlePaste(index, event3),
+            type: mask ? "password" : "text",
+            inputMode: allowedCharacters === "numeric" ? "numeric" : "text"
+          } : {
+            keyboardType: allowedCharacters === "numeric" ? "number-pad" : "default",
+            secureTextEntry: mask,
+            editable: !disabled
+          },
+          onFocus: () => selectInput(index),
+          autoFocus: autoFocus && index === 0,
+          autoCorrect: false,
+          autoCapitalize: "none",
+          disabled: import_tamagui30.isWeb ? disabled : void 0,
+          ...inputProps
         },
-        value: char,
-        onChange: (event3) => {
-          const e = event3;
-          handleInputChange(index, e.target?.value ?? "");
-        },
-        onChangeText: (text) => handleInputChange(index, text ?? ""),
-        ...import_tamagui30.isWeb ? {
-          onKeyDown: (event3) => handleKeyDown(index, event3),
-          onPaste: (event3) => handlePaste(index, event3),
-          type: mask ? "password" : "text",
-          inputMode: allowedCharacters === "numeric" ? "numeric" : "text"
-        } : {
-          keyboardType: allowedCharacters === "numeric" ? "number-pad" : "default",
-          secureTextEntry: mask,
-          editable: !disabled
-        },
-        onFocus: () => selectInput(index),
-        autoFocus: autoFocus && index === 0,
-        autoCorrect: false,
-        autoCapitalize: "none",
-        disabled: import_tamagui30.isWeb ? disabled : void 0,
-        ...inputProps
-      },
-      `otp-input-${index}`
-    )) });
+        `otp-input-${index}`
+      ))
+    });
   }
 );
 OTPInputImpl.displayName = "OTPInput";
@@ -4566,80 +4617,82 @@ var Pagination = ({
   }
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(PaginationRoot, { role: "navigation", "aria-label": ariaLabel, children: [
-    showEdges && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
-      PaginationButton,
-      {
-        size,
-        disabled: disabled || isFirstPage,
-        "aria-label": "First page",
-        onPress: () => handleChange(1),
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "First page" }),
-          "\xAB"
-        ]
-      }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
-      PaginationButton,
-      {
-        size,
-        disabled: disabled || isFirstPage,
-        "aria-label": "Previous page",
-        onPress: () => handleChange(currentPage - 1),
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "Previous page" }),
-          "\u2039"
-        ]
-      }
-    ),
-    paginationRange.map((pageNumber, index) => {
-      if (pageNumber === DOTS) {
-        return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(PaginationEllipsis, { "aria-hidden": true, children: "\u2026" }, `dots-${index}`);
-      }
-      const pageValue = pageNumber;
-      const isActive = pageValue === currentPage;
-      return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(PaginationRoot, {
+    role: "navigation", "aria-label": ariaLabel, children: [
+      showEdges && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
         PaginationButton,
         {
           size,
-          active: isActive,
-          "aria-current": isActive ? "page" : void 0,
-          "aria-label": `Go to page ${pageValue}`,
-          disabled,
-          onPress: () => handleChange(pageValue),
-          children: pageValue
-        },
-        pageValue
-      );
-    }),
+          disabled: disabled || isFirstPage,
+          "aria-label": "First page",
+          onPress: () => handleChange(1),
+          children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "First page" }),
+            "\xAB"
+          ]
+        }
+      ),
     /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
-      PaginationButton,
-      {
-        size,
-        disabled: disabled || isLastPage,
-        "aria-label": "Next page",
-        onPress: () => handleChange(currentPage + 1),
-        children: [
+        PaginationButton,
+        {
+          size,
+          disabled: disabled || isFirstPage,
+          "aria-label": "Previous page",
+          onPress: () => handleChange(currentPage - 1),
+          children: [
+          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "Previous page" }),
+            "\u2039"
+          ]
+        }
+      ),
+      paginationRange.map((pageNumber, index) => {
+        if (pageNumber === DOTS) {
+          return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(PaginationEllipsis, { "aria-hidden": true, children: "\u2026" }, `dots-${index}`);
+        }
+        const pageValue = pageNumber;
+        const isActive = pageValue === currentPage;
+        return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+          PaginationButton,
+          {
+            size,
+            active: isActive,
+            "aria-current": isActive ? "page" : void 0,
+            "aria-label": `Go to page ${pageValue}`,
+            disabled,
+            onPress: () => handleChange(pageValue),
+            children: pageValue
+          },
+          pageValue
+        );
+      }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
+        PaginationButton,
+        {
+          size,
+          disabled: disabled || isLastPage,
+          "aria-label": "Next page",
+          onPress: () => handleChange(currentPage + 1),
+          children: [
           /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "Next page" }),
-          "\u203A"
-        ]
-      }
-    ),
-    showEdges && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
-      PaginationButton,
-      {
-        size,
-        disabled: disabled || isLastPage,
-        "aria-label": "Last page",
-        onPress: () => handleChange(totalPages),
-        children: [
+            "\u203A"
+          ]
+        }
+      ),
+      showEdges && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
+        PaginationButton,
+        {
+          size,
+          disabled: disabled || isLastPage,
+          "aria-label": "Last page",
+          onPress: () => handleChange(totalPages),
+          children: [
           /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "Last page" }),
-          "\xBB"
-        ]
-      }
-    )
-  ] });
+            "\xBB"
+          ]
+        }
+      )
+    ]
+  });
 };
 Pagination.displayName = "Pagination";
 
@@ -4703,23 +4756,29 @@ var Breadcrumb = ({
   if (!items || items.length === 0) {
     return null;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbRoot, { role: "navigation", "aria-label": ariaLabel, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbList, { role: "list", children: items.map((item, index) => {
-    const isLast = index === items.length - 1;
-    const linkRel = item.rel ?? (item.target === "_blank" ? "noreferrer noopener" : void 0);
-    return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(BreadcrumbItemWrapper, { role: "listitem", children: [
-      isLast ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbCurrent, { "aria-current": "page", children: item.label }) : item.href ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
-        BreadcrumbLink,
-        {
-          href: item.href,
-          target: item.target,
-          rel: linkRel,
-          onPress: item.onPress,
-          children: item.label
-        }
-      ) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbButton, { onPress: item.onPress, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbButtonLabel, { children: item.label }) }),
-      !isLast && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbSeparator, { "aria-hidden": true, children: separator })
-    ] }, `${item.label}-${index}`);
-  }) }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbRoot, {
+    role: "navigation", "aria-label": ariaLabel, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbList, {
+      role: "list", children: items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        const linkRel = item.rel ?? (item.target === "_blank" ? "noreferrer noopener" : void 0);
+        return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(BreadcrumbItemWrapper, {
+          role: "listitem", children: [
+            isLast ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbCurrent, { "aria-current": "page", children: item.label }) : item.href ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
+              BreadcrumbLink,
+              {
+                href: item.href,
+                target: item.target,
+                rel: linkRel,
+                onPress: item.onPress,
+                children: item.label
+              }
+            ) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbButton, { onPress: item.onPress, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbButtonLabel, { children: item.label }) }),
+            !isLast && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbSeparator, { "aria-hidden": true, children: separator })
+          ]
+        }, `${item.label}-${index}`);
+      })
+    })
+  });
 };
 Breadcrumb.displayName = "Breadcrumb";
 
@@ -4851,8 +4910,9 @@ var ContextMenuCheckboxItem = import_react25.default.forwardRef(({ className: _c
   const _ = _className;
   return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(ContextMenuCheckboxItemFrame, { ref, checked, ...props, children: [
     /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.XStack, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", width: "$3.5", height: "$3.5", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ContextMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.Text, { children: "\u2713" }) }) }),
-    children
-  ] });
+      children
+    ]
+  });
 });
 ContextMenuCheckboxItem.displayName = ContextMenuPrimitive.CheckboxItem.displayName;
 var ContextMenuRadioItemFrame = (0, import_tamagui33.styled)(ContextMenuPrimitive.RadioItem, {
@@ -4888,8 +4948,9 @@ var ContextMenuRadioItem = import_react25.default.forwardRef(({ className: _clas
   const _ = _className;
   return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(ContextMenuRadioItemFrame, { ref, ...props, children: [
     /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.XStack, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", width: "$3.5", height: "$3.5", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ContextMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.Text, { children: "\u25CF" }) }) }),
-    children
-  ] });
+      children
+    ]
+  });
 });
 ContextMenuRadioItem.displayName = ContextMenuPrimitive.RadioItem.displayName;
 var ContextMenuLabel = (0, import_tamagui33.styled)(ContextMenuPrimitive.Label, {
@@ -5155,15 +5216,16 @@ var MenubarContentFrame = (0, import_tamagui35.styled)(import_react_menubar.Cont
   shadowOpacity: 0.1
 });
 var MenubarContent = import_react26.default.forwardRef(({ align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react_menubar.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
-  MenubarContentFrame,
-  {
-    ref,
-    align,
-    alignOffset,
-    sideOffset,
-    ...props
-  }
-) }));
+    MenubarContentFrame,
+    {
+      ref,
+      align,
+      alignOffset,
+      sideOffset,
+      ...props
+    }
+  )
+}));
 MenubarContent.displayName = import_react_menubar.Content.displayName;
 var MenubarItemFrame = (0, import_tamagui35.styled)(import_react_menubar.Item, {
   name: "MenubarItem",
@@ -5442,8 +5504,10 @@ var Tooltip = import_react27.default.forwardRef(({ children, content, ...props }
     /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(TooltipContent, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(TooltipArrow, {}),
       typeof content === "string" ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui37.Paragraph, { size: "$2", children: content }) : content
-    ] })
-  ] });
+      ]
+    })
+    ]
+  });
 });
 Tooltip.displayName = "Tooltip";
 
@@ -5721,10 +5785,13 @@ function DataTable({
     /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.ScrollView, { horizontal: true, showsHorizontalScrollIndicator: true, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_tamagui40.YStack, { minWidth: "100%", children: [
       /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableHeader, { children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableRow, { borderBottomWidth: 1, paddingVertical: "$3", children: headerGroup.headers.map((header) => {
         return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.View, { style: { flex: 1, minWidth: 100 }, children: header.isPlaceholder ? null : (0, import_react_table.flexRender)(
-          header.column.columnDef.header,
-          header.getContext()
-        ) }, header.id);
-      }) }, headerGroup.id)) }),
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )
+                }, header.id);
+              })
+            }, headerGroup.id))
+          }),
       /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.YStack, { children: table.getRowModel().rows?.length ? table.getRowModel().rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableRow, { "data-state": row.getIsSelected() && "selected", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.View, { style: { flex: 1, minWidth: 100 }, children: (0, import_react_table.flexRender)(cell.column.columnDef.cell, cell.getContext()) }, cell.id)) }, row.id)) : /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableRow, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.View, { style: { flex: 1, alignItems: "center", padding: 20 }, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableHeadText, { children: "No results." }) }) }) })
     ] }) }) }),
     /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_tamagui40.XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
@@ -5748,8 +5815,10 @@ function DataTable({
           children: "Next"
         }
       )
-    ] })
-  ] });
+      ]
+    })
+    ]
+  });
 }
 var Table = {
   Container: TableContainer,
@@ -5853,17 +5922,18 @@ var CarouselContent = import_react30.default.forwardRef(
   ({ ...props }, ref) => {
     const { carouselRef, orientation } = useCarousel();
     return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui41.View, { ref: carouselRef, overflow: "hidden", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
-      CarouselContentFrame,
-      {
-        ref,
-        flexDirection: orientation === "horizontal" ? "row" : "column",
-        marginTop: orientation === "horizontal" ? 0 : "-$4",
-        paddingTop: orientation === "horizontal" ? 0 : "$4",
-        marginLeft: orientation === "horizontal" ? "-$4" : 0,
-        paddingLeft: orientation === "horizontal" ? "$4" : 0,
-        ...props
-      }
-    ) });
+        CarouselContentFrame,
+        {
+          ref,
+          flexDirection: orientation === "horizontal" ? "row" : "column",
+          marginTop: orientation === "horizontal" ? 0 : "-$4",
+          paddingTop: orientation === "horizontal" ? 0 : "$4",
+          marginLeft: orientation === "horizontal" ? "-$4" : 0,
+          paddingLeft: orientation === "horizontal" ? "$4" : 0,
+          ...props
+        }
+      )
+    });
   }
 );
 CarouselContent.displayName = "CarouselContent";
@@ -5979,12 +6049,14 @@ var Command = import_react31.default.forwardRef(
 Command.displayName = import_cmdk.Command.displayName;
 var CommandDialog = ({ children, ...props }) => {
   return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Dialog, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(DialogContentComposite, { padding: 0, overflow: "hidden", maxWidth: 600, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
-    Command,
-    {
-      className: "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
-      children
-    }
-  ) }) });
+        Command,
+        {
+          className: "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
+          children
+        }
+      )
+    })
+  });
 };
 var CommandInputFrame = (0, import_tamagui42.styled)(import_tamagui42.View, {
   flexDirection: "row",
@@ -6014,7 +6086,8 @@ var CommandInput = import_react31.default.forwardRef(
         ...props
       }
     )
-  ] })
+    ]
+  })
 );
 CommandInput.displayName = import_cmdk.Command.Input.displayName;
 var CommandListFrame = (0, import_tamagui42.styled)(import_tamagui42.View, {
@@ -6074,18 +6147,19 @@ var CommandItemFrame = (0, import_tamagui42.styled)(import_tamagui42.View, {
 });
 var CommandItem = import_react31.default.forwardRef(
   ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(CommandItemFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
-    import_cmdk.Command.Item,
-    {
-      className: "aria-selected:bg-muted aria-selected:text-accent-foreground",
-      style: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center"
-        // Styles for cmdk selection usually need CSS or classNames
-      },
-      ...props
-    }
-  ) })
+      import_cmdk.Command.Item,
+      {
+        className: "aria-selected:bg-muted aria-selected:text-accent-foreground",
+        style: {
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center"
+          // Styles for cmdk selection usually need CSS or classNames
+        },
+        ...props
+      }
+    )
+  })
 );
 CommandItem.displayName = import_cmdk.Command.Item.displayName;
 var CommandShortcut = (0, import_tamagui42.styled)(import_tamagui42.Text, {
@@ -6113,38 +6187,39 @@ var Sidebar = ({ children, variant = "fixed" }) => {
   }
   const desktopSidebar = /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui43.AnimatePresence, { children: /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(
     import_tamagui43.YStack,
-    {
-      animation: "medium",
-      width: isCollapsed && variant === "collapsible" ? 60 : 280,
-      borderRightWidth: 1,
-      borderColor: "$borderColor",
-      padding: "$4",
-      space: "$2",
-      ...variant === "floating" && {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        bottom: 0,
-        backgroundColor: "$background",
-        zIndex: 10
-      },
-      children: [
-        children,
+      {
+        animation: "medium",
+        width: isCollapsed && variant === "collapsible" ? 60 : 280,
+        borderRightWidth: 1,
+        borderColor: "$borderColor",
+        padding: "$4",
+        space: "$2",
+        ...variant === "floating" && {
+          position: "absolute",
+          top: 0,
+          left: 0,
+          bottom: 0,
+          backgroundColor: "$background",
+          zIndex: 10
+        },
+        children: [
+          children,
         variant === "collapsible" && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
-          Button,
-          {
-            icon: isCollapsed ? import_lucide_icons2.ChevronRight : import_lucide_icons2.ChevronLeft,
-            onPress: toggleSidebar,
-            circular: true,
-            position: "absolute",
-            top: 20,
-            right: -15,
-            zIndex: 20
-          }
-        )
-      ]
-    }
-  ) });
+            Button,
+            {
+              icon: isCollapsed ? import_lucide_icons2.ChevronRight : import_lucide_icons2.ChevronLeft,
+              onPress: toggleSidebar,
+              circular: true,
+              position: "absolute",
+              top: 20,
+              right: -15,
+              zIndex: 20
+            }
+          )
+        ]
+      }
+    )
+  });
   return desktopSidebar;
 };
 
@@ -6167,11 +6242,11 @@ var BarChart = ({
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
   return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("div", { style: { height, width: width || "100%" }, children: /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(
-    import_victory.VictoryChart,
-    {
-      domainPadding: { x: 20 },
-      height,
-      width,
+      import_victory.VictoryChart,
+      {
+        domainPadding: { x: 20 },
+        height,
+        width,
       containerComponent: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_victory.VictoryContainer, { responsive: !width }),
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
@@ -6206,10 +6281,96 @@ var BarChart = ({
             cornerRadius: { top: 4 }
           }
         )
-      ]
-    }
-  ) });
+        ]
+      }
+    )
+  });
 };
+
+// src/molecules/StarRating/StarRating.tsx
+var import_react31 = require("react");
+var import_tamagui43 = require("tamagui");
+var import_lucide_icons3 = require("@tamagui/lucide-icons");
+var import_jsx_runtime33 = require("react/jsx-runtime");
+var StarRating = (0, import_react31.forwardRef)(({
+  count = 5,
+  onChange,
+  value,
+  defaultValue: defaultValue2 = null,
+  disabled,
+  iconProps,
+  gap = "$1",
+  Icon = import_lucide_icons3.Star,
+  size = "$1",
+  colorHover = "$yellow7",
+  colorActiveHover = "$yellow8",
+  colorActive = "$yellow10",
+  color = "$gray7",
+  ...stackProps
+}, ref) => {
+  const [internalRating, setInternalRating] = (0, import_react31.useState)(defaultValue2);
+  const [hoverRating, setHoverRating] = (0, import_react31.useState)(null);
+  const isControlled = value !== void 0;
+  const currentRatingValue = isControlled ? value : internalRating;
+  const arr = Array.from(Array(count).keys());
+  const handlePress = (ratingToSet) => {
+    if (disabled) return;
+    const newRating = currentRatingValue === ratingToSet ? null : ratingToSet;
+    if (!isControlled) {
+      setInternalRating(newRating);
+    }
+    onChange?.(newRating);
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui43.XStack, {
+    gap, ...stackProps, ref, children: arr.map((idx) => {
+      const ratingValue = idx + 1;
+      const filled = ratingValue <= (currentRatingValue || 0);
+      const hovered = ratingValue <= (hoverRating || 0);
+      let currentColor = color;
+      if (hoverRating !== null) {
+        if (hovered) {
+          currentColor = colorHover;
+        }
+      } else {
+        if (filled) {
+          currentColor = colorActive;
+        }
+      }
+      if (filled) {
+        currentColor = hovered ? colorActiveHover : colorActive;
+      } else {
+        currentColor = hovered ? colorHover : color;
+      }
+      return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+        import_tamagui43.SizableStack,
+        {
+          size,
+          onHoverIn: () => {
+            if (disabled) return;
+            setHoverRating(ratingValue);
+          },
+          onHoverOut: () => {
+            if (disabled) return;
+            setHoverRating(null);
+          },
+          onPress: () => handlePress(ratingValue),
+          cursor: disabled ? "not-allowed" : "pointer",
+          children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+            Icon,
+            {
+              ...iconProps,
+              size,
+              color: currentColor,
+              fill: filled ? currentColor : "transparent"
+            }
+          )
+        },
+        `${ratingValue}`
+      );
+    })
+  });
+});
+StarRating.displayName = "StarRating";
 
 // src/providers/AppProviders.tsx
 var import_tamagui48 = require("tamagui");
@@ -8567,7 +8728,7 @@ var resizeObserver = null;
 function getResizeObserver() {
   if (canUseDom_default && typeof window.ResizeObserver !== "undefined") {
     if (resizeObserver == null) {
-      resizeObserver = new window.ResizeObserver(function(entries) {
+      resizeObserver = new window.ResizeObserver(function (entries) {
         entries.forEach((entry) => {
           var node = entry.target;
           var onLayout = node[DOM_LAYOUT_HANDLER_NAME];
@@ -9248,12 +9409,12 @@ function eventListener(domEvent) {
       }
     } else {
       var isTerminateEvent = isCancelish(eventType) || // native context menu
-      eventType === "contextmenu" || // window blur
-      eventType === "blur" && eventTarget === window || // responder (or ancestors) blur
-      eventType === "blur" && eventTarget.contains(node) && domEvent.relatedTarget !== node || // native scroll without using a pointer
-      isScrollEvent && trackedTouchCount === 0 || // native scroll on node that is parent of the responder (allow siblings to scroll)
-      isScrollEvent && eventTarget.contains(node) && eventTarget !== node || // native select/selectionchange on node
-      isSelectionChangeEvent && hasValidSelection(domEvent);
+        eventType === "contextmenu" || // window blur
+        eventType === "blur" && eventTarget === window || // responder (or ancestors) blur
+        eventType === "blur" && eventTarget.contains(node) && domEvent.relatedTarget !== node || // native scroll without using a pointer
+        isScrollEvent && trackedTouchCount === 0 || // native scroll on node that is parent of the responder (allow siblings to scroll)
+        isScrollEvent && eventTarget.contains(node) && eventTarget !== node || // native select/selectionchange on node
+        isSelectionChangeEvent && hasValidSelection(domEvent);
       var isReleaseEvent = isEndEvent && !isTerminateEvent && !hasTargetTouches(node, domEvent.touches);
       if (isEndEvent) {
         if (onResponderEnd != null) {
@@ -10953,9 +11114,9 @@ var ChildListCollection = class {
     }
   }
   forEach(fn) {
-    for (var _iterator = (0, import_createForOfIteratorHelperLoose.default)(this._cellKeyToChildren.values()), _step; !(_step = _iterator()).done; ) {
+    for (var _iterator = (0, import_createForOfIteratorHelperLoose.default)(this._cellKeyToChildren.values()), _step; !(_step = _iterator()).done;) {
       var listSet = _step.value;
-      for (var _iterator2 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step2; !(_step2 = _iterator2()).done; ) {
+      for (var _iterator2 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step2; !(_step2 = _iterator2()).done;) {
         var list = _step2.value;
         fn(list);
       }
@@ -10964,7 +11125,7 @@ var ChildListCollection = class {
   forEachInCell(cellKey, fn) {
     var _this$_cellKeyToChild2;
     var listSet = (_this$_cellKeyToChild2 = this._cellKeyToChildren.get(cellKey)) !== null && _this$_cellKeyToChild2 !== void 0 ? _this$_cellKeyToChild2 : [];
-    for (var _iterator3 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step3; !(_step3 = _iterator3()).done; ) {
+    for (var _iterator3 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step3; !(_step3 = _iterator3()).done;) {
       var list = _step3.value;
       fn(list);
     }
@@ -10972,7 +11133,7 @@ var ChildListCollection = class {
   anyInCell(cellKey, fn) {
     var _this$_cellKeyToChild3;
     var listSet = (_this$_cellKeyToChild3 = this._cellKeyToChildren.get(cellKey)) !== null && _this$_cellKeyToChild3 !== void 0 ? _this$_cellKeyToChild3 : [];
-    for (var _iterator4 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step4; !(_step4 = _iterator4()).done; ) {
+    for (var _iterator4 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step4; !(_step4 = _iterator4()).done;) {
       var list = _step4.value;
       if (fn(list)) {
         return true;
@@ -11308,13 +11469,13 @@ var ViewabilityHelper = class {
       return [viewable2.key, viewable2];
     }));
     var changed = [];
-    for (var _iterator = (0, import_createForOfIteratorHelperLoose2.default)(nextItems), _step; !(_step = _iterator()).done; ) {
+    for (var _iterator = (0, import_createForOfIteratorHelperLoose2.default)(nextItems), _step; !(_step = _iterator()).done;) {
       var _step$value = _step.value, key = _step$value[0], viewable = _step$value[1];
       if (!prevItems.has(key)) {
         changed.push(viewable);
       }
     }
-    for (var _iterator2 = (0, import_createForOfIteratorHelperLoose2.default)(prevItems), _step2; !(_step2 = _iterator2()).done; ) {
+    for (var _iterator2 = (0, import_createForOfIteratorHelperLoose2.default)(prevItems), _step2; !(_step2 = _iterator2()).done;) {
       var _step2$value = _step2.value, _key = _step2$value[0], _viewable = _step2$value[1];
       if (!nextItems.has(_key)) {
         changed.push((0, import_objectSpread28.default)((0, import_objectSpread28.default)({}, _viewable), {}, {
@@ -11881,14 +12042,14 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
           // $FlowFixMe[incompatible-use]
           /* @__PURE__ */ React51.createElement(ScrollView_default, (0, import_extends4.default)({}, props, {
             refreshControl: props.refreshControl == null ? /* @__PURE__ */ React51.createElement(
-              RefreshControl_default,
-              {
-                refreshing: props.refreshing,
-                onRefresh,
-                progressViewOffset: props.progressViewOffset
-              }
-            ) : props.refreshControl
-          }))
+            RefreshControl_default,
+            {
+              refreshing: props.refreshing,
+              onRefresh,
+              progressViewOffset: props.progressViewOffset
+            }
+          ) : props.refreshControl
+        }))
         );
       } else {
         return /* @__PURE__ */ React51.createElement(ScrollView_default, props);
@@ -12484,7 +12645,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       var spacerKey = this._getSpacerKey(!horizontal);
       var renderRegions = this.state.renderMask.enumerateRegions();
       var lastSpacer = findLastWhere(renderRegions, (r) => r.isSpacer);
-      for (var _iterator = (0, import_createForOfIteratorHelperLoose3.default)(renderRegions), _step; !(_step = _iterator()).done; ) {
+      for (var _iterator = (0, import_createForOfIteratorHelperLoose3.default)(renderRegions), _step; !(_step = _iterator()).done;) {
         var section = _step.value;
         if (section.isSpacer) {
           if (this.props.disableVirtualization) {
@@ -13085,13 +13246,13 @@ var FlatList = class extends React52.PureComponent {
     return (
       // $FlowFixMe[incompatible-exact] - `restProps` (`Props`) is inexact.
       /* @__PURE__ */ React52.createElement(VirtualizedList_default, (0, import_extends5.default)({}, restProps, {
-        getItem: this._getItem,
-        getItemCount: this._getItemCount,
-        keyExtractor: this._keyExtractor,
-        ref: this._captureRef,
-        viewabilityConfigCallbackPairs: this._virtualizedListPairs,
-        removeClippedSubviews: removeClippedSubviewsOrDefault(_removeClippedSubviews)
-      }, renderer(this.props.ListItemComponent, this.props.renderItem, columnWrapperStyle, numColumns, this.props.extraData)))
+      getItem: this._getItem,
+      getItemCount: this._getItemCount,
+      keyExtractor: this._keyExtractor,
+      ref: this._captureRef,
+      viewabilityConfigCallbackPairs: this._virtualizedListPairs,
+      removeClippedSubviews: removeClippedSubviewsOrDefault(_removeClippedSubviews)
+    }, renderer(this.props.ListItemComponent, this.props.renderItem, columnWrapperStyle, numColumns, this.props.extraData)))
     );
   }
 };
@@ -13216,7 +13377,7 @@ Platform_default2.OS === "android" && !!(NativeAnimatedModule != null && NativeA
 var flushQueueTimeout = null;
 var eventListenerGetValueCallbacks = {};
 var eventListenerAnimationFinishedCallbacks = {};
-var nativeOps = useSingleOpBatching ? (function() {
+var nativeOps = useSingleOpBatching ? (function () {
   var apis = [
     "createAnimatedNode",
     // 1
@@ -13714,7 +13875,7 @@ var AnimatedWithChildren = class extends AnimatedNode_default {
   __makeNative(platformConfig) {
     if (!this.__isNative) {
       this.__isNative = true;
-      for (var _iterator = (0, import_createForOfIteratorHelperLoose4.default)(this._children), _step; !(_step = _iterator()).done; ) {
+      for (var _iterator = (0, import_createForOfIteratorHelperLoose4.default)(this._children), _step; !(_step = _iterator()).done;) {
         var child = _step.value;
         child.__makeNative(platformConfig);
         NativeAnimatedHelper_default.API.connectAnimatedNodes(this.__getNativeTag(), child.__getNativeTag());
@@ -13752,7 +13913,7 @@ var AnimatedWithChildren = class extends AnimatedNode_default {
   __callListeners(value) {
     super.__callListeners(value);
     if (!this.__isNative) {
-      for (var _iterator2 = (0, import_createForOfIteratorHelperLoose4.default)(this._children), _step2; !(_step2 = _iterator2()).done; ) {
+      for (var _iterator2 = (0, import_createForOfIteratorHelperLoose4.default)(this._children), _step2; !(_step2 = _iterator2()).done;) {
         var child = _step2.value;
         if (child.__getValue) {
           child.__callListeners(child.__getValue());
@@ -14276,7 +14437,7 @@ var AnimatedEvent = class {
     if (this.__isNative) {
       if (__DEV__5) {
         var _validatedMapping = false;
-        return function() {
+        return function () {
           for (var _len = arguments.length, args = new Array(_len), _key2 = 0; _key2 < _len; _key2++) {
             args[_key2] = arguments[_key2];
           }
@@ -14291,7 +14452,7 @@ var AnimatedEvent = class {
       }
     }
     var validatedMapping = false;
-    return function() {
+    return function () {
       for (var _len2 = arguments.length, args = new Array(_len2), _key3 = 0; _key3 < _len2; _key3++) {
         args[_key3] = arguments[_key3];
       }
@@ -15183,13 +15344,13 @@ var Image = /* @__PURE__ */ React55.forwardRef((props, ref) => {
 });
 Image.displayName = "Image";
 var ImageWithStatics = Image;
-ImageWithStatics.getSize = function(uri, success, failure) {
+ImageWithStatics.getSize = function (uri, success, failure) {
   ImageLoader_default.getSize(uri, success, failure);
 };
-ImageWithStatics.prefetch = function(uri) {
+ImageWithStatics.prefetch = function (uri) {
   return ImageLoader_default.prefetch(uri);
 };
-ImageWithStatics.queryCache = function(uris) {
+ImageWithStatics.queryCache = function (uris) {
   return ImageLoader_default.queryCache(uris);
 };
 var styles7 = StyleSheet_default.create({
@@ -15425,7 +15586,7 @@ var VirtualizedSectionList = class extends React58.PureComponent {
     var listHeaderOffset = this.props.ListHeaderComponent ? 1 : 0;
     var stickyHeaderIndices = this.props.stickySectionHeadersEnabled ? [] : void 0;
     var itemCount = 0;
-    for (var _iterator = (0, import_createForOfIteratorHelperLoose5.default)(this.props.sections), _step; !(_step = _iterator()).done; ) {
+    for (var _iterator = (0, import_createForOfIteratorHelperLoose5.default)(this.props.sections), _step; !(_step = _iterator()).done;) {
       var section = _step.value;
       if (stickyHeaderIndices != null) {
         stickyHeaderIndices.push(itemCount + listHeaderOffset);
@@ -15534,54 +15695,56 @@ function ItemWithSeparator(props) {
     trailingItem: props.item,
     trailingSection: props.trailingSection
   }), leadingSeparatorProps = _React$useState3[0], setLeadingSeparatorProps = _React$useState3[1];
-  var _React$useState4 = React58.useState({
-    leadingItem: props.item,
-    leadingSection: props.leadingSection,
-    section: props.section,
-    trailingItem: props.trailingItem,
-    trailingSection: props.trailingSection
-  }), separatorProps = _React$useState4[0], setSeparatorProps = _React$useState4[1];
-  React58.useEffect(() => {
-    setSelfHighlightCallback(cellKey, setSeparatorHighlighted);
-    setSelfUpdatePropsCallback(cellKey, setSeparatorProps);
-    return () => {
-      setSelfUpdatePropsCallback(cellKey, null);
-      setSelfHighlightCallback(cellKey, null);
-    };
-  }, [cellKey, setSelfHighlightCallback, setSeparatorProps, setSelfUpdatePropsCallback]);
-  var separators = {
-    highlight: () => {
-      setLeadingSeparatorHighlighted(true);
-      setSeparatorHighlighted(true);
-      if (prevCellKey != null) {
-        updateHighlightFor(prevCellKey, true);
-      }
-    },
-    unhighlight: () => {
-      setLeadingSeparatorHighlighted(false);
-      setSeparatorHighlighted(false);
-      if (prevCellKey != null) {
-        updateHighlightFor(prevCellKey, false);
-      }
-    },
-    updateProps: (select, newProps) => {
-      if (select === "leading") {
-        if (LeadingSeparatorComponent != null) {
-          setLeadingSeparatorProps((0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, leadingSeparatorProps), newProps));
-        } else if (prevCellKey != null) {
-          updatePropsFor(prevCellKey, (0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, leadingSeparatorProps), newProps));
+  var _React$useState4 = React57.useState({
+    var _React$useState4 = React58.useState({
+      leadingItem: props.item,
+      leadingSection: props.leadingSection,
+      section: props.section,
+      trailingItem: props.trailingItem,
+      trailingSection: props.trailingSection
+    }), separatorProps = _React$useState4[0], setSeparatorProps = _React$useState4[1];
+    React57.useEffect(() => {
+      React58.useEffect(() => {
+        setSelfHighlightCallback(cellKey, setSeparatorHighlighted);
+        setSelfUpdatePropsCallback(cellKey, setSeparatorProps);
+        return () => {
+          setSelfUpdatePropsCallback(cellKey, null);
+          setSelfHighlightCallback(cellKey, null);
+        };
+      }, [cellKey, setSelfHighlightCallback, setSeparatorProps, setSelfUpdatePropsCallback]);
+      var separators = {
+        highlight: () => {
+          setLeadingSeparatorHighlighted(true);
+          setSeparatorHighlighted(true);
+          if (prevCellKey != null) {
+            updateHighlightFor(prevCellKey, true);
+          }
+        },
+        unhighlight: () => {
+          setLeadingSeparatorHighlighted(false);
+          setSeparatorHighlighted(false);
+          if (prevCellKey != null) {
+            updateHighlightFor(prevCellKey, false);
+          }
+        },
+        updateProps: (select, newProps) => {
+          if (select === "leading") {
+            if (LeadingSeparatorComponent != null) {
+              setLeadingSeparatorProps((0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, leadingSeparatorProps), newProps));
+            } else if (prevCellKey != null) {
+              updatePropsFor(prevCellKey, (0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, leadingSeparatorProps), newProps));
+            }
+          } else if (select === "trailing" && SeparatorComponent != null) {
+            setSeparatorProps((0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, separatorProps), newProps));
+          }
         }
-      } else if (select === "trailing" && SeparatorComponent != null) {
-        setSeparatorProps((0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, separatorProps), newProps));
-      }
-    }
-  };
-  var element = props.renderItem({
-    item,
-    index,
-    section,
-    separators
-  });
+      };
+      var element = props.renderItem({
+        item,
+        index,
+        section,
+        separators
+      });
   var leadingSeparator = LeadingSeparatorComponent != null && /* @__PURE__ */ React58.createElement(LeadingSeparatorComponent, (0, import_extends10.default)({
     highlighted: leadingSeparatorHiglighted
   }, leadingSeparatorProps));
@@ -15589,3201 +15752,3210 @@ function ItemWithSeparator(props) {
     highlighted: separatorHighlighted
   }, separatorProps));
   return leadingSeparator || separator ? /* @__PURE__ */ React58.createElement(View_default, null, inverted === false ? leadingSeparator : separator, element, inverted === false ? separator : leadingSeparator) : element;
-}
+    }
 var VirtualizedSectionList_default = VirtualizedSectionList;
 
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
-var _excluded12 = ["stickySectionHeadersEnabled"];
+    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
+    var _excluded12 = ["stickySectionHeadersEnabled"];
 var SectionList = class extends React59.PureComponent {
-  constructor() {
-    super(...arguments);
-    this._captureRef = (ref) => {
-      this._wrapperListRef = ref;
-    };
-  }
-  /**
-   * Scrolls to the item at the specified `sectionIndex` and `itemIndex` (within the section)
-   * positioned in the viewable area such that `viewPosition` 0 places it at the top (and may be
-   * covered by a sticky header), 1 at the bottom, and 0.5 centered in the middle. `viewOffset` is a
-   * fixed number of pixels to offset the final target position, e.g. to compensate for sticky
-   * headers.
-   *
-   * Note: cannot scroll to locations outside the render window without specifying the
-   * `getItemLayout` prop.
-   */
-  scrollToLocation(params) {
-    if (this._wrapperListRef != null) {
-      this._wrapperListRef.scrollToLocation(params);
-    }
-  }
-  /**
-   * Tells the list an interaction has occurred, which should trigger viewability calculations, e.g.
-   * if `waitForInteractions` is true and the user has not scrolled. This is typically called by
-   * taps on items or by navigation actions.
-   */
-  recordInteraction() {
-    var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
-    listRef && listRef.recordInteraction();
-  }
-  /**
-   * Displays the scroll indicators momentarily.
-   *
-   * @platform ios
-   */
-  flashScrollIndicators() {
-    var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
-    listRef && listRef.flashScrollIndicators();
-  }
-  /**
-   * Provides a handle to the underlying scroll responder.
-   */
-  getScrollResponder() {
-    var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
-    if (listRef) {
-      return listRef.getScrollResponder();
-    }
-  }
-  getScrollableNode() {
-    var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
-    if (listRef) {
-      return listRef.getScrollableNode();
-    }
-  }
-  render() {
-    var _this$props = this.props, _stickySectionHeadersEnabled = _this$props.stickySectionHeadersEnabled, restProps = (0, import_objectWithoutPropertiesLoose12.default)(_this$props, _excluded12);
-    var stickySectionHeadersEnabled = _stickySectionHeadersEnabled !== null && _stickySectionHeadersEnabled !== void 0 ? _stickySectionHeadersEnabled : Platform_default.OS === "ios";
+      constructor() {
+        super(...arguments);
+        this._captureRef = (ref) => {
+          this._wrapperListRef = ref;
+        };
+      }
+      /**
+       * Scrolls to the item at the specified `sectionIndex` and `itemIndex` (within the section)
+       * positioned in the viewable area such that `viewPosition` 0 places it at the top (and may be
+       * covered by a sticky header), 1 at the bottom, and 0.5 centered in the middle. `viewOffset` is a
+       * fixed number of pixels to offset the final target position, e.g. to compensate for sticky
+       * headers.
+       *
+       * Note: cannot scroll to locations outside the render window without specifying the
+       * `getItemLayout` prop.
+       */
+      scrollToLocation(params) {
+        if (this._wrapperListRef != null) {
+          this._wrapperListRef.scrollToLocation(params);
+        }
+      }
+      /**
+       * Tells the list an interaction has occurred, which should trigger viewability calculations, e.g.
+       * if `waitForInteractions` is true and the user has not scrolled. This is typically called by
+       * taps on items or by navigation actions.
+       */
+      recordInteraction() {
+        var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
+        listRef && listRef.recordInteraction();
+      }
+      /**
+       * Displays the scroll indicators momentarily.
+       *
+       * @platform ios
+       */
+      flashScrollIndicators() {
+        var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
+        listRef && listRef.flashScrollIndicators();
+      }
+      /**
+       * Provides a handle to the underlying scroll responder.
+       */
+      getScrollResponder() {
+        var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
+        if (listRef) {
+          return listRef.getScrollResponder();
+        }
+      }
+      getScrollableNode() {
+        var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
+        if (listRef) {
+          return listRef.getScrollableNode();
+        }
+      }
+      render() {
+        var _this$props = this.props, _stickySectionHeadersEnabled = _this$props.stickySectionHeadersEnabled, restProps = (0, import_objectWithoutPropertiesLoose12.default)(_this$props, _excluded12);
+        var stickySectionHeadersEnabled = _stickySectionHeadersEnabled !== null && _stickySectionHeadersEnabled !== void 0 ? _stickySectionHeadersEnabled : Platform_default.OS === "ios";
     return /* @__PURE__ */ React59.createElement(VirtualizedSectionList_default, (0, import_extends11.default)({}, restProps, {
-      stickySectionHeadersEnabled,
-      ref: this._captureRef,
-      getItemCount: (items) => items.length,
-      getItem: (items, index) => items[index]
-    }));
-  }
-};
+          stickySectionHeadersEnabled,
+          ref: this._captureRef,
+          getItemCount: (items) => items.length,
+          getItem: (items, index) => items[index]
+        }));
+      }
+    };
 
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/SectionList/index.js
-var SectionList_default = SectionList;
+    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/SectionList/index.js
+    var SectionList_default = SectionList;
 
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
+    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
 var SectionListWithEventThrottle = /* @__PURE__ */ React60.forwardRef((props, ref) => /* @__PURE__ */ React60.createElement(SectionList_default, (0, import_extends12.default)({
-  scrollEventThrottle: 1e-4
-}, props, {
-  ref
-})));
-var AnimatedSectionList_default = createAnimatedComponent(SectionListWithEventThrottle);
+      scrollEventThrottle: 1e-4
+    }, props, {
+      ref
+    })));
+    var AnimatedSectionList_default = createAnimatedComponent(SectionListWithEventThrottle);
 
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
+    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
 var React62 = __toESM(require("react"));
 
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Text/index.js
-var import_objectSpread219 = __toESM(require_objectSpread2());
-var import_objectWithoutPropertiesLoose13 = __toESM(require_objectWithoutPropertiesLoose());
+    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Text/index.js
+    var import_objectSpread219 = __toESM(require_objectSpread2());
+    var import_objectWithoutPropertiesLoose13 = __toESM(require_objectWithoutPropertiesLoose());
 var React61 = __toESM(require("react"));
-var _excluded13 = ["hrefAttrs", "numberOfLines", "onClick", "onLayout", "onPress", "onMoveShouldSetResponder", "onMoveShouldSetResponderCapture", "onResponderEnd", "onResponderGrant", "onResponderMove", "onResponderReject", "onResponderRelease", "onResponderStart", "onResponderTerminate", "onResponderTerminationRequest", "onScrollShouldSetResponder", "onScrollShouldSetResponderCapture", "onSelectionChangeShouldSetResponder", "onSelectionChangeShouldSetResponderCapture", "onStartShouldSetResponder", "onStartShouldSetResponderCapture", "selectable"];
-var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clickProps, focusProps, keyboardProps, mouseProps, touchProps, styleProps, {
-  href: true,
-  lang: true,
-  pointerEvents: true
-});
-var pickProps2 = (props) => pick(props, forwardPropsList2);
+    var _excluded13 = ["hrefAttrs", "numberOfLines", "onClick", "onLayout", "onPress", "onMoveShouldSetResponder", "onMoveShouldSetResponderCapture", "onResponderEnd", "onResponderGrant", "onResponderMove", "onResponderReject", "onResponderRelease", "onResponderStart", "onResponderTerminate", "onResponderTerminationRequest", "onScrollShouldSetResponder", "onScrollShouldSetResponderCapture", "onSelectionChangeShouldSetResponder", "onSelectionChangeShouldSetResponderCapture", "onStartShouldSetResponder", "onStartShouldSetResponderCapture", "selectable"];
+    var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clickProps, focusProps, keyboardProps, mouseProps, touchProps, styleProps, {
+      href: true,
+      lang: true,
+      pointerEvents: true
+    });
+    var pickProps2 = (props) => pick(props, forwardPropsList2);
 var Text16 = /* @__PURE__ */ React61.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, numberOfLines = props.numberOfLines, onClick = props.onClick, onLayout = props.onLayout, onPress = props.onPress, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, selectable = props.selectable, rest = (0, import_objectWithoutPropertiesLoose13.default)(props, _excluded13);
   var hasTextAncestor = React61.useContext(TextAncestorContext_default);
   var hostRef = React61.useRef(null);
-  var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
-  useElementLayout(hostRef, onLayout);
-  useResponderEvents(hostRef, {
-    onMoveShouldSetResponder,
-    onMoveShouldSetResponderCapture,
-    onResponderEnd,
-    onResponderGrant,
-    onResponderMove,
-    onResponderReject,
-    onResponderRelease,
-    onResponderStart,
-    onResponderTerminate,
-    onResponderTerminationRequest,
-    onScrollShouldSetResponder,
-    onScrollShouldSetResponderCapture,
-    onSelectionChangeShouldSetResponder,
-    onSelectionChangeShouldSetResponderCapture,
-    onStartShouldSetResponder,
-    onStartShouldSetResponderCapture
-  });
-  var handleClick = React61.useCallback((e) => {
-    if (onClick != null) {
-      onClick(e);
-    } else if (onPress != null) {
-      e.stopPropagation();
-      onPress(e);
-    }
-  }, [onClick, onPress]);
-  var component = hasTextAncestor ? "span" : "div";
-  var langDirection = props.lang != null ? getLocaleDirection(props.lang) : null;
-  var componentDirection = props.dir || langDirection;
-  var writingDirection = componentDirection || contextDirection;
-  var supportedProps = pickProps2(rest);
-  supportedProps.dir = componentDirection;
-  if (!hasTextAncestor) {
-    supportedProps.dir = componentDirection != null ? componentDirection : "auto";
-  }
-  if (onClick || onPress) {
-    supportedProps.onClick = handleClick;
-  }
-  supportedProps.style = [numberOfLines != null && numberOfLines > 1 && {
-    WebkitLineClamp: numberOfLines
-  }, hasTextAncestor === true ? styles8.textHasAncestor$raw : styles8.text$raw, numberOfLines === 1 && styles8.textOneLine, numberOfLines != null && numberOfLines > 1 && styles8.textMultiLine, props.style, selectable === true && styles8.selectable, selectable === false && styles8.notSelectable, onPress && styles8.pressable];
-  if (props.href != null) {
-    component = "a";
-    if (hrefAttrs != null) {
-      var download = hrefAttrs.download, rel = hrefAttrs.rel, target = hrefAttrs.target;
-      if (download != null) {
-        supportedProps.download = download;
-      }
-      if (rel != null) {
-        supportedProps.rel = rel;
-      }
-      if (typeof target === "string") {
-        supportedProps.target = target.charAt(0) !== "_" ? "_" + target : target;
-      }
-    }
-  }
-  var platformMethodsRef = usePlatformMethods(supportedProps);
-  var setRef = useMergeRefs(hostRef, platformMethodsRef, forwardedRef);
-  supportedProps.ref = setRef;
-  var element = createElement_default(component, supportedProps, {
-    writingDirection
-  });
-  return hasTextAncestor ? element : /* @__PURE__ */ React61.createElement(TextAncestorContext_default.Provider, {
-    value: true
-  }, element);
-});
-Text16.displayName = "Text";
-var textStyle = {
-  backgroundColor: "transparent",
-  border: "0 solid black",
-  boxSizing: "border-box",
-  color: "black",
-  display: "inline",
-  font: "14px System",
-  listStyle: "none",
-  margin: 0,
-  padding: 0,
-  position: "relative",
-  textAlign: "start",
-  textDecoration: "none",
-  whiteSpace: "pre-wrap",
-  wordWrap: "break-word"
-};
-var styles8 = StyleSheet_default.create({
-  text$raw: textStyle,
-  textHasAncestor$raw: (0, import_objectSpread219.default)((0, import_objectSpread219.default)({}, textStyle), {}, {
-    color: "inherit",
-    font: "inherit",
-    textAlign: "inherit",
-    whiteSpace: "inherit"
-  }),
-  textOneLine: {
-    maxWidth: "100%",
-    overflow: "hidden",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-    wordWrap: "normal"
-  },
-  // See #13
-  textMultiLine: {
-    display: "-webkit-box",
-    maxWidth: "100%",
-    overflow: "clip",
-    textOverflow: "ellipsis",
-    WebkitBoxOrient: "vertical"
-  },
-  notSelectable: {
-    userSelect: "none"
-  },
-  selectable: {
-    userSelect: "text"
-  },
-  pressable: {
-    cursor: "pointer"
-  }
-});
-var Text_default = Text16;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
-var AnimatedText_default = createAnimatedComponent(Text_default);
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedView.js
-var React63 = __toESM(require("react"));
-var AnimatedView_default = createAnimatedComponent(View_default);
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
-var import_objectSpread222 = __toESM(require_objectSpread2());
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedImplementation.js
-var import_objectSpread221 = __toESM(require_objectSpread2());
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedAddition.js
-var AnimatedAddition = class extends AnimatedWithChildren_default {
-  constructor(a, b) {
-    super();
-    this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
-    this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
-  }
-  __makeNative(platformConfig) {
-    this._a.__makeNative(platformConfig);
-    this._b.__makeNative(platformConfig);
-    super.__makeNative(platformConfig);
-  }
-  __getValue() {
-    return this._a.__getValue() + this._b.__getValue();
-  }
-  interpolate(config2) {
-    return new AnimatedInterpolation_default(this, config2);
-  }
-  __attach() {
-    this._a.__addChild(this);
-    this._b.__addChild(this);
-  }
-  __detach() {
-    this._a.__removeChild(this);
-    this._b.__removeChild(this);
-    super.__detach();
-  }
-  __getNativeConfig() {
-    return {
-      type: "addition",
-      input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
-    };
-  }
-};
-var AnimatedAddition_default = AnimatedAddition;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedDiffClamp.js
-var AnimatedDiffClamp = class extends AnimatedWithChildren_default {
-  constructor(a, min, max) {
-    super();
-    this._a = a;
-    this._min = min;
-    this._max = max;
-    this._value = this._lastValue = this._a.__getValue();
-  }
-  __makeNative(platformConfig) {
-    this._a.__makeNative(platformConfig);
-    super.__makeNative(platformConfig);
-  }
-  interpolate(config2) {
-    return new AnimatedInterpolation_default(this, config2);
-  }
-  __getValue() {
-    var value = this._a.__getValue();
-    var diff = value - this._lastValue;
-    this._lastValue = value;
-    this._value = Math.min(Math.max(this._value + diff, this._min), this._max);
-    return this._value;
-  }
-  __attach() {
-    this._a.__addChild(this);
-  }
-  __detach() {
-    this._a.__removeChild(this);
-    super.__detach();
-  }
-  __getNativeConfig() {
-    return {
-      type: "diffclamp",
-      input: this._a.__getNativeTag(),
-      min: this._min,
-      max: this._max
-    };
-  }
-};
-var AnimatedDiffClamp_default = AnimatedDiffClamp;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedDivision.js
-var AnimatedDivision = class extends AnimatedWithChildren_default {
-  constructor(a, b) {
-    super();
-    this._warnedAboutDivideByZero = false;
-    if (b === 0 || b instanceof AnimatedNode_default && b.__getValue() === 0) {
-      console.error("Detected potential division by zero in AnimatedDivision");
-    }
-    this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
-    this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
-  }
-  __makeNative(platformConfig) {
-    this._a.__makeNative(platformConfig);
-    this._b.__makeNative(platformConfig);
-    super.__makeNative(platformConfig);
-  }
-  __getValue() {
-    var a = this._a.__getValue();
-    var b = this._b.__getValue();
-    if (b === 0) {
-      if (!this._warnedAboutDivideByZero) {
-        console.error("Detected division by zero in AnimatedDivision");
-        this._warnedAboutDivideByZero = true;
-      }
-      return 0;
-    }
-    this._warnedAboutDivideByZero = false;
-    return a / b;
-  }
-  interpolate(config2) {
-    return new AnimatedInterpolation_default(this, config2);
-  }
-  __attach() {
-    this._a.__addChild(this);
-    this._b.__addChild(this);
-  }
-  __detach() {
-    this._a.__removeChild(this);
-    this._b.__removeChild(this);
-    super.__detach();
-  }
-  __getNativeConfig() {
-    return {
-      type: "division",
-      input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
-    };
-  }
-};
-var AnimatedDivision_default = AnimatedDivision;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedModulo.js
-var AnimatedModulo = class extends AnimatedWithChildren_default {
-  constructor(a, modulus) {
-    super();
-    this._a = a;
-    this._modulus = modulus;
-  }
-  __makeNative(platformConfig) {
-    this._a.__makeNative(platformConfig);
-    super.__makeNative(platformConfig);
-  }
-  __getValue() {
-    return (this._a.__getValue() % this._modulus + this._modulus) % this._modulus;
-  }
-  interpolate(config2) {
-    return new AnimatedInterpolation_default(this, config2);
-  }
-  __attach() {
-    this._a.__addChild(this);
-  }
-  __detach() {
-    this._a.__removeChild(this);
-    super.__detach();
-  }
-  __getNativeConfig() {
-    return {
-      type: "modulus",
-      input: this._a.__getNativeTag(),
-      modulus: this._modulus
-    };
-  }
-};
-var AnimatedModulo_default = AnimatedModulo;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedMultiplication.js
-var AnimatedMultiplication = class extends AnimatedWithChildren_default {
-  constructor(a, b) {
-    super();
-    this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
-    this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
-  }
-  __makeNative(platformConfig) {
-    this._a.__makeNative(platformConfig);
-    this._b.__makeNative(platformConfig);
-    super.__makeNative(platformConfig);
-  }
-  __getValue() {
-    return this._a.__getValue() * this._b.__getValue();
-  }
-  interpolate(config2) {
-    return new AnimatedInterpolation_default(this, config2);
-  }
-  __attach() {
-    this._a.__addChild(this);
-    this._b.__addChild(this);
-  }
-  __detach() {
-    this._a.__removeChild(this);
-    this._b.__removeChild(this);
-    super.__detach();
-  }
-  __getNativeConfig() {
-    return {
-      type: "multiplication",
-      input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
-    };
-  }
-};
-var AnimatedMultiplication_default = AnimatedMultiplication;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedSubtraction.js
-var AnimatedSubtraction = class extends AnimatedWithChildren_default {
-  constructor(a, b) {
-    super();
-    this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
-    this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
-  }
-  __makeNative(platformConfig) {
-    this._a.__makeNative(platformConfig);
-    this._b.__makeNative(platformConfig);
-    super.__makeNative(platformConfig);
-  }
-  __getValue() {
-    return this._a.__getValue() - this._b.__getValue();
-  }
-  interpolate(config2) {
-    return new AnimatedInterpolation_default(this, config2);
-  }
-  __attach() {
-    this._a.__addChild(this);
-    this._b.__addChild(this);
-  }
-  __detach() {
-    this._a.__removeChild(this);
-    this._b.__removeChild(this);
-    super.__detach();
-  }
-  __getNativeConfig() {
-    return {
-      type: "subtraction",
-      input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
-    };
-  }
-};
-var AnimatedSubtraction_default = AnimatedSubtraction;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedTracking.js
-var import_objectSpread220 = __toESM(require_objectSpread2());
-var AnimatedTracking = class extends AnimatedNode_default {
-  constructor(value, parent, animationClass, animationConfig, callback) {
-    super();
-    this._value = value;
-    this._parent = parent;
-    this._animationClass = animationClass;
-    this._animationConfig = animationConfig;
-    this._useNativeDriver = shouldUseNativeDriver(animationConfig);
-    this._callback = callback;
-    this.__attach();
-  }
-  __makeNative() {
-    this.__isNative = true;
-    this._parent.__makeNative();
-    super.__makeNative();
-    this._value.__makeNative();
-  }
-  __getValue() {
-    return this._parent.__getValue();
-  }
-  __attach() {
-    this._parent.__addChild(this);
-    if (this._useNativeDriver) {
-      this.__makeNative();
-    }
-  }
-  __detach() {
-    this._parent.__removeChild(this);
-    super.__detach();
-  }
-  update() {
-    this._value.animate(new this._animationClass((0, import_objectSpread220.default)((0, import_objectSpread220.default)({}, this._animationConfig), {}, {
-      toValue: this._animationConfig.toValue.__getValue()
-    })), this._callback);
-  }
-  __getNativeConfig() {
-    var animation = new this._animationClass((0, import_objectSpread220.default)((0, import_objectSpread220.default)({}, this._animationConfig), {}, {
-      // remove toValue from the config as it's a ref to Animated.Value
-      toValue: void 0
-    }));
-    var animationConfig = animation.__getNativeAnimationConfig();
-    return {
-      type: "tracking",
-      animationId: generateNewAnimationId(),
-      animationConfig,
-      toValue: this._parent.__getNativeTag(),
-      value: this._value.__getNativeTag()
-    };
-  }
-};
-var AnimatedTracking_default = AnimatedTracking;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedValueXY.js
-var import_invariant20 = __toESM(require_invariant());
-var _uniqueId2 = 1;
-var AnimatedValueXY = class extends AnimatedWithChildren_default {
-  constructor(valueIn) {
-    super();
-    var value = valueIn || {
-      x: 0,
-      y: 0
-    };
-    if (typeof value.x === "number" && typeof value.y === "number") {
-      this.x = new AnimatedValue_default(value.x);
-      this.y = new AnimatedValue_default(value.y);
-    } else {
-      (0, import_invariant20.default)(value.x instanceof AnimatedValue_default && value.y instanceof AnimatedValue_default, "AnimatedValueXY must be initialized with an object of numbers or AnimatedValues.");
-      this.x = value.x;
-      this.y = value.y;
-    }
-    this._listeners = {};
-  }
-  /**
-   * Directly set the value. This will stop any animations running on the value
-   * and update all the bound properties.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#setvalue
-   */
-  setValue(value) {
-    this.x.setValue(value.x);
-    this.y.setValue(value.y);
-  }
-  /**
-   * Sets an offset that is applied on top of whatever value is set, whether
-   * via `setValue`, an animation, or `Animated.event`. Useful for compensating
-   * things like the start of a pan gesture.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#setoffset
-   */
-  setOffset(offset) {
-    this.x.setOffset(offset.x);
-    this.y.setOffset(offset.y);
-  }
-  /**
-   * Merges the offset value into the base value and resets the offset to zero.
-   * The final output of the value is unchanged.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#flattenoffset
-   */
-  flattenOffset() {
-    this.x.flattenOffset();
-    this.y.flattenOffset();
-  }
-  /**
-   * Sets the offset value to the base value, and resets the base value to
-   * zero. The final output of the value is unchanged.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#extractoffset
-   */
-  extractOffset() {
-    this.x.extractOffset();
-    this.y.extractOffset();
-  }
-  __getValue() {
-    return {
-      x: this.x.__getValue(),
-      y: this.y.__getValue()
-    };
-  }
-  /**
-   * Stops any animation and resets the value to its original.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#resetanimation
-   */
-  resetAnimation(callback) {
-    this.x.resetAnimation();
-    this.y.resetAnimation();
-    callback && callback(this.__getValue());
-  }
-  /**
-   * Stops any running animation or tracking. `callback` is invoked with the
-   * final value after stopping the animation, which is useful for updating
-   * state to match the animation position with layout.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#stopanimation
-   */
-  stopAnimation(callback) {
-    this.x.stopAnimation();
-    this.y.stopAnimation();
-    callback && callback(this.__getValue());
-  }
-  /**
-   * Adds an asynchronous listener to the value so you can observe updates from
-   * animations.  This is useful because there is no way to synchronously read
-   * the value because it might be driven natively.
-   *
-   * Returns a string that serves as an identifier for the listener.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#addlistener
-   */
-  addListener(callback) {
-    var id2 = String(_uniqueId2++);
-    var jointCallback = (_ref) => {
-      var number = _ref.value;
-      callback(this.__getValue());
-    };
-    this._listeners[id2] = {
-      x: this.x.addListener(jointCallback),
-      y: this.y.addListener(jointCallback)
-    };
-    return id2;
-  }
-  /**
-   * Unregister a listener. The `id` param shall match the identifier
-   * previously returned by `addListener()`.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#removelistener
-   */
-  removeListener(id2) {
-    this.x.removeListener(this._listeners[id2].x);
-    this.y.removeListener(this._listeners[id2].y);
-    delete this._listeners[id2];
-  }
-  /**
-   * Remove all registered listeners.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#removealllisteners
-   */
-  removeAllListeners() {
-    this.x.removeAllListeners();
-    this.y.removeAllListeners();
-    this._listeners = {};
-  }
-  /**
-   * Converts `{x, y}` into `{left, top}` for use in style.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#getlayout
-   */
-  getLayout() {
-    return {
-      left: this.x,
-      top: this.y
-    };
-  }
-  /**
-   * Converts `{x, y}` into a useable translation transform.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy.html#gettranslatetransform
-   */
-  getTranslateTransform() {
-    return [{
-      translateX: this.x
-    }, {
-      translateY: this.y
-    }];
-  }
-};
-var AnimatedValueXY_default = AnimatedValueXY;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/Animation.js
-var startNativeAnimationNextId = 1;
-var Animation = class {
-  start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
-  }
-  stop() {
-    if (this.__nativeId) {
-      NativeAnimatedHelper_default.API.stopAnimation(this.__nativeId);
-    }
-  }
-  __getNativeAnimationConfig() {
-    throw new Error("This animation type cannot be offloaded to native");
-  }
-  // Helper function for subclasses to make sure onEnd is only called once.
-  __debouncedOnEnd(result) {
-    var onEnd = this.__onEnd;
-    this.__onEnd = null;
-    onEnd && onEnd(result);
-  }
-  __startNativeAnimation(animatedValue) {
-    var startNativeAnimationWaitId = startNativeAnimationNextId + ":startAnimation";
-    startNativeAnimationNextId += 1;
-    NativeAnimatedHelper_default.API.setWaitingForIdentifier(startNativeAnimationWaitId);
-    try {
-      var config2 = this.__getNativeAnimationConfig();
-      animatedValue.__makeNative(config2.platformConfig);
-      this.__nativeId = NativeAnimatedHelper_default.generateNewAnimationId();
-      NativeAnimatedHelper_default.API.startAnimatingNode(
-        this.__nativeId,
-        animatedValue.__getNativeTag(),
-        config2,
-        // $FlowFixMe[method-unbinding] added when improving typing for this parameters
-        this.__debouncedOnEnd.bind(this)
-      );
-    } catch (e) {
-      throw e;
-    } finally {
-      NativeAnimatedHelper_default.API.unsetWaitingForIdentifier(startNativeAnimationWaitId);
-    }
-  }
-};
-var Animation_default = Animation;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/DecayAnimation.js
-var DecayAnimation = class extends Animation_default {
-  constructor(config2) {
-    var _config$deceleration, _config$isInteraction, _config$iterations;
-    super();
-    this._deceleration = (_config$deceleration = config2.deceleration) !== null && _config$deceleration !== void 0 ? _config$deceleration : 0.998;
-    this._velocity = config2.velocity;
-    this._useNativeDriver = shouldUseNativeDriver(config2);
-    this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
-    this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
-  }
-  __getNativeAnimationConfig() {
-    return {
-      type: "decay",
-      deceleration: this._deceleration,
-      velocity: this._velocity,
-      iterations: this.__iterations
-    };
-  }
-  start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
-    this.__active = true;
-    this._lastValue = fromValue;
-    this._fromValue = fromValue;
-    this._onUpdate = onUpdate;
-    this.__onEnd = onEnd;
-    this._startTime = Date.now();
-    if (this._useNativeDriver) {
-      this.__startNativeAnimation(animatedValue);
-    } else {
-      this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
-    }
-  }
-  onUpdate() {
-    var now = Date.now();
-    var value = this._fromValue + this._velocity / (1 - this._deceleration) * (1 - Math.exp(-(1 - this._deceleration) * (now - this._startTime)));
-    this._onUpdate(value);
-    if (Math.abs(this._lastValue - value) < 0.1) {
-      this.__debouncedOnEnd({
-        finished: true
+      var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
+      useElementLayout(hostRef, onLayout);
+      useResponderEvents(hostRef, {
+        onMoveShouldSetResponder,
+        onMoveShouldSetResponderCapture,
+        onResponderEnd,
+        onResponderGrant,
+        onResponderMove,
+        onResponderReject,
+        onResponderRelease,
+        onResponderStart,
+        onResponderTerminate,
+        onResponderTerminationRequest,
+        onScrollShouldSetResponder,
+        onScrollShouldSetResponderCapture,
+        onSelectionChangeShouldSetResponder,
+        onSelectionChangeShouldSetResponderCapture,
+        onStartShouldSetResponder,
+        onStartShouldSetResponderCapture
       });
-      return;
-    }
-    this._lastValue = value;
-    if (this.__active) {
-      this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
-    }
-  }
-  stop() {
-    super.stop();
-    this.__active = false;
-    global.cancelAnimationFrame(this._animationFrame);
-    this.__debouncedOnEnd({
-      finished: false
-    });
-  }
-};
-var DecayAnimation_default = DecayAnimation;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/SpringConfig.js
-function stiffnessFromOrigamiValue(oValue) {
-  return (oValue - 30) * 3.62 + 194;
-}
-function dampingFromOrigamiValue(oValue) {
-  return (oValue - 8) * 3 + 25;
-}
-function fromOrigamiTensionAndFriction(tension, friction) {
-  return {
-    stiffness: stiffnessFromOrigamiValue(tension),
-    damping: dampingFromOrigamiValue(friction)
-  };
-}
-function fromBouncinessAndSpeed(bounciness, speed) {
-  function normalize(value, startValue, endValue) {
-    return (value - startValue) / (endValue - startValue);
-  }
-  function projectNormal(n, start, end) {
-    return start + n * (end - start);
-  }
-  function linearInterpolation(t, start, end) {
-    return t * end + (1 - t) * start;
-  }
-  function quadraticOutInterpolation(t, start, end) {
-    return linearInterpolation(2 * t - t * t, start, end);
-  }
-  function b3Friction1(x) {
-    return 7e-4 * Math.pow(x, 3) - 0.031 * Math.pow(x, 2) + 0.64 * x + 1.28;
-  }
-  function b3Friction2(x) {
-    return 44e-6 * Math.pow(x, 3) - 6e-3 * Math.pow(x, 2) + 0.36 * x + 2;
-  }
-  function b3Friction3(x) {
-    return 45e-8 * Math.pow(x, 3) - 332e-6 * Math.pow(x, 2) + 0.1078 * x + 5.84;
-  }
-  function b3Nobounce(tension) {
-    if (tension <= 18) {
-      return b3Friction1(tension);
-    } else if (tension > 18 && tension <= 44) {
-      return b3Friction2(tension);
-    } else {
-      return b3Friction3(tension);
-    }
-  }
-  var b = normalize(bounciness / 1.7, 0, 20);
-  b = projectNormal(b, 0, 0.8);
-  var s = normalize(speed / 1.7, 0, 20);
-  var bouncyTension = projectNormal(s, 0.5, 200);
-  var bouncyFriction = quadraticOutInterpolation(b, b3Nobounce(bouncyTension), 0.01);
-  return {
-    stiffness: stiffnessFromOrigamiValue(bouncyTension),
-    damping: dampingFromOrigamiValue(bouncyFriction)
-  };
-}
-var SpringConfig_default = {
-  fromOrigamiTensionAndFriction,
-  fromBouncinessAndSpeed
-};
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/SpringAnimation.js
-var import_invariant21 = __toESM(require_invariant());
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedColor.js
-var import_normalize_colors3 = __toESM(require_normalize_colors());
-var NativeAnimatedAPI3 = NativeAnimatedHelper_default.API;
-var defaultColor = {
-  r: 0,
-  g: 0,
-  b: 0,
-  a: 1
-};
-var _uniqueId3 = 1;
-var processColorObject = (color) => {
-  return color;
-};
-function processColor2(color) {
-  if (color === void 0 || color === null) {
-    return null;
-  }
-  if (isRgbaValue(color)) {
-    return color;
-  }
-  var normalizedColor = (0, import_normalize_colors3.default)(
-    // $FlowIgnore[incompatible-cast] - Type is verified above
-    color
-  );
-  if (normalizedColor === void 0 || normalizedColor === null) {
-    return null;
-  }
-  if (typeof normalizedColor === "object") {
-    var processedColorObj = processColorObject(normalizedColor);
-    if (processedColorObj != null) {
-      return processedColorObj;
-    }
-  } else if (typeof normalizedColor === "number") {
-    var r = (normalizedColor & 4278190080) >>> 24;
-    var g = (normalizedColor & 16711680) >>> 16;
-    var b = (normalizedColor & 65280) >>> 8;
-    var a = (normalizedColor & 255) / 255;
-    return {
-      r,
-      g,
-      b,
-      a
-    };
-  }
-  return null;
-}
-function isRgbaValue(value) {
-  return value && typeof value.r === "number" && typeof value.g === "number" && typeof value.b === "number" && typeof value.a === "number";
-}
-function isRgbaAnimatedValue(value) {
-  return value && value.r instanceof AnimatedValue_default && value.g instanceof AnimatedValue_default && value.b instanceof AnimatedValue_default && value.a instanceof AnimatedValue_default;
-}
-var AnimatedColor = class extends AnimatedWithChildren_default {
-  constructor(valueIn, config2) {
-    super();
-    this._listeners = {};
-    var value = valueIn !== null && valueIn !== void 0 ? valueIn : defaultColor;
-    if (isRgbaAnimatedValue(value)) {
-      var rgbaAnimatedValue = value;
-      this.r = rgbaAnimatedValue.r;
-      this.g = rgbaAnimatedValue.g;
-      this.b = rgbaAnimatedValue.b;
-      this.a = rgbaAnimatedValue.a;
-    } else {
-      var _processColor;
-      var processedColor = (
-        // $FlowIgnore[incompatible-cast] - Type is verified above
-        (_processColor = processColor2(value)) !== null && _processColor !== void 0 ? _processColor : defaultColor
-      );
-      var initColor = defaultColor;
-      if (isRgbaValue(processedColor)) {
-        initColor = processedColor;
-      } else {
-        this.nativeColor = processedColor;
-      }
-      this.r = new AnimatedValue_default(initColor.r);
-      this.g = new AnimatedValue_default(initColor.g);
-      this.b = new AnimatedValue_default(initColor.b);
-      this.a = new AnimatedValue_default(initColor.a);
-    }
-    if (this.nativeColor || config2 && config2.useNativeDriver) {
-      this.__makeNative();
-    }
-  }
-  /**
-   * Directly set the value. This will stop any animations running on the value
-   * and update all the bound properties.
-   */
-  setValue(value) {
-    var _processColor2;
-    var shouldUpdateNodeConfig = false;
-    if (this.__isNative) {
-      var nativeTag = this.__getNativeTag();
-      NativeAnimatedAPI3.setWaitingForIdentifier(nativeTag.toString());
-    }
-    var processedColor = (_processColor2 = processColor2(value)) !== null && _processColor2 !== void 0 ? _processColor2 : defaultColor;
-    if (isRgbaValue(processedColor)) {
-      var rgbaValue = processedColor;
-      this.r.setValue(rgbaValue.r);
-      this.g.setValue(rgbaValue.g);
-      this.b.setValue(rgbaValue.b);
-      this.a.setValue(rgbaValue.a);
-      if (this.nativeColor != null) {
-        this.nativeColor = null;
-        shouldUpdateNodeConfig = true;
-      }
-    } else {
-      var nativeColor = processedColor;
-      if (this.nativeColor !== nativeColor) {
-        this.nativeColor = nativeColor;
-        shouldUpdateNodeConfig = true;
-      }
-    }
-    if (this.__isNative) {
-      var _nativeTag = this.__getNativeTag();
-      if (shouldUpdateNodeConfig) {
-        NativeAnimatedAPI3.updateAnimatedNodeConfig(_nativeTag, this.__getNativeConfig());
-      }
-      NativeAnimatedAPI3.unsetWaitingForIdentifier(_nativeTag.toString());
-    }
-  }
-  /**
-   * Sets an offset that is applied on top of whatever value is set, whether
-   * via `setValue`, an animation, or `Animated.event`. Useful for compensating
-   * things like the start of a pan gesture.
-   */
-  setOffset(offset) {
-    this.r.setOffset(offset.r);
-    this.g.setOffset(offset.g);
-    this.b.setOffset(offset.b);
-    this.a.setOffset(offset.a);
-  }
-  /**
-   * Merges the offset value into the base value and resets the offset to zero.
-   * The final output of the value is unchanged.
-   */
-  flattenOffset() {
-    this.r.flattenOffset();
-    this.g.flattenOffset();
-    this.b.flattenOffset();
-    this.a.flattenOffset();
-  }
-  /**
-   * Sets the offset value to the base value, and resets the base value to
-   * zero. The final output of the value is unchanged.
-   */
-  extractOffset() {
-    this.r.extractOffset();
-    this.g.extractOffset();
-    this.b.extractOffset();
-    this.a.extractOffset();
-  }
-  /**
-   * Adds an asynchronous listener to the value so you can observe updates from
-   * animations.  This is useful because there is no way to synchronously read
-   * the value because it might be driven natively.
-   *
-   * Returns a string that serves as an identifier for the listener.
-   */
-  addListener(callback) {
-    var id2 = String(_uniqueId3++);
-    var jointCallback = (_ref) => {
-      var number = _ref.value;
-      callback(this.__getValue());
-    };
-    this._listeners[id2] = {
-      r: this.r.addListener(jointCallback),
-      g: this.g.addListener(jointCallback),
-      b: this.b.addListener(jointCallback),
-      a: this.a.addListener(jointCallback)
-    };
-    return id2;
-  }
-  /**
-   * Unregister a listener. The `id` param shall match the identifier
-   * previously returned by `addListener()`.
-   */
-  removeListener(id2) {
-    this.r.removeListener(this._listeners[id2].r);
-    this.g.removeListener(this._listeners[id2].g);
-    this.b.removeListener(this._listeners[id2].b);
-    this.a.removeListener(this._listeners[id2].a);
-    delete this._listeners[id2];
-  }
-  /**
-   * Remove all registered listeners.
-   */
-  removeAllListeners() {
-    this.r.removeAllListeners();
-    this.g.removeAllListeners();
-    this.b.removeAllListeners();
-    this.a.removeAllListeners();
-    this._listeners = {};
-  }
-  /**
-   * Stops any running animation or tracking. `callback` is invoked with the
-   * final value after stopping the animation, which is useful for updating
-   * state to match the animation position with layout.
-   */
-  stopAnimation(callback) {
-    this.r.stopAnimation();
-    this.g.stopAnimation();
-    this.b.stopAnimation();
-    this.a.stopAnimation();
-    callback && callback(this.__getValue());
-  }
-  /**
-   * Stops any animation and resets the value to its original.
-   */
-  resetAnimation(callback) {
-    this.r.resetAnimation();
-    this.g.resetAnimation();
-    this.b.resetAnimation();
-    this.a.resetAnimation();
-    callback && callback(this.__getValue());
-  }
-  __getValue() {
-    if (this.nativeColor != null) {
-      return this.nativeColor;
-    } else {
-      return "rgba(" + this.r.__getValue() + ", " + this.g.__getValue() + ", " + this.b.__getValue() + ", " + this.a.__getValue() + ")";
-    }
-  }
-  __attach() {
-    this.r.__addChild(this);
-    this.g.__addChild(this);
-    this.b.__addChild(this);
-    this.a.__addChild(this);
-    super.__attach();
-  }
-  __detach() {
-    this.r.__removeChild(this);
-    this.g.__removeChild(this);
-    this.b.__removeChild(this);
-    this.a.__removeChild(this);
-    super.__detach();
-  }
-  __makeNative(platformConfig) {
-    this.r.__makeNative(platformConfig);
-    this.g.__makeNative(platformConfig);
-    this.b.__makeNative(platformConfig);
-    this.a.__makeNative(platformConfig);
-    super.__makeNative(platformConfig);
-  }
-  __getNativeConfig() {
-    return {
-      type: "color",
-      r: this.r.__getNativeTag(),
-      g: this.g.__getNativeTag(),
-      b: this.b.__getNativeTag(),
-      a: this.a.__getNativeTag(),
-      nativeColor: this.nativeColor
-    };
-  }
-};
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/SpringAnimation.js
-var SpringAnimation = class _SpringAnimation extends Animation_default {
-  constructor(config2) {
-    var _config$overshootClam, _config$restDisplacem, _config$restSpeedThre, _config$velocity, _config$velocity2, _config$delay, _config$isInteraction, _config$iterations;
-    super();
-    this._overshootClamping = (_config$overshootClam = config2.overshootClamping) !== null && _config$overshootClam !== void 0 ? _config$overshootClam : false;
-    this._restDisplacementThreshold = (_config$restDisplacem = config2.restDisplacementThreshold) !== null && _config$restDisplacem !== void 0 ? _config$restDisplacem : 1e-3;
-    this._restSpeedThreshold = (_config$restSpeedThre = config2.restSpeedThreshold) !== null && _config$restSpeedThre !== void 0 ? _config$restSpeedThre : 1e-3;
-    this._initialVelocity = (_config$velocity = config2.velocity) !== null && _config$velocity !== void 0 ? _config$velocity : 0;
-    this._lastVelocity = (_config$velocity2 = config2.velocity) !== null && _config$velocity2 !== void 0 ? _config$velocity2 : 0;
-    this._toValue = config2.toValue;
-    this._delay = (_config$delay = config2.delay) !== null && _config$delay !== void 0 ? _config$delay : 0;
-    this._useNativeDriver = shouldUseNativeDriver(config2);
-    this._platformConfig = config2.platformConfig;
-    this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
-    this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
-    if (config2.stiffness !== void 0 || config2.damping !== void 0 || config2.mass !== void 0) {
-      var _config$stiffness, _config$damping, _config$mass;
-      (0, import_invariant21.default)(config2.bounciness === void 0 && config2.speed === void 0 && config2.tension === void 0 && config2.friction === void 0, "You can define one of bounciness/speed, tension/friction, or stiffness/damping/mass, but not more than one");
-      this._stiffness = (_config$stiffness = config2.stiffness) !== null && _config$stiffness !== void 0 ? _config$stiffness : 100;
-      this._damping = (_config$damping = config2.damping) !== null && _config$damping !== void 0 ? _config$damping : 10;
-      this._mass = (_config$mass = config2.mass) !== null && _config$mass !== void 0 ? _config$mass : 1;
-    } else if (config2.bounciness !== void 0 || config2.speed !== void 0) {
-      var _config$bounciness, _config$speed;
-      (0, import_invariant21.default)(config2.tension === void 0 && config2.friction === void 0 && config2.stiffness === void 0 && config2.damping === void 0 && config2.mass === void 0, "You can define one of bounciness/speed, tension/friction, or stiffness/damping/mass, but not more than one");
-      var springConfig = SpringConfig_default.fromBouncinessAndSpeed((_config$bounciness = config2.bounciness) !== null && _config$bounciness !== void 0 ? _config$bounciness : 8, (_config$speed = config2.speed) !== null && _config$speed !== void 0 ? _config$speed : 12);
-      this._stiffness = springConfig.stiffness;
-      this._damping = springConfig.damping;
-      this._mass = 1;
-    } else {
-      var _config$tension, _config$friction;
-      var _springConfig = SpringConfig_default.fromOrigamiTensionAndFriction((_config$tension = config2.tension) !== null && _config$tension !== void 0 ? _config$tension : 40, (_config$friction = config2.friction) !== null && _config$friction !== void 0 ? _config$friction : 7);
-      this._stiffness = _springConfig.stiffness;
-      this._damping = _springConfig.damping;
-      this._mass = 1;
-    }
-    (0, import_invariant21.default)(this._stiffness > 0, "Stiffness value must be greater than 0");
-    (0, import_invariant21.default)(this._damping > 0, "Damping value must be greater than 0");
-    (0, import_invariant21.default)(this._mass > 0, "Mass value must be greater than 0");
-  }
-  __getNativeAnimationConfig() {
-    var _this$_initialVelocit;
-    return {
-      type: "spring",
-      overshootClamping: this._overshootClamping,
-      restDisplacementThreshold: this._restDisplacementThreshold,
-      restSpeedThreshold: this._restSpeedThreshold,
-      stiffness: this._stiffness,
-      damping: this._damping,
-      mass: this._mass,
-      initialVelocity: (_this$_initialVelocit = this._initialVelocity) !== null && _this$_initialVelocit !== void 0 ? _this$_initialVelocit : this._lastVelocity,
-      toValue: this._toValue,
-      iterations: this.__iterations,
-      platformConfig: this._platformConfig
-    };
-  }
-  start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
-    this.__active = true;
-    this._startPosition = fromValue;
-    this._lastPosition = this._startPosition;
-    this._onUpdate = onUpdate;
-    this.__onEnd = onEnd;
-    this._lastTime = Date.now();
-    this._frameTime = 0;
-    if (previousAnimation instanceof _SpringAnimation) {
-      var internalState = previousAnimation.getInternalState();
-      this._lastPosition = internalState.lastPosition;
-      this._lastVelocity = internalState.lastVelocity;
-      this._initialVelocity = this._lastVelocity;
-      this._lastTime = internalState.lastTime;
-    }
-    var start = () => {
-      if (this._useNativeDriver) {
-        this.__startNativeAnimation(animatedValue);
-      } else {
-        this.onUpdate();
-      }
-    };
-    if (this._delay) {
-      this._timeout = setTimeout(start, this._delay);
-    } else {
-      start();
-    }
-  }
-  getInternalState() {
-    return {
-      lastPosition: this._lastPosition,
-      lastVelocity: this._lastVelocity,
-      lastTime: this._lastTime
-    };
-  }
-  /**
-   * This spring model is based off of a damped harmonic oscillator
-   * (https://en.wikipedia.org/wiki/Harmonic_oscillator#Damped_harmonic_oscillator).
-   *
-   * We use the closed form of the second order differential equation:
-   *
-   * x'' + (2ζ⍵_0)x' + ⍵^2x = 0
-   *
-   * where
-   *    ⍵_0 = √(k / m) (undamped angular frequency of the oscillator),
-   *    ζ = c / 2√mk (damping ratio),
-   *    c = damping constant
-   *    k = stiffness
-   *    m = mass
-   *
-   * The derivation of the closed form is described in detail here:
-   * http://planetmath.org/sites/default/files/texpdf/39745.pdf
-   *
-   * This algorithm happens to match the algorithm used by CASpringAnimation,
-   * a QuartzCore (iOS) API that creates spring animations.
-   */
-  onUpdate() {
-    var MAX_STEPS = 64;
-    var now = Date.now();
-    if (now > this._lastTime + MAX_STEPS) {
-      now = this._lastTime + MAX_STEPS;
-    }
-    var deltaTime = (now - this._lastTime) / 1e3;
-    this._frameTime += deltaTime;
-    var c = this._damping;
-    var m2 = this._mass;
-    var k = this._stiffness;
-    var v0 = -this._initialVelocity;
-    var zeta = c / (2 * Math.sqrt(k * m2));
-    var omega0 = Math.sqrt(k / m2);
-    var omega1 = omega0 * Math.sqrt(1 - zeta * zeta);
-    var x0 = this._toValue - this._startPosition;
-    var position2 = 0;
-    var velocity = 0;
-    var t = this._frameTime;
-    if (zeta < 1) {
-      var envelope = Math.exp(-zeta * omega0 * t);
-      position2 = this._toValue - envelope * ((v0 + zeta * omega0 * x0) / omega1 * Math.sin(omega1 * t) + x0 * Math.cos(omega1 * t));
-      velocity = zeta * omega0 * envelope * (Math.sin(omega1 * t) * (v0 + zeta * omega0 * x0) / omega1 + x0 * Math.cos(omega1 * t)) - envelope * (Math.cos(omega1 * t) * (v0 + zeta * omega0 * x0) - omega1 * x0 * Math.sin(omega1 * t));
-    } else {
-      var _envelope = Math.exp(-omega0 * t);
-      position2 = this._toValue - _envelope * (x0 + (v0 + omega0 * x0) * t);
-      velocity = _envelope * (v0 * (t * omega0 - 1) + t * x0 * (omega0 * omega0));
-    }
-    this._lastTime = now;
-    this._lastPosition = position2;
-    this._lastVelocity = velocity;
-    this._onUpdate(position2);
-    if (!this.__active) {
-      return;
-    }
-    var isOvershooting = false;
-    if (this._overshootClamping && this._stiffness !== 0) {
-      if (this._startPosition < this._toValue) {
-        isOvershooting = position2 > this._toValue;
-      } else {
-        isOvershooting = position2 < this._toValue;
-      }
-    }
-    var isVelocity = Math.abs(velocity) <= this._restSpeedThreshold;
-    var isDisplacement = true;
-    if (this._stiffness !== 0) {
-      isDisplacement = Math.abs(this._toValue - position2) <= this._restDisplacementThreshold;
-    }
-    if (isOvershooting || isVelocity && isDisplacement) {
-      if (this._stiffness !== 0) {
-        this._lastPosition = this._toValue;
-        this._lastVelocity = 0;
-        this._onUpdate(this._toValue);
-      }
-      this.__debouncedOnEnd({
-        finished: true
-      });
-      return;
-    }
-    this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
-  }
-  stop() {
-    super.stop();
-    this.__active = false;
-    clearTimeout(this._timeout);
-    global.cancelAnimationFrame(this._animationFrame);
-    this.__debouncedOnEnd({
-      finished: false
-    });
-  }
-};
-var SpringAnimation_default = SpringAnimation;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/bezier.js
-var NEWTON_ITERATIONS = 4;
-var NEWTON_MIN_SLOPE = 1e-3;
-var SUBDIVISION_PRECISION = 1e-7;
-var SUBDIVISION_MAX_ITERATIONS = 10;
-var kSplineTableSize = 11;
-var kSampleStepSize = 1 / (kSplineTableSize - 1);
-var float32ArraySupported = typeof Float32Array === "function";
-function A(aA1, aA2) {
-  return 1 - 3 * aA2 + 3 * aA1;
-}
-function B(aA1, aA2) {
-  return 3 * aA2 - 6 * aA1;
-}
-function C(aA1) {
-  return 3 * aA1;
-}
-function calcBezier(aT, aA1, aA2) {
-  return ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT;
-}
-function getSlope(aT, aA1, aA2) {
-  return 3 * A(aA1, aA2) * aT * aT + 2 * B(aA1, aA2) * aT + C(aA1);
-}
-function binarySubdivide(aX, _aA, _aB, mX1, mX2) {
-  var currentX, currentT, i = 0, aA = _aA, aB = _aB;
-  do {
-    currentT = aA + (aB - aA) / 2;
-    currentX = calcBezier(currentT, mX1, mX2) - aX;
-    if (currentX > 0) {
-      aB = currentT;
-    } else {
-      aA = currentT;
-    }
-  } while (Math.abs(currentX) > SUBDIVISION_PRECISION && ++i < SUBDIVISION_MAX_ITERATIONS);
-  return currentT;
-}
-function newtonRaphsonIterate(aX, _aGuessT, mX1, mX2) {
-  var aGuessT = _aGuessT;
-  for (var i = 0; i < NEWTON_ITERATIONS; ++i) {
-    var currentSlope = getSlope(aGuessT, mX1, mX2);
-    if (currentSlope === 0) {
-      return aGuessT;
-    }
-    var currentX = calcBezier(aGuessT, mX1, mX2) - aX;
-    aGuessT -= currentX / currentSlope;
-  }
-  return aGuessT;
-}
-function bezier(mX1, mY1, mX2, mY2) {
-  if (!(mX1 >= 0 && mX1 <= 1 && mX2 >= 0 && mX2 <= 1)) {
-    throw new Error("bezier x values must be in [0, 1] range");
-  }
-  var sampleValues = float32ArraySupported ? new Float32Array(kSplineTableSize) : new Array(kSplineTableSize);
-  if (mX1 !== mY1 || mX2 !== mY2) {
-    for (var i = 0; i < kSplineTableSize; ++i) {
-      sampleValues[i] = calcBezier(i * kSampleStepSize, mX1, mX2);
-    }
-  }
-  function getTForX(aX) {
-    var intervalStart = 0;
-    var currentSample = 1;
-    var lastSample = kSplineTableSize - 1;
-    for (; currentSample !== lastSample && sampleValues[currentSample] <= aX; ++currentSample) {
-      intervalStart += kSampleStepSize;
-    }
-    --currentSample;
-    var dist = (aX - sampleValues[currentSample]) / (sampleValues[currentSample + 1] - sampleValues[currentSample]);
-    var guessForT = intervalStart + dist * kSampleStepSize;
-    var initialSlope = getSlope(guessForT, mX1, mX2);
-    if (initialSlope >= NEWTON_MIN_SLOPE) {
-      return newtonRaphsonIterate(aX, guessForT, mX1, mX2);
-    } else if (initialSlope === 0) {
-      return guessForT;
-    } else {
-      return binarySubdivide(aX, intervalStart, intervalStart + kSampleStepSize, mX1, mX2);
-    }
-  }
-  return function BezierEasing(x) {
-    if (mX1 === mY1 && mX2 === mY2) {
-      return x;
-    }
-    if (x === 0) {
-      return 0;
-    }
-    if (x === 1) {
-      return 1;
-    }
-    return calcBezier(getTForX(x), mY1, mY2);
-  };
-}
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/Easing.js
-var ease;
-var Easing = class _Easing {
-  /**
-   * A stepping function, returns 1 for any positive value of `n`.
-   */
-  static step0(n) {
-    return n > 0 ? 1 : 0;
-  }
-  /**
-   * A stepping function, returns 1 if `n` is greater than or equal to 1.
-   */
-  static step1(n) {
-    return n >= 1 ? 1 : 0;
-  }
-  /**
-   * A linear function, `f(t) = t`. Position correlates to elapsed time one to
-   * one.
-   *
-   * http://cubic-bezier.com/#0,0,1,1
-   */
-  static linear(t) {
-    return t;
-  }
-  /**
-   * A simple inertial interaction, similar to an object slowly accelerating to
-   * speed.
-   *
-   * http://cubic-bezier.com/#.42,0,1,1
-   */
-  static ease(t) {
-    if (!ease) {
-      ease = _Easing.bezier(0.42, 0, 1, 1);
-    }
-    return ease(t);
-  }
-  /**
-   * A quadratic function, `f(t) = t * t`. Position equals the square of elapsed
-   * time.
-   *
-   * http://easings.net/#easeInQuad
-   */
-  static quad(t) {
-    return t * t;
-  }
-  /**
-   * A cubic function, `f(t) = t * t * t`. Position equals the cube of elapsed
-   * time.
-   *
-   * http://easings.net/#easeInCubic
-   */
-  static cubic(t) {
-    return t * t * t;
-  }
-  /**
-   * A power function. Position is equal to the Nth power of elapsed time.
-   *
-   * n = 4: http://easings.net/#easeInQuart
-   * n = 5: http://easings.net/#easeInQuint
-   */
-  static poly(n) {
-    return (t) => Math.pow(t, n);
-  }
-  /**
-   * A sinusoidal function.
-   *
-   * http://easings.net/#easeInSine
-   */
-  static sin(t) {
-    return 1 - Math.cos(t * Math.PI / 2);
-  }
-  /**
-   * A circular function.
-   *
-   * http://easings.net/#easeInCirc
-   */
-  static circle(t) {
-    return 1 - Math.sqrt(1 - t * t);
-  }
-  /**
-   * An exponential function.
-   *
-   * http://easings.net/#easeInExpo
-   */
-  static exp(t) {
-    return Math.pow(2, 10 * (t - 1));
-  }
-  /**
-   * A simple elastic interaction, similar to a spring oscillating back and
-   * forth.
-   *
-   * Default bounciness is 1, which overshoots a little bit once. 0 bounciness
-   * doesn't overshoot at all, and bounciness of N > 1 will overshoot about N
-   * times.
-   *
-   * http://easings.net/#easeInElastic
-   */
-  static elastic(bounciness) {
-    if (bounciness === void 0) {
-      bounciness = 1;
-    }
-    var p = bounciness * Math.PI;
-    return (t) => 1 - Math.pow(Math.cos(t * Math.PI / 2), 3) * Math.cos(t * p);
-  }
-  /**
-   * Use with `Animated.parallel()` to create a simple effect where the object
-   * animates back slightly as the animation starts.
-   *
-   * Wolfram Plot:
-   *
-   * - http://tiny.cc/back_default (s = 1.70158, default)
-   */
-  static back(s) {
-    if (s === void 0) {
-      s = 1.70158;
-    }
-    return (t) => t * t * ((s + 1) * t - s);
-  }
-  /**
-   * Provides a simple bouncing effect.
-   *
-   * http://easings.net/#easeInBounce
-   */
-  static bounce(t) {
-    if (t < 1 / 2.75) {
-      return 7.5625 * t * t;
-    }
-    if (t < 2 / 2.75) {
-      var _t = t - 1.5 / 2.75;
-      return 7.5625 * _t * _t + 0.75;
-    }
-    if (t < 2.5 / 2.75) {
-      var _t2 = t - 2.25 / 2.75;
-      return 7.5625 * _t2 * _t2 + 0.9375;
-    }
-    var t2 = t - 2.625 / 2.75;
-    return 7.5625 * t2 * t2 + 0.984375;
-  }
-  /**
-   * Provides a cubic bezier curve, equivalent to CSS Transitions'
-   * `transition-timing-function`.
-   *
-   * A useful tool to visualize cubic bezier curves can be found at
-   * http://cubic-bezier.com/
-   */
-  static bezier(x1, y1, x2, y2) {
-    return bezier(x1, y1, x2, y2);
-  }
-  /**
-   * Runs an easing function forwards.
-   */
-  static in(easing) {
-    return easing;
-  }
-  /**
-   * Runs an easing function backwards.
-   */
-  static out(easing) {
-    return (t) => 1 - easing(1 - t);
-  }
-  /**
-   * Makes any easing function symmetrical. The easing function will run
-   * forwards for half of the duration, then backwards for the rest of the
-   * duration.
-   */
-  static inOut(easing) {
-    return (t) => {
-      if (t < 0.5) {
-        return easing(t * 2) / 2;
-      }
-      return 1 - easing((1 - t) * 2) / 2;
-    };
-  }
-};
-var Easing_default = Easing;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Easing/index.js
-var Easing_default2 = Easing_default;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/TimingAnimation.js
-var _easeInOut;
-function easeInOut() {
-  if (!_easeInOut) {
-    _easeInOut = Easing_default2.inOut(Easing_default2.ease);
-  }
-  return _easeInOut;
-}
-var TimingAnimation = class extends Animation_default {
-  constructor(config2) {
-    var _config$easing, _config$duration, _config$delay, _config$iterations, _config$isInteraction;
-    super();
-    this._toValue = config2.toValue;
-    this._easing = (_config$easing = config2.easing) !== null && _config$easing !== void 0 ? _config$easing : easeInOut();
-    this._duration = (_config$duration = config2.duration) !== null && _config$duration !== void 0 ? _config$duration : 500;
-    this._delay = (_config$delay = config2.delay) !== null && _config$delay !== void 0 ? _config$delay : 0;
-    this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
-    this._useNativeDriver = shouldUseNativeDriver(config2);
-    this._platformConfig = config2.platformConfig;
-    this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
-  }
-  __getNativeAnimationConfig() {
-    var frameDuration = 1e3 / 60;
-    var frames = [];
-    var numFrames = Math.round(this._duration / frameDuration);
-    for (var frame = 0; frame < numFrames; frame++) {
-      frames.push(this._easing(frame / numFrames));
-    }
-    frames.push(this._easing(1));
-    return {
-      type: "frames",
-      frames,
-      toValue: this._toValue,
-      iterations: this.__iterations,
-      platformConfig: this._platformConfig
-    };
-  }
-  start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
-    this.__active = true;
-    this._fromValue = fromValue;
-    this._onUpdate = onUpdate;
-    this.__onEnd = onEnd;
-    var start = () => {
-      if (this._duration === 0 && !this._useNativeDriver) {
-        this._onUpdate(this._toValue);
-        this.__debouncedOnEnd({
-          finished: true
-        });
-      } else {
-        this._startTime = Date.now();
-        if (this._useNativeDriver) {
-          this.__startNativeAnimation(animatedValue);
-        } else {
-          this._animationFrame = requestAnimationFrame(
-            // $FlowFixMe[method-unbinding] added when improving typing for this parameters
-            this.onUpdate.bind(this)
-          );
-        }
-      }
-    };
-    if (this._delay) {
-      this._timeout = setTimeout(start, this._delay);
-    } else {
-      start();
-    }
-  }
-  onUpdate() {
-    var now = Date.now();
-    if (now >= this._startTime + this._duration) {
-      if (this._duration === 0) {
-        this._onUpdate(this._toValue);
-      } else {
-        this._onUpdate(this._fromValue + this._easing(1) * (this._toValue - this._fromValue));
-      }
-      this.__debouncedOnEnd({
-        finished: true
-      });
-      return;
-    }
-    this._onUpdate(this._fromValue + this._easing((now - this._startTime) / this._duration) * (this._toValue - this._fromValue));
-    if (this.__active) {
-      this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
-    }
-  }
-  stop() {
-    super.stop();
-    this.__active = false;
-    clearTimeout(this._timeout);
-    global.cancelAnimationFrame(this._animationFrame);
-    this.__debouncedOnEnd({
-      finished: false
-    });
-  }
-};
-var TimingAnimation_default = TimingAnimation;
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedImplementation.js
-var add = function add2(a, b) {
-  return new AnimatedAddition_default(a, b);
-};
-var subtract = function subtract2(a, b) {
-  return new AnimatedSubtraction_default(a, b);
-};
-var divide = function divide2(a, b) {
-  return new AnimatedDivision_default(a, b);
-};
-var multiply = function multiply2(a, b) {
-  return new AnimatedMultiplication_default(a, b);
-};
-var modulo = function modulo2(a, modulus) {
-  return new AnimatedModulo_default(a, modulus);
-};
-var diffClamp = function diffClamp2(a, min, max) {
-  return new AnimatedDiffClamp_default(a, min, max);
-};
-var _combineCallbacks = function _combineCallbacks2(callback, config2) {
-  if (callback && config2.onComplete) {
-    return function() {
-      config2.onComplete && config2.onComplete(...arguments);
-      callback && callback(...arguments);
-    };
-  } else {
-    return callback || config2.onComplete;
-  }
-};
-var maybeVectorAnim = function maybeVectorAnim2(value, config2, anim) {
-  if (value instanceof AnimatedValueXY_default) {
-    var configX = (0, import_objectSpread221.default)({}, config2);
-    var configY = (0, import_objectSpread221.default)({}, config2);
-    for (var key in config2) {
-      var _config$key = config2[key], x = _config$key.x, y = _config$key.y;
-      if (x !== void 0 && y !== void 0) {
-        configX[key] = x;
-        configY[key] = y;
-      }
-    }
-    var aX = anim(value.x, configX);
-    var aY = anim(value.y, configY);
-    return parallel([aX, aY], {
-      stopTogether: false
-    });
-  } else if (value instanceof AnimatedColor) {
-    var configR = (0, import_objectSpread221.default)({}, config2);
-    var configG = (0, import_objectSpread221.default)({}, config2);
-    var configB = (0, import_objectSpread221.default)({}, config2);
-    var configA = (0, import_objectSpread221.default)({}, config2);
-    for (var _key in config2) {
-      var _config$_key = config2[_key], r = _config$_key.r, g = _config$_key.g, b = _config$_key.b, a = _config$_key.a;
-      if (r !== void 0 && g !== void 0 && b !== void 0 && a !== void 0) {
-        configR[_key] = r;
-        configG[_key] = g;
-        configB[_key] = b;
-        configA[_key] = a;
-      }
-    }
-    var aR = anim(value.r, configR);
-    var aG = anim(value.g, configG);
-    var aB = anim(value.b, configB);
-    var aA = anim(value.a, configA);
-    return parallel([aR, aG, aB, aA], {
-      stopTogether: false
-    });
-  }
-  return null;
-};
-var spring = function spring2(value, config2) {
-  var _start = function start(animatedValue, configuration, callback) {
-    callback = _combineCallbacks(callback, configuration);
-    var singleValue = animatedValue;
-    var singleConfig = configuration;
-    singleValue.stopTracking();
-    if (configuration.toValue instanceof AnimatedNode_default) {
-      singleValue.track(new AnimatedTracking_default(singleValue, configuration.toValue, SpringAnimation_default, singleConfig, callback));
-    } else {
-      singleValue.animate(new SpringAnimation_default(singleConfig), callback);
-    }
-  };
-  return maybeVectorAnim(value, config2, spring2) || {
-    start: function start(callback) {
-      _start(value, config2, callback);
-    },
-    stop: function stop() {
-      value.stopAnimation();
-    },
-    reset: function reset() {
-      value.resetAnimation();
-    },
-    _startNativeLoop: function _startNativeLoop(iterations) {
-      var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
-        iterations
-      });
-      _start(value, singleConfig);
-    },
-    _isUsingNativeDriver: function _isUsingNativeDriver() {
-      return config2.useNativeDriver || false;
-    }
-  };
-};
-var timing = function timing2(value, config2) {
-  var _start2 = function start(animatedValue, configuration, callback) {
-    callback = _combineCallbacks(callback, configuration);
-    var singleValue = animatedValue;
-    var singleConfig = configuration;
-    singleValue.stopTracking();
-    if (configuration.toValue instanceof AnimatedNode_default) {
-      singleValue.track(new AnimatedTracking_default(singleValue, configuration.toValue, TimingAnimation_default, singleConfig, callback));
-    } else {
-      singleValue.animate(new TimingAnimation_default(singleConfig), callback);
-    }
-  };
-  return maybeVectorAnim(value, config2, timing2) || {
-    start: function start(callback) {
-      _start2(value, config2, callback);
-    },
-    stop: function stop() {
-      value.stopAnimation();
-    },
-    reset: function reset() {
-      value.resetAnimation();
-    },
-    _startNativeLoop: function _startNativeLoop(iterations) {
-      var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
-        iterations
-      });
-      _start2(value, singleConfig);
-    },
-    _isUsingNativeDriver: function _isUsingNativeDriver() {
-      return config2.useNativeDriver || false;
-    }
-  };
-};
-var decay = function decay2(value, config2) {
-  var _start3 = function start(animatedValue, configuration, callback) {
-    callback = _combineCallbacks(callback, configuration);
-    var singleValue = animatedValue;
-    var singleConfig = configuration;
-    singleValue.stopTracking();
-    singleValue.animate(new DecayAnimation_default(singleConfig), callback);
-  };
-  return maybeVectorAnim(value, config2, decay2) || {
-    start: function start(callback) {
-      _start3(value, config2, callback);
-    },
-    stop: function stop() {
-      value.stopAnimation();
-    },
-    reset: function reset() {
-      value.resetAnimation();
-    },
-    _startNativeLoop: function _startNativeLoop(iterations) {
-      var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
-        iterations
-      });
-      _start3(value, singleConfig);
-    },
-    _isUsingNativeDriver: function _isUsingNativeDriver() {
-      return config2.useNativeDriver || false;
-    }
-  };
-};
-var sequence = function sequence2(animations2) {
-  var current = 0;
-  return {
-    start: function start(callback) {
-      var onComplete = function onComplete2(result) {
-        if (!result.finished) {
-          callback && callback(result);
-          return;
-        }
-        current++;
-        if (current === animations2.length) {
-          current = 0;
-          callback && callback(result);
-          return;
-        }
-        animations2[current].start(onComplete2);
-      };
-      if (animations2.length === 0) {
-        callback && callback({
-          finished: true
-        });
-      } else {
-        animations2[current].start(onComplete);
-      }
-    },
-    stop: function stop() {
-      if (current < animations2.length) {
-        animations2[current].stop();
-      }
-    },
-    reset: function reset() {
-      animations2.forEach((animation, idx) => {
-        if (idx <= current) {
-          animation.reset();
-        }
-      });
-      current = 0;
-    },
-    _startNativeLoop: function _startNativeLoop() {
-      throw new Error("Loops run using the native driver cannot contain Animated.sequence animations");
-    },
-    _isUsingNativeDriver: function _isUsingNativeDriver() {
-      return false;
-    }
-  };
-};
-var parallel = function parallel2(animations2, config2) {
-  var doneCount = 0;
-  var hasEnded = {};
-  var stopTogether = !(config2 && config2.stopTogether === false);
-  var result = {
-    start: function start(callback) {
-      if (doneCount === animations2.length) {
-        callback && callback({
-          finished: true
-        });
-        return;
-      }
-      animations2.forEach((animation, idx) => {
-        var cb = function cb2(endResult) {
-          hasEnded[idx] = true;
-          doneCount++;
-          if (doneCount === animations2.length) {
-            doneCount = 0;
-            callback && callback(endResult);
-            return;
+      var handleClick = React60.useCallback((e) => {
+        var handleClick = React61.useCallback((e) => {
+          if (onClick != null) {
+            onClick(e);
+          } else if (onPress != null) {
+            e.stopPropagation();
+            onPress(e);
           }
-          if (!endResult.finished && stopTogether) {
-            result.stop();
+        }, [onClick, onPress]);
+        var component = hasTextAncestor ? "span" : "div";
+        var langDirection = props.lang != null ? getLocaleDirection(props.lang) : null;
+        var componentDirection = props.dir || langDirection;
+        var writingDirection = componentDirection || contextDirection;
+        var supportedProps = pickProps2(rest);
+        supportedProps.dir = componentDirection;
+        if (!hasTextAncestor) {
+          supportedProps.dir = componentDirection != null ? componentDirection : "auto";
+        }
+        if (onClick || onPress) {
+          supportedProps.onClick = handleClick;
+        }
+        supportedProps.style = [numberOfLines != null && numberOfLines > 1 && {
+          WebkitLineClamp: numberOfLines
+        }, hasTextAncestor === true ? styles8.textHasAncestor$raw : styles8.text$raw, numberOfLines === 1 && styles8.textOneLine, numberOfLines != null && numberOfLines > 1 && styles8.textMultiLine, props.style, selectable === true && styles8.selectable, selectable === false && styles8.notSelectable, onPress && styles8.pressable];
+        if (props.href != null) {
+          component = "a";
+          if (hrefAttrs != null) {
+            var download = hrefAttrs.download, rel = hrefAttrs.rel, target = hrefAttrs.target;
+            if (download != null) {
+              supportedProps.download = download;
+            }
+            if (rel != null) {
+              supportedProps.rel = rel;
+            }
+            if (typeof target === "string") {
+              supportedProps.target = target.charAt(0) !== "_" ? "_" + target : target;
+            }
+          }
+        }
+        var platformMethodsRef = usePlatformMethods(supportedProps);
+        var setRef = useMergeRefs(hostRef, platformMethodsRef, forwardedRef);
+        supportedProps.ref = setRef;
+        var element = createElement_default(component, supportedProps, {
+          writingDirection
+        });
+        return hasTextAncestor ? element : /* @__PURE__ */ React60.createElement(TextAncestorContext_default.Provider, {
+          return hasTextAncestor ? element : /* @__PURE__ */ React61.createElement(TextAncestorContext_default.Provider, {
+            value: true
+          }, element);
+        });
+        Text16.displayName = "Text";
+        var textStyle = {
+          backgroundColor: "transparent",
+          border: "0 solid black",
+          boxSizing: "border-box",
+          color: "black",
+          display: "inline",
+          font: "14px System",
+          listStyle: "none",
+          margin: 0,
+          padding: 0,
+          position: "relative",
+          textAlign: "start",
+          textDecoration: "none",
+          whiteSpace: "pre-wrap",
+          wordWrap: "break-word"
+        };
+        var styles8 = StyleSheet_default.create({
+          text$raw: textStyle,
+          textHasAncestor$raw: (0, import_objectSpread219.default)((0, import_objectSpread219.default)({}, textStyle), {}, {
+            color: "inherit",
+            font: "inherit",
+            textAlign: "inherit",
+            whiteSpace: "inherit"
+          }),
+          textOneLine: {
+            maxWidth: "100%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            wordWrap: "normal"
+          },
+          // See #13
+          textMultiLine: {
+            display: "-webkit-box",
+            maxWidth: "100%",
+            overflow: "clip",
+            textOverflow: "ellipsis",
+            WebkitBoxOrient: "vertical"
+          },
+          notSelectable: {
+            userSelect: "none"
+          },
+          selectable: {
+            userSelect: "text"
+          },
+          pressable: {
+            cursor: "pointer"
+          }
+        });
+        var Text_default = Text16;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
+        var AnimatedText_default = createAnimatedComponent(Text_default);
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedView.js
+        var React62 = __toESM(require("react"));
+        var React63 = __toESM(require("react"));
+        var AnimatedView_default = createAnimatedComponent(View_default);
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
+        var import_objectSpread222 = __toESM(require_objectSpread2());
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedImplementation.js
+        var import_objectSpread221 = __toESM(require_objectSpread2());
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedAddition.js
+        var AnimatedAddition = class extends AnimatedWithChildren_default {
+          constructor(a, b) {
+            super();
+            this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
+            this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
+          }
+          __makeNative(platformConfig) {
+            this._a.__makeNative(platformConfig);
+            this._b.__makeNative(platformConfig);
+            super.__makeNative(platformConfig);
+          }
+          __getValue() {
+            return this._a.__getValue() + this._b.__getValue();
+          }
+          interpolate(config2) {
+            return new AnimatedInterpolation_default(this, config2);
+          }
+          __attach() {
+            this._a.__addChild(this);
+            this._b.__addChild(this);
+          }
+          __detach() {
+            this._a.__removeChild(this);
+            this._b.__removeChild(this);
+            super.__detach();
+          }
+          __getNativeConfig() {
+            return {
+              type: "addition",
+              input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
+            };
           }
         };
-        if (!animation) {
-          cb({
-            finished: true
-          });
-        } else {
-          animation.start(cb);
+        var AnimatedAddition_default = AnimatedAddition;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedDiffClamp.js
+        var AnimatedDiffClamp = class extends AnimatedWithChildren_default {
+          constructor(a, min, max) {
+            super();
+            this._a = a;
+            this._min = min;
+            this._max = max;
+            this._value = this._lastValue = this._a.__getValue();
+          }
+          __makeNative(platformConfig) {
+            this._a.__makeNative(platformConfig);
+            super.__makeNative(platformConfig);
+          }
+          interpolate(config2) {
+            return new AnimatedInterpolation_default(this, config2);
+          }
+          __getValue() {
+            var value = this._a.__getValue();
+            var diff = value - this._lastValue;
+            this._lastValue = value;
+            this._value = Math.min(Math.max(this._value + diff, this._min), this._max);
+            return this._value;
+          }
+          __attach() {
+            this._a.__addChild(this);
+          }
+          __detach() {
+            this._a.__removeChild(this);
+            super.__detach();
+          }
+          __getNativeConfig() {
+            return {
+              type: "diffclamp",
+              input: this._a.__getNativeTag(),
+              min: this._min,
+              max: this._max
+            };
+          }
+        };
+        var AnimatedDiffClamp_default = AnimatedDiffClamp;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedDivision.js
+        var AnimatedDivision = class extends AnimatedWithChildren_default {
+          constructor(a, b) {
+            super();
+            this._warnedAboutDivideByZero = false;
+            if (b === 0 || b instanceof AnimatedNode_default && b.__getValue() === 0) {
+              console.error("Detected potential division by zero in AnimatedDivision");
+            }
+            this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
+            this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
+          }
+          __makeNative(platformConfig) {
+            this._a.__makeNative(platformConfig);
+            this._b.__makeNative(platformConfig);
+            super.__makeNative(platformConfig);
+          }
+          __getValue() {
+            var a = this._a.__getValue();
+            var b = this._b.__getValue();
+            if (b === 0) {
+              if (!this._warnedAboutDivideByZero) {
+                console.error("Detected division by zero in AnimatedDivision");
+                this._warnedAboutDivideByZero = true;
+              }
+              return 0;
+            }
+            this._warnedAboutDivideByZero = false;
+            return a / b;
+          }
+          interpolate(config2) {
+            return new AnimatedInterpolation_default(this, config2);
+          }
+          __attach() {
+            this._a.__addChild(this);
+            this._b.__addChild(this);
+          }
+          __detach() {
+            this._a.__removeChild(this);
+            this._b.__removeChild(this);
+            super.__detach();
+          }
+          __getNativeConfig() {
+            return {
+              type: "division",
+              input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
+            };
+          }
+        };
+        var AnimatedDivision_default = AnimatedDivision;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedModulo.js
+        var AnimatedModulo = class extends AnimatedWithChildren_default {
+          constructor(a, modulus) {
+            super();
+            this._a = a;
+            this._modulus = modulus;
+          }
+          __makeNative(platformConfig) {
+            this._a.__makeNative(platformConfig);
+            super.__makeNative(platformConfig);
+          }
+          __getValue() {
+            return (this._a.__getValue() % this._modulus + this._modulus) % this._modulus;
+          }
+          interpolate(config2) {
+            return new AnimatedInterpolation_default(this, config2);
+          }
+          __attach() {
+            this._a.__addChild(this);
+          }
+          __detach() {
+            this._a.__removeChild(this);
+            super.__detach();
+          }
+          __getNativeConfig() {
+            return {
+              type: "modulus",
+              input: this._a.__getNativeTag(),
+              modulus: this._modulus
+            };
+          }
+        };
+        var AnimatedModulo_default = AnimatedModulo;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedMultiplication.js
+        var AnimatedMultiplication = class extends AnimatedWithChildren_default {
+          constructor(a, b) {
+            super();
+            this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
+            this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
+          }
+          __makeNative(platformConfig) {
+            this._a.__makeNative(platformConfig);
+            this._b.__makeNative(platformConfig);
+            super.__makeNative(platformConfig);
+          }
+          __getValue() {
+            return this._a.__getValue() * this._b.__getValue();
+          }
+          interpolate(config2) {
+            return new AnimatedInterpolation_default(this, config2);
+          }
+          __attach() {
+            this._a.__addChild(this);
+            this._b.__addChild(this);
+          }
+          __detach() {
+            this._a.__removeChild(this);
+            this._b.__removeChild(this);
+            super.__detach();
+          }
+          __getNativeConfig() {
+            return {
+              type: "multiplication",
+              input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
+            };
+          }
+        };
+        var AnimatedMultiplication_default = AnimatedMultiplication;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedSubtraction.js
+        var AnimatedSubtraction = class extends AnimatedWithChildren_default {
+          constructor(a, b) {
+            super();
+            this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
+            this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
+          }
+          __makeNative(platformConfig) {
+            this._a.__makeNative(platformConfig);
+            this._b.__makeNative(platformConfig);
+            super.__makeNative(platformConfig);
+          }
+          __getValue() {
+            return this._a.__getValue() - this._b.__getValue();
+          }
+          interpolate(config2) {
+            return new AnimatedInterpolation_default(this, config2);
+          }
+          __attach() {
+            this._a.__addChild(this);
+            this._b.__addChild(this);
+          }
+          __detach() {
+            this._a.__removeChild(this);
+            this._b.__removeChild(this);
+            super.__detach();
+          }
+          __getNativeConfig() {
+            return {
+              type: "subtraction",
+              input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
+            };
+          }
+        };
+        var AnimatedSubtraction_default = AnimatedSubtraction;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedTracking.js
+        var import_objectSpread220 = __toESM(require_objectSpread2());
+        var AnimatedTracking = class extends AnimatedNode_default {
+          constructor(value, parent, animationClass, animationConfig, callback) {
+            super();
+            this._value = value;
+            this._parent = parent;
+            this._animationClass = animationClass;
+            this._animationConfig = animationConfig;
+            this._useNativeDriver = shouldUseNativeDriver(animationConfig);
+            this._callback = callback;
+            this.__attach();
+          }
+          __makeNative() {
+            this.__isNative = true;
+            this._parent.__makeNative();
+            super.__makeNative();
+            this._value.__makeNative();
+          }
+          __getValue() {
+            return this._parent.__getValue();
+          }
+          __attach() {
+            this._parent.__addChild(this);
+            if (this._useNativeDriver) {
+              this.__makeNative();
+            }
+          }
+          __detach() {
+            this._parent.__removeChild(this);
+            super.__detach();
+          }
+          update() {
+            this._value.animate(new this._animationClass((0, import_objectSpread220.default)((0, import_objectSpread220.default)({}, this._animationConfig), {}, {
+              toValue: this._animationConfig.toValue.__getValue()
+            })), this._callback);
+          }
+          __getNativeConfig() {
+            var animation = new this._animationClass((0, import_objectSpread220.default)((0, import_objectSpread220.default)({}, this._animationConfig), {}, {
+              // remove toValue from the config as it's a ref to Animated.Value
+              toValue: void 0
+            }));
+            var animationConfig = animation.__getNativeAnimationConfig();
+            return {
+              type: "tracking",
+              animationId: generateNewAnimationId(),
+              animationConfig,
+              toValue: this._parent.__getNativeTag(),
+              value: this._value.__getNativeTag()
+            };
+          }
+        };
+        var AnimatedTracking_default = AnimatedTracking;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedValueXY.js
+        var import_invariant20 = __toESM(require_invariant());
+        var _uniqueId2 = 1;
+        var AnimatedValueXY = class extends AnimatedWithChildren_default {
+          constructor(valueIn) {
+            super();
+            var value = valueIn || {
+              x: 0,
+              y: 0
+            };
+            if (typeof value.x === "number" && typeof value.y === "number") {
+              this.x = new AnimatedValue_default(value.x);
+              this.y = new AnimatedValue_default(value.y);
+            } else {
+              (0, import_invariant20.default)(value.x instanceof AnimatedValue_default && value.y instanceof AnimatedValue_default, "AnimatedValueXY must be initialized with an object of numbers or AnimatedValues.");
+              this.x = value.x;
+              this.y = value.y;
+            }
+            this._listeners = {};
+          }
+          /**
+           * Directly set the value. This will stop any animations running on the value
+           * and update all the bound properties.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#setvalue
+           */
+          setValue(value) {
+            this.x.setValue(value.x);
+            this.y.setValue(value.y);
+          }
+          /**
+           * Sets an offset that is applied on top of whatever value is set, whether
+           * via `setValue`, an animation, or `Animated.event`. Useful for compensating
+           * things like the start of a pan gesture.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#setoffset
+           */
+          setOffset(offset) {
+            this.x.setOffset(offset.x);
+            this.y.setOffset(offset.y);
+          }
+          /**
+           * Merges the offset value into the base value and resets the offset to zero.
+           * The final output of the value is unchanged.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#flattenoffset
+           */
+          flattenOffset() {
+            this.x.flattenOffset();
+            this.y.flattenOffset();
+          }
+          /**
+           * Sets the offset value to the base value, and resets the base value to
+           * zero. The final output of the value is unchanged.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#extractoffset
+           */
+          extractOffset() {
+            this.x.extractOffset();
+            this.y.extractOffset();
+          }
+          __getValue() {
+            return {
+              x: this.x.__getValue(),
+              y: this.y.__getValue()
+            };
+          }
+          /**
+           * Stops any animation and resets the value to its original.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#resetanimation
+           */
+          resetAnimation(callback) {
+            this.x.resetAnimation();
+            this.y.resetAnimation();
+            callback && callback(this.__getValue());
+          }
+          /**
+           * Stops any running animation or tracking. `callback` is invoked with the
+           * final value after stopping the animation, which is useful for updating
+           * state to match the animation position with layout.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#stopanimation
+           */
+          stopAnimation(callback) {
+            this.x.stopAnimation();
+            this.y.stopAnimation();
+            callback && callback(this.__getValue());
+          }
+          /**
+           * Adds an asynchronous listener to the value so you can observe updates from
+           * animations.  This is useful because there is no way to synchronously read
+           * the value because it might be driven natively.
+           *
+           * Returns a string that serves as an identifier for the listener.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#addlistener
+           */
+          addListener(callback) {
+            var id2 = String(_uniqueId2++);
+            var jointCallback = (_ref) => {
+              var number = _ref.value;
+              callback(this.__getValue());
+            };
+            this._listeners[id2] = {
+              x: this.x.addListener(jointCallback),
+              y: this.y.addListener(jointCallback)
+            };
+            return id2;
+          }
+          /**
+           * Unregister a listener. The `id` param shall match the identifier
+           * previously returned by `addListener()`.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#removelistener
+           */
+          removeListener(id2) {
+            this.x.removeListener(this._listeners[id2].x);
+            this.y.removeListener(this._listeners[id2].y);
+            delete this._listeners[id2];
+          }
+          /**
+           * Remove all registered listeners.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#removealllisteners
+           */
+          removeAllListeners() {
+            this.x.removeAllListeners();
+            this.y.removeAllListeners();
+            this._listeners = {};
+          }
+          /**
+           * Converts `{x, y}` into `{left, top}` for use in style.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#getlayout
+           */
+          getLayout() {
+            return {
+              left: this.x,
+              top: this.y
+            };
+          }
+          /**
+           * Converts `{x, y}` into a useable translation transform.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy.html#gettranslatetransform
+           */
+          getTranslateTransform() {
+            return [{
+              translateX: this.x
+            }, {
+              translateY: this.y
+            }];
+          }
+        };
+        var AnimatedValueXY_default = AnimatedValueXY;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/Animation.js
+        var startNativeAnimationNextId = 1;
+        var Animation = class {
+          start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
+          }
+          stop() {
+            if (this.__nativeId) {
+              NativeAnimatedHelper_default.API.stopAnimation(this.__nativeId);
+            }
+          }
+          __getNativeAnimationConfig() {
+            throw new Error("This animation type cannot be offloaded to native");
+          }
+          // Helper function for subclasses to make sure onEnd is only called once.
+          __debouncedOnEnd(result) {
+            var onEnd = this.__onEnd;
+            this.__onEnd = null;
+            onEnd && onEnd(result);
+          }
+          __startNativeAnimation(animatedValue) {
+            var startNativeAnimationWaitId = startNativeAnimationNextId + ":startAnimation";
+            startNativeAnimationNextId += 1;
+            NativeAnimatedHelper_default.API.setWaitingForIdentifier(startNativeAnimationWaitId);
+            try {
+              var config2 = this.__getNativeAnimationConfig();
+              animatedValue.__makeNative(config2.platformConfig);
+              this.__nativeId = NativeAnimatedHelper_default.generateNewAnimationId();
+              NativeAnimatedHelper_default.API.startAnimatingNode(
+                this.__nativeId,
+                animatedValue.__getNativeTag(),
+                config2,
+                // $FlowFixMe[method-unbinding] added when improving typing for this parameters
+                this.__debouncedOnEnd.bind(this)
+              );
+            } catch (e) {
+              throw e;
+            } finally {
+              NativeAnimatedHelper_default.API.unsetWaitingForIdentifier(startNativeAnimationWaitId);
+            }
+          }
+        };
+        var Animation_default = Animation;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/DecayAnimation.js
+        var DecayAnimation = class extends Animation_default {
+          constructor(config2) {
+            var _config$deceleration, _config$isInteraction, _config$iterations;
+            super();
+            this._deceleration = (_config$deceleration = config2.deceleration) !== null && _config$deceleration !== void 0 ? _config$deceleration : 0.998;
+            this._velocity = config2.velocity;
+            this._useNativeDriver = shouldUseNativeDriver(config2);
+            this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
+            this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
+          }
+          __getNativeAnimationConfig() {
+            return {
+              type: "decay",
+              deceleration: this._deceleration,
+              velocity: this._velocity,
+              iterations: this.__iterations
+            };
+          }
+          start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
+            this.__active = true;
+            this._lastValue = fromValue;
+            this._fromValue = fromValue;
+            this._onUpdate = onUpdate;
+            this.__onEnd = onEnd;
+            this._startTime = Date.now();
+            if (this._useNativeDriver) {
+              this.__startNativeAnimation(animatedValue);
+            } else {
+              this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
+            }
+          }
+          onUpdate() {
+            var now = Date.now();
+            var value = this._fromValue + this._velocity / (1 - this._deceleration) * (1 - Math.exp(-(1 - this._deceleration) * (now - this._startTime)));
+            this._onUpdate(value);
+            if (Math.abs(this._lastValue - value) < 0.1) {
+              this.__debouncedOnEnd({
+                finished: true
+              });
+              return;
+            }
+            this._lastValue = value;
+            if (this.__active) {
+              this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
+            }
+          }
+          stop() {
+            super.stop();
+            this.__active = false;
+            global.cancelAnimationFrame(this._animationFrame);
+            this.__debouncedOnEnd({
+              finished: false
+            });
+          }
+        };
+        var DecayAnimation_default = DecayAnimation;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/SpringConfig.js
+        function stiffnessFromOrigamiValue(oValue) {
+          return (oValue - 30) * 3.62 + 194;
         }
-      });
-    },
-    stop: function stop() {
-      animations2.forEach((animation, idx) => {
-        !hasEnded[idx] && animation.stop();
-        hasEnded[idx] = true;
-      });
-    },
-    reset: function reset() {
-      animations2.forEach((animation, idx) => {
-        animation.reset();
-        hasEnded[idx] = false;
-        doneCount = 0;
-      });
-    },
-    _startNativeLoop: function _startNativeLoop() {
-      throw new Error("Loops run using the native driver cannot contain Animated.parallel animations");
-    },
-    _isUsingNativeDriver: function _isUsingNativeDriver() {
-      return false;
-    }
-  };
-  return result;
-};
-var delay = function delay2(time) {
-  return timing(new AnimatedValue_default(0), {
-    toValue: 0,
-    delay: time,
-    duration: 0,
-    useNativeDriver: false
-  });
-};
-var stagger = function stagger2(time, animations2) {
-  return parallel(animations2.map((animation, i) => {
-    return sequence([delay(time * i), animation]);
-  }));
-};
-var loop = function loop2(animation, _temp) {
-  var _ref = _temp === void 0 ? {} : _temp, _ref$iterations = _ref.iterations, iterations = _ref$iterations === void 0 ? -1 : _ref$iterations, _ref$resetBeforeItera = _ref.resetBeforeIteration, resetBeforeIteration = _ref$resetBeforeItera === void 0 ? true : _ref$resetBeforeItera;
-  var isFinished = false;
-  var iterationsSoFar = 0;
-  return {
-    start: function start(callback) {
-      var restart = function restart2(result) {
-        if (result === void 0) {
-          result = {
-            finished: true
+        function dampingFromOrigamiValue(oValue) {
+          return (oValue - 8) * 3 + 25;
+        }
+        function fromOrigamiTensionAndFriction(tension, friction) {
+          return {
+            stiffness: stiffnessFromOrigamiValue(tension),
+            damping: dampingFromOrigamiValue(friction)
           };
         }
-        if (isFinished || iterationsSoFar === iterations || result.finished === false) {
-          callback && callback(result);
-        } else {
-          iterationsSoFar++;
-          resetBeforeIteration && animation.reset();
-          animation.start(restart2);
-        }
-      };
-      if (!animation || iterations === 0) {
-        callback && callback({
-          finished: true
-        });
-      } else {
-        if (animation._isUsingNativeDriver()) {
-          animation._startNativeLoop(iterations);
-        } else {
-          restart();
-        }
-      }
-    },
-    stop: function stop() {
-      isFinished = true;
-      animation.stop();
-    },
-    reset: function reset() {
-      iterationsSoFar = 0;
-      isFinished = false;
-      animation.reset();
-    },
-    _startNativeLoop: function _startNativeLoop() {
-      throw new Error("Loops run using the native driver cannot contain Animated.loop animations");
-    },
-    _isUsingNativeDriver: function _isUsingNativeDriver() {
-      return animation._isUsingNativeDriver();
-    }
-  };
-};
-function forkEvent(event3, listener) {
-  if (!event3) {
-    return listener;
-  } else if (event3 instanceof AnimatedEvent) {
-    event3.__addListener(listener);
-    return event3;
-  } else {
-    return function() {
-      typeof event3 === "function" && event3(...arguments);
-      listener(...arguments);
-    };
-  }
-}
-function unforkEvent(event3, listener) {
-  if (event3 && event3 instanceof AnimatedEvent) {
-    event3.__removeListener(listener);
-  }
-}
-var event = function event2(argMapping, config2) {
-  var animatedEvent = new AnimatedEvent(argMapping, config2);
-  if (animatedEvent.__isNative) {
-    return animatedEvent;
-  } else {
-    return animatedEvent.__getHandler();
-  }
-};
-var AnimatedImplementation_default = {
-  /**
-   * Standard value class for driving animations.  Typically initialized with
-   * `new Animated.Value(0);`
-   *
-   * See https://reactnative.dev/docs/animated#value
-   */
-  Value: AnimatedValue_default,
-  /**
-   * 2D value class for driving 2D animations, such as pan gestures.
-   *
-   * See https://reactnative.dev/docs/animatedvaluexy
-   */
-  ValueXY: AnimatedValueXY_default,
-  /**
-   * Value class for driving color animations.
-   */
-  Color: AnimatedColor,
-  /**
-   * Exported to use the Interpolation type in flow.
-   *
-   * See https://reactnative.dev/docs/animated#interpolation
-   */
-  Interpolation: AnimatedInterpolation_default,
-  /**
-   * Exported for ease of type checking. All animated values derive from this
-   * class.
-   *
-   * See https://reactnative.dev/docs/animated#node
-   */
-  Node: AnimatedNode_default,
-  /**
-   * Animates a value from an initial velocity to zero based on a decay
-   * coefficient.
-   *
-   * See https://reactnative.dev/docs/animated#decay
-   */
-  decay,
-  /**
-   * Animates a value along a timed easing curve. The Easing module has tons of
-   * predefined curves, or you can use your own function.
-   *
-   * See https://reactnative.dev/docs/animated#timing
-   */
-  timing,
-  /**
-   * Animates a value according to an analytical spring model based on
-   * damped harmonic oscillation.
-   *
-   * See https://reactnative.dev/docs/animated#spring
-   */
-  spring,
-  /**
-   * Creates a new Animated value composed from two Animated values added
-   * together.
-   *
-   * See https://reactnative.dev/docs/animated#add
-   */
-  add,
-  /**
-   * Creates a new Animated value composed by subtracting the second Animated
-   * value from the first Animated value.
-   *
-   * See https://reactnative.dev/docs/animated#subtract
-   */
-  subtract,
-  /**
-   * Creates a new Animated value composed by dividing the first Animated value
-   * by the second Animated value.
-   *
-   * See https://reactnative.dev/docs/animated#divide
-   */
-  divide,
-  /**
-   * Creates a new Animated value composed from two Animated values multiplied
-   * together.
-   *
-   * See https://reactnative.dev/docs/animated#multiply
-   */
-  multiply,
-  /**
-   * Creates a new Animated value that is the (non-negative) modulo of the
-   * provided Animated value.
-   *
-   * See https://reactnative.dev/docs/animated#modulo
-   */
-  modulo,
-  /**
-   * Create a new Animated value that is limited between 2 values. It uses the
-   * difference between the last value so even if the value is far from the
-   * bounds it will start changing when the value starts getting closer again.
-   *
-   * See https://reactnative.dev/docs/animated#diffclamp
-   */
-  diffClamp,
-  /**
-   * Starts an animation after the given delay.
-   *
-   * See https://reactnative.dev/docs/animated#delay
-   */
-  delay,
-  /**
-   * Starts an array of animations in order, waiting for each to complete
-   * before starting the next. If the current running animation is stopped, no
-   * following animations will be started.
-   *
-   * See https://reactnative.dev/docs/animated#sequence
-   */
-  sequence,
-  /**
-   * Starts an array of animations all at the same time. By default, if one
-   * of the animations is stopped, they will all be stopped. You can override
-   * this with the `stopTogether` flag.
-   *
-   * See https://reactnative.dev/docs/animated#parallel
-   */
-  parallel,
-  /**
-   * Array of animations may run in parallel (overlap), but are started in
-   * sequence with successive delays.  Nice for doing trailing effects.
-   *
-   * See https://reactnative.dev/docs/animated#stagger
-   */
-  stagger,
-  /**
-   * Loops a given animation continuously, so that each time it reaches the
-   * end, it resets and begins again from the start.
-   *
-   * See https://reactnative.dev/docs/animated#loop
-   */
-  loop,
-  /**
-   * Takes an array of mappings and extracts values from each arg accordingly,
-   * then calls `setValue` on the mapped outputs.
-   *
-   * See https://reactnative.dev/docs/animated#event
-   */
-  event,
-  /**
-   * Make any React component Animatable.  Used to create `Animated.View`, etc.
-   *
-   * See https://reactnative.dev/docs/animated#createanimatedcomponent
-   */
-  createAnimatedComponent,
-  /**
-   * Imperative API to attach an animated value to an event on a view. Prefer
-   * using `Animated.event` with `useNativeDrive: true` if possible.
-   *
-   * See https://reactnative.dev/docs/animated#attachnativeevent
-   */
-  attachNativeEvent,
-  /**
-   * Advanced imperative API for snooping on animated events that are passed in
-   * through props. Use values directly where possible.
-   *
-   * See https://reactnative.dev/docs/animated#forkevent
-   */
-  forkEvent,
-  unforkEvent,
-  /**
-   * Expose Event class, so it can be used as a type for type checkers.
-   */
-  Event: AnimatedEvent
-};
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
-var inAnimationCallback = false;
-function mockAnimationStart(start) {
-  return (callback) => {
-    var guardedCallback = callback == null ? callback : function() {
-      if (inAnimationCallback) {
-        console.warn("Ignoring recursive animation callback when running mock animations");
-        return;
-      }
-      inAnimationCallback = true;
-      try {
-        callback(...arguments);
-      } finally {
-        inAnimationCallback = false;
-      }
-    };
-    start(guardedCallback);
-  };
-}
-var emptyAnimation = {
-  start: () => {
-  },
-  stop: () => {
-  },
-  reset: () => {
-  },
-  _startNativeLoop: () => {
-  },
-  _isUsingNativeDriver: () => {
-    return false;
-  }
-};
-var mockCompositeAnimation = (animations2) => (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
-  start: mockAnimationStart((callback) => {
-    animations2.forEach((animation) => animation.start());
-    callback == null ? void 0 : callback({
-      finished: true
-    });
-  })
-});
-var spring3 = function spring4(value, config2) {
-  var anyValue = value;
-  return (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
-    start: mockAnimationStart((callback) => {
-      anyValue.setValue(config2.toValue);
-      callback == null ? void 0 : callback({
-        finished: true
-      });
-    })
-  });
-};
-var timing3 = function timing4(value, config2) {
-  var anyValue = value;
-  return (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
-    start: mockAnimationStart((callback) => {
-      anyValue.setValue(config2.toValue);
-      callback == null ? void 0 : callback({
-        finished: true
-      });
-    })
-  });
-};
-var decay3 = function decay4(value, config2) {
-  return emptyAnimation;
-};
-var sequence3 = function sequence4(animations2) {
-  return mockCompositeAnimation(animations2);
-};
-var parallel3 = function parallel4(animations2, config2) {
-  return mockCompositeAnimation(animations2);
-};
-var delay3 = function delay4(time) {
-  return emptyAnimation;
-};
-var stagger3 = function stagger4(time, animations2) {
-  return mockCompositeAnimation(animations2);
-};
-var loop3 = function loop4(animation, _temp) {
-  var _ref = _temp === void 0 ? {} : _temp, _ref$iterations = _ref.iterations, iterations = _ref$iterations === void 0 ? -1 : _ref$iterations;
-  return emptyAnimation;
-};
-var AnimatedMock_default = {
-  Value: AnimatedValue_default,
-  ValueXY: AnimatedValueXY_default,
-  Color: AnimatedColor,
-  Interpolation: AnimatedInterpolation_default,
-  Node: AnimatedNode_default,
-  decay: decay3,
-  timing: timing3,
-  spring: spring3,
-  add: AnimatedImplementation_default.add,
-  subtract: AnimatedImplementation_default.subtract,
-  divide: AnimatedImplementation_default.divide,
-  multiply: AnimatedImplementation_default.multiply,
-  modulo: AnimatedImplementation_default.modulo,
-  diffClamp: AnimatedImplementation_default.diffClamp,
-  delay: delay3,
-  sequence: sequence3,
-  parallel: parallel3,
-  stagger: stagger3,
-  loop: loop3,
-  event: AnimatedImplementation_default.event,
-  createAnimatedComponent,
-  attachNativeEvent,
-  forkEvent: AnimatedImplementation_default.forkEvent,
-  unforkEvent: AnimatedImplementation_default.unforkEvent,
-  Event: AnimatedEvent
-};
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/Animated.js
-var Animated = Platform_default.isTesting ? AnimatedMock_default : AnimatedImplementation_default;
-var Animated_default = (0, import_objectSpread223.default)({
-  FlatList: AnimatedFlatList_default,
-  Image: AnimatedImage_default,
-  ScrollView: AnimatedScrollView_default,
-  SectionList: AnimatedSectionList_default,
-  Text: AnimatedText_default,
-  View: AnimatedView_default
-}, Animated);
-
-// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Animated/index.js
-var Animated_default2 = Animated_default;
-
-// ../../node_modules/.pnpm/@tamagui+animations-react-native@1.138.0_react-dom@18.3.1_react@18.3.1__react-native@0.82.1_@_pbdqmovbjfmtaaz5pg4fubn4hi/node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
-var animatedStyleKey = {
-  transform: true,
-  opacity: true
-};
-var colorStyleKey = {
-  backgroundColor: true,
-  color: true,
-  borderColor: true,
-  borderLeftColor: true,
-  borderRightColor: true,
-  borderTopColor: true,
-  borderBottomColor: true
-};
-var costlyToAnimateStyleKey = {
-  borderRadius: true,
-  borderTopLeftRadius: true,
-  borderTopRightRadius: true,
-  borderBottomLeftRadius: true,
-  borderBottomRightRadius: true,
-  borderWidth: true,
-  borderLeftWidth: true,
-  borderRightWidth: true,
-  borderTopWidth: true,
-  borderBottomWidth: true,
-  ...colorStyleKey
-  // TODO for other keys like height or width, it's better to not add them here till layout animations are ready
-};
-var AnimatedView = Animated_default2.View;
-var AnimatedText = Animated_default2.Text;
-function useAnimatedNumber(initial) {
-  const state = import_react44.default.useRef(null);
-  return state.current || (state.current = {
-    composite: null,
-    val: new Animated_default2.Value(initial),
-    strategy: {
-      type: "spring"
-    }
-  }), {
-    getInstance() {
-      return state.current.val;
-    },
-    getValue() {
-      return state.current.val._value;
-    },
-    stop() {
-      state.current.composite?.stop(), state.current.composite = null;
-    },
-    setValue(next, {
-      type,
-      ...config2
-    } = {
-      type: "spring"
-    }, onFinish) {
-      const val = state.current.val, handleFinish = onFinish ? ({
-        finished
-      }) => finished ? onFinish() : null : void 0;
-      if (type === "direct") val.setValue(next);
-      else if (type === "spring") {
-        state.current.composite?.stop();
-        const composite = Animated_default2.spring(val, {
-          ...config2,
-          toValue: next,
-          useNativeDriver: !isWeb3
-        });
-        composite.start(handleFinish), state.current.composite = composite;
-      } else {
-        state.current.composite?.stop();
-        const composite = Animated_default2.timing(val, {
-          ...config2,
-          toValue: next,
-          useNativeDriver: !isWeb3
-        });
-        composite.start(handleFinish), state.current.composite = composite;
-      }
-    }
-  };
-}
-var useAnimatedNumberReaction = ({
-  value
-}, onValue) => {
-  const onChange = useEvent((current) => {
-    onValue(current.value);
-  });
-  import_react44.default.useEffect(() => {
-    const id2 = value.getInstance().addListener(onChange);
-    return () => {
-      value.getInstance().removeListener(id2);
-    };
-  }, [value, onChange]);
-};
-var useAnimatedNumberStyle = (value, getStyle) => getStyle(value.getInstance());
-function createAnimations(animations2) {
-  return {
-    isReactNative: true,
-    animations: animations2,
-    View: AnimatedView,
-    Text: AnimatedText,
-    useAnimatedNumber,
-    useAnimatedNumberReaction,
-    useAnimatedNumberStyle,
-    usePresence,
-    ResetPresence,
-    useAnimations: ({
-      props,
-      onDidAnimate,
-      style,
-      componentState,
-      presence
-    }) => {
-      const isDisabled2 = isWeb3 && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react44.default.useRef({}), animatedTranforms = import_react44.default.useRef([]), animationsState = import_react44.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react44.default.useMemo(() => isWeb3 ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react44.default.useMemo(() => {
-        const runners = [], completions = [], nonAnimatedStyle = {};
-        for (const key in style) {
-          const val = style[key];
-          if (!isDisabled2) {
-            if (animatedStyleKey[key] == null && !costlyToAnimateStyleKey[key]) {
-              nonAnimatedStyle[key] = val;
-              continue;
-            }
-            if (hasAnimateOnly && !animateOnly.includes(key)) {
-              nonAnimatedStyle[key] = val;
-              continue;
-            }
-            if (key !== "transform") {
-              animateStyles.current[key] = update2(key, animateStyles.current[key], val);
-              continue;
-            }
-            if (val) {
-              if (typeof val == "string") {
-                console.warn("Warning: Tamagui can't animate string transforms yet!");
-                continue;
-              }
-              for (const [index, transform] of val.entries()) {
-                if (!transform) continue;
-                const tkey = Object.keys(transform)[0], currentTransform = animatedTranforms.current[index]?.[tkey];
-                animatedTranforms.current[index] = {
-                  [tkey]: update2(tkey, currentTransform, transform[tkey])
-                }, animatedTranforms.current = [...animatedTranforms.current];
-              }
+        function fromBouncinessAndSpeed(bounciness, speed) {
+          function normalize(value, startValue, endValue) {
+            return (value - startValue) / (endValue - startValue);
+          }
+          function projectNormal(n, start, end) {
+            return start + n * (end - start);
+          }
+          function linearInterpolation(t, start, end) {
+            return t * end + (1 - t) * start;
+          }
+          function quadraticOutInterpolation(t, start, end) {
+            return linearInterpolation(2 * t - t * t, start, end);
+          }
+          function b3Friction1(x) {
+            return 7e-4 * Math.pow(x, 3) - 0.031 * Math.pow(x, 2) + 0.64 * x + 1.28;
+          }
+          function b3Friction2(x) {
+            return 44e-6 * Math.pow(x, 3) - 6e-3 * Math.pow(x, 2) + 0.36 * x + 2;
+          }
+          function b3Friction3(x) {
+            return 45e-8 * Math.pow(x, 3) - 332e-6 * Math.pow(x, 2) + 0.1078 * x + 5.84;
+          }
+          function b3Nobounce(tension) {
+            if (tension <= 18) {
+              return b3Friction1(tension);
+            } else if (tension > 18 && tension <= 44) {
+              return b3Friction2(tension);
+            } else {
+              return b3Friction3(tension);
             }
           }
+          var b = normalize(bounciness / 1.7, 0, 20);
+          b = projectNormal(b, 0, 0.8);
+          var s = normalize(speed / 1.7, 0, 20);
+          var bouncyTension = projectNormal(s, 0.5, 200);
+          var bouncyFriction = quadraticOutInterpolation(b, b3Nobounce(bouncyTension), 0.01);
+          return {
+            stiffness: stiffnessFromOrigamiValue(bouncyTension),
+            damping: dampingFromOrigamiValue(bouncyFriction)
+          };
         }
-        const animatedStyle = {
-          ...Object.fromEntries(Object.entries(animateStyles.current).map(([k, v]) => [k, animationsState.current.get(v)?.interpolation || v])),
-          transform: animatedTranforms.current.map((r) => {
-            const key = Object.keys(r)[0], val = animationsState.current.get(r[key])?.interpolation || r[key];
+        var SpringConfig_default = {
+          fromOrigamiTensionAndFriction,
+          fromBouncinessAndSpeed
+        };
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/SpringAnimation.js
+        var import_invariant21 = __toESM(require_invariant());
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedColor.js
+        var import_normalize_colors3 = __toESM(require_normalize_colors());
+        var NativeAnimatedAPI3 = NativeAnimatedHelper_default.API;
+        var defaultColor = {
+          r: 0,
+          g: 0,
+          b: 0,
+          a: 1
+        };
+        var _uniqueId3 = 1;
+        var processColorObject = (color) => {
+          return color;
+        };
+        function processColor2(color) {
+          if (color === void 0 || color === null) {
+            return null;
+          }
+          if (isRgbaValue(color)) {
+            return color;
+          }
+          var normalizedColor = (0, import_normalize_colors3.default)(
+            // $FlowIgnore[incompatible-cast] - Type is verified above
+            color
+          );
+          if (normalizedColor === void 0 || normalizedColor === null) {
+            return null;
+          }
+          if (typeof normalizedColor === "object") {
+            var processedColorObj = processColorObject(normalizedColor);
+            if (processedColorObj != null) {
+              return processedColorObj;
+            }
+          } else if (typeof normalizedColor === "number") {
+            var r = (normalizedColor & 4278190080) >>> 24;
+            var g = (normalizedColor & 16711680) >>> 16;
+            var b = (normalizedColor & 65280) >>> 8;
+            var a = (normalizedColor & 255) / 255;
             return {
-              [key]: val
+              r,
+              g,
+              b,
+              a
             };
-          })
-        };
-        return {
-          runners,
-          completions,
-          style: [nonAnimatedStyle, animatedStyle]
-        };
-        function update2(key, animated, valIn) {
-          const isColorStyleKey = colorStyleKey[key], [val, type] = isColorStyleKey ? [0, void 0] : getValue2(valIn);
-          let animateToValue = val;
-          const value = animated || new Animated_default2.Value(val), curInterpolation = animationsState.current.get(value);
-          let interpolateArgs;
-          if (type && (interpolateArgs = getInterpolated(curInterpolation?.current ?? value._value, val, type), animationsState.current.set(value, {
-            interpolation: value.interpolate(interpolateArgs),
-            current: val
-          })), isColorStyleKey && (animateToValue = curInterpolation?.animateToValue ? 0 : 1, interpolateArgs = getColorInterpolated(
-            curInterpolation?.current,
-            // valIn is the next color
-            valIn,
-            animateToValue
-          ), animationsState.current.set(value, {
-            current: valIn,
-            interpolation: value.interpolate(interpolateArgs),
-            animateToValue: curInterpolation?.animateToValue ? 0 : 1
-          })), value) {
-            const animationConfig = getAnimationConfig(key, animations2, props.animation);
-            let resolve;
-            const promise = new Promise((res2) => {
-              resolve = res2;
-            });
-            completions.push(promise), runners.push(() => {
-              value.stopAnimation();
-              function getAnimation() {
-                return Animated_default2[animationConfig.type || "spring"](value, {
-                  toValue: animateToValue,
-                  useNativeDriver: !isWeb3 && !isThereNoNativeStyleKeys,
-                  ...animationConfig
-                });
+          }
+          return null;
+        }
+        function isRgbaValue(value) {
+          return value && typeof value.r === "number" && typeof value.g === "number" && typeof value.b === "number" && typeof value.a === "number";
+        }
+        function isRgbaAnimatedValue(value) {
+          return value && value.r instanceof AnimatedValue_default && value.g instanceof AnimatedValue_default && value.b instanceof AnimatedValue_default && value.a instanceof AnimatedValue_default;
+        }
+        var AnimatedColor = class extends AnimatedWithChildren_default {
+          constructor(valueIn, config2) {
+            super();
+            this._listeners = {};
+            var value = valueIn !== null && valueIn !== void 0 ? valueIn : defaultColor;
+            if (isRgbaAnimatedValue(value)) {
+              var rgbaAnimatedValue = value;
+              this.r = rgbaAnimatedValue.r;
+              this.g = rgbaAnimatedValue.g;
+              this.b = rgbaAnimatedValue.b;
+              this.a = rgbaAnimatedValue.a;
+            } else {
+              var _processColor;
+              var processedColor = (
+                // $FlowIgnore[incompatible-cast] - Type is verified above
+                (_processColor = processColor2(value)) !== null && _processColor !== void 0 ? _processColor : defaultColor
+              );
+              var initColor = defaultColor;
+              if (isRgbaValue(processedColor)) {
+                initColor = processedColor;
+              } else {
+                this.nativeColor = processedColor;
               }
-              (animationConfig.delay ? Animated_default2.sequence([Animated_default2.delay(animationConfig.delay), getAnimation()]) : getAnimation()).start(({
-                finished
-              }) => {
-                finished && resolve();
+              this.r = new AnimatedValue_default(initColor.r);
+              this.g = new AnimatedValue_default(initColor.g);
+              this.b = new AnimatedValue_default(initColor.b);
+              this.a = new AnimatedValue_default(initColor.a);
+            }
+            if (this.nativeColor || config2 && config2.useNativeDriver) {
+              this.__makeNative();
+            }
+          }
+          /**
+           * Directly set the value. This will stop any animations running on the value
+           * and update all the bound properties.
+           */
+          setValue(value) {
+            var _processColor2;
+            var shouldUpdateNodeConfig = false;
+            if (this.__isNative) {
+              var nativeTag = this.__getNativeTag();
+              NativeAnimatedAPI3.setWaitingForIdentifier(nativeTag.toString());
+            }
+            var processedColor = (_processColor2 = processColor2(value)) !== null && _processColor2 !== void 0 ? _processColor2 : defaultColor;
+            if (isRgbaValue(processedColor)) {
+              var rgbaValue = processedColor;
+              this.r.setValue(rgbaValue.r);
+              this.g.setValue(rgbaValue.g);
+              this.b.setValue(rgbaValue.b);
+              this.a.setValue(rgbaValue.a);
+              if (this.nativeColor != null) {
+                this.nativeColor = null;
+                shouldUpdateNodeConfig = true;
+              }
+            } else {
+              var nativeColor = processedColor;
+              if (this.nativeColor !== nativeColor) {
+                this.nativeColor = nativeColor;
+                shouldUpdateNodeConfig = true;
+              }
+            }
+            if (this.__isNative) {
+              var _nativeTag = this.__getNativeTag();
+              if (shouldUpdateNodeConfig) {
+                NativeAnimatedAPI3.updateAnimatedNodeConfig(_nativeTag, this.__getNativeConfig());
+              }
+              NativeAnimatedAPI3.unsetWaitingForIdentifier(_nativeTag.toString());
+            }
+          }
+          /**
+           * Sets an offset that is applied on top of whatever value is set, whether
+           * via `setValue`, an animation, or `Animated.event`. Useful for compensating
+           * things like the start of a pan gesture.
+           */
+          setOffset(offset) {
+            this.r.setOffset(offset.r);
+            this.g.setOffset(offset.g);
+            this.b.setOffset(offset.b);
+            this.a.setOffset(offset.a);
+          }
+          /**
+           * Merges the offset value into the base value and resets the offset to zero.
+           * The final output of the value is unchanged.
+           */
+          flattenOffset() {
+            this.r.flattenOffset();
+            this.g.flattenOffset();
+            this.b.flattenOffset();
+            this.a.flattenOffset();
+          }
+          /**
+           * Sets the offset value to the base value, and resets the base value to
+           * zero. The final output of the value is unchanged.
+           */
+          extractOffset() {
+            this.r.extractOffset();
+            this.g.extractOffset();
+            this.b.extractOffset();
+            this.a.extractOffset();
+          }
+          /**
+           * Adds an asynchronous listener to the value so you can observe updates from
+           * animations.  This is useful because there is no way to synchronously read
+           * the value because it might be driven natively.
+           *
+           * Returns a string that serves as an identifier for the listener.
+           */
+          addListener(callback) {
+            var id2 = String(_uniqueId3++);
+            var jointCallback = (_ref) => {
+              var number = _ref.value;
+              callback(this.__getValue());
+            };
+            this._listeners[id2] = {
+              r: this.r.addListener(jointCallback),
+              g: this.g.addListener(jointCallback),
+              b: this.b.addListener(jointCallback),
+              a: this.a.addListener(jointCallback)
+            };
+            return id2;
+          }
+          /**
+           * Unregister a listener. The `id` param shall match the identifier
+           * previously returned by `addListener()`.
+           */
+          removeListener(id2) {
+            this.r.removeListener(this._listeners[id2].r);
+            this.g.removeListener(this._listeners[id2].g);
+            this.b.removeListener(this._listeners[id2].b);
+            this.a.removeListener(this._listeners[id2].a);
+            delete this._listeners[id2];
+          }
+          /**
+           * Remove all registered listeners.
+           */
+          removeAllListeners() {
+            this.r.removeAllListeners();
+            this.g.removeAllListeners();
+            this.b.removeAllListeners();
+            this.a.removeAllListeners();
+            this._listeners = {};
+          }
+          /**
+           * Stops any running animation or tracking. `callback` is invoked with the
+           * final value after stopping the animation, which is useful for updating
+           * state to match the animation position with layout.
+           */
+          stopAnimation(callback) {
+            this.r.stopAnimation();
+            this.g.stopAnimation();
+            this.b.stopAnimation();
+            this.a.stopAnimation();
+            callback && callback(this.__getValue());
+          }
+          /**
+           * Stops any animation and resets the value to its original.
+           */
+          resetAnimation(callback) {
+            this.r.resetAnimation();
+            this.g.resetAnimation();
+            this.b.resetAnimation();
+            this.a.resetAnimation();
+            callback && callback(this.__getValue());
+          }
+          __getValue() {
+            if (this.nativeColor != null) {
+              return this.nativeColor;
+            } else {
+              return "rgba(" + this.r.__getValue() + ", " + this.g.__getValue() + ", " + this.b.__getValue() + ", " + this.a.__getValue() + ")";
+            }
+          }
+          __attach() {
+            this.r.__addChild(this);
+            this.g.__addChild(this);
+            this.b.__addChild(this);
+            this.a.__addChild(this);
+            super.__attach();
+          }
+          __detach() {
+            this.r.__removeChild(this);
+            this.g.__removeChild(this);
+            this.b.__removeChild(this);
+            this.a.__removeChild(this);
+            super.__detach();
+          }
+          __makeNative(platformConfig) {
+            this.r.__makeNative(platformConfig);
+            this.g.__makeNative(platformConfig);
+            this.b.__makeNative(platformConfig);
+            this.a.__makeNative(platformConfig);
+            super.__makeNative(platformConfig);
+          }
+          __getNativeConfig() {
+            return {
+              type: "color",
+              r: this.r.__getNativeTag(),
+              g: this.g.__getNativeTag(),
+              b: this.b.__getNativeTag(),
+              a: this.a.__getNativeTag(),
+              nativeColor: this.nativeColor
+            };
+          }
+        };
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/SpringAnimation.js
+        var SpringAnimation = class _SpringAnimation extends Animation_default {
+          constructor(config2) {
+            var _config$overshootClam, _config$restDisplacem, _config$restSpeedThre, _config$velocity, _config$velocity2, _config$delay, _config$isInteraction, _config$iterations;
+            super();
+            this._overshootClamping = (_config$overshootClam = config2.overshootClamping) !== null && _config$overshootClam !== void 0 ? _config$overshootClam : false;
+            this._restDisplacementThreshold = (_config$restDisplacem = config2.restDisplacementThreshold) !== null && _config$restDisplacem !== void 0 ? _config$restDisplacem : 1e-3;
+            this._restSpeedThreshold = (_config$restSpeedThre = config2.restSpeedThreshold) !== null && _config$restSpeedThre !== void 0 ? _config$restSpeedThre : 1e-3;
+            this._initialVelocity = (_config$velocity = config2.velocity) !== null && _config$velocity !== void 0 ? _config$velocity : 0;
+            this._lastVelocity = (_config$velocity2 = config2.velocity) !== null && _config$velocity2 !== void 0 ? _config$velocity2 : 0;
+            this._toValue = config2.toValue;
+            this._delay = (_config$delay = config2.delay) !== null && _config$delay !== void 0 ? _config$delay : 0;
+            this._useNativeDriver = shouldUseNativeDriver(config2);
+            this._platformConfig = config2.platformConfig;
+            this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
+            this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
+            if (config2.stiffness !== void 0 || config2.damping !== void 0 || config2.mass !== void 0) {
+              var _config$stiffness, _config$damping, _config$mass;
+              (0, import_invariant21.default)(config2.bounciness === void 0 && config2.speed === void 0 && config2.tension === void 0 && config2.friction === void 0, "You can define one of bounciness/speed, tension/friction, or stiffness/damping/mass, but not more than one");
+              this._stiffness = (_config$stiffness = config2.stiffness) !== null && _config$stiffness !== void 0 ? _config$stiffness : 100;
+              this._damping = (_config$damping = config2.damping) !== null && _config$damping !== void 0 ? _config$damping : 10;
+              this._mass = (_config$mass = config2.mass) !== null && _config$mass !== void 0 ? _config$mass : 1;
+            } else if (config2.bounciness !== void 0 || config2.speed !== void 0) {
+              var _config$bounciness, _config$speed;
+              (0, import_invariant21.default)(config2.tension === void 0 && config2.friction === void 0 && config2.stiffness === void 0 && config2.damping === void 0 && config2.mass === void 0, "You can define one of bounciness/speed, tension/friction, or stiffness/damping/mass, but not more than one");
+              var springConfig = SpringConfig_default.fromBouncinessAndSpeed((_config$bounciness = config2.bounciness) !== null && _config$bounciness !== void 0 ? _config$bounciness : 8, (_config$speed = config2.speed) !== null && _config$speed !== void 0 ? _config$speed : 12);
+              this._stiffness = springConfig.stiffness;
+              this._damping = springConfig.damping;
+              this._mass = 1;
+            } else {
+              var _config$tension, _config$friction;
+              var _springConfig = SpringConfig_default.fromOrigamiTensionAndFriction((_config$tension = config2.tension) !== null && _config$tension !== void 0 ? _config$tension : 40, (_config$friction = config2.friction) !== null && _config$friction !== void 0 ? _config$friction : 7);
+              this._stiffness = _springConfig.stiffness;
+              this._damping = _springConfig.damping;
+              this._mass = 1;
+            }
+            (0, import_invariant21.default)(this._stiffness > 0, "Stiffness value must be greater than 0");
+            (0, import_invariant21.default)(this._damping > 0, "Damping value must be greater than 0");
+            (0, import_invariant21.default)(this._mass > 0, "Mass value must be greater than 0");
+          }
+          __getNativeAnimationConfig() {
+            var _this$_initialVelocit;
+            return {
+              type: "spring",
+              overshootClamping: this._overshootClamping,
+              restDisplacementThreshold: this._restDisplacementThreshold,
+              restSpeedThreshold: this._restSpeedThreshold,
+              stiffness: this._stiffness,
+              damping: this._damping,
+              mass: this._mass,
+              initialVelocity: (_this$_initialVelocit = this._initialVelocity) !== null && _this$_initialVelocit !== void 0 ? _this$_initialVelocit : this._lastVelocity,
+              toValue: this._toValue,
+              iterations: this.__iterations,
+              platformConfig: this._platformConfig
+            };
+          }
+          start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
+            this.__active = true;
+            this._startPosition = fromValue;
+            this._lastPosition = this._startPosition;
+            this._onUpdate = onUpdate;
+            this.__onEnd = onEnd;
+            this._lastTime = Date.now();
+            this._frameTime = 0;
+            if (previousAnimation instanceof _SpringAnimation) {
+              var internalState = previousAnimation.getInternalState();
+              this._lastPosition = internalState.lastPosition;
+              this._lastVelocity = internalState.lastVelocity;
+              this._initialVelocity = this._lastVelocity;
+              this._lastTime = internalState.lastTime;
+            }
+            var start = () => {
+              if (this._useNativeDriver) {
+                this.__startNativeAnimation(animatedValue);
+              } else {
+                this.onUpdate();
+              }
+            };
+            if (this._delay) {
+              this._timeout = setTimeout(start, this._delay);
+            } else {
+              start();
+            }
+          }
+          getInternalState() {
+            return {
+              lastPosition: this._lastPosition,
+              lastVelocity: this._lastVelocity,
+              lastTime: this._lastTime
+            };
+          }
+          /**
+           * This spring model is based off of a damped harmonic oscillator
+           * (https://en.wikipedia.org/wiki/Harmonic_oscillator#Damped_harmonic_oscillator).
+           *
+           * We use the closed form of the second order differential equation:
+           *
+           * x'' + (2ζ⍵_0)x' + ⍵^2x = 0
+           *
+           * where
+           *    ⍵_0 = √(k / m) (undamped angular frequency of the oscillator),
+           *    ζ = c / 2√mk (damping ratio),
+           *    c = damping constant
+           *    k = stiffness
+           *    m = mass
+           *
+           * The derivation of the closed form is described in detail here:
+           * http://planetmath.org/sites/default/files/texpdf/39745.pdf
+           *
+           * This algorithm happens to match the algorithm used by CASpringAnimation,
+           * a QuartzCore (iOS) API that creates spring animations.
+           */
+          onUpdate() {
+            var MAX_STEPS = 64;
+            var now = Date.now();
+            if (now > this._lastTime + MAX_STEPS) {
+              now = this._lastTime + MAX_STEPS;
+            }
+            var deltaTime = (now - this._lastTime) / 1e3;
+            this._frameTime += deltaTime;
+            var c = this._damping;
+            var m2 = this._mass;
+            var k = this._stiffness;
+            var v0 = -this._initialVelocity;
+            var zeta = c / (2 * Math.sqrt(k * m2));
+            var omega0 = Math.sqrt(k / m2);
+            var omega1 = omega0 * Math.sqrt(1 - zeta * zeta);
+            var x0 = this._toValue - this._startPosition;
+            var position2 = 0;
+            var velocity = 0;
+            var t = this._frameTime;
+            if (zeta < 1) {
+              var envelope = Math.exp(-zeta * omega0 * t);
+              position2 = this._toValue - envelope * ((v0 + zeta * omega0 * x0) / omega1 * Math.sin(omega1 * t) + x0 * Math.cos(omega1 * t));
+              velocity = zeta * omega0 * envelope * (Math.sin(omega1 * t) * (v0 + zeta * omega0 * x0) / omega1 + x0 * Math.cos(omega1 * t)) - envelope * (Math.cos(omega1 * t) * (v0 + zeta * omega0 * x0) - omega1 * x0 * Math.sin(omega1 * t));
+            } else {
+              var _envelope = Math.exp(-omega0 * t);
+              position2 = this._toValue - _envelope * (x0 + (v0 + omega0 * x0) * t);
+              velocity = _envelope * (v0 * (t * omega0 - 1) + t * x0 * (omega0 * omega0));
+            }
+            this._lastTime = now;
+            this._lastPosition = position2;
+            this._lastVelocity = velocity;
+            this._onUpdate(position2);
+            if (!this.__active) {
+              return;
+            }
+            var isOvershooting = false;
+            if (this._overshootClamping && this._stiffness !== 0) {
+              if (this._startPosition < this._toValue) {
+                isOvershooting = position2 > this._toValue;
+              } else {
+                isOvershooting = position2 < this._toValue;
+              }
+            }
+            var isVelocity = Math.abs(velocity) <= this._restSpeedThreshold;
+            var isDisplacement = true;
+            if (this._stiffness !== 0) {
+              isDisplacement = Math.abs(this._toValue - position2) <= this._restDisplacementThreshold;
+            }
+            if (isOvershooting || isVelocity && isDisplacement) {
+              if (this._stiffness !== 0) {
+                this._lastPosition = this._toValue;
+                this._lastVelocity = 0;
+                this._onUpdate(this._toValue);
+              }
+              this.__debouncedOnEnd({
+                finished: true
               });
+              return;
+            }
+            this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
+          }
+          stop() {
+            super.stop();
+            this.__active = false;
+            clearTimeout(this._timeout);
+            global.cancelAnimationFrame(this._animationFrame);
+            this.__debouncedOnEnd({
+              finished: false
             });
           }
-          return process.env.NODE_ENV === "development" && props.debug === "verbose" && console.info(" \u{1F4A0} animate", key, `from (${value._value}) to`, valIn, `(${val})`, "type", type, "interpolate", interpolateArgs), value;
-        }
-      }, args);
-      return useIsomorphicLayoutEffect(() => {
-        res.runners.forEach((r) => r());
-        let cancel = false;
-        return Promise.all(res.completions).then(() => {
-          cancel || (onDidAnimate?.(), isExiting && sendExitComplete?.());
-        }), () => {
-          cancel = true;
         };
-      }, args), process.env.NODE_ENV === "development" && props.debug === "verbose" && console.info("Animated", {
-        response: res,
-        inputStyle: style,
-        isExiting
-      }), res;
-    }
-  };
-}
-function getColorInterpolated(currentColor, nextColor, animateToValue) {
-  const inputRange = [0, 1], outputRange = [currentColor || nextColor, nextColor];
-  return animateToValue === 0 && outputRange.reverse(), {
-    inputRange,
-    outputRange
-  };
-}
-function getInterpolated(current, next, postfix = "deg") {
-  next === current && (current = next - 1e-9);
-  const inputRange = [current, next], outputRange = [`${current}${postfix}`, `${next}${postfix}`];
-  return next < current && (inputRange.reverse(), outputRange.reverse()), {
-    inputRange,
-    outputRange
-  };
-}
-function getAnimationConfig(key, animations2, animation) {
-  if (typeof animation == "string") return animations2[animation];
-  let type = "", extraConf;
-  const shortKey = transformShorthands[key];
-  if (Array.isArray(animation)) {
-    type = animation[0];
-    const conf = animation[1]?.[key] ?? animation[1]?.[shortKey];
-    conf && (typeof conf == "string" ? type = conf : (type = conf.type || type, extraConf = conf));
-  } else {
-    const val = animation?.[key] ?? animation?.[shortKey];
-    type = val?.type, extraConf = val;
-  }
-  return {
-    ...animations2[type],
-    ...extraConf
-  };
-}
-var transformShorthands = {
-  x: "translateX",
-  y: "translateY",
-  translateX: "x",
-  translateY: "y"
-};
-function getValue2(input, isColor = false) {
-  if (typeof input != "string") return [input];
-  const [_, number, after] = input.match(/([-0-9]+)(deg|%|px)/) ?? [];
-  return [+number, after];
-}
+        var SpringAnimation_default = SpringAnimation;
 
-// src/theme/tokens.ts
-var import_tamagui45 = require("tamagui");
-var palette = {
-  transparent: "transparent",
-  white: "#FFFFFF",
-  black: "#000000",
-  slate50: "#F8FAFC",
-  slate100: "#F1F5F9",
-  slate200: "#E2E8F0",
-  slate300: "#CBD5F5",
-  slate400: "#94A3B8",
-  slate500: "#64748B",
-  slate600: "#475569",
-  slate700: "#334155",
-  slate800: "#1E293B",
-  slate900: "#0F172A",
-  violet400: "#A78BFA",
-  violet500: "#8B5CF6",
-  violet600: "#7C3AED",
-  violet700: "#6D28D9",
-  green500: "#22C55E",
-  green600: "#16A34A",
-  green700: "#15803D",
-  amber500: "#F59E0B",
-  amber600: "#D97706",
-  amber700: "#B45309",
-  red500: "#EF4444",
-  red600: "#DC2626",
-  red700: "#B91C1C",
-  sky500: "#0EA5E9",
-  sky600: "#0284C7",
-  sky700: "#0369A1",
-  // IVISA Brand Palette
-  // Primary (Azul Prefeitura)
-  ivisaPrimary50: "#EEF8FF",
-  ivisaPrimary100: "#DCF1FF",
-  ivisaPrimary200: "#B2E5FF",
-  ivisaPrimary300: "#6DD1FF",
-  ivisaPrimary400: "#20BAFF",
-  ivisaPrimary500: "#00A1FF",
-  ivisaPrimary600: "#0080DF",
-  // Main Logo Color
-  ivisaPrimary700: "#0065B4",
-  ivisaPrimary800: "#005694",
-  ivisaPrimary900: "#004A80",
-  // Dark Logo Color
-  ivisaPrimary950: "#002D51",
-  // Secondary (Ciano/Teal - Apoio IVISA)
-  ivisaSecondary50: "#F1F8FA",
-  ivisaSecondary100: "#C5FFF9",
-  ivisaSecondary200: "#8BFFF5",
-  ivisaSecondary300: "#49FFEF",
-  ivisaSecondary400: "#14EDE1",
-  ivisaSecondary500: "#00D1C8",
-  ivisaSecondary600: "#00A9A4",
-  ivisaSecondary700: "#056A6A",
-  ivisaSecondary800: "#0A5757",
-  ivisaSecondary900: "#003436",
-  // Semantic: Success (Green)
-  ivisaSuccess50: "#E9FFE6",
-  ivisaSuccess100: "#CCFFC8",
-  ivisaSuccess200: "#9DFF97",
-  ivisaSuccess300: "#60FB5B",
-  ivisaSuccess400: "#2FF12A",
-  ivisaSuccess500: "#0CDC0B",
-  ivisaSuccess600: "#04AC06",
-  ivisaSuccess700: "#08830C",
-  ivisaSuccess800: "#105715",
-  ivisaSuccess900: "#023106",
-  // Semantic: Error (Red)
-  ivisaError50: "#FFF0F0",
-  ivisaError100: "#FFDDDD",
-  ivisaError200: "#FFC0C0",
-  ivisaError300: "#FF9494",
-  ivisaError400: "#FF5757",
-  ivisaError500: "#FF2323",
-  ivisaError600: "#FF0000",
-  ivisaError700: "#D70000",
-  ivisaError800: "#B10303",
-  ivisaError900: "#920A0A",
-  ivisaError950: "#500000",
-  // Semantic: Warning (Yellow/Gold)
-  ivisaWarning50: "#FAFEE8",
-  ivisaWarning100: "#F4FFC2",
-  ivisaWarning200: "#EDFF87",
-  ivisaWarning300: "#EBFF43",
-  ivisaWarning400: "#F2FF0E",
-  ivisaWarning500: "#ECEF03",
-  ivisaWarning600: "#CEC000",
-  ivisaWarning700: "#A48C04",
-  ivisaWarning800: "#886D0B",
-  ivisaWarning900: "#735810",
-  ivisaWarning950: "#433005",
-  // Gray (Alternative)
-  ivisaGray50: "#F6F6F6",
-  ivisaGray100: "#E7E7E7",
-  ivisaGray200: "#D1D1D1",
-  ivisaGray300: "#B0B0B0",
-  ivisaGray400: "#888888",
-  ivisaGray500: "#6D6D6D",
-  ivisaGray600: "#5D5D5D",
-  ivisaGray700: "#4F4F4F",
-  ivisaGray800: "#454545",
-  ivisaGray900: "#3D3D3D",
-  ivisaGray950: "#262626",
-  // Dark Blue Gray (Dark)
-  ivisaDarkBlueGray100: "#DDEDF0",
-  ivisaDarkBlueGray300: "#91C1CF",
-  ivisaDarkBlueGray500: "#418199",
-  ivisaDarkBlueGray700: "#314B59",
-  ivisaDarkBlueGray900: "#263742",
-  ivisaDarkBlueGray950: "#192833"
-};
-var spaceScale = {
-  0: 0,
-  xs: 4,
-  sm: 8,
-  md: 12,
-  lg: 16,
-  xl: 24,
-  "2xl": 32,
-  "3xl": 40,
-  "4xl": 48,
-  true: 12
-  // default (md)
-};
-var sizeScale = {
-  0: 0,
-  xs: 24,
-  sm: 32,
-  md: 40,
-  lg: 48,
-  xl: 56,
-  "2xl": 64,
-  "3xl": 80,
-  true: 40
-  // default (md)
-};
-var radiusScale = {
-  none: 0,
-  xs: 4,
-  sm: 6,
-  md: 10,
-  lg: 14,
-  xl: 20,
-  full: 999
-};
-var zIndexScale = {
-  base: 0,
-  dropdown: 1e3,
-  sticky: 1020,
-  modal: 1100,
-  popover: 1200,
-  toast: 1300,
-  true: 0
-  // default (base)
-};
-var tokens = (0, import_tamagui45.createTokens)({
-  color: {
-    ...palette
-  },
-  space: spaceScale,
-  size: sizeScale,
-  radius: radiusScale,
-  zIndex: zIndexScale
-});
-var lightColors = {
-  background: palette.white,
-  backgroundHover: palette.slate50,
-  backgroundPress: palette.slate100,
-  backgroundFocus: palette.slate100,
-  backgroundStrong: palette.slate200,
-  backgroundTransparent: palette.transparent,
-  borderColor: palette.slate200,
-  borderColorHover: palette.slate300,
-  borderColorPress: palette.slate300,
-  borderColorFocus: palette.violet500,
-  color: palette.slate900,
-  colorHover: palette.slate900,
-  colorPress: palette.slate900,
-  colorFocus: palette.slate900,
-  colorTransparent: palette.transparent,
-  placeholderColor: palette.slate500,
-  shadowColor: "rgba(15,23,42,0.08)",
-  shadowColorHover: "rgba(15,23,42,0.12)",
-  primary: palette.violet500,
-  primaryHover: palette.violet600,
-  primaryPress: palette.violet700,
-  primaryFocus: palette.violet700,
-  primaryForeground: palette.white,
-  secondary: palette.slate100,
-  secondaryHover: palette.slate200,
-  secondaryPress: palette.slate200,
-  secondaryFocus: palette.slate300,
-  secondaryForeground: palette.slate900,
-  accent: "#EEF2FF",
-  accentHover: "#E0E7FF",
-  accentPress: "#C7D2FE",
-  accentFocus: "#C7D2FE",
-  accentForeground: "#312E81",
-  destructive: palette.red500,
-  destructiveHover: palette.red600,
-  destructivePress: palette.red600,
-  destructiveFocus: palette.red700,
-  destructiveForeground: palette.white,
-  success: palette.green500,
-  successHover: palette.green600,
-  successPress: palette.green600,
-  successFocus: palette.green700,
-  successForeground: palette.white,
-  warning: palette.amber500,
-  warningHover: palette.amber600,
-  warningPress: palette.amber600,
-  warningFocus: palette.amber700,
-  warningForeground: palette.slate900,
-  info: palette.sky500,
-  infoHover: palette.sky600,
-  infoPress: palette.sky600,
-  infoFocus: palette.sky700,
-  infoForeground: palette.white,
-  muted: palette.slate100,
-  mutedForeground: palette.slate500,
-  ring: palette.violet500
-};
-var darkColors = {
-  background: palette.slate900,
-  backgroundHover: palette.slate800,
-  backgroundPress: palette.slate800,
-  backgroundFocus: palette.slate700,
-  backgroundStrong: palette.slate800,
-  backgroundTransparent: palette.transparent,
-  borderColor: palette.slate700,
-  borderColorHover: palette.slate600,
-  borderColorPress: palette.slate600,
-  borderColorFocus: palette.violet500,
-  color: palette.slate100,
-  colorHover: palette.white,
-  colorPress: palette.white,
-  colorFocus: palette.white,
-  colorTransparent: palette.transparent,
-  placeholderColor: palette.slate400,
-  shadowColor: "rgba(15,23,42,0.45)",
-  shadowColorHover: "rgba(15,23,42,0.55)",
-  primary: palette.violet500,
-  primaryHover: palette.violet600,
-  primaryPress: palette.violet700,
-  primaryFocus: palette.violet600,
-  primaryForeground: palette.white,
-  secondary: palette.slate800,
-  secondaryHover: palette.slate700,
-  secondaryPress: palette.slate700,
-  secondaryFocus: palette.slate600,
-  secondaryForeground: palette.slate100,
-  accent: "#1E1B4B",
-  accentHover: "#312E81",
-  accentPress: "#3730A3",
-  accentFocus: "#4338CA",
-  accentForeground: palette.white,
-  destructive: palette.red600,
-  destructiveHover: palette.red500,
-  destructivePress: palette.red500,
-  destructiveFocus: palette.red700,
-  destructiveForeground: palette.white,
-  success: palette.green500,
-  successHover: palette.green600,
-  successPress: palette.green600,
-  successFocus: palette.green700,
-  successForeground: palette.white,
-  warning: palette.amber500,
-  warningHover: palette.amber600,
-  warningPress: palette.amber600,
-  warningFocus: palette.amber700,
-  warningForeground: palette.slate900,
-  info: palette.sky500,
-  infoHover: palette.sky600,
-  infoPress: palette.sky600,
-  infoFocus: palette.sky700,
-  infoForeground: palette.white,
-  muted: palette.slate800,
-  mutedForeground: palette.slate400,
-  ring: palette.violet500
-};
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/bezier.js
+        var NEWTON_ITERATIONS = 4;
+        var NEWTON_MIN_SLOPE = 1e-3;
+        var SUBDIVISION_PRECISION = 1e-7;
+        var SUBDIVISION_MAX_ITERATIONS = 10;
+        var kSplineTableSize = 11;
+        var kSampleStepSize = 1 / (kSplineTableSize - 1);
+        var float32ArraySupported = typeof Float32Array === "function";
+        function A(aA1, aA2) {
+          return 1 - 3 * aA2 + 3 * aA1;
+        }
+        function B(aA1, aA2) {
+          return 3 * aA2 - 6 * aA1;
+        }
+        function C(aA1) {
+          return 3 * aA1;
+        }
+        function calcBezier(aT, aA1, aA2) {
+          return ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT;
+        }
+        function getSlope(aT, aA1, aA2) {
+          return 3 * A(aA1, aA2) * aT * aT + 2 * B(aA1, aA2) * aT + C(aA1);
+        }
+        function binarySubdivide(aX, _aA, _aB, mX1, mX2) {
+          var currentX, currentT, i = 0, aA = _aA, aB = _aB;
+          do {
+            currentT = aA + (aB - aA) / 2;
+            currentX = calcBezier(currentT, mX1, mX2) - aX;
+            if (currentX > 0) {
+              aB = currentT;
+            } else {
+              aA = currentT;
+            }
+          } while (Math.abs(currentX) > SUBDIVISION_PRECISION && ++i < SUBDIVISION_MAX_ITERATIONS);
+          return currentT;
+        }
+        function newtonRaphsonIterate(aX, _aGuessT, mX1, mX2) {
+          var aGuessT = _aGuessT;
+          for (var i = 0; i < NEWTON_ITERATIONS; ++i) {
+            var currentSlope = getSlope(aGuessT, mX1, mX2);
+            if (currentSlope === 0) {
+              return aGuessT;
+            }
+            var currentX = calcBezier(aGuessT, mX1, mX2) - aX;
+            aGuessT -= currentX / currentSlope;
+          }
+          return aGuessT;
+        }
+        function bezier(mX1, mY1, mX2, mY2) {
+          if (!(mX1 >= 0 && mX1 <= 1 && mX2 >= 0 && mX2 <= 1)) {
+            throw new Error("bezier x values must be in [0, 1] range");
+          }
+          var sampleValues = float32ArraySupported ? new Float32Array(kSplineTableSize) : new Array(kSplineTableSize);
+          if (mX1 !== mY1 || mX2 !== mY2) {
+            for (var i = 0; i < kSplineTableSize; ++i) {
+              sampleValues[i] = calcBezier(i * kSampleStepSize, mX1, mX2);
+            }
+          }
+          function getTForX(aX) {
+            var intervalStart = 0;
+            var currentSample = 1;
+            var lastSample = kSplineTableSize - 1;
+            for (; currentSample !== lastSample && sampleValues[currentSample] <= aX; ++currentSample) {
+              intervalStart += kSampleStepSize;
+            }
+            --currentSample;
+            var dist = (aX - sampleValues[currentSample]) / (sampleValues[currentSample + 1] - sampleValues[currentSample]);
+            var guessForT = intervalStart + dist * kSampleStepSize;
+            var initialSlope = getSlope(guessForT, mX1, mX2);
+            if (initialSlope >= NEWTON_MIN_SLOPE) {
+              return newtonRaphsonIterate(aX, guessForT, mX1, mX2);
+            } else if (initialSlope === 0) {
+              return guessForT;
+            } else {
+              return binarySubdivide(aX, intervalStart, intervalStart + kSampleStepSize, mX1, mX2);
+            }
+          }
+          return function BezierEasing(x) {
+            if (mX1 === mY1 && mX2 === mY2) {
+              return x;
+            }
+            if (x === 0) {
+              return 0;
+            }
+            if (x === 1) {
+              return 1;
+            }
+            return calcBezier(getTForX(x), mY1, mY2);
+          };
+        }
 
-// src/theme/index.ts
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/Easing.js
+        var ease;
+        var Easing = class _Easing {
+          /**
+           * A stepping function, returns 1 for any positive value of `n`.
+           */
+          static step0(n) {
+            return n > 0 ? 1 : 0;
+          }
+          /**
+           * A stepping function, returns 1 if `n` is greater than or equal to 1.
+           */
+          static step1(n) {
+            return n >= 1 ? 1 : 0;
+          }
+          /**
+           * A linear function, `f(t) = t`. Position correlates to elapsed time one to
+           * one.
+           *
+           * http://cubic-bezier.com/#0,0,1,1
+           */
+          static linear(t) {
+            return t;
+          }
+          /**
+           * A simple inertial interaction, similar to an object slowly accelerating to
+           * speed.
+           *
+           * http://cubic-bezier.com/#.42,0,1,1
+           */
+          static ease(t) {
+            if (!ease) {
+              ease = _Easing.bezier(0.42, 0, 1, 1);
+            }
+            return ease(t);
+          }
+          /**
+           * A quadratic function, `f(t) = t * t`. Position equals the square of elapsed
+           * time.
+           *
+           * http://easings.net/#easeInQuad
+           */
+          static quad(t) {
+            return t * t;
+          }
+          /**
+           * A cubic function, `f(t) = t * t * t`. Position equals the cube of elapsed
+           * time.
+           *
+           * http://easings.net/#easeInCubic
+           */
+          static cubic(t) {
+            return t * t * t;
+          }
+          /**
+           * A power function. Position is equal to the Nth power of elapsed time.
+           *
+           * n = 4: http://easings.net/#easeInQuart
+           * n = 5: http://easings.net/#easeInQuint
+           */
+          static poly(n) {
+            return (t) => Math.pow(t, n);
+          }
+          /**
+           * A sinusoidal function.
+           *
+           * http://easings.net/#easeInSine
+           */
+          static sin(t) {
+            return 1 - Math.cos(t * Math.PI / 2);
+          }
+          /**
+           * A circular function.
+           *
+           * http://easings.net/#easeInCirc
+           */
+          static circle(t) {
+            return 1 - Math.sqrt(1 - t * t);
+          }
+          /**
+           * An exponential function.
+           *
+           * http://easings.net/#easeInExpo
+           */
+          static exp(t) {
+            return Math.pow(2, 10 * (t - 1));
+          }
+          /**
+           * A simple elastic interaction, similar to a spring oscillating back and
+           * forth.
+           *
+           * Default bounciness is 1, which overshoots a little bit once. 0 bounciness
+           * doesn't overshoot at all, and bounciness of N > 1 will overshoot about N
+           * times.
+           *
+           * http://easings.net/#easeInElastic
+           */
+          static elastic(bounciness) {
+            if (bounciness === void 0) {
+              bounciness = 1;
+            }
+            var p = bounciness * Math.PI;
+            return (t) => 1 - Math.pow(Math.cos(t * Math.PI / 2), 3) * Math.cos(t * p);
+          }
+          /**
+           * Use with `Animated.parallel()` to create a simple effect where the object
+           * animates back slightly as the animation starts.
+           *
+           * Wolfram Plot:
+           *
+           * - http://tiny.cc/back_default (s = 1.70158, default)
+           */
+          static back(s) {
+            if (s === void 0) {
+              s = 1.70158;
+            }
+            return (t) => t * t * ((s + 1) * t - s);
+          }
+          /**
+           * Provides a simple bouncing effect.
+           *
+           * http://easings.net/#easeInBounce
+           */
+          static bounce(t) {
+            if (t < 1 / 2.75) {
+              return 7.5625 * t * t;
+            }
+            if (t < 2 / 2.75) {
+              var _t = t - 1.5 / 2.75;
+              return 7.5625 * _t * _t + 0.75;
+            }
+            if (t < 2.5 / 2.75) {
+              var _t2 = t - 2.25 / 2.75;
+              return 7.5625 * _t2 * _t2 + 0.9375;
+            }
+            var t2 = t - 2.625 / 2.75;
+            return 7.5625 * t2 * t2 + 0.984375;
+          }
+          /**
+           * Provides a cubic bezier curve, equivalent to CSS Transitions'
+           * `transition-timing-function`.
+           *
+           * A useful tool to visualize cubic bezier curves can be found at
+           * http://cubic-bezier.com/
+           */
+          static bezier(x1, y1, x2, y2) {
+            return bezier(x1, y1, x2, y2);
+          }
+          /**
+           * Runs an easing function forwards.
+           */
+          static in(easing) {
+            return easing;
+          }
+          /**
+           * Runs an easing function backwards.
+           */
+          static out(easing) {
+            return (t) => 1 - easing(1 - t);
+          }
+          /**
+           * Makes any easing function symmetrical. The easing function will run
+           * forwards for half of the duration, then backwards for the rest of the
+           * duration.
+           */
+          static inOut(easing) {
+            return (t) => {
+              if (t < 0.5) {
+                return easing(t * 2) / 2;
+              }
+              return 1 - easing((1 - t) * 2) / 2;
+            };
+          }
+        };
+        var Easing_default = Easing;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Easing/index.js
+        var Easing_default2 = Easing_default;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/TimingAnimation.js
+        var _easeInOut;
+        function easeInOut() {
+          if (!_easeInOut) {
+            _easeInOut = Easing_default2.inOut(Easing_default2.ease);
+          }
+          return _easeInOut;
+        }
+        var TimingAnimation = class extends Animation_default {
+          constructor(config2) {
+            var _config$easing, _config$duration, _config$delay, _config$iterations, _config$isInteraction;
+            super();
+            this._toValue = config2.toValue;
+            this._easing = (_config$easing = config2.easing) !== null && _config$easing !== void 0 ? _config$easing : easeInOut();
+            this._duration = (_config$duration = config2.duration) !== null && _config$duration !== void 0 ? _config$duration : 500;
+            this._delay = (_config$delay = config2.delay) !== null && _config$delay !== void 0 ? _config$delay : 0;
+            this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
+            this._useNativeDriver = shouldUseNativeDriver(config2);
+            this._platformConfig = config2.platformConfig;
+            this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
+          }
+          __getNativeAnimationConfig() {
+            var frameDuration = 1e3 / 60;
+            var frames = [];
+            var numFrames = Math.round(this._duration / frameDuration);
+            for (var frame = 0; frame < numFrames; frame++) {
+              frames.push(this._easing(frame / numFrames));
+            }
+            frames.push(this._easing(1));
+            return {
+              type: "frames",
+              frames,
+              toValue: this._toValue,
+              iterations: this.__iterations,
+              platformConfig: this._platformConfig
+            };
+          }
+          start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
+            this.__active = true;
+            this._fromValue = fromValue;
+            this._onUpdate = onUpdate;
+            this.__onEnd = onEnd;
+            var start = () => {
+              if (this._duration === 0 && !this._useNativeDriver) {
+                this._onUpdate(this._toValue);
+                this.__debouncedOnEnd({
+                  finished: true
+                });
+              } else {
+                this._startTime = Date.now();
+                if (this._useNativeDriver) {
+                  this.__startNativeAnimation(animatedValue);
+                } else {
+                  this._animationFrame = requestAnimationFrame(
+                    // $FlowFixMe[method-unbinding] added when improving typing for this parameters
+                    this.onUpdate.bind(this)
+                  );
+                }
+              }
+            };
+            if (this._delay) {
+              this._timeout = setTimeout(start, this._delay);
+            } else {
+              start();
+            }
+          }
+          onUpdate() {
+            var now = Date.now();
+            if (now >= this._startTime + this._duration) {
+              if (this._duration === 0) {
+                this._onUpdate(this._toValue);
+              } else {
+                this._onUpdate(this._fromValue + this._easing(1) * (this._toValue - this._fromValue));
+              }
+              this.__debouncedOnEnd({
+                finished: true
+              });
+              return;
+            }
+            this._onUpdate(this._fromValue + this._easing((now - this._startTime) / this._duration) * (this._toValue - this._fromValue));
+            if (this.__active) {
+              this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
+            }
+          }
+          stop() {
+            super.stop();
+            this.__active = false;
+            clearTimeout(this._timeout);
+            global.cancelAnimationFrame(this._animationFrame);
+            this.__debouncedOnEnd({
+              finished: false
+            });
+          }
+        };
+        var TimingAnimation_default = TimingAnimation;
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedImplementation.js
+        var add = function add2(a, b) {
+          return new AnimatedAddition_default(a, b);
+        };
+        var subtract = function subtract2(a, b) {
+          return new AnimatedSubtraction_default(a, b);
+        };
+        var divide = function divide2(a, b) {
+          return new AnimatedDivision_default(a, b);
+        };
+        var multiply = function multiply2(a, b) {
+          return new AnimatedMultiplication_default(a, b);
+        };
+        var modulo = function modulo2(a, modulus) {
+          return new AnimatedModulo_default(a, modulus);
+        };
+        var diffClamp = function diffClamp2(a, min, max) {
+          return new AnimatedDiffClamp_default(a, min, max);
+        };
+        var _combineCallbacks = function _combineCallbacks2(callback, config2) {
+          if (callback && config2.onComplete) {
+            return function () {
+              config2.onComplete && config2.onComplete(...arguments);
+              callback && callback(...arguments);
+            };
+          } else {
+            return callback || config2.onComplete;
+          }
+        };
+        var maybeVectorAnim = function maybeVectorAnim2(value, config2, anim) {
+          if (value instanceof AnimatedValueXY_default) {
+            var configX = (0, import_objectSpread221.default)({}, config2);
+            var configY = (0, import_objectSpread221.default)({}, config2);
+            for (var key in config2) {
+              var _config$key = config2[key], x = _config$key.x, y = _config$key.y;
+              if (x !== void 0 && y !== void 0) {
+                configX[key] = x;
+                configY[key] = y;
+              }
+            }
+            var aX = anim(value.x, configX);
+            var aY = anim(value.y, configY);
+            return parallel([aX, aY], {
+              stopTogether: false
+            });
+          } else if (value instanceof AnimatedColor) {
+            var configR = (0, import_objectSpread221.default)({}, config2);
+            var configG = (0, import_objectSpread221.default)({}, config2);
+            var configB = (0, import_objectSpread221.default)({}, config2);
+            var configA = (0, import_objectSpread221.default)({}, config2);
+            for (var _key in config2) {
+              var _config$_key = config2[_key], r = _config$_key.r, g = _config$_key.g, b = _config$_key.b, a = _config$_key.a;
+              if (r !== void 0 && g !== void 0 && b !== void 0 && a !== void 0) {
+                configR[_key] = r;
+                configG[_key] = g;
+                configB[_key] = b;
+                configA[_key] = a;
+              }
+            }
+            var aR = anim(value.r, configR);
+            var aG = anim(value.g, configG);
+            var aB = anim(value.b, configB);
+            var aA = anim(value.a, configA);
+            return parallel([aR, aG, aB, aA], {
+              stopTogether: false
+            });
+          }
+          return null;
+        };
+        var spring = function spring2(value, config2) {
+          var _start = function start(animatedValue, configuration, callback) {
+            callback = _combineCallbacks(callback, configuration);
+            var singleValue = animatedValue;
+            var singleConfig = configuration;
+            singleValue.stopTracking();
+            if (configuration.toValue instanceof AnimatedNode_default) {
+              singleValue.track(new AnimatedTracking_default(singleValue, configuration.toValue, SpringAnimation_default, singleConfig, callback));
+            } else {
+              singleValue.animate(new SpringAnimation_default(singleConfig), callback);
+            }
+          };
+          return maybeVectorAnim(value, config2, spring2) || {
+            start: function start(callback) {
+              _start(value, config2, callback);
+            },
+            stop: function stop() {
+              value.stopAnimation();
+            },
+            reset: function reset() {
+              value.resetAnimation();
+            },
+            _startNativeLoop: function _startNativeLoop(iterations) {
+              var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
+                iterations
+              });
+              _start(value, singleConfig);
+            },
+            _isUsingNativeDriver: function _isUsingNativeDriver() {
+              return config2.useNativeDriver || false;
+            }
+          };
+        };
+        var timing = function timing2(value, config2) {
+          var _start2 = function start(animatedValue, configuration, callback) {
+            callback = _combineCallbacks(callback, configuration);
+            var singleValue = animatedValue;
+            var singleConfig = configuration;
+            singleValue.stopTracking();
+            if (configuration.toValue instanceof AnimatedNode_default) {
+              singleValue.track(new AnimatedTracking_default(singleValue, configuration.toValue, TimingAnimation_default, singleConfig, callback));
+            } else {
+              singleValue.animate(new TimingAnimation_default(singleConfig), callback);
+            }
+          };
+          return maybeVectorAnim(value, config2, timing2) || {
+            start: function start(callback) {
+              _start2(value, config2, callback);
+            },
+            stop: function stop() {
+              value.stopAnimation();
+            },
+            reset: function reset() {
+              value.resetAnimation();
+            },
+            _startNativeLoop: function _startNativeLoop(iterations) {
+              var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
+                iterations
+              });
+              _start2(value, singleConfig);
+            },
+            _isUsingNativeDriver: function _isUsingNativeDriver() {
+              return config2.useNativeDriver || false;
+            }
+          };
+        };
+        var decay = function decay2(value, config2) {
+          var _start3 = function start(animatedValue, configuration, callback) {
+            callback = _combineCallbacks(callback, configuration);
+            var singleValue = animatedValue;
+            var singleConfig = configuration;
+            singleValue.stopTracking();
+            singleValue.animate(new DecayAnimation_default(singleConfig), callback);
+          };
+          return maybeVectorAnim(value, config2, decay2) || {
+            start: function start(callback) {
+              _start3(value, config2, callback);
+            },
+            stop: function stop() {
+              value.stopAnimation();
+            },
+            reset: function reset() {
+              value.resetAnimation();
+            },
+            _startNativeLoop: function _startNativeLoop(iterations) {
+              var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
+                iterations
+              });
+              _start3(value, singleConfig);
+            },
+            _isUsingNativeDriver: function _isUsingNativeDriver() {
+              return config2.useNativeDriver || false;
+            }
+          };
+        };
+        var sequence = function sequence2(animations2) {
+          var current = 0;
+          return {
+            start: function start(callback) {
+              var onComplete = function onComplete2(result) {
+                if (!result.finished) {
+                  callback && callback(result);
+                  return;
+                }
+                current++;
+                if (current === animations2.length) {
+                  current = 0;
+                  callback && callback(result);
+                  return;
+                }
+                animations2[current].start(onComplete2);
+              };
+              if (animations2.length === 0) {
+                callback && callback({
+                  finished: true
+                });
+              } else {
+                animations2[current].start(onComplete);
+              }
+            },
+            stop: function stop() {
+              if (current < animations2.length) {
+                animations2[current].stop();
+              }
+            },
+            reset: function reset() {
+              animations2.forEach((animation, idx) => {
+                if (idx <= current) {
+                  animation.reset();
+                }
+              });
+              current = 0;
+            },
+            _startNativeLoop: function _startNativeLoop() {
+              throw new Error("Loops run using the native driver cannot contain Animated.sequence animations");
+            },
+            _isUsingNativeDriver: function _isUsingNativeDriver() {
+              return false;
+            }
+          };
+        };
+        var parallel = function parallel2(animations2, config2) {
+          var doneCount = 0;
+          var hasEnded = {};
+          var stopTogether = !(config2 && config2.stopTogether === false);
+          var result = {
+            start: function start(callback) {
+              if (doneCount === animations2.length) {
+                callback && callback({
+                  finished: true
+                });
+                return;
+              }
+              animations2.forEach((animation, idx) => {
+                var cb = function cb2(endResult) {
+                  hasEnded[idx] = true;
+                  doneCount++;
+                  if (doneCount === animations2.length) {
+                    doneCount = 0;
+                    callback && callback(endResult);
+                    return;
+                  }
+                  if (!endResult.finished && stopTogether) {
+                    result.stop();
+                  }
+                };
+                if (!animation) {
+                  cb({
+                    finished: true
+                  });
+                } else {
+                  animation.start(cb);
+                }
+              });
+            },
+            stop: function stop() {
+              animations2.forEach((animation, idx) => {
+                !hasEnded[idx] && animation.stop();
+                hasEnded[idx] = true;
+              });
+            },
+            reset: function reset() {
+              animations2.forEach((animation, idx) => {
+                animation.reset();
+                hasEnded[idx] = false;
+                doneCount = 0;
+              });
+            },
+            _startNativeLoop: function _startNativeLoop() {
+              throw new Error("Loops run using the native driver cannot contain Animated.parallel animations");
+            },
+            _isUsingNativeDriver: function _isUsingNativeDriver() {
+              return false;
+            }
+          };
+          return result;
+        };
+        var delay = function delay2(time) {
+          return timing(new AnimatedValue_default(0), {
+            toValue: 0,
+            delay: time,
+            duration: 0,
+            useNativeDriver: false
+          });
+        };
+        var stagger = function stagger2(time, animations2) {
+          return parallel(animations2.map((animation, i) => {
+            return sequence([delay(time * i), animation]);
+          }));
+        };
+        var loop = function loop2(animation, _temp) {
+          var _ref = _temp === void 0 ? {} : _temp, _ref$iterations = _ref.iterations, iterations = _ref$iterations === void 0 ? -1 : _ref$iterations, _ref$resetBeforeItera = _ref.resetBeforeIteration, resetBeforeIteration = _ref$resetBeforeItera === void 0 ? true : _ref$resetBeforeItera;
+          var isFinished = false;
+          var iterationsSoFar = 0;
+          return {
+            start: function start(callback) {
+              var restart = function restart2(result) {
+                if (result === void 0) {
+                  result = {
+                    finished: true
+                  };
+                }
+                if (isFinished || iterationsSoFar === iterations || result.finished === false) {
+                  callback && callback(result);
+                } else {
+                  iterationsSoFar++;
+                  resetBeforeIteration && animation.reset();
+                  animation.start(restart2);
+                }
+              };
+              if (!animation || iterations === 0) {
+                callback && callback({
+                  finished: true
+                });
+              } else {
+                if (animation._isUsingNativeDriver()) {
+                  animation._startNativeLoop(iterations);
+                } else {
+                  restart();
+                }
+              }
+            },
+            stop: function stop() {
+              isFinished = true;
+              animation.stop();
+            },
+            reset: function reset() {
+              iterationsSoFar = 0;
+              isFinished = false;
+              animation.reset();
+            },
+            _startNativeLoop: function _startNativeLoop() {
+              throw new Error("Loops run using the native driver cannot contain Animated.loop animations");
+            },
+            _isUsingNativeDriver: function _isUsingNativeDriver() {
+              return animation._isUsingNativeDriver();
+            }
+          };
+        };
+        function forkEvent(event3, listener) {
+          if (!event3) {
+            return listener;
+          } else if (event3 instanceof AnimatedEvent) {
+            event3.__addListener(listener);
+            return event3;
+          } else {
+            return function () {
+              typeof event3 === "function" && event3(...arguments);
+              listener(...arguments);
+            };
+          }
+        }
+        function unforkEvent(event3, listener) {
+          if (event3 && event3 instanceof AnimatedEvent) {
+            event3.__removeListener(listener);
+          }
+        }
+        var event = function event2(argMapping, config2) {
+          var animatedEvent = new AnimatedEvent(argMapping, config2);
+          if (animatedEvent.__isNative) {
+            return animatedEvent;
+          } else {
+            return animatedEvent.__getHandler();
+          }
+        };
+        var AnimatedImplementation_default = {
+          /**
+           * Standard value class for driving animations.  Typically initialized with
+           * `new Animated.Value(0);`
+           *
+           * See https://reactnative.dev/docs/animated#value
+           */
+          Value: AnimatedValue_default,
+          /**
+           * 2D value class for driving 2D animations, such as pan gestures.
+           *
+           * See https://reactnative.dev/docs/animatedvaluexy
+           */
+          ValueXY: AnimatedValueXY_default,
+          /**
+           * Value class for driving color animations.
+           */
+          Color: AnimatedColor,
+          /**
+           * Exported to use the Interpolation type in flow.
+           *
+           * See https://reactnative.dev/docs/animated#interpolation
+           */
+          Interpolation: AnimatedInterpolation_default,
+          /**
+           * Exported for ease of type checking. All animated values derive from this
+           * class.
+           *
+           * See https://reactnative.dev/docs/animated#node
+           */
+          Node: AnimatedNode_default,
+          /**
+           * Animates a value from an initial velocity to zero based on a decay
+           * coefficient.
+           *
+           * See https://reactnative.dev/docs/animated#decay
+           */
+          decay,
+          /**
+           * Animates a value along a timed easing curve. The Easing module has tons of
+           * predefined curves, or you can use your own function.
+           *
+           * See https://reactnative.dev/docs/animated#timing
+           */
+          timing,
+          /**
+           * Animates a value according to an analytical spring model based on
+           * damped harmonic oscillation.
+           *
+           * See https://reactnative.dev/docs/animated#spring
+           */
+          spring,
+          /**
+           * Creates a new Animated value composed from two Animated values added
+           * together.
+           *
+           * See https://reactnative.dev/docs/animated#add
+           */
+          add,
+          /**
+           * Creates a new Animated value composed by subtracting the second Animated
+           * value from the first Animated value.
+           *
+           * See https://reactnative.dev/docs/animated#subtract
+           */
+          subtract,
+          /**
+           * Creates a new Animated value composed by dividing the first Animated value
+           * by the second Animated value.
+           *
+           * See https://reactnative.dev/docs/animated#divide
+           */
+          divide,
+          /**
+           * Creates a new Animated value composed from two Animated values multiplied
+           * together.
+           *
+           * See https://reactnative.dev/docs/animated#multiply
+           */
+          multiply,
+          /**
+           * Creates a new Animated value that is the (non-negative) modulo of the
+           * provided Animated value.
+           *
+           * See https://reactnative.dev/docs/animated#modulo
+           */
+          modulo,
+          /**
+           * Create a new Animated value that is limited between 2 values. It uses the
+           * difference between the last value so even if the value is far from the
+           * bounds it will start changing when the value starts getting closer again.
+           *
+           * See https://reactnative.dev/docs/animated#diffclamp
+           */
+          diffClamp,
+          /**
+           * Starts an animation after the given delay.
+           *
+           * See https://reactnative.dev/docs/animated#delay
+           */
+          delay,
+          /**
+           * Starts an array of animations in order, waiting for each to complete
+           * before starting the next. If the current running animation is stopped, no
+           * following animations will be started.
+           *
+           * See https://reactnative.dev/docs/animated#sequence
+           */
+          sequence,
+          /**
+           * Starts an array of animations all at the same time. By default, if one
+           * of the animations is stopped, they will all be stopped. You can override
+           * this with the `stopTogether` flag.
+           *
+           * See https://reactnative.dev/docs/animated#parallel
+           */
+          parallel,
+          /**
+           * Array of animations may run in parallel (overlap), but are started in
+           * sequence with successive delays.  Nice for doing trailing effects.
+           *
+           * See https://reactnative.dev/docs/animated#stagger
+           */
+          stagger,
+          /**
+           * Loops a given animation continuously, so that each time it reaches the
+           * end, it resets and begins again from the start.
+           *
+           * See https://reactnative.dev/docs/animated#loop
+           */
+          loop,
+          /**
+           * Takes an array of mappings and extracts values from each arg accordingly,
+           * then calls `setValue` on the mapped outputs.
+           *
+           * See https://reactnative.dev/docs/animated#event
+           */
+          event,
+          /**
+           * Make any React component Animatable.  Used to create `Animated.View`, etc.
+           *
+           * See https://reactnative.dev/docs/animated#createanimatedcomponent
+           */
+          createAnimatedComponent,
+          /**
+           * Imperative API to attach an animated value to an event on a view. Prefer
+           * using `Animated.event` with `useNativeDrive: true` if possible.
+           *
+           * See https://reactnative.dev/docs/animated#attachnativeevent
+           */
+          attachNativeEvent,
+          /**
+           * Advanced imperative API for snooping on animated events that are passed in
+           * through props. Use values directly where possible.
+           *
+           * See https://reactnative.dev/docs/animated#forkevent
+           */
+          forkEvent,
+          unforkEvent,
+          /**
+           * Expose Event class, so it can be used as a type for type checkers.
+           */
+          Event: AnimatedEvent
+        };
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
+        var inAnimationCallback = false;
+        function mockAnimationStart(start) {
+          return (callback) => {
+            var guardedCallback = callback == null ? callback : function () {
+              if (inAnimationCallback) {
+                console.warn("Ignoring recursive animation callback when running mock animations");
+                return;
+              }
+              inAnimationCallback = true;
+              try {
+                callback(...arguments);
+              } finally {
+                inAnimationCallback = false;
+              }
+            };
+            start(guardedCallback);
+          };
+        }
+        var emptyAnimation = {
+          start: () => {
+          },
+          stop: () => {
+          },
+          reset: () => {
+          },
+          _startNativeLoop: () => {
+          },
+          _isUsingNativeDriver: () => {
+            return false;
+          }
+        };
+        var mockCompositeAnimation = (animations2) => (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
+          start: mockAnimationStart((callback) => {
+            animations2.forEach((animation) => animation.start());
+            callback == null ? void 0 : callback({
+              finished: true
+            });
+          })
+        });
+        var spring3 = function spring4(value, config2) {
+          var anyValue = value;
+          return (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
+            start: mockAnimationStart((callback) => {
+              anyValue.setValue(config2.toValue);
+              callback == null ? void 0 : callback({
+                finished: true
+              });
+            })
+          });
+        };
+        var timing3 = function timing4(value, config2) {
+          var anyValue = value;
+          return (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
+            start: mockAnimationStart((callback) => {
+              anyValue.setValue(config2.toValue);
+              callback == null ? void 0 : callback({
+                finished: true
+              });
+            })
+          });
+        };
+        var decay3 = function decay4(value, config2) {
+          return emptyAnimation;
+        };
+        var sequence3 = function sequence4(animations2) {
+          return mockCompositeAnimation(animations2);
+        };
+        var parallel3 = function parallel4(animations2, config2) {
+          return mockCompositeAnimation(animations2);
+        };
+        var delay3 = function delay4(time) {
+          return emptyAnimation;
+        };
+        var stagger3 = function stagger4(time, animations2) {
+          return mockCompositeAnimation(animations2);
+        };
+        var loop3 = function loop4(animation, _temp) {
+          var _ref = _temp === void 0 ? {} : _temp, _ref$iterations = _ref.iterations, iterations = _ref$iterations === void 0 ? -1 : _ref$iterations;
+          return emptyAnimation;
+        };
+        var AnimatedMock_default = {
+          Value: AnimatedValue_default,
+          ValueXY: AnimatedValueXY_default,
+          Color: AnimatedColor,
+          Interpolation: AnimatedInterpolation_default,
+          Node: AnimatedNode_default,
+          decay: decay3,
+          timing: timing3,
+          spring: spring3,
+          add: AnimatedImplementation_default.add,
+          subtract: AnimatedImplementation_default.subtract,
+          divide: AnimatedImplementation_default.divide,
+          multiply: AnimatedImplementation_default.multiply,
+          modulo: AnimatedImplementation_default.modulo,
+          diffClamp: AnimatedImplementation_default.diffClamp,
+          delay: delay3,
+          sequence: sequence3,
+          parallel: parallel3,
+          stagger: stagger3,
+          loop: loop3,
+          event: AnimatedImplementation_default.event,
+          createAnimatedComponent,
+          attachNativeEvent,
+          forkEvent: AnimatedImplementation_default.forkEvent,
+          unforkEvent: AnimatedImplementation_default.unforkEvent,
+          Event: AnimatedEvent
+        };
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/Animated.js
+        var Animated = Platform_default.isTesting ? AnimatedMock_default : AnimatedImplementation_default;
+        var Animated_default = (0, import_objectSpread223.default)({
+          FlatList: AnimatedFlatList_default,
+          Image: AnimatedImage_default,
+          ScrollView: AnimatedScrollView_default,
+          SectionList: AnimatedSectionList_default,
+          Text: AnimatedText_default,
+          View: AnimatedView_default
+        }, Animated);
+
+        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Animated/index.js
+        var Animated_default2 = Animated_default;
+
+        // ../../node_modules/.pnpm/@tamagui+animations-react-native@1.138.0_react-dom@18.3.1_react@18.3.1__react-native@0.82.1_@_pbdqmovbjfmtaaz5pg4fubn4hi/node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
+        var animatedStyleKey = {
+          transform: true,
+          opacity: true
+        };
+        var colorStyleKey = {
+          backgroundColor: true,
+          color: true,
+          borderColor: true,
+          borderLeftColor: true,
+          borderRightColor: true,
+          borderTopColor: true,
+          borderBottomColor: true
+        };
+        var costlyToAnimateStyleKey = {
+          borderRadius: true,
+          borderTopLeftRadius: true,
+          borderTopRightRadius: true,
+          borderBottomLeftRadius: true,
+          borderBottomRightRadius: true,
+          borderWidth: true,
+          borderLeftWidth: true,
+          borderRightWidth: true,
+          borderTopWidth: true,
+          borderBottomWidth: true,
+          ...colorStyleKey
+          // TODO for other keys like height or width, it's better to not add them here till layout animations are ready
+        };
+        var AnimatedView = Animated_default2.View;
+        var AnimatedText = Animated_default2.Text;
+        function useAnimatedNumber(initial) {
+          const state = import_react43.default.useRef(null);
+          const state = import_react44.default.useRef(null);
+          return state.current || (state.current = {
+            composite: null,
+            val: new Animated_default2.Value(initial),
+            strategy: {
+              type: "spring"
+            }
+          }), {
+            getInstance() {
+              return state.current.val;
+            },
+            getValue() {
+              return state.current.val._value;
+            },
+            stop() {
+              state.current.composite?.stop(), state.current.composite = null;
+            },
+            setValue(next, {
+              type,
+              ...config2
+            } = {
+                type: "spring"
+              }, onFinish) {
+              const val = state.current.val, handleFinish = onFinish ? ({
+                finished
+              }) => finished ? onFinish() : null : void 0;
+              if (type === "direct") val.setValue(next);
+              else if (type === "spring") {
+                state.current.composite?.stop();
+                const composite = Animated_default2.spring(val, {
+                  ...config2,
+                  toValue: next,
+                  useNativeDriver: !isWeb3
+                });
+                composite.start(handleFinish), state.current.composite = composite;
+              } else {
+                state.current.composite?.stop();
+                const composite = Animated_default2.timing(val, {
+                  ...config2,
+                  toValue: next,
+                  useNativeDriver: !isWeb3
+                });
+                composite.start(handleFinish), state.current.composite = composite;
+              }
+            }
+          };
+        }
+        var useAnimatedNumberReaction = ({
+          value
+        }, onValue) => {
+          const onChange = useEvent((current) => {
+            onValue(current.value);
+          });
+          import_react43.default.useEffect(() => {
+            import_react44.default.useEffect(() => {
+              const id2 = value.getInstance().addListener(onChange);
+              return () => {
+                value.getInstance().removeListener(id2);
+              };
+            }, [value, onChange]);
+          };
+          var useAnimatedNumberStyle = (value, getStyle) => getStyle(value.getInstance());
+          function createAnimations(animations2) {
+            return {
+              isReactNative: true,
+              animations: animations2,
+              View: AnimatedView,
+              Text: AnimatedText,
+              useAnimatedNumber,
+              useAnimatedNumberReaction,
+              useAnimatedNumberStyle,
+              usePresence,
+              ResetPresence,
+              useAnimations: ({
+                props,
+                onDidAnimate,
+                style,
+                componentState,
+                presence
+              }) => {
+                const isDisabled2 = isWeb3 && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react43.default.useRef({}), animatedTranforms = import_react43.default.useRef([]), animationsState = import_react43.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react43.default.useMemo(() => isWeb3 ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react43.default.useMemo(() => {
+                  const isDisabled2 = isWeb3 && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react44.default.useRef({}), animatedTranforms = import_react44.default.useRef([]), animationsState = import_react44.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react44.default.useMemo(() => isWeb3 ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react44.default.useMemo(() => {
+                    const runners = [], completions = [], nonAnimatedStyle = {};
+                    for (const key in style) {
+                      const val = style[key];
+                      if (!isDisabled2) {
+                        if (animatedStyleKey[key] == null && !costlyToAnimateStyleKey[key]) {
+                          nonAnimatedStyle[key] = val;
+                          continue;
+                        }
+                        if (hasAnimateOnly && !animateOnly.includes(key)) {
+                          nonAnimatedStyle[key] = val;
+                          continue;
+                        }
+                        if (key !== "transform") {
+                          animateStyles.current[key] = update2(key, animateStyles.current[key], val);
+                          continue;
+                        }
+                        if (val) {
+                          if (typeof val == "string") {
+                            console.warn("Warning: Tamagui can't animate string transforms yet!");
+                            continue;
+                          }
+                          for (const [index, transform] of val.entries()) {
+                            if (!transform) continue;
+                            const tkey = Object.keys(transform)[0], currentTransform = animatedTranforms.current[index]?.[tkey];
+                            animatedTranforms.current[index] = {
+                              [tkey]: update2(tkey, currentTransform, transform[tkey])
+                            }, animatedTranforms.current = [...animatedTranforms.current];
+                          }
+                        }
+                      }
+                    }
+                    const animatedStyle = {
+                      ...Object.fromEntries(Object.entries(animateStyles.current).map(([k, v]) => [k, animationsState.current.get(v)?.interpolation || v])),
+                      transform: animatedTranforms.current.map((r) => {
+                        const key = Object.keys(r)[0], val = animationsState.current.get(r[key])?.interpolation || r[key];
+                        return {
+                          [key]: val
+                        };
+                      })
+                    };
+                    return {
+                      runners,
+                      completions,
+                      style: [nonAnimatedStyle, animatedStyle]
+                    };
+                    function update2(key, animated, valIn) {
+                      const isColorStyleKey = colorStyleKey[key], [val, type] = isColorStyleKey ? [0, void 0] : getValue2(valIn);
+                      let animateToValue = val;
+                      const value = animated || new Animated_default2.Value(val), curInterpolation = animationsState.current.get(value);
+                      let interpolateArgs;
+                      if (type && (interpolateArgs = getInterpolated(curInterpolation?.current ?? value._value, val, type), animationsState.current.set(value, {
+                        interpolation: value.interpolate(interpolateArgs),
+                        current: val
+                      })), isColorStyleKey && (animateToValue = curInterpolation?.animateToValue ? 0 : 1, interpolateArgs = getColorInterpolated(
+                        curInterpolation?.current,
+                        // valIn is the next color
+                        valIn,
+                        animateToValue
+                      ), animationsState.current.set(value, {
+                        current: valIn,
+                        interpolation: value.interpolate(interpolateArgs),
+                        animateToValue: curInterpolation?.animateToValue ? 0 : 1
+                      })), value) {
+                        const animationConfig = getAnimationConfig(key, animations2, props.animation);
+                        let resolve;
+                        const promise = new Promise((res2) => {
+                          resolve = res2;
+                        });
+                        completions.push(promise), runners.push(() => {
+                          value.stopAnimation();
+                          function getAnimation() {
+                            return Animated_default2[animationConfig.type || "spring"](value, {
+                              toValue: animateToValue,
+                              useNativeDriver: !isWeb3 && !isThereNoNativeStyleKeys,
+                              ...animationConfig
+                            });
+                          }
+                          (animationConfig.delay ? Animated_default2.sequence([Animated_default2.delay(animationConfig.delay), getAnimation()]) : getAnimation()).start(({
+                            finished
+                          }) => {
+                            finished && resolve();
+                          });
+                        });
+                      }
+                      return process.env.NODE_ENV === "development" && props.debug === "verbose" && console.info(" \u{1F4A0} animate", key, `from (${value._value}) to`, valIn, `(${val})`, "type", type, "interpolate", interpolateArgs), value;
+                    }
+                  }, args);
+                  return useIsomorphicLayoutEffect(() => {
+                    res.runners.forEach((r) => r());
+                    let cancel = false;
+                    return Promise.all(res.completions).then(() => {
+                      cancel || (onDidAnimate?.(), isExiting && sendExitComplete?.());
+                    }), () => {
+                      cancel = true;
+                    };
+                  }, args), process.env.NODE_ENV === "development" && props.debug === "verbose" && console.info("Animated", {
+                    response: res,
+                    inputStyle: style,
+                    isExiting
+                  }), res;
+                }
+  };
+            }
+            function getColorInterpolated(currentColor, nextColor, animateToValue) {
+              const inputRange = [0, 1], outputRange = [currentColor || nextColor, nextColor];
+              return animateToValue === 0 && outputRange.reverse(), {
+                inputRange,
+                outputRange
+              };
+            }
+            function getInterpolated(current, next, postfix = "deg") {
+              next === current && (current = next - 1e-9);
+              const inputRange = [current, next], outputRange = [`${current}${postfix}`, `${next}${postfix}`];
+              return next < current && (inputRange.reverse(), outputRange.reverse()), {
+                inputRange,
+                outputRange
+              };
+            }
+            function getAnimationConfig(key, animations2, animation) {
+              if (typeof animation == "string") return animations2[animation];
+              let type = "", extraConf;
+              const shortKey = transformShorthands[key];
+              if (Array.isArray(animation)) {
+                type = animation[0];
+                const conf = animation[1]?.[key] ?? animation[1]?.[shortKey];
+                conf && (typeof conf == "string" ? type = conf : (type = conf.type || type, extraConf = conf));
+              } else {
+                const val = animation?.[key] ?? animation?.[shortKey];
+                type = val?.type, extraConf = val;
+              }
+              return {
+                ...animations2[type],
+                ...extraConf
+              };
+            }
+            var transformShorthands = {
+              x: "translateX",
+              y: "translateY",
+              translateX: "x",
+              translateY: "y"
+            };
+            function getValue2(input, isColor = false) {
+              if (typeof input != "string") return [input];
+              const [_, number, after] = input.match(/([-0-9]+)(deg|%|px)/) ?? [];
+              return [+number, after];
+            }
+
+            // src/theme/tokens.ts
+            var import_tamagui44 = require("tamagui");
+            var import_tamagui45 = require("tamagui");
+            var palette = {
+              transparent: "transparent",
+              white: "#FFFFFF",
+              black: "#000000",
+              slate50: "#F8FAFC",
+              slate100: "#F1F5F9",
+              slate200: "#E2E8F0",
+              slate300: "#CBD5F5",
+              slate400: "#94A3B8",
+              slate500: "#64748B",
+              slate600: "#475569",
+              slate700: "#334155",
+              slate800: "#1E293B",
+              slate900: "#0F172A",
+              violet400: "#A78BFA",
+              violet500: "#8B5CF6",
+              violet600: "#7C3AED",
+              violet700: "#6D28D9",
+              green500: "#22C55E",
+              green600: "#16A34A",
+              green700: "#15803D",
+              amber500: "#F59E0B",
+              amber600: "#D97706",
+              amber700: "#B45309",
+              red500: "#EF4444",
+              red600: "#DC2626",
+              red700: "#B91C1C",
+              sky500: "#0EA5E9",
+              sky600: "#0284C7",
+              sky700: "#0369A1",
+              // IVISA Brand Palette
+              // Primary (Azul Prefeitura)
+              ivisaPrimary50: "#EEF8FF",
+              ivisaPrimary100: "#DCF1FF",
+              ivisaPrimary200: "#B2E5FF",
+              ivisaPrimary300: "#6DD1FF",
+              ivisaPrimary400: "#20BAFF",
+              ivisaPrimary500: "#00A1FF",
+              ivisaPrimary600: "#0080DF",
+              // Main Logo Color
+              ivisaPrimary700: "#0065B4",
+              ivisaPrimary800: "#005694",
+              ivisaPrimary900: "#004A80",
+              // Dark Logo Color
+              ivisaPrimary950: "#002D51",
+              // Secondary (Ciano/Teal - Apoio IVISA)
+              ivisaSecondary50: "#F1F8FA",
+              ivisaSecondary100: "#C5FFF9",
+              ivisaSecondary200: "#8BFFF5",
+              ivisaSecondary300: "#49FFEF",
+              ivisaSecondary400: "#14EDE1",
+              ivisaSecondary500: "#00D1C8",
+              ivisaSecondary600: "#00A9A4",
+              ivisaSecondary700: "#056A6A",
+              ivisaSecondary800: "#0A5757",
+              ivisaSecondary900: "#003436",
+              // Semantic: Success (Green)
+              ivisaSuccess50: "#E9FFE6",
+              ivisaSuccess100: "#CCFFC8",
+              ivisaSuccess200: "#9DFF97",
+              ivisaSuccess300: "#60FB5B",
+              ivisaSuccess400: "#2FF12A",
+              ivisaSuccess500: "#0CDC0B",
+              ivisaSuccess600: "#04AC06",
+              ivisaSuccess700: "#08830C",
+              ivisaSuccess800: "#105715",
+              ivisaSuccess900: "#023106",
+              // Semantic: Error (Red)
+              ivisaError50: "#FFF0F0",
+              ivisaError100: "#FFDDDD",
+              ivisaError200: "#FFC0C0",
+              ivisaError300: "#FF9494",
+              ivisaError400: "#FF5757",
+              ivisaError500: "#FF2323",
+              ivisaError600: "#FF0000",
+              ivisaError700: "#D70000",
+              ivisaError800: "#B10303",
+              ivisaError900: "#920A0A",
+              ivisaError950: "#500000",
+              // Semantic: Warning (Yellow/Gold)
+              ivisaWarning50: "#FAFEE8",
+              ivisaWarning100: "#F4FFC2",
+              ivisaWarning200: "#EDFF87",
+              ivisaWarning300: "#EBFF43",
+              ivisaWarning400: "#F2FF0E",
+              ivisaWarning500: "#ECEF03",
+              ivisaWarning600: "#CEC000",
+              ivisaWarning700: "#A48C04",
+              ivisaWarning800: "#886D0B",
+              ivisaWarning900: "#735810",
+              ivisaWarning950: "#433005",
+              // Gray (Alternative)
+              ivisaGray50: "#F6F6F6",
+              ivisaGray100: "#E7E7E7",
+              ivisaGray200: "#D1D1D1",
+              ivisaGray300: "#B0B0B0",
+              ivisaGray400: "#888888",
+              ivisaGray500: "#6D6D6D",
+              ivisaGray600: "#5D5D5D",
+              ivisaGray700: "#4F4F4F",
+              ivisaGray800: "#454545",
+              ivisaGray900: "#3D3D3D",
+              ivisaGray950: "#262626",
+              // Dark Blue Gray (Dark)
+              ivisaDarkBlueGray100: "#DDEDF0",
+              ivisaDarkBlueGray300: "#91C1CF",
+              ivisaDarkBlueGray500: "#418199",
+              ivisaDarkBlueGray700: "#314B59",
+              ivisaDarkBlueGray900: "#263742",
+              ivisaDarkBlueGray950: "#192833"
+            };
+            var spaceScale = {
+              0: 0,
+              xs: 4,
+              sm: 8,
+              md: 12,
+              lg: 16,
+              xl: 24,
+              "2xl": 32,
+              "3xl": 40,
+              "4xl": 48,
+              true: 12
+              // default (md)
+            };
+            var sizeScale = {
+              0: 0,
+              xs: 24,
+              sm: 32,
+              md: 40,
+              lg: 48,
+              xl: 56,
+              "2xl": 64,
+              "3xl": 80,
+              true: 40
+              // default (md)
+            };
+            var radiusScale = {
+              none: 0,
+              xs: 4,
+              sm: 6,
+              md: 10,
+              lg: 14,
+              xl: 20,
+              full: 999
+            };
+            var zIndexScale = {
+              base: 0,
+              dropdown: 1e3,
+              sticky: 1020,
+              modal: 1100,
+              popover: 1200,
+              toast: 1300,
+              true: 0
+              // default (base)
+            };
+            var tokens = (0, import_tamagui44.createTokens)({
+              var tokens = (0, import_tamagui45.createTokens)({
+                color: {
+                  ...palette
+                },
+                space: spaceScale,
+                size: sizeScale,
+                radius: radiusScale,
+                zIndex: zIndexScale
+              });
+              var lightColors = {
+                background: palette.white,
+                backgroundHover: palette.slate50,
+                backgroundPress: palette.slate100,
+                backgroundFocus: palette.slate100,
+                backgroundStrong: palette.slate200,
+                backgroundTransparent: palette.transparent,
+                borderColor: palette.slate200,
+                borderColorHover: palette.slate300,
+                borderColorPress: palette.slate300,
+                borderColorFocus: palette.violet500,
+                color: palette.slate900,
+                colorHover: palette.slate900,
+                colorPress: palette.slate900,
+                colorFocus: palette.slate900,
+                colorTransparent: palette.transparent,
+                placeholderColor: palette.slate500,
+                shadowColor: "rgba(15,23,42,0.08)",
+                shadowColorHover: "rgba(15,23,42,0.12)",
+                primary: palette.violet500,
+                primaryHover: palette.violet600,
+                primaryPress: palette.violet700,
+                primaryFocus: palette.violet700,
+                primaryForeground: palette.white,
+                secondary: palette.slate100,
+                secondaryHover: palette.slate200,
+                secondaryPress: palette.slate200,
+                secondaryFocus: palette.slate300,
+                secondaryForeground: palette.slate900,
+                accent: "#EEF2FF",
+                accentHover: "#E0E7FF",
+                accentPress: "#C7D2FE",
+                accentFocus: "#C7D2FE",
+                accentForeground: "#312E81",
+                destructive: palette.red500,
+                destructiveHover: palette.red600,
+                destructivePress: palette.red600,
+                destructiveFocus: palette.red700,
+                destructiveForeground: palette.white,
+                success: palette.green500,
+                successHover: palette.green600,
+                successPress: palette.green600,
+                successFocus: palette.green700,
+                successForeground: palette.white,
+                warning: palette.amber500,
+                warningHover: palette.amber600,
+                warningPress: palette.amber600,
+                warningFocus: palette.amber700,
+                warningForeground: palette.slate900,
+                info: palette.sky500,
+                infoHover: palette.sky600,
+                infoPress: palette.sky600,
+                infoFocus: palette.sky700,
+                infoForeground: palette.white,
+                muted: palette.slate100,
+                mutedForeground: palette.slate500,
+                ring: palette.violet500
+              };
+              var darkColors = {
+                background: palette.slate900,
+                backgroundHover: palette.slate800,
+                backgroundPress: palette.slate800,
+                backgroundFocus: palette.slate700,
+                backgroundStrong: palette.slate800,
+                backgroundTransparent: palette.transparent,
+                borderColor: palette.slate700,
+                borderColorHover: palette.slate600,
+                borderColorPress: palette.slate600,
+                borderColorFocus: palette.violet500,
+                color: palette.slate100,
+                colorHover: palette.white,
+                colorPress: palette.white,
+                colorFocus: palette.white,
+                colorTransparent: palette.transparent,
+                placeholderColor: palette.slate400,
+                shadowColor: "rgba(15,23,42,0.45)",
+                shadowColorHover: "rgba(15,23,42,0.55)",
+                primary: palette.violet500,
+                primaryHover: palette.violet600,
+                primaryPress: palette.violet700,
+                primaryFocus: palette.violet600,
+                primaryForeground: palette.white,
+                secondary: palette.slate800,
+                secondaryHover: palette.slate700,
+                secondaryPress: palette.slate700,
+                secondaryFocus: palette.slate600,
+                secondaryForeground: palette.slate100,
+                accent: "#1E1B4B",
+                accentHover: "#312E81",
+                accentPress: "#3730A3",
+                accentFocus: "#4338CA",
+                accentForeground: palette.white,
+                destructive: palette.red600,
+                destructiveHover: palette.red500,
+                destructivePress: palette.red500,
+                destructiveFocus: palette.red700,
+                destructiveForeground: palette.white,
+                success: palette.green500,
+                successHover: palette.green600,
+                successPress: palette.green600,
+                successFocus: palette.green700,
+                successForeground: palette.white,
+                warning: palette.amber500,
+                warningHover: palette.amber600,
+                warningPress: palette.amber600,
+                warningFocus: palette.amber700,
+                warningForeground: palette.slate900,
+                info: palette.sky500,
+                infoHover: palette.sky600,
+                infoPress: palette.sky600,
+                infoFocus: palette.sky700,
+                infoForeground: palette.white,
+                muted: palette.slate800,
+                mutedForeground: palette.slate400,
+                ring: palette.violet500
+              };
+
+              // src/theme/index.ts
 var import_tamagui46 = require("tamagui");
 var lightTheme = (0, import_tamagui46.createTheme)({
   ...lightColors
 });
 var darkTheme = (0, import_tamagui46.createTheme)({
-  ...darkColors
-});
-var themes = {
-  light: lightTheme,
-  dark: darkTheme
-};
+                ...darkColors
+              });
+              var themes = {
+                light: lightTheme,
+                dark: darkTheme
+              };
 
-// ../../node_modules/.pnpm/@tamagui+font-inter@1.138.5_react-dom@18.3.1_react@18.3.1__react-native@0.82.1_@babel+core@7._ree625nyzoodvoencezom2kvsu/node_modules/@tamagui/font-inter/dist/esm/index.mjs
-var import_core = require("@tamagui/core");
-var createInterFont = (font = {}, {
-  sizeLineHeight = (size) => size + 10,
-  sizeSize = (size) => size * 1
-} = {}) => {
-  const size = Object.fromEntries(Object.entries({
-    ...defaultSizes,
-    ...font.size
-  }).map(([k, v]) => [k, sizeSize(+v)]));
-  return (0, import_core.createFont)({
-    family: import_core.isWeb ? 'Inter, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' : "Inter",
-    lineHeight: Object.fromEntries(Object.entries(size).map(([k, v]) => [k, sizeLineHeight((0, import_core.getVariableValue)(v))])),
-    weight: {
-      4: "300"
-    },
-    letterSpacing: {
-      4: 0
-    },
-    ...font,
-    size
-  });
-};
-var defaultSizes = {
-  1: 11,
-  2: 12,
-  3: 13,
-  4: 14,
-  true: 14,
-  5: 16,
-  6: 18,
-  7: 20,
-  8: 23,
-  9: 30,
-  10: 46,
-  11: 55,
-  12: 62,
-  13: 72,
-  14: 92,
-  15: 114,
-  16: 134
-};
+              // ../../node_modules/.pnpm/@tamagui+font-inter@1.138.5_react-dom@18.3.1_react@18.3.1__react-native@0.82.1_@babel+core@7._ree625nyzoodvoencezom2kvsu/node_modules/@tamagui/font-inter/dist/esm/index.mjs
+              var import_core = require("@tamagui/core");
+              var createInterFont = (font = {}, {
+                sizeLineHeight = (size) => size + 10,
+                sizeSize = (size) => size * 1
+              } = {}) => {
+                const size = Object.fromEntries(Object.entries({
+                  ...defaultSizes,
+                  ...font.size
+                }).map(([k, v]) => [k, sizeSize(+v)]));
+                return (0, import_core.createFont)({
+                  family: import_core.isWeb ? 'Inter, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' : "Inter",
+                  lineHeight: Object.fromEntries(Object.entries(size).map(([k, v]) => [k, sizeLineHeight((0, import_core.getVariableValue)(v))])),
+                  weight: {
+                    4: "300"
+                  },
+                  letterSpacing: {
+                    4: 0
+                  },
+                  ...font,
+                  size
+                });
+              };
+              var defaultSizes = {
+                1: 11,
+                2: 12,
+                3: 13,
+                4: 14,
+                true: 14,
+                5: 16,
+                6: 18,
+                7: 20,
+                8: 23,
+                9: 30,
+                10: 46,
+                11: 55,
+                12: 62,
+                13: 72,
+                14: 92,
+                15: 114,
+                16: 134
+              };
 
-// src/tamagui.config.ts
-var headingFont = createInterFont();
-var bodyFont = createInterFont();
+              // src/tamagui.config.ts
+              var headingFont = createInterFont();
+              var bodyFont = createInterFont();
 var ceraProFont = (0, import_tamagui47.createFont)({
-  family: "Cera Pro",
-  size: {
-    1: 12,
-    2: 14,
-    3: 16,
-    4: 18,
-    5: 20,
-    6: 24,
-    7: 32,
-    8: 48,
-    9: 64
-  },
-  lineHeight: {
-    1: 16,
-    2: 20,
-    3: 24,
-    4: 28,
-    5: 32,
-    6: 40,
-    7: 48,
-    8: 64,
-    9: 80
-  },
-  weight: {
-    4: "400",
-    // Regular
-    5: "500",
-    // Medium
-    9: "900"
-    // Black
-  },
-  letterSpacing: {
-    4: 0,
-    7: -0.5,
-    // Tighter for large titles
-    9: -1
-  },
-  face: {
-    400: { normal: "CeraPro-Regular" },
-    500: { normal: "CeraPro-Medium" },
-    900: { normal: "CeraPro-Black" }
-  }
-});
-var animations = createAnimations({
-  bouncy: {
-    type: "spring",
-    damping: 10,
-    mass: 0.9,
-    stiffness: 100
-  },
-  lazy: {
-    type: "spring",
-    damping: 20,
-    stiffness: 60
-  },
-  quick: {
-    type: "spring",
-    damping: 20,
-    mass: 1.2,
-    stiffness: 250
-  }
-});
+                family: "Cera Pro",
+                size: {
+                  1: 12,
+                  2: 14,
+                  3: 16,
+                  4: 18,
+                  5: 20,
+                  6: 24,
+                  7: 32,
+                  8: 48,
+                  9: 64
+                },
+                lineHeight: {
+                  1: 16,
+                  2: 20,
+                  3: 24,
+                  4: 28,
+                  5: 32,
+                  6: 40,
+                  7: 48,
+                  8: 64,
+                  9: 80
+                },
+                weight: {
+                  4: "400",
+                  // Regular
+                  5: "500",
+                  // Medium
+                  9: "900"
+                  // Black
+                },
+                letterSpacing: {
+                  4: 0,
+                  7: -0.5,
+                  // Tighter for large titles
+                  9: -1
+                },
+                face: {
+                  400: { normal: "CeraPro-Regular" },
+                  500: { normal: "CeraPro-Medium" },
+                  900: { normal: "CeraPro-Black" }
+                }
+              });
+              var animations = createAnimations({
+                bouncy: {
+                  type: "spring",
+                  damping: 10,
+                  mass: 0.9,
+                  stiffness: 100
+                },
+                lazy: {
+                  type: "spring",
+                  damping: 20,
+                  stiffness: 60
+                },
+                quick: {
+                  type: "spring",
+                  damping: 20,
+                  mass: 1.2,
+                  stiffness: 250
+                }
+              });
 var config = (0, import_tamagui47.createTamagui)({
-  // Animations
-  animations,
-  // Fonts
-  fonts: {
-    heading: headingFont,
-    body: bodyFont,
-    brandHeading: ceraProFont,
-    brandBody: ceraProFont
-  },
-  // Tokens
-  tokens,
-  // Themes
-  themes,
-  // Media queries
-  // These are the default media queries, useful for responsive design
-  media: {
-    xs: { maxWidth: 660 },
-    sm: { maxWidth: 800 },
-    md: { maxWidth: 1020 },
-    lg: { maxWidth: 1280 },
-    xl: { maxWidth: 1420 },
-    xxl: { maxWidth: 1600 },
-    gtXs: { minWidth: 661 },
-    gtSm: { minWidth: 801 },
-    gtMd: { minWidth: 1021 },
-    gtLg: { minWidth: 1281 },
-    short: { maxHeight: 820 },
-    tall: { minHeight: 820 },
-    hoverNone: { hover: "none" },
-    pointerCoarse: { pointer: "coarse" }
-  },
-  // Shorthands
-  // These are CSS-like shorthands for common style properties
-  shorthands: {
-    ac: "alignContent",
-    ai: "alignItems",
-    als: "alignSelf",
-    f: "flex",
-    fb: "flexBasis",
-    fd: "flexDirection",
-    fg: "flexGrow",
-    fs: "flexShrink",
-    fw: "flexWrap",
-    jc: "justifyContent",
-    h: "height",
-    m: "margin",
-    mb: "marginBottom",
-    ml: "marginLeft",
-    mr: "marginRight",
-    mt: "marginTop",
-    mx: "marginHorizontal",
-    my: "marginVertical",
-    p: "padding",
-    pb: "paddingBottom",
-    pl: "paddingLeft",
-    pr: "paddingRight",
-    pt: "paddingTop",
-    px: "paddingHorizontal",
-    py: "paddingVertical",
-    w: "width"
-  }
-});
-var tamagui_config_default = config;
+                // Animations
+                animations,
+                // Fonts
+                fonts: {
+                  heading: headingFont,
+                  body: bodyFont,
+                  brandHeading: ceraProFont,
+                  brandBody: ceraProFont
+                },
+                // Tokens
+                tokens,
+                // Themes
+                themes,
+                // Media queries
+                // These are the default media queries, useful for responsive design
+                media: {
+                  xs: { maxWidth: 660 },
+                  sm: { maxWidth: 800 },
+                  md: { maxWidth: 1020 },
+                  lg: { maxWidth: 1280 },
+                  xl: { maxWidth: 1420 },
+                  xxl: { maxWidth: 1600 },
+                  gtXs: { minWidth: 661 },
+                  gtSm: { minWidth: 801 },
+                  gtMd: { minWidth: 1021 },
+                  gtLg: { minWidth: 1281 },
+                  short: { maxHeight: 820 },
+                  tall: { minHeight: 820 },
+                  hoverNone: { hover: "none" },
+                  pointerCoarse: { pointer: "coarse" }
+                },
+                // Shorthands
+                // These are CSS-like shorthands for common style properties
+                shorthands: {
+                  ac: "alignContent",
+                  ai: "alignItems",
+                  als: "alignSelf",
+                  f: "flex",
+                  fb: "flexBasis",
+                  fd: "flexDirection",
+                  fg: "flexGrow",
+                  fs: "flexShrink",
+                  fw: "flexWrap",
+                  jc: "justifyContent",
+                  h: "height",
+                  m: "margin",
+                  mb: "marginBottom",
+                  ml: "marginLeft",
+                  mr: "marginRight",
+                  mt: "marginTop",
+                  mx: "marginHorizontal",
+                  my: "marginVertical",
+                  p: "padding",
+                  pb: "paddingBottom",
+                  pl: "paddingLeft",
+                  pr: "paddingRight",
+                  pt: "paddingTop",
+                  px: "paddingHorizontal",
+                  py: "paddingVertical",
+                  w: "width"
+                }
+              });
+              var tamagui_config_default = config;
 
-// src/providers/AppProviders.tsx
+              // src/providers/AppProviders.tsx
 var import_jsx_runtime36 = require("react/jsx-runtime");
 var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui48.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(ComponentErrorBoundary, { componentName: "AppProviders", children }) }) });
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  AppProviders,
-  AspectRatio,
-  Avatar,
-  AvatarFallback,
-  AvatarFallbackComponent,
-  AvatarImage,
-  AvatarImageComponent,
-  Badge,
-  BadgeText,
-  BarChart,
-  Breadcrumb,
-  Button,
-  Calendar,
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  Checkbox,
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-  ComponentErrorBoundary,
-  ContextMenu,
-  ContextMenuCheckboxItem,
-  ContextMenuContent,
-  ContextMenuGroup,
-  ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuPortal,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
-  ContextMenuTrigger,
-  DataTable,
-  DatePicker,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogContentComposite,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerTitle,
-  DrawerTrigger,
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  IndicatorArrow,
-  Input,
-  Menubar,
-  MenubarCheckboxItem,
-  MenubarContent,
-  MenubarGroup,
-  MenubarItem,
-  MenubarLabel,
-  MenubarMenu,
-  MenubarPortal,
-  MenubarRadioGroup,
-  MenubarRadioItem,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarSub,
-  MenubarSubContent,
-  MenubarSubTrigger,
-  MenubarTrigger,
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-  OTPInput,
-  Pagination,
-  Popover,
-  PopoverAnchor,
-  PopoverClose,
-  PopoverContent,
-  PopoverTrigger,
-  Progress,
-  ProgressFrame,
-  ProgressIndicator,
-  RadioGroup,
-  RadioGroupItem,
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-  ScrollArea,
-  Select,
-  Separator,
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHandle,
-  SheetHeader,
-  SheetOverlay,
-  SheetTitle,
-  SheetTrigger,
-  Sidebar,
-  Skeleton,
-  Slider,
-  SliderFrame,
-  SliderRange,
-  SliderThumb,
-  SliderTrack,
-  Stepper,
-  Switch,
-  SwitchComponent,
-  SwitchFrameExport,
-  SwitchThumbComponent,
-  SwitchWithThumb,
-  Table,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  Textarea,
-  Toast,
-  ToastDescription,
-  ToastProvider,
-  ToastTitle,
-  ToastViewport,
-  Toggle,
-  ToggleGroup,
-  ToggleGroupItem,
-  Tooltip,
-  config,
-  useFormField,
-  useToast
-});
+              // Annotate the CommonJS export names for ESM import in node:
+              0 && (module.exports = {
+                Accordion,
+                AccordionContent,
+                AccordionItem,
+                AccordionTrigger,
+                Alert,
+                AlertDescription,
+                AlertTitle,
+                AppProviders,
+                AspectRatio,
+                Avatar,
+                AvatarFallback,
+                AvatarFallbackComponent,
+                AvatarImage,
+                AvatarImageComponent,
+                Badge,
+                BadgeText,
+                BarChart,
+                Breadcrumb,
+                Button,
+                Calendar,
+                Card,
+                CardContent,
+                CardDescription,
+                CardFooter,
+                CardHeader,
+                CardTitle,
+                Carousel,
+                CarouselContent,
+                CarouselItem,
+                CarouselNext,
+                CarouselPrevious,
+                Checkbox,
+                Collapsible,
+                CollapsibleContent,
+                CollapsibleTrigger,
+                Command,
+                CommandDialog,
+                CommandEmpty,
+                CommandGroup,
+                CommandInput,
+                CommandItem,
+                CommandList,
+                CommandSeparator,
+                CommandShortcut,
+                ComponentErrorBoundary,
+                ContextMenu,
+                ContextMenuCheckboxItem,
+                ContextMenuContent,
+                ContextMenuGroup,
+                ContextMenuItem,
+                ContextMenuLabel,
+                ContextMenuPortal,
+                ContextMenuRadioGroup,
+                ContextMenuRadioItem,
+                ContextMenuSeparator,
+                ContextMenuShortcut,
+                ContextMenuSub,
+                ContextMenuSubContent,
+                ContextMenuSubTrigger,
+                ContextMenuTrigger,
+                DataTable,
+                DatePicker,
+                Dialog,
+                DialogClose,
+                DialogContent,
+                DialogContentComposite,
+                DialogDescription,
+                DialogFooter,
+                DialogHeader,
+                DialogOverlay,
+                DialogPortal,
+                DialogTitle,
+                DialogTrigger,
+                Drawer,
+                DrawerClose,
+                DrawerContent,
+                DrawerDescription,
+                DrawerFooter,
+                DrawerHeader,
+                DrawerOverlay,
+                DrawerTitle,
+                DrawerTrigger,
+                Form,
+                FormControl,
+                FormDescription,
+                FormField,
+                FormItem,
+                FormLabel,
+                FormMessage,
+                IndicatorArrow,
+                Input,
+                Menubar,
+                MenubarCheckboxItem,
+                MenubarContent,
+                MenubarGroup,
+                MenubarItem,
+                MenubarLabel,
+                MenubarMenu,
+                MenubarPortal,
+                MenubarRadioGroup,
+                MenubarRadioItem,
+                MenubarSeparator,
+                MenubarShortcut,
+                MenubarSub,
+                MenubarSubContent,
+                MenubarSubTrigger,
+                MenubarTrigger,
+                NavigationMenu,
+                NavigationMenuContent,
+                NavigationMenuIndicator,
+                NavigationMenuItem,
+                NavigationMenuLink,
+                NavigationMenuList,
+                NavigationMenuTrigger,
+                NavigationMenuViewport,
+                OTPInput,
+                Pagination,
+                Popover,
+                PopoverAnchor,
+                PopoverClose,
+                PopoverContent,
+                PopoverTrigger,
+                Progress,
+                ProgressFrame,
+                ProgressIndicator,
+                RadioGroup,
+                RadioGroupItem,
+                ResizableHandle,
+                ResizablePanel,
+                ResizablePanelGroup,
+                ScrollArea,
+                Select,
+                Separator,
+                Sheet,
+                SheetClose,
+                SheetContent,
+                SheetDescription,
+                SheetFooter,
+                SheetHandle,
+                SheetHeader,
+                SheetOverlay,
+                SheetTitle,
+                SheetTrigger,
+                Sidebar,
+                Skeleton,
+                Slider,
+                SliderFrame,
+                SliderRange,
+                SliderThumb,
+                SliderTrack,
+                StarRating,
+                Stepper,
+                Switch,
+                SwitchComponent,
+                SwitchFrameExport,
+                SwitchThumbComponent,
+                SwitchWithThumb,
+                Table,
+                Tabs,
+                TabsContent,
+                TabsList,
+                TabsTrigger,
+                Textarea,
+                Toast,
+                ToastDescription,
+                ToastProvider,
+                ToastTitle,
+                ToastViewport,
+                Toggle,
+                ToggleGroup,
+                ToggleGroupItem,
+                Tooltip,
+                config,
+                useFormField,
+                useToast
+              });

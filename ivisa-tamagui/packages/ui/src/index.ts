@@ -52,6 +52,7 @@ export * from './organisms/Carousel';
 export * from './organisms/Command';
 export * from './organisms/Sidebar';
 export * from './organisms/Charts';
+export * from './molecules/StarRating';
 export * from './organisms/Video';
 export * from './providers/AppProviders';
 export * from './fonts';
