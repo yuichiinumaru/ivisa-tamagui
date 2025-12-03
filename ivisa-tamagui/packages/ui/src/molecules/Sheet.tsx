@@ -97,6 +97,7 @@ export {
     SheetOverlay, // Exporting just in case
     SheetHandle,  // Exporting just in case
     SheetClose,
+    SheetContentFrame as SheetFrame,
 }
 
 export type SheetProps = GetProps<typeof Sheet>

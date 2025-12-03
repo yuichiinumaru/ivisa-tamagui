@@ -148,3 +148,15 @@ export const Select = Object.assign(SelectWithLogging, {
   TriggerFrame: SelectTriggerFrame,
   IconFrame: SelectIconFrame,
 })
+
+export const SelectTrigger = TamaguiSelect.Trigger
+export const SelectValue = TamaguiSelect.Value
+export const SelectContent = TamaguiSelect.Content
+export const SelectItem = TamaguiSelect.Item
+export const SelectItemText = TamaguiSelect.ItemText
+export const SelectItemIndicator = TamaguiSelect.ItemIndicator
+export const SelectGroup = TamaguiSelect.Group
+export const SelectViewport = TamaguiSelect.Viewport
+export const SelectLabel = TamaguiSelect.Label
+export const SelectScrollUpButton = TamaguiSelect.ScrollUpButton
+export const SelectScrollDownButton = TamaguiSelect.ScrollDownButton

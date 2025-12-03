@@ -1,9 +1,11 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import type { StorybookConfig } from '@storybook/react-vite';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
 
 const config: StorybookConfig = {
   stories: [
@@ -40,7 +42,9 @@ const config: StorybookConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@ivisa/ui': path.resolve(__dirname, '../packages/ui/src'),
-      'react-native': 'react-native-web'
+      'react-native': 'react-native-web',
+      '@react-native/assets-registry/registry': path.resolve(__dirname, '../packages/ui/src/mocks/assets-registry.js'),
+      'react-remove-scroll': require.resolve('react-remove-scroll'),
     };
 
     config.define = {
@@ -51,18 +55,53 @@ const config: StorybookConfig = {
     config.optimizeDeps ??= {};
     config.optimizeDeps.include = [
       ...(config.optimizeDeps.include || []),
-      'react-native-web',
       'tamagui',
       '@tamagui/core',
     ]
+    config.optimizeDeps.exclude = [
+      ...(config.optimizeDeps.exclude || []),
+      'victory-bar',
+      'victory-box-plot',
+      'victory-brush-container',
+      'victory-brush-line',
+      'victory-candlestick',
+      'victory-canvas',
+      'victory-chart',
+      'victory-core',
+      'victory-create-container',
+      'victory-cursor-container',
+      'victory-errorbar',
+      'victory-group',
+      'victory-histogram',
+      'victory-legend',
+      'victory-line',
+      'victory-pie',
+      'victory-polar-axis',
+      'victory-scatter',
+      'victory-selection-container',
+      'victory-shared-events',
+      'victory-stack',
+      'victory-tooltip',
+      'victory-voronoi-container',
+      'victory-voronoi',
+      'victory-zoom-container',
+      'victory-area',
+      'victory-axis',
+      'react-native-web',
+      'expo-av',
+      'react-remove-scroll',
+    ]
+
     config.optimizeDeps.esbuildOptions = {
       ...config.optimizeDeps.esbuildOptions,
-      // Add this to support JSX in JS files for react-native-web
-      loader: {
-        '.js': 'jsx',
-      },
       // Tamagui recommends this
       resolveExtensions: ['.web.js', '.js', '.ts', '.tsx'],
+    };
+
+    config.esbuild = {
+      loader: 'tsx',
+      include: /.*\.(js|jsx|ts|tsx)$/,
+      exclude: [],
     };
 
     return config;

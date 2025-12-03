@@ -57,3 +57,24 @@ export const Paragraph = styled(TamaguiText, { // Often useful to have Paragraph
   color: '$color',
   marginBottom: '$2',
 })
+
+// Aliases for compatibility with stories
+export const Heading = H1
+export const TypographyText = Text
+
+export const MutedText = styled(Text, {
+  color: '$color05',
+})
+
+export const LeadText = styled(Text, {
+  fontSize: '$5',
+  fontWeight: '300',
+})
+
+export const Blockquote = styled(Text, {
+  tag: 'blockquote',
+  borderLeftWidth: 2,
+  borderLeftColor: '$color05',
+  paddingLeft: '$4',
+  fontStyle: 'italic',
+})

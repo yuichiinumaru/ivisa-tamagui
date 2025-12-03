@@ -8,6 +8,8 @@ import {
     SheetDescription,
     SheetOverlay,
     SheetClose,
+    SheetFrame,
+    SheetHandle,
 } from './Sheet'
 
 // Drawer is essentially a Bottom Sheet in shadcn/vaul context.
@@ -23,6 +25,8 @@ export const DrawerTitle = SheetTitle
 export const DrawerDescription = SheetDescription
 export const DrawerOverlay = SheetOverlay
 export const DrawerClose = SheetClose
+export const DrawerFrame = SheetFrame
+export const DrawerHandle = SheetHandle
 
 // If we need specific Drawer styling distinct from Sheet, we would wrap them here.
 // For now, direct aliasing provides the functionality.
