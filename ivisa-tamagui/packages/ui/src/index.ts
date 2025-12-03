@@ -41,5 +41,6 @@ export * from './organisms/Carousel';
 export * from './organisms/Command';
 export * from './organisms/Sidebar';
 export * from './organisms/Charts';
+export * from './molecules/StarRating';
 export * from './providers/AppProviders';
 export { default as config } from './tamagui.config';

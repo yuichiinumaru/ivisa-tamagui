@@ -19,9 +19,9 @@
   - Re-create `scripts/visual-check.js` (uses Storybook + Playwright) which is currently missing.
 
 ### Missing / Incomplete Components (Frankenstein Strategy)
-32 - [ ] **Component Acceleration Phase (Harvest & Headless)**
-  - [ ] 32a – **Harvest `pogiii/sushi`**: Clone `pogiii/sushi` into `referencias/` and harvest the `Input` (Composed) and `OTPInput` patterns.
-  - [ ] 32b – **Harvest `tamagui-kitchen-sink`**: Run `scripts/convert_component.py` to auto-convert `LmStarRating` as `StarRating`.
+32 - [x] **Component Acceleration Phase (Harvest & Headless)**
+  - [x] 32a – **Harvest `pogiii/sushi`**: Clone `pogiii/sushi` into `referencias/` and harvest the `Input` (Composed) and `OTPInput` patterns.
+  - [x] 32b – **Harvest `tamagui-kitchen-sink`**: Run `scripts/convert_component.py` to auto-convert `LmStarRating` as `StarRating`.
 
 33 - [ ] **ShadCN Gap Fill - High Priority**
   - [ ] 33a – **Command Palette**: Implement `Command` using `cmdk` + `Dialog` wrapper.

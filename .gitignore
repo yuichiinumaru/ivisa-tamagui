@@ -24,5 +24,9 @@ build/
 *storybook.log
 storybook-static
 ivisa-tamagui/referencias/
+referencias/
 *.pyc
 __pycache__/
+
+# Assets
+ivisa-tamagui/packages/ui/src/assets/fonts/
