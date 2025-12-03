@@ -17,7 +17,7 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@storybook/addon-onboarding',
     '@storybook/addon-a11y',
-    '@storybook/addon-vitest'
+    // '@storybook/addon-vitest'
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -42,7 +42,7 @@ const config: StorybookConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@ivisa/ui': path.resolve(__dirname, '../packages/ui/src'),
-      'react-native': 'react-native-web',
+      'react-native': 'react-native-web/dist/index',
       '@react-native/assets-registry/registry': path.resolve(__dirname, '../packages/ui/src/mocks/assets-registry.js'),
       'react-remove-scroll': require.resolve('react-remove-scroll'),
       '@react-native/normalize-colors': path.resolve(__dirname, '../packages/ui/src/mocks/normalize-colors.js'),
@@ -50,6 +50,8 @@ const config: StorybookConfig = {
 
     config.define = {
       'process.env.TAMAGUI_TARGET': '"web"',
+      global: 'window',
+      setImmediate: 'setTimeout',
     };
 
     config.optimizeDeps ??= {};
@@ -57,10 +59,10 @@ const config: StorybookConfig = {
       ...(config.optimizeDeps.include || []),
       'tamagui',
       '@tamagui/core',
-      'react-native-web',
     ]
     config.optimizeDeps.exclude = [
       ...(config.optimizeDeps.exclude || []),
+      'react-native-web',
       'victory-bar',
       'victory-box-plot',
       'victory-brush-container',
@@ -97,12 +99,6 @@ const config: StorybookConfig = {
       ...config.optimizeDeps.esbuildOptions,
       // Tamagui recommends this
       resolveExtensions: ['.web.js', '.js', '.ts', '.tsx'],
-    };
-
-    config.esbuild = {
-      loader: 'tsx',
-      include: /.*\.(js|jsx|ts|tsx)$/,
-      exclude: [],
     };
 
     return config;

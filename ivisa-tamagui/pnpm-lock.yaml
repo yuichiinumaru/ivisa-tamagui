@@ -1634,7 +1634,7 @@ packages:
 
   '@expo/bunyan@4.0.1':
     resolution: {integrity: sha512-+Lla7nYSiHZirgK+U/uYzsLv/X+HaJienbD5AKX1UQZHYfWaP+9uuQluRB4GrEVWF0GZ7vEVp/jzaOT9k/SQlg==}
-    engines: {'0': node >=0.10.0}
+    engines: {node: '>=0.10.0'}
 
   '@expo/cli@0.17.13':
     resolution: {integrity: sha512-n13yxOmI3I0JidzMdFCH68tYKGDtK4XlDFk1vysZX7AIRKeDVRsSbHhma5jCla2bDt25RKmJBHA9KtzielwzAA==}
@@ -9843,7 +9843,7 @@ snapshots:
 
   '@babel/plugin-proposal-nullish-coalescing-operator@7.18.6(@babel/core@7.28.5)':
     dependencies:
-      '@babel/core': 7.28.5(supports-color@10.2.2)
+      '@babel/core': 7.28.5
       '@babel/helper-plugin-utils': 7.27.1
       '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3(@babel/core@7.28.5)
 
@@ -9870,7 +9870,7 @@ snapshots:
 
   '@babel/plugin-proposal-optional-chaining@7.21.0(@babel/core@7.28.5)':
     dependencies:
-      '@babel/core': 7.28.5(supports-color@10.2.2)
+      '@babel/core': 7.28.5
       '@babel/helper-plugin-utils': 7.27.1
       '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
       '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.28.5)
@@ -9988,7 +9988,7 @@ snapshots:
 
   '@babel/plugin-syntax-typescript@7.27.1(@babel/core@7.28.5)':
     dependencies:
-      '@babel/core': 7.28.5(supports-color@10.2.2)
+      '@babel/core': 7.28.5
       '@babel/helper-plugin-utils': 7.27.1
 
   '@babel/plugin-syntax-unicode-sets-regex@7.18.6(@babel/core@7.28.5)':
@@ -10366,7 +10366,7 @@ snapshots:
 
   '@babel/plugin-transform-typescript@7.28.5(@babel/core@7.28.5)':
     dependencies:
-      '@babel/core': 7.28.5(supports-color@10.2.2)
+      '@babel/core': 7.28.5
       '@babel/helper-annotate-as-pure': 7.27.3
       '@babel/helper-create-class-features-plugin': 7.28.5(@babel/core@7.28.5)
       '@babel/helper-plugin-utils': 7.27.1
@@ -10476,7 +10476,7 @@ snapshots:
 
   '@babel/preset-flow@7.27.1(@babel/core@7.28.5)':
     dependencies:
-      '@babel/core': 7.28.5(supports-color@10.2.2)
+      '@babel/core': 7.28.5
       '@babel/helper-plugin-utils': 7.27.1
       '@babel/helper-validator-option': 7.27.1
       '@babel/plugin-transform-flow-strip-types': 7.27.1(@babel/core@7.28.5)
@@ -10513,7 +10513,7 @@ snapshots:
 
   '@babel/register@7.28.3(@babel/core@7.28.5)':
     dependencies:
-      '@babel/core': 7.28.5(supports-color@10.2.2)
+      '@babel/core': 7.28.5
       clone-deep: 4.0.1
       find-cache-dir: 2.1.0
       make-dir: 2.1.0
@@ -12181,7 +12181,7 @@ snapshots:
       '@babel/template': 7.27.2
       '@react-native/babel-plugin-codegen': 0.73.4(@babel/preset-env@7.28.5(@babel/core@7.28.5))
       babel-plugin-transform-flow-enums: 0.0.2(@babel/core@7.28.5)
-      react-refresh: 0.14.0
+      react-refresh: 0.14.2
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
@@ -16306,7 +16306,7 @@ snapshots:
 
   babel-core@7.0.0-bridge.0(@babel/core@7.28.5):
     dependencies:
-      '@babel/core': 7.28.5(supports-color@10.2.2)
+      '@babel/core': 7.28.5
 
   babel-jest@29.7.0(@babel/core@7.28.5):
     dependencies:
@@ -19394,7 +19394,7 @@ snapshots:
 
   md5.js@1.3.5:
     dependencies:
-      hash-base: 3.0.5
+      hash-base: 3.1.2
       inherits: 2.0.4
       safe-buffer: 5.2.1
 
