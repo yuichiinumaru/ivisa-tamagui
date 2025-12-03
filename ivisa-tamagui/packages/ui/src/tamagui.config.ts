@@ -5,11 +5,6 @@ import { themes } from './theme';
 
 // Import the Tamagui fonts and create a font configuration
 // We can use the default fonts for now
-import { createInterFont } from '@tamagui/font-inter';
-
-const headingFont = createInterFont();
-const bodyFont = createInterFont();
-
 // Cera Pro Font Configuration (IVISA Brand)
 const ceraProFont = createFont({
   family: 'Cera Pro',
@@ -79,8 +74,8 @@ const config = createTamagui({
 
   // Fonts
   fonts: {
-    heading: headingFont,
-    body: bodyFont,
+    heading: ceraProFont,
+    body: ceraProFont,
     brandHeading: ceraProFont,
     brandBody: ceraProFont,
   },
