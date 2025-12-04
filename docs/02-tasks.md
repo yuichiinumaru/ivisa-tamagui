@@ -81,24 +81,24 @@
   - [ ] 38c – **Organisms**: `Carousel`, `Command`, `DataTable`.
   - [x] 38d – **Fix Autocomplete Tests**: `Autocomplete.test.tsx` restored and passing (mocked `tamagui`).
 
-35 - [ ] **Missing Documentation Specs (Implemented but no Spec)** (DOC)
-  - [ ] 35a – Create specs for `ComponentErrorBoundary`
+35 - [x] **Missing Documentation Specs (Implemented but no Spec)** (DOC)
+  - [x] 35a – Create specs for `ComponentErrorBoundary`
   - [x] 35b – Create specs for `DatePicker` & `MonthsPicker`
   - [x] 35c – Create specs for `StarRating`
-  - [ ] 35d – Create specs for `Stepper`
-  - [ ] 35e – Create specs for `Autocomplete`
-  - [ ] 35f – Create specs for `DataTable`
-  - [ ] 35g – Create specs for `RichText`
-  - [ ] 35h – Create specs for `Video`
+  - [x] 35d – Create specs for `Stepper`
+  - [x] 35e – Create specs for `Autocomplete`
+  - [x] 35f – Create specs for `DataTable`
+  - [x] 35g – Create specs for `RichText`
+  - [x] 35h – Create specs for `Video`
 
 36 - [ ] **Missing Implementations (Spec exists but no Code)** (TDD)
-  - [ ] 36a – Implement `button-group`
+  - [x] 36a – Implement `button-group`
   - [ ] 36b – Implement `empty` state component
   - [ ] 36c – Implement `field` component
-  - [ ] 36d – Implement `input-group`
+  - [x] 36d – Implement `input-group`
   - [ ] 36e – Implement `item` component
-  - [ ] 36f – Implement `kbd` (Keyboard shortcut display)
-  - [ ] 36g – Implement `label`
+  - [x] 36f – Implement `kbd` (Keyboard shortcut display)
+  - [x] 36g – Implement `label`
   - [ ] 36h – Implement `native-select`
   - [ ] 36i – Implement `sonner` (Toast alternative)
   - [ ] 36j – Implement `table` (Basic table, distinct from DataTable)
