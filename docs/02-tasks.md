@@ -77,7 +77,7 @@
 
 38 - [ ] **Missing Unit Tests (Implemented but no Test)** (TDD)
   - [x] 38a – **Atoms**: `Alert`, `Avatar`, `Badge`, `Checkbox`, `Progress`, `ScrollArea`, `Separator`, `Skeleton`, `Slider`, `Spinner`, `Stack`, `Switch`, `Toggle`.
-  - [ ] 38b – **Molecules**: `Accordion`, `AlertDialog`, `Calendar`, `Card`, `ComponentErrorBoundary`, `Drawer`, `DropdownMenu`, `HoverCard`, `Menubar`, `NavigationMenu`, `OTPInput`, `RadioGroup`, `Resizable`, `Tabs`, `Toast`, `ToggleGroup`. (Implemented: `Accordion`, `AlertDialog`, `Card`, `RadioGroup`, `Tabs`)
+  - [ ] 38b – **Molecules**: `Accordion`, `AlertDialog`, `Calendar`, `Card`, `ComponentErrorBoundary`, `Drawer` (Skipped), `DropdownMenu` (Disabled), `HoverCard`, `Menubar` (Disabled), `NavigationMenu`, `OTPInput`, `RadioGroup`, `Resizable`, `Tabs`, `Toast`, `ToggleGroup`. (Implemented: `Accordion`, `AlertDialog`, `Calendar`, `Card`, `NavigationMenu`, `RadioGroup`, `Tabs`, `Toast`, `ToggleGroup`)
   - [x] 38c – **Organisms**: `Carousel`, `Command` (Disabled due to build error), `DataTable`.
   - [x] 38d – **Fix Autocomplete Tests**: `Autocomplete.test.tsx` restored and passing (mocked `tamagui`).
 
@@ -94,13 +94,13 @@
 36 - [ ] **Missing Implementations (Spec exists but no Code)** (TDD)
   - [x] 36a – Implement `button-group`
   - [x] 36b – Implement `empty` state component
-  - [ ] 36c – Implement `field` component
+  - [x] 36c – Implement `field` component
   - [x] 36d – Implement `input-group`
-  - [ ] 36e – Implement `item` component
+  - [x] 36e – Implement `item` component
   - [x] 36f – Implement `kbd` (Keyboard shortcut display)
   - [x] 36g – Implement `label`
-  - [ ] 36h – Implement `native-select`
-  - [ ] 36i – Implement `sonner` (Toast alternative)
+  - [x] 36h – Implement `native-select`
+  - [x] 36i – Implement `sonner` (Toast alternative)
   - [x] 36j – Implement `table` (Basic table, distinct from DataTable)
 
 ---
