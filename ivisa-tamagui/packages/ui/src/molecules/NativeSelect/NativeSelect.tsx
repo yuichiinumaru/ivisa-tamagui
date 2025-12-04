@@ -1,12 +1,13 @@
 import React, { forwardRef } from 'react'
-import { styled, Stack, GetProps } from 'tamagui'
+import { styled, Stack } from 'tamagui'
+import { ChevronDown } from '@tamagui/lucide-icons'
 
 const SelectFrame = styled(Stack, {
   name: 'NativeSelect',
+  position: 'relative',
   borderWidth: 1,
   borderColor: '$borderColor',
   borderRadius: '$md',
-  paddingHorizontal: '$3',
   height: 40,
   justifyContent: 'center',
 })
@@ -24,11 +25,20 @@ export const NativeSelect = forwardRef<HTMLSelectElement, any>(({ children, ...p
             width: '100%',
             height: '100%',
             outline: 'none',
+            paddingLeft: '12px',
+            paddingRight: '32px',
         }}
         {...props}
       >
         {children}
       </select>
+      <ChevronDown
+        size={16}
+        position="absolute"
+        right="$3"
+        pointerEvents="none"
+        color="$color10"
+      />
     </SelectFrame>
   )
 })

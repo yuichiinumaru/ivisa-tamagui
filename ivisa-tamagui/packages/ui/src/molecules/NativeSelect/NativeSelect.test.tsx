@@ -2,15 +2,23 @@ import { render, screen } from '../../../vitest.setup'
 import { NativeSelect } from './NativeSelect'
 
 describe('NativeSelect', () => {
-  it('renders select element', () => {
+  it('renders select element and chevron icon', () => {
     render(
-      <NativeSelect data-testid="select">
+      <NativeSelect>
         <option value="1">Option 1</option>
       </NativeSelect>
     )
-    // Check for option text which implies select is rendered (since it's a child)
-    // Or try getting by role 'combobox' or 'listbox' if browser supports it for select
-    // But basic test:
+    expect(screen.getByRole('combobox')).toBeInTheDocument()
     expect(screen.getByText('Option 1')).toBeInTheDocument()
+    expect(document.querySelector('svg')).toBeInTheDocument()
+  })
+
+  it('can be disabled', () => {
+    render(
+      <NativeSelect disabled>
+        <option value="1">Option 1</option>
+      </NativeSelect>
+    )
+    expect(screen.getByRole('combobox')).toBeDisabled()
   })
 })
