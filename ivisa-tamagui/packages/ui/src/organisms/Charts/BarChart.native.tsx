@@ -28,7 +28,7 @@ export const BarChart = ({
   // We omit axisOptions for now to avoid crashes until a font strategy is defined.
 
   return (
-    <View style={{ height, width: width || '100%' }}>
+    <View style={{ height, width: width, marginHorizontal: 12, alignSelf: 'stretch' }}>
       <CartesianChart
         data={data}
         xKey={xKey}
