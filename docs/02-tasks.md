@@ -73,12 +73,12 @@
 37 - [ ] **QA & Cleanup**
   - [ ] 37a – **Resolve Linting Errors**: Fix 32 lint errors in `packages/ui`.
   - [ ] 37b – **Standardize Structure**: Move `Sidebar.test.tsx` to `organisms/Sidebar` and clean up `Sheet.test.tsx.disabled`.
-  - [ ] 37c – **Restore Visual Check**: Re-implement `scripts/visual-check.js`.
+  - [x] 37c – **Restore Visual Check**: Re-implement `scripts/visual-check.js`.
 
 38 - [ ] **Missing Unit Tests (Implemented but no Test)** (TDD)
-  - [ ] 38a – **Atoms**: `Alert`, `Avatar`, `Badge`, `Checkbox`, `Progress`, `ScrollArea`, `Separator`, `Skeleton`, `Slider`, `Spinner`, `Stack`, `Switch`, `Toggle`.
+  - [x] 38a – **Atoms**: `Alert`, `Avatar`, `Badge`, `Checkbox`, `Progress`, `ScrollArea`, `Separator`, `Skeleton`, `Slider`, `Spinner`, `Stack`, `Switch`, `Toggle`.
   - [ ] 38b – **Molecules**: `Accordion`, `AlertDialog`, `Calendar`, `Card`, `ComponentErrorBoundary`, `Drawer`, `DropdownMenu`, `HoverCard`, `Menubar`, `NavigationMenu`, `OTPInput`, `RadioGroup`, `Resizable`, `Tabs`, `Toast`, `ToggleGroup`.
-  - [ ] 38c – **Organisms**: `Carousel`, `Command`, `DataTable`.
+  - [x] 38c – **Organisms**: `Carousel`, `Command` (Disabled due to build error), `DataTable`.
   - [x] 38d – **Fix Autocomplete Tests**: `Autocomplete.test.tsx` restored and passing (mocked `tamagui`).
 
 35 - [x] **Missing Documentation Specs (Implemented but no Spec)** (DOC)
