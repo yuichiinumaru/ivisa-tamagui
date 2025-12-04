@@ -2190,27 +2190,6 @@ var require_nullthrows = __commonJS({
   }
 });
 
-// src/assets/fonts/CeraPro-Regular.otf
-var require_CeraPro_Regular = __commonJS({
-  "src/assets/fonts/CeraPro-Regular.otf"(exports2, module2) {
-    module2.exports = "./CeraPro-Regular-TNVAI32C.otf";
-  }
-});
-
-// src/assets/fonts/CeraPro-Medium.otf
-var require_CeraPro_Medium = __commonJS({
-  "src/assets/fonts/CeraPro-Medium.otf"(exports2, module2) {
-    module2.exports = "./CeraPro-Medium-BVBPRSS6.otf";
-  }
-});
-
-// src/assets/fonts/CeraPro-Black.otf
-var require_CeraPro_Black = __commonJS({
-  "src/assets/fonts/CeraPro-Black.otf"(exports2, module2) {
-    module2.exports = "./CeraPro-Black-WL63XRFO.otf";
-  }
-});
-
 // src/index.ts
 var index_exports = {};
 __export(index_exports, {
@@ -2454,7 +2433,6 @@ __export(index_exports, {
   ToggleGroupItem: () => ToggleGroupItemFrame,
   Tooltip: () => Tooltip,
   TypographyText: () => TypographyText,
-  Video: () => Video,
   config: () => tamagui_config_default,
   fonts: () => fonts,
   useFormField: () => useFormField,
@@ -6918,70 +6896,41 @@ var NativeSelect = (0, import_react38.forwardRef)(({ children, ...props }, ref) 
   ] });
 });
 
-// src/organisms/Video/Video.tsx
-var import_expo_av = require("expo-av");
-var import_react39 = require("react");
-var import_tamagui56 = require("tamagui");
-var import_jsx_runtime43 = require("react/jsx-runtime");
-var Video = (0, import_react39.forwardRef)(({
-  src,
-  width,
-  height = 200,
-  useNativeControls = true,
-  resizeMode = import_expo_av.ResizeMode.COVER,
-  ...props
-}, ref) => {
-  const source = src ? { uri: src } : props.source;
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_tamagui56.Stack, { width, height, marginHorizontal: "$true", overflow: "hidden", backgroundColor: "$black", ...props, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-    import_expo_av.Video,
-    {
-      ref,
-      source,
-      useNativeControls,
-      resizeMode,
-      style: {
-        width: "100%",
-        height: "100%"
-      }
-    }
-  ) });
-});
-
 // src/providers/AppProviders.tsx
-var import_tamagui60 = require("tamagui");
+var import_tamagui59 = require("tamagui");
 var import_portal2 = require("@tamagui/portal");
 
 // src/tamagui.config.ts
-var import_tamagui59 = require("tamagui");
+var import_tamagui58 = require("tamagui");
 
 // ../../node_modules/.pnpm/@tamagui+constants@1.138.6_react-native@0.73.6_@babel+core@7.28.5_@babel+preset-env@7.28.5_@b_avkbltc4tgzeyhqjidstttkgmy/node_modules/@tamagui/constants/dist/esm/constants.mjs
-var import_react40 = __toESM(require("react"), 1);
-var IS_REACT_19 = typeof import_react40.default.use < "u";
+var import_react39 = __toESM(require("react"), 1);
+var IS_REACT_19 = typeof import_react39.default.use < "u";
 var isWeb3 = true;
 var isWindowDefined = typeof window < "u";
 var isServer = isWeb3 && !isWindowDefined;
 var isClient = isWeb3 && isWindowDefined;
-var useIsomorphicLayoutEffect = isServer ? import_react40.useEffect : import_react40.useLayoutEffect;
+var useIsomorphicLayoutEffect = isServer ? import_react39.useEffect : import_react39.useLayoutEffect;
 var isChrome = typeof navigator < "u" && /Chrome/.test(navigator.userAgent || "");
 var isWebTouchable = isClient && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 var isIos = process.env.TEST_NATIVE_PLATFORM === "ios";
 
 // ../../node_modules/.pnpm/@tamagui+use-presence@1.138.6_react-dom@18.3.1_react@18.3.1__react-native@0.73.6_@babel+core@_nbweasrzawyvhpcynwut4doip4/node_modules/@tamagui/use-presence/dist/esm/PresenceContext.mjs
-var React42 = __toESM(require("react"), 1);
-var import_jsx_runtime44 = require("react/jsx-runtime");
-var PresenceContext = React42.createContext(null);
+var React41 = __toESM(require("react"), 1);
+var import_jsx_runtime43 = require("react/jsx-runtime");
+var PresenceContext = React41.createContext(null);
 var ResetPresence = (props) => {
-  const parent = React42.useContext(PresenceContext);
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PresenceContext.Provider, {
+  const parent = React41.useContext(PresenceContext);
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(PresenceContext.Provider, {
     value: props.disable ? parent : null,
     children: props.children
   });
 };
 
 // ../../node_modules/.pnpm/@tamagui+use-presence@1.138.6_react-dom@18.3.1_react@18.3.1__react-native@0.73.6_@babel+core@_nbweasrzawyvhpcynwut4doip4/node_modules/@tamagui/use-presence/dist/esm/usePresence.mjs
-var React43 = __toESM(require("react"), 1);
+var React42 = __toESM(require("react"), 1);
 function usePresence() {
-  const context = React43.useContext(PresenceContext);
+  const context = React42.useContext(PresenceContext);
   if (!context) return [true, null, context];
   const {
     id: id2,
@@ -6989,16 +6938,16 @@ function usePresence() {
     onExitComplete,
     register
   } = context;
-  return React43.useEffect(() => register(id2), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id2), context] : [true, void 0, context];
+  return React42.useEffect(() => register(id2), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id2), context] : [true, void 0, context];
 }
 
 // ../../node_modules/.pnpm/@tamagui+use-event@1.138.6_react-native@0.73.6_@babel+core@7.28.5_@babel+preset-env@7.28.5_@b_ysckxhduwhjb4khdvl4iembpua/node_modules/@tamagui/use-event/dist/esm/useGet.mjs
-var React44 = __toESM(require("react"), 1);
+var React43 = __toESM(require("react"), 1);
 function useGet(currentValue, initialValue, forwardToFunction) {
-  const curRef = React44.useRef(initialValue ?? currentValue);
+  const curRef = React43.useRef(initialValue ?? currentValue);
   return useIsomorphicLayoutEffect(() => {
     curRef.current = currentValue;
-  }), React44.useCallback(forwardToFunction ? (...args) => curRef.current?.apply(null, args) : () => curRef.current, []);
+  }), React43.useCallback(forwardToFunction ? (...args) => curRef.current?.apply(null, args) : () => curRef.current, []);
 }
 
 // ../../node_modules/.pnpm/@tamagui+use-event@1.138.6_react-native@0.73.6_@babel+core@7.28.5_@babel+preset-env@7.28.5_@b_ysckxhduwhjb4khdvl4iembpua/node_modules/@tamagui/use-event/dist/esm/useEvent.mjs
@@ -7010,7 +6959,7 @@ var defaultValue = () => {
 };
 
 // ../../node_modules/.pnpm/@tamagui+animations-react-native@1.138.6_react-dom@18.3.1_react@18.3.1__react-native@0.73.6_@_bbut7qs6n252b5szpatxlpsmqe/node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
-var import_react51 = __toESM(require("react"), 1);
+var import_react50 = __toESM(require("react"), 1);
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/AccessibilityUtil/isDisabled.js
 var isDisabled = (props) => props.disabled || Array.isArray(props.accessibilityStates) && props.accessibilityStates.indexOf("disabled") > -1;
@@ -8756,10 +8705,10 @@ var createDOMProps = (elementType, props, options) => {
 var createDOMProps_default = createDOMProps;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/createElement/index.js
-var import_react42 = __toESM(require("react"));
+var import_react41 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useLocale/index.js
-var import_react41 = __toESM(require("react"));
+var import_react40 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useLocale/isLocaleRTL.js
 var rtlScripts = /* @__PURE__ */ new Set(["Arab", "Syrc", "Samr", "Mand", "Thaa", "Mend", "Nkoo", "Adlm", "Rohg", "Hebr"]);
@@ -8837,14 +8786,14 @@ var defaultLocale = {
   direction: "ltr",
   locale: "en-US"
 };
-var LocaleContext = /* @__PURE__ */ (0, import_react41.createContext)(defaultLocale);
+var LocaleContext = /* @__PURE__ */ (0, import_react40.createContext)(defaultLocale);
 function getLocaleDirection(locale) {
   return isLocaleRTL(locale) ? "rtl" : "ltr";
 }
 function LocaleProvider(props) {
   var direction = props.direction, locale = props.locale, children = props.children;
   var needsContext = direction || locale;
-  return needsContext ? /* @__PURE__ */ import_react41.default.createElement(LocaleContext.Provider, {
+  return needsContext ? /* @__PURE__ */ import_react40.default.createElement(LocaleContext.Provider, {
     children,
     value: {
       direction: locale ? getLocaleDirection(locale) : direction,
@@ -8853,7 +8802,7 @@ function LocaleProvider(props) {
   }) : children;
 }
 function useLocaleContext() {
-  return (0, import_react41.useContext)(LocaleContext);
+  return (0, import_react40.useContext)(LocaleContext);
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/createElement/index.js
@@ -8864,8 +8813,8 @@ var createElement = (component, props, options) => {
   }
   var Component2 = accessibilityComponent || component;
   var domProps = createDOMProps_default(Component2, props, options);
-  var element = /* @__PURE__ */ import_react42.default.createElement(Component2, domProps);
-  var elementWithLocaleProvider = domProps.dir ? /* @__PURE__ */ import_react42.default.createElement(LocaleProvider, {
+  var element = /* @__PURE__ */ import_react41.default.createElement(Component2, domProps);
+  var elementWithLocaleProvider = domProps.dir ? /* @__PURE__ */ import_react41.default.createElement(LocaleProvider, {
     children: element,
     direction: domProps.dir,
     locale: domProps.lang
@@ -9109,7 +9058,7 @@ var Platform_default = Platform;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedFlatList.js
 var import_extends7 = __toESM(require_extends());
-var React61 = __toESM(require("react"));
+var React60 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/FlatList/index.js
 var import_extends5 = __toESM(require_extends());
@@ -9118,7 +9067,7 @@ var import_objectSpread212 = __toESM(require_objectSpread2());
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/View/index.js
 var import_objectWithoutPropertiesLoose4 = __toESM(require_objectWithoutPropertiesLoose());
-var React51 = __toESM(require("react"));
+var React50 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/forwardedProps/index.js
 var defaultProps = {
@@ -9292,8 +9241,8 @@ function pick(obj, list) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useLayoutEffect/index.js
-var import_react43 = require("react");
-var useLayoutEffectImpl = canUseDom_default ? import_react43.useLayoutEffect : import_react43.useEffect;
+var import_react42 = require("react");
+var useLayoutEffectImpl = canUseDom_default ? import_react42.useLayoutEffect : import_react42.useEffect;
 var useLayoutEffect_default = useLayoutEffectImpl;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useElementLayout/index.js
@@ -9367,15 +9316,15 @@ function useElementLayout(ref, onLayout) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useMergeRefs/index.js
-var React48 = __toESM(require("react"));
+var React47 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/mergeRefs/index.js
-var React47 = __toESM(require("react"));
+var React46 = __toESM(require("react"));
 function mergeRefs() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
-  return function forwardRef15(node) {
+  return function forwardRef14(node) {
     args.forEach((ref) => {
       if (ref == null) {
         return;
@@ -9398,7 +9347,7 @@ function useMergeRefs() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
-  return React48.useMemo(
+  return React47.useMemo(
     () => mergeRefs(...args),
     // eslint-disable-next-line
     [...args]
@@ -9406,10 +9355,10 @@ function useMergeRefs() {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useStable/index.js
-var React49 = __toESM(require("react"));
+var React48 = __toESM(require("react"));
 var UNINITIALIZED = typeof Symbol === "function" && typeof Symbol() === "symbol" ? Symbol() : Object.freeze({});
 function useStable(getInitialValue) {
-  var ref = React49.useRef(UNINITIALIZED);
+  var ref = React48.useRef(UNINITIALIZED);
   if (ref.current === UNINITIALIZED) {
     ref.current = getInitialValue();
   }
@@ -9430,7 +9379,7 @@ function usePlatformMethods(_ref) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useResponderEvents/index.js
-var React50 = __toESM(require("react"));
+var React49 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useResponderEvents/createResponderEvent.js
 var emptyFunction = () => {
@@ -10192,7 +10141,7 @@ function getResponderNode() {
 var emptyObject8 = {};
 var idCounter = 0;
 function useStable2(getInitialValue) {
-  var ref = React50.useRef(null);
+  var ref = React49.useRef(null);
   if (ref.current == null) {
     ref.current = getInitialValue();
   }
@@ -10203,14 +10152,14 @@ function useResponderEvents(hostRef, config2) {
     config2 = emptyObject8;
   }
   var id2 = useStable2(() => idCounter++);
-  var isAttachedRef = React50.useRef(false);
-  React50.useEffect(() => {
+  var isAttachedRef = React49.useRef(false);
+  React49.useEffect(() => {
     attachListeners();
     return () => {
       removeNode(id2);
     };
   }, [id2]);
-  React50.useEffect(() => {
+  React49.useEffect(() => {
     var _config = config2, onMoveShouldSetResponder = _config.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = _config.onMoveShouldSetResponderCapture, onScrollShouldSetResponder = _config.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = _config.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = _config.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = _config.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = _config.onStartShouldSetResponder, onStartShouldSetResponderCapture = _config.onStartShouldSetResponderCapture;
     var requiresResponderSystem = onMoveShouldSetResponder != null || onMoveShouldSetResponderCapture != null || onScrollShouldSetResponder != null || onScrollShouldSetResponderCapture != null || onSelectionChangeShouldSetResponder != null || onSelectionChangeShouldSetResponderCapture != null || onStartShouldSetResponder != null || onStartShouldSetResponderCapture != null;
     var node = hostRef.current;
@@ -10222,15 +10171,15 @@ function useResponderEvents(hostRef, config2) {
       isAttachedRef.current = false;
     }
   }, [config2, hostRef, id2]);
-  React50.useDebugValue({
+  React49.useDebugValue({
     isResponder: hostRef.current === getResponderNode()
   });
-  React50.useDebugValue(config2);
+  React49.useDebugValue(config2);
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Text/TextAncestorContext.js
-var import_react44 = require("react");
-var TextAncestorContext = /* @__PURE__ */ (0, import_react44.createContext)(false);
+var import_react43 = require("react");
+var TextAncestorContext = /* @__PURE__ */ (0, import_react43.createContext)(false);
 var TextAncestorContext_default = TextAncestorContext;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/View/index.js
@@ -10243,17 +10192,17 @@ var forwardPropsList = Object.assign({}, defaultProps, accessibilityProps, click
   pointerEvents: true
 });
 var pickProps = (props) => pick(props, forwardPropsList);
-var View12 = /* @__PURE__ */ React51.forwardRef((props, forwardedRef) => {
+var View12 = /* @__PURE__ */ React50.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, onLayout = props.onLayout, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, rest = (0, import_objectWithoutPropertiesLoose4.default)(props, _excluded4);
   if (process.env.NODE_ENV !== "production") {
-    React51.Children.toArray(props.children).forEach((item) => {
+    React50.Children.toArray(props.children).forEach((item) => {
       if (typeof item === "string") {
         console.error("Unexpected text node: " + item + ". A text node cannot be a child of a <View>.");
       }
     });
   }
-  var hasTextAncestor = React51.useContext(TextAncestorContext_default);
-  var hostRef = React51.useRef(null);
+  var hasTextAncestor = React50.useContext(TextAncestorContext_default);
+  var hostRef = React50.useRef(null);
   var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
   useElementLayout(hostRef, onLayout);
   useResponderEvents(hostRef, {
@@ -10381,7 +10330,7 @@ var deepDiffer_default = deepDiffer;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/FlatList/index.js
 var import_invariant11 = __toESM(require_invariant());
-var React59 = __toESM(require("react"));
+var React58 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 var import_createForOfIteratorHelperLoose3 = __toESM(require_createForOfIteratorHelperLoose());
@@ -10390,11 +10339,11 @@ var import_objectSpread211 = __toESM(require_objectSpread2());
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/RefreshControl/index.js
 var import_objectWithoutPropertiesLoose5 = __toESM(require_objectWithoutPropertiesLoose());
-var import_react45 = __toESM(require("react"));
+var import_react44 = __toESM(require("react"));
 var _excluded5 = ["colors", "enabled", "onRefresh", "progressBackgroundColor", "progressViewOffset", "refreshing", "size", "tintColor", "title", "titleColor"];
 function RefreshControl(props) {
   var colors = props.colors, enabled = props.enabled, onRefresh = props.onRefresh, progressBackgroundColor = props.progressBackgroundColor, progressViewOffset = props.progressViewOffset, refreshing = props.refreshing, size = props.size, tintColor = props.tintColor, title = props.title, titleColor = props.titleColor, rest = (0, import_objectWithoutPropertiesLoose5.default)(props, _excluded5);
-  return /* @__PURE__ */ import_react45.default.createElement(View_default, rest);
+  return /* @__PURE__ */ import_react44.default.createElement(View_default, rest);
 }
 var RefreshControl_default = RefreshControl;
 
@@ -10559,7 +10508,7 @@ var import_invariant2 = __toESM(require_invariant());
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/ScrollView/ScrollViewBase.js
 var import_extends = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose6 = __toESM(require_objectWithoutPropertiesLoose());
-var React53 = __toESM(require("react"));
+var React52 = __toESM(require("react"));
 var _excluded6 = ["onScroll", "onTouchMove", "onWheel", "scrollEnabled", "scrollEventThrottle", "showsHorizontalScrollIndicator", "showsVerticalScrollIndicator", "style"];
 function normalizeScrollEvent(e) {
   return {
@@ -10596,14 +10545,14 @@ function shouldEmitScrollEvent(lastTick, eventThrottle) {
   var timeSinceLastTick = Date.now() - lastTick;
   return eventThrottle > 0 && timeSinceLastTick >= eventThrottle;
 }
-var ScrollViewBase = /* @__PURE__ */ React53.forwardRef((props, forwardedRef) => {
+var ScrollViewBase = /* @__PURE__ */ React52.forwardRef((props, forwardedRef) => {
   var onScroll = props.onScroll, onTouchMove = props.onTouchMove, onWheel = props.onWheel, _props$scrollEnabled = props.scrollEnabled, scrollEnabled = _props$scrollEnabled === void 0 ? true : _props$scrollEnabled, _props$scrollEventThr = props.scrollEventThrottle, scrollEventThrottle = _props$scrollEventThr === void 0 ? 0 : _props$scrollEventThr, showsHorizontalScrollIndicator = props.showsHorizontalScrollIndicator, showsVerticalScrollIndicator = props.showsVerticalScrollIndicator, style = props.style, rest = (0, import_objectWithoutPropertiesLoose6.default)(props, _excluded6);
-  var scrollState = React53.useRef({
+  var scrollState = React52.useRef({
     isScrolling: false,
     scrollLastTick: 0
   });
-  var scrollTimeout = React53.useRef(null);
-  var scrollRef = React53.useRef(null);
+  var scrollTimeout = React52.useRef(null);
+  var scrollRef = React52.useRef(null);
   function createPreventableScrollHandler(handler) {
     return (e) => {
       if (scrollEnabled) {
@@ -10649,7 +10598,7 @@ var ScrollViewBase = /* @__PURE__ */ React53.forwardRef((props, forwardedRef) =>
     }
   }
   var hideScrollbar = showsHorizontalScrollIndicator === false || showsVerticalScrollIndicator === false;
-  return /* @__PURE__ */ React53.createElement(View_default, (0, import_extends.default)({}, rest, {
+  return /* @__PURE__ */ React52.createElement(View_default, (0, import_extends.default)({}, rest, {
     onScroll: handleScroll,
     onTouchMove: createPreventableScrollHandler(onTouchMove),
     onWheel: createPreventableScrollHandler(onWheel),
@@ -10670,12 +10619,12 @@ var styles2 = StyleSheet_default.create({
 var ScrollViewBase_default = ScrollViewBase;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/ScrollView/index.js
-var import_react46 = __toESM(require("react"));
+var import_react45 = __toESM(require("react"));
 var import_warning = __toESM(require_warning());
 var _excluded7 = ["contentContainerStyle", "horizontal", "onContentSizeChange", "refreshControl", "stickyHeaderIndices", "pagingEnabled", "forwardedRef", "keyboardDismissMode", "onScroll", "centerContent"];
 var emptyObject9 = {};
 var IS_ANIMATING_TOUCH_START_THRESHOLD_MS = 16;
-var ScrollView4 = class extends import_react46.default.Component {
+var ScrollView4 = class extends import_react45.default.Component {
   constructor() {
     super(...arguments);
     this._scrollNodeRef = null;
@@ -11144,17 +11093,17 @@ var ScrollView4 = class extends import_react46.default.Component {
       };
     }
     var hasStickyHeaderIndices = !horizontal && Array.isArray(stickyHeaderIndices);
-    var children = hasStickyHeaderIndices || pagingEnabled ? import_react46.default.Children.map(this.props.children, (child, i) => {
+    var children = hasStickyHeaderIndices || pagingEnabled ? import_react45.default.Children.map(this.props.children, (child, i) => {
       var isSticky = hasStickyHeaderIndices && stickyHeaderIndices.indexOf(i) > -1;
       if (child != null && (isSticky || pagingEnabled)) {
-        return /* @__PURE__ */ import_react46.default.createElement(View_default, {
+        return /* @__PURE__ */ import_react45.default.createElement(View_default, {
           style: [isSticky && styles3.stickyHeader, pagingEnabled && styles3.pagingEnabledChild]
         }, child);
       } else {
         return child;
       }
     }) : this.props.children;
-    var contentContainer = /* @__PURE__ */ import_react46.default.createElement(View_default, (0, import_extends2.default)({}, contentSizeChangeProps, {
+    var contentContainer = /* @__PURE__ */ import_react45.default.createElement(View_default, (0, import_extends2.default)({}, contentSizeChangeProps, {
       children,
       collapsable: false,
       ref: this._setInnerViewRef,
@@ -11183,11 +11132,11 @@ var ScrollView4 = class extends import_react46.default.Component {
     });
     var ScrollViewClass = ScrollViewBase_default;
     (0, import_invariant2.default)(ScrollViewClass !== void 0, "ScrollViewClass must not be undefined");
-    var scrollView = /* @__PURE__ */ import_react46.default.createElement(ScrollViewClass, (0, import_extends2.default)({}, props, {
+    var scrollView = /* @__PURE__ */ import_react45.default.createElement(ScrollViewClass, (0, import_extends2.default)({}, props, {
       ref: this._setScrollNodeRef
     }), contentContainer);
     if (refreshControl) {
-      return /* @__PURE__ */ import_react46.default.cloneElement(refreshControl, {
+      return /* @__PURE__ */ import_react45.default.cloneElement(refreshControl, {
         style: props.style
       }, scrollView);
     }
@@ -11237,8 +11186,8 @@ var styles3 = StyleSheet_default.create({
     scrollSnapAlign: "start"
   }
 });
-var ForwardedScrollView = /* @__PURE__ */ import_react46.default.forwardRef((props, forwardedRef) => {
-  return /* @__PURE__ */ import_react46.default.createElement(ScrollView4, (0, import_extends2.default)({}, props, {
+var ForwardedScrollView = /* @__PURE__ */ import_react45.default.forwardRef((props, forwardedRef) => {
+  return /* @__PURE__ */ import_react45.default.createElement(ScrollView4, (0, import_extends2.default)({}, props, {
     forwardedRef
   }));
 });
@@ -11882,8 +11831,8 @@ var FillRateHelper_default = FillRateHelper;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/StateSafePureComponent.js
 var import_invariant7 = __toESM(require_invariant());
-var React55 = __toESM(require("react"));
-var StateSafePureComponent = class extends React55.PureComponent {
+var React54 = __toESM(require("react"));
+var StateSafePureComponent = class extends React54.PureComponent {
   constructor(props) {
     super(props);
     this._inAsyncStateUpdate = false;
@@ -12092,16 +12041,16 @@ var import_objectSpread210 = __toESM(require_objectSpread2());
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/VirtualizedListContext.js
 var import_objectSpread29 = __toESM(require_objectSpread2());
-var React56 = __toESM(require("react"));
-var import_react47 = require("react");
+var React55 = __toESM(require("react"));
+var import_react46 = require("react");
 var __DEV__2 = process.env.NODE_ENV !== "production";
-var VirtualizedListContext = /* @__PURE__ */ React56.createContext(null);
+var VirtualizedListContext = /* @__PURE__ */ React55.createContext(null);
 if (__DEV__2) {
   VirtualizedListContext.displayName = "VirtualizedListContext";
 }
 function VirtualizedListContextProvider(_ref2) {
   var children = _ref2.children, value = _ref2.value;
-  var context = (0, import_react47.useMemo)(() => ({
+  var context = (0, import_react46.useMemo)(() => ({
     cellKey: null,
     getScrollMetrics: value.getScrollMetrics,
     horizontal: value.horizontal,
@@ -12109,25 +12058,25 @@ function VirtualizedListContextProvider(_ref2) {
     registerAsNestedChild: value.registerAsNestedChild,
     unregisterAsNestedChild: value.unregisterAsNestedChild
   }), [value.getScrollMetrics, value.horizontal, value.getOutermostParentListRef, value.registerAsNestedChild, value.unregisterAsNestedChild]);
-  return /* @__PURE__ */ React56.createElement(VirtualizedListContext.Provider, {
+  return /* @__PURE__ */ React55.createElement(VirtualizedListContext.Provider, {
     value: context
   }, children);
 }
 function VirtualizedListCellContextProvider(_ref3) {
   var cellKey = _ref3.cellKey, children = _ref3.children;
-  var currContext = (0, import_react47.useContext)(VirtualizedListContext);
-  var context = (0, import_react47.useMemo)(() => currContext == null ? null : (0, import_objectSpread29.default)((0, import_objectSpread29.default)({}, currContext), {}, {
+  var currContext = (0, import_react46.useContext)(VirtualizedListContext);
+  var context = (0, import_react46.useMemo)(() => currContext == null ? null : (0, import_objectSpread29.default)((0, import_objectSpread29.default)({}, currContext), {}, {
     cellKey
   }), [currContext, cellKey]);
-  return /* @__PURE__ */ React56.createElement(VirtualizedListContext.Provider, {
+  return /* @__PURE__ */ React55.createElement(VirtualizedListContext.Provider, {
     value: context
   }, children);
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
 var import_invariant9 = __toESM(require_invariant());
-var React57 = __toESM(require("react"));
-var CellRenderer = class extends React57.Component {
+var React56 = __toESM(require("react"));
+var CellRenderer = class extends React56.Component {
   constructor() {
     super(...arguments);
     this.state = {
@@ -12181,7 +12130,7 @@ var CellRenderer = class extends React57.Component {
       console.warn("VirtualizedList: Both ListItemComponent and renderItem props are present. ListItemComponent will take precedence over renderItem.");
     }
     if (ListItemComponent) {
-      return /* @__PURE__ */ React57.createElement(ListItemComponent, {
+      return /* @__PURE__ */ React56.createElement(ListItemComponent, {
         item,
         index,
         separators: this._separators
@@ -12199,20 +12148,20 @@ var CellRenderer = class extends React57.Component {
   render() {
     var _this$props4 = this.props, CellRendererComponent = _this$props4.CellRendererComponent, ItemSeparatorComponent = _this$props4.ItemSeparatorComponent, ListItemComponent = _this$props4.ListItemComponent, cellKey = _this$props4.cellKey, horizontal = _this$props4.horizontal, item = _this$props4.item, index = _this$props4.index, inversionStyle = _this$props4.inversionStyle, onCellFocusCapture = _this$props4.onCellFocusCapture, onCellLayout = _this$props4.onCellLayout, renderItem = _this$props4.renderItem;
     var element = this._renderElement(renderItem, ListItemComponent, item, index);
-    var itemSeparator = /* @__PURE__ */ React57.isValidElement(ItemSeparatorComponent) ? (
+    var itemSeparator = /* @__PURE__ */ React56.isValidElement(ItemSeparatorComponent) ? (
       // $FlowFixMe[incompatible-type]
       ItemSeparatorComponent
     ) : (
       // $FlowFixMe[incompatible-type]
-      ItemSeparatorComponent && /* @__PURE__ */ React57.createElement(ItemSeparatorComponent, this.state.separatorProps)
+      ItemSeparatorComponent && /* @__PURE__ */ React56.createElement(ItemSeparatorComponent, this.state.separatorProps)
     );
     var cellStyle = inversionStyle ? horizontal ? [styles4.rowReverse, inversionStyle] : [styles4.columnReverse, inversionStyle] : horizontal ? [styles4.row, inversionStyle] : inversionStyle;
-    var result = !CellRendererComponent ? /* @__PURE__ */ React57.createElement(View_default, (0, import_extends3.default)({
+    var result = !CellRendererComponent ? /* @__PURE__ */ React56.createElement(View_default, (0, import_extends3.default)({
       style: cellStyle,
       onFocusCapture: onCellFocusCapture
     }, onCellLayout && {
       onLayout: this._onLayout
-    }), element, itemSeparator) : /* @__PURE__ */ React57.createElement(CellRendererComponent, (0, import_extends3.default)({
+    }), element, itemSeparator) : /* @__PURE__ */ React56.createElement(CellRendererComponent, (0, import_extends3.default)({
       cellKey,
       index,
       item,
@@ -12221,7 +12170,7 @@ var CellRenderer = class extends React57.Component {
     }, onCellLayout && {
       onLayout: this._onLayout
     }), element, itemSeparator);
-    return /* @__PURE__ */ React57.createElement(VirtualizedListCellContextProvider, {
+    return /* @__PURE__ */ React56.createElement(VirtualizedListCellContextProvider, {
       cellKey: this.props.cellKey
     }, result);
   }
@@ -12355,7 +12304,7 @@ function keyExtractor(item, index) {
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 var import_invariant10 = __toESM(require_invariant());
 var import_nullthrows = __toESM(require_nullthrows());
-var React58 = __toESM(require("react"));
+var React57 = __toESM(require("react"));
 var __DEV__3 = process.env.NODE_ENV !== "production";
 var ON_EDGE_REACHED_EPSILON = 1e-3;
 var _usedIndexForKey = false;
@@ -12608,15 +12557,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     this._defaultRenderScrollComponent = (props) => {
       var onRefresh = props.onRefresh;
       if (this._isNestedWithSameOrientation()) {
-        return /* @__PURE__ */ React58.createElement(View_default, props);
+        return /* @__PURE__ */ React57.createElement(View_default, props);
       } else if (onRefresh) {
         var _props$refreshing;
         (0, import_invariant10.default)(typeof props.refreshing === "boolean", "`refreshing` prop must be set as a boolean in order to use `onRefresh`, but got `" + JSON.stringify((_props$refreshing = props.refreshing) !== null && _props$refreshing !== void 0 ? _props$refreshing : "undefined") + "`");
         return (
           // $FlowFixMe[prop-missing] Invalid prop usage
           // $FlowFixMe[incompatible-use]
-          /* @__PURE__ */ React58.createElement(ScrollView_default, (0, import_extends4.default)({}, props, {
-            refreshControl: props.refreshControl == null ? /* @__PURE__ */ React58.createElement(
+          /* @__PURE__ */ React57.createElement(ScrollView_default, (0, import_extends4.default)({}, props, {
+            refreshControl: props.refreshControl == null ? /* @__PURE__ */ React57.createElement(
               RefreshControl_default,
               {
                 refreshing: props.refreshing,
@@ -12627,7 +12576,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
           }))
         );
       } else {
-        return /* @__PURE__ */ React58.createElement(ScrollView_default, props);
+        return /* @__PURE__ */ React57.createElement(ScrollView_default, props);
       }
     };
     this._onCellLayout = (e, cellKey, index) => {
@@ -13111,7 +13060,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
         stickyHeaderIndices.push(cells.length);
       }
       var shouldListenForLayout = getItemLayout == null || debug || _this._fillRateHelper.enabled();
-      cells.push(/* @__PURE__ */ React58.createElement(CellRenderer, (0, import_extends4.default)({
+      cells.push(/* @__PURE__ */ React57.createElement(CellRenderer, (0, import_extends4.default)({
         CellRendererComponent,
         ItemSeparatorComponent: ii < end ? ItemSeparatorComponent : void 0,
         ListItemComponent,
@@ -13176,15 +13125,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       if (stickyIndicesFromProps.has(0)) {
         stickyHeaderIndices.push(0);
       }
-      var _element = /* @__PURE__ */ React58.isValidElement(ListHeaderComponent) ? ListHeaderComponent : (
+      var _element = /* @__PURE__ */ React57.isValidElement(ListHeaderComponent) ? ListHeaderComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React58.createElement(ListHeaderComponent, null)
+        /* @__PURE__ */ React57.createElement(ListHeaderComponent, null)
       );
-      cells.push(/* @__PURE__ */ React58.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React57.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getCellKey() + "-header",
         key: "$header"
-      }, /* @__PURE__ */ React58.createElement(
+      }, /* @__PURE__ */ React57.createElement(
         View_default,
         {
           onLayout: this._onLayoutHeader,
@@ -13196,15 +13145,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     }
     var itemCount = this.props.getItemCount(data);
     if (itemCount === 0 && ListEmptyComponent) {
-      var _element2 = /* @__PURE__ */ React58.isValidElement(ListEmptyComponent) ? ListEmptyComponent : (
+      var _element2 = /* @__PURE__ */ React57.isValidElement(ListEmptyComponent) ? ListEmptyComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React58.createElement(ListEmptyComponent, null)
+        /* @__PURE__ */ React57.createElement(ListEmptyComponent, null)
       );
-      cells.push(/* @__PURE__ */ React58.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React57.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getCellKey() + "-empty",
         key: "$empty"
-      }, /* @__PURE__ */ React58.cloneElement(_element2, {
+      }, /* @__PURE__ */ React57.cloneElement(_element2, {
         onLayout: (event3) => {
           this._onLayoutEmpty(event3);
           if (_element2.props.onLayout) {
@@ -13232,7 +13181,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
           var firstMetrics = this.__getFrameMetricsApprox(section.first, this.props);
           var lastMetrics = this.__getFrameMetricsApprox(last, this.props);
           var spacerSize = lastMetrics.offset + lastMetrics.length - firstMetrics.offset;
-          cells.push(/* @__PURE__ */ React58.createElement(View_default, {
+          cells.push(/* @__PURE__ */ React57.createElement(View_default, {
             key: "$spacer-" + section.first,
             style: {
               [spacerKey]: spacerSize
@@ -13248,15 +13197,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       }
     }
     if (ListFooterComponent) {
-      var _element3 = /* @__PURE__ */ React58.isValidElement(ListFooterComponent) ? ListFooterComponent : (
+      var _element3 = /* @__PURE__ */ React57.isValidElement(ListFooterComponent) ? ListFooterComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React58.createElement(ListFooterComponent, null)
+        /* @__PURE__ */ React57.createElement(ListFooterComponent, null)
       );
-      cells.push(/* @__PURE__ */ React58.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React57.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getFooterCellKey(),
         key: "$footer"
-      }, /* @__PURE__ */ React58.createElement(
+      }, /* @__PURE__ */ React57.createElement(
         View_default,
         {
           onLayout: this._onLayoutFooter,
@@ -13281,7 +13230,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       style: inversionStyle ? [inversionStyle, this.props.style] : this.props.style
     });
     this._hasMore = this.state.cellsAroundViewport.last < itemCount - 1;
-    var innerRet = /* @__PURE__ */ React58.createElement(VirtualizedListContextProvider, {
+    var innerRet = /* @__PURE__ */ React57.createElement(VirtualizedListContextProvider, {
       value: {
         cellKey: null,
         getScrollMetrics: this._getScrollMetrics,
@@ -13290,12 +13239,12 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
         registerAsNestedChild: this._registerAsNestedChild,
         unregisterAsNestedChild: this._unregisterAsNestedChild
       }
-    }, /* @__PURE__ */ React58.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+    }, /* @__PURE__ */ React57.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
       ref: this._captureScrollRef
     }, cells));
     var ret = innerRet;
     if (this.props.debug) {
-      return /* @__PURE__ */ React58.createElement(View_default, {
+      return /* @__PURE__ */ React57.createElement(View_default, {
         style: styles5.debug
       }, ret, this._renderDebugOverlay());
     } else {
@@ -13383,20 +13332,20 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     var windowLen = frameLast.offset + frameLast.length - windowTop;
     var visTop = this._scrollMetrics.offset;
     var visLen = this._scrollMetrics.visibleLength;
-    return /* @__PURE__ */ React58.createElement(View_default, {
+    return /* @__PURE__ */ React57.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlay]
-    }, framesInLayout.map((f, ii2) => /* @__PURE__ */ React58.createElement(View_default, {
+    }, framesInLayout.map((f, ii2) => /* @__PURE__ */ React57.createElement(View_default, {
       key: "f" + ii2,
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrame, {
         top: f.offset * normalize,
         height: f.length * normalize
       }]
-    })), /* @__PURE__ */ React58.createElement(View_default, {
+    })), /* @__PURE__ */ React57.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrameLast, {
         top: windowTop * normalize,
         height: windowLen * normalize
       }]
-    }), /* @__PURE__ */ React58.createElement(View_default, {
+    }), /* @__PURE__ */ React57.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrameVis, {
         top: visTop * normalize,
         height: visLen * normalize
@@ -13582,7 +13531,7 @@ function numColumnsOrDefault(numColumns) {
 function isArrayLike(data) {
   return typeof Object(data).length === "number";
 }
-var FlatList = class extends React59.PureComponent {
+var FlatList = class extends React58.PureComponent {
   /**
    * Scrolls to the end of the content. May be janky without `getItemLayout` prop.
    */
@@ -13710,7 +13659,7 @@ var FlatList = class extends React59.PureComponent {
       var cols = numColumnsOrDefault(numColumns);
       var render = (props) => {
         if (ListItemComponent) {
-          return /* @__PURE__ */ React59.createElement(ListItemComponent, props);
+          return /* @__PURE__ */ React58.createElement(ListItemComponent, props);
         } else if (renderItem) {
           return renderItem(props);
         } else {
@@ -13721,7 +13670,7 @@ var FlatList = class extends React59.PureComponent {
         if (cols > 1) {
           var _item2 = info.item, _index = info.index;
           (0, import_invariant11.default)(Array.isArray(_item2), "Expected array of items with numColumns > 1");
-          return /* @__PURE__ */ React59.createElement(View_default, {
+          return /* @__PURE__ */ React58.createElement(View_default, {
             style: [styles6.row, columnWrapperStyle]
           }, _item2.map((it, kk) => {
             var element = render({
@@ -13730,7 +13679,7 @@ var FlatList = class extends React59.PureComponent {
               index: _index * cols + kk,
               separators: info.separators
             });
-            return element != null ? /* @__PURE__ */ React59.createElement(React59.Fragment, {
+            return element != null ? /* @__PURE__ */ React58.createElement(React58.Fragment, {
               key: kk
             }, element) : null;
           }));
@@ -13820,7 +13769,7 @@ var FlatList = class extends React59.PureComponent {
     var renderer = strictMode ? this._memoizedRenderer : this._renderer;
     return (
       // $FlowFixMe[incompatible-exact] - `restProps` (`Props`) is inexact.
-      /* @__PURE__ */ React59.createElement(VirtualizedList_default, (0, import_extends5.default)({}, restProps, {
+      /* @__PURE__ */ React58.createElement(VirtualizedList_default, (0, import_extends5.default)({}, restProps, {
         getItem: this._getItem,
         getItemCount: this._getItemCount,
         keyExtractor: this._keyExtractor,
@@ -15379,10 +15328,10 @@ var AnimatedProps = class extends AnimatedNode_default {
 var AnimatedProps_default = AnimatedProps;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Utilities/useRefEffect.js
-var import_react48 = require("react");
+var import_react47 = require("react");
 function useRefEffect(effect) {
-  var cleanupRef = (0, import_react48.useRef)(void 0);
-  return (0, import_react48.useCallback)((instance) => {
+  var cleanupRef = (0, import_react47.useRef)(void 0);
+  return (0, import_react47.useCallback)((instance) => {
     if (cleanupRef.current) {
       cleanupRef.current();
       cleanupRef.current = void 0;
@@ -15394,13 +15343,13 @@ function useRefEffect(effect) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/useAnimatedProps.js
-var import_react49 = require("react");
+var import_react48 = require("react");
 function useAnimatedProps(props) {
-  var _useReducer = (0, import_react49.useReducer)((count) => count + 1, 0), scheduleUpdate = _useReducer[1];
-  var onUpdateRef = (0, import_react49.useRef)(null);
-  var node = (0, import_react49.useMemo)(() => new AnimatedProps_default(props, () => onUpdateRef.current == null ? void 0 : onUpdateRef.current()), [props]);
+  var _useReducer = (0, import_react48.useReducer)((count) => count + 1, 0), scheduleUpdate = _useReducer[1];
+  var onUpdateRef = (0, import_react48.useRef)(null);
+  var node = (0, import_react48.useMemo)(() => new AnimatedProps_default(props, () => onUpdateRef.current == null ? void 0 : onUpdateRef.current()), [props]);
   useAnimatedPropsLifecycle(node);
-  var refEffect = (0, import_react49.useCallback)((instance) => {
+  var refEffect = (0, import_react48.useCallback)((instance) => {
     node.setNativeView(instance);
     onUpdateRef.current = () => {
       scheduleUpdate();
@@ -15431,9 +15380,9 @@ function reduceAnimatedProps(node) {
   });
 }
 function useAnimatedPropsLifecycle(node) {
-  var prevNodeRef = (0, import_react49.useRef)(null);
-  var isUnmountingRef = (0, import_react49.useRef)(false);
-  (0, import_react49.useEffect)(() => {
+  var prevNodeRef = (0, import_react48.useRef)(null);
+  var isUnmountingRef = (0, import_react48.useRef)(false);
+  (0, import_react48.useEffect)(() => {
     NativeAnimatedHelper_default.API.flushQueue();
   });
   useLayoutEffect_default(() => {
@@ -15467,12 +15416,12 @@ function getEventTarget(instance) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Utilities/useMergeRefs.js
-var import_react50 = require("react");
+var import_react49 = require("react");
 function useMergeRefs2() {
   for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
     refs[_key] = arguments[_key];
   }
-  return (0, import_react50.useCallback)(
+  return (0, import_react49.useCallback)(
     (current) => {
       for (var _i = 0, _refs = refs; _i < _refs.length; _i++) {
         var ref = _refs[_i];
@@ -15491,16 +15440,16 @@ function useMergeRefs2() {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/createAnimatedComponent.js
-var React60 = __toESM(require("react"));
+var React59 = __toESM(require("react"));
 var _excluded9 = ["style"];
 function createAnimatedComponent(Component2) {
-  return /* @__PURE__ */ React60.forwardRef((props, forwardedRef) => {
+  return /* @__PURE__ */ React59.forwardRef((props, forwardedRef) => {
     var _useAnimatedProps = useAnimatedProps(props), reducedProps = _useAnimatedProps[0], callbackRef = _useAnimatedProps[1];
     var ref = useMergeRefs2(callbackRef, forwardedRef);
     var passthroughAnimatedPropExplicitValues = reducedProps.passthroughAnimatedPropExplicitValues, style = reducedProps.style;
     var _ref = passthroughAnimatedPropExplicitValues !== null && passthroughAnimatedPropExplicitValues !== void 0 ? passthroughAnimatedPropExplicitValues : {}, passthroughStyle = _ref.style, passthroughProps = (0, import_objectWithoutPropertiesLoose9.default)(_ref, _excluded9);
     var mergedStyle = [style, passthroughStyle];
-    return /* @__PURE__ */ React60.createElement(Component2, (0, import_extends6.default)({}, reducedProps, passthroughProps, {
+    return /* @__PURE__ */ React59.createElement(Component2, (0, import_extends6.default)({}, reducedProps, passthroughProps, {
       style: mergedStyle,
       ref
     }));
@@ -15508,7 +15457,7 @@ function createAnimatedComponent(Component2) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedFlatList.js
-var FlatListWithEventThrottle = /* @__PURE__ */ React61.forwardRef((props, ref) => /* @__PURE__ */ React61.createElement(FlatList_default2, (0, import_extends7.default)({
+var FlatListWithEventThrottle = /* @__PURE__ */ React60.forwardRef((props, ref) => /* @__PURE__ */ React60.createElement(FlatList_default2, (0, import_extends7.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -15516,13 +15465,13 @@ var FlatListWithEventThrottle = /* @__PURE__ */ React61.forwardRef((props, ref) 
 var AnimatedFlatList_default = createAnimatedComponent(FlatListWithEventThrottle);
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedImage.js
-var React63 = __toESM(require("react"));
+var React62 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Image/index.js
 var import_objectSpread217 = __toESM(require_objectSpread2());
 var import_extends8 = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose10 = __toESM(require_objectWithoutPropertiesLoose());
-var React62 = __toESM(require("react"));
+var React61 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/AssetRegistry/index.js
 var assets = [];
@@ -15701,20 +15650,20 @@ var IDLE = "IDLE";
 var _filterId = 0;
 var svgDataUriPattern = /^(data:image\/svg\+xml;utf8,)(.*)/;
 function createTintColorSVG(tintColor, id2) {
-  return tintColor && id2 != null ? /* @__PURE__ */ React62.createElement("svg", {
+  return tintColor && id2 != null ? /* @__PURE__ */ React61.createElement("svg", {
     style: {
       position: "absolute",
       height: 0,
       visibility: "hidden",
       width: 0
     }
-  }, /* @__PURE__ */ React62.createElement("defs", null, /* @__PURE__ */ React62.createElement("filter", {
+  }, /* @__PURE__ */ React61.createElement("defs", null, /* @__PURE__ */ React61.createElement("filter", {
     id: "tint-" + id2,
     suppressHydrationWarning: true
-  }, /* @__PURE__ */ React62.createElement("feFlood", {
+  }, /* @__PURE__ */ React61.createElement("feFlood", {
     floodColor: "" + tintColor,
     key: tintColor
-  }), /* @__PURE__ */ React62.createElement("feComposite", {
+  }), /* @__PURE__ */ React61.createElement("feComposite", {
     in2: "SourceAlpha",
     operator: "in"
   })))) : null;
@@ -15794,7 +15743,7 @@ function resolveAssetUri(source) {
   }
   return uri;
 }
-var Image = /* @__PURE__ */ React62.forwardRef((props, ref) => {
+var Image = /* @__PURE__ */ React61.forwardRef((props, ref) => {
   var _ariaLabel = props["aria-label"], accessibilityLabel = props.accessibilityLabel, blurRadius = props.blurRadius, defaultSource = props.defaultSource, draggable = props.draggable, onError = props.onError, onLayout = props.onLayout, onLoad = props.onLoad, onLoadEnd = props.onLoadEnd, onLoadStart = props.onLoadStart, pointerEvents = props.pointerEvents, source = props.source, style = props.style, rest = (0, import_objectWithoutPropertiesLoose10.default)(props, _excluded10);
   var ariaLabel = _ariaLabel || accessibilityLabel;
   if (process.env.NODE_ENV !== "production") {
@@ -15802,7 +15751,7 @@ var Image = /* @__PURE__ */ React62.forwardRef((props, ref) => {
       throw new Error("The <Image> component cannot contain children. If you want to render content on top of the image, consider using the <ImageBackground> component or absolute positioning.");
     }
   }
-  var _React$useState = React62.useState(() => {
+  var _React$useState = React61.useState(() => {
     var uri2 = resolveAssetUri(source);
     if (uri2 != null) {
       var isLoaded = ImageLoader_default.has(uri2);
@@ -15812,11 +15761,11 @@ var Image = /* @__PURE__ */ React62.forwardRef((props, ref) => {
     }
     return IDLE;
   }), state = _React$useState[0], updateState = _React$useState[1];
-  var _React$useState2 = React62.useState({}), layout = _React$useState2[0], updateLayout = _React$useState2[1];
-  var hasTextAncestor = React62.useContext(TextAncestorContext_default);
-  var hiddenImageRef = React62.useRef(null);
-  var filterRef = React62.useRef(_filterId++);
-  var requestRef = React62.useRef(null);
+  var _React$useState2 = React61.useState({}), layout = _React$useState2[0], updateLayout = _React$useState2[1];
+  var hasTextAncestor = React61.useContext(TextAncestorContext_default);
+  var hiddenImageRef = React61.useRef(null);
+  var filterRef = React61.useRef(_filterId++);
+  var requestRef = React61.useRef(null);
   var shouldDisplaySource = state === LOADED || state === LOADING && defaultSource == null;
   var _extractNonStandardSt = extractNonStandardStyleProps(style, blurRadius, filterRef.current, props.tintColor), _resizeMode = _extractNonStandardSt[0], filter = _extractNonStandardSt[1], _tintColor = _extractNonStandardSt[2];
   var resizeMode = props.resizeMode || _resizeMode || "cover";
@@ -15853,7 +15802,7 @@ var Image = /* @__PURE__ */ React62.forwardRef((props, ref) => {
     }
   }
   var uri = resolveAssetUri(source);
-  React62.useEffect(() => {
+  React61.useEffect(() => {
     abortPendingRequest();
     if (uri != null) {
       updateState(LOADING);
@@ -15890,7 +15839,7 @@ var Image = /* @__PURE__ */ React62.forwardRef((props, ref) => {
     }
     return abortPendingRequest;
   }, [uri, requestRef, updateState, onError, onLoad, onLoadEnd, onLoadStart]);
-  return /* @__PURE__ */ React62.createElement(View_default, (0, import_extends8.default)({}, rest, {
+  return /* @__PURE__ */ React61.createElement(View_default, (0, import_extends8.default)({}, rest, {
     "aria-label": ariaLabel,
     onLayout: handleLayout,
     pointerEvents,
@@ -15907,7 +15856,7 @@ var Image = /* @__PURE__ */ React62.forwardRef((props, ref) => {
         boxShadow: null
       }
     ]
-  }), /* @__PURE__ */ React62.createElement(View_default, {
+  }), /* @__PURE__ */ React61.createElement(View_default, {
     style: [styles7.image, resizeModeStyles[resizeMode], {
       backgroundImage,
       filter
@@ -15996,8 +15945,8 @@ var AnimatedImage_default = createAnimatedComponent(Image_default);
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedScrollView.js
 var import_extends9 = __toESM(require_extends());
-var React64 = __toESM(require("react"));
-var ScrollViewWithEventThrottle = /* @__PURE__ */ React64.forwardRef((props, ref) => /* @__PURE__ */ React64.createElement(ScrollView_default, (0, import_extends9.default)({
+var React63 = __toESM(require("react"));
+var ScrollViewWithEventThrottle = /* @__PURE__ */ React63.forwardRef((props, ref) => /* @__PURE__ */ React63.createElement(ScrollView_default, (0, import_extends9.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -16006,12 +15955,12 @@ var AnimatedScrollView_default = createAnimatedComponent(ScrollViewWithEventThro
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
 var import_extends12 = __toESM(require_extends());
-var React67 = __toESM(require("react"));
+var React66 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
 var import_extends11 = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose12 = __toESM(require_objectWithoutPropertiesLoose());
-var React66 = __toESM(require("react"));
+var React65 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedSectionList/index.js
 var import_extends10 = __toESM(require_extends());
@@ -16019,9 +15968,9 @@ var import_createForOfIteratorHelperLoose5 = __toESM(require_createForOfIterator
 var import_objectWithoutPropertiesLoose11 = __toESM(require_objectWithoutPropertiesLoose());
 var import_objectSpread218 = __toESM(require_objectSpread2());
 var import_invariant19 = __toESM(require_invariant());
-var React65 = __toESM(require("react"));
+var React64 = __toESM(require("react"));
 var _excluded11 = ["ItemSeparatorComponent", "SectionSeparatorComponent", "renderItem", "renderSectionFooter", "renderSectionHeader", "sections", "stickySectionHeadersEnabled"];
-var VirtualizedSectionList = class extends React65.PureComponent {
+var VirtualizedSectionList = class extends React64.PureComponent {
   constructor() {
     super(...arguments);
     this._keyExtractor = (item, index) => {
@@ -16080,7 +16029,7 @@ var VirtualizedSectionList = class extends React65.PureComponent {
           var renderItem = info.section.renderItem || this.props.renderItem;
           var SeparatorComponent = this._getSeparatorComponent(index, info, listItemCount);
           (0, import_invariant19.default)(renderItem, "no renderItem!");
-          return /* @__PURE__ */ React65.createElement(ItemWithSeparator, {
+          return /* @__PURE__ */ React64.createElement(ItemWithSeparator, {
             SeparatorComponent,
             LeadingSeparatorComponent: infoIndex === 0 ? this.props.SectionSeparatorComponent : void 0,
             cellKey: info.key,
@@ -16170,7 +16119,7 @@ var VirtualizedSectionList = class extends React65.PureComponent {
       itemCount += this.props.getItemCount(section.data);
     }
     var renderItem = this._renderItem(itemCount);
-    return /* @__PURE__ */ React65.createElement(VirtualizedList_default, (0, import_extends10.default)({}, passThroughProps, {
+    return /* @__PURE__ */ React64.createElement(VirtualizedList_default, (0, import_extends10.default)({}, passThroughProps, {
       keyExtractor: this._keyExtractor,
       stickyHeaderIndices,
       renderItem,
@@ -16261,23 +16210,23 @@ var VirtualizedSectionList = class extends React65.PureComponent {
 };
 function ItemWithSeparator(props) {
   var LeadingSeparatorComponent = props.LeadingSeparatorComponent, SeparatorComponent = props.SeparatorComponent, cellKey = props.cellKey, prevCellKey = props.prevCellKey, setSelfHighlightCallback = props.setSelfHighlightCallback, updateHighlightFor = props.updateHighlightFor, setSelfUpdatePropsCallback = props.setSelfUpdatePropsCallback, updatePropsFor = props.updatePropsFor, item = props.item, index = props.index, section = props.section, inverted = props.inverted;
-  var _React$useState = React65.useState(false), leadingSeparatorHiglighted = _React$useState[0], setLeadingSeparatorHighlighted = _React$useState[1];
-  var _React$useState2 = React65.useState(false), separatorHighlighted = _React$useState2[0], setSeparatorHighlighted = _React$useState2[1];
-  var _React$useState3 = React65.useState({
+  var _React$useState = React64.useState(false), leadingSeparatorHiglighted = _React$useState[0], setLeadingSeparatorHighlighted = _React$useState[1];
+  var _React$useState2 = React64.useState(false), separatorHighlighted = _React$useState2[0], setSeparatorHighlighted = _React$useState2[1];
+  var _React$useState3 = React64.useState({
     leadingItem: props.leadingItem,
     leadingSection: props.leadingSection,
     section: props.section,
     trailingItem: props.item,
     trailingSection: props.trailingSection
   }), leadingSeparatorProps = _React$useState3[0], setLeadingSeparatorProps = _React$useState3[1];
-  var _React$useState4 = React65.useState({
+  var _React$useState4 = React64.useState({
     leadingItem: props.item,
     leadingSection: props.leadingSection,
     section: props.section,
     trailingItem: props.trailingItem,
     trailingSection: props.trailingSection
   }), separatorProps = _React$useState4[0], setSeparatorProps = _React$useState4[1];
-  React65.useEffect(() => {
+  React64.useEffect(() => {
     setSelfHighlightCallback(cellKey, setSeparatorHighlighted);
     setSelfUpdatePropsCallback(cellKey, setSeparatorProps);
     return () => {
@@ -16318,19 +16267,19 @@ function ItemWithSeparator(props) {
     section,
     separators
   });
-  var leadingSeparator = LeadingSeparatorComponent != null && /* @__PURE__ */ React65.createElement(LeadingSeparatorComponent, (0, import_extends10.default)({
+  var leadingSeparator = LeadingSeparatorComponent != null && /* @__PURE__ */ React64.createElement(LeadingSeparatorComponent, (0, import_extends10.default)({
     highlighted: leadingSeparatorHiglighted
   }, leadingSeparatorProps));
-  var separator = SeparatorComponent != null && /* @__PURE__ */ React65.createElement(SeparatorComponent, (0, import_extends10.default)({
+  var separator = SeparatorComponent != null && /* @__PURE__ */ React64.createElement(SeparatorComponent, (0, import_extends10.default)({
     highlighted: separatorHighlighted
   }, separatorProps));
-  return leadingSeparator || separator ? /* @__PURE__ */ React65.createElement(View_default, null, inverted === false ? leadingSeparator : separator, element, inverted === false ? separator : leadingSeparator) : element;
+  return leadingSeparator || separator ? /* @__PURE__ */ React64.createElement(View_default, null, inverted === false ? leadingSeparator : separator, element, inverted === false ? separator : leadingSeparator) : element;
 }
 var VirtualizedSectionList_default = VirtualizedSectionList;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
 var _excluded12 = ["stickySectionHeadersEnabled"];
-var SectionList = class extends React66.PureComponent {
+var SectionList = class extends React65.PureComponent {
   constructor() {
     super(...arguments);
     this._captureRef = (ref) => {
@@ -16388,7 +16337,7 @@ var SectionList = class extends React66.PureComponent {
   render() {
     var _this$props = this.props, _stickySectionHeadersEnabled = _this$props.stickySectionHeadersEnabled, restProps = (0, import_objectWithoutPropertiesLoose12.default)(_this$props, _excluded12);
     var stickySectionHeadersEnabled = _stickySectionHeadersEnabled !== null && _stickySectionHeadersEnabled !== void 0 ? _stickySectionHeadersEnabled : Platform_default.OS === "ios";
-    return /* @__PURE__ */ React66.createElement(VirtualizedSectionList_default, (0, import_extends11.default)({}, restProps, {
+    return /* @__PURE__ */ React65.createElement(VirtualizedSectionList_default, (0, import_extends11.default)({}, restProps, {
       stickySectionHeadersEnabled,
       ref: this._captureRef,
       getItemCount: (items) => items.length,
@@ -16401,7 +16350,7 @@ var SectionList = class extends React66.PureComponent {
 var SectionList_default = SectionList;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
-var SectionListWithEventThrottle = /* @__PURE__ */ React67.forwardRef((props, ref) => /* @__PURE__ */ React67.createElement(SectionList_default, (0, import_extends12.default)({
+var SectionListWithEventThrottle = /* @__PURE__ */ React66.forwardRef((props, ref) => /* @__PURE__ */ React66.createElement(SectionList_default, (0, import_extends12.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -16409,12 +16358,12 @@ var SectionListWithEventThrottle = /* @__PURE__ */ React67.forwardRef((props, re
 var AnimatedSectionList_default = createAnimatedComponent(SectionListWithEventThrottle);
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
-var React69 = __toESM(require("react"));
+var React68 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Text/index.js
 var import_objectSpread219 = __toESM(require_objectSpread2());
 var import_objectWithoutPropertiesLoose13 = __toESM(require_objectWithoutPropertiesLoose());
-var React68 = __toESM(require("react"));
+var React67 = __toESM(require("react"));
 var _excluded13 = ["hrefAttrs", "numberOfLines", "onClick", "onLayout", "onPress", "onMoveShouldSetResponder", "onMoveShouldSetResponderCapture", "onResponderEnd", "onResponderGrant", "onResponderMove", "onResponderReject", "onResponderRelease", "onResponderStart", "onResponderTerminate", "onResponderTerminationRequest", "onScrollShouldSetResponder", "onScrollShouldSetResponderCapture", "onSelectionChangeShouldSetResponder", "onSelectionChangeShouldSetResponderCapture", "onStartShouldSetResponder", "onStartShouldSetResponderCapture", "selectable"];
 var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clickProps, focusProps, keyboardProps, mouseProps, touchProps, styleProps, {
   href: true,
@@ -16422,10 +16371,10 @@ var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clic
   pointerEvents: true
 });
 var pickProps2 = (props) => pick(props, forwardPropsList2);
-var Text20 = /* @__PURE__ */ React68.forwardRef((props, forwardedRef) => {
+var Text20 = /* @__PURE__ */ React67.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, numberOfLines = props.numberOfLines, onClick = props.onClick, onLayout = props.onLayout, onPress = props.onPress, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, selectable = props.selectable, rest = (0, import_objectWithoutPropertiesLoose13.default)(props, _excluded13);
-  var hasTextAncestor = React68.useContext(TextAncestorContext_default);
-  var hostRef = React68.useRef(null);
+  var hasTextAncestor = React67.useContext(TextAncestorContext_default);
+  var hostRef = React67.useRef(null);
   var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
   useElementLayout(hostRef, onLayout);
   useResponderEvents(hostRef, {
@@ -16446,7 +16395,7 @@ var Text20 = /* @__PURE__ */ React68.forwardRef((props, forwardedRef) => {
     onStartShouldSetResponder,
     onStartShouldSetResponderCapture
   });
-  var handleClick = React68.useCallback((e) => {
+  var handleClick = React67.useCallback((e) => {
     if (onClick != null) {
       onClick(e);
     } else if (onPress != null) {
@@ -16490,7 +16439,7 @@ var Text20 = /* @__PURE__ */ React68.forwardRef((props, forwardedRef) => {
   var element = createElement_default(component, supportedProps, {
     writingDirection
   });
-  return hasTextAncestor ? element : /* @__PURE__ */ React68.createElement(TextAncestorContext_default.Provider, {
+  return hasTextAncestor ? element : /* @__PURE__ */ React67.createElement(TextAncestorContext_default.Provider, {
     value: true
   }, element);
 });
@@ -16550,7 +16499,7 @@ var Text_default = Text20;
 var AnimatedText_default = createAnimatedComponent(Text_default);
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedView.js
-var React70 = __toESM(require("react"));
+var React69 = __toESM(require("react"));
 var AnimatedView_default = createAnimatedComponent(View_default);
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
@@ -18646,7 +18595,7 @@ var costlyToAnimateStyleKey = {
 var AnimatedView = Animated_default2.View;
 var AnimatedText = Animated_default2.Text;
 function useAnimatedNumber(initial) {
-  const state = import_react51.default.useRef(null);
+  const state = import_react50.default.useRef(null);
   return state.current || (state.current = {
     composite: null,
     val: new Animated_default2.Value(initial),
@@ -18699,7 +18648,7 @@ var useAnimatedNumberReaction = ({
   const onChange = useEvent((current) => {
     onValue(current.value);
   });
-  import_react51.default.useEffect(() => {
+  import_react50.default.useEffect(() => {
     const id2 = value.getInstance().addListener(onChange);
     return () => {
       value.getInstance().removeListener(id2);
@@ -18725,7 +18674,7 @@ function createAnimations(animations2) {
       componentState,
       presence
     }) => {
-      const isDisabled2 = isWeb3 && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react51.default.useRef({}), animatedTranforms = import_react51.default.useRef([]), animationsState = import_react51.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react51.default.useMemo(() => isWeb3 ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react51.default.useMemo(() => {
+      const isDisabled2 = isWeb3 && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react50.default.useRef({}), animatedTranforms = import_react50.default.useRef([]), animationsState = import_react50.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react50.default.useMemo(() => isWeb3 ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react50.default.useMemo(() => {
         const runners = [], completions = [], nonAnimatedStyle = {};
         for (const key in style) {
           const val = style[key];
@@ -18874,7 +18823,7 @@ function getValue2(input, isColor = false) {
 }
 
 // src/theme/tokens.ts
-var import_tamagui57 = require("tamagui");
+var import_tamagui56 = require("tamagui");
 var palette = {
   transparent: "transparent",
   white: "#FFFFFF",
@@ -19037,7 +18986,7 @@ var zIndexScale = {
   true: 0
   // default (base)
 };
-var tokens = (0, import_tamagui57.createTokens)({
+var tokens = (0, import_tamagui56.createTokens)({
   color: {
     ...palette
   },
@@ -19164,11 +19113,11 @@ var darkColors = {
 };
 
 // src/theme/index.ts
-var import_tamagui58 = require("tamagui");
-var lightTheme = (0, import_tamagui58.createTheme)({
+var import_tamagui57 = require("tamagui");
+var lightTheme = (0, import_tamagui57.createTheme)({
   ...lightColors
 });
-var darkTheme = (0, import_tamagui58.createTheme)({
+var darkTheme = (0, import_tamagui57.createTheme)({
   ...darkColors
 });
 var themes = {
@@ -19177,7 +19126,7 @@ var themes = {
 };
 
 // src/tamagui.config.ts
-var ceraProFont = (0, import_tamagui59.createFont)({
+var ceraProFont = (0, import_tamagui58.createFont)({
   family: "Cera Pro",
   size: {
     1: 12,
@@ -19240,7 +19189,7 @@ var animations = createAnimations({
     stiffness: 250
   }
 });
-var config = (0, import_tamagui59.createTamagui)({
+var config = (0, import_tamagui58.createTamagui)({
   // Animations
   animations,
   // Fonts
@@ -19306,14 +19255,14 @@ var config = (0, import_tamagui59.createTamagui)({
 var tamagui_config_default = config;
 
 // src/providers/AppProviders.tsx
-var import_jsx_runtime45 = require("react/jsx-runtime");
-var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_tamagui60.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(ComponentErrorBoundary, { componentName: "AppProviders", children }) }) });
+var import_jsx_runtime44 = require("react/jsx-runtime");
+var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_tamagui59.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(ComponentErrorBoundary, { componentName: "AppProviders", children }) }) });
 
 // src/fonts.ts
 var fonts = {
-  CeraProRegular: require_CeraPro_Regular(),
-  CeraProMedium: require_CeraPro_Medium(),
-  CeraProBlack: require_CeraPro_Black()
+  CeraProRegular: null,
+  CeraProMedium: null,
+  CeraProBlack: null
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
@@ -19557,7 +19506,6 @@ var fonts = {
   ToggleGroupItem,
   Tooltip,
   TypographyText,
-  Video,
   config,
   fonts,
   useFormField,
