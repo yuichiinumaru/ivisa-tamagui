@@ -11,6 +11,7 @@ const EditorContainer = styled(Stack, {
     borderRadius: '$md',
     padding: '$md',
     minHeight: 150,
+    marginHorizontal: '$true',
 })
 
 export interface RichTextProps extends StackProps {

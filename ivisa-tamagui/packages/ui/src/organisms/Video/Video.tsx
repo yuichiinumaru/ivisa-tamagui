@@ -8,7 +8,7 @@ export type VideoProps = ExpoVideoProps & StackProps & {
 
 export const Video = forwardRef<ExpoVideo, VideoProps>(({
     src,
-    width = '100%',
+    width,
     height = 200,
     useNativeControls = true,
     resizeMode = ResizeMode.COVER,
@@ -18,7 +18,7 @@ export const Video = forwardRef<ExpoVideo, VideoProps>(({
     const source = src ? { uri: src } : props.source
 
     return (
-        <Stack width={width} height={height} overflow="hidden" backgroundColor="$black" {...props}>
+        <Stack width={width} height={height} marginHorizontal="$true" overflow="hidden" backgroundColor="$black" {...props}>
             <ExpoVideo
                 ref={ref}
                 source={source}

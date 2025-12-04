@@ -87,7 +87,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <YStack gap="$4" width="100%">
+    <YStack gap="$4" marginHorizontal="$true">
       {/* Optional: Global Search or Filters could go here */}
       
       <TableContainer>
