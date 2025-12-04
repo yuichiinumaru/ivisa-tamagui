@@ -1,7 +1,14 @@
-import { XGroup, styled } from 'tamagui'
+import { XGroup, styled, GetProps } from 'tamagui'
+import React from 'react'
 
-export const ButtonGroup = styled(XGroup, {
+const ButtonGroupFrame = styled(XGroup, {
   // Styles for the group container
 })
 
 export const ButtonGroupItem = XGroup.Item
+
+type ButtonGroupProps = GetProps<typeof ButtonGroupFrame>
+
+export const ButtonGroup = ({ children, ...props }: ButtonGroupProps) => {
+  return <ButtonGroupFrame {...props}>{children}</ButtonGroupFrame>
+}

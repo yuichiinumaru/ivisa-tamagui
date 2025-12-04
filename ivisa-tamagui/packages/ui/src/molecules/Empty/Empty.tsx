@@ -1,6 +1,7 @@
-import { styled, Stack, Text, Image } from 'tamagui'
+import { Stack, Text, Image, GetProps, styled } from 'tamagui'
+import React, { cloneElement } from 'react'
 
-export const Empty = styled(Stack, {
+const EmptyFrame = styled(Stack, {
   name: 'Empty',
   alignItems: 'center',
   justifyContent: 'center',
@@ -8,20 +9,47 @@ export const Empty = styled(Stack, {
   gap: '$2',
 })
 
-export const EmptyImage = styled(Image, {
+const EmptyImage = styled(Image, {
   width: 100,
   height: 100,
   resizeMode: 'contain',
 })
 
-export const EmptyTitle = styled(Text, {
+const EmptyTitle = styled(Text, {
   fontSize: '$5',
   fontWeight: '600',
   textAlign: 'center',
 })
 
-export const EmptyDescription = styled(Text, {
+const EmptyDescription = styled(Text, {
   fontSize: '$3',
   color: '$mutedForeground',
   textAlign: 'center',
 })
+
+type EmptyProps = GetProps<typeof EmptyFrame> & {
+  icon?: React.ReactElement
+  imageSource?: GetProps<typeof Image>['source']
+  title?: string
+  description?: string
+  children?: React.ReactNode
+}
+
+export const Empty = ({
+  icon,
+  imageSource,
+  title,
+  description,
+  children,
+  ...props
+}: EmptyProps) => {
+  return (
+    <EmptyFrame {...props}>
+      {icon && cloneElement(icon, { size: 48, color: '$mutedForeground' })}
+      {imageSource && <EmptyImage source={imageSource} />}
+      {title && <EmptyTitle>{title}</EmptyTitle>}
+      {description && <EmptyDescription>{description}</EmptyDescription>}
+      {children}
+    </EmptyFrame>
+  )
+}
