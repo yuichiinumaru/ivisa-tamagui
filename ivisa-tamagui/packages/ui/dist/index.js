@@ -39,9 +39,9 @@ var require_typeof = __commonJS({
     "use strict";
     function _typeof2(o) {
       "@babel/helpers - typeof";
-      return module2.exports = _typeof2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o2) {
+      return module2.exports = _typeof2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(o2) {
         return typeof o2;
-      } : function (o2) {
+      } : function(o2) {
         return o2 && "function" == typeof Symbol && o2.constructor === Symbol && o2 !== Symbol.prototype ? "symbol" : typeof o2;
       }, module2.exports.__esModule = true, module2.exports["default"] = module2.exports, _typeof2(o);
     }
@@ -108,7 +108,7 @@ var require_objectSpread2 = __commonJS({
       var t = Object.keys(e);
       if (Object.getOwnPropertySymbols) {
         var o = Object.getOwnPropertySymbols(e);
-        r && (o = o.filter(function (r2) {
+        r && (o = o.filter(function(r2) {
           return Object.getOwnPropertyDescriptor(e, r2).enumerable;
         })), t.push.apply(t, o);
       }
@@ -117,9 +117,9 @@ var require_objectSpread2 = __commonJS({
     function _objectSpread24(e) {
       for (var r = 1; r < arguments.length; r++) {
         var t = null != arguments[r] ? arguments[r] : {};
-        r % 2 ? ownKeys(Object(t), true).forEach(function (r2) {
+        r % 2 ? ownKeys(Object(t), true).forEach(function(r2) {
           defineProperty(e, r2, t[r2]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r2) {
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function(r2) {
           Object.defineProperty(e, r2, Object.getOwnPropertyDescriptor(t, r2));
         });
       }
@@ -171,24 +171,24 @@ var require_normalize_colors = __commonJS({
       }
       if (match = matchers.rgb.exec(color)) {
         return (parse255(match[1]) << 24 | // r
-          parse255(match[2]) << 16 | // g
-          parse255(match[3]) << 8 | // b
-          255) >>> // a
-          0;
+        parse255(match[2]) << 16 | // g
+        parse255(match[3]) << 8 | // b
+        255) >>> // a
+        0;
       }
       if (match = matchers.rgba.exec(color)) {
         if (match[6] !== void 0) {
           return (parse255(match[6]) << 24 | // r
-            parse255(match[7]) << 16 | // g
-            parse255(match[8]) << 8 | // b
-            parse1(match[9])) >>> // a
-            0;
+          parse255(match[7]) << 16 | // g
+          parse255(match[8]) << 8 | // b
+          parse1(match[9])) >>> // a
+          0;
         }
         return (parse255(match[2]) << 24 | // r
-          parse255(match[3]) << 16 | // g
-          parse255(match[4]) << 8 | // b
-          parse1(match[5])) >>> // a
-          0;
+        parse255(match[3]) << 16 | // g
+        parse255(match[4]) << 8 | // b
+        parse1(match[5])) >>> // a
+        0;
       }
       if (match = matchers.hex3.exec(color)) {
         return parseInt(
@@ -222,7 +222,7 @@ var require_normalize_colors = __commonJS({
           parsePercentage(match[3])
           // l
         ) | 255) >>> // a
-          0;
+        0;
       }
       if (match = matchers.hsla.exec(color)) {
         if (match[6] !== void 0) {
@@ -234,7 +234,7 @@ var require_normalize_colors = __commonJS({
             parsePercentage(match[8])
             // l
           ) | parse1(match[9])) >>> // a
-            0;
+          0;
         }
         return (hslToRgb(
           parse360(match[2]),
@@ -244,7 +244,7 @@ var require_normalize_colors = __commonJS({
           parsePercentage(match[4])
           // l
         ) | parse1(match[5])) >>> // a
-          0;
+        0;
       }
       if (match = matchers.hwb.exec(color)) {
         return (hwbToRgb(
@@ -255,7 +255,7 @@ var require_normalize_colors = __commonJS({
           parsePercentage(match[3])
           // b
         ) | 255) >>> // a
-          0;
+        0;
       }
       return null;
     }
@@ -863,7 +863,7 @@ function _arrayLikeToArray(arr, len) {
   return arr2;
 }
 function filterUniqueArray(arr) {
-  return arr.filter(function (val, index) {
+  return arr.filter(function(val, index) {
     return arr.lastIndexOf(val) === index;
   });
 }
@@ -1161,7 +1161,7 @@ var require_crossFade = __commonJS({
     var prefixes4 = ["-webkit-", ""];
     function crossFade2(property, value) {
       if (typeof value === "string" && !(0, _cssInJsUtils.isPrefixedValue)(value) && value.indexOf("cross-fade(") !== -1) {
-        return prefixes4.map(function (prefix) {
+        return prefixes4.map(function(prefix) {
           return value.replace(CROSS_FADE_REGEX, prefix + "cross-fade(");
         });
       }
@@ -1200,7 +1200,7 @@ var require_imageSet = __commonJS({
     var prefixes4 = ["-webkit-", ""];
     function imageSet2(property, value) {
       if (typeof value === "string" && !(0, _isPrefixedValue2.default)(value) && value.indexOf("image-set(") > -1) {
-        return prefixes4.map(function (prefix) {
+        return prefixes4.map(function(prefix) {
           return value.replace(/image-set\(/g, prefix + "image-set(");
         });
       }
@@ -1296,7 +1296,7 @@ var require_sizing = __commonJS({
     };
     function sizing2(property, value) {
       if (properties.hasOwnProperty(property) && values.hasOwnProperty(value)) {
-        return prefixes4.map(function (prefix) {
+        return prefixes4.map(function(prefix) {
           return prefix + value;
         });
       }
@@ -1377,13 +1377,13 @@ var require_transition = __commonJS({
     function transition2(property, value, style, propertyPrefixMap) {
       if (typeof value === "string" && properties.hasOwnProperty(property)) {
         var outputValue = prefixValue(value, propertyPrefixMap);
-        var webkitOutput = outputValue.split(/,(?![^()]*(?:\([^()]*\))?\))/g).filter(function (val) {
+        var webkitOutput = outputValue.split(/,(?![^()]*(?:\([^()]*\))?\))/g).filter(function(val) {
           return !/-moz-|-ms-/.test(val);
         }).join(",");
         if (property.indexOf("Webkit") > -1) {
           return webkitOutput;
         }
-        var mozOutput = outputValue.split(/,(?![^()]*(?:\([^()]*\))?\))/g).filter(function (val) {
+        var mozOutput = outputValue.split(/,(?![^()]*(?:\([^()]*\))?\))/g).filter(function(val) {
           return !/-webkit-|-ms-/.test(val);
         }).join(",");
         if (property.indexOf("Moz") > -1) {
@@ -1589,7 +1589,7 @@ var require_parse = __commonJS({
     var uUpper = "U".charCodeAt(0);
     var plus = "+".charCodeAt(0);
     var isUnicodeRange = /^[a-f0-9?-]+$/i;
-    module2.exports = function (input) {
+    module2.exports = function(input) {
       var tokens2 = [];
       var value = input;
       var next, quote, prev, token, escape, escapePos, whitespacePos, parenthesesOpenPos;
@@ -1924,7 +1924,7 @@ var require_unit = __commonJS({
       }
       return false;
     }
-    module2.exports = function (value) {
+    module2.exports = function(value) {
       var pos = 0;
       var length = value.length;
       var code;
@@ -1991,10 +1991,10 @@ var require_lib = __commonJS({
       }
       return new ValueParser(value);
     }
-    ValueParser.prototype.toString = function () {
+    ValueParser.prototype.toString = function() {
       return Array.isArray(this.nodes) ? stringify(this.nodes) : "";
     };
-    ValueParser.prototype.walk = function (cb, bubble) {
+    ValueParser.prototype.walk = function(cb, bubble) {
       walk(this.nodes, cb, bubble);
       return this;
     };
@@ -2010,7 +2010,7 @@ var require_extends = __commonJS({
   "../../node_modules/.pnpm/@babel+runtime@7.28.4/node_modules/@babel/runtime/helpers/extends.js"(exports2, module2) {
     "use strict";
     function _extends13() {
-      return module2.exports = _extends13 = Object.assign ? Object.assign.bind() : function (n) {
+      return module2.exports = _extends13 = Object.assign ? Object.assign.bind() : function(n) {
         for (var e = 1; e < arguments.length; e++) {
           var t = arguments[e];
           for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);
@@ -2026,11 +2026,11 @@ var require_extends = __commonJS({
 var require_invariant = __commonJS({
   "../../node_modules/.pnpm/fbjs@3.0.5/node_modules/fbjs/lib/invariant.js"(exports2, module2) {
     "use strict";
-    var validateFormat = process.env.NODE_ENV !== "production" ? function (format2) {
+    var validateFormat = process.env.NODE_ENV !== "production" ? function(format2) {
       if (format2 === void 0) {
         throw new Error("invariant(...): Second argument must be a string.");
       }
-    } : function (format2) {
+    } : function(format2) {
     };
     function invariant22(condition, format2) {
       for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
@@ -2043,7 +2043,7 @@ var require_invariant = __commonJS({
           error2 = new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");
         } else {
           var argIndex = 0;
-          error2 = new Error(format2.replace(/%s/g, function () {
+          error2 = new Error(format2.replace(/%s/g, function() {
             return String(args[argIndex++]);
           }));
           error2.name = "Invariant Violation";
@@ -2096,7 +2096,7 @@ var require_createForOfIteratorHelperLoose = __commonJS({
       if (Array.isArray(r) || (t = unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) {
         t && (r = t);
         var o = 0;
-        return function () {
+        return function() {
           return o >= r.length ? {
             done: true
           } : {
@@ -2116,7 +2116,7 @@ var require_emptyFunction = __commonJS({
   "../../node_modules/.pnpm/fbjs@3.0.5/node_modules/fbjs/lib/emptyFunction.js"(exports2, module2) {
     "use strict";
     function makeEmptyFunction(arg) {
-      return function () {
+      return function() {
         return arg;
       };
     }
@@ -2126,10 +2126,10 @@ var require_emptyFunction = __commonJS({
     emptyFunction2.thatReturnsFalse = makeEmptyFunction(false);
     emptyFunction2.thatReturnsTrue = makeEmptyFunction(true);
     emptyFunction2.thatReturnsNull = makeEmptyFunction(null);
-    emptyFunction2.thatReturnsThis = function () {
+    emptyFunction2.thatReturnsThis = function() {
       return this;
     };
-    emptyFunction2.thatReturnsArgument = function (arg) {
+    emptyFunction2.thatReturnsArgument = function(arg) {
       return arg;
     };
     module2.exports = emptyFunction2;
@@ -2146,7 +2146,7 @@ var require_warning = __commonJS({
         args[_key - 1] = arguments[_key];
       }
       var argIndex = 0;
-      var message = "Warning: " + format2.replace(/%s/g, function () {
+      var message = "Warning: " + format2.replace(/%s/g, function() {
         return args[argIndex++];
       });
       if (typeof console !== "undefined") {
@@ -2157,7 +2157,7 @@ var require_warning = __commonJS({
       } catch (x) {
       }
     }
-    var warning2 = process.env.NODE_ENV !== "production" ? function (condition, format2) {
+    var warning2 = process.env.NODE_ENV !== "production" ? function(condition, format2) {
       if (format2 === void 0) {
         throw new Error("`warning(condition, format, ...args)` requires a warning message argument");
       }
@@ -2190,6 +2190,27 @@ var require_nullthrows = __commonJS({
   }
 });
 
+// src/assets/fonts/CeraPro-Regular.otf
+var require_CeraPro_Regular = __commonJS({
+  "src/assets/fonts/CeraPro-Regular.otf"(exports2, module2) {
+    module2.exports = "./CeraPro-Regular-TNVAI32C.otf";
+  }
+});
+
+// src/assets/fonts/CeraPro-Medium.otf
+var require_CeraPro_Medium = __commonJS({
+  "src/assets/fonts/CeraPro-Medium.otf"(exports2, module2) {
+    module2.exports = "./CeraPro-Medium-BVBPRSS6.otf";
+  }
+});
+
+// src/assets/fonts/CeraPro-Black.otf
+var require_CeraPro_Black = __commonJS({
+  "src/assets/fonts/CeraPro-Black.otf"(exports2, module2) {
+    module2.exports = "./CeraPro-Black-WL63XRFO.otf";
+  }
+});
+
 // src/index.ts
 var index_exports = {};
 __export(index_exports, {
@@ -2199,9 +2220,22 @@ __export(index_exports, {
   AccordionTrigger: () => AccordionTrigger,
   Alert: () => Alert,
   AlertDescription: () => AlertDescription,
+  AlertDialog: () => AlertDialog,
+  AlertDialogAction: () => AlertDialogAction,
+  AlertDialogCancel: () => AlertDialogCancel,
+  AlertDialogContent: () => AlertDialogContentComposite,
+  AlertDialogContentComposite: () => AlertDialogContentComposite,
+  AlertDialogDescription: () => AlertDialogDescription,
+  AlertDialogFooter: () => AlertDialogFooter,
+  AlertDialogHeader: () => AlertDialogHeader,
+  AlertDialogOverlay: () => AlertDialogOverlay,
+  AlertDialogPortal: () => AlertDialogPortal,
+  AlertDialogTitle: () => AlertDialogTitle,
+  AlertDialogTrigger: () => AlertDialogTrigger,
   AlertTitle: () => AlertTitle,
   AppProviders: () => AppProviders,
   AspectRatio: () => AspectRatio,
+  Autocomplete: () => Autocomplete,
   Avatar: () => Avatar,
   AvatarFallback: () => AvatarFallback,
   AvatarFallbackComponent: () => AvatarFallbackComponent,
@@ -2210,6 +2244,7 @@ __export(index_exports, {
   Badge: () => Badge,
   BadgeText: () => BadgeText,
   BarChart: () => BarChart,
+  Blockquote: () => Blockquote,
   Breadcrumb: () => Breadcrumb,
   Button: () => Button,
   Calendar: () => Calendar,
@@ -2271,10 +2306,31 @@ __export(index_exports, {
   DrawerContent: () => DrawerContent,
   DrawerDescription: () => DrawerDescription,
   DrawerFooter: () => DrawerFooter,
+  DrawerFrame: () => DrawerFrame,
+  DrawerHandle: () => DrawerHandle,
   DrawerHeader: () => DrawerHeader,
   DrawerOverlay: () => DrawerOverlay,
   DrawerTitle: () => DrawerTitle,
   DrawerTrigger: () => DrawerTrigger,
+  DropdownMenu: () => DropdownMenu,
+  DropdownMenuCheckboxItem: () => DropdownMenuCheckboxItem,
+  DropdownMenuContent: () => DropdownMenuContent,
+  DropdownMenuGroup: () => DropdownMenuGroup,
+  DropdownMenuItem: () => DropdownMenuItem,
+  DropdownMenuLabel: () => DropdownMenuLabel,
+  DropdownMenuPortal: () => DropdownMenuPortal,
+  DropdownMenuRadioGroup: () => DropdownMenuRadioGroup,
+  DropdownMenuRadioItem: () => DropdownMenuRadioItem,
+  DropdownMenuSeparator: () => DropdownMenuSeparator,
+  DropdownMenuShortcut: () => DropdownMenuShortcut,
+  DropdownMenuSub: () => DropdownMenuSub,
+  DropdownMenuSubContent: () => DropdownMenuSubContent,
+  DropdownMenuSubTrigger: () => DropdownMenuSubTrigger,
+  DropdownMenuTrigger: () => DropdownMenuTrigger,
+  Field: () => Field,
+  FieldControl: () => FieldControl,
+  FieldError: () => FieldError,
+  FieldLabel: () => FieldLabel,
   Form: () => Form,
   FormControl: () => FormControl,
   FormDescription: () => FormDescription,
@@ -2282,8 +2338,21 @@ __export(index_exports, {
   FormItem: () => FormItem,
   FormLabel: () => FormLabel,
   FormMessage: () => FormMessage,
+  H1: () => H1,
+  H2: () => H2,
+  H3: () => H3,
+  H4: () => H4,
+  H5: () => H5,
+  H6: () => H6,
+  Heading: () => Heading,
+  HoverCard: () => HoverCard,
+  HoverCardContent: () => HoverCardContent,
+  HoverCardTrigger: () => HoverCardTrigger,
   IndicatorArrow: () => IndicatorArrow,
   Input: () => Input,
+  InputGroup: () => InputGroup,
+  InputGroupItem: () => InputGroupItem,
+  LeadText: () => LeadText,
   Menubar: () => MenubarFrame,
   MenubarCheckboxItem: () => MenubarCheckboxItem,
   MenubarContent: () => MenubarContent,
@@ -2300,6 +2369,9 @@ __export(index_exports, {
   MenubarSubContent: () => MenubarSubContent,
   MenubarSubTrigger: () => MenubarSubTrigger,
   MenubarTrigger: () => MenubarTrigger,
+  MonthsPicker: () => MonthsPicker,
+  MutedText: () => MutedText,
+  NativeSelect: () => NativeSelect,
   NavigationMenu: () => NavigationMenu,
   NavigationMenuContent: () => NavigationMenuContent,
   NavigationMenuIndicator: () => NavigationMenuIndicator,
@@ -2310,6 +2382,7 @@ __export(index_exports, {
   NavigationMenuViewport: () => NavigationMenuViewport,
   OTPInput: () => OTPInput,
   Pagination: () => Pagination,
+  Paragraph: () => Paragraph2,
   Popover: () => Popover,
   PopoverAnchor: () => PopoverAnchor,
   PopoverClose: () => PopoverClose,
@@ -2318,19 +2391,32 @@ __export(index_exports, {
   Progress: () => Progress,
   ProgressFrame: () => ProgressFrame,
   ProgressIndicator: () => ProgressIndicator,
-  RadioGroup: () => RadioGroup,
+  RadioGroup: () => RadioGroup2,
   RadioGroupItem: () => RadioGroupItem,
   ResizableHandle: () => ResizableHandle,
   ResizablePanel: () => ResizablePanel,
   ResizablePanelGroup: () => ResizablePanelGroup,
+  RichText: () => RichText,
   ScrollArea: () => ScrollArea,
   Select: () => Select,
+  SelectContent: () => SelectContent,
+  SelectGroup: () => SelectGroup,
+  SelectItem: () => SelectItem,
+  SelectItemIndicator: () => SelectItemIndicator,
+  SelectItemText: () => SelectItemText,
+  SelectLabel: () => SelectLabel,
+  SelectScrollDownButton: () => SelectScrollDownButton,
+  SelectScrollUpButton: () => SelectScrollUpButton,
+  SelectTrigger: () => SelectTrigger,
+  SelectValue: () => SelectValue,
+  SelectViewport: () => SelectViewport,
   Separator: () => Separator,
   Sheet: () => Sheet,
   SheetClose: () => SheetClose,
   SheetContent: () => SheetContent,
   SheetDescription: () => SheetDescription,
   SheetFooter: () => SheetFooter,
+  SheetFrame: () => SheetContentFrame,
   SheetHandle: () => SheetHandle,
   SheetHeader: () => SheetHeader,
   SheetOverlay: () => SheetOverlay,
@@ -2343,6 +2429,7 @@ __export(index_exports, {
   SliderRange: () => SliderRange,
   SliderThumb: () => SliderThumb,
   SliderTrack: () => SliderTrack,
+  Spinner: () => Spinner,
   StarRating: () => StarRating,
   Stepper: () => Stepper,
   Switch: () => Switch,
@@ -2355,6 +2442,7 @@ __export(index_exports, {
   TabsContent: () => TabsContent,
   TabsList: () => TabsList,
   TabsTrigger: () => TabsTrigger,
+  Text: () => Text3,
   Textarea: () => Textarea,
   Toast: () => ToastFrame,
   ToastDescription: () => ToastDescription,
@@ -2365,7 +2453,10 @@ __export(index_exports, {
   ToggleGroup: () => ToggleGroupFrame,
   ToggleGroupItem: () => ToggleGroupItemFrame,
   Tooltip: () => Tooltip,
+  TypographyText: () => TypographyText,
+  Video: () => Video,
   config: () => tamagui_config_default,
+  fonts: () => fonts,
   useFormField: () => useFormField,
   useToast: () => useToast
 });
@@ -2535,12 +2626,10 @@ var AccordionContentFrame = (0, import_tamagui4.styled)(import_tamagui4.Accordio
   exitStyle: { opacity: 0, height: 0 }
 });
 var AccordionTrigger = import_react2.default.forwardRef(({ children, ...props }, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(AccordionTriggerFrame, {
-    ref, ...props, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)(AccordionTriggerFrame, { ref, ...props, children: [
     /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_tamagui4.Accordion.Header, { children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_tamagui4.Paragraph, { fontWeight: "500", fontSize: "$3", children }) }),
     /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_tamagui4.Square, { animation: "quick", rotate: "0deg", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_tamagui4.Paragraph, { fontSize: "$2", children: "\u25BC" }) })
-    ]
-  });
+  ] });
 });
 AccordionTrigger.displayName = "AccordionTrigger";
 var AccordionContent = import_react2.default.forwardRef(({ children, ...props }, ref) => {
@@ -2548,9 +2637,84 @@ var AccordionContent = import_react2.default.forwardRef(({ children, ...props },
 });
 AccordionContent.displayName = "AccordionContent";
 
-// src/atoms/Badge.tsx
+// src/molecules/AlertDialog/AlertDialog.tsx
+var import_react3 = __toESM(require("react"));
 var import_tamagui5 = require("tamagui");
-var Badge = (0, import_tamagui5.styled)(import_tamagui5.View, {
+var import_jsx_runtime3 = require("react/jsx-runtime");
+var AlertDialogOverlay = (0, import_tamagui5.styled)(import_tamagui5.AlertDialog.Overlay, {
+  name: "AlertDialogOverlay",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  animation: "quick",
+  opacity: 1,
+  enterStyle: { opacity: 0 },
+  exitStyle: { opacity: 0 }
+});
+var AlertDialogContent = (0, import_tamagui5.styled)(import_tamagui5.AlertDialog.Content, {
+  name: "AlertDialogContent",
+  backgroundColor: "$background",
+  borderRadius: "$lg",
+  padding: "$lg",
+  width: "90%",
+  maxWidth: 512,
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  // Animation
+  animation: [
+    "quick",
+    {
+      opacity: {
+        overshootClamping: true
+      }
+    }
+  ],
+  enterStyle: { x: 0, y: -20, opacity: 0, scale: 0.9 },
+  exitStyle: { x: 0, y: 10, opacity: 0, scale: 0.95 },
+  x: 0,
+  scale: 1,
+  opacity: 1,
+  y: 0
+});
+var AlertDialogHeader = (0, import_tamagui5.styled)(import_tamagui5.YStack, {
+  name: "AlertDialogHeader",
+  flexDirection: "column",
+  marginBottom: "$md",
+  gap: "$sm"
+});
+var AlertDialogTitle = (0, import_tamagui5.styled)(import_tamagui5.AlertDialog.Title, {
+  name: "AlertDialogTitle",
+  fontSize: "$6",
+  fontWeight: "600",
+  color: "$foreground"
+});
+var AlertDialogDescription = (0, import_tamagui5.styled)(import_tamagui5.AlertDialog.Description, {
+  name: "AlertDialogDescription",
+  fontSize: "$3",
+  color: "$mutedForeground",
+  lineHeight: "$4"
+});
+var AlertDialogFooter = (0, import_tamagui5.styled)(import_tamagui5.XStack, {
+  name: "AlertDialogFooter",
+  flexDirection: "row",
+  justifyContent: "flex-end",
+  gap: "$3",
+  marginTop: "$md"
+});
+var AlertDialogAction = import_tamagui5.AlertDialog.Action;
+var AlertDialogCancel = import_tamagui5.AlertDialog.Cancel;
+var AlertDialog = import_tamagui5.AlertDialog;
+var AlertDialogTrigger = import_tamagui5.AlertDialog.Trigger;
+var AlertDialogPortal = import_tamagui5.AlertDialog.Portal;
+var AlertDialogContentComposite = import_react3.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(AlertDialogPortal, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(AlertDialogOverlay, {}, "overlay"),
+    /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(AlertDialogContent, { ref, ...props }, "content")
+  ] });
+});
+AlertDialogContentComposite.displayName = "AlertDialogContent";
+
+// src/atoms/Badge.tsx
+var import_tamagui6 = require("tamagui");
+var Badge = (0, import_tamagui6.styled)(import_tamagui6.View, {
   name: "Badge",
   tag: "div",
   borderRadius: "$10",
@@ -2590,7 +2754,7 @@ var Badge = (0, import_tamagui5.styled)(import_tamagui5.View, {
     variant: "default"
   }
 });
-var BadgeText = (0, import_tamagui5.styled)(import_tamagui5.Text, {
+var BadgeText = (0, import_tamagui6.styled)(import_tamagui6.Text, {
   name: "BadgeText",
   fontSize: "$1",
   fontWeight: "600",
@@ -2616,11 +2780,11 @@ var BadgeText = (0, import_tamagui5.styled)(import_tamagui5.Text, {
 });
 
 // src/atoms/Button/Button.tsx
-var import_react4 = __toESM(require("react"));
-var import_tamagui6 = require("tamagui");
+var import_react5 = __toESM(require("react"));
+var import_tamagui7 = require("tamagui");
 
 // src/utils/withErrorLogging.tsx
-var import_react3 = __toESM(require("react"));
+var import_react4 = __toESM(require("react"));
 
 // src/utils/logging.ts
 function logComponentError(componentName, error2, componentStack) {
@@ -2635,11 +2799,11 @@ ${componentStack}`);
 }
 
 // src/utils/withErrorLogging.tsx
-var import_jsx_runtime3 = require("react/jsx-runtime");
+var import_jsx_runtime4 = require("react/jsx-runtime");
 function withErrorLogging(componentName, Component2) {
-  const Wrapped = import_react3.default.forwardRef((props, ref) => {
+  const Wrapped = import_react4.default.forwardRef((props, ref) => {
     try {
-      return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Component2, { ...props, ref });
+      return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(Component2, { ...props, ref });
     } catch (error2) {
       logComponentError(componentName, error2);
       throw error2;
@@ -2650,8 +2814,8 @@ function withErrorLogging(componentName, Component2) {
 }
 
 // src/atoms/Button/Button.tsx
-var import_jsx_runtime4 = require("react/jsx-runtime");
-var StyledButton = (0, import_tamagui6.styled)(import_tamagui6.Button, {
+var import_jsx_runtime5 = require("react/jsx-runtime");
+var StyledButton = (0, import_tamagui7.styled)(import_tamagui7.Button, {
   name: "Button",
   variants: {
     variant: {
@@ -2716,9 +2880,9 @@ var StyledButton = (0, import_tamagui6.styled)(import_tamagui6.Button, {
     size: "default"
   }
 });
-var ButtonImpl = import_react4.default.forwardRef(
+var ButtonImpl = import_react5.default.forwardRef(
   ({ variant = "default", size = "default", ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
       StyledButton,
       {
         ref,
@@ -2734,10 +2898,10 @@ ButtonImpl.displayName = "Button";
 var Button = withErrorLogging("Button", ButtonImpl);
 
 // src/atoms/Input/Input.tsx
-var import_react5 = __toESM(require("react"));
-var import_tamagui7 = require("tamagui");
-var import_jsx_runtime5 = require("react/jsx-runtime");
-var InputContext = import_react5.default.createContext({});
+var import_react6 = __toESM(require("react"));
+var import_tamagui8 = require("tamagui");
+var import_jsx_runtime6 = require("react/jsx-runtime");
+var InputContext = import_react6.default.createContext({});
 var inputVariants = {
   variant: {
     default: {
@@ -2787,7 +2951,7 @@ var inputVariants = {
     }
   }
 };
-var StyledInput = (0, import_tamagui7.styled)(import_tamagui7.Input, {
+var StyledInput = (0, import_tamagui8.styled)(import_tamagui8.Input, {
   name: "Input",
   color: "$foreground",
   placeholderTextColor: "$color.gray10",
@@ -2805,7 +2969,7 @@ var StyledInput = (0, import_tamagui7.styled)(import_tamagui7.Input, {
     size: "default"
   }
 });
-var InputFrame = (0, import_tamagui7.styled)(import_tamagui7.XStack, {
+var InputFrame = (0, import_tamagui8.styled)(import_tamagui8.XStack, {
   name: "InputFrame",
   alignItems: "center",
   borderRadius: "$4",
@@ -2816,7 +2980,7 @@ var InputFrame = (0, import_tamagui7.styled)(import_tamagui7.XStack, {
     size: "default"
   }
 });
-var UnframedInputStyled = (0, import_tamagui7.styled)(import_tamagui7.Input, {
+var UnframedInputStyled = (0, import_tamagui8.styled)(import_tamagui8.Input, {
   name: "InputField",
   flex: 1,
   backgroundColor: "transparent",
@@ -2843,29 +3007,29 @@ var UnframedInputStyled = (0, import_tamagui7.styled)(import_tamagui7.Input, {
     }
   }
 });
-var InputField = import_react5.default.forwardRef((props, ref) => {
-  const { size } = (0, import_react5.useContext)(InputContext);
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(UnframedInputStyled, { ref, size, ...props });
+var InputField = import_react6.default.forwardRef((props, ref) => {
+  const { size } = (0, import_react6.useContext)(InputContext);
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(UnframedInputStyled, { ref, size, ...props });
 });
-var InputIcon = (0, import_tamagui7.styled)(import_tamagui7.View, {
+var InputIcon = (0, import_tamagui8.styled)(import_tamagui8.View, {
   name: "InputIcon",
   justifyContent: "center",
   alignItems: "center",
   height: "100%",
   paddingHorizontal: "$2"
 });
-var InputButton = (0, import_tamagui7.styled)(Button, {
+var InputButton = (0, import_tamagui8.styled)(Button, {
   name: "InputButton",
   borderRadius: 0,
   height: "100%",
   borderWidth: 0
 });
-var InputImpl = import_react5.default.forwardRef(
+var InputImpl = import_react6.default.forwardRef(
   ({ variant = "default", size = "default", children, ...props }, ref) => {
     if (children) {
-      return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(InputContext.Provider, { value: { size }, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(InputFrame, { ref, variant, size, children }) });
+      return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(InputContext.Provider, { value: { size }, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(InputFrame, { ref, variant, size, children }) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
       StyledInput,
       {
         ref,
@@ -2885,10 +3049,10 @@ var Input = Object.assign(WrappedInput, {
 });
 
 // src/atoms/Switch.tsx
-var import_tamagui8 = require("tamagui");
-var import_react6 = __toESM(require("react"));
-var import_jsx_runtime6 = require("react/jsx-runtime");
-var SwitchFrame = (0, import_tamagui8.styled)(import_tamagui8.Switch, {
+var import_tamagui9 = require("tamagui");
+var import_react7 = __toESM(require("react"));
+var import_jsx_runtime7 = require("react/jsx-runtime");
+var SwitchFrame = (0, import_tamagui9.styled)(import_tamagui9.Switch, {
   name: "Switch",
   borderRadius: "$10",
   // Full pill
@@ -2918,7 +3082,7 @@ var SwitchFrame = (0, import_tamagui8.styled)(import_tamagui8.Switch, {
     checked: false
   }
 });
-var SwitchThumb = (0, import_tamagui8.styled)(import_tamagui8.Switch.Thumb, {
+var SwitchThumb = (0, import_tamagui9.styled)(import_tamagui9.Switch.Thumb, {
   name: "SwitchThumb",
   backgroundColor: "$background",
   borderRadius: "$10",
@@ -2932,17 +3096,17 @@ var SwitchThumb = (0, import_tamagui8.styled)(import_tamagui8.Switch.Thumb, {
 });
 var SwitchFrameExport = SwitchFrame;
 var SwitchThumbComponent = SwitchThumb;
-var SwitchComponent = import_react6.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SwitchFrame, { ref, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(SwitchThumb, {}) });
+var SwitchComponent = import_react7.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SwitchFrame, { ref, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SwitchThumb, {}) });
 });
 SwitchComponent.displayName = "Switch";
 var Switch = SwitchComponent;
 
 // src/atoms/Slider.tsx
-var import_tamagui9 = require("tamagui");
-var import_react7 = __toESM(require("react"));
-var import_jsx_runtime7 = require("react/jsx-runtime");
-var SliderFrame = (0, import_tamagui9.styled)(import_tamagui9.Slider, {
+var import_tamagui10 = require("tamagui");
+var import_react8 = __toESM(require("react"));
+var import_jsx_runtime8 = require("react/jsx-runtime");
+var SliderFrame = (0, import_tamagui10.styled)(import_tamagui10.Slider, {
   name: "Slider",
   defaultValue: [0],
   max: 100,
@@ -2952,7 +3116,7 @@ var SliderFrame = (0, import_tamagui9.styled)(import_tamagui9.Slider, {
   // Container height
   justifyContent: "center"
 });
-var SliderTrack = (0, import_tamagui9.styled)(import_tamagui9.Slider.Track, {
+var SliderTrack = (0, import_tamagui10.styled)(import_tamagui10.Slider.Track, {
   name: "SliderTrack",
   backgroundColor: "$secondary",
   height: 8,
@@ -2960,12 +3124,12 @@ var SliderTrack = (0, import_tamagui9.styled)(import_tamagui9.Slider.Track, {
   borderRadius: "$10"
   // rounded-full
 });
-var SliderRange = (0, import_tamagui9.styled)(import_tamagui9.Slider.TrackActive, {
+var SliderRange = (0, import_tamagui10.styled)(import_tamagui10.Slider.TrackActive, {
   name: "SliderRange",
   backgroundColor: "$primary",
   borderRadius: "$10"
 });
-var SliderThumb = (0, import_tamagui9.styled)(import_tamagui9.Slider.Thumb, {
+var SliderThumb = (0, import_tamagui10.styled)(import_tamagui10.Slider.Thumb, {
   name: "SliderThumb",
   index: 0,
   circular: true,
@@ -2984,19 +3148,17 @@ var SliderThumb = (0, import_tamagui9.styled)(import_tamagui9.Slider.Thumb, {
     cursor: "pointer"
   }
 });
-var Slider = import_react7.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(SliderFrame, {
-    ref, ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SliderTrack, { children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SliderRange, {}) }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(SliderThumb, {})
-    ]
-  });
+var Slider = import_react8.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(SliderFrame, { ref, ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SliderTrack, { children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SliderRange, {}) }),
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(SliderThumb, {})
+  ] });
 });
 Slider.displayName = "Slider";
 
 // src/atoms/Skeleton.tsx
-var import_tamagui10 = require("tamagui");
-var SkeletonFrame = (0, import_tamagui10.styled)(import_tamagui10.YStack, {
+var import_tamagui11 = require("tamagui");
+var SkeletonFrame = (0, import_tamagui11.styled)(import_tamagui11.YStack, {
   name: "Skeleton",
   backgroundColor: "$muted",
   // bg-muted
@@ -3014,21 +3176,98 @@ var SkeletonFrame = (0, import_tamagui10.styled)(import_tamagui10.YStack, {
 });
 var Skeleton = SkeletonFrame;
 
+// src/atoms/Typography.tsx
+var import_tamagui12 = require("tamagui");
+var H1 = (0, import_tamagui12.styled)(import_tamagui12.H1, {
+  fontFamily: "$heading",
+  fontWeight: "900",
+  textTransform: "uppercase",
+  color: "$color"
+  // Sizes are usually handled by the theme/font config, but we can enforce defaults here if needed.
+  // Using default Tamagui sizing for now which maps to the font config sizes.
+});
+var H2 = (0, import_tamagui12.styled)(import_tamagui12.H2, {
+  fontFamily: "$heading",
+  fontWeight: "900",
+  textTransform: "uppercase",
+  color: "$color"
+});
+var H3 = (0, import_tamagui12.styled)(import_tamagui12.H3, {
+  fontFamily: "$heading",
+  fontWeight: "500",
+  textTransform: "uppercase",
+  color: "$color"
+});
+var H4 = (0, import_tamagui12.styled)(import_tamagui12.H4, {
+  fontFamily: "$heading",
+  fontWeight: "500",
+  textTransform: "uppercase",
+  color: "$color"
+});
+var H5 = (0, import_tamagui12.styled)(import_tamagui12.H5, {
+  fontFamily: "$heading",
+  fontWeight: "500",
+  textTransform: "uppercase",
+  color: "$color"
+});
+var H6 = (0, import_tamagui12.styled)(import_tamagui12.H6, {
+  fontFamily: "$heading",
+  fontWeight: "500",
+  textTransform: "uppercase",
+  color: "$color"
+});
+var Text3 = (0, import_tamagui12.styled)(import_tamagui12.Text, {
+  fontFamily: "$body",
+  fontWeight: "400",
+  color: "$color"
+});
+var Paragraph2 = (0, import_tamagui12.styled)(import_tamagui12.Text, {
+  // Often useful to have Paragraph separate
+  tag: "p",
+  fontFamily: "$body",
+  fontWeight: "400",
+  color: "$color",
+  marginBottom: "$2"
+});
+var Heading = H1;
+var TypographyText = Text3;
+var MutedText = (0, import_tamagui12.styled)(Text3, {
+  color: "$color05"
+});
+var LeadText = (0, import_tamagui12.styled)(Text3, {
+  fontSize: "$5",
+  fontWeight: "300"
+});
+var Blockquote = (0, import_tamagui12.styled)(Text3, {
+  tag: "blockquote",
+  borderLeftWidth: 2,
+  borderLeftColor: "$color05",
+  paddingLeft: "$4",
+  fontStyle: "italic"
+});
+
+// src/atoms/Spinner/Spinner.tsx
+var import_tamagui13 = require("tamagui");
+var Spinner = (0, import_tamagui13.styled)(import_tamagui13.Spinner, {
+  name: "Spinner",
+  color: "$primary"
+});
+
 // src/atoms/Progress.tsx
-var import_tamagui11 = require("tamagui");
-var import_react8 = __toESM(require("react"));
-var import_jsx_runtime8 = require("react/jsx-runtime");
-var ProgressFrame = (0, import_tamagui11.styled)(import_tamagui11.Progress, {
+var import_tamagui14 = require("tamagui");
+var import_react9 = __toESM(require("react"));
+var import_jsx_runtime9 = require("react/jsx-runtime");
+var ProgressFrame = (0, import_tamagui14.styled)(import_tamagui14.Progress, {
   name: "Progress",
   height: 16,
   // h-4
-  width: "100%",
+  marginHorizontal: "$true",
   backgroundColor: "$secondary",
   borderRadius: "$10",
   // rounded-full
   overflow: "hidden"
 });
-var ProgressIndicator = (0, import_tamagui11.styled)(import_tamagui11.Progress.Indicator, {
+var ProgressIndicator = (0, import_tamagui14.styled)(import_tamagui14.Progress.Indicator, {
   name: "ProgressIndicator",
   backgroundColor: "$primary",
   height: "100%",
@@ -3036,14 +3275,14 @@ var ProgressIndicator = (0, import_tamagui11.styled)(import_tamagui11.Progress.I
   animation: "quick"
   // transition-all
 });
-var Progress = import_react8.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ProgressFrame, { ref, value: props.value, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(ProgressIndicator, {}) });
+var Progress = import_react9.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ProgressFrame, { ref, value: props.value, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(ProgressIndicator, {}) });
 });
 Progress.displayName = "Progress";
 
 // src/atoms/Separator.tsx
-var import_tamagui12 = require("tamagui");
-var SeparatorFrame = (0, import_tamagui12.styled)(import_tamagui12.Separator, {
+var import_tamagui15 = require("tamagui");
+var SeparatorFrame = (0, import_tamagui15.styled)(import_tamagui15.Separator, {
   name: "Separator",
   backgroundColor: "$border",
   // bg-border
@@ -3066,10 +3305,10 @@ var SeparatorFrame = (0, import_tamagui12.styled)(import_tamagui12.Separator, {
 var Separator = SeparatorFrame;
 
 // src/atoms/Toggle/Toggle.tsx
-var import_tamagui13 = require("tamagui");
-var import_react9 = __toESM(require("react"));
-var import_jsx_runtime9 = require("react/jsx-runtime");
-var ToggleFrame = (0, import_tamagui13.styled)(import_tamagui13.Button, {
+var import_tamagui16 = require("tamagui");
+var import_react10 = __toESM(require("react"));
+var import_jsx_runtime10 = require("react/jsx-runtime");
+var ToggleFrame = (0, import_tamagui16.styled)(import_tamagui16.Button, {
   name: "Toggle",
   backgroundColor: "transparent",
   borderRadius: "$4",
@@ -3091,9 +3330,9 @@ var ToggleFrame = (0, import_tamagui13.styled)(import_tamagui13.Button, {
     }
   }
 });
-var Toggle = import_react9.default.forwardRef((props, ref) => {
+var Toggle = import_react10.default.forwardRef((props, ref) => {
   const { pressed, onPressedChange, onPress, ...rest } = props;
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
     ToggleFrame,
     {
       ref,
@@ -3109,8 +3348,8 @@ var Toggle = import_react9.default.forwardRef((props, ref) => {
 Toggle.displayName = "Toggle";
 
 // src/atoms/ScrollArea.tsx
-var import_tamagui14 = require("tamagui");
-var ScrollAreaFrame = (0, import_tamagui14.styled)(import_tamagui14.ScrollView, {
+var import_tamagui17 = require("tamagui");
+var ScrollAreaFrame = (0, import_tamagui17.styled)(import_tamagui17.ScrollView, {
   name: "ScrollArea",
   width: "100%",
   height: "100%",
@@ -3124,10 +3363,10 @@ var ScrollAreaFrame = (0, import_tamagui14.styled)(import_tamagui14.ScrollView, 
 var ScrollArea = ScrollAreaFrame;
 
 // src/atoms/Textarea/Textarea.tsx
-var import_react10 = __toESM(require("react"));
-var import_tamagui15 = require("tamagui");
-var import_jsx_runtime10 = require("react/jsx-runtime");
-var StyledTextarea = (0, import_tamagui15.styled)(import_tamagui15.TextArea, {
+var import_react11 = __toESM(require("react"));
+var import_tamagui18 = require("tamagui");
+var import_jsx_runtime11 = require("react/jsx-runtime");
+var StyledTextarea = (0, import_tamagui18.styled)(import_tamagui18.TextArea, {
   name: "Textarea",
   fontFamily: "$body",
   color: "$foreground",
@@ -3198,14 +3437,14 @@ var StyledTextarea = (0, import_tamagui15.styled)(import_tamagui15.TextArea, {
     size: "default"
   }
 });
-var TextareaImpl = import_react10.default.forwardRef(
+var TextareaImpl = import_react11.default.forwardRef(
   ({
     variant = "default",
     size = "default",
     invalid = false,
     ...props
   }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
       StyledTextarea,
       {
         ref,
@@ -3226,11 +3465,11 @@ var Textarea = withErrorLogging(
 );
 
 // src/atoms/Checkbox/Checkbox.tsx
-var import_react11 = __toESM(require("react"));
-var import_tamagui16 = require("tamagui");
-var import_jsx_runtime11 = require("react/jsx-runtime");
-var CheckIcon = () => /* @__PURE__ */(0, import_jsx_runtime11.jsx)(
-  import_tamagui16.View,
+var import_react12 = __toESM(require("react"));
+var import_tamagui19 = require("tamagui");
+var import_jsx_runtime12 = require("react/jsx-runtime");
+var CheckIcon = () => /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+  import_tamagui19.View,
   {
     width: 8,
     height: 10,
@@ -3241,7 +3480,7 @@ var CheckIcon = () => /* @__PURE__ */(0, import_jsx_runtime11.jsx)(
     marginBottom: 2
   }
 );
-var StyledCheckbox = (0, import_tamagui16.styled)(import_tamagui16.Checkbox, {
+var StyledCheckbox = (0, import_tamagui19.styled)(import_tamagui19.Checkbox, {
   name: "Checkbox",
   width: "$5",
   height: "$5",
@@ -3274,22 +3513,22 @@ var StyledCheckbox = (0, import_tamagui16.styled)(import_tamagui16.Checkbox, {
     }
   }
 });
-var StyledIndicator = (0, import_tamagui16.styled)(import_tamagui16.Checkbox.Indicator, {
+var StyledIndicator = (0, import_tamagui19.styled)(import_tamagui19.Checkbox.Indicator, {
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
   height: "100%"
 });
-var CheckboxImpl = import_react11.default.forwardRef(
+var CheckboxImpl = import_react12.default.forwardRef(
   ({ checked, onCheckedChange, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
       StyledCheckbox,
       {
         ref,
         checked,
         onCheckedChange,
         ...props,
-        children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(StyledIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(CheckIcon, {}) })
+        children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(StyledIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(CheckIcon, {}) })
       }
     );
   }
@@ -3301,8 +3540,8 @@ var Checkbox = withErrorLogging(
 );
 
 // src/molecules/Card/Card.tsx
-var import_tamagui17 = require("tamagui");
-var CardFrame = (0, import_tamagui17.styled)(import_tamagui17.View, {
+var import_tamagui20 = require("tamagui");
+var CardFrame = (0, import_tamagui20.styled)(import_tamagui20.View, {
   name: "Card",
   backgroundColor: "$background",
   borderWidth: 1,
@@ -3328,27 +3567,27 @@ var CardFrame = (0, import_tamagui17.styled)(import_tamagui17.View, {
     variant: "default"
   }
 });
-var CardHeader = (0, import_tamagui17.styled)(import_tamagui17.View, {
+var CardHeader = (0, import_tamagui20.styled)(import_tamagui20.View, {
   name: "CardHeader",
   marginBottom: "$md"
 });
-var CardTitle = (0, import_tamagui17.styled)(import_tamagui17.Text, {
+var CardTitle = (0, import_tamagui20.styled)(import_tamagui20.Text, {
   name: "CardTitle",
   fontSize: "$6",
   fontWeight: "600",
   color: "$foreground",
   marginBottom: "$sm"
 });
-var CardDescription = (0, import_tamagui17.styled)(import_tamagui17.Text, {
+var CardDescription = (0, import_tamagui20.styled)(import_tamagui20.Text, {
   name: "CardDescription",
   fontSize: "$3",
   color: "$mutedForeground",
   lineHeight: "$3"
 });
-var CardContent = (0, import_tamagui17.styled)(import_tamagui17.View, {
+var CardContent = (0, import_tamagui20.styled)(import_tamagui20.View, {
   name: "CardContent"
 });
-var CardFooter = (0, import_tamagui17.styled)(import_tamagui17.View, {
+var CardFooter = (0, import_tamagui20.styled)(import_tamagui20.View, {
   name: "CardFooter",
   marginTop: "$lg",
   paddingTop: "$lg",
@@ -3358,13 +3597,13 @@ var CardFooter = (0, import_tamagui17.styled)(import_tamagui17.View, {
 
 // src/molecules/Collapsible.tsx
 var CollapsiblePrimitive = __toESM(require("@radix-ui/react-collapsible"));
-var import_react12 = __toESM(require("react"));
+var import_react13 = __toESM(require("react"));
 var import_react_animate_height = __toESM(require("react-animate-height"));
-var import_tamagui18 = require("tamagui");
-var import_jsx_runtime12 = require("react/jsx-runtime");
-var CollapsibleContext = import_react12.default.createContext({ open: false });
-var CollapsibleRoot = import_react12.default.forwardRef(({ open: openProp, defaultOpen, onOpenChange, children, ...props }, ref) => {
-  const [openState, setOpenState] = (0, import_react12.useState)(defaultOpen || false);
+var import_tamagui21 = require("tamagui");
+var import_jsx_runtime13 = require("react/jsx-runtime");
+var CollapsibleContext = import_react13.default.createContext({ open: false });
+var CollapsibleRoot = import_react13.default.forwardRef(({ open: openProp, defaultOpen, onOpenChange, children, ...props }, ref) => {
+  const [openState, setOpenState] = (0, import_react13.useState)(defaultOpen || false);
   const open = openProp !== void 0 ? openProp : openState;
   const handleOpenChange = (newOpen) => {
     if (openProp === void 0) {
@@ -3372,33 +3611,33 @@ var CollapsibleRoot = import_react12.default.forwardRef(({ open: openProp, defau
     }
     onOpenChange?.(newOpen);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
     CollapsiblePrimitive.Root,
     {
       open,
       onOpenChange: handleOpenChange,
       ref,
       ...props,
-      children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(CollapsibleContext.Provider, { value: { open }, children })
+      children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(CollapsibleContext.Provider, { value: { open }, children })
     }
   );
 });
 CollapsibleRoot.displayName = CollapsiblePrimitive.Root.displayName;
-var CollapsibleTrigger = (0, import_tamagui18.styled)(CollapsiblePrimitive.Trigger, {
+var CollapsibleTrigger = (0, import_tamagui21.styled)(CollapsiblePrimitive.Trigger, {
   name: "CollapsibleTrigger"
 });
-var CollapsibleContent = import_react12.default.forwardRef(({ children, animateHeightProps, ...props }, ref) => {
-  const { open } = (0, import_react12.useContext)(CollapsibleContext);
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(CollapsiblePrimitive.Content, { forceMount: true, ref, ...props, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_tamagui18.Stack, { children: /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(import_react_animate_height.default, { duration: 300, height: open ? "auto" : 0, ...animateHeightProps, children }) }) });
+var CollapsibleContent = import_react13.default.forwardRef(({ children, animateHeightProps, ...props }, ref) => {
+  const { open } = (0, import_react13.useContext)(CollapsibleContext);
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(CollapsiblePrimitive.Content, { forceMount: true, ref, ...props, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui21.Stack, { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_react_animate_height.default, { duration: 300, height: open ? "auto" : 0, ...animateHeightProps, children }) }) });
 });
 CollapsibleContent.displayName = CollapsiblePrimitive.Content.displayName;
 var Collapsible = CollapsibleRoot;
 
 // src/molecules/Dialog/Dialog.tsx
-var import_react13 = __toESM(require("react"));
-var import_tamagui19 = require("tamagui");
-var import_jsx_runtime13 = require("react/jsx-runtime");
-var DialogOverlay = (0, import_tamagui19.styled)(import_tamagui19.Dialog.Overlay, {
+var import_react14 = __toESM(require("react"));
+var import_tamagui22 = require("tamagui");
+var import_jsx_runtime14 = require("react/jsx-runtime");
+var DialogOverlay = (0, import_tamagui22.styled)(import_tamagui22.Dialog.Overlay, {
   name: "DialogOverlay",
   backgroundColor: "rgba(0, 0, 0, 0.5)",
   animation: "quick",
@@ -3406,7 +3645,7 @@ var DialogOverlay = (0, import_tamagui19.styled)(import_tamagui19.Dialog.Overlay
   enterStyle: { opacity: 0 },
   exitStyle: { opacity: 0 }
 });
-var DialogContent = (0, import_tamagui19.styled)(import_tamagui19.Dialog.Content, {
+var DialogContent = (0, import_tamagui22.styled)(import_tamagui22.Dialog.Content, {
   name: "DialogContent",
   backgroundColor: "$background",
   borderRadius: "$lg",
@@ -3431,87 +3670,79 @@ var DialogContent = (0, import_tamagui19.styled)(import_tamagui19.Dialog.Content
   opacity: 1,
   y: 0
 });
-var DialogHeader = (0, import_tamagui19.styled)(import_tamagui19.XStack, {
+var DialogHeader = (0, import_tamagui22.styled)(import_tamagui22.XStack, {
   name: "DialogHeader",
   flexDirection: "column",
   marginBottom: "$md",
   gap: "$sm"
 });
-var DialogTitle = (0, import_tamagui19.styled)(import_tamagui19.Dialog.Title, {
+var DialogTitle = (0, import_tamagui22.styled)(import_tamagui22.Dialog.Title, {
   name: "DialogTitle",
   fontSize: "$6",
   fontWeight: "600",
   color: "$foreground"
 });
-var DialogDescription = (0, import_tamagui19.styled)(import_tamagui19.Dialog.Description, {
+var DialogDescription = (0, import_tamagui22.styled)(import_tamagui22.Dialog.Description, {
   name: "DialogDescription",
   fontSize: "$3",
   color: "$mutedForeground",
   lineHeight: "$4"
 });
-var DialogFooter = (0, import_tamagui19.styled)(import_tamagui19.XStack, {
+var DialogFooter = (0, import_tamagui22.styled)(import_tamagui22.XStack, {
   name: "DialogFooter",
   flexDirection: "row",
   justifyContent: "flex-end",
   gap: "$3",
   marginTop: "$md"
 });
-var Dialog = import_tamagui19.Dialog;
-var DialogTrigger = import_tamagui19.Dialog.Trigger;
-var DialogPortal = import_tamagui19.Dialog.Portal;
-var DialogClose = import_tamagui19.Dialog.Close;
-var DialogContentComposite = import_react13.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DialogPortal, {
-    children: [
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(DialogOverlay, {}, "overlay"),
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(DialogContent, {
-      ref, ...props, children: [
-        props.children,
-      /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui19.Unspaced, {
-          children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui19.Dialog.Close, {
-            asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
-              import_tamagui19.Button,
-              {
-                position: "absolute",
-                top: "$3",
-                right: "$3",
-                size: "$2",
-                circular: true,
-                backgroundColor: "transparent",
-                pressStyle: { backgroundColor: "$muted" },
-                children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui19.Text, { color: "$mutedForeground", children: "\u2715" })
-              }
-            )
-          })
-        })
-      ]
-    }, "content")
-    ]
-  });
+var Dialog = import_tamagui22.Dialog;
+var DialogTrigger = import_tamagui22.Dialog.Trigger;
+var DialogPortal = import_tamagui22.Dialog.Portal;
+var DialogClose = import_tamagui22.Dialog.Close;
+var DialogContentComposite = import_react14.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(DialogPortal, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(DialogOverlay, {}, "overlay"),
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(DialogContent, { ref, ...props, children: [
+      props.children,
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(import_tamagui22.Unspaced, { children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(import_tamagui22.Dialog.Close, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+        import_tamagui22.Button,
+        {
+          position: "absolute",
+          top: "$3",
+          right: "$3",
+          size: "$2",
+          circular: true,
+          backgroundColor: "transparent",
+          pressStyle: { backgroundColor: "$muted" },
+          children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(import_tamagui22.Text, { color: "$mutedForeground", children: "\u2715" })
+        }
+      ) }) })
+    ] }, "content")
+  ] });
 });
 DialogContentComposite.displayName = "DialogContent";
 
 // src/molecules/Sheet.tsx
 var import_sheet = require("@tamagui/sheet");
-var import_tamagui20 = require("tamagui");
-var import_react14 = __toESM(require("react"));
-var import_jsx_runtime14 = require("react/jsx-runtime");
+var import_tamagui23 = require("tamagui");
+var import_react15 = __toESM(require("react"));
+var import_jsx_runtime15 = require("react/jsx-runtime");
 var Sheet = import_sheet.Sheet;
 var SheetTrigger = import_sheet.Sheet.Trigger;
 var SheetClose = import_sheet.Sheet.Close;
-var SheetOverlay = (0, import_tamagui20.styled)(import_sheet.Sheet.Overlay, {
+var SheetOverlay = (0, import_tamagui23.styled)(import_sheet.Sheet.Overlay, {
   name: "SheetOverlay",
   backgroundColor: "$black",
   opacity: 0.5,
   enterStyle: { opacity: 0 },
   exitStyle: { opacity: 0 }
 });
-var SheetHandle = (0, import_tamagui20.styled)(import_sheet.Sheet.Handle, {
+var SheetHandle = (0, import_tamagui23.styled)(import_sheet.Sheet.Handle, {
   name: "SheetHandle",
   backgroundColor: "$borderColor",
   opacity: 0.8
 });
-var SheetContentFrame = (0, import_tamagui20.styled)(import_sheet.Sheet.Frame, {
+var SheetContentFrame = (0, import_tamagui23.styled)(import_sheet.Sheet.Frame, {
   name: "SheetContent",
   backgroundColor: "$background",
   padding: "$4",
@@ -3523,34 +3754,32 @@ var SheetContentFrame = (0, import_tamagui20.styled)(import_sheet.Sheet.Frame, {
   shadowRadius: 10,
   elevation: 5
 });
-var SheetContent = import_react14.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, {
-    children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SheetOverlay, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SheetHandle, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(SheetContentFrame, { ref, ...props })
-    ]
-  });
+var SheetContent = import_react15.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(import_jsx_runtime15.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(SheetOverlay, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(SheetHandle, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(SheetContentFrame, { ref, ...props })
+  ] });
 });
 SheetContent.displayName = "SheetContent";
-var SheetHeader = (0, import_tamagui20.styled)(import_tamagui20.YStack, {
+var SheetHeader = (0, import_tamagui23.styled)(import_tamagui23.YStack, {
   name: "SheetHeader",
   gap: "$2",
   marginBottom: "$4"
 });
-var SheetFooter = (0, import_tamagui20.styled)(import_tamagui20.XStack, {
+var SheetFooter = (0, import_tamagui23.styled)(import_tamagui23.XStack, {
   name: "SheetFooter",
   justifyContent: "flex-end",
   gap: "$2",
   marginTop: "$4"
 });
-var SheetTitle = (0, import_tamagui20.styled)(import_tamagui20.H2, {
+var SheetTitle = (0, import_tamagui23.styled)(import_tamagui23.H2, {
   name: "SheetTitle",
   fontWeight: "bold",
   fontSize: "$6",
   color: "$foreground"
 });
-var SheetDescription = (0, import_tamagui20.styled)(import_tamagui20.Paragraph, {
+var SheetDescription = (0, import_tamagui23.styled)(import_tamagui23.Paragraph, {
   name: "SheetDescription",
   fontSize: "$3",
   color: "$mutedForeground"
@@ -3566,12 +3795,179 @@ var DrawerTitle = SheetTitle;
 var DrawerDescription = SheetDescription;
 var DrawerOverlay = SheetOverlay;
 var DrawerClose = SheetClose;
+var DrawerFrame = SheetContentFrame;
+var DrawerHandle = SheetHandle;
+
+// src/molecules/DropdownMenu/DropdownMenu.tsx
+var React16 = __toESM(require("react"));
+var DropdownMenuPrimitive = __toESM(require("@radix-ui/react-dropdown-menu"));
+var import_tamagui24 = require("tamagui");
+var import_lucide_icons = require("@tamagui/lucide-icons");
+var import_jsx_runtime16 = require("react/jsx-runtime");
+var DropdownMenu = DropdownMenuPrimitive.Root;
+var DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+var DropdownMenuGroup = DropdownMenuPrimitive.Group;
+var DropdownMenuPortal = DropdownMenuPrimitive.Portal;
+var DropdownMenuSub = DropdownMenuPrimitive.Sub;
+var DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
+var DropdownMenuSubTriggerFrame = (0, import_tamagui24.styled)(DropdownMenuPrimitive.SubTrigger, {
+  flexDirection: "row",
+  alignItems: "center",
+  paddingVertical: "$2",
+  paddingHorizontal: "$2",
+  borderRadius: "$sm",
+  cursor: "default",
+  outlineStyle: "none",
+  hoverStyle: {
+    backgroundColor: "$accent"
+  },
+  focusStyle: {
+    backgroundColor: "$accent"
+  }
+});
+var DropdownMenuSubTrigger = React16.forwardRef(({ className, children, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+  DropdownMenuSubTriggerFrame,
+  {
+    ref,
+    paddingLeft: inset ? "$8" : "$2",
+    ...props,
+    children: [
+      children,
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_tamagui24.View, { marginLeft: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_lucide_icons.ChevronRight, { size: 16 }) })
+    ]
+  }
+));
+DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName;
+var DropdownMenuSubContentFrame = (0, import_tamagui24.styled)(DropdownMenuPrimitive.SubContent, {
+  minWidth: 180,
+  // roughly 8rem
+  backgroundColor: "$background",
+  borderRadius: "$md",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  padding: "$1",
+  shadowColor: "$shadowColor",
+  shadowRadius: 5,
+  elevation: 5,
+  animation: "quick"
+});
+var DropdownMenuSubContent = React16.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(DropdownMenuSubContentFrame, { ref, ...props }));
+DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName;
+var DropdownMenuContentFrame = (0, import_tamagui24.styled)(DropdownMenuPrimitive.Content, {
+  minWidth: 220,
+  backgroundColor: "$background",
+  borderRadius: "$md",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  padding: "$1",
+  shadowColor: "$shadowColor",
+  shadowRadius: 10,
+  shadowOpacity: 0.2,
+  elevation: 10
+  // animation handled by radix/css? or we assume Tamagui handles it?
+});
+var DropdownMenuContent = React16.forwardRef(({ className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(DropdownMenuPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+  DropdownMenuContentFrame,
+  {
+    ref,
+    sideOffset,
+    ...props
+  }
+) }));
+DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
+var DropdownMenuItemFrame = (0, import_tamagui24.styled)(DropdownMenuPrimitive.Item, {
+  flexDirection: "row",
+  alignItems: "center",
+  paddingVertical: "$2",
+  paddingHorizontal: "$2",
+  borderRadius: "$sm",
+  cursor: "pointer",
+  outlineStyle: "none",
+  userSelect: "none",
+  hoverStyle: {
+    backgroundColor: "$accent"
+    // color is handled by children usually, or inheritable
+  },
+  focusStyle: {
+    backgroundColor: "$accent"
+  }
+});
+var DropdownMenuItem = React16.forwardRef(({ className, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+  DropdownMenuItemFrame,
+  {
+    ref,
+    paddingLeft: inset ? "$8" : "$2",
+    ...props
+  }
+));
+DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
+var DropdownMenuCheckboxItemFrame = (0, import_tamagui24.styled)(DropdownMenuPrimitive.CheckboxItem, {
+  flexDirection: "row",
+  alignItems: "center",
+  paddingVertical: "$2",
+  paddingLeft: "$8",
+  paddingRight: "$2",
+  borderRadius: "$sm",
+  outlineStyle: "none",
+  cursor: "default",
+  hoverStyle: { backgroundColor: "$accent" },
+  focusStyle: { backgroundColor: "$accent" }
+});
+var DropdownMenuCheckboxItem = React16.forwardRef(({ className, children, checked, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+  DropdownMenuCheckboxItemFrame,
+  {
+    ref,
+    checked,
+    ...props,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_tamagui24.View, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_lucide_icons.Check, { size: 16 }) }) }),
+      children
+    ]
+  }
+));
+DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName;
+var DropdownMenuRadioItemFrame = (0, import_tamagui24.styled)(DropdownMenuPrimitive.RadioItem, {
+  flexDirection: "row",
+  alignItems: "center",
+  paddingVertical: "$2",
+  paddingLeft: "$8",
+  paddingRight: "$2",
+  borderRadius: "$sm",
+  outlineStyle: "none",
+  cursor: "default",
+  hoverStyle: { backgroundColor: "$accent" },
+  focusStyle: { backgroundColor: "$accent" }
+});
+var DropdownMenuRadioItem = React16.forwardRef(({ className, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(DropdownMenuRadioItemFrame, { ref, ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_tamagui24.View, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_lucide_icons.Circle, { size: 8, fill: "currentColor" }) }) }),
+  children
+] }));
+DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
+var DropdownMenuLabel = (0, import_tamagui24.styled)(DropdownMenuPrimitive.Label, {
+  paddingHorizontal: "$2",
+  paddingVertical: "$1.5",
+  fontSize: "$3",
+  fontWeight: "600",
+  color: "$foreground"
+  // Ensure visibility
+});
+var DropdownMenuSeparator = (0, import_tamagui24.styled)(DropdownMenuPrimitive.Separator, {
+  height: 1,
+  backgroundColor: "$muted",
+  marginVertical: "$1"
+});
+var DropdownMenuShortcut = (0, import_tamagui24.styled)(import_tamagui24.Text, {
+  marginLeft: "auto",
+  fontSize: "$2",
+  color: "$mutedForeground",
+  letterSpacing: 1
+});
 
 // src/molecules/Popover/Popover.tsx
-var import_react15 = __toESM(require("react"));
-var import_tamagui21 = require("tamagui");
-var import_jsx_runtime15 = require("react/jsx-runtime");
-var PopoverContentFrame = (0, import_tamagui21.styled)(import_tamagui21.Popover.Content, {
+var import_react16 = __toESM(require("react"));
+var import_tamagui25 = require("tamagui");
+var import_jsx_runtime17 = require("react/jsx-runtime");
+var PopoverContentFrame = (0, import_tamagui25.styled)(import_tamagui25.Popover.Content, {
   name: "PopoverContent",
   backgroundColor: "$background",
   borderColor: "$borderColor",
@@ -3598,37 +3994,43 @@ var PopoverContentFrame = (0, import_tamagui21.styled)(import_tamagui21.Popover.
   y: 0,
   opacity: 1
 });
-var PopoverArrow = (0, import_tamagui21.styled)(import_tamagui21.Popover.Arrow, {
+var PopoverArrow = (0, import_tamagui25.styled)(import_tamagui25.Popover.Arrow, {
   name: "PopoverArrow",
   borderWidth: 1,
   borderColor: "$borderColor",
   backgroundColor: "$background"
 });
-var PopoverContent = import_react15.default.forwardRef(
+var PopoverContent = import_react16.default.forwardRef(
   ({ children, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(PopoverContentFrame, {
-      ref, ...props, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(PopoverArrow, { size: "$3" }),
-        children
-      ]
-    });
+    return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(PopoverContentFrame, { ref, ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(PopoverArrow, { size: "$3" }),
+      children
+    ] });
   }
 );
 PopoverContent.displayName = "PopoverContent";
-var Popover = import_tamagui21.Popover;
-var PopoverTrigger = import_tamagui21.Popover.Trigger;
-var PopoverAnchor = import_tamagui21.Popover.Anchor;
-var PopoverClose = import_tamagui21.Popover.Close;
+var Popover = import_tamagui25.Popover;
+var PopoverTrigger = import_tamagui25.Popover.Trigger;
+var PopoverAnchor = import_tamagui25.Popover.Anchor;
+var PopoverClose = import_tamagui25.Popover.Close;
+
+// src/molecules/HoverCard/HoverCard.tsx
+var import_jsx_runtime18 = require("react/jsx-runtime");
+var HoverCard = (props) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(Popover, { hoverable: true, ...props });
+};
+var HoverCardTrigger = PopoverTrigger;
+var HoverCardContent = PopoverContent;
 
 // src/molecules/RadioGroup.tsx
-var import_tamagui22 = require("tamagui");
-var import_react16 = __toESM(require("react"));
-var import_jsx_runtime16 = require("react/jsx-runtime");
-var RadioGroup = (0, import_tamagui22.styled)(import_tamagui22.RadioGroup, {
+var import_tamagui26 = require("tamagui");
+var import_react17 = __toESM(require("react"));
+var import_jsx_runtime19 = require("react/jsx-runtime");
+var RadioGroup2 = (0, import_tamagui26.styled)(import_tamagui26.RadioGroup, {
   name: "RadioGroup",
   gap: "$2"
 });
-var RadioGroupItemFrame = (0, import_tamagui22.styled)(import_tamagui22.RadioGroup.Item, {
+var RadioGroupItemFrame = (0, import_tamagui26.styled)(import_tamagui26.RadioGroup.Item, {
   name: "RadioGroupItem",
   size: "$4",
   // h-4 w-4 (16px)
@@ -3651,23 +4053,23 @@ var RadioGroupItemFrame = (0, import_tamagui22.styled)(import_tamagui22.RadioGro
     borderColor: "$primaryHover"
   }
 });
-var RadioGroupIndicator = (0, import_tamagui22.styled)(import_tamagui22.RadioGroup.Indicator, {
+var RadioGroupIndicator = (0, import_tamagui26.styled)(import_tamagui26.RadioGroup.Indicator, {
   name: "RadioGroupIndicator",
   backgroundColor: "$primary",
   width: 8,
   height: 8,
   borderRadius: "$10"
 });
-var RadioGroupItem = import_react16.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(RadioGroupItemFrame, { ref, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(RadioGroupIndicator, {}) });
+var RadioGroupItem = import_react17.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(RadioGroupItemFrame, { ref, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(RadioGroupIndicator, {}) });
 });
 RadioGroupItem.displayName = "RadioGroupItem";
 
 // src/molecules/Resizable.tsx
-var import_tamagui23 = require("tamagui");
-var import_react17 = __toESM(require("react"));
-var import_jsx_runtime17 = require("react/jsx-runtime");
-var ResizablePanelGroupFrame = (0, import_tamagui23.styled)(import_tamagui23.XStack, {
+var import_tamagui27 = require("tamagui");
+var import_react18 = __toESM(require("react"));
+var import_jsx_runtime20 = require("react/jsx-runtime");
+var ResizablePanelGroupFrame = (0, import_tamagui27.styled)(import_tamagui27.XStack, {
   name: "ResizablePanelGroup",
   flex: 1,
   width: "100%",
@@ -3686,12 +4088,12 @@ var ResizablePanelGroupFrame = (0, import_tamagui23.styled)(import_tamagui23.XSt
     direction: "horizontal"
   }
 });
-var ResizablePanelFrame = (0, import_tamagui23.styled)(import_tamagui23.YStack, {
+var ResizablePanelFrame = (0, import_tamagui27.styled)(import_tamagui27.YStack, {
   name: "ResizablePanel",
   flex: 1
   // Default to flex 1, but can be overridden by defaultSize (which we'd need to map to flex basis or grow)
 });
-var ResizableHandleFrame = (0, import_tamagui23.styled)(import_tamagui23.YStack, {
+var ResizableHandleFrame = (0, import_tamagui27.styled)(import_tamagui27.YStack, {
   name: "ResizableHandle",
   backgroundColor: "$border",
   variants: {
@@ -3712,25 +4114,25 @@ var ResizableHandleFrame = (0, import_tamagui23.styled)(import_tamagui23.YStack,
     }
   }
 });
-var ResizablePanelGroup = import_react17.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ResizablePanelGroupFrame, { ref, ...props });
+var ResizablePanelGroup = import_react18.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ResizablePanelGroupFrame, { ref, ...props });
 });
 ResizablePanelGroup.displayName = "ResizablePanelGroup";
-var ResizablePanel = import_react17.default.forwardRef((props, ref) => {
+var ResizablePanel = import_react18.default.forwardRef((props, ref) => {
   const { defaultSize, ...rest } = props;
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ResizablePanelFrame, { ref, ...rest });
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ResizablePanelFrame, { ref, ...rest });
 });
 ResizablePanel.displayName = "ResizablePanel";
-var ResizableHandle = import_react17.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(ResizableHandleFrame, { ref, ...props });
+var ResizableHandle = import_react18.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ResizableHandleFrame, { ref, ...props });
 });
 ResizableHandle.displayName = "ResizableHandle";
 
 // src/molecules/Select/Select.tsx
-var import_react18 = __toESM(require("react"));
-var import_tamagui24 = require("tamagui");
-var import_jsx_runtime18 = require("react/jsx-runtime");
-var SelectTriggerFrame = (0, import_tamagui24.styled)(import_tamagui24.Button, {
+var import_react19 = __toESM(require("react"));
+var import_tamagui28 = require("tamagui");
+var import_jsx_runtime21 = require("react/jsx-runtime");
+var SelectTriggerFrame = (0, import_tamagui28.styled)(import_tamagui28.Button, {
   name: "SelectTrigger",
   width: "100%",
   flexDirection: "row",
@@ -3750,13 +4152,13 @@ var SelectTriggerFrame = (0, import_tamagui24.styled)(import_tamagui24.Button, {
     borderWidth: 2
   }
 });
-var SelectIconFrame = (0, import_tamagui24.styled)(import_tamagui24.View, {
+var SelectIconFrame = (0, import_tamagui28.styled)(import_tamagui28.View, {
   name: "SelectIcon",
   marginLeft: "$2"
 });
-var ChevronDownIcon = () => /* @__PURE__ */(0, import_jsx_runtime18.jsx)(import_tamagui24.Text, { fontSize: "$1", color: "$mutedForeground", children: "\u25BC" });
-var CheckIcon2 = () => /* @__PURE__ */(0, import_jsx_runtime18.jsx)(import_tamagui24.Text, { fontSize: "$3", color: "$primary", children: "\u2713" });
-var SelectImpl = import_react18.default.forwardRef(
+var ChevronDownIcon = () => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Text, { fontSize: "$1", color: "$mutedForeground", children: "\u25BC" });
+var CheckIcon2 = () => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Text, { fontSize: "$3", color: "$primary", children: "\u2713" });
+var SelectImpl = import_react19.default.forwardRef(
   ({
     items,
     placeholder,
@@ -3764,64 +4166,52 @@ var SelectImpl = import_react18.default.forwardRef(
     disablePreventBodyScroll = true,
     ...props
   }, ref) => {
-    const hasCustomChildren = import_react18.default.Children.count(children) > 0;
-    const content = (0, import_react18.useMemo)(() => {
+    const hasCustomChildren = import_react19.default.Children.count(children) > 0;
+    const content = (0, import_react19.useMemo)(() => {
       if (hasCustomChildren) return children;
       if (!items || items.length === 0) return null;
-      return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_jsx_runtime18.Fragment, {
-        children: [
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Trigger, { icon: ChevronDownIcon, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(SelectTriggerFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Value, { placeholder }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Adapt, {
-          when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(
-            import_tamagui24.Sheet,
-            {
-              native: !import_tamagui24.isWeb,
-              modal: true,
-              dismissOnSnapToBottom: true,
-              animationConfig: {
-                type: "spring",
-                damping: 20,
-                mass: 1.2,
-                stiffness: 250
-              },
-              children: [
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Sheet.Frame, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Sheet.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Adapt.Contents, {}) }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
-                import_tamagui24.Sheet.Overlay,
+      return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(import_jsx_runtime21.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Select.Trigger, { icon: ChevronDownIcon, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(SelectTriggerFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Select.Value, { placeholder }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+          import_tamagui28.Sheet,
+          {
+            native: !import_tamagui28.isWeb,
+            modal: true,
+            dismissOnSnapToBottom: true,
+            animationConfig: {
+              type: "spring",
+              damping: 20,
+              mass: 1.2,
+              stiffness: 250
+            },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Sheet.Frame, { children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Sheet.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Adapt.Contents, {}) }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+                import_tamagui28.Sheet.Overlay,
                 {
                   animation: "lazy",
                   enterStyle: { opacity: 0 },
                   exitStyle: { opacity: 0 }
                 }
               )
-              ]
-            }
-          )
-        }),
-        /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_tamagui24.Select.Content, {
-          zIndex: 2e5, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.ScrollUpButton, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Viewport, {
-            minWidth: 200, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_tamagui24.Select.Group, {
-              children: [
-                props.label && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.Label, { children: props.label }),
-                items.map((item, index) => /* @__PURE__ */(0, import_jsx_runtime18.jsxs)(import_tamagui24.Select.Item, {
-                  value: item.value, index, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.ItemText, { children: item.label }),
-              /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.ItemIndicator, { marginLeft: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(CheckIcon2, {}) })
-                  ]
-                }, item.value))
-              ]
-            })
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(import_tamagui24.Select.ScrollDownButton, {})
-          ]
-        })
-        ]
-      });
+            ]
+          }
+        ) }),
+        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(import_tamagui28.Select.Content, { zIndex: 2e5, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Select.ScrollUpButton, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Select.Viewport, { minWidth: 200, children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(import_tamagui28.Select.Group, { children: [
+            props.label && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Select.Label, { children: props.label }),
+            items.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(import_tamagui28.Select.Item, { value: item.value, index, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Select.ItemText, { children: item.label }),
+              /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Select.ItemIndicator, { marginLeft: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(CheckIcon2, {}) })
+            ] }, item.value))
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui28.Select.ScrollDownButton, {})
+        ] })
+      ] });
     }, [items, placeholder, props.label, children, hasCustomChildren]);
-    return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
-      import_tamagui24.Select,
+    return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+      import_tamagui28.Select,
       {
         disablePreventBodyScroll,
         ...props,
@@ -3836,35 +4226,130 @@ var SelectWithLogging = withErrorLogging(
   SelectImpl
 );
 var Select = Object.assign(SelectWithLogging, {
-  Trigger: import_tamagui24.Select.Trigger,
-  Value: import_tamagui24.Select.Value,
-  Content: import_tamagui24.Select.Content,
-  Item: import_tamagui24.Select.Item,
-  ItemText: import_tamagui24.Select.ItemText,
-  ItemIndicator: import_tamagui24.Select.ItemIndicator,
-  Group: import_tamagui24.Select.Group,
-  Viewport: import_tamagui24.Select.Viewport,
-  Label: import_tamagui24.Select.Label,
-  ScrollUpButton: import_tamagui24.Select.ScrollUpButton,
-  ScrollDownButton: import_tamagui24.Select.ScrollDownButton,
+  Trigger: import_tamagui28.Select.Trigger,
+  Value: import_tamagui28.Select.Value,
+  Content: import_tamagui28.Select.Content,
+  Item: import_tamagui28.Select.Item,
+  ItemText: import_tamagui28.Select.ItemText,
+  ItemIndicator: import_tamagui28.Select.ItemIndicator,
+  Group: import_tamagui28.Select.Group,
+  Viewport: import_tamagui28.Select.Viewport,
+  Label: import_tamagui28.Select.Label,
+  ScrollUpButton: import_tamagui28.Select.ScrollUpButton,
+  ScrollDownButton: import_tamagui28.Select.ScrollDownButton,
   TriggerFrame: SelectTriggerFrame,
   IconFrame: SelectIconFrame
 });
+var SelectTrigger = import_tamagui28.Select.Trigger;
+var SelectValue = import_tamagui28.Select.Value;
+var SelectContent = import_tamagui28.Select.Content;
+var SelectItem = import_tamagui28.Select.Item;
+var SelectItemText = import_tamagui28.Select.ItemText;
+var SelectItemIndicator = import_tamagui28.Select.ItemIndicator;
+var SelectGroup = import_tamagui28.Select.Group;
+var SelectViewport = import_tamagui28.Select.Viewport;
+var SelectLabel = import_tamagui28.Select.Label;
+var SelectScrollUpButton = import_tamagui28.Select.ScrollUpButton;
+var SelectScrollDownButton = import_tamagui28.Select.ScrollDownButton;
+
+// src/molecules/StarRating/StarRating.tsx
+var import_react20 = require("react");
+var import_tamagui29 = require("tamagui");
+var import_lucide_icons2 = require("@tamagui/lucide-icons");
+var import_jsx_runtime22 = require("react/jsx-runtime");
+var StarRating = (0, import_react20.forwardRef)(({
+  count = 5,
+  onChange,
+  value,
+  defaultValue: defaultValue2 = null,
+  disabled,
+  iconProps,
+  gap = "$1",
+  Icon = import_lucide_icons2.Star,
+  size = "$1",
+  colorHover = "$yellow7",
+  colorActiveHover = "$yellow8",
+  colorActive = "$yellow10",
+  color = "$gray7",
+  ...stackProps
+}, ref) => {
+  const [internalRating, setInternalRating] = (0, import_react20.useState)(defaultValue2);
+  const [hoverRating, setHoverRating] = (0, import_react20.useState)(null);
+  const isControlled = value !== void 0;
+  const currentRatingValue = isControlled ? value : internalRating;
+  const arr = Array.from(Array(count).keys());
+  const handlePress = (ratingToSet) => {
+    if (disabled) return;
+    const newRating = currentRatingValue === ratingToSet ? null : ratingToSet;
+    if (!isControlled) {
+      setInternalRating(newRating);
+    }
+    onChange?.(newRating);
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_tamagui29.XStack, { gap, ...stackProps, ref, children: arr.map((idx) => {
+    const ratingValue = idx + 1;
+    const filled = ratingValue <= (currentRatingValue || 0);
+    const hovered = ratingValue <= (hoverRating || 0);
+    let currentColor = color;
+    if (hoverRating !== null) {
+      if (hovered) {
+        currentColor = colorHover;
+      }
+    } else {
+      if (filled) {
+        currentColor = colorActive;
+      }
+    }
+    if (filled) {
+      currentColor = hovered ? colorActiveHover : colorActive;
+    } else {
+      currentColor = hovered ? colorHover : color;
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+      import_tamagui29.SizableStack,
+      {
+        testID: `star-${ratingValue}`,
+        size,
+        onHoverIn: () => {
+          if (disabled) return;
+          setHoverRating(ratingValue);
+        },
+        onHoverOut: () => {
+          if (disabled) return;
+          setHoverRating(null);
+        },
+        onPress: () => handlePress(ratingValue),
+        cursor: disabled ? "not-allowed" : "pointer",
+        children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
+          Icon,
+          {
+            ...iconProps,
+            size,
+            color: currentColor,
+            fill: filled ? currentColor : "transparent"
+          }
+        )
+      },
+      `${ratingValue}`
+    );
+  }) });
+});
+StarRating.displayName = "StarRating";
 
 // src/molecules/Toast.tsx
-var import_react19 = require("react");
-var import_tamagui25 = require("tamagui");
+var import_react21 = require("react");
+var import_tamagui30 = require("tamagui");
 var import_portal = require("@tamagui/portal");
-var import_jsx_runtime19 = require("react/jsx-runtime");
-var ToastContext = (0, import_react19.createContext)(void 0);
+var import_jsx_runtime23 = require("react/jsx-runtime");
+var ToastContext = (0, import_react21.createContext)(void 0);
 var useToast = () => {
-  const context = (0, import_react19.useContext)(ToastContext);
+  const context = (0, import_react21.useContext)(ToastContext);
   if (!context) {
     throw new Error("useToast must be used within a ToastProvider");
   }
   return context;
 };
-var ToastViewportFrame = (0, import_tamagui25.styled)(import_tamagui25.YStack, {
+var ToastViewportFrame = (0, import_tamagui30.styled)(import_tamagui30.YStack, {
   name: "ToastViewport",
   position: "absolute",
   bottom: 0,
@@ -3878,7 +4363,7 @@ var ToastViewportFrame = (0, import_tamagui25.styled)(import_tamagui25.YStack, {
   pointerEvents: "box-none"
   // Allow clicks through empty space
 });
-var ToastFrame = (0, import_tamagui25.styled)(import_tamagui25.XStack, {
+var ToastFrame = (0, import_tamagui30.styled)(import_tamagui30.XStack, {
   name: "Toast",
   backgroundColor: "$background",
   borderRadius: "$4",
@@ -3913,7 +4398,7 @@ var ToastFrame = (0, import_tamagui25.styled)(import_tamagui25.XStack, {
     variant: "default"
   }
 });
-var ToastTitle = (0, import_tamagui25.styled)(import_tamagui25.Text, {
+var ToastTitle = (0, import_tamagui30.styled)(import_tamagui30.Text, {
   name: "ToastTitle",
   fontWeight: "600",
   fontSize: "$3",
@@ -3926,7 +4411,7 @@ var ToastTitle = (0, import_tamagui25.styled)(import_tamagui25.Text, {
     }
   }
 });
-var ToastDescription = (0, import_tamagui25.styled)(import_tamagui25.Text, {
+var ToastDescription = (0, import_tamagui30.styled)(import_tamagui30.Text, {
   name: "ToastDescription",
   fontSize: "$2",
   color: "$mutedForeground",
@@ -3939,7 +4424,7 @@ var ToastDescription = (0, import_tamagui25.styled)(import_tamagui25.Text, {
     }
   }
 });
-var ToastCloseButton = (0, import_tamagui25.styled)(import_tamagui25.Button, {
+var ToastCloseButton = (0, import_tamagui30.styled)(import_tamagui30.Button, {
   size: "$2",
   circular: true,
   chromeless: true,
@@ -3950,8 +4435,8 @@ var ToastCloseButton = (0, import_tamagui25.styled)(import_tamagui25.Button, {
   hoverStyle: { opacity: 1 }
 });
 var ToastProvider = ({ children }) => {
-  const [toasts, setToasts] = (0, import_react19.useState)([]);
-  const toast = (0, import_react19.useCallback)(({ duration = 5e3, ...props }) => {
+  const [toasts, setToasts] = (0, import_react21.useState)([]);
+  const toast = (0, import_react21.useCallback)(({ duration = 5e3, ...props }) => {
     const id2 = Math.random().toString(36).substring(2, 9);
     const newToast = { ...props, id: id2, duration };
     setToasts((prev) => [...prev, newToast]);
@@ -3961,18 +4446,16 @@ var ToastProvider = ({ children }) => {
       }, duration);
     }
   }, []);
-  const dismiss = (0, import_react19.useCallback)((id2) => {
+  const dismiss = (0, import_react21.useCallback)((id2) => {
     setToasts((prev) => prev.filter((t) => t.id !== id2));
   }, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(ToastContext.Provider, {
-    value: { toasts, toast, dismiss }, children: [
-      children,
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_portal.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastViewportFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_tamagui25.AnimatePresence, { children: toasts.map((t) => /* @__PURE__ */(0, import_jsx_runtime19.jsx)(ToastItem, { toast: t, onDismiss: () => dismiss(t.id) }, t.id)) }) }) })
-    ]
-  });
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(ToastContext.Provider, { value: { toasts, toast, dismiss }, children: [
+    children,
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_portal.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ToastViewportFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui30.AnimatePresence, { children: toasts.map((t) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ToastItem, { toast: t, onDismiss: () => dismiss(t.id) }, t.id)) }) }) })
+  ] });
 };
 var ToastItem = ({ toast, onDismiss }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
     ToastFrame,
     {
       variant: toast.variant,
@@ -3983,27 +4466,25 @@ var ToastItem = ({ toast, onDismiss }) => {
       scale: 1,
       y: 0,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(import_tamagui25.YStack, {
-        flex: 1, gap: "$1", children: [
-          toast.title && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastTitle, { variant: toast.variant, children: toast.title }),
-          toast.description && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastDescription, { variant: toast.variant, children: toast.description })
-        ]
-      }),
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(import_tamagui30.YStack, { flex: 1, gap: "$1", children: [
+          toast.title && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ToastTitle, { variant: toast.variant, children: toast.title }),
+          toast.description && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ToastDescription, { variant: toast.variant, children: toast.description })
+        ] }),
         toast.action,
-        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ToastCloseButton, { onPress: onDismiss, children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_tamagui25.Text, { children: "\u2715" }) })
+        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ToastCloseButton, { onPress: onDismiss, children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui30.Text, { children: "\u2715" }) })
       ]
     }
   );
 };
 
 // src/molecules/Tabs.tsx
-var import_tamagui26 = require("tamagui");
-var Tabs = (0, import_tamagui26.styled)(import_tamagui26.Tabs, {
+var import_tamagui31 = require("tamagui");
+var Tabs = (0, import_tamagui31.styled)(import_tamagui31.Tabs, {
   name: "Tabs",
   flexDirection: "column",
   defaultValue: "tab1"
 });
-var TabsList = (0, import_tamagui26.styled)(import_tamagui26.Tabs.List, {
+var TabsList = (0, import_tamagui31.styled)(import_tamagui31.Tabs.List, {
   name: "TabsList",
   flexDirection: "row",
   backgroundColor: "$muted",
@@ -4011,7 +4492,7 @@ var TabsList = (0, import_tamagui26.styled)(import_tamagui26.Tabs.List, {
   padding: "$1",
   gap: "$1"
 });
-var TabsTrigger = (0, import_tamagui26.styled)(import_tamagui26.Tabs.Tab, {
+var TabsTrigger = (0, import_tamagui31.styled)(import_tamagui31.Tabs.Tab, {
   name: "TabsTrigger",
   backgroundColor: "transparent",
   borderRadius: "$3",
@@ -4045,7 +4526,7 @@ var TabsTrigger = (0, import_tamagui26.styled)(import_tamagui26.Tabs.Tab, {
     }
   }
 });
-var TabsContent = (0, import_tamagui26.styled)(import_tamagui26.Tabs.Content, {
+var TabsContent = (0, import_tamagui31.styled)(import_tamagui31.Tabs.Content, {
   name: "TabsContent",
   backgroundColor: "$background",
   padding: "$4",
@@ -4064,11 +4545,11 @@ var TabsContent = (0, import_tamagui26.styled)(import_tamagui26.Tabs.Content, {
 });
 
 // src/molecules/Calendar/Calendar.tsx
-var import_react20 = require("react");
+var import_react22 = require("react");
 var import_datepicker = require("@rehookify/datepicker");
-var import_tamagui27 = require("tamagui");
-var import_jsx_runtime20 = require("react/jsx-runtime");
-var CalendarContainer = (0, import_tamagui27.styled)(import_tamagui27.YStack, {
+var import_tamagui32 = require("tamagui");
+var import_jsx_runtime24 = require("react/jsx-runtime");
+var CalendarContainer = (0, import_tamagui32.styled)(import_tamagui32.YStack, {
   width: 320,
   padding: "$4",
   borderRadius: "$md",
@@ -4076,14 +4557,14 @@ var CalendarContainer = (0, import_tamagui27.styled)(import_tamagui27.YStack, {
   borderColor: "$borderColor",
   backgroundColor: "$background"
 });
-var WeekDaysGrid = (0, import_tamagui27.styled)(import_tamagui27.XStack, {
+var WeekDaysGrid = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
   justifyContent: "space-between",
   marginBottom: "$2"
 });
-var DaysGrid = (0, import_tamagui27.styled)(import_tamagui27.XStack, {
+var DaysGrid = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
   flexWrap: "wrap"
 });
-var DayCell = (0, import_tamagui27.styled)(Button, {
+var DayCell = (0, import_tamagui32.styled)(Button, {
   width: 40,
   height: 40,
   padding: 0,
@@ -4121,7 +4602,7 @@ var DayCell = (0, import_tamagui27.styled)(Button, {
     }
   }
 });
-var DayText = (0, import_tamagui27.styled)(import_tamagui27.Text, {
+var DayText = (0, import_tamagui32.styled)(import_tamagui32.Text, {
   fontSize: "$3",
   variants: {
     selected: {
@@ -4131,7 +4612,7 @@ var DayText = (0, import_tamagui27.styled)(import_tamagui27.Text, {
     }
   }
 });
-var HeaderText = (0, import_tamagui27.styled)(import_tamagui27.Text, {
+var HeaderText = (0, import_tamagui32.styled)(import_tamagui32.Text, {
   fontSize: "$4",
   fontWeight: "600"
 });
@@ -4141,7 +4622,7 @@ var Calendar = ({
   minDate,
   maxDate
 }) => {
-  const [selectedDates, onDatesChange] = (0, import_react20.useState)(selectedDate ? [selectedDate] : []);
+  const [selectedDates, onDatesChange] = (0, import_react22.useState)(selectedDate ? [selectedDate] : []);
   const {
     data: { calendars, weekDays },
     propGetters: { dayButton, subtractOffset, addOffset }
@@ -4166,11 +4647,9 @@ var Calendar = ({
   if (!currentMonth) return null;
   const prevBtn = subtractOffset({ months: 1 });
   const nextBtn = addOffset({ months: 1 });
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(CalendarContainer, {
-    children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_tamagui27.XStack, {
-      justifyContent: "space-between", alignItems: "center", marginBottom: "$4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(CalendarContainer, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_tamagui32.XStack, { justifyContent: "space-between", alignItems: "center", marginBottom: "$4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
         Button,
         {
           circular: true,
@@ -4180,14 +4659,12 @@ var Calendar = ({
           children: "<"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(HeaderText, {
-        children: [
-          currentMonth.month,
-          " ",
-          currentMonth.year
-        ]
-      }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(HeaderText, { children: [
+        currentMonth.month,
+        " ",
+        currentMonth.year
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
         Button,
         {
           circular: true,
@@ -4197,92 +4674,89 @@ var Calendar = ({
           children: ">"
         }
       )
-      ]
-    }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(WeekDaysGrid, { children: weekDays.map((day) => /* @__PURE__ */(0, import_jsx_runtime20.jsx)(import_tamagui27.Text, { width: 40, textAlign: "center", color: "$mutedForeground", fontSize: "$2", children: day.substring(0, 2) }, day)) }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(DaysGrid, {
-      children: currentMonth.days.map((day, index) => {
-        const { onClick, ...dayProps } = dayButton(day);
-        return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
-          DayCell,
-          {
-            selected: day.selected,
-            today: day.now,
-            outside: !day.inCurrentMonth,
-            disabled: day.disabled,
-            onPress: (e) => {
-              onClick?.(e);
-            },
-            children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(DayText, { selected: day.selected, children: day.day })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(WeekDaysGrid, { children: weekDays.map((day) => /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(import_tamagui32.Text, { width: 40, textAlign: "center", color: "$mutedForeground", fontSize: "$2", children: day.substring(0, 2) }, day)) }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(DaysGrid, { children: currentMonth.days.map((day, index) => {
+      const { onClick, ...dayProps } = dayButton(day);
+      return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
+        DayCell,
+        {
+          selected: day.selected,
+          today: day.now,
+          outside: !day.inCurrentMonth,
+          disabled: day.disabled,
+          onPress: (e) => {
+            onClick?.(e);
           },
-          index
-        );
-      })
-    })
-    ]
-  });
+          children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(DayText, { selected: day.selected, children: day.day })
+        },
+        index
+      );
+    }) })
+  ] });
 };
 
 // src/molecules/DatePicker.tsx
-var import_react21 = require("react");
+var import_react23 = require("react");
 var import_date_fns = require("date-fns");
-var import_tamagui28 = require("tamagui");
-var import_tamagui29 = require("tamagui");
-var import_jsx_runtime21 = require("react/jsx-runtime");
+var import_tamagui33 = require("tamagui");
+var import_lucide_icons3 = require("@tamagui/lucide-icons");
+var import_jsx_runtime25 = require("react/jsx-runtime");
 var DatePicker = ({
   date,
   onDateChange,
   placeholder = "Pick a date"
 }) => {
-  const [open, setOpen] = (0, import_react21.useState)(false);
+  const [open, setOpen] = (0, import_react23.useState)(false);
   const handleSelect = (newDate) => {
     onDateChange?.(newDate);
     setOpen(false);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(Popover, {
-    open, onOpenChange: setOpen, placement: "bottom-start", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(PopoverTrigger, {
-      asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
-        Button,
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(Popover, { open, onOpenChange: setOpen, placement: "bottom-start", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(Sheet, { animation: "medium", modal: true, dismissOnSnapToBottom: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Sheet.Frame, { padding: "$4", gap: "$4", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.Adapt.Contents, {}) }),
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+        Sheet.Overlay,
         {
-          variant: "outline",
-          justifyContent: "flex-start",
-          textAlign: "left",
-          width: 240,
-          paddingLeft: "$3",
-          children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(import_tamagui28.XStack, {
-            gap: "$2", alignItems: "center", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui29.Text, { children: "\u{1F4C5}" }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_tamagui29.Text, { color: date ? "$foreground" : "$mutedForeground", children: date ? (0, import_date_fns.format)(date, "PPP") : placeholder })
-            ]
-          })
+          animation: "lazy",
+          enterStyle: { opacity: 0 },
+          exitStyle: { opacity: 0 }
         }
       )
-    }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(PopoverContent, {
-      padding: 0, width: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
-        Calendar,
-        {
-          selectedDate: date,
-          onDateChange: handleSelect
-        }
-      )
-    })
-    ]
-  });
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+      Button,
+      {
+        variant: "outline",
+        justifyContent: "flex-start",
+        textAlign: "left",
+        width: 240,
+        paddingLeft: "$3",
+        icon: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_lucide_icons3.Calendar, { size: 16 }),
+        children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.Text, { color: date ? "$foreground" : "$mutedForeground", children: date ? (0, import_date_fns.format)(date, "PPP") : placeholder })
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(PopoverContent, { padding: 0, width: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+      Calendar,
+      {
+        selectedDate: date,
+        onDateChange: handleSelect
+      }
+    ) })
+  ] });
 };
 
 // src/molecules/OTPInput/OTPInput.tsx
-var import_react22 = __toESM(require("react"));
-var import_tamagui30 = require("tamagui");
-var import_jsx_runtime22 = require("react/jsx-runtime");
-var OTPInputFrame = (0, import_tamagui30.styled)(import_tamagui30.YStack, {
+var import_react24 = __toESM(require("react"));
+var import_tamagui34 = require("tamagui");
+var import_jsx_runtime26 = require("react/jsx-runtime");
+var OTPInputFrame = (0, import_tamagui34.styled)(import_tamagui34.YStack, {
   name: "OTPInputFrame",
   flexDirection: "row",
   gap: "$2",
   alignItems: "center"
 });
-var OTPCellInput = (0, import_tamagui30.styled)(import_tamagui30.Input, {
+var OTPCellInput = (0, import_tamagui34.styled)(import_tamagui34.Input, {
   name: "OTPInputCell",
   width: 48,
   height: "$10",
@@ -4315,7 +4789,7 @@ var valueToArray = (value, length) => {
   }
   return chars;
 };
-var OTPInputImpl = import_react22.default.forwardRef(
+var OTPInputImpl = import_react24.default.forwardRef(
   ({
     length: lengthProp = 6,
     value: valueProp,
@@ -4329,22 +4803,22 @@ var OTPInputImpl = import_react22.default.forwardRef(
     inputProps,
     ...frameProps
   }, ref) => {
-    const length = import_react22.default.useMemo(() => Math.max(1, Math.floor(lengthProp)), [lengthProp]);
-    const [internalValue, setInternalValue] = import_react22.default.useState(
+    const length = import_react24.default.useMemo(() => Math.max(1, Math.floor(lengthProp)), [lengthProp]);
+    const [internalValue, setInternalValue] = import_react24.default.useState(
       () => sanitizeToLength(defaultValue2 ?? "", allowedCharacters, length)
     );
     const isControlled = valueProp !== void 0;
-    const resolvedValue = import_react22.default.useMemo(
+    const resolvedValue = import_react24.default.useMemo(
       () => sanitizeToLength((valueProp ?? internalValue) || "", allowedCharacters, length),
       [allowedCharacters, internalValue, length, valueProp]
     );
-    import_react22.default.useEffect(() => {
+    import_react24.default.useEffect(() => {
       if (!isControlled) {
         setInternalValue((prev) => sanitizeToLength(prev, allowedCharacters, length));
       }
     }, [allowedCharacters, isControlled, length]);
-    const inputRefs = import_react22.default.useRef([]);
-    const setValue = import_react22.default.useCallback(
+    const inputRefs = import_react24.default.useRef([]);
+    const setValue = import_react24.default.useCallback(
       (next) => {
         const sanitized = sanitizeToLength(next, allowedCharacters, length);
         if (!isControlled) {
@@ -4355,13 +4829,13 @@ var OTPInputImpl = import_react22.default.forwardRef(
       },
       [allowedCharacters, isControlled, length, onChange]
     );
-    const valueArray = import_react22.default.useMemo(() => valueToArray(resolvedValue, length), [resolvedValue, length]);
-    const focusInput = import_react22.default.useCallback((index) => {
+    const valueArray = import_react24.default.useMemo(() => valueToArray(resolvedValue, length), [resolvedValue, length]);
+    const focusInput = import_react24.default.useCallback((index) => {
       const node = inputRefs.current[index];
       node?.focus?.();
     }, []);
-    const selectInput = import_react22.default.useCallback((index) => {
-      if (!import_tamagui30.isWeb) return;
+    const selectInput = import_react24.default.useCallback((index) => {
+      if (!import_tamagui34.isWeb) return;
       const node = inputRefs.current[index];
       if (node && typeof node.select === "function") {
         node.select();
@@ -4369,7 +4843,7 @@ var OTPInputImpl = import_react22.default.forwardRef(
         node.setSelectionRange(0, node.value?.length ?? 0);
       }
     }, []);
-    const notifyCompletion = import_react22.default.useCallback(
+    const notifyCompletion = import_react24.default.useCallback(
       (chars) => {
         if (chars.every(Boolean)) {
           onComplete?.(chars.join(""));
@@ -4377,7 +4851,7 @@ var OTPInputImpl = import_react22.default.forwardRef(
       },
       [onComplete]
     );
-    const setCharacterAtIndex = import_react22.default.useCallback(
+    const setCharacterAtIndex = import_react24.default.useCallback(
       (index, char) => {
         const chars = valueToArray(resolvedValue, length);
         chars[index] = char;
@@ -4386,7 +4860,7 @@ var OTPInputImpl = import_react22.default.forwardRef(
       },
       [length, notifyCompletion, resolvedValue, setValue]
     );
-    const handleInputChange = import_react22.default.useCallback(
+    const handleInputChange = import_react24.default.useCallback(
       (index, rawValue) => {
         const sanitized = sanitizeChar(rawValue.slice(-1), allowedCharacters);
         if (!sanitized) {
@@ -4400,9 +4874,9 @@ var OTPInputImpl = import_react22.default.forwardRef(
       },
       [allowedCharacters, focusInput, length, setCharacterAtIndex]
     );
-    const handlePaste = import_react22.default.useCallback(
+    const handlePaste = import_react24.default.useCallback(
       (index, event3) => {
-        if (!import_tamagui30.isWeb) return;
+        if (!import_tamagui34.isWeb) return;
         event3.preventDefault?.();
         const data = event3.clipboardData?.getData("text") ?? "";
         const sanitized = sanitizeToLength(data, allowedCharacters, length - index);
@@ -4421,7 +4895,7 @@ var OTPInputImpl = import_react22.default.forwardRef(
       },
       [allowedCharacters, focusInput, length, notifyCompletion, resolvedValue, selectInput, setValue]
     );
-    const handleKeyDown = import_react22.default.useCallback(
+    const handleKeyDown = import_react24.default.useCallback(
       (index, event3) => {
         if (event3.key === "Backspace") {
           const hasValue = valueArray[index];
@@ -4445,60 +4919,58 @@ var OTPInputImpl = import_react22.default.forwardRef(
       },
       [focusInput, length, setCharacterAtIndex, valueArray]
     );
-    import_react22.default.useEffect(() => {
+    import_react24.default.useEffect(() => {
       if (autoFocus) {
         focusInput(0);
         selectInput(0);
       }
     }, [autoFocus, focusInput, selectInput]);
-    return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(OTPInputFrame, {
-      ref, ...frameProps, children: valueArray.map((char, index) => /* @__PURE__ */(0, import_jsx_runtime22.jsx)(
-        OTPCellInput,
-        {
-          ref: (node) => {
-            inputRefs.current[index] = node;
-          },
-          value: char,
-          onChange: (event3) => {
-            const e = event3;
-            handleInputChange(index, e.target?.value ?? "");
-          },
-          onChangeText: (text) => handleInputChange(index, text ?? ""),
-          ...import_tamagui30.isWeb ? {
-            onKeyDown: (event3) => handleKeyDown(index, event3),
-            onPaste: (event3) => handlePaste(index, event3),
-            type: mask ? "password" : "text",
-            inputMode: allowedCharacters === "numeric" ? "numeric" : "text"
-          } : {
-            keyboardType: allowedCharacters === "numeric" ? "number-pad" : "default",
-            secureTextEntry: mask,
-            editable: !disabled
-          },
-          onFocus: () => selectInput(index),
-          autoFocus: autoFocus && index === 0,
-          autoCorrect: false,
-          autoCapitalize: "none",
-          disabled: import_tamagui30.isWeb ? disabled : void 0,
-          ...inputProps
+    return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(OTPInputFrame, { ref, ...frameProps, children: valueArray.map((char, index) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
+      OTPCellInput,
+      {
+        ref: (node) => {
+          inputRefs.current[index] = node;
         },
-        `otp-input-${index}`
-      ))
-    });
+        value: char,
+        onChange: (event3) => {
+          const e = event3;
+          handleInputChange(index, e.target?.value ?? "");
+        },
+        onChangeText: (text) => handleInputChange(index, text ?? ""),
+        ...import_tamagui34.isWeb ? {
+          onKeyDown: (event3) => handleKeyDown(index, event3),
+          onPaste: (event3) => handlePaste(index, event3),
+          type: mask ? "password" : "text",
+          inputMode: allowedCharacters === "numeric" ? "numeric" : "text"
+        } : {
+          keyboardType: allowedCharacters === "numeric" ? "number-pad" : "default",
+          secureTextEntry: mask,
+          editable: !disabled
+        },
+        onFocus: () => selectInput(index),
+        autoFocus: autoFocus && index === 0,
+        autoCorrect: false,
+        autoCapitalize: "none",
+        disabled: import_tamagui34.isWeb ? disabled : void 0,
+        ...inputProps
+      },
+      `otp-input-${index}`
+    )) });
   }
 );
 OTPInputImpl.displayName = "OTPInput";
 var OTPInput = withErrorLogging("OTPInput", OTPInputImpl);
 
 // src/molecules/Pagination/Pagination.tsx
-var import_react23 = require("react");
-var import_tamagui31 = require("tamagui");
-var import_jsx_runtime23 = require("react/jsx-runtime");
-var PaginationRoot = (0, import_tamagui31.styled)(import_tamagui31.XStack, {
+var import_react25 = require("react");
+var import_tamagui35 = require("tamagui");
+var import_jsx_runtime27 = require("react/jsx-runtime");
+var PaginationRoot = (0, import_tamagui35.styled)(import_tamagui35.XStack, {
   name: "PaginationRoot",
   alignItems: "center",
   gap: "$2"
 });
-var PaginationButton = (0, import_tamagui31.styled)(import_tamagui31.Button, {
+var PaginationButton = (0, import_tamagui35.styled)(import_tamagui35.Button, {
   name: "PaginationButton",
   unstyled: true,
   borderRadius: "$full",
@@ -4555,7 +5027,7 @@ var PaginationButton = (0, import_tamagui31.styled)(import_tamagui31.Button, {
     active: false
   }
 });
-var PaginationEllipsis = (0, import_tamagui31.styled)(import_tamagui31.Text, {
+var PaginationEllipsis = (0, import_tamagui35.styled)(import_tamagui35.Text, {
   name: "PaginationEllipsis",
   color: "$mutedForeground",
   px: "$2",
@@ -4567,7 +5039,7 @@ var range = (start, end) => {
   return Array.from({ length }, (_, index) => start + index);
 };
 var usePaginationRange = ({ currentPage, totalPages, siblingCount }) => {
-  return (0, import_react23.useMemo)(() => {
+  return (0, import_react25.useMemo)(() => {
     if (totalPages <= 0) return [];
     const totalPageNumbers = siblingCount * 2 + 5;
     if (totalPageNumbers >= totalPages) {
@@ -4617,110 +5089,108 @@ var Pagination = ({
   }
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(PaginationRoot, {
-    role: "navigation", "aria-label": ariaLabel, children: [
-      showEdges && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(PaginationRoot, { role: "navigation", "aria-label": ariaLabel, children: [
+    showEdges && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+      PaginationButton,
+      {
+        size,
+        disabled: disabled || isFirstPage,
+        "aria-label": "First page",
+        onPress: () => handleChange(1),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui35.VisuallyHidden, { children: "First page" }),
+          "\xAB"
+        ]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+      PaginationButton,
+      {
+        size,
+        disabled: disabled || isFirstPage,
+        "aria-label": "Previous page",
+        onPress: () => handleChange(currentPage - 1),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui35.VisuallyHidden, { children: "Previous page" }),
+          "\u2039"
+        ]
+      }
+    ),
+    paginationRange.map((pageNumber, index) => {
+      if (pageNumber === DOTS) {
+        return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(PaginationEllipsis, { "aria-hidden": true, children: "\u2026" }, `dots-${index}`);
+      }
+      const pageValue = pageNumber;
+      const isActive = pageValue === currentPage;
+      return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
         PaginationButton,
         {
           size,
-          disabled: disabled || isFirstPage,
-          "aria-label": "First page",
-          onPress: () => handleChange(1),
-          children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "First page" }),
-            "\xAB"
-          ]
-        }
-      ),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
-        PaginationButton,
-        {
-          size,
-          disabled: disabled || isFirstPage,
-          "aria-label": "Previous page",
-          onPress: () => handleChange(currentPage - 1),
-          children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "Previous page" }),
-            "\u2039"
-          ]
-        }
-      ),
-      paginationRange.map((pageNumber, index) => {
-        if (pageNumber === DOTS) {
-          return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(PaginationEllipsis, { "aria-hidden": true, children: "\u2026" }, `dots-${index}`);
-        }
-        const pageValue = pageNumber;
-        const isActive = pageValue === currentPage;
-        return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
-          PaginationButton,
-          {
-            size,
-            active: isActive,
-            "aria-current": isActive ? "page" : void 0,
-            "aria-label": `Go to page ${pageValue}`,
-            disabled,
-            onPress: () => handleChange(pageValue),
-            children: pageValue
-          },
-          pageValue
-        );
-      }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
-        PaginationButton,
-        {
-          size,
-          disabled: disabled || isLastPage,
-          "aria-label": "Next page",
-          onPress: () => handleChange(currentPage + 1),
-          children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "Next page" }),
-            "\u203A"
-          ]
-        }
-      ),
-      showEdges && /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
-        PaginationButton,
-        {
-          size,
-          disabled: disabled || isLastPage,
-          "aria-label": "Last page",
-          onPress: () => handleChange(totalPages),
-          children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(import_tamagui31.VisuallyHidden, { children: "Last page" }),
-            "\xBB"
-          ]
-        }
-      )
-    ]
-  });
+          active: isActive,
+          "aria-current": isActive ? "page" : void 0,
+          "aria-label": `Go to page ${pageValue}`,
+          disabled,
+          onPress: () => handleChange(pageValue),
+          children: pageValue
+        },
+        pageValue
+      );
+    }),
+    /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+      PaginationButton,
+      {
+        size,
+        disabled: disabled || isLastPage,
+        "aria-label": "Next page",
+        onPress: () => handleChange(currentPage + 1),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui35.VisuallyHidden, { children: "Next page" }),
+          "\u203A"
+        ]
+      }
+    ),
+    showEdges && /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
+      PaginationButton,
+      {
+        size,
+        disabled: disabled || isLastPage,
+        "aria-label": "Last page",
+        onPress: () => handleChange(totalPages),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui35.VisuallyHidden, { children: "Last page" }),
+          "\xBB"
+        ]
+      }
+    )
+  ] });
 };
 Pagination.displayName = "Pagination";
 
 // src/molecules/Breadcrumb/Breadcrumb.tsx
-var import_tamagui32 = require("tamagui");
-var import_jsx_runtime24 = require("react/jsx-runtime");
-var BreadcrumbRoot = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
+var import_tamagui36 = require("tamagui");
+var import_jsx_runtime28 = require("react/jsx-runtime");
+var BreadcrumbRoot = (0, import_tamagui36.styled)(import_tamagui36.XStack, {
   name: "BreadcrumbRoot",
   alignItems: "center",
   gap: "$2"
 });
-var BreadcrumbList = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
+var BreadcrumbList = (0, import_tamagui36.styled)(import_tamagui36.XStack, {
   name: "BreadcrumbList",
   gap: "$2",
   alignItems: "center",
   flexWrap: "wrap"
 });
-var BreadcrumbItemWrapper = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
+var BreadcrumbItemWrapper = (0, import_tamagui36.styled)(import_tamagui36.XStack, {
   name: "BreadcrumbItem",
   alignItems: "center",
   gap: "$2"
 });
-var BreadcrumbSeparator = (0, import_tamagui32.styled)(import_tamagui32.Text, {
+var BreadcrumbSeparator = (0, import_tamagui36.styled)(import_tamagui36.Text, {
   name: "BreadcrumbSeparator",
   color: "$mutedForeground",
   fontSize: "$2"
 });
-var BreadcrumbLink = (0, import_tamagui32.styled)(import_tamagui32.Anchor, {
+var BreadcrumbLink = (0, import_tamagui36.styled)(import_tamagui36.Anchor, {
   name: "BreadcrumbLink",
   color: "$foreground",
   fontWeight: "500",
@@ -4728,7 +5198,7 @@ var BreadcrumbLink = (0, import_tamagui32.styled)(import_tamagui32.Anchor, {
     color: "$primary"
   }
 });
-var BreadcrumbButton = (0, import_tamagui32.styled)(import_tamagui32.Button, {
+var BreadcrumbButton = (0, import_tamagui36.styled)(import_tamagui36.Button, {
   name: "BreadcrumbButton",
   unstyled: true,
   padding: 0,
@@ -4738,12 +5208,12 @@ var BreadcrumbButton = (0, import_tamagui32.styled)(import_tamagui32.Button, {
     opacity: 0.8
   }
 });
-var BreadcrumbButtonLabel = (0, import_tamagui32.styled)(import_tamagui32.Text, {
+var BreadcrumbButtonLabel = (0, import_tamagui36.styled)(import_tamagui36.Text, {
   name: "BreadcrumbButtonLabel",
   color: "$foreground",
   fontWeight: "500"
 });
-var BreadcrumbCurrent = (0, import_tamagui32.styled)(import_tamagui32.Text, {
+var BreadcrumbCurrent = (0, import_tamagui36.styled)(import_tamagui36.Text, {
   name: "BreadcrumbCurrent",
   color: "$mutedForeground",
   fontWeight: "600"
@@ -4756,35 +5226,29 @@ var Breadcrumb = ({
   if (!items || items.length === 0) {
     return null;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbRoot, {
-    role: "navigation", "aria-label": ariaLabel, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbList, {
-      role: "list", children: items.map((item, index) => {
-        const isLast = index === items.length - 1;
-        const linkRel = item.rel ?? (item.target === "_blank" ? "noreferrer noopener" : void 0);
-        return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(BreadcrumbItemWrapper, {
-          role: "listitem", children: [
-            isLast ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbCurrent, { "aria-current": "page", children: item.label }) : item.href ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
-              BreadcrumbLink,
-              {
-                href: item.href,
-                target: item.target,
-                rel: linkRel,
-                onPress: item.onPress,
-                children: item.label
-              }
-            ) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbButton, { onPress: item.onPress, children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbButtonLabel, { children: item.label }) }),
-            !isLast && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(BreadcrumbSeparator, { "aria-hidden": true, children: separator })
-          ]
-        }, `${item.label}-${index}`);
-      })
-    })
-  });
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(BreadcrumbRoot, { role: "navigation", "aria-label": ariaLabel, children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(BreadcrumbList, { role: "list", children: items.map((item, index) => {
+    const isLast = index === items.length - 1;
+    const linkRel = item.rel ?? (item.target === "_blank" ? "noreferrer noopener" : void 0);
+    return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(BreadcrumbItemWrapper, { role: "listitem", children: [
+      isLast ? /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(BreadcrumbCurrent, { "aria-current": "page", children: item.label }) : item.href ? /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+        BreadcrumbLink,
+        {
+          href: item.href,
+          target: item.target,
+          rel: linkRel,
+          onPress: item.onPress,
+          children: item.label
+        }
+      ) : /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(BreadcrumbButton, { onPress: item.onPress, children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(BreadcrumbButtonLabel, { children: item.label }) }),
+      !isLast && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(BreadcrumbSeparator, { "aria-hidden": true, children: separator })
+    ] }, `${item.label}-${index}`);
+  }) }) });
 };
 Breadcrumb.displayName = "Breadcrumb";
 
 // src/molecules/ComponentErrorBoundary.tsx
-var import_react24 = __toESM(require("react"));
-var ComponentErrorBoundary = class extends import_react24.default.Component {
+var import_react26 = __toESM(require("react"));
+var ComponentErrorBoundary = class extends import_react26.default.Component {
   state = { hasError: false };
   static getDerivedStateFromError() {
     return { hasError: true };
@@ -4809,17 +5273,17 @@ var ComponentErrorBoundary = class extends import_react24.default.Component {
 };
 
 // src/molecules/ContextMenu/ContextMenu.tsx
-var import_react25 = __toESM(require("react"));
+var import_react27 = __toESM(require("react"));
 var ContextMenuPrimitive = __toESM(require("@radix-ui/react-context-menu"));
-var import_tamagui33 = require("tamagui");
-var import_jsx_runtime25 = require("react/jsx-runtime");
+var import_tamagui37 = require("tamagui");
+var import_jsx_runtime29 = require("react/jsx-runtime");
 var ContextMenu = ContextMenuPrimitive.Root;
 var ContextMenuTrigger = ContextMenuPrimitive.Trigger;
 var ContextMenuGroup = ContextMenuPrimitive.Group;
 var ContextMenuPortal = ContextMenuPrimitive.Portal;
 var ContextMenuSub = ContextMenuPrimitive.Sub;
 var ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
-var ContextMenuContentFrame = (0, import_tamagui33.styled)(ContextMenuPrimitive.Content, {
+var ContextMenuContentFrame = (0, import_tamagui37.styled)(ContextMenuPrimitive.Content, {
   name: "ContextMenuContent",
   minWidth: 180,
   backgroundColor: "$background",
@@ -4834,12 +5298,12 @@ var ContextMenuContentFrame = (0, import_tamagui33.styled)(ContextMenuPrimitive.
   shadowRadius: 10,
   animation: "quick"
 });
-var ContextMenuContent = import_react25.default.forwardRef(({ className: _className, ...props }, ref) => {
+var ContextMenuContent = import_react27.default.forwardRef(({ className: _className, ...props }, ref) => {
   const _ = _className;
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ContextMenuPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ContextMenuContentFrame, { ref, ...props }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(ContextMenuPortal, { children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(ContextMenuContentFrame, { ref, ...props }) });
 });
 ContextMenuContent.displayName = ContextMenuPrimitive.Content.displayName;
-var ContextMenuItemFrame = (0, import_tamagui33.styled)(ContextMenuPrimitive.Item, {
+var ContextMenuItemFrame = (0, import_tamagui37.styled)(ContextMenuPrimitive.Item, {
   name: "ContextMenuItem",
   position: "relative",
   flexDirection: "row",
@@ -4872,12 +5336,12 @@ var ContextMenuItemFrame = (0, import_tamagui33.styled)(ContextMenuPrimitive.Ite
     }
   }
 });
-var ContextMenuItem = import_react25.default.forwardRef(({ className: _className, inset, ...props }, ref) => {
+var ContextMenuItem = import_react27.default.forwardRef(({ className: _className, inset, ...props }, ref) => {
   const _ = _className;
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ContextMenuItemFrame, { ref, inset, ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(ContextMenuItemFrame, { ref, inset, ...props });
 });
 ContextMenuItem.displayName = ContextMenuPrimitive.Item.displayName;
-var ContextMenuCheckboxItemFrame = (0, import_tamagui33.styled)(ContextMenuPrimitive.CheckboxItem, {
+var ContextMenuCheckboxItemFrame = (0, import_tamagui37.styled)(ContextMenuPrimitive.CheckboxItem, {
   name: "ContextMenuCheckboxItem",
   position: "relative",
   flexDirection: "row",
@@ -4906,16 +5370,15 @@ var ContextMenuCheckboxItemFrame = (0, import_tamagui33.styled)(ContextMenuPrimi
     }
   }
 });
-var ContextMenuCheckboxItem = import_react25.default.forwardRef(({ className: _className, children, checked, ...props }, ref) => {
+var ContextMenuCheckboxItem = import_react27.default.forwardRef(({ className: _className, children, checked, ...props }, ref) => {
   const _ = _className;
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(ContextMenuCheckboxItemFrame, { ref, checked, ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.XStack, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", width: "$3.5", height: "$3.5", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ContextMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.Text, { children: "\u2713" }) }) }),
-      children
-    ]
-  });
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(ContextMenuCheckboxItemFrame, { ref, checked, ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_tamagui37.XStack, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", width: "$3.5", height: "$3.5", children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(ContextMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_tamagui37.Text, { children: "\u2713" }) }) }),
+    children
+  ] });
 });
 ContextMenuCheckboxItem.displayName = ContextMenuPrimitive.CheckboxItem.displayName;
-var ContextMenuRadioItemFrame = (0, import_tamagui33.styled)(ContextMenuPrimitive.RadioItem, {
+var ContextMenuRadioItemFrame = (0, import_tamagui37.styled)(ContextMenuPrimitive.RadioItem, {
   name: "ContextMenuRadioItem",
   position: "relative",
   flexDirection: "row",
@@ -4944,16 +5407,15 @@ var ContextMenuRadioItemFrame = (0, import_tamagui33.styled)(ContextMenuPrimitiv
     }
   }
 });
-var ContextMenuRadioItem = import_react25.default.forwardRef(({ className: _className, children, ...props }, ref) => {
+var ContextMenuRadioItem = import_react27.default.forwardRef(({ className: _className, children, ...props }, ref) => {
   const _ = _className;
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(ContextMenuRadioItemFrame, { ref, ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.XStack, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", width: "$3.5", height: "$3.5", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ContextMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.Text, { children: "\u25CF" }) }) }),
-      children
-    ]
-  });
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(ContextMenuRadioItemFrame, { ref, ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_tamagui37.XStack, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", width: "$3.5", height: "$3.5", children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(ContextMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_tamagui37.Text, { children: "\u25CF" }) }) }),
+    children
+  ] });
 });
 ContextMenuRadioItem.displayName = ContextMenuPrimitive.RadioItem.displayName;
-var ContextMenuLabel = (0, import_tamagui33.styled)(ContextMenuPrimitive.Label, {
+var ContextMenuLabel = (0, import_tamagui37.styled)(ContextMenuPrimitive.Label, {
   name: "ContextMenuLabel",
   paddingHorizontal: "$2",
   paddingVertical: "$1.5",
@@ -4968,21 +5430,21 @@ var ContextMenuLabel = (0, import_tamagui33.styled)(ContextMenuPrimitive.Label, 
     }
   }
 });
-var ContextMenuSeparator = (0, import_tamagui33.styled)(ContextMenuPrimitive.Separator, {
+var ContextMenuSeparator = (0, import_tamagui37.styled)(ContextMenuPrimitive.Separator, {
   name: "ContextMenuSeparator",
   height: 1,
   backgroundColor: "$border",
   marginHorizontal: "-$1",
   marginVertical: "$1"
 });
-var ContextMenuShortcut = (0, import_tamagui33.styled)(import_tamagui33.Text, {
+var ContextMenuShortcut = (0, import_tamagui37.styled)(import_tamagui37.Text, {
   name: "ContextMenuShortcut",
   marginLeft: "auto",
   fontSize: "$1",
   color: "$mutedForeground",
   letterSpacing: 1
 });
-var ContextMenuSubContentFrame = (0, import_tamagui33.styled)(ContextMenuPrimitive.SubContent, {
+var ContextMenuSubContentFrame = (0, import_tamagui37.styled)(ContextMenuPrimitive.SubContent, {
   name: "ContextMenuSubContent",
   minWidth: 180,
   backgroundColor: "$background",
@@ -4997,7 +5459,7 @@ var ContextMenuSubContentFrame = (0, import_tamagui33.styled)(ContextMenuPrimiti
   shadowRadius: 10,
   animation: "quick"
 });
-var ContextMenuSubTriggerFrame = (0, import_tamagui33.styled)(ContextMenuPrimitive.SubTrigger, {
+var ContextMenuSubTriggerFrame = (0, import_tamagui37.styled)(ContextMenuPrimitive.SubTrigger, {
   name: "ContextMenuSubTrigger",
   flexDirection: "row",
   alignItems: "center",
@@ -5023,31 +5485,31 @@ var ContextMenuSubTriggerFrame = (0, import_tamagui33.styled)(ContextMenuPrimiti
     }
   }
 });
-var ContextMenuSubTrigger = import_react25.default.forwardRef(({ className: _className, inset, children, ...props }, ref) => {
+var ContextMenuSubTrigger = import_react27.default.forwardRef(({ className: _className, inset, children, ...props }, ref) => {
   const _ = _className;
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(ContextMenuSubTriggerFrame, { ref, inset, ...props, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(ContextMenuSubTriggerFrame, { ref, inset, ...props, children: [
     children,
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(import_tamagui33.Text, { marginLeft: "auto", children: "\u25B6" })
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_tamagui37.Text, { marginLeft: "auto", children: "\u25B6" })
   ] });
 });
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName;
-var ContextMenuSubContent = import_react25.default.forwardRef(({ className: _className, ...props }, ref) => {
+var ContextMenuSubContent = import_react27.default.forwardRef(({ className: _className, ...props }, ref) => {
   const _ = _className;
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(ContextMenuSubContentFrame, { ref, ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(ContextMenuSubContentFrame, { ref, ...props });
 });
 ContextMenuSubContent.displayName = ContextMenuPrimitive.SubContent.displayName;
 
 // src/molecules/NavigationMenu.tsx
 var NavigationMenuPrimitive = __toESM(require("@radix-ui/react-navigation-menu"));
-var import_tamagui34 = require("tamagui");
-var NavigationMenu = (0, import_tamagui34.styled)(NavigationMenuPrimitive.Root, {
+var import_tamagui38 = require("tamagui");
+var NavigationMenu = (0, import_tamagui38.styled)(NavigationMenuPrimitive.Root, {
   name: "NavigationMenu",
   position: "relative",
   display: "flex",
   justifyContent: "center",
   width: "100%"
 });
-var NavigationMenuList = (0, import_tamagui34.styled)(NavigationMenuPrimitive.List, {
+var NavigationMenuList = (0, import_tamagui38.styled)(NavigationMenuPrimitive.List, {
   name: "NavigationMenuList",
   display: "flex",
   gap: "$2",
@@ -5060,7 +5522,7 @@ var NavigationMenuList = (0, import_tamagui34.styled)(NavigationMenuPrimitive.Li
   borderColor: "$borderColor"
 });
 var NavigationMenuItem = NavigationMenuPrimitive.Item;
-var NavigationMenuTrigger = (0, import_tamagui34.styled)(NavigationMenuPrimitive.Trigger, {
+var NavigationMenuTrigger = (0, import_tamagui38.styled)(NavigationMenuPrimitive.Trigger, {
   name: "NavigationMenuTrigger",
   borderRadius: "$md",
   paddingHorizontal: "$4",
@@ -5080,7 +5542,7 @@ var NavigationMenuTrigger = (0, import_tamagui34.styled)(NavigationMenuPrimitive
     borderColor: "$primary"
   }
 });
-var NavigationMenuContent = (0, import_tamagui34.styled)(NavigationMenuPrimitive.Content, {
+var NavigationMenuContent = (0, import_tamagui38.styled)(NavigationMenuPrimitive.Content, {
   name: "NavigationMenuContent",
   position: "absolute",
   top: "calc(100% + 0.5rem)",
@@ -5093,7 +5555,7 @@ var NavigationMenuContent = (0, import_tamagui34.styled)(NavigationMenuPrimitive
   minWidth: 320,
   zIndex: 20
 });
-var NavigationMenuLink = (0, import_tamagui34.styled)(NavigationMenuPrimitive.Link, {
+var NavigationMenuLink = (0, import_tamagui38.styled)(NavigationMenuPrimitive.Link, {
   name: "NavigationMenuLink",
   display: "block",
   borderRadius: "$lg",
@@ -5108,7 +5570,7 @@ var NavigationMenuLink = (0, import_tamagui34.styled)(NavigationMenuPrimitive.Li
     outlineColor: "$primary"
   }
 });
-var NavigationMenuIndicator = (0, import_tamagui34.styled)(NavigationMenuPrimitive.Indicator, {
+var NavigationMenuIndicator = (0, import_tamagui38.styled)(NavigationMenuPrimitive.Indicator, {
   name: "NavigationMenuIndicator",
   display: "flex",
   alignItems: "flex-end",
@@ -5117,7 +5579,7 @@ var NavigationMenuIndicator = (0, import_tamagui34.styled)(NavigationMenuPrimiti
   top: "100%",
   transition: "width, transform 200ms ease"
 });
-var IndicatorArrow = (0, import_tamagui34.styled)(import_tamagui34.YStack, {
+var IndicatorArrow = (0, import_tamagui38.styled)(import_tamagui38.YStack, {
   width: 20,
   height: 20,
   backgroundColor: "$background",
@@ -5128,7 +5590,7 @@ var IndicatorArrow = (0, import_tamagui34.styled)(import_tamagui34.YStack, {
   transform: "rotate(45deg)",
   marginTop: -8
 });
-var NavigationMenuViewport = (0, import_tamagui34.styled)(NavigationMenuPrimitive.Viewport, {
+var NavigationMenuViewport = (0, import_tamagui38.styled)(NavigationMenuPrimitive.Viewport, {
   name: "NavigationMenuViewport",
   position: "absolute",
   top: "100%",
@@ -5144,11 +5606,11 @@ var NavigationMenuViewport = (0, import_tamagui34.styled)(NavigationMenuPrimitiv
 
 // src/molecules/Menubar/Menubar.tsx
 var import_react_menubar = require("@radix-ui/react-menubar");
-var import_lucide_icons = require("@tamagui/lucide-icons");
-var import_react26 = __toESM(require("react"));
-var import_tamagui35 = require("tamagui");
-var import_jsx_runtime26 = require("react/jsx-runtime");
-var MenubarFrame = (0, import_tamagui35.styled)(import_react_menubar.Root, {
+var import_lucide_icons4 = require("@tamagui/lucide-icons");
+var import_react28 = __toESM(require("react"));
+var import_tamagui39 = require("tamagui");
+var import_jsx_runtime30 = require("react/jsx-runtime");
+var MenubarFrame = (0, import_tamagui39.styled)(import_react_menubar.Root, {
   name: "Menubar",
   display: "flex",
   flexDirection: "row",
@@ -5164,7 +5626,7 @@ var MenubarFrame = (0, import_tamagui35.styled)(import_react_menubar.Root, {
 var MenubarMenu = import_react_menubar.Menu;
 var MenubarGroup = import_react_menubar.Group;
 var MenubarPortal = import_react_menubar.Portal;
-var MenubarTriggerFrame = (0, import_tamagui35.styled)(import_react_menubar.Trigger, {
+var MenubarTriggerFrame = (0, import_tamagui39.styled)(import_react_menubar.Trigger, {
   name: "MenubarTrigger",
   display: "flex",
   alignItems: "center",
@@ -5198,9 +5660,9 @@ var MenubarTriggerFrame = (0, import_tamagui35.styled)(import_react_menubar.Trig
     }
   }
 });
-var MenubarTrigger = import_react26.default.forwardRef((props, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(MenubarTriggerFrame, { ref, ...props }));
+var MenubarTrigger = import_react28.default.forwardRef((props, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(MenubarTriggerFrame, { ref, ...props }));
 MenubarTrigger.displayName = import_react_menubar.Trigger.displayName;
-var MenubarContentFrame = (0, import_tamagui35.styled)(import_react_menubar.Content, {
+var MenubarContentFrame = (0, import_tamagui39.styled)(import_react_menubar.Content, {
   name: "MenubarContent",
   minWidth: 192,
   overflow: "hidden",
@@ -5215,19 +5677,18 @@ var MenubarContentFrame = (0, import_tamagui35.styled)(import_react_menubar.Cont
   shadowOffset: { width: 0, height: 4 },
   shadowOpacity: 0.1
 });
-var MenubarContent = import_react26.default.forwardRef(({ align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_react_menubar.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
-    MenubarContentFrame,
-    {
-      ref,
-      align,
-      alignOffset,
-      sideOffset,
-      ...props
-    }
-  )
-}));
+var MenubarContent = import_react28.default.forwardRef(({ align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_react_menubar.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+  MenubarContentFrame,
+  {
+    ref,
+    align,
+    alignOffset,
+    sideOffset,
+    ...props
+  }
+) }));
 MenubarContent.displayName = import_react_menubar.Content.displayName;
-var MenubarItemFrame = (0, import_tamagui35.styled)(import_react_menubar.Item, {
+var MenubarItemFrame = (0, import_tamagui39.styled)(import_react_menubar.Item, {
   name: "MenubarItem",
   position: "relative",
   display: "flex",
@@ -5256,7 +5717,7 @@ var MenubarItemFrame = (0, import_tamagui35.styled)(import_react_menubar.Item, {
     }
   }
 });
-var MenubarItem = import_react26.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
+var MenubarItem = import_react28.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
   MenubarItemFrame,
   {
     ref,
@@ -5265,7 +5726,7 @@ var MenubarItem = import_react26.default.forwardRef(({ inset, ...props }, ref) =
   }
 ));
 MenubarItem.displayName = import_react_menubar.Item.displayName;
-var MenubarCheckboxItemFrame = (0, import_tamagui35.styled)(import_react_menubar.CheckboxItem, {
+var MenubarCheckboxItemFrame = (0, import_tamagui39.styled)(import_react_menubar.CheckboxItem, {
   name: "MenubarCheckboxItem",
   position: "relative",
   display: "flex",
@@ -5295,7 +5756,7 @@ var MenubarCheckboxItemFrame = (0, import_tamagui35.styled)(import_react_menubar
     }
   }
 });
-var MenubarItemIndicatorFrame = (0, import_tamagui35.styled)(import_react_menubar.ItemIndicator, {
+var MenubarItemIndicatorFrame = (0, import_tamagui39.styled)(import_react_menubar.ItemIndicator, {
   position: "absolute",
   left: "$2",
   display: "flex",
@@ -5304,12 +5765,12 @@ var MenubarItemIndicatorFrame = (0, import_tamagui35.styled)(import_react_menuba
   width: "$4",
   height: "$4"
 });
-var MenubarCheckboxItem = import_react26.default.forwardRef(({ children, checked, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(MenubarCheckboxItemFrame, { ref, checked, ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_icons.Check, { size: 14 }) }),
+var MenubarCheckboxItem = import_react28.default.forwardRef(({ children, checked, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(MenubarCheckboxItemFrame, { ref, checked, ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_icons4.Check, { size: 14 }) }),
   children
 ] }));
 MenubarCheckboxItem.displayName = import_react_menubar.CheckboxItem.displayName;
-var MenubarRadioItemFrame = (0, import_tamagui35.styled)(import_react_menubar.RadioItem, {
+var MenubarRadioItemFrame = (0, import_tamagui39.styled)(import_react_menubar.RadioItem, {
   name: "MenubarRadioItem",
   position: "relative",
   display: "flex",
@@ -5339,12 +5800,12 @@ var MenubarRadioItemFrame = (0, import_tamagui35.styled)(import_react_menubar.Ra
     }
   }
 });
-var MenubarRadioItem = import_react26.default.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(MenubarRadioItemFrame, { ref, ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_icons.Circle, { size: 8, fill: "currentColor" }) }),
+var MenubarRadioItem = import_react28.default.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(MenubarRadioItemFrame, { ref, ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_icons4.Circle, { size: 8, fill: "currentColor" }) }),
   children
 ] }));
 MenubarRadioItem.displayName = import_react_menubar.RadioItem.displayName;
-var MenubarLabelFrame = (0, import_tamagui35.styled)(import_react_menubar.Label, {
+var MenubarLabelFrame = (0, import_tamagui39.styled)(import_react_menubar.Label, {
   name: "MenubarLabel",
   paddingHorizontal: "$2",
   paddingVertical: "$1.5",
@@ -5353,9 +5814,9 @@ var MenubarLabelFrame = (0, import_tamagui35.styled)(import_react_menubar.Label,
   color: "$foreground",
   paddingLeft: "$2"
 });
-var MenubarLabelWithInset = import_react26.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(MenubarLabelFrame, { ref, paddingLeft: inset ? "$8" : "$2", ...props }));
+var MenubarLabelWithInset = import_react28.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(MenubarLabelFrame, { ref, paddingLeft: inset ? "$8" : "$2", ...props }));
 MenubarLabelWithInset.displayName = import_react_menubar.Label.displayName;
-var MenubarSeparator = (0, import_tamagui35.styled)(import_react_menubar.Separator, {
+var MenubarSeparator = (0, import_tamagui39.styled)(import_react_menubar.Separator, {
   name: "MenubarSeparator",
   height: 1,
   backgroundColor: "$muted",
@@ -5363,14 +5824,14 @@ var MenubarSeparator = (0, import_tamagui35.styled)(import_react_menubar.Separat
   marginVertical: "$1",
   marginHorizontal: "-$1"
 });
-var MenubarShortcut = (0, import_tamagui35.styled)(import_tamagui35.Paragraph, {
+var MenubarShortcut = (0, import_tamagui39.styled)(import_tamagui39.Paragraph, {
   name: "MenubarShortcut",
   marginLeft: "auto",
   fontSize: "$1",
   color: "$mutedForeground",
   letterSpacing: "$1"
 });
-var MenubarSubTriggerFrame = (0, import_tamagui35.styled)(import_react_menubar.SubTrigger, {
+var MenubarSubTriggerFrame = (0, import_tamagui39.styled)(import_react_menubar.SubTrigger, {
   name: "MenubarSubTrigger",
   display: "flex",
   flexDirection: "row",
@@ -5398,7 +5859,7 @@ var MenubarSubTriggerFrame = (0, import_tamagui35.styled)(import_react_menubar.S
     }
   }
 });
-var MenubarSubTrigger = import_react26.default.forwardRef(({ children, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
+var MenubarSubTrigger = import_react28.default.forwardRef(({ children, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
   MenubarSubTriggerFrame,
   {
     ref,
@@ -5406,12 +5867,12 @@ var MenubarSubTrigger = import_react26.default.forwardRef(({ children, inset, ..
     ...props,
     children: [
       children,
-      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_icons.ChevronRight, { size: 14, style: { marginLeft: "auto" } })
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_icons4.ChevronRight, { size: 14, style: { marginLeft: "auto" } })
     ]
   }
 ));
 MenubarSubTrigger.displayName = import_react_menubar.SubTrigger.displayName;
-var MenubarSubContentFrame = (0, import_tamagui35.styled)(import_react_menubar.SubContent, {
+var MenubarSubContentFrame = (0, import_tamagui39.styled)(import_react_menubar.SubContent, {
   name: "MenubarSubContent",
   minWidth: 128,
   overflow: "hidden",
@@ -5426,21 +5887,50 @@ var MenubarSubContentFrame = (0, import_tamagui35.styled)(import_react_menubar.S
   shadowOpacity: 0.1,
   zIndex: 50
 });
-var MenubarSubContent = import_react26.default.forwardRef(({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(MenubarSubContentFrame, { ref, ...props }));
+var MenubarSubContent = import_react28.default.forwardRef(({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(MenubarSubContentFrame, { ref, ...props }));
 MenubarSubContent.displayName = import_react_menubar.SubContent.displayName;
 var MenubarSub = import_react_menubar.Sub;
 var MenubarRadioGroup = import_react_menubar.RadioGroup;
 
+// src/molecules/MonthsPicker/MonthsPicker.tsx
+var import_react29 = require("react");
+var import_tamagui40 = require("tamagui");
+var import_jsx_runtime31 = require("react/jsx-runtime");
+var MonthsPicker = ({ value, onValueChange, placeholder = "Select Month" }) => {
+  const months = (0, import_react29.useMemo)(() => [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ], []);
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(Select, { value, onValueChange, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(SelectTrigger, { width: 200, children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(SelectValue, { placeholder }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui40.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(import_tamagui40.Sheet, { modal: true, dismissOnSnapToBottom: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui40.Sheet.Frame, { children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui40.Sheet.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui40.Adapt.Contents, {}) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui40.Sheet.Overlay, {})
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(SelectContent, { children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(SelectViewport, { children: months.map((month, index) => /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(SelectItem, { index, value: month, children: month }, month)) }) })
+  ] });
+};
+
 // src/molecules/ToggleGroup/ToggleGroup.tsx
-var import_tamagui36 = require("tamagui");
-var ToggleGroupFrame = (0, import_tamagui36.styled)(import_tamagui36.ToggleGroup, {
+var import_tamagui41 = require("tamagui");
+var ToggleGroupFrame = (0, import_tamagui41.styled)(import_tamagui41.ToggleGroup, {
   name: "ToggleGroup",
   flexDirection: "row",
   alignItems: "center",
   justifyContent: "center",
   gap: "$1"
 });
-var ToggleGroupItemFrame = (0, import_tamagui36.styled)(import_tamagui36.ToggleGroup.Item, {
+var ToggleGroupItemFrame = (0, import_tamagui41.styled)(import_tamagui41.ToggleGroup.Item, {
   name: "ToggleGroupItem",
   backgroundColor: "transparent",
   borderRadius: "$4",
@@ -5471,10 +5961,10 @@ var ToggleGroupItemFrame = (0, import_tamagui36.styled)(import_tamagui36.ToggleG
 });
 
 // src/molecules/Tooltip/Tooltip.tsx
-var import_tamagui37 = require("tamagui");
-var import_react27 = __toESM(require("react"));
-var import_jsx_runtime27 = require("react/jsx-runtime");
-var TooltipContent = (0, import_tamagui37.styled)(import_tamagui37.Tooltip.Content, {
+var import_tamagui42 = require("tamagui");
+var import_react30 = __toESM(require("react"));
+var import_jsx_runtime32 = require("react/jsx-runtime");
+var TooltipContent = (0, import_tamagui42.styled)(import_tamagui42.Tooltip.Content, {
   name: "TooltipContent",
   enterStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
   exitStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
@@ -5491,33 +5981,31 @@ var TooltipContent = (0, import_tamagui37.styled)(import_tamagui37.Tooltip.Conte
   borderRadius: "$md",
   zIndex: 1e3
 });
-var TooltipArrow = (0, import_tamagui37.styled)(import_tamagui37.Tooltip.Arrow, {
+var TooltipArrow = (0, import_tamagui42.styled)(import_tamagui42.Tooltip.Arrow, {
   name: "TooltipArrow",
   borderColor: "$borderColor",
   borderWidth: 1,
   backgroundColor: "$background"
 });
-var Tooltip = import_react27.default.forwardRef(({ children, content, ...props }, ref) => {
+var Tooltip = import_react30.default.forwardRef(({ children, content, ...props }, ref) => {
   const _ = ref;
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_tamagui37.Tooltip, { ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui37.Tooltip.Trigger, { asChild: true, children }),
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(TooltipContent, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(TooltipArrow, {}),
-      typeof content === "string" ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui37.Paragraph, { size: "$2", children: content }) : content
-      ]
-    })
-    ]
-  });
+  return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui42.Tooltip, { ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui42.Tooltip.Trigger, { asChild: true, children }),
+    /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(TooltipContent, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(TooltipArrow, {}),
+      typeof content === "string" ? /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui42.Paragraph, { size: "$2", children: content }) : content
+    ] })
+  ] });
 });
 Tooltip.displayName = "Tooltip";
 
 // src/molecules/Stepper/Stepper.tsx
-var import_react28 = __toESM(require("react"));
-var import_tamagui38 = require("tamagui");
-var import_jsx_runtime28 = require("react/jsx-runtime");
-var StepperContext = (0, import_react28.createContext)(null);
-var StepperImpl = import_react28.default.forwardRef((props, ref) => {
-  const localRef = (0, import_react28.useRef)(null);
+var import_react31 = __toESM(require("react"));
+var import_tamagui43 = require("tamagui");
+var import_jsx_runtime33 = require("react/jsx-runtime");
+var StepperContext = (0, import_react31.createContext)(null);
+var StepperImpl = import_react31.default.forwardRef((props, ref) => {
+  const localRef = (0, import_react31.useRef)(null);
   const setRef = (node) => {
     localRef.current = node;
     if (typeof ref === "function") {
@@ -5527,9 +6015,9 @@ var StepperImpl = import_react28.default.forwardRef((props, ref) => {
     }
   };
   const { height, width, children, ...rest } = props;
-  const [layoutEvent, setLayoutEvent] = (0, import_react28.useState)();
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
-    import_tamagui38.ScrollView,
+  const [layoutEvent, setLayoutEvent] = (0, import_react31.useState)();
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+    import_tamagui43.ScrollView,
     {
       onLayout: (e) => {
         setLayoutEvent(e);
@@ -5547,7 +6035,7 @@ var StepperImpl = import_react28.default.forwardRef((props, ref) => {
       scrollEnabled: false,
       showsHorizontalScrollIndicator: false,
       ...rest,
-      children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
         StepperContext.Provider,
         {
           value: {
@@ -5563,12 +6051,12 @@ var StepperImpl = import_react28.default.forwardRef((props, ref) => {
 StepperImpl.displayName = "Stepper";
 var WrappedStepper = withErrorLogging("Stepper", StepperImpl);
 var StepperPage = (props) => {
-  const context = (0, import_react28.useContext)(StepperContext);
+  const context = (0, import_react31.useContext)(StepperContext);
   const width = context?.layout?.nativeEvent?.layout?.width ?? "100%";
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_tamagui38.View, { width, ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui43.View, { width, ...props });
 };
 var StepperTrigger = (props) => {
-  const context = (0, import_react28.useContext)(StepperContext);
+  const context = (0, import_react31.useContext)(StepperContext);
   const { children, disabled, targetPage, ...rest } = props;
   const scrollToPage = (target) => {
     if (!context?.layout) return;
@@ -5583,30 +6071,91 @@ var StepperTrigger = (props) => {
       scrollToPage(targetPage);
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_tamagui38.View, { onPress: handleOnPress, cursor: disabled ? "not-allowed" : "pointer", ...rest, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui43.View, { onPress: handleOnPress, cursor: disabled ? "not-allowed" : "pointer", ...rest, children });
 };
 var Stepper = Object.assign(WrappedStepper, {
   Page: StepperPage,
   Trigger: StepperTrigger
 });
 
+// src/organisms/Autocomplete/Autocomplete.tsx
+var import_react32 = require("react");
+var import_tamagui44 = require("tamagui");
+var import_lucide_icons5 = require("@tamagui/lucide-icons");
+var import_jsx_runtime34 = require("react/jsx-runtime");
+var Autocomplete = ({
+  options,
+  value,
+  onValueChange,
+  placeholder = "Select...",
+  emptyMessage = "No options found."
+}) => {
+  const [open, setOpen] = (0, import_react32.useState)(false);
+  const [search, setSearch] = (0, import_react32.useState)("");
+  const filteredOptions = (0, import_react32.useMemo)(() => {
+    if (!search) return options;
+    return options.filter((opt) => opt.label.toLowerCase().includes(search.toLowerCase()));
+  }, [options, search]);
+  const handleSelect = (option) => {
+    onValueChange?.(option);
+    setOpen(false);
+    setSearch("");
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(Popover, { open, onOpenChange: setOpen, placement: "bottom-start", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(
+      Button,
+      {
+        role: "combobox",
+        "aria-expanded": open,
+        justifyContent: "space-between",
+        width: 200,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui44.Text, { numberOfLines: 1, children: value ? value.label : placeholder }),
+          /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_lucide_icons5.ChevronDown, { size: 16 })
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(PopoverContent, { padding: 0, width: 200, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui44.YStack, { padding: "$2", borderBottomWidth: 1, borderBottomColor: "$borderColor", children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+        Input,
+        {
+          placeholder: "Search...",
+          value: search,
+          onChangeText: setSearch
+        }
+      ) }),
+      /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui44.ScrollView, { maxHeight: 200, keyboardShouldPersistTaps: "handled", children: filteredOptions.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui44.YStack, { padding: "$3", alignItems: "center", children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui44.Text, { color: "$mutedForeground", children: emptyMessage }) }) : /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui44.YGroup, { children: filteredOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui44.YGroup.Item, { children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+        import_tamagui44.ListItem,
+        {
+          hoverTheme: true,
+          pressTheme: true,
+          onPress: () => handleSelect(option),
+          icon: value?.value === option.value ? import_lucide_icons5.Check : void 0,
+          cursor: "pointer",
+          children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui44.Text, { children: option.label })
+        }
+      ) }, option.value)) }) })
+    ] })
+  ] });
+};
+
 // src/organisms/Form/Form.tsx
-var React29 = __toESM(require("react"));
+var React34 = __toESM(require("react"));
 var import_react_hook_form = require("react-hook-form");
-var import_tamagui39 = require("tamagui");
-var import_jsx_runtime29 = require("react/jsx-runtime");
+var import_tamagui45 = require("tamagui");
+var import_jsx_runtime35 = require("react/jsx-runtime");
 var Form = import_react_hook_form.FormProvider;
-var FormFieldContext = React29.createContext(
+var FormFieldContext = React34.createContext(
   {}
 );
 var FormField = ({
   ...props
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(FormFieldContext.Provider, { value: { name: props.name }, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_react_hook_form.Controller, { ...props }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(FormFieldContext.Provider, { value: { name: props.name }, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_react_hook_form.Controller, { ...props }) });
 };
 var useFormField = () => {
-  const fieldContext = React29.useContext(FormFieldContext);
-  const itemContext = React29.useContext(FormItemContext);
+  const fieldContext = React34.useContext(FormFieldContext);
+  const itemContext = React34.useContext(FormItemContext);
   const { getFieldState, formState } = (0, import_react_hook_form.useFormContext)();
   const fieldState = getFieldState(fieldContext.name, formState);
   if (!fieldContext) {
@@ -5622,21 +6171,21 @@ var useFormField = () => {
     ...fieldState
   };
 };
-var FormItemContext = React29.createContext(
+var FormItemContext = React34.createContext(
   {}
 );
-var FormItemFrame = (0, import_tamagui39.styled)(import_tamagui39.YStack, {
+var FormItemFrame = (0, import_tamagui45.styled)(import_tamagui45.YStack, {
   name: "FormItem",
   space: "$2"
 });
-var FormItem = React29.forwardRef(
+var FormItem = React34.forwardRef(
   ({ ...props }, ref) => {
-    const id2 = React29.useId();
-    return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(FormItemContext.Provider, { value: { id: id2 }, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(FormItemFrame, { ref, ...props }) });
+    const id2 = React34.useId();
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(FormItemContext.Provider, { value: { id: id2 }, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(FormItemFrame, { ref, ...props }) });
   }
 );
 FormItem.displayName = "FormItem";
-var FormLabelFrame = (0, import_tamagui39.styled)(import_tamagui39.Label, {
+var FormLabelFrame = (0, import_tamagui45.styled)(import_tamagui45.Label, {
   name: "FormLabel",
   color: "$color",
   fontWeight: "500",
@@ -5649,10 +6198,10 @@ var FormLabelFrame = (0, import_tamagui39.styled)(import_tamagui39.Label, {
     }
   }
 });
-var FormLabel = React29.forwardRef(
+var FormLabel = React34.forwardRef(
   ({ ...props }, ref) => {
     const { error: error2, formItemId } = useFormField();
-    return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
       FormLabelFrame,
       {
         ref,
@@ -5664,11 +6213,11 @@ var FormLabel = React29.forwardRef(
   }
 );
 FormLabel.displayName = "FormLabel";
-var FormControl = React29.forwardRef(
+var FormControl = React34.forwardRef(
   ({ ...props }, ref) => {
     const { error: error2, formItemId, formDescriptionId, formMessageId } = useFormField();
-    return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
-      import_tamagui39.View,
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+      import_tamagui45.View,
       {
         ref,
         id: formItemId,
@@ -5680,15 +6229,15 @@ var FormControl = React29.forwardRef(
   }
 );
 FormControl.displayName = "FormControl";
-var FormDescriptionFrame = (0, import_tamagui39.styled)(import_tamagui39.Text, {
+var FormDescriptionFrame = (0, import_tamagui45.styled)(import_tamagui45.Text, {
   name: "FormDescription",
   fontSize: "$2",
   color: "$mutedForeground"
 });
-var FormDescription = React29.forwardRef(
+var FormDescription = React34.forwardRef(
   ({ ...props }, ref) => {
     const { formDescriptionId } = useFormField();
-    return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
       FormDescriptionFrame,
       {
         ref,
@@ -5699,20 +6248,20 @@ var FormDescription = React29.forwardRef(
   }
 );
 FormDescription.displayName = "FormDescription";
-var FormMessageFrame = (0, import_tamagui39.styled)(import_tamagui39.Text, {
+var FormMessageFrame = (0, import_tamagui45.styled)(import_tamagui45.Text, {
   name: "FormMessage",
   fontSize: "$2",
   fontWeight: "500",
   color: "$destructive"
 });
-var FormMessage = React29.forwardRef(
+var FormMessage = React34.forwardRef(
   ({ children, ...props }, ref) => {
     const { error: error2, formMessageId } = useFormField();
     const body = error2 ? String(error2?.message) : children;
     if (!body) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
       FormMessageFrame,
       {
         ref,
@@ -5725,24 +6274,50 @@ var FormMessage = React29.forwardRef(
 );
 FormMessage.displayName = "FormMessage";
 
+// src/organisms/RichText/RichText.tsx
+var import_react33 = require("@tiptap/react");
+var import_starter_kit = __toESM(require("@tiptap/starter-kit"));
+var import_tamagui46 = require("tamagui");
+var import_jsx_runtime36 = require("react/jsx-runtime");
+var EditorContainer = (0, import_tamagui46.styled)(import_tamagui46.Stack, {
+  name: "RichTextEditor",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  borderRadius: "$md",
+  padding: "$md",
+  minHeight: 150,
+  marginHorizontal: "$true"
+});
+var RichText = ({ value, onChange, editable = true, ...props }) => {
+  const editor = (0, import_react33.useEditor)({
+    extensions: [import_starter_kit.default],
+    content: value,
+    editable,
+    onUpdate: ({ editor: editor2 }) => {
+      onChange?.(editor2.getHTML());
+    }
+  });
+  return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(EditorContainer, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_react33.EditorContent, { editor }) });
+};
+
 // src/organisms/DataTable/DataTable.tsx
-var import_react29 = require("react");
+var import_react34 = require("react");
 var import_react_table = require("@tanstack/react-table");
-var import_tamagui40 = require("tamagui");
-var import_jsx_runtime30 = require("react/jsx-runtime");
-var TableContainer = (0, import_tamagui40.styled)(import_tamagui40.YStack, {
+var import_tamagui47 = require("tamagui");
+var import_jsx_runtime37 = require("react/jsx-runtime");
+var TableContainer = (0, import_tamagui47.styled)(import_tamagui47.YStack, {
   borderColor: "$borderColor",
   borderWidth: 1,
   borderRadius: "$md",
   // Changed from $4 to $md
   overflow: "hidden"
 });
-var TableHeader = (0, import_tamagui40.styled)(import_tamagui40.YStack, {
+var TableHeader = (0, import_tamagui47.styled)(import_tamagui47.YStack, {
   backgroundColor: "$background",
   borderBottomWidth: 1,
   borderColor: "$borderColor"
 });
-var TableRow = (0, import_tamagui40.styled)(import_tamagui40.XStack, {
+var TableRow = (0, import_tamagui47.styled)(import_tamagui47.XStack, {
   borderBottomWidth: 1,
   borderColor: "$borderColor",
   paddingVertical: "$3",
@@ -5752,12 +6327,12 @@ var TableRow = (0, import_tamagui40.styled)(import_tamagui40.XStack, {
     backgroundColor: "$backgroundHover"
   }
 });
-var TableHeadText = (0, import_tamagui40.styled)(import_tamagui40.Text, {
+var TableHeadText = (0, import_tamagui47.styled)(import_tamagui47.Text, {
   color: "$mutedForeground",
   fontSize: "$3",
   fontWeight: "500"
 });
-var TableCellText = (0, import_tamagui40.styled)(import_tamagui40.Text, {
+var TableCellText = (0, import_tamagui47.styled)(import_tamagui47.Text, {
   color: "$foreground",
   fontSize: "$3"
 });
@@ -5765,8 +6340,8 @@ function DataTable({
   columns,
   data
 }) {
-  const [sorting, setSorting] = (0, import_react29.useState)([]);
-  const [columnFilters, setColumnFilters] = (0, import_react29.useState)([]);
+  const [sorting, setSorting] = (0, import_react34.useState)([]);
+  const [columnFilters, setColumnFilters] = (0, import_react34.useState)([]);
   const table = (0, import_react_table.useReactTable)({
     data,
     columns,
@@ -5781,21 +6356,18 @@ function DataTable({
       columnFilters
     }
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_tamagui40.YStack, { gap: "$4", width: "100%", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.ScrollView, { horizontal: true, showsHorizontalScrollIndicator: true, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_tamagui40.YStack, { minWidth: "100%", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableHeader, { children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableRow, { borderBottomWidth: 1, paddingVertical: "$3", children: headerGroup.headers.map((header) => {
-        return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.View, { style: { flex: 1, minWidth: 100 }, children: header.isPlaceholder ? null : (0, import_react_table.flexRender)(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )
-                }, header.id);
-              })
-            }, headerGroup.id))
-          }),
-      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.YStack, { children: table.getRowModel().rows?.length ? table.getRowModel().rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableRow, { "data-state": row.getIsSelected() && "selected", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.View, { style: { flex: 1, minWidth: 100 }, children: (0, import_react_table.flexRender)(cell.column.columnDef.cell, cell.getContext()) }, cell.id)) }, row.id)) : /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableRow, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui40.View, { style: { flex: 1, alignItems: "center", padding: 20 }, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(TableHeadText, { children: "No results." }) }) }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(import_tamagui47.YStack, { gap: "$4", marginHorizontal: "$true", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(TableContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_tamagui47.ScrollView, { horizontal: true, showsHorizontalScrollIndicator: true, children: /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(import_tamagui47.YStack, { minWidth: "100%", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(TableHeader, { children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(TableRow, { borderBottomWidth: 1, paddingVertical: "$3", children: headerGroup.headers.map((header) => {
+        return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_tamagui47.View, { style: { flex: 1, minWidth: 100 }, children: header.isPlaceholder ? null : (0, import_react_table.flexRender)(
+          header.column.columnDef.header,
+          header.getContext()
+        ) }, header.id);
+      }) }, headerGroup.id)) }),
+      /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_tamagui47.YStack, { children: table.getRowModel().rows?.length ? table.getRowModel().rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(TableRow, { "data-state": row.getIsSelected() && "selected", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_tamagui47.View, { style: { flex: 1, minWidth: 100 }, children: (0, import_react_table.flexRender)(cell.column.columnDef.cell, cell.getContext()) }, cell.id)) }, row.id)) : /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(TableRow, { children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_tamagui47.View, { style: { flex: 1, alignItems: "center", padding: 20 }, children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(TableHeadText, { children: "No results." }) }) }) })
     ] }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_tamagui40.XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(import_tamagui47.XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
         Button,
         {
           variant: "outline",
@@ -5805,7 +6377,7 @@ function DataTable({
           children: "Previous"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
         Button,
         {
           variant: "outline",
@@ -5815,10 +6387,8 @@ function DataTable({
           children: "Next"
         }
       )
-      ]
-    })
-    ]
-  });
+    ] })
+  ] });
 }
 var Table = {
   Container: TableContainer,
@@ -5829,23 +6399,23 @@ var Table = {
 };
 
 // src/organisms/Carousel/Carousel.tsx
-var import_react30 = __toESM(require("react"));
+var import_react35 = __toESM(require("react"));
 var import_embla_carousel_react = __toESM(require("embla-carousel-react"));
-var import_tamagui41 = require("tamagui");
-var import_jsx_runtime31 = require("react/jsx-runtime");
-var CarouselContext = import_react30.default.createContext(null);
+var import_tamagui48 = require("tamagui");
+var import_jsx_runtime38 = require("react/jsx-runtime");
+var CarouselContext = import_react35.default.createContext(null);
 function useCarousel() {
-  const context = import_react30.default.useContext(CarouselContext);
+  const context = import_react35.default.useContext(CarouselContext);
   if (!context) {
     throw new Error("useCarousel must be used within a <Carousel />");
   }
   return context;
 }
-var CarouselFrame = (0, import_tamagui41.styled)(import_tamagui41.YStack, {
-  width: "100%",
+var CarouselFrame = (0, import_tamagui48.styled)(import_tamagui48.YStack, {
+  marginHorizontal: "$true",
   position: "relative"
 });
-var Carousel = import_react30.default.forwardRef(
+var Carousel = import_react35.default.forwardRef(
   ({
     orientation = "horizontal",
     opts,
@@ -5861,24 +6431,24 @@ var Carousel = import_react30.default.forwardRef(
       },
       plugins
     );
-    const [canScrollPrev, setCanScrollPrev] = (0, import_react30.useState)(false);
-    const [canScrollNext, setCanScrollNext] = (0, import_react30.useState)(false);
-    const onSelect = (0, import_react30.useCallback)((api2) => {
+    const [canScrollPrev, setCanScrollPrev] = (0, import_react35.useState)(false);
+    const [canScrollNext, setCanScrollNext] = (0, import_react35.useState)(false);
+    const onSelect = (0, import_react35.useCallback)((api2) => {
       if (!api2) return;
       setCanScrollPrev(api2.canScrollPrev());
       setCanScrollNext(api2.canScrollNext());
     }, []);
-    const scrollPrev = (0, import_react30.useCallback)(() => {
+    const scrollPrev = (0, import_react35.useCallback)(() => {
       api?.scrollPrev();
     }, [api]);
-    const scrollNext = (0, import_react30.useCallback)(() => {
+    const scrollNext = (0, import_react35.useCallback)(() => {
       api?.scrollNext();
     }, [api]);
-    (0, import_react30.useEffect)(() => {
+    (0, import_react35.useEffect)(() => {
       if (!api || !setApi) return;
       setApi(api);
     }, [api, setApi]);
-    (0, import_react30.useEffect)(() => {
+    (0, import_react35.useEffect)(() => {
       if (!api) return;
       onSelect(api);
       api.on("reInit", onSelect);
@@ -5887,7 +6457,7 @@ var Carousel = import_react30.default.forwardRef(
         api?.off("select", onSelect);
       };
     }, [api, onSelect]);
-    return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
       CarouselContext.Provider,
       {
         value: {
@@ -5900,7 +6470,7 @@ var Carousel = import_react30.default.forwardRef(
           canScrollPrev,
           canScrollNext
         },
-        children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
           CarouselFrame,
           {
             ref,
@@ -5915,38 +6485,37 @@ var Carousel = import_react30.default.forwardRef(
   }
 );
 Carousel.displayName = "Carousel";
-var CarouselContentFrame = (0, import_tamagui41.styled)(import_tamagui41.XStack, {
+var CarouselContentFrame = (0, import_tamagui48.styled)(import_tamagui48.XStack, {
   display: "flex"
 });
-var CarouselContent = import_react30.default.forwardRef(
+var CarouselContent = import_react35.default.forwardRef(
   ({ ...props }, ref) => {
     const { carouselRef, orientation } = useCarousel();
-    return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui41.View, { ref: carouselRef, overflow: "hidden", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
-        CarouselContentFrame,
-        {
-          ref,
-          flexDirection: orientation === "horizontal" ? "row" : "column",
-          marginTop: orientation === "horizontal" ? 0 : "-$4",
-          paddingTop: orientation === "horizontal" ? 0 : "$4",
-          marginLeft: orientation === "horizontal" ? "-$4" : 0,
-          paddingLeft: orientation === "horizontal" ? "$4" : 0,
-          ...props
-        }
-      )
-    });
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_tamagui48.View, { ref: carouselRef, overflow: "hidden", children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      CarouselContentFrame,
+      {
+        ref,
+        flexDirection: orientation === "horizontal" ? "row" : "column",
+        marginTop: orientation === "horizontal" ? 0 : "-$4",
+        paddingTop: orientation === "horizontal" ? 0 : "$4",
+        marginLeft: orientation === "horizontal" ? "-$4" : 0,
+        paddingLeft: orientation === "horizontal" ? "$4" : 0,
+        ...props
+      }
+    ) });
   }
 );
 CarouselContent.displayName = "CarouselContent";
-var CarouselItemFrame = (0, import_tamagui41.styled)(import_tamagui41.YStack, {
+var CarouselItemFrame = (0, import_tamagui48.styled)(import_tamagui48.YStack, {
   minWidth: 0,
   flexShrink: 0,
   flexGrow: 0,
   flexBasis: "100%"
 });
-var CarouselItem = import_react30.default.forwardRef(
+var CarouselItem = import_react35.default.forwardRef(
   ({ ...props }, ref) => {
     const { orientation } = useCarousel();
-    return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
       CarouselItemFrame,
       {
         ref,
@@ -5960,12 +6529,12 @@ var CarouselItem = import_react30.default.forwardRef(
   }
 );
 CarouselItem.displayName = "CarouselItem";
-var ArrowLeft = () => /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui41.Text, { children: "<" });
-var ArrowRight = () => /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui41.Text, { children: ">" });
-var CarouselPrevious = import_react30.default.forwardRef(
+var ArrowLeft = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_tamagui48.Text, { children: "<" });
+var ArrowRight = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_tamagui48.Text, { children: ">" });
+var CarouselPrevious = import_react35.default.forwardRef(
   ({ variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
-    return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
       Button,
       {
         ref,
@@ -5993,10 +6562,10 @@ var CarouselPrevious = import_react30.default.forwardRef(
   }
 );
 CarouselPrevious.displayName = "CarouselPrevious";
-var CarouselNext = import_react30.default.forwardRef(
+var CarouselNext = import_react35.default.forwardRef(
   ({ variant = "outline", size = "icon", ...props }, ref) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();
-    return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
       Button,
       {
         ref,
@@ -6026,81 +6595,71 @@ var CarouselNext = import_react30.default.forwardRef(
 CarouselNext.displayName = "CarouselNext";
 
 // src/organisms/Command/Command.tsx
-var import_react31 = __toESM(require("react"));
+var import_react36 = __toESM(require("react"));
 var import_cmdk = require("cmdk");
-var import_tamagui42 = require("tamagui");
-var import_jsx_runtime32 = require("react/jsx-runtime");
-var CommandFrame = (0, import_tamagui42.styled)(import_tamagui42.View, {
+var import_tamagui49 = require("tamagui");
+var import_lucide_icons6 = require("@tamagui/lucide-icons");
+var import_jsx_runtime39 = require("react/jsx-runtime");
+var CommandFrame = (0, import_tamagui49.styled)(import_tamagui49.View, {
   name: "Command",
   flexDirection: "column",
   overflow: "hidden",
   backgroundColor: "$background",
   borderRadius: "$md",
-  // We need to target the [cmdk-root] if possible, but styling the wrapper is usually enough
   width: "100%",
   height: "100%"
 });
-var Command = import_react31.default.forwardRef(
-  ({ className: _className, ...props }, ref) => {
-    const _ = _className;
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(CommandFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_cmdk.Command, { ...props }) });
+var Command = import_react36.default.forwardRef(
+  ({ className, ...props }, ref) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(CommandFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_cmdk.Command, { className, ...props }) });
   }
 );
 Command.displayName = import_cmdk.Command.displayName;
 var CommandDialog = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Dialog, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(DialogContentComposite, { padding: 0, overflow: "hidden", maxWidth: 600, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
-        Command,
-        {
-          className: "[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5",
-          children
-        }
-      )
-    })
-  });
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Dialog, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(DialogContentComposite, { padding: 0, overflow: "hidden", maxWidth: 600, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Command, { children }) }) });
 };
-var CommandInputFrame = (0, import_tamagui42.styled)(import_tamagui42.View, {
+var CommandInputFrame = (0, import_tamagui49.styled)(import_tamagui49.View, {
   flexDirection: "row",
   alignItems: "center",
   borderBottomWidth: 1,
   borderBottomColor: "$borderColor",
   paddingHorizontal: "$3"
 });
-var SearchIcon = () => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui42.Text, { fontSize: "$4", marginRight: "$2", children: "\u{1F50D}" });
-var CommandInput = import_react31.default.forwardRef(
-  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(CommandInputFrame, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(SearchIcon, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
-      import_cmdk.Command.Input,
-      {
-        ref,
-        style: {
-          flex: 1,
-          height: 44,
-          fontSize: 14,
-          outline: "none",
-          border: "none",
-          background: "transparent",
-          color: "var(--color-foreground)"
-          // Need to ensure colors work
-        },
-        ...props
-      }
-    )
-    ]
-  })
+var CommandInput = import_react36.default.forwardRef(
+  ({ ...props }, ref) => {
+    const theme = (0, import_tamagui49.useTheme)();
+    return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(CommandInputFrame, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_lucide_icons6.Search, { size: 20, color: "$mutedForeground", marginRight: "$2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+        import_cmdk.Command.Input,
+        {
+          ref,
+          style: {
+            flex: 1,
+            height: 44,
+            fontSize: 14,
+            outline: "none",
+            border: "none",
+            background: "transparent",
+            color: theme.foreground?.val || "#000"
+          },
+          ...props
+        }
+      )
+    ] });
+  }
 );
 CommandInput.displayName = import_cmdk.Command.Input.displayName;
-var CommandListFrame = (0, import_tamagui42.styled)(import_tamagui42.View, {
+var CommandListFrame = (0, import_tamagui49.styled)(import_tamagui49.View, {
   maxHeight: 300,
-  overflowY: "auto",
-  overflowX: "hidden"
+  overflow: "scroll"
 });
-var CommandList = import_react31.default.forwardRef(
-  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(CommandListFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_cmdk.Command.List, { ...props }) })
+var CommandList = import_react36.default.forwardRef(
+  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(CommandListFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_cmdk.Command.List, { ...props }) })
 );
 CommandList.displayName = import_cmdk.Command.List.displayName;
-var CommandEmpty = import_react31.default.forwardRef(
-  (props, ref) => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
+var CommandEmpty = import_react36.default.forwardRef(
+  (props, ref) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
     import_cmdk.Command.Empty,
     {
       ref,
@@ -6114,119 +6673,112 @@ var CommandEmpty = import_react31.default.forwardRef(
   )
 );
 CommandEmpty.displayName = import_cmdk.Command.Empty.displayName;
-var CommandGroupFrame = (0, import_tamagui42.styled)(import_tamagui42.View, {
+var CommandGroupFrame = (0, import_tamagui49.styled)(import_tamagui49.View, {
   overflow: "hidden",
   padding: "$1"
-  // Styling the label text is tricky with pure styled wrapper around Group
-  // cmdk renders the label itself
 });
-var CommandGroup = import_react31.default.forwardRef(
-  ({ heading, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(CommandGroupFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_cmdk.Command.Group, { heading, ...props }) })
+var CommandGroup = import_react36.default.forwardRef(
+  ({ heading, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(CommandGroupFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_cmdk.Command.Group, { heading, ...props }) })
 );
 CommandGroup.displayName = import_cmdk.Command.Group.displayName;
-var CommandSeparatorFrame = (0, import_tamagui42.styled)(import_tamagui42.View, {
+var CommandSeparatorFrame = (0, import_tamagui49.styled)(import_tamagui49.View, {
   height: 1,
   backgroundColor: "$borderColor",
   marginHorizontal: "-$1"
 });
-var CommandSeparator = import_react31.default.forwardRef(
-  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(CommandSeparatorFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_cmdk.Command.Separator, { ...props }) })
+var CommandSeparator = import_react36.default.forwardRef(
+  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(CommandSeparatorFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_cmdk.Command.Separator, { ...props }) })
 );
 CommandSeparator.displayName = import_cmdk.Command.Separator.displayName;
-var CommandItemFrame = (0, import_tamagui42.styled)(import_tamagui42.View, {
+var CommandItemFrame = (0, import_tamagui49.styled)(import_tamagui49.View, {
   flexDirection: "row",
   alignItems: "center",
   padding: "$2",
   borderRadius: "$sm",
   cursor: "pointer",
-  // Hover/Selected styles handled by cmdk data attributes usually
-  // but we can add default hover
   hoverStyle: {
     backgroundColor: "$muted"
   }
 });
-var CommandItem = import_react31.default.forwardRef(
-  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(CommandItemFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
-      import_cmdk.Command.Item,
-      {
-        className: "aria-selected:bg-muted aria-selected:text-accent-foreground",
-        style: {
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center"
-          // Styles for cmdk selection usually need CSS or classNames
-        },
-        ...props
-      }
-    )
-  })
+var CommandItem = import_react36.default.forwardRef(
+  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(CommandItemFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+    import_cmdk.Command.Item,
+    {
+      style: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        userSelect: "none"
+      },
+      ...props
+    }
+  ) })
 );
 CommandItem.displayName = import_cmdk.Command.Item.displayName;
-var CommandShortcut = (0, import_tamagui42.styled)(import_tamagui42.Text, {
+var CommandShortcut = (0, import_tamagui49.styled)(import_tamagui49.Text, {
   marginLeft: "auto",
   fontSize: "$2",
   color: "$mutedForeground"
 });
 
 // src/organisms/Sidebar/Sidebar.tsx
-var import_react32 = require("react");
-var import_tamagui43 = require("tamagui");
-var import_lucide_icons2 = require("@tamagui/lucide-icons");
-var import_jsx_runtime33 = require("react/jsx-runtime");
+var import_react37 = require("react");
+var import_tamagui50 = require("tamagui");
+var import_lucide_icons7 = require("@tamagui/lucide-icons");
+var import_jsx_runtime40 = require("react/jsx-runtime");
 var Sidebar = ({ children, variant = "fixed" }) => {
-  const [isCollapsed, setIsCollapsed] = (0, import_react32.useState)(false);
-  const media = (0, import_tamagui43.useMedia)();
+  const [isCollapsed, setIsCollapsed] = (0, import_react37.useState)(false);
+  const media = (0, import_tamagui50.useMedia)();
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
   if (media.sm) {
-    return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(Sheet, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(SheetTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Button, { icon: import_lucide_icons2.Menu, circular: true }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(SheetContent, { position: "left", size: "$20", children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui43.YStack, { space: "$4", paddingTop: "$8", children }) })
+    return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(Sheet, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(SheetTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Button, { icon: import_lucide_icons7.Menu, circular: true }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(SheetContent, { position: "left", size: "$20", children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_tamagui50.YStack, { space: "$4", paddingTop: "$8", children }) })
     ] });
   }
-  const desktopSidebar = /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui43.AnimatePresence, { children: /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(
-    import_tamagui43.YStack,
-      {
-        animation: "medium",
-        width: isCollapsed && variant === "collapsible" ? 60 : 280,
-        borderRightWidth: 1,
-        borderColor: "$borderColor",
-        padding: "$4",
-        space: "$2",
-        ...variant === "floating" && {
-          position: "absolute",
-          top: 0,
-          left: 0,
-          bottom: 0,
-          backgroundColor: "$background",
-          zIndex: 10
-        },
-        children: [
-          children,
-        variant === "collapsible" && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
-            Button,
-            {
-              icon: isCollapsed ? import_lucide_icons2.ChevronRight : import_lucide_icons2.ChevronLeft,
-              onPress: toggleSidebar,
-              circular: true,
-              position: "absolute",
-              top: 20,
-              right: -15,
-              zIndex: 20
-            }
-          )
-        ]
-      }
-    )
-  });
+  const desktopSidebar = /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_tamagui50.AnimatePresence, { children: /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+    import_tamagui50.YStack,
+    {
+      animation: "medium",
+      width: isCollapsed && variant === "collapsible" ? 60 : 280,
+      borderRightWidth: 1,
+      borderColor: "$borderColor",
+      padding: "$4",
+      space: "$2",
+      ...variant === "floating" && {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        backgroundColor: "$background",
+        zIndex: 10
+      },
+      children: [
+        children,
+        variant === "collapsible" && /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+          Button,
+          {
+            icon: isCollapsed ? import_lucide_icons7.ChevronRight : import_lucide_icons7.ChevronLeft,
+            onPress: toggleSidebar,
+            circular: true,
+            position: "absolute",
+            top: 20,
+            right: -15,
+            zIndex: 20
+          }
+        )
+      ]
+    }
+  ) });
   return desktopSidebar;
 };
 
 // src/organisms/Charts/BarChart.tsx
 var import_victory = require("victory");
-var import_tamagui44 = require("tamagui");
-var import_jsx_runtime34 = require("react/jsx-runtime");
+var import_tamagui51 = require("tamagui");
+var import_jsx_runtime41 = require("react/jsx-runtime");
 var BarChart = ({
   data,
   xKey,
@@ -6235,21 +6787,21 @@ var BarChart = ({
   height = 300,
   width
 }) => {
-  const theme = (0, import_tamagui44.useTheme)();
+  const theme = (0, import_tamagui51.useTheme)();
   const themeColor = theme[color];
   const barColor = themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
-  return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("div", { style: { height, width: width || "100%" }, children: /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(
-      import_victory.VictoryChart,
-      {
-        domainPadding: { x: 20 },
-        height,
-        width,
-      containerComponent: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_victory.VictoryContainer, { responsive: !width }),
+  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { style: { height, width: width || "auto", marginLeft: 12, marginRight: 12 }, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+    import_victory.VictoryChart,
+    {
+      domainPadding: { x: 20 },
+      height,
+      width,
+      containerComponent: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_victory.VictoryContainer, { responsive: !width }),
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
           import_victory.VictoryAxis,
           {
             style: {
@@ -6258,7 +6810,7 @@ var BarChart = ({
             }
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
           import_victory.VictoryAxis,
           {
             dependentAxis: true,
@@ -6269,7 +6821,7 @@ var BarChart = ({
             }
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
           import_victory.VictoryBar,
           {
             data,
@@ -6281,132 +6833,155 @@ var BarChart = ({
             cornerRadius: { top: 4 }
           }
         )
-        ]
-      }
-    )
-  });
+      ]
+    }
+  ) });
 };
 
-// src/molecules/StarRating/StarRating.tsx
-var import_react31 = require("react");
-var import_tamagui43 = require("tamagui");
-var import_lucide_icons3 = require("@tamagui/lucide-icons");
-var import_jsx_runtime33 = require("react/jsx-runtime");
-var StarRating = (0, import_react31.forwardRef)(({
-  count = 5,
-  onChange,
-  value,
-  defaultValue: defaultValue2 = null,
-  disabled,
-  iconProps,
-  gap = "$1",
-  Icon = import_lucide_icons3.Star,
-  size = "$1",
-  colorHover = "$yellow7",
-  colorActiveHover = "$yellow8",
-  colorActive = "$yellow10",
-  color = "$gray7",
-  ...stackProps
-}, ref) => {
-  const [internalRating, setInternalRating] = (0, import_react31.useState)(defaultValue2);
-  const [hoverRating, setHoverRating] = (0, import_react31.useState)(null);
-  const isControlled = value !== void 0;
-  const currentRatingValue = isControlled ? value : internalRating;
-  const arr = Array.from(Array(count).keys());
-  const handlePress = (ratingToSet) => {
-    if (disabled) return;
-    const newRating = currentRatingValue === ratingToSet ? null : ratingToSet;
-    if (!isControlled) {
-      setInternalRating(newRating);
-    }
-    onChange?.(newRating);
-  };
-  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui43.XStack, {
-    gap, ...stackProps, ref, children: arr.map((idx) => {
-      const ratingValue = idx + 1;
-      const filled = ratingValue <= (currentRatingValue || 0);
-      const hovered = ratingValue <= (hoverRating || 0);
-      let currentColor = color;
-      if (hoverRating !== null) {
-        if (hovered) {
-          currentColor = colorHover;
-        }
-      } else {
-        if (filled) {
-          currentColor = colorActive;
-        }
-      }
-      if (filled) {
-        currentColor = hovered ? colorActiveHover : colorActive;
-      } else {
-        currentColor = hovered ? colorHover : color;
-      }
-      return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
-        import_tamagui43.SizableStack,
-        {
-          size,
-          onHoverIn: () => {
-            if (disabled) return;
-            setHoverRating(ratingValue);
-          },
-          onHoverOut: () => {
-            if (disabled) return;
-            setHoverRating(null);
-          },
-          onPress: () => handlePress(ratingValue),
-          cursor: disabled ? "not-allowed" : "pointer",
-          children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
-            Icon,
-            {
-              ...iconProps,
-              size,
-              color: currentColor,
-              fill: filled ? currentColor : "transparent"
-            }
-          )
-        },
-        `${ratingValue}`
-      );
-    })
-  });
+// src/molecules/Field/Field.tsx
+var import_tamagui53 = require("tamagui");
+
+// src/atoms/Label/Label.tsx
+var import_tamagui52 = require("tamagui");
+var Label5 = (0, import_tamagui52.styled)(import_tamagui52.Label, {
+  color: "$color",
+  fontSize: "$4",
+  fontWeight: "500",
+  lineHeight: "$4",
+  userSelect: "none"
 });
-StarRating.displayName = "StarRating";
+
+// src/molecules/Field/Field.tsx
+var Field = (0, import_tamagui53.styled)(import_tamagui53.YStack, {
+  name: "Field",
+  gap: "$2"
+});
+var FieldLabel = Label5;
+var FieldControl = (0, import_tamagui53.styled)(import_tamagui53.YStack, {
+  name: "FieldControl"
+});
+var FieldError = (0, import_tamagui53.styled)(import_tamagui53.Text, {
+  name: "FieldError",
+  color: "$destructive",
+  fontSize: "$2"
+});
+
+// src/molecules/InputGroup/InputGroup.tsx
+var import_tamagui54 = require("tamagui");
+var InputGroup = import_tamagui54.XGroup;
+var InputGroupItem = import_tamagui54.XGroup.Item;
+
+// src/molecules/NativeSelect/NativeSelect.tsx
+var import_react38 = require("react");
+var import_tamagui55 = require("tamagui");
+var import_lucide_icons8 = require("@tamagui/lucide-icons");
+var import_jsx_runtime42 = require("react/jsx-runtime");
+var SelectFrame = (0, import_tamagui55.styled)(import_tamagui55.Stack, {
+  name: "NativeSelect",
+  position: "relative",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  borderRadius: "$md",
+  height: 40,
+  justifyContent: "center"
+});
+var NativeSelect = (0, import_react38.forwardRef)(({ children, ...props }, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(SelectFrame, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+      "select",
+      {
+        ref,
+        style: {
+          appearance: "none",
+          background: "transparent",
+          border: "none",
+          width: "100%",
+          height: "100%",
+          outline: "none",
+          paddingLeft: "12px",
+          paddingRight: "32px"
+        },
+        ...props,
+        children
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+      import_lucide_icons8.ChevronDown,
+      {
+        size: 16,
+        position: "absolute",
+        right: "$3",
+        pointerEvents: "none",
+        color: "$color10"
+      }
+    )
+  ] });
+});
+
+// src/organisms/Video/Video.tsx
+var import_expo_av = require("expo-av");
+var import_react39 = require("react");
+var import_tamagui56 = require("tamagui");
+var import_jsx_runtime43 = require("react/jsx-runtime");
+var Video = (0, import_react39.forwardRef)(({
+  src,
+  width,
+  height = 200,
+  useNativeControls = true,
+  resizeMode = import_expo_av.ResizeMode.COVER,
+  ...props
+}, ref) => {
+  const source = src ? { uri: src } : props.source;
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_tamagui56.Stack, { width, height, marginHorizontal: "$true", overflow: "hidden", backgroundColor: "$black", ...props, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+    import_expo_av.Video,
+    {
+      ref,
+      source,
+      useNativeControls,
+      resizeMode,
+      style: {
+        width: "100%",
+        height: "100%"
+      }
+    }
+  ) });
+});
 
 // src/providers/AppProviders.tsx
-var import_tamagui48 = require("tamagui");
+var import_tamagui60 = require("tamagui");
 var import_portal2 = require("@tamagui/portal");
 
 // src/tamagui.config.ts
-var import_tamagui47 = require("tamagui");
+var import_tamagui59 = require("tamagui");
 
-// ../../node_modules/.pnpm/@tamagui+constants@1.138.0_react-native@0.82.1_@babel+core@7.28.5_@react-native-community+cli_4wkriafitghzsnawouvwf5z7y4/node_modules/@tamagui/constants/dist/esm/constants.mjs
-var import_react33 = __toESM(require("react"), 1);
-var IS_REACT_19 = typeof import_react33.default.use < "u";
+// ../../node_modules/.pnpm/@tamagui+constants@1.138.6_react-native@0.73.6_@babel+core@7.28.5_@babel+preset-env@7.28.5_@b_avkbltc4tgzeyhqjidstttkgmy/node_modules/@tamagui/constants/dist/esm/constants.mjs
+var import_react40 = __toESM(require("react"), 1);
+var IS_REACT_19 = typeof import_react40.default.use < "u";
 var isWeb3 = true;
 var isWindowDefined = typeof window < "u";
 var isServer = isWeb3 && !isWindowDefined;
 var isClient = isWeb3 && isWindowDefined;
-var useIsomorphicLayoutEffect = isServer ? import_react33.useEffect : import_react33.useLayoutEffect;
+var useIsomorphicLayoutEffect = isServer ? import_react40.useEffect : import_react40.useLayoutEffect;
 var isChrome = typeof navigator < "u" && /Chrome/.test(navigator.userAgent || "");
 var isWebTouchable = isClient && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 var isIos = process.env.TEST_NATIVE_PLATFORM === "ios";
 
-// ../../node_modules/.pnpm/@tamagui+use-presence@1.138.0_react-dom@18.3.1_react@18.3.1__react-native@0.82.1_@babel+core@_42rsu6nubndhvah3xoq7thsmhu/node_modules/@tamagui/use-presence/dist/esm/PresenceContext.mjs
-var React35 = __toESM(require("react"), 1);
-var import_jsx_runtime35 = require("react/jsx-runtime");
-var PresenceContext = React35.createContext(null);
+// ../../node_modules/.pnpm/@tamagui+use-presence@1.138.6_react-dom@18.3.1_react@18.3.1__react-native@0.73.6_@babel+core@_nbweasrzawyvhpcynwut4doip4/node_modules/@tamagui/use-presence/dist/esm/PresenceContext.mjs
+var React42 = __toESM(require("react"), 1);
+var import_jsx_runtime44 = require("react/jsx-runtime");
+var PresenceContext = React42.createContext(null);
 var ResetPresence = (props) => {
-  const parent = React35.useContext(PresenceContext);
-  return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(PresenceContext.Provider, {
+  const parent = React42.useContext(PresenceContext);
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PresenceContext.Provider, {
     value: props.disable ? parent : null,
     children: props.children
   });
 };
 
-// ../../node_modules/.pnpm/@tamagui+use-presence@1.138.0_react-dom@18.3.1_react@18.3.1__react-native@0.82.1_@babel+core@_42rsu6nubndhvah3xoq7thsmhu/node_modules/@tamagui/use-presence/dist/esm/usePresence.mjs
-var React36 = __toESM(require("react"), 1);
+// ../../node_modules/.pnpm/@tamagui+use-presence@1.138.6_react-dom@18.3.1_react@18.3.1__react-native@0.73.6_@babel+core@_nbweasrzawyvhpcynwut4doip4/node_modules/@tamagui/use-presence/dist/esm/usePresence.mjs
+var React43 = __toESM(require("react"), 1);
 function usePresence() {
-  const context = React36.useContext(PresenceContext);
+  const context = React43.useContext(PresenceContext);
   if (!context) return [true, null, context];
   const {
     id: id2,
@@ -6414,19 +6989,19 @@ function usePresence() {
     onExitComplete,
     register
   } = context;
-  return React36.useEffect(() => register(id2), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id2), context] : [true, void 0, context];
+  return React43.useEffect(() => register(id2), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id2), context] : [true, void 0, context];
 }
 
-// ../../node_modules/.pnpm/@tamagui+use-event@1.138.0_react-native@0.82.1_@babel+core@7.28.5_@react-native-community+cli_c5xfix7nnruruu5hug24r4gl4m/node_modules/@tamagui/use-event/dist/esm/useGet.mjs
-var React37 = __toESM(require("react"), 1);
+// ../../node_modules/.pnpm/@tamagui+use-event@1.138.6_react-native@0.73.6_@babel+core@7.28.5_@babel+preset-env@7.28.5_@b_ysckxhduwhjb4khdvl4iembpua/node_modules/@tamagui/use-event/dist/esm/useGet.mjs
+var React44 = __toESM(require("react"), 1);
 function useGet(currentValue, initialValue, forwardToFunction) {
-  const curRef = React37.useRef(initialValue ?? currentValue);
+  const curRef = React44.useRef(initialValue ?? currentValue);
   return useIsomorphicLayoutEffect(() => {
     curRef.current = currentValue;
-  }), React37.useCallback(forwardToFunction ? (...args) => curRef.current?.apply(null, args) : () => curRef.current, []);
+  }), React44.useCallback(forwardToFunction ? (...args) => curRef.current?.apply(null, args) : () => curRef.current, []);
 }
 
-// ../../node_modules/.pnpm/@tamagui+use-event@1.138.0_react-native@0.82.1_@babel+core@7.28.5_@react-native-community+cli_c5xfix7nnruruu5hug24r4gl4m/node_modules/@tamagui/use-event/dist/esm/useEvent.mjs
+// ../../node_modules/.pnpm/@tamagui+use-event@1.138.6_react-native@0.73.6_@babel+core@7.28.5_@babel+preset-env@7.28.5_@b_ysckxhduwhjb4khdvl4iembpua/node_modules/@tamagui/use-event/dist/esm/useEvent.mjs
 function useEvent(callback) {
   return useGet(callback, defaultValue, true);
 }
@@ -6434,8 +7009,8 @@ var defaultValue = () => {
   throw new Error("Cannot call an event handler while rendering.");
 };
 
-// ../../node_modules/.pnpm/@tamagui+animations-react-native@1.138.0_react-dom@18.3.1_react@18.3.1__react-native@0.82.1_@_pbdqmovbjfmtaaz5pg4fubn4hi/node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
-var import_react44 = __toESM(require("react"), 1);
+// ../../node_modules/.pnpm/@tamagui+animations-react-native@1.138.6_react-dom@18.3.1_react@18.3.1__react-native@0.73.6_@_bbut7qs6n252b5szpatxlpsmqe/node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
+var import_react51 = __toESM(require("react"), 1);
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/AccessibilityUtil/isDisabled.js
 var isDisabled = (props) => props.disabled || Array.isArray(props.accessibilityStates) && props.accessibilityStates.indexOf("disabled") > -1;
@@ -8181,10 +8756,10 @@ var createDOMProps = (elementType, props, options) => {
 var createDOMProps_default = createDOMProps;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/createElement/index.js
-var import_react35 = __toESM(require("react"));
+var import_react42 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useLocale/index.js
-var import_react34 = __toESM(require("react"));
+var import_react41 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useLocale/isLocaleRTL.js
 var rtlScripts = /* @__PURE__ */ new Set(["Arab", "Syrc", "Samr", "Mand", "Thaa", "Mend", "Nkoo", "Adlm", "Rohg", "Hebr"]);
@@ -8262,14 +8837,14 @@ var defaultLocale = {
   direction: "ltr",
   locale: "en-US"
 };
-var LocaleContext = /* @__PURE__ */ (0, import_react34.createContext)(defaultLocale);
+var LocaleContext = /* @__PURE__ */ (0, import_react41.createContext)(defaultLocale);
 function getLocaleDirection(locale) {
   return isLocaleRTL(locale) ? "rtl" : "ltr";
 }
 function LocaleProvider(props) {
   var direction = props.direction, locale = props.locale, children = props.children;
   var needsContext = direction || locale;
-  return needsContext ? /* @__PURE__ */ import_react34.default.createElement(LocaleContext.Provider, {
+  return needsContext ? /* @__PURE__ */ import_react41.default.createElement(LocaleContext.Provider, {
     children,
     value: {
       direction: locale ? getLocaleDirection(locale) : direction,
@@ -8278,7 +8853,7 @@ function LocaleProvider(props) {
   }) : children;
 }
 function useLocaleContext() {
-  return (0, import_react34.useContext)(LocaleContext);
+  return (0, import_react41.useContext)(LocaleContext);
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/createElement/index.js
@@ -8289,8 +8864,8 @@ var createElement = (component, props, options) => {
   }
   var Component2 = accessibilityComponent || component;
   var domProps = createDOMProps_default(Component2, props, options);
-  var element = /* @__PURE__ */ import_react35.default.createElement(Component2, domProps);
-  var elementWithLocaleProvider = domProps.dir ? /* @__PURE__ */ import_react35.default.createElement(LocaleProvider, {
+  var element = /* @__PURE__ */ import_react42.default.createElement(Component2, domProps);
+  var elementWithLocaleProvider = domProps.dir ? /* @__PURE__ */ import_react42.default.createElement(LocaleProvider, {
     children: element,
     direction: domProps.dir,
     locale: domProps.lang
@@ -8534,7 +9109,7 @@ var Platform_default = Platform;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedFlatList.js
 var import_extends7 = __toESM(require_extends());
-var React54 = __toESM(require("react"));
+var React61 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/FlatList/index.js
 var import_extends5 = __toESM(require_extends());
@@ -8543,7 +9118,7 @@ var import_objectSpread212 = __toESM(require_objectSpread2());
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/View/index.js
 var import_objectWithoutPropertiesLoose4 = __toESM(require_objectWithoutPropertiesLoose());
-var React44 = __toESM(require("react"));
+var React51 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/forwardedProps/index.js
 var defaultProps = {
@@ -8717,8 +9292,8 @@ function pick(obj, list) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useLayoutEffect/index.js
-var import_react36 = require("react");
-var useLayoutEffectImpl = canUseDom_default ? import_react36.useLayoutEffect : import_react36.useEffect;
+var import_react43 = require("react");
+var useLayoutEffectImpl = canUseDom_default ? import_react43.useLayoutEffect : import_react43.useEffect;
 var useLayoutEffect_default = useLayoutEffectImpl;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useElementLayout/index.js
@@ -8728,7 +9303,7 @@ var resizeObserver = null;
 function getResizeObserver() {
   if (canUseDom_default && typeof window.ResizeObserver !== "undefined") {
     if (resizeObserver == null) {
-      resizeObserver = new window.ResizeObserver(function (entries) {
+      resizeObserver = new window.ResizeObserver(function(entries) {
         entries.forEach((entry) => {
           var node = entry.target;
           var onLayout = node[DOM_LAYOUT_HANDLER_NAME];
@@ -8792,15 +9367,15 @@ function useElementLayout(ref, onLayout) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useMergeRefs/index.js
-var React41 = __toESM(require("react"));
+var React48 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/mergeRefs/index.js
-var React40 = __toESM(require("react"));
+var React47 = __toESM(require("react"));
 function mergeRefs() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
-  return function forwardRef11(node) {
+  return function forwardRef15(node) {
     args.forEach((ref) => {
       if (ref == null) {
         return;
@@ -8823,7 +9398,7 @@ function useMergeRefs() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
-  return React41.useMemo(
+  return React48.useMemo(
     () => mergeRefs(...args),
     // eslint-disable-next-line
     [...args]
@@ -8831,10 +9406,10 @@ function useMergeRefs() {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useStable/index.js
-var React42 = __toESM(require("react"));
+var React49 = __toESM(require("react"));
 var UNINITIALIZED = typeof Symbol === "function" && typeof Symbol() === "symbol" ? Symbol() : Object.freeze({});
 function useStable(getInitialValue) {
-  var ref = React42.useRef(UNINITIALIZED);
+  var ref = React49.useRef(UNINITIALIZED);
   if (ref.current === UNINITIALIZED) {
     ref.current = getInitialValue();
   }
@@ -8855,7 +9430,7 @@ function usePlatformMethods(_ref) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useResponderEvents/index.js
-var React43 = __toESM(require("react"));
+var React50 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/useResponderEvents/createResponderEvent.js
 var emptyFunction = () => {
@@ -9409,12 +9984,12 @@ function eventListener(domEvent) {
       }
     } else {
       var isTerminateEvent = isCancelish(eventType) || // native context menu
-        eventType === "contextmenu" || // window blur
-        eventType === "blur" && eventTarget === window || // responder (or ancestors) blur
-        eventType === "blur" && eventTarget.contains(node) && domEvent.relatedTarget !== node || // native scroll without using a pointer
-        isScrollEvent && trackedTouchCount === 0 || // native scroll on node that is parent of the responder (allow siblings to scroll)
-        isScrollEvent && eventTarget.contains(node) && eventTarget !== node || // native select/selectionchange on node
-        isSelectionChangeEvent && hasValidSelection(domEvent);
+      eventType === "contextmenu" || // window blur
+      eventType === "blur" && eventTarget === window || // responder (or ancestors) blur
+      eventType === "blur" && eventTarget.contains(node) && domEvent.relatedTarget !== node || // native scroll without using a pointer
+      isScrollEvent && trackedTouchCount === 0 || // native scroll on node that is parent of the responder (allow siblings to scroll)
+      isScrollEvent && eventTarget.contains(node) && eventTarget !== node || // native select/selectionchange on node
+      isSelectionChangeEvent && hasValidSelection(domEvent);
       var isReleaseEvent = isEndEvent && !isTerminateEvent && !hasTargetTouches(node, domEvent.touches);
       if (isEndEvent) {
         if (onResponderEnd != null) {
@@ -9617,7 +10192,7 @@ function getResponderNode() {
 var emptyObject8 = {};
 var idCounter = 0;
 function useStable2(getInitialValue) {
-  var ref = React43.useRef(null);
+  var ref = React50.useRef(null);
   if (ref.current == null) {
     ref.current = getInitialValue();
   }
@@ -9628,14 +10203,14 @@ function useResponderEvents(hostRef, config2) {
     config2 = emptyObject8;
   }
   var id2 = useStable2(() => idCounter++);
-  var isAttachedRef = React43.useRef(false);
-  React43.useEffect(() => {
+  var isAttachedRef = React50.useRef(false);
+  React50.useEffect(() => {
     attachListeners();
     return () => {
       removeNode(id2);
     };
   }, [id2]);
-  React43.useEffect(() => {
+  React50.useEffect(() => {
     var _config = config2, onMoveShouldSetResponder = _config.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = _config.onMoveShouldSetResponderCapture, onScrollShouldSetResponder = _config.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = _config.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = _config.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = _config.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = _config.onStartShouldSetResponder, onStartShouldSetResponderCapture = _config.onStartShouldSetResponderCapture;
     var requiresResponderSystem = onMoveShouldSetResponder != null || onMoveShouldSetResponderCapture != null || onScrollShouldSetResponder != null || onScrollShouldSetResponderCapture != null || onSelectionChangeShouldSetResponder != null || onSelectionChangeShouldSetResponderCapture != null || onStartShouldSetResponder != null || onStartShouldSetResponderCapture != null;
     var node = hostRef.current;
@@ -9647,15 +10222,15 @@ function useResponderEvents(hostRef, config2) {
       isAttachedRef.current = false;
     }
   }, [config2, hostRef, id2]);
-  React43.useDebugValue({
+  React50.useDebugValue({
     isResponder: hostRef.current === getResponderNode()
   });
-  React43.useDebugValue(config2);
+  React50.useDebugValue(config2);
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Text/TextAncestorContext.js
-var import_react37 = require("react");
-var TextAncestorContext = /* @__PURE__ */ (0, import_react37.createContext)(false);
+var import_react44 = require("react");
+var TextAncestorContext = /* @__PURE__ */ (0, import_react44.createContext)(false);
 var TextAncestorContext_default = TextAncestorContext;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/View/index.js
@@ -9668,17 +10243,17 @@ var forwardPropsList = Object.assign({}, defaultProps, accessibilityProps, click
   pointerEvents: true
 });
 var pickProps = (props) => pick(props, forwardPropsList);
-var View11 = /* @__PURE__ */ React44.forwardRef((props, forwardedRef) => {
+var View12 = /* @__PURE__ */ React51.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, onLayout = props.onLayout, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, rest = (0, import_objectWithoutPropertiesLoose4.default)(props, _excluded4);
   if (process.env.NODE_ENV !== "production") {
-    React44.Children.toArray(props.children).forEach((item) => {
+    React51.Children.toArray(props.children).forEach((item) => {
       if (typeof item === "string") {
         console.error("Unexpected text node: " + item + ". A text node cannot be a child of a <View>.");
       }
     });
   }
-  var hasTextAncestor = React44.useContext(TextAncestorContext_default);
-  var hostRef = React44.useRef(null);
+  var hasTextAncestor = React51.useContext(TextAncestorContext_default);
+  var hostRef = React51.useRef(null);
   var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
   useElementLayout(hostRef, onLayout);
   useResponderEvents(hostRef, {
@@ -9728,7 +10303,7 @@ var View11 = /* @__PURE__ */ React44.forwardRef((props, forwardedRef) => {
     writingDirection
   });
 });
-View11.displayName = "View";
+View12.displayName = "View";
 var styles = StyleSheet_default.create({
   view$raw: {
     alignContent: "flex-start",
@@ -9753,7 +10328,7 @@ var styles = StyleSheet_default.create({
     display: "inline-flex"
   }
 });
-var View_default = View11;
+var View_default = View12;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/deepDiffer/index.js
 var deepDiffer = function deepDiffer2(one, two, maxDepth) {
@@ -9806,7 +10381,7 @@ var deepDiffer_default = deepDiffer;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/FlatList/index.js
 var import_invariant11 = __toESM(require_invariant());
-var React52 = __toESM(require("react"));
+var React59 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 var import_createForOfIteratorHelperLoose3 = __toESM(require_createForOfIteratorHelperLoose());
@@ -9815,11 +10390,11 @@ var import_objectSpread211 = __toESM(require_objectSpread2());
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/RefreshControl/index.js
 var import_objectWithoutPropertiesLoose5 = __toESM(require_objectWithoutPropertiesLoose());
-var import_react38 = __toESM(require("react"));
+var import_react45 = __toESM(require("react"));
 var _excluded5 = ["colors", "enabled", "onRefresh", "progressBackgroundColor", "progressViewOffset", "refreshing", "size", "tintColor", "title", "titleColor"];
 function RefreshControl(props) {
   var colors = props.colors, enabled = props.enabled, onRefresh = props.onRefresh, progressBackgroundColor = props.progressBackgroundColor, progressViewOffset = props.progressViewOffset, refreshing = props.refreshing, size = props.size, tintColor = props.tintColor, title = props.title, titleColor = props.titleColor, rest = (0, import_objectWithoutPropertiesLoose5.default)(props, _excluded5);
-  return /* @__PURE__ */ import_react38.default.createElement(View_default, rest);
+  return /* @__PURE__ */ import_react45.default.createElement(View_default, rest);
 }
 var RefreshControl_default = RefreshControl;
 
@@ -9984,7 +10559,7 @@ var import_invariant2 = __toESM(require_invariant());
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/ScrollView/ScrollViewBase.js
 var import_extends = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose6 = __toESM(require_objectWithoutPropertiesLoose());
-var React46 = __toESM(require("react"));
+var React53 = __toESM(require("react"));
 var _excluded6 = ["onScroll", "onTouchMove", "onWheel", "scrollEnabled", "scrollEventThrottle", "showsHorizontalScrollIndicator", "showsVerticalScrollIndicator", "style"];
 function normalizeScrollEvent(e) {
   return {
@@ -10021,14 +10596,14 @@ function shouldEmitScrollEvent(lastTick, eventThrottle) {
   var timeSinceLastTick = Date.now() - lastTick;
   return eventThrottle > 0 && timeSinceLastTick >= eventThrottle;
 }
-var ScrollViewBase = /* @__PURE__ */ React46.forwardRef((props, forwardedRef) => {
+var ScrollViewBase = /* @__PURE__ */ React53.forwardRef((props, forwardedRef) => {
   var onScroll = props.onScroll, onTouchMove = props.onTouchMove, onWheel = props.onWheel, _props$scrollEnabled = props.scrollEnabled, scrollEnabled = _props$scrollEnabled === void 0 ? true : _props$scrollEnabled, _props$scrollEventThr = props.scrollEventThrottle, scrollEventThrottle = _props$scrollEventThr === void 0 ? 0 : _props$scrollEventThr, showsHorizontalScrollIndicator = props.showsHorizontalScrollIndicator, showsVerticalScrollIndicator = props.showsVerticalScrollIndicator, style = props.style, rest = (0, import_objectWithoutPropertiesLoose6.default)(props, _excluded6);
-  var scrollState = React46.useRef({
+  var scrollState = React53.useRef({
     isScrolling: false,
     scrollLastTick: 0
   });
-  var scrollTimeout = React46.useRef(null);
-  var scrollRef = React46.useRef(null);
+  var scrollTimeout = React53.useRef(null);
+  var scrollRef = React53.useRef(null);
   function createPreventableScrollHandler(handler) {
     return (e) => {
       if (scrollEnabled) {
@@ -10074,7 +10649,7 @@ var ScrollViewBase = /* @__PURE__ */ React46.forwardRef((props, forwardedRef) =>
     }
   }
   var hideScrollbar = showsHorizontalScrollIndicator === false || showsVerticalScrollIndicator === false;
-  return /* @__PURE__ */ React46.createElement(View_default, (0, import_extends.default)({}, rest, {
+  return /* @__PURE__ */ React53.createElement(View_default, (0, import_extends.default)({}, rest, {
     onScroll: handleScroll,
     onTouchMove: createPreventableScrollHandler(onTouchMove),
     onWheel: createPreventableScrollHandler(onWheel),
@@ -10095,12 +10670,12 @@ var styles2 = StyleSheet_default.create({
 var ScrollViewBase_default = ScrollViewBase;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/ScrollView/index.js
-var import_react39 = __toESM(require("react"));
+var import_react46 = __toESM(require("react"));
 var import_warning = __toESM(require_warning());
 var _excluded7 = ["contentContainerStyle", "horizontal", "onContentSizeChange", "refreshControl", "stickyHeaderIndices", "pagingEnabled", "forwardedRef", "keyboardDismissMode", "onScroll", "centerContent"];
 var emptyObject9 = {};
 var IS_ANIMATING_TOUCH_START_THRESHOLD_MS = 16;
-var ScrollView3 = class extends import_react39.default.Component {
+var ScrollView4 = class extends import_react46.default.Component {
   constructor() {
     super(...arguments);
     this._scrollNodeRef = null;
@@ -10569,17 +11144,17 @@ var ScrollView3 = class extends import_react39.default.Component {
       };
     }
     var hasStickyHeaderIndices = !horizontal && Array.isArray(stickyHeaderIndices);
-    var children = hasStickyHeaderIndices || pagingEnabled ? import_react39.default.Children.map(this.props.children, (child, i) => {
+    var children = hasStickyHeaderIndices || pagingEnabled ? import_react46.default.Children.map(this.props.children, (child, i) => {
       var isSticky = hasStickyHeaderIndices && stickyHeaderIndices.indexOf(i) > -1;
       if (child != null && (isSticky || pagingEnabled)) {
-        return /* @__PURE__ */ import_react39.default.createElement(View_default, {
+        return /* @__PURE__ */ import_react46.default.createElement(View_default, {
           style: [isSticky && styles3.stickyHeader, pagingEnabled && styles3.pagingEnabledChild]
         }, child);
       } else {
         return child;
       }
     }) : this.props.children;
-    var contentContainer = /* @__PURE__ */ import_react39.default.createElement(View_default, (0, import_extends2.default)({}, contentSizeChangeProps, {
+    var contentContainer = /* @__PURE__ */ import_react46.default.createElement(View_default, (0, import_extends2.default)({}, contentSizeChangeProps, {
       children,
       collapsable: false,
       ref: this._setInnerViewRef,
@@ -10608,11 +11183,11 @@ var ScrollView3 = class extends import_react39.default.Component {
     });
     var ScrollViewClass = ScrollViewBase_default;
     (0, import_invariant2.default)(ScrollViewClass !== void 0, "ScrollViewClass must not be undefined");
-    var scrollView = /* @__PURE__ */ import_react39.default.createElement(ScrollViewClass, (0, import_extends2.default)({}, props, {
+    var scrollView = /* @__PURE__ */ import_react46.default.createElement(ScrollViewClass, (0, import_extends2.default)({}, props, {
       ref: this._setScrollNodeRef
     }), contentContainer);
     if (refreshControl) {
-      return /* @__PURE__ */ import_react39.default.cloneElement(refreshControl, {
+      return /* @__PURE__ */ import_react46.default.cloneElement(refreshControl, {
         style: props.style
       }, scrollView);
     }
@@ -10662,8 +11237,8 @@ var styles3 = StyleSheet_default.create({
     scrollSnapAlign: "start"
   }
 });
-var ForwardedScrollView = /* @__PURE__ */ import_react39.default.forwardRef((props, forwardedRef) => {
-  return /* @__PURE__ */ import_react39.default.createElement(ScrollView3, (0, import_extends2.default)({}, props, {
+var ForwardedScrollView = /* @__PURE__ */ import_react46.default.forwardRef((props, forwardedRef) => {
+  return /* @__PURE__ */ import_react46.default.createElement(ScrollView4, (0, import_extends2.default)({}, props, {
     forwardedRef
   }));
 });
@@ -11114,9 +11689,9 @@ var ChildListCollection = class {
     }
   }
   forEach(fn) {
-    for (var _iterator = (0, import_createForOfIteratorHelperLoose.default)(this._cellKeyToChildren.values()), _step; !(_step = _iterator()).done;) {
+    for (var _iterator = (0, import_createForOfIteratorHelperLoose.default)(this._cellKeyToChildren.values()), _step; !(_step = _iterator()).done; ) {
       var listSet = _step.value;
-      for (var _iterator2 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step2; !(_step2 = _iterator2()).done;) {
+      for (var _iterator2 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step2; !(_step2 = _iterator2()).done; ) {
         var list = _step2.value;
         fn(list);
       }
@@ -11125,7 +11700,7 @@ var ChildListCollection = class {
   forEachInCell(cellKey, fn) {
     var _this$_cellKeyToChild2;
     var listSet = (_this$_cellKeyToChild2 = this._cellKeyToChildren.get(cellKey)) !== null && _this$_cellKeyToChild2 !== void 0 ? _this$_cellKeyToChild2 : [];
-    for (var _iterator3 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step3; !(_step3 = _iterator3()).done;) {
+    for (var _iterator3 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step3; !(_step3 = _iterator3()).done; ) {
       var list = _step3.value;
       fn(list);
     }
@@ -11133,7 +11708,7 @@ var ChildListCollection = class {
   anyInCell(cellKey, fn) {
     var _this$_cellKeyToChild3;
     var listSet = (_this$_cellKeyToChild3 = this._cellKeyToChildren.get(cellKey)) !== null && _this$_cellKeyToChild3 !== void 0 ? _this$_cellKeyToChild3 : [];
-    for (var _iterator4 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step4; !(_step4 = _iterator4()).done;) {
+    for (var _iterator4 = (0, import_createForOfIteratorHelperLoose.default)(listSet), _step4; !(_step4 = _iterator4()).done; ) {
       var list = _step4.value;
       if (fn(list)) {
         return true;
@@ -11307,8 +11882,8 @@ var FillRateHelper_default = FillRateHelper;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/StateSafePureComponent.js
 var import_invariant7 = __toESM(require_invariant());
-var React48 = __toESM(require("react"));
-var StateSafePureComponent = class extends React48.PureComponent {
+var React55 = __toESM(require("react"));
+var StateSafePureComponent = class extends React55.PureComponent {
   constructor(props) {
     super(props);
     this._inAsyncStateUpdate = false;
@@ -11469,13 +12044,13 @@ var ViewabilityHelper = class {
       return [viewable2.key, viewable2];
     }));
     var changed = [];
-    for (var _iterator = (0, import_createForOfIteratorHelperLoose2.default)(nextItems), _step; !(_step = _iterator()).done;) {
+    for (var _iterator = (0, import_createForOfIteratorHelperLoose2.default)(nextItems), _step; !(_step = _iterator()).done; ) {
       var _step$value = _step.value, key = _step$value[0], viewable = _step$value[1];
       if (!prevItems.has(key)) {
         changed.push(viewable);
       }
     }
-    for (var _iterator2 = (0, import_createForOfIteratorHelperLoose2.default)(prevItems), _step2; !(_step2 = _iterator2()).done;) {
+    for (var _iterator2 = (0, import_createForOfIteratorHelperLoose2.default)(prevItems), _step2; !(_step2 = _iterator2()).done; ) {
       var _step2$value = _step2.value, _key = _step2$value[0], _viewable = _step2$value[1];
       if (!nextItems.has(_key)) {
         changed.push((0, import_objectSpread28.default)((0, import_objectSpread28.default)({}, _viewable), {}, {
@@ -11517,16 +12092,16 @@ var import_objectSpread210 = __toESM(require_objectSpread2());
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/VirtualizedListContext.js
 var import_objectSpread29 = __toESM(require_objectSpread2());
-var React49 = __toESM(require("react"));
-var import_react40 = require("react");
+var React56 = __toESM(require("react"));
+var import_react47 = require("react");
 var __DEV__2 = process.env.NODE_ENV !== "production";
-var VirtualizedListContext = /* @__PURE__ */ React49.createContext(null);
+var VirtualizedListContext = /* @__PURE__ */ React56.createContext(null);
 if (__DEV__2) {
   VirtualizedListContext.displayName = "VirtualizedListContext";
 }
 function VirtualizedListContextProvider(_ref2) {
   var children = _ref2.children, value = _ref2.value;
-  var context = (0, import_react40.useMemo)(() => ({
+  var context = (0, import_react47.useMemo)(() => ({
     cellKey: null,
     getScrollMetrics: value.getScrollMetrics,
     horizontal: value.horizontal,
@@ -11534,25 +12109,25 @@ function VirtualizedListContextProvider(_ref2) {
     registerAsNestedChild: value.registerAsNestedChild,
     unregisterAsNestedChild: value.unregisterAsNestedChild
   }), [value.getScrollMetrics, value.horizontal, value.getOutermostParentListRef, value.registerAsNestedChild, value.unregisterAsNestedChild]);
-  return /* @__PURE__ */ React49.createElement(VirtualizedListContext.Provider, {
+  return /* @__PURE__ */ React56.createElement(VirtualizedListContext.Provider, {
     value: context
   }, children);
 }
 function VirtualizedListCellContextProvider(_ref3) {
   var cellKey = _ref3.cellKey, children = _ref3.children;
-  var currContext = (0, import_react40.useContext)(VirtualizedListContext);
-  var context = (0, import_react40.useMemo)(() => currContext == null ? null : (0, import_objectSpread29.default)((0, import_objectSpread29.default)({}, currContext), {}, {
+  var currContext = (0, import_react47.useContext)(VirtualizedListContext);
+  var context = (0, import_react47.useMemo)(() => currContext == null ? null : (0, import_objectSpread29.default)((0, import_objectSpread29.default)({}, currContext), {}, {
     cellKey
   }), [currContext, cellKey]);
-  return /* @__PURE__ */ React49.createElement(VirtualizedListContext.Provider, {
+  return /* @__PURE__ */ React56.createElement(VirtualizedListContext.Provider, {
     value: context
   }, children);
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
 var import_invariant9 = __toESM(require_invariant());
-var React50 = __toESM(require("react"));
-var CellRenderer = class extends React50.Component {
+var React57 = __toESM(require("react"));
+var CellRenderer = class extends React57.Component {
   constructor() {
     super(...arguments);
     this.state = {
@@ -11606,7 +12181,7 @@ var CellRenderer = class extends React50.Component {
       console.warn("VirtualizedList: Both ListItemComponent and renderItem props are present. ListItemComponent will take precedence over renderItem.");
     }
     if (ListItemComponent) {
-      return /* @__PURE__ */ React50.createElement(ListItemComponent, {
+      return /* @__PURE__ */ React57.createElement(ListItemComponent, {
         item,
         index,
         separators: this._separators
@@ -11624,20 +12199,20 @@ var CellRenderer = class extends React50.Component {
   render() {
     var _this$props4 = this.props, CellRendererComponent = _this$props4.CellRendererComponent, ItemSeparatorComponent = _this$props4.ItemSeparatorComponent, ListItemComponent = _this$props4.ListItemComponent, cellKey = _this$props4.cellKey, horizontal = _this$props4.horizontal, item = _this$props4.item, index = _this$props4.index, inversionStyle = _this$props4.inversionStyle, onCellFocusCapture = _this$props4.onCellFocusCapture, onCellLayout = _this$props4.onCellLayout, renderItem = _this$props4.renderItem;
     var element = this._renderElement(renderItem, ListItemComponent, item, index);
-    var itemSeparator = /* @__PURE__ */ React50.isValidElement(ItemSeparatorComponent) ? (
+    var itemSeparator = /* @__PURE__ */ React57.isValidElement(ItemSeparatorComponent) ? (
       // $FlowFixMe[incompatible-type]
       ItemSeparatorComponent
     ) : (
       // $FlowFixMe[incompatible-type]
-      ItemSeparatorComponent && /* @__PURE__ */ React50.createElement(ItemSeparatorComponent, this.state.separatorProps)
+      ItemSeparatorComponent && /* @__PURE__ */ React57.createElement(ItemSeparatorComponent, this.state.separatorProps)
     );
     var cellStyle = inversionStyle ? horizontal ? [styles4.rowReverse, inversionStyle] : [styles4.columnReverse, inversionStyle] : horizontal ? [styles4.row, inversionStyle] : inversionStyle;
-    var result = !CellRendererComponent ? /* @__PURE__ */ React50.createElement(View_default, (0, import_extends3.default)({
+    var result = !CellRendererComponent ? /* @__PURE__ */ React57.createElement(View_default, (0, import_extends3.default)({
       style: cellStyle,
       onFocusCapture: onCellFocusCapture
     }, onCellLayout && {
       onLayout: this._onLayout
-    }), element, itemSeparator) : /* @__PURE__ */ React50.createElement(CellRendererComponent, (0, import_extends3.default)({
+    }), element, itemSeparator) : /* @__PURE__ */ React57.createElement(CellRendererComponent, (0, import_extends3.default)({
       cellKey,
       index,
       item,
@@ -11646,7 +12221,7 @@ var CellRenderer = class extends React50.Component {
     }, onCellLayout && {
       onLayout: this._onLayout
     }), element, itemSeparator);
-    return /* @__PURE__ */ React50.createElement(VirtualizedListCellContextProvider, {
+    return /* @__PURE__ */ React57.createElement(VirtualizedListCellContextProvider, {
       cellKey: this.props.cellKey
     }, result);
   }
@@ -11780,7 +12355,7 @@ function keyExtractor(item, index) {
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 var import_invariant10 = __toESM(require_invariant());
 var import_nullthrows = __toESM(require_nullthrows());
-var React51 = __toESM(require("react"));
+var React58 = __toESM(require("react"));
 var __DEV__3 = process.env.NODE_ENV !== "production";
 var ON_EDGE_REACHED_EPSILON = 1e-3;
 var _usedIndexForKey = false;
@@ -12033,26 +12608,26 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     this._defaultRenderScrollComponent = (props) => {
       var onRefresh = props.onRefresh;
       if (this._isNestedWithSameOrientation()) {
-        return /* @__PURE__ */ React51.createElement(View_default, props);
+        return /* @__PURE__ */ React58.createElement(View_default, props);
       } else if (onRefresh) {
         var _props$refreshing;
         (0, import_invariant10.default)(typeof props.refreshing === "boolean", "`refreshing` prop must be set as a boolean in order to use `onRefresh`, but got `" + JSON.stringify((_props$refreshing = props.refreshing) !== null && _props$refreshing !== void 0 ? _props$refreshing : "undefined") + "`");
         return (
           // $FlowFixMe[prop-missing] Invalid prop usage
           // $FlowFixMe[incompatible-use]
-          /* @__PURE__ */ React51.createElement(ScrollView_default, (0, import_extends4.default)({}, props, {
-            refreshControl: props.refreshControl == null ? /* @__PURE__ */ React51.createElement(
-            RefreshControl_default,
-            {
-              refreshing: props.refreshing,
-              onRefresh,
-              progressViewOffset: props.progressViewOffset
-            }
-          ) : props.refreshControl
-        }))
+          /* @__PURE__ */ React58.createElement(ScrollView_default, (0, import_extends4.default)({}, props, {
+            refreshControl: props.refreshControl == null ? /* @__PURE__ */ React58.createElement(
+              RefreshControl_default,
+              {
+                refreshing: props.refreshing,
+                onRefresh,
+                progressViewOffset: props.progressViewOffset
+              }
+            ) : props.refreshControl
+          }))
         );
       } else {
-        return /* @__PURE__ */ React51.createElement(ScrollView_default, props);
+        return /* @__PURE__ */ React58.createElement(ScrollView_default, props);
       }
     };
     this._onCellLayout = (e, cellKey, index) => {
@@ -12536,7 +13111,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
         stickyHeaderIndices.push(cells.length);
       }
       var shouldListenForLayout = getItemLayout == null || debug || _this._fillRateHelper.enabled();
-      cells.push(/* @__PURE__ */ React51.createElement(CellRenderer, (0, import_extends4.default)({
+      cells.push(/* @__PURE__ */ React58.createElement(CellRenderer, (0, import_extends4.default)({
         CellRendererComponent,
         ItemSeparatorComponent: ii < end ? ItemSeparatorComponent : void 0,
         ListItemComponent,
@@ -12601,15 +13176,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       if (stickyIndicesFromProps.has(0)) {
         stickyHeaderIndices.push(0);
       }
-      var _element = /* @__PURE__ */ React51.isValidElement(ListHeaderComponent) ? ListHeaderComponent : (
+      var _element = /* @__PURE__ */ React58.isValidElement(ListHeaderComponent) ? ListHeaderComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React51.createElement(ListHeaderComponent, null)
+        /* @__PURE__ */ React58.createElement(ListHeaderComponent, null)
       );
-      cells.push(/* @__PURE__ */ React51.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React58.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getCellKey() + "-header",
         key: "$header"
-      }, /* @__PURE__ */ React51.createElement(
+      }, /* @__PURE__ */ React58.createElement(
         View_default,
         {
           onLayout: this._onLayoutHeader,
@@ -12621,15 +13196,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     }
     var itemCount = this.props.getItemCount(data);
     if (itemCount === 0 && ListEmptyComponent) {
-      var _element2 = /* @__PURE__ */ React51.isValidElement(ListEmptyComponent) ? ListEmptyComponent : (
+      var _element2 = /* @__PURE__ */ React58.isValidElement(ListEmptyComponent) ? ListEmptyComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React51.createElement(ListEmptyComponent, null)
+        /* @__PURE__ */ React58.createElement(ListEmptyComponent, null)
       );
-      cells.push(/* @__PURE__ */ React51.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React58.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getCellKey() + "-empty",
         key: "$empty"
-      }, /* @__PURE__ */ React51.cloneElement(_element2, {
+      }, /* @__PURE__ */ React58.cloneElement(_element2, {
         onLayout: (event3) => {
           this._onLayoutEmpty(event3);
           if (_element2.props.onLayout) {
@@ -12645,7 +13220,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       var spacerKey = this._getSpacerKey(!horizontal);
       var renderRegions = this.state.renderMask.enumerateRegions();
       var lastSpacer = findLastWhere(renderRegions, (r) => r.isSpacer);
-      for (var _iterator = (0, import_createForOfIteratorHelperLoose3.default)(renderRegions), _step; !(_step = _iterator()).done;) {
+      for (var _iterator = (0, import_createForOfIteratorHelperLoose3.default)(renderRegions), _step; !(_step = _iterator()).done; ) {
         var section = _step.value;
         if (section.isSpacer) {
           if (this.props.disableVirtualization) {
@@ -12657,7 +13232,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
           var firstMetrics = this.__getFrameMetricsApprox(section.first, this.props);
           var lastMetrics = this.__getFrameMetricsApprox(last, this.props);
           var spacerSize = lastMetrics.offset + lastMetrics.length - firstMetrics.offset;
-          cells.push(/* @__PURE__ */ React51.createElement(View_default, {
+          cells.push(/* @__PURE__ */ React58.createElement(View_default, {
             key: "$spacer-" + section.first,
             style: {
               [spacerKey]: spacerSize
@@ -12673,15 +13248,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       }
     }
     if (ListFooterComponent) {
-      var _element3 = /* @__PURE__ */ React51.isValidElement(ListFooterComponent) ? ListFooterComponent : (
+      var _element3 = /* @__PURE__ */ React58.isValidElement(ListFooterComponent) ? ListFooterComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React51.createElement(ListFooterComponent, null)
+        /* @__PURE__ */ React58.createElement(ListFooterComponent, null)
       );
-      cells.push(/* @__PURE__ */ React51.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React58.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getFooterCellKey(),
         key: "$footer"
-      }, /* @__PURE__ */ React51.createElement(
+      }, /* @__PURE__ */ React58.createElement(
         View_default,
         {
           onLayout: this._onLayoutFooter,
@@ -12706,7 +13281,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       style: inversionStyle ? [inversionStyle, this.props.style] : this.props.style
     });
     this._hasMore = this.state.cellsAroundViewport.last < itemCount - 1;
-    var innerRet = /* @__PURE__ */ React51.createElement(VirtualizedListContextProvider, {
+    var innerRet = /* @__PURE__ */ React58.createElement(VirtualizedListContextProvider, {
       value: {
         cellKey: null,
         getScrollMetrics: this._getScrollMetrics,
@@ -12715,12 +13290,12 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
         registerAsNestedChild: this._registerAsNestedChild,
         unregisterAsNestedChild: this._unregisterAsNestedChild
       }
-    }, /* @__PURE__ */ React51.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+    }, /* @__PURE__ */ React58.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
       ref: this._captureScrollRef
     }, cells));
     var ret = innerRet;
     if (this.props.debug) {
-      return /* @__PURE__ */ React51.createElement(View_default, {
+      return /* @__PURE__ */ React58.createElement(View_default, {
         style: styles5.debug
       }, ret, this._renderDebugOverlay());
     } else {
@@ -12808,20 +13383,20 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     var windowLen = frameLast.offset + frameLast.length - windowTop;
     var visTop = this._scrollMetrics.offset;
     var visLen = this._scrollMetrics.visibleLength;
-    return /* @__PURE__ */ React51.createElement(View_default, {
+    return /* @__PURE__ */ React58.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlay]
-    }, framesInLayout.map((f, ii2) => /* @__PURE__ */ React51.createElement(View_default, {
+    }, framesInLayout.map((f, ii2) => /* @__PURE__ */ React58.createElement(View_default, {
       key: "f" + ii2,
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrame, {
         top: f.offset * normalize,
         height: f.length * normalize
       }]
-    })), /* @__PURE__ */ React51.createElement(View_default, {
+    })), /* @__PURE__ */ React58.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrameLast, {
         top: windowTop * normalize,
         height: windowLen * normalize
       }]
-    }), /* @__PURE__ */ React51.createElement(View_default, {
+    }), /* @__PURE__ */ React58.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrameVis, {
         top: visTop * normalize,
         height: visLen * normalize
@@ -13007,7 +13582,7 @@ function numColumnsOrDefault(numColumns) {
 function isArrayLike(data) {
   return typeof Object(data).length === "number";
 }
-var FlatList = class extends React52.PureComponent {
+var FlatList = class extends React59.PureComponent {
   /**
    * Scrolls to the end of the content. May be janky without `getItemLayout` prop.
    */
@@ -13135,7 +13710,7 @@ var FlatList = class extends React52.PureComponent {
       var cols = numColumnsOrDefault(numColumns);
       var render = (props) => {
         if (ListItemComponent) {
-          return /* @__PURE__ */ React52.createElement(ListItemComponent, props);
+          return /* @__PURE__ */ React59.createElement(ListItemComponent, props);
         } else if (renderItem) {
           return renderItem(props);
         } else {
@@ -13146,7 +13721,7 @@ var FlatList = class extends React52.PureComponent {
         if (cols > 1) {
           var _item2 = info.item, _index = info.index;
           (0, import_invariant11.default)(Array.isArray(_item2), "Expected array of items with numColumns > 1");
-          return /* @__PURE__ */ React52.createElement(View_default, {
+          return /* @__PURE__ */ React59.createElement(View_default, {
             style: [styles6.row, columnWrapperStyle]
           }, _item2.map((it, kk) => {
             var element = render({
@@ -13155,7 +13730,7 @@ var FlatList = class extends React52.PureComponent {
               index: _index * cols + kk,
               separators: info.separators
             });
-            return element != null ? /* @__PURE__ */ React52.createElement(React52.Fragment, {
+            return element != null ? /* @__PURE__ */ React59.createElement(React59.Fragment, {
               key: kk
             }, element) : null;
           }));
@@ -13245,14 +13820,14 @@ var FlatList = class extends React52.PureComponent {
     var renderer = strictMode ? this._memoizedRenderer : this._renderer;
     return (
       // $FlowFixMe[incompatible-exact] - `restProps` (`Props`) is inexact.
-      /* @__PURE__ */ React52.createElement(VirtualizedList_default, (0, import_extends5.default)({}, restProps, {
-      getItem: this._getItem,
-      getItemCount: this._getItemCount,
-      keyExtractor: this._keyExtractor,
-      ref: this._captureRef,
-      viewabilityConfigCallbackPairs: this._virtualizedListPairs,
-      removeClippedSubviews: removeClippedSubviewsOrDefault(_removeClippedSubviews)
-    }, renderer(this.props.ListItemComponent, this.props.renderItem, columnWrapperStyle, numColumns, this.props.extraData)))
+      /* @__PURE__ */ React59.createElement(VirtualizedList_default, (0, import_extends5.default)({}, restProps, {
+        getItem: this._getItem,
+        getItemCount: this._getItemCount,
+        keyExtractor: this._keyExtractor,
+        ref: this._captureRef,
+        viewabilityConfigCallbackPairs: this._virtualizedListPairs,
+        removeClippedSubviews: removeClippedSubviewsOrDefault(_removeClippedSubviews)
+      }, renderer(this.props.ListItemComponent, this.props.renderItem, columnWrapperStyle, numColumns, this.props.extraData)))
     );
   }
 };
@@ -13377,7 +13952,7 @@ Platform_default2.OS === "android" && !!(NativeAnimatedModule != null && NativeA
 var flushQueueTimeout = null;
 var eventListenerGetValueCallbacks = {};
 var eventListenerAnimationFinishedCallbacks = {};
-var nativeOps = useSingleOpBatching ? (function () {
+var nativeOps = useSingleOpBatching ? (function() {
   var apis = [
     "createAnimatedNode",
     // 1
@@ -13875,7 +14450,7 @@ var AnimatedWithChildren = class extends AnimatedNode_default {
   __makeNative(platformConfig) {
     if (!this.__isNative) {
       this.__isNative = true;
-      for (var _iterator = (0, import_createForOfIteratorHelperLoose4.default)(this._children), _step; !(_step = _iterator()).done;) {
+      for (var _iterator = (0, import_createForOfIteratorHelperLoose4.default)(this._children), _step; !(_step = _iterator()).done; ) {
         var child = _step.value;
         child.__makeNative(platformConfig);
         NativeAnimatedHelper_default.API.connectAnimatedNodes(this.__getNativeTag(), child.__getNativeTag());
@@ -13913,7 +14488,7 @@ var AnimatedWithChildren = class extends AnimatedNode_default {
   __callListeners(value) {
     super.__callListeners(value);
     if (!this.__isNative) {
-      for (var _iterator2 = (0, import_createForOfIteratorHelperLoose4.default)(this._children), _step2; !(_step2 = _iterator2()).done;) {
+      for (var _iterator2 = (0, import_createForOfIteratorHelperLoose4.default)(this._children), _step2; !(_step2 = _iterator2()).done; ) {
         var child = _step2.value;
         if (child.__getValue) {
           child.__callListeners(child.__getValue());
@@ -14437,7 +15012,7 @@ var AnimatedEvent = class {
     if (this.__isNative) {
       if (__DEV__5) {
         var _validatedMapping = false;
-        return function () {
+        return function() {
           for (var _len = arguments.length, args = new Array(_len), _key2 = 0; _key2 < _len; _key2++) {
             args[_key2] = arguments[_key2];
           }
@@ -14452,7 +15027,7 @@ var AnimatedEvent = class {
       }
     }
     var validatedMapping = false;
-    return function () {
+    return function() {
       for (var _len2 = arguments.length, args = new Array(_len2), _key3 = 0; _key3 < _len2; _key3++) {
         args[_key3] = arguments[_key3];
       }
@@ -14804,10 +15379,10 @@ var AnimatedProps = class extends AnimatedNode_default {
 var AnimatedProps_default = AnimatedProps;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Utilities/useRefEffect.js
-var import_react41 = require("react");
+var import_react48 = require("react");
 function useRefEffect(effect) {
-  var cleanupRef = (0, import_react41.useRef)(void 0);
-  return (0, import_react41.useCallback)((instance) => {
+  var cleanupRef = (0, import_react48.useRef)(void 0);
+  return (0, import_react48.useCallback)((instance) => {
     if (cleanupRef.current) {
       cleanupRef.current();
       cleanupRef.current = void 0;
@@ -14819,13 +15394,13 @@ function useRefEffect(effect) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/useAnimatedProps.js
-var import_react42 = require("react");
+var import_react49 = require("react");
 function useAnimatedProps(props) {
-  var _useReducer = (0, import_react42.useReducer)((count) => count + 1, 0), scheduleUpdate = _useReducer[1];
-  var onUpdateRef = (0, import_react42.useRef)(null);
-  var node = (0, import_react42.useMemo)(() => new AnimatedProps_default(props, () => onUpdateRef.current == null ? void 0 : onUpdateRef.current()), [props]);
+  var _useReducer = (0, import_react49.useReducer)((count) => count + 1, 0), scheduleUpdate = _useReducer[1];
+  var onUpdateRef = (0, import_react49.useRef)(null);
+  var node = (0, import_react49.useMemo)(() => new AnimatedProps_default(props, () => onUpdateRef.current == null ? void 0 : onUpdateRef.current()), [props]);
   useAnimatedPropsLifecycle(node);
-  var refEffect = (0, import_react42.useCallback)((instance) => {
+  var refEffect = (0, import_react49.useCallback)((instance) => {
     node.setNativeView(instance);
     onUpdateRef.current = () => {
       scheduleUpdate();
@@ -14856,9 +15431,9 @@ function reduceAnimatedProps(node) {
   });
 }
 function useAnimatedPropsLifecycle(node) {
-  var prevNodeRef = (0, import_react42.useRef)(null);
-  var isUnmountingRef = (0, import_react42.useRef)(false);
-  (0, import_react42.useEffect)(() => {
+  var prevNodeRef = (0, import_react49.useRef)(null);
+  var isUnmountingRef = (0, import_react49.useRef)(false);
+  (0, import_react49.useEffect)(() => {
     NativeAnimatedHelper_default.API.flushQueue();
   });
   useLayoutEffect_default(() => {
@@ -14892,12 +15467,12 @@ function getEventTarget(instance) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Utilities/useMergeRefs.js
-var import_react43 = require("react");
+var import_react50 = require("react");
 function useMergeRefs2() {
   for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
     refs[_key] = arguments[_key];
   }
-  return (0, import_react43.useCallback)(
+  return (0, import_react50.useCallback)(
     (current) => {
       for (var _i = 0, _refs = refs; _i < _refs.length; _i++) {
         var ref = _refs[_i];
@@ -14916,16 +15491,16 @@ function useMergeRefs2() {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/createAnimatedComponent.js
-var React53 = __toESM(require("react"));
+var React60 = __toESM(require("react"));
 var _excluded9 = ["style"];
 function createAnimatedComponent(Component2) {
-  return /* @__PURE__ */ React53.forwardRef((props, forwardedRef) => {
+  return /* @__PURE__ */ React60.forwardRef((props, forwardedRef) => {
     var _useAnimatedProps = useAnimatedProps(props), reducedProps = _useAnimatedProps[0], callbackRef = _useAnimatedProps[1];
     var ref = useMergeRefs2(callbackRef, forwardedRef);
     var passthroughAnimatedPropExplicitValues = reducedProps.passthroughAnimatedPropExplicitValues, style = reducedProps.style;
     var _ref = passthroughAnimatedPropExplicitValues !== null && passthroughAnimatedPropExplicitValues !== void 0 ? passthroughAnimatedPropExplicitValues : {}, passthroughStyle = _ref.style, passthroughProps = (0, import_objectWithoutPropertiesLoose9.default)(_ref, _excluded9);
     var mergedStyle = [style, passthroughStyle];
-    return /* @__PURE__ */ React53.createElement(Component2, (0, import_extends6.default)({}, reducedProps, passthroughProps, {
+    return /* @__PURE__ */ React60.createElement(Component2, (0, import_extends6.default)({}, reducedProps, passthroughProps, {
       style: mergedStyle,
       ref
     }));
@@ -14933,7 +15508,7 @@ function createAnimatedComponent(Component2) {
 }
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedFlatList.js
-var FlatListWithEventThrottle = /* @__PURE__ */ React54.forwardRef((props, ref) => /* @__PURE__ */ React54.createElement(FlatList_default2, (0, import_extends7.default)({
+var FlatListWithEventThrottle = /* @__PURE__ */ React61.forwardRef((props, ref) => /* @__PURE__ */ React61.createElement(FlatList_default2, (0, import_extends7.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -14941,13 +15516,13 @@ var FlatListWithEventThrottle = /* @__PURE__ */ React54.forwardRef((props, ref) 
 var AnimatedFlatList_default = createAnimatedComponent(FlatListWithEventThrottle);
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedImage.js
-var React56 = __toESM(require("react"));
+var React63 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Image/index.js
 var import_objectSpread217 = __toESM(require_objectSpread2());
 var import_extends8 = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose10 = __toESM(require_objectWithoutPropertiesLoose());
-var React55 = __toESM(require("react"));
+var React62 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/modules/AssetRegistry/index.js
 var assets = [];
@@ -15126,20 +15701,20 @@ var IDLE = "IDLE";
 var _filterId = 0;
 var svgDataUriPattern = /^(data:image\/svg\+xml;utf8,)(.*)/;
 function createTintColorSVG(tintColor, id2) {
-  return tintColor && id2 != null ? /* @__PURE__ */ React55.createElement("svg", {
+  return tintColor && id2 != null ? /* @__PURE__ */ React62.createElement("svg", {
     style: {
       position: "absolute",
       height: 0,
       visibility: "hidden",
       width: 0
     }
-  }, /* @__PURE__ */ React55.createElement("defs", null, /* @__PURE__ */ React55.createElement("filter", {
+  }, /* @__PURE__ */ React62.createElement("defs", null, /* @__PURE__ */ React62.createElement("filter", {
     id: "tint-" + id2,
     suppressHydrationWarning: true
-  }, /* @__PURE__ */ React55.createElement("feFlood", {
+  }, /* @__PURE__ */ React62.createElement("feFlood", {
     floodColor: "" + tintColor,
     key: tintColor
-  }), /* @__PURE__ */ React55.createElement("feComposite", {
+  }), /* @__PURE__ */ React62.createElement("feComposite", {
     in2: "SourceAlpha",
     operator: "in"
   })))) : null;
@@ -15219,7 +15794,7 @@ function resolveAssetUri(source) {
   }
   return uri;
 }
-var Image = /* @__PURE__ */ React55.forwardRef((props, ref) => {
+var Image = /* @__PURE__ */ React62.forwardRef((props, ref) => {
   var _ariaLabel = props["aria-label"], accessibilityLabel = props.accessibilityLabel, blurRadius = props.blurRadius, defaultSource = props.defaultSource, draggable = props.draggable, onError = props.onError, onLayout = props.onLayout, onLoad = props.onLoad, onLoadEnd = props.onLoadEnd, onLoadStart = props.onLoadStart, pointerEvents = props.pointerEvents, source = props.source, style = props.style, rest = (0, import_objectWithoutPropertiesLoose10.default)(props, _excluded10);
   var ariaLabel = _ariaLabel || accessibilityLabel;
   if (process.env.NODE_ENV !== "production") {
@@ -15227,7 +15802,7 @@ var Image = /* @__PURE__ */ React55.forwardRef((props, ref) => {
       throw new Error("The <Image> component cannot contain children. If you want to render content on top of the image, consider using the <ImageBackground> component or absolute positioning.");
     }
   }
-  var _React$useState = React55.useState(() => {
+  var _React$useState = React62.useState(() => {
     var uri2 = resolveAssetUri(source);
     if (uri2 != null) {
       var isLoaded = ImageLoader_default.has(uri2);
@@ -15237,11 +15812,11 @@ var Image = /* @__PURE__ */ React55.forwardRef((props, ref) => {
     }
     return IDLE;
   }), state = _React$useState[0], updateState = _React$useState[1];
-  var _React$useState2 = React55.useState({}), layout = _React$useState2[0], updateLayout = _React$useState2[1];
-  var hasTextAncestor = React55.useContext(TextAncestorContext_default);
-  var hiddenImageRef = React55.useRef(null);
-  var filterRef = React55.useRef(_filterId++);
-  var requestRef = React55.useRef(null);
+  var _React$useState2 = React62.useState({}), layout = _React$useState2[0], updateLayout = _React$useState2[1];
+  var hasTextAncestor = React62.useContext(TextAncestorContext_default);
+  var hiddenImageRef = React62.useRef(null);
+  var filterRef = React62.useRef(_filterId++);
+  var requestRef = React62.useRef(null);
   var shouldDisplaySource = state === LOADED || state === LOADING && defaultSource == null;
   var _extractNonStandardSt = extractNonStandardStyleProps(style, blurRadius, filterRef.current, props.tintColor), _resizeMode = _extractNonStandardSt[0], filter = _extractNonStandardSt[1], _tintColor = _extractNonStandardSt[2];
   var resizeMode = props.resizeMode || _resizeMode || "cover";
@@ -15278,7 +15853,7 @@ var Image = /* @__PURE__ */ React55.forwardRef((props, ref) => {
     }
   }
   var uri = resolveAssetUri(source);
-  React55.useEffect(() => {
+  React62.useEffect(() => {
     abortPendingRequest();
     if (uri != null) {
       updateState(LOADING);
@@ -15315,7 +15890,7 @@ var Image = /* @__PURE__ */ React55.forwardRef((props, ref) => {
     }
     return abortPendingRequest;
   }, [uri, requestRef, updateState, onError, onLoad, onLoadEnd, onLoadStart]);
-  return /* @__PURE__ */ React55.createElement(View_default, (0, import_extends8.default)({}, rest, {
+  return /* @__PURE__ */ React62.createElement(View_default, (0, import_extends8.default)({}, rest, {
     "aria-label": ariaLabel,
     onLayout: handleLayout,
     pointerEvents,
@@ -15332,7 +15907,7 @@ var Image = /* @__PURE__ */ React55.forwardRef((props, ref) => {
         boxShadow: null
       }
     ]
-  }), /* @__PURE__ */ React55.createElement(View_default, {
+  }), /* @__PURE__ */ React62.createElement(View_default, {
     style: [styles7.image, resizeModeStyles[resizeMode], {
       backgroundImage,
       filter
@@ -15344,13 +15919,13 @@ var Image = /* @__PURE__ */ React55.forwardRef((props, ref) => {
 });
 Image.displayName = "Image";
 var ImageWithStatics = Image;
-ImageWithStatics.getSize = function (uri, success, failure) {
+ImageWithStatics.getSize = function(uri, success, failure) {
   ImageLoader_default.getSize(uri, success, failure);
 };
-ImageWithStatics.prefetch = function (uri) {
+ImageWithStatics.prefetch = function(uri) {
   return ImageLoader_default.prefetch(uri);
 };
-ImageWithStatics.queryCache = function (uris) {
+ImageWithStatics.queryCache = function(uris) {
   return ImageLoader_default.queryCache(uris);
 };
 var styles7 = StyleSheet_default.create({
@@ -15421,8 +15996,8 @@ var AnimatedImage_default = createAnimatedComponent(Image_default);
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedScrollView.js
 var import_extends9 = __toESM(require_extends());
-var React57 = __toESM(require("react"));
-var ScrollViewWithEventThrottle = /* @__PURE__ */ React57.forwardRef((props, ref) => /* @__PURE__ */ React57.createElement(ScrollView_default, (0, import_extends9.default)({
+var React64 = __toESM(require("react"));
+var ScrollViewWithEventThrottle = /* @__PURE__ */ React64.forwardRef((props, ref) => /* @__PURE__ */ React64.createElement(ScrollView_default, (0, import_extends9.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -15431,12 +16006,12 @@ var AnimatedScrollView_default = createAnimatedComponent(ScrollViewWithEventThro
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
 var import_extends12 = __toESM(require_extends());
-var React60 = __toESM(require("react"));
+var React67 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
 var import_extends11 = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose12 = __toESM(require_objectWithoutPropertiesLoose());
-var React59 = __toESM(require("react"));
+var React66 = __toESM(require("react"));
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/VirtualizedSectionList/index.js
 var import_extends10 = __toESM(require_extends());
@@ -15444,9 +16019,9 @@ var import_createForOfIteratorHelperLoose5 = __toESM(require_createForOfIterator
 var import_objectWithoutPropertiesLoose11 = __toESM(require_objectWithoutPropertiesLoose());
 var import_objectSpread218 = __toESM(require_objectSpread2());
 var import_invariant19 = __toESM(require_invariant());
-var React58 = __toESM(require("react"));
+var React65 = __toESM(require("react"));
 var _excluded11 = ["ItemSeparatorComponent", "SectionSeparatorComponent", "renderItem", "renderSectionFooter", "renderSectionHeader", "sections", "stickySectionHeadersEnabled"];
-var VirtualizedSectionList = class extends React58.PureComponent {
+var VirtualizedSectionList = class extends React65.PureComponent {
   constructor() {
     super(...arguments);
     this._keyExtractor = (item, index) => {
@@ -15505,7 +16080,7 @@ var VirtualizedSectionList = class extends React58.PureComponent {
           var renderItem = info.section.renderItem || this.props.renderItem;
           var SeparatorComponent = this._getSeparatorComponent(index, info, listItemCount);
           (0, import_invariant19.default)(renderItem, "no renderItem!");
-          return /* @__PURE__ */ React58.createElement(ItemWithSeparator, {
+          return /* @__PURE__ */ React65.createElement(ItemWithSeparator, {
             SeparatorComponent,
             LeadingSeparatorComponent: infoIndex === 0 ? this.props.SectionSeparatorComponent : void 0,
             cellKey: info.key,
@@ -15586,7 +16161,7 @@ var VirtualizedSectionList = class extends React58.PureComponent {
     var listHeaderOffset = this.props.ListHeaderComponent ? 1 : 0;
     var stickyHeaderIndices = this.props.stickySectionHeadersEnabled ? [] : void 0;
     var itemCount = 0;
-    for (var _iterator = (0, import_createForOfIteratorHelperLoose5.default)(this.props.sections), _step; !(_step = _iterator()).done;) {
+    for (var _iterator = (0, import_createForOfIteratorHelperLoose5.default)(this.props.sections), _step; !(_step = _iterator()).done; ) {
       var section = _step.value;
       if (stickyHeaderIndices != null) {
         stickyHeaderIndices.push(itemCount + listHeaderOffset);
@@ -15595,7 +16170,7 @@ var VirtualizedSectionList = class extends React58.PureComponent {
       itemCount += this.props.getItemCount(section.data);
     }
     var renderItem = this._renderItem(itemCount);
-    return /* @__PURE__ */ React58.createElement(VirtualizedList_default, (0, import_extends10.default)({}, passThroughProps, {
+    return /* @__PURE__ */ React65.createElement(VirtualizedList_default, (0, import_extends10.default)({}, passThroughProps, {
       keyExtractor: this._keyExtractor,
       stickyHeaderIndices,
       renderItem,
@@ -15686,3276 +16261,3305 @@ var VirtualizedSectionList = class extends React58.PureComponent {
 };
 function ItemWithSeparator(props) {
   var LeadingSeparatorComponent = props.LeadingSeparatorComponent, SeparatorComponent = props.SeparatorComponent, cellKey = props.cellKey, prevCellKey = props.prevCellKey, setSelfHighlightCallback = props.setSelfHighlightCallback, updateHighlightFor = props.updateHighlightFor, setSelfUpdatePropsCallback = props.setSelfUpdatePropsCallback, updatePropsFor = props.updatePropsFor, item = props.item, index = props.index, section = props.section, inverted = props.inverted;
-  var _React$useState = React58.useState(false), leadingSeparatorHiglighted = _React$useState[0], setLeadingSeparatorHighlighted = _React$useState[1];
-  var _React$useState2 = React58.useState(false), separatorHighlighted = _React$useState2[0], setSeparatorHighlighted = _React$useState2[1];
-  var _React$useState3 = React58.useState({
+  var _React$useState = React65.useState(false), leadingSeparatorHiglighted = _React$useState[0], setLeadingSeparatorHighlighted = _React$useState[1];
+  var _React$useState2 = React65.useState(false), separatorHighlighted = _React$useState2[0], setSeparatorHighlighted = _React$useState2[1];
+  var _React$useState3 = React65.useState({
     leadingItem: props.leadingItem,
     leadingSection: props.leadingSection,
     section: props.section,
     trailingItem: props.item,
     trailingSection: props.trailingSection
   }), leadingSeparatorProps = _React$useState3[0], setLeadingSeparatorProps = _React$useState3[1];
-  var _React$useState4 = React57.useState({
-    var _React$useState4 = React58.useState({
-      leadingItem: props.item,
-      leadingSection: props.leadingSection,
-      section: props.section,
-      trailingItem: props.trailingItem,
-      trailingSection: props.trailingSection
-    }), separatorProps = _React$useState4[0], setSeparatorProps = _React$useState4[1];
-    React57.useEffect(() => {
-      React58.useEffect(() => {
-        setSelfHighlightCallback(cellKey, setSeparatorHighlighted);
-        setSelfUpdatePropsCallback(cellKey, setSeparatorProps);
-        return () => {
-          setSelfUpdatePropsCallback(cellKey, null);
-          setSelfHighlightCallback(cellKey, null);
-        };
-      }, [cellKey, setSelfHighlightCallback, setSeparatorProps, setSelfUpdatePropsCallback]);
-      var separators = {
-        highlight: () => {
-          setLeadingSeparatorHighlighted(true);
-          setSeparatorHighlighted(true);
-          if (prevCellKey != null) {
-            updateHighlightFor(prevCellKey, true);
-          }
-        },
-        unhighlight: () => {
-          setLeadingSeparatorHighlighted(false);
-          setSeparatorHighlighted(false);
-          if (prevCellKey != null) {
-            updateHighlightFor(prevCellKey, false);
-          }
-        },
-        updateProps: (select, newProps) => {
-          if (select === "leading") {
-            if (LeadingSeparatorComponent != null) {
-              setLeadingSeparatorProps((0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, leadingSeparatorProps), newProps));
-            } else if (prevCellKey != null) {
-              updatePropsFor(prevCellKey, (0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, leadingSeparatorProps), newProps));
-            }
-          } else if (select === "trailing" && SeparatorComponent != null) {
-            setSeparatorProps((0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, separatorProps), newProps));
-          }
+  var _React$useState4 = React65.useState({
+    leadingItem: props.item,
+    leadingSection: props.leadingSection,
+    section: props.section,
+    trailingItem: props.trailingItem,
+    trailingSection: props.trailingSection
+  }), separatorProps = _React$useState4[0], setSeparatorProps = _React$useState4[1];
+  React65.useEffect(() => {
+    setSelfHighlightCallback(cellKey, setSeparatorHighlighted);
+    setSelfUpdatePropsCallback(cellKey, setSeparatorProps);
+    return () => {
+      setSelfUpdatePropsCallback(cellKey, null);
+      setSelfHighlightCallback(cellKey, null);
+    };
+  }, [cellKey, setSelfHighlightCallback, setSeparatorProps, setSelfUpdatePropsCallback]);
+  var separators = {
+    highlight: () => {
+      setLeadingSeparatorHighlighted(true);
+      setSeparatorHighlighted(true);
+      if (prevCellKey != null) {
+        updateHighlightFor(prevCellKey, true);
+      }
+    },
+    unhighlight: () => {
+      setLeadingSeparatorHighlighted(false);
+      setSeparatorHighlighted(false);
+      if (prevCellKey != null) {
+        updateHighlightFor(prevCellKey, false);
+      }
+    },
+    updateProps: (select, newProps) => {
+      if (select === "leading") {
+        if (LeadingSeparatorComponent != null) {
+          setLeadingSeparatorProps((0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, leadingSeparatorProps), newProps));
+        } else if (prevCellKey != null) {
+          updatePropsFor(prevCellKey, (0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, leadingSeparatorProps), newProps));
         }
-      };
-      var element = props.renderItem({
-        item,
-        index,
-        section,
-        separators
-      });
-  var leadingSeparator = LeadingSeparatorComponent != null && /* @__PURE__ */ React58.createElement(LeadingSeparatorComponent, (0, import_extends10.default)({
+      } else if (select === "trailing" && SeparatorComponent != null) {
+        setSeparatorProps((0, import_objectSpread218.default)((0, import_objectSpread218.default)({}, separatorProps), newProps));
+      }
+    }
+  };
+  var element = props.renderItem({
+    item,
+    index,
+    section,
+    separators
+  });
+  var leadingSeparator = LeadingSeparatorComponent != null && /* @__PURE__ */ React65.createElement(LeadingSeparatorComponent, (0, import_extends10.default)({
     highlighted: leadingSeparatorHiglighted
   }, leadingSeparatorProps));
-  var separator = SeparatorComponent != null && /* @__PURE__ */ React58.createElement(SeparatorComponent, (0, import_extends10.default)({
+  var separator = SeparatorComponent != null && /* @__PURE__ */ React65.createElement(SeparatorComponent, (0, import_extends10.default)({
     highlighted: separatorHighlighted
   }, separatorProps));
-  return leadingSeparator || separator ? /* @__PURE__ */ React58.createElement(View_default, null, inverted === false ? leadingSeparator : separator, element, inverted === false ? separator : leadingSeparator) : element;
-    }
+  return leadingSeparator || separator ? /* @__PURE__ */ React65.createElement(View_default, null, inverted === false ? leadingSeparator : separator, element, inverted === false ? separator : leadingSeparator) : element;
+}
 var VirtualizedSectionList_default = VirtualizedSectionList;
 
-    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
-    var _excluded12 = ["stickySectionHeadersEnabled"];
-var SectionList = class extends React59.PureComponent {
-      constructor() {
-        super(...arguments);
-        this._captureRef = (ref) => {
-          this._wrapperListRef = ref;
-        };
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
+var _excluded12 = ["stickySectionHeadersEnabled"];
+var SectionList = class extends React66.PureComponent {
+  constructor() {
+    super(...arguments);
+    this._captureRef = (ref) => {
+      this._wrapperListRef = ref;
+    };
+  }
+  /**
+   * Scrolls to the item at the specified `sectionIndex` and `itemIndex` (within the section)
+   * positioned in the viewable area such that `viewPosition` 0 places it at the top (and may be
+   * covered by a sticky header), 1 at the bottom, and 0.5 centered in the middle. `viewOffset` is a
+   * fixed number of pixels to offset the final target position, e.g. to compensate for sticky
+   * headers.
+   *
+   * Note: cannot scroll to locations outside the render window without specifying the
+   * `getItemLayout` prop.
+   */
+  scrollToLocation(params) {
+    if (this._wrapperListRef != null) {
+      this._wrapperListRef.scrollToLocation(params);
+    }
+  }
+  /**
+   * Tells the list an interaction has occurred, which should trigger viewability calculations, e.g.
+   * if `waitForInteractions` is true and the user has not scrolled. This is typically called by
+   * taps on items or by navigation actions.
+   */
+  recordInteraction() {
+    var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
+    listRef && listRef.recordInteraction();
+  }
+  /**
+   * Displays the scroll indicators momentarily.
+   *
+   * @platform ios
+   */
+  flashScrollIndicators() {
+    var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
+    listRef && listRef.flashScrollIndicators();
+  }
+  /**
+   * Provides a handle to the underlying scroll responder.
+   */
+  getScrollResponder() {
+    var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
+    if (listRef) {
+      return listRef.getScrollResponder();
+    }
+  }
+  getScrollableNode() {
+    var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
+    if (listRef) {
+      return listRef.getScrollableNode();
+    }
+  }
+  render() {
+    var _this$props = this.props, _stickySectionHeadersEnabled = _this$props.stickySectionHeadersEnabled, restProps = (0, import_objectWithoutPropertiesLoose12.default)(_this$props, _excluded12);
+    var stickySectionHeadersEnabled = _stickySectionHeadersEnabled !== null && _stickySectionHeadersEnabled !== void 0 ? _stickySectionHeadersEnabled : Platform_default.OS === "ios";
+    return /* @__PURE__ */ React66.createElement(VirtualizedSectionList_default, (0, import_extends11.default)({}, restProps, {
+      stickySectionHeadersEnabled,
+      ref: this._captureRef,
+      getItemCount: (items) => items.length,
+      getItem: (items, index) => items[index]
+    }));
+  }
+};
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/SectionList/index.js
+var SectionList_default = SectionList;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
+var SectionListWithEventThrottle = /* @__PURE__ */ React67.forwardRef((props, ref) => /* @__PURE__ */ React67.createElement(SectionList_default, (0, import_extends12.default)({
+  scrollEventThrottle: 1e-4
+}, props, {
+  ref
+})));
+var AnimatedSectionList_default = createAnimatedComponent(SectionListWithEventThrottle);
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
+var React69 = __toESM(require("react"));
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Text/index.js
+var import_objectSpread219 = __toESM(require_objectSpread2());
+var import_objectWithoutPropertiesLoose13 = __toESM(require_objectWithoutPropertiesLoose());
+var React68 = __toESM(require("react"));
+var _excluded13 = ["hrefAttrs", "numberOfLines", "onClick", "onLayout", "onPress", "onMoveShouldSetResponder", "onMoveShouldSetResponderCapture", "onResponderEnd", "onResponderGrant", "onResponderMove", "onResponderReject", "onResponderRelease", "onResponderStart", "onResponderTerminate", "onResponderTerminationRequest", "onScrollShouldSetResponder", "onScrollShouldSetResponderCapture", "onSelectionChangeShouldSetResponder", "onSelectionChangeShouldSetResponderCapture", "onStartShouldSetResponder", "onStartShouldSetResponderCapture", "selectable"];
+var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clickProps, focusProps, keyboardProps, mouseProps, touchProps, styleProps, {
+  href: true,
+  lang: true,
+  pointerEvents: true
+});
+var pickProps2 = (props) => pick(props, forwardPropsList2);
+var Text20 = /* @__PURE__ */ React68.forwardRef((props, forwardedRef) => {
+  var hrefAttrs = props.hrefAttrs, numberOfLines = props.numberOfLines, onClick = props.onClick, onLayout = props.onLayout, onPress = props.onPress, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, selectable = props.selectable, rest = (0, import_objectWithoutPropertiesLoose13.default)(props, _excluded13);
+  var hasTextAncestor = React68.useContext(TextAncestorContext_default);
+  var hostRef = React68.useRef(null);
+  var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
+  useElementLayout(hostRef, onLayout);
+  useResponderEvents(hostRef, {
+    onMoveShouldSetResponder,
+    onMoveShouldSetResponderCapture,
+    onResponderEnd,
+    onResponderGrant,
+    onResponderMove,
+    onResponderReject,
+    onResponderRelease,
+    onResponderStart,
+    onResponderTerminate,
+    onResponderTerminationRequest,
+    onScrollShouldSetResponder,
+    onScrollShouldSetResponderCapture,
+    onSelectionChangeShouldSetResponder,
+    onSelectionChangeShouldSetResponderCapture,
+    onStartShouldSetResponder,
+    onStartShouldSetResponderCapture
+  });
+  var handleClick = React68.useCallback((e) => {
+    if (onClick != null) {
+      onClick(e);
+    } else if (onPress != null) {
+      e.stopPropagation();
+      onPress(e);
+    }
+  }, [onClick, onPress]);
+  var component = hasTextAncestor ? "span" : "div";
+  var langDirection = props.lang != null ? getLocaleDirection(props.lang) : null;
+  var componentDirection = props.dir || langDirection;
+  var writingDirection = componentDirection || contextDirection;
+  var supportedProps = pickProps2(rest);
+  supportedProps.dir = componentDirection;
+  if (!hasTextAncestor) {
+    supportedProps.dir = componentDirection != null ? componentDirection : "auto";
+  }
+  if (onClick || onPress) {
+    supportedProps.onClick = handleClick;
+  }
+  supportedProps.style = [numberOfLines != null && numberOfLines > 1 && {
+    WebkitLineClamp: numberOfLines
+  }, hasTextAncestor === true ? styles8.textHasAncestor$raw : styles8.text$raw, numberOfLines === 1 && styles8.textOneLine, numberOfLines != null && numberOfLines > 1 && styles8.textMultiLine, props.style, selectable === true && styles8.selectable, selectable === false && styles8.notSelectable, onPress && styles8.pressable];
+  if (props.href != null) {
+    component = "a";
+    if (hrefAttrs != null) {
+      var download = hrefAttrs.download, rel = hrefAttrs.rel, target = hrefAttrs.target;
+      if (download != null) {
+        supportedProps.download = download;
       }
-      /**
-       * Scrolls to the item at the specified `sectionIndex` and `itemIndex` (within the section)
-       * positioned in the viewable area such that `viewPosition` 0 places it at the top (and may be
-       * covered by a sticky header), 1 at the bottom, and 0.5 centered in the middle. `viewOffset` is a
-       * fixed number of pixels to offset the final target position, e.g. to compensate for sticky
-       * headers.
-       *
-       * Note: cannot scroll to locations outside the render window without specifying the
-       * `getItemLayout` prop.
-       */
-      scrollToLocation(params) {
-        if (this._wrapperListRef != null) {
-          this._wrapperListRef.scrollToLocation(params);
-        }
+      if (rel != null) {
+        supportedProps.rel = rel;
       }
-      /**
-       * Tells the list an interaction has occurred, which should trigger viewability calculations, e.g.
-       * if `waitForInteractions` is true and the user has not scrolled. This is typically called by
-       * taps on items or by navigation actions.
-       */
-      recordInteraction() {
-        var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
-        listRef && listRef.recordInteraction();
+      if (typeof target === "string") {
+        supportedProps.target = target.charAt(0) !== "_" ? "_" + target : target;
       }
-      /**
-       * Displays the scroll indicators momentarily.
-       *
-       * @platform ios
-       */
-      flashScrollIndicators() {
-        var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
-        listRef && listRef.flashScrollIndicators();
+    }
+  }
+  var platformMethodsRef = usePlatformMethods(supportedProps);
+  var setRef = useMergeRefs(hostRef, platformMethodsRef, forwardedRef);
+  supportedProps.ref = setRef;
+  var element = createElement_default(component, supportedProps, {
+    writingDirection
+  });
+  return hasTextAncestor ? element : /* @__PURE__ */ React68.createElement(TextAncestorContext_default.Provider, {
+    value: true
+  }, element);
+});
+Text20.displayName = "Text";
+var textStyle = {
+  backgroundColor: "transparent",
+  border: "0 solid black",
+  boxSizing: "border-box",
+  color: "black",
+  display: "inline",
+  font: "14px System",
+  listStyle: "none",
+  margin: 0,
+  padding: 0,
+  position: "relative",
+  textAlign: "start",
+  textDecoration: "none",
+  whiteSpace: "pre-wrap",
+  wordWrap: "break-word"
+};
+var styles8 = StyleSheet_default.create({
+  text$raw: textStyle,
+  textHasAncestor$raw: (0, import_objectSpread219.default)((0, import_objectSpread219.default)({}, textStyle), {}, {
+    color: "inherit",
+    font: "inherit",
+    textAlign: "inherit",
+    whiteSpace: "inherit"
+  }),
+  textOneLine: {
+    maxWidth: "100%",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    wordWrap: "normal"
+  },
+  // See #13
+  textMultiLine: {
+    display: "-webkit-box",
+    maxWidth: "100%",
+    overflow: "clip",
+    textOverflow: "ellipsis",
+    WebkitBoxOrient: "vertical"
+  },
+  notSelectable: {
+    userSelect: "none"
+  },
+  selectable: {
+    userSelect: "text"
+  },
+  pressable: {
+    cursor: "pointer"
+  }
+});
+var Text_default = Text20;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
+var AnimatedText_default = createAnimatedComponent(Text_default);
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedView.js
+var React70 = __toESM(require("react"));
+var AnimatedView_default = createAnimatedComponent(View_default);
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
+var import_objectSpread222 = __toESM(require_objectSpread2());
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedImplementation.js
+var import_objectSpread221 = __toESM(require_objectSpread2());
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedAddition.js
+var AnimatedAddition = class extends AnimatedWithChildren_default {
+  constructor(a, b) {
+    super();
+    this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
+    this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
+  }
+  __makeNative(platformConfig) {
+    this._a.__makeNative(platformConfig);
+    this._b.__makeNative(platformConfig);
+    super.__makeNative(platformConfig);
+  }
+  __getValue() {
+    return this._a.__getValue() + this._b.__getValue();
+  }
+  interpolate(config2) {
+    return new AnimatedInterpolation_default(this, config2);
+  }
+  __attach() {
+    this._a.__addChild(this);
+    this._b.__addChild(this);
+  }
+  __detach() {
+    this._a.__removeChild(this);
+    this._b.__removeChild(this);
+    super.__detach();
+  }
+  __getNativeConfig() {
+    return {
+      type: "addition",
+      input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
+    };
+  }
+};
+var AnimatedAddition_default = AnimatedAddition;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedDiffClamp.js
+var AnimatedDiffClamp = class extends AnimatedWithChildren_default {
+  constructor(a, min, max) {
+    super();
+    this._a = a;
+    this._min = min;
+    this._max = max;
+    this._value = this._lastValue = this._a.__getValue();
+  }
+  __makeNative(platformConfig) {
+    this._a.__makeNative(platformConfig);
+    super.__makeNative(platformConfig);
+  }
+  interpolate(config2) {
+    return new AnimatedInterpolation_default(this, config2);
+  }
+  __getValue() {
+    var value = this._a.__getValue();
+    var diff = value - this._lastValue;
+    this._lastValue = value;
+    this._value = Math.min(Math.max(this._value + diff, this._min), this._max);
+    return this._value;
+  }
+  __attach() {
+    this._a.__addChild(this);
+  }
+  __detach() {
+    this._a.__removeChild(this);
+    super.__detach();
+  }
+  __getNativeConfig() {
+    return {
+      type: "diffclamp",
+      input: this._a.__getNativeTag(),
+      min: this._min,
+      max: this._max
+    };
+  }
+};
+var AnimatedDiffClamp_default = AnimatedDiffClamp;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedDivision.js
+var AnimatedDivision = class extends AnimatedWithChildren_default {
+  constructor(a, b) {
+    super();
+    this._warnedAboutDivideByZero = false;
+    if (b === 0 || b instanceof AnimatedNode_default && b.__getValue() === 0) {
+      console.error("Detected potential division by zero in AnimatedDivision");
+    }
+    this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
+    this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
+  }
+  __makeNative(platformConfig) {
+    this._a.__makeNative(platformConfig);
+    this._b.__makeNative(platformConfig);
+    super.__makeNative(platformConfig);
+  }
+  __getValue() {
+    var a = this._a.__getValue();
+    var b = this._b.__getValue();
+    if (b === 0) {
+      if (!this._warnedAboutDivideByZero) {
+        console.error("Detected division by zero in AnimatedDivision");
+        this._warnedAboutDivideByZero = true;
       }
-      /**
-       * Provides a handle to the underlying scroll responder.
-       */
-      getScrollResponder() {
-        var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
-        if (listRef) {
-          return listRef.getScrollResponder();
-        }
+      return 0;
+    }
+    this._warnedAboutDivideByZero = false;
+    return a / b;
+  }
+  interpolate(config2) {
+    return new AnimatedInterpolation_default(this, config2);
+  }
+  __attach() {
+    this._a.__addChild(this);
+    this._b.__addChild(this);
+  }
+  __detach() {
+    this._a.__removeChild(this);
+    this._b.__removeChild(this);
+    super.__detach();
+  }
+  __getNativeConfig() {
+    return {
+      type: "division",
+      input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
+    };
+  }
+};
+var AnimatedDivision_default = AnimatedDivision;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedModulo.js
+var AnimatedModulo = class extends AnimatedWithChildren_default {
+  constructor(a, modulus) {
+    super();
+    this._a = a;
+    this._modulus = modulus;
+  }
+  __makeNative(platformConfig) {
+    this._a.__makeNative(platformConfig);
+    super.__makeNative(platformConfig);
+  }
+  __getValue() {
+    return (this._a.__getValue() % this._modulus + this._modulus) % this._modulus;
+  }
+  interpolate(config2) {
+    return new AnimatedInterpolation_default(this, config2);
+  }
+  __attach() {
+    this._a.__addChild(this);
+  }
+  __detach() {
+    this._a.__removeChild(this);
+    super.__detach();
+  }
+  __getNativeConfig() {
+    return {
+      type: "modulus",
+      input: this._a.__getNativeTag(),
+      modulus: this._modulus
+    };
+  }
+};
+var AnimatedModulo_default = AnimatedModulo;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedMultiplication.js
+var AnimatedMultiplication = class extends AnimatedWithChildren_default {
+  constructor(a, b) {
+    super();
+    this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
+    this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
+  }
+  __makeNative(platformConfig) {
+    this._a.__makeNative(platformConfig);
+    this._b.__makeNative(platformConfig);
+    super.__makeNative(platformConfig);
+  }
+  __getValue() {
+    return this._a.__getValue() * this._b.__getValue();
+  }
+  interpolate(config2) {
+    return new AnimatedInterpolation_default(this, config2);
+  }
+  __attach() {
+    this._a.__addChild(this);
+    this._b.__addChild(this);
+  }
+  __detach() {
+    this._a.__removeChild(this);
+    this._b.__removeChild(this);
+    super.__detach();
+  }
+  __getNativeConfig() {
+    return {
+      type: "multiplication",
+      input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
+    };
+  }
+};
+var AnimatedMultiplication_default = AnimatedMultiplication;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedSubtraction.js
+var AnimatedSubtraction = class extends AnimatedWithChildren_default {
+  constructor(a, b) {
+    super();
+    this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
+    this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
+  }
+  __makeNative(platformConfig) {
+    this._a.__makeNative(platformConfig);
+    this._b.__makeNative(platformConfig);
+    super.__makeNative(platformConfig);
+  }
+  __getValue() {
+    return this._a.__getValue() - this._b.__getValue();
+  }
+  interpolate(config2) {
+    return new AnimatedInterpolation_default(this, config2);
+  }
+  __attach() {
+    this._a.__addChild(this);
+    this._b.__addChild(this);
+  }
+  __detach() {
+    this._a.__removeChild(this);
+    this._b.__removeChild(this);
+    super.__detach();
+  }
+  __getNativeConfig() {
+    return {
+      type: "subtraction",
+      input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
+    };
+  }
+};
+var AnimatedSubtraction_default = AnimatedSubtraction;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedTracking.js
+var import_objectSpread220 = __toESM(require_objectSpread2());
+var AnimatedTracking = class extends AnimatedNode_default {
+  constructor(value, parent, animationClass, animationConfig, callback) {
+    super();
+    this._value = value;
+    this._parent = parent;
+    this._animationClass = animationClass;
+    this._animationConfig = animationConfig;
+    this._useNativeDriver = shouldUseNativeDriver(animationConfig);
+    this._callback = callback;
+    this.__attach();
+  }
+  __makeNative() {
+    this.__isNative = true;
+    this._parent.__makeNative();
+    super.__makeNative();
+    this._value.__makeNative();
+  }
+  __getValue() {
+    return this._parent.__getValue();
+  }
+  __attach() {
+    this._parent.__addChild(this);
+    if (this._useNativeDriver) {
+      this.__makeNative();
+    }
+  }
+  __detach() {
+    this._parent.__removeChild(this);
+    super.__detach();
+  }
+  update() {
+    this._value.animate(new this._animationClass((0, import_objectSpread220.default)((0, import_objectSpread220.default)({}, this._animationConfig), {}, {
+      toValue: this._animationConfig.toValue.__getValue()
+    })), this._callback);
+  }
+  __getNativeConfig() {
+    var animation = new this._animationClass((0, import_objectSpread220.default)((0, import_objectSpread220.default)({}, this._animationConfig), {}, {
+      // remove toValue from the config as it's a ref to Animated.Value
+      toValue: void 0
+    }));
+    var animationConfig = animation.__getNativeAnimationConfig();
+    return {
+      type: "tracking",
+      animationId: generateNewAnimationId(),
+      animationConfig,
+      toValue: this._parent.__getNativeTag(),
+      value: this._value.__getNativeTag()
+    };
+  }
+};
+var AnimatedTracking_default = AnimatedTracking;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedValueXY.js
+var import_invariant20 = __toESM(require_invariant());
+var _uniqueId2 = 1;
+var AnimatedValueXY = class extends AnimatedWithChildren_default {
+  constructor(valueIn) {
+    super();
+    var value = valueIn || {
+      x: 0,
+      y: 0
+    };
+    if (typeof value.x === "number" && typeof value.y === "number") {
+      this.x = new AnimatedValue_default(value.x);
+      this.y = new AnimatedValue_default(value.y);
+    } else {
+      (0, import_invariant20.default)(value.x instanceof AnimatedValue_default && value.y instanceof AnimatedValue_default, "AnimatedValueXY must be initialized with an object of numbers or AnimatedValues.");
+      this.x = value.x;
+      this.y = value.y;
+    }
+    this._listeners = {};
+  }
+  /**
+   * Directly set the value. This will stop any animations running on the value
+   * and update all the bound properties.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#setvalue
+   */
+  setValue(value) {
+    this.x.setValue(value.x);
+    this.y.setValue(value.y);
+  }
+  /**
+   * Sets an offset that is applied on top of whatever value is set, whether
+   * via `setValue`, an animation, or `Animated.event`. Useful for compensating
+   * things like the start of a pan gesture.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#setoffset
+   */
+  setOffset(offset) {
+    this.x.setOffset(offset.x);
+    this.y.setOffset(offset.y);
+  }
+  /**
+   * Merges the offset value into the base value and resets the offset to zero.
+   * The final output of the value is unchanged.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#flattenoffset
+   */
+  flattenOffset() {
+    this.x.flattenOffset();
+    this.y.flattenOffset();
+  }
+  /**
+   * Sets the offset value to the base value, and resets the base value to
+   * zero. The final output of the value is unchanged.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#extractoffset
+   */
+  extractOffset() {
+    this.x.extractOffset();
+    this.y.extractOffset();
+  }
+  __getValue() {
+    return {
+      x: this.x.__getValue(),
+      y: this.y.__getValue()
+    };
+  }
+  /**
+   * Stops any animation and resets the value to its original.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#resetanimation
+   */
+  resetAnimation(callback) {
+    this.x.resetAnimation();
+    this.y.resetAnimation();
+    callback && callback(this.__getValue());
+  }
+  /**
+   * Stops any running animation or tracking. `callback` is invoked with the
+   * final value after stopping the animation, which is useful for updating
+   * state to match the animation position with layout.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#stopanimation
+   */
+  stopAnimation(callback) {
+    this.x.stopAnimation();
+    this.y.stopAnimation();
+    callback && callback(this.__getValue());
+  }
+  /**
+   * Adds an asynchronous listener to the value so you can observe updates from
+   * animations.  This is useful because there is no way to synchronously read
+   * the value because it might be driven natively.
+   *
+   * Returns a string that serves as an identifier for the listener.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#addlistener
+   */
+  addListener(callback) {
+    var id2 = String(_uniqueId2++);
+    var jointCallback = (_ref) => {
+      var number = _ref.value;
+      callback(this.__getValue());
+    };
+    this._listeners[id2] = {
+      x: this.x.addListener(jointCallback),
+      y: this.y.addListener(jointCallback)
+    };
+    return id2;
+  }
+  /**
+   * Unregister a listener. The `id` param shall match the identifier
+   * previously returned by `addListener()`.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#removelistener
+   */
+  removeListener(id2) {
+    this.x.removeListener(this._listeners[id2].x);
+    this.y.removeListener(this._listeners[id2].y);
+    delete this._listeners[id2];
+  }
+  /**
+   * Remove all registered listeners.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#removealllisteners
+   */
+  removeAllListeners() {
+    this.x.removeAllListeners();
+    this.y.removeAllListeners();
+    this._listeners = {};
+  }
+  /**
+   * Converts `{x, y}` into `{left, top}` for use in style.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#getlayout
+   */
+  getLayout() {
+    return {
+      left: this.x,
+      top: this.y
+    };
+  }
+  /**
+   * Converts `{x, y}` into a useable translation transform.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy.html#gettranslatetransform
+   */
+  getTranslateTransform() {
+    return [{
+      translateX: this.x
+    }, {
+      translateY: this.y
+    }];
+  }
+};
+var AnimatedValueXY_default = AnimatedValueXY;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/Animation.js
+var startNativeAnimationNextId = 1;
+var Animation = class {
+  start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
+  }
+  stop() {
+    if (this.__nativeId) {
+      NativeAnimatedHelper_default.API.stopAnimation(this.__nativeId);
+    }
+  }
+  __getNativeAnimationConfig() {
+    throw new Error("This animation type cannot be offloaded to native");
+  }
+  // Helper function for subclasses to make sure onEnd is only called once.
+  __debouncedOnEnd(result) {
+    var onEnd = this.__onEnd;
+    this.__onEnd = null;
+    onEnd && onEnd(result);
+  }
+  __startNativeAnimation(animatedValue) {
+    var startNativeAnimationWaitId = startNativeAnimationNextId + ":startAnimation";
+    startNativeAnimationNextId += 1;
+    NativeAnimatedHelper_default.API.setWaitingForIdentifier(startNativeAnimationWaitId);
+    try {
+      var config2 = this.__getNativeAnimationConfig();
+      animatedValue.__makeNative(config2.platformConfig);
+      this.__nativeId = NativeAnimatedHelper_default.generateNewAnimationId();
+      NativeAnimatedHelper_default.API.startAnimatingNode(
+        this.__nativeId,
+        animatedValue.__getNativeTag(),
+        config2,
+        // $FlowFixMe[method-unbinding] added when improving typing for this parameters
+        this.__debouncedOnEnd.bind(this)
+      );
+    } catch (e) {
+      throw e;
+    } finally {
+      NativeAnimatedHelper_default.API.unsetWaitingForIdentifier(startNativeAnimationWaitId);
+    }
+  }
+};
+var Animation_default = Animation;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/DecayAnimation.js
+var DecayAnimation = class extends Animation_default {
+  constructor(config2) {
+    var _config$deceleration, _config$isInteraction, _config$iterations;
+    super();
+    this._deceleration = (_config$deceleration = config2.deceleration) !== null && _config$deceleration !== void 0 ? _config$deceleration : 0.998;
+    this._velocity = config2.velocity;
+    this._useNativeDriver = shouldUseNativeDriver(config2);
+    this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
+    this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
+  }
+  __getNativeAnimationConfig() {
+    return {
+      type: "decay",
+      deceleration: this._deceleration,
+      velocity: this._velocity,
+      iterations: this.__iterations
+    };
+  }
+  start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
+    this.__active = true;
+    this._lastValue = fromValue;
+    this._fromValue = fromValue;
+    this._onUpdate = onUpdate;
+    this.__onEnd = onEnd;
+    this._startTime = Date.now();
+    if (this._useNativeDriver) {
+      this.__startNativeAnimation(animatedValue);
+    } else {
+      this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
+    }
+  }
+  onUpdate() {
+    var now = Date.now();
+    var value = this._fromValue + this._velocity / (1 - this._deceleration) * (1 - Math.exp(-(1 - this._deceleration) * (now - this._startTime)));
+    this._onUpdate(value);
+    if (Math.abs(this._lastValue - value) < 0.1) {
+      this.__debouncedOnEnd({
+        finished: true
+      });
+      return;
+    }
+    this._lastValue = value;
+    if (this.__active) {
+      this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
+    }
+  }
+  stop() {
+    super.stop();
+    this.__active = false;
+    global.cancelAnimationFrame(this._animationFrame);
+    this.__debouncedOnEnd({
+      finished: false
+    });
+  }
+};
+var DecayAnimation_default = DecayAnimation;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/SpringConfig.js
+function stiffnessFromOrigamiValue(oValue) {
+  return (oValue - 30) * 3.62 + 194;
+}
+function dampingFromOrigamiValue(oValue) {
+  return (oValue - 8) * 3 + 25;
+}
+function fromOrigamiTensionAndFriction(tension, friction) {
+  return {
+    stiffness: stiffnessFromOrigamiValue(tension),
+    damping: dampingFromOrigamiValue(friction)
+  };
+}
+function fromBouncinessAndSpeed(bounciness, speed) {
+  function normalize(value, startValue, endValue) {
+    return (value - startValue) / (endValue - startValue);
+  }
+  function projectNormal(n, start, end) {
+    return start + n * (end - start);
+  }
+  function linearInterpolation(t, start, end) {
+    return t * end + (1 - t) * start;
+  }
+  function quadraticOutInterpolation(t, start, end) {
+    return linearInterpolation(2 * t - t * t, start, end);
+  }
+  function b3Friction1(x) {
+    return 7e-4 * Math.pow(x, 3) - 0.031 * Math.pow(x, 2) + 0.64 * x + 1.28;
+  }
+  function b3Friction2(x) {
+    return 44e-6 * Math.pow(x, 3) - 6e-3 * Math.pow(x, 2) + 0.36 * x + 2;
+  }
+  function b3Friction3(x) {
+    return 45e-8 * Math.pow(x, 3) - 332e-6 * Math.pow(x, 2) + 0.1078 * x + 5.84;
+  }
+  function b3Nobounce(tension) {
+    if (tension <= 18) {
+      return b3Friction1(tension);
+    } else if (tension > 18 && tension <= 44) {
+      return b3Friction2(tension);
+    } else {
+      return b3Friction3(tension);
+    }
+  }
+  var b = normalize(bounciness / 1.7, 0, 20);
+  b = projectNormal(b, 0, 0.8);
+  var s = normalize(speed / 1.7, 0, 20);
+  var bouncyTension = projectNormal(s, 0.5, 200);
+  var bouncyFriction = quadraticOutInterpolation(b, b3Nobounce(bouncyTension), 0.01);
+  return {
+    stiffness: stiffnessFromOrigamiValue(bouncyTension),
+    damping: dampingFromOrigamiValue(bouncyFriction)
+  };
+}
+var SpringConfig_default = {
+  fromOrigamiTensionAndFriction,
+  fromBouncinessAndSpeed
+};
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/SpringAnimation.js
+var import_invariant21 = __toESM(require_invariant());
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedColor.js
+var import_normalize_colors3 = __toESM(require_normalize_colors());
+var NativeAnimatedAPI3 = NativeAnimatedHelper_default.API;
+var defaultColor = {
+  r: 0,
+  g: 0,
+  b: 0,
+  a: 1
+};
+var _uniqueId3 = 1;
+var processColorObject = (color) => {
+  return color;
+};
+function processColor2(color) {
+  if (color === void 0 || color === null) {
+    return null;
+  }
+  if (isRgbaValue(color)) {
+    return color;
+  }
+  var normalizedColor = (0, import_normalize_colors3.default)(
+    // $FlowIgnore[incompatible-cast] - Type is verified above
+    color
+  );
+  if (normalizedColor === void 0 || normalizedColor === null) {
+    return null;
+  }
+  if (typeof normalizedColor === "object") {
+    var processedColorObj = processColorObject(normalizedColor);
+    if (processedColorObj != null) {
+      return processedColorObj;
+    }
+  } else if (typeof normalizedColor === "number") {
+    var r = (normalizedColor & 4278190080) >>> 24;
+    var g = (normalizedColor & 16711680) >>> 16;
+    var b = (normalizedColor & 65280) >>> 8;
+    var a = (normalizedColor & 255) / 255;
+    return {
+      r,
+      g,
+      b,
+      a
+    };
+  }
+  return null;
+}
+function isRgbaValue(value) {
+  return value && typeof value.r === "number" && typeof value.g === "number" && typeof value.b === "number" && typeof value.a === "number";
+}
+function isRgbaAnimatedValue(value) {
+  return value && value.r instanceof AnimatedValue_default && value.g instanceof AnimatedValue_default && value.b instanceof AnimatedValue_default && value.a instanceof AnimatedValue_default;
+}
+var AnimatedColor = class extends AnimatedWithChildren_default {
+  constructor(valueIn, config2) {
+    super();
+    this._listeners = {};
+    var value = valueIn !== null && valueIn !== void 0 ? valueIn : defaultColor;
+    if (isRgbaAnimatedValue(value)) {
+      var rgbaAnimatedValue = value;
+      this.r = rgbaAnimatedValue.r;
+      this.g = rgbaAnimatedValue.g;
+      this.b = rgbaAnimatedValue.b;
+      this.a = rgbaAnimatedValue.a;
+    } else {
+      var _processColor;
+      var processedColor = (
+        // $FlowIgnore[incompatible-cast] - Type is verified above
+        (_processColor = processColor2(value)) !== null && _processColor !== void 0 ? _processColor : defaultColor
+      );
+      var initColor = defaultColor;
+      if (isRgbaValue(processedColor)) {
+        initColor = processedColor;
+      } else {
+        this.nativeColor = processedColor;
       }
-      getScrollableNode() {
-        var listRef = this._wrapperListRef && this._wrapperListRef.getListRef();
-        if (listRef) {
-          return listRef.getScrollableNode();
-        }
+      this.r = new AnimatedValue_default(initColor.r);
+      this.g = new AnimatedValue_default(initColor.g);
+      this.b = new AnimatedValue_default(initColor.b);
+      this.a = new AnimatedValue_default(initColor.a);
+    }
+    if (this.nativeColor || config2 && config2.useNativeDriver) {
+      this.__makeNative();
+    }
+  }
+  /**
+   * Directly set the value. This will stop any animations running on the value
+   * and update all the bound properties.
+   */
+  setValue(value) {
+    var _processColor2;
+    var shouldUpdateNodeConfig = false;
+    if (this.__isNative) {
+      var nativeTag = this.__getNativeTag();
+      NativeAnimatedAPI3.setWaitingForIdentifier(nativeTag.toString());
+    }
+    var processedColor = (_processColor2 = processColor2(value)) !== null && _processColor2 !== void 0 ? _processColor2 : defaultColor;
+    if (isRgbaValue(processedColor)) {
+      var rgbaValue = processedColor;
+      this.r.setValue(rgbaValue.r);
+      this.g.setValue(rgbaValue.g);
+      this.b.setValue(rgbaValue.b);
+      this.a.setValue(rgbaValue.a);
+      if (this.nativeColor != null) {
+        this.nativeColor = null;
+        shouldUpdateNodeConfig = true;
       }
-      render() {
-        var _this$props = this.props, _stickySectionHeadersEnabled = _this$props.stickySectionHeadersEnabled, restProps = (0, import_objectWithoutPropertiesLoose12.default)(_this$props, _excluded12);
-        var stickySectionHeadersEnabled = _stickySectionHeadersEnabled !== null && _stickySectionHeadersEnabled !== void 0 ? _stickySectionHeadersEnabled : Platform_default.OS === "ios";
-    return /* @__PURE__ */ React59.createElement(VirtualizedSectionList_default, (0, import_extends11.default)({}, restProps, {
-          stickySectionHeadersEnabled,
-          ref: this._captureRef,
-          getItemCount: (items) => items.length,
-          getItem: (items, index) => items[index]
-        }));
+    } else {
+      var nativeColor = processedColor;
+      if (this.nativeColor !== nativeColor) {
+        this.nativeColor = nativeColor;
+        shouldUpdateNodeConfig = true;
+      }
+    }
+    if (this.__isNative) {
+      var _nativeTag = this.__getNativeTag();
+      if (shouldUpdateNodeConfig) {
+        NativeAnimatedAPI3.updateAnimatedNodeConfig(_nativeTag, this.__getNativeConfig());
+      }
+      NativeAnimatedAPI3.unsetWaitingForIdentifier(_nativeTag.toString());
+    }
+  }
+  /**
+   * Sets an offset that is applied on top of whatever value is set, whether
+   * via `setValue`, an animation, or `Animated.event`. Useful for compensating
+   * things like the start of a pan gesture.
+   */
+  setOffset(offset) {
+    this.r.setOffset(offset.r);
+    this.g.setOffset(offset.g);
+    this.b.setOffset(offset.b);
+    this.a.setOffset(offset.a);
+  }
+  /**
+   * Merges the offset value into the base value and resets the offset to zero.
+   * The final output of the value is unchanged.
+   */
+  flattenOffset() {
+    this.r.flattenOffset();
+    this.g.flattenOffset();
+    this.b.flattenOffset();
+    this.a.flattenOffset();
+  }
+  /**
+   * Sets the offset value to the base value, and resets the base value to
+   * zero. The final output of the value is unchanged.
+   */
+  extractOffset() {
+    this.r.extractOffset();
+    this.g.extractOffset();
+    this.b.extractOffset();
+    this.a.extractOffset();
+  }
+  /**
+   * Adds an asynchronous listener to the value so you can observe updates from
+   * animations.  This is useful because there is no way to synchronously read
+   * the value because it might be driven natively.
+   *
+   * Returns a string that serves as an identifier for the listener.
+   */
+  addListener(callback) {
+    var id2 = String(_uniqueId3++);
+    var jointCallback = (_ref) => {
+      var number = _ref.value;
+      callback(this.__getValue());
+    };
+    this._listeners[id2] = {
+      r: this.r.addListener(jointCallback),
+      g: this.g.addListener(jointCallback),
+      b: this.b.addListener(jointCallback),
+      a: this.a.addListener(jointCallback)
+    };
+    return id2;
+  }
+  /**
+   * Unregister a listener. The `id` param shall match the identifier
+   * previously returned by `addListener()`.
+   */
+  removeListener(id2) {
+    this.r.removeListener(this._listeners[id2].r);
+    this.g.removeListener(this._listeners[id2].g);
+    this.b.removeListener(this._listeners[id2].b);
+    this.a.removeListener(this._listeners[id2].a);
+    delete this._listeners[id2];
+  }
+  /**
+   * Remove all registered listeners.
+   */
+  removeAllListeners() {
+    this.r.removeAllListeners();
+    this.g.removeAllListeners();
+    this.b.removeAllListeners();
+    this.a.removeAllListeners();
+    this._listeners = {};
+  }
+  /**
+   * Stops any running animation or tracking. `callback` is invoked with the
+   * final value after stopping the animation, which is useful for updating
+   * state to match the animation position with layout.
+   */
+  stopAnimation(callback) {
+    this.r.stopAnimation();
+    this.g.stopAnimation();
+    this.b.stopAnimation();
+    this.a.stopAnimation();
+    callback && callback(this.__getValue());
+  }
+  /**
+   * Stops any animation and resets the value to its original.
+   */
+  resetAnimation(callback) {
+    this.r.resetAnimation();
+    this.g.resetAnimation();
+    this.b.resetAnimation();
+    this.a.resetAnimation();
+    callback && callback(this.__getValue());
+  }
+  __getValue() {
+    if (this.nativeColor != null) {
+      return this.nativeColor;
+    } else {
+      return "rgba(" + this.r.__getValue() + ", " + this.g.__getValue() + ", " + this.b.__getValue() + ", " + this.a.__getValue() + ")";
+    }
+  }
+  __attach() {
+    this.r.__addChild(this);
+    this.g.__addChild(this);
+    this.b.__addChild(this);
+    this.a.__addChild(this);
+    super.__attach();
+  }
+  __detach() {
+    this.r.__removeChild(this);
+    this.g.__removeChild(this);
+    this.b.__removeChild(this);
+    this.a.__removeChild(this);
+    super.__detach();
+  }
+  __makeNative(platformConfig) {
+    this.r.__makeNative(platformConfig);
+    this.g.__makeNative(platformConfig);
+    this.b.__makeNative(platformConfig);
+    this.a.__makeNative(platformConfig);
+    super.__makeNative(platformConfig);
+  }
+  __getNativeConfig() {
+    return {
+      type: "color",
+      r: this.r.__getNativeTag(),
+      g: this.g.__getNativeTag(),
+      b: this.b.__getNativeTag(),
+      a: this.a.__getNativeTag(),
+      nativeColor: this.nativeColor
+    };
+  }
+};
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/SpringAnimation.js
+var SpringAnimation = class _SpringAnimation extends Animation_default {
+  constructor(config2) {
+    var _config$overshootClam, _config$restDisplacem, _config$restSpeedThre, _config$velocity, _config$velocity2, _config$delay, _config$isInteraction, _config$iterations;
+    super();
+    this._overshootClamping = (_config$overshootClam = config2.overshootClamping) !== null && _config$overshootClam !== void 0 ? _config$overshootClam : false;
+    this._restDisplacementThreshold = (_config$restDisplacem = config2.restDisplacementThreshold) !== null && _config$restDisplacem !== void 0 ? _config$restDisplacem : 1e-3;
+    this._restSpeedThreshold = (_config$restSpeedThre = config2.restSpeedThreshold) !== null && _config$restSpeedThre !== void 0 ? _config$restSpeedThre : 1e-3;
+    this._initialVelocity = (_config$velocity = config2.velocity) !== null && _config$velocity !== void 0 ? _config$velocity : 0;
+    this._lastVelocity = (_config$velocity2 = config2.velocity) !== null && _config$velocity2 !== void 0 ? _config$velocity2 : 0;
+    this._toValue = config2.toValue;
+    this._delay = (_config$delay = config2.delay) !== null && _config$delay !== void 0 ? _config$delay : 0;
+    this._useNativeDriver = shouldUseNativeDriver(config2);
+    this._platformConfig = config2.platformConfig;
+    this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
+    this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
+    if (config2.stiffness !== void 0 || config2.damping !== void 0 || config2.mass !== void 0) {
+      var _config$stiffness, _config$damping, _config$mass;
+      (0, import_invariant21.default)(config2.bounciness === void 0 && config2.speed === void 0 && config2.tension === void 0 && config2.friction === void 0, "You can define one of bounciness/speed, tension/friction, or stiffness/damping/mass, but not more than one");
+      this._stiffness = (_config$stiffness = config2.stiffness) !== null && _config$stiffness !== void 0 ? _config$stiffness : 100;
+      this._damping = (_config$damping = config2.damping) !== null && _config$damping !== void 0 ? _config$damping : 10;
+      this._mass = (_config$mass = config2.mass) !== null && _config$mass !== void 0 ? _config$mass : 1;
+    } else if (config2.bounciness !== void 0 || config2.speed !== void 0) {
+      var _config$bounciness, _config$speed;
+      (0, import_invariant21.default)(config2.tension === void 0 && config2.friction === void 0 && config2.stiffness === void 0 && config2.damping === void 0 && config2.mass === void 0, "You can define one of bounciness/speed, tension/friction, or stiffness/damping/mass, but not more than one");
+      var springConfig = SpringConfig_default.fromBouncinessAndSpeed((_config$bounciness = config2.bounciness) !== null && _config$bounciness !== void 0 ? _config$bounciness : 8, (_config$speed = config2.speed) !== null && _config$speed !== void 0 ? _config$speed : 12);
+      this._stiffness = springConfig.stiffness;
+      this._damping = springConfig.damping;
+      this._mass = 1;
+    } else {
+      var _config$tension, _config$friction;
+      var _springConfig = SpringConfig_default.fromOrigamiTensionAndFriction((_config$tension = config2.tension) !== null && _config$tension !== void 0 ? _config$tension : 40, (_config$friction = config2.friction) !== null && _config$friction !== void 0 ? _config$friction : 7);
+      this._stiffness = _springConfig.stiffness;
+      this._damping = _springConfig.damping;
+      this._mass = 1;
+    }
+    (0, import_invariant21.default)(this._stiffness > 0, "Stiffness value must be greater than 0");
+    (0, import_invariant21.default)(this._damping > 0, "Damping value must be greater than 0");
+    (0, import_invariant21.default)(this._mass > 0, "Mass value must be greater than 0");
+  }
+  __getNativeAnimationConfig() {
+    var _this$_initialVelocit;
+    return {
+      type: "spring",
+      overshootClamping: this._overshootClamping,
+      restDisplacementThreshold: this._restDisplacementThreshold,
+      restSpeedThreshold: this._restSpeedThreshold,
+      stiffness: this._stiffness,
+      damping: this._damping,
+      mass: this._mass,
+      initialVelocity: (_this$_initialVelocit = this._initialVelocity) !== null && _this$_initialVelocit !== void 0 ? _this$_initialVelocit : this._lastVelocity,
+      toValue: this._toValue,
+      iterations: this.__iterations,
+      platformConfig: this._platformConfig
+    };
+  }
+  start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
+    this.__active = true;
+    this._startPosition = fromValue;
+    this._lastPosition = this._startPosition;
+    this._onUpdate = onUpdate;
+    this.__onEnd = onEnd;
+    this._lastTime = Date.now();
+    this._frameTime = 0;
+    if (previousAnimation instanceof _SpringAnimation) {
+      var internalState = previousAnimation.getInternalState();
+      this._lastPosition = internalState.lastPosition;
+      this._lastVelocity = internalState.lastVelocity;
+      this._initialVelocity = this._lastVelocity;
+      this._lastTime = internalState.lastTime;
+    }
+    var start = () => {
+      if (this._useNativeDriver) {
+        this.__startNativeAnimation(animatedValue);
+      } else {
+        this.onUpdate();
       }
     };
-
-    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/SectionList/index.js
-    var SectionList_default = SectionList;
-
-    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
-var SectionListWithEventThrottle = /* @__PURE__ */ React60.forwardRef((props, ref) => /* @__PURE__ */ React60.createElement(SectionList_default, (0, import_extends12.default)({
-      scrollEventThrottle: 1e-4
-    }, props, {
-      ref
-    })));
-    var AnimatedSectionList_default = createAnimatedComponent(SectionListWithEventThrottle);
-
-    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
-var React62 = __toESM(require("react"));
-
-    // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Text/index.js
-    var import_objectSpread219 = __toESM(require_objectSpread2());
-    var import_objectWithoutPropertiesLoose13 = __toESM(require_objectWithoutPropertiesLoose());
-var React61 = __toESM(require("react"));
-    var _excluded13 = ["hrefAttrs", "numberOfLines", "onClick", "onLayout", "onPress", "onMoveShouldSetResponder", "onMoveShouldSetResponderCapture", "onResponderEnd", "onResponderGrant", "onResponderMove", "onResponderReject", "onResponderRelease", "onResponderStart", "onResponderTerminate", "onResponderTerminationRequest", "onScrollShouldSetResponder", "onScrollShouldSetResponderCapture", "onSelectionChangeShouldSetResponder", "onSelectionChangeShouldSetResponderCapture", "onStartShouldSetResponder", "onStartShouldSetResponderCapture", "selectable"];
-    var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clickProps, focusProps, keyboardProps, mouseProps, touchProps, styleProps, {
-      href: true,
-      lang: true,
-      pointerEvents: true
-    });
-    var pickProps2 = (props) => pick(props, forwardPropsList2);
-var Text16 = /* @__PURE__ */ React61.forwardRef((props, forwardedRef) => {
-  var hrefAttrs = props.hrefAttrs, numberOfLines = props.numberOfLines, onClick = props.onClick, onLayout = props.onLayout, onPress = props.onPress, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, selectable = props.selectable, rest = (0, import_objectWithoutPropertiesLoose13.default)(props, _excluded13);
-  var hasTextAncestor = React61.useContext(TextAncestorContext_default);
-  var hostRef = React61.useRef(null);
-      var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
-      useElementLayout(hostRef, onLayout);
-      useResponderEvents(hostRef, {
-        onMoveShouldSetResponder,
-        onMoveShouldSetResponderCapture,
-        onResponderEnd,
-        onResponderGrant,
-        onResponderMove,
-        onResponderReject,
-        onResponderRelease,
-        onResponderStart,
-        onResponderTerminate,
-        onResponderTerminationRequest,
-        onScrollShouldSetResponder,
-        onScrollShouldSetResponderCapture,
-        onSelectionChangeShouldSetResponder,
-        onSelectionChangeShouldSetResponderCapture,
-        onStartShouldSetResponder,
-        onStartShouldSetResponderCapture
+    if (this._delay) {
+      this._timeout = setTimeout(start, this._delay);
+    } else {
+      start();
+    }
+  }
+  getInternalState() {
+    return {
+      lastPosition: this._lastPosition,
+      lastVelocity: this._lastVelocity,
+      lastTime: this._lastTime
+    };
+  }
+  /**
+   * This spring model is based off of a damped harmonic oscillator
+   * (https://en.wikipedia.org/wiki/Harmonic_oscillator#Damped_harmonic_oscillator).
+   *
+   * We use the closed form of the second order differential equation:
+   *
+   * x'' + (2ζ⍵_0)x' + ⍵^2x = 0
+   *
+   * where
+   *    ⍵_0 = √(k / m) (undamped angular frequency of the oscillator),
+   *    ζ = c / 2√mk (damping ratio),
+   *    c = damping constant
+   *    k = stiffness
+   *    m = mass
+   *
+   * The derivation of the closed form is described in detail here:
+   * http://planetmath.org/sites/default/files/texpdf/39745.pdf
+   *
+   * This algorithm happens to match the algorithm used by CASpringAnimation,
+   * a QuartzCore (iOS) API that creates spring animations.
+   */
+  onUpdate() {
+    var MAX_STEPS = 64;
+    var now = Date.now();
+    if (now > this._lastTime + MAX_STEPS) {
+      now = this._lastTime + MAX_STEPS;
+    }
+    var deltaTime = (now - this._lastTime) / 1e3;
+    this._frameTime += deltaTime;
+    var c = this._damping;
+    var m2 = this._mass;
+    var k = this._stiffness;
+    var v0 = -this._initialVelocity;
+    var zeta = c / (2 * Math.sqrt(k * m2));
+    var omega0 = Math.sqrt(k / m2);
+    var omega1 = omega0 * Math.sqrt(1 - zeta * zeta);
+    var x0 = this._toValue - this._startPosition;
+    var position2 = 0;
+    var velocity = 0;
+    var t = this._frameTime;
+    if (zeta < 1) {
+      var envelope = Math.exp(-zeta * omega0 * t);
+      position2 = this._toValue - envelope * ((v0 + zeta * omega0 * x0) / omega1 * Math.sin(omega1 * t) + x0 * Math.cos(omega1 * t));
+      velocity = zeta * omega0 * envelope * (Math.sin(omega1 * t) * (v0 + zeta * omega0 * x0) / omega1 + x0 * Math.cos(omega1 * t)) - envelope * (Math.cos(omega1 * t) * (v0 + zeta * omega0 * x0) - omega1 * x0 * Math.sin(omega1 * t));
+    } else {
+      var _envelope = Math.exp(-omega0 * t);
+      position2 = this._toValue - _envelope * (x0 + (v0 + omega0 * x0) * t);
+      velocity = _envelope * (v0 * (t * omega0 - 1) + t * x0 * (omega0 * omega0));
+    }
+    this._lastTime = now;
+    this._lastPosition = position2;
+    this._lastVelocity = velocity;
+    this._onUpdate(position2);
+    if (!this.__active) {
+      return;
+    }
+    var isOvershooting = false;
+    if (this._overshootClamping && this._stiffness !== 0) {
+      if (this._startPosition < this._toValue) {
+        isOvershooting = position2 > this._toValue;
+      } else {
+        isOvershooting = position2 < this._toValue;
+      }
+    }
+    var isVelocity = Math.abs(velocity) <= this._restSpeedThreshold;
+    var isDisplacement = true;
+    if (this._stiffness !== 0) {
+      isDisplacement = Math.abs(this._toValue - position2) <= this._restDisplacementThreshold;
+    }
+    if (isOvershooting || isVelocity && isDisplacement) {
+      if (this._stiffness !== 0) {
+        this._lastPosition = this._toValue;
+        this._lastVelocity = 0;
+        this._onUpdate(this._toValue);
+      }
+      this.__debouncedOnEnd({
+        finished: true
       });
-      var handleClick = React60.useCallback((e) => {
-        var handleClick = React61.useCallback((e) => {
-          if (onClick != null) {
-            onClick(e);
-          } else if (onPress != null) {
-            e.stopPropagation();
-            onPress(e);
-          }
-        }, [onClick, onPress]);
-        var component = hasTextAncestor ? "span" : "div";
-        var langDirection = props.lang != null ? getLocaleDirection(props.lang) : null;
-        var componentDirection = props.dir || langDirection;
-        var writingDirection = componentDirection || contextDirection;
-        var supportedProps = pickProps2(rest);
-        supportedProps.dir = componentDirection;
-        if (!hasTextAncestor) {
-          supportedProps.dir = componentDirection != null ? componentDirection : "auto";
-        }
-        if (onClick || onPress) {
-          supportedProps.onClick = handleClick;
-        }
-        supportedProps.style = [numberOfLines != null && numberOfLines > 1 && {
-          WebkitLineClamp: numberOfLines
-        }, hasTextAncestor === true ? styles8.textHasAncestor$raw : styles8.text$raw, numberOfLines === 1 && styles8.textOneLine, numberOfLines != null && numberOfLines > 1 && styles8.textMultiLine, props.style, selectable === true && styles8.selectable, selectable === false && styles8.notSelectable, onPress && styles8.pressable];
-        if (props.href != null) {
-          component = "a";
-          if (hrefAttrs != null) {
-            var download = hrefAttrs.download, rel = hrefAttrs.rel, target = hrefAttrs.target;
-            if (download != null) {
-              supportedProps.download = download;
-            }
-            if (rel != null) {
-              supportedProps.rel = rel;
-            }
-            if (typeof target === "string") {
-              supportedProps.target = target.charAt(0) !== "_" ? "_" + target : target;
-            }
-          }
-        }
-        var platformMethodsRef = usePlatformMethods(supportedProps);
-        var setRef = useMergeRefs(hostRef, platformMethodsRef, forwardedRef);
-        supportedProps.ref = setRef;
-        var element = createElement_default(component, supportedProps, {
-          writingDirection
-        });
-        return hasTextAncestor ? element : /* @__PURE__ */ React60.createElement(TextAncestorContext_default.Provider, {
-          return hasTextAncestor ? element : /* @__PURE__ */ React61.createElement(TextAncestorContext_default.Provider, {
-            value: true
-          }, element);
-        });
-        Text16.displayName = "Text";
-        var textStyle = {
-          backgroundColor: "transparent",
-          border: "0 solid black",
-          boxSizing: "border-box",
-          color: "black",
-          display: "inline",
-          font: "14px System",
-          listStyle: "none",
-          margin: 0,
-          padding: 0,
-          position: "relative",
-          textAlign: "start",
-          textDecoration: "none",
-          whiteSpace: "pre-wrap",
-          wordWrap: "break-word"
-        };
-        var styles8 = StyleSheet_default.create({
-          text$raw: textStyle,
-          textHasAncestor$raw: (0, import_objectSpread219.default)((0, import_objectSpread219.default)({}, textStyle), {}, {
-            color: "inherit",
-            font: "inherit",
-            textAlign: "inherit",
-            whiteSpace: "inherit"
-          }),
-          textOneLine: {
-            maxWidth: "100%",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            wordWrap: "normal"
-          },
-          // See #13
-          textMultiLine: {
-            display: "-webkit-box",
-            maxWidth: "100%",
-            overflow: "clip",
-            textOverflow: "ellipsis",
-            WebkitBoxOrient: "vertical"
-          },
-          notSelectable: {
-            userSelect: "none"
-          },
-          selectable: {
-            userSelect: "text"
-          },
-          pressable: {
-            cursor: "pointer"
-          }
-        });
-        var Text_default = Text16;
+      return;
+    }
+    this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
+  }
+  stop() {
+    super.stop();
+    this.__active = false;
+    clearTimeout(this._timeout);
+    global.cancelAnimationFrame(this._animationFrame);
+    this.__debouncedOnEnd({
+      finished: false
+    });
+  }
+};
+var SpringAnimation_default = SpringAnimation;
 
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
-        var AnimatedText_default = createAnimatedComponent(Text_default);
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedView.js
-        var React62 = __toESM(require("react"));
-        var React63 = __toESM(require("react"));
-        var AnimatedView_default = createAnimatedComponent(View_default);
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
-        var import_objectSpread222 = __toESM(require_objectSpread2());
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedImplementation.js
-        var import_objectSpread221 = __toESM(require_objectSpread2());
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedAddition.js
-        var AnimatedAddition = class extends AnimatedWithChildren_default {
-          constructor(a, b) {
-            super();
-            this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
-            this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
-          }
-          __makeNative(platformConfig) {
-            this._a.__makeNative(platformConfig);
-            this._b.__makeNative(platformConfig);
-            super.__makeNative(platformConfig);
-          }
-          __getValue() {
-            return this._a.__getValue() + this._b.__getValue();
-          }
-          interpolate(config2) {
-            return new AnimatedInterpolation_default(this, config2);
-          }
-          __attach() {
-            this._a.__addChild(this);
-            this._b.__addChild(this);
-          }
-          __detach() {
-            this._a.__removeChild(this);
-            this._b.__removeChild(this);
-            super.__detach();
-          }
-          __getNativeConfig() {
-            return {
-              type: "addition",
-              input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
-            };
-          }
-        };
-        var AnimatedAddition_default = AnimatedAddition;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedDiffClamp.js
-        var AnimatedDiffClamp = class extends AnimatedWithChildren_default {
-          constructor(a, min, max) {
-            super();
-            this._a = a;
-            this._min = min;
-            this._max = max;
-            this._value = this._lastValue = this._a.__getValue();
-          }
-          __makeNative(platformConfig) {
-            this._a.__makeNative(platformConfig);
-            super.__makeNative(platformConfig);
-          }
-          interpolate(config2) {
-            return new AnimatedInterpolation_default(this, config2);
-          }
-          __getValue() {
-            var value = this._a.__getValue();
-            var diff = value - this._lastValue;
-            this._lastValue = value;
-            this._value = Math.min(Math.max(this._value + diff, this._min), this._max);
-            return this._value;
-          }
-          __attach() {
-            this._a.__addChild(this);
-          }
-          __detach() {
-            this._a.__removeChild(this);
-            super.__detach();
-          }
-          __getNativeConfig() {
-            return {
-              type: "diffclamp",
-              input: this._a.__getNativeTag(),
-              min: this._min,
-              max: this._max
-            };
-          }
-        };
-        var AnimatedDiffClamp_default = AnimatedDiffClamp;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedDivision.js
-        var AnimatedDivision = class extends AnimatedWithChildren_default {
-          constructor(a, b) {
-            super();
-            this._warnedAboutDivideByZero = false;
-            if (b === 0 || b instanceof AnimatedNode_default && b.__getValue() === 0) {
-              console.error("Detected potential division by zero in AnimatedDivision");
-            }
-            this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
-            this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
-          }
-          __makeNative(platformConfig) {
-            this._a.__makeNative(platformConfig);
-            this._b.__makeNative(platformConfig);
-            super.__makeNative(platformConfig);
-          }
-          __getValue() {
-            var a = this._a.__getValue();
-            var b = this._b.__getValue();
-            if (b === 0) {
-              if (!this._warnedAboutDivideByZero) {
-                console.error("Detected division by zero in AnimatedDivision");
-                this._warnedAboutDivideByZero = true;
-              }
-              return 0;
-            }
-            this._warnedAboutDivideByZero = false;
-            return a / b;
-          }
-          interpolate(config2) {
-            return new AnimatedInterpolation_default(this, config2);
-          }
-          __attach() {
-            this._a.__addChild(this);
-            this._b.__addChild(this);
-          }
-          __detach() {
-            this._a.__removeChild(this);
-            this._b.__removeChild(this);
-            super.__detach();
-          }
-          __getNativeConfig() {
-            return {
-              type: "division",
-              input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
-            };
-          }
-        };
-        var AnimatedDivision_default = AnimatedDivision;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedModulo.js
-        var AnimatedModulo = class extends AnimatedWithChildren_default {
-          constructor(a, modulus) {
-            super();
-            this._a = a;
-            this._modulus = modulus;
-          }
-          __makeNative(platformConfig) {
-            this._a.__makeNative(platformConfig);
-            super.__makeNative(platformConfig);
-          }
-          __getValue() {
-            return (this._a.__getValue() % this._modulus + this._modulus) % this._modulus;
-          }
-          interpolate(config2) {
-            return new AnimatedInterpolation_default(this, config2);
-          }
-          __attach() {
-            this._a.__addChild(this);
-          }
-          __detach() {
-            this._a.__removeChild(this);
-            super.__detach();
-          }
-          __getNativeConfig() {
-            return {
-              type: "modulus",
-              input: this._a.__getNativeTag(),
-              modulus: this._modulus
-            };
-          }
-        };
-        var AnimatedModulo_default = AnimatedModulo;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedMultiplication.js
-        var AnimatedMultiplication = class extends AnimatedWithChildren_default {
-          constructor(a, b) {
-            super();
-            this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
-            this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
-          }
-          __makeNative(platformConfig) {
-            this._a.__makeNative(platformConfig);
-            this._b.__makeNative(platformConfig);
-            super.__makeNative(platformConfig);
-          }
-          __getValue() {
-            return this._a.__getValue() * this._b.__getValue();
-          }
-          interpolate(config2) {
-            return new AnimatedInterpolation_default(this, config2);
-          }
-          __attach() {
-            this._a.__addChild(this);
-            this._b.__addChild(this);
-          }
-          __detach() {
-            this._a.__removeChild(this);
-            this._b.__removeChild(this);
-            super.__detach();
-          }
-          __getNativeConfig() {
-            return {
-              type: "multiplication",
-              input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
-            };
-          }
-        };
-        var AnimatedMultiplication_default = AnimatedMultiplication;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedSubtraction.js
-        var AnimatedSubtraction = class extends AnimatedWithChildren_default {
-          constructor(a, b) {
-            super();
-            this._a = typeof a === "number" ? new AnimatedValue_default(a) : a;
-            this._b = typeof b === "number" ? new AnimatedValue_default(b) : b;
-          }
-          __makeNative(platformConfig) {
-            this._a.__makeNative(platformConfig);
-            this._b.__makeNative(platformConfig);
-            super.__makeNative(platformConfig);
-          }
-          __getValue() {
-            return this._a.__getValue() - this._b.__getValue();
-          }
-          interpolate(config2) {
-            return new AnimatedInterpolation_default(this, config2);
-          }
-          __attach() {
-            this._a.__addChild(this);
-            this._b.__addChild(this);
-          }
-          __detach() {
-            this._a.__removeChild(this);
-            this._b.__removeChild(this);
-            super.__detach();
-          }
-          __getNativeConfig() {
-            return {
-              type: "subtraction",
-              input: [this._a.__getNativeTag(), this._b.__getNativeTag()]
-            };
-          }
-        };
-        var AnimatedSubtraction_default = AnimatedSubtraction;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedTracking.js
-        var import_objectSpread220 = __toESM(require_objectSpread2());
-        var AnimatedTracking = class extends AnimatedNode_default {
-          constructor(value, parent, animationClass, animationConfig, callback) {
-            super();
-            this._value = value;
-            this._parent = parent;
-            this._animationClass = animationClass;
-            this._animationConfig = animationConfig;
-            this._useNativeDriver = shouldUseNativeDriver(animationConfig);
-            this._callback = callback;
-            this.__attach();
-          }
-          __makeNative() {
-            this.__isNative = true;
-            this._parent.__makeNative();
-            super.__makeNative();
-            this._value.__makeNative();
-          }
-          __getValue() {
-            return this._parent.__getValue();
-          }
-          __attach() {
-            this._parent.__addChild(this);
-            if (this._useNativeDriver) {
-              this.__makeNative();
-            }
-          }
-          __detach() {
-            this._parent.__removeChild(this);
-            super.__detach();
-          }
-          update() {
-            this._value.animate(new this._animationClass((0, import_objectSpread220.default)((0, import_objectSpread220.default)({}, this._animationConfig), {}, {
-              toValue: this._animationConfig.toValue.__getValue()
-            })), this._callback);
-          }
-          __getNativeConfig() {
-            var animation = new this._animationClass((0, import_objectSpread220.default)((0, import_objectSpread220.default)({}, this._animationConfig), {}, {
-              // remove toValue from the config as it's a ref to Animated.Value
-              toValue: void 0
-            }));
-            var animationConfig = animation.__getNativeAnimationConfig();
-            return {
-              type: "tracking",
-              animationId: generateNewAnimationId(),
-              animationConfig,
-              toValue: this._parent.__getNativeTag(),
-              value: this._value.__getNativeTag()
-            };
-          }
-        };
-        var AnimatedTracking_default = AnimatedTracking;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedValueXY.js
-        var import_invariant20 = __toESM(require_invariant());
-        var _uniqueId2 = 1;
-        var AnimatedValueXY = class extends AnimatedWithChildren_default {
-          constructor(valueIn) {
-            super();
-            var value = valueIn || {
-              x: 0,
-              y: 0
-            };
-            if (typeof value.x === "number" && typeof value.y === "number") {
-              this.x = new AnimatedValue_default(value.x);
-              this.y = new AnimatedValue_default(value.y);
-            } else {
-              (0, import_invariant20.default)(value.x instanceof AnimatedValue_default && value.y instanceof AnimatedValue_default, "AnimatedValueXY must be initialized with an object of numbers or AnimatedValues.");
-              this.x = value.x;
-              this.y = value.y;
-            }
-            this._listeners = {};
-          }
-          /**
-           * Directly set the value. This will stop any animations running on the value
-           * and update all the bound properties.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#setvalue
-           */
-          setValue(value) {
-            this.x.setValue(value.x);
-            this.y.setValue(value.y);
-          }
-          /**
-           * Sets an offset that is applied on top of whatever value is set, whether
-           * via `setValue`, an animation, or `Animated.event`. Useful for compensating
-           * things like the start of a pan gesture.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#setoffset
-           */
-          setOffset(offset) {
-            this.x.setOffset(offset.x);
-            this.y.setOffset(offset.y);
-          }
-          /**
-           * Merges the offset value into the base value and resets the offset to zero.
-           * The final output of the value is unchanged.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#flattenoffset
-           */
-          flattenOffset() {
-            this.x.flattenOffset();
-            this.y.flattenOffset();
-          }
-          /**
-           * Sets the offset value to the base value, and resets the base value to
-           * zero. The final output of the value is unchanged.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#extractoffset
-           */
-          extractOffset() {
-            this.x.extractOffset();
-            this.y.extractOffset();
-          }
-          __getValue() {
-            return {
-              x: this.x.__getValue(),
-              y: this.y.__getValue()
-            };
-          }
-          /**
-           * Stops any animation and resets the value to its original.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#resetanimation
-           */
-          resetAnimation(callback) {
-            this.x.resetAnimation();
-            this.y.resetAnimation();
-            callback && callback(this.__getValue());
-          }
-          /**
-           * Stops any running animation or tracking. `callback` is invoked with the
-           * final value after stopping the animation, which is useful for updating
-           * state to match the animation position with layout.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#stopanimation
-           */
-          stopAnimation(callback) {
-            this.x.stopAnimation();
-            this.y.stopAnimation();
-            callback && callback(this.__getValue());
-          }
-          /**
-           * Adds an asynchronous listener to the value so you can observe updates from
-           * animations.  This is useful because there is no way to synchronously read
-           * the value because it might be driven natively.
-           *
-           * Returns a string that serves as an identifier for the listener.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#addlistener
-           */
-          addListener(callback) {
-            var id2 = String(_uniqueId2++);
-            var jointCallback = (_ref) => {
-              var number = _ref.value;
-              callback(this.__getValue());
-            };
-            this._listeners[id2] = {
-              x: this.x.addListener(jointCallback),
-              y: this.y.addListener(jointCallback)
-            };
-            return id2;
-          }
-          /**
-           * Unregister a listener. The `id` param shall match the identifier
-           * previously returned by `addListener()`.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#removelistener
-           */
-          removeListener(id2) {
-            this.x.removeListener(this._listeners[id2].x);
-            this.y.removeListener(this._listeners[id2].y);
-            delete this._listeners[id2];
-          }
-          /**
-           * Remove all registered listeners.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#removealllisteners
-           */
-          removeAllListeners() {
-            this.x.removeAllListeners();
-            this.y.removeAllListeners();
-            this._listeners = {};
-          }
-          /**
-           * Converts `{x, y}` into `{left, top}` for use in style.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#getlayout
-           */
-          getLayout() {
-            return {
-              left: this.x,
-              top: this.y
-            };
-          }
-          /**
-           * Converts `{x, y}` into a useable translation transform.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy.html#gettranslatetransform
-           */
-          getTranslateTransform() {
-            return [{
-              translateX: this.x
-            }, {
-              translateY: this.y
-            }];
-          }
-        };
-        var AnimatedValueXY_default = AnimatedValueXY;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/Animation.js
-        var startNativeAnimationNextId = 1;
-        var Animation = class {
-          start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
-          }
-          stop() {
-            if (this.__nativeId) {
-              NativeAnimatedHelper_default.API.stopAnimation(this.__nativeId);
-            }
-          }
-          __getNativeAnimationConfig() {
-            throw new Error("This animation type cannot be offloaded to native");
-          }
-          // Helper function for subclasses to make sure onEnd is only called once.
-          __debouncedOnEnd(result) {
-            var onEnd = this.__onEnd;
-            this.__onEnd = null;
-            onEnd && onEnd(result);
-          }
-          __startNativeAnimation(animatedValue) {
-            var startNativeAnimationWaitId = startNativeAnimationNextId + ":startAnimation";
-            startNativeAnimationNextId += 1;
-            NativeAnimatedHelper_default.API.setWaitingForIdentifier(startNativeAnimationWaitId);
-            try {
-              var config2 = this.__getNativeAnimationConfig();
-              animatedValue.__makeNative(config2.platformConfig);
-              this.__nativeId = NativeAnimatedHelper_default.generateNewAnimationId();
-              NativeAnimatedHelper_default.API.startAnimatingNode(
-                this.__nativeId,
-                animatedValue.__getNativeTag(),
-                config2,
-                // $FlowFixMe[method-unbinding] added when improving typing for this parameters
-                this.__debouncedOnEnd.bind(this)
-              );
-            } catch (e) {
-              throw e;
-            } finally {
-              NativeAnimatedHelper_default.API.unsetWaitingForIdentifier(startNativeAnimationWaitId);
-            }
-          }
-        };
-        var Animation_default = Animation;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/DecayAnimation.js
-        var DecayAnimation = class extends Animation_default {
-          constructor(config2) {
-            var _config$deceleration, _config$isInteraction, _config$iterations;
-            super();
-            this._deceleration = (_config$deceleration = config2.deceleration) !== null && _config$deceleration !== void 0 ? _config$deceleration : 0.998;
-            this._velocity = config2.velocity;
-            this._useNativeDriver = shouldUseNativeDriver(config2);
-            this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
-            this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
-          }
-          __getNativeAnimationConfig() {
-            return {
-              type: "decay",
-              deceleration: this._deceleration,
-              velocity: this._velocity,
-              iterations: this.__iterations
-            };
-          }
-          start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
-            this.__active = true;
-            this._lastValue = fromValue;
-            this._fromValue = fromValue;
-            this._onUpdate = onUpdate;
-            this.__onEnd = onEnd;
-            this._startTime = Date.now();
-            if (this._useNativeDriver) {
-              this.__startNativeAnimation(animatedValue);
-            } else {
-              this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
-            }
-          }
-          onUpdate() {
-            var now = Date.now();
-            var value = this._fromValue + this._velocity / (1 - this._deceleration) * (1 - Math.exp(-(1 - this._deceleration) * (now - this._startTime)));
-            this._onUpdate(value);
-            if (Math.abs(this._lastValue - value) < 0.1) {
-              this.__debouncedOnEnd({
-                finished: true
-              });
-              return;
-            }
-            this._lastValue = value;
-            if (this.__active) {
-              this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
-            }
-          }
-          stop() {
-            super.stop();
-            this.__active = false;
-            global.cancelAnimationFrame(this._animationFrame);
-            this.__debouncedOnEnd({
-              finished: false
-            });
-          }
-        };
-        var DecayAnimation_default = DecayAnimation;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/SpringConfig.js
-        function stiffnessFromOrigamiValue(oValue) {
-          return (oValue - 30) * 3.62 + 194;
-        }
-        function dampingFromOrigamiValue(oValue) {
-          return (oValue - 8) * 3 + 25;
-        }
-        function fromOrigamiTensionAndFriction(tension, friction) {
-          return {
-            stiffness: stiffnessFromOrigamiValue(tension),
-            damping: dampingFromOrigamiValue(friction)
-          };
-        }
-        function fromBouncinessAndSpeed(bounciness, speed) {
-          function normalize(value, startValue, endValue) {
-            return (value - startValue) / (endValue - startValue);
-          }
-          function projectNormal(n, start, end) {
-            return start + n * (end - start);
-          }
-          function linearInterpolation(t, start, end) {
-            return t * end + (1 - t) * start;
-          }
-          function quadraticOutInterpolation(t, start, end) {
-            return linearInterpolation(2 * t - t * t, start, end);
-          }
-          function b3Friction1(x) {
-            return 7e-4 * Math.pow(x, 3) - 0.031 * Math.pow(x, 2) + 0.64 * x + 1.28;
-          }
-          function b3Friction2(x) {
-            return 44e-6 * Math.pow(x, 3) - 6e-3 * Math.pow(x, 2) + 0.36 * x + 2;
-          }
-          function b3Friction3(x) {
-            return 45e-8 * Math.pow(x, 3) - 332e-6 * Math.pow(x, 2) + 0.1078 * x + 5.84;
-          }
-          function b3Nobounce(tension) {
-            if (tension <= 18) {
-              return b3Friction1(tension);
-            } else if (tension > 18 && tension <= 44) {
-              return b3Friction2(tension);
-            } else {
-              return b3Friction3(tension);
-            }
-          }
-          var b = normalize(bounciness / 1.7, 0, 20);
-          b = projectNormal(b, 0, 0.8);
-          var s = normalize(speed / 1.7, 0, 20);
-          var bouncyTension = projectNormal(s, 0.5, 200);
-          var bouncyFriction = quadraticOutInterpolation(b, b3Nobounce(bouncyTension), 0.01);
-          return {
-            stiffness: stiffnessFromOrigamiValue(bouncyTension),
-            damping: dampingFromOrigamiValue(bouncyFriction)
-          };
-        }
-        var SpringConfig_default = {
-          fromOrigamiTensionAndFriction,
-          fromBouncinessAndSpeed
-        };
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/SpringAnimation.js
-        var import_invariant21 = __toESM(require_invariant());
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/nodes/AnimatedColor.js
-        var import_normalize_colors3 = __toESM(require_normalize_colors());
-        var NativeAnimatedAPI3 = NativeAnimatedHelper_default.API;
-        var defaultColor = {
-          r: 0,
-          g: 0,
-          b: 0,
-          a: 1
-        };
-        var _uniqueId3 = 1;
-        var processColorObject = (color) => {
-          return color;
-        };
-        function processColor2(color) {
-          if (color === void 0 || color === null) {
-            return null;
-          }
-          if (isRgbaValue(color)) {
-            return color;
-          }
-          var normalizedColor = (0, import_normalize_colors3.default)(
-            // $FlowIgnore[incompatible-cast] - Type is verified above
-            color
-          );
-          if (normalizedColor === void 0 || normalizedColor === null) {
-            return null;
-          }
-          if (typeof normalizedColor === "object") {
-            var processedColorObj = processColorObject(normalizedColor);
-            if (processedColorObj != null) {
-              return processedColorObj;
-            }
-          } else if (typeof normalizedColor === "number") {
-            var r = (normalizedColor & 4278190080) >>> 24;
-            var g = (normalizedColor & 16711680) >>> 16;
-            var b = (normalizedColor & 65280) >>> 8;
-            var a = (normalizedColor & 255) / 255;
-            return {
-              r,
-              g,
-              b,
-              a
-            };
-          }
-          return null;
-        }
-        function isRgbaValue(value) {
-          return value && typeof value.r === "number" && typeof value.g === "number" && typeof value.b === "number" && typeof value.a === "number";
-        }
-        function isRgbaAnimatedValue(value) {
-          return value && value.r instanceof AnimatedValue_default && value.g instanceof AnimatedValue_default && value.b instanceof AnimatedValue_default && value.a instanceof AnimatedValue_default;
-        }
-        var AnimatedColor = class extends AnimatedWithChildren_default {
-          constructor(valueIn, config2) {
-            super();
-            this._listeners = {};
-            var value = valueIn !== null && valueIn !== void 0 ? valueIn : defaultColor;
-            if (isRgbaAnimatedValue(value)) {
-              var rgbaAnimatedValue = value;
-              this.r = rgbaAnimatedValue.r;
-              this.g = rgbaAnimatedValue.g;
-              this.b = rgbaAnimatedValue.b;
-              this.a = rgbaAnimatedValue.a;
-            } else {
-              var _processColor;
-              var processedColor = (
-                // $FlowIgnore[incompatible-cast] - Type is verified above
-                (_processColor = processColor2(value)) !== null && _processColor !== void 0 ? _processColor : defaultColor
-              );
-              var initColor = defaultColor;
-              if (isRgbaValue(processedColor)) {
-                initColor = processedColor;
-              } else {
-                this.nativeColor = processedColor;
-              }
-              this.r = new AnimatedValue_default(initColor.r);
-              this.g = new AnimatedValue_default(initColor.g);
-              this.b = new AnimatedValue_default(initColor.b);
-              this.a = new AnimatedValue_default(initColor.a);
-            }
-            if (this.nativeColor || config2 && config2.useNativeDriver) {
-              this.__makeNative();
-            }
-          }
-          /**
-           * Directly set the value. This will stop any animations running on the value
-           * and update all the bound properties.
-           */
-          setValue(value) {
-            var _processColor2;
-            var shouldUpdateNodeConfig = false;
-            if (this.__isNative) {
-              var nativeTag = this.__getNativeTag();
-              NativeAnimatedAPI3.setWaitingForIdentifier(nativeTag.toString());
-            }
-            var processedColor = (_processColor2 = processColor2(value)) !== null && _processColor2 !== void 0 ? _processColor2 : defaultColor;
-            if (isRgbaValue(processedColor)) {
-              var rgbaValue = processedColor;
-              this.r.setValue(rgbaValue.r);
-              this.g.setValue(rgbaValue.g);
-              this.b.setValue(rgbaValue.b);
-              this.a.setValue(rgbaValue.a);
-              if (this.nativeColor != null) {
-                this.nativeColor = null;
-                shouldUpdateNodeConfig = true;
-              }
-            } else {
-              var nativeColor = processedColor;
-              if (this.nativeColor !== nativeColor) {
-                this.nativeColor = nativeColor;
-                shouldUpdateNodeConfig = true;
-              }
-            }
-            if (this.__isNative) {
-              var _nativeTag = this.__getNativeTag();
-              if (shouldUpdateNodeConfig) {
-                NativeAnimatedAPI3.updateAnimatedNodeConfig(_nativeTag, this.__getNativeConfig());
-              }
-              NativeAnimatedAPI3.unsetWaitingForIdentifier(_nativeTag.toString());
-            }
-          }
-          /**
-           * Sets an offset that is applied on top of whatever value is set, whether
-           * via `setValue`, an animation, or `Animated.event`. Useful for compensating
-           * things like the start of a pan gesture.
-           */
-          setOffset(offset) {
-            this.r.setOffset(offset.r);
-            this.g.setOffset(offset.g);
-            this.b.setOffset(offset.b);
-            this.a.setOffset(offset.a);
-          }
-          /**
-           * Merges the offset value into the base value and resets the offset to zero.
-           * The final output of the value is unchanged.
-           */
-          flattenOffset() {
-            this.r.flattenOffset();
-            this.g.flattenOffset();
-            this.b.flattenOffset();
-            this.a.flattenOffset();
-          }
-          /**
-           * Sets the offset value to the base value, and resets the base value to
-           * zero. The final output of the value is unchanged.
-           */
-          extractOffset() {
-            this.r.extractOffset();
-            this.g.extractOffset();
-            this.b.extractOffset();
-            this.a.extractOffset();
-          }
-          /**
-           * Adds an asynchronous listener to the value so you can observe updates from
-           * animations.  This is useful because there is no way to synchronously read
-           * the value because it might be driven natively.
-           *
-           * Returns a string that serves as an identifier for the listener.
-           */
-          addListener(callback) {
-            var id2 = String(_uniqueId3++);
-            var jointCallback = (_ref) => {
-              var number = _ref.value;
-              callback(this.__getValue());
-            };
-            this._listeners[id2] = {
-              r: this.r.addListener(jointCallback),
-              g: this.g.addListener(jointCallback),
-              b: this.b.addListener(jointCallback),
-              a: this.a.addListener(jointCallback)
-            };
-            return id2;
-          }
-          /**
-           * Unregister a listener. The `id` param shall match the identifier
-           * previously returned by `addListener()`.
-           */
-          removeListener(id2) {
-            this.r.removeListener(this._listeners[id2].r);
-            this.g.removeListener(this._listeners[id2].g);
-            this.b.removeListener(this._listeners[id2].b);
-            this.a.removeListener(this._listeners[id2].a);
-            delete this._listeners[id2];
-          }
-          /**
-           * Remove all registered listeners.
-           */
-          removeAllListeners() {
-            this.r.removeAllListeners();
-            this.g.removeAllListeners();
-            this.b.removeAllListeners();
-            this.a.removeAllListeners();
-            this._listeners = {};
-          }
-          /**
-           * Stops any running animation or tracking. `callback` is invoked with the
-           * final value after stopping the animation, which is useful for updating
-           * state to match the animation position with layout.
-           */
-          stopAnimation(callback) {
-            this.r.stopAnimation();
-            this.g.stopAnimation();
-            this.b.stopAnimation();
-            this.a.stopAnimation();
-            callback && callback(this.__getValue());
-          }
-          /**
-           * Stops any animation and resets the value to its original.
-           */
-          resetAnimation(callback) {
-            this.r.resetAnimation();
-            this.g.resetAnimation();
-            this.b.resetAnimation();
-            this.a.resetAnimation();
-            callback && callback(this.__getValue());
-          }
-          __getValue() {
-            if (this.nativeColor != null) {
-              return this.nativeColor;
-            } else {
-              return "rgba(" + this.r.__getValue() + ", " + this.g.__getValue() + ", " + this.b.__getValue() + ", " + this.a.__getValue() + ")";
-            }
-          }
-          __attach() {
-            this.r.__addChild(this);
-            this.g.__addChild(this);
-            this.b.__addChild(this);
-            this.a.__addChild(this);
-            super.__attach();
-          }
-          __detach() {
-            this.r.__removeChild(this);
-            this.g.__removeChild(this);
-            this.b.__removeChild(this);
-            this.a.__removeChild(this);
-            super.__detach();
-          }
-          __makeNative(platformConfig) {
-            this.r.__makeNative(platformConfig);
-            this.g.__makeNative(platformConfig);
-            this.b.__makeNative(platformConfig);
-            this.a.__makeNative(platformConfig);
-            super.__makeNative(platformConfig);
-          }
-          __getNativeConfig() {
-            return {
-              type: "color",
-              r: this.r.__getNativeTag(),
-              g: this.g.__getNativeTag(),
-              b: this.b.__getNativeTag(),
-              a: this.a.__getNativeTag(),
-              nativeColor: this.nativeColor
-            };
-          }
-        };
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/SpringAnimation.js
-        var SpringAnimation = class _SpringAnimation extends Animation_default {
-          constructor(config2) {
-            var _config$overshootClam, _config$restDisplacem, _config$restSpeedThre, _config$velocity, _config$velocity2, _config$delay, _config$isInteraction, _config$iterations;
-            super();
-            this._overshootClamping = (_config$overshootClam = config2.overshootClamping) !== null && _config$overshootClam !== void 0 ? _config$overshootClam : false;
-            this._restDisplacementThreshold = (_config$restDisplacem = config2.restDisplacementThreshold) !== null && _config$restDisplacem !== void 0 ? _config$restDisplacem : 1e-3;
-            this._restSpeedThreshold = (_config$restSpeedThre = config2.restSpeedThreshold) !== null && _config$restSpeedThre !== void 0 ? _config$restSpeedThre : 1e-3;
-            this._initialVelocity = (_config$velocity = config2.velocity) !== null && _config$velocity !== void 0 ? _config$velocity : 0;
-            this._lastVelocity = (_config$velocity2 = config2.velocity) !== null && _config$velocity2 !== void 0 ? _config$velocity2 : 0;
-            this._toValue = config2.toValue;
-            this._delay = (_config$delay = config2.delay) !== null && _config$delay !== void 0 ? _config$delay : 0;
-            this._useNativeDriver = shouldUseNativeDriver(config2);
-            this._platformConfig = config2.platformConfig;
-            this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
-            this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
-            if (config2.stiffness !== void 0 || config2.damping !== void 0 || config2.mass !== void 0) {
-              var _config$stiffness, _config$damping, _config$mass;
-              (0, import_invariant21.default)(config2.bounciness === void 0 && config2.speed === void 0 && config2.tension === void 0 && config2.friction === void 0, "You can define one of bounciness/speed, tension/friction, or stiffness/damping/mass, but not more than one");
-              this._stiffness = (_config$stiffness = config2.stiffness) !== null && _config$stiffness !== void 0 ? _config$stiffness : 100;
-              this._damping = (_config$damping = config2.damping) !== null && _config$damping !== void 0 ? _config$damping : 10;
-              this._mass = (_config$mass = config2.mass) !== null && _config$mass !== void 0 ? _config$mass : 1;
-            } else if (config2.bounciness !== void 0 || config2.speed !== void 0) {
-              var _config$bounciness, _config$speed;
-              (0, import_invariant21.default)(config2.tension === void 0 && config2.friction === void 0 && config2.stiffness === void 0 && config2.damping === void 0 && config2.mass === void 0, "You can define one of bounciness/speed, tension/friction, or stiffness/damping/mass, but not more than one");
-              var springConfig = SpringConfig_default.fromBouncinessAndSpeed((_config$bounciness = config2.bounciness) !== null && _config$bounciness !== void 0 ? _config$bounciness : 8, (_config$speed = config2.speed) !== null && _config$speed !== void 0 ? _config$speed : 12);
-              this._stiffness = springConfig.stiffness;
-              this._damping = springConfig.damping;
-              this._mass = 1;
-            } else {
-              var _config$tension, _config$friction;
-              var _springConfig = SpringConfig_default.fromOrigamiTensionAndFriction((_config$tension = config2.tension) !== null && _config$tension !== void 0 ? _config$tension : 40, (_config$friction = config2.friction) !== null && _config$friction !== void 0 ? _config$friction : 7);
-              this._stiffness = _springConfig.stiffness;
-              this._damping = _springConfig.damping;
-              this._mass = 1;
-            }
-            (0, import_invariant21.default)(this._stiffness > 0, "Stiffness value must be greater than 0");
-            (0, import_invariant21.default)(this._damping > 0, "Damping value must be greater than 0");
-            (0, import_invariant21.default)(this._mass > 0, "Mass value must be greater than 0");
-          }
-          __getNativeAnimationConfig() {
-            var _this$_initialVelocit;
-            return {
-              type: "spring",
-              overshootClamping: this._overshootClamping,
-              restDisplacementThreshold: this._restDisplacementThreshold,
-              restSpeedThreshold: this._restSpeedThreshold,
-              stiffness: this._stiffness,
-              damping: this._damping,
-              mass: this._mass,
-              initialVelocity: (_this$_initialVelocit = this._initialVelocity) !== null && _this$_initialVelocit !== void 0 ? _this$_initialVelocit : this._lastVelocity,
-              toValue: this._toValue,
-              iterations: this.__iterations,
-              platformConfig: this._platformConfig
-            };
-          }
-          start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
-            this.__active = true;
-            this._startPosition = fromValue;
-            this._lastPosition = this._startPosition;
-            this._onUpdate = onUpdate;
-            this.__onEnd = onEnd;
-            this._lastTime = Date.now();
-            this._frameTime = 0;
-            if (previousAnimation instanceof _SpringAnimation) {
-              var internalState = previousAnimation.getInternalState();
-              this._lastPosition = internalState.lastPosition;
-              this._lastVelocity = internalState.lastVelocity;
-              this._initialVelocity = this._lastVelocity;
-              this._lastTime = internalState.lastTime;
-            }
-            var start = () => {
-              if (this._useNativeDriver) {
-                this.__startNativeAnimation(animatedValue);
-              } else {
-                this.onUpdate();
-              }
-            };
-            if (this._delay) {
-              this._timeout = setTimeout(start, this._delay);
-            } else {
-              start();
-            }
-          }
-          getInternalState() {
-            return {
-              lastPosition: this._lastPosition,
-              lastVelocity: this._lastVelocity,
-              lastTime: this._lastTime
-            };
-          }
-          /**
-           * This spring model is based off of a damped harmonic oscillator
-           * (https://en.wikipedia.org/wiki/Harmonic_oscillator#Damped_harmonic_oscillator).
-           *
-           * We use the closed form of the second order differential equation:
-           *
-           * x'' + (2ζ⍵_0)x' + ⍵^2x = 0
-           *
-           * where
-           *    ⍵_0 = √(k / m) (undamped angular frequency of the oscillator),
-           *    ζ = c / 2√mk (damping ratio),
-           *    c = damping constant
-           *    k = stiffness
-           *    m = mass
-           *
-           * The derivation of the closed form is described in detail here:
-           * http://planetmath.org/sites/default/files/texpdf/39745.pdf
-           *
-           * This algorithm happens to match the algorithm used by CASpringAnimation,
-           * a QuartzCore (iOS) API that creates spring animations.
-           */
-          onUpdate() {
-            var MAX_STEPS = 64;
-            var now = Date.now();
-            if (now > this._lastTime + MAX_STEPS) {
-              now = this._lastTime + MAX_STEPS;
-            }
-            var deltaTime = (now - this._lastTime) / 1e3;
-            this._frameTime += deltaTime;
-            var c = this._damping;
-            var m2 = this._mass;
-            var k = this._stiffness;
-            var v0 = -this._initialVelocity;
-            var zeta = c / (2 * Math.sqrt(k * m2));
-            var omega0 = Math.sqrt(k / m2);
-            var omega1 = omega0 * Math.sqrt(1 - zeta * zeta);
-            var x0 = this._toValue - this._startPosition;
-            var position2 = 0;
-            var velocity = 0;
-            var t = this._frameTime;
-            if (zeta < 1) {
-              var envelope = Math.exp(-zeta * omega0 * t);
-              position2 = this._toValue - envelope * ((v0 + zeta * omega0 * x0) / omega1 * Math.sin(omega1 * t) + x0 * Math.cos(omega1 * t));
-              velocity = zeta * omega0 * envelope * (Math.sin(omega1 * t) * (v0 + zeta * omega0 * x0) / omega1 + x0 * Math.cos(omega1 * t)) - envelope * (Math.cos(omega1 * t) * (v0 + zeta * omega0 * x0) - omega1 * x0 * Math.sin(omega1 * t));
-            } else {
-              var _envelope = Math.exp(-omega0 * t);
-              position2 = this._toValue - _envelope * (x0 + (v0 + omega0 * x0) * t);
-              velocity = _envelope * (v0 * (t * omega0 - 1) + t * x0 * (omega0 * omega0));
-            }
-            this._lastTime = now;
-            this._lastPosition = position2;
-            this._lastVelocity = velocity;
-            this._onUpdate(position2);
-            if (!this.__active) {
-              return;
-            }
-            var isOvershooting = false;
-            if (this._overshootClamping && this._stiffness !== 0) {
-              if (this._startPosition < this._toValue) {
-                isOvershooting = position2 > this._toValue;
-              } else {
-                isOvershooting = position2 < this._toValue;
-              }
-            }
-            var isVelocity = Math.abs(velocity) <= this._restSpeedThreshold;
-            var isDisplacement = true;
-            if (this._stiffness !== 0) {
-              isDisplacement = Math.abs(this._toValue - position2) <= this._restDisplacementThreshold;
-            }
-            if (isOvershooting || isVelocity && isDisplacement) {
-              if (this._stiffness !== 0) {
-                this._lastPosition = this._toValue;
-                this._lastVelocity = 0;
-                this._onUpdate(this._toValue);
-              }
-              this.__debouncedOnEnd({
-                finished: true
-              });
-              return;
-            }
-            this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
-          }
-          stop() {
-            super.stop();
-            this.__active = false;
-            clearTimeout(this._timeout);
-            global.cancelAnimationFrame(this._animationFrame);
-            this.__debouncedOnEnd({
-              finished: false
-            });
-          }
-        };
-        var SpringAnimation_default = SpringAnimation;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/bezier.js
-        var NEWTON_ITERATIONS = 4;
-        var NEWTON_MIN_SLOPE = 1e-3;
-        var SUBDIVISION_PRECISION = 1e-7;
-        var SUBDIVISION_MAX_ITERATIONS = 10;
-        var kSplineTableSize = 11;
-        var kSampleStepSize = 1 / (kSplineTableSize - 1);
-        var float32ArraySupported = typeof Float32Array === "function";
-        function A(aA1, aA2) {
-          return 1 - 3 * aA2 + 3 * aA1;
-        }
-        function B(aA1, aA2) {
-          return 3 * aA2 - 6 * aA1;
-        }
-        function C(aA1) {
-          return 3 * aA1;
-        }
-        function calcBezier(aT, aA1, aA2) {
-          return ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT;
-        }
-        function getSlope(aT, aA1, aA2) {
-          return 3 * A(aA1, aA2) * aT * aT + 2 * B(aA1, aA2) * aT + C(aA1);
-        }
-        function binarySubdivide(aX, _aA, _aB, mX1, mX2) {
-          var currentX, currentT, i = 0, aA = _aA, aB = _aB;
-          do {
-            currentT = aA + (aB - aA) / 2;
-            currentX = calcBezier(currentT, mX1, mX2) - aX;
-            if (currentX > 0) {
-              aB = currentT;
-            } else {
-              aA = currentT;
-            }
-          } while (Math.abs(currentX) > SUBDIVISION_PRECISION && ++i < SUBDIVISION_MAX_ITERATIONS);
-          return currentT;
-        }
-        function newtonRaphsonIterate(aX, _aGuessT, mX1, mX2) {
-          var aGuessT = _aGuessT;
-          for (var i = 0; i < NEWTON_ITERATIONS; ++i) {
-            var currentSlope = getSlope(aGuessT, mX1, mX2);
-            if (currentSlope === 0) {
-              return aGuessT;
-            }
-            var currentX = calcBezier(aGuessT, mX1, mX2) - aX;
-            aGuessT -= currentX / currentSlope;
-          }
-          return aGuessT;
-        }
-        function bezier(mX1, mY1, mX2, mY2) {
-          if (!(mX1 >= 0 && mX1 <= 1 && mX2 >= 0 && mX2 <= 1)) {
-            throw new Error("bezier x values must be in [0, 1] range");
-          }
-          var sampleValues = float32ArraySupported ? new Float32Array(kSplineTableSize) : new Array(kSplineTableSize);
-          if (mX1 !== mY1 || mX2 !== mY2) {
-            for (var i = 0; i < kSplineTableSize; ++i) {
-              sampleValues[i] = calcBezier(i * kSampleStepSize, mX1, mX2);
-            }
-          }
-          function getTForX(aX) {
-            var intervalStart = 0;
-            var currentSample = 1;
-            var lastSample = kSplineTableSize - 1;
-            for (; currentSample !== lastSample && sampleValues[currentSample] <= aX; ++currentSample) {
-              intervalStart += kSampleStepSize;
-            }
-            --currentSample;
-            var dist = (aX - sampleValues[currentSample]) / (sampleValues[currentSample + 1] - sampleValues[currentSample]);
-            var guessForT = intervalStart + dist * kSampleStepSize;
-            var initialSlope = getSlope(guessForT, mX1, mX2);
-            if (initialSlope >= NEWTON_MIN_SLOPE) {
-              return newtonRaphsonIterate(aX, guessForT, mX1, mX2);
-            } else if (initialSlope === 0) {
-              return guessForT;
-            } else {
-              return binarySubdivide(aX, intervalStart, intervalStart + kSampleStepSize, mX1, mX2);
-            }
-          }
-          return function BezierEasing(x) {
-            if (mX1 === mY1 && mX2 === mY2) {
-              return x;
-            }
-            if (x === 0) {
-              return 0;
-            }
-            if (x === 1) {
-              return 1;
-            }
-            return calcBezier(getTForX(x), mY1, mY2);
-          };
-        }
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/Easing.js
-        var ease;
-        var Easing = class _Easing {
-          /**
-           * A stepping function, returns 1 for any positive value of `n`.
-           */
-          static step0(n) {
-            return n > 0 ? 1 : 0;
-          }
-          /**
-           * A stepping function, returns 1 if `n` is greater than or equal to 1.
-           */
-          static step1(n) {
-            return n >= 1 ? 1 : 0;
-          }
-          /**
-           * A linear function, `f(t) = t`. Position correlates to elapsed time one to
-           * one.
-           *
-           * http://cubic-bezier.com/#0,0,1,1
-           */
-          static linear(t) {
-            return t;
-          }
-          /**
-           * A simple inertial interaction, similar to an object slowly accelerating to
-           * speed.
-           *
-           * http://cubic-bezier.com/#.42,0,1,1
-           */
-          static ease(t) {
-            if (!ease) {
-              ease = _Easing.bezier(0.42, 0, 1, 1);
-            }
-            return ease(t);
-          }
-          /**
-           * A quadratic function, `f(t) = t * t`. Position equals the square of elapsed
-           * time.
-           *
-           * http://easings.net/#easeInQuad
-           */
-          static quad(t) {
-            return t * t;
-          }
-          /**
-           * A cubic function, `f(t) = t * t * t`. Position equals the cube of elapsed
-           * time.
-           *
-           * http://easings.net/#easeInCubic
-           */
-          static cubic(t) {
-            return t * t * t;
-          }
-          /**
-           * A power function. Position is equal to the Nth power of elapsed time.
-           *
-           * n = 4: http://easings.net/#easeInQuart
-           * n = 5: http://easings.net/#easeInQuint
-           */
-          static poly(n) {
-            return (t) => Math.pow(t, n);
-          }
-          /**
-           * A sinusoidal function.
-           *
-           * http://easings.net/#easeInSine
-           */
-          static sin(t) {
-            return 1 - Math.cos(t * Math.PI / 2);
-          }
-          /**
-           * A circular function.
-           *
-           * http://easings.net/#easeInCirc
-           */
-          static circle(t) {
-            return 1 - Math.sqrt(1 - t * t);
-          }
-          /**
-           * An exponential function.
-           *
-           * http://easings.net/#easeInExpo
-           */
-          static exp(t) {
-            return Math.pow(2, 10 * (t - 1));
-          }
-          /**
-           * A simple elastic interaction, similar to a spring oscillating back and
-           * forth.
-           *
-           * Default bounciness is 1, which overshoots a little bit once. 0 bounciness
-           * doesn't overshoot at all, and bounciness of N > 1 will overshoot about N
-           * times.
-           *
-           * http://easings.net/#easeInElastic
-           */
-          static elastic(bounciness) {
-            if (bounciness === void 0) {
-              bounciness = 1;
-            }
-            var p = bounciness * Math.PI;
-            return (t) => 1 - Math.pow(Math.cos(t * Math.PI / 2), 3) * Math.cos(t * p);
-          }
-          /**
-           * Use with `Animated.parallel()` to create a simple effect where the object
-           * animates back slightly as the animation starts.
-           *
-           * Wolfram Plot:
-           *
-           * - http://tiny.cc/back_default (s = 1.70158, default)
-           */
-          static back(s) {
-            if (s === void 0) {
-              s = 1.70158;
-            }
-            return (t) => t * t * ((s + 1) * t - s);
-          }
-          /**
-           * Provides a simple bouncing effect.
-           *
-           * http://easings.net/#easeInBounce
-           */
-          static bounce(t) {
-            if (t < 1 / 2.75) {
-              return 7.5625 * t * t;
-            }
-            if (t < 2 / 2.75) {
-              var _t = t - 1.5 / 2.75;
-              return 7.5625 * _t * _t + 0.75;
-            }
-            if (t < 2.5 / 2.75) {
-              var _t2 = t - 2.25 / 2.75;
-              return 7.5625 * _t2 * _t2 + 0.9375;
-            }
-            var t2 = t - 2.625 / 2.75;
-            return 7.5625 * t2 * t2 + 0.984375;
-          }
-          /**
-           * Provides a cubic bezier curve, equivalent to CSS Transitions'
-           * `transition-timing-function`.
-           *
-           * A useful tool to visualize cubic bezier curves can be found at
-           * http://cubic-bezier.com/
-           */
-          static bezier(x1, y1, x2, y2) {
-            return bezier(x1, y1, x2, y2);
-          }
-          /**
-           * Runs an easing function forwards.
-           */
-          static in(easing) {
-            return easing;
-          }
-          /**
-           * Runs an easing function backwards.
-           */
-          static out(easing) {
-            return (t) => 1 - easing(1 - t);
-          }
-          /**
-           * Makes any easing function symmetrical. The easing function will run
-           * forwards for half of the duration, then backwards for the rest of the
-           * duration.
-           */
-          static inOut(easing) {
-            return (t) => {
-              if (t < 0.5) {
-                return easing(t * 2) / 2;
-              }
-              return 1 - easing((1 - t) * 2) / 2;
-            };
-          }
-        };
-        var Easing_default = Easing;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Easing/index.js
-        var Easing_default2 = Easing_default;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/TimingAnimation.js
-        var _easeInOut;
-        function easeInOut() {
-          if (!_easeInOut) {
-            _easeInOut = Easing_default2.inOut(Easing_default2.ease);
-          }
-          return _easeInOut;
-        }
-        var TimingAnimation = class extends Animation_default {
-          constructor(config2) {
-            var _config$easing, _config$duration, _config$delay, _config$iterations, _config$isInteraction;
-            super();
-            this._toValue = config2.toValue;
-            this._easing = (_config$easing = config2.easing) !== null && _config$easing !== void 0 ? _config$easing : easeInOut();
-            this._duration = (_config$duration = config2.duration) !== null && _config$duration !== void 0 ? _config$duration : 500;
-            this._delay = (_config$delay = config2.delay) !== null && _config$delay !== void 0 ? _config$delay : 0;
-            this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
-            this._useNativeDriver = shouldUseNativeDriver(config2);
-            this._platformConfig = config2.platformConfig;
-            this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
-          }
-          __getNativeAnimationConfig() {
-            var frameDuration = 1e3 / 60;
-            var frames = [];
-            var numFrames = Math.round(this._duration / frameDuration);
-            for (var frame = 0; frame < numFrames; frame++) {
-              frames.push(this._easing(frame / numFrames));
-            }
-            frames.push(this._easing(1));
-            return {
-              type: "frames",
-              frames,
-              toValue: this._toValue,
-              iterations: this.__iterations,
-              platformConfig: this._platformConfig
-            };
-          }
-          start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
-            this.__active = true;
-            this._fromValue = fromValue;
-            this._onUpdate = onUpdate;
-            this.__onEnd = onEnd;
-            var start = () => {
-              if (this._duration === 0 && !this._useNativeDriver) {
-                this._onUpdate(this._toValue);
-                this.__debouncedOnEnd({
-                  finished: true
-                });
-              } else {
-                this._startTime = Date.now();
-                if (this._useNativeDriver) {
-                  this.__startNativeAnimation(animatedValue);
-                } else {
-                  this._animationFrame = requestAnimationFrame(
-                    // $FlowFixMe[method-unbinding] added when improving typing for this parameters
-                    this.onUpdate.bind(this)
-                  );
-                }
-              }
-            };
-            if (this._delay) {
-              this._timeout = setTimeout(start, this._delay);
-            } else {
-              start();
-            }
-          }
-          onUpdate() {
-            var now = Date.now();
-            if (now >= this._startTime + this._duration) {
-              if (this._duration === 0) {
-                this._onUpdate(this._toValue);
-              } else {
-                this._onUpdate(this._fromValue + this._easing(1) * (this._toValue - this._fromValue));
-              }
-              this.__debouncedOnEnd({
-                finished: true
-              });
-              return;
-            }
-            this._onUpdate(this._fromValue + this._easing((now - this._startTime) / this._duration) * (this._toValue - this._fromValue));
-            if (this.__active) {
-              this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
-            }
-          }
-          stop() {
-            super.stop();
-            this.__active = false;
-            clearTimeout(this._timeout);
-            global.cancelAnimationFrame(this._animationFrame);
-            this.__debouncedOnEnd({
-              finished: false
-            });
-          }
-        };
-        var TimingAnimation_default = TimingAnimation;
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedImplementation.js
-        var add = function add2(a, b) {
-          return new AnimatedAddition_default(a, b);
-        };
-        var subtract = function subtract2(a, b) {
-          return new AnimatedSubtraction_default(a, b);
-        };
-        var divide = function divide2(a, b) {
-          return new AnimatedDivision_default(a, b);
-        };
-        var multiply = function multiply2(a, b) {
-          return new AnimatedMultiplication_default(a, b);
-        };
-        var modulo = function modulo2(a, modulus) {
-          return new AnimatedModulo_default(a, modulus);
-        };
-        var diffClamp = function diffClamp2(a, min, max) {
-          return new AnimatedDiffClamp_default(a, min, max);
-        };
-        var _combineCallbacks = function _combineCallbacks2(callback, config2) {
-          if (callback && config2.onComplete) {
-            return function () {
-              config2.onComplete && config2.onComplete(...arguments);
-              callback && callback(...arguments);
-            };
-          } else {
-            return callback || config2.onComplete;
-          }
-        };
-        var maybeVectorAnim = function maybeVectorAnim2(value, config2, anim) {
-          if (value instanceof AnimatedValueXY_default) {
-            var configX = (0, import_objectSpread221.default)({}, config2);
-            var configY = (0, import_objectSpread221.default)({}, config2);
-            for (var key in config2) {
-              var _config$key = config2[key], x = _config$key.x, y = _config$key.y;
-              if (x !== void 0 && y !== void 0) {
-                configX[key] = x;
-                configY[key] = y;
-              }
-            }
-            var aX = anim(value.x, configX);
-            var aY = anim(value.y, configY);
-            return parallel([aX, aY], {
-              stopTogether: false
-            });
-          } else if (value instanceof AnimatedColor) {
-            var configR = (0, import_objectSpread221.default)({}, config2);
-            var configG = (0, import_objectSpread221.default)({}, config2);
-            var configB = (0, import_objectSpread221.default)({}, config2);
-            var configA = (0, import_objectSpread221.default)({}, config2);
-            for (var _key in config2) {
-              var _config$_key = config2[_key], r = _config$_key.r, g = _config$_key.g, b = _config$_key.b, a = _config$_key.a;
-              if (r !== void 0 && g !== void 0 && b !== void 0 && a !== void 0) {
-                configR[_key] = r;
-                configG[_key] = g;
-                configB[_key] = b;
-                configA[_key] = a;
-              }
-            }
-            var aR = anim(value.r, configR);
-            var aG = anim(value.g, configG);
-            var aB = anim(value.b, configB);
-            var aA = anim(value.a, configA);
-            return parallel([aR, aG, aB, aA], {
-              stopTogether: false
-            });
-          }
-          return null;
-        };
-        var spring = function spring2(value, config2) {
-          var _start = function start(animatedValue, configuration, callback) {
-            callback = _combineCallbacks(callback, configuration);
-            var singleValue = animatedValue;
-            var singleConfig = configuration;
-            singleValue.stopTracking();
-            if (configuration.toValue instanceof AnimatedNode_default) {
-              singleValue.track(new AnimatedTracking_default(singleValue, configuration.toValue, SpringAnimation_default, singleConfig, callback));
-            } else {
-              singleValue.animate(new SpringAnimation_default(singleConfig), callback);
-            }
-          };
-          return maybeVectorAnim(value, config2, spring2) || {
-            start: function start(callback) {
-              _start(value, config2, callback);
-            },
-            stop: function stop() {
-              value.stopAnimation();
-            },
-            reset: function reset() {
-              value.resetAnimation();
-            },
-            _startNativeLoop: function _startNativeLoop(iterations) {
-              var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
-                iterations
-              });
-              _start(value, singleConfig);
-            },
-            _isUsingNativeDriver: function _isUsingNativeDriver() {
-              return config2.useNativeDriver || false;
-            }
-          };
-        };
-        var timing = function timing2(value, config2) {
-          var _start2 = function start(animatedValue, configuration, callback) {
-            callback = _combineCallbacks(callback, configuration);
-            var singleValue = animatedValue;
-            var singleConfig = configuration;
-            singleValue.stopTracking();
-            if (configuration.toValue instanceof AnimatedNode_default) {
-              singleValue.track(new AnimatedTracking_default(singleValue, configuration.toValue, TimingAnimation_default, singleConfig, callback));
-            } else {
-              singleValue.animate(new TimingAnimation_default(singleConfig), callback);
-            }
-          };
-          return maybeVectorAnim(value, config2, timing2) || {
-            start: function start(callback) {
-              _start2(value, config2, callback);
-            },
-            stop: function stop() {
-              value.stopAnimation();
-            },
-            reset: function reset() {
-              value.resetAnimation();
-            },
-            _startNativeLoop: function _startNativeLoop(iterations) {
-              var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
-                iterations
-              });
-              _start2(value, singleConfig);
-            },
-            _isUsingNativeDriver: function _isUsingNativeDriver() {
-              return config2.useNativeDriver || false;
-            }
-          };
-        };
-        var decay = function decay2(value, config2) {
-          var _start3 = function start(animatedValue, configuration, callback) {
-            callback = _combineCallbacks(callback, configuration);
-            var singleValue = animatedValue;
-            var singleConfig = configuration;
-            singleValue.stopTracking();
-            singleValue.animate(new DecayAnimation_default(singleConfig), callback);
-          };
-          return maybeVectorAnim(value, config2, decay2) || {
-            start: function start(callback) {
-              _start3(value, config2, callback);
-            },
-            stop: function stop() {
-              value.stopAnimation();
-            },
-            reset: function reset() {
-              value.resetAnimation();
-            },
-            _startNativeLoop: function _startNativeLoop(iterations) {
-              var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
-                iterations
-              });
-              _start3(value, singleConfig);
-            },
-            _isUsingNativeDriver: function _isUsingNativeDriver() {
-              return config2.useNativeDriver || false;
-            }
-          };
-        };
-        var sequence = function sequence2(animations2) {
-          var current = 0;
-          return {
-            start: function start(callback) {
-              var onComplete = function onComplete2(result) {
-                if (!result.finished) {
-                  callback && callback(result);
-                  return;
-                }
-                current++;
-                if (current === animations2.length) {
-                  current = 0;
-                  callback && callback(result);
-                  return;
-                }
-                animations2[current].start(onComplete2);
-              };
-              if (animations2.length === 0) {
-                callback && callback({
-                  finished: true
-                });
-              } else {
-                animations2[current].start(onComplete);
-              }
-            },
-            stop: function stop() {
-              if (current < animations2.length) {
-                animations2[current].stop();
-              }
-            },
-            reset: function reset() {
-              animations2.forEach((animation, idx) => {
-                if (idx <= current) {
-                  animation.reset();
-                }
-              });
-              current = 0;
-            },
-            _startNativeLoop: function _startNativeLoop() {
-              throw new Error("Loops run using the native driver cannot contain Animated.sequence animations");
-            },
-            _isUsingNativeDriver: function _isUsingNativeDriver() {
-              return false;
-            }
-          };
-        };
-        var parallel = function parallel2(animations2, config2) {
-          var doneCount = 0;
-          var hasEnded = {};
-          var stopTogether = !(config2 && config2.stopTogether === false);
-          var result = {
-            start: function start(callback) {
-              if (doneCount === animations2.length) {
-                callback && callback({
-                  finished: true
-                });
-                return;
-              }
-              animations2.forEach((animation, idx) => {
-                var cb = function cb2(endResult) {
-                  hasEnded[idx] = true;
-                  doneCount++;
-                  if (doneCount === animations2.length) {
-                    doneCount = 0;
-                    callback && callback(endResult);
-                    return;
-                  }
-                  if (!endResult.finished && stopTogether) {
-                    result.stop();
-                  }
-                };
-                if (!animation) {
-                  cb({
-                    finished: true
-                  });
-                } else {
-                  animation.start(cb);
-                }
-              });
-            },
-            stop: function stop() {
-              animations2.forEach((animation, idx) => {
-                !hasEnded[idx] && animation.stop();
-                hasEnded[idx] = true;
-              });
-            },
-            reset: function reset() {
-              animations2.forEach((animation, idx) => {
-                animation.reset();
-                hasEnded[idx] = false;
-                doneCount = 0;
-              });
-            },
-            _startNativeLoop: function _startNativeLoop() {
-              throw new Error("Loops run using the native driver cannot contain Animated.parallel animations");
-            },
-            _isUsingNativeDriver: function _isUsingNativeDriver() {
-              return false;
-            }
-          };
-          return result;
-        };
-        var delay = function delay2(time) {
-          return timing(new AnimatedValue_default(0), {
-            toValue: 0,
-            delay: time,
-            duration: 0,
-            useNativeDriver: false
-          });
-        };
-        var stagger = function stagger2(time, animations2) {
-          return parallel(animations2.map((animation, i) => {
-            return sequence([delay(time * i), animation]);
-          }));
-        };
-        var loop = function loop2(animation, _temp) {
-          var _ref = _temp === void 0 ? {} : _temp, _ref$iterations = _ref.iterations, iterations = _ref$iterations === void 0 ? -1 : _ref$iterations, _ref$resetBeforeItera = _ref.resetBeforeIteration, resetBeforeIteration = _ref$resetBeforeItera === void 0 ? true : _ref$resetBeforeItera;
-          var isFinished = false;
-          var iterationsSoFar = 0;
-          return {
-            start: function start(callback) {
-              var restart = function restart2(result) {
-                if (result === void 0) {
-                  result = {
-                    finished: true
-                  };
-                }
-                if (isFinished || iterationsSoFar === iterations || result.finished === false) {
-                  callback && callback(result);
-                } else {
-                  iterationsSoFar++;
-                  resetBeforeIteration && animation.reset();
-                  animation.start(restart2);
-                }
-              };
-              if (!animation || iterations === 0) {
-                callback && callback({
-                  finished: true
-                });
-              } else {
-                if (animation._isUsingNativeDriver()) {
-                  animation._startNativeLoop(iterations);
-                } else {
-                  restart();
-                }
-              }
-            },
-            stop: function stop() {
-              isFinished = true;
-              animation.stop();
-            },
-            reset: function reset() {
-              iterationsSoFar = 0;
-              isFinished = false;
-              animation.reset();
-            },
-            _startNativeLoop: function _startNativeLoop() {
-              throw new Error("Loops run using the native driver cannot contain Animated.loop animations");
-            },
-            _isUsingNativeDriver: function _isUsingNativeDriver() {
-              return animation._isUsingNativeDriver();
-            }
-          };
-        };
-        function forkEvent(event3, listener) {
-          if (!event3) {
-            return listener;
-          } else if (event3 instanceof AnimatedEvent) {
-            event3.__addListener(listener);
-            return event3;
-          } else {
-            return function () {
-              typeof event3 === "function" && event3(...arguments);
-              listener(...arguments);
-            };
-          }
-        }
-        function unforkEvent(event3, listener) {
-          if (event3 && event3 instanceof AnimatedEvent) {
-            event3.__removeListener(listener);
-          }
-        }
-        var event = function event2(argMapping, config2) {
-          var animatedEvent = new AnimatedEvent(argMapping, config2);
-          if (animatedEvent.__isNative) {
-            return animatedEvent;
-          } else {
-            return animatedEvent.__getHandler();
-          }
-        };
-        var AnimatedImplementation_default = {
-          /**
-           * Standard value class for driving animations.  Typically initialized with
-           * `new Animated.Value(0);`
-           *
-           * See https://reactnative.dev/docs/animated#value
-           */
-          Value: AnimatedValue_default,
-          /**
-           * 2D value class for driving 2D animations, such as pan gestures.
-           *
-           * See https://reactnative.dev/docs/animatedvaluexy
-           */
-          ValueXY: AnimatedValueXY_default,
-          /**
-           * Value class for driving color animations.
-           */
-          Color: AnimatedColor,
-          /**
-           * Exported to use the Interpolation type in flow.
-           *
-           * See https://reactnative.dev/docs/animated#interpolation
-           */
-          Interpolation: AnimatedInterpolation_default,
-          /**
-           * Exported for ease of type checking. All animated values derive from this
-           * class.
-           *
-           * See https://reactnative.dev/docs/animated#node
-           */
-          Node: AnimatedNode_default,
-          /**
-           * Animates a value from an initial velocity to zero based on a decay
-           * coefficient.
-           *
-           * See https://reactnative.dev/docs/animated#decay
-           */
-          decay,
-          /**
-           * Animates a value along a timed easing curve. The Easing module has tons of
-           * predefined curves, or you can use your own function.
-           *
-           * See https://reactnative.dev/docs/animated#timing
-           */
-          timing,
-          /**
-           * Animates a value according to an analytical spring model based on
-           * damped harmonic oscillation.
-           *
-           * See https://reactnative.dev/docs/animated#spring
-           */
-          spring,
-          /**
-           * Creates a new Animated value composed from two Animated values added
-           * together.
-           *
-           * See https://reactnative.dev/docs/animated#add
-           */
-          add,
-          /**
-           * Creates a new Animated value composed by subtracting the second Animated
-           * value from the first Animated value.
-           *
-           * See https://reactnative.dev/docs/animated#subtract
-           */
-          subtract,
-          /**
-           * Creates a new Animated value composed by dividing the first Animated value
-           * by the second Animated value.
-           *
-           * See https://reactnative.dev/docs/animated#divide
-           */
-          divide,
-          /**
-           * Creates a new Animated value composed from two Animated values multiplied
-           * together.
-           *
-           * See https://reactnative.dev/docs/animated#multiply
-           */
-          multiply,
-          /**
-           * Creates a new Animated value that is the (non-negative) modulo of the
-           * provided Animated value.
-           *
-           * See https://reactnative.dev/docs/animated#modulo
-           */
-          modulo,
-          /**
-           * Create a new Animated value that is limited between 2 values. It uses the
-           * difference between the last value so even if the value is far from the
-           * bounds it will start changing when the value starts getting closer again.
-           *
-           * See https://reactnative.dev/docs/animated#diffclamp
-           */
-          diffClamp,
-          /**
-           * Starts an animation after the given delay.
-           *
-           * See https://reactnative.dev/docs/animated#delay
-           */
-          delay,
-          /**
-           * Starts an array of animations in order, waiting for each to complete
-           * before starting the next. If the current running animation is stopped, no
-           * following animations will be started.
-           *
-           * See https://reactnative.dev/docs/animated#sequence
-           */
-          sequence,
-          /**
-           * Starts an array of animations all at the same time. By default, if one
-           * of the animations is stopped, they will all be stopped. You can override
-           * this with the `stopTogether` flag.
-           *
-           * See https://reactnative.dev/docs/animated#parallel
-           */
-          parallel,
-          /**
-           * Array of animations may run in parallel (overlap), but are started in
-           * sequence with successive delays.  Nice for doing trailing effects.
-           *
-           * See https://reactnative.dev/docs/animated#stagger
-           */
-          stagger,
-          /**
-           * Loops a given animation continuously, so that each time it reaches the
-           * end, it resets and begins again from the start.
-           *
-           * See https://reactnative.dev/docs/animated#loop
-           */
-          loop,
-          /**
-           * Takes an array of mappings and extracts values from each arg accordingly,
-           * then calls `setValue` on the mapped outputs.
-           *
-           * See https://reactnative.dev/docs/animated#event
-           */
-          event,
-          /**
-           * Make any React component Animatable.  Used to create `Animated.View`, etc.
-           *
-           * See https://reactnative.dev/docs/animated#createanimatedcomponent
-           */
-          createAnimatedComponent,
-          /**
-           * Imperative API to attach an animated value to an event on a view. Prefer
-           * using `Animated.event` with `useNativeDrive: true` if possible.
-           *
-           * See https://reactnative.dev/docs/animated#attachnativeevent
-           */
-          attachNativeEvent,
-          /**
-           * Advanced imperative API for snooping on animated events that are passed in
-           * through props. Use values directly where possible.
-           *
-           * See https://reactnative.dev/docs/animated#forkevent
-           */
-          forkEvent,
-          unforkEvent,
-          /**
-           * Expose Event class, so it can be used as a type for type checkers.
-           */
-          Event: AnimatedEvent
-        };
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
-        var inAnimationCallback = false;
-        function mockAnimationStart(start) {
-          return (callback) => {
-            var guardedCallback = callback == null ? callback : function () {
-              if (inAnimationCallback) {
-                console.warn("Ignoring recursive animation callback when running mock animations");
-                return;
-              }
-              inAnimationCallback = true;
-              try {
-                callback(...arguments);
-              } finally {
-                inAnimationCallback = false;
-              }
-            };
-            start(guardedCallback);
-          };
-        }
-        var emptyAnimation = {
-          start: () => {
-          },
-          stop: () => {
-          },
-          reset: () => {
-          },
-          _startNativeLoop: () => {
-          },
-          _isUsingNativeDriver: () => {
-            return false;
-          }
-        };
-        var mockCompositeAnimation = (animations2) => (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
-          start: mockAnimationStart((callback) => {
-            animations2.forEach((animation) => animation.start());
-            callback == null ? void 0 : callback({
-              finished: true
-            });
-          })
-        });
-        var spring3 = function spring4(value, config2) {
-          var anyValue = value;
-          return (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
-            start: mockAnimationStart((callback) => {
-              anyValue.setValue(config2.toValue);
-              callback == null ? void 0 : callback({
-                finished: true
-              });
-            })
-          });
-        };
-        var timing3 = function timing4(value, config2) {
-          var anyValue = value;
-          return (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
-            start: mockAnimationStart((callback) => {
-              anyValue.setValue(config2.toValue);
-              callback == null ? void 0 : callback({
-                finished: true
-              });
-            })
-          });
-        };
-        var decay3 = function decay4(value, config2) {
-          return emptyAnimation;
-        };
-        var sequence3 = function sequence4(animations2) {
-          return mockCompositeAnimation(animations2);
-        };
-        var parallel3 = function parallel4(animations2, config2) {
-          return mockCompositeAnimation(animations2);
-        };
-        var delay3 = function delay4(time) {
-          return emptyAnimation;
-        };
-        var stagger3 = function stagger4(time, animations2) {
-          return mockCompositeAnimation(animations2);
-        };
-        var loop3 = function loop4(animation, _temp) {
-          var _ref = _temp === void 0 ? {} : _temp, _ref$iterations = _ref.iterations, iterations = _ref$iterations === void 0 ? -1 : _ref$iterations;
-          return emptyAnimation;
-        };
-        var AnimatedMock_default = {
-          Value: AnimatedValue_default,
-          ValueXY: AnimatedValueXY_default,
-          Color: AnimatedColor,
-          Interpolation: AnimatedInterpolation_default,
-          Node: AnimatedNode_default,
-          decay: decay3,
-          timing: timing3,
-          spring: spring3,
-          add: AnimatedImplementation_default.add,
-          subtract: AnimatedImplementation_default.subtract,
-          divide: AnimatedImplementation_default.divide,
-          multiply: AnimatedImplementation_default.multiply,
-          modulo: AnimatedImplementation_default.modulo,
-          diffClamp: AnimatedImplementation_default.diffClamp,
-          delay: delay3,
-          sequence: sequence3,
-          parallel: parallel3,
-          stagger: stagger3,
-          loop: loop3,
-          event: AnimatedImplementation_default.event,
-          createAnimatedComponent,
-          attachNativeEvent,
-          forkEvent: AnimatedImplementation_default.forkEvent,
-          unforkEvent: AnimatedImplementation_default.unforkEvent,
-          Event: AnimatedEvent
-        };
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/Animated.js
-        var Animated = Platform_default.isTesting ? AnimatedMock_default : AnimatedImplementation_default;
-        var Animated_default = (0, import_objectSpread223.default)({
-          FlatList: AnimatedFlatList_default,
-          Image: AnimatedImage_default,
-          ScrollView: AnimatedScrollView_default,
-          SectionList: AnimatedSectionList_default,
-          Text: AnimatedText_default,
-          View: AnimatedView_default
-        }, Animated);
-
-        // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Animated/index.js
-        var Animated_default2 = Animated_default;
-
-        // ../../node_modules/.pnpm/@tamagui+animations-react-native@1.138.0_react-dom@18.3.1_react@18.3.1__react-native@0.82.1_@_pbdqmovbjfmtaaz5pg4fubn4hi/node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
-        var animatedStyleKey = {
-          transform: true,
-          opacity: true
-        };
-        var colorStyleKey = {
-          backgroundColor: true,
-          color: true,
-          borderColor: true,
-          borderLeftColor: true,
-          borderRightColor: true,
-          borderTopColor: true,
-          borderBottomColor: true
-        };
-        var costlyToAnimateStyleKey = {
-          borderRadius: true,
-          borderTopLeftRadius: true,
-          borderTopRightRadius: true,
-          borderBottomLeftRadius: true,
-          borderBottomRightRadius: true,
-          borderWidth: true,
-          borderLeftWidth: true,
-          borderRightWidth: true,
-          borderTopWidth: true,
-          borderBottomWidth: true,
-          ...colorStyleKey
-          // TODO for other keys like height or width, it's better to not add them here till layout animations are ready
-        };
-        var AnimatedView = Animated_default2.View;
-        var AnimatedText = Animated_default2.Text;
-        function useAnimatedNumber(initial) {
-          const state = import_react43.default.useRef(null);
-          const state = import_react44.default.useRef(null);
-          return state.current || (state.current = {
-            composite: null,
-            val: new Animated_default2.Value(initial),
-            strategy: {
-              type: "spring"
-            }
-          }), {
-            getInstance() {
-              return state.current.val;
-            },
-            getValue() {
-              return state.current.val._value;
-            },
-            stop() {
-              state.current.composite?.stop(), state.current.composite = null;
-            },
-            setValue(next, {
-              type,
-              ...config2
-            } = {
-                type: "spring"
-              }, onFinish) {
-              const val = state.current.val, handleFinish = onFinish ? ({
-                finished
-              }) => finished ? onFinish() : null : void 0;
-              if (type === "direct") val.setValue(next);
-              else if (type === "spring") {
-                state.current.composite?.stop();
-                const composite = Animated_default2.spring(val, {
-                  ...config2,
-                  toValue: next,
-                  useNativeDriver: !isWeb3
-                });
-                composite.start(handleFinish), state.current.composite = composite;
-              } else {
-                state.current.composite?.stop();
-                const composite = Animated_default2.timing(val, {
-                  ...config2,
-                  toValue: next,
-                  useNativeDriver: !isWeb3
-                });
-                composite.start(handleFinish), state.current.composite = composite;
-              }
-            }
-          };
-        }
-        var useAnimatedNumberReaction = ({
-          value
-        }, onValue) => {
-          const onChange = useEvent((current) => {
-            onValue(current.value);
-          });
-          import_react43.default.useEffect(() => {
-            import_react44.default.useEffect(() => {
-              const id2 = value.getInstance().addListener(onChange);
-              return () => {
-                value.getInstance().removeListener(id2);
-              };
-            }, [value, onChange]);
-          };
-          var useAnimatedNumberStyle = (value, getStyle) => getStyle(value.getInstance());
-          function createAnimations(animations2) {
-            return {
-              isReactNative: true,
-              animations: animations2,
-              View: AnimatedView,
-              Text: AnimatedText,
-              useAnimatedNumber,
-              useAnimatedNumberReaction,
-              useAnimatedNumberStyle,
-              usePresence,
-              ResetPresence,
-              useAnimations: ({
-                props,
-                onDidAnimate,
-                style,
-                componentState,
-                presence
-              }) => {
-                const isDisabled2 = isWeb3 && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react43.default.useRef({}), animatedTranforms = import_react43.default.useRef([]), animationsState = import_react43.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react43.default.useMemo(() => isWeb3 ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react43.default.useMemo(() => {
-                  const isDisabled2 = isWeb3 && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react44.default.useRef({}), animatedTranforms = import_react44.default.useRef([]), animationsState = import_react44.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react44.default.useMemo(() => isWeb3 ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react44.default.useMemo(() => {
-                    const runners = [], completions = [], nonAnimatedStyle = {};
-                    for (const key in style) {
-                      const val = style[key];
-                      if (!isDisabled2) {
-                        if (animatedStyleKey[key] == null && !costlyToAnimateStyleKey[key]) {
-                          nonAnimatedStyle[key] = val;
-                          continue;
-                        }
-                        if (hasAnimateOnly && !animateOnly.includes(key)) {
-                          nonAnimatedStyle[key] = val;
-                          continue;
-                        }
-                        if (key !== "transform") {
-                          animateStyles.current[key] = update2(key, animateStyles.current[key], val);
-                          continue;
-                        }
-                        if (val) {
-                          if (typeof val == "string") {
-                            console.warn("Warning: Tamagui can't animate string transforms yet!");
-                            continue;
-                          }
-                          for (const [index, transform] of val.entries()) {
-                            if (!transform) continue;
-                            const tkey = Object.keys(transform)[0], currentTransform = animatedTranforms.current[index]?.[tkey];
-                            animatedTranforms.current[index] = {
-                              [tkey]: update2(tkey, currentTransform, transform[tkey])
-                            }, animatedTranforms.current = [...animatedTranforms.current];
-                          }
-                        }
-                      }
-                    }
-                    const animatedStyle = {
-                      ...Object.fromEntries(Object.entries(animateStyles.current).map(([k, v]) => [k, animationsState.current.get(v)?.interpolation || v])),
-                      transform: animatedTranforms.current.map((r) => {
-                        const key = Object.keys(r)[0], val = animationsState.current.get(r[key])?.interpolation || r[key];
-                        return {
-                          [key]: val
-                        };
-                      })
-                    };
-                    return {
-                      runners,
-                      completions,
-                      style: [nonAnimatedStyle, animatedStyle]
-                    };
-                    function update2(key, animated, valIn) {
-                      const isColorStyleKey = colorStyleKey[key], [val, type] = isColorStyleKey ? [0, void 0] : getValue2(valIn);
-                      let animateToValue = val;
-                      const value = animated || new Animated_default2.Value(val), curInterpolation = animationsState.current.get(value);
-                      let interpolateArgs;
-                      if (type && (interpolateArgs = getInterpolated(curInterpolation?.current ?? value._value, val, type), animationsState.current.set(value, {
-                        interpolation: value.interpolate(interpolateArgs),
-                        current: val
-                      })), isColorStyleKey && (animateToValue = curInterpolation?.animateToValue ? 0 : 1, interpolateArgs = getColorInterpolated(
-                        curInterpolation?.current,
-                        // valIn is the next color
-                        valIn,
-                        animateToValue
-                      ), animationsState.current.set(value, {
-                        current: valIn,
-                        interpolation: value.interpolate(interpolateArgs),
-                        animateToValue: curInterpolation?.animateToValue ? 0 : 1
-                      })), value) {
-                        const animationConfig = getAnimationConfig(key, animations2, props.animation);
-                        let resolve;
-                        const promise = new Promise((res2) => {
-                          resolve = res2;
-                        });
-                        completions.push(promise), runners.push(() => {
-                          value.stopAnimation();
-                          function getAnimation() {
-                            return Animated_default2[animationConfig.type || "spring"](value, {
-                              toValue: animateToValue,
-                              useNativeDriver: !isWeb3 && !isThereNoNativeStyleKeys,
-                              ...animationConfig
-                            });
-                          }
-                          (animationConfig.delay ? Animated_default2.sequence([Animated_default2.delay(animationConfig.delay), getAnimation()]) : getAnimation()).start(({
-                            finished
-                          }) => {
-                            finished && resolve();
-                          });
-                        });
-                      }
-                      return process.env.NODE_ENV === "development" && props.debug === "verbose" && console.info(" \u{1F4A0} animate", key, `from (${value._value}) to`, valIn, `(${val})`, "type", type, "interpolate", interpolateArgs), value;
-                    }
-                  }, args);
-                  return useIsomorphicLayoutEffect(() => {
-                    res.runners.forEach((r) => r());
-                    let cancel = false;
-                    return Promise.all(res.completions).then(() => {
-                      cancel || (onDidAnimate?.(), isExiting && sendExitComplete?.());
-                    }), () => {
-                      cancel = true;
-                    };
-                  }, args), process.env.NODE_ENV === "development" && props.debug === "verbose" && console.info("Animated", {
-                    response: res,
-                    inputStyle: style,
-                    isExiting
-                  }), res;
-                }
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/bezier.js
+var NEWTON_ITERATIONS = 4;
+var NEWTON_MIN_SLOPE = 1e-3;
+var SUBDIVISION_PRECISION = 1e-7;
+var SUBDIVISION_MAX_ITERATIONS = 10;
+var kSplineTableSize = 11;
+var kSampleStepSize = 1 / (kSplineTableSize - 1);
+var float32ArraySupported = typeof Float32Array === "function";
+function A(aA1, aA2) {
+  return 1 - 3 * aA2 + 3 * aA1;
+}
+function B(aA1, aA2) {
+  return 3 * aA2 - 6 * aA1;
+}
+function C(aA1) {
+  return 3 * aA1;
+}
+function calcBezier(aT, aA1, aA2) {
+  return ((A(aA1, aA2) * aT + B(aA1, aA2)) * aT + C(aA1)) * aT;
+}
+function getSlope(aT, aA1, aA2) {
+  return 3 * A(aA1, aA2) * aT * aT + 2 * B(aA1, aA2) * aT + C(aA1);
+}
+function binarySubdivide(aX, _aA, _aB, mX1, mX2) {
+  var currentX, currentT, i = 0, aA = _aA, aB = _aB;
+  do {
+    currentT = aA + (aB - aA) / 2;
+    currentX = calcBezier(currentT, mX1, mX2) - aX;
+    if (currentX > 0) {
+      aB = currentT;
+    } else {
+      aA = currentT;
+    }
+  } while (Math.abs(currentX) > SUBDIVISION_PRECISION && ++i < SUBDIVISION_MAX_ITERATIONS);
+  return currentT;
+}
+function newtonRaphsonIterate(aX, _aGuessT, mX1, mX2) {
+  var aGuessT = _aGuessT;
+  for (var i = 0; i < NEWTON_ITERATIONS; ++i) {
+    var currentSlope = getSlope(aGuessT, mX1, mX2);
+    if (currentSlope === 0) {
+      return aGuessT;
+    }
+    var currentX = calcBezier(aGuessT, mX1, mX2) - aX;
+    aGuessT -= currentX / currentSlope;
+  }
+  return aGuessT;
+}
+function bezier(mX1, mY1, mX2, mY2) {
+  if (!(mX1 >= 0 && mX1 <= 1 && mX2 >= 0 && mX2 <= 1)) {
+    throw new Error("bezier x values must be in [0, 1] range");
+  }
+  var sampleValues = float32ArraySupported ? new Float32Array(kSplineTableSize) : new Array(kSplineTableSize);
+  if (mX1 !== mY1 || mX2 !== mY2) {
+    for (var i = 0; i < kSplineTableSize; ++i) {
+      sampleValues[i] = calcBezier(i * kSampleStepSize, mX1, mX2);
+    }
+  }
+  function getTForX(aX) {
+    var intervalStart = 0;
+    var currentSample = 1;
+    var lastSample = kSplineTableSize - 1;
+    for (; currentSample !== lastSample && sampleValues[currentSample] <= aX; ++currentSample) {
+      intervalStart += kSampleStepSize;
+    }
+    --currentSample;
+    var dist = (aX - sampleValues[currentSample]) / (sampleValues[currentSample + 1] - sampleValues[currentSample]);
+    var guessForT = intervalStart + dist * kSampleStepSize;
+    var initialSlope = getSlope(guessForT, mX1, mX2);
+    if (initialSlope >= NEWTON_MIN_SLOPE) {
+      return newtonRaphsonIterate(aX, guessForT, mX1, mX2);
+    } else if (initialSlope === 0) {
+      return guessForT;
+    } else {
+      return binarySubdivide(aX, intervalStart, intervalStart + kSampleStepSize, mX1, mX2);
+    }
+  }
+  return function BezierEasing(x) {
+    if (mX1 === mY1 && mX2 === mY2) {
+      return x;
+    }
+    if (x === 0) {
+      return 0;
+    }
+    if (x === 1) {
+      return 1;
+    }
+    return calcBezier(getTForX(x), mY1, mY2);
   };
+}
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/Easing.js
+var ease;
+var Easing = class _Easing {
+  /**
+   * A stepping function, returns 1 for any positive value of `n`.
+   */
+  static step0(n) {
+    return n > 0 ? 1 : 0;
+  }
+  /**
+   * A stepping function, returns 1 if `n` is greater than or equal to 1.
+   */
+  static step1(n) {
+    return n >= 1 ? 1 : 0;
+  }
+  /**
+   * A linear function, `f(t) = t`. Position correlates to elapsed time one to
+   * one.
+   *
+   * http://cubic-bezier.com/#0,0,1,1
+   */
+  static linear(t) {
+    return t;
+  }
+  /**
+   * A simple inertial interaction, similar to an object slowly accelerating to
+   * speed.
+   *
+   * http://cubic-bezier.com/#.42,0,1,1
+   */
+  static ease(t) {
+    if (!ease) {
+      ease = _Easing.bezier(0.42, 0, 1, 1);
+    }
+    return ease(t);
+  }
+  /**
+   * A quadratic function, `f(t) = t * t`. Position equals the square of elapsed
+   * time.
+   *
+   * http://easings.net/#easeInQuad
+   */
+  static quad(t) {
+    return t * t;
+  }
+  /**
+   * A cubic function, `f(t) = t * t * t`. Position equals the cube of elapsed
+   * time.
+   *
+   * http://easings.net/#easeInCubic
+   */
+  static cubic(t) {
+    return t * t * t;
+  }
+  /**
+   * A power function. Position is equal to the Nth power of elapsed time.
+   *
+   * n = 4: http://easings.net/#easeInQuart
+   * n = 5: http://easings.net/#easeInQuint
+   */
+  static poly(n) {
+    return (t) => Math.pow(t, n);
+  }
+  /**
+   * A sinusoidal function.
+   *
+   * http://easings.net/#easeInSine
+   */
+  static sin(t) {
+    return 1 - Math.cos(t * Math.PI / 2);
+  }
+  /**
+   * A circular function.
+   *
+   * http://easings.net/#easeInCirc
+   */
+  static circle(t) {
+    return 1 - Math.sqrt(1 - t * t);
+  }
+  /**
+   * An exponential function.
+   *
+   * http://easings.net/#easeInExpo
+   */
+  static exp(t) {
+    return Math.pow(2, 10 * (t - 1));
+  }
+  /**
+   * A simple elastic interaction, similar to a spring oscillating back and
+   * forth.
+   *
+   * Default bounciness is 1, which overshoots a little bit once. 0 bounciness
+   * doesn't overshoot at all, and bounciness of N > 1 will overshoot about N
+   * times.
+   *
+   * http://easings.net/#easeInElastic
+   */
+  static elastic(bounciness) {
+    if (bounciness === void 0) {
+      bounciness = 1;
+    }
+    var p = bounciness * Math.PI;
+    return (t) => 1 - Math.pow(Math.cos(t * Math.PI / 2), 3) * Math.cos(t * p);
+  }
+  /**
+   * Use with `Animated.parallel()` to create a simple effect where the object
+   * animates back slightly as the animation starts.
+   *
+   * Wolfram Plot:
+   *
+   * - http://tiny.cc/back_default (s = 1.70158, default)
+   */
+  static back(s) {
+    if (s === void 0) {
+      s = 1.70158;
+    }
+    return (t) => t * t * ((s + 1) * t - s);
+  }
+  /**
+   * Provides a simple bouncing effect.
+   *
+   * http://easings.net/#easeInBounce
+   */
+  static bounce(t) {
+    if (t < 1 / 2.75) {
+      return 7.5625 * t * t;
+    }
+    if (t < 2 / 2.75) {
+      var _t = t - 1.5 / 2.75;
+      return 7.5625 * _t * _t + 0.75;
+    }
+    if (t < 2.5 / 2.75) {
+      var _t2 = t - 2.25 / 2.75;
+      return 7.5625 * _t2 * _t2 + 0.9375;
+    }
+    var t2 = t - 2.625 / 2.75;
+    return 7.5625 * t2 * t2 + 0.984375;
+  }
+  /**
+   * Provides a cubic bezier curve, equivalent to CSS Transitions'
+   * `transition-timing-function`.
+   *
+   * A useful tool to visualize cubic bezier curves can be found at
+   * http://cubic-bezier.com/
+   */
+  static bezier(x1, y1, x2, y2) {
+    return bezier(x1, y1, x2, y2);
+  }
+  /**
+   * Runs an easing function forwards.
+   */
+  static in(easing) {
+    return easing;
+  }
+  /**
+   * Runs an easing function backwards.
+   */
+  static out(easing) {
+    return (t) => 1 - easing(1 - t);
+  }
+  /**
+   * Makes any easing function symmetrical. The easing function will run
+   * forwards for half of the duration, then backwards for the rest of the
+   * duration.
+   */
+  static inOut(easing) {
+    return (t) => {
+      if (t < 0.5) {
+        return easing(t * 2) / 2;
+      }
+      return 1 - easing((1 - t) * 2) / 2;
+    };
+  }
+};
+var Easing_default = Easing;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Easing/index.js
+var Easing_default2 = Easing_default;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/animations/TimingAnimation.js
+var _easeInOut;
+function easeInOut() {
+  if (!_easeInOut) {
+    _easeInOut = Easing_default2.inOut(Easing_default2.ease);
+  }
+  return _easeInOut;
+}
+var TimingAnimation = class extends Animation_default {
+  constructor(config2) {
+    var _config$easing, _config$duration, _config$delay, _config$iterations, _config$isInteraction;
+    super();
+    this._toValue = config2.toValue;
+    this._easing = (_config$easing = config2.easing) !== null && _config$easing !== void 0 ? _config$easing : easeInOut();
+    this._duration = (_config$duration = config2.duration) !== null && _config$duration !== void 0 ? _config$duration : 500;
+    this._delay = (_config$delay = config2.delay) !== null && _config$delay !== void 0 ? _config$delay : 0;
+    this.__iterations = (_config$iterations = config2.iterations) !== null && _config$iterations !== void 0 ? _config$iterations : 1;
+    this._useNativeDriver = shouldUseNativeDriver(config2);
+    this._platformConfig = config2.platformConfig;
+    this.__isInteraction = (_config$isInteraction = config2.isInteraction) !== null && _config$isInteraction !== void 0 ? _config$isInteraction : !this._useNativeDriver;
+  }
+  __getNativeAnimationConfig() {
+    var frameDuration = 1e3 / 60;
+    var frames = [];
+    var numFrames = Math.round(this._duration / frameDuration);
+    for (var frame = 0; frame < numFrames; frame++) {
+      frames.push(this._easing(frame / numFrames));
+    }
+    frames.push(this._easing(1));
+    return {
+      type: "frames",
+      frames,
+      toValue: this._toValue,
+      iterations: this.__iterations,
+      platformConfig: this._platformConfig
+    };
+  }
+  start(fromValue, onUpdate, onEnd, previousAnimation, animatedValue) {
+    this.__active = true;
+    this._fromValue = fromValue;
+    this._onUpdate = onUpdate;
+    this.__onEnd = onEnd;
+    var start = () => {
+      if (this._duration === 0 && !this._useNativeDriver) {
+        this._onUpdate(this._toValue);
+        this.__debouncedOnEnd({
+          finished: true
+        });
+      } else {
+        this._startTime = Date.now();
+        if (this._useNativeDriver) {
+          this.__startNativeAnimation(animatedValue);
+        } else {
+          this._animationFrame = requestAnimationFrame(
+            // $FlowFixMe[method-unbinding] added when improving typing for this parameters
+            this.onUpdate.bind(this)
+          );
+        }
+      }
+    };
+    if (this._delay) {
+      this._timeout = setTimeout(start, this._delay);
+    } else {
+      start();
+    }
+  }
+  onUpdate() {
+    var now = Date.now();
+    if (now >= this._startTime + this._duration) {
+      if (this._duration === 0) {
+        this._onUpdate(this._toValue);
+      } else {
+        this._onUpdate(this._fromValue + this._easing(1) * (this._toValue - this._fromValue));
+      }
+      this.__debouncedOnEnd({
+        finished: true
+      });
+      return;
+    }
+    this._onUpdate(this._fromValue + this._easing((now - this._startTime) / this._duration) * (this._toValue - this._fromValue));
+    if (this.__active) {
+      this._animationFrame = requestAnimationFrame(this.onUpdate.bind(this));
+    }
+  }
+  stop() {
+    super.stop();
+    this.__active = false;
+    clearTimeout(this._timeout);
+    global.cancelAnimationFrame(this._animationFrame);
+    this.__debouncedOnEnd({
+      finished: false
+    });
+  }
+};
+var TimingAnimation_default = TimingAnimation;
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedImplementation.js
+var add = function add2(a, b) {
+  return new AnimatedAddition_default(a, b);
+};
+var subtract = function subtract2(a, b) {
+  return new AnimatedSubtraction_default(a, b);
+};
+var divide = function divide2(a, b) {
+  return new AnimatedDivision_default(a, b);
+};
+var multiply = function multiply2(a, b) {
+  return new AnimatedMultiplication_default(a, b);
+};
+var modulo = function modulo2(a, modulus) {
+  return new AnimatedModulo_default(a, modulus);
+};
+var diffClamp = function diffClamp2(a, min, max) {
+  return new AnimatedDiffClamp_default(a, min, max);
+};
+var _combineCallbacks = function _combineCallbacks2(callback, config2) {
+  if (callback && config2.onComplete) {
+    return function() {
+      config2.onComplete && config2.onComplete(...arguments);
+      callback && callback(...arguments);
+    };
+  } else {
+    return callback || config2.onComplete;
+  }
+};
+var maybeVectorAnim = function maybeVectorAnim2(value, config2, anim) {
+  if (value instanceof AnimatedValueXY_default) {
+    var configX = (0, import_objectSpread221.default)({}, config2);
+    var configY = (0, import_objectSpread221.default)({}, config2);
+    for (var key in config2) {
+      var _config$key = config2[key], x = _config$key.x, y = _config$key.y;
+      if (x !== void 0 && y !== void 0) {
+        configX[key] = x;
+        configY[key] = y;
+      }
+    }
+    var aX = anim(value.x, configX);
+    var aY = anim(value.y, configY);
+    return parallel([aX, aY], {
+      stopTogether: false
+    });
+  } else if (value instanceof AnimatedColor) {
+    var configR = (0, import_objectSpread221.default)({}, config2);
+    var configG = (0, import_objectSpread221.default)({}, config2);
+    var configB = (0, import_objectSpread221.default)({}, config2);
+    var configA = (0, import_objectSpread221.default)({}, config2);
+    for (var _key in config2) {
+      var _config$_key = config2[_key], r = _config$_key.r, g = _config$_key.g, b = _config$_key.b, a = _config$_key.a;
+      if (r !== void 0 && g !== void 0 && b !== void 0 && a !== void 0) {
+        configR[_key] = r;
+        configG[_key] = g;
+        configB[_key] = b;
+        configA[_key] = a;
+      }
+    }
+    var aR = anim(value.r, configR);
+    var aG = anim(value.g, configG);
+    var aB = anim(value.b, configB);
+    var aA = anim(value.a, configA);
+    return parallel([aR, aG, aB, aA], {
+      stopTogether: false
+    });
+  }
+  return null;
+};
+var spring = function spring2(value, config2) {
+  var _start = function start(animatedValue, configuration, callback) {
+    callback = _combineCallbacks(callback, configuration);
+    var singleValue = animatedValue;
+    var singleConfig = configuration;
+    singleValue.stopTracking();
+    if (configuration.toValue instanceof AnimatedNode_default) {
+      singleValue.track(new AnimatedTracking_default(singleValue, configuration.toValue, SpringAnimation_default, singleConfig, callback));
+    } else {
+      singleValue.animate(new SpringAnimation_default(singleConfig), callback);
+    }
+  };
+  return maybeVectorAnim(value, config2, spring2) || {
+    start: function start(callback) {
+      _start(value, config2, callback);
+    },
+    stop: function stop() {
+      value.stopAnimation();
+    },
+    reset: function reset() {
+      value.resetAnimation();
+    },
+    _startNativeLoop: function _startNativeLoop(iterations) {
+      var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
+        iterations
+      });
+      _start(value, singleConfig);
+    },
+    _isUsingNativeDriver: function _isUsingNativeDriver() {
+      return config2.useNativeDriver || false;
+    }
+  };
+};
+var timing = function timing2(value, config2) {
+  var _start2 = function start(animatedValue, configuration, callback) {
+    callback = _combineCallbacks(callback, configuration);
+    var singleValue = animatedValue;
+    var singleConfig = configuration;
+    singleValue.stopTracking();
+    if (configuration.toValue instanceof AnimatedNode_default) {
+      singleValue.track(new AnimatedTracking_default(singleValue, configuration.toValue, TimingAnimation_default, singleConfig, callback));
+    } else {
+      singleValue.animate(new TimingAnimation_default(singleConfig), callback);
+    }
+  };
+  return maybeVectorAnim(value, config2, timing2) || {
+    start: function start(callback) {
+      _start2(value, config2, callback);
+    },
+    stop: function stop() {
+      value.stopAnimation();
+    },
+    reset: function reset() {
+      value.resetAnimation();
+    },
+    _startNativeLoop: function _startNativeLoop(iterations) {
+      var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
+        iterations
+      });
+      _start2(value, singleConfig);
+    },
+    _isUsingNativeDriver: function _isUsingNativeDriver() {
+      return config2.useNativeDriver || false;
+    }
+  };
+};
+var decay = function decay2(value, config2) {
+  var _start3 = function start(animatedValue, configuration, callback) {
+    callback = _combineCallbacks(callback, configuration);
+    var singleValue = animatedValue;
+    var singleConfig = configuration;
+    singleValue.stopTracking();
+    singleValue.animate(new DecayAnimation_default(singleConfig), callback);
+  };
+  return maybeVectorAnim(value, config2, decay2) || {
+    start: function start(callback) {
+      _start3(value, config2, callback);
+    },
+    stop: function stop() {
+      value.stopAnimation();
+    },
+    reset: function reset() {
+      value.resetAnimation();
+    },
+    _startNativeLoop: function _startNativeLoop(iterations) {
+      var singleConfig = (0, import_objectSpread221.default)((0, import_objectSpread221.default)({}, config2), {}, {
+        iterations
+      });
+      _start3(value, singleConfig);
+    },
+    _isUsingNativeDriver: function _isUsingNativeDriver() {
+      return config2.useNativeDriver || false;
+    }
+  };
+};
+var sequence = function sequence2(animations2) {
+  var current = 0;
+  return {
+    start: function start(callback) {
+      var onComplete = function onComplete2(result) {
+        if (!result.finished) {
+          callback && callback(result);
+          return;
+        }
+        current++;
+        if (current === animations2.length) {
+          current = 0;
+          callback && callback(result);
+          return;
+        }
+        animations2[current].start(onComplete2);
+      };
+      if (animations2.length === 0) {
+        callback && callback({
+          finished: true
+        });
+      } else {
+        animations2[current].start(onComplete);
+      }
+    },
+    stop: function stop() {
+      if (current < animations2.length) {
+        animations2[current].stop();
+      }
+    },
+    reset: function reset() {
+      animations2.forEach((animation, idx) => {
+        if (idx <= current) {
+          animation.reset();
+        }
+      });
+      current = 0;
+    },
+    _startNativeLoop: function _startNativeLoop() {
+      throw new Error("Loops run using the native driver cannot contain Animated.sequence animations");
+    },
+    _isUsingNativeDriver: function _isUsingNativeDriver() {
+      return false;
+    }
+  };
+};
+var parallel = function parallel2(animations2, config2) {
+  var doneCount = 0;
+  var hasEnded = {};
+  var stopTogether = !(config2 && config2.stopTogether === false);
+  var result = {
+    start: function start(callback) {
+      if (doneCount === animations2.length) {
+        callback && callback({
+          finished: true
+        });
+        return;
+      }
+      animations2.forEach((animation, idx) => {
+        var cb = function cb2(endResult) {
+          hasEnded[idx] = true;
+          doneCount++;
+          if (doneCount === animations2.length) {
+            doneCount = 0;
+            callback && callback(endResult);
+            return;
+          }
+          if (!endResult.finished && stopTogether) {
+            result.stop();
+          }
+        };
+        if (!animation) {
+          cb({
+            finished: true
+          });
+        } else {
+          animation.start(cb);
+        }
+      });
+    },
+    stop: function stop() {
+      animations2.forEach((animation, idx) => {
+        !hasEnded[idx] && animation.stop();
+        hasEnded[idx] = true;
+      });
+    },
+    reset: function reset() {
+      animations2.forEach((animation, idx) => {
+        animation.reset();
+        hasEnded[idx] = false;
+        doneCount = 0;
+      });
+    },
+    _startNativeLoop: function _startNativeLoop() {
+      throw new Error("Loops run using the native driver cannot contain Animated.parallel animations");
+    },
+    _isUsingNativeDriver: function _isUsingNativeDriver() {
+      return false;
+    }
+  };
+  return result;
+};
+var delay = function delay2(time) {
+  return timing(new AnimatedValue_default(0), {
+    toValue: 0,
+    delay: time,
+    duration: 0,
+    useNativeDriver: false
+  });
+};
+var stagger = function stagger2(time, animations2) {
+  return parallel(animations2.map((animation, i) => {
+    return sequence([delay(time * i), animation]);
+  }));
+};
+var loop = function loop2(animation, _temp) {
+  var _ref = _temp === void 0 ? {} : _temp, _ref$iterations = _ref.iterations, iterations = _ref$iterations === void 0 ? -1 : _ref$iterations, _ref$resetBeforeItera = _ref.resetBeforeIteration, resetBeforeIteration = _ref$resetBeforeItera === void 0 ? true : _ref$resetBeforeItera;
+  var isFinished = false;
+  var iterationsSoFar = 0;
+  return {
+    start: function start(callback) {
+      var restart = function restart2(result) {
+        if (result === void 0) {
+          result = {
+            finished: true
+          };
+        }
+        if (isFinished || iterationsSoFar === iterations || result.finished === false) {
+          callback && callback(result);
+        } else {
+          iterationsSoFar++;
+          resetBeforeIteration && animation.reset();
+          animation.start(restart2);
+        }
+      };
+      if (!animation || iterations === 0) {
+        callback && callback({
+          finished: true
+        });
+      } else {
+        if (animation._isUsingNativeDriver()) {
+          animation._startNativeLoop(iterations);
+        } else {
+          restart();
+        }
+      }
+    },
+    stop: function stop() {
+      isFinished = true;
+      animation.stop();
+    },
+    reset: function reset() {
+      iterationsSoFar = 0;
+      isFinished = false;
+      animation.reset();
+    },
+    _startNativeLoop: function _startNativeLoop() {
+      throw new Error("Loops run using the native driver cannot contain Animated.loop animations");
+    },
+    _isUsingNativeDriver: function _isUsingNativeDriver() {
+      return animation._isUsingNativeDriver();
+    }
+  };
+};
+function forkEvent(event3, listener) {
+  if (!event3) {
+    return listener;
+  } else if (event3 instanceof AnimatedEvent) {
+    event3.__addListener(listener);
+    return event3;
+  } else {
+    return function() {
+      typeof event3 === "function" && event3(...arguments);
+      listener(...arguments);
+    };
+  }
+}
+function unforkEvent(event3, listener) {
+  if (event3 && event3 instanceof AnimatedEvent) {
+    event3.__removeListener(listener);
+  }
+}
+var event = function event2(argMapping, config2) {
+  var animatedEvent = new AnimatedEvent(argMapping, config2);
+  if (animatedEvent.__isNative) {
+    return animatedEvent;
+  } else {
+    return animatedEvent.__getHandler();
+  }
+};
+var AnimatedImplementation_default = {
+  /**
+   * Standard value class for driving animations.  Typically initialized with
+   * `new Animated.Value(0);`
+   *
+   * See https://reactnative.dev/docs/animated#value
+   */
+  Value: AnimatedValue_default,
+  /**
+   * 2D value class for driving 2D animations, such as pan gestures.
+   *
+   * See https://reactnative.dev/docs/animatedvaluexy
+   */
+  ValueXY: AnimatedValueXY_default,
+  /**
+   * Value class for driving color animations.
+   */
+  Color: AnimatedColor,
+  /**
+   * Exported to use the Interpolation type in flow.
+   *
+   * See https://reactnative.dev/docs/animated#interpolation
+   */
+  Interpolation: AnimatedInterpolation_default,
+  /**
+   * Exported for ease of type checking. All animated values derive from this
+   * class.
+   *
+   * See https://reactnative.dev/docs/animated#node
+   */
+  Node: AnimatedNode_default,
+  /**
+   * Animates a value from an initial velocity to zero based on a decay
+   * coefficient.
+   *
+   * See https://reactnative.dev/docs/animated#decay
+   */
+  decay,
+  /**
+   * Animates a value along a timed easing curve. The Easing module has tons of
+   * predefined curves, or you can use your own function.
+   *
+   * See https://reactnative.dev/docs/animated#timing
+   */
+  timing,
+  /**
+   * Animates a value according to an analytical spring model based on
+   * damped harmonic oscillation.
+   *
+   * See https://reactnative.dev/docs/animated#spring
+   */
+  spring,
+  /**
+   * Creates a new Animated value composed from two Animated values added
+   * together.
+   *
+   * See https://reactnative.dev/docs/animated#add
+   */
+  add,
+  /**
+   * Creates a new Animated value composed by subtracting the second Animated
+   * value from the first Animated value.
+   *
+   * See https://reactnative.dev/docs/animated#subtract
+   */
+  subtract,
+  /**
+   * Creates a new Animated value composed by dividing the first Animated value
+   * by the second Animated value.
+   *
+   * See https://reactnative.dev/docs/animated#divide
+   */
+  divide,
+  /**
+   * Creates a new Animated value composed from two Animated values multiplied
+   * together.
+   *
+   * See https://reactnative.dev/docs/animated#multiply
+   */
+  multiply,
+  /**
+   * Creates a new Animated value that is the (non-negative) modulo of the
+   * provided Animated value.
+   *
+   * See https://reactnative.dev/docs/animated#modulo
+   */
+  modulo,
+  /**
+   * Create a new Animated value that is limited between 2 values. It uses the
+   * difference between the last value so even if the value is far from the
+   * bounds it will start changing when the value starts getting closer again.
+   *
+   * See https://reactnative.dev/docs/animated#diffclamp
+   */
+  diffClamp,
+  /**
+   * Starts an animation after the given delay.
+   *
+   * See https://reactnative.dev/docs/animated#delay
+   */
+  delay,
+  /**
+   * Starts an array of animations in order, waiting for each to complete
+   * before starting the next. If the current running animation is stopped, no
+   * following animations will be started.
+   *
+   * See https://reactnative.dev/docs/animated#sequence
+   */
+  sequence,
+  /**
+   * Starts an array of animations all at the same time. By default, if one
+   * of the animations is stopped, they will all be stopped. You can override
+   * this with the `stopTogether` flag.
+   *
+   * See https://reactnative.dev/docs/animated#parallel
+   */
+  parallel,
+  /**
+   * Array of animations may run in parallel (overlap), but are started in
+   * sequence with successive delays.  Nice for doing trailing effects.
+   *
+   * See https://reactnative.dev/docs/animated#stagger
+   */
+  stagger,
+  /**
+   * Loops a given animation continuously, so that each time it reaches the
+   * end, it resets and begins again from the start.
+   *
+   * See https://reactnative.dev/docs/animated#loop
+   */
+  loop,
+  /**
+   * Takes an array of mappings and extracts values from each arg accordingly,
+   * then calls `setValue` on the mapped outputs.
+   *
+   * See https://reactnative.dev/docs/animated#event
+   */
+  event,
+  /**
+   * Make any React component Animatable.  Used to create `Animated.View`, etc.
+   *
+   * See https://reactnative.dev/docs/animated#createanimatedcomponent
+   */
+  createAnimatedComponent,
+  /**
+   * Imperative API to attach an animated value to an event on a view. Prefer
+   * using `Animated.event` with `useNativeDrive: true` if possible.
+   *
+   * See https://reactnative.dev/docs/animated#attachnativeevent
+   */
+  attachNativeEvent,
+  /**
+   * Advanced imperative API for snooping on animated events that are passed in
+   * through props. Use values directly where possible.
+   *
+   * See https://reactnative.dev/docs/animated#forkevent
+   */
+  forkEvent,
+  unforkEvent,
+  /**
+   * Expose Event class, so it can be used as a type for type checkers.
+   */
+  Event: AnimatedEvent
+};
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
+var inAnimationCallback = false;
+function mockAnimationStart(start) {
+  return (callback) => {
+    var guardedCallback = callback == null ? callback : function() {
+      if (inAnimationCallback) {
+        console.warn("Ignoring recursive animation callback when running mock animations");
+        return;
+      }
+      inAnimationCallback = true;
+      try {
+        callback(...arguments);
+      } finally {
+        inAnimationCallback = false;
+      }
+    };
+    start(guardedCallback);
+  };
+}
+var emptyAnimation = {
+  start: () => {
+  },
+  stop: () => {
+  },
+  reset: () => {
+  },
+  _startNativeLoop: () => {
+  },
+  _isUsingNativeDriver: () => {
+    return false;
+  }
+};
+var mockCompositeAnimation = (animations2) => (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
+  start: mockAnimationStart((callback) => {
+    animations2.forEach((animation) => animation.start());
+    callback == null ? void 0 : callback({
+      finished: true
+    });
+  })
+});
+var spring3 = function spring4(value, config2) {
+  var anyValue = value;
+  return (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
+    start: mockAnimationStart((callback) => {
+      anyValue.setValue(config2.toValue);
+      callback == null ? void 0 : callback({
+        finished: true
+      });
+    })
+  });
+};
+var timing3 = function timing4(value, config2) {
+  var anyValue = value;
+  return (0, import_objectSpread222.default)((0, import_objectSpread222.default)({}, emptyAnimation), {}, {
+    start: mockAnimationStart((callback) => {
+      anyValue.setValue(config2.toValue);
+      callback == null ? void 0 : callback({
+        finished: true
+      });
+    })
+  });
+};
+var decay3 = function decay4(value, config2) {
+  return emptyAnimation;
+};
+var sequence3 = function sequence4(animations2) {
+  return mockCompositeAnimation(animations2);
+};
+var parallel3 = function parallel4(animations2, config2) {
+  return mockCompositeAnimation(animations2);
+};
+var delay3 = function delay4(time) {
+  return emptyAnimation;
+};
+var stagger3 = function stagger4(time, animations2) {
+  return mockCompositeAnimation(animations2);
+};
+var loop3 = function loop4(animation, _temp) {
+  var _ref = _temp === void 0 ? {} : _temp, _ref$iterations = _ref.iterations, iterations = _ref$iterations === void 0 ? -1 : _ref$iterations;
+  return emptyAnimation;
+};
+var AnimatedMock_default = {
+  Value: AnimatedValue_default,
+  ValueXY: AnimatedValueXY_default,
+  Color: AnimatedColor,
+  Interpolation: AnimatedInterpolation_default,
+  Node: AnimatedNode_default,
+  decay: decay3,
+  timing: timing3,
+  spring: spring3,
+  add: AnimatedImplementation_default.add,
+  subtract: AnimatedImplementation_default.subtract,
+  divide: AnimatedImplementation_default.divide,
+  multiply: AnimatedImplementation_default.multiply,
+  modulo: AnimatedImplementation_default.modulo,
+  diffClamp: AnimatedImplementation_default.diffClamp,
+  delay: delay3,
+  sequence: sequence3,
+  parallel: parallel3,
+  stagger: stagger3,
+  loop: loop3,
+  event: AnimatedImplementation_default.event,
+  createAnimatedComponent,
+  attachNativeEvent,
+  forkEvent: AnimatedImplementation_default.forkEvent,
+  unforkEvent: AnimatedImplementation_default.unforkEvent,
+  Event: AnimatedEvent
+};
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/Animated.js
+var Animated = Platform_default.isTesting ? AnimatedMock_default : AnimatedImplementation_default;
+var Animated_default = (0, import_objectSpread223.default)({
+  FlatList: AnimatedFlatList_default,
+  Image: AnimatedImage_default,
+  ScrollView: AnimatedScrollView_default,
+  SectionList: AnimatedSectionList_default,
+  Text: AnimatedText_default,
+  View: AnimatedView_default
+}, Animated);
+
+// ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/exports/Animated/index.js
+var Animated_default2 = Animated_default;
+
+// ../../node_modules/.pnpm/@tamagui+animations-react-native@1.138.6_react-dom@18.3.1_react@18.3.1__react-native@0.73.6_@_bbut7qs6n252b5szpatxlpsmqe/node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
+var animatedStyleKey = {
+  transform: true,
+  opacity: true
+};
+var colorStyleKey = {
+  backgroundColor: true,
+  color: true,
+  borderColor: true,
+  borderLeftColor: true,
+  borderRightColor: true,
+  borderTopColor: true,
+  borderBottomColor: true
+};
+var costlyToAnimateStyleKey = {
+  borderRadius: true,
+  borderTopLeftRadius: true,
+  borderTopRightRadius: true,
+  borderBottomLeftRadius: true,
+  borderBottomRightRadius: true,
+  borderWidth: true,
+  borderLeftWidth: true,
+  borderRightWidth: true,
+  borderTopWidth: true,
+  borderBottomWidth: true,
+  ...colorStyleKey
+  // TODO for other keys like height or width, it's better to not add them here till layout animations are ready
+};
+var AnimatedView = Animated_default2.View;
+var AnimatedText = Animated_default2.Text;
+function useAnimatedNumber(initial) {
+  const state = import_react51.default.useRef(null);
+  return state.current || (state.current = {
+    composite: null,
+    val: new Animated_default2.Value(initial),
+    strategy: {
+      type: "spring"
+    }
+  }), {
+    getInstance() {
+      return state.current.val;
+    },
+    getValue() {
+      return state.current.val._value;
+    },
+    stop() {
+      state.current.composite?.stop(), state.current.composite = null;
+    },
+    setValue(next, {
+      type,
+      ...config2
+    } = {
+      type: "spring"
+    }, onFinish) {
+      const val = state.current.val, handleFinish = onFinish ? ({
+        finished
+      }) => finished ? onFinish() : null : void 0;
+      if (type === "direct") val.setValue(next);
+      else if (type === "spring") {
+        state.current.composite?.stop();
+        const composite = Animated_default2.spring(val, {
+          ...config2,
+          toValue: next,
+          useNativeDriver: !isWeb3
+        });
+        composite.start(handleFinish), state.current.composite = composite;
+      } else {
+        state.current.composite?.stop();
+        const composite = Animated_default2.timing(val, {
+          ...config2,
+          toValue: next,
+          useNativeDriver: !isWeb3
+        });
+        composite.start(handleFinish), state.current.composite = composite;
+      }
+    }
+  };
+}
+var useAnimatedNumberReaction = ({
+  value
+}, onValue) => {
+  const onChange = useEvent((current) => {
+    onValue(current.value);
+  });
+  import_react51.default.useEffect(() => {
+    const id2 = value.getInstance().addListener(onChange);
+    return () => {
+      value.getInstance().removeListener(id2);
+    };
+  }, [value, onChange]);
+};
+var useAnimatedNumberStyle = (value, getStyle) => getStyle(value.getInstance());
+function createAnimations(animations2) {
+  return {
+    isReactNative: true,
+    animations: animations2,
+    View: AnimatedView,
+    Text: AnimatedText,
+    useAnimatedNumber,
+    useAnimatedNumberReaction,
+    useAnimatedNumberStyle,
+    usePresence,
+    ResetPresence,
+    useAnimations: ({
+      props,
+      onDidAnimate,
+      style,
+      componentState,
+      presence
+    }) => {
+      const isDisabled2 = isWeb3 && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react51.default.useRef({}), animatedTranforms = import_react51.default.useRef([]), animationsState = import_react51.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react51.default.useMemo(() => isWeb3 ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react51.default.useMemo(() => {
+        const runners = [], completions = [], nonAnimatedStyle = {};
+        for (const key in style) {
+          const val = style[key];
+          if (!isDisabled2) {
+            if (animatedStyleKey[key] == null && !costlyToAnimateStyleKey[key]) {
+              nonAnimatedStyle[key] = val;
+              continue;
             }
-            function getColorInterpolated(currentColor, nextColor, animateToValue) {
-              const inputRange = [0, 1], outputRange = [currentColor || nextColor, nextColor];
-              return animateToValue === 0 && outputRange.reverse(), {
-                inputRange,
-                outputRange
-              };
+            if (hasAnimateOnly && !animateOnly.includes(key)) {
+              nonAnimatedStyle[key] = val;
+              continue;
             }
-            function getInterpolated(current, next, postfix = "deg") {
-              next === current && (current = next - 1e-9);
-              const inputRange = [current, next], outputRange = [`${current}${postfix}`, `${next}${postfix}`];
-              return next < current && (inputRange.reverse(), outputRange.reverse()), {
-                inputRange,
-                outputRange
-              };
+            if (key !== "transform") {
+              animateStyles.current[key] = update2(key, animateStyles.current[key], val);
+              continue;
             }
-            function getAnimationConfig(key, animations2, animation) {
-              if (typeof animation == "string") return animations2[animation];
-              let type = "", extraConf;
-              const shortKey = transformShorthands[key];
-              if (Array.isArray(animation)) {
-                type = animation[0];
-                const conf = animation[1]?.[key] ?? animation[1]?.[shortKey];
-                conf && (typeof conf == "string" ? type = conf : (type = conf.type || type, extraConf = conf));
-              } else {
-                const val = animation?.[key] ?? animation?.[shortKey];
-                type = val?.type, extraConf = val;
+            if (val) {
+              if (typeof val == "string") {
+                console.warn("Warning: Tamagui can't animate string transforms yet!");
+                continue;
               }
-              return {
-                ...animations2[type],
-                ...extraConf
-              };
+              for (const [index, transform] of val.entries()) {
+                if (!transform) continue;
+                const tkey = Object.keys(transform)[0], currentTransform = animatedTranforms.current[index]?.[tkey];
+                animatedTranforms.current[index] = {
+                  [tkey]: update2(tkey, currentTransform, transform[tkey])
+                }, animatedTranforms.current = [...animatedTranforms.current];
+              }
             }
-            var transformShorthands = {
-              x: "translateX",
-              y: "translateY",
-              translateX: "x",
-              translateY: "y"
+          }
+        }
+        const animatedStyle = {
+          ...Object.fromEntries(Object.entries(animateStyles.current).map(([k, v]) => [k, animationsState.current.get(v)?.interpolation || v])),
+          transform: animatedTranforms.current.map((r) => {
+            const key = Object.keys(r)[0], val = animationsState.current.get(r[key])?.interpolation || r[key];
+            return {
+              [key]: val
             };
-            function getValue2(input, isColor = false) {
-              if (typeof input != "string") return [input];
-              const [_, number, after] = input.match(/([-0-9]+)(deg|%|px)/) ?? [];
-              return [+number, after];
-            }
-
-            // src/theme/tokens.ts
-            var import_tamagui44 = require("tamagui");
-            var import_tamagui45 = require("tamagui");
-            var palette = {
-              transparent: "transparent",
-              white: "#FFFFFF",
-              black: "#000000",
-              slate50: "#F8FAFC",
-              slate100: "#F1F5F9",
-              slate200: "#E2E8F0",
-              slate300: "#CBD5F5",
-              slate400: "#94A3B8",
-              slate500: "#64748B",
-              slate600: "#475569",
-              slate700: "#334155",
-              slate800: "#1E293B",
-              slate900: "#0F172A",
-              violet400: "#A78BFA",
-              violet500: "#8B5CF6",
-              violet600: "#7C3AED",
-              violet700: "#6D28D9",
-              green500: "#22C55E",
-              green600: "#16A34A",
-              green700: "#15803D",
-              amber500: "#F59E0B",
-              amber600: "#D97706",
-              amber700: "#B45309",
-              red500: "#EF4444",
-              red600: "#DC2626",
-              red700: "#B91C1C",
-              sky500: "#0EA5E9",
-              sky600: "#0284C7",
-              sky700: "#0369A1",
-              // IVISA Brand Palette
-              // Primary (Azul Prefeitura)
-              ivisaPrimary50: "#EEF8FF",
-              ivisaPrimary100: "#DCF1FF",
-              ivisaPrimary200: "#B2E5FF",
-              ivisaPrimary300: "#6DD1FF",
-              ivisaPrimary400: "#20BAFF",
-              ivisaPrimary500: "#00A1FF",
-              ivisaPrimary600: "#0080DF",
-              // Main Logo Color
-              ivisaPrimary700: "#0065B4",
-              ivisaPrimary800: "#005694",
-              ivisaPrimary900: "#004A80",
-              // Dark Logo Color
-              ivisaPrimary950: "#002D51",
-              // Secondary (Ciano/Teal - Apoio IVISA)
-              ivisaSecondary50: "#F1F8FA",
-              ivisaSecondary100: "#C5FFF9",
-              ivisaSecondary200: "#8BFFF5",
-              ivisaSecondary300: "#49FFEF",
-              ivisaSecondary400: "#14EDE1",
-              ivisaSecondary500: "#00D1C8",
-              ivisaSecondary600: "#00A9A4",
-              ivisaSecondary700: "#056A6A",
-              ivisaSecondary800: "#0A5757",
-              ivisaSecondary900: "#003436",
-              // Semantic: Success (Green)
-              ivisaSuccess50: "#E9FFE6",
-              ivisaSuccess100: "#CCFFC8",
-              ivisaSuccess200: "#9DFF97",
-              ivisaSuccess300: "#60FB5B",
-              ivisaSuccess400: "#2FF12A",
-              ivisaSuccess500: "#0CDC0B",
-              ivisaSuccess600: "#04AC06",
-              ivisaSuccess700: "#08830C",
-              ivisaSuccess800: "#105715",
-              ivisaSuccess900: "#023106",
-              // Semantic: Error (Red)
-              ivisaError50: "#FFF0F0",
-              ivisaError100: "#FFDDDD",
-              ivisaError200: "#FFC0C0",
-              ivisaError300: "#FF9494",
-              ivisaError400: "#FF5757",
-              ivisaError500: "#FF2323",
-              ivisaError600: "#FF0000",
-              ivisaError700: "#D70000",
-              ivisaError800: "#B10303",
-              ivisaError900: "#920A0A",
-              ivisaError950: "#500000",
-              // Semantic: Warning (Yellow/Gold)
-              ivisaWarning50: "#FAFEE8",
-              ivisaWarning100: "#F4FFC2",
-              ivisaWarning200: "#EDFF87",
-              ivisaWarning300: "#EBFF43",
-              ivisaWarning400: "#F2FF0E",
-              ivisaWarning500: "#ECEF03",
-              ivisaWarning600: "#CEC000",
-              ivisaWarning700: "#A48C04",
-              ivisaWarning800: "#886D0B",
-              ivisaWarning900: "#735810",
-              ivisaWarning950: "#433005",
-              // Gray (Alternative)
-              ivisaGray50: "#F6F6F6",
-              ivisaGray100: "#E7E7E7",
-              ivisaGray200: "#D1D1D1",
-              ivisaGray300: "#B0B0B0",
-              ivisaGray400: "#888888",
-              ivisaGray500: "#6D6D6D",
-              ivisaGray600: "#5D5D5D",
-              ivisaGray700: "#4F4F4F",
-              ivisaGray800: "#454545",
-              ivisaGray900: "#3D3D3D",
-              ivisaGray950: "#262626",
-              // Dark Blue Gray (Dark)
-              ivisaDarkBlueGray100: "#DDEDF0",
-              ivisaDarkBlueGray300: "#91C1CF",
-              ivisaDarkBlueGray500: "#418199",
-              ivisaDarkBlueGray700: "#314B59",
-              ivisaDarkBlueGray900: "#263742",
-              ivisaDarkBlueGray950: "#192833"
-            };
-            var spaceScale = {
-              0: 0,
-              xs: 4,
-              sm: 8,
-              md: 12,
-              lg: 16,
-              xl: 24,
-              "2xl": 32,
-              "3xl": 40,
-              "4xl": 48,
-              true: 12
-              // default (md)
-            };
-            var sizeScale = {
-              0: 0,
-              xs: 24,
-              sm: 32,
-              md: 40,
-              lg: 48,
-              xl: 56,
-              "2xl": 64,
-              "3xl": 80,
-              true: 40
-              // default (md)
-            };
-            var radiusScale = {
-              none: 0,
-              xs: 4,
-              sm: 6,
-              md: 10,
-              lg: 14,
-              xl: 20,
-              full: 999
-            };
-            var zIndexScale = {
-              base: 0,
-              dropdown: 1e3,
-              sticky: 1020,
-              modal: 1100,
-              popover: 1200,
-              toast: 1300,
-              true: 0
-              // default (base)
-            };
-            var tokens = (0, import_tamagui44.createTokens)({
-              var tokens = (0, import_tamagui45.createTokens)({
-                color: {
-                  ...palette
-                },
-                space: spaceScale,
-                size: sizeScale,
-                radius: radiusScale,
-                zIndex: zIndexScale
+          })
+        };
+        return {
+          runners,
+          completions,
+          style: [nonAnimatedStyle, animatedStyle]
+        };
+        function update2(key, animated, valIn) {
+          const isColorStyleKey = colorStyleKey[key], [val, type] = isColorStyleKey ? [0, void 0] : getValue2(valIn);
+          let animateToValue = val;
+          const value = animated || new Animated_default2.Value(val), curInterpolation = animationsState.current.get(value);
+          let interpolateArgs;
+          if (type && (interpolateArgs = getInterpolated(curInterpolation?.current ?? value._value, val, type), animationsState.current.set(value, {
+            interpolation: value.interpolate(interpolateArgs),
+            current: val
+          })), isColorStyleKey && (animateToValue = curInterpolation?.animateToValue ? 0 : 1, interpolateArgs = getColorInterpolated(
+            curInterpolation?.current,
+            // valIn is the next color
+            valIn,
+            animateToValue
+          ), animationsState.current.set(value, {
+            current: valIn,
+            interpolation: value.interpolate(interpolateArgs),
+            animateToValue: curInterpolation?.animateToValue ? 0 : 1
+          })), value) {
+            const animationConfig = getAnimationConfig(key, animations2, props.animation);
+            let resolve;
+            const promise = new Promise((res2) => {
+              resolve = res2;
+            });
+            completions.push(promise), runners.push(() => {
+              value.stopAnimation();
+              function getAnimation() {
+                return Animated_default2[animationConfig.type || "spring"](value, {
+                  toValue: animateToValue,
+                  useNativeDriver: !isWeb3 && !isThereNoNativeStyleKeys,
+                  ...animationConfig
+                });
+              }
+              (animationConfig.delay ? Animated_default2.sequence([Animated_default2.delay(animationConfig.delay), getAnimation()]) : getAnimation()).start(({
+                finished
+              }) => {
+                finished && resolve();
               });
-              var lightColors = {
-                background: palette.white,
-                backgroundHover: palette.slate50,
-                backgroundPress: palette.slate100,
-                backgroundFocus: palette.slate100,
-                backgroundStrong: palette.slate200,
-                backgroundTransparent: palette.transparent,
-                borderColor: palette.slate200,
-                borderColorHover: palette.slate300,
-                borderColorPress: palette.slate300,
-                borderColorFocus: palette.violet500,
-                color: palette.slate900,
-                colorHover: palette.slate900,
-                colorPress: palette.slate900,
-                colorFocus: palette.slate900,
-                colorTransparent: palette.transparent,
-                placeholderColor: palette.slate500,
-                shadowColor: "rgba(15,23,42,0.08)",
-                shadowColorHover: "rgba(15,23,42,0.12)",
-                primary: palette.violet500,
-                primaryHover: palette.violet600,
-                primaryPress: palette.violet700,
-                primaryFocus: palette.violet700,
-                primaryForeground: palette.white,
-                secondary: palette.slate100,
-                secondaryHover: palette.slate200,
-                secondaryPress: palette.slate200,
-                secondaryFocus: palette.slate300,
-                secondaryForeground: palette.slate900,
-                accent: "#EEF2FF",
-                accentHover: "#E0E7FF",
-                accentPress: "#C7D2FE",
-                accentFocus: "#C7D2FE",
-                accentForeground: "#312E81",
-                destructive: palette.red500,
-                destructiveHover: palette.red600,
-                destructivePress: palette.red600,
-                destructiveFocus: palette.red700,
-                destructiveForeground: palette.white,
-                success: palette.green500,
-                successHover: palette.green600,
-                successPress: palette.green600,
-                successFocus: palette.green700,
-                successForeground: palette.white,
-                warning: palette.amber500,
-                warningHover: palette.amber600,
-                warningPress: palette.amber600,
-                warningFocus: palette.amber700,
-                warningForeground: palette.slate900,
-                info: palette.sky500,
-                infoHover: palette.sky600,
-                infoPress: palette.sky600,
-                infoFocus: palette.sky700,
-                infoForeground: palette.white,
-                muted: palette.slate100,
-                mutedForeground: palette.slate500,
-                ring: palette.violet500
-              };
-              var darkColors = {
-                background: palette.slate900,
-                backgroundHover: palette.slate800,
-                backgroundPress: palette.slate800,
-                backgroundFocus: palette.slate700,
-                backgroundStrong: palette.slate800,
-                backgroundTransparent: palette.transparent,
-                borderColor: palette.slate700,
-                borderColorHover: palette.slate600,
-                borderColorPress: palette.slate600,
-                borderColorFocus: palette.violet500,
-                color: palette.slate100,
-                colorHover: palette.white,
-                colorPress: palette.white,
-                colorFocus: palette.white,
-                colorTransparent: palette.transparent,
-                placeholderColor: palette.slate400,
-                shadowColor: "rgba(15,23,42,0.45)",
-                shadowColorHover: "rgba(15,23,42,0.55)",
-                primary: palette.violet500,
-                primaryHover: palette.violet600,
-                primaryPress: palette.violet700,
-                primaryFocus: palette.violet600,
-                primaryForeground: palette.white,
-                secondary: palette.slate800,
-                secondaryHover: palette.slate700,
-                secondaryPress: palette.slate700,
-                secondaryFocus: palette.slate600,
-                secondaryForeground: palette.slate100,
-                accent: "#1E1B4B",
-                accentHover: "#312E81",
-                accentPress: "#3730A3",
-                accentFocus: "#4338CA",
-                accentForeground: palette.white,
-                destructive: palette.red600,
-                destructiveHover: palette.red500,
-                destructivePress: palette.red500,
-                destructiveFocus: palette.red700,
-                destructiveForeground: palette.white,
-                success: palette.green500,
-                successHover: palette.green600,
-                successPress: palette.green600,
-                successFocus: palette.green700,
-                successForeground: palette.white,
-                warning: palette.amber500,
-                warningHover: palette.amber600,
-                warningPress: palette.amber600,
-                warningFocus: palette.amber700,
-                warningForeground: palette.slate900,
-                info: palette.sky500,
-                infoHover: palette.sky600,
-                infoPress: palette.sky600,
-                infoFocus: palette.sky700,
-                infoForeground: palette.white,
-                muted: palette.slate800,
-                mutedForeground: palette.slate400,
-                ring: palette.violet500
-              };
+            });
+          }
+          return process.env.NODE_ENV === "development" && props.debug === "verbose" && console.info(" \u{1F4A0} animate", key, `from (${value._value}) to`, valIn, `(${val})`, "type", type, "interpolate", interpolateArgs), value;
+        }
+      }, args);
+      return useIsomorphicLayoutEffect(() => {
+        res.runners.forEach((r) => r());
+        let cancel = false;
+        return Promise.all(res.completions).then(() => {
+          cancel || (onDidAnimate?.(), isExiting && sendExitComplete?.());
+        }), () => {
+          cancel = true;
+        };
+      }, args), process.env.NODE_ENV === "development" && props.debug === "verbose" && console.info("Animated", {
+        response: res,
+        inputStyle: style,
+        isExiting
+      }), res;
+    }
+  };
+}
+function getColorInterpolated(currentColor, nextColor, animateToValue) {
+  const inputRange = [0, 1], outputRange = [currentColor || nextColor, nextColor];
+  return animateToValue === 0 && outputRange.reverse(), {
+    inputRange,
+    outputRange
+  };
+}
+function getInterpolated(current, next, postfix = "deg") {
+  next === current && (current = next - 1e-9);
+  const inputRange = [current, next], outputRange = [`${current}${postfix}`, `${next}${postfix}`];
+  return next < current && (inputRange.reverse(), outputRange.reverse()), {
+    inputRange,
+    outputRange
+  };
+}
+function getAnimationConfig(key, animations2, animation) {
+  if (typeof animation == "string") return animations2[animation];
+  let type = "", extraConf;
+  const shortKey = transformShorthands[key];
+  if (Array.isArray(animation)) {
+    type = animation[0];
+    const conf = animation[1]?.[key] ?? animation[1]?.[shortKey];
+    conf && (typeof conf == "string" ? type = conf : (type = conf.type || type, extraConf = conf));
+  } else {
+    const val = animation?.[key] ?? animation?.[shortKey];
+    type = val?.type, extraConf = val;
+  }
+  return {
+    ...animations2[type],
+    ...extraConf
+  };
+}
+var transformShorthands = {
+  x: "translateX",
+  y: "translateY",
+  translateX: "x",
+  translateY: "y"
+};
+function getValue2(input, isColor = false) {
+  if (typeof input != "string") return [input];
+  const [_, number, after] = input.match(/([-0-9]+)(deg|%|px)/) ?? [];
+  return [+number, after];
+}
 
-              // src/theme/index.ts
-var import_tamagui46 = require("tamagui");
-var lightTheme = (0, import_tamagui46.createTheme)({
+// src/theme/tokens.ts
+var import_tamagui57 = require("tamagui");
+var palette = {
+  transparent: "transparent",
+  white: "#FFFFFF",
+  black: "#000000",
+  slate50: "#F8FAFC",
+  slate100: "#F1F5F9",
+  slate200: "#E2E8F0",
+  slate300: "#CBD5F5",
+  slate400: "#94A3B8",
+  slate500: "#64748B",
+  slate600: "#475569",
+  slate700: "#334155",
+  slate800: "#1E293B",
+  slate900: "#0F172A",
+  violet400: "#A78BFA",
+  violet500: "#8B5CF6",
+  violet600: "#7C3AED",
+  violet700: "#6D28D9",
+  green500: "#22C55E",
+  green600: "#16A34A",
+  green700: "#15803D",
+  amber500: "#F59E0B",
+  amber600: "#D97706",
+  amber700: "#B45309",
+  red500: "#EF4444",
+  red600: "#DC2626",
+  red700: "#B91C1C",
+  sky500: "#0EA5E9",
+  sky600: "#0284C7",
+  sky700: "#0369A1",
+  // Rio Brand Palette
+  rioDeepBlue: "#13335A",
+  rioLightGray: "#ECEDED",
+  rioGradientStart: "#2A688F",
+  rioGradientEnd: "#42B9EB",
+  // IVISA Brand Palette (Legacy/Mapped)
+  // Primary (Rio Deep Blue based)
+  ivisaPrimary50: "#E0E5EB",
+  // Lighter version
+  ivisaPrimary100: "#B3C0CF",
+  ivisaPrimary200: "#809AB3",
+  ivisaPrimary300: "#4D7596",
+  ivisaPrimary400: "#265980",
+  ivisaPrimary500: "#13335A",
+  // Base Color
+  ivisaPrimary600: "#112E51",
+  ivisaPrimary700: "#0E2643",
+  ivisaPrimary800: "#0B1F36",
+  ivisaPrimary900: "#081728",
+  ivisaPrimary950: "#050E19",
+  // Secondary (Rio Light Gray / Gradient Blue)
+  ivisaSecondary50: "#F9F9F9",
+  ivisaSecondary100: "#ECEDED",
+  // Base Light Gray
+  ivisaSecondary200: "#D1D3D3",
+  ivisaSecondary300: "#B6BABA",
+  ivisaSecondary400: "#9CA0A0",
+  ivisaSecondary500: "#2A688F",
+  // Gradient Start
+  ivisaSecondary600: "#255D80",
+  ivisaSecondary700: "#205170",
+  ivisaSecondary800: "#1A4560",
+  ivisaSecondary900: "#153A50",
+  // Semantic: Success (Green)
+  ivisaSuccess50: "#E9FFE6",
+  ivisaSuccess100: "#CCFFC8",
+  ivisaSuccess200: "#9DFF97",
+  ivisaSuccess300: "#60FB5B",
+  ivisaSuccess400: "#2FF12A",
+  ivisaSuccess500: "#0CDC0B",
+  ivisaSuccess600: "#04AC06",
+  ivisaSuccess700: "#08830C",
+  ivisaSuccess800: "#105715",
+  ivisaSuccess900: "#023106",
+  // Semantic: Error (Red)
+  ivisaError50: "#FFF0F0",
+  ivisaError100: "#FFDDDD",
+  ivisaError200: "#FFC0C0",
+  ivisaError300: "#FF9494",
+  ivisaError400: "#FF5757",
+  ivisaError500: "#FF2323",
+  ivisaError600: "#FF0000",
+  ivisaError700: "#D70000",
+  ivisaError800: "#B10303",
+  ivisaError900: "#920A0A",
+  ivisaError950: "#500000",
+  // Semantic: Warning (Yellow/Gold)
+  ivisaWarning50: "#FAFEE8",
+  ivisaWarning100: "#F4FFC2",
+  ivisaWarning200: "#EDFF87",
+  ivisaWarning300: "#EBFF43",
+  ivisaWarning400: "#F2FF0E",
+  ivisaWarning500: "#ECEF03",
+  ivisaWarning600: "#CEC000",
+  ivisaWarning700: "#A48C04",
+  ivisaWarning800: "#886D0B",
+  ivisaWarning900: "#735810",
+  ivisaWarning950: "#433005",
+  // Gray (Alternative)
+  ivisaGray50: "#F6F6F6",
+  ivisaGray100: "#E7E7E7",
+  ivisaGray200: "#D1D1D1",
+  ivisaGray300: "#B0B0B0",
+  ivisaGray400: "#888888",
+  ivisaGray500: "#6D6D6D",
+  ivisaGray600: "#5D5D5D",
+  ivisaGray700: "#4F4F4F",
+  ivisaGray800: "#454545",
+  ivisaGray900: "#3D3D3D",
+  ivisaGray950: "#262626",
+  // Dark Blue Gray (Dark)
+  ivisaDarkBlueGray100: "#DDEDF0",
+  ivisaDarkBlueGray300: "#91C1CF",
+  ivisaDarkBlueGray500: "#418199",
+  ivisaDarkBlueGray700: "#314B59",
+  ivisaDarkBlueGray900: "#263742",
+  ivisaDarkBlueGray950: "#192833"
+};
+var spaceScale = {
+  0: 0,
+  xs: 4,
+  sm: 8,
+  md: 12,
+  lg: 16,
+  xl: 24,
+  "2xl": 32,
+  "3xl": 40,
+  "4xl": 48,
+  true: 12
+  // default (md)
+};
+var sizeScale = {
+  0: 0,
+  xs: 24,
+  sm: 32,
+  md: 40,
+  lg: 48,
+  xl: 56,
+  "2xl": 64,
+  "3xl": 80,
+  true: 40
+  // default (md)
+};
+var radiusScale = {
+  none: 0,
+  xs: 4,
+  sm: 6,
+  md: 10,
+  lg: 14,
+  xl: 20,
+  full: 999
+};
+var zIndexScale = {
+  base: 0,
+  dropdown: 1e3,
+  sticky: 1020,
+  modal: 1100,
+  popover: 1200,
+  toast: 1300,
+  true: 0
+  // default (base)
+};
+var tokens = (0, import_tamagui57.createTokens)({
+  color: {
+    ...palette
+  },
+  space: spaceScale,
+  size: sizeScale,
+  radius: radiusScale,
+  zIndex: zIndexScale
+});
+var lightColors = {
+  background: palette.white,
+  backgroundHover: palette.slate50,
+  backgroundPress: palette.slate100,
+  backgroundFocus: palette.slate100,
+  backgroundStrong: palette.slate200,
+  backgroundTransparent: palette.transparent,
+  borderColor: palette.slate200,
+  borderColorHover: palette.slate300,
+  borderColorPress: palette.slate300,
+  borderColorFocus: palette.violet500,
+  color: palette.slate900,
+  colorHover: palette.slate900,
+  colorPress: palette.slate900,
+  colorFocus: palette.slate900,
+  colorTransparent: palette.transparent,
+  placeholderColor: palette.slate500,
+  shadowColor: "rgba(15,23,42,0.08)",
+  shadowColorHover: "rgba(15,23,42,0.12)",
+  primary: palette.rioDeepBlue,
+  primaryHover: palette.rioGradientStart,
+  primaryPress: palette.rioGradientEnd,
+  primaryFocus: palette.rioGradientStart,
+  primaryForeground: palette.white,
+  secondary: palette.rioLightGray,
+  secondaryHover: palette.slate200,
+  secondaryPress: palette.slate200,
+  secondaryFocus: palette.slate300,
+  secondaryForeground: palette.rioDeepBlue,
+  accent: "#EEF2FF",
+  accentHover: "#E0E7FF",
+  accentPress: "#C7D2FE",
+  accentFocus: "#C7D2FE",
+  accentForeground: "#312E81",
+  destructive: palette.red500,
+  destructiveHover: palette.red600,
+  destructivePress: palette.red600,
+  destructiveFocus: palette.red700,
+  destructiveForeground: palette.white,
+  success: palette.green500,
+  successHover: palette.green600,
+  successPress: palette.green600,
+  successFocus: palette.green700,
+  successForeground: palette.white,
+  warning: palette.amber500,
+  warningHover: palette.amber600,
+  warningPress: palette.amber600,
+  warningFocus: palette.amber700,
+  warningForeground: palette.slate900,
+  info: palette.sky500,
+  infoHover: palette.sky600,
+  infoPress: palette.sky600,
+  infoFocus: palette.sky700,
+  infoForeground: palette.white,
+  muted: palette.slate100,
+  mutedForeground: palette.slate500,
+  ring: palette.rioDeepBlue
+};
+var darkColors = {
+  background: palette.slate900,
+  backgroundHover: palette.slate800,
+  backgroundPress: palette.slate800,
+  backgroundFocus: palette.slate700,
+  backgroundStrong: palette.slate800,
+  backgroundTransparent: palette.transparent,
+  borderColor: palette.slate700,
+  borderColorHover: palette.slate600,
+  borderColorPress: palette.slate600,
+  borderColorFocus: palette.rioDeepBlue,
+  color: palette.slate100,
+  colorHover: palette.white,
+  colorPress: palette.white,
+  colorFocus: palette.white,
+  colorTransparent: palette.transparent,
+  placeholderColor: palette.slate400,
+  shadowColor: "rgba(15,23,42,0.45)",
+  shadowColorHover: "rgba(15,23,42,0.55)",
+  primary: palette.rioGradientEnd,
+  primaryHover: palette.rioGradientStart,
+  primaryPress: palette.rioGradientStart,
+  primaryFocus: palette.rioGradientStart,
+  primaryForeground: palette.slate900,
+  secondary: palette.slate800,
+  secondaryHover: palette.slate700,
+  secondaryPress: palette.slate700,
+  secondaryFocus: palette.slate600,
+  secondaryForeground: palette.slate100,
+  accent: "#1E1B4B",
+  accentHover: "#312E81",
+  accentPress: "#3730A3",
+  accentFocus: "#4338CA",
+  accentForeground: palette.white,
+  destructive: palette.red600,
+  destructiveHover: palette.red500,
+  destructivePress: palette.red500,
+  destructiveFocus: palette.red700,
+  destructiveForeground: palette.white,
+  success: palette.green500,
+  successHover: palette.green600,
+  successPress: palette.green600,
+  successFocus: palette.green700,
+  successForeground: palette.white,
+  warning: palette.amber500,
+  warningHover: palette.amber600,
+  warningPress: palette.amber600,
+  warningFocus: palette.amber700,
+  warningForeground: palette.slate900,
+  info: palette.sky500,
+  infoHover: palette.sky600,
+  infoPress: palette.sky600,
+  infoFocus: palette.sky700,
+  infoForeground: palette.white,
+  muted: palette.slate800,
+  mutedForeground: palette.slate400,
+  ring: palette.rioGradientEnd
+};
+
+// src/theme/index.ts
+var import_tamagui58 = require("tamagui");
+var lightTheme = (0, import_tamagui58.createTheme)({
   ...lightColors
 });
-var darkTheme = (0, import_tamagui46.createTheme)({
-                ...darkColors
-              });
-              var themes = {
-                light: lightTheme,
-                dark: darkTheme
-              };
+var darkTheme = (0, import_tamagui58.createTheme)({
+  ...darkColors
+});
+var themes = {
+  light: lightTheme,
+  dark: darkTheme
+};
 
-              // ../../node_modules/.pnpm/@tamagui+font-inter@1.138.5_react-dom@18.3.1_react@18.3.1__react-native@0.82.1_@babel+core@7._ree625nyzoodvoencezom2kvsu/node_modules/@tamagui/font-inter/dist/esm/index.mjs
-              var import_core = require("@tamagui/core");
-              var createInterFont = (font = {}, {
-                sizeLineHeight = (size) => size + 10,
-                sizeSize = (size) => size * 1
-              } = {}) => {
-                const size = Object.fromEntries(Object.entries({
-                  ...defaultSizes,
-                  ...font.size
-                }).map(([k, v]) => [k, sizeSize(+v)]));
-                return (0, import_core.createFont)({
-                  family: import_core.isWeb ? 'Inter, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' : "Inter",
-                  lineHeight: Object.fromEntries(Object.entries(size).map(([k, v]) => [k, sizeLineHeight((0, import_core.getVariableValue)(v))])),
-                  weight: {
-                    4: "300"
-                  },
-                  letterSpacing: {
-                    4: 0
-                  },
-                  ...font,
-                  size
-                });
-              };
-              var defaultSizes = {
-                1: 11,
-                2: 12,
-                3: 13,
-                4: 14,
-                true: 14,
-                5: 16,
-                6: 18,
-                7: 20,
-                8: 23,
-                9: 30,
-                10: 46,
-                11: 55,
-                12: 62,
-                13: 72,
-                14: 92,
-                15: 114,
-                16: 134
-              };
+// src/tamagui.config.ts
+var ceraProFont = (0, import_tamagui59.createFont)({
+  family: "Cera Pro",
+  size: {
+    1: 12,
+    2: 14,
+    3: 16,
+    4: 18,
+    5: 20,
+    6: 24,
+    7: 32,
+    8: 48,
+    9: 64
+  },
+  lineHeight: {
+    1: 16,
+    2: 20,
+    3: 24,
+    4: 28,
+    5: 32,
+    6: 40,
+    7: 48,
+    8: 64,
+    9: 80
+  },
+  weight: {
+    4: "400",
+    // Regular
+    5: "500",
+    // Medium
+    9: "900"
+    // Black
+  },
+  letterSpacing: {
+    4: 0,
+    7: -0.5,
+    // Tighter for large titles
+    9: -1
+  },
+  face: {
+    400: { normal: "CeraPro-Regular" },
+    500: { normal: "CeraPro-Medium" },
+    900: { normal: "CeraPro-Black" }
+  }
+});
+var animations = createAnimations({
+  bouncy: {
+    type: "spring",
+    damping: 10,
+    mass: 0.9,
+    stiffness: 100
+  },
+  lazy: {
+    type: "spring",
+    damping: 20,
+    stiffness: 60
+  },
+  quick: {
+    type: "spring",
+    damping: 20,
+    mass: 1.2,
+    stiffness: 250
+  }
+});
+var config = (0, import_tamagui59.createTamagui)({
+  // Animations
+  animations,
+  // Fonts
+  fonts: {
+    heading: ceraProFont,
+    body: ceraProFont,
+    brandHeading: ceraProFont,
+    brandBody: ceraProFont
+  },
+  // Tokens
+  tokens,
+  // Themes
+  themes,
+  // Media queries
+  // These are the default media queries, useful for responsive design
+  media: {
+    xs: { maxWidth: 660 },
+    sm: { maxWidth: 800 },
+    md: { maxWidth: 1020 },
+    lg: { maxWidth: 1280 },
+    xl: { maxWidth: 1420 },
+    xxl: { maxWidth: 1600 },
+    gtXs: { minWidth: 661 },
+    gtSm: { minWidth: 801 },
+    gtMd: { minWidth: 1021 },
+    gtLg: { minWidth: 1281 },
+    short: { maxHeight: 820 },
+    tall: { minHeight: 820 },
+    hoverNone: { hover: "none" },
+    pointerCoarse: { pointer: "coarse" }
+  },
+  // Shorthands
+  // These are CSS-like shorthands for common style properties
+  shorthands: {
+    ac: "alignContent",
+    ai: "alignItems",
+    als: "alignSelf",
+    f: "flex",
+    fb: "flexBasis",
+    fd: "flexDirection",
+    fg: "flexGrow",
+    fs: "flexShrink",
+    fw: "flexWrap",
+    jc: "justifyContent",
+    h: "height",
+    m: "margin",
+    mb: "marginBottom",
+    ml: "marginLeft",
+    mr: "marginRight",
+    mt: "marginTop",
+    mx: "marginHorizontal",
+    my: "marginVertical",
+    p: "padding",
+    pb: "paddingBottom",
+    pl: "paddingLeft",
+    pr: "paddingRight",
+    pt: "paddingTop",
+    px: "paddingHorizontal",
+    py: "paddingVertical",
+    w: "width"
+  }
+});
+var tamagui_config_default = config;
 
-              // src/tamagui.config.ts
-              var headingFont = createInterFont();
-              var bodyFont = createInterFont();
-var ceraProFont = (0, import_tamagui47.createFont)({
-                family: "Cera Pro",
-                size: {
-                  1: 12,
-                  2: 14,
-                  3: 16,
-                  4: 18,
-                  5: 20,
-                  6: 24,
-                  7: 32,
-                  8: 48,
-                  9: 64
-                },
-                lineHeight: {
-                  1: 16,
-                  2: 20,
-                  3: 24,
-                  4: 28,
-                  5: 32,
-                  6: 40,
-                  7: 48,
-                  8: 64,
-                  9: 80
-                },
-                weight: {
-                  4: "400",
-                  // Regular
-                  5: "500",
-                  // Medium
-                  9: "900"
-                  // Black
-                },
-                letterSpacing: {
-                  4: 0,
-                  7: -0.5,
-                  // Tighter for large titles
-                  9: -1
-                },
-                face: {
-                  400: { normal: "CeraPro-Regular" },
-                  500: { normal: "CeraPro-Medium" },
-                  900: { normal: "CeraPro-Black" }
-                }
-              });
-              var animations = createAnimations({
-                bouncy: {
-                  type: "spring",
-                  damping: 10,
-                  mass: 0.9,
-                  stiffness: 100
-                },
-                lazy: {
-                  type: "spring",
-                  damping: 20,
-                  stiffness: 60
-                },
-                quick: {
-                  type: "spring",
-                  damping: 20,
-                  mass: 1.2,
-                  stiffness: 250
-                }
-              });
-var config = (0, import_tamagui47.createTamagui)({
-                // Animations
-                animations,
-                // Fonts
-                fonts: {
-                  heading: headingFont,
-                  body: bodyFont,
-                  brandHeading: ceraProFont,
-                  brandBody: ceraProFont
-                },
-                // Tokens
-                tokens,
-                // Themes
-                themes,
-                // Media queries
-                // These are the default media queries, useful for responsive design
-                media: {
-                  xs: { maxWidth: 660 },
-                  sm: { maxWidth: 800 },
-                  md: { maxWidth: 1020 },
-                  lg: { maxWidth: 1280 },
-                  xl: { maxWidth: 1420 },
-                  xxl: { maxWidth: 1600 },
-                  gtXs: { minWidth: 661 },
-                  gtSm: { minWidth: 801 },
-                  gtMd: { minWidth: 1021 },
-                  gtLg: { minWidth: 1281 },
-                  short: { maxHeight: 820 },
-                  tall: { minHeight: 820 },
-                  hoverNone: { hover: "none" },
-                  pointerCoarse: { pointer: "coarse" }
-                },
-                // Shorthands
-                // These are CSS-like shorthands for common style properties
-                shorthands: {
-                  ac: "alignContent",
-                  ai: "alignItems",
-                  als: "alignSelf",
-                  f: "flex",
-                  fb: "flexBasis",
-                  fd: "flexDirection",
-                  fg: "flexGrow",
-                  fs: "flexShrink",
-                  fw: "flexWrap",
-                  jc: "justifyContent",
-                  h: "height",
-                  m: "margin",
-                  mb: "marginBottom",
-                  ml: "marginLeft",
-                  mr: "marginRight",
-                  mt: "marginTop",
-                  mx: "marginHorizontal",
-                  my: "marginVertical",
-                  p: "padding",
-                  pb: "paddingBottom",
-                  pl: "paddingLeft",
-                  pr: "paddingRight",
-                  pt: "paddingTop",
-                  px: "paddingHorizontal",
-                  py: "paddingVertical",
-                  w: "width"
-                }
-              });
-              var tamagui_config_default = config;
+// src/providers/AppProviders.tsx
+var import_jsx_runtime45 = require("react/jsx-runtime");
+var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_tamagui60.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(ComponentErrorBoundary, { componentName: "AppProviders", children }) }) });
 
-              // src/providers/AppProviders.tsx
-var import_jsx_runtime36 = require("react/jsx-runtime");
-var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui48.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(ComponentErrorBoundary, { componentName: "AppProviders", children }) }) });
-              // Annotate the CommonJS export names for ESM import in node:
-              0 && (module.exports = {
-                Accordion,
-                AccordionContent,
-                AccordionItem,
-                AccordionTrigger,
-                Alert,
-                AlertDescription,
-                AlertTitle,
-                AppProviders,
-                AspectRatio,
-                Avatar,
-                AvatarFallback,
-                AvatarFallbackComponent,
-                AvatarImage,
-                AvatarImageComponent,
-                Badge,
-                BadgeText,
-                BarChart,
-                Breadcrumb,
-                Button,
-                Calendar,
-                Card,
-                CardContent,
-                CardDescription,
-                CardFooter,
-                CardHeader,
-                CardTitle,
-                Carousel,
-                CarouselContent,
-                CarouselItem,
-                CarouselNext,
-                CarouselPrevious,
-                Checkbox,
-                Collapsible,
-                CollapsibleContent,
-                CollapsibleTrigger,
-                Command,
-                CommandDialog,
-                CommandEmpty,
-                CommandGroup,
-                CommandInput,
-                CommandItem,
-                CommandList,
-                CommandSeparator,
-                CommandShortcut,
-                ComponentErrorBoundary,
-                ContextMenu,
-                ContextMenuCheckboxItem,
-                ContextMenuContent,
-                ContextMenuGroup,
-                ContextMenuItem,
-                ContextMenuLabel,
-                ContextMenuPortal,
-                ContextMenuRadioGroup,
-                ContextMenuRadioItem,
-                ContextMenuSeparator,
-                ContextMenuShortcut,
-                ContextMenuSub,
-                ContextMenuSubContent,
-                ContextMenuSubTrigger,
-                ContextMenuTrigger,
-                DataTable,
-                DatePicker,
-                Dialog,
-                DialogClose,
-                DialogContent,
-                DialogContentComposite,
-                DialogDescription,
-                DialogFooter,
-                DialogHeader,
-                DialogOverlay,
-                DialogPortal,
-                DialogTitle,
-                DialogTrigger,
-                Drawer,
-                DrawerClose,
-                DrawerContent,
-                DrawerDescription,
-                DrawerFooter,
-                DrawerHeader,
-                DrawerOverlay,
-                DrawerTitle,
-                DrawerTrigger,
-                Form,
-                FormControl,
-                FormDescription,
-                FormField,
-                FormItem,
-                FormLabel,
-                FormMessage,
-                IndicatorArrow,
-                Input,
-                Menubar,
-                MenubarCheckboxItem,
-                MenubarContent,
-                MenubarGroup,
-                MenubarItem,
-                MenubarLabel,
-                MenubarMenu,
-                MenubarPortal,
-                MenubarRadioGroup,
-                MenubarRadioItem,
-                MenubarSeparator,
-                MenubarShortcut,
-                MenubarSub,
-                MenubarSubContent,
-                MenubarSubTrigger,
-                MenubarTrigger,
-                NavigationMenu,
-                NavigationMenuContent,
-                NavigationMenuIndicator,
-                NavigationMenuItem,
-                NavigationMenuLink,
-                NavigationMenuList,
-                NavigationMenuTrigger,
-                NavigationMenuViewport,
-                OTPInput,
-                Pagination,
-                Popover,
-                PopoverAnchor,
-                PopoverClose,
-                PopoverContent,
-                PopoverTrigger,
-                Progress,
-                ProgressFrame,
-                ProgressIndicator,
-                RadioGroup,
-                RadioGroupItem,
-                ResizableHandle,
-                ResizablePanel,
-                ResizablePanelGroup,
-                ScrollArea,
-                Select,
-                Separator,
-                Sheet,
-                SheetClose,
-                SheetContent,
-                SheetDescription,
-                SheetFooter,
-                SheetHandle,
-                SheetHeader,
-                SheetOverlay,
-                SheetTitle,
-                SheetTrigger,
-                Sidebar,
-                Skeleton,
-                Slider,
-                SliderFrame,
-                SliderRange,
-                SliderThumb,
-                SliderTrack,
-                StarRating,
-                Stepper,
-                Switch,
-                SwitchComponent,
-                SwitchFrameExport,
-                SwitchThumbComponent,
-                SwitchWithThumb,
-                Table,
-                Tabs,
-                TabsContent,
-                TabsList,
-                TabsTrigger,
-                Textarea,
-                Toast,
-                ToastDescription,
-                ToastProvider,
-                ToastTitle,
-                ToastViewport,
-                Toggle,
-                ToggleGroup,
-                ToggleGroupItem,
-                Tooltip,
-                config,
-                useFormField,
-                useToast
-              });
+// src/fonts.ts
+var fonts = {
+  CeraProRegular: require_CeraPro_Regular(),
+  CeraProMedium: require_CeraPro_Medium(),
+  CeraProBlack: require_CeraPro_Black()
+};
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Alert,
+  AlertDescription,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogContentComposite,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  AlertDialogPortal,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+  AlertTitle,
+  AppProviders,
+  AspectRatio,
+  Autocomplete,
+  Avatar,
+  AvatarFallback,
+  AvatarFallbackComponent,
+  AvatarImage,
+  AvatarImageComponent,
+  Badge,
+  BadgeText,
+  BarChart,
+  Blockquote,
+  Breadcrumb,
+  Button,
+  Calendar,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  Checkbox,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+  Command,
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  CommandShortcut,
+  ComponentErrorBoundary,
+  ContextMenu,
+  ContextMenuCheckboxItem,
+  ContextMenuContent,
+  ContextMenuGroup,
+  ContextMenuItem,
+  ContextMenuLabel,
+  ContextMenuPortal,
+  ContextMenuRadioGroup,
+  ContextMenuRadioItem,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+  ContextMenuSub,
+  ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
+  DataTable,
+  DatePicker,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogContentComposite,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerFrame,
+  DrawerHandle,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerTitle,
+  DrawerTrigger,
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+  Field,
+  FieldControl,
+  FieldError,
+  FieldLabel,
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Heading,
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+  IndicatorArrow,
+  Input,
+  InputGroup,
+  InputGroupItem,
+  LeadText,
+  Menubar,
+  MenubarCheckboxItem,
+  MenubarContent,
+  MenubarGroup,
+  MenubarItem,
+  MenubarLabel,
+  MenubarMenu,
+  MenubarPortal,
+  MenubarRadioGroup,
+  MenubarRadioItem,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarTrigger,
+  MonthsPicker,
+  MutedText,
+  NativeSelect,
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+  OTPInput,
+  Pagination,
+  Paragraph,
+  Popover,
+  PopoverAnchor,
+  PopoverClose,
+  PopoverContent,
+  PopoverTrigger,
+  Progress,
+  ProgressFrame,
+  ProgressIndicator,
+  RadioGroup,
+  RadioGroupItem,
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+  RichText,
+  ScrollArea,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectItemIndicator,
+  SelectItemText,
+  SelectLabel,
+  SelectScrollDownButton,
+  SelectScrollUpButton,
+  SelectTrigger,
+  SelectValue,
+  SelectViewport,
+  Separator,
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetFrame,
+  SheetHandle,
+  SheetHeader,
+  SheetOverlay,
+  SheetTitle,
+  SheetTrigger,
+  Sidebar,
+  Skeleton,
+  Slider,
+  SliderFrame,
+  SliderRange,
+  SliderThumb,
+  SliderTrack,
+  Spinner,
+  StarRating,
+  Stepper,
+  Switch,
+  SwitchComponent,
+  SwitchFrameExport,
+  SwitchThumbComponent,
+  SwitchWithThumb,
+  Table,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+  Text,
+  Textarea,
+  Toast,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+  Toggle,
+  ToggleGroup,
+  ToggleGroupItem,
+  Tooltip,
+  TypographyText,
+  Video,
+  config,
+  fonts,
+  useFormField,
+  useToast
+});
