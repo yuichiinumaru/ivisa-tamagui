@@ -54,6 +54,9 @@ importers:
       '@storybook/addon-a11y':
         specifier: ^10.0.8
         version: 10.1.4(storybook@10.1.4(@testing-library/dom@9.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      '@storybook/addon-actions':
+        specifier: ^9.0.8
+        version: 9.0.8
       '@storybook/addon-docs':
         specifier: ^10.0.8
         version: 10.1.4(@types/react@18.3.27)(esbuild@0.27.0)(rollup@4.53.3)(storybook@10.1.4(@testing-library/dom@9.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@7.2.6(@types/node@24.10.1)(terser@5.44.1)(yaml@2.8.2))
@@ -2730,6 +2733,9 @@ packages:
     resolution: {integrity: sha512-go7SshAyu+pnK7Prq3UnCBCB7DxAQkPMnebsv3fnboeTZHnDXQqfmHdZ15o+pH0JsCedC05RYsdbjd2rMHMvFQ==}
     peerDependencies:
       storybook: ^10.1.4
+
+  '@storybook/addon-actions@9.0.8':
+    resolution: {integrity: sha512-LFePu7PPnWN0Il/uoUpmA5T0J0C7d6haJIbg0pXrjxW2MQVSYXE4S4LSUz8fOImltBDV3xAl6tLPYHFj6VcrOA==}
 
   '@storybook/addon-docs@10.1.4':
     resolution: {integrity: sha512-TWLDJNLS/S3AUyTf9x0Hb8k7d+VWMJCH9dWAS0QenvJG8ga9VaehO6r+e+3YyIDbO1ev3UST3GCjh9SY8tzwRA==}
@@ -12391,6 +12397,8 @@ snapshots:
       '@storybook/global': 5.0.0
       axe-core: 4.11.0
       storybook: 10.1.4(@testing-library/dom@9.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
+  '@storybook/addon-actions@9.0.8': {}
 
   '@storybook/addon-docs@10.1.4(@types/react@18.3.27)(esbuild@0.27.0)(rollup@4.53.3)(storybook@10.1.4(@testing-library/dom@9.3.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@7.2.6(@types/node@24.10.1)(terser@5.44.1)(yaml@2.8.2))':
     dependencies:

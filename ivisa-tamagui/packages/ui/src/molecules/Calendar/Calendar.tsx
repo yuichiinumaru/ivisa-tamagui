@@ -124,7 +124,7 @@ export const Calendar = ({
   const nextBtn = addOffset({ months: 1 })
 
   return (
-    <CalendarContainer>
+    <CalendarContainer data-testid="calendar-container">
       {/* Header: Month Year + Nav */}
       <XStack justifyContent="space-between" alignItems="center" marginBottom="$4">
         <Button
