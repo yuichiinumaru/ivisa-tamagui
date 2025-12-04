@@ -9,11 +9,11 @@
 ## 🚨 Critical Remediation & Pending Features
 
 ### Q_bug: Critical Bug Fixes (From Audit)
-- [ ] **Fix Current Unit Test Failures (P0)**
+- [x] **Fix Current Unit Test Failures (P0)**
   - Fix snapshot and style mismatches in `Button`, `Typography`, `Breadcrumb`, `Pagination`, `Textarea`.
 - [x] **Implement Security Scanning (P1)**
   - Integrate a security scanner (e.g., `snyk`, `npm audit`) into the CI/CD pipeline.
-- [ ] **Resolve All Linting Errors (P1)**
+- [x] **Resolve All Linting Errors (P1)**
   - Fix 74 ESLint errors (unused variables, `any` types).
 - [x] **Restore Visual Testing Capabilities (P2)**
   - Re-create `scripts/visual-check.js` (uses Storybook + Playwright) which is currently missing.
@@ -79,7 +79,7 @@
   - [ ] 38a – **Atoms**: `Alert`, `Avatar`, `Badge`, `Checkbox`, `Progress`, `ScrollArea`, `Separator`, `Skeleton`, `Slider`, `Spinner`, `Stack`, `Switch`, `Toggle`.
   - [ ] 38b – **Molecules**: `Accordion`, `AlertDialog`, `Calendar`, `Card`, `ComponentErrorBoundary`, `Drawer`, `DropdownMenu`, `HoverCard`, `Menubar`, `NavigationMenu`, `OTPInput`, `RadioGroup`, `Resizable`, `Tabs`, `Toast`, `ToggleGroup`.
   - [ ] 38c – **Organisms**: `Carousel`, `Command`, `DataTable`.
-  - [ ] 38d – **Fix Autocomplete Tests**: `Autocomplete.test.tsx` is currently disabled due to syntax/environment errors.
+  - [x] 38d – **Fix Autocomplete Tests**: `Autocomplete.test.tsx` restored and passing (mocked `tamagui`).
 
 35 - [ ] **Missing Documentation Specs (Implemented but no Spec)** (DOC)
   - [ ] 35a – Create specs for `ComponentErrorBoundary`
