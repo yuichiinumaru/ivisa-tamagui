@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 export const fonts = {
   CeraProRegular: require('./assets/fonts/CeraPro-Regular.otf'),
   CeraProMedium: require('./assets/fonts/CeraPro-Medium.otf'),

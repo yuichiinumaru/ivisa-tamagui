@@ -36,7 +36,7 @@ exports[`Pagination > renders pagination snapshot 1`] = `
               class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
             />
             <span
-              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis _fontSize-f-size-3"
             >
               «
             </span>
@@ -58,7 +58,7 @@ exports[`Pagination > renders pagination snapshot 1`] = `
               class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
             />
             <span
-              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis _fontSize-f-size-3"
             >
               ‹
             </span>
@@ -151,7 +151,7 @@ exports[`Pagination > renders pagination snapshot 1`] = `
               class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
             />
             <span
-              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis _fontSize-f-size-3"
             >
               ›
             </span>
@@ -173,7 +173,7 @@ exports[`Pagination > renders pagination snapshot 1`] = `
               class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
             />
             <span
-              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-f-weight-4 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis _fontSize-f-size-3"
             >
               »
             </span>

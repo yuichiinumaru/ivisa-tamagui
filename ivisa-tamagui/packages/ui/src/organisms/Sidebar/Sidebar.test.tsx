@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
-import { render } from '../vitest.setup';
-import { Sidebar } from './organisms/Sidebar';
-import { vi } from 'vitest';
+import { render } from '../../../vitest.setup';
+import { Sidebar } from './Sidebar';
+import { vi, describe, it, expect } from 'vitest';
 
 vi.mock('tamagui', async () => {
   const tamagui = await vi.importActual('tamagui');
@@ -22,7 +22,7 @@ vi.mock('../../molecules/Sheet', () => ({
     SheetContent: ({ children }) => <>{children}</>,
 }));
 
-vi.mock('./atoms/Button', () => ({
+vi.mock('../../atoms/Button', () => ({
     Button: React.forwardRef(({ icon: Icon, onPress, ...props }, ref) => (
       <button ref={ref} onClick={onPress} {...props}>
         {Icon && <Icon />}
