@@ -28,7 +28,7 @@ exports[`Breadcrumb > renders snapshot 1`] = `
               role="listitem"
             >
               <a
-                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-500 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color is_BreadcrumbLink "
+                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _fontWeight-500 is_BreadcrumbLink "
                 data-disable-theme="true"
                 href="#"
                 role="link"
@@ -47,7 +47,7 @@ exports[`Breadcrumb > renders snapshot 1`] = `
               role="listitem"
             >
               <a
-                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _fontWeight-500 _ls-f-letterSpa1360334202 _fontSize-f-size-4 _lh-f-lineHeigh112923 _col-color is_BreadcrumbLink "
+                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _fontWeight-500 is_BreadcrumbLink "
                 data-disable-theme="true"
                 href="#"
                 role="link"

@@ -34,7 +34,7 @@ Before starting a task, ALWAYS read these documents in order:
 - **Package Manager:** `pnpm`
 - **Monorepo:** We are inside `ivisa-tamagui` (root).
 - **Testing:**
-    - **Visual:** `scripts/visual-check.js` (uses Storybook + Playwright).
+    - **Visual:** `scripts/visual-check.js` (Note: Currently pending restoration).
     - **Unit:** `vitest`.
 
 ### 3️⃣ Implementation Pattern
@@ -65,6 +65,7 @@ We categorize components into three types:
 - **Phase 2 (High-Impact):** ✅ Complete. Forms, DataTable, Calendar/DatePicker.
 - **Phase 3 (Expansion):** ✅ Complete. Carousel, Command Palette, Menubar, etc.
 - **Phase 4 (Docs & Polish):** 🚧 In Progress. Storybook population, Spec cleanup, and missing Atoms (`Label`, `Kbd`).
+- **Phase 6 (QA & Cleanup):** 🚧 In Progress. Audit, linting, and test coverage improvements.
 
 ---
 
