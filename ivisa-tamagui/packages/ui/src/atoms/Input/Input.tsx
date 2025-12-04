@@ -1,10 +1,15 @@
 import React, { useContext } from 'react';
-import { Input as TamaguiInput, styled, GetProps, XStack, View } from 'tamagui';
+import { Input as TamaguiInput, styled, GetProps, XStack, View, TamaguiElement } from 'tamagui';
 import { Button } from '../Button';
-import { withErrorLogging } from '../../utils/withErrorLogging';
 
 // Context to share props like size to subcomponents
-const InputContext = React.createContext<{ size?: StyledInputProps['size'] }>({});
+const InputContext = React.createContext<{ size?: StyledInputProps['size'] } | null>(null);
+
+const useInputContext = () => {
+  const context = useContext(InputContext);
+  // Default to undefined size if no context (standalone field usage)
+  return context || {};
+}
 
 // Common variants
 const inputVariants = {
@@ -119,8 +124,8 @@ const UnframedInputStyled = styled(TamaguiInput, {
   } as const
 })
 
-const InputField = React.forwardRef<React.ElementRef<typeof TamaguiInput>, GetProps<typeof UnframedInputStyled>>((props, ref) => {
-  const { size } = useContext(InputContext)
+const InputField = React.forwardRef<TamaguiElement, GetProps<typeof UnframedInputStyled>>((props, ref) => {
+  const { size } = useInputContext()
   return <UnframedInputStyled ref={ref} size={size} {...props} />
 })
 
@@ -149,13 +154,13 @@ export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
   children?: React.ReactNode
 }
 
-const InputImpl = React.forwardRef<React.ElementRef<typeof TamaguiInput>, InputProps>(
+// 💀 Resurrection: Strict typing for Ref (TamaguiElement covers both Input and View)
+const InputImpl = React.forwardRef<TamaguiElement, InputProps>(
   ({ variant = 'default', size = 'default', children, ...props }, ref) => {
     if (children) {
       return (
         <InputContext.Provider value={{ size }}>
-          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-          <InputFrame ref={ref as any} variant={variant} size={size}>
+          <InputFrame ref={ref} variant={variant} size={size}>
             {children}
           </InputFrame>
         </InputContext.Provider>
@@ -174,9 +179,7 @@ const InputImpl = React.forwardRef<React.ElementRef<typeof TamaguiInput>, InputP
 
 InputImpl.displayName = 'Input'
 
-const WrappedInput = withErrorLogging<InputProps, React.ElementRef<typeof TamaguiInput>>('Input', InputImpl)
-
-export const Input = Object.assign(WrappedInput, {
+export const Input = Object.assign(InputImpl, {
   Field: InputField,
   Icon: InputIcon,
   Button: InputButton,

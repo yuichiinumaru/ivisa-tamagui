@@ -20,23 +20,27 @@ import {
 } from 'tamagui'
 import { Button } from '../../atoms/Button'
 
+// --- Constants ---
+const MIN_COLUMN_WIDTH = 100
+const BORDER_WIDTH = 1
+
 // --- Styled Primitives for the Table ---
 
 const TableContainer = styled(YStack, {
   borderColor: '$borderColor',
-  borderWidth: 1,
-  borderRadius: '$md', // Changed from $4 to $md
+  borderWidth: BORDER_WIDTH,
+  borderRadius: '$md',
   overflow: 'hidden',
 })
 
 const TableHeader = styled(YStack, {
   backgroundColor: '$background',
-  borderBottomWidth: 1,
+  borderBottomWidth: BORDER_WIDTH,
   borderColor: '$borderColor',
 })
 
 const TableRow = styled(XStack, {
-  borderBottomWidth: 1,
+  borderBottomWidth: BORDER_WIDTH,
   borderColor: '$borderColor',
   paddingVertical: '$3',
   paddingHorizontal: '$4',
@@ -55,6 +59,18 @@ const TableHeadText = styled(Text, {
 const TableCellText = styled(Text, {
   color: '$foreground',
   fontSize: '$3',
+})
+
+// 💀 Resurrection: Replaced inline styles with styled components
+const TableCellFrame = styled(View, {
+  flex: 1,
+  minWidth: MIN_COLUMN_WIDTH,
+})
+
+const NoResultsCell = styled(View, {
+  flex: 1,
+  alignItems: 'center',
+  padding: '$5', // 20px
 })
 
 // --- Component Definition ---
@@ -99,14 +115,14 @@ export function DataTable<TData, TValue>({
                 <TableRow key={headerGroup.id} borderBottomWidth={1} paddingVertical="$3">
                   {headerGroup.headers.map((header) => {
                     return (
-                      <View key={header.id} style={{ flex: 1, minWidth: 100 }}>
+                      <TableCellFrame key={header.id}>
                         {header.isPlaceholder
                           ? null
                           : flexRender(
                               header.column.columnDef.header,
                               header.getContext()
                             )}
-                      </View>
+                      </TableCellFrame>
                     )
                   })}
                 </TableRow>
@@ -119,17 +135,17 @@ export function DataTable<TData, TValue>({
                 table.getRowModel().rows.map((row) => (
                   <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                     {row.getVisibleCells().map((cell) => (
-                      <View key={cell.id} style={{ flex: 1, minWidth: 100 }}>
+                      <TableCellFrame key={cell.id}>
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      </View>
+                      </TableCellFrame>
                     ))}
                   </TableRow>
                 ))
               ) : (
                 <TableRow>
-                  <View style={{ flex: 1, alignItems: 'center', padding: 20 }}>
+                  <NoResultsCell>
                     <TableHeadText>No results.</TableHeadText>
-                  </View>
+                  </NoResultsCell>
                 </TableRow>
               )}
             </YStack>

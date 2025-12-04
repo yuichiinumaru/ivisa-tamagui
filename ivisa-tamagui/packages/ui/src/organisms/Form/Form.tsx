@@ -15,9 +15,8 @@ type FormFieldContextValue = {
   name: string
 }
 
-const FormFieldContext = React.createContext<FormFieldContextValue>(
-  {} as FormFieldContextValue
-)
+// 💀 Resurrection: Context is nullable, not "Empty Object cast to Type"
+const FormFieldContext = React.createContext<FormFieldContextValue | null>(null)
 
 const FormField = <
   TFieldValues extends FieldValues = FieldValues,
@@ -25,8 +24,11 @@ const FormField = <
 >({
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
+  // 💀 Resurrection: Memoize context value to prevent render thrashing
+  const contextValue = React.useMemo(() => ({ name: props.name }), [props.name])
+
   return (
-    <FormFieldContext.Provider value={{ name: props.name }}>
+    <FormFieldContext.Provider value={contextValue}>
       <Controller {...props} />
     </FormFieldContext.Provider>
   )
@@ -37,12 +39,15 @@ const useFormField = () => {
   const itemContext = React.useContext(FormItemContext)
   const { getFieldState, formState } = useFormContext()
 
-  const fieldState = getFieldState(fieldContext.name, formState)
-
+  // 💀 Resurrection: Fail Loudly
   if (!fieldContext) {
     throw new Error("useFormField should be used within <FormField>")
   }
+  if (!itemContext) {
+    throw new Error("useFormField should be used within <FormItem>")
+  }
 
+  const fieldState = getFieldState(fieldContext.name, formState)
   const { id } = itemContext
 
   return {
@@ -59,9 +64,8 @@ type FormItemContextValue = {
   id: string
 }
 
-const FormItemContext = React.createContext<FormItemContextValue>(
-  {} as FormItemContextValue
-)
+// 💀 Resurrection: Nullable Context
+const FormItemContext = React.createContext<FormItemContextValue | null>(null)
 
 const FormItemFrame = styled(YStack, {
   name: 'FormItem',
@@ -71,9 +75,11 @@ const FormItemFrame = styled(YStack, {
 const FormItem = React.forwardRef<TamaguiElement, GetProps<typeof FormItemFrame>>(
   ({ ...props }, ref) => {
     const id = React.useId()
+    // 💀 Resurrection: Memoize ID object
+    const contextValue = React.useMemo(() => ({ id }), [id])
 
     return (
-      <FormItemContext.Provider value={{ id }}>
+      <FormItemContext.Provider value={contextValue}>
         <FormItemFrame ref={ref} {...props} />
       </FormItemContext.Provider>
     )
@@ -92,7 +98,7 @@ const FormLabelFrame = styled(Label, {
         color: '$destructive',
       }
     }
-  }
+  } as const
 })
 
 const FormLabel = React.forwardRef<TamaguiElement, GetProps<typeof FormLabelFrame>>(
@@ -118,6 +124,7 @@ const FormControl = React.forwardRef<TamaguiElement, GetProps<typeof View>>(
     return (
       <View
         ref={ref}
+        // Tamagui handles id prop mapping
         id={formItemId}
         aria-describedby={
           !error

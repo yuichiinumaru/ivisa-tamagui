@@ -15,7 +15,8 @@ vi.mock('tamagui', async (importOriginal) => {
   const tamagui = await importOriginal()
   const react = await import('react')
 
-  const mockComponent = (tag) =>
+  // 💀 Resurrection: Fixed scope error. Passed options to mockComponent factory.
+  const mockComponent = (tag, componentOptions = {}) =>
     react.forwardRef(({ children, ...props }, ref) => {
       const { asChild, ...rest } = props
 
@@ -50,7 +51,7 @@ vi.mock('tamagui', async (importOriginal) => {
       // Add role="button" if it's a Button
       if (props.role) {
         validProps.role = props.role
-      } else if (tag === 'button' || (options?.name === 'Button')) {
+      } else if (tag === 'button' || (componentOptions?.name === 'Button')) {
         validProps.role = 'button'
       }
 
@@ -61,7 +62,8 @@ vi.mock('tamagui', async (importOriginal) => {
     ...tamagui,
     styled: (Component, options) => {
       if (options?.name) {
-        const Comp = mockComponent(options.tag || 'div')
+        // Pass options to the mock factory
+        const Comp = mockComponent(options.tag || 'div', options)
         Comp.displayName = options.name
         return Comp
       }
