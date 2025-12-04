@@ -91,12 +91,14 @@ const config: StorybookConfig = {
       'victory-area',
       'victory-axis',
       'react-native-web',
-      'expo-av',
       'react-remove-scroll',
     ]
 
     config.optimizeDeps.esbuildOptions = {
       ...config.optimizeDeps.esbuildOptions,
+      loader: {
+        '.js': 'jsx',
+      },
       // Tamagui recommends this
       resolveExtensions: ['.web.js', '.js', '.ts', '.tsx'],
     };
