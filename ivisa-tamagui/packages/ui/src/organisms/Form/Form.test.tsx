@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '../../../vitest.setup'
+import { render, screen } from '../../../vitest.setup'
 // Ensure setup is loaded for IntersectionObserver
 import '../../../test-setup'
 import { useForm } from 'react-hook-form'
@@ -15,6 +15,7 @@ const formSchema = z.object({
   }),
 })
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TestForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
     const form = useForm({
         resolver: zodResolver(formSchema),
