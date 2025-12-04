@@ -58,11 +58,45 @@
 - [x] **Implement Security Scanning (P1)**: Integrated security scanner.
 - [x] **Resolve All Linting Errors (P1)**: Fixed 70+ ESLint errors.
 - [x] **Restore Visual Testing Capabilities (P2)**: Restored `scripts/visual-check.js`.
-
 ### Component Acceleration & Harvesting
 32 - [x] **Component Acceleration Phase**
   - [x] 32a – **Harvest `pogiii/sushi`**: Input (Composed) and OTPInput patterns.
   - [x] 32b – **Harvest `tamagui-kitchen-sink`**: StarRating.
+
+## 📦 Batch 1: Critical Remediation & Quality (P0)
+**Context:** Critical fixes for codebase health.
+
+- [ ] **Fix Unit Test Suite (P0)**: Fix import paths in `packages/ui/tests/migrated`.
+- [ ] **Resolve Linting Errors (P1)**: Fix ESLint errors (unused vars, `any`).
+
+## 📦 Batch 2: Documentation Specs (Gap Fill)
+**Context:** Missing specs for complex components.
+**Goal:** Create `docs/specs/COMPONENT.md` for each.
+
+- [ ] **Task 35f**: Create specs for `DataTable`
+- [ ] **Task 35g**: Create specs for `RichText`
+- [ ] **Task 35h**: Create specs for `Video`
+- [ ] **Task 35e**: Create specs for `Autocomplete`
+
+## 📦 Batch 3: Implemented Components (Atoms/Molecules)
+**Context:** These components have been implemented.
+**Goal:** Verify and add tests/stories if missing.
+
+- [x] **Task 36a**: Implement `button-group`
+- [x] **Task 36b**: Implement `empty` state component
+- [x] **Task 36c**: Implement `field` component
+- [x] **Task 36d**: Implement `input-group`
+- [x] **Task 36e**: Implement `item` component
+
+## 📦 Batch 4: Implemented Components (UI Elements)
+**Context:** These components have been implemented.
+**Goal:** Verify and add tests/stories if missing.
+
+- [x] **Task 36f**: Implement `kbd` (Keyboard shortcut display)
+- [x] **Task 36g**: Implement `label`
+- [x] **Task 36h**: Implement `native-select`
+- [x] **Task 36i**: Implement `sonner` (Toast alternative)
+- [x] **Task 36j**: Implement `table` (Basic table)
 
 ### ShadCN Gap Fill (High/Medium Priority)
 33 - [x] **ShadCN Gap Fill - High Priority**
@@ -75,17 +109,6 @@
   - [x] 34a – **AspectRatio**: Implemented.
   - [x] 34b – **Collapsible**: Implemented.
   - [x] 34e – **Spinner**: Implemented.
-
-### Missing Atoms & Cleanup (Parity)
-35 - [x] **Missing Atoms**
-  - [x] 35a – **Label**: Implemented `Label` atom.
-  - [x] 35b – **Kbd**: Implemented `Kbd` atom.
-36 - [x] **Documentation Cleanup**
-  - [x] 36a – **Archive Empty Specs**: Archived empty templates to `_archive/specs`.
-  - [x] 36b – **Sync Specs**: Valid specs retained; moving towards Storybook as source of truth.
-
-### Implemented Components (Verification)
-- [x] **Molecules/Organisms**: `ButtonGroup`, `Empty`, `Field`, `InputGroup`, `Item`, `NativeSelect`, `Sonner`, `Table` (Basic), `RichText`, `Video`.
 
 ### Phase 0-3 Completions
 - [x] **Phase 0 (Research)**: Ecosystem research, direction decided.
