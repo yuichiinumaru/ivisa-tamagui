@@ -6683,6 +6683,40 @@ var NativeSelect = forwardRef5(({ children, ...props }, ref) => {
   ] });
 });
 
+// src/organisms/Video/Video.tsx
+import { forwardRef as forwardRef6 } from "react";
+import { Stack as Stack5, Text as Text20 } from "tamagui";
+import { jsx as jsx43 } from "react/jsx-runtime";
+var ResizeMode = {
+  CONTAIN: "contain",
+  COVER: "cover",
+  STRETCH: "stretch"
+};
+var Video = forwardRef6(({
+  src,
+  width,
+  height = 200,
+  ...props
+}, ref) => {
+  return /* @__PURE__ */ jsx43(
+    Stack5,
+    {
+      ref,
+      width,
+      height,
+      marginHorizontal: "$true",
+      overflow: "hidden",
+      backgroundColor: "$background",
+      borderColor: "$borderColor",
+      borderWidth: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      ...props,
+      children: /* @__PURE__ */ jsx43(Text20, { children: "Video Component (Web Mock)" })
+    }
+  );
+});
+
 // src/providers/AppProviders.tsx
 import { TamaguiProvider } from "tamagui";
 import { PortalProvider } from "@tamagui/portal";
@@ -16158,7 +16192,7 @@ var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clic
   pointerEvents: true
 });
 var pickProps2 = (props) => pick(props, forwardPropsList2);
-var Text20 = /* @__PURE__ */ React67.forwardRef((props, forwardedRef) => {
+var Text21 = /* @__PURE__ */ React68.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, numberOfLines = props.numberOfLines, onClick = props.onClick, onLayout = props.onLayout, onPress = props.onPress, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, selectable = props.selectable, rest = (0, import_objectWithoutPropertiesLoose13.default)(props, _excluded13);
   var hasTextAncestor = React67.useContext(TextAncestorContext_default);
   var hostRef = React67.useRef(null);
@@ -16230,7 +16264,7 @@ var Text20 = /* @__PURE__ */ React67.forwardRef((props, forwardedRef) => {
     value: true
   }, element);
 });
-Text20.displayName = "Text";
+Text21.displayName = "Text";
 var textStyle = {
   backgroundColor: "transparent",
   border: "0 solid black",
@@ -16280,7 +16314,7 @@ var styles8 = StyleSheet_default.create({
     cursor: "pointer"
   }
 });
-var Text_default = Text20;
+var Text_default = Text21;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
 var AnimatedText_default = createAnimatedComponent(Text_default);
@@ -19234,6 +19268,7 @@ export {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
+  ResizeMode,
   RichText,
   ScrollArea,
   Select,
