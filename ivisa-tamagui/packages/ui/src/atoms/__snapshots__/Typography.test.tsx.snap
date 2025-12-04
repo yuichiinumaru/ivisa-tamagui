@@ -14,12 +14,12 @@ exports[`Typography primitives > renders heading with default level 1`] = `
         class=" t_dark is_Theme"
         style="color: var(--color); display: contents;"
       >
-        <span
-          class="is_Heading font_heading _dsp-inline _bxs-border-box _ww-break-word _ff-f-family _fontWeight-f-weight-8 _ls-f-letterSpa1360334198 _fontSize-f-size-8 _lh-f-lineHeigh112927 _col-color _userSelect-auto _ws-normal _mt-0px _mr-0px _mb-0px _ml-0px"
+        <h1
+          class="is_H1 font_heading _dsp-inline _bxs-border-box _ww-break-word _userSelect-auto _ws-normal _ff-f-family _fontWeight-900 _ls-f-letterSpa1360334198 _fontSize-f-size-8 _lh-f-lineHeigh112927 _col-color _mt-0px _mr-0px _mb-0px _ml-0px _tt-uppercase"
           role="heading"
         >
           Heading Title
-        </span>
+        </h1>
         <div
           style="display: contents;"
         />
@@ -47,29 +47,29 @@ exports[`Typography primitives > renders text variations 1`] = `
         style="color: var(--color); display: contents;"
       >
         <span
-          class="is_TypographyText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color"
+          class="font_body _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color _ff-f-family _fontWeight-400"
           data-testid="body"
         >
           Body copy
         </span>
         <span
-          class="is_MutedText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
+          class="font_body _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color _ff-f-family _fontWeight-400"
           data-testid="muted"
         >
           Muted copy
         </span>
         <span
-          class="is_LeadText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
+          class="font_body _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color _ff-f-family _fontSize-f-size-5 _fontWeight-300"
           data-testid="lead"
         >
           Lead copy
         </span>
-        <span
-          class="is_Blockquote font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color _borderLeftWidth-2px _borderLeftColor-borderColor _fst-italic _borderLeftStyle-solid"
+        <blockquote
+          class="font_body _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color _ff-f-family _fontWeight-400 _borderLeftWidth-2px _fst-italic _borderLeftStyle-solid"
           data-testid="quote"
         >
           Quote
-        </span>
+        </blockquote>
         <div
           style="display: contents;"
         />

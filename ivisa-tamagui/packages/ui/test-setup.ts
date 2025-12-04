@@ -26,4 +26,5 @@ if (typeof window !== 'undefined') {
   });
 }
 // Also define on global for good measure
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (global as any).matchMedia = matchMediaMock;
