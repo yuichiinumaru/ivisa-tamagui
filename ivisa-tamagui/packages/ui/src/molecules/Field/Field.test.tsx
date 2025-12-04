@@ -16,4 +16,19 @@ describe('Field', () => {
     expect(screen.getByText('Email')).toBeInTheDocument()
     expect(screen.getByText('Error message')).toBeInTheDocument()
   })
+
+  it('associates the label with the input', () => {
+    render(
+      <Field>
+        <FieldLabel htmlFor="email">Email</FieldLabel>
+        <FieldControl>
+            <Input id="email" />
+        </FieldControl>
+      </Field>
+    )
+    const label = screen.getByText('Email')
+    const input = screen.getByLabelText('Email')
+    expect(label).toBeInTheDocument()
+    expect(input).toBeInTheDocument()
+  })
 })
