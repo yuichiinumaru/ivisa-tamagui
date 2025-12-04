@@ -45,7 +45,7 @@ const config: StorybookConfig = {
       'react-native': 'react-native-web/dist/index',
       '@react-native/assets-registry/registry': path.resolve(__dirname, '../packages/ui/src/mocks/assets-registry.js'),
       'react-remove-scroll': require.resolve('react-remove-scroll'),
-      '@react-native/normalize-colors': path.resolve(__dirname, '../packages/ui/src/mocks/normalize-colors.js'),
+      // '@react-native/normalize-colors': path.resolve(__dirname, '../packages/ui/src/mocks/normalize-colors.js'),
     };
 
     config.define = {
@@ -59,6 +59,7 @@ const config: StorybookConfig = {
       ...(config.optimizeDeps.include || []),
       'tamagui',
       '@tamagui/core',
+      'expo-av',
     ]
     config.optimizeDeps.exclude = [
       ...(config.optimizeDeps.exclude || []),

@@ -56,7 +56,7 @@ export * from './molecules/Field';
 export * from './molecules/InputGroup';
 export * from './molecules/NativeSelect';
 
-export * from './organisms/Video';
+// export * from './organisms/Video';
 export * from './providers/AppProviders';
 export * from './fonts';
 export { default as config } from './tamagui.config';
