@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
+// Fonts are currently missing in the repo. Mocking them to allow build.
 export const fonts = {
-  CeraProRegular: require('./assets/fonts/CeraPro-Regular.otf'),
-  CeraProMedium: require('./assets/fonts/CeraPro-Medium.otf'),
-  CeraProBlack: require('./assets/fonts/CeraPro-Black.otf'),
+  CeraProRegular: null,
+  CeraProMedium: null,
+  CeraProBlack: null,
 }

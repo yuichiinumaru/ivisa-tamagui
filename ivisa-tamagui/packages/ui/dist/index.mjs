@@ -2189,27 +2189,6 @@ var require_nullthrows = __commonJS({
   }
 });
 
-// src/assets/fonts/CeraPro-Regular.otf
-var require_CeraPro_Regular = __commonJS({
-  "src/assets/fonts/CeraPro-Regular.otf"(exports, module) {
-    module.exports = "./CeraPro-Regular-TNVAI32C.otf";
-  }
-});
-
-// src/assets/fonts/CeraPro-Medium.otf
-var require_CeraPro_Medium = __commonJS({
-  "src/assets/fonts/CeraPro-Medium.otf"(exports, module) {
-    module.exports = "./CeraPro-Medium-BVBPRSS6.otf";
-  }
-});
-
-// src/assets/fonts/CeraPro-Black.otf
-var require_CeraPro_Black = __commonJS({
-  "src/assets/fonts/CeraPro-Black.otf"(exports, module) {
-    module.exports = "./CeraPro-Black-WL63XRFO.otf";
-  }
-});
-
 // src/atoms/Alert.tsx
 import { styled, Text, XStack } from "tamagui";
 var AlertFrame = styled(XStack, {
@@ -6705,32 +6684,37 @@ var NativeSelect = forwardRef5(({ children, ...props }, ref) => {
 });
 
 // src/organisms/Video/Video.tsx
-import { ResizeMode, Video as ExpoVideo } from "expo-av";
 import { forwardRef as forwardRef6 } from "react";
-import { Stack as Stack5 } from "tamagui";
+import { Stack as Stack5, Text as Text20 } from "tamagui";
 import { jsx as jsx43 } from "react/jsx-runtime";
+var ResizeMode = {
+  CONTAIN: "contain",
+  COVER: "cover",
+  STRETCH: "stretch"
+};
 var Video = forwardRef6(({
   src,
   width,
   height = 200,
-  useNativeControls = true,
-  resizeMode = ResizeMode.COVER,
   ...props
 }, ref) => {
-  const source = src ? { uri: src } : props.source;
-  return /* @__PURE__ */ jsx43(Stack5, { width, height, marginHorizontal: "$true", overflow: "hidden", backgroundColor: "$black", ...props, children: /* @__PURE__ */ jsx43(
-    ExpoVideo,
+  return /* @__PURE__ */ jsx43(
+    Stack5,
     {
       ref,
-      source,
-      useNativeControls,
-      resizeMode,
-      style: {
-        width: "100%",
-        height: "100%"
-      }
+      width,
+      height,
+      marginHorizontal: "$true",
+      overflow: "hidden",
+      backgroundColor: "$background",
+      borderColor: "$borderColor",
+      borderWidth: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      ...props,
+      children: /* @__PURE__ */ jsx43(Text20, { children: "Video Component (Web Mock)" })
     }
-  ) });
+  );
 });
 
 // src/providers/AppProviders.tsx
@@ -16208,7 +16192,7 @@ var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clic
   pointerEvents: true
 });
 var pickProps2 = (props) => pick(props, forwardPropsList2);
-var Text20 = /* @__PURE__ */ React68.forwardRef((props, forwardedRef) => {
+var Text21 = /* @__PURE__ */ React68.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, numberOfLines = props.numberOfLines, onClick = props.onClick, onLayout = props.onLayout, onPress = props.onPress, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, selectable = props.selectable, rest = (0, import_objectWithoutPropertiesLoose13.default)(props, _excluded13);
   var hasTextAncestor = React68.useContext(TextAncestorContext_default);
   var hostRef = React68.useRef(null);
@@ -16280,7 +16264,7 @@ var Text20 = /* @__PURE__ */ React68.forwardRef((props, forwardedRef) => {
     value: true
   }, element);
 });
-Text20.displayName = "Text";
+Text21.displayName = "Text";
 var textStyle = {
   backgroundColor: "transparent",
   border: "0 solid black",
@@ -16330,7 +16314,7 @@ var styles8 = StyleSheet_default.create({
     cursor: "pointer"
   }
 });
-var Text_default = Text20;
+var Text_default = Text21;
 
 // ../../node_modules/.pnpm/react-native-web@0.21.2_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
 var AnimatedText_default = createAnimatedComponent(Text_default);
@@ -19097,9 +19081,9 @@ var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ jsx45(Tama
 
 // src/fonts.ts
 var fonts = {
-  CeraProRegular: require_CeraPro_Regular(),
-  CeraProMedium: require_CeraPro_Medium(),
-  CeraProBlack: require_CeraPro_Black()
+  CeraProRegular: null,
+  CeraProMedium: null,
+  CeraProBlack: null
 };
 export {
   Accordion,
@@ -19284,6 +19268,7 @@ export {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
+  ResizeMode,
   RichText,
   ScrollArea,
   Select,

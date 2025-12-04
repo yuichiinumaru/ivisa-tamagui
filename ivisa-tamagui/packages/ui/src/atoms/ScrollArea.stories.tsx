@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { ScrollArea } from './ScrollArea'
-import { YStack, Text, For } from 'tamagui'
+import { YStack, Text } from 'tamagui'
 
 const meta: Meta<typeof ScrollArea> = {
   title: 'atoms/ScrollArea',
@@ -17,9 +17,9 @@ const meta: Meta<typeof ScrollArea> = {
     <ScrollArea {...args}>
       <YStack p="$4">
         <Text fontSize="$4" fontWeight="bold" mb="$2">Tags</Text>
-        <For each={Array.from({ length: 50 }).map((_, i) => `Tag ${i + 1}`)}>
-          {(tag) => <Text key={tag} py="$1">{tag}</Text>}
-        </For>
+        {Array.from({ length: 50 }).map((_, i) => `Tag ${i + 1}`).map((tag) => (
+          <Text key={tag} py="$1">{tag}</Text>
+        ))}
       </YStack>
     </ScrollArea>
   ),
@@ -37,9 +37,9 @@ export const Horizontal: Story = {
     render: (args) => (
         <ScrollArea {...args} horizontal>
             <YStack p="$4" flexDirection="row" gap="$4">
-                <For each={Array.from({ length: 20 })}>
-                    {(_, i) => <Text key={i} whiteSpace="nowrap">Item {i+1}</Text>}
-                </For>
+                {Array.from({ length: 20 }).map((_, i) => (
+                    <Text key={i} whiteSpace="nowrap">Item {i+1}</Text>
+                ))}
             </YStack>
         </ScrollArea>
     )
