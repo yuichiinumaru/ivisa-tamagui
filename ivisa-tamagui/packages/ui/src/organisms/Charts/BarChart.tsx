@@ -27,7 +27,7 @@ export const BarChart = ({
   const gridColor = theme.borderColor?.get() || '#eee'
 
   return (
-    <div style={{ height, width: width || '100%' }}>
+    <div style={{ height, width: width || 'auto', marginLeft: 12, marginRight: 12 }}>
       <VictoryChart
         domainPadding={{ x: 20 }}
         height={height}

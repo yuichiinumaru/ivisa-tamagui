@@ -4,7 +4,7 @@ import React from 'react'
 const ProgressFrame = styled(TamaguiProgress, {
     name: 'Progress',
     height: 16, // h-4
-    width: '100%',
+    marginHorizontal: '$true',
     backgroundColor: '$secondary',
     borderRadius: '$10', // rounded-full
     overflow: 'hidden',
