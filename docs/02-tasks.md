@@ -79,6 +79,7 @@
   - [ ] 38a – **Atoms**: `Alert`, `Avatar`, `Badge`, `Checkbox`, `Progress`, `ScrollArea`, `Separator`, `Skeleton`, `Slider`, `Spinner`, `Stack`, `Switch`, `Toggle`.
   - [ ] 38b – **Molecules**: `Accordion`, `AlertDialog`, `Calendar`, `Card`, `ComponentErrorBoundary`, `Drawer`, `DropdownMenu`, `HoverCard`, `Menubar`, `NavigationMenu`, `OTPInput`, `RadioGroup`, `Resizable`, `Tabs`, `Toast`, `ToggleGroup`.
   - [ ] 38c – **Organisms**: `Carousel`, `Command`, `DataTable`.
+  - [ ] 38d – **Fix Autocomplete Tests**: `Autocomplete.test.tsx` is currently disabled due to syntax/environment errors.
 
 35 - [ ] **Missing Documentation Specs (Implemented but no Spec)** (DOC)
   - [ ] 35a – Create specs for `ComponentErrorBoundary`

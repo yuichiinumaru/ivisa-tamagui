@@ -24,7 +24,7 @@ describe('Typography primitives', () => {
     expect(screen.getByTestId('lead')).toHaveTextContent('Lead copy')
     const quote = screen.getByTestId('quote')
     expect(quote).toHaveTextContent('Quote')
-    expect(quote.tagName).toBe('SPAN')
+    expect(quote.tagName).toBe('BLOCKQUOTE')
     expect(container).toMatchSnapshot()
   })
 })
