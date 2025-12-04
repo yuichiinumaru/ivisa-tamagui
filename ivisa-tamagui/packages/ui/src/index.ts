@@ -52,6 +52,9 @@ export * from './organisms/Carousel';
 export * from './organisms/Command';
 export * from './organisms/Sidebar';
 export * from './organisms/Charts';
+export * from './molecules/Field';
+export * from './molecules/InputGroup';
+export * from './molecules/NativeSelect';
 
 export * from './organisms/Video';
 export * from './providers/AppProviders';
