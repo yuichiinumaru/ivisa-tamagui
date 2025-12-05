@@ -119,3 +119,23 @@ Storybook is the primary environment for developing, testing, and documenting UI
 - **Strict Rule:** This repository must remain framework-agnostic. It cannot depend on `next`, `expo`, or `remix`.
 - **Integration:** It is designed to be consumed as a Git Submodule.
 - **Details:** See [`docs/08-submodule-strategy.md`](./08-submodule-strategy.md) for the full strategy and integration workflows.
+
+## 10. Upgrade Strategy
+
+### Tamagui & Core Dependencies
+- **Versioning:** We pin `tamagui` and related `@tamagui/*` packages to exact versions to avoid unexpected breakage.
+- **Process:** Upgrades are treated as major maintenance tasks.
+  1. Review Tamagui changelog for breaking changes (especially in Themes/Config).
+  2. Bump versions in `package.json`.
+  3. Run `pnpm build` and `pnpm test`.
+  4. visually verify key components (`Button`, `Input`, `Sheet`) in Storybook.
+
+### Headless Libraries
+- Libraries like `@tanstack/react-table`, `cmdk`, or `@rehookify/datepicker` are implementation details wrapped by our Organisms.
+- **Strategy:** We can upgrade these libraries independently of the Design System's major version, provided our Component API (props/exports) remains stable.
+- **Breaking Changes:** If a headless library introduces a breaking change that forces a prop change in our component, we should consider deprecating the old prop or bumping the Design System version.
+
+### Harvested Code ("Frankenstein" Components)
+- Components copied from references (e.g., `pogiii/sushi`, `tamagui-kitchen-sink`) are **detached** from their source once integrated.
+- **No Auto-Sync:** We do not automatically pull updates from these repos.
+- **Manual Re-harvest:** If a reference implementation significantly improves, we manually "re-harvest" the code, audit it, and merge it into our codebase, resolving any conflicts with our customization.
