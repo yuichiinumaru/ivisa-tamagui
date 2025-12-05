@@ -6,12 +6,14 @@ import { ChatScreen } from './src/screens/ChatScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
 import { DashboardScreen } from './src/screens/DashboardScreen';
 
-// 💀 The Rite of Resurrection: Typed Styles
+// Styled Components
 const SafeView = styled(SafeAreaView, {
   name: 'SafeView',
   flex: 1,
 })
 
+// Constants
+// TODO: Replace with proper i18n
 const TAB_LABELS = {
   CHAT: 'Chat',
   DASHBOARD: 'Dashboard',
@@ -34,7 +36,7 @@ export default function App() {
               disablePassBorderRadius
               loop={false}
               aria-label={TAB_LABELS.ARIA_LIST}
-              // 💀 Fix: Use tokens instead of hardcoded 0 radius if possible, or explicit styles
+              // TODO: Use tokens instead of hardcoded 0 radius if possible, or explicit styles
               borderBottomLeftRadius={0}
               borderBottomRightRadius={0}
               padding="$2"
