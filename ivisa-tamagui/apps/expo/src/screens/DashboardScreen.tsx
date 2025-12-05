@@ -60,7 +60,7 @@ export function DashboardScreen() {
           <H4 fontSize="$5">Weekly Sales</H4>
           {/* BarChart needs explicit width/height sometimes in Native, but let's try default */}
           <YStack height={250}>
-             <BarChart data={chartData} />
+             <BarChart data={chartData} xKey="x" yKey="y" />
           </YStack>
         </YStack>
       </Card>
