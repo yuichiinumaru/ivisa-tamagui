@@ -3,7 +3,7 @@ import { Checkbox } from './Checkbox'
 
 describe('Checkbox', () => {
   it('renders', async () => {
-    const { user } = render(<Checkbox id="term" />)
+    render(<Checkbox id="term" />)
     const checkbox = screen.getByRole('checkbox')
     expect(checkbox).toBeInTheDocument()
   })

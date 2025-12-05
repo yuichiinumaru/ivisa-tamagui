@@ -1,4 +1,4 @@
-import { render, screen } from '../../vitest.setup'
+import { render } from '../../vitest.setup'
 import { Skeleton } from './Skeleton'
 
 describe('Skeleton', () => {

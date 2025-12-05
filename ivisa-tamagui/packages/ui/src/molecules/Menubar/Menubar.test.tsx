@@ -3,23 +3,8 @@ import { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem } fro
 import { vi } from 'vitest'
 import React from 'react'
 
-vi.mock('tamagui', async () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const tamagui = await vi.importActual('tamagui');
-  return {
-    ...tamagui,
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    Text: (props: any) => <span {...props} />,
-    YStack: (props: any) => <div {...props} />,
-    XStack: (props: any) => <div {...props} />,
-    ScrollView: (props: any) => <div {...props} />,
-    ListItem: (props: any) => <div {...props} />,
-    YGroup: (props: any) => <div {...props} />,
-    YGroupItem: (props: any) => <div {...props} />,
-    /* eslint-enable @typescript-eslint/no-explicit-any */
-  };
-});
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 vi.mock('@radix-ui/react-menubar', () => ({
     Root: ({ children }: any) => <div>{children}</div>,
     Menu: ({ children }: any) => <div>{children}</div>,
@@ -38,6 +23,7 @@ vi.mock('@radix-ui/react-menubar', () => ({
     Sub: ({ children }: any) => <div>{children}</div>,
     RadioGroup: ({ children }: any) => <div>{children}</div>,
 }))
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 describe('Menubar', () => {
   it('renders menu', () => {

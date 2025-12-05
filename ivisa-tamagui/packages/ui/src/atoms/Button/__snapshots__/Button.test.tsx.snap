@@ -15,18 +15,11 @@ exports[`Button > matches snapshot 1`] = `
         style="color: var(--color); display: contents;"
       >
         <button
-          class="is_Button "
-          data-disable-theme="true"
           role="button"
-          style="display: flex; align-items: center; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; min-width: 0px; flex-shrink: 0; flex-direction: row; padding-right: var(--t-space-true); padding-left: var(--t-space-true); height: var(--t-size-true); justify-content: center; flex-wrap: nowrap; cursor: pointer; background-color: var(--primary); color: var(--background); border-width: 1px; border-style: solid; border-color: transparent;"
-          tabindex="0"
           type="button"
+          variant="default"
         >
-          <span
-            class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-background _fontSize-f-size-3 _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
-          >
-            Snapshot
-          </span>
+          Snapshot
         </button>
         <div
           style="display: contents;"

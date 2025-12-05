@@ -41,7 +41,7 @@ const RadioGroupIndicator = styled(TamaguiRadioGroup.Indicator, {
 // Composite Item to include Indicator automatically
 const RadioGroupItem = React.forwardRef<React.ElementRef<typeof RadioGroupItemFrame>, GetProps<typeof RadioGroupItemFrame>>((props, ref) => {
     return (
-        <RadioGroupItemFrame ref={ref} {...props}>
+        <RadioGroupItemFrame ref={ref} role="radio" {...props}>
             <RadioGroupIndicator />
         </RadioGroupItemFrame>
     )

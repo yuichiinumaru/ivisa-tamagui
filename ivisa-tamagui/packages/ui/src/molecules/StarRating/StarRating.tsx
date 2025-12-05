@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from 'react'
-import { SizableStack, SizeTokens, XStack, XStackProps } from 'tamagui'
+import { SizableStack, SizeTokens, TamaguiElement, XStack, XStackProps } from 'tamagui'
 import { Star } from '@tamagui/lucide-icons'
 
 export type StarRatingProps = XStackProps & {
@@ -9,17 +9,15 @@ export type StarRatingProps = XStackProps & {
   defaultValue?: number | null
   size?: SizeTokens
   disabled?: boolean
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  iconProps?: any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Icon?: any
+  iconProps?: Record<string, unknown>
+  Icon?: React.ElementType
   colorActive?: string
   colorHover?: string
   colorActiveHover?: string
   color?: string
 }
 
-export const StarRating = forwardRef<any, StarRatingProps>(({
+export const StarRating = forwardRef<TamaguiElement, StarRatingProps>(({
   count = 5,
   onChange,
   value,
