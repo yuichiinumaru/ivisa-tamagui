@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { YStack, XStack, Label, H4, Text } from 'tamagui'
-import { Switch, Button, Select, Separator } from '@ivisa/ui'
+import { YStack, XStack } from 'tamagui'
+import { Switch, Button, Select, Separator, Label, H4, MutedText } from '@ivisa/ui'
 
 export function SettingsScreen() {
   const [notifications, setNotifications] = useState(true)
@@ -11,7 +11,7 @@ export function SettingsScreen() {
     <YStack flex={1} padding="$4" gap="$6" backgroundColor="$background">
       <YStack gap="$2">
         <H4>Preferences</H4>
-        <Text color="$mutedForeground">Manage your app settings.</Text>
+        <MutedText>Manage your app settings.</MutedText>
       </YStack>
 
       <Separator />
@@ -20,7 +20,7 @@ export function SettingsScreen() {
         <XStack alignItems="center" justifyContent="space-between">
           <YStack>
             <Label fontWeight="bold">Dark Mode</Label>
-            <Text fontSize="$2" color="$mutedForeground">Switch between light and dark themes</Text>
+            <MutedText fontSize="$2">Switch between light and dark themes</MutedText>
           </YStack>
           <Switch checked={darkMode} onCheckedChange={setDarkMode}>
             <Switch.Thumb animation="quick" />
@@ -32,7 +32,7 @@ export function SettingsScreen() {
         <XStack alignItems="center" justifyContent="space-between">
           <YStack>
             <Label fontWeight="bold">Notifications</Label>
-            <Text fontSize="$2" color="$mutedForeground">Receive alerts and updates</Text>
+            <MutedText fontSize="$2">Receive alerts and updates</MutedText>
           </YStack>
           <Switch checked={notifications} onCheckedChange={setNotifications}>
             <Switch.Thumb animation="quick" />

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-require-imports */
+import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import App from './App';
 
@@ -7,7 +9,7 @@ jest.mock('@ivisa/ui', () => {
   const React = require('react');
   const { View, Text, TouchableOpacity } = require('react-native');
 
-  const TabsContext = React.createContext({ value: '', setValue: (v: string) => {} });
+  const TabsContext = React.createContext({ value: '', setValue: (_v: string) => {} });
 
   const Tabs = ({ children, defaultValue, value, onValueChange }: any) => {
     const [internalValue, setInternalValue] = React.useState(defaultValue || value);
@@ -54,6 +56,10 @@ jest.mock('@ivisa/ui', () => {
     Select: () => <View />,
     DataTable: () => <View testID="data-table" />,
     BarChart: () => <View testID="bar-chart" />,
+    Label: ({ children }: any) => <Text>{children}</Text>,
+    H4: ({ children }: any) => <Text>{children}</Text>,
+    MutedText: ({ children }: any) => <Text>{children}</Text>,
+    Text: ({ children }: any) => <Text>{children}</Text>,
   };
 });
 

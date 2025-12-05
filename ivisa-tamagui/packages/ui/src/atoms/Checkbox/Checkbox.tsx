@@ -74,6 +74,7 @@ const CheckboxImpl = React.forwardRef<React.ElementRef<typeof TamaguiCheckbox>, 
         ref={ref}
         checked={checked}
         onCheckedChange={onCheckedChange}
+        role="checkbox"
         {...props}
       >
         <StyledIndicator>

@@ -1,6 +1,6 @@
 import React from 'react'
-import { YStack, XStack, ScrollView, Text } from 'tamagui'
-import { Input, Button, Avatar, Card, Separator } from '@ivisa/ui'
+import { YStack, XStack, ScrollView } from 'tamagui'
+import { Input, Button, Avatar, Card, Separator, MutedText, Text } from '@ivisa/ui'
 
 export function ChatScreen() {
   return (
@@ -18,7 +18,7 @@ export function ChatScreen() {
             sender="Me"
           />
           <Separator marginVertical="$2" />
-          <Text textAlign="center" fontSize="$1" color="$mutedForeground">Today, 10:23 AM</Text>
+          <MutedText textAlign="center" fontSize="$1">Today, 10:23 AM</MutedText>
           <ChatBubble
             message="Sure! You can use the ChatScreen component as a reference."
             isMe={false}
@@ -48,7 +48,7 @@ function ChatBubble({ message, isMe, sender }: { message: string, isMe: boolean,
         </Avatar>
       )}
       <YStack maxWidth="70%">
-        {!isMe && <Text fontSize="$1" color="$mutedForeground" marginBottom="$1">{sender}</Text>}
+        {!isMe && <MutedText fontSize="$1" marginBottom="$1">{sender}</MutedText>}
         <Card
           padded
           bordered

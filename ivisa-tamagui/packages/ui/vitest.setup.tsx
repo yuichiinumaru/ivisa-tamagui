@@ -46,8 +46,8 @@ vi.mock('tamagui', async (importOriginal) => {
   const react = await import('react')
 
   // 💀 Resurrection: Fixed scope error. Passed options to mockComponent factory.
-  const mockComponent = (tag, componentOptions = {}) =>
-    react.forwardRef(({ children, ...props }, ref) => {
+  const mockComponent = (tag, componentOptions = {}) => {
+    const Comp = react.forwardRef(({ children, ...props }, ref) => {
       const { asChild, ...rest } = props
 
       if (asChild && React.isValidElement(children)) {
@@ -78,7 +78,7 @@ vi.mock('tamagui', async (importOriginal) => {
         validProps.onClick = props.onPress
       }
 
-      // Add role="button" if it's a Button
+      // Add role="button" if it's a Button, or if role is specified in options
       if (props.role) {
         validProps.role = props.role
       } else if (componentOptions?.role) {
@@ -89,10 +89,36 @@ vi.mock('tamagui', async (importOriginal) => {
 
       return React.createElement(tag, { ...validProps, ref }, children)
     })
+    // @ts-expect-error - Adding custom property to React component for mock identification
+    Comp.__tag = tag
+    // @ts-expect-error - Adding custom property
+    Comp.__role = componentOptions?.role
+    return Comp
+  }
 
   return {
     ...tamagui,
     styled: (Component, options) => {
+      // Determine tag from component if possible to preserve semantic HTML
+      let tag = options?.tag
+      if (!tag) {
+        if (typeof Component === 'string') {
+          tag = Component
+        } else if (Component?.__tag) {
+          tag = Component.__tag
+        } else {
+          tag = 'div'
+        }
+      }
+
+      // Determine role inheritance
+      let role = options?.role
+      if (!role && Component?.__role) {
+        role = Component.__role
+      }
+
+      // Pass options to the mock factory
+      const Comp = mockComponent(tag, { ...options, role })
       if (options?.name) {
         let tag = options.tag || 'div'
         const extraOptions = { ...options }
@@ -111,12 +137,14 @@ vi.mock('tamagui', async (importOriginal) => {
         // Pass options to the mock factory
         const Comp = mockComponent(tag, extraOptions)
         Comp.displayName = options.name
-        return Comp
       }
-      return Component
+      return Comp
     },
     Stack: mockComponent('div'),
     XStack: mockComponent('div'),
+    XGroup: Object.assign(mockComponent('div'), {
+      Item: mockComponent('div'),
+    }),
     Text: mockComponent('span'),
     Image: mockComponent('img'),
     View: mockComponent('div'),

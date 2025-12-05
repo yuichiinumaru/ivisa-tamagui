@@ -52,7 +52,7 @@ import React from 'react'
 
 export const SwitchComponent = React.forwardRef<React.ElementRef<typeof SwitchFrame>, GetProps<typeof SwitchFrame>>((props, ref) => {
     return (
-        <SwitchFrame ref={ref} {...props}>
+        <SwitchFrame ref={ref} role="switch" {...props}>
             <SwitchThumb />
         </SwitchFrame>
     )

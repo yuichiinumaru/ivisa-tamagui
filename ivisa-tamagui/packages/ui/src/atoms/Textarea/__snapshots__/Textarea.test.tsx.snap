@@ -14,30 +14,14 @@ exports[`Textarea > renders multiline textbox with accessible label and default 
         class=" t_dark is_Theme"
         style="color: var(--color); display: contents;"
       >
-        <span
-          class="_dsp_contents"
+        <textarea
+          aria-invalid="false"
+          aria-label="Description"
+          style="resize: vertical;"
+          variant="default"
         >
-          <span
-            class="_dsp_contents"
-          >
-            <textarea
-              aria-invalid="false"
-              aria-label="Description"
-              autocapitalize="sentences"
-              autocomplete="on"
-              autocorrect="on"
-              class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 is_TextArea font_body _btc-0hover-borderColor69916956 _brc-0hover-borderColor69916956 _borderBottomColor-0hover-borderColor69916956 _borderLeftColor-0hover-borderColor69916956 _btc-0focus-ring _brc-0focus-ring _borderBottomColor-0focus-ring _borderLeftColor-0focus-ring _outlineWidth-0focus-visible-2px _outlineStyle-0focus-visible-solid _btw-0focus-2px _brw-0focus-2px _borderBottomWidth-0focus-2px _borderLeftWidth-0focus-2px _borderBottomStyle-0focus-solid _borderTopStyle-0focus-solid _borderLeftStyle-0focus-solid _borderRightStyle-0focus-solid _o-0disabled-0--6 _ws-pre-wrap _pr-t-space-sm _pl-t-space-sm _h-auto _ff-f-family _pt-t-space-sm _pb-t-space-sm _btw-1px _brw-1px _borderBottomWidth-1px _borderLeftWidth-1px _outlineWidth-0px _col-color _btc-borderColor _brc-borderColor _borderBottomColor-borderColor _borderLeftColor-borderColor _backgroundColor-background _minWidth-0px _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid _btlr-t-radius-sm _btrr-t-radius-sm _bbrr-t-radius-sm _bblr-t-radius-sm _w-10037 _minHeight-124px true is_Textarea "
-              data-disable-theme="true"
-              dir="auto"
-              rows="4"
-              spellcheck="true"
-              tabindex="0"
-              virtualkeyboardpolicy="auto"
-            >
-              Initial value
-            </textarea>
-          </span>
-        </span>
+          Initial value
+        </textarea>
         <div
           style="display: contents;"
         />

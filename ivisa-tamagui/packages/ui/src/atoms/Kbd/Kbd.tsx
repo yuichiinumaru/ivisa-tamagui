@@ -1,6 +1,7 @@
 import { styled, Text } from 'tamagui'
 
 export const Kbd = styled(Text, {
+  name: 'Kbd',
   tag: 'kbd',
   fontSize: 12,
   fontWeight: '500',

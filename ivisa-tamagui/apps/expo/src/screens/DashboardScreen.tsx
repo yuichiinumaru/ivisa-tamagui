@@ -1,6 +1,6 @@
 import React from 'react'
-import { YStack, H4, Text, XStack } from 'tamagui'
-import { DataTable, BarChart, Card } from '@ivisa/ui'
+import { YStack } from 'tamagui'
+import { DataTable, BarChart, Card, H4, Text } from '@ivisa/ui'
 import { ColumnDef } from '@tanstack/react-table'
 
 type Transaction = {
