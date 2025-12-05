@@ -48,7 +48,7 @@
 
 ### 5.1 Shared Tamagui Config Directive
 - The design team’s reference config at `docs/tamaguiconfig.txt` is the **canonical source of palette and theme scales** for the company.
-- This project currently uses a local `tokens.ts` + `tamagui.config.ts` implementation for light/dark themes; **Task 14** in `docs/02-tasks.md` tracks the work to align those tokens/themes with the shared config (potentially via `@tamagui/theme-builder`).
+- This project currently uses a local `tokens.ts` + `tamagui.config.ts` implementation for light/dark themes; **Task 14** in `docs/02-tasks.md` tracks the work to align those tokens/themes with the shared config (likely using `@tamagui/theme-builder`).
 - Rationale: we keep the design system stable while we migrate toward the shared config in a controlled way, preserving existing component contracts and Atomic Design documentation.
 
 ## 6. Phase Roadmap
@@ -58,7 +58,7 @@
 - Identify which surfaces will use `tamagui/ui`, which can be sourced from Bento Free, and which require headless libraries + Tamagui composites.
 - Decide explicitly **not** to port shadcn components 1:1, but to build a Tamagui-first design system with shadcn-inspired theming.
 
-### Phase 1 – Foundation: Theme, Config, Forms & Tooling
+### Phase 1 – Foundation: Theme, Config, Forms & Tooling (Completed)
 - Implement Tamagui theme/tokens mirroring shadcn or Pink colors and radius (e.g., `themes.ts` + `tamagui.config.ts`).
 - Wire `TamaguiProvider` + `PortalProvider` into the app entrypoints and smoke-test basic primitives.
 - Establish the forms stack: `react-hook-form` + `zod`.
@@ -67,7 +67,7 @@
     - Configure the testing framework (**Vitest** + **React Testing Library**).
     - Perform a minimal setup of **Storybook** to enable isolated component development and visual tracking from the start.
 
-### Phase 2 – High-Impact Gaps (Data Table, Calendar, Command Palette)
+### Phase 2 – High-Impact Gaps (Data Table, Calendar, Command Palette) (Completed)
 - **Data Table:** Implement an `DataTable` composite using `@tanstack/react-table` for logic and Tamagui primitives for rendering.
 - **Calendar / Date Picker:** Implement an `Calendar` / `DatePicker` composite using `@rehookify/datepicker` hooks, rendered inside a Tamagui `Sheet` or `Dialog`.
 - **Command Palette (Cmd+K):** Implement an `CommandPalette` composite using `cmdk` as headless logic, wrapped inside a Tamagui `Dialog` or `Sheet`.
@@ -77,6 +77,11 @@
 - **Input OTP:** Implement an `OTPInput` composite, using patterns from `pogiii/sushi`.
 - **Pagination & Breadcrumb:** Implement lightweight, Tamagui-only `Pagination` and `Breadcrumb` components.
 - **Sidebar & Charts:** Implemented as Organisms.
+
+### Phase 3.1 – Structural Resurrection (Current)
+- **Governance:** Enforce "FORGE v2" protocols.
+- **Audit:** Conduct "Zero-Mercy" code autopsy and set remediation plan.
+- **Documentation:** Align `docs/` with reality and prepare for strict enforcement.
 
 ### Phase 4 – Web-Specific UX & Full Documentation
 - **Navigation Menu / Menubar / Context Menu:** For desktop-style navigation, use Radix Primitives and render them with Tamagui primitives. (Completed)
