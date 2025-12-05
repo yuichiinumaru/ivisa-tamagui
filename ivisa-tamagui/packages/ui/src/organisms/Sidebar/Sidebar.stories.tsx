@@ -7,6 +7,23 @@ const meta = {
   component: Sidebar,
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component: `
+### Sidebar
+The Application Sidebar. It acts as a collapsible drawer on mobile (using Sheet) and a fixed or floating sidebar on desktop.
+
+### Usage
+Wrap your main content layout with the Sidebar provider or place it as the primary navigation element.
+It supports different variants:
+- **Fixed**: Always visible on the side.
+- **Collapsible**: Can be expanded/collapsed.
+- **Floating**: Floats over content (often used for mobile or overlay modes).
+
+Note: This component handles responsive behavior automatically.
+`,
+      },
+    },
   },
   argTypes: {
     variant: {

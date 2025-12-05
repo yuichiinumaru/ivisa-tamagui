@@ -8,15 +8,15 @@
 
 ## 🚀 Current Focus: Phase 4 – Web-Specific UX & Full Documentation
 
-25 - [ ] **Populate Storybook as Source of Truth** (DOC)
-  - [ ] 25a – **Primary Docs**: Ensure every component has a Storybook entry with full description and props documentation.
-  - [ ] 25b – **Visual States**: Create stories for all variants and states (hover, press, error).
-  - [ ] 25c – **Usage Notes**: Add usage guidelines directly in Storybook MDX or description fields.
+25 - [~] **Populate Storybook as Source of Truth** (DOC)
+  - [~] 25a – **Primary Docs**: Ensure every component has a Storybook entry with full description and props documentation.
+  - [~] 25b – **Visual States**: Create stories for all variants and states (hover, press, error).
+  - [~] 25c – **Usage Notes**: Add usage guidelines directly in Storybook MDX or description fields.
 
-26 - [ ] **Documentation Passes** (DOC)
-  - [ ] 26a – Ensure `docs/01-plan.md`, `docs/02-tasks.md`, and `docs/03-architecture.md` are in sync with current implementation.
-  - [ ] 26b – Record major milestones and decisions in `docs/04-changelog.md`.
-  - [ ] 26c – **Document Multi-Root Workspace**: Add instructions for setting up VSCode Multi-Root Workspace for referencing `sushi` and `tamagui-kitchen-sink`.
+26 - [x] **Documentation Passes** (DOC)
+  - [x] 26a – Ensure `docs/01-plan.md`, `docs/02-tasks.md`, and `docs/03-architecture.md` are in sync with current implementation.
+  - [x] 26b – Record major milestones and decisions in `docs/04-changelog.md`.
+  - [x] 26c – **Document Multi-Root Workspace**: Add instructions for setting up VSCode Multi-Root Workspace for referencing `sushi` and `tamagui-kitchen-sink`.
 
 ---
 

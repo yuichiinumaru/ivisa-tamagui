@@ -43,6 +43,10 @@ All notable changes to this design system and its documentation will be recorded
 - **Cleanup**: Removed legacy `migrated/` folder to streamline the codebase.
 
 ## [Unreleased]
+- **Documentation**:
+  - Updated `ivisa.code-workspace` to reference `referencias` folder.
+  - Added "Multi-Root Workspace" setup guide to `docs/03-architecture.md`.
+  - Enriched Storybook documentation for `Button` and `Sidebar` with usage notes and descriptions.
 - Implemented `AspectRatio` atom using Tamagui `Stack`.
 - Implemented `Collapsible` molecule using `@radix-ui/react-collapsible` and `react-animate-height`.
 - Captured the new research-driven strategy for building a Tamagui-based design system in `docs/00-draft-new-research.md`.
