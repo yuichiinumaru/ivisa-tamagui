@@ -5,11 +5,41 @@ import userEvent from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { AppProviders } from './src/providers/AppProviders'
 
-vi.mock('react-native', () => ({
-  StyleSheet: {
-    create: (style) => style,
-  },
-}))
+vi.mock('react-native', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const React = require('react')
+  const View = React.forwardRef(({ accessibilityRole, ...props }: any, ref: any) => {
+    return React.createElement('div', { ...props, role: accessibilityRole, ref }, props.children)
+  })
+  const Text = React.forwardRef(({ accessibilityRole, ...props }: any, ref: any) => {
+    return React.createElement('span', { ...props, role: accessibilityRole, ref }, props.children)
+  })
+  const Image = React.forwardRef(({ source, ...props }: any, ref: any) => {
+    return React.createElement('img', { ...props, src: source?.uri || props.src, ref, role: 'img' })
+  })
+  const Switch = React.forwardRef(({ ...props }: any, ref: any) => {
+    return React.createElement('input', { type: 'checkbox', role: 'switch', ...props, ref })
+  })
+
+  return {
+    StyleSheet: {
+      create: (style: any) => style,
+      flatten: (style: any) => style,
+    },
+    View,
+    Text,
+    Image,
+    Switch,
+    ScrollView: View,
+    TouchableOpacity: View,
+    Pressable: View,
+    Platform: { OS: 'web', select: (obj: any) => obj.web || obj.default },
+    Appearance: { getColorScheme: () => 'light', addChangeListener: () => {} },
+    AccessibilityInfo: { isScreenReaderEnabled: () => Promise.resolve(false) },
+    I18nManager: { isRTL: false },
+    InteractionManager: { runAfterInteractions: (fn: any) => { fn(); return { cancel: () => {} } } },
+  }
+})
 
 vi.mock('tamagui', async (importOriginal) => {
   const tamagui = await importOriginal()
@@ -90,6 +120,22 @@ vi.mock('tamagui', async (importOriginal) => {
       // Pass options to the mock factory
       const Comp = mockComponent(tag, { ...options, role })
       if (options?.name) {
+        let tag = options.tag || 'div'
+        const extraOptions = { ...options }
+
+        if (options.name === 'AvatarImage') {
+          tag = 'img'
+        }
+        if (options.name === 'Switch') {
+          tag = 'button'
+          extraOptions.role = 'switch'
+        }
+        if (options.name === 'Progress') {
+          extraOptions.role = 'progressbar'
+        }
+
+        // Pass options to the mock factory
+        const Comp = mockComponent(tag, extraOptions)
         Comp.displayName = options.name
       }
       return Comp
@@ -116,49 +162,14 @@ vi.mock('tamagui', async (importOriginal) => {
     ListItem: mockComponent('div'),
     ScrollView: mockComponent('div'),
     YStack: mockComponent('div'),
-    Input: mockComponent('input'),
-    TextArea: mockComponent('textarea'),
-    Button: mockComponent('button', { name: 'Button' }),
-    Checkbox: Object.assign(mockComponent('button', { role: 'checkbox' }), {
-      Indicator: mockComponent('div'),
-    }),
-    Switch: Object.assign(mockComponent('button', { role: 'switch' }), {
-      Thumb: mockComponent('div'),
-    }),
-    RadioGroup: Object.assign(mockComponent('div'), {
-      Item: mockComponent('button', { role: 'radio' }),
-      Indicator: mockComponent('div'),
-    }),
-    Slider: Object.assign(mockComponent('div', { role: 'slider' }), {
-      Track: mockComponent('div'),
-      Range: mockComponent('div'),
-      Thumb: mockComponent('div'),
-    }),
-    Progress: Object.assign(mockComponent('progress', { role: 'progressbar' }), {
-      Indicator: mockComponent('div'),
-    }),
-    Accordion: Object.assign(mockComponent('div'), {
-      Item: mockComponent('div'),
-      Header: mockComponent('div', { role: 'heading' }),
-      Trigger: mockComponent('button'),
-      Content: mockComponent('div'),
-      HeightAnimator: mockComponent('div'),
-    }),
-    Label: mockComponent('label'),
     Avatar: Object.assign(mockComponent('div'), {
       Image: mockComponent('img'),
       Fallback: mockComponent('div'),
     }),
-    Group: Object.assign(mockComponent('div'), {
-      Item: mockComponent('div'),
+    Switch: mockComponent('button', { role: 'switch' }),
+    Progress: Object.assign(mockComponent('div', { role: 'progressbar' }), {
+      Indicator: mockComponent('div'),
     }),
-    H1: mockComponent('h1'),
-    H2: mockComponent('h2'),
-    H3: mockComponent('h3'),
-    H4: mockComponent('h4'),
-    H5: mockComponent('h5'),
-    H6: mockComponent('h6'),
-    Paragraph: mockComponent('p'),
   }
 })
 

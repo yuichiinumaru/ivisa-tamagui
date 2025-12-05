@@ -1,4 +1,7 @@
 import { render, screen } from '../../../vitest.setup';
+import { describe, it, expect } from 'vitest';
+import React from 'react';
+
 import { describe, it, expect, vi } from 'vitest';
 import { Autocomplete, AutocompleteOption } from './Autocomplete';
 import userEvent from '@testing-library/user-event';

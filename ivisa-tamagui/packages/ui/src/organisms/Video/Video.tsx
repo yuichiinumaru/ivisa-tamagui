@@ -20,8 +20,8 @@ export type VideoProps = StackProps & {
     onPlaybackStatusUpdate?: unknown
 }
 
-export const Video = forwardRef<TamaguiElement, VideoProps>(({
-    src: _src,
+export const Video = forwardRef<unknown, VideoProps>(({
+    src,
     width,
     height = 200,
     ...props
@@ -40,7 +40,7 @@ export const Video = forwardRef<TamaguiElement, VideoProps>(({
           justifyContent="center"
           {...props}
         >
-            <Text>Video Component (Web Mock)</Text>
+            <Text>Video Component (Web Mock){src ? ` - ${src}` : ''}</Text>
         </Stack>
     )
 })
