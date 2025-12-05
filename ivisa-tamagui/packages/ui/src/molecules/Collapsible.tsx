@@ -40,7 +40,7 @@ const CollapsibleTrigger = styled(CollapsiblePrimitive.Trigger, {
 
 const CollapsibleContent = React.forwardRef<
   React.ElementRef<typeof CollapsiblePrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content> & { animateHeightProps?: any }
+  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content> & { animateHeightProps?: unknown }
 >(({ children, animateHeightProps, ...props }, ref) => {
   const { open } = useContext(CollapsibleContext)
 

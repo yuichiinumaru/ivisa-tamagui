@@ -5,11 +5,41 @@ import userEvent from '@testing-library/user-event'
 import { vi } from 'vitest'
 import { AppProviders } from './src/providers/AppProviders'
 
-vi.mock('react-native', () => ({
-  StyleSheet: {
-    create: (style) => style,
-  },
-}))
+vi.mock('react-native', () => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const React = require('react')
+  const View = React.forwardRef(({ accessibilityRole, ...props }: any, ref: any) => {
+    return React.createElement('div', { ...props, role: accessibilityRole, ref }, props.children)
+  })
+  const Text = React.forwardRef(({ accessibilityRole, ...props }: any, ref: any) => {
+    return React.createElement('span', { ...props, role: accessibilityRole, ref }, props.children)
+  })
+  const Image = React.forwardRef(({ source, ...props }: any, ref: any) => {
+    return React.createElement('img', { ...props, src: source?.uri || props.src, ref, role: 'img' })
+  })
+  const Switch = React.forwardRef(({ ...props }: any, ref: any) => {
+    return React.createElement('input', { type: 'checkbox', role: 'switch', ...props, ref })
+  })
+
+  return {
+    StyleSheet: {
+      create: (style: any) => style,
+      flatten: (style: any) => style,
+    },
+    View,
+    Text,
+    Image,
+    Switch,
+    ScrollView: View,
+    TouchableOpacity: View,
+    Pressable: View,
+    Platform: { OS: 'web', select: (obj: any) => obj.web || obj.default },
+    Appearance: { getColorScheme: () => 'light', addChangeListener: () => {} },
+    AccessibilityInfo: { isScreenReaderEnabled: () => Promise.resolve(false) },
+    I18nManager: { isRTL: false },
+    InteractionManager: { runAfterInteractions: (fn: any) => { fn(); return { cancel: () => {} } } },
+  }
+})
 
 vi.mock('tamagui', async (importOriginal) => {
   const tamagui = await importOriginal()
@@ -27,10 +57,10 @@ vi.mock('tamagui', async (importOriginal) => {
       // Filter out props that are not valid for the underlying DOM element
       const {
         // Tamagui-specific style props
-        animation,
-        animateOnly,
-        debug,
-        gap,
+        animation: _animation,
+        animateOnly: _animateOnly,
+        debug: _debug,
+        gap: _gap,
         // etc.
         // Also filter out any props starting with '$'
         ...otherProps
@@ -51,6 +81,8 @@ vi.mock('tamagui', async (importOriginal) => {
       // Add role="button" if it's a Button
       if (props.role) {
         validProps.role = props.role
+      } else if (componentOptions?.role) {
+        validProps.role = componentOptions.role
       } else if (tag === 'button' || (componentOptions?.name === 'Button')) {
         validProps.role = 'button'
       }
@@ -62,8 +94,22 @@ vi.mock('tamagui', async (importOriginal) => {
     ...tamagui,
     styled: (Component, options) => {
       if (options?.name) {
+        let tag = options.tag || 'div'
+        const extraOptions = { ...options }
+
+        if (options.name === 'AvatarImage') {
+          tag = 'img'
+        }
+        if (options.name === 'Switch') {
+          tag = 'button'
+          extraOptions.role = 'switch'
+        }
+        if (options.name === 'Progress') {
+          extraOptions.role = 'progressbar'
+        }
+
         // Pass options to the mock factory
-        const Comp = mockComponent(options.tag || 'div', options)
+        const Comp = mockComponent(tag, extraOptions)
         Comp.displayName = options.name
         return Comp
       }
@@ -88,6 +134,14 @@ vi.mock('tamagui', async (importOriginal) => {
     ListItem: mockComponent('div'),
     ScrollView: mockComponent('div'),
     YStack: mockComponent('div'),
+    Avatar: Object.assign(mockComponent('div'), {
+      Image: mockComponent('img'),
+      Fallback: mockComponent('div'),
+    }),
+    Switch: mockComponent('button', { role: 'switch' }),
+    Progress: Object.assign(mockComponent('div', { role: 'progressbar' }), {
+      Indicator: mockComponent('div'),
+    }),
   }
 })
 

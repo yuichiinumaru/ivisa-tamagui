@@ -21,7 +21,7 @@ const ProgressIndicator = styled(TamaguiProgress.Indicator, {
 // Composite component
 const Progress = React.forwardRef<React.ElementRef<typeof ProgressFrame>, GetProps<typeof ProgressFrame> & { value?: number }>((props, ref) => {
     return (
-        <ProgressFrame ref={ref} value={props.value} {...props}>
+        <ProgressFrame ref={ref} value={props.value} aria-valuenow={props.value} {...props}>
             <ProgressIndicator />
         </ProgressFrame>
     )

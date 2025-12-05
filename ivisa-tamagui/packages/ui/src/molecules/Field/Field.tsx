@@ -1,4 +1,4 @@
-import { styled, YStack, Text, GetProps } from 'tamagui'
+import { styled, YStack, Text } from 'tamagui'
 import { Label } from '../../atoms/Label'
 
 export const Field = styled(YStack, {

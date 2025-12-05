@@ -1,4 +1,4 @@
-import { styled, Stack, Text, GetProps } from 'tamagui'
+import { styled, Stack, Text } from 'tamagui'
 
 export const Table = styled(Stack, {
   name: 'Table',

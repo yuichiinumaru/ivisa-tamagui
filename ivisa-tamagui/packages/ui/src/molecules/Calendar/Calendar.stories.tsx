@@ -68,7 +68,7 @@ export const Default: Story = {
 export const NoDateSelected: Story = {
   name: "No Date Selected",
   args: {
-    // @ts-ignore-next-line - Explicitly setting to undefined
+    // @ts-expect-error - Explicitly setting to undefined
     selectedDate: undefined,
     onDateChange: action('onDateChange'),
   },

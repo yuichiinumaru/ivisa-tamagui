@@ -19,7 +19,7 @@ export type StarRatingProps = XStackProps & {
   color?: string
 }
 
-export const StarRating = forwardRef<any, StarRatingProps>(({
+export const StarRating = forwardRef<unknown, StarRatingProps>(({
   count = 5,
   onChange,
   value,

@@ -12,15 +12,15 @@ export const ResizeMode = {
 export type VideoProps = StackProps & {
     src?: string
     useNativeControls?: boolean
-    resizeMode?: any
-    source?: any
+    resizeMode?: unknown
+    source?: unknown
     isLooping?: boolean
     shouldPlay?: boolean
-    status?: any
-    onPlaybackStatusUpdate?: any
+    status?: unknown
+    onPlaybackStatusUpdate?: unknown
 }
 
-export const Video = forwardRef<any, VideoProps>(({
+export const Video = forwardRef<unknown, VideoProps>(({
     src,
     width,
     height = 200,
@@ -40,7 +40,7 @@ export const Video = forwardRef<any, VideoProps>(({
           justifyContent="center"
           {...props}
         >
-            <Text>Video Component (Web Mock)</Text>
+            <Text>Video Component (Web Mock){src ? ` - ${src}` : ''}</Text>
         </Stack>
     )
 })
