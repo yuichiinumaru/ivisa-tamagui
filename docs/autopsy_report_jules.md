@@ -1,92 +1,64 @@
-# AUTOPSY REPORT: ZERO-MERCY PATHOLOGY
+# Autopsy Report: The Forensic Code Pathologist
 
-**Pathologist:** The Senior Engineer Forensic Pathologist (Jules)
+**Pathologist:** Jules (Zero-Mercy Mode)
 **Date:** 2024-05-24
-**Scope:** `packages/ui/src` (Representative Sample) & `apps/expo`
-**Doctrine:** Atomic Decomposition
+**Doctrine:** Atomic Decomposition & Recursive Micro-Analysis
 
 ---
 
 ## Section 1: The File-by-File Breakdown
 
-### File: `packages/ui/src/atoms/Button/Button.tsx`
-**Shame Score:** 85/100
-**Findings:**
-* `[Line 4]` **(Nitpick)**: "💀 The Rite of Resurrection" comment. Unprofessional. Codebase is not a fantasy novel.
-* `[Line 66]` **(Nitpick)**: `type={props.type || 'button'}`. Good security practice (prevents accidental submits), but implementation via explicit prop override is verbose.
-* `[Line 8]` **(Nitpick)**: `color: '$primaryForeground'`. Good fix from previous audit, but comments confirming it ("Fixed: ...") are now zombie comments. Remove them.
-
-### File: `packages/ui/src/atoms/Input/Input.tsx`
-**Shame Score:** 90/100
-**Findings:**
-* `[Line 16]` **(High)**: `throw new Error(...)`. "Fail Loudly" pattern is excellent for composition.
-* `[Line 24]` **(Med)**: `variants: { variant: { ... } }`. The nested `variant` key inside `variants` is syntactically correct for Tamagui but cognitively high-load. It relies on the user knowing Tamagui's specific DSL quirks.
-* `[Line 140]` **(Nitpick)**: `InputField` component. `displayName` assignment is good.
-
-### File: `packages/ui/src/atoms/Textarea/Textarea.tsx`
-**Shame Score:** 60/100
-**Findings:**
-* `[Line 104]` **(Critical)**: `style={{ resize: 'vertical' } as any}`. **ABSOLUTE FILTH.** You used `as any` to bypass the type checker because you couldn't figure out how to type a style object.
-* `[Line 103]` **(Nitpick)**: `eslint-disable-next-line`. You silenced the linter instead of fixing the problem.
-* `[Line 113]` **(Med)**: `withErrorLogging`. HOC usage adds runtime overhead. Is it necessary for a simple Textarea?
-
-### File: `packages/ui/src/molecules/Select/Select.tsx`
-**Shame Score:** 75/100
-**Findings:**
-* `[Line 33]` **(Nitpick)**: `ChevronDownIcon` using literal "▼". Use a real icon library or SVG. This looks cheap.
-* `[Line 49]` **(Med)**: `eslint-disable-next-line @typescript-eslint/no-unused-vars`. The `ref` is unused. If it's not forwarded, don't declare it, or use `_ref`.
-* `[Line 87]` **(High)**: `zIndex={200000}`. **MAGIC NUMBER.** This will eventually conflict with another z-index war. Use a token or constant.
-
-### File: `packages/ui/src/molecules/DatePicker.tsx`
-**Shame Score:** 80/100
-**Findings:**
-* `[Line 27]` **(Med)**: `console.warn(...)`. Do not ship `console` statements to production. Use a proper logging service or suppress it.
-* `[Line 34]` **(Low)**: `isValid(date)` check. Good defensive coding. Prevents the "Invalid Date" crash.
-* `[Line 18]` **(Nitpick)**: `placeholder = "Pick a date"`. Hardcoded English string. i18n nightmare.
-
-### File: `packages/ui/src/molecules/Dialog/Dialog.tsx`
-**Shame Score:** 70/100
-**Findings:**
-* `[Line 6]` **(Med)**: `backgroundColor: 'rgba(0, 0, 0, 0.5)'`. Hardcoded color value. What if the theme changes? Use a token like `$shadow` or `$overlay`.
-* `[Line 88]` **(Nitpick)**: Literal "✕" for close button. Use an icon.
-
-### File: `packages/ui/src/molecules/DropdownMenu/DropdownMenu.tsx`
-**Shame Score:** 85/100
-**Findings:**
-* `[Line 56]` **(Med)**: `minWidth: 180`. Magic number. Why 180?
-* `[Line 62]` **(Med)**: `shadowRadius: 5`. Hardcoded styling. Should be in the theme.
-* `[Line 191]` **(Nitpick)**: `color: '$foreground' // Ensure visibility`. Comment explains *why*, which is rare and acceptable.
-
-### File: `packages/ui/src/organisms/Sidebar/Sidebar.tsx`
-**Shame Score:** 92/100
-**Findings:**
-* `[Line 24]` **(Low)**: `display="none" $sm={{ display: 'flex' }}`. CSS-based toggle. This is the **correct** way to handle hydration mismatches. Good job.
-* `[Line 8]` **(Nitpick)**: `CONSTANTS` object. Good practice to avoid magic numbers in the JSX.
-
-### File: `packages/ui/src/organisms/Form/Form.tsx`
-**Shame Score:** 88/100
-**Findings:**
-* `[Line 24]` **(Low)**: `useMemo` for context value. Prevents unnecessary re-renders. Good.
-* `[Line 15]` **(Nitpick)**: More "💀 Resurrection" comments. Delete them.
-
-### File: `packages/ui/src/organisms/RichText/RichText.tsx`
-**Shame Score:** 95/100
-**Findings:**
-* `[Line 42]` **(Low)**: `DOMPurify.sanitize(rawHtml)`. **CRITICAL SECURITY FIX.** This single line saves the app from stored XSS.
-* `[Line 29]` **(Nitpick)**: `SECURITY NOTE` comment. Good documentation.
-
-### File: `packages/ui/src/organisms/DataTable/DataTable.tsx`
-**Shame Score:** 85/100
-**Findings:**
-* `[Line 68]` **(Med)**: `console.warn` for performance hazard. Good intent, but again, `console` in production is messy.
-* `[Line 96]` **(High)**: `.slice(0, MAX_ROWS_WITHOUT_PAGINATION)`. Excellent fallback. Prevents the UI from locking up if someone accidentally passes 10k rows.
-
-### File: `apps/expo/App.tsx`
+### File: `ivisa-tamagui/packages/ui/src/atoms/Input/Input.tsx`
 **Shame Score:** 50/100
 **Findings:**
-* `[Line 37]` **(Med)**: `borderBottomLeftRadius={0}`. Inline style override. This suggests the `Tabs` component isn't flexible enough via variants.
-* `[Line 15]` **(High)**: `TAB_LABELS`. Hardcoded strings.
-* `[Line 9]` **(Nitpick)**: "💀" comments everywhere.
+* `[Line 16]` **(High)**: **Schizophrenic API Design.** The component uses `children` presence to toggle between two completely different rendering modes (Context Provider vs. Flat Element). This violates the Single Responsibility Principle and confuses consumers.
+* `[Line 19]` **(Med)**: **Implicit Context Failure.** `useInputContext` throws an error ("Fail Loudly"), which is good, but the component structure allows `Input.Field` to be imported and used independently without type-level protection, relying on runtime crashes.
+* `[Line 142]` **(Nit)**: **Generic Ref Typing.** `React.forwardRef<TamaguiElement, ...>` uses `TamaguiElement` which is too broad. It should be `HTMLInputElement | TextInput` depending on the platform or a specific unified type.
+* `[Line 21]` **(Nit)**: **Vague Variable Name.** `inputVariants` is descriptive, but inside `variants` prop (Line 80), it's spread `...inputVariants.size.sm`. This coupling suggests the styled component definition is too far from its variant map.
+
+### File: `ivisa-tamagui/packages/ui/src/organisms/DataTable/DataTable.tsx`
+**Shame Score:** 40/100
+**Findings:**
+* `[Line 75]` **(High)**: **Prop Mutation.** `showPagination = true` explicitly mutates the function argument. This is a cardinal sin in React functional components. Props are read-only.
+* `[Line 76]` **(Med)**: **Magic Number/Logic Coupling.** `MAX_ROWS_WITHOUT_PAGINATION` (100) is hardcoded. If a user wants 101 rows without pagination for a specific reason (e.g., printing), they are blocked by this "Nanny Code".
+* `[Line 73]` **(Nit)**: **Zombie Comment.** `// 🛡️ Guard: Performance Protection`. The emoji is cute but unprofessional code clutter. Code should be self-documenting.
+* `[Line 115]` **(Nit)**: **Loose Typing.** `marginHorizontal="$true"`. In Tamagui, `$true` is often valid but semantically meaningless for spacing. It should be a specific token like `$4` or `$md`.
+* `[Line 215]` **(Low)**: **Accessibility Gap.** `NoResultsCell` just renders text. It lacks `role="status"` or `aria-live="polite"` to inform screen readers that the search yielded no results.
+
+### File: `ivisa-tamagui/apps/expo/App.tsx`
+**Shame Score:** 20/100
+**Findings:**
+* `[Line 16]` **(Critical)**: **Hardcoded Strings.** "Chat", "Dashboard", "Settings" are hardcoded. This prevents localization (i18n) and is a technical debt factory.
+* `[Line 39]` **(High)**: **Style Override with Magic Numbers.** `borderBottomLeftRadius={0}`. Overriding theme tokens with raw numbers defeats the purpose of a design system.
+* `[Line 9]` **(Med)**: **Wrapper Hell.** `SafeView` is a styled `SafeAreaView`. Why? It just adds `flex: 1`. This could be inline or a standard atom. It creates unnecessary indirection.
+* `[Line 23]` **(Nit)**: **Zombie Comment.** `// TODO: Replace with proper i18n`. If you know it's wrong, fix it. Don't leave a tombstone.
+
+### File: `ivisa-tamagui/packages/ui/src/molecules/OTPInput/OTPInput.tsx`
+**Shame Score:** 60/100
+**Findings:**
+* `[Line 270]` **(High)**: **Security Risk.** `type: mask ? 'password' : 'text'`. Using `type="password"` for OTPs is dangerous. Password managers will try to save the OTP as the user's login password. Use `type="text"` with `autocomplete="one-time-code"`.
+* `[Line 118]` **(Med)**: **Web/Native Divergence.** The `useEffect` and event handlers are heavily guarded with `isWeb` checks or distinct logic (Line 275). This "split-brain" component is hard to maintain and test. It should likely be split into `OTPInput.web.tsx` and `OTPInput.native.tsx`.
+* `[Line 45]` **(Nit)**: **Inefficient Regex.** `/[a-z0-9]/i` is created inside the function `sanitizeChar` on every keystroke (indirectly). Compile regexes outside functions.
+* `[Line 118]` **(Med)**: **Mutable Ref Arrays.** `inputRefs.current[index] = node`. While standard for managing focus, manually managing an array of refs is error-prone. One off-by-one error (e.g. in `handleKeyDown`) breaks the entire flow.
+
+### File: `ivisa-tamagui/packages/ui/src/tamagui.config.ts`
+**Shame Score:** 80/100
+**Findings:**
+* `[Line 20]` **(High)**: **Magic Numbers in Theme.** Font sizes (e.g., `8: 48`) are hardcoded integers. These should ideally reference a primitive scale to ensure consistency across properties (e.g., spacing vs font size).
+* `[Line 126]` **(Nit)**: **Shorthand Overload.** The config defines every shorthand under the sun (`ac`, `ai`, `als`...). While convenient, it raises the learning curve and encourages cryptic code (`<Stack ai="center" jc="center" />` vs `<Stack alignItems="center" ... />`).
+* `[Line 45]` **(Med)**: **Font Face Mapping.** `400: { normal: 'CeraPro-Regular' }`. This assumes the font is loaded globally with that exact postscript name. If the font loading fails or the name differs on Android, the app crashes or looks broken. Needs a fallback system.
+
+### File: `ivisa-tamagui/packages/ui/src/molecules/Select/Select.test.tsx`
+**Shame Score:** 10/100
+**Findings:**
+* `[Line 7]` **(Critical)**: **Skipped Tests.** `it.skip(...)`. The main functionality of the component is NOT tested. This file is essentially a placebo. It passes "green" but verifies nothing.
+* `[Line 39]` **(High)**: **Defeatist Comment.** `// TODO: Fix Radix Select interaction in JSDOM`. The developer gave up. If JSDOM is insufficient, use Playwright/E2E. Leaving a skipped test is creating false confidence.
+
+### File: `AGENTS.md`
+**Shame Score:** 70/100
+**Findings:**
+* `[Line 5]` **(Med)**: **Vague Instruction.** "NEVER use rm -rf". While good advice, it lacks system enforcement (e.g., a pre-commit hook or shell alias). It relies on developer discipline, which is non-existent.
+* `[Line 24]` **(Nit)**: **Duplicate Truth.** It lists the `docs/` structure again. This is redundant with `docs/00-draft.md` or the directory listing itself. If `AGENTS.md` gets out of sync, it becomes a lie.
 
 ---
 
@@ -94,12 +66,12 @@
 
 | Severity | File:Line | Error Type | Description | The Fix |
 | :--- | :--- | :--- | :--- | :--- |
-| **CRITICAL** | `Textarea.tsx:104` | Type Safety | `as any` used to bypass style typing. | Fix the type definition. Remove `any`. |
-| **HIGH** | `Select.tsx:87` | Maintainability | Magic number `zIndex={200000}`. | Move to a constant/token. |
-| **HIGH** | `DataTable.tsx:96` | Performance | `console.warn` in render path. | Use a dedicated logger or run only in `__DEV__`. |
-| **HIGH** | `App.tsx:15` | i18n | Hardcoded English strings. | Use i18n library. |
-| **MED** | `DatePicker.tsx:27` | Hygiene | `console.warn` in production code. | Remove or wrap in `__DEV__`. |
-| **MED** | `Dialog.tsx:6` | Styling | Hardcoded RGBA value. | Use theme tokens. |
-| **MED** | `DropdownMenu.tsx:56` | Styling | Hardcoded pixel values (`minWidth: 180`). | Use theme tokens/space. |
-| **NIT** | `Button.tsx:4` | Hygiene | "💀" Zombie comments. | Delete them. |
-| **NIT** | `Select.tsx:33` | UI | Using text "▼" as an icon. | Use a real icon. |
+| **CRITICAL** | `apps/expo/App.tsx:16` | Hygiene | Hardcoded user-facing strings ("Chat", "Dashboard"). | Implement proper i18n dictionaries. |
+| **CRITICAL** | `molecules/Select/Select.test.tsx:7` | Testing | `it.skip` used on primary functionality. Code is effectively untested. | Unskip and fix mocks, or move to E2E testing. |
+| **HIGH** | `atoms/Input/Input.tsx:16` | Logic | Schizophrenic API (Conditional Context). | Split into `Input` (Simple) and `InputComposite`. |
+| **HIGH** | `organisms/DataTable/DataTable.tsx:75` | Logic | Mutating Props (`showPagination = true`). | Use derived state/variable `shouldPagination`. |
+| **HIGH** | `molecules/OTPInput/OTPInput.tsx:270` | Security | `type="password"` for OTP inputs. | Use `type="text"` + `autocomplete="one-time-code"`. |
+| **HIGH** | `tamagui.config.ts:20` | Styling | Magic numbers in font definition. | Abstract into a `scales` object or tokens. |
+| **MED** | `molecules/OTPInput/OTPInput.tsx:118` | Complexity | Web/Native split logic in one file. | Split into `.web.tsx` and `.native.tsx`. |
+| **MED** | `atoms/Input/Input.tsx:19` | Reliability | Implicit Context dependency for `Input.Field`. | Enforce context at type level or handle missing context gracefully. |
+| **MED** | `tamagui.config.ts:45` | Reliability | Fragile Font Face mapping without fallbacks. | Add system font fallbacks. |
