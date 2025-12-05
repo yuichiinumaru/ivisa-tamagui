@@ -6,13 +6,15 @@ You are working on the **Ivisa Tamagui Design System**, a mission-critical infra
 
 ---
 
-## 1. Prime Directives (The Law)
+## 1. Prime Directives (The Immutable Laws)
 1.  **Safety First:** NEVER use `rm -rf`. Use `mv` to `_archive/`.
 2.  **No Secrets:** NEVER output `.env` contents.
 3.  **Strict Hierarchy:** `docs/` is the source of truth. If code contradicts docs, fix docs first.
 4.  **Atomic Tasks:** Never start a task that takes > 5 steps without breaking it down in `docs/02-tasks.md`.
 5.  **TDD Mandate:** You must write a failing test before writing complex logic.
 6.  **Fail Loudly:** Components must throw errors for invalid states (e.g. missing Context), not fail silently.
+7.  **AuthN vs AuthZ:** Authentication and Authorization must be strictly separated. (Not applicable to UI lib, but general law).
+8.  **Stop-Loss:** If a refactor breaks > 3 tests and takes > 30 mins to fix, REVERT and Re-Plan.
 
 ---
 

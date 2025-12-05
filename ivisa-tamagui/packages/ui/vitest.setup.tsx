@@ -2,8 +2,23 @@ import '@testing-library/jest-dom'
 import React from 'react'
 import { render as baseRender } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { vi } from 'vitest'
+import { vi, beforeAll, afterAll } from 'vitest'
 import { AppProviders } from './src/providers/AppProviders'
+
+// 🛡️ Necromancer Fix: Global DOM mocks for Radix/JSDOM compatibility.
+// This prevents "Implementation Leakage" in individual test files.
+beforeAll(() => {
+  if (typeof window !== 'undefined') {
+    window.HTMLElement.prototype.hasPointerCapture = vi.fn()
+    window.HTMLElement.prototype.setPointerCapture = vi.fn()
+    window.HTMLElement.prototype.releasePointerCapture = vi.fn()
+    window.HTMLElement.prototype.scrollIntoView = vi.fn()
+  }
+})
+
+afterAll(() => {
+  vi.clearAllMocks()
+})
 
 vi.mock('react-native', () => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
