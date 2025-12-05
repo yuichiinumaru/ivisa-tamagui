@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import {
   ColumnDef,
   flexRender,
@@ -23,6 +23,8 @@ import { Button } from '../../atoms/Button'
 // --- Constants ---
 const MIN_COLUMN_WIDTH = 100
 const BORDER_WIDTH = 1
+const DEFAULT_PAGE_SIZE = 10
+const MAX_ROWS_WITHOUT_PAGINATION = 100
 
 // --- Styled Primitives for the Table ---
 
@@ -61,7 +63,6 @@ const TableCellText = styled(Text, {
   fontSize: '$3',
 })
 
-// 💀 Resurrection: Replaced inline styles with styled components
 const TableCellFrame = styled(View, {
   flex: 1,
   minWidth: MIN_COLUMN_WIDTH,
@@ -70,7 +71,7 @@ const TableCellFrame = styled(View, {
 const NoResultsCell = styled(View, {
   flex: 1,
   alignItems: 'center',
-  padding: '$5', // 20px
+  padding: '$5',
 })
 
 // --- Component Definition ---
@@ -78,14 +79,25 @@ const NoResultsCell = styled(View, {
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  showPagination?: boolean
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  showPagination = true,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+
+  // 🛡️ Guard: Performance Protection
+  if (!showPagination && data.length > MAX_ROWS_WITHOUT_PAGINATION) {
+    console.warn(
+      `DataTable: Rendering ${data.length} rows without pagination is a performance hazard. ` +
+      `Pagination has been forcibly enabled.`
+    )
+    showPagination = true
+  }
 
   const table = useReactTable({
     data,
@@ -96,16 +108,25 @@ export function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    initialState: {
+      pagination: {
+        pageSize: DEFAULT_PAGE_SIZE,
+      },
+    },
     state: {
       sorting,
       columnFilters,
     },
   })
 
+  // 🛡️ Guard: Ensure we don't render millions of rows
+  // If pagination is somehow disabled but logic fails, slice the array in render.
+  const rows = showPagination
+    ? table.getRowModel().rows
+    : table.getRowModel().rows.slice(0, MAX_ROWS_WITHOUT_PAGINATION)
+
   return (
     <YStack gap="$4" marginHorizontal="$true">
-      {/* Optional: Global Search or Filters could go here */}
-      
       <TableContainer>
         <ScrollView horizontal showsHorizontalScrollIndicator={true}>
           <YStack minWidth="100%">
@@ -131,8 +152,8 @@ export function DataTable<TData, TValue>({
 
             {/* Body */}
             <YStack>
-              {table.getRowModel().rows?.length ? (
-                table.getRowModel().rows.map((row) => (
+              {rows.length ? (
+                rows.map((row) => (
                   <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
                     {row.getVisibleCells().map((cell) => (
                       <TableCellFrame key={cell.id}>
@@ -154,24 +175,29 @@ export function DataTable<TData, TValue>({
       </TableContainer>
 
       {/* Pagination Controls */}
-      <XStack alignItems="center" justifyContent="flex-end" gap="$2">
-        <Button
-          variant="outline"
-          size="sm"
-          onPress={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onPress={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
-      </XStack>
+      {showPagination && (
+        <XStack alignItems="center" justifyContent="flex-end" gap="$2">
+            <Text fontSize="$2" color="$mutedForeground">
+                Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+            </Text>
+            <Button
+            variant="outline"
+            size="sm"
+            onPress={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+            >
+            Previous
+            </Button>
+            <Button
+            variant="outline"
+            size="sm"
+            onPress={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+            >
+            Next
+            </Button>
+        </XStack>
+      )}
     </YStack>
   )
 }

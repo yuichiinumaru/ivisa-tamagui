@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { Input as TamaguiInput, styled, GetProps, XStack, View, TamaguiElement } from 'tamagui';
 import { Button } from '../Button';
 
-// 💀 The Rite of Resurrection: Fail Loudly Context
+// --- Types & Context ---
+
 type InputContextValue = {
-  size: StyledInputProps['size'];
+  size: InputProps['size'];
 }
 
 const InputContext = React.createContext<InputContextValue | null>(null);
@@ -12,13 +13,14 @@ const InputContext = React.createContext<InputContextValue | null>(null);
 const useInputContext = () => {
   const context = useContext(InputContext);
   if (!context) {
-    // 💀 Fail Loudly: If a developer uses <Input.Field> outside <Input>, crash immediately.
-    throw new Error('Input compound components (Field, Icon, Button) must be used within <Input>');
+    // Fail Loudly: Enforce Composition Pattern
+    throw new Error('Input compound components (Input.Field, Input.Icon, Input.Button) must be used within <Input>');
   }
   return context;
 }
 
-// ... inputVariants defined outside to be reused ...
+// --- Variants Definition ---
+
 const inputVariants = {
   variant: {
     default: {
@@ -68,19 +70,22 @@ const inputVariants = {
   }
 } as const;
 
+// --- Styled Components ---
+
 const StyledInput = styled(TamaguiInput, {
   name: 'Input',
   color: '$foreground',
-  placeholderTextColor: '$mutedForeground', // Fixed color
-  ...inputVariants,
+  placeholderTextColor: '$mutedForeground',
+
   variants: {
-    ...inputVariants.variant,
+    variant: inputVariants.variant,
     size: {
       sm: { ...inputVariants.size.sm, fontSize: '$2' },
       default: { ...inputVariants.size.default, fontSize: '$3' },
       lg: { ...inputVariants.size.lg, fontSize: '$4' }
     }
   } as const,
+
   defaultVariants: {
     variant: 'default',
     size: 'default'
@@ -92,7 +97,12 @@ const InputFrame = styled(XStack, {
   alignItems: 'center',
   borderRadius: '$4',
   overflow: 'hidden',
-  ...inputVariants,
+
+  variants: {
+    variant: inputVariants.variant,
+    size: inputVariants.size
+  } as const,
+
   defaultVariants: {
     variant: 'default',
     size: 'default'
@@ -127,6 +137,8 @@ const UnframedInputStyled = styled(TamaguiInput, {
   } as const
 })
 
+// --- Components ---
+
 const InputField = React.forwardRef<TamaguiElement, GetProps<typeof UnframedInputStyled>>((props, ref) => {
   const { size } = useInputContext()
   return <UnframedInputStyled ref={ref} size={size} {...props} />
@@ -151,8 +163,8 @@ const InputButton = styled(Button, {
 type StyledInputProps = GetProps<typeof StyledInput>
 
 export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
-  variant?: StyledInputProps['variant']
-  size?: StyledInputProps['size']
+  variant?: 'default' | 'filled'
+  size?: 'sm' | 'default' | 'lg'
   children?: React.ReactNode
 }
 
@@ -179,7 +191,8 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
 )
 InputMain.displayName = 'Input'
 
-// 💀 Type Safe Composition
+// --- Export ---
+
 export const Input = Object.assign(InputMain, {
   Field: InputField,
   Icon: InputIcon,

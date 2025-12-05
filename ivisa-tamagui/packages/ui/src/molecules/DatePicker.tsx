@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { Popover, PopoverTrigger, PopoverContent } from '../molecules/Popover'
 import { Calendar } from '../molecules/Calendar'
 import { Button } from '../atoms/Button'
-import { format } from 'date-fns'
+import { format, isValid } from 'date-fns'
 import { Adapt, Text } from 'tamagui'
 import { Sheet } from '../molecules/Sheet'
 import { Calendar as CalendarIcon } from '@tamagui/lucide-icons'
 
 export interface DatePickerProps {
-  date?: Date
-  onDateChange?: (date: Date) => void
+  date?: Date | null
+  onDateChange?: (date: Date | undefined) => void
   placeholder?: string
 }
 
@@ -20,10 +20,19 @@ export const DatePicker = ({
 }: DatePickerProps) => {
   const [open, setOpen] = useState(false)
 
-  const handleSelect = (newDate: Date) => {
+  const handleSelect = (newDate: Date | undefined) => {
+    // 🛡️ Guard: Ensure valid date before propagating
+    if (newDate && !isValid(newDate)) {
+      console.warn('DatePicker: Attempted to select invalid date', newDate)
+      return
+    }
     onDateChange?.(newDate)
     setOpen(false)
   }
+
+  // 🛡️ Guard: Ensure display date is valid to prevent crash
+  const displayDate = date && isValid(date) ? format(date, "PPP") : placeholder
+  const isDateSelected = !!(date && isValid(date))
 
   return (
     <Popover open={open} onOpenChange={setOpen} placement="bottom-start">
@@ -49,14 +58,14 @@ export const DatePicker = ({
           paddingLeft="$3"
           icon={<CalendarIcon size={16} />}
         >
-             <Text color={date ? '$foreground' : '$mutedForeground'}>
-                {date ? format(date, "PPP") : placeholder}
+             <Text color={isDateSelected ? '$foreground' : '$mutedForeground'}>
+                {displayDate}
              </Text>
         </Button>
       </PopoverTrigger>
       <PopoverContent padding={0} width="auto">
         <Calendar
-          selectedDate={date}
+          selectedDate={date || undefined}
           onDateChange={handleSelect}
         />
       </PopoverContent>
