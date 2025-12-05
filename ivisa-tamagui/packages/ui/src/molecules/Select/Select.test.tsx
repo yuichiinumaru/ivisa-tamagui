@@ -5,14 +5,8 @@ import { Select } from './Select'
 
 describe('Select', () => {
   // 🛡️ Necromancer Fix: Unskip and prove life.
-  // Note: Radix Select is tricky in JSDOM because it uses pointer events that aren't fully simulated.
-  // We mock pointer capture to make it work.
+  // JSDOM Mocks are handled globally in vitest.setup.tsx
   it('renders and allows selecting an item', async () => {
-    // Mock pointer events for Radix
-    window.HTMLElement.prototype.hasPointerCapture = vi.fn()
-    window.HTMLElement.prototype.setPointerCapture = vi.fn()
-    window.HTMLElement.prototype.releasePointerCapture = vi.fn()
-
     const { asFragment, user } = render(
       <Select>
         <Select.Trigger>
