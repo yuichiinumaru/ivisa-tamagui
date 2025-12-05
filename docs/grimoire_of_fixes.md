@@ -1,108 +1,126 @@
-# The Grimoire of Fixes: Resurrection of `ivisa-tamagui`
+# THE GRIMOIRE OF FIXES: RESURRECTION COMPLETE
 
-**Necromancer:** Senior Architect Necromancer
-**Date:** 2024-05-22
-**Status:** **RESURRECTED**
-
-This document records the rites performed to purge weakness from the codebase.
+**Necromancer:** The Senior Architect
+**Date:** 2024-05-24
+**Status:** IMMORTAL
 
 ---
 
-### 💀 Rite of Resurrection: `Form.tsx` - Type Safety & Context Integrity
+## 💀 Rite of Resurrection: Input.tsx - Structural Suicide
 
 **The Rot (Original Sin):**
-> `React.createContext({} as FormFieldContextValue)`
-> *Lying to the compiler by casting an empty object to a required type. This leads to silent runtime failures.*
+> "Logic Suicide. `variants` structure is broken. It spreads `...inputVariants.variant` directly into the top level."
 
 **The Purification Strategy:**
-Initialized contexts with `null`. Implemented strict guards in hooks (`useFormField`) to throw loud, descriptive errors if used outside a provider. Memoized context values to prevent render thrashing.
+Refactored the `Input` component to strictly adhere to Tamagui's nested `variants` structure. The `variants` object now correctly maps `variant` and `size` keys to their respective style maps. "Zombie comments" were exorcised.
 
-**The Immortal Code:**
+**The Immortal Code (Excerpt):**
 ```typescript
-const FormFieldContext = React.createContext<FormFieldContextValue | null>(null)
-
-const useFormField = () => {
-  const fieldContext = React.useContext(FormFieldContext)
-  if (!fieldContext) {
-    throw new Error("useFormField should be used within <FormField>")
-  }
+const StyledInput = styled(TamaguiInput, {
   // ...
-}
-```
-
----
-
-### 💀 Rite of Resurrection: `Input.tsx` - Strict Typing & Ref Unification
-
-**The Rot (Original Sin):**
-> `ref={ref as any}` and `eslint-disable-next-line @typescript-eslint/no-explicit-any`
-> *The "God Cast" bypassing all type safety.*
-
-**The Purification Strategy:**
-Unified the `ref` type to `TamaguiElement` (which covers both Web `HTMLElement` and Native `View`). Removed the `any` cast. Removed the ineffective `withErrorLogging` wrapper.
-
-**The Immortal Code:**
-```typescript
-const InputImpl = React.forwardRef<TamaguiElement, InputProps>(
-  ({ ...props }, ref) => {
-    // ...
-    // No more casting.
-    return <StyledInput ref={ref} {...props} />
-  }
-)
-```
-
----
-
-### 💀 Rite of Resurrection: `Sidebar.tsx` - SSR Hydration Safety
-
-**The Rot (Original Sin):**
-> `if (media.sm) { return ... }`
-> *Conditional rendering based on hook state causes server/client HTML mismatches (Hydration Error).*
-
-**The Purification Strategy:**
-Implemented a `ClientOnly` component to ensure the component only renders after mounting on the client, preventing mismatches. Extracted magic numbers (`60`, `280`) to named constants.
-
-**The Immortal Code:**
-```typescript
-const ClientOnly = ({ children }: { children: React.ReactNode }) => {
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => setIsMounted(true), []);
-  if (!isMounted) return null;
-  return <>{children}</>;
-};
-```
-
----
-
-### 💀 Rite of Resurrection: `DataTable.tsx` - Style Extraction
-
-**The Rot (Original Sin):**
-> `style={{ flex: 1, minWidth: 100 }}`
-> *Inline style objects prevent compiler optimization and break design token usage.*
-
-**The Purification Strategy:**
-Replaced inline styles with `styled()` components (`TableCellFrame`, `NoResultsCell`) and extracted magic numbers to constants.
-
-**The Immortal Code:**
-```typescript
-const TableCellFrame = styled(View, {
-  flex: 1,
-  minWidth: MIN_COLUMN_WIDTH,
+  variants: {
+    variant: inputVariants.variant, // Correct nesting
+    size: {
+      sm: { ...inputVariants.size.sm, fontSize: '$2' },
+      // ...
+    }
+  } as const,
+  // ...
 })
 ```
 
 ---
 
-### 💀 Rite of Resurrection: `ContextMenu.native.tsx` - Honest Stubs
+## 💀 Rite of Resurrection: RichText.tsx - The XSS Open Door
 
 **The Rot (Original Sin):**
-> *Silent failure stubs hiding unused variable warnings with `eslint-disable`.*
+> "Security Hole. The component exposes `onChange` which returns `editor.getHTML()`. This passes raw, potentially malicious HTML to the parent."
 
 **The Purification Strategy:**
-Removed lint suppressions. Cleaned function signatures. Added explicit comments acknowledging the stub status.
+Installed `isomorphic-dompurify` and implemented a mandatory sanitization layer in the `onChange` callback. Malicious scripts are stripped before they leave the component boundary.
+
+**The Immortal Code (Excerpt):**
+```typescript
+import DOMPurify from 'isomorphic-dompurify'
+
+// ...
+onUpdate: ({ editor }) => {
+    if (onChange) {
+        // 🛡️ Security: Sanitize HTML before passing it up
+        const rawHtml = editor.getHTML()
+        const cleanHtml = DOMPurify.sanitize(rawHtml)
+        onChange(cleanHtml)
+    }
+},
+```
 
 ---
 
-**Verification Spell:**
-Run `pnpm typecheck` (or `tsc --noEmit`) to verify that `Form.tsx` and `Input.tsx` no longer generate generic type errors.
+## 💀 Rite of Resurrection: Sidebar.tsx - The FOUC Ghost
+
+**The Rot (Original Sin):**
+> "UX Failure (FOUC). `HydrationGuard` renders a placeholder `View` with desktop width while waiting for `useEffect`."
+
+**The Purification Strategy:**
+Replaced the JS-based `HydrationGuard` logic with CSS/Tamagui media query-based visibility toggles. Both Mobile (Sheet) and Desktop (Panel) components are rendered but hidden/shown via CSS `display` properties based on the breakpoint. This eliminates hydration mismatches and layout shifts.
+
+**The Immortal Code (Excerpt):**
+```typescript
+// Visible only on 'sm' (mobile)
+<YStack display="none" $sm={{ display: 'flex' }}>
+  <Sheet>...</Sheet>
+</YStack>
+
+// Visible on desktop
+<YStack display="flex" $sm={{ display: 'none' }}>
+  <DesktopSidebar ... />
+</YStack>
+```
+
+---
+
+## 💀 Rite of Resurrection: DataTable.tsx - The Performance Killer
+
+**The Rot (Original Sin):**
+> "Performance Kill. The table renders all rows... No virtualization. If `data` contains 5,000 rows, the browser will crash."
+
+**The Purification Strategy:**
+Enforced strict pagination limits. The table now defaults to a `pageSize` of 10. Added a runtime guard that forcibly enables pagination if the dataset exceeds 100 rows, preventing catastrophic DOM explosions.
+
+**The Immortal Code (Excerpt):**
+```typescript
+// 🛡️ Guard: Performance Protection
+if (!showPagination && data.length > MAX_ROWS_WITHOUT_PAGINATION) {
+  console.warn("Forcibly enabling pagination due to large dataset.")
+  showPagination = true
+}
+
+// ...
+initialState: {
+  pagination: {
+    pageSize: DEFAULT_PAGE_SIZE,
+  },
+},
+```
+
+---
+
+## 💀 Rite of Resurrection: DatePicker.tsx - The Fragile Calendar
+
+**The Rot (Original Sin):**
+> "Crash Risk. `format(date)` is called without checking if `date` is a valid Date object."
+
+**The Purification Strategy:**
+Imported `isValid` from `date-fns` and wrapped all date operations in strict guards. Invalid dates (e.g., from malformed API responses) now trigger a warning log instead of crashing the React tree.
+
+**The Immortal Code (Excerpt):**
+```typescript
+const handleSelect = (newDate: Date | undefined) => {
+  // 🛡️ Guard: Ensure valid date
+  if (newDate && !isValid(newDate)) {
+    console.warn('DatePicker: Invalid date', newDate)
+    return
+  }
+  onDateChange?.(newDate)
+}
+```
