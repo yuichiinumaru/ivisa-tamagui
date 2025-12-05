@@ -1,15 +1,28 @@
 import React from 'react';
 import { AppProviders, Tabs } from '@ivisa/ui';
 import { SafeAreaView } from 'react-native';
-import { YStack, Text } from 'tamagui';
+import { YStack, Text, styled } from 'tamagui';
 import { ChatScreen } from './src/screens/ChatScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
 import { DashboardScreen } from './src/screens/DashboardScreen';
 
+// 💀 The Rite of Resurrection: Typed Styles
+const SafeView = styled(SafeAreaView, {
+  name: 'SafeView',
+  flex: 1,
+})
+
+const TAB_LABELS = {
+  CHAT: 'Chat',
+  DASHBOARD: 'Dashboard',
+  SETTINGS: 'Settings',
+  ARIA_LIST: 'Manage your account',
+} as const;
+
 export default function App() {
   return (
     <AppProviders theme="light">
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeView>
         <YStack flex={1} backgroundColor="$background">
           <Tabs
             defaultValue="chat"
@@ -20,7 +33,8 @@ export default function App() {
             <Tabs.List
               disablePassBorderRadius
               loop={false}
-              aria-label="Manage your account"
+              aria-label={TAB_LABELS.ARIA_LIST}
+              // 💀 Fix: Use tokens instead of hardcoded 0 radius if possible, or explicit styles
               borderBottomLeftRadius={0}
               borderBottomRightRadius={0}
               padding="$2"
@@ -29,13 +43,13 @@ export default function App() {
               borderColor="$borderColor"
             >
               <Tabs.Trigger theme="alt1" value="chat" flex={1}>
-                <Text>Chat</Text>
+                <Text>{TAB_LABELS.CHAT}</Text>
               </Tabs.Trigger>
               <Tabs.Trigger theme="alt1" value="dashboard" flex={1}>
-                <Text>Dashboard</Text>
+                <Text>{TAB_LABELS.DASHBOARD}</Text>
               </Tabs.Trigger>
               <Tabs.Trigger theme="alt1" value="settings" flex={1}>
-                <Text>Settings</Text>
+                <Text>{TAB_LABELS.SETTINGS}</Text>
               </Tabs.Trigger>
             </Tabs.List>
 
@@ -52,7 +66,7 @@ export default function App() {
             </Tabs.Content>
           </Tabs>
         </YStack>
-      </SafeAreaView>
+      </SafeView>
     </AppProviders>
   );
 }

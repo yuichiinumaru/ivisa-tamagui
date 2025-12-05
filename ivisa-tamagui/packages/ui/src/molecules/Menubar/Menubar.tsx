@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Root,
   Menu,
@@ -19,7 +18,7 @@ import {
 } from '@radix-ui/react-menubar'
 import { Check, ChevronRight, Circle } from '@tamagui/lucide-icons'
 import React from 'react'
-import { styled, Paragraph } from 'tamagui'
+import { styled, Paragraph, GetProps, TamaguiElement } from 'tamagui'
 
 const MenubarFrame = styled(Root, {
   name: 'Menubar',
@@ -76,7 +75,8 @@ const MenubarTriggerFrame = styled(Trigger, {
   }
 })
 
-const MenubarTrigger = React.forwardRef<any, any>((props, ref) => (
+// 💀 Type Safe Wrappers
+const MenubarTrigger = React.forwardRef<React.ElementRef<typeof Trigger>, GetProps<typeof MenubarTriggerFrame>>((props, ref) => (
   <MenubarTriggerFrame ref={ref} {...props} />
 ))
 MenubarTrigger.displayName = Trigger.displayName
@@ -97,7 +97,7 @@ const MenubarContentFrame = styled(Content, {
   shadowOpacity: 0.1,
 })
 
-const MenubarContent = React.forwardRef<any, any>(({ align = 'start', alignOffset = -4, sideOffset = 8, ...props }, ref) => (
+const MenubarContent = React.forwardRef<React.ElementRef<typeof Content>, GetProps<typeof MenubarContentFrame>>(({ align = 'start', alignOffset = -4, sideOffset = 8, ...props }, ref) => (
   <Portal>
     <MenubarContentFrame
       ref={ref}
@@ -142,7 +142,7 @@ const MenubarItemFrame = styled(Item, {
   }
 })
 
-const MenubarItem = React.forwardRef<any, any>(({ inset, ...props }, ref) => (
+const MenubarItem = React.forwardRef<React.ElementRef<typeof Item>, GetProps<typeof MenubarItemFrame> & { inset?: boolean }>(({ inset, ...props }, ref) => (
   <MenubarItemFrame
     ref={ref}
     paddingLeft={inset ? '$8' : '$2'}
@@ -194,7 +194,7 @@ const MenubarItemIndicatorFrame = styled(ItemIndicator, {
   height: '$4',
 })
 
-const MenubarCheckboxItem = React.forwardRef<any, any>(({ children, checked, ...props }, ref) => (
+const MenubarCheckboxItem = React.forwardRef<React.ElementRef<typeof CheckboxItem>, GetProps<typeof MenubarCheckboxItemFrame>>(({ children, checked, ...props }, ref) => (
   <MenubarCheckboxItemFrame ref={ref} checked={checked} {...props}>
     <MenubarItemIndicatorFrame>
       <Check size={14} />
@@ -237,7 +237,7 @@ const MenubarRadioItemFrame = styled(RadioItem, {
   }
 })
 
-const MenubarRadioItem = React.forwardRef<any, any>(({ children, ...props }, ref) => (
+const MenubarRadioItem = React.forwardRef<React.ElementRef<typeof RadioItem>, GetProps<typeof MenubarRadioItemFrame>>(({ children, ...props }, ref) => (
   <MenubarRadioItemFrame ref={ref} {...props}>
     <MenubarItemIndicatorFrame>
       <Circle size={8} fill="currentColor" />
@@ -257,16 +257,16 @@ const MenubarLabelFrame = styled(Label, {
   paddingLeft: '$2',
 })
 
-const MenubarLabelWithInset = React.forwardRef<any, any>(({ inset, ...props }, ref) => (
+const MenubarLabel = React.forwardRef<React.ElementRef<typeof Label>, GetProps<typeof MenubarLabelFrame> & { inset?: boolean }>(({ inset, ...props }, ref) => (
     <MenubarLabelFrame ref={ref} paddingLeft={inset ? '$8' : '$2'} {...props} />
 ))
-MenubarLabelWithInset.displayName = Label.displayName
+MenubarLabel.displayName = Label.displayName
 
 
 const MenubarSeparator = styled(Separator, {
   name: 'MenubarSeparator',
   height: 1,
-  backgroundColor: '$muted', // or $border
+  backgroundColor: '$muted',
   marginVertical: '$1',
   marginHorizontal: '-$1',
 })
@@ -310,7 +310,7 @@ const MenubarSubTriggerFrame = styled(SubTrigger, {
   }
 })
 
-const MenubarSubTrigger = React.forwardRef<any, any>(({ children, inset, ...props }, ref) => (
+const MenubarSubTrigger = React.forwardRef<React.ElementRef<typeof SubTrigger>, GetProps<typeof MenubarSubTriggerFrame> & { inset?: boolean }>(({ children, inset, ...props }, ref) => (
   <MenubarSubTriggerFrame
     ref={ref}
     paddingLeft={inset ? '$8' : '$2'}
@@ -338,7 +338,7 @@ const MenubarSubContentFrame = styled(SubContent, {
   zIndex: 50,
 })
 
-const MenubarSubContent = React.forwardRef<any, any>(({ ...props }, ref) => (
+const MenubarSubContent = React.forwardRef<React.ElementRef<typeof SubContent>, GetProps<typeof MenubarSubContentFrame>>(({ ...props }, ref) => (
   <MenubarSubContentFrame ref={ref} {...props} />
 ))
 MenubarSubContent.displayName = SubContent.displayName
@@ -353,7 +353,7 @@ export {
   MenubarContent,
   MenubarItem,
   MenubarSeparator,
-  MenubarLabelWithInset as MenubarLabel,
+  MenubarLabel,
   MenubarCheckboxItem,
   MenubarRadioGroup,
   MenubarRadioItem,

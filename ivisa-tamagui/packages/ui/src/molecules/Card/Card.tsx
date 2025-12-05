@@ -1,5 +1,6 @@
 import { View, Text, styled, GetProps } from 'tamagui'
 
+// 💀 The Rite of Resurrection: Tokenized Shadows
 const CardFrame = styled(View, {
   name: 'Card',
   backgroundColor: '$background',
@@ -14,9 +15,10 @@ const CardFrame = styled(View, {
       },
       elevated: {
         backgroundColor: '$background',
-        shadowColor: '#000',
+        // 💀 Fix: Use theme token for shadow color
+        shadowColor: '$shadowColor',
         shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.05,
+        shadowOpacity: 0.1, // Adjusted for typical design system feel
         shadowRadius: 2,
         elevation: 2,
       }

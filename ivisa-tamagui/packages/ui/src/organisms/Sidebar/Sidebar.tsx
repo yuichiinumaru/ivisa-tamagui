@@ -1,27 +1,85 @@
 import React, { useState, useEffect } from 'react';
-import { YStack, AnimatePresence, useMedia } from 'tamagui';
+import { YStack, AnimatePresence, useMedia, View } from 'tamagui';
 import { Sheet, SheetTrigger, SheetContent } from '../../molecules/Sheet';
 import { Button } from '../../atoms/Button';
 import { ChevronLeft, ChevronRight, Menu } from '@tamagui/lucide-icons';
 
-// Defining the props interface for the Sidebar component
+// 💀 The Rite of Resurrection: Magic Number Exorcism
+const CONSTANTS = {
+  WIDTH_EXPANDED: 280,
+  WIDTH_COLLAPSED: 60,
+  TOGGLE_OFFSET: -15,
+  TOGGLE_TOP: 20,
+} as const;
+
 interface SidebarProps {
   children: React.ReactNode;
   variant?: 'collapsible' | 'fixed' | 'floating';
 }
 
-const SIDEBAR_WIDTH_EXPANDED = 280;
-const SIDEBAR_WIDTH_COLLAPSED = 60;
-const TOGGLE_BUTTON_OFFSET = -15;
-const TOGGLE_BUTTON_TOP = 20;
-
-// 💀 Resurrection: ClientOnly ensures hydration matches
-const ClientOnly = ({ children }: { children: React.ReactNode }) => {
+// 💀 The Rite of Resurrection: Hydration Guard
+const HydrationGuard = ({ children, fallback = null }: { children: React.ReactNode, fallback?: React.ReactNode }) => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => setIsMounted(true), []);
-  if (!isMounted) return null;
+  if (!isMounted) return <>{fallback}</>;
   return <>{children}</>;
 };
+
+// 💀 Optimization: Extracted components to prevent re-mounting on parent render
+const MobileSidebar = ({ children }: { children: React.ReactNode }) => (
+  <Sheet>
+    <SheetTrigger asChild>
+      <Button icon={Menu} circular size="$4" />
+    </SheetTrigger>
+    <SheetContent position="left" size="$20">
+      <YStack space="$4" paddingTop="$8">
+        {children}
+      </YStack>
+    </SheetContent>
+  </Sheet>
+);
+
+interface DesktopSidebarProps {
+  children: React.ReactNode;
+  isCollapsed: boolean;
+  toggleSidebar: () => void;
+  variant: SidebarProps['variant'];
+}
+
+const DesktopSidebar = ({ children, isCollapsed, toggleSidebar, variant = 'fixed' }: DesktopSidebarProps) => (
+  <AnimatePresence>
+    <YStack
+      animation="medium"
+      width={isCollapsed && variant === 'collapsible' ? CONSTANTS.WIDTH_COLLAPSED : CONSTANTS.WIDTH_EXPANDED}
+      borderRightWidth={1}
+      borderColor="$borderColor"
+      padding="$4"
+      space="$2"
+      {...(variant === 'floating' && {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        backgroundColor: '$background',
+        zIndex: 10,
+      })}
+    >
+      {children}
+      {variant === 'collapsible' && (
+        <Button
+          icon={isCollapsed ? ChevronRight : ChevronLeft}
+          onPress={toggleSidebar}
+          circular
+          size="$3"
+          position="absolute"
+          top={CONSTANTS.TOGGLE_TOP}
+          right={CONSTANTS.TOGGLE_OFFSET}
+          zIndex={20}
+        />
+      )}
+    </YStack>
+  </AnimatePresence>
+);
 
 export const Sidebar = ({ children, variant = 'fixed' }: SidebarProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -31,64 +89,19 @@ export const Sidebar = ({ children, variant = 'fixed' }: SidebarProps) => {
     setIsCollapsed(!isCollapsed);
   };
 
-  // Helper function to render content based on media query
-  // avoiding nested component definitions which cause remounts
-  const renderSidebarContent = () => {
-    // On small screens (mobile), render a Sheet with a trigger button
-    if (media.sm) {
-      return (
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button icon={Menu} circular />
-          </SheetTrigger>
-          <SheetContent position="left" size="$20">
-            <YStack space="$4" paddingTop="$8">
-              {children}
-            </YStack>
-          </SheetContent>
-        </Sheet>
-      );
-    }
-
-    // Desktop view
-    return (
-      <AnimatePresence>
-        <YStack
-          animation="medium"
-          width={isCollapsed && variant === 'collapsible' ? SIDEBAR_WIDTH_COLLAPSED : SIDEBAR_WIDTH_EXPANDED}
-          borderRightWidth={1}
-          borderColor="$borderColor"
-          padding="$4"
-          space="$2"
-          {...(variant === 'floating' && {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            bottom: 0,
-            backgroundColor: '$background',
-            zIndex: 10,
-          })}
+  return (
+    <HydrationGuard fallback={<View width={CONSTANTS.WIDTH_EXPANDED} />}>
+      {media.sm ? (
+        <MobileSidebar>{children}</MobileSidebar>
+      ) : (
+        <DesktopSidebar
+          isCollapsed={isCollapsed}
+          toggleSidebar={toggleSidebar}
+          variant={variant}
         >
           {children}
-          {variant === 'collapsible' && (
-            <Button
-              icon={isCollapsed ? ChevronRight : ChevronLeft}
-              onPress={toggleSidebar}
-              circular
-              position="absolute"
-              top={TOGGLE_BUTTON_TOP}
-              right={TOGGLE_BUTTON_OFFSET}
-              zIndex={20}
-            />
-          )}
-        </YStack>
-      </AnimatePresence>
-    );
-  };
-
-  return (
-    <ClientOnly>
-      {renderSidebarContent()}
-    </ClientOnly>
+        </DesktopSidebar>
+      )}
+    </HydrationGuard>
   );
 };

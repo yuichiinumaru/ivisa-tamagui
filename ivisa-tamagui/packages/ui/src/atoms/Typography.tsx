@@ -1,46 +1,54 @@
 import { styled, H1 as TamaguiH1, H2 as TamaguiH2, H3 as TamaguiH3, H4 as TamaguiH4, H5 as TamaguiH5, H6 as TamaguiH6, Text as TamaguiText } from 'tamagui'
 
+// 💀 The Rite of Resurrection: Decoupling Style from Semantics
 export const H1 = styled(TamaguiH1, {
   fontFamily: '$heading',
   fontWeight: '900',
-  textTransform: 'uppercase',
   color: '$color',
-  // Sizes are usually handled by the theme/font config, but we can enforce defaults here if needed.
-  // Using default Tamagui sizing for now which maps to the font config sizes.
+  // Removed mandatory uppercase. Use `textTransform="uppercase"` prop if needed.
+  variants: {
+    uppercase: {
+      true: {
+        textTransform: 'uppercase',
+      }
+    }
+  } as const
 })
 
 export const H2 = styled(TamaguiH2, {
   fontFamily: '$heading',
   fontWeight: '900',
-  textTransform: 'uppercase',
   color: '$color',
+  variants: {
+    uppercase: {
+      true: {
+        textTransform: 'uppercase',
+      }
+    }
+  } as const
 })
 
 export const H3 = styled(TamaguiH3, {
   fontFamily: '$heading',
   fontWeight: '500',
-  textTransform: 'uppercase',
   color: '$color',
 })
 
 export const H4 = styled(TamaguiH4, {
   fontFamily: '$heading',
   fontWeight: '500',
-  textTransform: 'uppercase',
   color: '$color',
 })
 
 export const H5 = styled(TamaguiH5, {
   fontFamily: '$heading',
   fontWeight: '500',
-  textTransform: 'uppercase',
   color: '$color',
 })
 
 export const H6 = styled(TamaguiH6, {
   fontFamily: '$heading',
   fontWeight: '500',
-  textTransform: 'uppercase',
   color: '$color',
 })
 
@@ -50,7 +58,7 @@ export const Text = styled(TamaguiText, {
   color: '$color',
 })
 
-export const Paragraph = styled(TamaguiText, { // Often useful to have Paragraph separate
+export const Paragraph = styled(TamaguiText, {
   tag: 'p',
   fontFamily: '$body',
   fontWeight: '400',
@@ -58,12 +66,12 @@ export const Paragraph = styled(TamaguiText, { // Often useful to have Paragraph
   marginBottom: '$2',
 })
 
-// Aliases for compatibility with stories
+// Aliases
 export const Heading = H1
 export const TypographyText = Text
 
 export const MutedText = styled(Text, {
-  color: '$color05',
+  color: '$mutedForeground', // Fixed: $color05 -> semantic token
 })
 
 export const LeadText = styled(Text, {
@@ -74,7 +82,9 @@ export const LeadText = styled(Text, {
 export const Blockquote = styled(Text, {
   tag: 'blockquote',
   borderLeftWidth: 2,
-  borderLeftColor: '$color05',
+  borderLeftColor: '$borderColor', // Fixed: $color05 -> semantic token
   paddingLeft: '$4',
   fontStyle: 'italic',
+  // 💀 Fix: Reset margin for blockquote to prevent browser defaults messing up layout
+  margin: 0,
 })
