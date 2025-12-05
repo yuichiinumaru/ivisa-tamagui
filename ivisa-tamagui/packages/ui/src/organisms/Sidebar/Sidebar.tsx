@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { YStack, AnimatePresence, View } from 'tamagui';
-import { Sheet, SheetTrigger, SheetContent } from '../../molecules/Sheet';
+import { Sheet, SheetContent } from '../../molecules/Sheet';
 import { Button } from '../../atoms/Button';
 import { ChevronLeft, ChevronRight, Menu } from '@tamagui/lucide-icons';
 
@@ -19,22 +19,27 @@ interface SidebarProps {
 
 // --- Components ---
 
-const MobileSidebar = ({ children }: { children: React.ReactNode }) => (
-  // 🛡️ CSS-based Responsive Visibility
-  // Visible only on 'sm' (mobile). Hidden on desktop.
-  <YStack display="none" $sm={{ display: 'flex' }}>
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button icon={Menu} circular size="$4" />
-      </SheetTrigger>
-      <SheetContent position="left" size="$20">
-        <YStack space="$4" paddingTop="$8">
-          {children}
-        </YStack>
-      </SheetContent>
-    </Sheet>
-  </YStack>
-);
+const MobileSidebar = ({ children }: { children: React.ReactNode }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    // 🛡️ CSS-based Responsive Visibility
+    // Visible only on 'sm' (mobile). Hidden on desktop.
+    <YStack display="none" $sm={{ display: 'flex' }}>
+      <Sheet open={open} onOpenChange={setOpen}>
+        <Button icon={Menu} circular size="$4" onPress={() => setOpen(true)} />
+        <SheetContent position="left" size="$20">
+          <YStack space="$4" paddingTop="$8">
+            {children}
+            {/* Close button inside content since SheetClose is missing */}
+            <Button onPress={() => setOpen(false)} size="$3" chromeless>
+              Close
+            </Button>
+          </YStack>
+        </SheetContent>
+      </Sheet>
+    </YStack>
+  );
+};
 
 interface DesktopSidebarProps {
   children: React.ReactNode;
@@ -49,7 +54,7 @@ const DesktopSidebar = ({ children, isCollapsed, toggleSidebar, variant = 'fixed
   <YStack display="flex" $sm={{ display: 'none' }}>
     <AnimatePresence>
       <YStack
-        animation="medium"
+        animation="bouncy"
         width={isCollapsed && variant === 'collapsible' ? CONSTANTS.WIDTH_COLLAPSED : CONSTANTS.WIDTH_EXPANDED}
         borderRightWidth={1}
         borderColor="$borderColor"

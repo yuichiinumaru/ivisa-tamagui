@@ -1,11 +1,10 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { Command, CommandInput, CommandList, CommandItem, CommandEmpty } from './Command'
-import { vi, describe, it, expect } from 'vitest'
 import React from 'react'
 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-vi.mock('cmdk', () => {
+jest.mock('cmdk', () => {
   const Command = ({ children }: any) => <div>{children}</div>;
   Command.displayName = 'Command';
 
@@ -44,7 +43,7 @@ vi.mock('cmdk', () => {
   };
 })
 
-vi.mock('../../molecules/Dialog', () => ({
+jest.mock('../../molecules/Dialog', () => ({
     Dialog: ({ children }: any) => <div>{children}</div>,
     DialogContent: ({ children }: any) => <div>{children}</div>,
 }))

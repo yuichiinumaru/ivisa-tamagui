@@ -7,15 +7,75 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const require = createRequire(import.meta.url);
 
+const quotaGuardScript = `
+<script>
+  ;(function () {
+    if (typeof window === 'undefined') return
+
+    const createMemoryStorage = (source) => {
+      const map = new Map()
+      if (source && typeof source.length === 'number') {
+        try {
+          for (let i = 0; i < source.length; i++) {
+            const key = source.key(i)
+            if (key != null) {
+              map.set(key, source.getItem(key))
+            }
+          }
+        } catch (error) {}
+      }
+      return {
+        get length() {
+          return map.size
+        },
+        key(index) {
+          return Array.from(map.keys())[index] ?? null
+        },
+        getItem(key) {
+          return map.has(key) ? map.get(key) : null
+        },
+        setItem(key, value) {
+          map.set(String(key), String(value))
+        },
+        removeItem(key) {
+          map.delete(key)
+        },
+        clear() {
+          map.clear()
+        },
+      }
+    }
+
+    const replaceStorage = (name) => {
+      try {
+        const fallback = createMemoryStorage(window[name])
+        Object.defineProperty(window, name, {
+          value: fallback,
+          configurable: true,
+        })
+        if (typeof console !== 'undefined' && console.warn) {
+          console.warn('[storybook] replaced ' + name + ' with in-memory storage to avoid quota errors')
+        }
+      } catch (error) {
+        try {
+          window[name] = createMemoryStorage()
+        } catch (_) {}
+      }
+    }
+
+    replaceStorage('localStorage')
+    replaceStorage('sessionStorage')
+  })()
+</script>
+`
+
 const config: StorybookConfig = {
   stories: [
     '../packages/ui/src/**/*.mdx',
     '../packages/ui/src/**/*.stories.@(ts|tsx)'
   ],
   addons: [
-    '@chromatic-com/storybook',
     '@storybook/addon-docs',
-    '@storybook/addon-onboarding',
     '@storybook/addon-a11y',
     // '@storybook/addon-vitest'
   ],
@@ -23,6 +83,8 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {}
   },
+  managerHead: (head: string = '') => `${head}\n${quotaGuardScript}`,
+  previewHead: (head: string = '') => `${head}\n${quotaGuardScript}`,
   viteFinal: async (config) => {
     const { tamaguiPlugin } = await import('@tamagui/vite-plugin')
 
@@ -45,7 +107,45 @@ const config: StorybookConfig = {
       'react-native': 'react-native-web/dist/index',
       '@react-native/assets-registry/registry': path.resolve(__dirname, '../packages/ui/src/mocks/assets-registry.js'),
       'react-remove-scroll': require.resolve('react-remove-scroll'),
-      // '@react-native/normalize-colors': path.resolve(__dirname, '../packages/ui/src/mocks/normalize-colors.js'),
+      '@react-native/normalize-colors': path.resolve(__dirname, '../packages/ui/src/mocks/normalize-colors.js'),
+      'inline-style-prefixer/lib/plugins/crossFade.js': path.resolve(
+        __dirname,
+        '../packages/ui/src/mocks/inline-style-prefixer-crossFade.js',
+      ),
+      'inline-style-prefixer/lib/plugins/crossFade': path.resolve(
+        __dirname,
+        '../packages/ui/src/mocks/inline-style-prefixer-crossFade.js',
+      ),
+      'inline-style-prefixer/lib/createPrefixer.js': path.resolve(
+        __dirname,
+        '../packages/ui/src/mocks/inline-style-prefixer-createPrefixer.js',
+      ),
+      'inline-style-prefixer/lib/createPrefixer': path.resolve(
+        __dirname,
+        '../packages/ui/src/mocks/inline-style-prefixer-createPrefixer.js',
+      ),
+      'inline-style-prefixer': path.resolve(
+        __dirname,
+        '../packages/ui/src/mocks/inline-style-prefixer-index.js',
+      ),
+      'inline-style-prefixer/lib/plugins/imageSet.js': path.resolve(
+        __dirname,
+        '../packages/ui/src/mocks/inline-style-prefixer-imageSet.js',
+      ),
+      'inline-style-prefixer/lib/plugins/imageSet': path.resolve(
+        __dirname,
+        '../packages/ui/src/mocks/inline-style-prefixer-imageSet.js',
+      ),
+      'inline-style-prefixer/lib/plugins/logical': path.resolve(
+        __dirname,
+        '../packages/ui/src/mocks/inline-style-prefixer-logical.js',
+      ),
+      // Comprehensive mock for all plugins
+      ...['calc', 'cursor', 'flex', 'flexboxIE', 'flexboxOld', 'gradient', 'grid', 'position', 'sizing', 'transition'].reduce((acc, plugin) => ({
+        ...acc,
+        [`inline-style-prefixer/lib/plugins/${plugin}.js`]: path.resolve(__dirname, '../packages/ui/src/mocks/inline-style-prefixer-mock.js'),
+        [`inline-style-prefixer/lib/plugins/${plugin}`]: path.resolve(__dirname, '../packages/ui/src/mocks/inline-style-prefixer-mock.js'),
+      }), {}),
     };
 
     config.define = {

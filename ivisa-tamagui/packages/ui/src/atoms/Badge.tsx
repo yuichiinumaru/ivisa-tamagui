@@ -3,7 +3,7 @@ import { GetProps, styled, Text, View } from 'tamagui'
 export const Badge = styled(View, {
     name: 'Badge',
     tag: 'div',
-    borderRadius: '$10', // Pill shape usually
+    borderRadius: '$full', // Pill shape default
     borderWidth: 1,
     paddingHorizontal: '$2.5',
     paddingVertical: '$0.5',
@@ -49,6 +49,7 @@ export const BadgeText = styled(Text, {
     name: 'BadgeText',
     fontSize: '$1',
     fontWeight: '600',
+    fontFamily: '$body',
 
     variants: {
         variant: {

@@ -38,7 +38,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <ContextMenu>
-      <ContextMenuTrigger>
+      <ContextMenuTrigger asChild>
         <YStack
           width={300}
           height={200}
@@ -54,47 +54,47 @@ export const Default: Story = {
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuItem>
-            <Text>Back</Text>
-            <ContextMenuShortcut>⌘[</ContextMenuShortcut>
+          <Text>Back</Text>
+          <ContextMenuShortcut>⌘[</ContextMenuShortcut>
         </ContextMenuItem>
         <ContextMenuItem disabled>
-            <Text>Forward</Text>
-            <ContextMenuShortcut>⌘]</ContextMenuShortcut>
+          <Text>Forward</Text>
+          <ContextMenuShortcut>⌘]</ContextMenuShortcut>
         </ContextMenuItem>
         <ContextMenuItem>
-            <Text>Reload</Text>
-            <ContextMenuShortcut>⌘R</ContextMenuShortcut>
+          <Text>Reload</Text>
+          <ContextMenuShortcut>⌘R</ContextMenuShortcut>
         </ContextMenuItem>
         <ContextMenuSeparator />
         <ContextMenuSub>
-            <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
-            <ContextMenuSubContent>
-                <ContextMenuItem>
-                    <Text>Save Page As...</Text>
-                    <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
-                </ContextMenuItem>
-                <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-                <ContextMenuItem>Name Window...</ContextMenuItem>
-                <ContextMenuSeparator />
-                <ContextMenuItem>Developer Tools</ContextMenuItem>
-            </ContextMenuSubContent>
+          <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+          <ContextMenuSubContent>
+            <ContextMenuItem>
+              <Text>Save Page As...</Text>
+              <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
+            </ContextMenuItem>
+            <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+            <ContextMenuItem>Name Window...</ContextMenuItem>
+            <ContextMenuSeparator />
+            <ContextMenuItem>Developer Tools</ContextMenuItem>
+          </ContextMenuSubContent>
         </ContextMenuSub>
         <ContextMenuSeparator />
         <ContextMenuCheckboxItem checked>
-            Show Bookmarks Bar
+          Show Bookmarks Bar
         </ContextMenuCheckboxItem>
         <ContextMenuCheckboxItem>
-            Show Full URLs
+          Show Full URLs
         </ContextMenuCheckboxItem>
         <ContextMenuSeparator />
         <ContextMenuLabel>People</ContextMenuLabel>
         <ContextMenuRadioGroup value="pedro">
-            <ContextMenuRadioItem value="pedro">
-                Pedro Duarte
-            </ContextMenuRadioItem>
-            <ContextMenuRadioItem value="colm">
-                Colm Tuite
-            </ContextMenuRadioItem>
+          <ContextMenuRadioItem value="pedro">
+            Pedro Duarte
+          </ContextMenuRadioItem>
+          <ContextMenuRadioItem value="colm">
+            Colm Tuite
+          </ContextMenuRadioItem>
         </ContextMenuRadioGroup>
       </ContextMenuContent>
     </ContextMenu>

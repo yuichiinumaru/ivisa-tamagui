@@ -1,8 +1,7 @@
-import { render } from '../../vitest.setup'
-import { describe, it, expect, vi } from 'vitest'
+import { render } from '../test-utils'
 import { DatePicker } from './DatePicker'
 
-vi.mock('@tamagui/lucide-icons', () => ({
+jest.mock('@tamagui/lucide-icons', () => ({
     Calendar: () => <div data-testid="calendar-icon" />
 }))
 

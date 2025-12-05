@@ -1,5 +1,4 @@
-import { render, screen } from '../../../vitest.setup'
-import { vi } from 'vitest'
+import { render, screen } from '../../test-utils'
 
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogFooter, DialogClose } from './Dialog'
 import { Button } from '../../atoms/Button/Button'
@@ -21,7 +20,7 @@ const DialogTestComponent = ({ onOpenChange }: { onOpenChange: (open: boolean) =
 
 describe('Dialog', () => {
   it('renders dialog content correctly', () => {
-    const onOpenChange = vi.fn()
+    const onOpenChange = jest.fn()
     render(<DialogTestComponent onOpenChange={onOpenChange} />)
 
     expect(screen.getByText('Dialog Title')).toBeInTheDocument()
@@ -32,7 +31,7 @@ describe('Dialog', () => {
   })
 
   // it('calls onOpenChange when overlay is clicked', () => {
-  //   const onOpenChange = vi.fn()
+  //   const onOpenChange = jest.fn()
   //   render(<DialogTestComponent onOpenChange={onOpenChange} />)
 
   //   // The overlay is the backdrop, let's find it by its name

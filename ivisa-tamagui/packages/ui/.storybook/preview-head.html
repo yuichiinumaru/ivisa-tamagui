@@ -1,0 +1,44 @@
+<script>
+  window.process = {
+    env: {
+      NODE_ENV: 'development',
+      TAMAGUI_TARGET: 'web',
+      STORYBOOK: 'true'
+    }
+  };
+</script>
+<style>
+  @font-face {
+    font-family: 'Cera Pro';
+    src: local('Cera Pro'), local('CeraPro-Regular'), url('/fonts/CeraPro-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Cera Pro';
+    src: local('Cera Pro Medium'), local('CeraPro-Medium'), url('/fonts/CeraPro-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Cera Pro';
+    src: local('Cera Pro Bold'), local('CeraPro-Bold'), url('/fonts/CeraPro-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Cera Pro';
+    src: local('Cera Pro Black'), local('CeraPro-Black'), url('/fonts/CeraPro-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  body {
+    font-family: 'Cera Pro', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>

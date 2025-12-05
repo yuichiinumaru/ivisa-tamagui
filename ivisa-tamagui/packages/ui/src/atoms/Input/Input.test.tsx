@@ -1,5 +1,4 @@
-import { render } from '../../../vitest.setup';
-import { describe, it, expect } from 'vitest';
+import { render } from '../../test-utils';
 import { Input } from './Input';
 
 describe('Input', () => {

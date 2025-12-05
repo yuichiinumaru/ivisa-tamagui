@@ -6,14 +6,24 @@ const meta: Meta<typeof Autocomplete> = {
   title: 'Organisms/Autocomplete',
   component: Autocomplete,
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div style={{ minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
 }
 
 const OPTIONS = [
-    { label: 'Apple', value: 'apple' },
-    { label: 'Banana', value: 'banana' },
-    { label: 'Blueberry', value: 'blueberry' },
-    { label: 'Grapes', value: 'grapes' },
-    { label: 'Pineapple', value: 'pineapple' },
+  { label: 'Apple', value: 'apple' },
+  { label: 'Banana', value: 'banana' },
+  { label: 'Blueberry', value: 'blueberry' },
+  { label: 'Grapes', value: 'grapes' },
+  { label: 'Pineapple', value: 'pineapple' },
 ]
 
 export default meta

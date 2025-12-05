@@ -1,8 +1,7 @@
 // @vitest-environment jsdom
 import { render, screen } from '@testing-library/react'
 import { Text } from 'tamagui'
-import { vi, describe, it, expect } from 'vitest'
-import '../../vitest.setup'
+import '../test-utils'
 
 import { AppProviders } from './AppProviders'
 
@@ -27,7 +26,7 @@ describe('AppProviders', () => {
   })
 
   it('logs and rethrows component errors with timestamped metadata', () => {
-    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
 
     const Boom = () => {
       throw new Error('boom')

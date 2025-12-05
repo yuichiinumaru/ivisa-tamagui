@@ -1,7 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import { TamaguiProvider } from 'tamagui'
-import { describe, it, expect, vi } from 'vitest'
 import config from '../../tamagui.config'
 import { Pagination } from './Pagination'
 
@@ -18,7 +17,7 @@ describe('Pagination', () => {
   })
 
   it('calls onPageChange when navigating forward', () => {
-    const handleChange = vi.fn()
+    const handleChange = jest.fn()
 
     const { getByLabelText } = renderWithProvider(
       <Pagination currentPage={3} totalPages={7} onPageChange={handleChange} />

@@ -1,13 +1,12 @@
 // @vitest-environment jsdom
 import React from 'react'
-import { render, screen, waitFor } from '../../../vitest.setup'
-import { afterEach, vi, describe, it, expect } from 'vitest'
+import { render, screen, waitFor } from '../../test-utils'
 
 import { Tooltip } from './Tooltip'
 import { Button, Text } from 'tamagui'
 
 afterEach(() => {
-  vi.restoreAllMocks()
+  jest.restoreAllMocks()
 })
 
 describe('Tooltip', () => {

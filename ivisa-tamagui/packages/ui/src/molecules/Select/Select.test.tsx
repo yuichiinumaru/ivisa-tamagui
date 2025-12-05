@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { fireEvent, render, screen } from '../../../vitest.setup'
+import { fireEvent, render, screen } from '../../test-utils'
 
 import { Select } from './Select'
 

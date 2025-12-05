@@ -5,6 +5,7 @@ export const Kbd = styled(Text, {
   tag: 'kbd',
   fontSize: 12,
   fontWeight: '500',
+  fontFamily: '$body',
   backgroundColor: '$background',
   color: '$color',
   borderRadius: '$2',

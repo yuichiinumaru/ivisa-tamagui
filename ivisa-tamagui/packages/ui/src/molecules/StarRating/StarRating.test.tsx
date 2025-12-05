@@ -1,8 +1,7 @@
-import { render } from '../../../vitest.setup'
-import { describe, it, expect, vi } from 'vitest'
+import { render } from '../../test-utils'
 import { StarRating } from './StarRating'
 
-vi.mock('@tamagui/lucide-icons', () => ({
+jest.mock('@tamagui/lucide-icons', () => ({
   Star: () => <div data-testid="star-icon" />
 }))
 

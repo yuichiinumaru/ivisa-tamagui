@@ -1,16 +1,15 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { Carousel, CarouselContent, CarouselItem } from './Carousel'
-import { vi, describe, it, expect } from 'vitest'
 
 // Mock embla-carousel-react
-vi.mock('embla-carousel-react', () => ({
+jest.mock('embla-carousel-react', () => ({
     default: () => [() => {}, {
-        scrollPrev: vi.fn(),
-        scrollNext: vi.fn(),
+        scrollPrev: jest.fn(),
+        scrollNext: jest.fn(),
         canScrollPrev: () => true,
         canScrollNext: () => true,
-        on: vi.fn(),
-        off: vi.fn(),
+        on: jest.fn(),
+        off: jest.fn(),
     }],
 }))
 

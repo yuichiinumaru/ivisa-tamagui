@@ -1,8 +1,7 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { Video } from './Video'
-import { vi, describe, it, expect } from 'vitest'
 
-vi.mock('expo-av', () => ({
+jest.mock('expo-av', () => ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Video: ({ source, useNativeControls: _0, resizeMode: _1, style, ...rest }: any) => {
     const src = source?.uri || ''

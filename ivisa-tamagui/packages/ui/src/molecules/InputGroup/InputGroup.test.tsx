@@ -1,4 +1,4 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { InputGroup, InputGroupItem } from './InputGroup'
 import { Input } from '../../atoms/Input'
 import { Button } from '../../atoms/Button'

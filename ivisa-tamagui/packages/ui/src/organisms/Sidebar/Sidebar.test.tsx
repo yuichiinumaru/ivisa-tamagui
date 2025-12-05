@@ -1,12 +1,11 @@
 // @vitest-environment jsdom
 import React from 'react';
 import { fireEvent } from '@testing-library/react';
-import { render } from '../../../vitest.setup';
+import { render } from '../../test-utils';
 import { Sidebar } from './Sidebar';
-import { vi, describe, it, expect } from 'vitest';
 
-vi.mock('tamagui', async () => {
-  const tamagui = await vi.importActual('tamagui');
+jest.mock('tamagui', async () => {
+  const tamagui = await jest.importActual('tamagui');
   return {
     ...tamagui,
     Text: (props) => <div {...props} />,
@@ -16,13 +15,13 @@ vi.mock('tamagui', async () => {
   };
 });
 
-vi.mock('../../molecules/Sheet', () => ({
+jest.mock('../../molecules/Sheet', () => ({
     Sheet: ({ children }) => <>{children}</>,
     SheetTrigger: ({ children }) => <>{children}</>,
     SheetContent: ({ children }) => <>{children}</>,
 }));
 
-vi.mock('../../atoms/Button', () => ({
+jest.mock('../../atoms/Button', () => ({
     Button: React.forwardRef(({ icon: Icon, onPress, ...props }, ref) => (
       <button ref={ref} onClick={onPress} {...props}>
         {Icon && <Icon />}
@@ -30,7 +29,7 @@ vi.mock('../../atoms/Button', () => ({
     )),
 }));
 
-vi.mock('@tamagui/lucide-icons', () => ({
+jest.mock('@tamagui/lucide-icons', () => ({
     ChevronLeft: () => <span>ChevronLeft</span>,
     ChevronRight: () => <span>ChevronRight</span>,
     Menu: () => <span>Menu</span>,

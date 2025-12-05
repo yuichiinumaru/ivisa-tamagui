@@ -1,7 +1,6 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { OTPInput } from './OTPInput'
 import userEvent from '@testing-library/user-event'
-import { vi } from 'vitest'
 
 describe('OTPInput', () => {
   it('renders correctly with given length', () => {
@@ -23,7 +22,7 @@ describe('OTPInput', () => {
 
   it('calls onComplete when filled', async () => {
     const user = userEvent.setup()
-    const onComplete = vi.fn()
+    const onComplete = jest.fn()
     render(<OTPInput length={3} onComplete={onComplete} />)
     const inputs = screen.getAllByRole('textbox')
 

@@ -1,12 +1,11 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { Toaster } from './Sonner'
 import { toast } from 'sonner'
 import { Button } from '../../atoms/Button'
-import { vi, describe, it, expect } from 'vitest'
 
-vi.mock('sonner', () => ({
+jest.mock('sonner', () => ({
   Toaster: () => <div data-testid="toaster" />,
-  toast: vi.fn(),
+  toast: jest.fn(),
 }))
 
 describe('Sonner', () => {

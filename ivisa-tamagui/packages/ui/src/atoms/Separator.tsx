@@ -3,6 +3,7 @@ import { Separator as TamaguiSeparator, styled, GetProps } from 'tamagui'
 const SeparatorFrame = styled(TamaguiSeparator, {
     name: 'Separator',
     backgroundColor: '$border', // bg-border
+    fontFamily: '$body',
 
     variants: {
         orientation: {

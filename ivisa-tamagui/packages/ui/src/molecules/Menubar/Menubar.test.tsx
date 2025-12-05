@@ -1,11 +1,10 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem } from './Menubar'
-import { vi } from 'vitest'
 import React from 'react'
 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-vi.mock('@radix-ui/react-menubar', () => ({
+jest.mock('@radix-ui/react-menubar', () => ({
     Root: ({ children }: any) => <div>{children}</div>,
     Menu: ({ children }: any) => <div>{children}</div>,
     Trigger: ({ children }: any) => <button>{children}</button>,

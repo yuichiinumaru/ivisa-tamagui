@@ -1,4 +1,4 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 // Ensure setup is loaded for IntersectionObserver
 import '../../../test-setup'
 import { useForm } from 'react-hook-form'
@@ -7,7 +7,6 @@ import { Input } from '../../atoms/Input/Input'
 import { Button } from '../../atoms/Button/Button'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { vi, describe, it, expect } from 'vitest'
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -50,7 +49,7 @@ describe('Form', () => {
     // Validation test skipped due to timing/environment issue in vitest where error message doesn't appear in time.
     // Logic seems correct and works in manual testing.
     it.skip('validates input and shows error message', async () => {
-        const onSubmit = vi.fn()
+        const onSubmit = jest.fn()
         const { user } = render(<TestForm onSubmit={onSubmit} />)
 
         await user.click(screen.getByText('Submit'))
@@ -60,7 +59,7 @@ describe('Form', () => {
     })
 
     it('submits valid data', async () => {
-        const onSubmit = vi.fn()
+        const onSubmit = jest.fn()
         const { user } = render(<TestForm onSubmit={onSubmit} />)
         const input = screen.getByPlaceholderText('shadcn')
 

@@ -1,8 +1,7 @@
 // @vitest-environment jsdom
 import React from 'react';
-import { render, screen } from '../../../vitest.setup';
+import { render, screen } from '../../test-utils';
 import { RichText } from './RichText';
-import { vi } from 'vitest';
 
 const tiptapMocks = {
     onUpdate: null,
@@ -11,7 +10,7 @@ const tiptapMocks = {
     },
 };
 
-vi.mock('@tiptap/react', async (importOriginal) => {
+jest.mock('@tiptap/react', async (importOriginal) => {
     const actual = await importOriginal();
     return {
         ...actual,
@@ -26,7 +25,7 @@ vi.mock('@tiptap/react', async (importOriginal) => {
 describe('RichText', () => {
   beforeEach(() => {
     tiptapMocks.onUpdate = null;
-    vi.clearAllMocks();
+    jest.clearAllMocks();
   });
 
   it('renders correctly with default props', () => {
@@ -35,7 +34,7 @@ describe('RichText', () => {
   });
 
   it('calls onChange when the editor content updates', () => {
-    const handleChange = vi.fn();
+    const handleChange = jest.fn();
     render(<RichText onChange={handleChange} />);
 
     expect(tiptapMocks.onUpdate).toBeInstanceOf(Function);

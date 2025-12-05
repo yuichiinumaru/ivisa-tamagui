@@ -1,4 +1,4 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { Empty } from './Empty'
 import { Ban } from '@tamagui/lucide-icons'
 import { Button } from '../../atoms/Button'

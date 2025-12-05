@@ -8,7 +8,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@ivisa/ui": "workspace:*",
+    "@ivisa/ui": "*",
     "@hookform/resolvers": "^3.3.4",
     "react-hook-form": "^7.50.1",
     "zod": "^3.22.4"

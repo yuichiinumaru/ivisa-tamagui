@@ -1,4 +1,4 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { Item } from './Item'
 import { User } from '@tamagui/lucide-icons'
 

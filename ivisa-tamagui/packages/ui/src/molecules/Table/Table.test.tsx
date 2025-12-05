@@ -1,4 +1,4 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from './Table'
 
 describe('Table', () => {

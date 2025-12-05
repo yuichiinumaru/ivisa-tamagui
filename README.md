@@ -37,9 +37,9 @@ bento/       # (optional) Marketing layouts from Tamagui Bento Free
 
 ```bash
 pnpm install                # install workspace deps
-pnpm storybook              # launch Storybook (default: http://localhost:6006)
-pnpm test                   # run unit + interaction tests (Vitest)
-pnpm lint                   # run eslint/ruff (see package.json scripts)
+40: pnpm storybook              # launch Storybook (Webpack 5) (default: http://localhost:6006)
+41: pnpm test                   # run unit tests (Jest)
+42: pnpm lint                   # run eslint/ruff (see package.json scripts)
 # node scripts/visual-check   # Playwright screenshots (Pending restoration)
 python scripts/migrate_old_port.py --help  # tooling to import legacy assets
 ```
@@ -57,7 +57,7 @@ python scripts/migrate_old_port.py --help  # tooling to import legacy assets
    - Add/modify components inside the correct layer (`atoms/`, `molecules/`, `organisms/`).
    - Export from `packages/ui/src/index.ts` and update accompanying stories under the same folder.
 3. **Testing**
-   - Prefer TDD for new composites (Vitest + React Testing Library).
+60:    - Prefer TDD for new composites (Jest + React Testing Library).
    - Verify visually through Storybook (Visual check script pending).
 4. **Documentation**
    - Log noteworthy changes in `docs/04-changelog.md`.

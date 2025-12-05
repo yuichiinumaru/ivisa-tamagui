@@ -1,4 +1,4 @@
-import { render, screen } from '../../vitest.setup'
+import { render, screen } from '../test-utils'
 import { Toast, ToastProvider, ToastViewport, ToastTitle } from './Toast'
 
 describe('Toast', () => {

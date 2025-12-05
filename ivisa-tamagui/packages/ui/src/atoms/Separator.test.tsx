@@ -1,4 +1,4 @@
-import { render } from '../../vitest.setup'
+import { render } from '../test-utils'
 import { Separator } from './Separator'
 
 describe('Separator', () => {

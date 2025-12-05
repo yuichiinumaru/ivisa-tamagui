@@ -1,13 +1,13 @@
 import {
     Sheet,
-    SheetTrigger,
+    //     SheetTrigger, // Removed
     SheetContent,
     SheetHeader,
     SheetFooter,
     SheetTitle,
     SheetDescription,
     SheetOverlay,
-    SheetClose,
+    //     SheetClose, // Removed
     SheetFrame,
     SheetHandle,
 } from './Sheet'
@@ -17,14 +17,14 @@ import {
 // we can alias the components.
 
 export const Drawer = Sheet
-export const DrawerTrigger = SheetTrigger
+// export const DrawerTrigger = SheetTrigger // Removed
 export const DrawerContent = SheetContent
 export const DrawerHeader = SheetHeader
 export const DrawerFooter = SheetFooter
 export const DrawerTitle = SheetTitle
 export const DrawerDescription = SheetDescription
 export const DrawerOverlay = SheetOverlay
-export const DrawerClose = SheetClose
+// export const DrawerClose = SheetClose // Removed
 export const DrawerFrame = SheetFrame
 export const DrawerHandle = SheetHandle
 

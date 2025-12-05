@@ -1,4 +1,4 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { DataTable } from './DataTable'
 import { ColumnDef } from '@tanstack/react-table'
 

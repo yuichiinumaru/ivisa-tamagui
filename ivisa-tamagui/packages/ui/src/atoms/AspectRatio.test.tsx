@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react'
 import { AspectRatio } from './AspectRatio'
 import React from 'react'
-import { describe, it, expect } from 'vitest'
 import { TamaguiProvider } from 'tamagui'
 import config from '../tamagui.config'
 

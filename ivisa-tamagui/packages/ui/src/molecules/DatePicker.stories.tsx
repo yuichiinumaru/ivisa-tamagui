@@ -14,15 +14,25 @@ const meta: Meta<typeof DatePicker> = {
       control: 'text',
     },
   },
+  decorators: [
+    (Story) => (
+      <div style={{ minHeight: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  parameters: {
+    layout: 'fullscreen',
+  },
   render: (args) => {
-    const [date, setDate] = useState<Date | undefined>(args.date);
+    const [date, setDate] = useState<Date | undefined>(args.date ? new Date(args.date) : undefined);
 
-    const handleDateChange = (newDate: Date) => {
+    const handleDateChange = (newDate: Date | undefined) => {
       setDate(newDate);
       console.log('dateChanged', newDate);
     };
 
-    return <DatePicker {...args} date={date} onDateChange={handleDateChange} />;
+    return <DatePicker {...args} date={date || undefined} onDateChange={handleDateChange} />;
   },
 }
 

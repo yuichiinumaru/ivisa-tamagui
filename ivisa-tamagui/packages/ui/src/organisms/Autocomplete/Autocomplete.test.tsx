@@ -1,13 +1,11 @@
-import { render, screen } from '../../../vitest.setup';
-import { describe, it, expect } from 'vitest';
+import { render, screen } from '../../test-utils';
 import React from 'react';
 
-import { describe, it, expect, vi } from 'vitest';
 import { Autocomplete, AutocompleteOption } from './Autocomplete';
 import userEvent from '@testing-library/user-event';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-vi.mock('cmdk', () => {
+jest.mock('cmdk', () => {
   const Command = ({ children }: any) => <div>{children}</div>;
   Command.displayName = 'Command';
 
@@ -87,7 +85,7 @@ describe('Autocomplete', () => {
 
   it('calls onValueChange with the selected option', async () => {
     const user = userEvent.setup();
-    const onValueChange = vi.fn();
+    const onValueChange = jest.fn();
     render(<Autocomplete options={options} onValueChange={onValueChange} />);
     const trigger = screen.getByRole('combobox');
     await user.click(trigger);

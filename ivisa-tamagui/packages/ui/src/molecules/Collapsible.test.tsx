@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from './Collapsible'
 import React from 'react'
-import { describe, it, expect } from 'vitest'
 import { TamaguiProvider, Text } from 'tamagui'
 import config from '../tamagui.config'
 

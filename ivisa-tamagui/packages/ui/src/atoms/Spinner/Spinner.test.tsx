@@ -1,4 +1,4 @@
-import { render } from '../../../vitest.setup'
+import { render } from '../../test-utils'
 import { Spinner } from './Spinner'
 
 describe('Spinner', () => {

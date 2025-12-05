@@ -1,19 +1,17 @@
-import { Sheet as TamaguiSheet } from '@tamagui/sheet'
-import { styled, GetProps, XStack, YStack, H2, Paragraph } from 'tamagui'
+import { Sheet as TamaguiSheet, styled, GetProps, XStack, YStack, H2, Paragraph } from 'tamagui'
 import React from 'react'
 
 /* 
   Shadcn Sheet is a sidebar (Drawer). Tamagui Sheet is a bottom sheet.
   For this implementation, we will wrap Tamagui Sheet. 
-  Note: To get a true "Side Sheet" on web with Tamagui, we might need to use Dialog with custom animations,
-  but Tamagui Sheet is the closest primitive for the "Sheet" concept in mobile-first design.
-  We will expose the Tamagui Sheet API but wrapped to look like shadcn.
+  Note: Tamagui Sheet does NOT expose Trigger or Close components. 
+  We must control state manually or create custom wrappers if needed.
 */
 
 const Sheet = TamaguiSheet
 
-const SheetTrigger = TamaguiSheet.Trigger
-const SheetClose = TamaguiSheet.Close
+// SheetTrigger and SheetClose are NOT supported by Tamagui Sheet directly.
+// Removing them to prevent "undefined" errors. State must be controlled.
 
 const SheetOverlay = styled(TamaguiSheet.Overlay, {
     name: 'SheetOverlay',
@@ -88,7 +86,7 @@ const SheetDescription = styled(Paragraph, {
 
 export {
     Sheet,
-    SheetTrigger,
+    // SheetTrigger, // Not available
     SheetContent,
     SheetHeader,
     SheetFooter,
@@ -96,7 +94,7 @@ export {
     SheetDescription,
     SheetOverlay, // Exporting just in case
     SheetHandle,  // Exporting just in case
-    SheetClose,
+    // SheetClose, // Not available
     SheetContentFrame as SheetFrame,
 }
 

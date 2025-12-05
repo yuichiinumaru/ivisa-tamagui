@@ -1,4 +1,4 @@
-import { render, screen } from '../../vitest.setup'
+import { render, screen } from '../test-utils'
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './Resizable'
 import { Text } from 'tamagui'
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { TamaguiProvider } from 'tamagui'
-import { describe, it, expect } from 'vitest'
 import config from '../../tamagui.config'
 import { Breadcrumb } from './Breadcrumb'
 

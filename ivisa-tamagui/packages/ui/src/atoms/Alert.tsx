@@ -5,7 +5,7 @@ const AlertFrame = styled(XStack, {
     tag: 'div',
     role: 'alert',
     alignItems: 'flex-start',
-    borderRadius: '$4',
+    borderRadius: '$md',
     borderWidth: 1,
     padding: '$4',
     gap: '$4',
@@ -34,6 +34,7 @@ const AlertTitleFrame = styled(Text, {
     name: 'AlertTitle',
     tag: 'h5',
     fontWeight: '500',
+    fontFamily: '$heading',
     lineHeight: 1,
     letterSpacing: -0.05,
     marginBottom: '$1',
@@ -60,6 +61,7 @@ const AlertDescriptionFrame = styled(Text, {
     tag: 'div',
     fontSize: '$3',
     lineHeight: '$4',
+    fontFamily: '$body',
     color: '$mutedForeground',
 
     variants: {

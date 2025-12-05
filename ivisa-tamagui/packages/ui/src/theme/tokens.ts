@@ -150,12 +150,12 @@ const sizeScale = {
 
 const radiusScale = {
   none: 0,
-  xs: 4,
-  sm: 6,
-  md: 10,
-  lg: 14,
-  xl: 20,
-  full: 999,
+  xs: 2,
+  sm: 4,
+  md: 8, // ShadCN default (0.5rem)
+  lg: 12,
+  xl: 24,
+  full: 9999,
 };
 
 const zIndexScale = {

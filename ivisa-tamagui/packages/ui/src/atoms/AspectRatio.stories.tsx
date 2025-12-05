@@ -8,8 +8,15 @@ const meta: Meta<typeof AspectRatio> = {
   tags: ['autodocs'],
   argTypes: {
     ratio: {
-      control: { type: 'number' },
-      description: 'The aspect ratio of the container (width / height)',
+      control: 'select',
+      options: ['16:9', '4:3', '1:1', '21:9'],
+      mapping: {
+        '16:9': 16 / 9,
+        '4:3': 4 / 3,
+        '1:1': 1,
+        '21:9': 21 / 9,
+      },
+      description: 'The aspect ratio of the container',
     },
   },
 }
@@ -20,7 +27,7 @@ type Story = StoryObj<typeof AspectRatio>
 
 export const Default: Story = {
   render: (args) => (
-    <AspectRatio {...args} width={300} overflow="hidden" borderRadius="$4" backgroundColor="$gray5">
+    <AspectRatio {...args} width={300} overflow="hidden" backgroundColor="$gray5">
       <Image
         source={{
           uri: 'https://images.unsplash.com/photo-1535025183041-0991a977e25b?w=300&dpr=2&q=80',
@@ -32,13 +39,13 @@ export const Default: Story = {
     </AspectRatio>
   ),
   args: {
-    ratio: 16 / 9,
+    ratio: '16:9',
   },
 }
 
 export const Square: Story = {
   render: (args) => (
-    <AspectRatio {...args} width={300} overflow="hidden" borderRadius="$4" backgroundColor="$gray5">
+    <AspectRatio {...args} width={300} overflow="hidden" backgroundColor="$gray5">
       <Image
         source={{
           uri: 'https://images.unsplash.com/photo-1535025183041-0991a977e25b?w=300&dpr=2&q=80',

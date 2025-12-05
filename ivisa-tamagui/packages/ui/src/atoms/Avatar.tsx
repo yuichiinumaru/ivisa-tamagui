@@ -10,7 +10,6 @@ const AvatarFrame = styled(TamaguiAvatar, {
 
 const AvatarImage = styled(TamaguiAvatar.Image, {
     name: 'AvatarImage',
-    source: { uri: '' }, // Default source object for TS
     width: '100%',
     height: '100%',
 })

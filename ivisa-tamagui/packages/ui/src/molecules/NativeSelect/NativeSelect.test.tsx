@@ -1,4 +1,4 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { NativeSelect } from './NativeSelect'
 
 describe('NativeSelect', () => {

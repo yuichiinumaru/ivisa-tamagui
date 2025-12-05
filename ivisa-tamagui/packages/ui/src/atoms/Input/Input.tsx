@@ -78,6 +78,7 @@ const StyledInput = styled(TamaguiInput, {
   name: 'Input',
   color: '$foreground',
   placeholderTextColor: '$mutedForeground',
+  fontFamily: '$body',
 
   variants: {
     variant: inputVariants.variant,
@@ -97,7 +98,7 @@ const StyledInput = styled(TamaguiInput, {
 const InputFrame = styled(XStack, {
   name: 'InputFrame',
   alignItems: 'center',
-  borderRadius: '$4',
+  borderRadius: '$md',
   overflow: 'hidden',
 
   variants: {
@@ -119,6 +120,7 @@ const UnframedInputStyled = styled(TamaguiInput, {
   outlineWidth: 0,
   color: '$foreground',
   placeholderTextColor: '$mutedForeground',
+  fontFamily: '$body',
   height: '100%',
   paddingHorizontal: 0,
   hoverStyle: {
@@ -195,15 +197,15 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
   ({ variant = 'default', size = 'default', children, ...props }, ref) => {
     // 🛡️ Necromancer Guard: Zero Ambiguity
     if (children) {
-       if (process.env.NODE_ENV === 'development') {
-         console.warn("Input: Passing 'children' to <Input /> is deprecated. Use <Input.Box> for composite inputs.")
-       }
-       // Legacy support (Transition Phase)
-       return (
+      if (process.env.NODE_ENV === 'development') {
+        console.warn("Input: Passing 'children' to <Input /> is deprecated. Use <Input.Box> for composite inputs.")
+      }
+      // Legacy support (Transition Phase)
+      return (
         <InputBox ref={ref} variant={variant} size={size} {...props}>
           {children}
         </InputBox>
-       )
+      )
     }
 
     return (

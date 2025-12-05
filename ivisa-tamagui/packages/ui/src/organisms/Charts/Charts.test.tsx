@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
 import { BarChart } from './BarChart'
 import { AppProviders } from '../../providers/AppProviders'
 

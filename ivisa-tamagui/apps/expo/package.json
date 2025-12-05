@@ -11,7 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@ivisa/ui": "workspace:*",
+    "@ivisa/ui": "*",
     "@tanstack/react-table": "^8.21.3",
     "expo": "~50.0.14",
     "react": "18.2.0",

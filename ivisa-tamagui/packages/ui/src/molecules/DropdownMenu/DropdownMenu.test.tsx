@@ -1,11 +1,10 @@
-import { render, screen } from '../../../vitest.setup'
+import { render, screen } from '../../test-utils'
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from './DropdownMenu'
-import { vi } from 'vitest'
 import React from 'react'
 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-vi.mock('@radix-ui/react-dropdown-menu', () => ({
+jest.mock('@radix-ui/react-dropdown-menu', () => ({
     Root: ({ children }: any) => <div>{children}</div>,
     Trigger: ({ children }: any) => <button>{children}</button>,
     Portal: ({ children }: any) => <div>{children}</div>,

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '../../../vitest.setup'
+import { render, screen, fireEvent } from '../../test-utils'
 
 import {
   Popover,
