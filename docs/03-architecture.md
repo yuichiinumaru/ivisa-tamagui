@@ -60,15 +60,31 @@ For components that Tamagui does not ship out of the box, we follow a consistent
 
 ## 6. External References & Cloned Repositories
 
-To avoid polluting the main project, external references live in a separate folder (e.g. `_reference/`) and are not part of the design system package:
+To avoid polluting the main project, external references live in a separate folder (`referencias/`) and are not part of the design system package:
 
 - Example clones:
   - `tamagui/tamagui` – Source of Tamagui UI and config patterns.
   - `dohomi/tamagui-kitchen-sink` – Examples of forms and advanced layouts.
   - `pogiii/sushi` – Patterns for composed inputs (`Input`, `OTPInput`) and multi-step layouts (`Stepper`).
   - Headless libraries and utilities (TanStack Table/Query, Rehookify Datepicker, cmdk, Embla Carousel, Downshift, Radix Primitives, input-otp, etc.).
-- The workspace can be opened as a multi-root VS Code workspace so the main app and `_reference/` are visible side by side while keeping Git history, search, and watchers separate.
+- The workspace can be opened as a multi-root VS Code workspace so the main app and `referencias/` are visible side by side while keeping Git history, search, and watchers separate.
 - Only concepts and patterns are copied from these references into `packages/ui`; the design system remains self-contained.
+
+### Setting up Multi-Root Workspace
+
+We use a VS Code Multi-Root Workspace (`ivisa.code-workspace`) to manage the `ivisa-tamagui` project alongside the reference repositories without mixing their contexts (linting, git, search).
+
+1.  **Clone References:** Ensure you have the reference repositories cloned into the `referencias/` folder.
+    ```bash
+    mkdir -p referencias
+    cd referencias
+    git clone https://github.com/pogiii/sushi.git
+    git clone https://github.com/dohomi/tamagui-kitchen-sink.git
+    ```
+2.  **Open Workspace:** In VS Code, go to `File > Open Workspace from File...` and select `ivisa.code-workspace` from the root directory.
+3.  **Workspace Features:**
+    - **Context Isolation:** Search results and file watchers in `referencias` are excluded from the main project context to improve performance and reduce noise.
+    - **Side-by-Side Reference:** You can easily browse `sushi` or `tamagui-kitchen-sink` code and copy/adapt patterns into `packages/ui`.
 
 ## 7. Testing & Documentation
 

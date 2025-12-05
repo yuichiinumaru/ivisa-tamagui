@@ -5,6 +5,23 @@ const meta: Meta<typeof Button> = {
   title: 'atoms/Button',
   component: Button,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### Usage
+Buttons are used to trigger actions or navigation. They should be used for primary actions (Save, Submit) and secondary actions (Cancel, Back).
+
+### Variants
+- **Default**: Primary action.
+- **Secondary**: Lower priority action.
+- **Destructive**: Action that deletes or removes data.
+- **Outline**: Alternative secondary action.
+- **Ghost**: Minimalistic action, often used in toolbars.
+`,
+      },
+    },
+  },
   argTypes: {
     variant: {
       control: { type: 'select' },
