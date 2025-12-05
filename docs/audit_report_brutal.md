@@ -1,48 +1,74 @@
-# The Report of Shame: Zero-Mercy Code Audit
+# AUDIT REPORT: BRUTAL & EXHAUSTIVE
 
-**Auditor:** Senior Engineer Hardcore Code Inquisitor
-**Date:** 2024-05-22
-**Subject:** `ivisa-tamagui` Monorepo
-**Verdict:** **UNACCEPTABLE**
+**Auditor:** The Senior Engineer Hardcore Code Inquisitor
+**Date:** 2024-05-24
+**Status:** FAILED
+**Doctrine:** Absolute Zero Fragility
 
-This document catalogues the critical failures, structural weaknesses, and acts of negligence found within the codebase. It is not a suggestion box. It is a demand for immediate remediation.
+## Executive Summary
+The codebase exhibits a facade of modernity ("Frankenstein Controlado") but hides critical structural weaknesses, potential security vulnerabilities, and sloppy configuration. While the Atomic Design structure is respected, the implementation details betray a lack of rigor in type safety, state management, and testing strategy.
 
-## Summary of Atrocities
+**Verdict:** DO NOT DEPLOY until critical issues are resolved.
 
-| Severity | Count | Primary Offender |
-| :--- | :---: | :--- |
-| **CRITICAL** | 4 | `Input.tsx`, `ContextMenu.native.tsx`, `Button.tsx`, `Sidebar.tsx` |
-| **HIGH** | 3 | `withErrorLogging.tsx`, `Sheet.tsx`, `package.json` |
-| **MED** | 2 | `docs/02-tasks.md`, `tamagui.config.ts` |
-| **NIT** | 1 | `ContextMenu.tsx` |
-
----
-
-## The Findings
+## The Report of Shame
 
 | Severity | File:Line | Error Type | Description of Failure | The Fix (Ruthless) |
 | :--- | :--- | :--- | :--- | :--- |
-| **CRITICAL** | `packages/ui/src/atoms/Input/Input.tsx:125` | Type Safety | `ref={ref as any}`. You have explicitly disabled the compiler's ability to save you from yourself. This is an admission of defeat. | Define the correct union type for the Ref or split the component. **REMOVE `any`**. |
-| **CRITICAL** | `packages/ui/src/atoms/Input/Input.tsx:124` | Linting | `eslint-disable-next-line @typescript-eslint/no-explicit-any`. You suppressed the warning instead of fixing the problem. This is "Coding by Coercion". | Remove the disable comment. Fix the type. |
-| **CRITICAL** | `packages/ui/src/molecules/ContextMenu/ContextMenu.native.tsx` | Functional | **Silent Failure**. The component renders `null` or `children` blindly. A user on Native will tap the trigger and *nothing will happen*. No error, no UI. | Implement a Native ActionSheet or throw a loud error/warning in DEV mode. |
-| **CRITICAL** | `packages/ui/src/atoms/Button/Button.tsx:80` | Type Safety | `React.forwardRef<HTMLButtonElement, ...>`. `HTMLButtonElement` does not exist on React Native. This code lies about its cross-platform compatibility. | Use `TamaguiElement` or `React.ElementRef<typeof TamaguiButton>` for the ref type. |
-| **CRITICAL** | `packages/ui/src/organisms/Sidebar/Sidebar.tsx:21` | Logic / SSR | `if (media.sm) { return ... }`. Conditional rendering based on `useMedia` hooks will cause **Hydration Mismatches** during SSR (Next.js). The server renders Desktop; client renders Mobile. Crash/Flicker imminent. | Wrap in a `<ClientOnly>` boundary or use CSS/Tamagui media styles for visibility toggling instead of conditional return. |
-| **HIGH** | `packages/ui/src/utils/withErrorLogging.tsx` | Architecture | **Useless Pattern**. A `try/catch` block around a React Component render function *does not catch errors in children, effects, or event handlers*. It is security theater. | Delete this wrapper. Use standard **React Error Boundaries**. |
-| **HIGH** | `packages/ui/src/molecules/Sheet.tsx` | Semantic | **Concept Pollution**. You are aliasing a "Bottom Sheet" (Tamagui Sheet) as a "Sidebar/Drawer" (Shadcn Sheet). Users expecting a sidebar get a bottom sheet on mobile. | Rename to `BottomSheet` if that's what it is, or implement a real `Dialog`-based Side Sheet for desktop/web. |
-| **HIGH** | `packages/ui/package.json` | Dependencies | **Dependency Bloat**. Mixing `victory` (Web) and `victory-native` (Native) and `expo-av` in the same package without strict tree-shaking guarantees allows Web code to leak into Native bundles and vice-versa. | Split into `@ivisa/ui-web` and `@ivisa/ui-native` OR ensure strict `.native.tsx` / `.web.tsx` isolation for *all* imports. |
-| **MED** | `docs/02-tasks.md` | Integrity | **False Reporting**. Task 37a claims "Resolve Linting Errors" is pending, yet "Completed Tasks" claims "Fixed 70+ ESLint errors". The presence of `eslint-disable` proves the latter is a lie. | Update the docs to reflect reality: "Linting errors were suppressed, not fixed." |
-| **MED** | `packages/ui/src/tamagui.config.ts` | Linting | `eslint-disable` used for `TamaguiCustomConfig`. Lazy configuration. | Extend the interface properly or use the correct Tamagui config utility helpers. |
-| **NIT** | `packages/ui/src/molecules/ContextMenu/ContextMenu.tsx` | Code Hygiene | Unused `_className` variables and lazy `eslint-disable` comments. | Remove unused variables from destructuring. |
+| **CRITICAL** | `ivisa-tamagui/packages/ui/src/atoms/Input/Input.tsx:21` | Logic | `variants` definition is structurally broken. It spreads `...inputVariants.variant` directly into `variants`, creating props named `default` and `filled` instead of a `variant` prop with those values. | Restructure to `variants: { variant: { ...inputVariants.variant }, size: ... }`. Learn how Tamagui `styled` works or stop using it. |
+| **HIGH** | `ivisa-tamagui/package.json:9` | Config | `typecheck` script runs `pnpm lint`. This is a lie. It does not check types. It checks style. | Change to `tsc --noEmit`. Stop lying to your CI. |
+| **HIGH** | `ivisa-tamagui/tsconfig.json:11` | Type Safety | `allowJs: true` is enabled. This allows untyped JavaScript to pollute the codebase, defeating the purpose of TypeScript. | Set `allowJs: false`. Migrate any `.js` files to `.ts` or delete them. |
+| **MED** | `ivisa-tamagui/packages/ui/src/organisms/RichText/RichText.tsx:29` | Security | `onChange` returns raw HTML from `editor.getHTML()`. This is a stored XSS vector if the consumer renders it directly. | Return JSON/Content object or force sanitization (DOMPurify) before outputting. Add a warning comment at minimum. |
+| **MED** | `ivisa-tamagui/packages/ui/src/molecules/DatePicker.tsx:49` | Logic | `format(date, ...)` will crash the app if `date` is an invalid Date object. No validation performed. | Add `if (!isValid(date)) return null;` or handle the error. Never trust Date objects. |
+| **MED** | `ivisa-tamagui/packages/ui/src/organisms/Sidebar/Sidebar.tsx:75` | UX / Perf | `HydrationGuard` + `useMedia` causes a layout shift (FOUC). It renders a blank box then snaps to Mobile/Desktop. | Use CSS media queries for layout or Accept the limitation and document it. Do not pretend it is seamless. |
+| **MED** | `ivisa-tamagui/scripts/visual-check.js:14` | Maintainability | `STORIES_TO_CHECK` is a hardcoded array. It is already stale and will rot further. | Use `glob` to find `*.stories.tsx` and extract IDs dynamically. |
+| **MED** | `ivisa-tamagui/scripts/visual-check.js:106` | Flakiness | `setTimeout(500)` is a "magic wait". It will fail on slow CI runners. | Use `page.waitForSelector()` or proper Playwright locators. |
+| **LOW** | `ivisa-tamagui/apps/expo/App.tsx:26` | Hardcoding | `TAB_LABELS.ARIA_LIST` is hardcoded English. | Use an i18n key or at least a prop. |
+| **NIT** | `ivisa-tamagui/packages/ui/src/atoms/Button/Button.tsx:4` | Hygiene | "💀" comments everywhere. | Delete them. Code is not a blog post. |
+| **NIT** | `ivisa-tamagui/apps/expo/App.tsx:37` | Style | `borderBottomLeftRadius={0}` hardcoded style override. | Define a proper `TabList` variant in the theme/component instead of inline overrides. |
 
----
+## Phase 1: The Surface Scan (Static Analysis)
 
-## Conclusion
-The codebase exhibits a "Frankenstein" nature that has gone beyond "Controlado" into "Uncontrolled". The mixing of Web and Native types without safeguards is a ticking time bomb for the bundler. The reliance on `any` and `eslint-disable` indicates a lack of discipline.
+### Style & Hygiene
+*   **Zombie Comments:** The codebase is littered with "💀 The Rite of Resurrection" comments. While they provide context, they are unprofessional noise.
+*   **Lying Scripts:** `pnpm typecheck` running `eslint` is a capital offense. It gives a false sense of security.
+*   **Loose Types:** `tsconfig.json` allows JS. This is lazy.
 
-**Immediate Actions Required:**
-1.  **Ban `any`**: Enable `no-explicit-any` in ESLint and *remove* it from `ignores`.
-2.  **Fix Refs**: Audit all `forwardRef` calls for Native compatibility.
-3.  **Implement Native Context Menu**: Do not ship silent failures.
-4.  **Fix SSR**: Audit all `useMedia` usages.
+### Type Safety
+*   **Input.tsx:** The `variants` definition is valid TypeScript but semantically wrong for the library (Tamagui). It compiles but won't work as expected at runtime. This is the most dangerous kind of bug.
 
-*End of Report.*
+## Phase 2: The Structural Assault (Logic & Complexity)
+
+### Component Logic
+*   **Input.tsx:** Composition pattern relies on `InputContext`. The check `if (!context) throw` is good ("Fail Loudly"), but the broken variants map undermines the component's basic utility.
+*   **Sidebar.tsx:** The "Hydration Guard" is a patch over the problem of SSR/CSR mismatch with `useMedia`. It results in a degraded user experience (flashing).
+
+### Dependency Management
+*   **visual-check.js:** The script manually constructs Storybook URLs and lists stories. This is fragile coupling. If Storybook changes its URL format or ID generation, this script dies.
+
+## Phase 3: The Security Penetration (Vulnerabilities)
+
+### Injection Risks
+*   **RichText.tsx:** The component wraps Tiptap and exposes `onChange(html)`. While Tiptap is generally safe, returning raw HTML string encourages consumers to use `dangerouslySetInnerHTML`.
+    *   *Scenario:* User inputs `<img src=x onerror=alert(1)>`. If Tiptap allows it and consumer renders it, you are pwned.
+
+### Data Exposure
+*   No hardcoded secrets found in the scanned files (Good).
+*   No `eval()` usage found (Good).
+
+## Phase 4: The Chaos Simulation (Hypothetical Scenarios)
+
+### "What if..."
+*   **What if the date is invalid?** `DatePicker` crashes.
+*   **What if the network is slow?** `visual-check.js` fails due to 500ms timeout.
+*   **What if a developer adds a new story?** It is ignored by `visual-check.js` because the list is hardcoded.
+
+## Final Recommendations
+
+1.  **Fix the Build Pipeline:** Make `typecheck` actually check types.
+2.  **Repair `Input.tsx`:** It is currently broken.
+3.  **Harden Input Handling:** Sanitize HTML from RichText, validate Dates.
+4.  **Refactor Scripts:** Make them dynamic and robust.
+5.  **Clean Up:** Remove the "💀" comments and use standard TSDoc.
+
+**Signed,**
+*The Inquisitor*
