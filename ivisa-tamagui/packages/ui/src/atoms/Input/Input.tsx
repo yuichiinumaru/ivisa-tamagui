@@ -14,7 +14,9 @@ const useInputContext = () => {
   const context = useContext(InputContext);
   if (!context) {
     // Fail Loudly: Enforce Composition Pattern
-    throw new Error('Input compound components (Input.Field, Input.Icon, Input.Button) must be used within <Input>');
+    // TODO: Ideally this would be allowed for standalone Fields, but the current design assumes Context.
+    // For now, we keep the strict check to match the Necromancer Doctrine of "Fail Loudly".
+    throw new Error('Input compound components (Input.Field, Input.Icon, Input.Button) must be used within <Input.Box>');
   }
   return context;
 }
@@ -165,20 +167,45 @@ type StyledInputProps = GetProps<typeof StyledInput>
 export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
   variant?: 'default' | 'filled'
   size?: 'sm' | 'default' | 'lg'
+  /**
+   * @deprecated Passing children to Input is deprecated. Use <Input.Box> for composite layouts.
+   */
   children?: React.ReactNode
 }
 
+/**
+ * Input.Box (formerly implicit <Input>)
+ * Explicit container for composite inputs.
+ */
+const InputBox = React.forwardRef<TamaguiElement, InputProps & { children: React.ReactNode }>(
+  ({ variant = 'default', size = 'default', children, ...props }, ref) => {
+    return (
+      <InputContext.Provider value={{ size }}>
+        <InputFrame ref={ref} variant={variant} size={size} {...props}>
+          {children}
+        </InputFrame>
+      </InputContext.Provider>
+    )
+  }
+)
+InputBox.displayName = 'Input.Box'
+
+
 const InputMain = React.forwardRef<TamaguiElement, InputProps>(
   ({ variant = 'default', size = 'default', children, ...props }, ref) => {
+    // 🛡️ Necromancer Guard: Zero Ambiguity
     if (children) {
-      return (
-        <InputContext.Provider value={{ size }}>
-          <InputFrame ref={ref} variant={variant} size={size}>
-            {children}
-          </InputFrame>
-        </InputContext.Provider>
-      )
+       if (process.env.NODE_ENV === 'development') {
+         console.warn("Input: Passing 'children' to <Input /> is deprecated. Use <Input.Box> for composite inputs.")
+       }
+       // Legacy support (Transition Phase)
+       return (
+        <InputBox ref={ref} variant={variant} size={size} {...props}>
+          {children}
+        </InputBox>
+       )
     }
+
     return (
       <StyledInput
         ref={ref}
@@ -194,6 +221,7 @@ InputMain.displayName = 'Input'
 // --- Export ---
 
 export const Input = Object.assign(InputMain, {
+  Box: InputBox,
   Field: InputField,
   Icon: InputIcon,
   Button: InputButton,
