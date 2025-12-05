@@ -1,6 +1,10 @@
 import React, { useMemo } from 'react'
-import { Button, isWeb, Select as TamaguiSelect, Sheet, styled, View, Text, Adapt, SelectProps as TamaguiSelectProps } from 'tamagui'
+import { Button, isWeb, Select as TamaguiSelect, Sheet, styled, View, Adapt, SelectProps as TamaguiSelectProps } from 'tamagui'
+import { Check, ChevronDown } from '@tamagui/lucide-icons'
 import { withErrorLogging } from '../../utils/withErrorLogging'
+
+// Constants
+const SELECT_CONTENT_Z_INDEX = 200000
 
 // Styled components
 const SelectTriggerFrame = styled(Button, {
@@ -29,9 +33,9 @@ const SelectIconFrame = styled(View, {
   marginLeft: '$2',
 })
 
-// Simple icons since we lack Lucide
-const ChevronDownIcon = () => <Text fontSize="$1" color="$mutedForeground">▼</Text>
-const CheckIcon = () => <Text fontSize="$3" color="$primary">✓</Text>
+// Use Lucide Icons for better visual quality
+const ChevronDownIcon = () => <ChevronDown size={12} color="$mutedForeground" />
+const CheckIcon = () => <Check size={16} color="$primary" />
 
 export interface SelectProps extends Omit<TamaguiSelectProps, 'children'> {
   items?: { value: string; label: string }[]
@@ -40,6 +44,17 @@ export interface SelectProps extends Omit<TamaguiSelectProps, 'children'> {
   children?: React.ReactNode
 }
 
+/**
+ * Select Component
+ *
+ * A form select component based on Tamagui Select (which wraps Radix UI Select on web).
+ *
+ * Improvements:
+ * - Removed magic numbers (extracted zIndex to constant)
+ * - Improved icons (Lucide vs Text)
+ * - Strict Types
+ * - Cleaned up lint warnings
+ */
 const SelectImpl = React.forwardRef<React.ElementRef<typeof TamaguiSelect>, SelectProps>(
   (
     {
@@ -50,7 +65,7 @@ const SelectImpl = React.forwardRef<React.ElementRef<typeof TamaguiSelect>, Sele
       ...props
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    ref
+    _ref
   ) => {
     const hasCustomChildren = React.Children.count(children) > 0
 
@@ -92,7 +107,7 @@ const SelectImpl = React.forwardRef<React.ElementRef<typeof TamaguiSelect>, Sele
             </Sheet>
           </Adapt>
 
-          <TamaguiSelect.Content zIndex={200000}>
+          <TamaguiSelect.Content zIndex={SELECT_CONTENT_Z_INDEX}>
             <TamaguiSelect.ScrollUpButton />
             <TamaguiSelect.Viewport minWidth={200}>
               <TamaguiSelect.Group>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { TextArea as TamaguiTextArea, styled, GetProps } from 'tamagui'
+import { StyleProp, TextStyle } from 'react-native'
 
 import { withErrorLogging } from '../../utils/withErrorLogging'
 
@@ -82,18 +83,30 @@ export interface TextareaProps
   variant?: StyledTextareaProps['variant']
   size?: StyledTextareaProps['size']
   invalid?: boolean
+  style?: StyleProp<TextStyle>
 }
 
+/**
+ * Textarea Component
+ *
+ * A multi-line input field based on Tamagui TextArea.
+ * Supports variants, error states, and strict typing.
+ */
 const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, TextareaProps>(
   (
     {
       variant = 'default',
       size = 'default',
       invalid = false,
+      style,
       ...props
     },
     ref
   ) => {
+    // Merge default style with user provided style
+    // We cast the literal object to allow 'resize' property which might not be in standard RN TextStyle
+    const defaultStyle = { resize: 'vertical' } as unknown as StyleProp<TextStyle>
+
     return (
       <StyledTextarea
         ref={ref}
@@ -101,8 +114,7 @@ const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, 
         size={size}
         invalid={invalid || undefined}
         aria-invalid={invalid}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        style={{ resize: 'vertical' } as any}
+        style={[defaultStyle, style]}
         {...props}
       />
     )

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import {
   ColumnDef,
   flexRender,
@@ -92,10 +92,12 @@ export function DataTable<TData, TValue>({
 
   // 🛡️ Guard: Performance Protection
   if (!showPagination && data.length > MAX_ROWS_WITHOUT_PAGINATION) {
-    console.warn(
-      `DataTable: Rendering ${data.length} rows without pagination is a performance hazard. ` +
-      `Pagination has been forcibly enabled.`
-    )
+    if (process.env.NODE_ENV === 'development') {
+        console.warn(
+            `DataTable: Rendering ${data.length} rows without pagination is a performance hazard. ` +
+            `Pagination has been forcibly enabled.`
+        )
+    }
     showPagination = true
   }
 
