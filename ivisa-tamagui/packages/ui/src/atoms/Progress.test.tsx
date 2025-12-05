@@ -5,6 +5,7 @@ describe('Progress', () => {
   it('renders with value', () => {
     render(<Progress value={50} />)
     const progress = screen.getByRole('progressbar')
-    expect(progress).toHaveAttribute('aria-valuenow', '50')
+    // With mocked Tamagui, we check if value prop is passed to the underlying element (progress tag)
+    expect(progress).toHaveAttribute('value', '50')
   })
 })

@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { Stack, StackProps, Text } from 'tamagui'
+import { Stack, StackProps, TamaguiElement, Text } from 'tamagui'
 
 // Mock ResizeMode for Web
 export const ResizeMode = {
@@ -12,16 +12,16 @@ export const ResizeMode = {
 export type VideoProps = StackProps & {
     src?: string
     useNativeControls?: boolean
-    resizeMode?: any
-    source?: any
+    resizeMode?: unknown
+    source?: unknown
     isLooping?: boolean
     shouldPlay?: boolean
-    status?: any
-    onPlaybackStatusUpdate?: any
+    status?: unknown
+    onPlaybackStatusUpdate?: unknown
 }
 
-export const Video = forwardRef<any, VideoProps>(({
-    src,
+export const Video = forwardRef<TamaguiElement, VideoProps>(({
+    src: _src,
     width,
     height = 200,
     ...props

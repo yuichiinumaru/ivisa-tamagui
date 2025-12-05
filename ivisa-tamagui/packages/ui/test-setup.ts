@@ -1,12 +1,19 @@
 import { vi } from 'vitest';
 import '@testing-library/react';
 
-global.IntersectionObserver = class IntersectionObserver {
+class IntersectionObserver {
   constructor() {}
   observe() { return null; }
   disconnect() { return null; }
   unobserve() { return null; }
-};
+  takeRecords() { return []; }
+}
+
+global.IntersectionObserver = IntersectionObserver;
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).IntersectionObserver = IntersectionObserver;
+}
 
 const matchMediaMock = vi.fn().mockImplementation((query) => ({
   matches: false,

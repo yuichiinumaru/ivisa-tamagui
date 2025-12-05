@@ -3,7 +3,7 @@ import { Popover, PopoverTrigger, PopoverContent } from '../molecules/Popover'
 import { Calendar } from '../molecules/Calendar'
 import { Button } from '../atoms/Button'
 import { format } from 'date-fns'
-import { XStack, Adapt, Text } from 'tamagui'
+import { Adapt, Text } from 'tamagui'
 import { Sheet } from '../molecules/Sheet'
 import { Calendar as CalendarIcon } from '@tamagui/lucide-icons'
 

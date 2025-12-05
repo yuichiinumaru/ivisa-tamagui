@@ -29,8 +29,6 @@ const ContextMenuContent = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Content>
 >(({ className: _className, ...props }, ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _ = _className;
   return (
     <ContextMenuPortal>
       <ContextMenuContentFrame ref={ref} {...props} />
@@ -81,8 +79,6 @@ const ContextMenuItem = React.forwardRef<
     inset?: boolean
   }
 >(({ className: _className, inset, ...props }, ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _ = _className;
   return <ContextMenuItemFrame ref={ref} inset={inset} {...props} />
 })
 ContextMenuItem.displayName = ContextMenuPrimitive.Item.displayName
@@ -123,8 +119,6 @@ const ContextMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.CheckboxItem>
 >(({ className: _className, children, checked, ...props }, ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _ = _className;
   return (
     <ContextMenuCheckboxItemFrame ref={ref} checked={checked} {...props}>
       <XStack position="absolute" left="$2" justifyContent="center" alignItems="center" width="$3.5" height="$3.5">
@@ -174,8 +168,6 @@ const ContextMenuRadioItem = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.RadioItem>,
   React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.RadioItem>
 >(({ className: _className, children, ...props }, ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _ = _className;
   return (
     <ContextMenuRadioItemFrame ref={ref} {...props}>
       <XStack position="absolute" left="$2" justifyContent="center" alignItems="center" width="$3.5" height="$3.5">
@@ -272,8 +264,6 @@ const ContextMenuSubTrigger = React.forwardRef<
     inset?: boolean
   }
 >(({ className: _className, inset, children, ...props }, ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _ = _className;
   return (
     <ContextMenuSubTriggerFrame ref={ref} inset={inset} {...props}>
       {children}
@@ -287,8 +277,6 @@ const ContextMenuSubContent = React.forwardRef<
   React.ElementRef<typeof ContextMenuPrimitive.SubContent>,
   React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent>
 >(({ className: _className, ...props }, ref) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _ = _className;
   return <ContextMenuSubContentFrame ref={ref} {...props} />;
 })
 ContextMenuSubContent.displayName = ContextMenuPrimitive.SubContent.displayName

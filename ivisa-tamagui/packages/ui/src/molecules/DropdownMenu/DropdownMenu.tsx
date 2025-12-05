@@ -30,7 +30,7 @@ const DropdownMenuSubTriggerFrame = styled(DropdownMenuPrimitive.SubTrigger, {
 const DropdownMenuSubTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & { inset?: boolean }
->(({ className, children, inset, ...props }, ref) => (
+>(({ className: _className, children, inset, ...props }, ref) => (
   <DropdownMenuSubTriggerFrame
     ref={ref}
     paddingLeft={inset ? '$8' : '$2'}
@@ -60,7 +60,7 @@ const DropdownMenuSubContentFrame = styled(DropdownMenuPrimitive.SubContent, {
 const DropdownMenuSubContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
->(({ className, ...props }, ref) => (
+>(({ className: _className, ...props }, ref) => (
   <DropdownMenuSubContentFrame ref={ref} {...props} />
 ))
 DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName
@@ -82,7 +82,7 @@ const DropdownMenuContentFrame = styled(DropdownMenuPrimitive.Content, {
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
->(({ className, sideOffset = 4, ...props }, ref) => (
+>(({ className: _className, sideOffset = 4, ...props }, ref) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuContentFrame
       ref={ref}
@@ -115,7 +115,7 @@ const DropdownMenuItemFrame = styled(DropdownMenuPrimitive.Item, {
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & { inset?: boolean }
->(({ className, inset, ...props }, ref) => (
+>(({ className: _className, inset, ...props }, ref) => (
   <DropdownMenuItemFrame
     ref={ref}
     paddingLeft={inset ? '$8' : '$2'}
@@ -141,7 +141,7 @@ const DropdownMenuCheckboxItemFrame = styled(DropdownMenuPrimitive.CheckboxItem,
 const DropdownMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
->(({ className, children, checked, ...props }, ref) => (
+>(({ className: _className, children, checked, ...props }, ref) => (
   <DropdownMenuCheckboxItemFrame
     ref={ref}
     checked={checked}
@@ -174,7 +174,7 @@ const DropdownMenuRadioItemFrame = styled(DropdownMenuPrimitive.RadioItem, {
 const DropdownMenuRadioItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
->(({ className, children, ...props }, ref) => (
+>(({ className: _className, children, ...props }, ref) => (
   <DropdownMenuRadioItemFrame ref={ref} {...props}>
     <View position="absolute" left="$2" justifyContent="center" alignItems="center">
       <DropdownMenuPrimitive.ItemIndicator>

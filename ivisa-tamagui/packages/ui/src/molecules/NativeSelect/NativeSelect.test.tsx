@@ -10,7 +10,8 @@ describe('NativeSelect', () => {
     )
     expect(screen.getByRole('combobox')).toBeInTheDocument()
     expect(screen.getByText('Option 1')).toBeInTheDocument()
-    expect(document.querySelector('svg')).toBeInTheDocument()
+    // Icon is mocked as div with testid
+    expect(screen.getByTestId('chevron-down-icon')).toBeInTheDocument()
   })
 
   it('can be disabled', () => {
