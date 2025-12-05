@@ -2,16 +2,23 @@ import React, { useContext } from 'react';
 import { Input as TamaguiInput, styled, GetProps, XStack, View, TamaguiElement } from 'tamagui';
 import { Button } from '../Button';
 
-// Context to share props like size to subcomponents
-const InputContext = React.createContext<{ size?: StyledInputProps['size'] } | null>(null);
+// 💀 The Rite of Resurrection: Fail Loudly Context
+type InputContextValue = {
+  size: StyledInputProps['size'];
+}
+
+const InputContext = React.createContext<InputContextValue | null>(null);
 
 const useInputContext = () => {
   const context = useContext(InputContext);
-  // Default to undefined size if no context (standalone field usage)
-  return context || {};
+  if (!context) {
+    // 💀 Fail Loudly: If a developer uses <Input.Field> outside <Input>, crash immediately.
+    throw new Error('Input compound components (Field, Icon, Button) must be used within <Input>');
+  }
+  return context;
 }
 
-// Common variants
+// ... inputVariants defined outside to be reused ...
 const inputVariants = {
   variant: {
     default: {
@@ -20,7 +27,6 @@ const inputVariants = {
       backgroundColor: '$background',
       focusStyle: {
         borderColor: '$ring',
-        // avoiding layout shift by keeping border width same, relying on outline/ring color
         outlineColor: '$ring',
         outlineStyle: 'solid',
         outlineWidth: 2,
@@ -62,11 +68,10 @@ const inputVariants = {
   }
 } as const;
 
-// 1. The original Input (for backward compatibility)
 const StyledInput = styled(TamaguiInput, {
   name: 'Input',
   color: '$foreground',
-  placeholderTextColor: '$color.gray10',
+  placeholderTextColor: '$mutedForeground', // Fixed color
   ...inputVariants,
   variants: {
     ...inputVariants.variant,
@@ -82,7 +87,6 @@ const StyledInput = styled(TamaguiInput, {
   }
 })
 
-// 2. The Input Frame
 const InputFrame = styled(XStack, {
   name: 'InputFrame',
   alignItems: 'center',
@@ -95,7 +99,6 @@ const InputFrame = styled(XStack, {
   }
 })
 
-// 3. The Unframed Input (Field)
 const UnframedInputStyled = styled(TamaguiInput, {
   name: 'InputField',
   flex: 1,
@@ -103,7 +106,7 @@ const UnframedInputStyled = styled(TamaguiInput, {
   borderWidth: 0,
   outlineWidth: 0,
   color: '$foreground',
-  placeholderTextColor: '$color.gray10',
+  placeholderTextColor: '$mutedForeground',
   height: '100%',
   paddingHorizontal: 0,
   hoverStyle: {
@@ -128,8 +131,8 @@ const InputField = React.forwardRef<TamaguiElement, GetProps<typeof UnframedInpu
   const { size } = useInputContext()
   return <UnframedInputStyled ref={ref} size={size} {...props} />
 })
+InputField.displayName = 'Input.Field'
 
-// 4. Input Icon
 const InputIcon = styled(View, {
   name: 'InputIcon',
   justifyContent: 'center',
@@ -138,7 +141,6 @@ const InputIcon = styled(View, {
   paddingHorizontal: '$2',
 })
 
-// 5. Input Button
 const InputButton = styled(Button, {
   name: 'InputButton',
   borderRadius: 0,
@@ -154,8 +156,7 @@ export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
   children?: React.ReactNode
 }
 
-// 💀 Resurrection: Strict typing for Ref (TamaguiElement covers both Input and View)
-const InputImpl = React.forwardRef<TamaguiElement, InputProps>(
+const InputMain = React.forwardRef<TamaguiElement, InputProps>(
   ({ variant = 'default', size = 'default', children, ...props }, ref) => {
     if (children) {
       return (
@@ -176,10 +177,10 @@ const InputImpl = React.forwardRef<TamaguiElement, InputProps>(
     )
   }
 )
+InputMain.displayName = 'Input'
 
-InputImpl.displayName = 'Input'
-
-export const Input = Object.assign(InputImpl, {
+// 💀 Type Safe Composition
+export const Input = Object.assign(InputMain, {
   Field: InputField,
   Icon: InputIcon,
   Button: InputButton,

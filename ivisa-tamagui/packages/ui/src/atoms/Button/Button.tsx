@@ -1,30 +1,28 @@
 import React from 'react'
-import { Button as TamaguiButton, styled, GetProps } from 'tamagui'
+import { Button as TamaguiButton, styled, GetProps, TamaguiElement } from 'tamagui'
 
-import { withErrorLogging } from '../../utils/withErrorLogging'
-
-// Button variants using Tamagui's variant system
+// 💀 The Rite of Resurrection: Strict Typing & Token Usage
 const StyledButton = styled(TamaguiButton, {
   name: 'Button',
   variants: {
     variant: {
       default: {
         backgroundColor: '$primary',
-        color: '$background',
+        color: '$primaryForeground', // Fixed: $background -> $primaryForeground for better contrast
         hoverStyle: {
           backgroundColor: '$primaryHover',
         }
       },
       secondary: {
         backgroundColor: '$secondary',
-        color: '$background',
+        color: '$secondaryForeground', // Fixed: $background -> $secondaryForeground
         hoverStyle: {
           backgroundColor: '$secondaryHover',
         }
       },
       destructive: {
         backgroundColor: '$destructive',
-        color: '$background',
+        color: '$destructiveForeground', // Fixed
         hoverStyle: {
           opacity: 0.9,
         }
@@ -48,7 +46,7 @@ const StyledButton = styled(TamaguiButton, {
     },
     size: {
       sm: {
-        height: '$5',
+        height: '$8', // Adjusted from $5 (too small) to standard
         px: '$3',
         fontSize: '$2'
       },
@@ -78,20 +76,22 @@ export interface ButtonProps extends Omit<StyledButtonProps, 'variant' | 'size'>
   children?: React.ReactNode
 }
 
-const ButtonImpl = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = React.forwardRef<TamaguiElement, ButtonProps>(
   ({ variant = 'default', size = 'default', ...props }, ref) => {
     return (
       <StyledButton
         ref={ref}
         variant={variant}
         size={size}
-        type="button"
+        // 💀 Security: Explicitly disable submit default unless requested
+        // This prevents accidental form submissions when using buttons for UI
+        type={props.type || 'button'}
         {...props}
       />
     )
   }
 )
 
-ButtonImpl.displayName = 'Button'
+Button.displayName = 'Button'
 
-export const Button = withErrorLogging<ButtonProps, HTMLButtonElement>('Button', ButtonImpl)
+export { Button }
