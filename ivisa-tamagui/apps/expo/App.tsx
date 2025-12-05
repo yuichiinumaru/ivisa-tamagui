@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppProviders, Tabs } from '@ivisa/ui';
 import { SafeAreaView } from 'react-native';
-import { YStack, Text, Theme } from 'tamagui';
+import { YStack, Text } from 'tamagui';
 import { ChatScreen } from './src/screens/ChatScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
 import { DashboardScreen } from './src/screens/DashboardScreen';

@@ -70,3 +70,9 @@ Then ensure it is exported in the main `src/index.ts` if it belongs there.
 ## 6. Commit
 
 Follow the project's commit message convention.
+
+## 7. Agent & Automation Rules
+
+If you are an AI agent or using automation:
+- **Read `AGENTS.md`**: It contains critical rules and context.
+- **Do not verify via browser**: Use `scripts/visual-check.js` (if active) or `scripts/accessibility-check.js`.

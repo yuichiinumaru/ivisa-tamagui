@@ -17,3 +17,4 @@ This document captures ideas, wishlist items, and potential improvements that ar
 ## DX Improvements
 - [ ] **Snippets**: VSCode snippets for common patterns (e.g., `styled` component boilerplate).
 - [ ] **Prop Tables**: Improve Storybook prop tables to include more descriptive types and defaults.
+- [ ] **Native Flow Testing**: Investigate Maestro or Detox for true E2E native testing in CI.
