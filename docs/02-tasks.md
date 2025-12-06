@@ -120,3 +120,37 @@
 ### Additional
 - [x] **Brand Integration**: IVISA branding applied.
 - [x] **Submodule Strategy**: Documentation created.
+
+---
+
+## 📦 Phase 3: Quick Wins & Foundations (From Catalog)
+**Context:** High-value, low-effort components to polish the DS.
+**Source:** `ORGANISMS-catalog.md`
+
+### Week 1-2: Quick Wins
+- [ ] **Pagination** (1d): Fundamental for DataTable.
+- [ ] **Breadcrumb** (1d): Simple, hierarchical navigation.
+- [ ] **InputOTP** (1-2d): Modern 2FA/Verification.
+- [ ] **AvatarGroup** (1d): Team/participants UI.
+- [ ] **BadgeCounter**: Notification indicators.
+
+### Week 3-4: High Value
+- [ ] **Sidebar** (3-4d): Refactor/Finalize app layout.
+- [ ] **Stepper** (3-4d): Onboarding & multi-step forms.
+- [ ] **Modal Dialog (Advanced)** (2d): Confirm, Form, Loading variants.
+- [ ] **Toast Stack** (2d): Managed notifications.
+- [ ] **Navigation Menu** (2-3d): Desktop header navigation.
+
+---
+
+## 📦 Phase 4: Advanced Organisms (From Catalog)
+**Context:** Complex, high-effort components for dashboards and specialized UIs.
+
+- [ ] **Dashboard Layout** (Grid): Responsive, resizable panels.
+- [ ] **Data Grid (Advanced)**: Virtual scrolling, massive datasets.
+- [ ] **Search / Filterable List**: Fuzzy search, dropdown results.
+- [ ] **File Upload**: Dropzone with previews and progress.
+- [ ] **Rich Text Editor**: Tiptap/Slate wrapper.
+- [ ] **Calendar (Booking)**: Full appointment scheduling.
+- [ ] **Timeline**: Process flows.
+

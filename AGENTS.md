@@ -49,3 +49,22 @@ The repository follows a strict **Atomic Design** layout in `packages/ui/src/`:
 - **Layout:** Bento (Marketing).
 - **Style:** Shadcn/Pink Tokens.
 **Rule:** We DO NOT port Shadcn. We use their tokens on OUR components.
+
+---
+
+## 5. 📋 Organisms Catalog (Roadmap)
+
+| Organism | Phase | Status | Libs | Atoms/Molecules | Effort |
+|----------|-------|--------|------|-----------------|--------|
+| **DataTable** | 2 | 🚧 | @tanstack/react-table | Button, Input, Dialog | 4-5d |
+| **Form** | 2 | 🚧 | react-hook-form + zod | Input, Select, Checkbox | 2-3d |
+| **CommandPalette** | 2 | 🚧 | cmdk | Dialog, Input, List | 2-3d |
+| **Carousel** | 2 | 🚧 | embla-carousel | Stack, Button, Image | 2-3d |
+| **Sidebar** | 3 | ⏳ | — | Stack, Button, Sheet | 3-4d |
+| **Pagination** | 3 | ⏳ | — | Button, Stack, Text | 1-2d |
+| **Breadcrumb** | 3 | ⏳ | — | Button, Stack, Text | 1d |
+| **InputOTP** | 3 | ⏳ | input-otp | Input, Stack | 1-2d |
+| **AvatarGroup** | 3 | ⏳ | — | Avatar, Stack | 1d |
+| **Stepper** | 3 | ⏳ | — | Button, Card, Form | 3-4d |
+
+> **Note:** See `ORGANISMS-catalog.md` for detailed specifications, dependencies, and implementation patterns for all 30 organisms.
