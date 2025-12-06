@@ -43,49 +43,49 @@ export const Autocomplete = ({
     <Popover open={open} onOpenChange={setOpen} placement="bottom-start">
       <PopoverTrigger asChild>
         <Button
-            role="combobox"
-            aria-expanded={open}
-            justifyContent="space-between"
-            width={200}
+          role="combobox"
+          aria-expanded={open}
+          justifyContent="space-between"
+          width={200}
         >
-            <Text numberOfLines={1}>
-                 {value ? value.label : placeholder}
-            </Text>
-            <ChevronDown size={16} />
+          <Text numberOfLines={1}>
+            {value ? value.label : placeholder}
+          </Text>
+          <ChevronDown size={16} />
         </Button>
       </PopoverTrigger>
       <PopoverContent padding={0} width={200}>
-         <YStack padding="$2" borderBottomWidth={1} borderBottomColor="$borderColor">
-             <Input
-                placeholder="Search..."
-                value={search}
-                onChangeText={setSearch}
-                // autoFocus // Can be problematic on mobile
-             />
-         </YStack>
-         <ScrollView maxHeight={200} keyboardShouldPersistTaps="handled">
-            {filteredOptions.length === 0 ? (
-                <YStack padding="$3" alignItems="center">
-                    <Text color="$mutedForeground">{emptyMessage}</Text>
-                </YStack>
-            ) : (
-                <YGroup>
-                    {filteredOptions.map(option => (
-                        <YGroup.Item key={option.value}>
-                             <ListItem
-                                hoverTheme
-                                pressTheme
-                                onPress={() => handleSelect(option)}
-                                icon={value?.value === option.value ? Check : undefined}
-                                cursor="pointer"
-                             >
-                                <Text>{option.label}</Text>
-                             </ListItem>
-                        </YGroup.Item>
-                    ))}
-                </YGroup>
-            )}
-         </ScrollView>
+        <YStack padding="$sm" borderBottomWidth={1} borderBottomColor="$borderColor">
+          <Input
+            placeholder="Search..."
+            value={search}
+            onChangeText={setSearch}
+          // autoFocus // Can be problematic on mobile
+          />
+        </YStack>
+        <ScrollView maxHeight={200} keyboardShouldPersistTaps="handled">
+          {filteredOptions.length === 0 ? (
+            <YStack padding="$md" alignItems="center">
+              <Text color="$mutedForeground">{emptyMessage}</Text>
+            </YStack>
+          ) : (
+            <YGroup>
+              {filteredOptions.map(option => (
+                <YGroup.Item key={option.value}>
+                  <ListItem
+                    hoverTheme
+                    pressTheme
+                    onPress={() => handleSelect(option)}
+                    icon={value?.value === option.value ? Check : undefined}
+                    cursor="pointer"
+                  >
+                    <Text>{option.label}</Text>
+                  </ListItem>
+                </YGroup.Item>
+              ))}
+            </YGroup>
+          )}
+        </ScrollView>
       </PopoverContent>
     </Popover>
   )

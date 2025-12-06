@@ -46,18 +46,18 @@ const StyledButton = styled(TamaguiButton, {
     },
     size: {
       sm: {
-        height: '$8', // Adjusted from $5 (too small) to standard
-        px: '$3',
-        fontSize: '$2'
+        height: '$sm', // 32px
+        px: '$md',     // 12px
+        fontSize: '$2' // Font tokens are numeric (1-9)
       },
       default: {
-        height: '$10',
-        px: '$4',
+        height: '$md', // 40px
+        px: '$lg',     // 16px
         fontSize: '$3'
       },
       lg: {
-        height: '$12',
-        px: '$6',
+        height: '$lg', // 48px
+        px: '$xl',     // 24px
         fontSize: '$4'
       }
     }

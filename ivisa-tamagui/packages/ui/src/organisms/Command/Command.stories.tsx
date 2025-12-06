@@ -34,28 +34,28 @@ export const Default: Story = {
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
             <CommandItem onSelect={() => console.log('Calendar')}>
-                <Text>Calendar</Text>
+              <Text>Calendar</Text>
             </CommandItem>
             <CommandItem onSelect={() => console.log('Search Emoji')}>
-                <Text>Search Emoji</Text>
+              <Text>Search Emoji</Text>
             </CommandItem>
             <CommandItem onSelect={() => console.log('Calculator')}>
-                <Text>Calculator</Text>
+              <Text>Calculator</Text>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Settings">
             <CommandItem onSelect={() => console.log('Profile')}>
-                <Text>Profile</Text>
-                <CommandShortcut>⌘P</CommandShortcut>
+              <Text>Profile</Text>
+              <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
             <CommandItem onSelect={() => console.log('Billing')}>
-                <Text>Billing</Text>
-                <CommandShortcut>⌘B</CommandShortcut>
+              <Text>Billing</Text>
+              <CommandShortcut>⌘B</CommandShortcut>
             </CommandItem>
             <CommandItem onSelect={() => console.log('Settings')}>
-                <Text>Settings</Text>
-                <CommandShortcut>⌘S</CommandShortcut>
+              <Text>Settings</Text>
+              <CommandShortcut>⌘S</CommandShortcut>
             </CommandItem>
           </CommandGroup>
         </CommandList>
@@ -80,28 +80,31 @@ export const DialogDemo = () => {
 
   return (
     <>
-      <Text fontSize="$3" color="$mutedForeground">
+      <Text fontSize="$md" color="$mutedForeground">
         Press{' '}
-        <Text fontWeight="bold" fontSize="$3">
+        <Text fontWeight="bold" fontSize="$md">
           ⌘K
         </Text>{' '}
         to open the command dialog
       </Text>
-      <Button onPress={() => setOpen(true)} marginTop="$4">Open Command Dialog</Button>
-      
+      <Text fontSize="$sm" color="$mutedForeground" marginTop="$2">
+        (Or click the button below)
+      </Text>
+      <Button onPress={() => setOpen(true)} marginTop="$lg">Open Command Dialog</Button>
+
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
             <CommandItem>
-                <Text>Calendar</Text>
+              <Text>Calendar</Text>
             </CommandItem>
             <CommandItem>
-                <Text>Search Emoji</Text>
+              <Text>Search Emoji</Text>
             </CommandItem>
             <CommandItem>
-                <Text>Calculator</Text>
+              <Text>Calculator</Text>
             </CommandItem>
           </CommandGroup>
         </CommandList>

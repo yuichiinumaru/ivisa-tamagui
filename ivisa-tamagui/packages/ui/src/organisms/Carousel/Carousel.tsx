@@ -133,10 +133,10 @@ const CarouselContent = React.forwardRef<React.ElementRef<typeof CarouselContent
         <CarouselContentFrame
           ref={ref}
           flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
-          marginTop={orientation === 'horizontal' ? 0 : '-$4'}
-          paddingTop={orientation === 'horizontal' ? 0 : '$4'}
-          marginLeft={orientation === 'horizontal' ? '-$4' : 0}
-          paddingLeft={orientation === 'horizontal' ? '$4' : 0}
+          marginTop={orientation === 'horizontal' ? 0 : '-$lg'}
+          paddingTop={orientation === 'horizontal' ? 0 : '$lg'}
+          marginLeft={orientation === 'horizontal' ? '-$lg' : 0}
+          paddingLeft={orientation === 'horizontal' ? '$lg' : 0}
           {...props}
         />
       </View>
@@ -159,8 +159,8 @@ const CarouselItem = React.forwardRef<React.ElementRef<typeof CarouselItemFrame>
     return (
       <CarouselItemFrame
         ref={ref}
-        paddingTop={orientation === 'horizontal' ? 0 : '$4'}
-        paddingLeft={orientation === 'horizontal' ? '$4' : 0}
+        paddingTop={orientation === 'horizontal' ? 0 : '$lg'}
+        paddingLeft={orientation === 'horizontal' ? '$lg' : 0}
         role="group"
         aria-roledescription="slide"
         {...props}
@@ -191,16 +191,16 @@ const CarouselPrevious = React.forwardRef<React.ElementRef<typeof Button>, GetPr
         zIndex={10}
         {...(orientation === 'horizontal'
           ? {
-              left: '-$12',
-              top: '50%',
-              y: '-50%',
-            }
+            left: '-$2xl',
+            top: '-$2xl',
+            y: '-50%',
+          }
           : {
-              top: '-$12',
-              left: '50%',
-              x: '-50%',
-              rotate: '90deg',
-            })}
+            top: '-$12',
+            left: '50%',
+            x: '-50%',
+            rotate: '90deg',
+          })}
         {...props}
       />
     )
@@ -225,16 +225,16 @@ const CarouselNext = React.forwardRef<React.ElementRef<typeof Button>, GetProps<
         zIndex={10}
         {...(orientation === 'horizontal'
           ? {
-              right: '-$12',
-              top: '50%',
-              y: '-50%',
-            }
+            right: '-$2xl',
+            bottom: '-$2xl',
+            y: '-50%',
+          }
           : {
-              bottom: '-$12',
-              left: '50%',
-              x: '-50%',
-              rotate: '90deg',
-            })}
+            bottom: '-$12',
+            left: '50%',
+            x: '-50%',
+            rotate: '90deg',
+          })}
         {...props}
       />
     )

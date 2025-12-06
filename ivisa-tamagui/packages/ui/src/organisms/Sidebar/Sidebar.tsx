@@ -26,12 +26,12 @@ const MobileSidebar = ({ children }: { children: React.ReactNode }) => {
     // Visible only on 'sm' (mobile). Hidden on desktop.
     <YStack display="none" $sm={{ display: 'flex' }}>
       <Sheet open={open} onOpenChange={setOpen}>
-        <Button icon={Menu} circular size="$4" onPress={() => setOpen(true)} />
-        <SheetContent position="left" size="$20">
-          <YStack space="$4" paddingTop="$8">
+        <Button icon={Menu} circular size="$md" onPress={() => setOpen(true)} />
+        <SheetContent position="left" size="$xl">
+          <YStack space="$md" paddingTop="$2xl">
             {children}
             {/* Close button inside content since SheetClose is missing */}
-            <Button onPress={() => setOpen(false)} size="$3" chromeless>
+            <Button onPress={() => setOpen(false)} size="$sm" chromeless>
               Close
             </Button>
           </YStack>
@@ -58,7 +58,7 @@ const DesktopSidebar = ({ children, isCollapsed, toggleSidebar, variant = 'fixed
         width={isCollapsed && variant === 'collapsible' ? CONSTANTS.WIDTH_COLLAPSED : CONSTANTS.WIDTH_EXPANDED}
         borderRightWidth={1}
         borderColor="$borderColor"
-        padding="$4"
+        padding="$lg"
         space="$2"
         {...(variant === 'floating' && {
           position: 'absolute',
@@ -75,7 +75,7 @@ const DesktopSidebar = ({ children, isCollapsed, toggleSidebar, variant = 'fixed
             icon={isCollapsed ? ChevronRight : ChevronLeft}
             onPress={toggleSidebar}
             circular
-            size="$3"
+            size="$sm"
             position="absolute"
             top={CONSTANTS.TOGGLE_TOP}
             right={CONSTANTS.TOGGLE_OFFSET}

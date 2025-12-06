@@ -1,6 +1,6 @@
 import React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
-import { styled, View, Text, GetProps, TamaguiElement, useTheme } from 'tamagui'
+import { styled, View, Text, GetProps, TamaguiElement, useTheme, XStack } from 'tamagui'
 import { Search } from '@tamagui/lucide-icons'
 import { Dialog, DialogContent } from '../../molecules/Dialog'
 
@@ -30,7 +30,7 @@ Command.displayName = CommandPrimitive.displayName
 
 // Command Dialog
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface CommandDialogProps extends React.ComponentPropsWithoutRef<typeof Dialog> {}
+interface CommandDialogProps extends React.ComponentPropsWithoutRef<typeof Dialog> { }
 
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
@@ -45,30 +45,36 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
 }
 
 // Command Input
-const CommandInputFrame = styled(View, {
-  flexDirection: 'row',
+const CommandInputFrame = styled(XStack, {
+  name: 'CommandInput',
   alignItems: 'center',
   borderBottomWidth: 1,
   borderBottomColor: '$borderColor',
-  paddingHorizontal: '$3',
+  paddingHorizontal: '$md',
 })
+
+const CommandInputIcon = () => (
+  <View>
+    <Search size={20} color="$mutedForeground" marginRight="$sm" />
+  </View>
+)
 
 const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & GetProps<typeof CommandInputFrame>>(
   ({ ...props }, ref) => {
     const theme = useTheme()
     return (
       <CommandInputFrame>
-        <Search size={20} color="$mutedForeground" marginRight="$2" />
+        <CommandInputIcon />
         <CommandPrimitive.Input
           ref={ref}
           style={{
-              flex: 1,
-              height: 44,
-              fontSize: 14,
-              outline: 'none',
-              border: 'none',
-              background: 'transparent',
-              color: theme.foreground?.val || '#000',
+            flex: 1,
+            height: 44,
+            fontSize: 14,
+            outline: 'none',
+            border: 'none',
+            background: 'transparent',
+            color: theme.foreground?.val || '#000',
           }}
           {...props}
         />
@@ -99,9 +105,9 @@ const CommandEmpty = React.forwardRef<React.ElementRef<typeof CommandPrimitive.E
     <CommandPrimitive.Empty
       ref={ref}
       style={{
-          padding: 24,
-          textAlign: 'center',
-          fontSize: 14,
+        padding: 24,
+        textAlign: 'center',
+        fontSize: 14,
       }}
       {...props}
     />
@@ -118,7 +124,7 @@ const CommandGroupFrame = styled(View, {
 const CommandGroup = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group> & GetProps<typeof CommandGroupFrame>>(
   ({ heading, ...props }, ref) => (
     <CommandGroupFrame ref={ref} asChild>
-        <CommandPrimitive.Group heading={heading} {...props} />
+      <CommandPrimitive.Group heading={heading} {...props} />
     </CommandGroupFrame>
   )
 )
@@ -148,7 +154,7 @@ const CommandItemFrame = styled(View, {
   borderRadius: '$sm',
   cursor: 'pointer',
   hoverStyle: {
-      backgroundColor: '$muted',
+    backgroundColor: '$muted',
   },
 })
 
@@ -157,10 +163,10 @@ const CommandItem = React.forwardRef<TamaguiElement, React.ComponentPropsWithout
     <CommandItemFrame ref={ref} asChild>
       <CommandPrimitive.Item
         style={{
-             display: 'flex',
-             flexDirection: 'row',
-             alignItems: 'center',
-             userSelect: 'none',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          userSelect: 'none',
         }}
         {...props}
       />

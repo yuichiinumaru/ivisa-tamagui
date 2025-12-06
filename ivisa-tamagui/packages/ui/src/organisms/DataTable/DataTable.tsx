@@ -44,8 +44,8 @@ const TableHeader = styled(YStack, {
 const TableRow = styled(XStack, {
   borderBottomWidth: BORDER_WIDTH,
   borderColor: '$borderColor',
-  paddingVertical: '$3',
-  paddingHorizontal: '$4',
+  paddingVertical: '$md',
+  paddingHorizontal: '$lg',
   alignItems: 'center',
   hoverStyle: {
     backgroundColor: '$backgroundHover',
@@ -71,7 +71,7 @@ const TableCellFrame = styled(View, {
 const NoResultsCell = styled(View, {
   flex: 1,
   alignItems: 'center',
-  padding: '$5',
+  padding: '$xl',
 })
 
 // --- Component Definition ---
@@ -93,10 +93,10 @@ export function DataTable<TData, TValue>({
   // 🛡️ Guard: Performance Protection
   if (!showPagination && data.length > MAX_ROWS_WITHOUT_PAGINATION) {
     if (process.env.NODE_ENV === 'development') {
-        console.warn(
-            `DataTable: Rendering ${data.length} rows without pagination is a performance hazard. ` +
-            `Pagination has been forcibly enabled.`
-        )
+      console.warn(
+        `DataTable: Rendering ${data.length} rows without pagination is a performance hazard. ` +
+        `Pagination has been forcibly enabled.`
+      )
     }
     showPagination = true
   }
@@ -128,23 +128,23 @@ export function DataTable<TData, TValue>({
     : table.getRowModel().rows.slice(0, MAX_ROWS_WITHOUT_PAGINATION)
 
   return (
-    <YStack gap="$4" marginHorizontal="$true">
+    <YStack gap="$lg" marginHorizontal="$true">
       <TableContainer>
         <ScrollView horizontal showsHorizontalScrollIndicator={true}>
           <YStack minWidth="100%">
             {/* Header */}
             <TableHeader>
               {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id} borderBottomWidth={1} paddingVertical="$3">
+                <TableRow key={headerGroup.id} borderBottomWidth={1} paddingVertical="$md">
                   {headerGroup.headers.map((header) => {
                     return (
                       <TableCellFrame key={header.id}>
                         {header.isPlaceholder
                           ? null
                           : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                       </TableCellFrame>
                     )
                   })}
@@ -178,26 +178,26 @@ export function DataTable<TData, TValue>({
 
       {/* Pagination Controls */}
       {showPagination && (
-        <XStack alignItems="center" justifyContent="flex-end" gap="$2">
-            <Text fontSize="$2" color="$mutedForeground">
-                Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-            </Text>
-            <Button
+        <XStack alignItems="center" justifyContent="flex-end" gap="$sm">
+          <Text fontSize="$2" color="$mutedForeground">
+            Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
+          </Text>
+          <Button
             variant="outline"
             size="sm"
             onPress={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            >
+          >
             Previous
-            </Button>
-            <Button
+          </Button>
+          <Button
             variant="outline"
             size="sm"
             onPress={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            >
+          >
             Next
-            </Button>
+          </Button>
         </XStack>
       )}
     </YStack>

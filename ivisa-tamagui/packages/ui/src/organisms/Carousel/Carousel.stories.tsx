@@ -17,14 +17,14 @@ type Story = StoryObj<typeof Carousel>
 
 export const Default: Story = {
   render: () => (
-    <View width={400} padding="$4">
+    <View width={400} padding="$lg">
       <Carousel>
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
-              <View padding="$1">
+              <View padding="$xs">
                 <Card>
-                  <CardContent alignItems="center" justifyContent="center" padding="$6">
+                  <CardContent alignItems="center" justifyContent="center" padding="$xl">
                     <Text fontSize="$9" fontWeight="bold">{index + 1}</Text>
                   </CardContent>
                 </Card>
@@ -41,7 +41,7 @@ export const Default: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <View width={600} padding="$4">
+    <View width={600} padding="$lg">
       <Carousel
         opts={{
           align: "start",
@@ -50,9 +50,9 @@ export const Sizes: Story = {
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index} flexBasis="33%">
-              <View padding="$1">
+              <View padding="$xs">
                 <Card>
-                  <CardContent alignItems="center" justifyContent="center" padding="$6">
+                  <CardContent alignItems="center" justifyContent="center" padding="$xl">
                     <Text fontSize="$9" fontWeight="bold">{index + 1}</Text>
                   </CardContent>
                 </Card>
@@ -69,19 +69,19 @@ export const Sizes: Story = {
 
 export const Vertical: Story = {
   render: () => (
-    <View width={400} padding="$4">
+    <View width={400} padding="$lg">
       <Carousel
         orientation="vertical"
         opts={{
-            align: "start",
+          align: "start",
         }}
       >
         <CarouselContent height={200}>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index} flexBasis="50%">
-              <View padding="$1">
+              <View padding="$xs">
                 <Card>
-                  <CardContent alignItems="center" justifyContent="center" padding="$6">
+                  <CardContent alignItems="center" justifyContent="center" padding="$xl">
                     <Text fontSize="$6" fontWeight="bold">{index + 1}</Text>
                   </CardContent>
                 </Card>

@@ -69,7 +69,7 @@ const FormItemContext = React.createContext<FormItemContextValue | null>(null)
 
 const FormItemFrame = styled(YStack, {
   name: 'FormItem',
-  space: '$2',
+  space: '$sm',
 })
 
 const FormItem = React.forwardRef<TamaguiElement, GetProps<typeof FormItemFrame>>(

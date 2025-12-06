@@ -74,7 +74,7 @@ const LoginForm = () => {
                   </FormItem>
                 )}
               />
-              
+
               <FormField
                 control={form.control}
                 name="password"
@@ -156,11 +156,11 @@ const ProfileForm = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Role</FormLabel>
-                    <Select 
-                      items={roles} 
-                      placeholder="Select a role" 
-                      value={field.value} 
-                      onValueChange={field.onChange} 
+                    <Select
+                      items={roles}
+                      placeholder="Select a role"
+                      value={field.value}
+                      onValueChange={field.onChange}
                     />
                     <FormMessage />
                   </FormItem>
@@ -172,23 +172,23 @@ const ProfileForm = () => {
                 name="marketing"
                 render={({ field }) => (
                   <FormItem>
-                      <YStack flexDirection="row" alignItems="center" gap="$3" paddingVertical="$2">
-                          <FormControl>
-                              <Checkbox
-                                  id="marketing"
-                                  checked={field.value} 
-                                  onCheckedChange={field.onChange} 
-                              />
-                          </FormControl>
-                          <YStack gap="$1">
-                              <FormLabel htmlFor="marketing" style={{ marginBottom: 0 }}>
-                                  Marketing emails
-                              </FormLabel>
-                              <FormDescription>
-                                  Receive emails about new features.
-                              </FormDescription>
-                          </YStack>
+                    <YStack flexDirection="row" alignItems="center" gap="$md" paddingVertical="$sm">
+                      <FormControl>
+                        <Checkbox
+                          id="marketing"
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <YStack gap="$xs">
+                        <FormLabel htmlFor="marketing" style={{ marginBottom: 0 }}>
+                          Marketing emails
+                        </FormLabel>
+                        <FormDescription>
+                          Receive emails about new features.
+                        </FormDescription>
                       </YStack>
+                    </YStack>
                   </FormItem>
                 )}
               />
