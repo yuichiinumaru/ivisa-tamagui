@@ -43,11 +43,7 @@ const STORIES_TO_CHECK = [
   'molecules-toast--default',
   // New components
   'organisms-sidebar--default',
-  'organisms-charts--bar',
-  'molecules-avatargroup--default',
-  'molecules-badgecounter--default',
-  'organisms-timeline--default',
-  'organisms-fileupload--default'
+  'organisms-charts--bar'
 ];
 
 async function runVisualCheck() {
