@@ -2,19 +2,19 @@
   "name": "tamagui-design-system",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "yarn@1.22.22",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "pnpm --filter @ivisa/ui build",
+    "build": "yarn workspace @ivisa/ui build",
     "lint": "eslint .",
-    "test": "pnpm --filter @ivisa/ui test",
-    "typecheck": "pnpm --filter @ivisa/ui typecheck",
-    "scan:security": "pnpm audit",
-    "storybook": "pnpm --filter @ivisa/ui storybook",
-    "build-storybook": "pnpm --filter @ivisa/ui build-storybook"
+    "test": "yarn workspace @ivisa/ui test",
+    "typecheck": "yarn workspace @ivisa/ui typecheck",
+    "scan:security": "yarn audit",
+    "storybook": "yarn workspace @ivisa/ui storybook",
+    "build-storybook": "yarn workspace @ivisa/ui build-storybook"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

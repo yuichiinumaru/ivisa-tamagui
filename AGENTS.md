@@ -37,8 +37,8 @@ The repository follows a strict **Atomic Design** layout in `packages/ui/src/`:
 37: ## 3. Workflow
 38: 1.  **Read:** `docs/01-plan.md` -> `docs/02-tasks.md`
 39: 2.  **Plan:** Use `set_plan`.
-40: 3.  **Execute:** Write Code -> Verify with `pnpm test` (Jest) or `pnpm storybook` (Webpack).
-41: 4.  **Audit:** Run `pnpm lint`.
+40: 3.  **Execute:** Write Code -> Verify with `yarn test` (Jest) or `yarn storybook` (Webpack).
+41: 4.  **Audit:** Run `yarn lint`.
 42: 5.  **Record:** Update `docs/04-changelog.md`.
 
 ---
