@@ -134,7 +134,7 @@ Storybook is the primary environment for developing, testing, and documenting UI
 
 - **Strict Rule:** This repository must remain framework-agnostic. It cannot depend on `next`, `expo`, or `remix`.
 - **Integration:** It is designed to be consumed as a Git Submodule.
-- **Details:** See [`docs/08-submodule-strategy.md`](./08-submodule-strategy.md) for the full strategy and integration workflows.
+- **Details:** Strategy and integration workflows are defined in the repository guidelines.
 
 ## 10. Upgrade Strategy
 
