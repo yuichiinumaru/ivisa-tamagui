@@ -14,7 +14,8 @@
     "typecheck": "yarn workspace @ivisa/ui typecheck",
     "scan:security": "yarn audit",
     "storybook": "yarn workspace @ivisa/ui storybook",
-    "build-storybook": "yarn workspace @ivisa/ui build-storybook"
+    "build-storybook": "yarn workspace @ivisa/ui build-storybook",
+    "build:ci": "yarn build && yarn build-storybook"
   },
   "resolutions": {
     "react": "18.3.1",
