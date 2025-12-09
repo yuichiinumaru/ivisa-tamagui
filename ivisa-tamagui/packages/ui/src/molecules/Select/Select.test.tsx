@@ -7,7 +7,7 @@ describe('Select', () => {
   // 🛡️ Necromancer Fix: Unskip and prove life.
   // JSDOM Mocks are handled globally in vitest.setup.tsx
   it('renders and allows selecting an item', async () => {
-    const { asFragment, user } = render(
+    const { user } = render(
       <Select>
         <Select.Trigger>
           <Select.Value placeholder="Select a fruit" />

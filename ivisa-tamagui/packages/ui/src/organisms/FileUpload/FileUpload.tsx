@@ -19,7 +19,7 @@ const FileUploadFrame = styled(YStack, {
 })
 
 export interface FileUploadProps extends GetProps<typeof FileUploadFrame> {
-  onFileSelect?: (file: any) => void
+  onFileSelect?: (file: File | { name: string; size: number }) => void
   accept?: string
 }
 

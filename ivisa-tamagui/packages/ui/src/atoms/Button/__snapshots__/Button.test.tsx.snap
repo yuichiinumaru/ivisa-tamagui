@@ -1,6 +1,6 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button > matches snapshot 1`] = `
+exports[`Button matches snapshot 1`] = `
 <DocumentFragment>
   <span
     class=""
@@ -11,15 +11,22 @@ exports[`Button > matches snapshot 1`] = `
       style="display: contents;"
     >
       <span
-        class=" t_dark is_Theme"
+        class=" t_light is_Theme"
         style="color: var(--color); display: contents;"
       >
         <button
+          class="is_Button "
+          data-disable-theme="true"
           role="button"
+          style="display: flex; align-items: center; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; min-width: 0px; flex-shrink: 0; flex-direction: row; padding-right: var(--t-space-lg); padding-left: var(--t-space-lg); height: var(--t-size-md); justify-content: center; flex-wrap: nowrap; cursor: pointer; background-color: var(--primary); border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; color: var(--primaryForeground);"
+          tabindex="0"
           type="button"
-          variant="default"
         >
-          Snapshot
+          <span
+            class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-primaryFore1237460601 _fontSize-f-size-3 _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+          >
+            Snapshot
+          </span>
         </button>
         <div
           style="display: contents;"

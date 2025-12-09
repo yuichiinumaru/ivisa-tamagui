@@ -1,4 +1,4 @@
-import { render, screen } from '../../jest.setup'
+import { render, screen } from '../../test-utils'
 import { AvatarGroup } from './AvatarGroup'
 import { Avatar, AvatarFallback } from '../../atoms/Avatar'
 import { Text } from 'tamagui'

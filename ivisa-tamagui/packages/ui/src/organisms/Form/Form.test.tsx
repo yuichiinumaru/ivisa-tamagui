@@ -1,6 +1,4 @@
 import { render, screen } from '../../test-utils'
-// Ensure setup is loaded for IntersectionObserver
-import '../../../test-setup'
 import { useForm } from 'react-hook-form'
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from './Form'
 import { Input } from '../../atoms/Input/Input'

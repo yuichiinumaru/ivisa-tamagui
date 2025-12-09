@@ -4,24 +4,33 @@ import React from 'react'
 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-jest.mock('@radix-ui/react-menubar', () => ({
-    Root: ({ children }: any) => <div>{children}</div>,
-    Menu: ({ children }: any) => <div>{children}</div>,
-    Trigger: ({ children }: any) => <button>{children}</button>,
-    Portal: ({ children }: any) => <div>{children}</div>,
-    Content: ({ children }: any) => <div>{children}</div>,
-    Item: ({ children }: any) => <div>{children}</div>,
-    Group: ({ children }: any) => <div>{children}</div>,
-    CheckboxItem: ({ children }: any) => <div>{children}</div>,
-    ItemIndicator: ({ children }: any) => <div>{children}</div>,
-    RadioItem: ({ children }: any) => <div>{children}</div>,
-    Label: ({ children }: any) => <div>{children}</div>,
-    Separator: ({ children }: any) => <div>{children}</div>,
-    SubTrigger: ({ children }: any) => <div>{children}</div>,
-    SubContent: ({ children }: any) => <div>{children}</div>,
-    Sub: ({ children }: any) => <div>{children}</div>,
-    RadioGroup: ({ children }: any) => <div>{children}</div>,
-}))
+jest.mock('@radix-ui/react-menubar', () => {
+    const React = require('react');
+    const ForwardRefDiv = React.forwardRef(({ children, ...props }: any, ref: any) => <div ref={ref} {...props}>{children}</div>);
+    ForwardRefDiv.displayName = 'MockDiv';
+
+    const ForwardRefButton = React.forwardRef(({ children, ...props }: any, ref: any) => <button ref={ref} {...props}>{children}</button>);
+    ForwardRefButton.displayName = 'MockButton';
+
+    return {
+        Root: ForwardRefDiv,
+        Menu: ForwardRefDiv,
+        Trigger: ForwardRefButton,
+        Portal: ForwardRefDiv,
+        Content: ForwardRefDiv,
+        Item: ForwardRefDiv,
+        Group: ForwardRefDiv,
+        CheckboxItem: ForwardRefDiv,
+        ItemIndicator: ForwardRefDiv,
+        RadioItem: ForwardRefDiv,
+        Label: ForwardRefDiv,
+        Separator: ForwardRefDiv,
+        SubTrigger: ForwardRefDiv,
+        SubContent: ForwardRefDiv,
+        Sub: ForwardRefDiv,
+        RadioGroup: ForwardRefDiv,
+    };
+})
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
 describe('Menubar', () => {
