@@ -59,7 +59,7 @@ export type TimelineItemProps = {
   isLast?: boolean
 }
 
-export const TimelineItem = ({ title, description, time, isLast }: TimelineItemProps) => {
+export const TimelineItem = ({ title, description, time, isLast, children }: TimelineItemProps & { children?: React.ReactNode }) => {
   return (
     <TimelineItemFrame>
       <View>
@@ -68,19 +68,29 @@ export const TimelineItem = ({ title, description, time, isLast }: TimelineItemP
       </View>
       <TimelineContent>
         {time && <TimelineTime>{time}</TimelineTime>}
-        <TimelineTitle>{title}</TimelineTitle>
+        {title && <TimelineTitle>{title}</TimelineTitle>}
         {description && <TimelineDescription>{description}</TimelineDescription>}
+        {children}
       </TimelineContent>
     </TimelineItemFrame>
   )
 }
 
-export const Timeline = ({ items }: { items: TimelineItemProps[] }) => {
+export const Timeline = ({ items, children }: { items?: TimelineItemProps[], children?: React.ReactNode }) => {
+  if (items) {
+    return (
+      <TimelineFrame>
+        {items.map((item, index) => (
+          <TimelineItem key={index} {...item} isLast={index === items.length - 1} />
+        ))}
+      </TimelineFrame>
+    )
+  }
+
+  // Handle composition pattern
   return (
     <TimelineFrame>
-      {items.map((item, index) => (
-        <TimelineItem key={index} {...item} isLast={index === items.length - 1} />
-      ))}
+      {children}
     </TimelineFrame>
   )
 }

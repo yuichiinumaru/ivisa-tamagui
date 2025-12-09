@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { Stack, StackProps, TamaguiElement, Text } from 'tamagui'
+import { Stack, StackProps, Text } from 'tamagui'
 
 // Mock ResizeMode for Web
 export const ResizeMode = {

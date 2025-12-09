@@ -9,7 +9,7 @@ Module.prototype.require = function (id) {
     if (typeof id === 'string' && id.startsWith('file://')) {
         try {
             id = fileURLToPath(id);
-        } catch (e) {
+        } catch (_e) {
             // ignore
         }
     }

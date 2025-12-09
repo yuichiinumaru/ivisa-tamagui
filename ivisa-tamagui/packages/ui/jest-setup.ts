@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom';
 
+import React from 'react';
+
 jest.mock('react-native', () => {
-    const React = require('react');
-    const View = React.forwardRef(({ children, ...props }, ref) => React.createElement('div', { ...props, ref }, children));
+    const View = React.forwardRef(({ children, ...props }: { children?: React.ReactNode; [key: string]: unknown }, ref) => React.createElement('div', { ...props, ref }, children));
     // Mock other components as needed by Tamagui
     return {
         View,
@@ -46,3 +47,43 @@ jest.mock('@tamagui/animations-react-native', () => ({
         'quick': {},
     })),
 }));
+
+jest.mock('react-native-svg', () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const React = require('react');
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const View = require('react-native').View;
+  const SvgMock = React.forwardRef((props: any, ref: any) => React.createElement(View, { ...props, ref }));
+  return {
+    __esModule: true,
+    default: SvgMock,
+    Svg: SvgMock,
+    Path: SvgMock,
+    Rect: SvgMock,
+    Circle: SvgMock,
+    Line: SvgMock,
+    Polygon: SvgMock,
+    Polyline: SvgMock,
+    Ellipse: SvgMock,
+    G: SvgMock,
+    Text: SvgMock,
+    TSpan: SvgMock,
+    TextPath: SvgMock,
+    Use: SvgMock,
+    Symbol: SvgMock,
+    Defs: SvgMock,
+    LinearGradient: SvgMock,
+    RadialGradient: SvgMock,
+    Stop: SvgMock,
+    ClipPath: SvgMock,
+    Pattern: SvgMock,
+    Mask: SvgMock,
+    Marker: SvgMock,
+  };
+});
+
+global.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};
