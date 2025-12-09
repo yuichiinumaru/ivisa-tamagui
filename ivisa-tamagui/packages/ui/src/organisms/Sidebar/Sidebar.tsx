@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { YStack, AnimatePresence, View } from 'tamagui';
+import { YStack, AnimatePresence } from 'tamagui';
 import { Sheet, SheetContent } from '../../molecules/Sheet';
 import { Button } from '../../atoms/Button';
 import { ChevronLeft, ChevronRight, Menu } from '@tamagui/lucide-icons';

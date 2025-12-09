@@ -17,7 +17,9 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => (
   </TamaguiProvider>
 )
 
-export const render = (ui: React.ReactElement, options?: any) =>
+import { RenderOptions } from '@testing-library/react'
+
+export const render = (ui: React.ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
   rtlRender(ui, { wrapper: AppProviders, ...options })
 
 export * from '@testing-library/react'

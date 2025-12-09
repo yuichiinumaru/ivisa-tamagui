@@ -1,5 +1,4 @@
-import React from 'react'
-import { View, Text, styled } from 'tamagui'
+import { View, styled } from 'tamagui'
 
 // 💀 The Rite of Resurrection: Safe Native Stub
 // This file exists to prevent React Native from crashing when importing @ivisa/ui.
