@@ -1,24 +1,24 @@
 // @vitest-environment jsdom
 import React from 'react'
 import { render, screen } from '../../test-utils'
-import {
-  ContextMenu,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuTrigger,
-} from './ContextMenu'
+
+import { ContextMenu, ContextMenuItemDef } from './ContextMenu'
 
 describe('ContextMenu', () => {
   it('renders context menu on right click', async () => {
+    const menuItems: ContextMenuItemDef[] = [
+      {
+        label: 'Profile',
+      },
+      {
+        label: 'Billing',
+      },
+    ]
+
+    // @ts-expect-error Tamagui types are not correctly picked up in test env
     const { user } = render(
-      <ContextMenu>
-        <ContextMenuTrigger>
-          <div style={{ padding: 50, border: '1px solid black' }}>Right click me</div>
-        </ContextMenuTrigger>
-        <ContextMenuContent>
-          <ContextMenuItem>Profile</ContextMenuItem>
-          <ContextMenuItem>Billing</ContextMenuItem>
-        </ContextMenuContent>
+      <ContextMenu items={menuItems}>
+        <div style={{ padding: 50, border: '1px solid black' }}>Right click me</div>
       </ContextMenu>
     )
 
