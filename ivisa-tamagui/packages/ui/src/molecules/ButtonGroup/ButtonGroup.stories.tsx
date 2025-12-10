@@ -1,33 +1,39 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ButtonGroup, ButtonGroupItem } from './ButtonGroup'
+import { ButtonGroup } from './ButtonGroup'
 import { Button } from '../../atoms/Button'
-import { SizableStackProps } from 'tamagui'
+import { YStack } from 'tamagui'
+import { Heart } from '@tamagui/lucide-icons'
 
 const meta: Meta<typeof ButtonGroup> = {
-  title: 'Molecules/ButtonGroup',
+  title: 'Moléculas/Grupo de Botões',
   component: ButtonGroup,
   tags: ['autodocs'],
   parameters: {
     docs: {
       description: {
         component:
-          'A ButtonGroup is used to group related buttons together. It uses Tamagui`s XGroup.',
+          'Um Grupo de Botões organiza ações relacionadas em um layout de pilha horizontal, aplicando espaçamento consistente e gerenciando estados unificados.',
       },
     },
+    layout: 'centered',
   },
   argTypes: {
-    size: {
+    gap: {
       control: { type: 'select' },
-      options: ['$2', '$3', '$4', '$5', '$6'],
-      description: 'The size of the buttons in the group.',
+      options: ['$1', '$2', '$3', '$4', '$5', '$6'],
+      description: 'O espaçamento entre os botões no grupo.',
     },
-    disabled: {
+    isDisabled: {
       control: 'boolean',
-      description: 'Disables all buttons in the group.',
+      description: 'Desabilita todos os botões no grupo.',
     },
-    bordered: {
+    isLoading: {
       control: 'boolean',
-      description: 'Adds a border around the entire group.',
+      description: 'Mostra um estado de esqueleto para o grupo de botões.',
+    },
+    hasError: {
+      control: 'boolean',
+      description: 'Aplica um estilo de erro (borda vermelha) aos botões filhos.',
     },
   },
 }
@@ -35,64 +41,76 @@ const meta: Meta<typeof ButtonGroup> = {
 export default meta
 type Story = StoryObj<typeof ButtonGroup>
 
-const renderButtons = (args: SizableStackProps) => (
+const renderButtons = (args) => (
   <ButtonGroup {...args}>
-    <ButtonGroupItem>
-      <Button>One</Button>
-    </ButtonGroupItem>
-    <ButtonGroupItem>
-      <Button>Two</Button>
-    </ButtonGroupItem>
-    <ButtonGroupItem>
-      <Button>Three</Button>
-    </ButtonGroupItem>
+    <Button>Primário</Button>
+    <Button>Secundário</Button>
+    <Button>Terciário</Button>
   </ButtonGroup>
 )
 
-export const Default: Story = {
+export const Padrao: Story = {
+  name: 'Padrão',
   args: {
-    size: '$4',
-    disabled: false,
-    bordered: true,
+    gap: '$2',
+    isDisabled: false,
+    isLoading: false,
+    hasError: false,
   },
   render: renderButtons,
 }
 
-export const Variants: Story = {
-  render: () => (
-    <ButtonGroup>
-      <ButtonGroupItem>
-        <Button>Default</Button>
-      </ButtonGroupItem>
-      <ButtonGroupItem>
-        <Button variant="outline">Outline</Button>
-      </ButtonGroupItem>
-      <ButtonGroupItem>
-        <Button variant="ghost">Ghost</Button>
-      </ButtonGroupItem>
+export const Carregando: Story = {
+  args: {
+    isLoading: true,
+  },
+  render: renderButtons,
+}
+
+export const Desabilitado: Story = {
+  args: {
+    isDisabled: true,
+  },
+  render: renderButtons,
+}
+
+export const ComErro: Story = {
+  args: {
+    hasError: true,
+  },
+  render: renderButtons,
+}
+
+export const ComSlotDireito: Story = {
+  name: 'Com Slot Direito',
+  args: {
+    rightSlot: (
+      <Button icon={<Heart />} variant="outline">
+        Favorito
+      </Button>
+    ),
+  },
+  render: (args) => (
+    <ButtonGroup {...args}>
+      <Button>Ação Principal</Button>
+      <Button>Outra Ação</Button>
     </ButtonGroup>
   ),
 }
 
-export const Sizes: Story = {
-  render: () => (
-    <>
-      <ButtonGroup size="$3" marginBottom="$2">
-        <ButtonGroupItem>
-          <Button>Small</Button>
-        </ButtonGroupItem>
-        <ButtonGroupItem>
-          <Button>Small</Button>
-        </ButtonGroupItem>
-      </ButtonGroup>
-      <ButtonGroup size="$4">
-        <ButtonGroupItem>
-          <Button>Medium</Button>
-        </ButtonGroupItem>
-        <ButtonGroupItem>
-          <Button>Medium</Button>
-        </ButtonGroupItem>
-      </ButtonGroup>
-    </>
+export const ContainerPequeno: Story = {
+  name: 'Container Pequeno',
+  decorators: [
+    (Story) => (
+      <YStack width={250} p="$2" borderWidth={1} borderColor="$borderColor" borderRadius="$4">
+        <Story />
+      </YStack>
+    ),
+  ],
+  render: (args) => (
+    <ButtonGroup {...args}>
+      <Button>Botão Um</Button>
+      <Button>Botão Dois</Button>
+    </ButtonGroup>
   ),
 }
