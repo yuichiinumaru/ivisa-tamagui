@@ -1,4 +1,4 @@
-import { Progress as TamaguiProgress, styled, GetProps } from 'tamagui'
+import { Progress as TamaguiProgress, styled, GetProps, YStack, Label } from 'tamagui'
 import React from 'react'
 
 const ProgressFrame = styled(TamaguiProgress, {
@@ -8,6 +8,14 @@ const ProgressFrame = styled(TamaguiProgress, {
     backgroundColor: '$secondary',
     borderRadius: '$10', // rounded-full
     overflow: 'hidden',
+    variants: {
+        state: {
+            indeterminate: {
+                animation: 'pulse',
+                animationIterationCount: 'infinite',
+            }
+        }
+    }
 })
 
 const ProgressIndicator = styled(TamaguiProgress.Indicator, {
@@ -18,12 +26,34 @@ const ProgressIndicator = styled(TamaguiProgress.Indicator, {
     animation: 'quick', // transition-all
 })
 
+export type ProgressProps = GetProps<typeof ProgressFrame> & {
+    /**
+     * The current value of the progress bar.
+     */
+    value?: number;
+    /**
+     * The label to display next to the progress bar.
+     */
+    label?: string;
+    /**
+     * The state of the progress bar.
+     * @default "determinate"
+     *
+     */
+    state?: 'determinate' | 'indeterminate';
+}
+
+
 // Composite component
-const Progress = React.forwardRef<React.ElementRef<typeof ProgressFrame>, GetProps<typeof ProgressFrame> & { value?: number }>((props, ref) => {
+const Progress = React.forwardRef<React.ElementRef<typeof ProgressFrame>, ProgressProps>(({ value, label, state = 'determinate', ...props }, ref) => {
+    const id = React.useId()
     return (
-        <ProgressFrame ref={ref} value={props.value} aria-valuenow={props.value} {...props}>
-            <ProgressIndicator />
-        </ProgressFrame>
+        <YStack>
+            {label && <Label htmlFor={id}>{label}</Label>}
+            <ProgressFrame ref={ref} value={value} state={state} aria-valuenow={value} {...props} id={id}>
+                <ProgressIndicator />
+            </ProgressFrame>
+        </YStack>
     )
 })
 
@@ -34,5 +64,3 @@ export {
     ProgressFrame,
     ProgressIndicator,
 }
-
-export type ProgressProps = GetProps<typeof ProgressFrame>
