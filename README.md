@@ -8,8 +8,8 @@ Modern, Tamagui-first recreation of shadcn/ui ergonomics for the Ivisa product s
 
 | Path | Description |
 | --- | --- |
-| `ivisa-tamagui/` | PNPM workspace containing the `packages/ui` design-system package and supporting configs. |
-| `docs/` | Living documentation (`01-plan`, `02-tasks`, `03-architecture`, `04-changelog`, `06-testing-process`, etc.). |
+| `ivisa-tamagui/` | Yarn workspace containing the `packages/ui` design-system package and supporting configs. |
+| `docs/` | Living documentation (`01-plan`, `02-tasks`, `03-architecture`, `04-changelog`, `06-rules`, etc.). |
 | `scripts/` | Utility scripts such as `migrate_old_port.py` and Playwright visual-test harnesses. |
 | `_archive/` | Safe holding area for retired assets (never delete outright). |
 | `AGENTS.md` | Project charter + operating rules for every contributor. |
@@ -27,7 +27,7 @@ bento/       # (optional) Marketing layouts from Tamagui Bento Free
 ## Requirements
 
 - Node.js 20+
-- PNPM (see `corepack enable` if not available)
+- **Yarn** (v1) - `npm` and `pnpm` are forbidden.
 - Python 3.10+ (for helper scripts)
 - Playwright browsers (install via `npx playwright install chromium`)
 
@@ -36,16 +36,25 @@ bento/       # (optional) Marketing layouts from Tamagui Bento Free
 ## Setup & Commands
 
 ```bash
-pnpm install                # install workspace deps
-40: pnpm storybook              # launch Storybook (Webpack 5) (default: http://localhost:6006)
-41: pnpm test                   # run unit tests (Jest)
-42: pnpm lint                   # run eslint/ruff (see package.json scripts)
-# node scripts/visual-check   # Playwright screenshots (Pending restoration)
-python scripts/migrate_old_port.py --help  # tooling to import legacy assets
+cd ivisa-tamagui
+yarn install                    # install workspace deps
+yarn storybook                  # launch Storybook (Webpack 5) (default: http://localhost:6006)
+yarn test                       # run unit tests (Jest)
+yarn lint                       # run eslint
+# node scripts/visual-check.js  # Playwright screenshots (Pending restoration)
 ```
 
 - Storybook already aliases `react-native` → `react-native-web` and injects `process.env` polyfills for Tamagui.
-- `scripts/visual-check.js` requires a running Storybook (use `pnpm storybook` in another terminal). It captures PNG snapshots and fails on console errors.
+- `scripts/visual-check.js` requires a running Storybook (use `yarn storybook` in another terminal). It captures PNG snapshots and fails on console errors.
+
+## Deployment (Vercel)
+
+Deployment is managed via `ivisa-tamagui/vercel.json` which enforces:
+- **Build Command:** `yarn build:ci` (Static build, never dev server)
+- **Output:** `packages/ui/storybook-static`
+- **Root Directory:** `ivisa-tamagui`
+
+See [`docs/03-architecture.md`](./docs/03-architecture.md) for full deployment details.
 
 ## Development Workflow
 
@@ -57,7 +66,7 @@ python scripts/migrate_old_port.py --help  # tooling to import legacy assets
    - Add/modify components inside the correct layer (`atoms/`, `molecules/`, `organisms/`).
    - Export from `packages/ui/src/index.ts` and update accompanying stories under the same folder.
 3. **Testing**
-60:    - Prefer TDD for new composites (Jest + React Testing Library).
+   - Prefer TDD for new composites (Jest + React Testing Library).
    - Verify visually through Storybook (Visual check script pending).
 4. **Documentation**
    - Log noteworthy changes in `docs/04-changelog.md`.
@@ -80,17 +89,7 @@ python scripts/migrate_old_port.py --help  # tooling to import legacy assets
 - [`docs/02-tasks.md`](./docs/02-tasks.md) – Detailed task board (phases, subtasks, completion state).
 - [`docs/03-architecture.md`](./docs/03-architecture.md) – Atomic layout, headless integration rules.
 - [`docs/04-changelog.md`](./docs/04-changelog.md) – Release log + notable changes.
-- [`docs/06-testing-process.md`](./docs/06-testing-process.md) – Storybook + Playwright workflow, troubleshooting.
+- [`docs/06-rules.md`](./docs/06-rules.md) – The Code of Law.
 - [`docs/08-submodule-strategy.md`](./docs/08-submodule-strategy.md) – Git Submodule usage & framework-agnostic rules.
 
 Keep these files synchronized with code changes to maintain a reliable onboarding trail.
-
-## Contributing Checklist
-
-1. Create a feature branch (`feat/<component>` or `fix/<issue>`).
-2. Follow TDD where possible; commit only after tests + visual checks pass.
-3. Update docs + changelog alongside the code.
-4. Move any removed assets to `_archive/` and note their origin in the PR.
-5. Submit a PR referencing the relevant task ID from `docs/02-tasks.md`.
-
-Happy building! 🎉
