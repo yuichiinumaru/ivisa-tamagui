@@ -23,5 +23,12 @@ const SeparatorFrame = styled(TamaguiSeparator, {
     }
 })
 
+/**
+ * A separator component that can be used to divide content vertically or horizontally.
+ * It inherits from the Tamagui Separator and is styled with the application's theme.
+ */
 export const Separator = SeparatorFrame
+/**
+ * Props for the Separator component.
+ */
 export type SeparatorProps = GetProps<typeof SeparatorFrame>
