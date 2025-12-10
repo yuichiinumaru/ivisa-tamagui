@@ -45,6 +45,8 @@ export * from './molecules/MonthsPicker';
 export * from './molecules/ToggleGroup';
 export * from './molecules/Tooltip';
 export * from './molecules/Stepper';
+export * from './molecules/AvatarGroup';
+export * from './molecules/BadgeCounter';
 export * from './organisms/Autocomplete';
 export * from './organisms/Form';
 export * from './organisms/RichText';

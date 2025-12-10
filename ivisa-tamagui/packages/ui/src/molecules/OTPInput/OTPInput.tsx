@@ -6,14 +6,14 @@ import { withErrorLogging } from '../../utils/withErrorLogging'
 const OTPInputFrame = styled(YStack, {
   name: 'OTPInputFrame',
   flexDirection: 'row',
-  gap: '$2',
+  gap: '$sm',
   alignItems: 'center',
 })
 
 const OTPCellInput = styled(TamaguiInput, {
   name: 'OTPInputCell',
   width: 48,
-  height: '$10',
+  height: '$2xl',
   textAlign: 'center',
   fontSize: '$5',
   borderWidth: 1,
@@ -263,18 +263,18 @@ const OTPInputImpl = React.forwardRef<ContainerRef, OTPInputProps>(
             onChangeText={text => handleInputChange(index, text ?? '')}
             {...(isWeb
               ? ({
-                  onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) =>
-                    handleKeyDown(index, event),
-                  onPaste: (event: React.ClipboardEvent<HTMLInputElement>) =>
-                    handlePaste(index, event),
-                  type: mask ? 'password' : 'text',
-                  inputMode: allowedCharacters === 'numeric' ? 'numeric' : 'text',
-                } as Record<string, unknown>)
+                onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) =>
+                  handleKeyDown(index, event),
+                onPaste: (event: React.ClipboardEvent<HTMLInputElement>) =>
+                  handlePaste(index, event),
+                type: mask ? 'password' : 'text',
+                inputMode: allowedCharacters === 'numeric' ? 'numeric' : 'text',
+              } as Record<string, unknown>)
               : ({
-                  keyboardType: allowedCharacters === 'numeric' ? 'number-pad' : 'default',
-                  secureTextEntry: mask,
-                  editable: !disabled,
-                } as Record<string, unknown>))}
+                keyboardType: allowedCharacters === 'numeric' ? 'number-pad' : 'default',
+                secureTextEntry: mask,
+                editable: !disabled,
+              } as Record<string, unknown>))}
             onFocus={() => selectInput(index)}
             autoFocus={autoFocus && index === 0}
             autoCorrect={false}

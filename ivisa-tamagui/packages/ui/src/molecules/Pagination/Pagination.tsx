@@ -4,7 +4,7 @@ import { Button, XStack, Text, GetProps, styled, VisuallyHidden } from 'tamagui'
 const PaginationRoot = styled(XStack, {
   name: 'PaginationRoot',
   alignItems: 'center',
-  gap: '$2',
+  gap: '$sm',
 })
 
 const PaginationButton = styled(Button, {
@@ -14,8 +14,8 @@ const PaginationButton = styled(Button, {
   borderWidth: 1,
   borderColor: '$borderColor',
   minWidth: 40,
-  height: '$6',
-  paddingHorizontal: '$3',
+  height: '$xl',
+  paddingHorizontal: '$md',
   alignItems: 'center',
   justifyContent: 'center',
   color: '$foreground',
@@ -44,17 +44,17 @@ const PaginationButton = styled(Button, {
     },
     size: {
       sm: {
-        height: '$5',
+        height: '$lg',
         minWidth: 32,
-        paddingHorizontal: '$2',
+        paddingHorizontal: '$sm',
         fontSize: '$2',
       },
       md: {
-        height: '$6',
+        height: '$xl',
         fontSize: '$3',
       },
       lg: {
-        height: '$8',
+        height: '$2xl',
         fontSize: '$4',
       },
     },
@@ -68,7 +68,7 @@ const PaginationButton = styled(Button, {
 const PaginationEllipsis = styled(Text, {
   name: 'PaginationEllipsis',
   color: '$mutedForeground',
-  px: '$2',
+  px: '$sm',
   fontSize: '$3',
 })
 

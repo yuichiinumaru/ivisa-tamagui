@@ -154,3 +154,81 @@
 - [ ] **Calendar (Booking)**: Full appointment scheduling.
 - [ ] **Timeline**: Process flows.
 
+
+Current Existing Components:
+
+⚛️ ATOMS
+1. Alert
+AspectRatio
+Avatar
+Badge
+Button
+Checkbox
+Input
+Kbd
+Label
+Progress
+ScrollArea
+Separator
+Skeleton
+Slider
+Spinner
+Stack
+Switch
+Textarea
+Toggle
+Typography
+
+🧪 MOLECULES
+Accordion
+AlertDialog
+AvatarGroup
+BadgeCounter
+Breadcrumb
+ButtonGroup
+Calendar
+Card
+Collapsible
+ComponentErrorBoundary
+ContextMenu
+DatePicker
+Dialog
+Drawer
+Empty
+Field
+HoverCard
+InputGroup
+Item
+Menubar
+MonthsPicker
+NativeSelect
+NavigationMenu
+OTPInput
+Pagination
+Popover
+RadioGroup
+Resizable
+Select
+Sheet
+Sonner
+StarRating
+Stepper
+Table
+Tabs
+Toast
+ToggleGroup
+Tooltip
+
+🧬 ORGANISMES
+Autocomplete
+Calendar
+Carousel
+Charts
+Command
+DashboardLayout
+DataTable
+FileUpload
+Form
+RichText
+Sidebar
+Timeline

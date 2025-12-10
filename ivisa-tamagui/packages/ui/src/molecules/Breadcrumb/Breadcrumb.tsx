@@ -4,12 +4,12 @@ import { Anchor, Button, GetProps, Text, XStack, styled } from 'tamagui'
 const BreadcrumbRoot = styled(XStack, {
   name: 'BreadcrumbRoot',
   alignItems: 'center',
-  gap: '$2',
+  gap: '$sm',
 })
 
 const BreadcrumbList = styled(XStack, {
   name: 'BreadcrumbList',
-  gap: '$2',
+  gap: '$sm',
   alignItems: 'center',
   flexWrap: 'wrap',
 })
@@ -17,7 +17,7 @@ const BreadcrumbList = styled(XStack, {
 const BreadcrumbItemWrapper = styled(XStack, {
   name: 'BreadcrumbItem',
   alignItems: 'center',
-  gap: '$2',
+  gap: '$sm',
 })
 
 const BreadcrumbSeparator = styled(Text, {
