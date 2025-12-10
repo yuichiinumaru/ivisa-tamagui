@@ -1,20 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Progress } from './Progress';
-import { YStack } from 'tamagui';
+import { YStack, Text } from 'tamagui';
 import { userEvent, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
-const meta: Meta<typeof Progress> = {
+const meta: Meta<typeof Progress.Root> = {
   title: 'atoms/Progresso',
-  component: Progress,
+  component: Progress.Root,
   tags: ['autodocs'],
   argTypes: {
     value: {
       control: { type: 'range', min: 0, max: 100, step: 1 },
       description: 'O valor atual da barra de progresso.',
-    },
-    label: {
-      control: 'text',
-      description: 'O rótulo a ser exibido junto à barra de progresso.',
     },
     state: {
       control: { type: 'radio' },
@@ -31,22 +28,36 @@ const meta: Meta<typeof Progress> = {
       options: ['info', 'success', 'warning', 'danger'],
       description: 'O status da barra de progresso, que determina sua cor.',
     },
+    showValue: {
+        control: 'boolean',
+        description: 'Exibir o valor percentual.',
+    },
+    'aria-valuetext': {
+        control: 'text',
+        description: 'Texto para leitores de tela.',
+    },
   },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Progress>;
+type Story = StoryObj<typeof Progress.Root>;
 
 export const Padrao: Story = {
   args: {
     value: 50,
-    label: 'Progresso',
     state: 'determinate',
     size: 'md',
     status: 'info',
+    showValue: true,
   },
   name: 'Padrão',
+  render: (args) => (
+    <Progress.Root {...args}>
+        <Progress.Label>Progresso</Progress.Label>
+        <Progress.Indicator />
+    </Progress.Root>
+  ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const progress = await canvas.findByRole('progressbar');
@@ -55,47 +66,20 @@ export const Padrao: Story = {
   },
 };
 
-export const Sucesso: Story = {
+export const LabelDentro: Story = {
     args: {
         ...Padrao.args,
-        status: 'success',
-        label: 'Sucesso'
+        showValue: false,
     },
-    name: 'Status: Sucesso'
-}
-
-export const Aviso: Story = {
-    args: {
-        ...Padrao.args,
-        status: 'warning',
-        label: 'Aviso'
-    },
-    name: 'Status: Aviso'
-}
-
-export const Perigo: Story = {
-    args: {
-        ...Padrao.args,
-        status: 'danger',
-        label: 'Perigo'
-    },
-    name: 'Status: Perigo'
-}
-
-export const TamanhoPequeno: Story = {
-    args: {
-        ...Padrao.args,
-        size: 'sm',
-        label: 'Tamanho Pequeno'
-    },
-    name: 'Tamanho: Pequeno'
-}
-
-export const TamanhoGrande: Story = {
-    args: {
-        ...Padrao.args,
-        size: 'lg',
-        label: 'Tamanho Grande'
-    },
-    name: 'Tamanho: Grande'
+    name: "Composição: Rótulo Interno",
+    render: (args) => (
+        <Progress.Root {...args}>
+             <YStack flex={1} justifyContent='center' alignItems='center'>
+                <Progress.Label asChild>
+                    <Text color="white" fontSize={12}>Carregando...</Text>
+                </Progress.Label>
+            </YStack>
+            <Progress.Indicator />
+        </Progress.Root>
+    )
 }
