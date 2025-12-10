@@ -1,8 +1,18 @@
-import { Spinner as TamaguiSpinner, SpinnerProps as TamaguiSpinnerProps, styled } from 'tamagui'
+import type { SpinnerProps as TamaguiSpinnerProps } from 'tamagui';
+import { GetProps, Spinner as TamaguiSpinner, styled } from 'tamagui';
 
-export const Spinner = styled(TamaguiSpinner, {
+const StyledSpinner = styled(TamaguiSpinner, {
   name: 'Spinner',
   color: '$primary',
-})
+});
 
-export type SpinnerProps = TamaguiSpinnerProps
+/**
+ * Displays an animated spinner to indicate a loading state.
+ * This component is a styled wrapper around the Tamagui Spinner,
+ * providing a default accessible label.
+ */
+export type SpinnerProps = GetProps<typeof StyledSpinner>;
+
+export const Spinner = ({ 'aria-label': ariaLabel = 'Carregando...', ...props }: SpinnerProps) => {
+  return <StyledSpinner aria-label={ariaLabel} {...props} />;
+};

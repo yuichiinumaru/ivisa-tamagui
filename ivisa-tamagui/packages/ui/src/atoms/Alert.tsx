@@ -1,4 +1,5 @@
-import { GetProps, styled, Text, XStack } from 'tamagui'
+import { GetProps, styled, Text, XStack, YStack } from 'tamagui'
+import React from 'react'
 
 const AlertFrame = styled(XStack, {
     name: 'Alert',
@@ -18,8 +19,6 @@ const AlertFrame = styled(XStack, {
             },
             destructive: {
                 borderColor: '$destructive',
-                // We might want a subtle background for destructive, but following shadcn default:
-                // border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive
                 backgroundColor: '$background',
             },
         },
@@ -80,16 +79,40 @@ const AlertDescriptionFrame = styled(Text, {
     }
 })
 
-// Composite component to handle variant propagation if needed, 
-// but for now we can just export the styled components.
-// To match shadcn API, we might want to pass variant down, 
-// but Tamagui doesn't automatically pass variants to children unless using createStyledContext.
-// For simplicity and "Frankenstein" approach, we'll keep it simple.
+type AlertFrameProps = GetProps<typeof AlertFrame>
 
-export const Alert = AlertFrame
-export const AlertTitle = AlertTitleFrame
-export const AlertDescription = AlertDescriptionFrame
+export interface AlertProps extends AlertFrameProps {
+    /**
+     * The title of the alert.
+     */
+    title: React.ReactNode,
+    /**
+     * The description of the alert.
+     */
+    description?: React.ReactNode,
+    /**
+     * An optional icon to display on the left.
+     */
+    leftIcon?: React.ReactNode,
+    /**
+     * An optional icon to display on the right.
+     */
+    rightIcon?: React.ReactNode,
+}
 
-export type AlertProps = GetProps<typeof AlertFrame>
-export type AlertTitleProps = GetProps<typeof AlertTitleFrame>
-export type AlertDescriptionProps = GetProps<typeof AlertDescriptionFrame>
+export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
+    ({ variant, title, description, leftIcon, rightIcon, ...props }, ref) => {
+        return (
+            <AlertFrame ref={ref} variant={variant} role="alert" {...props}>
+                {leftIcon}
+                <YStack flex={1} gap="$1.5">
+                    <AlertTitleFrame variant={variant}>{title}</AlertTitleFrame>
+                    {description && <AlertDescriptionFrame variant={variant}>{description}</AlertDescriptionFrame>}
+                </YStack>
+                {rightIcon}
+            </AlertFrame>
+        )
+    }
+)
+
+Alert.displayName = 'Alert'
