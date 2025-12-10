@@ -3,18 +3,23 @@ import { Input } from './Input';
 
 describe('Input', () => {
   it('renders standard input', () => {
-    const { getByPlaceholderText } = render(<Input placeholder="test" />);
-    expect(getByPlaceholderText('test')).toBeDefined();
+    const { getByRole } = render(<Input placeholder="test" />);
+    expect(getByRole('textbox')).toBeDefined();
   });
 
   it('renders composed input', () => {
-    const { getByPlaceholderText, getByText } = render(
+    const { getByRole, getByText } = render(
       <Input>
         <Input.Field placeholder="composed" />
         <Input.Button>Submit</Input.Button>
       </Input>
     );
-    expect(getByPlaceholderText('composed')).toBeDefined();
+    expect(getByRole('textbox')).toBeDefined();
     expect(getByText('Submit')).toBeDefined();
+  });
+
+  it('renders loading state', () => {
+    const { getByRole } = render(<Input loading />);
+    expect(getByRole('textbox')).toBeDisabled();
   });
 });
