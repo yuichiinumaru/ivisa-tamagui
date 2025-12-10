@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
-import { Input as TamaguiInput, styled, GetProps, XStack, View, TamaguiElement } from 'tamagui';
+import { Eye, EyeOff } from '@tamagui/lucide-icons';
+import React, { useContext, useState } from 'react';
+import { Input as TamaguiInput, styled, GetProps, XStack, View, TamaguiElement, Text } from 'tamagui';
 import { Button } from '../Button';
+import { Spinner } from '../Spinner';
 
 // --- Types & Context ---
 
 type InputContextValue = {
   size: InputProps['size'];
+  loading?: boolean;
 }
 
 const InputContext = React.createContext<InputContextValue | null>(null);
@@ -69,6 +72,16 @@ const inputVariants = {
       height: '$12',
       px: '$4',
     }
+  },
+  state: {
+    error: {
+      borderColor: '$red10',
+      borderWidth: 2,
+    },
+    success: {
+      borderColor: '$green10',
+      borderWidth: 2,
+    }
   }
 } as const;
 
@@ -103,7 +116,38 @@ const InputFrame = styled(XStack, {
 
   variants: {
     variant: inputVariants.variant,
-    size: inputVariants.size
+    size: inputVariants.size,
+    state: inputVariants.state,
+    loading: {
+      true: {
+        opacity: 0.7,
+        pointerEvents: 'none',
+      }
+    }
+  } as const,
+
+  defaultVariants: {
+    variant: 'default',
+    size: 'default'
+  }
+})
+
+const SimpleInputFrame = styled(XStack, {
+  name: 'SimpleInputFrame',
+  alignItems: 'center',
+  borderRadius: '$md',
+  overflow: 'hidden',
+
+  variants: {
+    variant: inputVariants.variant,
+    size: inputVariants.size,
+    state: inputVariants.state,
+    loading: {
+      true: {
+        opacity: 0.7,
+        pointerEvents: 'none',
+      }
+    }
   } as const,
 
   defaultVariants: {
@@ -164,11 +208,36 @@ const InputButton = styled(Button, {
   borderWidth: 0,
 })
 
+const InputHint = styled(Text, {
+  name: 'InputHint',
+  fontSize: '$2',
+  color: '$mutedForeground',
+  marginTop: '$2',
+})
+
 type StyledInputProps = GetProps<typeof StyledInput>
 
 export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
+  /**
+   * The visual style of the input.
+   * @default 'default'
+   */
   variant?: 'default' | 'filled'
+  /**
+   * The size of the input.
+   * @default 'default'
+   */
   size?: 'sm' | 'default' | 'lg'
+    /**
+   * If true, the input will be in a loading state.
+   * @default false
+   */
+  loading?: boolean
+  /**
+   * The validation state of the input.
+   * @default undefined
+   */
+  state?: 'error' | 'success'
   /**
    * @deprecated Passing children to Input is deprecated. Use <Input.Box> for composite layouts.
    */
@@ -180,11 +249,16 @@ export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
  * Explicit container for composite inputs.
  */
 const InputBox = React.forwardRef<TamaguiElement, InputProps & { children: React.ReactNode }>(
-  ({ variant = 'default', size = 'default', children, ...props }, ref) => {
+  ({ variant = 'default', size = 'default', loading = false, state, children, ...props }, ref) => {
     return (
-      <InputContext.Provider value={{ size }}>
-        <InputFrame ref={ref} variant={variant} size={size} {...props}>
+      <InputContext.Provider value={{ size, loading }}>
+        <InputFrame ref={ref} variant={variant} size={size} loading={loading} state={state} {...props}>
           {children}
+          {loading && (
+            <InputIcon>
+              <Spinner />
+            </InputIcon>
+          )}
         </InputFrame>
       </InputContext.Provider>
     )
@@ -194,7 +268,10 @@ InputBox.displayName = 'Input.Box'
 
 
 const InputMain = React.forwardRef<TamaguiElement, InputProps>(
-  ({ variant = 'default', size = 'default', children, ...props }, ref) => {
+  ({ variant = 'default', size = 'default', loading = false, state, children, ...props }, ref) => {
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const isPassword = props.type === 'password';
+
     // 🛡️ Necromancer Guard: Zero Ambiguity
     if (children) {
       if (process.env.NODE_ENV === 'development') {
@@ -202,20 +279,44 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
       }
       // Legacy support (Transition Phase)
       return (
-        <InputBox ref={ref} variant={variant} size={size} {...props}>
+        <InputBox ref={ref} variant={variant} size={size} loading={loading} state={state} {...props}>
           {children}
         </InputBox>
       )
     }
 
     return (
-      <StyledInput
+      <SimpleInputFrame
         ref={ref}
         variant={variant}
         size={size}
-        {...props}
-      />
-    )
+        loading={loading}
+        state={state}
+      >
+        <StyledInput
+          flex={1}
+          variant={variant}
+          size={size}
+          disabled={loading}
+          {...props}
+          type={isPassword && !isPasswordVisible ? 'password' : props.type}
+        />
+        {loading && (
+          <InputIcon>
+            <Spinner />
+          </InputIcon>
+        )}
+        {isPassword && (
+          <InputIcon>
+            <Button
+              icon={isPasswordVisible ? EyeOff : Eye}
+              onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+              chromeless
+            />
+          </InputIcon>
+        )}
+      </SimpleInputFrame>
+    );
   }
 )
 InputMain.displayName = 'Input'
@@ -227,4 +328,5 @@ export const Input = Object.assign(InputMain, {
   Field: InputField,
   Icon: InputIcon,
   Button: InputButton,
+  Hint: InputHint,
 })

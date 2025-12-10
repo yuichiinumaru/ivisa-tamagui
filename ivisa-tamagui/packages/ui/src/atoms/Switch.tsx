@@ -1,70 +1,130 @@
-import { Switch as TamaguiSwitch, styled, GetProps } from 'tamagui'
+import React from 'react';
+import { GetProps, Spinner, Switch as TamaguiSwitch, styled } from 'tamagui';
 
+// # 1. Component Variants
 const SwitchFrame = styled(TamaguiSwitch, {
-    name: 'Switch',
-    borderRadius: '$10', // Full pill
-    borderWidth: 0,
-    backgroundColor: '$input', // Default unchecked
-    minHeight: 24,
-    minWidth: 44,
-
-    // Focus styles
-    focusStyle: {
-        outlineColor: '$ring',
-        outlineStyle: 'solid',
-        outlineWidth: 2,
-        outlineOffset: 2,
+  name: 'Switch',
+  borderRadius: '$10',
+  borderWidth: 0,
+  backgroundColor: '$gray8',
+  minHeight: 24,
+  minWidth: 44,
+  focusStyle: {
+    outlineColor: '$blue10',
+    outlineStyle: 'solid',
+    outlineWidth: 2,
+    outlineOffset: 2,
+  },
+  hoverStyle: {
+    backgroundColor: '$gray9',
+  },
+  variants: {
+    checked: {
+      true: {
+        backgroundColor: '$blue10',
+        hoverStyle: {
+          backgroundColor: '$blue11',
+        },
+      },
+      false: {
+        backgroundColor: '$gray8',
+      },
     },
-
-    variants: {
-        checked: {
-            true: {
-                backgroundColor: '$primary',
-            },
-            false: {
-                backgroundColor: '$input',
-            }
-        }
-    } as const,
-
-    defaultVariants: {
-        checked: false,
-    }
-})
+    disabled: {
+      true: {
+        opacity: 0.5,
+        backgroundColor: '$gray8',
+        pointerEvents: 'none',
+      },
+    },
+    size: {
+      small: {
+        minHeight: 20,
+        minWidth: 36,
+      },
+      medium: {
+        minHeight: 24,
+        minWidth: 44,
+      },
+      large: {
+        minHeight: 28,
+        minWidth: 52,
+      },
+    },
+  } as const,
+  defaultVariants: {
+    checked: false,
+    size: 'medium',
+  },
+});
 
 const SwitchThumb = styled(TamaguiSwitch.Thumb, {
-    name: 'SwitchThumb',
-    backgroundColor: '$background',
-    borderRadius: '$10', // Full circle
-    height: 20,
-    width: 20,
-    animation: 'quick', // Assuming 'quick' animation exists in config, otherwise use 'bouncy' or define one
+  name: 'SwitchThumb',
+  backgroundColor: '$background',
+  borderRadius: '$10',
+  animation: 'quick',
+  variants: {
+    size: {
+      small: {
+        height: 16,
+        width: 16,
+      },
+      medium: {
+        height: 20,
+        width: 20,
+      },
+      large: {
+        height: 24,
+        width: 24,
+      },
+    },
+  } as const,
+  defaultVariants: {
+    size: 'medium',
+  },
+});
 
-    // Shadcn uses translate for state, Tamagui handles this internally with the primitive.
-    // We just need to ensure the thumb size and color are correct.
-})
+// # 2. Prop Types
+export type SwitchProps = GetProps<typeof SwitchFrame> & {
+  /**
+   * Identificador único para o componente Switch.
+   */
+  id?: string;
+  /**
+   * O estado de carregamento do Switch.
+   * @default false
+   */
+  loading?: boolean;
+};
 
-export const SwitchFrameExport = SwitchFrame
-export const SwitchThumbComponent = SwitchThumb // Exporting if needed for composition
+// # 3. Composed Component
+const SwitchComponent = React.forwardRef<
+  React.ElementRef<typeof SwitchFrame>,
+  SwitchProps
+>(({ loading = false, disabled, size, ...props }, ref) => {
+  const isDisabled = loading || disabled;
 
-// We can also create a composed component to ensure Thumb is always present
-import React from 'react'
+  return (
+    <SwitchFrame
+      ref={ref}
+      role="switch"
+      aria-checked={props.checked}
+      disabled={isDisabled}
+      size={size}
+      {...props}
+    >
+      <SwitchThumb size={size} />
+      {loading && (
+        <Spinner
+          size={size === 'small' ? 'small' : 'large'}
+          color="$background"
+          style={{ position: 'absolute', margin: 'auto' }}
+        />
+      )}
+    </SwitchFrame>
+  );
+});
 
-export const SwitchComponent = React.forwardRef<React.ElementRef<typeof SwitchFrame>, GetProps<typeof SwitchFrame>>((props, ref) => {
-    return (
-        <SwitchFrame ref={ref} role="switch" {...props}>
-            <SwitchThumb />
-        </SwitchFrame>
-    )
-})
+SwitchComponent.displayName = 'Switch';
 
-SwitchComponent.displayName = 'Switch'
-
-// Export the composed one as default or named
-export { SwitchComponent as SwitchWithThumb }
-// But usually we want to export the parts for flexibility or the composed one as the main "Switch"
-// Let's stick to the parts pattern or a simple wrapper. 
-// Shadcn is just <Switch />, so let's export the wrapper as `Switch`.
-
-export const Switch = SwitchComponent
-export type SwitchProps = GetProps<typeof SwitchFrame>
+export const Switch = SwitchComponent;
