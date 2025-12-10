@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "buildCommand": "yarn build:ci",
+  "outputDirectory": "packages/ui/storybook-static",
+  "installCommand": "yarn install",
+  "framework": "storybook"
+}
