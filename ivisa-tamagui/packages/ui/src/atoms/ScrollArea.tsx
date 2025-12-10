@@ -1,17 +1,25 @@
-import { ScrollView as TamaguiScrollView, styled, GetProps } from 'tamagui'
+import { GetProps, ScrollView as TamaguiScrollView, styled } from 'tamagui'
 
-const ScrollAreaFrame = styled(TamaguiScrollView, {
-    name: 'ScrollArea',
-    width: '100%',
-    height: '100%',
-    overflow: 'hidden', // Tamagui ScrollView handles overflow internally usually
-
-    // Custom scrollbar styling is tricky in cross-platform.
-    // Tamagui supports `showsVerticalScrollIndicator` etc.
-    // For web, we can use CSS in `contentContainerStyle` or similar if needed.
-    // But for now, we map to the primitive.
+/**
+ * @module ScrollArea - A scrollable container component.
+ * @description Provides a versatile and theme-aware scrollable area. It's built on Tamagui's ScrollView,
+ * ensuring cross-platform compatibility. It supports the `asChild` prop for polymorphism, allowing it
+ * to compose with other components seamlessly.
+ * @see https://tamagui.dev/docs/components/scroll-view
+ *
+ * @param {React.ReactNode} children - The content to be scrolled.
+ * @param {boolean} [horizontal=false] - If true, scrolling is horizontal.
+ * @param {boolean} [showsVerticalScrollIndicator=true] - Toggles the visibility of the vertical scrollbar.
+ * @param {boolean} [showsHorizontalScrollIndicator=true] - Toggles the visibility of the horizontal scrollbar.
+ * @param {boolean} [asChild=false] - Merges the component with its immediate child.
+ */
+const ScrollArea = styled(TamaguiScrollView, {
+  name: 'ScrollArea',
+  width: '100%',
+  height: '100%',
 })
 
-export const ScrollArea = ScrollAreaFrame
+ScrollArea.displayName = 'ScrollArea'
 
-export type ScrollAreaProps = GetProps<typeof ScrollAreaFrame>
+export { ScrollArea }
+export type ScrollAreaProps = GetProps<typeof ScrollArea>

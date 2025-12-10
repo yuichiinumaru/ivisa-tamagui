@@ -24,6 +24,10 @@ const stringToColor = (str: string): string => {
 
 // --- Componentes do Avatar ---
 
+/**
+ * Componente de Frame do Avatar
+ * Estilizado a partir do TamaguiAvatar com propriedades padrão.
+ */
 const AvatarFrame = styled(TamaguiAvatar, {
   name: 'Avatar',
   size: '$10',
@@ -79,6 +83,10 @@ const AvatarImageComponent = React.forwardRef<HTMLImageElement, AvatarImageProps
 );
 AvatarImageComponent.displayName = 'AvatarImage';
 
+/**
+ * Componente de Fallback do Avatar
+ * Exibido se a imagem não carregar ou não for fornecida.
+ */
 const AvatarFallback = styled(TamaguiAvatar.Fallback, {
   name: 'AvatarFallback',
   alignItems: 'center',
