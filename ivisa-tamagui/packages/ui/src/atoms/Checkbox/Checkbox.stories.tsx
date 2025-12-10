@@ -10,7 +10,8 @@ const meta: Meta<typeof Checkbox> = {
   tags: ['autodocs'],
   argTypes: {
     checked: {
-      control: { type: 'boolean' },
+      control: { type: 'select' },
+      options: [true, false, 'indeterminate'],
       description: 'Define o estado do checkbox.',
     },
     disabled: {
@@ -21,6 +22,15 @@ const meta: Meta<typeof Checkbox> = {
       control: { type: 'text' },
       description: 'O texto a ser exibido ao lado do checkbox.',
     },
+    size: {
+        control: { type: 'select' },
+        options: ['$3', '$4', '$5', '$6'],
+        description: 'Define o tamanho do checkbox.'
+    },
+    error: {
+        control: { type: 'boolean' },
+        description: 'Aplica o estilo de erro ao checkbox.'
+    }
   },
   parameters: {
     docs: {
@@ -80,6 +90,46 @@ export const Marcado: Story = {
   }
 }
 
+export const Indeterminado: Story = {
+    name: "Indeterminado",
+    args: {
+      ...Padrao.args,
+      checked: 'indeterminate',
+      id: 'indeterminate-checkbox',
+      label: 'Estado de seleção mista'
+    },
+    parameters: {
+      docs: {
+        description: {
+          story: 'O estado indeterminado é visual apenas. O checkbox se comporta como desmarcado.'
+        },
+        source: {
+          code: `<Checkbox id="indeterminate-checkbox" checked="indeterminate" label="Estado de seleção mista" />`,
+        },
+      },
+    }
+}
+
+export const Erro: Story = {
+    name: "Com Erro",
+    args: {
+      ...Padrao.args,
+      error: true,
+      id: 'error-checkbox',
+      label: 'Eu aceito os termos'
+    },
+    parameters: {
+      docs: {
+        description: {
+            story: 'Exibe o checkbox com uma borda de erro para indicar uma validação falha.'
+        },
+        source: {
+          code: `<Checkbox id="error-checkbox" error={true} label="Eu aceito os termos" />`,
+        },
+      },
+    }
+}
+
 export const Desativado: Story = {
   name: "Desativado",
   args: {
@@ -95,6 +145,24 @@ export const Desativado: Story = {
       },
     },
   }
+}
+
+export const Tamanhos: Story = {
+    name: "Tamanhos",
+    render: (args) => (
+        <XStack space="$4" alignItems="center">
+            <Checkbox {...args} size="$3" id="size-3" label="Pequeno" />
+            <Checkbox {...args} size="$4" id="size-4" label="Médio" />
+            <Checkbox {...args} size="$5" id="size-5" label="Grande" />
+        </XStack>
+    ),
+    parameters: {
+        docs: {
+          description: {
+            story: 'O checkbox suporta diferentes tamanhos definidos pelos tokens de tema.'
+          },
+        },
+      }
 }
 
 export const Texto_Longo: Story = {
