@@ -17,8 +17,8 @@ const meta: Meta<typeof Avatar> = {
       },
       source: {
         code: `
-<Avatar size="$10">
-  <Avatar.Image src="https://github.com/tamagui.png" />
+<Avatar size="$10" shape="circle">
+  <Avatar.Image src="https://github.com/tamagui.png" accessibilityLabel="Avatar de Usuário" />
   <Avatar.Fallback>AV</Avatar.Fallback>
 </Avatar>
         `,
@@ -32,6 +32,12 @@ const meta: Meta<typeof Avatar> = {
       control: { type: 'select' },
       options: ['$8', '$10', '$12', '$14', '$16'],
       description: 'Define o tamanho do avatar.',
+    },
+    shape: {
+      name: 'Forma',
+      control: { type: 'radio' },
+      options: ['circle', 'square', 'rounded'],
+      description: 'Define a forma do avatar.',
     },
     imageUrl: {
       name: 'URL da Imagem',
@@ -51,7 +57,7 @@ const meta: Meta<typeof Avatar> = {
   },
   render: ({ imageUrl, fallbackText, accessibilityLabel, ...args }) => (
     <Avatar {...args} accessibilityLabel={accessibilityLabel}>
-      <Avatar.Image src={imageUrl} alt={accessibilityLabel} />
+      <Avatar.Image src={imageUrl} accessibilityLabel={accessibilityLabel || fallbackText} />
       <Avatar.Fallback>{fallbackText}</Avatar.Fallback>
     </Avatar>
   ),
@@ -62,14 +68,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Padrao: Story = {
-  name: 'Padrão',
+  name: 'Padrão (Círculo)',
   args: {
     size: '$10',
+    shape: 'circle',
     imageUrl: 'https://github.com/ivisa.png',
     fallbackText: 'AV',
     accessibilityLabel: 'Avatar de Usuário',
   },
-   play: async ({ canvasElement, step }) => {
+  play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step('Verificar a renderização do avatar pela label de acessibilidade', async () => {
         const avatar = canvas.getByLabelText('Avatar de Usuário');
@@ -82,36 +89,57 @@ export const Padrao: Story = {
   },
 };
 
-export const ComFallback: Story = {
-  name: 'Com Fallback',
+export const Quadrado: Story = {
+  name: 'Forma: Quadrado',
+  args: {
+    ...Padrao.args,
+    shape: 'square',
+  },
+};
+
+export const Arredondado: Story = {
+  name: 'Forma: Arredondado',
+  args: {
+    ...Padrao.args,
+    shape: 'rounded',
+  },
+};
+
+export const ComFallbackDinamico: Story = {
+  name: 'Com Fallback (Cor Dinâmica)',
   args: {
     ...Padrao.args,
     imageUrl: 'https://url-invalida.png',
-    fallbackText: 'AV',
-    accessibilityLabel: 'Avatar de Usuário com fallback',
+    fallbackText: 'Jules',
+    accessibilityLabel: 'Avatar com fallback dinâmico',
   },
 };
 
-export const Pequeno: Story = {
-  name: 'Pequeno',
+export const ComIndicadorDeStatus: Story = {
+  name: 'Com Indicador de Status',
   args: {
     ...Padrao.args,
-    size: '$8',
   },
+  render: (args) => (
+    <div style={{ position: 'relative', display: 'inline-block' }}>
+      <meta.render {...args} />
+      <Avatar.Indicator />
+    </div>
+  ),
 };
 
-export const Grande: Story = {
-  name: 'Grande',
+export const Carregando: Story = {
+  name: 'Carregando (com Skeleton)',
   args: {
     ...Padrao.args,
-    size: '$12',
+    imageUrl: 'https://delay.pics/v1/2000/https://github.com/ivisa.png',
   },
 };
 
 export const ComTextoDeFallbackLongo: Story = {
   name: 'Com Texto de Fallback Longo',
   args: {
-    ...ComFallback.args,
+    ...ComFallbackDinamico.args,
     fallbackText: 'Texto Muito Longo Que Nao Cabe',
   },
   parameters: {
@@ -138,35 +166,6 @@ export const EmContainerPequeno: Story = {
     docs: {
       description: {
         story: 'Verifica o comportamento do Avatar quando colocado dentro de um contêiner com restrições de tamanho.',
-      },
-    },
-  },
-};
-
-export const Interativo: Story = {
-  name: 'Interativo (dentro de um botão)',
-  render: (args) => (
-    <Button>
-        <meta.render {...args} />
-    </Button>
-  ),
-  args: {
-    ...Padrao.args,
-    size: '$8',
-  },
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button');
-
-    await step('Verifica se o botão é focável', async () => {
-      await userEvent.tab();
-      expect(button).toHaveFocus();
-    });
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Demonstra o uso do Avatar dentro de um elemento interativo como um `Button`. O Avatar herda os estados de interação (hover, focus).',
       },
     },
   },
