@@ -1,3 +1,6 @@
+import React from 'react';
+import { Avatar as TamaguiAvatar, styled, GetProps, Text } from 'tamagui';
+
 import React, { useState } from 'react';
 import { Avatar as TamaguiAvatar, styled, GetProps } from 'tamagui';
 import { Text } from 'tamagui';
@@ -31,6 +34,13 @@ const stringToColor = (str: string): string => {
 const AvatarFrame = styled(TamaguiAvatar, {
   name: 'Avatar',
   size: '$10',
+});
+
+const AvatarImage = styled(TamaguiAvatar.Image, {
+  name: 'AvatarImage',
+  width: '100%',
+  height: '100%',
+});
   borderWidth: 0,
   overflow: 'hidden',
   jc: 'center',
@@ -83,11 +93,7 @@ const AvatarImageComponent = React.forwardRef<HTMLImageElement, AvatarImageProps
 );
 AvatarImageComponent.displayName = 'AvatarImage';
 
-/**
- * Componente de Fallback do Avatar
- * Exibido se a imagem não carregar ou não for fornecida.
- */
-const AvatarFallback = styled(TamaguiAvatar.Fallback, {
+const AvatarFallbackView = styled(TamaguiAvatar.Fallback, {
   name: 'AvatarFallback',
   alignItems: 'center',
   justifyContent: 'center',
@@ -115,8 +121,18 @@ export type AvatarProps = GetProps<typeof AvatarFrame> & {
    * O texto a ser usado para acessibilidade geral do componente.
    */
   accessibilityLabel?: string;
+  src?: string;
+  fallback?: React.ReactNode;
 };
 
+export const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
+  ({ src, fallback, accessibilityLabel, ...props }, ref) => {
+    return (
+      <AvatarFrame ref={ref} {...props} aria-label={accessibilityLabel}>
+        <AvatarImage src={src} />
+        <AvatarFallbackView>
+          {typeof fallback === 'string' ? <Text>{fallback}</Text> : fallback}
+        </AvatarFallbackView>
 const AvatarRoot = React.forwardRef<HTMLSpanElement, AvatarProps>(
   ({ accessibilityLabel, ...props }, ref) => {
     return (
@@ -126,6 +142,8 @@ const AvatarRoot = React.forwardRef<HTMLSpanElement, AvatarProps>(
     );
   }
 );
+
+Avatar.displayName = 'Avatar';
 AvatarRoot.displayName = 'Avatar';
 
 const AvatarFallbackText = ({ children }: { children: React.ReactNode }) => {

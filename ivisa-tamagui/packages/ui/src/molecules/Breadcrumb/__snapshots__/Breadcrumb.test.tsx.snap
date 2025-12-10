@@ -16,15 +16,15 @@ exports[`Breadcrumb renders snapshot 1`] = `
       >
         <div
           aria-label="Breadcrumb"
-          class="is_BreadcrumbRoot _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
+          class="is_BreadcrumbRoot _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _gap-t-space-sm"
           role="navigation"
         >
           <div
-            class="is_BreadcrumbList _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _fw-wrap"
+            class="is_BreadcrumbList _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _gap-t-space-sm _ai-center _fw-wrap"
             role="list"
           >
             <div
-              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
+              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _gap-t-space-sm"
               role="listitem"
             >
               <a
@@ -43,7 +43,7 @@ exports[`Breadcrumb renders snapshot 1`] = `
               </span>
             </div>
             <div
-              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
+              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _gap-t-space-sm"
               role="listitem"
             >
               <a
@@ -62,7 +62,7 @@ exports[`Breadcrumb renders snapshot 1`] = `
               </span>
             </div>
             <div
-              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
+              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _gap-t-space-sm"
               role="listitem"
             >
               <span
