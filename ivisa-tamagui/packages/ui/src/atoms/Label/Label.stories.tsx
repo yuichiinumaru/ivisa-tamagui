@@ -11,7 +11,7 @@ const meta: Meta<typeof Label> = {
     docs: {
       description: {
         component:
-          'Um rótulo acessível para controles de formulário, estilizado para consistência visual.',
+          'Um rótulo acessível para controles de formulário, com variantes para diferentes estados.',
       },
     },
   },
@@ -23,6 +23,19 @@ const meta: Meta<typeof Label> = {
     htmlFor: {
       control: 'text',
       description: 'O ID do elemento de formulário ao qual o rótulo está associado.',
+    },
+    state: {
+      control: { type: 'radio' },
+      options: ['error'],
+      description: 'A variante visual do rótulo para indicar estados como erro.',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Se verdadeiro, o rótulo será estilizado como desabilitado.',
+    },
+    required: {
+      control: 'boolean',
+      description: 'Se verdadeiro, um asterisco será exibido ao lado do texto.',
     },
     asChild: {
       table: {
@@ -40,41 +53,60 @@ export const Padrao: Story = {
   args: {
     children: 'Endereço de E-mail',
     htmlFor: 'email-padrao',
+    disabled: false,
+    required: false,
   },
   render: (args) => (
     <YStack gap="$2" width={300}>
-      <Label htmlFor={args.htmlFor}>{args.children}</Label>
-      <Input id={args.htmlFor} placeholder="seunome@email.com" />
+      <Label {...args}>{args.children}</Label>
+      <Input id={args.htmlFor} placeholder="seunome@email.com" disabled={args.disabled} />
     </YStack>
   ),
 }
 
-export const TextoLong: Story = {
-  name: 'Texto Longo',
+export const ComErro: Story = {
+  name: 'Com Erro',
   args: {
     ...Padrao.args,
-    children:
-      'Este é um rótulo de exemplo com texto excessivamente longo para demonstrar como o componente lida com o encapsulamento e o estouro de texto.',
-    htmlFor: 'email-longo',
+    children: 'Senha',
+    htmlFor: 'senha-erro',
+    state: 'error',
   },
   render: (args) => (
     <YStack gap="$2" width={300}>
-      <Label htmlFor={args.htmlFor}>{args.children}</Label>
-      <Input id={args.htmlFor} />
+      <Label {...args}>{args.children}</Label>
+      <Input id={args.htmlFor} defaultValue="123" />
     </YStack>
   ),
 }
 
-export const LarguraRestrita: Story = {
-  name: 'Largura Restrita',
+export const Desabilitado: Story = {
+  name: 'Desabilitado',
   args: {
     ...Padrao.args,
-    children: 'Rótulo em Contêiner Pequeno',
-    htmlFor: 'email-restrito',
+    children: 'Campo Desabilitado',
+    htmlFor: 'campo-desabilitado',
+    disabled: true,
   },
   render: (args) => (
-    <YStack gap="$2" width={150} padding="$2" backgroundColor="$backgroundFocus">
-      <Label htmlFor={args.htmlFor}>{args.children}</Label>
+    <YStack gap="$2" width={300}>
+      <Label {...args}>{args.children}</Label>
+      <Input id={args.htmlFor} disabled />
+    </YStack>
+  ),
+}
+
+export const Obrigatorio: Story = {
+  name: 'Obrigatório',
+  args: {
+    ...Padrao.args,
+    children: 'Nome Completo',
+    htmlFor: 'nome-completo',
+    required: true,
+  },
+  render: (args) => (
+    <YStack gap="$2" width={300}>
+      <Label {...args}>{args.children}</Label>
       <Input id={args.htmlFor} />
     </YStack>
   ),
