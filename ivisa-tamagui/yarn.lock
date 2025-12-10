@@ -825,6 +825,13 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.27.1"
 
+"@babel/plugin-transform-object-assign@^7.16.7":
+  version "7.27.1"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-object-assign/-/plugin-transform-object-assign-7.27.1.tgz#2a76d9bbf7610296ce906a6fe7c7317025c9a67c"
+  integrity sha512-LP6tsnirA6iy13uBKiYgjJsfQrodmlSrpZModtlo1Vk8sOO68gfo7dfA9TGJyEgxTiO7czK4EGZm8FJEZtk4kQ==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.27.1"
+
 "@babel/plugin-transform-object-rest-spread@^7.12.13", "@babel/plugin-transform-object-rest-spread@^7.28.4":
   version "7.28.4"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-object-rest-spread/-/plugin-transform-object-rest-spread-7.28.4.tgz#9ee1ceca80b3e6c4bac9247b2149e36958f7f98d"
@@ -1155,7 +1162,7 @@
     "@babel/plugin-transform-react-jsx-development" "^7.27.1"
     "@babel/plugin-transform-react-pure-annotations" "^7.27.1"
 
-"@babel/preset-typescript@^7.13.0":
+"@babel/preset-typescript@^7.13.0", "@babel/preset-typescript@^7.16.7":
   version "7.28.5"
   resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.28.5.tgz#540359efa3028236958466342967522fd8f2a60c"
   integrity sha512-+bQy5WOI2V6LJZpPVxY+yp66XdZ2yifu0Mc1aP5CQKgjn4QM5IN2i5fAZ4xKop47pr8rpVhiAeu+nDQa12C8+g==
@@ -2818,6 +2825,11 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
+"@pkgr/core@^0.1.0":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@pkgr/core/-/core-0.1.2.tgz#1cf95080bb7072fafaa3cb13b442fab4695c3893"
+  integrity sha512-fdDH1LSGfZdTH2sxdpVMw31BanV28K/Gry0cVFxaNP77neJSkd82mM8ErPNYs9e+0O7SdHBLTDzDgwUuy18RnQ==
+
 "@pkgr/core@^0.2.9":
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/@pkgr/core/-/core-0.2.9.tgz#d229a7b7f9dac167a156992ef23c7f023653f53b"
@@ -4380,6 +4392,18 @@
     "@tamagui/shapes" "1.93.1"
     "@tamagui/text" "1.93.1"
 
+"@tamagui/babel-plugin@^1.138.0":
+  version "1.139.2"
+  resolved "https://registry.yarnpkg.com/@tamagui/babel-plugin/-/babel-plugin-1.139.2.tgz#8f73738579be4fc134425e63b00011bb7550143b"
+  integrity sha512-0voJVnYVWzVvLtRsaGWINIKmmg57hcxaXy8d2PIga0PVFnuXNZaUt0NOVM/shB+VhM/33FmOEzrKlv68OoOB0g==
+  dependencies:
+    "@babel/core" "^7.25.2"
+    "@babel/generator" "^7.25.5"
+    "@babel/helper-plugin-utils" "^7.24.8"
+    "@babel/template" "^7.25.0"
+    "@babel/traverse" "^7.25.4"
+    "@tamagui/static-sync" "1.139.2"
+
 "@tamagui/button@1.139.2":
   version "1.139.2"
   resolved "https://registry.yarnpkg.com/@tamagui/button/-/button-1.139.2.tgz#abf8ab8c1abe7c83207f6886a15df09b01c56efd"
@@ -5612,6 +5636,16 @@
   version "1.139.2"
   resolved "https://registry.yarnpkg.com/@tamagui/start-transition/-/start-transition-1.139.2.tgz#0116346d024a6ecac34dda101dc4a9317ad59375"
   integrity sha512-HRiqJ/AfWzza966pucLwwcA2c+LO9di/+o6vvVrKu/MrV18KGwL5EmkFn/R6n3f+IVx2ISKzMuNstz0hHjxymA==
+
+"@tamagui/static-sync@1.139.2":
+  version "1.139.2"
+  resolved "https://registry.yarnpkg.com/@tamagui/static-sync/-/static-sync-1.139.2.tgz#f02cdf866373ee6f21432d5cffd893bceeee364d"
+  integrity sha512-aDTkTSZ0stTSXLGJuJk0MmR2lbOLMT534aiCk5HDYv40b2RiWs/LYYhKeQfz8nwEuAgZBz2LTyUkRr7Eqt6fnA==
+  dependencies:
+    "@babel/core" "^7.25.2"
+    "@tamagui/static" "1.139.2"
+    "@tamagui/types" "1.139.2"
+    synckit "^0.9.2"
 
 "@tamagui/static-worker@1.139.2":
   version "1.139.2"
@@ -14829,6 +14863,16 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-reanimated@~3.6.2:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.6.3.tgz#859cf2320e37c80e3a21e19db24f82c34d6d3ded"
+  integrity sha512-2KkkPozoIvDbJcHuf8qeyoLROXQxizSi+2CTCkuNVkVZOxxY4B0Omvgq61aOQhSZUh/649x1YHoAaTyGMGDJUw==
+  dependencies:
+    "@babel/plugin-transform-object-assign" "^7.16.7"
+    "@babel/preset-typescript" "^7.16.7"
+    convert-source-map "^2.0.0"
+    invariant "^2.2.4"
+
 react-native-svg@^15.15.0:
   version "15.15.1"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-15.15.1.tgz#0b08716f5c389ef8550a73492c985c7b23849d65"
@@ -14992,7 +15036,7 @@ react-test-renderer@^18.3.1:
     react-shallow-renderer "^16.15.0"
     scheduler "^0.23.2"
 
-react@18.2.0, react@18.3.1, react@>=18.2, "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", react@^18.2.0:
+react@18.3.1, react@>=18.2, "react@^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", react@^18.2.0:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
@@ -16194,6 +16238,14 @@ synckit@^0.11.8:
   dependencies:
     "@pkgr/core" "^0.2.9"
 
+synckit@^0.9.2:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/synckit/-/synckit-0.9.3.tgz#1cfd60d9e61f931e07fb7f56f474b5eb31b826a7"
+  integrity sha512-JJoOEKTfL1urb1mDoEblhD9NhEbWmq9jHEMEnxoC4ujUaZ4itA8vKgwkFAyNClgxplLi9tsUKX+EduK0p/l7sg==
+  dependencies:
+    "@pkgr/core" "^0.1.0"
+    tslib "^2.6.2"
+
 tabbable@^6.0.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-6.3.0.tgz#2e0e6163935387cdeacd44e9334616ca0115a8d3"
@@ -16617,7 +16669,7 @@ tsconfig-paths@^4.2.0:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.1, tslib@^2.4.0:
+tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.1, tslib@^2.4.0, tslib@^2.6.2:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
