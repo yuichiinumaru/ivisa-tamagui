@@ -1,7 +1,8 @@
 import { expect, userEvent, within } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
 import { AspectRatio } from './AspectRatio'
-import { Image, Paragraph, YStack } from 'tamagui'
+import { H4, Image, Paragraph, YStack } from 'tamagui'
+import { Card } from '../molecules/Card'
 
 const meta: Meta<typeof AspectRatio> = {
   title: 'Atomos/ProporcaoDaTela',
@@ -10,27 +11,35 @@ const meta: Meta<typeof AspectRatio> = {
   parameters: {
     docs: {
       description: {
-        component: 'Exibe o conteúdo dentro da proporção desejada.',
+        component: 'Exibe o conteúdo dentro da proporção desejada, com variantes pré-definidas e estado de carregamento.',
       },
     },
   },
   argTypes: {
-    ratio: {
+    variant: {
       control: 'select',
-      options: ['16:9', '4:3', '1:1', '21:9'],
-      mapping: {
-        '16:9': 16 / 9,
-        '4:3': 4 / 3,
-        '1:1': 1,
-        '21:9': 21 / 9,
-      },
-      description: 'A proporção da largura do componente em relação à sua altura.',
+      options: ['square', 'video', 'photo'],
+      description: 'Variantes de proporção pré-definidas.',
+    },
+    ratio: {
+      control: 'number',
+      description: 'Uma proporção numérica customizada que sobrepõe a variante.',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Se verdadeiro, exibe um esqueleto de carregamento.',
     },
     children: {
       control: {
         disable: true,
       },
       description: 'O conteúdo a ser renderizado dentro do componente.',
+    },
+    asChild: {
+      control: {
+        disable: true,
+      },
+      description: 'Permite que o componente se funda com seu único filho.',
     },
   },
 }
@@ -41,9 +50,8 @@ type Story = StoryObj<typeof AspectRatio>
 
 export const Padrao: Story = {
   args: {
-    'data-testid': 'aspect-ratio',
-    ratio: 16 / 9,
-    width: 300,
+    variant: 'video',
+    width: 400,
     overflow: 'hidden',
     backgroundColor: '$gray5',
     children: (
@@ -56,11 +64,55 @@ export const Padrao: Story = {
         objectFit="cover"
       />
     ),
+  },
+}
+
+export const ComEstadoDeCarregamento: Story = {
+  name: 'Com Estado de Carregamento',
+  args: {
+    ...Padrao.args,
+    loading: true,
+    children: undefined,
+  },
+}
+
+export const PolimorficoComCard: Story = {
+  name: 'Polimórfico com Card (asChild)',
+  render: (args) => (
+    <AspectRatio {...args}>
+      <Card
+        width="100%"
+        height="100%"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <H4>Card com Proporção</H4>
+        <Paragraph>Este card mantém a proporção de 16:9.</Paragraph>
+      </Card>
+    </AspectRatio>
+  ),
+  args: {
+    variant: 'video',
+    width: 400,
+    asChild: true,
+  },
+}
+
+export const ComFocoVisivel: Story = {
+  name: 'Com Foco Visível',
+  args: {
+    ...Padrao.args,
+    'data-testid': 'focusable-aspect-ratio',
     tabIndex: 0,
+    focusStyle: {
+      outlineStyle: 'solid',
+      outlineWidth: 2,
+      outlineColor: '$blue10',
+    },
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
-    const aspectRatio = canvas.getByTestId('aspect-ratio')
+    const aspectRatio = canvas.getByTestId('focusable-aspect-ratio')
     await userEvent.tab()
     await expect(aspectRatio).toHaveFocus()
   },
@@ -68,7 +120,7 @@ export const Padrao: Story = {
 
 export const ComTextoLongo: Story = {
   args: {
-    ratio: 16 / 9,
+    variant: 'video',
     width: 300,
     overflow: 'hidden',
     backgroundColor: '$gray5',
@@ -102,6 +154,6 @@ export const EmContainerPequeno: Story = {
     </YStack>
   ),
   args: {
-    ratio: 1,
+    variant: 'square',
   },
 }
