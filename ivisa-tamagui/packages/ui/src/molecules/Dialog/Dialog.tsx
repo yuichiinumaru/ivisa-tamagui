@@ -1,5 +1,16 @@
-import React from 'react'
-import { Dialog as TamaguiDialog, DialogContentProps, styled, Unspaced, Button, XStack, Text } from 'tamagui'
+import { X } from '@tamagui/lucide-icons'
+import React, { ReactNode } from 'react'
+import {
+  Button,
+  Dialog as TamaguiDialog,
+  DialogContentProps as TamaguiDialogContentProps,
+  styled,
+  Unspaced,
+  XStack,
+  XStackProps,
+  YStack,
+} from 'tamagui'
+import { Skeleton } from '../../atoms/Skeleton'
 
 // Styled Components matching Shadcn
 const DialogOverlay = styled(TamaguiDialog.Overlay, {
@@ -20,7 +31,7 @@ const DialogContent = styled(TamaguiDialog.Content, {
   maxWidth: 512,
   borderWidth: 1,
   borderColor: '$borderColor',
-  
+
   // Animation
   animation: [
     'quick',
@@ -36,11 +47,18 @@ const DialogContent = styled(TamaguiDialog.Content, {
   scale: 1,
   opacity: 1,
   y: 0,
+
+  variants: {
+    hasError: {
+      true: {
+        borderColor: '$red10',
+      },
+    },
+  } as const,
 })
 
-const DialogHeader = styled(XStack, {
+const DialogHeader = styled(YStack, {
   name: 'DialogHeader',
-  flexDirection: 'column',
   marginBottom: '$md',
   gap: '$sm',
 })
@@ -50,6 +68,7 @@ const DialogTitle = styled(TamaguiDialog.Title, {
   fontSize: '$6',
   fontWeight: '600',
   color: '$foreground',
+  ellipse: true,
 })
 
 const DialogDescription = styled(TamaguiDialog.Description, {
@@ -59,7 +78,19 @@ const DialogDescription = styled(TamaguiDialog.Description, {
   lineHeight: '$4',
 })
 
-const DialogFooter = styled(XStack, {
+interface DialogFooterProps extends XStackProps {
+  actions?: ReactNode
+}
+
+const DialogFooterComponent = React.forwardRef<any, DialogFooterProps>(
+  ({ actions, children, ...props }, ref) => (
+    <XStack {...props} ref={ref}>
+      {actions ?? children}
+    </XStack>
+  )
+)
+
+const DialogFooter = styled(DialogFooterComponent, {
   name: 'DialogFooter',
   flexDirection: 'row',
   justifyContent: 'flex-end',
@@ -73,26 +104,35 @@ export const DialogTrigger = TamaguiDialog.Trigger
 export const DialogPortal = TamaguiDialog.Portal
 export const DialogClose = TamaguiDialog.Close
 
+// Define Props for the composite component
+interface DialogContentCompositeProps extends TamaguiDialogContentProps {
+  isLoading?: boolean
+  hasError?: boolean
+}
+
 // Composite for standard usage
-export const DialogContentComposite = React.forwardRef<React.ElementRef<typeof DialogContent>, DialogContentProps>((props, ref) => {
+export const DialogContentComposite = React.forwardRef<
+  React.ElementRef<typeof DialogContent>,
+  DialogContentCompositeProps
+>(({ children, isLoading = false, hasError = false, ...props }, ref) => {
   return (
     <DialogPortal>
       <DialogOverlay key="overlay" />
-      <DialogContent key="content" ref={ref} {...props}>
-        {props.children}
+      <DialogContent key="content" ref={ref} hasError={hasError} {...props}>
+        {isLoading ? <Skeleton height={250} /> : children}
         <Unspaced>
           <TamaguiDialog.Close asChild>
             <Button
+              aria-label="Fechar"
               position="absolute"
               top="$3"
               right="$3"
               size="$2"
               circular
+              icon={X}
               backgroundColor="transparent"
-              pressStyle={{ backgroundColor: '$muted' }}
-            >
-               <Text color="$mutedForeground">✕</Text>
-            </Button>
+              pressStyle={{ backgroundColor: '$backgroundHover' }}
+            />
           </TamaguiDialog.Close>
         </Unspaced>
       </DialogContent>
