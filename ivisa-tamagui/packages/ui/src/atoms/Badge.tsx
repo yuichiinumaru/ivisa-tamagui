@@ -32,8 +32,6 @@ const BadgeFrame = styled(View, {
   tag: 'div',
   borderRadius: '$full',
   borderWidth: 1,
-  paddingHorizontal: '$2.5',
-  paddingVertical: '$0.5',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
@@ -64,16 +62,30 @@ const BadgeFrame = styled(View, {
         ])
       ),
     },
+    size: {
+      sm: {
+        paddingHorizontal: '$2',
+        paddingVertical: '$0.5',
+      },
+      md: {
+        paddingHorizontal: '$2.5',
+        paddingVertical: '$0.5',
+      },
+      lg: {
+        paddingHorizontal: '$3',
+        paddingVertical: '$1',
+      },
+    },
   } as const,
 
   defaultVariants: {
     variant: 'default',
+    size: 'md',
   },
 });
 
 const BadgeText = styled(Text, {
   name: 'BadgeText',
-  fontSize: '$1',
   fontWeight: '600',
   fontFamily: '$body',
   variants: {
@@ -87,10 +99,22 @@ const BadgeText = styled(Text, {
         ])
       ),
     },
+    size: {
+      sm: {
+        fontSize: '$1',
+      },
+      md: {
+        fontSize: '$2',
+      },
+      lg: {
+        fontSize: '$3',
+      },
+    },
   } as const,
 
   defaultVariants: {
     variant: 'default',
+    size: 'md',
   },
 });
 
@@ -114,7 +138,7 @@ type BadgeProps = GetProps<typeof BadgeFrame> & {
 };
 
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
-  ({ children, asChild, variant = 'default', leftIcon, rightIcon, ...props }, ref) => {
+  ({ children, asChild, variant = 'default', size = 'md', leftIcon, rightIcon, ...props }, ref) => {
     const Component = asChild ? Slot : BadgeFrame;
 
     const renderIcon = (icon: React.ReactElement) => {
@@ -125,12 +149,12 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
     };
 
     return (
-      <Component {...props} variant={variant} ref={ref}>
+      <Component {...props} variant={variant} size={size} ref={ref}>
         {renderIcon(leftIcon)}
         {asChild ? (
           children
         ) : typeof children === 'string' ? (
-          <BadgeText variant={variant}>{children}</BadgeText>
+          <BadgeText variant={variant} size={size}>{children}</BadgeText>
         ) : (
           children
         )}

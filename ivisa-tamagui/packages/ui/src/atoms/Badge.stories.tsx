@@ -15,6 +15,11 @@ const meta: Meta<typeof Badge> = {
       options: ['default', 'secondary', 'destructive', 'outline'],
       description: 'O estilo visual do badge.',
     },
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'md', 'lg'],
+      description: 'O tamanho do badge.',
+    },
     children: {
       control: 'text',
       description: 'O conteúdo de texto a ser exibido dentro do badge.',
@@ -108,6 +113,30 @@ export const TextoLongo: Story = {
       <Badge {...args} />
     </View>
   ),
+};
+
+export const TamanhoPequeno: Story = {
+    name: 'Tamanho Pequeno',
+    args: {
+        children: 'Pequeno',
+        size: 'sm',
+    },
+};
+
+export const TamanhoMedio: Story = {
+    name: 'Tamanho Médio',
+    args: {
+        children: 'Médio',
+        size: 'md',
+    },
+};
+
+export const TamanhoGrande: Story = {
+    name: 'Tamanho Grande',
+    args: {
+        children: 'Grande',
+        size: 'lg',
+    },
 };
 
 export const ComoLinkComIcones: Story = {
