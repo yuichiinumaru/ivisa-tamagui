@@ -1,11 +1,11 @@
-import { GetProps, styled, Text, XStack } from 'tamagui'
-import * as ProgressPrimitive from '@tamagui/progress'
+import { GetProps, styled, Text, XStack, YStack } from 'tamagui'
+import { Progress as ProgressPrimitive, ProgressIndicator as ProgressIndicatorPrimitive } from '@tamagui/progress'
 import React from 'react'
 
 // --- Subcomponents ---
 
 // 1. Indicator
-const ProgressIndicatorFrame = styled(ProgressPrimitive.Indicator, {
+const ProgressIndicatorFrame = styled(ProgressIndicatorPrimitive, {
   name: 'ProgressIndicator',
   height: '100%',
   width: '100%',
@@ -25,7 +25,7 @@ const ProgressIndicatorFrame = styled(ProgressPrimitive.Indicator, {
 })
 
 // 2. Root (Frame) - The Bar itself
-const ProgressFrame = styled(ProgressPrimitive.Progress, {
+const ProgressFrame = styled(ProgressPrimitive, {
   name: 'Progress',
   overflow: 'hidden',
   backgroundColor: '$secondary',
@@ -50,7 +50,7 @@ const ProgressLabel = styled(Text, {
   name: 'ProgressLabel',
   color: '$color',
   fontSize: '$3',
-  marginBottom: '$2',
+  fontWeight: '$body', // Ensure readable weight
 })
 
 // --- Exports & Types ---
@@ -63,7 +63,7 @@ export type ProgressProps = GetProps<typeof ProgressFrame> & {
    */
   showValue?: boolean
   /**
-   * Label text.
+   * Label text displayed above the progress bar.
    */
   label?: string
   /**
@@ -80,6 +80,16 @@ export type ProgressProps = GetProps<typeof ProgressFrame> & {
  * Displays an indicator showing the completion progress of a task.
  * Supports Compound Pattern (<Progress><Progress.Indicator /></Progress>)
  * and Facade Pattern (<Progress value={50} />).
+ *
+ * @example
+ * // Facade
+ * <Progress value={50} showValue label="Uploading..." status="success" />
+ *
+ * @example
+ * // Compound
+ * <Progress.Root value={50}>
+ *   <Progress.Indicator status="warning" />
+ * </Progress.Root>
  */
 const ProgressComponent = React.forwardRef<React.ElementRef<typeof ProgressFrame>, ProgressProps>(
   ({ value, showValue, label, status, size, children, ...props }, ref) => {
@@ -99,16 +109,16 @@ const ProgressComponent = React.forwardRef<React.ElementRef<typeof ProgressFrame
     // This changes the root element from a div (primitive) to a div (stack).
     // This is acceptable for a "smart" atom facade.
 
-    const Bar = (
+    let content = (
        <ProgressFrame ref={ref} value={value} size={size} {...props}>
           <ProgressIndicatorFrame status={status} animation="bouncy" />
        </ProgressFrame>
     )
 
     if (showValue) {
-        return (
+        content = (
             <XStack alignItems="center" gap="$3" width="100%">
-                {Bar}
+                {content}
                 <Text
                     fontSize="$1"
                     color="$color"
@@ -121,7 +131,16 @@ const ProgressComponent = React.forwardRef<React.ElementRef<typeof ProgressFrame
         )
     }
 
-    return Bar
+    if (label) {
+        content = (
+            <YStack width="100%" gap="$2">
+                <ProgressLabel>{label}</ProgressLabel>
+                {content}
+            </YStack>
+        )
+    }
+
+    return content
   }
 )
 
@@ -131,5 +150,5 @@ ProgressComponent.displayName = 'Progress'
 export const Progress = Object.assign(ProgressComponent, {
   Indicator: ProgressIndicatorFrame,
   Label: ProgressLabel,
-  Root: ProgressComponent,
+  Root: ProgressFrame, // Exposed as Root to match Compound pattern expectation (should be the Frame)
 })
