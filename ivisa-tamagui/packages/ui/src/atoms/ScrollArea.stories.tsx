@@ -28,6 +28,12 @@ const meta: Meta<typeof ScrollArea> = {
     },
   },
   argTypes: {
+    scrollbar: {
+      control: 'select',
+      options: ['default', 'subtle', 'hidden'],
+      description: 'Define o estilo visual da barra de rolagem.',
+      defaultValue: { summary: 'default' },
+    },
     horizontal: {
       control: 'boolean',
       description: 'Define a direção de rolagem para horizontal.',
@@ -61,6 +67,7 @@ type Story = StoryObj<typeof ScrollArea>
 export const Padrao: Story = {
   name: 'Padrão (Vertical)',
   args: {
+    scrollbar: 'default',
     'aria-label': 'Área de rolagem com uma lista de etiquetas',
   },
   render: (args) => (
@@ -87,9 +94,36 @@ export const Padrao: Story = {
   },
 }
 
+export const Sutil: Story = {
+  name: 'Barra de Rolagem Sutil',
+  args: {
+    scrollbar: 'subtle',
+    'aria-label': 'Área de rolagem com barra de rolagem sutil',
+  },
+  render: (args) => (
+    <ScrollArea {...args}>
+      <YStack p="$4">{renderItems(50, 'Item')}</YStack>
+    </ScrollArea>
+  ),
+}
+
+export const Oculta: Story = {
+  name: 'Barra de Rolagem Oculta',
+  args: {
+    scrollbar: 'hidden',
+    'aria-label': 'Área de rolagem com barra de rolagem oculta',
+  },
+  render: (args) => (
+    <ScrollArea {...args}>
+      <YStack p="$4">{renderItems(50, 'Item')}</YStack>
+    </ScrollArea>
+  ),
+}
+
 export const Horizontal: Story = {
   args: {
     horizontal: true,
+    scrollbar: 'default',
     'aria-label': 'Área de rolagem horizontal com itens',
   },
   render: (args) => (
@@ -101,56 +135,6 @@ export const Horizontal: Story = {
           </Text>
         ))}
       </YStack>
-    </ScrollArea>
-  ),
-}
-
-export const TextoLongo: Story = {
-  name: 'Estresse: Texto Longo',
-  args: {
-    'aria-label': 'Área de rolagem com texto longo e sem quebras',
-  },
-  render: (args) => (
-    <ScrollArea {...args}>
-      <YStack p="$4" gap="$2">
-        <Text>
-          Esta história testa como a área de rolagem lida com texto muito longo e palavras que não
-          podem ser quebradas, forçando a rolagem ou o corte do conteúdo.
-        </Text>
-        <Text style={{ wordBreak: 'break-all' }}>
-          PalavraLongaQueNaoQuebraNaturalmente:
-          loremipsumdolorsitametconsecteturadipiscingelitseddoeiustemporincididuntutlaboreetdoloremagnaaliqua.ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.
-        </Text>
-        <Text>
-          O comportamento de quebra de linha é essencial para evitar layouts quebrados.
-        </Text>
-      </YStack>
-    </ScrollArea>
-  ),
-}
-
-export const ConteudoDinamicoContido: Story = {
-  name: 'Estresse: Em Container Pequeno',
-  args: {
-    'aria-label': 'Área de rolagem com muitos itens em um contêiner pequeno',
-  },
-  decorators: [
-    (Story) => (
-      <YStack
-        height={150}
-        width={150}
-        borderWidth={1}
-        borderColor="$borderColor"
-        borderRadius="$4"
-        als="center"
-      >
-        <Story />
-      </YStack>
-    ),
-  ],
-  render: (args) => (
-    <ScrollArea {...args}>
-      <YStack p="$2">{renderItems(30, 'Item')}</YStack>
     </ScrollArea>
   ),
 }

@@ -1,4 +1,4 @@
-import { Slider as TamaguiSlider, styled, GetProps } from 'tamagui'
+import { Slider as TamaguiSlider, styled, GetProps, Spinner } from 'tamagui'
 
 const SliderFrame = styled(TamaguiSlider, {
     name: 'Slider',
@@ -47,13 +47,20 @@ const SliderThumb = styled(TamaguiSlider.Thumb, {
 // Composite component to simplify usage
 import React from 'react'
 
-const Slider = React.forwardRef<React.ElementRef<typeof SliderFrame>, GetProps<typeof SliderFrame>>((props, ref) => {
+const Slider = React.forwardRef<React.ElementRef<typeof SliderFrame>, SliderProps>(({
+    'aria-label': ariaLabel = 'Deslizante',
+    disabled = false,
+    loading = false,
+    ...props
+}, ref) => {
     return (
-        <SliderFrame ref={ref} {...props}>
+        <SliderFrame ref={ref} {...props} disabled={disabled || loading} aria-label={ariaLabel}>
             <SliderTrack>
                 <SliderRange />
             </SliderTrack>
-            <SliderThumb />
+            <SliderThumb>
+                {loading && <Spinner size="small" color="$primary" />}
+            </SliderThumb>
         </SliderFrame>
     )
 })
@@ -68,4 +75,19 @@ export {
     SliderThumb,
 }
 
-export type SliderProps = GetProps<typeof SliderFrame>
+/**
+ * Props for the Slider component.
+ * Extends all props from the Tamagui Slider.
+ */
+export type SliderProps = GetProps<typeof SliderFrame> & {
+    /**
+     * Accessible label for the slider.
+     * @default 'Deslizante'
+     */
+    'aria-label'?: string;
+    /**
+     * When true, the slider will be in a loading state.
+     * @default false
+     */
+    loading?: boolean;
+}

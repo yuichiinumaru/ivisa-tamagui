@@ -22,7 +22,11 @@ const meta: Meta<typeof Input> = {
     },
     loading: {
       control: { type: 'boolean' },
-    }
+    },
+    state: {
+      control: { type: 'select' },
+      options: ['error', 'success'],
+    },
   },
 }
 
@@ -161,6 +165,39 @@ export const ConstraintCheck: Story = {
         <Input.Field placeholder="Composto..." />
         <Input.Button>Ir</Input.Button>
       </Input>
+    </YStack>
+  )
+}
+
+export const WithHint: Story = {
+  render: () => (
+    <YStack gap="$4" width={300}>
+      <Text>Input com Dica</Text>
+      <Input placeholder="Digite seu nome" />
+      <Input.Hint>Esta é uma dica útil.</Input.Hint>
+    </YStack>
+  )
+}
+
+export const Password: Story = {
+  args: {
+    type: 'password',
+    placeholder: 'Digite sua senha',
+  },
+}
+
+export const Success: Story = {
+  args: {
+    state: 'success',
+    defaultValue: 'contato@ivisa.com',
+  },
+}
+
+export const Error: Story = {
+  render: () => (
+    <YStack gap="$4" width={300}>
+      <Input state="error" defaultValue="email-invalido" />
+      <Input.Hint>O e-mail inserido é inválido.</Input.Hint>
     </YStack>
   )
 }

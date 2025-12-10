@@ -2,6 +2,18 @@ import '@testing-library/jest-dom';
 
 import React from 'react';
 
+// Mock Tamagui's keyframes function
+jest.mock('tamagui', () => {
+    const original = jest.requireActual('tamagui');
+    return {
+        ...original,
+        keyframes: jest.fn(() => ({
+            name: 'mock-animation', // Provide a mock animation name
+        })),
+    };
+});
+
+
 jest.mock('react-native', () => {
     const View = React.forwardRef(({ children, ...props }: { children?: React.ReactNode; [key: string]: unknown }, ref) => React.createElement('div', { ...props, ref }, children));
     // Mock other components as needed by Tamagui

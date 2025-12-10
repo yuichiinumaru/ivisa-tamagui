@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import { Input as TamaguiInput, styled, GetProps, XStack, View, TamaguiElement } from 'tamagui';
+import { Eye, EyeOff } from '@tamagui/lucide-icons';
+import React, { useContext, useState } from 'react';
+import { Input as TamaguiInput, styled, GetProps, XStack, View, TamaguiElement, Text } from 'tamagui';
 import { Button } from '../Button';
 import { Spinner } from '../Spinner';
 
@@ -71,6 +72,16 @@ const inputVariants = {
       height: '$12',
       px: '$4',
     }
+  },
+  state: {
+    error: {
+      borderColor: '$red10',
+      borderWidth: 2,
+    },
+    success: {
+      borderColor: '$green10',
+      borderWidth: 2,
+    }
   }
 } as const;
 
@@ -106,6 +117,7 @@ const InputFrame = styled(XStack, {
   variants: {
     variant: inputVariants.variant,
     size: inputVariants.size,
+    state: inputVariants.state,
     loading: {
       true: {
         opacity: 0.7,
@@ -129,6 +141,7 @@ const SimpleInputFrame = styled(XStack, {
   variants: {
     variant: inputVariants.variant,
     size: inputVariants.size,
+    state: inputVariants.state,
     loading: {
       true: {
         opacity: 0.7,
@@ -195,6 +208,13 @@ const InputButton = styled(Button, {
   borderWidth: 0,
 })
 
+const InputHint = styled(Text, {
+  name: 'InputHint',
+  fontSize: '$2',
+  color: '$mutedForeground',
+  marginTop: '$2',
+})
+
 type StyledInputProps = GetProps<typeof StyledInput>
 
 export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
@@ -214,6 +234,11 @@ export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
    */
   loading?: boolean
   /**
+   * The validation state of the input.
+   * @default undefined
+   */
+  state?: 'error' | 'success'
+  /**
    * @deprecated Passing children to Input is deprecated. Use <Input.Box> for composite layouts.
    */
   children?: React.ReactNode
@@ -224,10 +249,10 @@ export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
  * Explicit container for composite inputs.
  */
 const InputBox = React.forwardRef<TamaguiElement, InputProps & { children: React.ReactNode }>(
-  ({ variant = 'default', size = 'default', loading = false, children, ...props }, ref) => {
+  ({ variant = 'default', size = 'default', loading = false, state, children, ...props }, ref) => {
     return (
       <InputContext.Provider value={{ size, loading }}>
-        <InputFrame ref={ref} variant={variant} size={size} loading={loading} {...props}>
+        <InputFrame ref={ref} variant={variant} size={size} loading={loading} state={state} {...props}>
           {children}
           {loading && (
             <InputIcon>
@@ -243,7 +268,10 @@ InputBox.displayName = 'Input.Box'
 
 
 const InputMain = React.forwardRef<TamaguiElement, InputProps>(
-  ({ variant = 'default', size = 'default', loading = false, children, ...props }, ref) => {
+  ({ variant = 'default', size = 'default', loading = false, state, children, ...props }, ref) => {
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const isPassword = props.type === 'password';
+
     // 🛡️ Necromancer Guard: Zero Ambiguity
     if (children) {
       if (process.env.NODE_ENV === 'development') {
@@ -251,7 +279,7 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
       }
       // Legacy support (Transition Phase)
       return (
-        <InputBox ref={ref} variant={variant} size={size} loading={loading} {...props}>
+        <InputBox ref={ref} variant={variant} size={size} loading={loading} state={state} {...props}>
           {children}
         </InputBox>
       )
@@ -263,7 +291,7 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
         variant={variant}
         size={size}
         loading={loading}
-        {...props}
+        state={state}
       >
         <StyledInput
           flex={1}
@@ -271,10 +299,20 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
           size={size}
           disabled={loading}
           {...props}
+          type={isPassword && !isPasswordVisible ? 'password' : props.type}
         />
         {loading && (
           <InputIcon>
             <Spinner />
+          </InputIcon>
+        )}
+        {isPassword && (
+          <InputIcon>
+            <Button
+              icon={isPasswordVisible ? EyeOff : Eye}
+              onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+              chromeless
+            />
           </InputIcon>
         )}
       </SimpleInputFrame>
@@ -290,4 +328,5 @@ export const Input = Object.assign(InputMain, {
   Field: InputField,
   Icon: InputIcon,
   Button: InputButton,
+  Hint: InputHint,
 })

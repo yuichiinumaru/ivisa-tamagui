@@ -12,7 +12,11 @@ const meta: Meta<typeof Checkbox> = {
     checked: {
       control: { type: 'select' },
       options: [true, false, 'indeterminate'],
-      description: 'Define o estado do checkbox.',
+      description: 'Define o estado controlado do checkbox.',
+    },
+    defaultChecked: {
+      control: { type: 'boolean' },
+      description: 'Define o estado inicial não controlado do checkbox.',
     },
     disabled: {
       control: { type: 'boolean' },
@@ -30,6 +34,10 @@ const meta: Meta<typeof Checkbox> = {
     error: {
         control: { type: 'boolean' },
         description: 'Aplica o estilo de erro ao checkbox.'
+    },
+    errorMessage: {
+        control: { type: 'text' },
+        description: 'Mensagem de erro a ser exibida e associada para acessibilidade.'
     }
   },
   parameters: {
@@ -55,9 +63,7 @@ type Story = StoryObj<typeof Checkbox>
 export const Padrao: Story = {
   name: "Padrão",
   args: {
-    checked: false,
     label: 'Aceitar termos e condições',
-    disabled: false,
     id: 'default-checkbox'
   },
   play: async ({ canvasElement }) => {
@@ -65,35 +71,30 @@ export const Padrao: Story = {
     const checkbox = canvas.getByLabelText('Aceitar termos e condições');
     await userEvent.click(checkbox);
   },
-  parameters: {
-    docs: {
-      source: {
-        code: `<Checkbox id="default-checkbox" checked={false} label="Aceitar termos e condições" />`,
-      },
-    },
-  }
 }
 
-export const Marcado: Story = {
-  name: "Marcado",
-  args: {
-    ...Padrao.args,
-    checked: true,
-    id: 'checked-checkbox'
-  },
-  parameters: {
-    docs: {
-      source: {
-        code: `<Checkbox id="checked-checkbox" checked={true} label="Aceitar termos e condições" />`,
-      },
+export const NaoControlado: Story = {
+    name: "Não Controlado (defaultChecked)",
+    args: {
+      defaultChecked: true,
+      label: 'Aceitar termos e condições',
+      id: 'default-checked-checkbox'
     },
-  }
+    parameters: {
+      docs: {
+        description: {
+            story: 'O checkbox começa marcado e seu estado é gerenciado internamente.'
+        },
+        source: {
+          code: `<Checkbox id="default-checked-checkbox" defaultChecked={true} label="Aceitar termos e condições" />`,
+        },
+      },
+    }
 }
 
 export const Indeterminado: Story = {
     name: "Indeterminado",
     args: {
-      ...Padrao.args,
       checked: 'indeterminate',
       id: 'indeterminate-checkbox',
       label: 'Estado de seleção mista'
@@ -110,21 +111,21 @@ export const Indeterminado: Story = {
     }
 }
 
-export const Erro: Story = {
+export const ComErro: Story = {
     name: "Com Erro",
     args: {
-      ...Padrao.args,
       error: true,
       id: 'error-checkbox',
-      label: 'Eu aceito os termos'
+      label: 'Eu aceito os termos',
+      errorMessage: 'Você deve aceitar os termos para continuar.'
     },
     parameters: {
       docs: {
         description: {
-            story: 'Exibe o checkbox com uma borda de erro para indicar uma validação falha.'
+            story: 'Exibe o checkbox com uma borda de erro e uma mensagem para indicar uma validação falha.'
         },
         source: {
-          code: `<Checkbox id="error-checkbox" error={true} label="Eu aceito os termos" />`,
+          code: `<Checkbox id="error-checkbox" error={true} label="Eu aceito os termos" errorMessage="Você deve aceitar os termos para continuar." />`,
         },
       },
     }
@@ -133,15 +134,20 @@ export const Erro: Story = {
 export const Desativado: Story = {
   name: "Desativado",
   args: {
-    ...Padrao.args,
     checked: false,
     disabled: true,
+    label: 'Aceitar termos e condições',
     id: 'disabled-checkbox'
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByLabelText('Aceitar termos e condições');
+    await userEvent.click(checkbox);
   },
   parameters: {
     docs: {
       source: {
-        code: `<Checkbox id="disabled-checkbox" disabled={true} label="Aceitar termos e condições" />`,
+        code: `<Checkbox id="default-checkbox" checked={false} label="Aceitar termos e condições" />`,
       },
     },
   }
@@ -151,31 +157,26 @@ export const Tamanhos: Story = {
     name: "Tamanhos",
     render: (args) => (
         <XStack space="$4" alignItems="center">
-            <Checkbox {...args} size="$3" id="size-3" label="Pequeno" />
-            <Checkbox {...args} size="$4" id="size-4" label="Médio" />
-            <Checkbox {...args} size="$5" id="size-5" label="Grande" />
+            <Checkbox {...args} size="$3" id="size-3" label="Pequeno" checked={args.checked} />
+            <Checkbox {...args} size="$4" id="size-4" label="Médio" checked={args.checked} />
+            <Checkbox {...args} size="$5" id="size-5" label="Grande" checked={args.checked} />
         </XStack>
     ),
-    parameters: {
-        docs: {
-          description: {
-            story: 'O checkbox suporta diferentes tamanhos definidos pelos tokens de tema.'
-          },
-        },
-      }
+    args: {
+        checked: true
+    }
 }
 
 export const Texto_Longo: Story = {
   name: "Estresse: Texto Longo",
   args: {
-    ...Padrao.args,
     id: 'long-text-checkbox',
     label: 'Eu li, entendi e concordo com os termos de serviço, política de privacidade, e confirmo que sou maior de 18 anos.',
   },
   parameters: {
     docs: {
-      description: {
-        story: 'Verifica como o componente lida com textos muito longos, garantindo que a quebra de linha funcione corretamente.'
+      source: {
+        code: `<Checkbox id="checked-checkbox" checked={true} label="Aceitar termos e condições" />`,
       },
     },
   }
@@ -184,7 +185,6 @@ export const Texto_Longo: Story = {
 export const Container_Pequeno: Story = {
   name: "Estresse: Container Pequeno",
   args: {
-    ...Padrao.args,
     id: 'constrained-checkbox',
     label: 'Label em container pequeno',
   },
@@ -195,22 +195,15 @@ export const Container_Pequeno: Story = {
       </YStack>
     ),
   ],
-  parameters: {
-    docs: {
-      description: {
-        story: 'Verifica o comportamento do componente dentro de um container com largura limitada.'
-      },
-    },
-  }
 }
 
 export const Carregando: Story = {
   name: "Estresse: Carregando",
   args: {
-    ...Padrao.args,
     id: 'loading-checkbox',
     checked: false,
     disabled: true,
+    label: 'Carregando...'
   },
   render: (args) => (
     <XStack alignItems="center" space="$2">
@@ -218,11 +211,4 @@ export const Carregando: Story = {
       <Spinner />
     </XStack>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story: 'Simula um estado de carregamento onde o checkbox está desativado e um spinner é exibido.'
-      },
-    },
-  }
 }

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Checkbox as TamaguiCheckbox, styled, GetProps, View, Label, XStack, SizeTokens } from 'tamagui'
+import { Checkbox as TamaguiCheckbox, styled, GetProps, Label, XStack, SizeTokens, YStack, Text } from 'tamagui'
 import { withErrorLogging } from '../../utils/withErrorLogging'
 import { Check, Minus } from '@tamagui/lucide-icons'
+import { useControllableState } from '@tamagui/use-controllable-state'
 
 const StyledCheckbox = styled(TamaguiCheckbox, {
   name: 'Checkbox',
@@ -50,6 +51,9 @@ const StyledCheckbox = styled(TamaguiCheckbox, {
     error: {
       true: {
         borderColor: '$red10',
+        hoverStyle: {
+          borderColor: '$red10',
+        },
         focusStyle: {
           borderColor: '$red10',
           outlineColor: '$red10',
@@ -83,19 +87,23 @@ const StyledIndicator = styled(TamaguiCheckbox.Indicator, {
 
 type StyledCheckboxProps = GetProps<typeof StyledCheckbox>
 
-export interface CheckboxProps extends Omit<StyledCheckboxProps, 'checked' | 'onCheckedChange'> {
+export interface CheckboxProps extends Omit<StyledCheckboxProps, 'checked' | 'onCheckedChange' | 'defaultChecked'> {
   /**
-   * The state of the checkbox. Can be true, false, or "indeterminate".
+   * The controlled state of the checkbox. Must be used with `onCheckedChange`.
    */
-  checked?: boolean | 'indeterminate'
+  checked?: boolean | 'indeterminate';
+  /**
+   * The default state of the checkbox when it is not controlled.
+   */
+  defaultChecked?: boolean;
   /**
    * Event handler called when the checkbox state changes.
    */
-  onCheckedChange?: (checked: boolean) => void
+  onCheckedChange?: (checked: boolean) => void;
   /**
    * The unique identifier for the checkbox.
    */
-  id?: string
+  id?: string;
   /**
    * The label text to be displayed next to the checkbox.
    */
@@ -109,41 +117,71 @@ export interface CheckboxProps extends Omit<StyledCheckboxProps, 'checked' | 'on
    */
   error?: boolean;
   /**
+   * An error message to be displayed below the checkbox, which will also be announced by screen readers.
+   */
+  errorMessage?: string;
+  /**
    * The size of the checkbox.
    */
   size?: SizeTokens;
 }
 
 const CheckboxImpl = React.forwardRef<React.ElementRef<typeof TamaguiCheckbox>, CheckboxProps>(
-  ({ checked, onCheckedChange, id, label, disabled, error, size, ...props }, ref) => {
-    // Ensure a unique id for label association if not provided
+  ({
+    checked: checkedProp,
+    defaultChecked,
+    onCheckedChange,
+    id,
+    label,
+    disabled,
+    error,
+    errorMessage,
+    size,
+    ...props
+  }, ref) => {
     const realId = id || React.useId();
+    const errorId = errorMessage ? `${realId}-error` : undefined;
+
+    const [checked, setChecked] = useControllableState({
+      prop: checkedProp,
+      defaultProp: defaultChecked || false,
+      onChange: onCheckedChange,
+      strategy: 'prop-wins',
+    })
 
     return (
-      <XStack alignItems="center" space="$2">
-        <StyledCheckbox
-          ref={ref}
-          id={realId}
-          checked={checked}
-          onCheckedChange={onCheckedChange}
-          disabled={disabled}
-          error={error}
-          size={size}
-          role="checkbox"
-          aria-checked={checked === 'indeterminate' ? 'mixed' : !!checked}
-          aria-label={label ? undefined : 'checkbox'} // Provide aria-label if no visible label
-          {...props}
-        >
-          <StyledIndicator>
-            {checked === 'indeterminate' ? (
-                <Minus size={16} color="$background" />
-            ) : (
-                <Check size={16} color="$background" />
-            )}
-          </StyledIndicator>
-        </StyledCheckbox>
-        {label && <Label htmlFor={realId} disabled={disabled}>{label}</Label>}
-      </XStack>
+      <YStack space="$1.5">
+        <XStack alignItems="center" space="$2">
+          <StyledCheckbox
+            ref={ref}
+            id={realId}
+            checked={checked}
+            onCheckedChange={(val) => setChecked(val)}
+            disabled={disabled}
+            error={error || !!errorMessage}
+            size={size}
+            role="checkbox"
+            aria-checked={checked === 'indeterminate' ? 'mixed' : !!checked}
+            aria-label={label ? undefined : 'checkbox'} // Provide aria-label if no visible label
+            aria-describedby={errorId}
+            {...props}
+          >
+            <StyledIndicator>
+              {checked === 'indeterminate' ? (
+                  <Minus size={16} color="$background" />
+              ) : (
+                checked ? <Check size={16} color="$background" /> : null
+              )}
+            </StyledIndicator>
+          </StyledCheckbox>
+          {label && <Label htmlFor={realId} disabled={disabled}>{label}</Label>}
+        </XStack>
+        {errorMessage && (
+          <Text id={errorId} color="$red10" fontSize="$2" pl="$1" role="alert">
+            {errorMessage}
+          </Text>
+        )}
+      </YStack>
     )
   }
 )
