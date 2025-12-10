@@ -10,7 +10,7 @@
   "scripts": {
     "build": "yarn workspace @ivisa/ui build",
     "lint": "eslint .",
-    "test": "yarn workspace @ivisa/ui test",
+    "test": "jest",
     "typecheck": "yarn workspace @ivisa/ui typecheck",
     "scan:security": "yarn audit",
     "storybook": "yarn workspace @ivisa/ui storybook",
@@ -65,7 +65,7 @@
     "jest-environment-jsdom": "^30.2.0",
     "playwright": "^1.56.1",
     "react-test-renderer": "^18.3.1",
-    "storybook": "^10.0.8",
+    "storybook": "^10.1.6",
     "style-loader": "^4.0.0",
     "tamagui-loader": "^1.138.6",
     "ts-jest": "^29.4.6",

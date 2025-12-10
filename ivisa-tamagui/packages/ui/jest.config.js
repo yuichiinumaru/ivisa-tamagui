@@ -1,5 +1,6 @@
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
+    rootDir: '../..', // Move the root up to the monorepo root
     preset: 'ts-jest',
     testEnvironment: 'jest-environment-jsdom',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
@@ -15,7 +16,12 @@ module.exports = {
     ],
     moduleNameMapper: {
         '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
-        '^react-native$': '<rootDir>/react-native-mock.js',
+        // Adjust paths to be relative to the new rootDir
+        '^react-native$': '<rootDir>/packages/ui/react-native-mock.js',
     },
-    setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
+    setupFilesAfterEnv: ['<rootDir>/packages/ui/jest-setup.ts'],
+    // Add testMatch to find tests in the ui package, relative to the new rootDir
+    testMatch: [
+        '<rootDir>/packages/ui/src/**/*.test.tsx'
+    ]
 };
