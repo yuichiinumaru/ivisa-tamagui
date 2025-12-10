@@ -139,6 +139,18 @@ export const Desativado: Story = {
     label: 'Aceitar termos e condições',
     id: 'disabled-checkbox'
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByLabelText('Aceitar termos e condições');
+    await userEvent.click(checkbox);
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Checkbox id="default-checkbox" checked={false} label="Aceitar termos e condições" />`,
+      },
+    },
+  }
 }
 
 export const Tamanhos: Story = {
@@ -161,6 +173,13 @@ export const Texto_Longo: Story = {
     id: 'long-text-checkbox',
     label: 'Eu li, entendi e concordo com os termos de serviço, política de privacidade, e confirmo que sou maior de 18 anos.',
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Checkbox id="checked-checkbox" checked={true} label="Aceitar termos e condições" />`,
+      },
+    },
+  }
 }
 
 export const Container_Pequeno: Story = {

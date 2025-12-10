@@ -12,7 +12,7 @@ const StyledCheckbox = styled(TamaguiCheckbox, {
   backgroundColor: '$background',
   alignItems: 'center',
   justifyContent: 'center',
-  
+
   hoverStyle: {
     borderColor: '$primary',
   },

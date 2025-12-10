@@ -1,9 +1,23 @@
-import type { Meta } from '@storybook/react'
-import { YStack } from 'tamagui'
-import { Heading, TypographyText, MutedText, LeadText, Blockquote } from './Typography'
+import type { Meta, StoryObj } from '@storybook/react';
+import { YStack } from 'tamagui';
+import { userEvent, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
+import { AlarmClock } from '@tamagui/lucide-icons';
+import {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Paragraph,
+  MutedText,
+  LeadText,
+  Blockquote,
+} from './Typography';
 
 const meta: Meta = {
-  title: 'atoms/Typography',
+  title: 'Atoms/Typography',
   tags: ['autodocs'],
   decorators: [
     (Story) => (
@@ -12,29 +26,141 @@ const meta: Meta = {
       </YStack>
     ),
   ],
-}
+  argTypes: {
+    children: {
+      control: 'text',
+      description: 'O conteúdo do texto a ser exibido.',
+    },
+    variant: {
+      control: {
+        type: 'select',
+        options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span'],
+      },
+      description: 'A tag HTML semântica e o estilo a ser aplicado.',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Se verdadeiro, o componente renderizará um carregador de esqueleto.',
+    },
+    uppercase: {
+      control: 'boolean',
+      description: 'Se verdadeiro, o texto será transformado em maiúsculas.',
+    },
+    asChild: {
+      control: 'boolean',
+      description: 'Se verdadeiro, o componente renderizará seus filhos como um slot.',
+    },
+  },
+};
 
-export default meta
+export default meta;
 
-export const All = {
+type Story = StoryObj<typeof meta>;
+
+const renderStory = (args) => {
+  const components = {
+    h1: H1,
+    h2: H2,
+    h3: H3,
+    h4: H4,
+    h5: H5,
+    h6: H6,
+    p: Paragraph,
+    span: MutedText,
+  };
+  const Component = components[args.variant] || Paragraph;
+  return <Component {...args} />;
+};
+
+export const Default: Story = {
+  args: {
+    children: 'Este é um texto padrão.',
+    variant: 'p',
+    loading: false,
+    uppercase: false,
+  },
+  render: renderStory,
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const textElement = canvas.getByText(args.children);
+    await userEvent.click(textElement);
+    expect(textElement).toBeInTheDocument();
+    // A more robust test would be to check for an action in the actions panel
+  },
+};
+
+export const LongText: Story = {
+  args: {
+    children: 'Este é um texto muito longo para testar o comportamento de quebra de linha e truncamento. O pedido do rei, no entanto, não foi tão facilmente atendido. Era um pedido que testaria os limites de seu poder e a leialdade de seus súditos.',
+    variant: 'p',
+  },
+  render: renderStory,
+};
+
+export const Constrained: Story = {
+  args: {
+    children: 'Este texto está dentro de um contêiner com uma largura máxima de 100px.',
+    variant: 'p',
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ maxWidth: '100px', border: '1px solid red' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  render: renderStory,
+};
+
+export const Loading: Story = {
+  args: {
+    children: 'Este texto não deve ser visível.',
+    variant: 'p',
+    loading: true,
+  },
+  render: renderStory,
+};
+
+export const WithIcons: Story = {
+  args: {
+    children: 'Texto com ícones',
+    variant: 'p',
+    leftIcon: <AlarmClock />,
+    rightIcon: <AlarmClock />,
+  },
+  render: renderStory,
+};
+
+export const AsChild: Story = {
+  args: {
+    children: <a href="#">Este é um link renderizado como filho.</a>,
+    variant: 'p',
+    asChild: true,
+  },
+  render: renderStory,
+};
+
+export const All: Story = {
   render: () => (
     <>
-      <Heading size="9xl">Heading 1</Heading>
-      <Heading size="8xl">Heading 2</Heading>
-      <Heading size="7xl">Heading 3</Heading>
-      <Heading size="6xl">Heading 4</Heading>
-      <TypographyText>
-        This is a standard paragraph. The king's request, however, was not so easily granted. It was a request that would test the limits of his power and the loyalty of his subjects.
-      </TypographyText>
+      <H1>Cabeçalho 1</H1>
+      <H2>Cabeçalho 2</H2>
+      <H3>Cabeçalho 3</H3>
+      <H4>Cabeçalho 4</H4>
+      <H5>Cabeçalho 5</H5>
+      <H6>Cabeçalho 6</H6>
+      <Paragraph>
+        Este é um parágrafo padrão. O pedido do rei, no entanto, não foi tão facilmente atendido. Era um pedido que testaria os limites de seu poder e a lealdade de seus súditos.
+      </Paragraph>
       <LeadText>
-        This is a lead paragraph. It stands out from the rest. A lead paragraph is a single paragraph that precedes the body of a text.
+        Este é um parágrafo principal. Ele se destaca do resto. Um parágrafo principal é um único parágrafo que precede o corpo de um texto.
       </LeadText>
       <MutedText>
-        This is a muted text. It's for supplementary information.
+        Este é um texto esmaecido. É para informações suplementares.
       </MutedText>
       <Blockquote>
-        "This is a blockquote. It's for quoting text from another source."
+        "Esta é uma citação em bloco. É para citar texto de outra fonte."
       </Blockquote>
     </>
   ),
-}
+};

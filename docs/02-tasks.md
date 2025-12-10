@@ -6,6 +6,103 @@
 
 ---
 
+## 🚀 Priority 1: Component Refactor & BI Expansion (Jules Swarm)
+
+### ⚛️ ATOMS
+**Goal:** Refactor for PT-BR, A11y, and Robustness using the "Atom Algorithm".
+
+- [/] Refactor `Alert` (Dispatched)
+- [/] Refactor `AspectRatio` (Dispatched)
+- [ ] Refactor `Avatar` (Harvested) -> Dispatched
+- [/] Refactor `Badge` (Dispatched)
+- [/] Refactor `Button` (Dispatched)
+- [/] Refactor `Checkbox` (Dispatched)
+- [/] Refactor `Input` (Dispatched)
+- [/] Refactor `Kbd` (Dispatched)
+- [/] Refactor `Label` (Dispatched)
+- [/] Refactor `Progress` (Dispatched)
+- [/] Refactor `ScrollArea` (Dispatched)
+- [ ] Refactor `Separator`
+- [ ] Refactor `Skeleton`
+- [ ] Refactor `Slider`
+- [ ] Refactor `Spinner`
+- [ ] Refactor `Stack`
+- [ ] Refactor `Switch`
+- [ ] Refactor `Textarea`
+- [ ] Refactor `Toggle`
+- [ ] Refactor `Typography`
+- [ ] Implement `NavLink` (New - BI Sidebar)
+- [ ] Implement `Logo` (New - BI Sidebar)
+- [ ] Implement `Dot` (New - BI Charts)
+
+### 🧪 MOLECULES
+**Goal:** Upgrade for State Orchestration and Layout Integrity using the "Molecule Algorithm".
+
+- [ ] Refactor `Accordion`
+- [ ] Refactor `AlertDialog`
+- [ ] Refactor `AvatarGroup` (Harvested)
+- [ ] Refactor `BadgeCounter` (Harvested)
+- [ ] Refactor `Breadcrumb`
+- [ ] Refactor `ButtonGroup`
+- [ ] Refactor `Calendar`
+- [ ] Refactor `Card`
+- [ ] Refactor `Collapsible`
+- [ ] Refactor `ComponentErrorBoundary`
+- [ ] Refactor `ContextMenu`
+- [ ] Refactor `DatePicker`
+- [ ] Refactor `Dialog`
+- [ ] Refactor `Drawer`
+- [ ] Refactor `Empty`
+- [ ] Refactor `Field`
+- [ ] Refactor `HoverCard`
+- [ ] Refactor `InputGroup`
+- [ ] Refactor `Item`
+- [ ] Refactor `Menubar`
+- [ ] Refactor `MonthsPicker` (Harvested)
+- [ ] Refactor `NativeSelect`
+- [ ] Refactor `NavigationMenu`
+- [ ] Refactor `OTPInput` (Harvested)
+- [ ] Refactor `Pagination`
+- [ ] Refactor `Popover`
+- [ ] Refactor `RadioGroup`
+- [ ] Refactor `Resizable`
+- [ ] Refactor `Select`
+- [ ] Refactor `Sheet`
+- [ ] Refactor `Sonner`
+- [ ] Refactor `StarRating` (Harvested)
+- [ ] Refactor `Stepper`
+- [ ] Refactor `Table`
+- [ ] Refactor `Tabs`
+- [ ] Refactor `Toast`
+- [ ] Refactor `ToggleGroup`
+- [ ] Refactor `Tooltip`
+- [ ] Implement `MetricCard` (New - BI)
+- [ ] Implement `NavGroup` (New - BI)
+- [ ] Implement `ChartContainer` (New - BI Wrapper)
+- [ ] Implement `RadialChartContent` (New - BI)
+- [ ] Implement `HorizontalBarGroup` (New - BI)
+
+### 🧬 ORGANISMS
+**Goal:** Upgrade for Data Lifecycle and Container Agnosticism using the "Organism Algorithm".
+
+- [ ] Refactor `Autocomplete`
+- [ ] Refactor `Carousel`
+- [ ] Refactor `Charts` (General Library)
+- [ ] Refactor `Command`
+- [ ] Refactor `DashboardLayout` -> Refactor to `DashboardShell` (BI)
+- [ ] Refactor `DataTable`
+- [ ] Refactor `FileUpload`
+- [ ] Refactor `Form`
+- [ ] Refactor `RichText`
+- [ ] Refactor `Sidebar` (App Shell)
+- [ ] Refactor `Timeline`
+- [ ] Implement `KPIGrid` (New - BI)
+- [ ] Implement `TimeSeriesChart` (New - BI)
+- [ ] Implement `GaugeChart` (New - BI)
+- [ ] Implement `RankingChart` (New - BI)
+
+---
+
 ## 🚀 Current Focus: Phase 4 – Web-Specific UX & Full Documentation
 
 25 - [~] **Populate Storybook as Source of Truth** (DOC)
@@ -42,9 +139,6 @@
 37 - [ ] **QA & Cleanup**
   - [ ] 37a – **Resolve Linting Errors**: Fix remaining lint warnings in `packages/ui` (if any).
   - [ ] 37b – **Standardize Structure**: Ensure all tests are co-located or strictly organized.
-  - [x] 37c – **Restore Visual Check**: Re-implement `scripts/visual-check.js`.
-
-38 - [ ] **Missing / Disabled Unit Tests** (TDD)
   - [ ] 38a – **Fix Disabled Tests**: Resolve issues in `Command`, `Menubar`, `DropdownMenu`, and `Autocomplete` tests.
   - [ ] 38b – **Molecules Coverage**: Add tests for `HoverCard`, `NavigationMenu`, `OTPInput`, `Resizable`.
   - [ ] 38c – **Interaction Tests**: Improve reliability of tests involving Radix/Headless interactions in JSDOM.
@@ -53,182 +147,34 @@
 
 ## ✅ Completed Tasks
 
-### Critical Remediation (From Audit)
+- [x] **Restore Visual Check**: Re-implement `scripts/visual-check.js`.
 - [x] **Fix Current Unit Test Failures (P0)**: Fixed snapshot/style mismatches in `Button`, `Typography`, etc.
 - [x] **Implement Security Scanning (P1)**: Integrated security scanner.
 - [x] **Resolve All Linting Errors (P1)**: Fixed 70+ ESLint errors.
 - [x] **Restore Visual Testing Capabilities (P2)**: Restored `scripts/visual-check.js`.
-### Component Acceleration & Harvesting
-32 - [x] **Component Acceleration Phase**
-  - [x] 32a – **Harvest `pogiii/sushi`**: Input (Composed) and OTPInput patterns.
-  - [x] 32b – **Harvest `tamagui-kitchen-sink`**: StarRating.
-
-## 📦 Batch 1: Critical Remediation & Quality (P0)
-**Context:** Critical fixes for codebase health.
-
-- [ ] **Fix Unit Test Suite (P0)**: Fix import paths in `packages/ui/tests/migrated`.
-- [ ] **Resolve Linting Errors (P1)**: Fix ESLint errors (unused vars, `any`).
-
-## 📦 Batch 2: Documentation Specs (Gap Fill)
-**Context:** Missing specs for complex components.
-**Goal:** Create `docs/specs/COMPONENT.md` for each.
-
-- [ ] **Task 35f**: Create specs for `DataTable`
-- [ ] **Task 35g**: Create specs for `RichText`
-- [ ] **Task 35h**: Create specs for `Video`
-- [ ] **Task 35e**: Create specs for `Autocomplete`
-
-## 📦 Batch 3: Implemented Components (Atoms/Molecules)
-**Context:** These components have been implemented.
-**Goal:** Verify and add tests/stories if missing.
-
+- [x] **Component Acceleration Phase**: Harvested `pogiii/sushi` and `tamagui-kitchen-sink`.
 - [x] **Task 36a**: Implement `button-group`
 - [x] **Task 36b**: Implement `empty` state component
 - [x] **Task 36c**: Implement `field` component
 - [x] **Task 36d**: Implement `input-group`
 - [x] **Task 36e**: Implement `item` component
-
-## 📦 Batch 4: Implemented Components (UI Elements)
-**Context:** These components have been implemented.
-**Goal:** Verify and add tests/stories if missing.
-
 - [x] **Task 36f**: Implement `kbd` (Keyboard shortcut display)
 - [x] **Task 36g**: Implement `label`
 - [x] **Task 36h**: Implement `native-select`
 - [x] **Task 36i**: Implement `sonner` (Toast alternative)
 - [x] **Task 36j**: Implement `table` (Basic table)
-
-### ShadCN Gap Fill (High/Medium Priority)
-33 - [x] **ShadCN Gap Fill - High Priority**
-  - [x] 33a – **Command Palette**: Implemented `Command`.
-  - [x] 33b – **Date Picker**: Implemented `Calendar` + `DatePicker`.
-  - [x] 33c – **DropdownMenu**: Implemented `DropdownMenu`.
-34 - [x] **ShadCN Gap Fill - Medium Priority**
-  - [x] 34c – **HoverCard**: Implemented using `Popover`.
-  - [x] 34d – **Carousel**: Implemented using `embla-carousel`.
-  - [x] 34a – **AspectRatio**: Implemented.
-  - [x] 34b – **Collapsible**: Implemented.
-  - [x] 34e – **Spinner**: Implemented.
-
-### Phase 0-3 Completions
+- [x] **Command Palette**: Implemented `Command`.
+- [x] **Date Picker**: Implemented `Calendar` + `DatePicker`.
+- [x] **DropdownMenu**: Implemented `DropdownMenu`.
+- [x] **HoverCard**: Implemented using `Popover`.
+- [x] **Carousel**: Implemented using `embla-carousel`.
+- [x] **AspectRatio**: Implemented.
+- [x] **Collapsible**: Implemented.
+- [x] **Spinner**: Implemented.
 - [x] **Phase 0 (Research)**: Ecosystem research, direction decided.
 - [x] **Phase 1 (Foundation)**: Theme, Config, Forms, Providers, Testing Setup.
 - [x] **Phase 2 (High Impact)**: DataTable, Calendar, Command.
 - [x] **Phase 3 (Expansion)**: Carousel, OTPInput, Pagination, Breadcrumb, Sidebar, Charts.
 - [x] **Phase 4 (Web UX - Partial)**: NavigationMenu, ToggleGroup, Alert, Badge, Switch, Sheet, Toast, Avatar, Tabs, Accordion, Slider, RadioGroup, Skeleton, Progress, Separator, Toggle, ScrollArea, Resizable, Drawer, Tooltip, ContextMenu.
-
-### Additional
 - [x] **Brand Integration**: IVISA branding applied.
 - [x] **Submodule Strategy**: Documentation created.
-
----
-
-## 📦 Phase 3: Quick Wins & Foundations (From Catalog)
-**Context:** High-value, low-effort components to polish the DS.
-**Source:** `ORGANISMS-catalog.md`
-
-### Week 1-2: Quick Wins
-- [ ] **Pagination** (1d): Fundamental for DataTable.
-- [ ] **Breadcrumb** (1d): Simple, hierarchical navigation.
-- [ ] **InputOTP** (1-2d): Modern 2FA/Verification.
-- [ ] **AvatarGroup** (1d): Team/participants UI.
-- [ ] **BadgeCounter**: Notification indicators.
-
-### Week 3-4: High Value
-- [ ] **Sidebar** (3-4d): Refactor/Finalize app layout.
-- [ ] **Stepper** (3-4d): Onboarding & multi-step forms.
-- [ ] **Modal Dialog (Advanced)** (2d): Confirm, Form, Loading variants.
-- [ ] **Toast Stack** (2d): Managed notifications.
-- [ ] **Navigation Menu** (2-3d): Desktop header navigation.
-
----
-
-## 📦 Phase 4: Advanced Organisms (From Catalog)
-**Context:** Complex, high-effort components for dashboards and specialized UIs.
-
-- [ ] **Dashboard Layout** (Grid): Responsive, resizable panels.
-- [ ] **Data Grid (Advanced)**: Virtual scrolling, massive datasets.
-- [ ] **Search / Filterable List**: Fuzzy search, dropdown results.
-- [ ] **File Upload**: Dropzone with previews and progress.
-- [ ] **Rich Text Editor**: Tiptap/Slate wrapper.
-- [ ] **Calendar (Booking)**: Full appointment scheduling.
-- [ ] **Timeline**: Process flows.
-
-
-Current Existing Components:
-
-⚛️ ATOMS
-1. Alert
-AspectRatio
-Avatar
-Badge
-Button
-Checkbox
-Input
-Kbd
-Label
-Progress
-ScrollArea
-Separator
-Skeleton
-Slider
-Spinner
-Stack
-Switch
-Textarea
-Toggle
-Typography
-
-🧪 MOLECULES
-Accordion
-AlertDialog
-AvatarGroup
-BadgeCounter
-Breadcrumb
-ButtonGroup
-Calendar
-Card
-Collapsible
-ComponentErrorBoundary
-ContextMenu
-DatePicker
-Dialog
-Drawer
-Empty
-Field
-HoverCard
-InputGroup
-Item
-Menubar
-MonthsPicker
-NativeSelect
-NavigationMenu
-OTPInput
-Pagination
-Popover
-RadioGroup
-Resizable
-Select
-Sheet
-Sonner
-StarRating
-Stepper
-Table
-Tabs
-Toast
-ToggleGroup
-Tooltip
-
-🧬 ORGANISMES
-Autocomplete
-Calendar
-Carousel
-Charts
-Command
-DashboardLayout
-DataTable
-FileUpload
-Form
-RichText
-Sidebar
-Timeline
