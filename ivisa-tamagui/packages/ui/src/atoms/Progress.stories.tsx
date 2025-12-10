@@ -1,40 +1,63 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Progress } from './Progress';
-import { YStack } from 'tamagui';
+import { YStack, Text } from 'tamagui';
 import { userEvent, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
-const meta: Meta<typeof Progress> = {
+const meta: Meta<typeof Progress.Root> = {
   title: 'atoms/Progresso',
-  component: Progress,
+  component: Progress.Root,
   tags: ['autodocs'],
   argTypes: {
     value: {
       control: { type: 'range', min: 0, max: 100, step: 1 },
       description: 'O valor atual da barra de progresso.',
     },
-    label: {
-      control: 'text',
-      description: 'O rótulo a ser exibido junto à barra de progresso.',
-    },
     state: {
       control: { type: 'radio' },
       options: ['determinate', 'indeterminate'],
       description: 'O estado da barra de progresso.',
+    },
+    size: {
+      control: { type: 'radio' },
+      options: ['sm', 'md', 'lg'],
+      description: 'O tamanho da barra de progresso.',
+    },
+    status: {
+      control: { type: 'radio' },
+      options: ['info', 'success', 'warning', 'danger'],
+      description: 'O status da barra de progresso, que determina sua cor.',
+    },
+    showValue: {
+        control: 'boolean',
+        description: 'Exibir o valor percentual.',
+    },
+    'aria-valuetext': {
+        control: 'text',
+        description: 'Texto para leitores de tela.',
     },
   },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Progress>;
+type Story = StoryObj<typeof Progress.Root>;
 
 export const Padrao: Story = {
   args: {
     value: 50,
-    label: 'Progresso',
     state: 'determinate',
+    size: 'md',
+    status: 'info',
+    showValue: true,
   },
   name: 'Padrão',
+  render: (args) => (
+    <Progress.Root {...args}>
+        <Progress.Label>Progresso</Progress.Label>
+        <Progress.Indicator />
+    </Progress.Root>
+  ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const progress = await canvas.findByRole('progressbar');
@@ -43,50 +66,20 @@ export const Padrao: Story = {
   },
 };
 
-export const Vazio: Story = {
-  args: {
-    value: 0,
-    label: 'Vazio',
-    state: 'determinate',
-  },
-};
-
-export const Cheio: Story = {
-  args: {
-    value: 100,
-    label: 'Completo',
-    state: 'determinate',
-  },
-};
-
-export const Indeterminado: Story = {
+export const LabelDentro: Story = {
     args: {
-      value: 40,
-      label: 'Carregando...',
-      state: 'indeterminate',
+        ...Padrao.args,
+        showValue: false,
     },
-    name: 'Indeterminado (Carregando)',
-};
-
-export const TextoExtenso: Story = {
-  args: {
-    value: 75,
-    label: 'Este é um texto muito longo para verificar como o componente se comporta com excesso de conteúdo no rótulo.',
-    state: 'determinate',
-  },
-  name: 'Com Texto Longo',
-};
-
-export const ContainerPequeno: Story = {
-  render: (args) => (
-    <YStack style={{ maxWidth: 150, borderWidth: 1, borderColor: 'red', padding: 8 }}>
-      <Progress {...args} />
-    </YStack>
-  ),
-  args: {
-    value: 60,
-    label: 'Dentro de um contêiner pequeno',
-    state: 'determinate',
-  },
-  name: 'Em Contêiner Pequeno',
-};
+    name: "Composição: Rótulo Interno",
+    render: (args) => (
+        <Progress.Root {...args}>
+             <YStack flex={1} justifyContent='center' alignItems='center'>
+                <Progress.Label asChild>
+                    <Text color="white" fontSize={12}>Carregando...</Text>
+                </Progress.Label>
+            </YStack>
+            <Progress.Indicator />
+        </Progress.Root>
+    )
+}
