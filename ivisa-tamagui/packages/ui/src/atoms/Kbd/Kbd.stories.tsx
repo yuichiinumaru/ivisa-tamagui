@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Kbd } from './Kbd'
 import { XStack, Text } from 'tamagui'
 import { userEvent, within } from '@storybook/testing-library'
+import { Search } from '@tamagui/lucide-icons'
 import { expect } from '@storybook/jest'
 
 const meta: Meta<typeof Kbd> = {
@@ -22,6 +23,10 @@ O componente \`Kbd\` é usado para exibir atalhos de teclado.
     },
   },
   argTypes: {
+    variant: {
+      control: { type: 'select' },
+      options: ['default', 'subtle'],
+    },
     size: {
       control: { type: 'select' },
       options: ['sm', 'default', 'lg'],
@@ -30,6 +35,9 @@ O componente \`Kbd\` é usado para exibir atalhos de teclado.
       control: { type: 'text' },
     },
     onClick: { action: 'clicked' },
+    asChild: {
+      control: { type: 'boolean' },
+    },
   },
 }
 
@@ -60,6 +68,31 @@ export const Grande: Story = {
   args: {
     ...Padrao.args,
     size: 'lg',
+  },
+}
+
+export const Sutil: Story = {
+  args: {
+    ...Padrao.args,
+    variant: 'subtle',
+  },
+}
+
+export const ComoBotao: Story = {
+  render: (args) => (
+    <Kbd {...args}>
+      <button>Botão</button>
+    </Kbd>
+  ),
+  args: {
+    asChild: true,
+  },
+}
+
+export const ComIcone: Story = {
+  args: {
+    ...Padrao.args,
+    iconBefore: <Search size={12} />,
   },
 }
 

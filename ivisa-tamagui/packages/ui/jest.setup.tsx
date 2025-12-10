@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { render as rtlRender } from '@testing-library/react'
+import { render as rtlRender, RenderOptions } from '@testing-library/react'
 import { TamaguiProvider } from 'tamagui'
 import config from './src/tamagui.config'
 import React from 'react'
@@ -16,8 +16,6 @@ const AppProviders = ({ children }: { children: React.ReactNode }) => (
     {children}
   </TamaguiProvider>
 )
-
-import { RenderOptions } from '@testing-library/react'
 
 export const render = (ui: React.ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
   rtlRender(ui, { wrapper: AppProviders, ...options })

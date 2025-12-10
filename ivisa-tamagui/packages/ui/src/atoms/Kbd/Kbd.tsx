@@ -1,7 +1,7 @@
 import React from 'react'
-import { styled, Text, GetProps, TamaguiElement } from 'tamagui'
+import { styled, Text, GetProps, TamaguiElement, Slot, XStack } from 'tamagui'
 
-const StyledKbd = styled(Text, {
+const StyledKbd = styled(XStack, {
   name: 'Kbd',
   tag: 'kbd',
   fontFamily: '$body',
@@ -10,7 +10,8 @@ const StyledKbd = styled(Text, {
   borderRadius: '$2',
   borderWidth: 1,
   borderColor: '$borderColor',
-  textAlign: 'center',
+  justifyContent: 'center',
+  alignItems: 'center',
 
   hoverStyle: {
     backgroundColor: '$backgroundHover',
@@ -21,24 +22,30 @@ const StyledKbd = styled(Text, {
   },
 
   variants: {
+    variant: {
+      default: {
+        backgroundColor: '$background',
+        color: '$color',
+        borderColor: '$borderColor',
+      },
+      subtle: {
+        backgroundColor: '$backgroundFocus',
+        color: '$color',
+        borderColor: '$backgroundFocus',
+      },
+    },
     size: {
       sm: {
-        fontSize: 10,
-        fontWeight: '400',
         paddingHorizontal: 4,
         paddingVertical: 1,
         minWidth: 16,
       },
       default: {
-        fontSize: 12,
-        fontWeight: '500',
         paddingHorizontal: 6,
         paddingVertical: 2,
         minWidth: 20,
       },
       lg: {
-        fontSize: 14,
-        fontWeight: '600',
         paddingHorizontal: 8,
         paddingVertical: 3,
         minWidth: 24,
@@ -48,29 +55,85 @@ const StyledKbd = styled(Text, {
 
   defaultVariants: {
     size: 'default',
+    variant: 'default',
   },
+})
+
+// Inner Text style to handle font sizes from main
+const KbdText = styled(Text, {
+  fontFamily: '$body',
+  color: '$color',
+  variants: {
+      size: {
+        sm: { fontSize: 10, fontWeight: '400' },
+        default: { fontSize: 12, fontWeight: '500' },
+        lg: { fontSize: 14, fontWeight: '600' },
+      }
+  },
+  defaultVariants: {
+      size: 'default'
+  }
 })
 
 type StyledKbdProps = GetProps<typeof StyledKbd>
 
-export interface KbdProps extends Omit<StyledKbdProps, 'size'> {
+export interface KbdProps extends Omit<StyledKbdProps, 'size' | 'variant'> {
   /**
    * The size of the component.
    * @default 'default'
    */
   size?: StyledKbdProps['size']
   /**
+   * The visual style of the component.
+   * @default 'default'
+   */
+  variant?: StyledKbdProps['variant']
+  /**
    * The content to be displayed inside the component.
    */
   children?: React.ReactNode
+  /**
+   * Renders the component as a child of the parent component.
+   * @default false
+   */
+  asChild?: boolean
+  /**
+   * An optional icon to display before the text.
+   */
+  iconBefore?: React.ReactNode
+  /**
+   * An optional icon to display after the text.
+   */
+  iconAfter?: React.ReactNode
 }
 
 /**
  * A component to display keyboard shortcuts.
  */
-const Kbd = React.forwardRef<TamaguiElement, KbdProps>(({ size = 'default', ...props }, ref) => {
-  return <StyledKbd ref={ref} size={size} {...props} />
-})
+const Kbd = React.forwardRef<TamaguiElement, KbdProps>(
+  (
+    {
+      size = 'default',
+      variant = 'default',
+      asChild = false,
+      iconBefore,
+      iconAfter,
+      children,
+      ...props
+    },
+    ref,
+  ) => {
+    const Comp = asChild ? Slot : StyledKbd
+    // Pass size to Text as well
+    return (
+      <Comp ref={ref} size={size} variant={variant} {...props} tag="kbd">
+        {iconBefore}
+        <KbdText size={size as any}>{children}</KbdText>
+        {iconAfter}
+      </Comp>
+    )
+  },
+)
 
 Kbd.displayName = 'Kbd'
 
