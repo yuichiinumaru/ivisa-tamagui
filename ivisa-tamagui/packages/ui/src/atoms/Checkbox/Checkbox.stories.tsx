@@ -1,48 +1,160 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { userEvent, within } from '@storybook/testing-library'
 import { Checkbox } from './Checkbox'
+import { YStack, XStack } from 'tamagui'
+import { Spinner } from '../Spinner'
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'atoms/Checkbox',
+  title: 'Atoms/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
   argTypes: {
     checked: {
       control: { type: 'boolean' },
+      description: 'Define o estado do checkbox.',
     },
     disabled: {
       control: { type: 'boolean' },
+      description: 'Desativa a interação com o checkbox.',
+    },
+    label: {
+      control: { type: 'text' },
+      description: 'O texto a ser exibido ao lado do checkbox.',
     },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Um controle que permite ao usuário fazer uma seleção binária.'
+      }
+    }
+  },
+  decorators: [
+    (Story) => (
+      <YStack width={300} space="$2">
+        <Story />
+      </YStack>
+    ),
+  ],
 }
 
 export default meta
 
 type Story = StoryObj<typeof Checkbox>
 
-export const Default: Story = {
+export const Padrao: Story = {
+  name: "Padrão",
   args: {
     checked: false,
+    label: 'Aceitar termos e condições',
+    disabled: false,
+    id: 'default-checkbox'
   },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkbox = canvas.getByLabelText('Aceitar termos e condições');
+    await userEvent.click(checkbox);
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Checkbox id="default-checkbox" checked={false} label="Aceitar termos e condições" />`,
+      },
+    },
+  }
 }
 
-export const Checked: Story = {
+export const Marcado: Story = {
+  name: "Marcado",
   args: {
-    ...Default.args,
+    ...Padrao.args,
     checked: true,
+    id: 'checked-checkbox'
   },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Checkbox id="checked-checkbox" checked={true} label="Aceitar termos e condições" />`,
+      },
+    },
+  }
 }
 
-export const Disabled: Story = {
+export const Desativado: Story = {
+  name: "Desativado",
   args: {
-    ...Default.args,
+    ...Padrao.args,
+    checked: false,
+    disabled: true,
+    id: 'disabled-checkbox'
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `<Checkbox id="disabled-checkbox" disabled={true} label="Aceitar termos e condições" />`,
+      },
+    },
+  }
+}
+
+export const Texto_Longo: Story = {
+  name: "Estresse: Texto Longo",
+  args: {
+    ...Padrao.args,
+    id: 'long-text-checkbox',
+    label: 'Eu li, entendi e concordo com os termos de serviço, política de privacidade, e confirmo que sou maior de 18 anos.',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Verifica como o componente lida com textos muito longos, garantindo que a quebra de linha funcione corretamente.'
+      },
+    },
+  }
+}
+
+export const Container_Pequeno: Story = {
+  name: "Estresse: Container Pequeno",
+  args: {
+    ...Padrao.args,
+    id: 'constrained-checkbox',
+    label: 'Label em container pequeno',
+  },
+  decorators: [
+    (Story) => (
+      <YStack width={150} padding="$2" backgroundColor="$backgroundHover" borderRadius="$sm">
+        <Story />
+      </YStack>
+    ),
+  ],
+  parameters: {
+    docs: {
+      description: {
+        story: 'Verifica o comportamento do componente dentro de um container com largura limitada.'
+      },
+    },
+  }
+}
+
+export const Carregando: Story = {
+  name: "Estresse: Carregando",
+  args: {
+    ...Padrao.args,
+    id: 'loading-checkbox',
+    checked: false,
     disabled: true,
   },
-}
-
-export const DisabledChecked: Story = {
-  args: {
-    ...Default.args,
-    checked: true,
-    disabled: true,
-  },
+  render: (args) => (
+    <XStack alignItems="center" space="$2">
+      <Checkbox {...args} />
+      <Spinner />
+    </XStack>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Simula um estado de carregamento onde o checkbox está desativado e um spinner é exibido.'
+      },
+    },
+  }
 }

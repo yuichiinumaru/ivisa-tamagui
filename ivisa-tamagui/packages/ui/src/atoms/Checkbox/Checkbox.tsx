@@ -1,25 +1,13 @@
 import React from 'react'
-import { Checkbox as TamaguiCheckbox, styled, GetProps, View } from 'tamagui'
+import { Checkbox as TamaguiCheckbox, styled, GetProps, View, Label, XStack } from 'tamagui'
 import { withErrorLogging } from '../../utils/withErrorLogging'
-
-// Custom CheckIcon using simple View/CSS for now since we don't have icons yet
-const CheckIcon = () => (
-  <View
-    width={8}
-    height={10}
-    borderColor="$primaryForeground"
-    borderBottomWidth={2}
-    borderRightWidth={2}
-    rotate="45deg"
-    marginBottom={2}
-  />
-)
+import { Check } from '@tamagui/lucide-icons'
 
 const StyledCheckbox = styled(TamaguiCheckbox, {
   name: 'Checkbox',
-  width: '$5',
-  height: '$5',
-  borderWidth: 1,
+  width: '$4',
+  height: '$4',
+  borderWidth: 2,
   borderColor: '$borderColor',
   borderRadius: '$sm',
   backgroundColor: '$background',
@@ -32,7 +20,9 @@ const StyledCheckbox = styled(TamaguiCheckbox, {
 
   focusStyle: {
     borderColor: '$ring',
-    borderWidth: 2,
+    outlineColor: '$ring',
+    outlineWidth: 2,
+    outlineStyle: 'solid',
   },
 
   variants: {
@@ -41,12 +31,18 @@ const StyledCheckbox = styled(TamaguiCheckbox, {
         backgroundColor: '$primary',
         borderColor: '$primary',
       },
+      false: {
+        backgroundColor: 'transparent',
+      }
     },
     disabled: {
       true: {
         opacity: 0.5,
-        backgroundColor: '$muted',
-        borderColor: '$muted',
+        backgroundColor: '$background',
+        borderColor: '$borderColor',
+        hoverStyle: {
+            borderColor: '$borderColor',
+        }
       },
     },
   } as const,
@@ -62,25 +58,52 @@ const StyledIndicator = styled(TamaguiCheckbox.Indicator, {
 type StyledCheckboxProps = GetProps<typeof StyledCheckbox>
 
 export interface CheckboxProps extends Omit<StyledCheckboxProps, 'checked' | 'onCheckedChange'> {
-  checked?: boolean
+  /**
+   * The state of the checkbox.
+   */
+  checked?: boolean | 'indeterminate'
+  /**
+   * Event handler called when the checkbox state changes.
+   */
   onCheckedChange?: (checked: boolean) => void
+  /**
+   * The unique identifier for the checkbox.
+   */
   id?: string
+  /**
+   * The label text to be displayed next to the checkbox.
+   */
+  label?: string;
+  /**
+   * Disables the checkbox, preventing user interaction.
+   */
+  disabled?: boolean;
 }
 
 const CheckboxImpl = React.forwardRef<React.ElementRef<typeof TamaguiCheckbox>, CheckboxProps>(
-  ({ checked, onCheckedChange, ...props }, ref) => {
+  ({ checked, onCheckedChange, id, label, disabled, ...props }, ref) => {
+    // Ensure a unique id for label association if not provided
+    const realId = id || React.useId();
+
     return (
-      <StyledCheckbox
-        ref={ref}
-        checked={checked}
-        onCheckedChange={onCheckedChange}
-        role="checkbox"
-        {...props}
-      >
-        <StyledIndicator>
-          <CheckIcon />
-        </StyledIndicator>
-      </StyledCheckbox>
+      <XStack alignItems="center" space="$2">
+        <StyledCheckbox
+          ref={ref}
+          id={realId}
+          checked={checked}
+          onCheckedChange={onCheckedChange}
+          disabled={disabled}
+          role="checkbox"
+          aria-checked={checked === 'indeterminate' ? 'mixed' : !!checked}
+          aria-label={label ? undefined : 'checkbox'} // Provide aria-label if no visible label
+          {...props}
+        >
+          <StyledIndicator>
+            <Check size={16} color="$background" />
+          </StyledIndicator>
+        </StyledCheckbox>
+        {label && <Label htmlFor={realId} disabled={disabled}>{label}</Label>}
+      </XStack>
     )
   }
 )
