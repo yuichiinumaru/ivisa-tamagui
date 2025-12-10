@@ -1,13 +1,21 @@
-import React, { useMemo } from 'react'
-import { Button, isWeb, Select as TamaguiSelect, Sheet, styled, View, Adapt, SelectProps as TamaguiSelectProps } from 'tamagui'
-import { Check, ChevronDown } from '@tamagui/lucide-icons'
-import { withErrorLogging } from '../../utils/withErrorLogging'
+import { Check, ChevronDown } from '@tamagui/lucide-icons';
+import React from 'react';
+import {
+  Adapt,
+  isWeb,
+  Select as TamaguiSelect,
+  SelectProps as TamaguiSelectProps,
+  Sheet,
+  styled,
+  XStack,
+  YStack,
+} from 'tamagui';
+import type { YStackProps } from 'tamagui';
+import { Spinner } from '../../atoms/Spinner';
 
-// Constants
-const SELECT_CONTENT_Z_INDEX = 200000
+const SelectRoot = (props: TamaguiSelectProps) => <TamaguiSelect {...props} />;
 
-// Styled components
-const SelectTriggerFrame = styled(Button, {
+const SelectTriggerFrame = styled(XStack, {
   name: 'SelectTrigger',
   width: '100%',
   flexDirection: 'row',
@@ -16,162 +24,167 @@ const SelectTriggerFrame = styled(Button, {
   borderWidth: 1,
   borderColor: '$borderColor',
   backgroundColor: '$background',
-  color: '$foreground',
   paddingHorizontal: '$3',
   height: '$10',
+  borderRadius: '$2',
+  gap: '$2',
+
   hoverStyle: {
     backgroundColor: '$backgroundHover',
   },
+
   focusStyle: {
     borderColor: '$ring',
     borderWidth: 2,
   },
-})
 
-const SelectIconFrame = styled(View, {
-  name: 'SelectIcon',
-  marginLeft: '$2',
-})
-
-// Use Lucide Icons for better visual quality
-const ChevronDownIcon = () => <ChevronDown size={12} color="$mutedForeground" />
-const CheckIcon = () => <Check size={16} color="$primary" />
-
-export interface SelectProps extends Omit<TamaguiSelectProps, 'children'> {
-  items?: { value: string; label: string }[]
-  placeholder?: string
-  label?: string
-  children?: React.ReactNode
-}
-
-/**
- * Select Component
- *
- * A form select component based on Tamagui Select (which wraps Radix UI Select on web).
- *
- * Improvements:
- * - Removed magic numbers (extracted zIndex to constant)
- * - Improved icons (Lucide vs Text)
- * - Strict Types
- * - Cleaned up lint warnings
- */
-const SelectImpl = React.forwardRef<React.ElementRef<typeof TamaguiSelect>, SelectProps>(
-  (
-    {
-      items,
-      placeholder,
-      children,
-      disablePreventBodyScroll = true,
-      ...props
+  variants: {
+    hasError: {
+      true: {
+        borderColor: '$red10',
+      },
     },
+    disabled: {
+      true: {
+        opacity: 0.5,
+        backgroundColor: '$background',
+      },
+    },
+    isLoading: {
+      true: {
+        opacity: 0.5,
+        backgroundColor: '$background',
+      },
+    },
+  } as const,
+});
 
-    _ref
-  ) => {
-    const hasCustomChildren = React.Children.count(children) > 0
+type SelectTriggerProps = React.ComponentProps<typeof SelectTriggerFrame> & {
+  hasError?: boolean;
+  disabled?: boolean;
+  isLoading?: boolean;
+  rightSlot?: React.ReactNode;
+};
 
-    const content = useMemo(() => {
-      if (hasCustomChildren) return children
-
-      if (!items || items.length === 0) return null
-
-      return (
-        <>
-          <TamaguiSelect.Trigger icon={ChevronDownIcon} asChild>
-            <SelectTriggerFrame>
-              <TamaguiSelect.Value placeholder={placeholder} />
-            </SelectTriggerFrame>
-          </TamaguiSelect.Trigger>
-
-          <Adapt when="sm" platform="touch">
-            <Sheet
-              native={!isWeb}
-              modal
-              dismissOnSnapToBottom
-              animationConfig={{
-                type: 'spring',
-                damping: 20,
-                mass: 1.2,
-                stiffness: 250,
-              }}
-            >
-              <Sheet.Frame>
-                <Sheet.ScrollView>
-                  <Adapt.Contents />
-                </Sheet.ScrollView>
-              </Sheet.Frame>
-              <Sheet.Overlay
-                animation="lazy"
-                enterStyle={{ opacity: 0 }}
-                exitStyle={{ opacity: 0 }}
-              />
-            </Sheet>
-          </Adapt>
-
-          <TamaguiSelect.Content zIndex={SELECT_CONTENT_Z_INDEX}>
-            <TamaguiSelect.ScrollUpButton />
-            <TamaguiSelect.Viewport minWidth={200}>
-              <TamaguiSelect.Group>
-                {props.label && (
-                   <TamaguiSelect.Label>{props.label}</TamaguiSelect.Label>
-                )}
-                {items.map((item, index) => (
-                  <TamaguiSelect.Item key={item.value} value={item.value} index={index}>
-                    <TamaguiSelect.ItemText>{item.label}</TamaguiSelect.ItemText>
-                    <TamaguiSelect.ItemIndicator marginLeft="auto">
-                      <CheckIcon />
-                    </TamaguiSelect.ItemIndicator>
-                  </TamaguiSelect.Item>
-                ))}
-              </TamaguiSelect.Group>
-            </TamaguiSelect.Viewport>
-            <TamaguiSelect.ScrollDownButton />
-          </TamaguiSelect.Content>
-        </>
-      )
-    }, [items, placeholder, props.label, children, hasCustomChildren])
-
+const SelectTrigger = React.forwardRef<React.ElementRef<typeof SelectTriggerFrame>, SelectTriggerProps>(
+  ({ children, hasError, disabled, isLoading, rightSlot, ...props }, ref) => {
     return (
-      <TamaguiSelect
-        disablePreventBodyScroll={disablePreventBodyScroll}
-        {...props}
-      >
-        {content}
-      </TamaguiSelect>
-    )
+      <TamaguiSelect.Trigger asChild disabled={disabled || isLoading} ref={ref}>
+        <SelectTriggerFrame hasError={hasError} disabled={disabled || isLoading} {...props}>
+          {children}
+          {isLoading ? <Spinner /> : rightSlot || <ChevronDown size={12} color="$mutedForeground" />}
+        </SelectTriggerFrame>
+      </TamaguiSelect.Trigger>
+    );
   }
-)
+);
 
-SelectImpl.displayName = 'Select'
+const SelectContent = (props: React.ComponentProps<typeof TamaguiSelect.Content>) => (
+  <TamaguiSelect.Content zIndex={200000} {...props}>
+    <TamaguiSelect.ScrollUpButton
+      alignItems="center"
+      justifyContent="center"
+      position="relative"
+      width="100%"
+      height="$3"
+    >
+      <YStack zIndex={10}>
+        <ChevronDown size={12} />
+      </YStack>
+    </TamaguiSelect.ScrollUpButton>
 
-const SelectWithLogging = withErrorLogging<SelectProps, React.ElementRef<typeof TamaguiSelect>>(
-  'Select',
-  SelectImpl
-)
+    <TamaguiSelect.Viewport minWidth={200}>{props.children}</TamaguiSelect.Viewport>
 
-export const Select = Object.assign(SelectWithLogging, {
-  Trigger: TamaguiSelect.Trigger,
-  Value: TamaguiSelect.Value,
-  Content: TamaguiSelect.Content,
-  Item: TamaguiSelect.Item,
-  ItemText: TamaguiSelect.ItemText,
-  ItemIndicator: TamaguiSelect.ItemIndicator,
-  Group: TamaguiSelect.Group,
-  Viewport: TamaguiSelect.Viewport,
-  Label: TamaguiSelect.Label,
-  ScrollUpButton: TamaguiSelect.ScrollUpButton,
-  ScrollDownButton: TamaguiSelect.ScrollDownButton,
-  TriggerFrame: SelectTriggerFrame,
-  IconFrame: SelectIconFrame,
-})
+    <TamaguiSelect.ScrollDownButton
+      alignItems="center"
+      justifyContent="center"
+      position="relative"
+      width="100%"
+      height="$3"
+    >
+      <YStack zIndex={10}>
+        <ChevronDown size={12} />
+      </YStack>
+    </TamaguiSelect.ScrollDownButton>
+  </TamaguiSelect.Content>
+);
 
-export const SelectTrigger = TamaguiSelect.Trigger
-export const SelectValue = TamaguiSelect.Value
-export const SelectContent = TamaguiSelect.Content
-export const SelectItem = TamaguiSelect.Item
-export const SelectItemText = TamaguiSelect.ItemText
-export const SelectItemIndicator = TamaguiSelect.ItemIndicator
-export const SelectGroup = TamaguiSelect.Group
-export const SelectViewport = TamaguiSelect.Viewport
-export const SelectLabel = TamaguiSelect.Label
-export const SelectScrollUpButton = TamaguiSelect.ScrollUpButton
-export const SelectScrollDownButton = TamaguiSelect.ScrollDownButton
+const SelectItem = styled(TamaguiSelect.Item, {
+  name: 'SelectItem',
+  paddingHorizontal: '$3',
+  paddingVertical: '$2',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  borderRadius: '$2',
+  height: '$10',
+
+  variants: {
+    disabled: {
+      true: {
+        color: '$colorDisabled',
+        pointerEvents: 'none',
+      },
+    },
+  } as const,
+});
+
+const SelectItemIndicator = (props: YStackProps) => (
+  <TamaguiSelect.ItemIndicator marginLeft="auto" {...props}>
+    <Check size={16} />
+  </TamaguiSelect.ItemIndicator>
+);
+
+const SelectSheet = (props: React.ComponentProps<typeof Sheet>) => (
+  <Adapt when="sm" platform="touch">
+    <Sheet
+      native={!isWeb}
+      modal
+      dismissOnSnapToBottom
+      animationConfig={{
+        type: 'spring',
+        damping: 20,
+        mass: 1.2,
+        stiffness: 250,
+      }}
+      {...props}
+    >
+      <Sheet.Frame>
+        <Sheet.ScrollView>
+          <Adapt.Contents />
+        </Sheet.ScrollView>
+      </Sheet.Frame>
+      <Sheet.Overlay animation="lazy" enterStyle={{ opacity: 0 }} exitStyle={{ opacity: 0 }} />
+    </Sheet>
+  </Adapt>
+);
+
+const SelectValue = TamaguiSelect.Value;
+const SelectItemText = TamaguiSelect.ItemText;
+const SelectGroup = TamaguiSelect.Group;
+const SelectLabel = TamaguiSelect.Label;
+const SelectViewport = TamaguiSelect.Viewport;
+
+SelectRoot.Trigger = SelectTrigger;
+SelectRoot.Value = SelectValue;
+SelectRoot.Content = SelectContent;
+SelectRoot.Item = SelectItem;
+SelectRoot.ItemText = SelectItemText;
+SelectRoot.ItemIndicator = SelectItemIndicator;
+SelectRoot.Group = SelectGroup;
+SelectRoot.Label = SelectLabel;
+SelectRoot.Sheet = SelectSheet;
+
+export {
+  SelectRoot as Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+  SelectItemText,
+  SelectItemIndicator,
+  SelectGroup,
+  SelectLabel,
+  SelectSheet,
+  SelectViewport,
+};
