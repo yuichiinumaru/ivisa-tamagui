@@ -26,11 +26,10 @@ describe('Calendar', () => {
   it('has an error style when hasError is true', () => {
     render(<Calendar hasError />)
     const container = screen.getByTestId('calendar-container')
-    // JSDOM has trouble resolving CSS variables for border-color in tests.
-    // We'll verify a different, concrete style from the `hasError` variant
-    // to confirm the variant is being applied correctly.
+    // JSDOM can be unreliable with shorthand border properties.
+    // We check a specific longhand property to ensure the style is applied.
     expect(container).toHaveStyle({
-      'border-width': '2px',
+      'border-bottom-width': '2px',
     })
   })
 })
