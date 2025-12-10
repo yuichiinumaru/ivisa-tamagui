@@ -10,11 +10,9 @@ const tiptapMocks = {
     },
 };
 
-jest.mock('@tiptap/react', async (importOriginal) => {
-    const actual = await importOriginal();
+jest.mock('@tiptap/react', () => {
     return {
-        ...actual,
-        useEditor: ({ onUpdate }) => {
+        useEditor: ({ onUpdate }: any) => {
             tiptapMocks.onUpdate = onUpdate;
             return tiptapMocks.editor;
         },

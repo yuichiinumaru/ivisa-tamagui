@@ -1,4 +1,3 @@
-import { vi } from 'vitest';
 import '@testing-library/react';
 
 class IntersectionObserver {
@@ -15,15 +14,15 @@ if (typeof window !== 'undefined') {
   (window as any).IntersectionObserver = IntersectionObserver;
 }
 
-const matchMediaMock = vi.fn().mockImplementation((query) => ({
+const matchMediaMock = jest.fn().mockImplementation((query) => ({
   matches: false,
   media: query,
   onchange: null,
-  addListener: vi.fn(), // deprecated
-  removeListener: vi.fn(), // deprecated
-  addEventListener: vi.fn(),
-  removeEventListener: vi.fn(),
-  dispatchEvent: vi.fn(),
+  addListener: jest.fn(), // deprecated
+  removeListener: jest.fn(), // deprecated
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  dispatchEvent: jest.fn(),
 }));
 
 if (typeof window !== 'undefined') {

@@ -1,6 +1,6 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Breadcrumb > renders snapshot 1`] = `
+exports[`Breadcrumb renders snapshot 1`] = `
 <DocumentFragment>
   <span
     class=""
@@ -16,44 +16,58 @@ exports[`Breadcrumb > renders snapshot 1`] = `
       >
         <div
           aria-label="Breadcrumb"
+          class="is_BreadcrumbRoot _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
           role="navigation"
         >
           <div
+            class="is_BreadcrumbList _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _fw-wrap"
             role="list"
           >
             <div
+              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
               role="listitem"
             >
-              <div
+              <a
+                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _fontWeight-500 is_BreadcrumbLink "
+                data-disable-theme="true"
                 href="#"
+                role="link"
               >
                 Home
-              </div>
+              </a>
               <span
                 aria-hidden="true"
+                class="is_BreadcrumbSeparator font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
               >
                 /
               </span>
             </div>
             <div
+              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
               role="listitem"
             >
-              <div
+              <a
+                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _fontWeight-500 is_BreadcrumbLink "
+                data-disable-theme="true"
                 href="#"
+                role="link"
               >
                 Section
-              </div>
+              </a>
               <span
                 aria-hidden="true"
+                class="is_BreadcrumbSeparator font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748"
               >
                 /
               </span>
             </div>
             <div
+              class="is_BreadcrumbItem _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center"
               role="listitem"
             >
               <span
                 aria-current="page"
+                class="is_BreadcrumbCurrent font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748 _fontWeight-600"
               >
                 Page
               </span>

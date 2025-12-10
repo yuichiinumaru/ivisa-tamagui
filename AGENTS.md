@@ -15,6 +15,8 @@ You are working on the **Ivisa Tamagui Design System**, a mission-critical infra
 6.  **Fail Loudly:** Components must throw errors for invalid states (e.g. missing Context), not fail silently.
 7.  **AuthN vs AuthZ:** Authentication and Authorization must be strictly separated. (Not applicable to UI lib, but general law).
 8.  **Stop-Loss:** If a refactor breaks > 3 tests and takes > 30 mins to fix, REVERT and Re-Plan.
+9.  **Package Manager Mandate:** You MUST use **Yarn** (`yarn`). Use of `npm` or `pnpm` is STRICTLY FORBIDDEN.
+10. **Testing Framework Mandate:** You MUST use **Jest** (`jest`). Use of `vitest` is STRICTLY FORBIDDEN.
 
 ---
 
@@ -34,12 +36,12 @@ The repository follows a strict **Atomic Design** layout in `packages/ui/src/`:
 
 ---
 
-37: ## 3. Workflow
-38: 1.  **Read:** `docs/01-plan.md` -> `docs/02-tasks.md`
-39: 2.  **Plan:** Use `set_plan`.
-40: 3.  **Execute:** Write Code -> Verify with `pnpm test` (Jest) or `pnpm storybook` (Webpack).
-41: 4.  **Audit:** Run `pnpm lint`.
-42: 5.  **Record:** Update `docs/04-changelog.md`.
+## 3. Workflow
+1.  **Read:** `docs/01-plan.md` -> `docs/02-tasks.md`
+2.  **Plan:** Use `set_plan`.
+3.  **Execute:** Write Code -> Verify with `yarn test` (Jest) or `yarn storybook` (Webpack).
+4.  **Audit:** Run `yarn lint`.
+5.  **Record:** Update `docs/04-changelog.md`.
 
 ---
 

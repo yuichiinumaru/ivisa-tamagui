@@ -95,8 +95,8 @@ We use a VS Code Multi-Root Workspace (`ivisa.code-workspace`) to manage the `iv
   - Runs against `packages/ui` to visualize each component in isolation.
   - Serves as living documentation for developers and designers.
   - Commands:
-    - `pnpm storybook` – launches the local catalog (default port `6006`, falls back to the next open port).
-    - `pnpm build-storybook` – generates the static Storybook build for preview/handoff.
+    - `yarn storybook` – launches the local catalog (default port `6006`, falls back to the next open port).
+    - `yarn build-storybook` – generates the static Storybook build for preview/handoff.
 - **Docs alignment:**
   - `docs/01-plan.md` captures high-level direction and phases.
   - `docs/02-tasks.md` tracks concrete tasks and status.
@@ -110,7 +110,7 @@ Storybook is the primary environment for developing, testing, and documenting UI
 - **Run Storybook:**
   ```bash
   cd ivisa-tamagui
-  pnpm storybook
+  yarn storybook
   ```
   This starts the development server at `http://localhost:6006`.
 
@@ -134,7 +134,7 @@ Storybook is the primary environment for developing, testing, and documenting UI
 
 - **Strict Rule:** This repository must remain framework-agnostic. It cannot depend on `next`, `expo`, or `remix`.
 - **Integration:** It is designed to be consumed as a Git Submodule.
-- **Details:** See [`docs/08-submodule-strategy.md`](./08-submodule-strategy.md) for the full strategy and integration workflows.
+- **Details:** Strategy and integration workflows are defined in the repository guidelines.
 
 ## 10. Upgrade Strategy
 
@@ -143,7 +143,7 @@ Storybook is the primary environment for developing, testing, and documenting UI
 - **Process:** Upgrades are treated as major maintenance tasks.
   1. Review Tamagui changelog for breaking changes (especially in Themes/Config).
   2. Bump versions in `package.json`.
-  3. Run `pnpm build` and `pnpm test`.
+  3. Run `yarn build` and `yarn test`.
   4. visually verify key components (`Button`, `Input`, `Sheet`) in Storybook.
 
 ### Headless Libraries
@@ -155,3 +155,22 @@ Storybook is the primary environment for developing, testing, and documenting UI
 - Components copied from references (e.g., `pogiii/sushi`, `tamagui-kitchen-sink`) are **detached** from their source once integrated.
 - **No Auto-Sync:** We do not automatically pull updates from these repos.
 - **Manual Re-harvest:** If a reference implementation significantly improves, we manually "re-harvest" the code, audit it, and merge it into our codebase, resolving any conflicts with our customization.
+
+## 11. Deployment Strategy (Vercel)
+
+The project is deployed to Vercel using a specific configuration to ensure stability and correct building of the Storybook artifacts.
+
+### Configuration
+- **Source of Truth:** `ivisa-tamagui/vercel.json` overrides any auto-detected settings.
+- **Root Directory:** Vercel "Root Directory" must be set to `ivisa-tamagui`.
+- **Package Manager:** **Yarn** (v1) is mandated. `pnpm-workspace.yaml` files are forbidden as they cause dependency conflicts.
+
+### Build Commands
+- **Install:** `yarn install`
+- **Build:** `yarn build:ci`
+  - This script executes `yarn build` (package build) AND `yarn build-storybook` (static site generation).
+  - **Crucial:** Never use `yarn storybook` (dev server) for deployment, as it hangs indefinitely.
+
+### Output & Assets
+- **Output Directory:** `packages/ui/storybook-static`
+- **Assets:** The directory `packages/ui/src/assets` MUST exist (even if empty, via `.gitkeep`) for the Storybook build process to succeed.

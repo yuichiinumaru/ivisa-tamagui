@@ -1,54 +1,50 @@
-import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { BadgeCounter } from './BadgeCounter'
-import { Button, XStack } from 'tamagui'
-import { Bell, Mail } from '@tamagui/lucide-icons'
+import { Button } from '../../atoms/Button'
+import { Bell } from '@tamagui/lucide-icons'
 
 const meta: Meta<typeof BadgeCounter> = {
-    title: 'Molecules/BadgeCounter',
-    component: BadgeCounter,
-    tags: ['autodocs'],
+  title: 'Molecules/BadgeCounter',
+  component: BadgeCounter,
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component: 'BadgeCounter wraps an element and displays a notification count badge.',
+      },
+    },
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    count: { control: 'number' },
+    max: { control: 'number' },
+    showZero: { control: 'boolean' },
+  },
 }
 
 export default meta
 
 type Story = StoryObj<typeof BadgeCounter>
 
-const IconWrapper = ({ children }: { children: React.ReactNode }) => (
-    <XStack
-        width={40}
-        height={40}
-        backgroundColor="$muted"
-        alignItems="center"
-        justifyContent="center"
-        borderRadius="$sm"
-        position="relative"
-    >
-        {children}
-    </XStack>
-)
-
 export const Default: Story = {
-    render: (args) => (
-        <XStack gap="$8" padding="$4">
-            <IconWrapper>
-                <Bell size={20} />
-                <BadgeCounter {...args} />
-            </IconWrapper>
+  args: {
+    count: 5,
+    children: <Button icon={Bell} circular size="$md" />,
+  },
+}
 
-            <IconWrapper>
-                <Mail size={20} />
-                <BadgeCounter count={5} />
-            </IconWrapper>
+export const Overflow: Story = {
+  args: {
+    count: 100,
+    max: 99,
+    children: <Button icon={Bell} circular size="$md" />,
+  },
+}
 
-            <IconWrapper>
-                <Bell size={20} />
-                <BadgeCounter variant="dot" />
-            </IconWrapper>
-        </XStack>
-    ),
-    args: {
-        count: 120,
-        limit: 99,
-    }
+export const ShowZero: Story = {
+  args: {
+    count: 0,
+    showZero: true,
+    children: <Button icon={Bell} circular size="$md" />,
+  },
 }

@@ -18,7 +18,7 @@ import {
 } from '@radix-ui/react-menubar'
 import { Check, ChevronRight, Circle } from '@tamagui/lucide-icons'
 import React from 'react'
-import { styled, Paragraph, GetProps, TamaguiElement } from 'tamagui'
+import { styled, Paragraph, GetProps } from 'tamagui'
 
 const MenubarFrame = styled(Root, {
   name: 'Menubar',

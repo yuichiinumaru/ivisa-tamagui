@@ -55,6 +55,8 @@ export * from './organisms/Carousel';
 export * from './organisms/Command';
 export * from './organisms/Sidebar';
 export * from './organisms/Charts';
+export * from './organisms/Timeline';
+export * from './organisms/FileUpload';
 export * from './molecules/Field';
 export * from './molecules/InputGroup';
 export * from './molecules/NativeSelect';
