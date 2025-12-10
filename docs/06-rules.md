@@ -17,5 +17,10 @@
 
 ## 3. Workflow
 - **Plan:** `set_plan` before code.
-- **Verify:** `pnpm test` or `pnpm storybook` after code.
+- **Verify:** `yarn test` or `yarn storybook` after code.
 - **Commit:** Descriptive messages.
+
+## 4. Deployment Integrity
+- **No Dev Servers in CI:** Build commands must always exit. Never use `yarn storybook` or `yarn dev` in Vercel. Use `yarn build:ci`.
+- **Config Supremacy:** `vercel.json` governs deployment. Verify it matches `package.json` scripts.
+- **Yarn Only:** `pnpm` and `npm` are forbidden. `yarn.lock` is the single source of truth.
