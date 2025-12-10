@@ -20,3 +20,6 @@
 - **Rite 4 (App):** Added i18n placeholders for hardcoded strings in `App.tsx`.
 - **Rite 5 (Hygiene):** Purged zombie comments and warnings from `Button.tsx` and `DatePicker.tsx`.
 
+## [Deployment Fix] - 2025-02-12
+- **Vercel:** Created `vercel.json` to fix hanging build (Storybook dev server) and set correct output directory.
+- **Cleanup:** Removed forbidden `pnpm-workspace.yaml`.
