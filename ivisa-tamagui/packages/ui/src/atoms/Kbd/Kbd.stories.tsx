@@ -1,31 +1,113 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Kbd } from './Kbd'
 import { XStack, Text } from 'tamagui'
+import { userEvent, within } from '@storybook/testing-library'
+import { expect } from '@storybook/jest'
 
 const meta: Meta<typeof Kbd> = {
   title: 'Atoms/Kbd',
   component: Kbd,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### Uso
+O componente \`Kbd\` é usado para exibir atalhos de teclado.
+
+### Variantes
+- **Tamanhos**: \`sm\`, \`default\`, \`lg\`.
+`,
+      },
+    },
+  },
+  argTypes: {
+    size: {
+      control: { type: 'select' },
+      options: ['sm', 'default', 'lg'],
+    },
+    children: {
+      control: { type: 'text' },
+    },
+    onClick: { action: 'clicked' },
+  },
 }
 
 export default meta
 type Story = StoryObj<typeof Kbd>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     children: '⌘K',
+    size: 'default',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const kbd = canvas.getByText('⌘K')
+    await userEvent.click(kbd)
+    expect(kbd).toBeInTheDocument()
   },
 }
 
-export const Combination: Story = {
-  render: () => (
+export const Pequeno: Story = {
+  args: {
+    ...Padrao.args,
+    size: 'sm',
+  },
+}
+
+export const Grande: Story = {
+  args: {
+    ...Padrao.args,
+    size: 'lg',
+  },
+}
+
+export const Combinacao: Story = {
+  render: (args) => (
     <XStack gap="$2" alignItems="center">
-      <Text>Press</Text>
-      <Kbd>⌘</Kbd>
+      <Text>Pressione</Text>
+      <Kbd {...args}>⌘</Kbd>
       <Text>+</Text>
-      <Kbd>Shift</Kbd>
+      <Kbd {...args}>Shift</Kbd>
       <Text>+</Text>
-      <Kbd>P</Kbd>
+      <Kbd {...args}>P</Kbd>
     </XStack>
-  )
+  ),
+  args: {
+    size: 'default',
+  },
+}
+
+export const TextoExtenso: Story = {
+  args: {
+    children: 'a'.repeat(100),
+    size: 'default',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Este teste verifica como o componente lida com textos muito longos.',
+      },
+    },
+  },
+}
+
+export const EmContainerPequeno: Story = {
+  render: (args) => (
+    <div style={{ maxWidth: '100px', border: '1px solid red', padding: '10px' }}>
+      <Kbd {...args} />
+    </div>
+  ),
+  args: {
+    children: 'TextoLongoParaTestarQuebra',
+    size: 'default',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Este teste verifica o comportamento do componente dentro de um contêiner com largura limitada.',
+      },
+    },
+  },
 }
