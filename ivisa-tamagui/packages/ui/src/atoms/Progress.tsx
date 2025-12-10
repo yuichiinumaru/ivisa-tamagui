@@ -1,4 +1,4 @@
-import { Progress as TamaguiProgress, styled, GetProps, YStack, Text } from 'tamagui'
+import { Progress as TamaguiProgress, styled, GetProps, YStack, Label } from 'tamagui'
 import React from 'react'
 
 const ProgressFrame = styled(TamaguiProgress, {
@@ -49,8 +49,8 @@ const Progress = React.forwardRef<React.ElementRef<typeof ProgressFrame>, Progre
     const id = React.useId()
     return (
         <YStack>
-            {label && <Text htmlFor={id}>{label}</Text>}
-            <ProgressFrame ref={ref} value={value} aria-valuenow={value} {...props} id={id}>
+            {label && <Label htmlFor={id}>{label}</Label>}
+            <ProgressFrame ref={ref} value={value} state={state} aria-valuenow={value} {...props} id={id}>
                 <ProgressIndicator />
             </ProgressFrame>
         </YStack>

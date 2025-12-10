@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Progress } from './Progress';
 import { YStack } from 'tamagui';
+import { userEvent, within } from '@storybook/testing-library';
 
 const meta: Meta<typeof Progress> = {
   title: 'atoms/Progresso',
@@ -34,6 +35,12 @@ export const Padrao: Story = {
     state: 'determinate',
   },
   name: 'Padrão',
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const progress = await canvas.findByRole('progressbar');
+    await userEvent.tab();
+    await expect(progress).toHaveFocus();
+  },
 };
 
 export const Vazio: Story = {
