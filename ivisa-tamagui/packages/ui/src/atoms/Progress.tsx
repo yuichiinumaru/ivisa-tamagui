@@ -1,146 +1,135 @@
-import { Progress as TamaguiProgress, styled, GetProps, Label, Text, YStack } from 'tamagui';
-import React from 'react';
+import { GetProps, styled, Text, XStack } from 'tamagui'
+import * as ProgressPrimitive from '@tamagui/progress'
+import React from 'react'
 
-// --- STYLED COMPONENTS ---
+// --- Subcomponents ---
 
-const ProgressFrame = styled(TamaguiProgress, {
-    name: 'Progress',
-    height: '$4',
-    marginHorizontal: '$true',
-    backgroundColor: '$secondary',
-    borderRadius: '$10',
-    overflow: 'hidden',
-    variants: {
-        state: {
-            indeterminate: {
-                animation: 'pulse',
-                animationIterationCount: 'infinite',
-            },
-        },
-        size: {
-            sm: { height: '$2' },
-            md: { height: '$4' },
-            lg: { height: '$6' },
-        },
-    } as const,
-});
+// 1. Indicator
+const ProgressIndicatorFrame = styled(ProgressPrimitive.Indicator, {
+  name: 'ProgressIndicator',
+  height: '100%',
+  width: '100%',
+  backgroundColor: '$primary',
 
-const StyledIndicator = styled(TamaguiProgress.Indicator, {
-    name: 'ProgressIndicator',
-    backgroundColor: '$primary',
-    height: '100%',
-    width: '100%',
-    animation: 'quick',
-    variants: {
-        status: {
-            info: { backgroundColor: '$blue9' },
-            success: { backgroundColor: '$green9' },
-            warning: { backgroundColor: '$yellow9' },
-            danger: { backgroundColor: '$red9' },
-        },
-    } as const,
-});
+  variants: {
+    status: {
+      default: { backgroundColor: '$primary' },
+      success: { backgroundColor: '$green10' },
+      warning: { backgroundColor: '$yellow10' },
+      error: { backgroundColor: '$red10' },
+    },
+  },
+  defaultVariants: {
+    status: 'default',
+  },
+})
 
-// --- CONTEXT ---
+// 2. Root (Frame) - The Bar itself
+const ProgressFrame = styled(ProgressPrimitive.Progress, {
+  name: 'Progress',
+  overflow: 'hidden',
+  backgroundColor: '$secondary',
+  borderRadius: 1000,
+  flex: 1, // Allow it to fill space if in a stack
 
-type ProgressContextValue = {
-    id: string;
-    value?: number;
-    size?: 'sm' | 'md' | 'lg';
-    status?: 'info' | 'success' | 'warning' | 'danger';
-    state?: 'determinate' | 'indeterminate';
-    showValue?: boolean;
-    'aria-valuetext'?: string;
-};
+  variants: {
+    size: {
+      xs: { height: 2 },
+      sm: { height: 4 },
+      md: { height: 8 },
+      lg: { height: 12 },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+  },
+})
 
-const ProgressContext = React.createContext<ProgressContextValue | null>(null);
+// 3. Label (Optional internal label)
+const ProgressLabel = styled(Text, {
+  name: 'ProgressLabel',
+  color: '$color',
+  fontSize: '$3',
+  marginBottom: '$2',
+})
 
-const useProgressContext = () => {
-    const context = React.useContext(ProgressContext);
-    if (!context) {
-        throw new Error('Progress sub-components must be used within a <Progress.Root>');
+// --- Exports & Types ---
+
+export type ProgressIndicatorProps = GetProps<typeof ProgressIndicatorFrame>
+export type ProgressProps = GetProps<typeof ProgressFrame> & {
+  value?: number
+  /**
+   * If true, displays the percentage value to the right of the bar.
+   */
+  showValue?: boolean
+  /**
+   * Label text.
+   */
+  label?: string
+  /**
+   * Status variant for the indicator (color).
+   */
+  status?: ProgressIndicatorProps['status']
+}
+
+// --- Main Component ---
+
+/**
+ * Progress Atom
+ *
+ * Displays an indicator showing the completion progress of a task.
+ * Supports Compound Pattern (<Progress><Progress.Indicator /></Progress>)
+ * and Facade Pattern (<Progress value={50} />).
+ */
+const ProgressComponent = React.forwardRef<React.ElementRef<typeof ProgressFrame>, ProgressProps>(
+  ({ value, showValue, label, status, size, children, ...props }, ref) => {
+    // Compound Mode: If children are present, render them directly inside the Frame.
+    // NOTE: If using Compound Mode, automatic label/value placement is disabled.
+    if (children) {
+      return (
+        <ProgressFrame ref={ref} value={value} size={size} {...props}>
+          {children}
+        </ProgressFrame>
+      )
     }
-    return context;
-};
 
-// --- COMPONENT API ---
+    // Facade Mode: Render standard structure
+    // To solve the "Clipping" issue and "Atom" constraints:
+    // If showValue is true, we wrap the Bar and Text in an XStack.
+    // This changes the root element from a div (primitive) to a div (stack).
+    // This is acceptable for a "smart" atom facade.
 
-export type ProgressRootProps = GetProps<typeof ProgressFrame> & {
-    /** The current value of the progress bar. */
-    value?: number;
-    /** The state of the progress bar. @default "determinate" */
-    state?: 'determinate' | 'indeterminate';
-    /** The size of the progress bar. @default "md" */
-    size?: 'sm' | 'md' | 'lg';
-    /** The status of the progress bar, which determines its color. @default "info" */
-    status?: 'info' | 'success' | 'warning' | 'danger';
-    /** Whether to display the current value as a percentage. @default false */
-    showValue?: boolean;
-    /** Human-readable text for the current value, for screen readers. */
-    'aria-valuetext'?: string;
-};
+    const Bar = (
+       <ProgressFrame ref={ref} value={value} size={size} {...props}>
+          <ProgressIndicatorFrame status={status} animation="bouncy" />
+       </ProgressFrame>
+    )
 
-const Root = React.forwardRef<React.ElementRef<typeof ProgressFrame>, ProgressRootProps>(
-    ({ value, state = 'determinate', size = 'md', status = 'info', showValue = false, 'aria-valuetext': ariaValueText, children, ...props }, ref) => {
-        const id = React.useId();
-        const contextValue: ProgressContextValue = { id, value, state, size, status, showValue, 'aria-valuetext': ariaValueText };
-
+    if (showValue) {
         return (
-            <ProgressContext.Provider value={contextValue}>
-                <YStack>
-                    <ProgressFrame
-                        ref={ref}
-                        id={id}
-                        value={value}
-                        state={state}
-                        size={size}
-                        aria-valuenow={value}
-                        aria-valuetext={ariaValueText}
-                        aria-busy={state === 'indeterminate'}
-                        {...props}
-                    >
-                        {children}
-                    </ProgressFrame>
-                    {showValue && value && (
-                        <Text fontSize={12} color="$gray11" alignSelf="flex-end" marginTop="$1">
-                            {value}%
-                        </Text>
-                    )}
-                </YStack>
-            </ProgressContext.Provider>
-        );
+            <XStack alignItems="center" gap="$3" width="100%">
+                {Bar}
+                <Text
+                    fontSize="$1"
+                    color="$color"
+                    minWidth={30} // Prevent layout shift
+                    textAlign="right"
+                >
+                    {Math.round(value ?? 0)}%
+                </Text>
+            </XStack>
+        )
     }
-);
-Root.displayName = 'Progress.Root';
 
+    return Bar
+  }
+)
 
-export type ProgressIndicatorProps = GetProps<typeof StyledIndicator>;
+ProgressComponent.displayName = 'Progress'
 
-const Indicator = React.forwardRef<React.ElementRef<typeof StyledIndicator>, ProgressIndicatorProps>(
-    (props, ref) => {
-        const { status } = useProgressContext();
-        return <StyledIndicator ref={ref} status={status} {...props} />;
-    }
-);
-Indicator.displayName = 'Progress.Indicator';
-
-
-export type ProgressLabelProps = GetProps<typeof Label> & {
-    children?: React.ReactNode;
-};
-
-const ProgressLabel = React.forwardRef<React.ElementRef<typeof Label>, ProgressLabelProps>(
-    ({ children, ...props }, ref) => {
-        const { id } = useProgressContext();
-        return <Label ref={ref} htmlFor={id} {...props}>{children}</Label>;
-    }
-);
-ProgressLabel.displayName = 'Progress.Label';
-
-// --- EXPORT ---
-
-export const Progress = {
-    Root,
-    Indicator,
-    Label: ProgressLabel,
-};
+// Bind subcomponents for Compound Pattern
+export const Progress = Object.assign(ProgressComponent, {
+  Indicator: ProgressIndicatorFrame,
+  Label: ProgressLabel,
+  Root: ProgressComponent,
+})
