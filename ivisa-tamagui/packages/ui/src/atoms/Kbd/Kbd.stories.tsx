@@ -78,22 +78,6 @@ export const Sutil: Story = {
   },
 }
 
-export const Combinacao: Story = {
-  render: (args) => (
-    <XStack gap="$2" alignItems="center">
-      <Text>Pressione</Text>
-      <Kbd {...args}>⌘</Kbd>
-      <Text>+</Text>
-      <Kbd {...args}>Shift</Kbd>
-      <Text>+</Text>
-      <Kbd {...args}>P</Kbd>
-    </XStack>
-  ),
-  args: {
-    size: 'default',
-  },
-}
-
 export const ComoBotao: Story = {
   render: (args) => (
     <Kbd {...args}>
@@ -109,6 +93,22 @@ export const ComIcone: Story = {
   args: {
     ...Padrao.args,
     iconBefore: <Search size={12} />,
+  },
+}
+
+export const Combinacao: Story = {
+  render: (args) => (
+    <XStack gap="$2" alignItems="center">
+      <Text>Pressione</Text>
+      <Kbd {...args}>⌘</Kbd>
+      <Text>+</Text>
+      <Kbd {...args}>Shift</Kbd>
+      <Text>+</Text>
+      <Kbd {...args}>P</Kbd>
+    </XStack>
+  ),
+  args: {
+    size: 'default',
   },
 }
 

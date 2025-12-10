@@ -1,77 +1,169 @@
-import { GetProps, styled, Text, View } from 'tamagui'
+import { cloneElement, forwardRef } from 'react';
+import { GetProps, styled, Text, View } from 'tamagui';
+import { Slot } from '@tamagui/core';
 
-export const Badge = styled(View, {
-    name: 'Badge',
-    tag: 'div',
-    borderRadius: '$full', // Pill shape default
-    borderWidth: 1,
-    paddingHorizontal: '$2.5',
-    paddingVertical: '$0.5',
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    // Default text styles for children
-    // Note: Tamagui doesn't cascade text styles to non-Text children easily without context,
-    // but if we use <Badge><Text>...</Text></Badge>, we might need a specific Text component or just rely on inheritance if configured.
-    // For now, we'll assume usage like <Badge><Text>Label</Text></Badge> or just style the container.
-
-    variants: {
-        variant: {
-            default: {
-                backgroundColor: '$primary',
-                borderColor: 'transparent',
-                // Text color needs to be handled. Usually primary-foreground.
-                // In Tamagui we can use `color` prop on the container and hope it cascades or use specific Text theme.
-            },
-            secondary: {
-                backgroundColor: '$secondary',
-                borderColor: 'transparent',
-            },
-            destructive: {
-                backgroundColor: '$destructive',
-                borderColor: 'transparent',
-            },
-            outline: {
-                backgroundColor: 'transparent',
-                borderColor: '$borderColor',
-            },
-        },
-    } as const,
-
-    defaultVariants: {
-        variant: 'default',
+const badgeVariants = {
+  variant: {
+    default: {
+      backgroundColor: '$primary',
+      borderColor: 'transparent',
+      color: '$primaryForeground',
     },
-})
+    secondary: {
+      backgroundColor: '$secondary',
+      borderColor: 'transparent',
+      color: '$secondaryForeground',
+    },
+    destructive: {
+      backgroundColor: '$destructive',
+      borderColor: 'transparent',
+      color: '$destructiveForeground',
+    },
+    outline: {
+      backgroundColor: 'transparent',
+      borderColor: '$borderColor',
+      color: '$foreground',
+    },
+  },
+} as const;
 
-// Helper Text component for Badge if needed, but usually we just use standard Text with size adjustments.
-// Let's export a BadgeText for convenience.
-export const BadgeText = styled(Text, {
-    name: 'BadgeText',
-    fontSize: '$1',
-    fontWeight: '600',
-    fontFamily: '$body',
+const BadgeFrame = styled(View, {
+  name: 'Badge',
+  tag: 'div',
+  borderRadius: '$full',
+  borderWidth: 1,
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '$1.5',
 
-    variants: {
-        variant: {
-            default: {
-                color: '$primaryForeground',
-            },
-            secondary: {
-                color: '$secondaryForeground',
-            },
-            destructive: {
-                color: '$destructiveForeground',
-            },
-            outline: {
-                color: '$foreground',
-            },
-        }
-    } as const,
+  // Interactive states
+  hoverStyle: {
+    opacity: 0.8,
+  },
+  focusStyle: {
+    outlineColor: '$focusRingColor',
+    outlineWidth: 2,
+    outlineStyle: 'solid',
+  },
+  pressStyle: {
+    opacity: 0.9,
+  },
 
-    defaultVariants: {
-        variant: 'default',
-    }
-})
+  variants: {
+    variant: {
+      ...Object.fromEntries(
+        Object.entries(badgeVariants.variant).map(([key, value]) => [
+          key,
+          {
+            backgroundColor: value.backgroundColor,
+            borderColor: value.borderColor,
+          },
+        ])
+      ),
+    },
+    size: {
+      sm: {
+        paddingHorizontal: '$2',
+        paddingVertical: '$0.5',
+      },
+      md: {
+        paddingHorizontal: '$2.5',
+        paddingVertical: '$0.5',
+      },
+      lg: {
+        paddingHorizontal: '$3',
+        paddingVertical: '$1',
+      },
+    },
+  } as const,
 
-export type BadgeProps = GetProps<typeof Badge>
-export type BadgeTextProps = GetProps<typeof BadgeText>
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+  },
+});
+
+const BadgeText = styled(Text, {
+  name: 'BadgeText',
+  fontWeight: '600',
+  fontFamily: '$body',
+  variants: {
+    variant: {
+      ...Object.fromEntries(
+        Object.entries(badgeVariants.variant).map(([key, value]) => [
+          key,
+          {
+            color: value.color,
+          },
+        ])
+      ),
+    },
+    size: {
+      sm: {
+        fontSize: '$1',
+      },
+      md: {
+        fontSize: '$2',
+      },
+      lg: {
+        fontSize: '$3',
+      },
+    },
+  } as const,
+
+  defaultVariants: {
+    variant: 'default',
+    size: 'md',
+  },
+});
+
+type BadgeProps = GetProps<typeof BadgeFrame> & {
+  /**
+   * Se a Badge deve ser renderizada como um filho do elemento anterior.
+   */
+  asChild?: boolean;
+  /**
+   * O conteúdo a ser exibido dentro da Badge. Pode ser um texto ou um elemento React.
+   */
+  children?: React.ReactNode;
+  /**
+   * Ícone a ser exibido à esquerda do texto.
+   */
+  leftIcon?: React.ReactElement;
+  /**
+   * Ícone a ser exibido à direita do texto.
+   */
+  rightIcon?: React.ReactElement;
+};
+
+export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
+  ({ children, asChild, variant = 'default', size = 'md', leftIcon, rightIcon, ...props }, ref) => {
+    const Component = asChild ? Slot : BadgeFrame;
+
+    const renderIcon = (icon: React.ReactElement) => {
+      if (!icon) return null;
+      return cloneElement(icon, {
+        size: 12, // Consistent icon size
+      });
+    };
+
+    return (
+      <Component {...props} variant={variant} size={size} ref={ref}>
+        {renderIcon(leftIcon)}
+        {asChild ? (
+          children
+        ) : typeof children === 'string' ? (
+          <BadgeText variant={variant} size={size}>{children}</BadgeText>
+        ) : (
+          children
+        )}
+        {renderIcon(rightIcon)}
+      </Component>
+    );
+  }
+);
+
+Badge.displayName = 'Badge';
+
+export { BadgeText };

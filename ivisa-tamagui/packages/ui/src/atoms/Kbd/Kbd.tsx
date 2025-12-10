@@ -10,6 +10,8 @@ const StyledKbd = styled(XStack, {
   borderRadius: '$2',
   borderWidth: 1,
   borderColor: '$borderColor',
+  justifyContent: 'center',
+  alignItems: 'center',
 
   hoverStyle: {
     backgroundColor: '$backgroundHover',
@@ -34,22 +36,16 @@ const StyledKbd = styled(XStack, {
     },
     size: {
       sm: {
-        fontSize: 10,
-        fontWeight: '400',
         paddingHorizontal: 4,
         paddingVertical: 1,
         minWidth: 16,
       },
       default: {
-        fontSize: 12,
-        fontWeight: '500',
         paddingHorizontal: 6,
         paddingVertical: 2,
         minWidth: 20,
       },
       lg: {
-        fontSize: 14,
-        fontWeight: '600',
         paddingHorizontal: 8,
         paddingVertical: 3,
         minWidth: 24,
@@ -61,6 +57,22 @@ const StyledKbd = styled(XStack, {
     size: 'default',
     variant: 'default',
   },
+})
+
+// Inner Text style to handle font sizes from main
+const KbdText = styled(Text, {
+  fontFamily: '$body',
+  color: '$color',
+  variants: {
+      size: {
+        sm: { fontSize: 10, fontWeight: '400' },
+        default: { fontSize: 12, fontWeight: '500' },
+        lg: { fontSize: 14, fontWeight: '600' },
+      }
+  },
+  defaultVariants: {
+      size: 'default'
+  }
 })
 
 type StyledKbdProps = GetProps<typeof StyledKbd>
@@ -112,10 +124,11 @@ const Kbd = React.forwardRef<TamaguiElement, KbdProps>(
     ref,
   ) => {
     const Comp = asChild ? Slot : StyledKbd
+    // Pass size to Text as well
     return (
       <Comp ref={ref} size={size} variant={variant} {...props} tag="kbd">
         {iconBefore}
-        <Text>{children}</Text>
+        <KbdText size={size as any}>{children}</KbdText>
         {iconAfter}
       </Comp>
     )
