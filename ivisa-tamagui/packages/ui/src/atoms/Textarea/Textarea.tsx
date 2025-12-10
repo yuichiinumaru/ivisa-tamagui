@@ -1,25 +1,32 @@
 import React from 'react'
-import { TextArea as TamaguiTextArea, styled, GetProps } from 'tamagui'
+import {
+  TextArea as TamaguiTextArea,
+  styled,
+  GetProps,
+  XStack,
+  YStack,
+} from 'tamagui'
 import { StyleProp, TextStyle } from 'react-native'
 
+import { Label } from '../Label'
+import { Spinner } from '../Spinner'
 import { withErrorLogging } from '../../utils/withErrorLogging'
 
 const StyledTextarea = styled(TamaguiTextArea, {
   name: 'Textarea',
   fontFamily: '$body',
   color: '$foreground',
-  backgroundColor: '$background',
+  backgroundColor: 'transparent',
   placeholderTextColor: '$color.gray10',
-  borderColor: '$borderColor',
-  borderWidth: 1,
-  borderRadius: '$sm',
+  borderColor: 'transparent',
+  borderWidth: 0,
   width: '100%',
   minHeight: 120,
-  px: '$3',
-  py: '$2',
+  px: '$0',
+  py: '$0',
   focusStyle: {
-    borderColor: '$ring',
-    borderWidth: 2,
+    borderColor: 'transparent',
+    borderWidth: 0,
   },
   disabledStyle: {
     opacity: 0.6,
@@ -80,10 +87,42 @@ type StyledTextareaProps = GetProps<typeof StyledTextarea>
 
 export interface TextareaProps
   extends Omit<StyledTextareaProps, 'variant' | 'size'> {
+  /**
+   * The visual style of the textarea.
+   * @default 'default'
+   */
   variant?: StyledTextareaProps['variant']
+  /**
+   * The size of the textarea.
+   * @default 'default'
+   */
   size?: StyledTextareaProps['size']
+  /**
+   * If true, the textarea will be displayed in an invalid state.
+   * @default false
+   */
   invalid?: boolean
+  /**
+   * Custom style for the textarea.
+   */
   style?: StyleProp<TextStyle>
+  /**
+   * The label for the textarea.
+   */
+  label?: string
+  /**
+   * An icon to display on the left side of the textarea.
+   */
+  leftIcon?: React.ReactNode
+  /**
+   * An icon to display on the right side of the textarea.
+   */
+  rightIcon?: React.ReactNode
+  /**
+   * If true, the textarea will be in a loading state.
+   * @default false
+   */
+  loading?: boolean
 }
 
 /**
@@ -99,6 +138,10 @@ const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, 
       size = 'default',
       invalid = false,
       style,
+      label,
+      leftIcon,
+      rightIcon,
+      loading = false,
       ...props
     },
     ref
@@ -106,17 +149,45 @@ const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, 
     // Merge default style with user provided style
     // We cast the literal object to allow 'resize' property which might not be in standard RN TextStyle
     const defaultStyle = { resize: 'vertical' } as unknown as StyleProp<TextStyle>
+    const id = React.useId()
 
     return (
-      <StyledTextarea
-        ref={ref}
-        variant={variant}
-        size={size}
-        invalid={invalid || undefined}
-        aria-invalid={invalid}
-        style={[defaultStyle, style]}
-        {...props}
-      />
+      <YStack width="100%" space="$2">
+        {label && <Label htmlFor={id}>{label}</Label>}
+        <XStack
+          alignItems="center"
+          space="$2"
+          borderColor={invalid ? '$destructive' : '$borderColor'}
+          borderWidth={1}
+          borderRadius="$sm"
+          px="$3"
+          py="$2"
+          focusStyle={{
+            borderColor: '$ring',
+            borderWidth: 2,
+          }}
+          hoverStyle={{
+            borderColor: '$borderColorHover',
+          }}
+          pressStyle={{
+            borderColor: '$borderColorPress',
+          }}
+        >
+          {leftIcon}
+          <StyledTextarea
+            ref={ref}
+            id={id}
+            variant={variant}
+            size={size}
+            invalid={invalid || undefined}
+            aria-invalid={invalid}
+            style={[defaultStyle, style]}
+            disabled={loading || props.disabled}
+            {...props}
+          />
+          {loading ? <Spinner /> : rightIcon}
+        </XStack>
+      </YStack>
     )
   }
 )
