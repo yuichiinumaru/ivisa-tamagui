@@ -1,6 +1,6 @@
 import { cloneElement, forwardRef } from 'react';
 import { GetProps, styled, Text, View } from 'tamagui';
-import { Slot } from '@tamagui/slot';
+import { Slot } from '@tamagui/core';
 
 const badgeVariants = {
   variant: {
@@ -141,3 +141,5 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 );
 
 Badge.displayName = 'Badge';
+
+export { BadgeText };
