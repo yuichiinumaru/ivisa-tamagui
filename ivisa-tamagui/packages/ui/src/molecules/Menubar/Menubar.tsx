@@ -18,7 +18,8 @@ import {
 } from '@radix-ui/react-menubar'
 import { Check, ChevronRight, Circle } from '@tamagui/lucide-icons'
 import React from 'react'
-import { styled, Paragraph, GetProps } from 'tamagui'
+import { styled, Paragraph, GetProps, YStack } from 'tamagui'
+import { Skeleton } from '../../atoms/Skeleton'
 
 const MenubarFrame = styled(Root, {
   name: 'Menubar',
@@ -95,6 +96,9 @@ const MenubarContentFrame = styled(Content, {
   shadowRadius: 10,
   shadowOffset: { width: 0, height: 4 },
   shadowOpacity: 0.1,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '$1',
 })
 
 const MenubarContent = React.forwardRef<React.ElementRef<typeof Content>, GetProps<typeof MenubarContentFrame>>(({ align = 'start', alignOffset = -4, sideOffset = 8, ...props }, ref) => (
@@ -267,7 +271,6 @@ const MenubarSeparator = styled(Separator, {
   name: 'MenubarSeparator',
   height: 1,
   backgroundColor: '$muted',
-  marginVertical: '$1',
   marginHorizontal: '-$1',
 })
 
@@ -345,9 +348,52 @@ MenubarSubContent.displayName = SubContent.displayName
 
 const MenubarSub = Sub
 const MenubarRadioGroup = RadioGroup
+const MenubarRoot = MenubarFrame
+
+type MenubarProps = GetProps<typeof MenubarFrame> & {
+  isLoading?: boolean
+  hasError?: boolean
+  isDisabled?: boolean
+  rightSlot?: React.ReactNode
+}
+
+import { Spacer } from 'tamagui'
+
+const Menubar = ({
+  isLoading,
+  hasError,
+  isDisabled,
+  rightSlot,
+  children,
+  ...props
+}: MenubarProps) => {
+  if (isLoading) {
+    return (
+      <YStack width="100%" space="$2">
+        <Skeleton height="$4" width="100%" />
+      </YStack>
+    );
+  }
+
+  return (
+    <MenubarRoot
+      {...props}
+      opacity={isDisabled ? 0.5 : 1}
+      borderColor={hasError ? '$red10' : '$borderColor'}
+    >
+      {children}
+      {rightSlot && (
+        <>
+          <Spacer />
+          {rightSlot}
+        </>
+      )}
+    </MenubarRoot>
+  )
+}
 
 export {
-  MenubarFrame as Menubar,
+  Menubar,
   MenubarMenu,
   MenubarTrigger,
   MenubarContent,
