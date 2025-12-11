@@ -2,10 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
+import { YStack, H3 } from 'tamagui'
 import { Button } from '../../atoms/Button'
 import { Input } from '../../atoms/Input'
 import { Checkbox } from '../../atoms/Checkbox'
 import { Select } from '../../molecules/Select'
+import { Skeleton } from '../../atoms/Skeleton'
+import { Alert } from '../../molecules/Alert'
 import {
   Form,
   FormControl,
@@ -14,11 +17,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormRoot,
+  FormFooter,
 } from './Form'
-import { YStack, H3 } from 'tamagui'
 
 const meta: Meta = {
   title: 'Organisms/Form',
+  component: Form,
   parameters: {
     layout: 'centered',
   },
@@ -27,181 +32,195 @@ const meta: Meta = {
 
 export default meta
 
-// 1. Login Form Example
-const loginSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  password: z.string().min(6, {
-    message: "Password must be at least 6 characters.",
-  }),
-})
-
-const LoginForm = () => {
-  const form = useForm<z.infer<typeof loginSchema>>({
-    // @ts-expect-error - zod version mismatch workaround
-    resolver: zodResolver(loginSchema),
-    defaultValues: {
-      username: "",
-      password: "",
-    },
-  })
-
-  function onSubmit(values: z.infer<typeof loginSchema>) {
-    alert(JSON.stringify(values, null, 2))
-  }
-
-  return (
-    <YStack width={350} padding="$md" borderWidth={1} borderColor="$borderColor" borderRadius="$md" gap="$md">
-      <H3>Login</H3>
-      <Form {...form}>
-        <YStack gap="$md">
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <YStack gap="$md">
-              <FormField
-                control={form.control}
-                name="username"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Username</FormLabel>
-                    <FormControl>
-                      <Input placeholder="shadcn" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      This is your public display name.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input secureTextEntry placeholder="******" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <Button>Submit</Button>
-            </YStack>
-          </form>
-        </YStack>
-      </Form>
-    </YStack>
-  )
-}
-
-export const Login: StoryObj = {
-  render: () => <LoginForm />
-}
-
-// 2. Full Profile Form Example (Select, Checkbox)
+// --- Schema Definition ---
 const profileSchema = z.object({
-  email: z.string().email(),
-  role: z.string().min(1, "Please select a role."),
+  email: z.string().email({ message: 'Por favor, insira um email válido.' }),
+  role: z.string().min(1, 'Por favor, selecione um cargo.'),
   marketing: z.boolean().default(false).optional(),
 })
 
-const ProfileForm = () => {
-  const form = useForm<z.infer<typeof profileSchema>>({
+type ProfileFormValues = z.infer<typeof profileSchema>
+
+// --- Reusable Organism Component ---
+interface ProfileFormProps {
+  isLoading?: boolean
+  error?: string | null
+  onSubmit: (values: ProfileFormValues) => void
+  footer: React.ReactNode
+}
+
+const ProfileForm = ({ isLoading, error, onSubmit, footer }: ProfileFormProps) => {
+  const form = useForm<ProfileFormValues>({
     // @ts-expect-error - zod version mismatch workaround
     resolver: zodResolver(profileSchema),
     defaultValues: {
-      email: "",
+      email: '',
+      role: undefined,
       marketing: true,
     },
   })
 
-  function onSubmit(values: z.infer<typeof profileSchema>) {
-    alert(JSON.stringify(values, null, 2))
-  }
-
   const roles = [
-    { value: 'admin', label: 'Administrator' },
-    { value: 'user', label: 'User' },
-    { value: 'guest', label: 'Guest' },
+    { value: 'admin', label: 'Administrador' },
+    { value: 'user', label: 'Usuário' },
+    { value: 'guest', label: 'Convidado' },
   ]
 
   return (
-    <YStack width={400} padding="$md" borderWidth={1} borderColor="$borderColor" borderRadius="$md" gap="$md">
-      <H3>Create Profile</H3>
+    <YStack width={400} padding="$4" borderWidth={1} borderColor="$borderColor" borderRadius="$lg">
+      <H3>Criar Perfil</H3>
       <Form {...form}>
-        <YStack gap="$md">
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <YStack gap="$md">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="m@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="role"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Role</FormLabel>
-                    <Select
-                      items={roles}
-                      placeholder="Select a role"
-                      value={field.value}
-                      onValueChange={field.onChange}
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <YStack gap="$4">
+            <FormRoot>
+              {/* Loading State */}
+              {isLoading ? (
+                <YStack gap="$4">
+                  <YStack gap="$2">
+                    <Skeleton height={20} width={100} />
+                    <Skeleton height={40} />
+                  </YStack>
+                  <YStack gap="$2">
+                    <Skeleton height={20} width={80} />
+                    <Skeleton height={40} />
+                  </YStack>
+                  <YStack gap="$2" flexDirection="row" alignItems="center">
+                    <Skeleton height={24} width={24} />
+                    <Skeleton height={20} width={200} />
+                  </YStack>
+                </YStack>
+              ) : (
+                <>
+                  {/* Error State */}
+                  {error && (
+                    <Alert
+                      variant="destructive"
+                      title="Ocorreu um erro"
+                      message={error}
                     />
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                  )}
 
-              <FormField
-                control={form.control}
-                name="marketing"
-                render={({ field }) => (
-                  <FormItem>
-                    <YStack flexDirection="row" alignItems="center" gap="$md" paddingVertical="$sm">
-                      <FormControl>
-                        <Checkbox
-                          id="marketing"
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                          <Input placeholder="seu@email.com" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="role"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Cargo</FormLabel>
+                        <Select
+                          items={roles}
+                          placeholder="Selecione um cargo"
+                          value={field.value}
+                          onValueChange={field.onChange}
                         />
-                      </FormControl>
-                      <YStack gap="$xs">
-                        <FormLabel htmlFor="marketing" style={{ marginBottom: 0 }}>
-                          Marketing emails
-                        </FormLabel>
-                        <FormDescription>
-                          Receive emails about new features.
-                        </FormDescription>
-                      </YStack>
-                    </YStack>
-                  </FormItem>
-                )}
-              />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
-              <Button>Save Profile</Button>
-            </YStack>
-          </form>
-        </YStack>
+                  <FormField
+                    control={form.control}
+                    name="marketing"
+                    render={({ field }) => (
+                      <FormItem>
+                        <YStack flexDirection="row" alignItems="center" gap="$2" paddingTop="$2">
+                          <FormControl>
+                            <Checkbox
+                              id="marketing"
+                              checked={field.value}
+                              onCheckedChange={field.onChange}
+                            />
+                          </FormControl>
+                          <YStack gap="$1">
+                            <FormLabel htmlFor="marketing" style={{ marginBottom: 0 }}>
+                              Emails de marketing
+                            </FormLabel>
+                            <FormDescription>
+                              Receba emails sobre novos produtos e recursos.
+                            </FormDescription>
+                          </YStack>
+                        </YStack>
+                      </FormItem>
+                    )}
+                  />
+                </>
+              )}
+            </FormRoot>
+            {footer}
+          </YStack>
+        </form>
       </Form>
     </YStack>
   )
 }
 
-export const Complex: StoryObj = {
-  render: () => <ProfileForm />
+// --- Stories ---
+const Template: StoryObj<ProfileFormProps> = {
+  render: (args) => <ProfileForm {...args} />,
+}
+
+export const Completo = {
+  ...Template,
+  args: {
+    isLoading: false,
+    error: null,
+    onSubmit: (values: ProfileFormValues) => {
+      alert(JSON.stringify(values, null, 2))
+    },
+    footer: (
+      <FormFooter>
+        <Button variant="outline">Cancelar</Button>
+        <Button>Salvar Perfil</Button>
+      </FormFooter>
+    ),
+  },
+}
+
+export const Carregando = {
+  ...Template,
+  args: {
+    ...Completo.args,
+    isLoading: true,
+    footer: (
+      <FormFooter>
+        <Button variant="outline" disabled>Cancelar</Button>
+        <Button disabled>Salvando...</Button>
+      </FormFooter>
+    ),
+  },
+}
+
+export const ComErro = {
+  ...Template,
+  args: {
+    ...Completo.args,
+    error: 'Ocorreu um erro ao enviar o formulário. Tente novamente.',
+  },
+}
+
+export const ConteinerEstreito = {
+  ...Template,
+  args: {
+    ...Completo.args,
+  },
+  decorators: [
+    (Story: any) => (
+      <YStack width={320}>
+        <Story />
+      </YStack>
+    ),
+  ],
 }
