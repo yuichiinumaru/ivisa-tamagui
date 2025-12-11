@@ -1,7 +1,15 @@
 import React from 'react'
-import { AlertDialog as TamaguiAlertDialog, AlertDialogContentProps, styled, XStack, YStack } from 'tamagui'
+import {
+  AlertDialog as TamaguiAlertDialog,
+  AlertDialogContentProps,
+  styled,
+  XStack,
+  YStack,
+  Spinner,
+} from 'tamagui'
+import { Button } from '../../atoms/Button'
 
-// Styled Components
+// Styled Components (retained for composition)
 const AlertDialogOverlay = styled(TamaguiAlertDialog.Overlay, {
   name: 'AlertDialogOverlay',
   backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -21,7 +29,14 @@ const AlertDialogContent = styled(TamaguiAlertDialog.Content, {
   borderWidth: 1,
   borderColor: '$borderColor',
 
-  // Animation
+  variants: {
+    error: {
+      true: {
+        borderColor: '$red10',
+      },
+    },
+  },
+
   animation: [
     'quick',
     {
@@ -50,6 +65,13 @@ const AlertDialogTitle = styled(TamaguiAlertDialog.Title, {
   fontSize: '$6',
   fontWeight: '600',
   color: '$foreground',
+  variants: {
+    error: {
+      true: {
+        color: '$red10',
+      },
+    },
+  },
 })
 
 const AlertDialogDescription = styled(TamaguiAlertDialog.Description, {
@@ -70,28 +92,93 @@ const AlertDialogFooter = styled(XStack, {
 const AlertDialogAction = TamaguiAlertDialog.Action
 const AlertDialogCancel = TamaguiAlertDialog.Cancel
 
-export const AlertDialog = TamaguiAlertDialog
-export const AlertDialogTrigger = TamaguiAlertDialog.Trigger
-export const AlertDialogPortal = TamaguiAlertDialog.Portal
+const AlertDialogPortal = TamaguiAlertDialog.Portal
 
-export const AlertDialogContentComposite = React.forwardRef<React.ElementRef<typeof AlertDialogContent>, AlertDialogContentProps>((props, ref) => {
+const AlertDialogContentComposite = React.forwardRef<
+  React.ElementRef<typeof AlertDialogContent>,
+  AlertDialogContentProps & { hasError?: boolean }
+>(({ hasError, ...props }, ref) => {
   return (
     <AlertDialogPortal>
       <AlertDialogOverlay key="overlay" />
-      <AlertDialogContent key="content" ref={ref} {...props} />
+      <AlertDialogContent key="content" ref={ref} error={hasError} {...props} />
     </AlertDialogPortal>
   )
 })
-
 AlertDialogContentComposite.displayName = 'AlertDialogContent'
 
+// High-level "Puppeteer" Component
+interface AlertDialogProps {
+  trigger: React.ReactNode
+  title: string
+  description: string
+  actions?: React.ReactNode
+  onCancel?: () => void
+  onAction?: () => void
+  isLoading?: boolean
+  hasError?: boolean
+  isDisabled?: boolean
+  actionText?: string
+  cancelText?: string
+}
+
+const AlertDialog = ({
+  trigger,
+  title,
+  description,
+  actions,
+  onCancel,
+  onAction,
+  isLoading = false,
+  hasError = false,
+  isDisabled = false,
+  actionText = 'Confirmar',
+  cancelText = 'Cancelar',
+}: AlertDialogProps) => {
+  return (
+    <TamaguiAlertDialog>
+      <TamaguiAlertDialog.Trigger asChild>{trigger}</TamaguiAlertDialog.Trigger>
+      <AlertDialogContentComposite hasError={hasError}>
+        <AlertDialogHeader>
+          <AlertDialogTitle error={hasError}>{title}</AlertDialogTitle>
+          <AlertDialogDescription>{description}</AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          {actions || (
+            <>
+              <AlertDialogCancel asChild>
+                <Button variant="outline" onPress={onCancel} disabled={isLoading || isDisabled}>
+                  {cancelText}
+                </Button>
+              </AlertDialogCancel>
+              <AlertDialogAction asChild>
+                <Button
+                  variant={hasError ? 'destructive' : 'default'}
+                  onPress={onAction}
+                  disabled={isLoading || isDisabled}
+                  icon={isLoading ? <Spinner /> : undefined}
+                >
+                  {isLoading ? 'Processando...' : actionText}
+                </Button>
+              </AlertDialogAction>
+            </>
+          )}
+        </AlertDialogFooter>
+      </AlertDialogContentComposite>
+    </TamaguiAlertDialog>
+  )
+}
+
 export {
+  AlertDialog,
   AlertDialogOverlay,
+  AlertDialogContent,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContentComposite as AlertDialogContent,
+  AlertDialogPortal,
+  AlertDialogTrigger: TamaguiAlertDialog.Trigger,
 }
