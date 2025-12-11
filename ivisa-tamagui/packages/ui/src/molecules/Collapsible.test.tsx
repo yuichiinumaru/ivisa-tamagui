@@ -17,15 +17,15 @@ describe('Collapsible', () => {
     const trigger = screen.getByText('Trigger')
     expect(trigger).toBeInTheDocument()
 
-    // Content should not be visible by default
-    const content = screen.getByText('Content')
-    expect(content).not.toBeVisible()
+    // Content should not be in the document by default
+    expect(screen.queryByText('Content')).not.toBeInTheDocument()
 
     // Click to open
     fireEvent.click(trigger)
 
     // Content should now be visible
-    expect(content).toBeVisible()
+    const visibleContent = await screen.findByText('Content')
+    expect(visibleContent).toBeVisible()
   })
 
   it('shows skeleton when loading', () => {
