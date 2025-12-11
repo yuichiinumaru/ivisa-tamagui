@@ -145,6 +145,7 @@ const sizeScale = {
   xl: 56,
   '2xl': 64,
   '3xl': 80,
+  '15': 300,
   true: 40, // default (md)
 };
 
