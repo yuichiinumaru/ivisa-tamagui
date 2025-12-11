@@ -2556,7 +2556,8 @@ var AccordionContentFrame = styled5(TamaguiAccordion.Content, {
 var AccordionItem = React4.forwardRef(({ children, isLoading, hasError, ...props }, ref) => {
   const childrenWithProps = React4.Children.map(children, (child) => {
     if (React4.isValidElement(child)) {
-      if (child.type.displayName === "AccordionContent") {
+      const type = child.type;
+      if (type.displayName === "AccordionContent") {
         return React4.cloneElement(child, { isLoading });
       }
     }
@@ -9760,13 +9761,13 @@ import { jsx as jsx59, jsxs as jsxs45 } from "react/jsx-runtime";
 var DEFAULT_PAGE_SIZE = 10;
 var MAX_ROWS_WITHOUT_PAGINATION = 100;
 var DEFAULT_LOCALIZATION = {
-  noResults: "No results.",
-  previousPage: "Previous",
-  nextPage: "Next",
-  pageOf: (currentPage, pageCount) => `Page ${currentPage} of ${pageCount}`,
-  errorTitle: "Something went wrong",
-  errorBody: "There was an error loading the data. Please try again.",
-  retry: "Retry"
+  noResults: "Nenhum resultado encontrado.",
+  previousPage: "Anterior",
+  nextPage: "Pr\xF3ximo",
+  pageOf: (currentPage, pageCount) => `P\xE1gina ${currentPage} de ${pageCount}`,
+  errorTitle: "Algo deu errado",
+  errorBody: "Houve um erro ao carregar os dados. Por favor, tente novamente.",
+  retry: "Tentar novamente"
 };
 function DataTable({
   columns,
@@ -10386,7 +10387,7 @@ var Charts = ({
 }) => {
   const theme = useTheme();
   const themeColor = theme[color];
-  const barColor = themeColor ? themeColor.get() : color;
+  const barColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
