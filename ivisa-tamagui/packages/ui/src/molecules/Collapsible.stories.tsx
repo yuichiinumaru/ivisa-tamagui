@@ -1,7 +1,13 @@
 
 import type { Meta, StoryObj } from '@storybook/react'
-import { Collapsible } from './Collapsible'
-import { Badge, Text, YStack } from 'tamagui'
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleRoot,
+  CollapsibleTrigger,
+} from './Collapsible'
+import { Badge, Button, Text, XStack, YStack } from 'tamagui'
+import { ChevronsUpDown } from '@tamagui/lucide-icons'
 import React from 'react'
 
 const meta: Meta<typeof Collapsible> = {
@@ -28,6 +34,14 @@ const meta: Meta<typeof Collapsible> = {
     rightSlot: {
       control: false,
       description: 'A slot for custom React nodes to the right of the title.',
+    },
+    animationDuration: {
+      control: 'number',
+      description: 'The duration of the animation in milliseconds.',
+    },
+    animationEasing: {
+      control: 'text',
+      description: 'The easing function for the animation.',
     },
   },
 }
@@ -91,7 +105,8 @@ export const TesteDeEstresse: Story = {
   name: 'Teste de Estresse (Stress Test)',
   args: {
     ...Padrao.args,
-    title: 'Este é um título muito longo para testar o comportamento de truncamento de texto em contêineres estreitos.',
+    title:
+      'Este é um título muito longo para testar o comportamento de truncamento de texto em contêineres estreitos.',
   },
   decorators: [
     (Story) => (
@@ -100,4 +115,28 @@ export const TesteDeEstresse: Story = {
       </YStack>
     ),
   ],
+}
+
+export const Composicao: Story = {
+  name: 'Composição (Compound Pattern)',
+  render: () => (
+    <CollapsibleRoot>
+      <CollapsibleTrigger>
+        <Text fontSize="$4" fontWeight="bold">
+          Título Personalizado
+        </Text>
+        <Button size="$3" chromeless icon={ChevronsUpDown} />
+      </CollapsibleTrigger>
+      <CollapsibleContent>{renderContent()}</CollapsibleContent>
+    </CollapsibleRoot>
+  ),
+}
+
+export const AnimacaoPersonalizada: Story = {
+  name: 'Animação Personalizada',
+  args: {
+    ...Padrao.args,
+    animationDuration: 1000,
+    animationEasing: 'ease-out',
+  },
 }

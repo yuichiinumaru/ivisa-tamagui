@@ -17,14 +17,14 @@ describe('Collapsible', () => {
     const trigger = screen.getByText('Trigger')
     expect(trigger).toBeInTheDocument()
 
-    // Content should not be in the document by default
-    expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    // Content should not be visible by default
+    const content = screen.getByText('Content')
+    expect(content).not.toBeVisible()
 
     // Click to open
     fireEvent.click(trigger)
 
     // Content should now be visible
-    const content = await screen.findByText('Content')
     expect(content).toBeVisible()
   })
 
@@ -39,7 +39,7 @@ describe('Collapsible', () => {
     expect(getByTestId('skeleton-container')).toBeInTheDocument()
   })
 
-  it('applies error styles', () => {
+  it('applies error styles and aria-invalid', () => {
     const { container } = render(
       <TamaguiProvider config={config}>
         <Collapsible title="Trigger" hasError>
@@ -49,5 +49,6 @@ describe('Collapsible', () => {
     )
     const trigger = container.querySelector('[data-has-error="true"]')
     expect(trigger).toBeInTheDocument()
+    expect(trigger).toHaveAttribute('aria-invalid', 'true')
   })
 })
