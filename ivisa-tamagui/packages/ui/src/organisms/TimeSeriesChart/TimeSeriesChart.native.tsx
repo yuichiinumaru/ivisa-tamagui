@@ -6,7 +6,7 @@ import {
   VictoryAxis,
   VictoryVoronoiContainer,
   VictoryTooltip,
-} from 'victory'
+} from 'victory-native'
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
 
@@ -118,14 +118,14 @@ export const TimeSeriesChart = ({
         <VictoryAxis
           style={{
             axis: { stroke: axisColor },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: 'inherit' },
+            tickLabels: { fill: textColor, padding: 5, fontSize: 12 },
           }}
         />
         <VictoryAxis
           dependentAxis
           style={{
             axis: { stroke: 'transparent' },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: 'inherit' },
+            tickLabels: { fill: textColor, padding: 5, fontSize: 12 },
             grid: { stroke: gridColor, strokeDasharray: '4, 4' },
           }}
         />

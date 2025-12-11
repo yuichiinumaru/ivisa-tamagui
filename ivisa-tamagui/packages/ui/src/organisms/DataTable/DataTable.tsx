@@ -1,108 +1,92 @@
+import { AlertCircle } from '@tamagui/lucide-icons'
 import React, { useState } from 'react'
+import type { ColumnDef, ColumnFiltersState, SortingState } from '@tanstack/react-table'
 import {
-  ColumnDef,
   flexRender,
   getCoreRowModel,
-  useReactTable,
+  getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  SortingState,
-  getFilteredRowModel,
-  ColumnFiltersState,
+  useReactTable,
 } from '@tanstack/react-table'
-import {
-  YStack,
-  XStack,
-  Text,
-  styled,
-  ScrollView,
-  View,
-} from 'tamagui'
+import { ScrollView, Text, YStack } from 'tamagui'
 import { Button } from '../../atoms/Button'
-
-// --- Constants ---
-const MIN_COLUMN_WIDTH = 100
-const BORDER_WIDTH = 1
-const DEFAULT_PAGE_SIZE = 10
-const MAX_ROWS_WITHOUT_PAGINATION = 100
-
-// --- Styled Primitives for the Table ---
-
-const TableContainer = styled(YStack, {
-  borderColor: '$borderColor',
-  borderWidth: BORDER_WIDTH,
-  borderRadius: '$md',
-  overflow: 'hidden',
-})
-
-const TableHeader = styled(YStack, {
-  backgroundColor: '$background',
-  borderBottomWidth: BORDER_WIDTH,
-  borderColor: '$borderColor',
-})
-
-const TableRow = styled(XStack, {
-  borderBottomWidth: BORDER_WIDTH,
-  borderColor: '$borderColor',
-  paddingVertical: '$md',
-  paddingHorizontal: '$lg',
-  alignItems: 'center',
-  hoverStyle: {
-    backgroundColor: '$backgroundHover',
-  },
-})
-
-const TableHeadText = styled(Text, {
-  color: '$mutedForeground',
-  fontSize: '$3',
-  fontWeight: '500',
-})
-
-const TableCellText = styled(Text, {
-  color: '$foreground',
-  fontSize: '$3',
-})
-
-const TableCellFrame = styled(View, {
-  flex: 1,
-  minWidth: MIN_COLUMN_WIDTH,
-})
-
-const NoResultsCell = styled(View, {
-  flex: 1,
-  alignItems: 'center',
-  padding: '$xl',
-})
+import { Skeleton } from '../../atoms/Skeleton'
+import { Empty } from '../../molecules/Empty'
+import {
+  HeaderActionsContainer,
+  NoResultsCell,
+  TableCellFrame,
+  TableContainer,
+  TableHeader,
+  TableRow,
+} from './DataTable.parts'
 
 // --- Component Definition ---
+const DEFAULT_PAGE_SIZE = 10
+const MAX_ROWS_WITHOUT_PAGINATION = 100
+export interface DataTableLocalization {
+  noResults: string
+  previousPage: string
+  nextPage: string
+  pageOf: (currentPage: number, pageCount: number) => string
+  errorTitle: string
+  errorBody: string
+  retry: string
+}
 
-interface DataTableProps<TData, TValue> {
+const DEFAULT_LOCALIZATION: DataTableLocalization = {
+  noResults: 'No results.',
+  previousPage: 'Previous',
+  nextPage: 'Next',
+  pageOf: (currentPage, pageCount) => `Page ${currentPage} of ${pageCount}`,
+  errorTitle: 'Something went wrong',
+  errorBody: 'There was an error loading the data. Please try again.',
+  retry: 'Retry',
+}
+
+export interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
   showPagination?: boolean
+  isLoading?: boolean
+  error?: Error | null
+  onRetry?: () => void
+  emptyState?: React.ReactNode
+  headerActions?: React.ReactNode
+  localization?: Partial<DataTableLocalization>
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
-  showPagination = true,
+  showPagination: initialShowPagination = true,
+  isLoading = false,
+  error = null,
+  onRetry,
+  emptyState,
+  headerActions,
+  localization: customLocalization,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+
+  const localization = { ...DEFAULT_LOCALIZATION, ...customLocalization }
+  let showPagination = initialShowPagination
 
   // 🛡️ Guard: Performance Protection
   if (!showPagination && data.length > MAX_ROWS_WITHOUT_PAGINATION) {
     if (process.env.NODE_ENV === 'development') {
       console.warn(
         `DataTable: Rendering ${data.length} rows without pagination is a performance hazard. ` +
-        `Pagination has been forcibly enabled.`
+          `Pagination has been forcibly enabled.`
       )
     }
     showPagination = true
   }
 
   const table = useReactTable({
-    data,
+    data: data ?? [],
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -127,88 +111,118 @@ export function DataTable<TData, TValue>({
     ? table.getRowModel().rows
     : table.getRowModel().rows.slice(0, MAX_ROWS_WITHOUT_PAGINATION)
 
+  const renderTableBody = () => {
+    if (isLoading) {
+      return Array.from({ length: table.getState().pagination.pageSize }).map((_, i) => (
+        <TableRow key={`skeleton-${i}`}>
+          {columns.map((_, j) => (
+            <TableCellFrame key={`skeleton-cell-${j}`}>
+              <Skeleton height="$4" />
+            </TableCellFrame>
+          ))}
+        </TableRow>
+      ))
+    }
+
+    if (error) {
+      return (
+        <TableRow>
+          <NoResultsCell>
+            <Empty
+              icon={<AlertCircle size="$5" color="$red10" />}
+              title={localization.errorTitle}
+              body={localization.errorBody}
+              action={
+                onRetry && (
+                  <Button variant="outline" onPress={onRetry}>
+                    {localization.retry}
+                  </Button>
+                )
+              }
+            />
+          </NoResultsCell>
+        </TableRow>
+      )
+    }
+
+    if (rows.length === 0) {
+      return (
+        <TableRow>
+          <NoResultsCell>
+            {emptyState || <Empty title={localization.noResults} />}
+          </NoResultsCell>
+        </TableRow>
+      )
+    }
+
+    return rows.map((row) => (
+      <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
+        {row.getVisibleCells().map((cell) => (
+          <TableCellFrame key={cell.id}>
+            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          </TableCellFrame>
+        ))}
+      </TableRow>
+    ))
+  }
+
   return (
-    <YStack gap="$lg" marginHorizontal="$true">
+    <YStack gap="$3" tag="table" aria-label="Data table">
+      {headerActions && <HeaderActionsContainer>{headerActions}</HeaderActionsContainer>}
       <TableContainer>
-        <ScrollView horizontal showsHorizontalScrollIndicator={true}>
+        <ScrollView horizontal showsHorizontalScrollIndicator>
           <YStack minWidth="100%">
             {/* Header */}
-            <TableHeader>
+            <TableHeader tag="thead">
               {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id} borderBottomWidth={1} paddingVertical="$md">
-                  {headerGroup.headers.map((header) => {
-                    return (
-                      <TableCellFrame key={header.id}>
-                        {header.isPlaceholder
-                          ? null
-                          : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                      </TableCellFrame>
-                    )
-                  })}
+                <TableRow key={headerGroup.id} tag="tr">
+                  {headerGroup.headers.map((header) => (
+                    <TableCellFrame key={header.id} tag="th">
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(header.column.columnDef.header, header.getContext())}
+                    </TableCellFrame>
+                  ))}
                 </TableRow>
               ))}
             </TableHeader>
 
             {/* Body */}
-            <YStack>
-              {rows.length ? (
-                rows.map((row) => (
-                  <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
-                    {row.getVisibleCells().map((cell) => (
-                      <TableCellFrame key={cell.id}>
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      </TableCellFrame>
-                    ))}
-                  </TableRow>
-                ))
-              ) : (
-                <TableRow>
-                  <NoResultsCell>
-                    <TableHeadText>No results.</TableHeadText>
-                  </NoResultsCell>
-                </TableRow>
-              )}
-            </YStack>
+            <YStack tag="tbody">{renderTableBody()}</YStack>
           </YStack>
         </ScrollView>
       </TableContainer>
 
       {/* Pagination Controls */}
-      {showPagination && (
-        <XStack alignItems="center" justifyContent="flex-end" gap="$sm">
-          <Text fontSize="$2" color="$mutedForeground">
-            Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-          </Text>
-          <Button
-            variant="outline"
-            size="sm"
-            onPress={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Previous
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onPress={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Next
-          </Button>
-        </XStack>
+      {showPagination && table.getPageCount() > 1 && (
+        <TableRow>
+          <YStack flex={1} />
+          <XStack alignItems="center" justifyContent="flex-end" gap="$2">
+            <Text fontSize="$2" color="$color">
+              {localization.pageOf(
+                table.getState().pagination.pageIndex + 1,
+                table.getPageCount()
+              )}
+            </Text>
+            <Button
+              variant="outline"
+              size="$2"
+              onPress={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              {localization.previousPage}
+            </Button>
+            <Button
+              variant="outline"
+              size="$2"
+              onPress={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              {localization.nextPage}
+            </Button>
+          </XStack>
+        </TableRow>
       )}
     </YStack>
   )
-}
-
-// --- Export sub-components for custom usage ---
-export const Table = {
-  Container: TableContainer,
-  Header: TableHeader,
-  Row: TableRow,
-  HeadText: TableHeadText,
-  CellText: TableCellText,
 }

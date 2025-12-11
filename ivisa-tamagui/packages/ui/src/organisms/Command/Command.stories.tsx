@@ -11,60 +11,120 @@ import {
   CommandShortcut,
 } from './Command'
 import { useState, useEffect } from 'react'
-import { View, Text, Button } from 'tamagui'
+import { YStack, Text, Button } from 'tamagui'
+import { MOCK_SUGESTOES, MOCK_CONFIGURACOES } from './mocks'
+import { Search } from '@tamagui/lucide-icons'
 
 const meta: Meta<typeof Command> = {
-  title: 'Organisms/Command',
+  title: 'Organismos/Command',
   component: Command,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
+  decorators: [
+    (Story) => (
+      <YStack width={400} borderWidth={1} borderColor="$borderColor" borderRadius="$md" overflow="hidden">
+        <Story />
+      </YStack>
+    ),
+  ],
 }
 
 export default meta
 type Story = StoryObj<typeof Command>
 
-export const Default: Story = {
+export const Padrao: Story = {
   render: () => (
-    <View width={400} borderWidth={1} borderColor="$borderColor" borderRadius="$md" overflow="hidden">
-      <Command>
-        <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem onSelect={() => console.log('Calendar')}>
-              <Text>Calendar</Text>
+    <Command>
+      <CommandInput placeholder="Digite um comando ou pesquise..." />
+      <CommandList>
+        <CommandEmpty />
+        <CommandGroup heading="Sugestões">
+          {MOCK_SUGESTOES.map((item) => (
+            <CommandItem key={item.id} onSelect={() => console.log(item.label)}>
+              <Text>{item.label}</Text>
             </CommandItem>
-            <CommandItem onSelect={() => console.log('Search Emoji')}>
-              <Text>Search Emoji</Text>
+          ))}
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Configurações">
+          {MOCK_CONFIGURACOES.map((item) => (
+            <CommandItem key={item.id} onSelect={() => console.log(item.label)}>
+              <Text>{item.label}</Text>
+              <CommandShortcut>{item.shortcut}</CommandShortcut>
             </CommandItem>
-            <CommandItem onSelect={() => console.log('Calculator')}>
-              <Text>Calculator</Text>
-            </CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem onSelect={() => console.log('Profile')}>
-              <Text>Profile</Text>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem onSelect={() => console.log('Billing')}>
-              <Text>Billing</Text>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem onSelect={() => console.log('Settings')}>
-              <Text>Settings</Text>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </Command>
-    </View>
+          ))}
+        </CommandGroup>
+      </CommandList>
+    </Command>
   ),
 }
 
-export const DialogDemo = () => {
+export const ComErro: Story = {
+  render: () => (
+    <Command>
+      <CommandInput placeholder="Digite um comando ou pesquise..." />
+      <CommandList error="Ocorreu um erro ao buscar os dados." />
+    </Command>
+  ),
+}
+
+export const Carregando: Story = {
+  render: () => (
+    <Command>
+      <CommandInput placeholder="Digite um comando ou pesquise..." />
+      <CommandList isLoading />
+    </Command>
+  ),
+}
+
+export const EstadoVazio: Story = {
+  render: () => (
+    <Command>
+      <CommandInput placeholder="Digite um comando ou pesquise..." />
+      <CommandList>
+        <CommandEmpty title="Nenhum dado para mostrar." icon={<Search size="$5" />} />
+      </CommandList>
+    </Command>
+  ),
+}
+
+export const ContainerLimitado: Story = {
+  decorators: [
+    (Story) => (
+      <YStack width={300} borderWidth={1} borderColor="$borderColor" borderRadius="$md" overflow="hidden">
+        <Story />
+      </YStack>
+    ),
+  ],
+  render: () => (
+    <Command>
+      <CommandInput placeholder="Digite um comando ou pesquise..." />
+      <CommandList>
+        <CommandEmpty />
+        <CommandGroup heading="Sugestões">
+          {MOCK_SUGESTOES.map((item) => (
+            <CommandItem key={item.id} onSelect={() => console.log(item.label)}>
+              <Text>{item.label}</Text>
+            </CommandItem>
+          ))}
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Configurações">
+          {MOCK_CONFIGURACOES.map((item) => (
+            <CommandItem key={item.id} onSelect={() => console.log(item.label)}>
+              <Text>{item.label}</Text>
+              <CommandShortcut>{item.shortcut}</CommandShortcut>
+            </CommandItem>
+          ))}
+        </CommandGroup>
+      </CommandList>
+    </Command>
+  ),
+}
+
+export const Dialogo = () => {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -79,36 +139,32 @@ export const DialogDemo = () => {
   }, [])
 
   return (
-    <>
-      <Text fontSize="$md" color="$mutedForeground">
-        Press{' '}
+    <YStack ai="center" jc="center" p="$4" gap="$4">
+      <Text fontSize="$md" color="$color11">
+        Pressione{' '}
         <Text fontWeight="bold" fontSize="$md">
           ⌘K
         </Text>{' '}
-        to open the command dialog
+        para abrir o diálogo de comando.
       </Text>
-      <Text fontSize="$sm" color="$mutedForeground" marginTop="$2">
-        (Or click the button below)
+      <Text fontSize="$sm" color="$color10">
+        (Ou clique no botão abaixo)
       </Text>
-      <Button onPress={() => setOpen(true)} marginTop="$lg">Open Command Dialog</Button>
+      <Button onPress={() => setOpen(true)}>Abrir Diálogo</Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput placeholder="Digite um comando ou pesquise..." />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem>
-              <Text>Calendar</Text>
-            </CommandItem>
-            <CommandItem>
-              <Text>Search Emoji</Text>
-            </CommandItem>
-            <CommandItem>
-              <Text>Calculator</Text>
-            </CommandItem>
+          <CommandEmpty />
+          <CommandGroup heading="Sugestões">
+            {MOCK_SUGESTOES.map((item) => (
+              <CommandItem key={item.id}>
+                <Text>{item.label}</Text>
+              </CommandItem>
+            ))}
           </CommandGroup>
         </CommandList>
       </CommandDialog>
-    </>
+    </YStack>
   )
 }
