@@ -9,7 +9,7 @@ from pathlib import Path
 # Configuration
 API_BASE_URL = "https://jules.googleapis.com/v1alpha"
 ENV_FILE_PATH = Path(".env")
-STATE_FILE_PATH = Path("scripts/state/sessions.json")
+STATE_FILE_PATH = Path("state/sessions.json")
 
 def load_api_keys():
     """Loads JULES_API_KEYS from .env file or system env."""
@@ -18,12 +18,11 @@ def load_api_keys():
     if not val and ENV_FILE_PATH.exists():
         with open(ENV_FILE_PATH, "r") as f:
             for line in f:
-                # Handle KEY=VAL and KEY = VAL
-                if "JULES_API_KEYS" in line and "=" in line:
-                    parts = line.strip().split("=")
-                    if parts[0].strip() == "JULES_API_KEYS":
-                        val = parts[1].strip().strip('"').strip("'")
-                        break
+                if "=" in line:
+                     parts = line.strip().split("=", 1)
+                     if parts[0].strip() == "JULES_API_KEYS":
+                         val = parts[1].strip().strip('"').strip("'")
+                         break
     
     if val:
         return [k.strip() for k in val.split(",") if k.strip()]

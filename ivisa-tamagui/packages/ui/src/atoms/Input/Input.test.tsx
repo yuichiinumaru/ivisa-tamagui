@@ -1,26 +1,29 @@
+
 import { fireEvent, render } from '../../test-utils';
 import { Input } from './Input';
 
 describe('Input', () => {
   it('renders standard input', () => {
-    const { getByRole } = render(<Input placeholder="test" />);
-    expect(getByRole('textbox')).toBeDefined();
+    const { getByTestId } = render(<Input placeholder="test" testID="input" />);
+    expect(getByTestId('input')).toBeDefined();
   });
 
   it('renders composed input', () => {
-    const { getByRole, getByText } = render(
+    const { getByTestId, getByText } = render(
       <Input>
-        <Input.Field placeholder="composed" />
+        <Input.Field placeholder="composed" testID="input-field" />
         <Input.Button>Submit</Input.Button>
       </Input>
     );
-    expect(getByRole('textbox')).toBeDefined();
+    expect(getByTestId('input-field')).toBeDefined();
     expect(getByText('Submit')).toBeDefined();
   });
 
   it('renders loading state', () => {
-    const { getByRole } = render(<Input loading />);
-    expect(getByRole('textbox')).toBeDisabled();
+    // When loading, it might be disabled or read-only
+    const { getByTestId } = render(<Input loading testID="input" />);
+    const input = getByTestId('input');
+    expect(input).toHaveAttribute('aria-disabled', 'true');
   });
 
   it('renders with hint', () => {
@@ -34,23 +37,24 @@ describe('Input', () => {
   });
 
   it('renders success state', () => {
-    const { getByRole } = render(<Input state="success" />);
-    expect(getByRole('textbox')).toBeDefined();
+    const { getByTestId } = render(<Input state="success" testID="input" />);
+    // Simply check it renders
+    expect(getByTestId('input')).toBeDefined();
   });
 
   it('renders error state', () => {
-    const { getByRole } = render(<Input state="error" />);
-    expect(getByRole('textbox')).toBeDefined();
+    const { getByTestId } = render(<Input state="error" testID="input" />);
+    expect(getByTestId('input')).toBeDefined();
   });
 
   it('toggles password visibility', () => {
-    const { getByRole } = render(<Input type="password" />);
-    const input = getByRole('textbox');
+    const { getByTestId, getByRole } = render(<Input type="password" testID="input" />);
+    const input = getByTestId('input');
     const button = getByRole('button');
 
     expect(input.getAttribute('type')).toBe('password');
 
-    fireEvent.press(button);
+    fireEvent.click(button); // Use click for web/jest-dom interaction on button
 
     expect(input.getAttribute('type')).toBe('text');
   });

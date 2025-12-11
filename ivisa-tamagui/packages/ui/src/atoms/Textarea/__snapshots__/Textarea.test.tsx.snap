@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Textarea renders multiline textbox with accessible label and default styles 1`] = `
 <DocumentFragment>
@@ -20,31 +20,16 @@ exports[`Textarea renders multiline textbox with accessible label and default st
           <div
             class="_btc-0focus-ring _brc-0focus-ring _borderBottomColor-0focus-ring _borderLeftColor-0focus-ring _btw-0focus-2px _brw-0focus-2px _borderBottomWidth-0focus-2px _borderLeftWidth-0focus-2px _borderBottomStyle-0focus-solid _borderTopStyle-0focus-solid _borderLeftStyle-0focus-solid _borderRightStyle-0focus-solid _btc-0hover-borderColor69916956 _brc-0hover-borderColor69916956 _borderBottomColor-0hover-borderColor69916956 _borderLeftColor-0hover-borderColor69916956 _btc-0active-borderColor77378595 _brc-0active-borderColor77378595 _borderBottomColor-0active-borderColor77378595 _borderLeftColor-0active-borderColor77378595 _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _btc-borderColor _brc-borderColor _borderBottomColor-borderColor _borderLeftColor-borderColor _btw-1px _brw-1px _borderBottomWidth-1px _borderLeftWidth-1px _btlr-t-radius-sm _btrr-t-radius-sm _bbrr-t-radius-sm _bblr-t-radius-sm _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid"
           >
-            <span
-              class="_dsp_contents"
-            >
-              <span
-                class="_dsp_contents"
-              >
-                <textarea
-                  aria-invalid="false"
-                  aria-label="Description"
-                  autocapitalize="sentences"
-                  autocomplete="on"
-                  autocorrect="on"
-                  class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 is_TextArea font_body _btc-0hover-borderColor69916956 _brc-0hover-borderColor69916956 _borderBottomColor-0hover-borderColor69916956 _borderLeftColor-0hover-borderColor69916956 _btc-0focus-transparent _brc-0focus-transparent _borderBottomColor-0focus-transparent _borderLeftColor-0focus-transparent _outlineWidth-0focus-visible-2px _outlineStyle-0focus-visible-solid _btw-0focus-0px _brw-0focus-0px _borderBottomWidth-0focus-0px _borderLeftWidth-0focus-0px _borderBottomStyle-0focus-solid _borderTopStyle-0focus-solid _borderLeftStyle-0focus-solid _borderRightStyle-0focus-solid _o-0disabled-0--6 _ws-pre-wrap _pr-t-space-0 _pl-t-space-0 _h-auto _ff-f-family _pt-t-space-0 _pb-t-space-0 _btw-0px _brw-0px _borderBottomWidth-0px _borderLeftWidth-0px _outlineWidth-0px _col-color _btc-transparent _brc-transparent _borderBottomColor-transparent _borderLeftColor-transparent _backgroundColor-transparent _minWidth-0px _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid _w-10037 _minHeight-124px true is_Textarea "
-                  data-disable-theme="true"
-                  dir="auto"
-                  id=":r1:"
-                  rows="4"
-                  spellcheck="true"
-                  tabindex="0"
-                  virtualkeyboardpolicy="auto"
-                >
-                  Initial value
-                </textarea>
-              </span>
-            </span>
+            <input
+              aria-invalid="false"
+              aria-label="Description"
+              class="is_TextArea font_body _btc-0hover-borderColor69916956 _brc-0hover-borderColor69916956 _borderBottomColor-0hover-borderColor69916956 _borderLeftColor-0hover-borderColor69916956 _btc-0focus-transparent _brc-0focus-transparent _borderBottomColor-0focus-transparent _borderLeftColor-0focus-transparent _outlineWidth-0focus-visible-2px _outlineStyle-0focus-visible-solid _btw-0focus-0px _brw-0focus-0px _borderBottomWidth-0focus-0px _borderLeftWidth-0focus-0px _borderBottomStyle-0focus-solid _borderTopStyle-0focus-solid _borderLeftStyle-0focus-solid _borderRightStyle-0focus-solid _o-0disabled-0--6 _ws-pre-wrap _pr-t-space-0 _pl-t-space-0 _h-auto _ff-f-family _pt-t-space-0 _pb-t-space-0 _btw-0px _brw-0px _borderBottomWidth-0px _borderLeftWidth-0px _outlineWidth-0px _col-color _btc-transparent _brc-transparent _borderBottomColor-transparent _borderLeftColor-transparent _backgroundColor-transparent _minWidth-0px _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid _w-10037 _minHeight-124px is_Textarea font_body "
+              data-disable-theme="true"
+              id=":r1:"
+              rows="4"
+              tabindex="0"
+              value="Initial value"
+            />
           </div>
         </div>
         <div

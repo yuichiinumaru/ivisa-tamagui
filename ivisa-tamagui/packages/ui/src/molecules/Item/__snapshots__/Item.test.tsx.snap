@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Item applies disabled styles when isDisabled is true 1`] = `
 <span
@@ -93,7 +93,6 @@ exports[`Item renders a skeleton when isLoading is true 1`] = `
         <div
           animationduration="2s"
           animationname="mock-animation"
-          animationtimingfunction="cubic-bezier(0.4, 0, 0.6, 1)"
           aria-hidden="true"
           class="is_Skeleton _dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-column _backgroundColor-muted _animationIterationCount-infinite _h-40px"
           data-disable-theme="true"

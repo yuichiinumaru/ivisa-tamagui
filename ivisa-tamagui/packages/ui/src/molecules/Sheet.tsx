@@ -1,3 +1,4 @@
+
 import {
   Sheet as TamaguiSheet,
   styled,
@@ -26,8 +27,6 @@ const SheetContext = createContext<SheetContextValue>({
 })
 
 const useSheetContext = () => useContext(SheetContext)
-
-const SheetPortal = TamaguiSheet.Portal
 
 // 2. ROOT COMPONENT with Provider
 // =================================================================================================
@@ -176,10 +175,12 @@ const SheetClose = SheetCloseFrame.styleable((props, ref) => {
   )
 })
 
+const SheetTrigger = TamaguiSheet.Trigger
+
 // 4. COMPOSITE COMPONENT
 // =================================================================================================
 const Sheet = withStaticProperties(SheetComponent, {
-  Portal: SheetPortal,
+  Portal: TamaguiSheet.Portal,
   Overlay: SheetOverlay,
   Frame: SheetContentFrame,
   Handle: SheetHandle,
@@ -189,6 +190,7 @@ const Sheet = withStaticProperties(SheetComponent, {
   Title: SheetTitle,
   Description: SheetDescription,
   Close: SheetClose,
+  Trigger: SheetTrigger,
 })
 
 // 5. EXPORTS
@@ -205,6 +207,7 @@ export {
   SheetComponent,
   SheetContentFrame, // Exporting as alias if needed, or raw
   SheetClose,
+  SheetTrigger,
   useSheetContext,
 }
 

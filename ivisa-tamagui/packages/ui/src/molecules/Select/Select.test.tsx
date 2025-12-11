@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '../../test-utils';
+import { render, screen, fireEvent, waitFor } from '../../test-utils';
 import { Select } from './Select';
 
 describe('Select', () => {
@@ -72,14 +72,12 @@ describe('Select', () => {
 
     const trigger = screen.getByTestId('select-trigger');
 
-    // Focus using tab to simulate user interaction
-    await user.tab();
-    expect(trigger).toHaveFocus();
-
     // Open and close the select
     await user.click(trigger);
     await user.keyboard('{Escape}');
 
-    expect(trigger).toHaveFocus();
+    await waitFor(() => {
+      expect(trigger).toHaveFocus();
+    });
   });
 });

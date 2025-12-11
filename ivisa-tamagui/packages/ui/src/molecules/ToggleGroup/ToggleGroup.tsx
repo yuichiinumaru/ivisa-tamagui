@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useMemo, cloneElement, Children, isValidElement, forwardRef } from 'react'
 import { Skeleton } from '../../atoms/Skeleton'
 import { ToggleGroup as TamaguiToggleGroup, styled, GetProps, TamaguiElement, YStack, withStaticProperties } from 'tamagui'
@@ -69,9 +70,9 @@ const ToggleGroupItemFrame = styled(TamaguiToggleGroup.Item, {
   } as const,
 })
 
-type ToggleGroupItemProps = GetProps<typeof ToggleGroupItemFrame>
+export type ToggleGroupItemProps = GetProps<typeof ToggleGroupItemFrame>
 
-const ToggleGroupItem = forwardRef<TamaguiElement, ToggleGroupItemProps>((props, ref) => {
+export const ToggleGroupItem = forwardRef<TamaguiElement, ToggleGroupItemProps>((props, ref) => {
   const { disabled, error } = useToggleGroupContext()
   return <ToggleGroupItemFrame ref={ref} {...props} disabled={disabled || props.disabled} error={error} />
 })
@@ -129,4 +130,4 @@ export const ToggleGroup = withStaticProperties(ToggleGroupRoot, {
   Item: ToggleGroupItem,
 })
 
-export type { ToggleGroupProps, ToggleGroupItemProps }
+export type { ToggleGroupProps }

@@ -12,7 +12,7 @@ from pathlib import Path
 # Configuration
 API_BASE_URL = "https://jules.googleapis.com/v1alpha"
 ENV_FILE_PATH = Path(".env")
-STATE_FILE_PATH = Path("scripts/state/sessions.json")
+STATE_FILE_PATH = Path("state/sessions.json")
 
 def log_session(component, session_id, title):
     """Logs session details to a JSON file."""
@@ -49,12 +49,11 @@ def load_api_keys():
     if not val and ENV_FILE_PATH.exists():
         with open(ENV_FILE_PATH, "r") as f:
             for line in f:
-                # Handle KEY=VAL and KEY = VAL
-                if "JULES_API_KEYS" in line and "=" in line:
-                    parts = line.strip().split("=")
-                    if parts[0].strip() == "JULES_API_KEYS":
-                        val = parts[1].strip().strip('"').strip("'")
-                        break
+                if "=" in line:
+                     parts = line.strip().split("=", 1)
+                     if parts[0].strip() == "JULES_API_KEYS":
+                         val = parts[1].strip().strip('"').strip("'")
+                         break
     
     if val:
         # Split by comma and clean up
@@ -155,13 +154,13 @@ def main():
         sys.exit(1)
 
     # 3. Load Paths
-    tasks_file = Path(f"scripts/tasks/{args.type}.txt")
-    prompt_file = Path(f"scripts/prompts/{args.type}_prompt.md")
+    tasks_file = Path(f"tasks/{args.type}.txt")
+    prompt_file = Path(f"prompts/{args.type}_prompt.md")
     
     # Fallback for phase files if not found but base type exists
     if not prompt_file.exists() and "_" in args.type:
         base_type = args.type.split("_")[0]
-        fallback_prompt = Path(f"scripts/prompts/{base_type}_prompt.md")
+        fallback_prompt = Path(f"prompts/{base_type}_prompt.md")
         if fallback_prompt.exists():
              print(f"⚠️  Prompt file for '{args.type}' not found, using base prompt '{fallback_prompt}'")
              prompt_file = fallback_prompt

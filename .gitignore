@@ -4,6 +4,7 @@ node_modules/
 
 # Environment
 .env
+jules-swarm/scripts/.env
 .env.local
 .env.*.local
 

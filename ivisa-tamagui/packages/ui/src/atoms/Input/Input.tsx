@@ -228,10 +228,10 @@ export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
    * @default 'default'
    */
   size?: 'sm' | 'default' | 'lg'
-    /**
-   * If true, the input will be in a loading state.
-   * @default false
-   */
+  /**
+ * If true, the input will be in a loading state.
+ * @default false
+ */
   loading?: boolean
   /**
    * The validation state of the input.
@@ -299,7 +299,7 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
           size={size}
           disabled={loading}
           {...props}
-          type={isPassword && !isPasswordVisible ? 'password' : props.type}
+          type={isPassword && isPasswordVisible ? 'text' : props.type}
         />
         {loading && (
           <InputIcon>

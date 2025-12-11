@@ -1,8 +1,9 @@
+
 import { Tooltip as TamaguiTooltip, TooltipProps as TamaguiTooltipProps, styled, Paragraph, YStack, XStack } from 'tamagui'
 import React from 'react'
 import { Skeleton } from '../../atoms/Skeleton'
 
-const TooltipContent = styled(TamaguiTooltip.Content, {
+export const TooltipContent = styled(TamaguiTooltip.Content, {
   name: 'TooltipContent',
   enterStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
   exitStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
@@ -28,7 +29,7 @@ const TooltipContent = styled(TamaguiTooltip.Content, {
   },
 })
 
-const TooltipArrow = styled(TamaguiTooltip.Arrow, {
+export const TooltipArrow = styled(TamaguiTooltip.Arrow, {
   name: 'TooltipArrow',
   borderColor: '$borderColor',
   borderWidth: 1,
@@ -41,6 +42,8 @@ const TooltipArrow = styled(TamaguiTooltip.Arrow, {
     },
   },
 })
+
+export const TooltipTrigger = TamaguiTooltip.Trigger
 
 export interface TooltipProps extends TamaguiTooltipProps {
   content: React.ReactNode
@@ -58,9 +61,9 @@ export const Tooltip = React.forwardRef<unknown, TooltipProps>(({ children, cont
 
   return (
     <TamaguiTooltip {...props} disabled={isDisabled}>
-      <TamaguiTooltip.Trigger asChild>
+      <TooltipTrigger asChild>
         {children}
-      </TamaguiTooltip.Trigger>
+      </TooltipTrigger>
       <TooltipContent hasError={hasError}>
         <TooltipArrow hasError={hasError} />
         <YStack gap="$2">

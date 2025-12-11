@@ -156,7 +156,9 @@ const OTPInputImpl = React.forwardRef<ContainerRef, OTPInputProps>(
 
     const focusInput = React.useCallback((index: number) => {
       const node = inputRefs.current[index]
-      node?.focus?.()
+      if (node && typeof node.focus === 'function') {
+        node.focus()
+      }
     }, [])
 
     const selectInput = React.useCallback((index: number) => {

@@ -4,12 +4,11 @@ import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogTitle }
 describe('AlertDialog', () => {
   it('renders trigger', () => {
     render(
-      <AlertDialog>
-        <AlertDialogTrigger>Open</AlertDialogTrigger>
-        <AlertDialogContent>
-            <AlertDialogTitle>Title</AlertDialogTitle>
-        </AlertDialogContent>
-      </AlertDialog>
+      <AlertDialog
+        trigger={<button>Open</button>}
+        title="Title"
+        description="Description"
+      />
     )
     expect(screen.getByText('Open')).toBeInTheDocument()
   })

@@ -8,7 +8,7 @@ import { Input } from '../../atoms/Input'
 import { Checkbox } from '../../atoms/Checkbox'
 import { Select } from '../../molecules/Select'
 import { Skeleton } from '../../atoms/Skeleton'
-import { Alert } from '../../molecules/Alert'
+import { Alert } from '../../atoms/Alert';
 import {
   Form,
   FormControl,

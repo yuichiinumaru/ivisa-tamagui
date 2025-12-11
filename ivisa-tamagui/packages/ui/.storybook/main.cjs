@@ -134,6 +134,7 @@ const config = {
             'react-native/assets-registry/registry': 'react-native-web/dist/modules/AssetRegistry',
             '@react-native/normalize-color': 'react-native-web/dist/modules/normalizeColor',
             'react-native/Libraries/Image/AssetRegistry': 'react-native-web/dist/modules/AssetRegistry', // Fallback
+            'victory-native': 'victory',
         };
 
         // ANTIGRAVITY FIX: Inject React to solve "ReferenceError: React is not defined" in Storybook stories

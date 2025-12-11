@@ -22,84 +22,83 @@
 - [/] Refactor `Label` (Dispatched)
 - [/] Refactor `Progress` (Dispatched)
 - [/] Refactor `ScrollArea` (Dispatched)
-- [ ] Refactor `Separator`
-- [ ] Refactor `Skeleton`
-- [ ] Refactor `Slider`
-- [ ] Refactor `Spinner`
-- [ ] Refactor `Stack`
-- [ ] Refactor `Switch`
-- [ ] Refactor `Textarea`
-- [ ] Refactor `Toggle`
-- [ ] Refactor `Typography`
-- [ ] Implement `NavLink` (New - BI Sidebar)
-- [ ] Implement `Logo` (New - BI Sidebar)
-- [ ] Implement `Dot` (New - BI Charts)
+- [/] Refactor `Separator` (Dispatched)
+- [/] Refactor `Skeleton` (Dispatched)
+- [/] Refactor `Slider` (Dispatched)
+- [/] Refactor `Spinner` (Dispatched)
+- [/] Refactor `Stack` (Dispatched)
+- [/] Refactor `Switch` (Dispatched)
+- [/] Refactor `Textarea` (Dispatched)
+- [/] Refactor `Toggle` (Dispatched)
+- [/] Refactor `Typography` (Dispatched)
+- [/] Implement `NavLink` (New - BI Sidebar) (Dispatched)
+- [/] Implement `Logo` (New - BI Sidebar) (Dispatched)
+- [/] Implement `Dot` (New - BI Charts) (Dispatched)
 
 ### 🧪 MOLECULES
 **Goal:** Upgrade for State Orchestration and Layout Integrity using the "Molecule Algorithm".
 
-- [ ] Refactor `Accordion`
-- [ ] Refactor `AlertDialog`
-- [ ] Refactor `AvatarGroup` (Harvested)
-- [ ] Refactor `BadgeCounter` (Harvested)
-- [ ] Refactor `Breadcrumb`
-- [ ] Refactor `ButtonGroup`
-- [ ] Refactor `Calendar`
-- [ ] Refactor `Card`
-- [ ] Refactor `Collapsible`
-- [ ] Refactor `ComponentErrorBoundary`
-- [ ] Refactor `ContextMenu`
-- [ ] Refactor `DatePicker`
-- [ ] Refactor `Dialog`
-- [ ] Refactor `Drawer`
-- [ ] Refactor `Empty`
-- [ ] Refactor `Field`
-- [ ] Refactor `HoverCard`
-- [ ] Refactor `InputGroup`
-- [ ] Refactor `Item`
-- [ ] Refactor `Menubar`
-- [ ] Refactor `MonthsPicker` (Harvested)
-- [ ] Refactor `NativeSelect`
-- [ ] Refactor `NavigationMenu`
-- [ ] Refactor `OTPInput` (Harvested)
-- [ ] Refactor `Pagination`
-- [ ] Refactor `Popover`
-- [ ] Refactor `RadioGroup`
-- [ ] Refactor `Resizable`
-- [ ] Refactor `Select`
-- [ ] Refactor `Sheet`
-- [ ] Refactor `Sonner`
-- [ ] Refactor `StarRating` (Harvested)
-- [ ] Refactor `Stepper`
-- [ ] Refactor `Table`
-- [ ] Refactor `Tabs`
-- [ ] Refactor `Toast`
-- [ ] Refactor `ToggleGroup`
-- [ ] Refactor `Tooltip`
-- [ ] Implement `MetricCard` (New - BI)
-- [ ] Implement `NavGroup` (New - BI)
-- [ ] Implement `ChartContainer` (New - BI Wrapper)
-- [ ] Implement `RadialChartContent` (New - BI)
-- [ ] Implement `HorizontalBarGroup` (New - BI)
+- [x] Refactor `Accordion` (Merged)
+- [x] Refactor `AlertDialog` (Merged)
+- [x] Refactor `AvatarGroup` (Merged)
+- [x] Refactor `BadgeCounter` (Merged)
+- [x] Refactor `Breadcrumb` (Merged)
+- [x] Refactor `ButtonGroup` (Merged)
+- [x] Refactor `Calendar` (Merged)
+- [x] Refactor `Card` (Merged)
+- [ ] Refactor `Collapsible` (RE-DISPATCHED: sessions/7658640210671527458)
+- [x] Refactor `ComponentErrorBoundary` (Merged)
+- [x] Refactor `ContextMenu` (Merged)
+- [x] Refactor `Dialog` (Merged)
+- [x] Refactor `Drawer` (Merged)
+- [ ] Refactor `Empty` (RE-DISPATCHED: sessions/4631933430795898581)
+- [x] Refactor `Field` (Merged)
+- [x] Refactor `HoverCard` (Merged)
+- [x] Refactor `InputGroup` (Merged)
+- [x] Refactor `Item` (Merged)
+- [x] Refactor `Menubar` (Merged)
+- [x] Refactor `MonthsPicker` (Merged)
+- [x] Refactor `NativeSelect` (Merged)
+- [x] Refactor `NavigationMenu` (Merged)
+- [x] Refactor `OTPInput` (Merged)
+- [x] Refactor `Pagination` (Merged)
+- [x] Refactor `Popover` (Merged)
+- [x] Refactor `RadioGroup` (Merged)
+- [x] Refactor `Resizable` (Merged)
+- [x] Refactor `Select` (Merged)
+- [!] Refactor `Sheet` (Conflict - PR #146)
+- [ ] Refactor `Sonner` (RE-DISPATCHED: sessions/14881574663270584859)
+- [x] Refactor `StarRating` (Merged)
+- [x] Refactor `Stepper` (Merged)
+- [x] Refactor `Table` (Merged)
+- [x] Refactor `Tabs` (Merged)
+- [x] Refactor `Toast` (Merged)
+- [x] Refactor `ToggleGroup` (Merged)
+- [x] Refactor `Tooltip` (Merged)
+- [ ] Implement `MetricCard` (New - BI) (RE-DISPATCHED: sessions/5069382544934931143)
+- [x] Implement `NavGroup` (New - BI) (Merged)
+- [x] Implement `ChartContainer` (New - BI Wrapper) (Merged)
+- [x] Implement `RadialChartContent` (New - BI) (Merged)
+- [x] Implement `HorizontalBarGroup` (New - BI) (Merged)
 
 ### 🧬 ORGANISMS
 **Goal:** Upgrade for Data Lifecycle and Container Agnosticism using the "Organism Algorithm".
 
-- [ ] Refactor `Autocomplete`
-- [ ] Refactor `Carousel`
-- [ ] Refactor `Charts` (General Library)
-- [ ] Refactor `Command`
-- [ ] Refactor `DashboardLayout` -> Refactor to `DashboardShell` (BI)
-- [ ] Refactor `DataTable`
-- [ ] Refactor `FileUpload`
-- [ ] Refactor `Form`
-- [ ] Refactor `RichText`
-- [ ] Refactor `Sidebar` (App Shell)
-- [ ] Refactor `Timeline`
-- [ ] Implement `KPIGrid` (New - BI)
-- [ ] Implement `TimeSeriesChart` (New - BI)
-- [ ] Implement `GaugeChart` (New - BI)
-- [ ] Implement `RankingChart` (New - BI)
+- [DISPATCHED] Refactor `Autocomplete`
+- [DISPATCHED] Refactor `Carousel`
+- [DISPATCHED] Refactor `Charts` (General Library)
+- [DISPATCHED] Refactor `Command`
+- [DISPATCHED] Refactor `DashboardLayout` -> Refactor to `DashboardShell` (BI)
+- [DISPATCHED] Refactor `DataTable`
+- [DISPATCHED] Refactor `FileUpload`
+- [DISPATCHED] Refactor `Form`
+- [DISPATCHED] Refactor `RichText`
+- [DISPATCHED] Refactor `Sidebar` (App Shell)
+- [DISPATCHED] Refactor `Timeline`
+- [DISPATCHED] Implement `KPIGrid` (New - BI)
+- [DISPATCHED] Implement `TimeSeriesChart` (New - BI)
+- [DISPATCHED] Implement `GaugeChart` (New - BI)
+- [DISPATCHED] Implement `RankingChart` (New - BI)
 
 ---
 

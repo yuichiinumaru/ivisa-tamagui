@@ -70,7 +70,7 @@ const SelectTrigger = React.forwardRef<React.ElementRef<typeof SelectTriggerFram
   ({ children, hasError, disabled, isLoading, rightSlot, ...props }, ref) => {
     return (
       <TamaguiSelect.Trigger asChild disabled={disabled || isLoading} ref={ref}>
-        <SelectTriggerFrame hasError={hasError} disabled={disabled || isLoading} {...props}>
+        <SelectTriggerFrame tabIndex={0} hasError={hasError} disabled={disabled || isLoading} {...props}>
           {children}
           {isLoading ? <Spinner /> : rightSlot || <ChevronDown size={12} color="$mutedForeground" />}
         </SelectTriggerFrame>

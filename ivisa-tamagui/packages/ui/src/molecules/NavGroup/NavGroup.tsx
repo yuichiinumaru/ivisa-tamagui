@@ -1,5 +1,5 @@
 import { NavLink } from '../../atoms/NavLink/NavLink';
-import { Skeleton } from '../../atoms/Skeleton/Skeleton';
+import { Skeleton } from '../../atoms/Skeleton';
 import React from 'react';
 import {
   GetProps,
