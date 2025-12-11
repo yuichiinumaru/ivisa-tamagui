@@ -27,7 +27,10 @@ export const Charts = ({
 }: ChartsProps) => {
   const theme = useTheme()
   const themeColor = theme[color as keyof typeof theme]
-  const barColor = themeColor ? (themeColor as unknown as { get: () => string }).get() : color
+  const barColor =
+    themeColor && typeof themeColor === 'object' && 'get' in themeColor
+      ? (themeColor as { get: () => string }).get()
+      : color
   const axisColor = theme.borderColor?.get() || '#ccc'
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
