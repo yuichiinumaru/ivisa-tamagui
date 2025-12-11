@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { userEvent, within } from '@storybook/testing-library'
+import { expect, fn } from '@storybook/test'
 import { Button } from './Button'
+import { Text } from 'tamagui'
 
 const meta: Meta<typeof Button> = {
   title: 'atoms/Button',
@@ -9,15 +12,15 @@ const meta: Meta<typeof Button> = {
     docs: {
       description: {
         component: `
-### Usage
-Buttons are used to trigger actions or navigation. They should be used for primary actions (Save, Submit) and secondary actions (Cancel, Back).
+### Uso
+Botões são usados para disparar ações ou navegação. Eles devem ser usados para ações primárias (Salvar, Enviar) e ações secundárias (Cancelar, Voltar).
 
-### Variants
-- **Default**: Primary action.
-- **Secondary**: Lower priority action.
-- **Destructive**: Action that deletes or removes data.
-- **Outline**: Alternative secondary action.
-- **Ghost**: Minimalistic action, often used in toolbars.
+### Variantes
+- **Default**: Ação primária.
+- **Secondary**: Ação de menor prioridade.
+- **Destructive**: Ação que exclui ou remove dados.
+- **Outline**: Ação secundária alternativa.
+- **Ghost**: Ação minimalista, frequentemente usada em barras de ferramentas.
 `,
       },
     },
@@ -31,9 +34,25 @@ Buttons are used to trigger actions or navigation. They should be used for prima
       control: { type: 'select' },
       options: ['sm', 'default', 'lg'],
     },
+    children: {
+      control: { type: 'text' },
+    },
+    loading: {
+      control: { type: 'boolean' },
+    },
     disabled: {
       control: { type: 'boolean' },
     },
+    asChild: {
+      control: { type: 'boolean' },
+    },
+    leftIcon: {
+      control: false,
+    },
+    rightIcon: {
+      control: false,
+    },
+    onClick: { action: 'clicked' },
   },
 }
 
@@ -41,59 +60,107 @@ export default meta
 
 type Story = StoryObj<typeof Button>
 
-export const Default: Story = {
+export const Primario: Story = {
   args: {
-    children: 'Button',
+    children: 'Enviar',
     variant: 'default',
     size: 'default',
+    loading: false,
+    disabled: false,
+    asChild: false,
+    onClick: fn(),
+  },
+  play: async ({ args, canvasElement }) => {
+    const canvas = within(canvasElement)
+    const button = canvas.getByRole('button', { name: /Enviar/i })
+    await userEvent.click(button)
+    await expect(args.onClick).toHaveBeenCalled()
   },
 }
 
-export const Secondary: Story = {
+export const Secundario: Story = {
   args: {
-    ...Default.args,
+    ...Primario.args,
+    children: 'Cancelar',
     variant: 'secondary',
   },
 }
 
-export const Destructive: Story = {
+export const Destrutivo: Story = {
   args: {
-    ...Default.args,
+    ...Primario.args,
+    children: 'Excluir',
     variant: 'destructive',
   },
 }
 
-export const Outline: Story = {
+export const Contorno: Story = {
   args: {
-    ...Default.args,
+    ...Primario.args,
     variant: 'outline',
   },
 }
 
-export const Ghost: Story = {
+export const Fantasma: Story = {
   args: {
-    ...Default.args,
+    ...Primario.args,
     variant: 'ghost',
   },
 }
 
-export const Small: Story = {
+export const ComIcone: Story = {
   args: {
-    ...Default.args,
+    ...Primario.args,
+    children: 'Salvar',
+    leftIcon: <Text>✅</Text>,
+  },
+}
+
+export const Pequeno: Story = {
+  args: {
+    ...Primario.args,
     size: 'sm',
   },
 }
 
-export const Large: Story = {
+export const Grande: Story = {
   args: {
-    ...Default.args,
+    ...Primario.args,
     size: 'lg',
   },
 }
 
-export const Disabled: Story = {
+export const Desabilitado: Story = {
   args: {
-    ...Default.args,
+    ...Primario.args,
     disabled: true,
+  },
+}
+
+export const ComTextoLongo: Story = {
+  args: {
+    ...Primario.args,
+    children: 'Este é um texto excessivamente longo para um botão para testar o comportamento de quebra de linha e truncamento.',
+  },
+}
+
+export const EmContainerPequeno: Story = {
+  decorators: [
+    (Story) => (
+      <div style={{ maxWidth: '150px', border: '1px solid #ccc', padding: '10px' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  args: {
+    ...Primario.args,
+    children: 'Botão Pressionado',
+  },
+}
+
+export const Carregando: Story = {
+  args: {
+    ...Primario.args,
+    loading: true,
   },
 }
