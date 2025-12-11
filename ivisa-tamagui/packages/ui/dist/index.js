@@ -2558,16 +2558,7 @@ var import_react2 = require("react");
 
 // src/atoms/Skeleton.tsx
 var import_tamagui2 = require("tamagui");
-var import_core = require("@tamagui/core");
 var import_jsx_runtime2 = require("react/jsx-runtime");
-var pulse = (0, import_core.keyframes)({
-  "0%, 100%": {
-    opacity: 1
-  },
-  "50%": {
-    opacity: 0.5
-  }
-});
 var SkeletonFrame = (0, import_tamagui2.styled)(import_tamagui2.YStack, {
   name: "Skeleton",
   backgroundColor: "$muted",
@@ -2575,7 +2566,7 @@ var SkeletonFrame = (0, import_tamagui2.styled)(import_tamagui2.YStack, {
   variants: {
     animationType: {
       pulse: {
-        animationName: pulse.name,
+        animationName: "skeleton-pulse",
         animationDuration: "2s",
         animationIterationCount: "infinite"
       },
@@ -2789,7 +2780,8 @@ var AccordionContentFrame = (0, import_tamagui5.styled)(import_tamagui5.Accordio
 var AccordionItem = import_react4.default.forwardRef(({ children, isLoading, hasError, ...props }, ref) => {
   const childrenWithProps = import_react4.default.Children.map(children, (child) => {
     if (import_react4.default.isValidElement(child)) {
-      if (child.type.displayName === "AccordionContent") {
+      const type = child.type;
+      if (type.displayName === "AccordionContent") {
         return import_react4.default.cloneElement(child, { isLoading });
       }
     }
@@ -3073,7 +3065,7 @@ var AlertDialog = ({
 // src/atoms/Badge.tsx
 var import_react7 = require("react");
 var import_tamagui9 = require("tamagui");
-var import_core2 = require("@tamagui/core");
+var import_core = require("@tamagui/core");
 var import_jsx_runtime9 = require("react/jsx-runtime");
 var badgeVariants = {
   variant: {
@@ -3186,7 +3178,7 @@ var BadgeText = (0, import_tamagui9.styled)(import_tamagui9.Text, {
 });
 var Badge = (0, import_react7.forwardRef)(
   ({ children, asChild, variant = "default", size = "md", leftIcon, rightIcon, ...props }, ref) => {
-    const Component3 = asChild ? import_core2.Slot : BadgeFrame;
+    const Component3 = asChild ? import_core.Slot : BadgeFrame;
     const renderIcon = (icon) => {
       if (!icon) return null;
       return (0, import_react7.cloneElement)(icon, {
@@ -3930,7 +3922,7 @@ var Blockquote = (0, import_tamagui14.styled)(Text5, {
 var import_tamagui15 = require("tamagui");
 
 // ../../node_modules/@tamagui/progress/dist/esm/Progress.mjs
-var import_core6 = require("@tamagui/core");
+var import_core5 = require("@tamagui/core");
 
 // ../../node_modules/@tamagui/create-context/dist/esm/create-context.mjs
 var React13 = __toESM(require("react"), 1);
@@ -4454,15 +4446,15 @@ var stepTokenUpOrDown = (type, current, options = defaultOptions) => {
 var getTokenRelative = stepTokenUpOrDown;
 
 // ../../node_modules/@tamagui/stacks/dist/esm/Stacks.mjs
-var import_core4 = require("@tamagui/core");
+var import_core3 = require("@tamagui/core");
 
 // ../../node_modules/@tamagui/stacks/dist/esm/getElevation.mjs
-var import_core3 = require("@tamagui/core");
+var import_core2 = require("@tamagui/core");
 var getElevation = (size, extras) => {
   if (!size) return;
   const {
     tokens: tokens2
-  } = extras, token = tokens2.size[size], sizeNum = (0, import_core3.isVariable)(token) ? +token.val : size;
+  } = extras, token = tokens2.size[size], sizeNum = (0, import_core2.isVariable)(token) ? +token.val : size;
   return getSizedElevation(sizeNum, extras);
 };
 var getSizedElevation = (val, {
@@ -4471,7 +4463,7 @@ var getSizedElevation = (val, {
 }) => {
   let num = 0;
   if (val === true) {
-    const val2 = (0, import_core3.getVariableValue)(tokens2.size.true);
+    const val2 = (0, import_core2.getVariableValue)(tokens2.size.true);
     typeof val2 == "number" ? num = val2 : num = 10;
   } else num = +val;
   if (num === 0) return;
@@ -4483,7 +4475,7 @@ var getSizedElevation = (val, {
       height,
       width: 0
     },
-    ...import_core3.isAndroid ? {
+    ...import_core2.isAndroid ? {
       elevationAndroid: 2 * height
     } : {}
   };
@@ -4513,17 +4505,17 @@ var variants = {
   },
   inset: getInset
 };
-var YStack5 = (0, import_core4.styled)(import_core4.View, {
+var YStack5 = (0, import_core3.styled)(import_core3.View, {
   flexDirection: "column",
   variants
 });
 YStack5.displayName = "YStack";
-var XStack6 = (0, import_core4.styled)(import_core4.View, {
+var XStack6 = (0, import_core3.styled)(import_core3.View, {
   flexDirection: "row",
   variants
 });
 XStack6.displayName = "XStack";
-var ZStack = (0, import_core4.styled)(YStack5, {
+var ZStack = (0, import_core3.styled)(YStack5, {
   position: "relative"
 }, {
   neverFlatten: true,
@@ -4631,7 +4623,7 @@ var focusTheme = {
 };
 
 // ../../node_modules/@tamagui/stacks/dist/esm/ThemeableStack.mjs
-var import_core5 = require("@tamagui/core");
+var import_core4 = require("@tamagui/core");
 var chromelessStyle = {
   backgroundColor: "transparent",
   borderColor: "transparent",
@@ -4669,7 +4661,7 @@ var themeableVariants = {
     }
   }
 };
-var ThemeableStack = (0, import_core5.styled)(YStack5, {
+var ThemeableStack = (0, import_core4.styled)(YStack5, {
   variants: themeableVariants
 });
 
@@ -4680,7 +4672,7 @@ var PROGRESS_NAME = "Progress";
 var [createProgressContext, createProgressScope] = createContextScope(PROGRESS_NAME);
 var [ProgressProvider, useProgressContext] = createProgressContext(PROGRESS_NAME);
 var INDICATOR_NAME = "ProgressIndicator";
-var ProgressIndicatorFrame = (0, import_core6.styled)(ThemeableStack, {
+var ProgressIndicatorFrame = (0, import_core5.styled)(ThemeableStack, {
   name: INDICATOR_NAME,
   variants: {
     unstyled: {
@@ -4732,7 +4724,7 @@ function isValidValueNumber(value, max) {
   return isNumber(value) && !Number.isNaN(value) && value <= max && value >= 0;
 }
 var DEFAULT_MAX = 100;
-var ProgressFrame = (0, import_core6.styled)(ThemeableStack, {
+var ProgressFrame = (0, import_core5.styled)(ThemeableStack, {
   name: "Progress",
   variants: {
     unstyled: {
@@ -4744,10 +4736,10 @@ var ProgressFrame = (0, import_core6.styled)(ThemeableStack, {
     },
     size: {
       "...size": (val) => {
-        const size = Math.round((0, import_core6.getVariableValue)(getSize(val)) * 0.25);
+        const size = Math.round((0, import_core5.getVariableValue)(getSize(val)) * 0.25);
         return {
           height: size,
-          minWidth: (0, import_core6.getVariableValue)(size) * 20,
+          minWidth: (0, import_core5.getVariableValue)(size) * 20,
           width: "100%"
         };
       }
@@ -9877,13 +9869,13 @@ var import_jsx_runtime59 = require("react/jsx-runtime");
 var DEFAULT_PAGE_SIZE = 10;
 var MAX_ROWS_WITHOUT_PAGINATION = 100;
 var DEFAULT_LOCALIZATION = {
-  noResults: "No results.",
-  previousPage: "Previous",
-  nextPage: "Next",
-  pageOf: (currentPage, pageCount) => `Page ${currentPage} of ${pageCount}`,
-  errorTitle: "Something went wrong",
-  errorBody: "There was an error loading the data. Please try again.",
-  retry: "Retry"
+  noResults: "Nenhum resultado encontrado.",
+  previousPage: "Anterior",
+  nextPage: "Pr\xF3ximo",
+  pageOf: (currentPage, pageCount) => `P\xE1gina ${currentPage} de ${pageCount}`,
+  errorTitle: "Algo deu errado",
+  errorBody: "Houve um erro ao carregar os dados. Por favor, tente novamente.",
+  retry: "Tentar novamente"
 };
 function DataTable({
   columns,
@@ -10499,7 +10491,7 @@ var Charts = ({
 }) => {
   const theme = (0, import_tamagui62.useTheme)();
   const themeColor = theme[color];
-  const barColor = themeColor ? themeColor.get() : color;
+  const barColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
@@ -11853,11 +11845,11 @@ function createIdentifier(prefix, name, key) {
   var hashedString = hash_default(name + key);
   return process.env.NODE_ENV !== "production" ? prefix + "-" + name + "-" + hashedString : prefix + "-" + hashedString;
 }
-function createKeyframes(keyframes2) {
+function createKeyframes(keyframes) {
   var prefixes4 = ["-webkit-", ""];
-  var identifier = createIdentifier("r", "animation", JSON.stringify(keyframes2));
-  var steps = "{" + Object.keys(keyframes2).map((stepName) => {
-    var rule = keyframes2[stepName];
+  var identifier = createIdentifier("r", "animation", JSON.stringify(keyframes));
+  var steps = "{" + Object.keys(keyframes).map((stepName) => {
+    var rule = keyframes[stepName];
     var block = createDeclarationBlock(rule);
     return "" + stepName + block;
   }).join("") + "}";
@@ -11873,11 +11865,11 @@ function processKeyframesValue(keyframesValue) {
   var animationNames = [];
   var rules = [];
   var value = Array.isArray(keyframesValue) ? keyframesValue : [keyframesValue];
-  value.forEach((keyframes2) => {
-    if (typeof keyframes2 === "string") {
-      animationNames.push(keyframes2);
+  value.forEach((keyframes) => {
+    if (typeof keyframes === "string") {
+      animationNames.push(keyframes);
     } else {
-      var _createKeyframes = createKeyframes(keyframes2), identifier = _createKeyframes[0], keyframesRules = _createKeyframes[1];
+      var _createKeyframes = createKeyframes(keyframes), identifier = _createKeyframes[0], keyframesRules = _createKeyframes[1];
       animationNames.push(identifier);
       rules.push(...keyframesRules);
     }

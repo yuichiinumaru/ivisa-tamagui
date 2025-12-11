@@ -76,7 +76,7 @@ const MenubarTriggerFrame = styled(Trigger, {
   }
 })
 
-// 💀 Type Safe Wrappers
+// Type Safe Wrappers
 const MenubarTrigger = React.forwardRef<React.ElementRef<typeof Trigger>, GetProps<typeof MenubarTriggerFrame>>((props, ref) => (
   <MenubarTriggerFrame ref={ref} {...props} />
 ))

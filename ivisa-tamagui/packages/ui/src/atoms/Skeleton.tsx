@@ -1,14 +1,5 @@
 import { YStack, styled, GetProps } from 'tamagui'
-import { keyframes } from '@tamagui/core'
-
-const pulse = keyframes({
-  '0%, 100%': {
-    opacity: 1,
-  },
-  '50%': {
-    opacity: 0.5,
-  },
-})
+import './Skeleton.css'
 
 const SkeletonFrame = styled(YStack, {
   name: 'Skeleton',
@@ -18,7 +9,7 @@ const SkeletonFrame = styled(YStack, {
   variants: {
     animationType: {
       pulse: {
-        animationName: pulse.name,
+        animationName: 'skeleton-pulse',
         animationDuration: '2s',
         animationIterationCount: 'infinite',
       },

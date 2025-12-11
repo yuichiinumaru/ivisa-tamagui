@@ -20,7 +20,7 @@ const preview: Preview = {
     },
   ],
 
-  globals: {
+  initialGlobals: {
     theme: allThemes[0] ?? "light",
   },
 
