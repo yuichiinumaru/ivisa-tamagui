@@ -14,7 +14,7 @@ import { Slot } from '@radix-ui/react-slot';
  * @param {React.ReactNode} children - The text content to display.
  * @param {'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'} variant - The semantic HTML tag and style to apply.
  */
-const Typography = ({ leftIcon, rightIcon, loading, children, variant, asChild, ...props }) => {
+export const Typography = ({ leftIcon, rightIcon, loading, children, variant, asChild, ...props }) => {
   const components = {
     h1: TamaguiH1,
     h2: TamaguiH2,

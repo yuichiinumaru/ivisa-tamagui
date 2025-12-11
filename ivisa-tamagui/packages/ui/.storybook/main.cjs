@@ -81,6 +81,15 @@ const config = {
             '@tamagui/config': tamaguiConfigPath,
             '@tamagui/config.cjs': tamaguiConfigPath,
             '@tamagui/config.js': tamaguiConfigPath,
+            'tamagui': path.resolve(__dirname, '../../../node_modules/tamagui'),
+        };
+
+        config.resolve.fallback = {
+            ...config.resolve.fallback,
+            fs: false,
+            stream: false,
+            constants: false,
+            path: false,
         };
 
         // Log extensions to debug

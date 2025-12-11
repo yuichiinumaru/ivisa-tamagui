@@ -1,51 +1,88 @@
-import React from 'react';
-import { Toaster as SonnerToaster, toast as sonnerToast } from 'sonner';
-import { useTheme } from 'tamagui';
-import { CustomToast, CustomToastProps } from './CustomToast';
+import { toast as sonnerToast, Toaster as SonnerPrimitive } from 'sonner'
+import { useTheme } from 'tamagui'
+import { Toast, ToastProps } from './Toast'
 
-type ToasterProps = React.ComponentProps<typeof SonnerToaster>;
+type ToasterProps = React.ComponentProps<typeof SonnerPrimitive>
 
-export const Toaster = ({ ...props }: ToasterProps) => {
-  const theme = useTheme();
+export const Sonner = (props: ToasterProps) => {
+  const theme = useTheme()
+
   return (
-    <SonnerToaster
+    <SonnerPrimitive
       theme={theme.name as 'light' | 'dark' | 'system'}
+      toastOptions={{
+        unstyled: true,
+      }}
       {...props}
     />
-  );
-};
+  )
+}
 
-type ToastProps = CustomToastProps & { id?: string | number };
+const showToast = (
+  variant: ToastProps['variant'],
+  title: React.ReactNode,
+  description?: React.ReactNode
+) => {
+  sonnerToast.custom((t) => (
+    <Toast
+      variant={variant}
+      title={title}
+      description={description}
+      onDismiss={() => sonnerToast.dismiss(t)}
+    />
+  ))
+}
 
-const showToast = (props: ToastProps) => {
-  const { id, ...rest } = props;
-  return sonnerToast.custom(() => <CustomToast {...rest} />, { id });
-};
-
-export const toast = (title: string, props?: Omit<ToastProps, 'title'>) => {
-  return showToast({ title, ...props });
-};
-
-toast.success = (title: string, props?: Omit<ToastProps, 'title' | 'type'>) => {
-  return showToast({ title, type: 'success', ...props });
-};
-
-toast.error = (title: string, props?: Omit<ToastProps, 'title' | 'type'>) => {
-  return showToast({ title, type: 'error', ...props });
-};
-
-toast.warning = (title: string, props?: Omit<ToastProps, 'title' | 'type'>) => {
-  return showToast({ title, type: 'warning', ...props });
-};
-
-toast.info = (title: string, props?: Omit<ToastProps, 'title' | 'type'>) => {
-  return showToast({ title, type: 'info', ...props });
-};
-
-toast.loading = (title: string, props?: Omit<ToastProps, 'title' | 'loading'>) => {
-  return showToast({ title, loading: true, ...props });
-};
-
-toast.dismiss = (toastId: string | number) => {
-  sonnerToast.dismiss(toastId);
-};
+export const toast = {
+  message: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('info', title, description)
+  },
+  success: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('success', title, description)
+  },
+  error: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('error', title, description)
+  },
+  warning: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('warning', title, description)
+  },
+  loading: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('loading', title, description)
+  },
+  promise: <T,>(
+    promise: Promise<T>,
+    messages: {
+      loading: React.ReactNode
+      success: React.ReactNode | ((data: T) => React.ReactNode)
+      error: React.ReactNode | ((error: any) => React.ReactNode)
+    }
+  ) => {
+    sonnerToast.promise(promise, {
+      loading: (
+        <Toast variant="loading" title={messages.loading} />
+      ),
+      success: (data) => (
+        <Toast
+          variant="success"
+          title={
+            typeof messages.success === 'function'
+              ? messages.success(data)
+              : messages.success
+          }
+        />
+      ),
+      error: (error) => (
+        <Toast
+          variant="error"
+          title={
+            typeof messages.error === 'function'
+              ? messages.error(error)
+              : messages.error
+          }
+        />
+      ),
+    })
+  },
+  custom: sonnerToast.custom,
+  dismiss: sonnerToast.dismiss,
+}
