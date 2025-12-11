@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Badge } from './Badge';
-import { userEvent, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { userEvent, within } from '@storybook/test';
+import { expect } from '@storybook/test';
 import { AlarmClock, Rocket } from '@tamagui/lucide-icons';
 import { View } from 'tamagui';
 
 const meta: Meta<typeof Badge> = {
-  title: 'Atoms/Badge',
+  title: 'Átomos/Badge',
   component: Badge,
   tags: ['autodocs'],
   argTypes: {

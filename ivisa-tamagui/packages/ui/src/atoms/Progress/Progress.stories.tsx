@@ -3,7 +3,7 @@ import { Progress, ProgressProps } from './Progress'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof Progress> = {
-  title: 'Atoms/Progress',
+  title: 'Átomos/Progress',
   component: Progress,
   tags: ['autodocs'],
   args: {

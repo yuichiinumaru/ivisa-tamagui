@@ -3,7 +3,7 @@ import { Stack, Text } from 'tamagui'
 import { Logo } from './Logo'
 
 const meta: Meta<typeof Logo> = {
-  title: 'Atomos/Logo',
+  title: 'Átomos/Logo',
   component: Logo,
   tags: ['autodocs'],
   parameters: {
@@ -53,7 +53,7 @@ type Story = StoryObj<typeof Logo>
 
 export const Padrao: Story = {
   name: 'Padrão',
-  storyName: 'Padrão',
+  name: 'Padrão',
   args: {
     variant: 'full',
     color: 'primary',

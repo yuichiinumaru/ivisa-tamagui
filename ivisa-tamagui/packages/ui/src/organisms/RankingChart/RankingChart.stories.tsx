@@ -10,7 +10,7 @@ const MOCK_DATA: RankingChartEntry[] = [
 ];
 
 const meta: Meta<typeof RankingChart> = {
-  title: 'Organisms/RankingChart',
+  title: 'Organismos/RankingChart',
   component: RankingChart,
   tags: ['autodocs'],
   argTypes: {

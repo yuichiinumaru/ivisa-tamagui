@@ -12,7 +12,7 @@ import { Text, Label, XStack, YStack } from 'tamagui'
 import { Skeleton } from '../../atoms/Skeleton'
 
 const meta: Meta<typeof Popover> = {
-  title: 'Molecules/Popover',
+  title: 'Moléculas/Popover',
   component: Popover,
   parameters: {
     layout: 'centered',

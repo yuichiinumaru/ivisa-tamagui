@@ -3,7 +3,7 @@ import { KPIGrid } from './KPIGrid'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof KPIGrid> = {
-  title: 'Organisms/KPIGrid',
+  title: 'Organismos/KPIGrid',
   component: KPIGrid,
   tags: ['autodocs'],
   argTypes: {

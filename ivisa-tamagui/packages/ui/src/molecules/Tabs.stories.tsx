@@ -7,7 +7,7 @@ import { Label, Input } from 'tamagui'
 import { Button } from '../atoms/Button'
 
 const meta: Meta<typeof Tabs> = {
-  title: 'Molecules/Tabs',
+  title: 'Moléculas/Tabs',
   component: Tabs,
   parameters: {
     layout: 'centered',

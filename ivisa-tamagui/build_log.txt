@@ -1,0 +1,243 @@
+yarn run v1.22.22
+$ yarn workspace @ivisa/ui build-storybook
+$ storybook build
+@storybook/core v8.6.14
+
+info => Cleaning outputDir: storybook-static
+info => Loading presets
+WARN Could not resolve addon "file:///home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@storybook/react-dom-shim/dist/preset.js", skipping. Is it installed?
+info => Building manager..
+info => Manager built ([38;2;181;126;229m127 ms[39m)
+info => Building preview..
+info Addon-docs: using MDX3
+│
+●  Using implicit CSS loaders
+ANTIGRAVITY: Existing extensions: [
+  '.mjs', '.js',
+  '.jsx', '.ts',
+  '.tsx', '.json',
+  '.cjs'
+]
+ANTIGRAVITY: Final extensions: [
+  '.web.ts',  '.web.tsx', '.web.js',
+  '.web.jsx', '.ts',      '.tsx',
+  '.js',      '.jsx',     '.json',
+  '.cjs',     '.mjs',     '.mjs',
+  '.js',      '.jsx',     '.ts',
+  '.tsx',     '.json',    '.cjs'
+]
+│
+●  Using default Webpack5 setup
+<s> [webpack.Progress] 0% 
+
+<s> [webpack.Progress] 1% setup before run
+<s> [webpack.Progress] 1% setup before run NodeEnvironmentPlugin
+<s> [webpack.Progress] 1% setup before run storybook-mock-plugin
+<i> [storybook-mock-plugin] Mock map updated with 0 mocks.
+<s> [webpack.Progress] 1% setup before run
+<s> [webpack.Progress] 2% setup run
+<s> [webpack.Progress] 2% setup run
+<s> [webpack.Progress] 4% setup normal module factory
+<s> [webpack.Progress] 4% setup normal module factory CaseSensitivePathsPlugin
+<s> [webpack.Progress] 4% setup normal module factory NormalModuleReplacementPlugin
+<s> [webpack.Progress] 4% setup normal module factory
+<s> [webpack.Progress] 5% setup context module factory
+<s> [webpack.Progress] 5% setup context module factory
+<s> [webpack.Progress] 6% setup before compile
+<s> [webpack.Progress] 6% setup before compile ProgressPlugin
+<s> [webpack.Progress] 6% setup before compile
+<s> [webpack.Progress] 7% setup compile
+<s> [webpack.Progress] 7% setup compile ExternalsPlugin
+<s> [webpack.Progress] 7% setup compile ExternalsPlugin
+<s> [webpack.Progress] 7% setup compile
+<s> [webpack.Progress] 8% setup compilation
+<s> [webpack.Progress] 8% setup compilation HtmlWebpackPlugin
+<s> [webpack.Progress] 8% setup compilation unplugin-csf
+<s> [webpack.Progress] 8% setup compilation ArrayPushCallbackChunkFormatPlugin
+<s> [webpack.Progress] 8% setup compilation JsonpChunkLoadingPlugin
+<s> [webpack.Progress] 8% setup compilation StartupChunkDependenciesPlugin
+<s> [webpack.Progress] 8% setup compilation ImportScriptsChunkLoadingPlugin
+<s> [webpack.Progress] 8% setup compilation WorkerPlugin
+<s> [webpack.Progress] 8% setup compilation SplitChunksPlugin
+<s> [webpack.Progress] 8% setup compilation RuntimeChunkPlugin
+<s> [webpack.Progress] 8% setup compilation ResolverCachePlugin
+<s> [webpack.Progress] 8% setup compilation
+<s> [webpack.Progress] 9% setup compilation
+<s> [webpack.Progress] 9% setup compilation DefinePlugin
+<s> [webpack.Progress] 9% setup compilation ProgressPlugin
+<s> [webpack.Progress] 9% setup compilation ProvidePlugin
+<s> [webpack.Progress] 9% setup compilation WebpackInjectMockerRuntimePlugin
+<s> [webpack.Progress] 9% setup compilation ExternalsPlugin
+<s> [webpack.Progress] 9% setup compilation ExternalsPlugin
+<s> [webpack.Progress] 9% setup compilation ChunkPrefetchPreloadPlugin
+<s> [webpack.Progress] 9% setup compilation SourceMapDevToolPlugin
+<s> [webpack.Progress] 9% setup compilation JavascriptModulesPlugin
+<s> [webpack.Progress] 9% setup compilation JsonModulesPlugin
+<s> [webpack.Progress] 9% setup compilation AssetModulesPlugin
+<s> [webpack.Progress] 9% setup compilation EntryPlugin
+<s> [webpack.Progress] 9% setup compilation RuntimePlugin
+<s> [webpack.Progress] 9% setup compilation InferAsyncModulesPlugin
+<s> [webpack.Progress] 9% setup compilation DataUriPlugin
+<s> [webpack.Progress] 9% setup compilation FileUriPlugin
+<s> [webpack.Progress] 9% setup compilation CompatibilityPlugin
+<s> [webpack.Progress] 9% setup compilation HarmonyModulesPlugin
+<s> [webpack.Progress] 9% setup compilation AMDPlugin
+<s> [webpack.Progress] 9% setup compilation RequireJsStuffPlugin
+<s> [webpack.Progress] 9% setup compilation CommonJsPlugin
+<s> [webpack.Progress] 9% setup compilation LoaderPlugin
+<s> [webpack.Progress] 9% setup compilation LoaderPlugin
+<s> [webpack.Progress] 9% setup compilation NodeStuffPlugin
+<s> [webpack.Progress] 9% setup compilation APIPlugin
+<s> [webpack.Progress] 9% setup compilation ExportsInfoApiPlugin
+<s> [webpack.Progress] 9% setup compilation WebpackIsIncludedPlugin
+<s> [webpack.Progress] 9% setup compilation ConstPlugin
+<s> [webpack.Progress] 9% setup compilation UseStrictPlugin
+<s> [webpack.Progress] 9% setup compilation RequireIncludePlugin
+<s> [webpack.Progress] 9% setup compilation RequireEnsurePlugin
+<s> [webpack.Progress] 9% setup compilation RequireContextPlugin
+<s> [webpack.Progress] 9% setup compilation ImportPlugin
+<s> [webpack.Progress] 9% setup compilation ImportMetaContextPlugin
+<s> [webpack.Progress] 9% setup compilation SystemPlugin
+<s> [webpack.Progress] 9% setup compilation ImportMetaPlugin
+<s> [webpack.Progress] 9% setup compilation URLPlugin
+<s> [webpack.Progress] 9% setup compilation DefaultStatsFactoryPlugin
+<s> [webpack.Progress] 9% setup compilation DefaultStatsPresetPlugin
+<s> [webpack.Progress] 9% setup compilation DefaultStatsPrinterPlugin
+<s> [webpack.Progress] 9% setup compilation JavascriptMetaInfoPlugin
+<s> [webpack.Progress] 9% setup compilation EnsureChunkConditionsPlugin
+<s> [webpack.Progress] 9% setup compilation RemoveEmptyChunksPlugin
+<s> [webpack.Progress] 9% setup compilation MergeDuplicateChunksPlugin
+<s> [webpack.Progress] 9% setup compilation FlagIncludedChunksPlugin
+<s> [webpack.Progress] 9% setup compilation SideEffectsFlagPlugin
+<s> [webpack.Progress] 9% setup compilation FlagDependencyExportsPlugin
+<s> [webpack.Progress] 9% setup compilation FlagDependencyUsagePlugin
+<s> [webpack.Progress] 9% setup compilation InnerGraphPlugin
+<s> [webpack.Progress] 9% setup compilation MangleExportsPlugin
+<s> [webpack.Progress] 9% setup compilation ModuleConcatenationPlugin
+<s> [webpack.Progress] 9% setup compilation NoEmitOnErrorsPlugin
+<s> [webpack.Progress] 9% setup compilation RealContentHashPlugin
+<s> [webpack.Progress] 9% setup compilation WasmFinalizeExportsPlugin
+<s> [webpack.Progress] 9% setup compilation NamedModuleIdsPlugin
+<s> [webpack.Progress] 9% setup compilation DeterministicChunkIdsPlugin
+<s> [webpack.Progress] 9% setup compilation DefinePlugin
+<s> [webpack.Progress] 9% setup compilation TerserPlugin
+<s> [webpack.Progress] 9% setup compilation TemplatedPathPlugin
+<s> [webpack.Progress] 9% setup compilation RecordIdsPlugin
+<s> [webpack.Progress] 9% setup compilation WarnCaseSensitiveModulesPlugin
+<s> [webpack.Progress] 9% setup compilation IgnoreWarningsPlugin
+<s> [webpack.Progress] 9% setup compilation
+<s> [webpack.Progress] 10% building
+<s> [webpack.Progress] 10% building 0/1 entries 0/0 dependencies 0/0 modules
+Unexpected usage of "storyName" in "Padrao". Please use "name" instead.
+info => Copying static files: public at storybook-static
+<s> [webpack.Progress] 10% building 0/1 entries 1/1 dependencies 0/0 modules
+<s> [webpack.Progress] 10% building import loader ../../node_modules/tamagui-loader/dist/cjs/index.cjs
+<s> [webpack.Progress] 10% building 0/1 entries 1/1 dependencies 0/1 modules
+[33m
+  ➡ [tamagui] built config, components, prompt (254ms)[0m
+<s> [webpack.Progress] 10% building 0/1 entries 1/2 dependencies 0/1 modules
+<s> [webpack.Progress] 10% building import loader ../../node_modules/swc-loader/src/index.js
+<s> [webpack.Progress] 10% building 0/1 entries 37/47 dependencies 5/33 modules
+<s> [webpack.Progress] 10% building import loader ../../node_modules/style-loader/dist/cjs.js
+<s> [webpack.Progress] 10% building import loader ../../node_modules/css-loader/dist/cjs.js
+<s> [webpack.Progress] 10% building 0/1 entries 120/132 dependencies 33/62 modules
+<s> [webpack.Progress] 58% building 1/1 entries 137/156 dependencies 39/64 modules
+<s> [webpack.Progress] 99% cache begin idle
+<s> [webpack.Progress] 99% cache begin idle
+<s> [webpack.Progress] 100% 
+
+<s> [webpack.Progress] 99% cache shutdown
+<s> [webpack.Progress] 99% cache shutdown
+<s> [webpack.Progress] 100% 
+
+[38;2;241;97;97m=> Failed to build the preview[39m
+[38;2;241;97;97mSB_BUILDER-WEBPACK5_0002 (WebpackInvocationError): Module not found: Error: Package path ./dist/preview is not exported from package /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@storybook/addon-docs (see exports field in /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@storybook/addon-docs/package.json)[39m
+    at file:///home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@storybook/builder-webpack5/dist/index.js:833:35
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/HookWebpackError.js:66:2
+    at Hook.eval [as callAsync] (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:11:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/Hook.js:21:14)
+    at Cache.shutdown (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Cache.js:157:23)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compiler.js:1407:15
+    at Hook.eval [as callAsync] (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:6:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/Hook.js:21:14)
+    at Compiler.close (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compiler.js:1400:23)
+    at file:///home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@storybook/builder-webpack5/dist/index.js:833:18
+    at finalCallback (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compiler.js:519:32)
+    at onCompiled (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compiler.js:533:20)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compiler.js:1355:21
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:32:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/EntryPlugin.js:49:5
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:2509:13
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:2394:6
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:2337:13
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/util/AsyncQueue.js:390:5
+    at Hook.eval [as callAsync] (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)
+    at AsyncQueue._handleResult (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/util/AsyncQueue.js:360:21)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/util/AsyncQueue.js:343:11
+    at onTransitiveTasksFinished (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:1708:20)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:1694:7
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:2337:13
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/util/AsyncQueue.js:390:5
+    at Hook.eval [as callAsync] (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)
+    at AsyncQueue._handleResult (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/util/AsyncQueue.js:360:21)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/util/AsyncQueue.js:343:11
+    at onTransitiveTasksFinished (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:1708:20)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:1694:7
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:2162:13
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/util/AsyncQueue.js:390:5
+    at Hook.eval [as callAsync] (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)
+    at AsyncQueue._handleResult (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/util/AsyncQueue.js:360:21)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/util/AsyncQueue.js:343:11
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/Compilation.js:2058:13
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/NormalModuleFactory.js:1031:13
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:10:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/NormalModuleFactory.js:432:22
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:9:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/NormalModuleFactory.js:617:22
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/NormalModuleFactory.js:179:10
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/NormalModuleFactory.js:887:25
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/NormalModuleFactory.js:1116:8
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/NormalModuleFactory.js:1245:5
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/neo-async/async.js:6883:13
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/webpack/lib/NormalModuleFactory.js:1228:45
+    at finishWithoutResolve (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:568:11)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:657:14
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:718:5
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:718:5
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:27:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:89:43
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:718:5
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:16:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/forEachBail.js:39:13
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/AliasPlugin.js:170:14
+    at next (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/forEachBail.js:35:3)
+    at forEachBail (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/forEachBail.js:49:9)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/AliasPlugin.js:62:5
+    at _next0 (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:8:1)
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:30:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:718:5
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:16:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:718:5
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:16:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:718:5
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:27:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/DescriptionFilePlugin.js:89:43
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:718:5
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:16:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/Resolver.js:718:5
+    at eval (eval at create (/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:15:1)
+    at /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/enhanced-resolve/lib/DirectoryExistsPlugin.js:43:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+error Command failed.
+Exit code: 1
+Command: /usr/local/bin/node
+Arguments: /usr/local/lib/node_modules/yarn/lib/cli.js build-storybook
+Directory: /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/packages/ui
+Output:
+
+info Visit https://yarnpkg.com/en/docs/cli/workspace for documentation about this command.
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

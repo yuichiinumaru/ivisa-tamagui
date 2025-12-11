@@ -5,7 +5,7 @@ import { MoreHorizontal } from '@tamagui/lucide-icons'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof TimeSeriesChart> = {
-  title: 'Organisms/TimeSeriesChart',
+  title: 'Organismos/TimeSeriesChart',
   component: TimeSeriesChart,
   tags: ['autodocs'],
   argTypes: {

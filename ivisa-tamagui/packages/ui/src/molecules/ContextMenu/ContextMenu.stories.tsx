@@ -6,7 +6,7 @@ import { Share, Link, Pen, Trash } from '@tamagui/lucide-icons'
 import { ContextMenu, ContextMenuItemDef } from './ContextMenu'
 
 const meta: Meta<typeof ContextMenu> = {
-  title: 'Molecules/ContextMenu',
+  title: 'Moléculas/ContextMenu',
   component: ContextMenu,
   parameters: {
     layout: 'centered',

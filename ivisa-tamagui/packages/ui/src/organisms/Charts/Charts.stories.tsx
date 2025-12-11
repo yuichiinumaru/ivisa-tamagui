@@ -3,7 +3,7 @@ import { Charts } from './Charts'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof Charts> = {
-  title: 'Organisms/Charts',
+  title: 'Organismos/Charts',
   component: Charts,
   args: {
     data: [

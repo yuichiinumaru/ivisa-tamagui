@@ -7,7 +7,7 @@ import { Button } from '../../atoms/Button';
 
 // --- Storybook Metadata ---
 const meta: Meta<typeof Sidebar> = {
-  title: 'Organisms/Sidebar',
+  title: 'Organismos/Sidebar',
   component: Sidebar,
   parameters: {
     layout: 'fullscreen',

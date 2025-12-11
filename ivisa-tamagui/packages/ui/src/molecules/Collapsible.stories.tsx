@@ -10,11 +10,11 @@ import {
 import { Badge, Button, Square, Text, XStack, YStack } from 'tamagui'
 import { ChevronsUpDown } from '@tamagui/lucide-icons'
 import React from 'react'
-import { userEvent, within } from '@storybook/testing-library'
-import { expect } from '@storybook/jest'
+import { userEvent, within } from '@storybook/test'
+import { expect } from '@storybook/test'
 
 const meta: Meta<typeof Collapsible> = {
-  title: 'Molecules/Collapsible',
+  title: 'Moléculas/Collapsible',
   component: Collapsible,
   tags: ['autodocs'],
   argTypes: {

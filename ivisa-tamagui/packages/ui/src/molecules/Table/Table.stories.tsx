@@ -59,7 +59,7 @@ const columns: TableColumn<Invoice>[] = [
 // =================================================================================================
 
 const meta: Meta<typeof Table> = {
-  title: 'Molecules/Table',
+  title: 'Moléculas/Table',
   component: Table,
   tags: ['autodocs'],
   parameters: {

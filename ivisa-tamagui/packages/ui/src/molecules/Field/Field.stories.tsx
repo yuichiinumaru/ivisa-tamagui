@@ -6,7 +6,7 @@ import { Input } from '../../atoms/Input'
 import { Field } from './Field'
 
 const meta: Meta<typeof Field> = {
-  title: 'Molecules/Field',
+  title: 'Moléculas/Field',
   component: Field,
   tags: ['autodocs'],
   argTypes: {

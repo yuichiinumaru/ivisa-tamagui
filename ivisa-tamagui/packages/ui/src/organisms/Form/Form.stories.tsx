@@ -22,7 +22,7 @@ import {
 } from './Form'
 
 const meta: Meta = {
-  title: 'Organisms/Form',
+  title: 'Organismos/Form',
   component: Form,
   parameters: {
     layout: 'centered',

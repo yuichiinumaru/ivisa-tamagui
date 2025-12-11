@@ -1,11 +1,11 @@
 import { action } from '@storybook/addon-actions'
 import type { Meta, StoryObj } from '@storybook/react'
-import { userEvent, within } from '@storybook/testing-library'
+import { userEvent, within } from '@storybook/test'
 import { Button, Stack, Text, XStack } from 'tamagui'
 import { Dot } from './Dot'
 
 const meta: Meta<typeof Dot> = {
-  title: 'Atomos/Ponto',
+  title: 'Átomos/Ponto',
   component: Dot,
   tags: ['autodocs'],
   argTypes: {

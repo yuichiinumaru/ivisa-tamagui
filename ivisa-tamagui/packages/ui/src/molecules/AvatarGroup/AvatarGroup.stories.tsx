@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { AvatarGroup, AvatarGroupProps } from './AvatarGroup'
 
 const meta: Meta<typeof AvatarGroup> = {
-  title: 'Molecules/AvatarGroup',
+  title: 'Moléculas/AvatarGroup',
   component: AvatarGroup,
   tags: ['autodocs'],
   argTypes: {

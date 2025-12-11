@@ -2318,7 +2318,8 @@ import { Stack, styled as styled3 } from "tamagui";
 import { forwardRef as forwardRef2 } from "react";
 
 // src/atoms/Skeleton.tsx
-import { YStack as YStack2, styled as styled2, keyframes } from "tamagui";
+import { YStack as YStack2, styled as styled2 } from "tamagui";
+import { keyframes } from "@tamagui/core";
 import { jsx as jsx2 } from "react/jsx-runtime";
 var pulse = keyframes({
   "0%, 100%": {
@@ -3194,7 +3195,7 @@ var InputMain = React7.forwardRef(
               size,
               disabled: loading,
               ...props,
-              type: isPassword && !isPasswordVisible ? "password" : props.type
+              type: isPassword && isPasswordVisible ? "text" : props.type
             }
           ),
           loading && /* @__PURE__ */ jsx10(InputIcon, { children: /* @__PURE__ */ jsx10(Spinner, {}) }),
@@ -3430,7 +3431,7 @@ var Slider = React10.forwardRef(({
 }, ref) => {
   return /* @__PURE__ */ jsxs10(SliderFrame, { ref, ...props, disabled: disabled || loading, "aria-label": ariaLabel, children: [
     /* @__PURE__ */ jsx13(SliderTrack, { children: /* @__PURE__ */ jsx13(SliderRange, {}) }),
-    /* @__PURE__ */ jsx13(SliderThumb, { children: loading && /* @__PURE__ */ jsx13(Spinner4, { size: "small", color: "$primary" }) })
+    /* @__PURE__ */ jsx13(SliderThumb, { "aria-label": ariaLabel, children: loading && /* @__PURE__ */ jsx13(Spinner4, { size: "small", color: "$primary" }) })
   ] });
 });
 Slider.displayName = "Slider";
@@ -6480,7 +6481,7 @@ var SelectTriggerFrame = styled32(XStack17, {
 });
 var SelectTrigger = React32.forwardRef(
   ({ children, hasError, disabled, isLoading, rightSlot, ...props }, ref) => {
-    return /* @__PURE__ */ jsx35(TamaguiSelect.Trigger, { asChild: true, disabled: disabled || isLoading, ref, children: /* @__PURE__ */ jsxs25(SelectTriggerFrame, { hasError, disabled: disabled || isLoading, ...props, children: [
+    return /* @__PURE__ */ jsx35(TamaguiSelect.Trigger, { asChild: true, disabled: disabled || isLoading, ref, children: /* @__PURE__ */ jsxs25(SelectTriggerFrame, { tabIndex: 0, hasError, disabled: disabled || isLoading, ...props, children: [
       children,
       isLoading ? /* @__PURE__ */ jsx35(Spinner, {}) : rightSlot || /* @__PURE__ */ jsx35(ChevronDown3, { size: 12, color: "$mutedForeground" })
     ] }) });
@@ -7371,7 +7372,9 @@ var OTPInputImpl = React38.forwardRef(
     const valueArray = React38.useMemo(() => valueToArray(resolvedValue, length), [resolvedValue, length]);
     const focusInput = React38.useCallback((index) => {
       const node = inputRefs.current[index];
-      node?.focus?.();
+      if (node && typeof node.focus === "function") {
+        node.focus();
+      }
     }, []);
     const selectInput = React38.useCallback((index) => {
       if (!isWeb3) return;

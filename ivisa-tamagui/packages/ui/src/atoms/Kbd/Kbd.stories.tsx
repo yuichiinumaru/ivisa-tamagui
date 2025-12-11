@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Kbd } from './Kbd'
 import { XStack, Text } from 'tamagui'
-import { userEvent, within } from '@storybook/testing-library'
+import { userEvent, within } from '@storybook/test'
 import { Search } from '@tamagui/lucide-icons'
-import { expect } from '@storybook/jest'
+import { expect } from '@storybook/test'
 
 const meta: Meta<typeof Kbd> = {
-  title: 'Atoms/Kbd',
+  title: 'Átomos/Kbd',
   component: Kbd,
   tags: ['autodocs'],
   parameters: {

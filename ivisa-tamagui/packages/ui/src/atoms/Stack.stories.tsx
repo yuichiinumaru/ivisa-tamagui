@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack, HStack, VStack } from './Stack'
 import { Text, View } from 'tamagui'
-import { userEvent, within } from '@storybook/testing-library'
+import { userEvent, within } from '@storybook/test'
 
 const meta: Meta<typeof Stack> = {
-  title: 'atoms/Stack',
+  title: 'Átomos/Stack',
   component: Stack,
   tags: ['autodocs'],
   argTypes: {

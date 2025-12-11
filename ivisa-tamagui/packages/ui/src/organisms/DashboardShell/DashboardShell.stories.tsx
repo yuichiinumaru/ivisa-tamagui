@@ -7,7 +7,7 @@ import { H2, H3, MutedText } from '../../atoms/Typography'
 import { Avatar } from '../../atoms/Avatar'
 
 const meta: Meta<typeof DashboardShell> = {
-  title: 'Organisms/DashboardShell',
+  title: 'Organismos/DashboardShell',
   component: DashboardShell,
   tags: ['autodocs'],
   parameters: {

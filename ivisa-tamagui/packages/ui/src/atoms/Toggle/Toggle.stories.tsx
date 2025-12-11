@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Toggle, ToggleProps } from './Toggle';
 import { Bold, Italic, Loader } from '@tamagui/lucide-icons';
-import { userEvent, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { userEvent, within } from '@storybook/test';
+import { expect } from '@storybook/test';
 import { Stack } from 'tamagui';
 
 const meta: Meta<typeof Toggle> = {
-  title: 'atoms/Toggle',
+  title: 'Átomos/Toggle',
   component: Toggle,
   tags: ['autodocs'],
   argTypes: {

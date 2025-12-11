@@ -58,7 +58,7 @@ const Slider = React.forwardRef<React.ElementRef<typeof SliderFrame>, SliderProp
             <SliderTrack>
                 <SliderRange />
             </SliderTrack>
-            <SliderThumb>
+            <SliderThumb aria-label={ariaLabel}>
                 {loading && <Spinner size="small" color="$primary" />}
             </SliderThumb>
         </SliderFrame>

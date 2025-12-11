@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof Alert> = {
-  title: 'atoms/Alert',
+  title: 'Átomos/Alert',
   component: Alert,
   tags: ['autodocs'],
   argTypes: {

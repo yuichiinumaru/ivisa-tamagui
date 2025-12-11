@@ -14,7 +14,7 @@ import {
 } from './Dialog'
 
 const meta: Meta<typeof DialogContent> = {
-  title: 'Molecules/Dialog',
+  title: 'Moléculas/Dialog',
   component: DialogContent,
   parameters: {
     layout: 'centered',

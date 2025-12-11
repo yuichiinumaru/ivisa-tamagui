@@ -8,7 +8,7 @@ import { Button } from '../../atoms/Button'
 import { HorizontalBarGroup } from './HorizontalBarGroup'
 
 const meta: Meta<typeof HorizontalBarGroup> = {
-  title: 'Molecules/HorizontalBarGroup',
+  title: 'Moléculas/HorizontalBarGroup',
   component: HorizontalBarGroup,
   tags: ['autodocs'],
   argTypes: {

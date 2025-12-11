@@ -11,7 +11,7 @@ import { pagamentos } from './DataTable.mocks'
 import type { Pagamento } from './DataTable.mocks'
 
 const meta: Meta<typeof DataTable> = {
-  title: 'Organisms/DataTable',
+  title: 'Organismos/DataTable',
   component: DataTable,
   parameters: {
     layout: 'centered',

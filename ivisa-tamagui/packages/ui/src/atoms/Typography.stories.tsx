@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { YStack } from 'tamagui';
-import { userEvent, within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { userEvent, within } from '@storybook/test';
+import { expect } from '@storybook/test';
 import { AlarmClock } from '@tamagui/lucide-icons';
 import {
   H1,
@@ -17,7 +17,7 @@ import {
 } from './Typography';
 
 const meta: Meta = {
-  title: 'Atoms/Typography',
+  title: 'Átomos/Typography',
   tags: ['autodocs'],
   decorators: [
     (Story) => (

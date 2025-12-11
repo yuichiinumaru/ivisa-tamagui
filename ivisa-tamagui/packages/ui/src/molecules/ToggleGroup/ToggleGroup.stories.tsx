@@ -4,7 +4,7 @@ import { Text, YStack } from 'tamagui'
 import { AlignCenter, AlignLeft, AlignRight } from '@tamagui/lucide-icons'
 
 const meta: Meta<typeof ToggleGroup> = {
-  title: 'Molecules/ToggleGroup',
+  title: 'Moléculas/ToggleGroup',
   component: ToggleGroup,
   parameters: {
     layout: 'centered',

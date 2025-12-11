@@ -4,7 +4,7 @@ import { Button } from '../../atoms/Button'
 import { GaugeChart, GaugeChartProps } from './GaugeChart'
 
 const meta: Meta<typeof GaugeChart> = {
-  title: 'Organisms/GaugeChart',
+  title: 'Organismos/GaugeChart',
   component: GaugeChart,
   tags: ['autodocs'],
   argTypes: {

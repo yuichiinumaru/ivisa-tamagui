@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { userEvent, within } from '@storybook/testing-library'
+import { userEvent, within } from '@storybook/test'
 import { Search } from '@tamagui/lucide-icons'
 import { YStack, Text } from 'tamagui'
 import { Input } from './Input'
 
 const meta: Meta<typeof Input> = {
-  title: 'atoms/Input',
+  title: 'Átomos/Input',
   component: Input,
   tags: ['autodocs'],
   argTypes: {

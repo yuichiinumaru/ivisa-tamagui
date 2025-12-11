@@ -1,3 +1,4 @@
+import "./fonts.css"
 import React from "react"
 import { Preview } from "@storybook/react"
 import { TamaguiProvider } from "tamagui"

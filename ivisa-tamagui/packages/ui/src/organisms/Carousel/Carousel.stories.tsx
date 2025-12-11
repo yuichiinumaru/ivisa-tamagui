@@ -13,7 +13,7 @@ import { Image, Paragraph, Text, View, YStack } from 'tamagui'
 // --- Storybook Setup ---------------------------------------------------------
 
 const meta: Meta<typeof Carousel> = {
-  title: 'Organisms/Carousel',
+  title: 'Organismos/Carousel',
   component: Carousel,
   tags: ['autodocs'],
   parameters: {

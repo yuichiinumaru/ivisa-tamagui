@@ -5,7 +5,7 @@ import { userEvent, within } from '@storybook/test'
 import { expect } from '@storybook/test'
 
 const meta: Meta<typeof NavLink> = {
-  title: 'Atoms/NavLink',
+  title: 'Átomos/NavLink',
   component: NavLink,
   tags: ['autodocs'],
   args: {

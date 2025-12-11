@@ -5,7 +5,7 @@ import { Slider } from './Slider'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof Slider> = {
-  title: 'Atoms/Slider',
+  title: 'Átomos/Slider',
   component: Slider,
   tags: ['autodocs'],
   argTypes: {

@@ -5,7 +5,7 @@ import { Ban, WifiOff } from '@tamagui/lucide-icons'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof Empty> = {
-  title: 'Molecules/Empty',
+  title: 'Moléculas/Empty',
   component: Empty,
   tags: ['autodocs'],
   parameters: {

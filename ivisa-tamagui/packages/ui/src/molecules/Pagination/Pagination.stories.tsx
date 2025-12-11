@@ -5,7 +5,7 @@ import { YStack } from 'tamagui'
 import { Pagination, PaginationProps } from './Pagination'
 
 const meta: Meta<PaginationProps> = {
-  title: 'Molecules/Paginação',
+  title: 'Moléculas/Paginação',
   component: Pagination,
   tags: ['autodocs'],
   args: {

@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { userEvent, within } from '@storybook/testing-library'
+import { userEvent, within } from '@storybook/test'
 import { Checkbox } from './Checkbox'
 import { YStack, XStack } from 'tamagui'
 import { Spinner } from '../Spinner'
 
 const meta: Meta<typeof Checkbox> = {
-  title: 'Atoms/Checkbox',
+  title: 'Átomos/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
   argTypes: {

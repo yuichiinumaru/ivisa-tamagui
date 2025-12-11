@@ -6,7 +6,7 @@ import { Input } from '../atoms/Input'
 import { Label } from '../atoms/Label'
 
 const meta: Meta<typeof Drawer> = {
-  title: 'Molecules/Drawer',
+  title: 'Moléculas/Drawer',
   component: Drawer,
   parameters: {
     layout: 'centered',

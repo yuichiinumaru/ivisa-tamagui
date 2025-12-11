@@ -5,7 +5,7 @@ import { ToastProvider, useToast } from './Toast'
 import { YStack } from 'tamagui'
 
 const meta: Meta = {
-  title: 'Molecules/Toast',
+  title: 'Moléculas/Toast',
   component: ToastProvider,
   decorators: [
     (Story, context) => (

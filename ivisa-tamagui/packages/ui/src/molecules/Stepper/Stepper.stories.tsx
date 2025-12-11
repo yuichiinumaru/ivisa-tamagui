@@ -20,7 +20,7 @@ const steps = [
 ]
 
 const meta: Meta<typeof Stepper> = {
-  title: 'Molecules/Stepper',
+  title: 'Moléculas/Stepper',
   component: Stepper,
   tags: ['autodocs'],
   args: {

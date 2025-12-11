@@ -5,7 +5,7 @@ import { Button } from '../../atoms/Button'
 import { MetricCard } from './MetricCard'
 
 const meta: Meta<typeof MetricCard> = {
-  title: 'Molecules/MetricCard',
+  title: 'Moléculas/MetricCard',
   component: MetricCard,
   tags: ['autodocs'],
   argTypes: {

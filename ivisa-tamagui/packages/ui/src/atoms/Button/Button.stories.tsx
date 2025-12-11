@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { userEvent, within } from '@storybook/testing-library'
+import { userEvent, within } from '@storybook/test'
 import { expect, fn } from '@storybook/test'
 import { Button } from './Button'
 import { Text } from 'tamagui'
 
 const meta: Meta<typeof Button> = {
-  title: 'atoms/Button',
+  title: 'Átomos/Button',
   component: Button,
   tags: ['autodocs'],
   parameters: {

@@ -5,7 +5,7 @@ import { YStack } from 'tamagui'
 import { DatePicker, DatePickerProps } from './DatePicker'
 
 const meta: Meta<typeof DatePicker> = {
-  title: 'molecules/DatePicker',
+  title: 'Moléculas/DatePicker',
   component: DatePicker,
   argTypes: {
     variant: {

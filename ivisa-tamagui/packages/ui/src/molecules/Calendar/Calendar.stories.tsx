@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions'
 import { DatePicker } from '../DatePicker'
 
 const meta: Meta<CalendarProps> = {
-  title: 'Molecules/Calendar',
+  title: 'Moléculas/Calendar',
   component: Calendar,
   parameters: {
     layout: 'centered',

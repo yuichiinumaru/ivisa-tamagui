@@ -9,7 +9,7 @@ import { Button } from '../../atoms/Button'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof HoverCard> = {
-  title: 'Moleculas/HoverCard',
+  title: 'Moléculas/HoverCard',
   component: HoverCard,
   tags: ['autodocs'],
   parameters: {

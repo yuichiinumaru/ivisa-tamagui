@@ -6,7 +6,7 @@ import { YStack } from 'tamagui'
 import { Breadcrumb, BreadcrumbProps } from './Breadcrumb'
 
 const meta: Meta<BreadcrumbProps> = {
-  title: 'Moleculas/Breadcrumb',
+  title: 'Moléculas/Breadcrumb',
   component: Breadcrumb,
   tags: ['autodocs'],
   args: {

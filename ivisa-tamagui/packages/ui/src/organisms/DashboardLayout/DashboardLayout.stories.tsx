@@ -3,7 +3,7 @@ import { DashboardLayout } from './DashboardLayout'
 import { Text, YStack, H3 } from 'tamagui'
 
 const meta: Meta<typeof DashboardLayout> = {
-  title: 'Organisms/DashboardLayout',
+  title: 'Organismos/DashboardLayout',
   component: DashboardLayout,
   parameters: {
     layout: 'fullscreen',

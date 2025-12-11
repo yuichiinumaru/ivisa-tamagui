@@ -5,7 +5,7 @@ import { YStack } from 'tamagui'
 import { DollarSign, Activity } from '@tamagui/lucide-icons'
 
 const meta: Meta<typeof RadialChartContent> = {
-  title: 'Molecules/RadialChartContent',
+  title: 'Moléculas/RadialChartContent',
   component: RadialChartContent,
   tags: ['autodocs'],
   argTypes: {

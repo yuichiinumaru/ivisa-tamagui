@@ -2558,8 +2558,9 @@ var import_react2 = require("react");
 
 // src/atoms/Skeleton.tsx
 var import_tamagui2 = require("tamagui");
+var import_core = require("@tamagui/core");
 var import_jsx_runtime2 = require("react/jsx-runtime");
-var pulse = (0, import_tamagui2.keyframes)({
+var pulse = (0, import_core.keyframes)({
   "0%, 100%": {
     opacity: 1
   },
@@ -3072,7 +3073,7 @@ var AlertDialog = ({
 // src/atoms/Badge.tsx
 var import_react7 = require("react");
 var import_tamagui9 = require("tamagui");
-var import_core = require("@tamagui/core");
+var import_core2 = require("@tamagui/core");
 var import_jsx_runtime9 = require("react/jsx-runtime");
 var badgeVariants = {
   variant: {
@@ -3185,7 +3186,7 @@ var BadgeText = (0, import_tamagui9.styled)(import_tamagui9.Text, {
 });
 var Badge = (0, import_react7.forwardRef)(
   ({ children, asChild, variant = "default", size = "md", leftIcon, rightIcon, ...props }, ref) => {
-    const Component3 = asChild ? import_core.Slot : BadgeFrame;
+    const Component3 = asChild ? import_core2.Slot : BadgeFrame;
     const renderIcon = (icon) => {
       if (!icon) return null;
       return (0, import_react7.cloneElement)(icon, {
@@ -3421,7 +3422,7 @@ var InputMain = import_react8.default.forwardRef(
               size,
               disabled: loading,
               ...props,
-              type: isPassword && !isPasswordVisible ? "password" : props.type
+              type: isPassword && isPasswordVisible ? "text" : props.type
             }
           ),
           loading && /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(InputIcon, { children: /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(Spinner, {}) }),
@@ -3653,7 +3654,7 @@ var Slider = import_react11.default.forwardRef(({
 }, ref) => {
   return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)(SliderFrame, { ref, ...props, disabled: disabled || loading, "aria-label": ariaLabel, children: [
     /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(SliderTrack, { children: /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(SliderRange, {}) }),
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(SliderThumb, { children: loading && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui13.Spinner, { size: "small", color: "$primary" }) })
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(SliderThumb, { "aria-label": ariaLabel, children: loading && /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(import_tamagui13.Spinner, { size: "small", color: "$primary" }) })
   ] });
 });
 Slider.displayName = "Slider";
@@ -3929,7 +3930,7 @@ var Blockquote = (0, import_tamagui14.styled)(Text5, {
 var import_tamagui15 = require("tamagui");
 
 // ../../node_modules/@tamagui/progress/dist/esm/Progress.mjs
-var import_core5 = require("@tamagui/core");
+var import_core6 = require("@tamagui/core");
 
 // ../../node_modules/@tamagui/create-context/dist/esm/create-context.mjs
 var React13 = __toESM(require("react"), 1);
@@ -4453,15 +4454,15 @@ var stepTokenUpOrDown = (type, current, options = defaultOptions) => {
 var getTokenRelative = stepTokenUpOrDown;
 
 // ../../node_modules/@tamagui/stacks/dist/esm/Stacks.mjs
-var import_core3 = require("@tamagui/core");
+var import_core4 = require("@tamagui/core");
 
 // ../../node_modules/@tamagui/stacks/dist/esm/getElevation.mjs
-var import_core2 = require("@tamagui/core");
+var import_core3 = require("@tamagui/core");
 var getElevation = (size, extras) => {
   if (!size) return;
   const {
     tokens: tokens2
-  } = extras, token = tokens2.size[size], sizeNum = (0, import_core2.isVariable)(token) ? +token.val : size;
+  } = extras, token = tokens2.size[size], sizeNum = (0, import_core3.isVariable)(token) ? +token.val : size;
   return getSizedElevation(sizeNum, extras);
 };
 var getSizedElevation = (val, {
@@ -4470,7 +4471,7 @@ var getSizedElevation = (val, {
 }) => {
   let num = 0;
   if (val === true) {
-    const val2 = (0, import_core2.getVariableValue)(tokens2.size.true);
+    const val2 = (0, import_core3.getVariableValue)(tokens2.size.true);
     typeof val2 == "number" ? num = val2 : num = 10;
   } else num = +val;
   if (num === 0) return;
@@ -4482,7 +4483,7 @@ var getSizedElevation = (val, {
       height,
       width: 0
     },
-    ...import_core2.isAndroid ? {
+    ...import_core3.isAndroid ? {
       elevationAndroid: 2 * height
     } : {}
   };
@@ -4512,17 +4513,17 @@ var variants = {
   },
   inset: getInset
 };
-var YStack5 = (0, import_core3.styled)(import_core3.View, {
+var YStack5 = (0, import_core4.styled)(import_core4.View, {
   flexDirection: "column",
   variants
 });
 YStack5.displayName = "YStack";
-var XStack6 = (0, import_core3.styled)(import_core3.View, {
+var XStack6 = (0, import_core4.styled)(import_core4.View, {
   flexDirection: "row",
   variants
 });
 XStack6.displayName = "XStack";
-var ZStack = (0, import_core3.styled)(YStack5, {
+var ZStack = (0, import_core4.styled)(YStack5, {
   position: "relative"
 }, {
   neverFlatten: true,
@@ -4630,7 +4631,7 @@ var focusTheme = {
 };
 
 // ../../node_modules/@tamagui/stacks/dist/esm/ThemeableStack.mjs
-var import_core4 = require("@tamagui/core");
+var import_core5 = require("@tamagui/core");
 var chromelessStyle = {
   backgroundColor: "transparent",
   borderColor: "transparent",
@@ -4668,7 +4669,7 @@ var themeableVariants = {
     }
   }
 };
-var ThemeableStack = (0, import_core4.styled)(YStack5, {
+var ThemeableStack = (0, import_core5.styled)(YStack5, {
   variants: themeableVariants
 });
 
@@ -4679,7 +4680,7 @@ var PROGRESS_NAME = "Progress";
 var [createProgressContext, createProgressScope] = createContextScope(PROGRESS_NAME);
 var [ProgressProvider, useProgressContext] = createProgressContext(PROGRESS_NAME);
 var INDICATOR_NAME = "ProgressIndicator";
-var ProgressIndicatorFrame = (0, import_core5.styled)(ThemeableStack, {
+var ProgressIndicatorFrame = (0, import_core6.styled)(ThemeableStack, {
   name: INDICATOR_NAME,
   variants: {
     unstyled: {
@@ -4731,7 +4732,7 @@ function isValidValueNumber(value, max) {
   return isNumber(value) && !Number.isNaN(value) && value <= max && value >= 0;
 }
 var DEFAULT_MAX = 100;
-var ProgressFrame = (0, import_core5.styled)(ThemeableStack, {
+var ProgressFrame = (0, import_core6.styled)(ThemeableStack, {
   name: "Progress",
   variants: {
     unstyled: {
@@ -4743,10 +4744,10 @@ var ProgressFrame = (0, import_core5.styled)(ThemeableStack, {
     },
     size: {
       "...size": (val) => {
-        const size = Math.round((0, import_core5.getVariableValue)(getSize(val)) * 0.25);
+        const size = Math.round((0, import_core6.getVariableValue)(getSize(val)) * 0.25);
         return {
           height: size,
-          minWidth: (0, import_core5.getVariableValue)(size) * 20,
+          minWidth: (0, import_core6.getVariableValue)(size) * 20,
           width: "100%"
         };
       }
@@ -6648,7 +6649,7 @@ var SelectTriggerFrame = (0, import_tamagui31.styled)(import_tamagui31.XStack, {
 });
 var SelectTrigger = import_react30.default.forwardRef(
   ({ children, hasError, disabled, isLoading, rightSlot, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Select.Trigger, { asChild: true, disabled: disabled || isLoading, ref, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(SelectTriggerFrame, { hasError, disabled: disabled || isLoading, ...props, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Select.Trigger, { asChild: true, disabled: disabled || isLoading, ref, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(SelectTriggerFrame, { tabIndex: 0, hasError, disabled: disabled || isLoading, ...props, children: [
       children,
       isLoading ? /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Spinner, {}) : rightSlot || /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_lucide_icons10.ChevronDown, { size: 12, color: "$mutedForeground" })
     ] }) });
@@ -7534,7 +7535,9 @@ var OTPInputImpl = import_react36.default.forwardRef(
     const valueArray = import_react36.default.useMemo(() => valueToArray(resolvedValue, length), [resolvedValue, length]);
     const focusInput = import_react36.default.useCallback((index) => {
       const node = inputRefs.current[index];
-      node?.focus?.();
+      if (node && typeof node.focus === "function") {
+        node.focus();
+      }
     }, []);
     const selectInput = import_react36.default.useCallback((index) => {
       if (!import_tamagui37.isWeb) return;

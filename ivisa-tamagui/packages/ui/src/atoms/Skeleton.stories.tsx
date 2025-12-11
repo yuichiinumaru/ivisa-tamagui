@@ -10,7 +10,7 @@ import { Skeleton } from './Skeleton'
  * de que a página está processando.
  */
 const meta: Meta<typeof Skeleton> = {
-  title: 'atoms/Skeleton',
+  title: 'Átomos/Skeleton',
   component: Skeleton,
   tags: ['autodocs'],
   parameters: {

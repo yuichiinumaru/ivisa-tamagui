@@ -7,7 +7,7 @@ import { Avatar } from './Avatar';
 import { Button } from './Button';
 
 const meta: Meta<typeof Avatar> = {
-  title: 'Atomics/Avatar',
+  title: 'Átomos/Avatar',
   component: Avatar,
   tags: ['autodocs'],
   parameters: {

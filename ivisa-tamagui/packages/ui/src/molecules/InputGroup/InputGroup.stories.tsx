@@ -6,7 +6,7 @@ import { Search } from '@tamagui/lucide-icons'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof InputGroup> = {
-  title: 'Molecules/InputGroup',
+  title: 'Moléculas/InputGroup',
   component: InputGroup,
   tags: ['autodocs'],
   parameters: {

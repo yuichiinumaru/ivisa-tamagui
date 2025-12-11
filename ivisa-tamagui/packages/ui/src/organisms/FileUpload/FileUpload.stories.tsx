@@ -3,7 +3,7 @@ import { FileUpload } from './FileUpload'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof FileUpload> = {
-  title: 'Organisms/FileUpload',
+  title: 'Organismos/FileUpload',
   component: FileUpload,
   parameters: {
     layout: 'centered',

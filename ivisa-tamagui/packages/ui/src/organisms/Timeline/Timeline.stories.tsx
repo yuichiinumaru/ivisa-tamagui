@@ -3,7 +3,7 @@ import { Timeline } from './Timeline'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof Timeline> = {
-  title: 'Organisms/Timeline',
+  title: 'Organismos/Timeline',
   component: Timeline,
   parameters: {
     layout: 'centered',

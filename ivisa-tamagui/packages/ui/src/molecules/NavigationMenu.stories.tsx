@@ -11,7 +11,7 @@ import { YStack, Text } from 'tamagui'
 import { Button } from '../atoms/Button'
 
 const meta: Meta<typeof NavigationMenu> = {
-  title: 'Molecules/NavigationMenu',
+  title: 'Moléculas/NavigationMenu',
   component: NavigationMenu,
   parameters: {
     layout: 'centered',

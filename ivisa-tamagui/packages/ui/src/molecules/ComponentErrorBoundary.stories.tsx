@@ -5,7 +5,7 @@ import { Button, Paragraph, Text, XStack, YStack } from 'tamagui'
 import { ComponentErrorBoundary } from './ComponentErrorBoundary'
 
 const meta: Meta<typeof ComponentErrorBoundary> = {
-  title: 'Molecules/ComponentErrorBoundary',
+  title: 'Moléculas/ComponentErrorBoundary',
   component: ComponentErrorBoundary,
   parameters: {
     layout: 'centered',

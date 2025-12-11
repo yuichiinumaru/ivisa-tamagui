@@ -16,7 +16,7 @@ import { YStack, XStack } from 'tamagui'
 import { StorybookArgs } from '../../../apps/storybook/.storybook/utils/StorybookArgs'
 
 const meta: Meta<typeof Sheet> = {
-  title: 'Molecules/Sheet',
+  title: 'Moléculas/Sheet',
   component: Sheet,
   parameters: {
     layout: 'centered',

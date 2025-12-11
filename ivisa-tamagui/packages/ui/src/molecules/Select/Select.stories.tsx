@@ -13,7 +13,7 @@ import {
 } from './Select';
 
 const meta: Meta<typeof Select> = {
-  title: 'Molecules/Select',
+  title: 'Moléculas/Select',
   component: Select,
   parameters: {
     layout: 'centered',

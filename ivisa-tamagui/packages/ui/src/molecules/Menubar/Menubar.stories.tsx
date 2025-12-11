@@ -18,7 +18,7 @@ import React from 'react'
 import { Button } from '../../atoms/Button'
 
 const meta: Meta<typeof Menubar> = {
-  title: 'Molecules/Menubar',
+  title: 'Moléculas/Menubar',
   component: Menubar,
   parameters: {
     layout: 'centered',

@@ -3,7 +3,7 @@ import { Separator, SeparatorProps } from './Separator'
 import { YStack, XStack, Text } from 'tamagui'
 
 const meta: Meta<typeof Separator> = {
-  title: 'atoms/Separator',
+  title: 'Átomos/Separator',
   component: Separator,
   tags: ['autodocs'],
   argTypes: {

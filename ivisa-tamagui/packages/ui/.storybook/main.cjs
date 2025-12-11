@@ -18,14 +18,12 @@ Module.prototype.require = function (id) {
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
-    stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
+    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
     addons: [
         '@storybook/addon-links',
         {
             name: '@storybook/addon-essentials',
-            options: {
-                docs: false,
-            },
+            options: {},
         },
         '@storybook/addon-interactions',
         '@storybook/addon-webpack5-compiler-swc',
@@ -37,7 +35,7 @@ const config = {
     docs: {
         autodocs: false,
     },
-    staticDirs: ['../src/assets'],
+    staticDirs: ['../public'],
     webpackFinal: async (config) => {
         if (!config.resolve) config.resolve = {};
         if (!config.module) config.module = { rules: [] };
@@ -134,7 +132,8 @@ const config = {
             'react-native/assets-registry/registry': 'react-native-web/dist/modules/AssetRegistry',
             '@react-native/normalize-color': 'react-native-web/dist/modules/normalizeColor',
             'react-native/Libraries/Image/AssetRegistry': 'react-native-web/dist/modules/AssetRegistry', // Fallback
-            'victory-native': 'victory',
+            'react-native/Libraries/Image/AssetRegistry': 'react-native-web/dist/modules/AssetRegistry', // Fallback
+            'victory-native': path.resolve(__dirname, '../src/mocks/victory-native.js'),
         };
 
         // ANTIGRAVITY FIX: Inject React to solve "ReferenceError: React is not defined" in Storybook stories

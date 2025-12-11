@@ -4,7 +4,7 @@ import { Settings } from '@tamagui/lucide-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof NavGroup> = {
-  title: 'Molecules/NavGroup',
+  title: 'Moléculas/NavGroup',
   component: NavGroup,
   tags: ['autodocs'],
   argTypes: {

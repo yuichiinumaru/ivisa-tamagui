@@ -6,7 +6,7 @@ import { Sonner, toast } from './Sonner'
 import { Toast } from './Toast'
 
 const meta: Meta<typeof Sonner> = {
-  title: 'Molecules/Sonner',
+  title: 'Moléculas/Sonner',
   component: Sonner,
   tags: ['autodocs'],
   parameters: {

@@ -5,7 +5,7 @@ import { YStack, Text } from 'tamagui'
 import { OTPInput } from './OTPInput'
 
 const meta: Meta<typeof OTPInput> = {
-  title: 'Molecules/OTPInput',
+  title: 'Moléculas/OTPInput',
   component: OTPInput,
   tags: ['autodocs'],
   args: {

@@ -3,7 +3,7 @@ import { RichText } from './RichText'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof RichText> = {
-  title: 'Organisms/RichText',
+  title: 'Organismos/RichText',
   component: RichText,
   tags: ['autodocs'],
   parameters: {

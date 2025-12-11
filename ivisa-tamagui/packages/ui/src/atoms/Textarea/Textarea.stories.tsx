@@ -4,7 +4,7 @@ import { userEvent, within } from '@storybook/test'
 import { Textarea } from './Textarea'
 
 const meta: Meta<typeof Textarea> = {
-  title: 'atoms/Textarea',
+  title: 'Átomos/Textarea',
   component: Textarea,
   tags: ['autodocs'],
   argTypes: {

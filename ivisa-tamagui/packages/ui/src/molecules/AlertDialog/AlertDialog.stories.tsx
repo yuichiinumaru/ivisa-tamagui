@@ -4,7 +4,7 @@ import { AlertDialog } from './AlertDialog'
 import { Check, X } from '@tamagui/lucide-icons'
 
 const meta: Meta<typeof AlertDialog> = {
-  title: 'Molecules/AlertDialog',
+  title: 'Moléculas/AlertDialog',
   component: AlertDialog,
   tags: ['autodocs'],
   argTypes: {

@@ -5,7 +5,7 @@ import { H4, Image, Paragraph, YStack } from 'tamagui'
 import { Card } from '../molecules/Card'
 
 const meta: Meta<typeof AspectRatio> = {
-  title: 'Atomos/ProporcaoDaTela',
+  title: 'Átomos/ProporcaoDaTela',
   component: AspectRatio,
   tags: ['autodocs'],
   parameters: {

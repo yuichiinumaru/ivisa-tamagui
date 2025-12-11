@@ -4,7 +4,7 @@ import { Button, Text } from 'tamagui'
 import { BarChart } from '@tamagui/lucide-icons'
 
 const meta: Meta<typeof ChartContainer> = {
-  title: 'Moleculas/ChartContainer',
+  title: 'Moléculas/ChartContainer',
   component: ChartContainer,
   tags: ['autodocs'],
   argTypes: {

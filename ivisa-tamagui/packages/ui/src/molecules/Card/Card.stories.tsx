@@ -13,7 +13,7 @@ import { Input } from '../../atoms/Input'
 import { Label } from '../../atoms/Label'
 
 const meta: Meta<typeof Card> = {
-  title: 'Molecules/Card',
+  title: 'Moléculas/Card',
   component: Card,
   parameters: {
     layout: 'centered',
