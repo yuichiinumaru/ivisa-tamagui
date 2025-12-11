@@ -1,5 +1,6 @@
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
-import { GetProps, styled, YStack } from 'tamagui'
+import { GetProps, styled, YStack, XStack } from 'tamagui'
+import { Skeleton } from '../atoms/Skeleton'
 
 const NavigationMenu = styled(NavigationMenuPrimitive.Root, {
   name: 'NavigationMenu',
@@ -7,6 +8,22 @@ const NavigationMenu = styled(NavigationMenuPrimitive.Root, {
   display: 'flex',
   justifyContent: 'center',
   width: '100%',
+  variants: {
+    hasError: {
+      true: {
+        borderColor: '$red10',
+        borderWidth: 1,
+        borderRadius: '$4',
+      },
+    },
+    disabled: {
+      true: {
+        opacity: 0.5,
+        cursor: 'not-allowed',
+        pointerEvents: 'none',
+      },
+    },
+  },
 })
 
 const NavigationMenuList = styled(NavigationMenuPrimitive.List, {
@@ -22,10 +39,14 @@ const NavigationMenuList = styled(NavigationMenuPrimitive.List, {
   borderColor: '$borderColor',
 })
 
-const NavigationMenuItem = NavigationMenuPrimitive.Item
+const NavigationMenuItem = styled(NavigationMenuPrimitive.Item, {
+  name: 'NavigationMenuItem',
+  tag: 'li',
+})
 
 const NavigationMenuTrigger = styled(NavigationMenuPrimitive.Trigger, {
   name: 'NavigationMenuTrigger',
+  ellipse: true,
   borderRadius: '$md',
   paddingHorizontal: '$4',
   paddingVertical: '$2',
@@ -61,6 +82,7 @@ const NavigationMenuContent = styled(NavigationMenuPrimitive.Content, {
 
 const NavigationMenuLink = styled(NavigationMenuPrimitive.Link, {
   name: 'NavigationMenuLink',
+  ellipse: true,
   display: 'block',
   borderRadius: '$lg',
   padding: '$4',
@@ -111,11 +133,39 @@ const NavigationMenuViewport = styled(NavigationMenuPrimitive.Viewport, {
   overflow: 'hidden',
 })
 
-type NavigationMenuTriggerProps = GetProps<typeof NavigationMenuTrigger>
-type NavigationMenuContentProps = GetProps<typeof NavigationMenuContent>
+type NavigationMenuProps = GetProps<typeof NavigationMenu> & {
+  isLoading?: boolean
+  rightSlot?: React.ReactNode
+}
+
+const NavigationMenuComponent = ({
+  children,
+  isLoading,
+  rightSlot,
+  ...props
+}: NavigationMenuProps) => {
+  if (isLoading) {
+    return (
+      <XStack alignItems="center" gap="$4">
+        <Skeleton height={32} width={120} />
+        <Skeleton height={32} width={120} />
+        <Skeleton height={32} width={120} />
+      </XStack>
+    )
+  }
+
+  return (
+    <NavigationMenu {...props}>
+      <NavigationMenuList>
+        {children}
+        {rightSlot}
+      </NavigationMenuList>
+    </NavigationMenu>
+  )
+}
 
 export {
-  NavigationMenu,
+  NavigationMenuComponent as NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
   NavigationMenuTrigger,
@@ -125,5 +175,3 @@ export {
   NavigationMenuViewport,
   IndicatorArrow,
 }
-
-export type { NavigationMenuTriggerProps, NavigationMenuContentProps }

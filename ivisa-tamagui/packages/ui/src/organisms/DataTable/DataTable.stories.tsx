@@ -1,8 +1,14 @@
+import { Filter, Plus } from '@tamagui/lucide-icons'
 import type { Meta, StoryObj } from '@storybook/react'
-import { ColumnDef } from '@tanstack/react-table'
-import { DataTable, Table } from './DataTable'
+import type { ColumnDef } from '@tanstack/react-table'
+import { Avatar, Text, XStack, YStack } from 'tamagui'
 import { Button } from '../../atoms/Button'
-import { YStack } from 'tamagui'
+import { Input } from '../../atoms/Input'
+import { DataTable } from './DataTable'
+import type { DataTableLocalization } from './DataTable'
+import { TableCellText, TableHeadText } from './DataTable.parts'
+import { pagamentos } from './DataTable.mocks'
+import type { Pagamento } from './DataTable.mocks'
 
 const meta: Meta<typeof DataTable> = {
   title: 'Organisms/DataTable',
@@ -11,98 +17,149 @@ const meta: Meta<typeof DataTable> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    data: {
+      control: {
+        type: 'object',
+      },
+    },
+    columns: {
+      control: {
+        disable: true,
+      },
+    },
+    headerActions: {
+      control: {
+        disable: true,
+      },
+    },
+    emptyState: {
+      control: {
+        disable: true,
+      },
+    },
+    localization: {
+      control: {
+        type: 'object',
+      },
+    },
+  },
 }
 
 export default meta
 
 type Story = StoryObj<typeof meta>
 
-// Sample Data
-type Payment = {
-  id: string
-  amount: number
-  status: 'pending' | 'processing' | 'success' | 'failed'
-  email: string
+const localizacao: DataTableLocalization = {
+  noResults: 'Nenhum resultado encontrado.',
+  previousPage: 'Anterior',
+  nextPage: 'Próxima',
+  pageOf: (pagina, total) => `Página ${pagina} de ${total}`,
+  errorTitle: 'Algo deu errado',
+  errorBody: 'Houve um erro ao carregar os dados. Por favor, tente novamente.',
+  retry: 'Tentar Novamente',
 }
 
-const data: Payment[] = [
+const colunas: ColumnDef<Pagamento>[] = [
   {
-    id: '728ed52f',
-    amount: 100,
-    status: 'pending',
-    email: 'm@example.com',
-  },
-  {
-    id: '489e1d42',
-    amount: 125,
-    status: 'processing',
-    email: 'example@gmail.com',
-  },
-  {
-    id: '627a91d3',
-    amount: 50,
-    status: 'success',
-    email: 'success@hotmail.com',
-  },
-  {
-    id: '921b82c1',
-    amount: 775,
-    status: 'failed',
-    email: 'fail@yahoo.com',
-  },
-  // Add more data for pagination
-  ...Array.from({ length: 20 }).map((_, i) => ({
-    id: `generated-${i}`,
-    amount: Math.floor(Math.random() * 1000),
-    status: (i % 2 === 0 ? 'success' : 'pending') as 'success' | 'pending',
-    email: `user${i}@example.com`,
-  })),
-]
-
-const columns: ColumnDef<Payment>[] = [
-  {
-    accessorKey: 'status',
-    header: () => <Table.HeadText>Status</Table.HeadText>,
-    cell: ({ row }) => (
-      <Table.CellText textTransform="capitalize">
-        {row.getValue('status')}
-      </Table.CellText>
-    ),
-  },
-  {
-    accessorKey: 'email',
-    header: ({ column }) => {
+    accessorKey: 'nome',
+    header: () => <TableHeadText>Cliente</TableHeadText>,
+    cell: ({ row }) => {
+      const { nome, avatar, email } = row.original
       return (
-        <Button
-          variant="ghost"
-          onPress={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-          paddingLeft="$0"
-        >
-          Email {column.getIsSorted() === 'asc' ? '↑' : column.getIsSorted() === 'desc' ? '↓' : ''}
-        </Button>
+        <XStack gap="$2" alignItems="center">
+          <Avatar circular size="$2">
+            <Avatar.Image src={avatar} />
+            <Avatar.Fallback>{nome.charAt(0)}</Avatar.Fallback>
+          </Avatar>
+          <YStack>
+            <TableCellText fontWeight="600">{nome}</TableCellText>
+            <Text fontSize="$1" color="$color">
+              {email}
+            </Text>
+          </YStack>
+        </XStack>
       )
     },
-    cell: ({ row }) => <Table.CellText>{row.getValue('email')}</Table.CellText>,
   },
   {
-    accessorKey: 'amount',
-    header: () => <Table.HeadText textAlign="right">Amount</Table.HeadText>,
+    accessorKey: 'status',
+    header: () => <TableHeadText>Status</TableHeadText>,
+    cell: ({ row }) => <TableCellText textTransform="capitalize">{row.getValue('status')}</TableCellText>,
+  },
+  {
+    accessorKey: 'quantia',
+    header: () => <TableHeadText textAlign="right">Quantia</TableHeadText>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('amount'))
-      const formatted = new Intl.NumberFormat('en-US', {
+      const quantia = parseFloat(row.getValue('quantia'))
+      const formatado = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
-        currency: 'USD',
-      }).format(amount)
- 
-      return <Table.CellText textAlign="right" fontWeight="500">{formatted}</Table.CellText>
+        currency: 'BRL',
+      }).format(quantia)
+
+      return <TableCellText textAlign="right">{formatado}</TableCellText>
     },
   },
 ]
 
-export const Default: Story = {
-  render: () => (
-    <YStack width={800}>
-       <DataTable columns={columns} data={data} />
+const HeaderActions = (
+  <XStack gap="$2" alignItems="center" width="100%">
+    <Input placeholder="Filtrar por nome..." flex={1} />
+    <Button icon={<Filter />} variant="outline">
+      Filtros
+    </Button>
+    <Button icon={<Plus />}>Novo Pagamento</Button>
+  </XStack>
+)
+
+export const Padrao: Story = {
+  args: {
+    columns: colunas,
+    data: pagamentos,
+    localization: localizacao,
+    headerActions: HeaderActions,
+  },
+  render: (args) => (
+    <YStack width={800} minHeight={400}>
+      <DataTable {...args} />
+    </YStack>
+  ),
+}
+
+export const Carregando: Story = {
+  args: {
+    ...Padrao.args,
+    data: [],
+    isLoading: true,
+  },
+  render: Padrao.render,
+}
+
+export const SemDados: Story = {
+  args: {
+    ...Padrao.args,
+    data: [],
+  },
+  render: Padrao.render,
+}
+
+export const Erro: Story = {
+  args: {
+    ...Padrao.args,
+    data: [],
+    error: new Error('Falha ao buscar dados.'),
+    onRetry: () => alert('Retrying...'),
+  },
+  render: Padrao.render,
+}
+
+export const EstresseDeLayout: Story = {
+  args: {
+    ...Padrao.args,
+  },
+  render: (args) => (
+    <YStack width={450} minHeight={400}>
+      <DataTable {...args} />
     </YStack>
   ),
 }

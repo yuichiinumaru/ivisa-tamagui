@@ -3,21 +3,19 @@ import { FileUpload } from './FileUpload'
 import React from 'react'
 
 describe('FileUpload', () => {
-  it('renders correctly', () => {
+  it('renders correctly with default PT-BR text', () => {
     render(<FileUpload />)
-    expect(screen.getByText('Click to upload')).toBeInTheDocument()
+    expect(screen.getByText('Clique para enviar um arquivo')).toBeInTheDocument()
+    expect(screen.getByText(/SVG, PNG, JPG ou GIF/)).toBeInTheDocument()
   })
 
-  it('triggers input click on press', () => {
+  it('triggers input click on button press', () => {
     render(<FileUpload />)
     const input = screen.getByTestId('file-input')
     const clickSpy = jest.spyOn(input, 'click')
 
-    // Simulate press on the container (which calls input.click())
-    // Note: Tamagui onPress might not fire in JSDOM easily with just fireEvent.click on container?
-    // Let's find the container. Usually it's a div.
-    const container = screen.getByText('Click to upload').parentElement?.parentElement
-    if (container) fireEvent.click(container)
+    const uploadButton = screen.getByRole('button', { name: /Clique para enviar um arquivo/i })
+    fireEvent.click(uploadButton)
 
     expect(clickSpy).toHaveBeenCalled()
   })
@@ -31,5 +29,20 @@ describe('FileUpload', () => {
     await user.upload(input, file)
 
     expect(onFileSelect).toHaveBeenCalledWith(expect.objectContaining({ name: 'hello.png' }))
+  })
+
+  it('renders skeleton when isLoading is true', () => {
+    render(<FileUpload isLoading />)
+    // The main content should not be visible
+    expect(screen.queryByText('Clique para enviar um arquivo')).not.toBeInTheDocument()
+    // A simple way to check for skeleton is to see if the container has changed,
+    // or query for a role that skeleton might have, though it's often just a div.
+    // For this case, not finding the text is a good indicator.
+  })
+
+  it('renders an error message when hasError is true', () => {
+    const errorMessage = 'Ocorreu um erro.'
+    render(<FileUpload hasError errorMessage={errorMessage} />)
+    expect(screen.getByText(errorMessage)).toBeInTheDocument()
   })
 })

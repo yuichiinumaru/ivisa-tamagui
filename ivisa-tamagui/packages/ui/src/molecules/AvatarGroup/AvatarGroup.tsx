@@ -1,46 +1,139 @@
+import { Avatar, AvatarFallback, AvatarImage } from '../../atoms/Avatar'
+import { Skeleton } from '../../atoms/Skeleton'
 import React from 'react'
-import { XStack, styled, GetProps, View, Text } from 'tamagui'
-import { Avatar, AvatarFallback } from '../../atoms/Avatar'
+import { GetProps, SizeTokens, Text, XStack, styled } from 'tamagui'
+
+const AVATAR_GROUP_ITEM_BORDER_WIDTH = 2
 
 const AvatarGroupFrame = styled(XStack, {
   name: 'AvatarGroup',
-  flexDirection: 'row',
   alignItems: 'center',
-  paddingLeft: 10,
+  flexDirection: 'row',
+
+  variants: {
+    size: {
+      '...size': (val, { tokens }) => {
+        return {
+          height: tokens.size[val] ?? val,
+          paddingLeft: (tokens.size[val] ?? val) * 0.4,
+        }
+      },
+    },
+  } as const,
+
+  defaultVariants: {
+    size: '$10',
+  },
 })
 
-const AvatarGroupItemFrame = styled(View, {
+const AvatarGroupItemFrame = styled(XStack, {
   name: 'AvatarGroupItem',
+  justifyContent: 'center',
+  alignItems: 'center',
+  overflow: 'hidden',
   borderColor: '$background',
-  borderWidth: 2,
-  borderRadius: 1000,
-  marginLeft: -10,
+  borderWidth: AVATAR_GROUP_ITEM_BORDER_WIDTH,
+  borderRadius: '$round',
+
+  variants: {
+    size: {
+      '...size': (val, { tokens }) => {
+        return {
+          width: tokens.size[val] ?? val,
+          height: tokens.size[val] ?? val,
+          // Overlap by 40% of the avatar's size
+          marginLeft: (tokens.size[val] ?? val) * -0.4,
+        }
+      },
+    },
+    hasError: {
+      true: {
+        borderColor: '$red10',
+      },
+    },
+  } as const,
+
+  defaultVariants: {
+    size: '$10',
+  },
 })
 
 export interface AvatarGroupProps extends GetProps<typeof AvatarGroupFrame> {
-  children: React.ReactNode
+  items: {
+    src?: string
+    fallback: string
+    alt?: string
+  }[]
   limit?: number
+  isLoading?: boolean
+  hasError?: boolean
+  size?: SizeTokens
 }
 
-export const AvatarGroup = ({ children, limit, ...props }: AvatarGroupProps) => {
-  const childrenArray = React.Children.toArray(children)
-  const count = childrenArray.length
+export const AvatarGroup = ({
+  items = [],
+  limit = 3,
+  isLoading = false,
+  hasError = false,
+  size = '$10',
+  ...rest
+}: AvatarGroupProps) => {
+  if (isLoading) {
+    return (
+      <AvatarGroupFrame size={size} {...rest} data-testid="avatar-group-frame">
+        {Array.from({ length: limit }).map((_, index) => (
+          <AvatarGroupItemFrame
+            key={`skeleton-${index}`}
+            size={size}
+            zIndex={limit - index}
+            data-testid={`avatar-group-skeleton-${index}`}
+          >
+            <Skeleton circular width="100%" height="100%" />
+          </AvatarGroupItemFrame>
+        ))}
+      </AvatarGroupFrame>
+    )
+  }
 
-  const visibleChildren = limit ? childrenArray.slice(0, limit) : childrenArray
-  const remaining = count - visibleChildren.length
+  if (items.length === 0) {
+    return null
+  }
+
+  const visibleItems = items.slice(0, limit)
+  const remainingCount = Math.max(0, items.length - limit)
 
   return (
-    <AvatarGroupFrame {...props}>
-      {visibleChildren.map((child, index) => (
-        <AvatarGroupItemFrame key={index} zIndex={visibleChildren.length - index}>
-          {child}
+    <AvatarGroupFrame size={size} {...rest} data-testid="avatar-group-frame">
+      {visibleItems.map((item, index) => (
+        <AvatarGroupItemFrame
+          key={`avatar-${index}`}
+          size={size}
+          zIndex={visibleItems.length - index}
+          hasError={hasError}
+          data-testid={`avatar-group-item-${index}`}
+          data-haserror={hasError}
+        >
+          <Avatar size={size}>
+            <AvatarImage alt={item.alt ?? item.fallback} src={item.src} />
+            <AvatarFallback>
+              <Text>{item.fallback}</Text>
+            </AvatarFallback>
+          </Avatar>
         </AvatarGroupItemFrame>
       ))}
-      {remaining > 0 && (
-        <AvatarGroupItemFrame zIndex={0}>
-          <Avatar circular size="$3" backgroundColor="$muted">
+      {remainingCount > 0 && (
+        <AvatarGroupItemFrame
+          size={size}
+          zIndex={0}
+          hasError={hasError}
+          data-testid="avatar-group-remainder"
+          data-haserror={hasError}
+        >
+          <Avatar size={size}>
             <AvatarFallback>
-              <Text fontSize="$2" fontWeight="bold">+{remaining}</Text>
+              <Text size="$4" fontWeight="bold">
+                +{remainingCount}
+              </Text>
             </AvatarFallback>
           </Avatar>
         </AvatarGroupItemFrame>

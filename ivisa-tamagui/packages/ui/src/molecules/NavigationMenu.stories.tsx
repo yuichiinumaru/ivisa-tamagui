@@ -2,13 +2,13 @@ import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   NavigationMenu,
-  NavigationMenuList,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuTrigger,
   NavigationMenuContent,
-  NavigationMenuLink,
 } from './NavigationMenu'
-import { YStack } from 'tamagui'
+import { YStack, Text } from 'tamagui'
+import { Button } from '../atoms/Button'
 
 const meta: Meta<typeof NavigationMenu> = {
   title: 'Molecules/NavigationMenu',
@@ -17,6 +17,17 @@ const meta: Meta<typeof NavigationMenu> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    isLoading: {
+      control: 'boolean',
+    },
+    hasError: {
+      control: 'boolean',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+  },
 }
 
 export default meta
@@ -24,32 +35,83 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  render: () => (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <YStack space="$2" padding="$2">
-              <NavigationMenuLink>Introduction</NavigationMenuLink>
-              <NavigationMenuLink>Installation</NavigationMenuLink>
-            </YStack>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <YStack space="$2" padding="$2">
-              <NavigationMenuLink>Accordion</NavigationMenuLink>
-              <NavigationMenuLink>Alert</NavigationMenuLink>
-              <NavigationMenuLink>Alert Dialog</NavigationMenuLink>
-            </YStack>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink>Documentation</NavigationMenuLink>
-        </NavigationMenuItem>
-      </NavigationMenuList>
+  args: {
+    isLoading: false,
+    hasError: false,
+    disabled: false,
+  },
+  render: (args) => (
+    <NavigationMenu {...args}>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Recursos</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <YStack space="$2" padding="$2">
+            <NavigationMenuLink>Blog</NavigationMenuLink>
+            <NavigationMenuLink>Documentação</NavigationMenuLink>
+            <NavigationMenuLink>Tutoriais</NavigationMenuLink>
+          </YStack>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <NavigationMenuTrigger>Produtos</NavigationMenuTrigger>
+        <NavigationMenuContent>
+          <YStack space="$2" padding="$2">
+            <NavigationMenuLink>Software</NavigationMenuLink>
+            <NavigationMenuLink>Dispositivos</NavigationMenuLink>
+            <NavigationMenuLink>Serviços</NavigationMenuLink>
+          </YStack>
+        </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <Button variant="ghost">Contato</Button>
+      </NavigationMenuItem>
     </NavigationMenu>
   ),
+}
+
+export const WithRightSlot: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    rightSlot: (
+      <NavigationMenuItem>
+        <Button>Cadastre-se</Button>
+      </NavigationMenuItem>
+    ),
+  },
+}
+
+export const Loading: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    isLoading: true,
+  },
+}
+
+export const Error: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    hasError: true,
+  },
+}
+
+export const Disabled: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    disabled: true,
+  },
+}
+
+export const NarrowContainer: Story = {
+  ...Default,
+  decorators: [
+    (Story) => (
+      <div style={{ width: 300 }}>
+        <Story />
+      </div>
+    ),
+  ],
 }

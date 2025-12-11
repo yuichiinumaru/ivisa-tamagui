@@ -1,108 +1,112 @@
-import React, { createContext, useContext, useRef, useState } from 'react'
-import { LayoutChangeEvent, ScrollView as ScrollViewNative } from 'react-native'
-import { ScrollView, View, ViewProps, ScrollViewProps } from 'tamagui'
-import { withErrorLogging } from '../../utils/withErrorLogging'
+import React, { ReactNode } from 'react'
+import { Text, XStack, YStack } from 'tamagui'
+import { Skeleton } from '../../atoms/Skeleton'
+import {
+  Stepper as StepperPrimitive,
+  StepperContextProvider,
+  useStepper,
+} from './Stepper.context'
 
-type StepperContextObject = {
-  scrollTo: (options: { x: number; y: number; animated: boolean }) => void
-  layout: LayoutChangeEvent | undefined
-} | null
+interface Step {
+  title: string
+  content: ReactNode
+}
 
-const StepperContext = createContext<StepperContextObject>(null)
+type ActionsRenderProp = (
+  nextStep: () => void,
+  prevStep: () => void,
+  isFirstStep: boolean,
+  isLastStep: boolean,
+  isDisabled: boolean,
+) => ReactNode
 
-type StepperProps = Pick<ScrollViewProps, 'height' | 'width' | 'children' | 'backgroundColor' | 'borderWidth' | 'borderColor' | 'borderRadius'>
+interface StepperProps {
+  steps: Step[]
+  isLoading?: boolean
+  hasError?: boolean
+  isDisabled?: boolean
+  actions: ActionsRenderProp
+}
 
-const StepperImpl = React.forwardRef<ScrollViewNative, StepperProps>((props, ref) => {
-  const localRef = useRef<ScrollViewNative>(null)
+const StepperContent = () => {
+  const {
+    currentStep,
+    steps,
+    nextStep,
+    prevStep,
+    isFirstStep,
+    isLastStep,
+    isLoading,
+    isDisabled,
+    hasError,
+    actions,
+  } = useStepper()
 
-  const setRef = (node: ScrollViewNative | null) => {
-    localRef.current = node
-    if (typeof ref === 'function') {
-      ref(node)
-    } else if (ref) {
-      ref.current = node
-    }
+  if (isLoading) {
+    return (
+      <YStack space="$2" data-testid="skeleton-container">
+        <Skeleton height={28} width={250} />
+        <Skeleton height={120} />
+        <XStack justifyContent="space-between">
+          <Skeleton height={44} width={110} />
+          <Skeleton height={44} width={110} />
+        </XStack>
+      </YStack>
+    )
   }
 
-  const { height, width, children, ...rest } = props
-  const [layoutEvent, setLayoutEvent] = useState<LayoutChangeEvent>()
+  if (!steps || steps.length === 0) {
+    return <Text>Não há passos para exibir.</Text>
+  }
 
   return (
-    <ScrollView
-      onLayout={(e) => {
-        setLayoutEvent(e)
-      }}
-      width={width}
-      height={height}
-      ref={setRef}
-      horizontal
-      alignItems="stretch"
-      justifyContent="flex-start"
-      flexBasis="100%"
-      flexGrow={0}
-      flexShrink={0}
-      flexWrap="wrap"
-      scrollEnabled={false}
-      showsHorizontalScrollIndicator={false}
-      {...rest}
-    >
-      <StepperContext.Provider
-        value={{
-          scrollTo: (options) => localRef.current?.scrollTo(options),
-          layout: layoutEvent,
-        }}
+    <YStack space="$4">
+      <Text
+        color={hasError ? '$red10' : '$color'}
+        fontSize="$6"
+        fontWeight="bold"
+        textAlign="center"
+        data-testid="stepper-title"
+        data-has-error={hasError}
       >
-        {children}
-      </StepperContext.Provider>
-    </ScrollView>
+        {steps[currentStep].title}
+      </Text>
+      <YStack
+        borderWidth={1}
+        borderColor={hasError ? '$red10' : '$borderColor'}
+        borderRadius="$4"
+        padding="$4"
+        minHeight={100}
+        justifyContent="center"
+        alignItems="center"
+      >
+        {steps[currentStep].content}
+      </YStack>
+      <XStack justifyContent="space-between">
+        {actions(nextStep, prevStep, isFirstStep, isLastStep, isDisabled)}
+      </XStack>
+    </YStack>
   )
-})
-
-StepperImpl.displayName = 'Stepper'
-
-const WrappedStepper = withErrorLogging<StepperProps, ScrollViewNative>('Stepper', StepperImpl)
-
-// Stepper Page
-const StepperPage = (props: ViewProps) => {
-  const context = useContext(StepperContext)
-  const width = context?.layout?.nativeEvent?.layout?.width ?? '100%'
-
-  return <View width={width} {...props} />
 }
 
-type StepperTriggerProps = ViewProps & {
-  disabled?: boolean
-  targetPage: number
-}
-
-const StepperTrigger = (props: StepperTriggerProps) => {
-  const context = useContext(StepperContext)
-  const { children, disabled, targetPage, ...rest } = props
-
-  const scrollToPage = (target: number): void => {
-    if (!context?.layout) return
-
-    context.scrollTo({
-      y: 0,
-      x: target * context.layout.nativeEvent.layout.width,
-      animated: true,
-    })
-  }
-
-  const handleOnPress = () => {
-    if (!disabled && context?.layout) {
-      scrollToPage(targetPage)
-    }
-  }
-
+export const Stepper = ({
+  steps,
+  isLoading = false,
+  hasError = false,
+  isDisabled = false,
+  actions,
+}: StepperProps) => {
   return (
-    <View onPress={handleOnPress} cursor={disabled ? 'not-allowed' : 'pointer'} {...rest}>
-      {children}
-    </View>
+    <StepperContextProvider
+      steps={steps}
+      isLoading={isLoading}
+      hasError={hasError}
+      isDisabled={isDisabled}
+      actions={actions}
+    >
+      <StepperPrimitive>
+        <StepperContent />
+      </StepperPrimitive>
+    </StepperContextProvider>
   )
 }
-
-export const Stepper = Object.assign(WrappedStepper, {
-  Page: StepperPage,
-  Trigger: StepperTrigger,
-})

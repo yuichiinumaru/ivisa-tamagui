@@ -7,7 +7,7 @@ jest.mock('@tamagui/lucide-icons', () => ({
 
 describe('DatePicker', () => {
     it('renders correctly', () => {
-        const { getByText } = render(<DatePicker placeholder="Pick a date" />)
-        expect(getByText('Pick a date')).toBeDefined()
+        const { getByPlaceholderText } = render(<DatePicker placeholder="Pick a date" />)
+        expect(getByPlaceholderText('Pick a date')).toBeInTheDocument()
     })
 })

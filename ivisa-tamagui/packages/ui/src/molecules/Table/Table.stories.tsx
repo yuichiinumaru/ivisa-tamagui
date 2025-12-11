@@ -1,14 +1,62 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from './Table'
-import { Text } from '../../atoms/Typography'
+import { Table, TableColumn } from './Table'
+import { TableFooter, TableRow, TableCell } from './Table.parts'
+import { YStack, Text } from 'tamagui'
+import { Badge } from '../../atoms/Badge'
 
-const invoices = [
-  { invoice: 'INV001', paymentStatus: 'Paid', totalAmount: '$250.00', paymentMethod: 'Credit Card' },
-  { invoice: 'INV002', paymentStatus: 'Pending', totalAmount: '$150.00', paymentMethod: 'PayPal' },
-  { invoice: 'INV003', paymentStatus: 'Unpaid', totalAmount: '$350.00', paymentMethod: 'Bank Transfer' },
-  { invoice: 'INV004', paymentStatus: 'Paid', totalAmount: '$450.00', paymentMethod: 'Credit Card' },
-  { invoice: 'INV005', paymentStatus: 'Paid', totalAmount: '$550.00', paymentMethod: 'PayPal' },
+// =================================================================================================
+// MOCKS
+// =================================================================================================
+
+interface Invoice {
+  id: string
+  invoice: string
+  paymentStatus: 'Paid' | 'Pending' | 'Unpaid'
+  totalAmount: string
+  paymentMethod: string
+}
+
+const invoices: Invoice[] = [
+  { id: '1', invoice: 'FAT001', paymentStatus: 'Paid', totalAmount: 'R$250,00', paymentMethod: 'Cartão de Crédito' },
+  { id: '2', invoice: 'FAT002', paymentStatus: 'Pending', totalAmount: 'R$150,00', paymentMethod: 'PayPal' },
+  { id: '3', invoice: 'FAT003', paymentStatus: 'Unpaid', totalAmount: 'R$350,00', paymentMethod: 'Transferência' },
+  { id: '4', invoice: 'FAT004', paymentStatus: 'Paid', totalAmount: 'R$450,00', paymentMethod: 'Cartão de Crédito' },
+  { id: '5', invoice: 'FAT005', paymentStatus: 'Paid', totalAmount: 'R$550,00', paymentMethod: 'PayPal' },
 ]
+
+const columns: TableColumn<Invoice>[] = [
+  {
+    header: 'Fatura',
+    accessor: 'invoice',
+    render: (item) => <Text fontWeight="bold">{item.invoice}</Text>,
+  },
+  {
+    header: 'Status',
+    accessor: 'paymentStatus',
+    render: (item) => {
+      const statusMap = {
+        Paid: { label: 'Pago', color: 'green' },
+        Pending: { label: 'Pendente', color: 'orange' },
+        Unpaid: { label: 'Não Pago', color: 'red' },
+      }
+      const { label, color } = statusMap[item.paymentStatus]
+      return <Badge color={color}>{label}</Badge>
+    },
+  },
+  {
+    header: 'Método',
+    accessor: 'paymentMethod',
+  },
+  {
+    header: 'Valor',
+    accessor: 'totalAmount',
+    render: (item) => <Text textAlign="right">{item.totalAmount}</Text>,
+  },
+]
+
+// =================================================================================================
+// META
+// =================================================================================================
 
 const meta: Meta<typeof Table> = {
   title: 'Molecules/Table',
@@ -17,7 +65,7 @@ const meta: Meta<typeof Table> = {
   parameters: {
     docs: {
       description: {
-        component: 'A responsive table component for displaying tabular data.',
+        component: 'Uma tabela responsiva para exibir dados tabulares com estados de carregamento, erro e vazio.',
       },
     },
   },
@@ -26,88 +74,87 @@ const meta: Meta<typeof Table> = {
 export default meta
 type Story = StoryObj<typeof Table>
 
-export const Playground: Story = {
-  render: (args) => (
-    <Table {...args}>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead>Amount</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell>
-              <Text fontWeight="bold">{invoice.invoice}</Text>
-            </TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell>
-              <Text textAlign="right">{invoice.totalAmount}</Text>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  ),
+// =================================================================================================
+// STORIES
+// =================================================================================================
+
+export const Default: Story = {
+  args: {
+    columns: columns,
+    data: invoices,
+    caption: 'Uma lista das suas faturas recentes.',
+  },
 }
 
-export const WithCaption: Story = {
-  render: () => (
-    <Table>
-      <TableCaption>A list of your recent invoices.</TableCaption>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Invoice</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Method</TableHead>
-          <TableHead>Amount</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {invoices.slice(0, 3).map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell>{invoice.invoice}</TableCell>
-            <TableCell>{invoice.paymentStatus}</TableCell>
-            <TableCell>{invoice.paymentMethod}</TableCell>
-            <TableCell>{invoice.totalAmount}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+export const Loading: Story = {
+  args: {
+    ...Default.args,
+    isLoading: true,
+  },
+}
+
+export const Empty: Story = {
+  args: {
+    ...Default.args,
+    data: [],
+  },
+}
+
+export const Error: Story = {
+  args: {
+    ...Default.args,
+    data: undefined, // data is undefined to simulate error
+    hasError: true,
+  },
+}
+
+export const InSmallContainer: Story = {
+  render: (args) => (
+    <YStack width={400} mx="auto">
+      <Table {...args} />
+    </YStack>
   ),
+  args: {
+    ...Default.args,
+    caption: 'A tabela se ajusta a um contêiner estreito com truncamento de texto.',
+  },
 }
 
 export const WithFooter: Story = {
-  render: () => (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Invoice</TableHead>
-          <TableHead>Amount</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {invoices.map((invoice) => (
-          <TableRow key={invoice.invoice}>
-            <TableCell>{invoice.invoice}</TableCell>
-            <TableCell>{invoice.totalAmount}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
+  args: {
+    ...Default.args,
+    footer: (
       <TableFooter>
         <TableRow>
           <TableCell>
             <Text fontWeight="bold">Total</Text>
           </TableCell>
+          <TableCell />
+          <TableCell />
           <TableCell>
-            <Text fontWeight="bold">$1,750.00</Text>
+            <Text fontWeight="bold" textAlign="right">
+              R$1.750,00
+            </Text>
           </TableCell>
         </TableRow>
       </TableFooter>
-    </Table>
-  ),
+    ),
+  },
+}
+
+export const WithPartialData: Story = {
+  args: {
+    ...Default.args,
+    data: [
+      ...invoices,
+      {
+        id: '6',
+        invoice: 'FAT006',
+        paymentStatus: 'Pending',
+        totalAmount: null, // null value
+        paymentMethod: undefined, // undefined value
+      },
+    ],
+    caption: 'Tabela com alguns dados ausentes (nulos ou indefinidos).',
+  },
 }

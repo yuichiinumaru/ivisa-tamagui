@@ -1,22 +1,59 @@
-import { XStack, Text, GetProps, styled } from 'tamagui'
-import React, { cloneElement } from 'react'
+import { Skeleton } from '../../atoms/Skeleton'
+import { GetProps, Text, XStack, YStack, styled } from 'tamagui'
+
+import type { ReactElement, ReactNode } from 'react'
 
 const ItemFrame = styled(XStack, {
   name: 'Item',
+  tag: 'li',
+
   alignItems: 'center',
   gap: '$3',
   padding: '$3',
   borderRadius: '$md',
   hoverStyle: {
-    backgroundColor: '$muted',
+    backgroundColor: '$backgroundHover',
   },
+
+  variants: {
+    hasError: {
+      true: {
+        borderColor: '$red10',
+        borderWidth: 1,
+      },
+    },
+
+    isDisabled: {
+      true: {
+        opacity: 0.5,
+      },
+    },
+  } as const,
+})
+
+const ItemIcon = styled(YStack, {
+  name: 'ItemIcon',
+  paddingHorizontal: '$1',
+})
+
+const ItemContent = styled(YStack, {
+  name: 'ItemContent',
+  flex: 1,
+  gap: '$1',
 })
 
 const ItemText = styled(Text, {
   name: 'ItemText',
   fontSize: '$3',
   fontWeight: '500',
-  flex: 1,
+  ellipse: true,
+})
+
+const ItemSubtitle = styled(Text, {
+  name: 'ItemSubtitle',
+  fontSize: '$2',
+  color: '$gray11',
+  ellipse: true,
 })
 
 const ItemValue = styled(Text, {
@@ -25,18 +62,45 @@ const ItemValue = styled(Text, {
   color: '$mutedForeground',
 })
 
-type ItemProps = GetProps<typeof ItemFrame> & {
-  icon?: React.ReactElement
+const ItemRightSlot = styled(YStack, {
+  name: 'ItemRightSlot',
+})
+
+type ItemData = {
+  icon?: ReactElement
   text?: string
+  subtitle?: string
   value?: string
 }
 
-export const Item = ({ icon, text, value, ...props }: ItemProps) => {
+type ItemProps = GetProps<typeof ItemFrame> & {
+  item?: ItemData
+  rightSlot?: ReactNode
+  isLoading?: boolean
+}
+
+const ItemComponent = ({ item, rightSlot, isLoading, ...props }: ItemProps) => {
+  if (isLoading) {
+    return (
+      <ItemFrame {...props}>
+        <Skeleton height={40} />
+      </ItemFrame>
+    )
+  }
+
+  const { icon, text, subtitle, value } = item || {}
+
   return (
     <ItemFrame {...props}>
-      {icon && cloneElement(icon, { size: 20 })}
-      {text && <ItemText>{text}</ItemText>}
+      {icon && <ItemIcon>{icon}</ItemIcon>}
+      <ItemContent>
+        {text && <ItemText>{text}</ItemText>}
+        {subtitle && <ItemSubtitle>{subtitle}</ItemSubtitle>}
+      </ItemContent>
       {value && <ItemValue>{value}</ItemValue>}
+      {rightSlot && <ItemRightSlot>{rightSlot}</ItemRightSlot>}
     </ItemFrame>
   )
 }
+
+export const Item = ItemComponent

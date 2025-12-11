@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Item applies disabled styles when isDisabled is true 1`] = `
+<span
+  class=""
+  style="display: contents;"
+>
+  <span
+    class=" "
+    style="display: contents;"
+  >
+    <span
+      class=" t_light is_Theme"
+      style="color: var(--color); display: contents;"
+    >
+      <li
+        class="is_Item _backgroundColor-0hover-backgroundH3423444 _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _btlr-t-radius-md _btrr-t-radius-md _bbrr-t-radius-md _bblr-t-radius-md _o-0--5"
+      >
+        <div
+          class="is_ItemContent _dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-1 _fd-column _fg-1"
+        >
+          <span
+            class="is_ItemText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color _fontWeight-500 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+          >
+            Disabled
+          </span>
+        </div>
+      </li>
+      <div
+        style="display: contents;"
+      />
+      <div
+        style="display: contents;"
+      />
+    </span>
+  </span>
+</span>
+`;
+
+exports[`Item applies error styles when hasError is true 1`] = `
+<span
+  class=""
+  style="display: contents;"
+>
+  <span
+    class=" "
+    style="display: contents;"
+  >
+    <span
+      class=" t_light is_Theme"
+      style="color: var(--color); display: contents;"
+    >
+      <li
+        class="is_Item _backgroundColor-0hover-backgroundH3423444 _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _btlr-t-radius-md _btrr-t-radius-md _bbrr-t-radius-md _bblr-t-radius-md _btw-1px _brw-1px _borderBottomWidth-1px _borderLeftWidth-1px _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid"
+      >
+        <div
+          class="is_ItemContent _dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-1 _fd-column _fg-1"
+        >
+          <span
+            class="is_ItemText font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color _fontWeight-500 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
+          >
+            Error
+          </span>
+        </div>
+      </li>
+      <div
+        style="display: contents;"
+      />
+      <div
+        style="display: contents;"
+      />
+    </span>
+  </span>
+</span>
+`;
+
+exports[`Item renders a skeleton when isLoading is true 1`] = `
+<span
+  class=""
+  style="display: contents;"
+>
+  <span
+    class=" "
+    style="display: contents;"
+  >
+    <span
+      class=" t_light is_Theme"
+      style="color: var(--color); display: contents;"
+    >
+      <li
+        class="is_Item _backgroundColor-0hover-backgroundH3423444 _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _btlr-t-radius-md _btrr-t-radius-md _bbrr-t-radius-md _bblr-t-radius-md"
+      >
+        <div
+          animationduration="2s"
+          animationname="mock-animation"
+          animationtimingfunction="cubic-bezier(0.4, 0, 0.6, 1)"
+          aria-hidden="true"
+          class="is_Skeleton _dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-column _backgroundColor-muted _animationIterationCount-infinite _h-40px"
+          data-disable-theme="true"
+        />
+      </li>
+      <div
+        style="display: contents;"
+      />
+      <div
+        style="display: contents;"
+      />
+    </span>
+  </span>
+</span>
+`;

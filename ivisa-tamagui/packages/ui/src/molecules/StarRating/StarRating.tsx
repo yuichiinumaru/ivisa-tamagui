@@ -1,111 +1,136 @@
-import React, { forwardRef, useState } from 'react'
-import { SizableStack, SizeTokens, TamaguiElement, XStack, XStackProps } from 'tamagui'
 import { Star } from '@tamagui/lucide-icons'
+import React, { forwardRef, useState } from 'react'
+import {
+  GetProps,
+  SizeTokens,
+  TamaguiElement,
+  XStack,
+  getVariableValue,
+  styled,
+  withStaticProperties,
+} from 'tamagui'
 
-export type StarRatingProps = XStackProps & {
+import { Skeleton } from '../../atoms/Skeleton'
+
+const StarRatingFrame = styled(XStack, {
+  name: 'StarRating',
+  gap: '$1',
+  variants: {
+    hasError: {
+      true: {
+        // You can define error styles for the container if needed,
+        // but for now, we'll handle color on the icon itself.
+      },
+    },
+  },
+})
+
+const StarIconContainer = styled(XStack, {
+  name: 'StarIconContainer',
+  cursor: 'pointer',
+  variants: {
+    disabled: {
+      true: {
+        cursor: 'not-allowed',
+        opacity: 0.5,
+      },
+    },
+  },
+})
+
+export type StarRatingProps = GetProps<typeof StarRatingFrame> & {
   count?: number
   onChange?: (rating: number | null) => void
   value?: number | null
   defaultValue?: number | null
   size?: SizeTokens
-  disabled?: boolean
   iconProps?: Record<string, unknown>
   Icon?: React.ElementType
   colorActive?: string
-  colorHover?: string
-  colorActiveHover?: string
-  color?: string
+  colorInactive?: string
+  isLoading?: boolean
+  rightSlot?: React.ReactNode
 }
 
-export const StarRating = forwardRef<TamaguiElement, StarRatingProps>(({
-  count = 5,
-  onChange,
-  value,
-  defaultValue = null,
-  disabled,
-  iconProps,
-  gap = '$1',
-  Icon = Star,
-  size = '$1',
-  colorHover = '$yellow7',
-  colorActiveHover = '$yellow8',
-  colorActive = '$yellow10',
-  color = '$gray7',
-  ...stackProps
-}: StarRatingProps, ref) => {
-  const [internalRating, setInternalRating] = useState<number | null>(defaultValue)
-  const [hoverRating, setHoverRating] = useState<number | null>(null)
+const StarRatingComponent = forwardRef<TamaguiElement, StarRatingProps>(
+  (
+    {
+      count = 5,
+      onChange,
+      value,
+      defaultValue = null,
+      disabled,
+      hasError,
+      isLoading,
+      iconProps,
+      Icon = Star,
+      size = '$2',
+      colorActive: colorActiveProp = '$yellow10',
+      colorInactive: colorInactiveProp = '$gray7',
+      rightSlot,
+      ...frameProps
+    },
+    ref,
+  ) => {
+    const [internalRating, setInternalRating] = useState<number | null>(defaultValue)
+    const [hoverRating, setHoverRating] = useState<number | null>(null)
 
-  const isControlled = value !== undefined
-  const currentRatingValue = isControlled ? value : internalRating
+    const isControlled = value !== undefined
+    const currentRating = isControlled ? value : internalRating
+    const colorActive = getVariableValue(colorActiveProp)
+    const colorError = getVariableValue('$red10')
+    const colorInactive = getVariableValue(colorInactiveProp)
 
-  const arr = Array.from(Array(count).keys())
-
-  const handlePress = (ratingToSet: number) => {
-    if (disabled) return
-
-    const newRating = currentRatingValue === ratingToSet ? null : ratingToSet
-
-    if (!isControlled) {
-      setInternalRating(newRating)
+    const handlePress = (ratingToSet: number) => {
+      if (disabled || isLoading) return
+      const newRating = currentRating === ratingToSet ? null : ratingToSet
+      if (!isControlled) {
+        setInternalRating(newRating)
+      }
+      onChange?.(newRating)
     }
-    onChange?.(newRating)
-  }
 
-  return (
-    <XStack gap={gap} {...stackProps} ref={ref}>
-      {arr.map((idx) => {
-        const ratingValue = idx + 1
-        const filled = ratingValue <= (currentRatingValue || 0)
-        const hovered = ratingValue <= (hoverRating || 0)
+    if (isLoading) {
+      return (
+        <StarRatingFrame {...frameProps} ref={ref}>
+          {Array.from({ length: count }, (_, i) => (
+            <Skeleton key={i} width={size} height={size} br="$10" />
+          ))}
+        </StarRatingFrame>
+      )
+    }
 
-        let currentColor = color
-        if (hoverRating !== null) {
-          // We are hovering
-          if (hovered) {
-            currentColor = colorHover
-          }
-        } else {
-          // Not hovering
-          if (filled) {
-            currentColor = colorActive
-          }
-        }
+    return (
+      <StarRatingFrame {...frameProps} ref={ref}>
+        {Array.from({ length: count }, (_, i) => {
+          const ratingValue = i + 1
+          const isFilled = ratingValue <= (hoverRating ?? currentRating ?? 0)
+          const starColor = hasError ? colorError : isFilled ? colorActive : colorInactive
 
-        if (filled) {
-          currentColor = hovered ? colorActiveHover : colorActive
-        } else {
-          currentColor = hovered ? colorHover : color
-        }
+          return (
+            <StarIconContainer
+              key={ratingValue}
+              disabled={disabled}
+              onHoverIn={() => !disabled && setHoverRating(ratingValue)}
+              onHoverOut={() => !disabled && setHoverRating(null)}
+              onPress={() => handlePress(ratingValue)}
+              aria-label={`Avaliação ${ratingValue} de ${count}`}
+            >
+              <Icon
+                {...iconProps}
+                size={size}
+                color={starColor}
+                fill={isFilled ? starColor : 'transparent'}
+              />
+            </StarIconContainer>
+          )
+        })}
+        {rightSlot}
+      </StarRatingFrame>
+    )
+  },
+)
 
-        return (
-          <SizableStack
-            key={`${ratingValue}`}
-            testID={`star-${ratingValue}`}
-            size={size}
-            // circular // SizableStack circular might clip the icon if not careful
-            onHoverIn={() => {
-              if (disabled) return
-              setHoverRating(ratingValue)
-            }}
-            onHoverOut={() => {
-              if (disabled) return
-              setHoverRating(null)
-            }}
-            onPress={() => handlePress(ratingValue)}
-            cursor={disabled ? 'not-allowed' : 'pointer'}
-          >
-            <Icon
-              {...iconProps}
-              size={size}
-              color={currentColor}
-              fill={filled ? currentColor : 'transparent'}
-            />
-          </SizableStack>
-        )
-      })}
-    </XStack>
-  )
-})
+StarRatingComponent.displayName = 'StarRating'
 
-StarRating.displayName = 'StarRating'
+export const StarRating = withStaticProperties(StarRatingComponent, {})

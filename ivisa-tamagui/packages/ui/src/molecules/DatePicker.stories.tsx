@@ -1,54 +1,130 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { DatePicker } from './DatePicker'
-import { useState } from 'react'
+import { Meta, StoryObj } from '@storybook/react'
+import React, { useState } from 'react'
+import { YStack } from 'tamagui'
+
+import { DatePicker, DatePickerProps } from './DatePicker'
 
 const meta: Meta<typeof DatePicker> = {
   title: 'molecules/DatePicker',
   component: DatePicker,
-  tags: ['autodocs'],
   argTypes: {
-    date: {
-      control: 'date',
+    variant: {
+      control: { type: 'radio' },
+      options: ['default', 'filled'],
+    },
+    size: {
+      control: { type: 'radio' },
+      options: ['sm', 'default', 'lg'],
+    },
+    state: {
+      control: { type: 'radio' },
+      options: ['default', 'error', 'success'],
+    },
+    loading: {
+      control: { type: 'boolean' },
+    },
+    disabled: {
+      control: { type: 'boolean' },
     },
     placeholder: {
-      control: 'text',
+      control: { type: 'text' },
     },
+  },
+  args: {
+    variant: 'default',
+    size: 'default',
+    state: 'default',
+    loading: false,
+    disabled: false,
+    placeholder: 'Selecione uma data',
   },
   decorators: [
     (Story) => (
-      <div style={{ minHeight: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <YStack width={300} gap="$4" alignItems="center" style={{ minHeight: '500px' }}>
         <Story />
-      </div>
+      </YStack>
     ),
   ],
-  parameters: {
-    layout: 'fullscreen',
-  },
-  render: (args) => {
-    const [date, setDate] = useState<Date | undefined>(args.date ? new Date(args.date) : undefined);
-
-    const handleDateChange = (newDate: Date | undefined) => {
-      setDate(newDate);
-      console.log('dateChanged', newDate);
-    };
-
-    return <DatePicker {...args} date={date || undefined} onDateChange={handleDateChange} />;
-  },
 }
 
 export default meta
 
 type Story = StoryObj<typeof DatePicker>
 
+const DatePickerWithState = (props: DatePickerProps) => {
+  const [date, setDate] = useState<Date | undefined>(new Date())
+
+  return <DatePicker {...props} date={date} onDateChange={setDate} />
+}
+
 export const Default: Story = {
+  render: (props) => <DatePickerWithState {...props} />,
+}
+
+export const Filled: Story = {
+  render: (props) => <DatePickerWithState {...props} />,
   args: {
-    placeholder: 'Select a date',
+    variant: 'filled',
   },
 }
 
-export const WithInitialDate: Story = {
+export const Small: Story = {
+  render: (props) => <DatePickerWithState {...props} />,
   args: {
-    date: new Date('2025-01-20'),
-    placeholder: 'Select a date',
+    size: 'sm',
   },
+}
+
+export const Large: Story = {
+  render: (props) => <DatePickerWithState {...props} />,
+  args: {
+    size: 'lg',
+  },
+}
+
+export const Loading: Story = {
+  render: (props) => <DatePickerWithState {...props} />,
+  args: {
+    loading: true,
+  },
+}
+
+export const Disabled: Story = {
+  render: (props) => <DatePickerWithState {...props} />,
+  args: {
+    disabled: true,
+  },
+}
+
+export const Error: Story = {
+  render: (props) => <DatePickerWithState {...props} />,
+  args: {
+    state: 'error',
+  },
+}
+
+export const Success: Story = {
+  render: (props) => <DatePickerWithState {...props} />,
+  args: {
+    state: 'success',
+  },
+}
+
+export const NoDateSelected: Story = {
+  render: (props) => {
+    const [date, setDate] = useState<Date | undefined>()
+
+    return <DatePicker {...props} date={date} onDateChange={setDate} />
+  },
+}
+
+export const NarrowContainer: Story = {
+  render: (props) => <DatePickerWithState {...props} />,
+  decorators: [
+    (Story) => (
+      <YStack width={200} gap="$4" alignItems="center" style={{ minHeight: '500px' }}>
+        <Story />
+      </YStack>
+    ),
+  ],
 }
