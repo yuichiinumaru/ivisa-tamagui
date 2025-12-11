@@ -7,9 +7,11 @@ import {
   H2,
   Paragraph,
   SheetProps as TamaguiSheetProps,
+  withStaticProperties,
 } from 'tamagui'
 import React, { createContext, useContext, forwardRef } from 'react'
 import { Skeleton } from '../atoms/Skeleton'
+import { Button } from '../atoms/Button'
 
 // 1. CONTEXT for state propagation
 // =================================================================================================
@@ -25,6 +27,8 @@ const SheetContext = createContext<SheetContextValue>({
 
 const useSheetContext = () => useContext(SheetContext)
 
+const SheetPortal = TamaguiSheet.Portal
+
 // 2. ROOT COMPONENT with Provider
 // =================================================================================================
 interface SheetProps extends TamaguiSheetProps {
@@ -32,7 +36,7 @@ interface SheetProps extends TamaguiSheetProps {
   hasError?: boolean
 }
 
-const Sheet = ({ isLoading = false, hasError = false, children, ...props }: SheetProps) => (
+const SheetComponent = ({ isLoading = false, hasError = false, children, ...props }: SheetProps) => (
   <SheetContext.Provider value={{ isLoading, hasError }}>
     <TamaguiSheet {...props}>{children}</TamaguiSheet>
   </SheetContext.Provider>
@@ -157,7 +161,37 @@ const SheetDescription = styled(Paragraph, {
   color: '$mutedForeground',
 })
 
-// 4. EXPORTS
+const SheetCloseFrame = styled(Button, {
+  name: 'SheetClose',
+})
+
+const SheetClose = SheetCloseFrame.styleable((props, ref) => {
+  const context = TamaguiSheet.useSheetContext()
+  return (
+    <SheetCloseFrame
+      ref={ref}
+      onPress={() => context.setOpen(false)}
+      {...props}
+    />
+  )
+})
+
+// 4. COMPOSITE COMPONENT
+// =================================================================================================
+const Sheet = withStaticProperties(SheetComponent, {
+  Portal: SheetPortal,
+  Overlay: SheetOverlay,
+  Frame: SheetContentFrame,
+  Handle: SheetHandle,
+  Content: SheetContent,
+  Header: SheetHeader,
+  Footer: SheetFooter,
+  Title: SheetTitle,
+  Description: SheetDescription,
+  Close: SheetClose,
+})
+
+// 5. EXPORTS
 // =================================================================================================
 export {
   Sheet,
@@ -168,7 +202,9 @@ export {
   SheetDescription,
   SheetOverlay,
   SheetHandle,
-  SheetContentFrame as SheetFrame,
+  SheetComponent,
+  SheetContentFrame, // Exporting as alias if needed, or raw
+  SheetClose,
   useSheetContext,
 }
 

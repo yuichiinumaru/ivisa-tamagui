@@ -1,6 +1,7 @@
 import React from 'react'
 import { GetProps, Input as TamaguiInput, YStack, isWeb, styled } from 'tamagui'
 
+import { Skeleton } from '../../atoms/Skeleton'
 import { withErrorLogging } from '../../utils/withErrorLogging'
 
 const OTPInputFrame = styled(YStack, {
@@ -23,6 +24,18 @@ const OTPCellInput = styled(TamaguiInput, {
   focusStyle: {
     borderColor: '$ring',
     borderWidth: 2,
+  },
+
+  variants: {
+    hasError: {
+      true: {
+        borderColor: '$red10',
+        focusStyle: {
+          borderColor: '$red10',
+          borderWidth: 2,
+        },
+      },
+    },
   },
 })
 
@@ -79,6 +92,8 @@ export interface OTPInputProps extends Omit<FrameProps, 'children' | 'mask'> {
   mask?: boolean
   autoFocus?: boolean
   disabled?: boolean
+  isLoading?: boolean
+  hasError?: boolean
   inputProps?: OptionalCellProps
 }
 
@@ -97,6 +112,8 @@ const OTPInputImpl = React.forwardRef<ContainerRef, OTPInputProps>(
       mask = false,
       autoFocus = false,
       disabled = false,
+      isLoading = false,
+      hasError = false,
       inputProps,
       ...frameProps
     },
@@ -246,6 +263,16 @@ const OTPInputImpl = React.forwardRef<ContainerRef, OTPInputProps>(
       }
     }, [autoFocus, focusInput, selectInput])
 
+    if (isLoading) {
+      return (
+        <OTPInputFrame ref={ref} {...frameProps}>
+          {Array.from({ length }, (_, index) => (
+            <Skeleton key={`otp-skeleton-${index}`} width={48} height={48} />
+          ))}
+        </OTPInputFrame>
+      )
+    }
+
     return (
       <OTPInputFrame ref={ref} {...frameProps}>
         {valueArray.map((char, index) => (
@@ -255,6 +282,8 @@ const OTPInputImpl = React.forwardRef<ContainerRef, OTPInputProps>(
               inputRefs.current[index] = node
             }}
             value={char}
+            hasError={hasError}
+            aria-label={`Dígito ${index + 1} do código de verificação`}
             onChange={(event) => {
               // Tamagui Input types match Native, but on web we get a React event
               const e = event as unknown as React.ChangeEvent<HTMLInputElement>

@@ -2,49 +2,101 @@ import React, { useState } from 'react'
 import { useDatePicker } from '@rehookify/datepicker'
 import { YStack, XStack, Text, styled } from 'tamagui'
 import { Button } from '../../atoms/Button'
+import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
+import { Skeleton } from '../../atoms/Skeleton'
 
+// Locales for PT-BR
+const MONTHS_PT_BR = [
+  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+];
+const WEEK_DAYS_PT_BR = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+// Styled components using Tamagui's `styled` factory and tokens
 const CalendarContainer = styled(YStack, {
-  width: 320,
+  name: 'Calendar',
   padding: '$4',
-  borderRadius: '$md',
+  borderRadius: '$6',
   borderWidth: 1,
   borderColor: '$borderColor',
   backgroundColor: '$background',
+  gap: '$4',
+
+  variants: {
+    disabled: {
+      true: {
+        opacity: 0.5,
+        pointerEvents: 'none',
+      },
+    },
+    hasError: {
+      true: {
+        borderColor: '$red10',
+        borderWidth: 2,
+      }
+    }
+  } as const,
+})
+
+const CalendarHeader = styled(XStack, {
+  justifyContent: 'space-between',
+  alignItems: 'center',
+})
+
+const CalendarTitle = styled(Text, {
+  fontSize: '$5',
+  fontWeight: '600',
+  textAlign: 'center',
+  flex: 1,
+})
+
+const CalendarGrid = styled(YStack, {
+  gap: '$2',
 })
 
 const WeekDaysGrid = styled(XStack, {
-  justifyContent: 'space-between',
-  marginBottom: '$2',
+  gap: '$2',
+})
+
+const WeekDayText = styled(Text, {
+  flex: 1,
+  textAlign: 'center',
+  color: '$mutedForeground',
+  fontSize: '$2',
+  fontWeight: '600',
 })
 
 const DaysGrid = styled(XStack, {
   flexWrap: 'wrap',
+  gap: '$2',
 })
 
-const DayCell = styled(Button, {
+const DayButtonFrame = styled(Button, {
   width: 40,
   height: 40,
   padding: 0,
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: 'transparent',
-  borderRadius: '$md',
-  borderWidth: 0,
+  borderRadius: '$4',
+  borderWidth: 1,
+  borderColor: 'transparent',
+  tag: 'button',
 
   variants: {
     selected: {
       true: {
         backgroundColor: '$primary',
-        color: '$primaryForeground',
-        hoverStyle: {
-          backgroundColor: '$primaryHover',
+        borderColor: '$primary',
+        '&:hover': {
+          backgroundColor: '$primary',
+          opacity: 0.9,
         },
       },
     },
     today: {
       true: {
-        backgroundColor: '$muted',
-        color: '$foreground',
+        borderColor: '$primary',
       },
     },
     outside: {
@@ -59,42 +111,63 @@ const DayCell = styled(Button, {
       },
     },
   } as const,
+
+  defaultVariants: {
+    variant: 'ghost',
+  },
 })
 
 const DayText = styled(Text, {
-  fontSize: '$3',
+  fontSize: '$4',
+  color: '$foreground',
   variants: {
     selected: {
       true: {
-        color: '$background',
+        color: '$primaryForeground',
       },
     },
   } as const,
 })
 
-const HeaderText = styled(Text, {
-  fontSize: '$4',
-  fontWeight: '600',
-})
+const SkeletonGrid = () => (
+  <YStack gap="$2" data-testid="calendar-skeleton">
+    <XStack gap="$2" justifyContent="space-around">
+      {Array.from({ length: 7 }).map((_, i) => (
+        <Skeleton key={i} width={40} height={20} borderRadius="$2" />
+      ))}
+    </XStack>
+    <XStack flexWrap="wrap" gap="$2" justifyContent="space-around">
+      {Array.from({ length: 35 }).map((_, i) => (
+        <Skeleton key={i} width={40} height={40} borderRadius="$4" />
+      ))}
+    </XStack>
+  </YStack>
+)
+
 
 export interface CalendarProps {
   selectedDate?: Date
   onDateChange?: (date: Date) => void
   minDate?: Date
   maxDate?: Date
+  isLoading?: boolean
+  isDisabled?: boolean
+  hasError?: boolean
 }
 
 export const Calendar = ({
-  selectedDate = new Date(),
+  selectedDate,
   onDateChange,
   minDate,
   maxDate,
+  isLoading = false,
+  isDisabled = false,
+  hasError = false,
 }: CalendarProps) => {
-  // @rehookify/datepicker uses an array for selectedDates
   const [selectedDates, onDatesChange] = useState<Date[]>(selectedDate ? [selectedDate] : [])
 
   const {
-    data: { calendars, weekDays },
+    data: { calendars },
     propGetters: { dayButton, subtractOffset, addOffset },
   } = useDatePicker({
     selectedDates,
@@ -110,81 +183,57 @@ export const Calendar = ({
     dates: {
       minDate,
       maxDate,
+    },
+    locale: {
+      month: MONTHS_PT_BR,
+      weekdays: WEEK_DAYS_PT_BR,
     }
   })
 
-  // We usually only display one month at a time
   const currentMonth = calendars[0]
-  // const currentMonthData = months[0]
 
-  if (!currentMonth) return null
-
-  // Use subtractOffset/addOffset for navigation props
-  const prevBtn = subtractOffset({ months: 1 })
-  const nextBtn = addOffset({ months: 1 })
+  const { onClick: onPrevClick } = subtractOffset({ months: 1 })
+  const { onClick: onNextClick } = addOffset({ months: 1 })
 
   return (
-    <CalendarContainer data-testid="calendar-container">
-      {/* Header: Month Year + Nav */}
-      <XStack justifyContent="space-between" alignItems="center" marginBottom="$4">
-        <Button
-          circular
-          size="sm"
-          variant="ghost"
-          // @ts-expect-error - rehookify props mismatch with tamagui
-          onPress={prevBtn.onClick}
-        >
-          {'<'}
-        </Button>
-        
-        <HeaderText>
-          {currentMonth.month} {currentMonth.year}
-        </HeaderText>
+    <CalendarContainer disabled={isDisabled} hasError={hasError} data-testid="calendar-container">
+      <CalendarHeader>
+        <Button icon={ChevronLeft} circular variant="ghost" onPress={onPrevClick} disabled={isLoading} />
+        <CalendarTitle>
+          {isLoading ? <Skeleton width={120} height={24} /> : (currentMonth ? `${currentMonth.month} ${currentMonth.year}`: '')}
+        </CalendarTitle>
+        <Button icon={ChevronRight} circular variant="ghost" onPress={onNextClick} disabled={isLoading} />
+      </CalendarHeader>
 
-        <Button
-          circular
-          size="sm"
-          variant="ghost"
-          // @ts-expect-error - rehookify props mismatch with tamagui
-          onPress={nextBtn.onClick}
-        >
-          {'>'}
-        </Button>
-      </XStack>
-
-      {/* Week Days Header */}
-      <WeekDaysGrid>
-        {weekDays.map((day) => (
-          <Text key={day} width={40} textAlign="center" color="$mutedForeground" fontSize="$2">
-            {day.substring(0, 2)}
-          </Text>
-        ))}
-      </WeekDaysGrid>
-
-      {/* Days Grid */}
-      <DaysGrid>
-        {currentMonth.days.map((day, index) => {
-            // rehookify provides props, but we need to adapt them to Tamagui
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { onClick, ...dayProps } = dayButton(day)
-            
-            return (
-              <DayCell
-                key={index}
-                selected={day.selected}
-                today={day.now}
-                outside={!day.inCurrentMonth}
-                disabled={day.disabled}
-                onPress={(e) => {
-                  // @ts-expect-error - rehookify props mismatch with tamagui
-                  onClick?.(e) 
-                }}
-              >
-                <DayText selected={day.selected}>{day.day}</DayText>
-              </DayCell>
-            )
-        })}
-      </DaysGrid>
+      {isLoading ? <SkeletonGrid /> : (
+        currentMonth ? (
+          <CalendarGrid data-testid="calendar-grid">
+            <WeekDaysGrid>
+              {WEEK_DAYS_PT_BR.map((day) => (
+                <WeekDayText key={day}>{day.substring(0, 3)}</WeekDayText>
+              ))}
+            </WeekDaysGrid>
+            <DaysGrid>
+              {currentMonth.days.map((day, index) => {
+                const { onClick: onDayClick, ...dayProps } = dayButton(day)
+                return (
+                  <DayButtonFrame
+                    key={index}
+                    selected={day.selected}
+                    today={day.now}
+                    outside={!day.inCurrentMonth}
+                    disabled={day.disabled}
+                    onPress={onDayClick}
+                    {...dayProps}
+                  >
+                    <DayText selected={day.selected}>{day.day}</DayText>
+                  </DayButtonFrame>
+                )
+              })}
+            </DaysGrid>
+          </CalendarGrid>
+        ) : null
+      )}
     </CalendarContainer>
   )
 }
