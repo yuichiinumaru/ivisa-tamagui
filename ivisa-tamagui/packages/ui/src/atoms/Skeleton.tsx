@@ -1,5 +1,4 @@
-import { YStack, styled, GetProps } from 'tamagui'
-import { keyframes } from '@tamagui/core'
+import { YStack, styled, GetProps, keyframes } from 'tamagui'
 
 const pulse = keyframes({
   '0%, 100%': {
