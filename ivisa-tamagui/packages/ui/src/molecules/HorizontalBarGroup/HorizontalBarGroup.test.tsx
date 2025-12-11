@@ -1,7 +1,8 @@
 
-import { render } from '../../test-utils'
+import { render, fireEvent } from '../../test-utils'
 import { HorizontalBarGroup } from './HorizontalBarGroup'
 import { Button } from '../../atoms/Button'
+import { Text } from 'tamagui'
 
 describe('HorizontalBarGroup', () => {
   it('renders title and subtitle', () => {
@@ -22,6 +23,25 @@ describe('HorizontalBarGroup', () => {
     expect(getByText('Click Me')).toBeTruthy()
   })
 
+  it('renders leftSlot', () => {
+    const { getByText } = render(
+      <HorizontalBarGroup
+        title="Test Title"
+        leftSlot={<Text>Left Slot</Text>}
+      />
+    )
+    expect(getByText('Left Slot')).toBeTruthy()
+  })
+
+  it('handles onPress', () => {
+    const onPress = jest.fn()
+    const { getByText } = render(
+      <HorizontalBarGroup title="Test Title" onPress={onPress} />
+    )
+    fireEvent.click(getByText('Test Title'))
+    expect(onPress).toHaveBeenCalled()
+  })
+
   it('shows skeleton when loading', () => {
     const { queryByText } = render(<HorizontalBarGroup isLoading />)
     expect(queryByText('Test Title')).toBeNull()
@@ -29,9 +49,16 @@ describe('HorizontalBarGroup', () => {
 
   it('applies error styles', () => {
     const { container } = render(<HorizontalBarGroup hasError />)
-    // This is a naive way to test this. A better way would be to check computed styles.
-    // However, given the setup, we'll check for the presence of the error variant class if possible
-    // For now, let's just ensure it renders without crashing.
+    expect(container.firstChild).toBeTruthy()
+  })
+
+  it('applies success styles', () => {
+    const { container } = render(<HorizontalBarGroup isSuccess />)
+    expect(container.firstChild).toBeTruthy()
+  })
+
+  it('applies warning styles', () => {
+    const { container } = render(<HorizontalBarGroup isWarning />)
     expect(container.firstChild).toBeTruthy()
   })
 
