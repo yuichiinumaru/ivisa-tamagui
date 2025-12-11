@@ -77,8 +77,9 @@ export type AccordionItemProps = GetProps<typeof AccordionItemFrame> & CustomAcc
 const AccordionItem = React.forwardRef<React.ElementRef<typeof AccordionItemFrame>, AccordionItemProps>(({ children, isLoading, hasError, ...props }, ref) => {
     const childrenWithProps = React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
-            if ((child.type as any).displayName === 'AccordionContent') {
-                return React.cloneElement(child, { isLoading: isLoading } as any)
+            const type = child.type as { displayName?: string }
+            if (type.displayName === 'AccordionContent') {
+                return React.cloneElement(child as React.ReactElement<AccordionContentProps>, { isLoading })
             }
         }
         return child
