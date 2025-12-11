@@ -19,11 +19,9 @@ module.exports = {
         '^react-native$': 'react-native-web',
         '^@tamagui/(.*)': '<rootDir>/node_modules/@tamagui/$1',
     },
-    // Fix: point to the correct setup file which exists
     setupFilesAfterEnv: ['<rootDir>/packages/ui/jest-setup.ts'],
     testMatch: [
         '<rootDir>/packages/ui/src/**/*.test.tsx'
     ],
-    // IMPORTANT: Set rootDir to repo root so <rootDir> refs work
-    rootDir: '../../',
+    rootDir: '../..',
 };
