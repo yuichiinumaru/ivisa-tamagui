@@ -67,6 +67,18 @@ type FormItemContextValue = {
 // 💀 Resurrection: Nullable Context
 const FormItemContext = React.createContext<FormItemContextValue | null>(null)
 
+const FormRoot = styled(YStack, {
+  name: 'FormRoot',
+  gap: '$4',
+})
+
+const FormFooter = styled(YStack, {
+  name: 'FormFooter',
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  gap: '$2',
+})
+
 const FormItemFrame = styled(YStack, {
   name: 'FormItem',
   space: '$sm',
@@ -198,4 +210,6 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+  FormRoot,
+  FormFooter,
 }

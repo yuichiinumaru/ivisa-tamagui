@@ -6,7 +6,7 @@ import { Sonner, toast } from './Sonner'
 import { Toast } from './Toast'
 
 const meta: Meta<typeof Sonner> = {
-  title: 'Moléculas/Sonner',
+  title: 'Molecules/Sonner',
   component: Sonner,
   tags: ['autodocs'],
   parameters: {
@@ -134,23 +134,23 @@ export const TextoExtenso: Story = {
 }
 
 export const ApenasComTitulo: Story = {
-    render: (args) => (
-      <VStack gap="$3" alignItems="flex-start">
-        <Sonner {...args} />
-        <H4>Toast contendo apenas o título</H4>
-        <Button
-          onPress={() =>
-            toast.success('Arquivo Enviado')
-          }
-        >
-          Mostrar Toast Apenas com Título
-        </Button>
-      </VStack>
-    ),
-    args: {
-      position: 'bottom-right',
-    },
-  }
+  render: (args) => (
+    <VStack gap="$3" alignItems="flex-start">
+      <Sonner {...args} />
+      <H4>Toast contendo apenas o título</H4>
+      <Button
+        onPress={() =>
+          toast.success('Arquivo Enviado')
+        }
+      >
+        Mostrar Toast Apenas com Título
+      </Button>
+    </VStack>
+  ),
+  args: {
+    position: 'bottom-right',
+  },
+}
 
 export const ComPromise: Story = {
   render: (args) => (
@@ -177,25 +177,6 @@ export const ComPromise: Story = {
         }}
       >
         Executar Promise
-      </Button>
-    </VStack>
-  ),
-  args: {
-    position: 'bottom-right',
-  },
-}
-
-export const ComIconeCustomizado: Story = {
-  render: (args) => (
-    <VStack gap="$3" alignItems="flex-start">
-      <Sonner {...args} />
-      <H4>Toast com Ícone Customizado</H4>
-      <Button
-        onPress={() =>
-          toast.message('Notificação com Ícone', 'Este toast usa um ícone de foguete.')
-        }
-      >
-        Mostrar Toast com Ícone de Foguete
       </Button>
     </VStack>
   ),

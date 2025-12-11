@@ -1,41 +1,89 @@
+import { ChevronDown } from '@tamagui/lucide-icons'
 import React, { useMemo } from 'react'
-import { Adapt, Sheet } from 'tamagui'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectViewport } from '../Select'
+import { Adapt, Select, Sheet, styled } from 'tamagui'
+
+import { Skeleton } from '../../atoms/Skeleton'
+import { SelectContent, SelectItem, SelectTrigger, SelectValue, SelectViewport } from '../Select'
 
 export interface MonthsPickerProps {
   value?: string
   onValueChange?: (value: string) => void
   placeholder?: string
+  isLoading?: boolean
+  hasError?: boolean
+  isDisabled?: boolean
 }
 
-export const MonthsPicker = ({ value, onValueChange, placeholder = "Select Month" }: MonthsPickerProps) => {
-  const months = useMemo(() => [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ], [])
+const MonthsPickerTrigger = styled(SelectTrigger, {
+  name: 'MonthsPickerTrigger',
+  width: 200,
+  variants: {
+    error: {
+      true: {
+        borderColor: '$red10',
+      },
+    },
+    disabled: {
+      true: {
+        opacity: 0.5,
+        backgroundColor: '$gray5',
+      },
+    },
+  },
+})
+
+export const MonthsPicker = ({
+  value,
+  onValueChange,
+  placeholder = 'Selecione o Mês',
+  isLoading = false,
+  hasError = false,
+  isDisabled = false,
+}: MonthsPickerProps) => {
+  const meses = useMemo(
+    () => [
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+      'Julho',
+      'Agosto',
+      'Setembro',
+      'Outubro',
+      'Novembro',
+      'Dezembro',
+    ],
+    []
+  )
+
+  if (isLoading) {
+    return <Skeleton width={200} height={35} />
+  }
 
   return (
-    <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger width={200}>
+    <Select value={value} onValueChange={onValueChange} disabled={isDisabled}>
+      <MonthsPickerTrigger error={hasError} disabled={isDisabled} iconAfter={ChevronDown}>
         <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
+      </MonthsPickerTrigger>
 
       <Adapt when="sm" platform="touch">
         <Sheet modal dismissOnSnapToBottom>
-            <Sheet.Frame>
-                <Sheet.ScrollView>
-                    <Adapt.Contents />
-                </Sheet.ScrollView>
-            </Sheet.Frame>
-            <Sheet.Overlay />
+          <Sheet.Frame>
+            <Sheet.ScrollView>
+              <Adapt.Contents />
+            </Sheet.ScrollView>
+          </Sheet.Frame>
+          <Sheet.Overlay />
         </Sheet>
       </Adapt>
 
       <SelectContent>
         <SelectViewport>
-          {months.map((month, index) => (
-            <SelectItem index={index} key={month} value={month}>
-              {month}
+          {meses.map((mes, index) => (
+            <SelectItem index={index} key={mes} value={mes}>
+              {mes}
             </SelectItem>
           ))}
         </SelectViewport>

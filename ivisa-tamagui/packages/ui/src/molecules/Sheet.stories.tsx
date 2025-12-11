@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   Sheet,
@@ -7,10 +7,13 @@ import {
   SheetFooter,
   SheetTitle,
   SheetDescription,
+  SheetProps,
 } from './Sheet'
 import { Button } from '../atoms/Button'
 import { Input } from '../atoms/Input'
-import { Label, YStack } from 'tamagui'
+import { Label } from '../atoms/Label'
+import { YStack, XStack } from 'tamagui'
+import { StorybookArgs } from '../../../apps/storybook/.storybook/utils/StorybookArgs'
 
 const meta: Meta<typeof Sheet> = {
   title: 'Molecules/Sheet',
@@ -19,40 +22,157 @@ const meta: Meta<typeof Sheet> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    open: { control: 'boolean' },
+    isLoading: { control: 'boolean' },
+    hasError: { control: 'boolean' },
+  },
 }
 
 export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  render: () => {
-    const [open, setOpen] = React.useState(false)
-    return (
-      <Sheet open={open} onOpenChange={setOpen}>
-        <Button variant="outline" onPress={() => setOpen(true)}>Open</Button>
+const SheetStoryContent = () => (
+  <>
+    <SheetHeader>
+      <SheetTitle>Editar Perfil</SheetTitle>
+      <SheetDescription>
+        Faça alterações no seu perfil aqui. Clique em salvar quando terminar.
+      </SheetDescription>
+    </SheetHeader>
+    <YStack gap="$4" py="$4">
+      <YStack gap="$1">
+        <Label htmlFor="name">Nome</Label>
+        <Input id="name" defaultValue="Pedro Duarte" />
+      </YStack>
+      <YStack gap="$1">
+        <Label htmlFor="username">Usuário</Label>
+        <Input id="username" defaultValue="@peduarte" />
+      </YStack>
+    </YStack>
+  </>
+)
+
+const renderSheet = (args: StorybookArgs<SheetProps>) => {
+  const [open, setOpen] = useState(args.open ?? false)
+
+  return (
+    <>
+      <Button variant="outline" onPress={() => setOpen(true)}>
+        Abrir Sheet
+      </Button>
+      <Sheet open={open} onOpenChange={setOpen} {...args}>
         <SheetContent>
-          <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
-            <SheetDescription>
-              Make changes to your profile here. Click save when you're done.
-            </SheetDescription>
-          </SheetHeader>
-          <YStack gap="$4" py="$4">
-            <YStack gap="$1">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" defaultValue="Pedro Duarte" />
-            </YStack>
-            <YStack gap="$1">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" defaultValue="@peduarte" />
-            </YStack>
-          </YStack>
-          <SheetFooter>
-            <Button onPress={() => setOpen(false)}>Save changes</Button>
-          </SheetFooter>
+          <SheetStoryContent />
+          <SheetFooter
+            actions={
+              <Button onPress={() => setOpen(false)} variant="primary">
+                Salvar alterações
+              </Button>
+            }
+          />
         </SheetContent>
       </Sheet>
+    </>
+  )
+}
+
+export const Padrao: Story = {
+  args: {
+    open: false,
+    isLoading: false,
+    hasError: false,
+  },
+  render: renderSheet,
+}
+
+export const Carregando: Story = {
+  args: {
+    ...Padrao.args,
+    isLoading: true,
+  },
+  render: renderSheet,
+}
+
+export const ComErro: Story = {
+  args: {
+    ...Padrao.args,
+    hasError: true,
+  },
+  render: renderSheet,
+}
+
+export const ConteudoLongo: Story = {
+  args: {
+    ...Padrao.args,
+  },
+  render: (args) => {
+    const [open, setOpen] = useState(args.open ?? false)
+    return (
+      <>
+        <Button variant="outline" onPress={() => setOpen(true)}>
+          Abrir Sheet com Conteúdo Longo
+        </Button>
+        <Sheet open={open} onOpenChange={setOpen} {...args}>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Termos de Serviço</SheetTitle>
+              <SheetDescription>
+                Por favor, leia os termos e condições cuidadosamente.
+              </SheetDescription>
+            </SheetHeader>
+            <YStack gap="$2" py="$4" height={300} overflow="scroll">
+              {[...Array(20)].map((_, i) => (
+                <p key={i}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget
+                  fermentum aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc eget nisl.
+                </p>
+              ))}
+            </YStack>
+            <SheetFooter
+              actions={
+                <Button onPress={() => setOpen(false)} variant="primary">
+                  Aceitar
+                </Button>
+              }
+            />
+          </SheetContent>
+        </Sheet>
+      </>
+    )
+  },
+}
+
+export const AcoesCustomizadas: Story = {
+  args: {
+    ...Padrao.args,
+  },
+  render: (args) => {
+    const [open, setOpen] = useState(args.open ?? false)
+    return (
+      <>
+        <Button variant="outline" onPress={() => setOpen(true)}>
+          Abrir com Ações Customizadas
+        </Button>
+        <Sheet open={open} onOpenChange={setOpen} {...args}>
+          <SheetContent>
+            <SheetStoryContent />
+            <SheetFooter
+              actions={
+                <XStack gap="$2">
+                  <Button onPress={() => setOpen(false)} variant="secondary">
+                    Cancelar
+                  </Button>
+                  <Button onPress={() => setOpen(false)} variant="primary">
+                    Confirmar
+                  </Button>
+                </XStack>
+              }
+            />
+          </SheetContent>
+        </Sheet>
+      </>
     )
   },
 }

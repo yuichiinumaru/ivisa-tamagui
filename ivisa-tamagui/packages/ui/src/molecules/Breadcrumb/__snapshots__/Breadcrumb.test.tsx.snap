@@ -15,12 +15,12 @@ exports[`Breadcrumb renders snapshot 1`] = `
         style="color: var(--color); display: contents;"
       >
         <div
-          aria-label="Breadcrumb"
-          class="is_BreadcrumbRoot _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _gap-t-space-sm"
+          aria-label="Navegação"
+          class="is_BreadcrumbRoot _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _jc-space-betwe3241 _w-10037"
           role="navigation"
         >
           <div
-            class="is_BreadcrumbList _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _gap-t-space-sm _ai-center _fw-wrap"
+            class="is_BreadcrumbList _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _gap-t-space-sm _ai-center _fw-nowrap _ox-hidden _oy-hidden"
             role="list"
           >
             <div
@@ -28,12 +28,12 @@ exports[`Breadcrumb renders snapshot 1`] = `
               role="listitem"
             >
               <a
-                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _fontWeight-500 is_BreadcrumbLink "
+                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _fontWeight-500 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis is_BreadcrumbLink "
                 data-disable-theme="true"
-                href="#"
+                href="/"
                 role="link"
               >
-                Home
+                Início
               </a>
               <span
                 aria-hidden="true"
@@ -47,12 +47,12 @@ exports[`Breadcrumb renders snapshot 1`] = `
               role="listitem"
             >
               <a
-                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _fontWeight-500 is_BreadcrumbLink "
+                class="is_Anchor font_body _col-0hover-primary _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _fontWeight-500 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis is_BreadcrumbLink "
                 data-disable-theme="true"
-                href="#"
+                href="/category"
                 role="link"
               >
-                Section
+                Categoria
               </a>
               <span
                 aria-hidden="true"
@@ -67,9 +67,9 @@ exports[`Breadcrumb renders snapshot 1`] = `
             >
               <span
                 aria-current="page"
-                class="is_BreadcrumbCurrent font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748 _fontWeight-600"
+                class="is_BreadcrumbCurrent font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _col-mutedForegr3422748 _fontWeight-600 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis"
               >
-                Page
+                Página Atual
               </span>
             </div>
           </div>

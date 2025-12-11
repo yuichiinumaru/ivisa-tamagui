@@ -1,17 +1,21 @@
+import { Skeleton } from '../../atoms/Skeleton'
 import React from 'react'
 import { Anchor, Button, GetProps, Text, XStack, styled } from 'tamagui'
 
 const BreadcrumbRoot = styled(XStack, {
   name: 'BreadcrumbRoot',
   alignItems: 'center',
-  gap: '$sm',
+  justifyContent: 'space-between',
+  gap: '$4',
+  width: '100%',
 })
 
 const BreadcrumbList = styled(XStack, {
   name: 'BreadcrumbList',
   gap: '$sm',
   alignItems: 'center',
-  flexWrap: 'wrap',
+  flexWrap: 'nowrap',
+  overflow: 'hidden',
 })
 
 const BreadcrumbItemWrapper = styled(XStack, {
@@ -33,6 +37,7 @@ const BreadcrumbLink = styled(Anchor, {
   hoverStyle: {
     color: '$primary',
   },
+  ellipse: true,
 })
 
 const BreadcrumbButton = styled(Button, {
@@ -50,12 +55,14 @@ const BreadcrumbButtonLabel = styled(Text, {
   name: 'BreadcrumbButtonLabel',
   color: '$foreground',
   fontWeight: '500',
+  ellipse: true,
 })
 
 const BreadcrumbCurrent = styled(Text, {
   name: 'BreadcrumbCurrent',
   color: '$mutedForeground',
   fontWeight: '600',
+  ellipse: true,
 })
 
 type BreadcrumbButtonProps = GetProps<typeof BreadcrumbButton>
@@ -72,13 +79,29 @@ export interface BreadcrumbProps {
   items: BreadcrumbItem[]
   separator?: React.ReactNode
   ariaLabel?: string
+  isLoading?: boolean
+  rightSlot?: React.ReactNode
 }
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   items,
   separator = '/',
-  ariaLabel = 'Breadcrumb',
+  ariaLabel = 'Navegação',
+  isLoading = false,
+  rightSlot = null,
 }) => {
+  if (isLoading) {
+    return (
+      <BreadcrumbRoot data-testid="breadcrumb-skeleton">
+        <BreadcrumbList>
+          <Skeleton height={20} width={80} />
+          <Skeleton height={20} width={100} />
+          <Skeleton height={20} width={120} />
+        </BreadcrumbList>
+      </BreadcrumbRoot>
+    )
+  }
+
   if (!items || items.length === 0) {
     return null
   }
@@ -116,6 +139,8 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
           )
         })}
       </BreadcrumbList>
+
+      {rightSlot && <XStack>{rightSlot}</XStack>}
     </BreadcrumbRoot>
   )
 }
