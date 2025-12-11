@@ -1,18 +1,27 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Toaster } from './Sonner'
-import { Button } from '../../atoms/Button'
-import { toast } from 'sonner'
-import { H4 } from '../../atoms/Typography'
-import { VStack } from '../../atoms/Stack'
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { Toaster, toast } from './Sonner';
+import { Button } from '../../atoms/Button';
+import { H4 } from '../../atoms/Typography';
+import { VStack } from '../../atoms/Stack';
+import { TamaguiProvider } from 'tamagui';
+import tamaguiConfig from '../../tamagui.config';
 
 const meta: Meta<typeof Toaster> = {
   title: 'Molecules/Sonner',
   component: Toaster,
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <TamaguiProvider config={tamaguiConfig}>
+        <Story />
+      </TamaguiProvider>
+    ),
+  ],
   parameters: {
     docs: {
       description: {
-        component: 'A toast component based on Sonner that provides non-intrusive notifications.',
+        component: 'Um componente de toast baseado no Sonner que fornece notificações não intrusivas.',
       },
     },
   },
@@ -20,47 +29,106 @@ const meta: Meta<typeof Toaster> = {
     position: {
       control: 'select',
       options: ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'],
-      description: 'The position of the toast notifications on the screen.',
+      description: 'A posição das notificações de toast na tela.',
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Toaster>
+export default meta;
+type Story = StoryObj<typeof Toaster>;
 
 export const Playground: Story = {
   render: (args) => (
-    <VStack>
+    <VStack gap="$2">
       <Toaster {...args} />
-      <H4>Click buttons to see different toast types</H4>
-      <Button onPress={() => toast('A default toast notification.')}>Default</Button>
-      <Button onPress={() => toast.success('Success!', { description: 'The operation was successful.' })}>
-        Success
+      <H4>Clique nos botões para ver os diferentes tipos de toast</H4>
+      <Button onPress={() => toast('Um toast de notificação padrão.')}>Padrão</Button>
+      <Button onPress={() => toast.success('Sucesso!', { description: 'A operação foi bem-sucedida.' })}>
+        Sucesso
       </Button>
-      <Button onPress={() => toast.error('Error!', { description: 'Something went wrong.' })}>
-        Error
+      <Button onPress={() => toast.error('Erro!', { description: 'Algo deu errado.' })}>
+        Erro
       </Button>
-      <Button onPress={() => toast.warning('Warning!', { description: 'Please be cautious.' })}>
-        Warning
+      <Button onPress={() => toast.warning('Aviso!', { description: 'Por favor, seja cauteloso.' })}>
+        Aviso
       </Button>
-      <Button onPress={() => toast.info('Info', { description: 'Here is some information.' })}>
-        Info
+      <Button onPress={() => toast.info('Informação', { description: 'Aqui estão algumas informações.' })}>
+        Informação
       </Button>
       <Button
         onPress={() =>
-          toast('Event has been created', {
+          toast('O evento foi criado', {
             action: {
-              label: 'Undo',
-              onClick: () => console.log('Undo'),
+              label: 'Desfazer',
+              onClick: () => console.log('Desfazer'),
             },
           })
         }
       >
-        With Action
+        Com Ação
       </Button>
     </VStack>
   ),
   args: {
     position: 'bottom-right',
   },
-}
+};
+
+export const StressTestTruncation: Story = {
+  render: (args) => (
+    <VStack gap="$2">
+      <Toaster {...args} />
+      <H4>Toast com texto longo</H4>
+      <Button
+        onPress={() =>
+          toast.info('Título da Notificação', {
+            description:
+              'Esta é uma descrição muito longa que deve ser truncada para evitar que o componente de toast se torne muito grande e ilegível na tela.',
+          })
+        }
+      >
+        Mostrar Toast com Texto Longo
+      </Button>
+    </VStack>
+  ),
+  args: {
+    position: 'bottom-right',
+  },
+};
+
+export const StressTestPartialData: Story = {
+  render: (args) => (
+    <VStack gap="$2">
+      <Toaster {...args} />
+      <H4>Toast com dados parciais</H4>
+      <Button onPress={() => toast.success('Apenas um título')}>
+        Mostrar Toast Apenas com Título
+      </Button>
+    </VStack>
+  ),
+  args: {
+    position: 'bottom-right',
+  },
+};
+
+export const StressTestLoading: Story = {
+  render: (args) => (
+    <VStack gap="$2">
+      <Toaster {...args} />
+      <H4>Toast com estado de carregamento</H4>
+      <Button
+        onPress={() => {
+          const toastId = toast.loading('Carregando...', { description: 'Por favor, aguarde.' });
+          setTimeout(() => {
+            toast.success('Sucesso!', { description: 'Os dados foram carregados.', id: toastId });
+          }, 2000);
+        }}
+      >
+        Mostrar Toast de Carregamento
+      </Button>
+    </VStack>
+  ),
+  args: {
+    position: 'bottom-right',
+  },
+};
