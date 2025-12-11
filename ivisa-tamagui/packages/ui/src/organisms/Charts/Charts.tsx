@@ -1,24 +1,30 @@
-import React from 'react'
+import { Skeleton } from '../../atoms/Skeleton'
+import { YStack, Text, useTheme } from 'tamagui'
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryContainer } from 'victory'
-import { useTheme } from 'tamagui'
+import { AlertTriangle, BarChart3 } from '@tamagui/lucide-icons'
+import React from 'react'
 
-export interface BarChartProps {
-  data: Record<string, unknown>[]
+export interface ChartsProps {
+  data?: Record<string, unknown>[]
   xKey: string
   yKey: string
   color?: string
   height?: number
-  width?: number
+  isLoading?: boolean
+  error?: Error | null
+  headerContent?: React.ReactNode
 }
 
-export const BarChart = ({
+export const Charts = ({
   data,
   xKey,
   yKey,
   color = '$primary',
   height = 300,
-  width,
-}: BarChartProps) => {
+  isLoading = false,
+  error = null,
+  headerContent,
+}: ChartsProps) => {
   const theme = useTheme()
   const themeColor = theme[color as keyof typeof theme]
   const barColor = themeColor ? (themeColor as unknown as { get: () => string }).get() : color
@@ -26,13 +32,34 @@ export const BarChart = ({
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
 
-  return (
-    <div style={{ height, width: width || 'auto', marginLeft: 12, marginRight: 12 }}>
+  const renderContent = () => {
+    if (isLoading) {
+      return <Skeleton height={height} width="100%" />
+    }
+
+    if (error) {
+      return (
+        <YStack flex={1} justifyContent="center" alignItems="center" gap="$2" height={height}>
+          <AlertTriangle color="$red10" />
+          <Text color="$red10">Ocorreu um erro ao carregar os dados.</Text>
+        </YStack>
+      )
+    }
+
+    if (!data || data.length === 0) {
+      return (
+        <YStack flex={1} justifyContent="center" alignItems="center" gap="$2" height={height}>
+          <BarChart3 color="$gray10" />
+          <Text>Não há dados para exibir.</Text>
+        </YStack>
+      )
+    }
+
+    return (
       <VictoryChart
         domainPadding={{ x: 20 }}
         height={height}
-        width={width}
-        containerComponent={<VictoryContainer responsive={!width} />}
+        containerComponent={<VictoryContainer responsive={true} />}
       >
         <VictoryAxis
           style={{
@@ -58,6 +85,13 @@ export const BarChart = ({
           cornerRadius={{ top: 4 }}
         />
       </VictoryChart>
-    </div>
+    )
+  }
+
+  return (
+    <YStack width="100%" gap="$4" paddingHorizontal="$4">
+      {headerContent}
+      {renderContent()}
+    </YStack>
   )
 }
