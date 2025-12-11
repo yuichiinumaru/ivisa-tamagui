@@ -1,10 +1,29 @@
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from '@tamagui/lucide-icons'
 import React, { useMemo } from 'react'
-import { Button, XStack, Text, GetProps, styled, VisuallyHidden } from 'tamagui'
+import { Button, GetProps, Text, VisuallyHidden, XStack, styled } from 'tamagui'
+
+import { Skeleton } from '../../atoms/Skeleton'
 
 const PaginationRoot = styled(XStack, {
   name: 'PaginationRoot',
   alignItems: 'center',
   gap: '$sm',
+
+  variants: {
+    hasError: {
+      true: {
+        borderWidth: 1,
+        borderColor: '$red10',
+        borderRadius: '$radius',
+        padding: '$2',
+      },
+    },
+  } as const,
 })
 
 const PaginationButton = styled(Button, {
@@ -134,8 +153,12 @@ export interface PaginationProps {
   siblingCount?: number
   showEdges?: boolean
   disabled?: boolean
+  isLoading?: boolean
+  hasError?: boolean
   size?: PaginationButtonProps['size']
   ariaLabel?: string
+  leftSlot?: React.ReactNode
+  rightSlot?: React.ReactNode
 }
 
 export const Pagination: React.FC<PaginationProps> = ({
@@ -145,15 +168,69 @@ export const Pagination: React.FC<PaginationProps> = ({
   siblingCount = 1,
   showEdges = true,
   disabled = false,
+  isLoading = false,
+  hasError = false,
   size = 'md',
-  ariaLabel = 'Pagination',
+  ariaLabel = 'Paginação',
+  leftSlot,
+  rightSlot,
 }) => {
-  const paginationRange = usePaginationRange({ currentPage, totalPages, siblingCount })
+  const paginationRange = usePaginationRange({
+    currentPage,
+    totalPages,
+    siblingCount,
+  })
 
   const handleChange = (page: number) => {
-    if (disabled) return
+    if (disabled || isLoading) return
     if (page < 1 || page > totalPages || page === currentPage) return
     onPageChange?.(page)
+  }
+
+  if (isLoading) {
+    return (
+      <XStack
+        alignItems="center"
+        gap="$sm"
+        aria-label="Carregando paginação"
+      >
+        <Skeleton
+          width={32}
+          height={32}
+          borderRadius="$full"
+        />
+        <Skeleton
+          width={32}
+          height={32}
+          borderRadius="$full"
+        />
+        <Skeleton
+          width={40}
+          height={32}
+          borderRadius="$full"
+        />
+        <Skeleton
+          width={40}
+          height={32}
+          borderRadius="$full"
+        />
+        <Skeleton
+          width={40}
+          height={32}
+          borderRadius="$full"
+        />
+        <Skeleton
+          width={32}
+          height={32}
+          borderRadius="$full"
+        />
+        <Skeleton
+          width={32}
+          height={32}
+          borderRadius="$full"
+        />
+      </XStack>
+    )
   }
 
   if (totalPages <= 1 || paginationRange.length === 0) {
@@ -164,33 +241,41 @@ export const Pagination: React.FC<PaginationProps> = ({
   const isLastPage = currentPage === totalPages
 
   return (
-    <PaginationRoot role="navigation" aria-label={ariaLabel}>
+    <PaginationRoot
+      role="navigation"
+      aria-label={ariaLabel}
+      hasError={hasError}
+    >
+      {leftSlot}
       {showEdges && (
         <PaginationButton
           size={size}
           disabled={disabled || isFirstPage}
-          aria-label="First page"
+          aria-label="Primeira página"
           onPress={() => handleChange(1)}
         >
-          <VisuallyHidden>First page</VisuallyHidden>
-          «
+          <VisuallyHidden>Primeira página</VisuallyHidden>
+          <ChevronsLeft />
         </PaginationButton>
       )}
 
       <PaginationButton
         size={size}
         disabled={disabled || isFirstPage}
-        aria-label="Previous page"
+        aria-label="Página anterior"
         onPress={() => handleChange(currentPage - 1)}
       >
-        <VisuallyHidden>Previous page</VisuallyHidden>
-        ‹
+        <VisuallyHidden>Página anterior</VisuallyHidden>
+        <ChevronLeft />
       </PaginationButton>
 
       {paginationRange.map((pageNumber, index) => {
         if (pageNumber === DOTS) {
           return (
-            <PaginationEllipsis key={`dots-${index}`} aria-hidden={true}>
+            <PaginationEllipsis
+              key={`dots-${index}`}
+              aria-hidden={true}
+            >
               …
             </PaginationEllipsis>
           )
@@ -205,7 +290,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             size={size}
             active={isActive}
             aria-current={isActive ? 'page' : undefined}
-            aria-label={`Go to page ${pageValue}`}
+            aria-label={`Ir para a página ${pageValue}`}
             disabled={disabled}
             onPress={() => handleChange(pageValue)}
           >
@@ -217,24 +302,25 @@ export const Pagination: React.FC<PaginationProps> = ({
       <PaginationButton
         size={size}
         disabled={disabled || isLastPage}
-        aria-label="Next page"
+        aria-label="Próxima página"
         onPress={() => handleChange(currentPage + 1)}
       >
-        <VisuallyHidden>Next page</VisuallyHidden>
-        ›
+        <VisuallyHidden>Próxima página</VisuallyHidden>
+        <ChevronRight />
       </PaginationButton>
 
       {showEdges && (
         <PaginationButton
           size={size}
           disabled={disabled || isLastPage}
-          aria-label="Last page"
+          aria-label="Última página"
           onPress={() => handleChange(totalPages)}
         >
-          <VisuallyHidden>Last page</VisuallyHidden>
-          »
+          <VisuallyHidden>Última página</VisuallyHidden>
+          <ChevronsRight />
         </PaginationButton>
       )}
+      {rightSlot}
     </PaginationRoot>
   )
 }

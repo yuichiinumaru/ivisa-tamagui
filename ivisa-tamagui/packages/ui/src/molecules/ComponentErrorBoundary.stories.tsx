@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { useArgs } from '@storybook/preview-api'
+import React, { useState, ReactNode } from 'react'
+import { Button, Paragraph, Text, XStack, YStack } from 'tamagui'
 import { ComponentErrorBoundary } from './ComponentErrorBoundary'
-import { Text, YStack, Button } from 'tamagui'
 
 const meta: Meta<typeof ComponentErrorBoundary> = {
   title: 'Molecules/ComponentErrorBoundary',
@@ -10,87 +11,159 @@ const meta: Meta<typeof ComponentErrorBoundary> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A wrapper component that catches JavaScript errors in its child component tree, logs them, and displays a fallback UI (currently null).',
+        component:
+          'A molecule that catches JavaScript errors in its child component tree, logs them, and displays a fallback UI with recovery options.',
       },
     },
   },
   tags: ['autodocs'],
+  argTypes: {
+    componentName: {
+      control: { type: 'text' },
+      description: 'The name of the component being wrapped, used for logging purposes.',
+    },
+    onReset: {
+      action: 'reset',
+      description: 'A callback function to reset the component state and re-render the children.',
+    },
+    fallback: {
+      control: { type: 'object' },
+      description: 'A custom ReactNode to display as a fallback UI instead of the default one.',
+    },
+    children: {
+      control: { disable: true },
+      description: 'The child components to render within the error boundary.',
+    },
+  },
 }
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof ComponentErrorBoundary>
 
-// A component that renders fine
-const SafeComponent = () => (
-  <YStack padding="$4" backgroundColor="$green4" borderRadius="$4">
-    <Text color="$color">I am a safe component. No errors here!</Text>
-  </YStack>
-)
-
-// A component that throws an error
-const BuggyComponent = ({ shouldThrow = true }: { shouldThrow?: boolean }) => {
+const BuggyComponent = ({ shouldThrow }: { shouldThrow: boolean }) => {
   if (shouldThrow) {
-    throw new Error('I crashed!')
+    throw new Error('Component crashed intentionally for the story!')
   }
   return (
-    <YStack padding="$4" backgroundColor="$red4" borderRadius="$4">
-      <Text color="$color">I am a buggy component, but I haven't crashed yet.</Text>
+    <YStack p="$4" backgroundColor="$green4" borderRadius="$4">
+      <Paragraph color="$color">I am a safe component. No errors here!</Paragraph>
+    </YStack>
+  )
+}
+
+const InteractiveStory = ({
+  children,
+  ...args
+}: {
+  children: ReactNode
+  args: Story['args']
+}) => {
+  const [key, setKey] = useState(0)
+  const [{ shouldThrow }, updateArgs] = useArgs()
+
+  const handleReset = () => {
+    args.onReset?.()
+    setKey((prev) => prev + 1)
+    updateArgs({ shouldThrow: false })
+  }
+
+  return (
+    <YStack gap="$4" width={400} alignItems="center">
+      <ComponentErrorBoundary {...args} key={key} onReset={handleReset}>
+        <BuggyComponent shouldThrow={shouldThrow} />
+      </ComponentErrorBoundary>
+      <Button onPress={() => updateArgs({ shouldThrow: true })} disabled={shouldThrow}>
+        Trigger Error
+      </Button>
     </YStack>
   )
 }
 
 export const Default: Story = {
+  render: (args) => <InteractiveStory args={args}> </InteractiveStory>,
   args: {
-    componentName: 'SafeComponentStory',
-    children: <SafeComponent />,
+    componentName: 'DefaultStory',
+    shouldThrow: false,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This is the default state. The child component renders normally. Click "Trigger Error" to see the fallback UI.',
+      },
+    },
   },
 }
 
-export const WithError: Story = {
-  decorators: [
-    (Story) => (
-      <YStack gap="$4" maxWidth={400}>
-        <Text fontSize="$3" color="$gray11">
-          Below this text, there should be nothing rendered because the error boundary catches the error and renders null.
-          Check the console for the error log.
-        </Text>
-        <YStack borderWidth={1} borderColor="$gray5" minHeight={50} padding="$2" alignItems="center" justifyContent="center" borderStyle="dashed">
-            <Story />
-        </YStack>
-      </YStack>
-    ),
-  ],
+export const WithErrorAndRecovery: Story = {
+  render: (args) => <InteractiveStory args={args}> </InteractiveStory>,
   args: {
-    componentName: 'BuggyComponentStory',
-    children: <BuggyComponent />,
+    componentName: 'RecoveryStory',
+    shouldThrow: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This story shows the default error fallback UI with a "Tentar Novamente" (Try Again) button. Clicking it will reset the error state and re-render the child component.',
+      },
+    },
   },
 }
 
-// Interactive demo to trigger error
-const InteractiveDemo = () => {
-  const [crashed, setCrashed] = useState(false)
-
-  return (
-    <YStack gap="$4">
-      <Button onPress={() => setCrashed(true)}>
-        Trigger Error
-      </Button>
-
-      <YStack borderWidth={1} borderColor="$gray5" padding="$4" minHeight={100} alignItems="center" justifyContent="center">
-        {!crashed ? (
-             <Text>Everything is fine.</Text>
-        ) : (
-            <ComponentErrorBoundary componentName="InteractiveDemo">
-                <BuggyComponent />
-            </ComponentErrorBoundary>
-        )}
-      </YStack>
-      {crashed && <Text fontSize="$2" color="$gray10">The component above has crashed and is now hidden (null).</Text>}
+export const StressTestNarrowContainer: Story = {
+  render: (args) => (
+    <YStack width={250}>
+      <ComponentErrorBoundary {...args}>
+        <BuggyComponent shouldThrow={true} />
+      </ComponentErrorBoundary>
     </YStack>
-  )
+  ),
+  args: {
+    componentName: 'NarrowContainerStory',
+    onReset: () => {},
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'This story demonstrates how the fallback UI adapts to a narrow container.',
+      },
+    },
+  },
 }
 
-export const Interactive: Story = {
-    render: () => <InteractiveDemo />
+const CustomFallback = () => (
+  <XStack
+    gap="$4"
+    p="$4"
+    backgroundColor="$blue4"
+    borderRadius="$6"
+    alignItems="center"
+    borderColor="$blue7"
+    borderWidth={2}
+    borderStyle="dashed"
+  >
+    <Text fontSize="$8">🤔</Text>
+    <YStack>
+      <Paragraph fontWeight="bold">Oops, custom fallback!</Paragraph>
+      <Paragraph fontSize="$2">Something went wrong, but we have a custom UI for it.</Paragraph>
+    </YStack>
+  </XStack>
+)
+
+export const WithCustomFallback: Story = {
+  args: {
+    componentName: 'CustomFallbackStory',
+    fallback: <CustomFallback />,
+    children: <BuggyComponent shouldThrow={true} />,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This story shows how you can provide a custom `fallback` component to be rendered on error.',
+      },
+    },
+  },
 }

@@ -23,7 +23,7 @@ describe('Pagination', () => {
       <Pagination currentPage={3} totalPages={7} onPageChange={handleChange} />
     )
 
-    fireEvent.click(getByLabelText('Next page'))
+    fireEvent.click(getByLabelText('Próxima página'))
 
     expect(handleChange).toHaveBeenCalledWith(4)
   })
