@@ -1,26 +1,88 @@
-import { Toaster as SonnerToaster } from 'sonner'
+import { toast as sonnerToast, Toaster as SonnerPrimitive } from 'sonner'
 import { useTheme } from 'tamagui'
+import { Toast, ToastProps } from './Toast'
 
-type ToasterProps = React.ComponentProps<typeof SonnerToaster>
+type ToasterProps = React.ComponentProps<typeof SonnerPrimitive>
 
-export const Toaster = ({ ...props }: ToasterProps) => {
+export const Sonner = (props: ToasterProps) => {
   const theme = useTheme()
+
   return (
-    <SonnerToaster
-      theme={theme.name as "light" | "dark" | "system"}
-      className="toaster group"
+    <SonnerPrimitive
+      theme={theme.name as 'light' | 'dark' | 'system'}
       toastOptions={{
-        classNames: {
-          toast:
-            "group toast group-[.toaster]:bg-background group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg",
-          description: "group-[.toast]:text-muted-foreground",
-          actionButton:
-            "group-[.toast]:bg-primary group-[.toast]:text-primary-foreground",
-          cancelButton:
-            "group-[.toast]:bg-muted group-[.toast]:text-muted-foreground",
-        },
+        unstyled: true,
       }}
       {...props}
     />
   )
+}
+
+const showToast = (
+  variant: ToastProps['variant'],
+  title: React.ReactNode,
+  description?: React.ReactNode
+) => {
+  sonnerToast.custom((t) => (
+    <Toast
+      variant={variant}
+      title={title}
+      description={description}
+      onDismiss={() => sonnerToast.dismiss(t)}
+    />
+  ))
+}
+
+export const toast = {
+  message: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('info', title, description)
+  },
+  success: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('success', title, description)
+  },
+  error: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('error', title, description)
+  },
+  warning: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('warning', title, description)
+  },
+  loading: (title: React.ReactNode, description?: React.ReactNode) => {
+    showToast('loading', title, description)
+  },
+  promise: <T,>(
+    promise: Promise<T>,
+    messages: {
+      loading: React.ReactNode
+      success: React.ReactNode | ((data: T) => React.ReactNode)
+      error: React.ReactNode | ((error: any) => React.ReactNode)
+    }
+  ) => {
+    sonnerToast.promise(promise, {
+      loading: (
+        <Toast variant="loading" title={messages.loading} />
+      ),
+      success: (data) => (
+        <Toast
+          variant="success"
+          title={
+            typeof messages.success === 'function'
+              ? messages.success(data)
+              : messages.success
+          }
+        />
+      ),
+      error: (error) => (
+        <Toast
+          variant="error"
+          title={
+            typeof messages.error === 'function'
+              ? messages.error(error)
+              : messages.error
+          }
+        />
+      ),
+    })
+  },
+  custom: sonnerToast.custom,
+  dismiss: sonnerToast.dismiss,
 }
