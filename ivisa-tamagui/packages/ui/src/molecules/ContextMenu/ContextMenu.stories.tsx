@@ -1,21 +1,9 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import {
-  ContextMenu,
-  ContextMenuTrigger,
-  ContextMenuContent,
-  ContextMenuItem,
-  ContextMenuCheckboxItem,
-  ContextMenuRadioItem,
-  ContextMenuLabel,
-  ContextMenuSeparator,
-  ContextMenuShortcut,
-  ContextMenuSub,
-  ContextMenuSubContent,
-  ContextMenuSubTrigger,
-  ContextMenuRadioGroup,
-} from './ContextMenu'
 import { YStack, Text } from 'tamagui'
+import { Share, Link, Pen, Trash } from '@tamagui/lucide-icons'
+
+import { ContextMenu, ContextMenuItemDef } from './ContextMenu'
 
 const meta: Meta<typeof ContextMenu> = {
   title: 'Molecules/ContextMenu',
@@ -24,79 +12,215 @@ const meta: Meta<typeof ContextMenu> = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Displays a menu to the user — such as a set of actions or functions — triggered by a right-click.',
+        component:
+          'Exibe um menu para o usuário — como um conjunto de ações ou funções — acionado por um clique com o botão direito.',
       },
     },
   },
   tags: ['autodocs'],
+  argTypes: {
+    isLoading: {
+      control: 'boolean',
+      description: 'Mostra o estado de carregamento do menu.',
+    },
+    isDisabled: {
+      control: 'boolean',
+      description: 'Desativa o gatilho do menu de contexto.',
+    },
+    hasError: {
+      control: 'boolean',
+      description: 'Aplica um estilo de erro ao gatilho.',
+    },
+    items: {
+      control: 'object',
+      description: 'Array de itens a serem exibidos no menu.',
+    },
+  },
 }
 
 export default meta
 
 type Story = StoryObj<typeof meta>
 
+const defaultItems: ContextMenuItemDef[] = [
+  {
+    label: 'Compartilhar',
+    icon: <Share size="$1" />,
+    shortcut: '⌘S',
+    onSelect: () => console.log('Compartilhar'),
+  },
+  {
+    label: 'Copiar Link',
+    icon: <Link size="$1" />,
+    onSelect: () => console.log('Copiar Link'),
+  },
+  {
+    isSeparator: true,
+  },
+  {
+    label: 'Editar',
+    icon: <Pen size="$1" />,
+    onSelect: () => console.log('Editar'),
+    disabled: true,
+  },
+  {
+    isSeparator: true,
+  },
+  {
+    label: 'Excluir',
+    icon: <Trash size="$1" />,
+    shortcut: '⌘D',
+    onSelect: () => console.log('Excluir'),
+  },
+]
+
+const TriggerArea = ({
+  hasError = false,
+  isDisabled = false,
+  constrained = false,
+  children,
+}) => (
+  <YStack
+    width={constrained ? 150 : 300}
+    height={200}
+    borderWidth={2}
+    borderColor={hasError ? '$red10' : '$borderColor'}
+    borderRadius="$md"
+    alignItems="center"
+    justifyContent="center"
+    borderStyle="dashed"
+    opacity={isDisabled ? 0.5 : 1}
+    backgroundColor={isDisabled ? '$backgroundHover' : 'transparent'}
+    padding="$4"
+  >
+    <Text textAlign="center">{children}</Text>
+  </YStack>
+)
+
 export const Default: Story = {
-  render: () => (
-    <ContextMenu>
-      <ContextMenuTrigger asChild>
-        <YStack
-          width={300}
-          height={200}
-          borderWidth={1}
-          borderColor="$borderColor"
-          borderRadius="$md"
-          alignItems="center"
-          justifyContent="center"
-          borderStyle="dashed"
-        >
-          <Text>Right-click here</Text>
-        </YStack>
-      </ContextMenuTrigger>
-      <ContextMenuContent>
-        <ContextMenuItem>
-          <Text>Back</Text>
-          <ContextMenuShortcut>⌘[</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem disabled>
-          <Text>Forward</Text>
-          <ContextMenuShortcut>⌘]</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuItem>
-          <Text>Reload</Text>
-          <ContextMenuShortcut>⌘R</ContextMenuShortcut>
-        </ContextMenuItem>
-        <ContextMenuSeparator />
-        <ContextMenuSub>
-          <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
-          <ContextMenuSubContent>
-            <ContextMenuItem>
-              <Text>Save Page As...</Text>
-              <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
-            </ContextMenuItem>
-            <ContextMenuItem>Create Shortcut...</ContextMenuItem>
-            <ContextMenuItem>Name Window...</ContextMenuItem>
-            <ContextMenuSeparator />
-            <ContextMenuItem>Developer Tools</ContextMenuItem>
-          </ContextMenuSubContent>
-        </ContextMenuSub>
-        <ContextMenuSeparator />
-        <ContextMenuCheckboxItem checked>
-          Show Bookmarks Bar
-        </ContextMenuCheckboxItem>
-        <ContextMenuCheckboxItem>
-          Show Full URLs
-        </ContextMenuCheckboxItem>
-        <ContextMenuSeparator />
-        <ContextMenuLabel>People</ContextMenuLabel>
-        <ContextMenuRadioGroup value="pedro">
-          <ContextMenuRadioItem value="pedro">
-            Pedro Duarte
-          </ContextMenuRadioItem>
-          <ContextMenuRadioItem value="colm">
-            Colm Tuite
-          </ContextMenuRadioItem>
-        </ContextMenuRadioGroup>
-      </ContextMenuContent>
+  args: {
+    items: defaultItems,
+    isLoading: false,
+    isDisabled: false,
+    hasError: false,
+  },
+  render: ({ items, isLoading, isDisabled, hasError }) => (
+    <ContextMenu items={items} isLoading={isLoading} isDisabled={isDisabled}>
+      <TriggerArea hasError={hasError} isDisabled={isDisabled}>
+        Clique com o botão direito aqui
+      </TriggerArea>
+    </ContextMenu>
+  ),
+}
+
+export const Loading: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    isLoading: true,
+  },
+  render: (args) => (
+    <ContextMenu {...args}>
+      <TriggerArea>Carregando...</TriggerArea>
+    </ContextMenu>
+  ),
+}
+
+export const Disabled: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    isDisabled: true,
+  },
+  render: (args) => (
+    <ContextMenu {...args}>
+      <TriggerArea isDisabled>Desativado</TriggerArea>
+    </ContextMenu>
+  ),
+}
+
+export const Error: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    hasError: true,
+  },
+  render: (args) => (
+    <ContextMenu {...args}>
+      <TriggerArea hasError>Erro no gatilho</TriggerArea>
+    </ContextMenu>
+  ),
+}
+
+export const PartialData: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    items: [
+      {
+        label: 'Ação com ícone',
+        icon: <Share size="$1" />,
+      },
+      {
+        label: 'Ação sem ícone',
+      },
+      {
+        label: 'Ação com atalho',
+        shortcut: '⌘K',
+      },
+    ],
+  },
+  render: (args) => (
+    <ContextMenu {...args}>
+      <TriggerArea>Dados parciais</TriggerArea>
+    </ContextMenu>
+  ),
+}
+
+export const ConstrainedWidth: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    items: [
+      {
+        label: 'Este é um texto muito longo que deve ser truncado',
+      },
+      {
+        label: 'Outro item com texto longo para mostrar o comportamento',
+      },
+    ],
+  },
+  render: (args) => (
+    <ContextMenu {...args}>
+      <TriggerArea constrained>
+        Gatilho com largura restrita para testar o truncamento de texto
+      </TriggerArea>
+    </ContextMenu>
+  ),
+}
+
+export const WithCheckbox: Story = {
+  ...Default,
+  args: {
+    ...Default.args,
+    items: [
+      {
+        label: 'Opção 1',
+        isCheckbox: true,
+        checked: true,
+        onCheckedChange: (checked) => console.log(`Opção 1: ${checked}`),
+      },
+      {
+        label: 'Opção 2',
+        isCheckbox: true,
+        checked: false,
+        onCheckedChange: (checked) => console.log(`Opção 2: ${checked}`),
+      },
+    ],
+  },
+  render: (args) => (
+    <ContextMenu {...args}>
+      <TriggerArea>Menu com checkboxes</TriggerArea>
     </ContextMenu>
   ),
 }
