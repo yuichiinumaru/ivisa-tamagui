@@ -2559,14 +2559,6 @@ var import_react2 = require("react");
 // src/atoms/Skeleton.tsx
 var import_tamagui2 = require("tamagui");
 var import_jsx_runtime2 = require("react/jsx-runtime");
-var pulse = (0, import_tamagui2.keyframes)({
-  "0%, 100%": {
-    opacity: 1
-  },
-  "50%": {
-    opacity: 0.5
-  }
-});
 var SkeletonFrame = (0, import_tamagui2.styled)(import_tamagui2.YStack, {
   name: "Skeleton",
   backgroundColor: "$muted",
@@ -2574,7 +2566,7 @@ var SkeletonFrame = (0, import_tamagui2.styled)(import_tamagui2.YStack, {
   variants: {
     animationType: {
       pulse: {
-        animationName: pulse.name,
+        animationName: "skeleton-pulse",
         animationDuration: "2s",
         animationIterationCount: "infinite"
       },
@@ -11853,11 +11845,11 @@ function createIdentifier(prefix, name, key) {
   var hashedString = hash_default(name + key);
   return process.env.NODE_ENV !== "production" ? prefix + "-" + name + "-" + hashedString : prefix + "-" + hashedString;
 }
-function createKeyframes(keyframes2) {
+function createKeyframes(keyframes) {
   var prefixes4 = ["-webkit-", ""];
-  var identifier = createIdentifier("r", "animation", JSON.stringify(keyframes2));
-  var steps = "{" + Object.keys(keyframes2).map((stepName) => {
-    var rule = keyframes2[stepName];
+  var identifier = createIdentifier("r", "animation", JSON.stringify(keyframes));
+  var steps = "{" + Object.keys(keyframes).map((stepName) => {
+    var rule = keyframes[stepName];
     var block = createDeclarationBlock(rule);
     return "" + stepName + block;
   }).join("") + "}";
@@ -11873,11 +11865,11 @@ function processKeyframesValue(keyframesValue) {
   var animationNames = [];
   var rules = [];
   var value = Array.isArray(keyframesValue) ? keyframesValue : [keyframesValue];
-  value.forEach((keyframes2) => {
-    if (typeof keyframes2 === "string") {
-      animationNames.push(keyframes2);
+  value.forEach((keyframes) => {
+    if (typeof keyframes === "string") {
+      animationNames.push(keyframes);
     } else {
-      var _createKeyframes = createKeyframes(keyframes2), identifier = _createKeyframes[0], keyframesRules = _createKeyframes[1];
+      var _createKeyframes = createKeyframes(keyframes), identifier = _createKeyframes[0], keyframesRules = _createKeyframes[1];
       animationNames.push(identifier);
       rules.push(...keyframesRules);
     }
