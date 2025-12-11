@@ -1,166 +1,261 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import {
+  ChevronLeft,
+  ChevronRight,
+  HelpCircle,
+} from '@tamagui/lucide-icons'
 import useEmblaCarousel, { UseEmblaCarouselType } from 'embla-carousel-react'
-import { styled, YStack, XStack, View, StackProps, GetProps, Text } from 'tamagui'
+import React, { useCallback, useEffect, useState } from 'react'
+import { GetProps, StackProps, styled, Text, View, XStack, YStack } from 'tamagui'
+
 import { Button } from '../../atoms/Button'
+import { Skeleton } from '../../atoms/Skeleton'
+
+// --- Carousel Core Hooks and Context -----------------------------------------
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
 type CarouselOptions = UseCarouselParameters[0]
 type CarouselPlugin = UseCarouselParameters[1]
 
-type CarouselProps = {
+// Props for the main Carousel provider component
+type CarouselProps<T> = {
+  data?: T[]
+  isLoading?: boolean
+  error?: React.ReactNode
+  emptyState?: React.ReactNode
   opts?: CarouselOptions
   plugins?: CarouselPlugin
   orientation?: 'horizontal' | 'vertical'
   setApi?: (api: CarouselApi) => void
 }
 
-type CarouselContextProps = {
+// Props for the CarouselContent component, which handles rendering
+type CarouselContentProps<T> = {
+  renderItem: (item: T, index: number) => React.ReactNode
+} & StackProps
+
+// The shape of the context provided by the Carousel component
+type CarouselContextProps<T> = {
   carouselRef: ReturnType<typeof useEmblaCarousel>[0]
   api: CarouselApi
   scrollPrev: () => void
   scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
-} & CarouselProps
+  orientation: 'horizontal' | 'vertical'
+  data: T[]
+  isLoading: boolean
+  error: React.ReactNode
+  emptyState: React.ReactNode
+}
 
-const CarouselContext = React.createContext<CarouselContextProps | null>(null)
+const CarouselContext = React.createContext<CarouselContextProps<any> | null>(null)
 
-function useCarousel() {
-  const context = React.useContext(CarouselContext)
-
+function useCarousel<T = any>() {
+  const context = React.useContext<CarouselContextProps<T> | null>(CarouselContext)
   if (!context) {
     throw new Error('useCarousel must be used within a <Carousel />')
   }
-
   return context
 }
 
+// --- Styled Components -------------------------------------------------------
+
 const CarouselFrame = styled(YStack, {
-  marginHorizontal: '$true',
+  name: 'CarouselFrame',
+  position: 'relative',
+  width: '100%',
+})
+
+const CarouselContentFrame = styled(XStack, {
+  name: 'CarouselContent',
+  // Negative margin is applied here to counteract item padding
+})
+
+const CarouselItemFrame = styled(YStack, {
+  name: 'CarouselItem',
+  minWidth: 0,
+  flex: '0 0 100%',
   position: 'relative',
 })
 
-const Carousel = React.forwardRef<React.ElementRef<typeof CarouselFrame>, StackProps & CarouselProps>(
-  (
-    {
-      orientation = 'horizontal',
-      opts,
-      setApi,
-      plugins,
-      children,
-      ...props
+const CarouselNavButton = styled(Button, {
+  name: 'CarouselNavButton',
+  circular: true,
+  size: '$4',
+  position: 'absolute',
+  top: '50%',
+  transform: 'translateY(-50%)',
+  zIndex: 10,
+  backgroundColor: '$background',
+  opacity: 0.8,
+  pressStyle: {
+    backgroundColor: '$background',
+    opacity: 1,
+  },
+  variants: {
+    side: {
+      prev: { left: '$2' },
+      next: { right: '$2' },
     },
-    ref
-  ) => {
-    const [carouselRef, api] = useEmblaCarousel(
-      {
-        ...opts,
-        axis: orientation === 'horizontal' ? 'x' : 'y',
-      },
-      plugins
-    )
-    const [canScrollPrev, setCanScrollPrev] = useState(false)
-    const [canScrollNext, setCanScrollNext] = useState(false)
-
-    const onSelect = useCallback((api: CarouselApi) => {
-      if (!api) return
-      setCanScrollPrev(api.canScrollPrev())
-      setCanScrollNext(api.canScrollNext())
-    }, [])
-
-    const scrollPrev = useCallback(() => {
-      api?.scrollPrev()
-    }, [api])
-
-    const scrollNext = useCallback(() => {
-      api?.scrollNext()
-    }, [api])
-
-    useEffect(() => {
-      if (!api || !setApi) return
-      setApi(api)
-    }, [api, setApi])
-
-    useEffect(() => {
-      if (!api) return
-      onSelect(api)
-      api.on('reInit', onSelect)
-      api.on('select', onSelect)
-
-      return () => {
-        api?.off('select', onSelect)
-      }
-    }, [api, onSelect])
-
-    return (
-      <CarouselContext.Provider
-        value={{
-          carouselRef,
-          api: api,
-          opts,
-          orientation: orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal'),
-          scrollPrev,
-          scrollNext,
-          canScrollPrev,
-          canScrollNext,
-        }}
-      >
-        <CarouselFrame
-          ref={ref}
-          role="region"
-          aria-roledescription="carousel"
-          {...props}
-        >
-          {children}
-        </CarouselFrame>
-      </CarouselContext.Provider>
-    )
-  }
-)
-Carousel.displayName = 'Carousel'
-
-const CarouselContentFrame = styled(XStack, {
-  display: 'flex',
+  } as const,
 })
 
-const CarouselContent = React.forwardRef<React.ElementRef<typeof CarouselContentFrame>, StackProps>(
-  ({ ...props }, ref) => {
-    const { carouselRef, orientation } = useCarousel()
+const StateContainer = styled(YStack, {
+  name: 'StateContainer',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '$4',
+  padding: '$8',
+  borderRadius: '$4',
+  backgroundColor: '$background',
+  borderWidth: 1,
+  borderColor: '$borderColor',
+  minHeight: 200,
+})
+
+// --- Carousel Components -----------------------------------------------------
+
+const Carousel = <T,>({
+  orientation = 'horizontal',
+  opts,
+  setApi,
+  plugins,
+  data = [],
+  isLoading = false,
+  error = null,
+  emptyState = null,
+  children,
+  ...props
+}: StackProps & CarouselProps<T>) => {
+  const [carouselRef, api] = useEmblaCarousel(
+    { ...opts, axis: orientation === 'horizontal' ? 'x' : 'y' },
+    plugins
+  )
+  const [canScrollPrev, setCanScrollPrev] = useState(false)
+  const [canScrollNext, setCanScrollNext] = useState(false)
+
+  const onSelect = useCallback((api: CarouselApi) => {
+    if (!api) return
+    setCanScrollPrev(api.canScrollPrev())
+    setCanScrollNext(api.canScrollNext())
+  }, [])
+
+  const scrollPrev = useCallback(() => api?.scrollPrev(), [api])
+  const scrollNext = useCallback(() => api?.scrollNext(), [api])
+
+  useEffect(() => {
+    if (!api) return
+    if (setApi) setApi(api)
+    onSelect(api)
+    api.on('reInit', onSelect)
+    api.on('select', onSelect)
+    return () => {
+      api.off('reInit', onSelect)
+      api.off('select', onSelect)
+    }
+  }, [api, setApi, onSelect])
+
+  const contextValue: CarouselContextProps<T> = {
+    carouselRef,
+    api,
+    scrollPrev,
+    scrollNext,
+    canScrollPrev,
+    canScrollNext,
+    orientation,
+    data,
+    isLoading,
+    error,
+    emptyState,
+  }
+
+  return (
+    <CarouselContext.Provider value={contextValue}>
+      <CarouselFrame role="region" aria-roledescription="carousel" {...props}>
+        {children}
+      </CarouselFrame>
+    </CarouselContext.Provider>
+  )
+}
+Carousel.displayName = 'Carousel'
+
+const CarouselContent = React.forwardRef(
+  <T,>({ renderItem, ...props }: CarouselContentProps<T>, ref: React.Ref<HTMLDivElement>) => {
+    const {
+      carouselRef,
+      orientation,
+      data,
+      isLoading,
+      error,
+      emptyState,
+    } = useCarousel<T>()
+
+    const renderChildren = () => {
+      if (isLoading) {
+        return (
+          <XStack space="$2" width="100%" pl="$2">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <CarouselItem key={index} flexBasis="33.33%">
+                <YStack flex={1} space="$2">
+                  <Skeleton height={150} />
+                  <Skeleton height={20} />
+                  <Skeleton height={20} width="75%" />
+                </YStack>
+              </CarouselItem>
+            ))}
+          </XStack>
+        )
+      }
+
+      if (error) {
+        return (
+          <StateContainer>
+            <HelpCircle size="$4" color="$red10" />
+            <Text color="$red10" textAlign="center">{error}</Text>
+          </StateContainer>
+        )
+      }
+
+      if (!data || data.length === 0) {
+        return (
+          emptyState || (
+            <StateContainer>
+              <HelpCircle size="$4" color="$gray10" />
+              <Text color="$gray10" textAlign="center">Nenhum item para exibir.</Text>
+            </StateContainer>
+          )
+        )
+      }
+
+      return data.map((item, index) => renderItem(item, index))
+    }
 
     return (
       <View ref={carouselRef} overflow="hidden">
         <CarouselContentFrame
           ref={ref}
           flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
-          marginTop={orientation === 'horizontal' ? 0 : '-$lg'}
-          paddingTop={orientation === 'horizontal' ? 0 : '$lg'}
-          marginLeft={orientation === 'horizontal' ? '-$lg' : 0}
-          paddingLeft={orientation === 'horizontal' ? '$lg' : 0}
+          marginLeft={orientation === 'horizontal' ? '-$2' : '$0'}
+          marginTop={orientation === 'vertical' ? '-$2' : '$0'}
           {...props}
-        />
+        >
+          {renderChildren()}
+        </CarouselContentFrame>
       </View>
     )
   }
 )
 CarouselContent.displayName = 'CarouselContent'
 
-const CarouselItemFrame = styled(YStack, {
-  minWidth: 0,
-  flexShrink: 0,
-  flexGrow: 0,
-  flexBasis: '100%',
-})
-
 const CarouselItem = React.forwardRef<React.ElementRef<typeof CarouselItemFrame>, StackProps>(
-  ({ ...props }, ref) => {
+  (props, ref) => {
     const { orientation } = useCarousel()
-
     return (
       <CarouselItemFrame
         ref={ref}
-        paddingTop={orientation === 'horizontal' ? 0 : '$lg'}
-        paddingLeft={orientation === 'horizontal' ? '$lg' : 0}
+        paddingLeft={orientation === 'horizontal' ? '$2' : '$0'}
+        paddingTop={orientation === 'vertical' ? '$2' : '$0'}
         role="group"
         aria-roledescription="slide"
         {...props}
@@ -170,76 +265,42 @@ const CarouselItem = React.forwardRef<React.ElementRef<typeof CarouselItemFrame>
 )
 CarouselItem.displayName = 'CarouselItem'
 
-// Simple Icon Components
-const ArrowLeft = () => <Text>{'<'}</Text>
-const ArrowRight = () => <Text>{'>'}</Text>
-
-const CarouselPrevious = React.forwardRef<React.ElementRef<typeof Button>, GetProps<typeof Button>>(
-  ({ variant = 'outline', size = 'icon', ...props }, ref) => {
-    const { orientation, scrollPrev, canScrollPrev } = useCarousel()
-
-    return (
-      <Button
-        ref={ref}
-        variant={variant}
-        size={size}
-        circular
-        disabled={!canScrollPrev}
-        onPress={scrollPrev}
-        icon={ArrowLeft}
-        position="absolute"
-        zIndex={10}
-        {...(orientation === 'horizontal'
-          ? {
-            left: '-$2xl',
-            top: '-$2xl',
-            y: '-50%',
-          }
-          : {
-            top: '-$12',
-            left: '50%',
-            x: '-50%',
-            rotate: '90deg',
-          })}
-        {...props}
-      />
-    )
-  }
-)
+const CarouselPrevious = React.forwardRef<
+  React.ElementRef<typeof CarouselNavButton>,
+  GetProps<typeof CarouselNavButton>
+>((props, ref) => {
+  const { scrollPrev, canScrollPrev } = useCarousel()
+  return (
+    <CarouselNavButton
+      ref={ref}
+      side="prev"
+      disabled={!canScrollPrev}
+      onPress={scrollPrev}
+      icon={ChevronLeft}
+      aria-label="Slide anterior"
+      {...props}
+    />
+  )
+})
 CarouselPrevious.displayName = 'CarouselPrevious'
 
-const CarouselNext = React.forwardRef<React.ElementRef<typeof Button>, GetProps<typeof Button>>(
-  ({ variant = 'outline', size = 'icon', ...props }, ref) => {
-    const { orientation, scrollNext, canScrollNext } = useCarousel()
-
-    return (
-      <Button
-        ref={ref}
-        variant={variant}
-        size={size}
-        circular
-        disabled={!canScrollNext}
-        onPress={scrollNext}
-        icon={ArrowRight}
-        position="absolute"
-        zIndex={10}
-        {...(orientation === 'horizontal'
-          ? {
-            right: '-$2xl',
-            bottom: '-$2xl',
-            y: '-50%',
-          }
-          : {
-            bottom: '-$12',
-            left: '50%',
-            x: '-50%',
-            rotate: '90deg',
-          })}
-        {...props}
-      />
-    )
-  }
-)
+const CarouselNext = React.forwardRef<
+  React.ElementRef<typeof CarouselNavButton>,
+  GetProps<typeof CarouselNavButton>
+>((props, ref) => {
+  const { scrollNext, canScrollNext } = useCarousel()
+  return (
+    <CarouselNavButton
+      ref={ref}
+      side="next"
+      disabled={!canScrollNext}
+      onPress={scrollNext}
+      icon={ChevronRight}
+      aria-label="Próximo slide"
+      {...props}
+    />
+  )
+})
 CarouselNext.displayName = 'CarouselNext'
 
 export {
