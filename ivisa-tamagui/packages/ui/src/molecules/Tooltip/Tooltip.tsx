@@ -1,5 +1,6 @@
-import { Tooltip as TamaguiTooltip, TooltipProps as TamaguiTooltipProps, styled, Paragraph } from 'tamagui'
+import { Tooltip as TamaguiTooltip, TooltipProps as TamaguiTooltipProps, styled, Paragraph, YStack, XStack } from 'tamagui'
 import React from 'react'
+import { Skeleton } from '../../atoms/Skeleton'
 
 const TooltipContent = styled(TamaguiTooltip.Content, {
   name: 'TooltipContent',
@@ -17,6 +18,14 @@ const TooltipContent = styled(TamaguiTooltip.Content, {
   borderWidth: 1,
   borderRadius: '$md',
   zIndex: 1000,
+
+  variants: {
+    hasError: {
+      true: {
+        borderColor: '$destructive',
+      },
+    },
+  },
 })
 
 const TooltipArrow = styled(TamaguiTooltip.Arrow, {
@@ -24,22 +33,40 @@ const TooltipArrow = styled(TamaguiTooltip.Arrow, {
   borderColor: '$borderColor',
   borderWidth: 1,
   backgroundColor: '$background',
+  variants: {
+    hasError: {
+      true: {
+        borderColor: '$destructive',
+      },
+    },
+  },
 })
 
 export interface TooltipProps extends TamaguiTooltipProps {
   content: React.ReactNode
   trigger?: React.ReactNode
+  isLoading?: boolean
+  hasError?: boolean
+  isDisabled?: boolean
+  actions?: React.ReactNode
 }
 
-export const Tooltip = React.forwardRef<unknown, TooltipProps>(({ children, content, ...props }, _ref) => {
+export const Tooltip = React.forwardRef<unknown, TooltipProps>(({ children, content, isLoading = false, hasError = false, isDisabled = false, actions, ...props }, _ref) => {
+  if (isLoading) {
+    return <Skeleton />
+  }
+
   return (
-    <TamaguiTooltip {...props}>
+    <TamaguiTooltip {...props} disabled={isDisabled}>
       <TamaguiTooltip.Trigger asChild>
         {children}
       </TamaguiTooltip.Trigger>
-      <TooltipContent>
-        <TooltipArrow />
-        {typeof content === 'string' ? <Paragraph size="$2">{content}</Paragraph> : content}
+      <TooltipContent hasError={hasError}>
+        <TooltipArrow hasError={hasError} />
+        <YStack gap="$2">
+          {typeof content === 'string' ? <Paragraph size="$2">{content}</Paragraph> : content}
+          {actions && <XStack gap="$2">{actions}</XStack>}
+        </YStack>
       </TooltipContent>
     </TamaguiTooltip>
   )
