@@ -15,12 +15,12 @@ exports[`Pagination renders pagination snapshot 1`] = `
         style="color: var(--color); display: contents;"
       >
         <div
-          aria-label="Pagination"
+          aria-label="Paginação"
           class="is_PaginationRoot _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _gap-t-space-sm"
           role="navigation"
         >
           <button
-            aria-label="First page"
+            aria-label="Primeira página"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -30,19 +30,33 @@ exports[`Pagination renders pagination snapshot 1`] = `
             <span
               class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _pos-absolute _w-1px _h-1px _mt--1px _mr--1px _mb--1px _ml--1px _zIndex--10000 _ox-hidden _oy-hidden _o-1e-8 _pe-none"
             >
-              First page
+              Primeira página
             </span>
             <span
               class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
             />
-            <span
-              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis _fontSize-f-size-3"
+            <div
+              fill="none"
+              height="24"
+              stroke="var(--color)"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+              width="24"
             >
-              «
-            </span>
+              <div
+                d="m11 17-5-5 5-5"
+                stroke="var(--color)"
+              />
+              <div
+                d="m18 17-5-5 5-5"
+                stroke="var(--color)"
+              />
+            </div>
           </button>
           <button
-            aria-label="Previous page"
+            aria-label="Página anterior"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -52,19 +66,29 @@ exports[`Pagination renders pagination snapshot 1`] = `
             <span
               class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _pos-absolute _w-1px _h-1px _mt--1px _mr--1px _mb--1px _ml--1px _zIndex--10000 _ox-hidden _oy-hidden _o-1e-8 _pe-none"
             >
-              Previous page
+              Página anterior
             </span>
             <span
               class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
             />
-            <span
-              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis _fontSize-f-size-3"
+            <div
+              fill="none"
+              height="24"
+              stroke="var(--color)"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+              width="24"
             >
-              ‹
-            </span>
+              <div
+                d="m15 18-6-6 6-6"
+                stroke="var(--color)"
+              />
+            </div>
           </button>
           <button
-            aria-label="Go to page 1"
+            aria-label="Ir para a página 1"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -75,7 +99,7 @@ exports[`Pagination renders pagination snapshot 1`] = `
           </button>
           <button
             aria-current="page"
-            aria-label="Go to page 2"
+            aria-label="Ir para a página 2"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -85,7 +109,7 @@ exports[`Pagination renders pagination snapshot 1`] = `
             2
           </button>
           <button
-            aria-label="Go to page 3"
+            aria-label="Ir para a página 3"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -95,7 +119,7 @@ exports[`Pagination renders pagination snapshot 1`] = `
             3
           </button>
           <button
-            aria-label="Go to page 4"
+            aria-label="Ir para a página 4"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -105,7 +129,7 @@ exports[`Pagination renders pagination snapshot 1`] = `
             4
           </button>
           <button
-            aria-label="Go to page 5"
+            aria-label="Ir para a página 5"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -115,7 +139,7 @@ exports[`Pagination renders pagination snapshot 1`] = `
             5
           </button>
           <button
-            aria-label="Go to page 6"
+            aria-label="Ir para a página 6"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -125,7 +149,7 @@ exports[`Pagination renders pagination snapshot 1`] = `
             6
           </button>
           <button
-            aria-label="Go to page 7"
+            aria-label="Ir para a página 7"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -135,7 +159,7 @@ exports[`Pagination renders pagination snapshot 1`] = `
             7
           </button>
           <button
-            aria-label="Next page"
+            aria-label="Próxima página"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -145,19 +169,29 @@ exports[`Pagination renders pagination snapshot 1`] = `
             <span
               class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _pos-absolute _w-1px _h-1px _mt--1px _mr--1px _mb--1px _ml--1px _zIndex--10000 _ox-hidden _oy-hidden _o-1e-8 _pe-none"
             >
-              Next page
+              Próxima página
             </span>
             <span
               class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
             />
-            <span
-              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis _fontSize-f-size-3"
+            <div
+              fill="none"
+              height="24"
+              stroke="var(--color)"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+              width="24"
             >
-              ›
-            </span>
+              <div
+                d="m9 18 6-6-6-6"
+                stroke="var(--color)"
+              />
+            </div>
           </button>
           <button
-            aria-label="Last page"
+            aria-label="Última página"
             class="is_Button "
             data-disable-theme="true"
             role="button"
@@ -167,16 +201,30 @@ exports[`Pagination renders pagination snapshot 1`] = `
             <span
               class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _pos-absolute _w-1px _h-1px _mt--1px _mr--1px _mb--1px _ml--1px _zIndex--10000 _ox-hidden _oy-hidden _o-1e-8 _pe-none"
             >
-              Last page
+              Última página
             </span>
             <span
               class="is_Spacer _dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-10--56px _fs-0 _pe-none _w-10--56px _h-0px"
             />
-            <span
-              class="is_Button font_body _dsp-inline _bxs-border-box _ww-break-word _ws-nowrap _mt-0px _mr-0px _mb-0px _ml-0px _ff-f-family _col-color _userSelect-none _cur-pointer _fg-0 _fs-1 _maxWidth-10037 _ox-hidden _oy-hidden _textOverflow-ellipsis _fontSize-f-size-3"
+            <div
+              fill="none"
+              height="24"
+              stroke="var(--color)"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewbox="0 0 24 24"
+              width="24"
             >
-              »
-            </span>
+              <div
+                d="m6 17 5-5-5-5"
+                stroke="var(--color)"
+              />
+              <div
+                d="m13 17 5-5-5-5"
+                stroke="var(--color)"
+              />
+            </div>
           </button>
         </div>
         <div

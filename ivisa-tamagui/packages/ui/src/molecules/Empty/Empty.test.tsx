@@ -15,17 +15,18 @@ describe('Empty', () => {
     expect(screen.getByTestId('icon')).toBeInTheDocument()
   })
 
-  it('renders an image when imageSource is provided', () => {
-    render(<Empty imageSource={{ uri: 'https://example.com/image.png' }} />)
-    expect(screen.getByRole('img')).toBeInTheDocument()
+  it('renders the actions slot', () => {
+    render(<Empty actions={<Button>Click Me</Button>} />)
+    expect(screen.getByText('Click Me')).toBeInTheDocument()
   })
 
-  it('renders children', () => {
-    render(
-      <Empty>
-        <Button>Click Me</Button>
-      </Empty>
-    )
-    expect(screen.getByText('Click Me')).toBeInTheDocument()
+  it('renders the skeleton when isLoading is true', () => {
+    render(<Empty isLoading />)
+    expect(screen.getByTestId('empty-skeleton')).toBeInTheDocument()
+  })
+
+  it('applies error styles when hasError is true', () => {
+    render(<Empty title="Error" hasError />)
+    expect(screen.getByTestId('empty-icon-frame')).toHaveAttribute('data-has-error', 'true')
   })
 })

@@ -11,4 +11,26 @@ describe('Calendar', () => {
     const headerText = screen.getByText((content) => content.includes(String(year)))
     expect(headerText).toBeInTheDocument()
   })
+
+  it('renders the skeleton when isLoading is true', () => {
+    render(<Calendar isLoading />)
+    expect(screen.getByTestId('calendar-skeleton')).toBeInTheDocument()
+    expect(screen.queryByTestId('calendar-grid')).not.toBeInTheDocument()
+  })
+
+  it('is disabled when isDisabled is true', () => {
+    render(<Calendar isDisabled />)
+    expect(screen.getByTestId('calendar-container')).toHaveStyle('opacity: 0.5')
+  })
+
+  it('has an error style when hasError is true', () => {
+    render(<Calendar hasError />)
+    const container = screen.getByTestId('calendar-container')
+    // JSDOM has trouble resolving CSS variables for border-color in tests.
+    // We'll verify a different, concrete style from the `hasError` variant
+    // to confirm the variant is being applied correctly.
+    expect(container).toHaveStyle({
+      'border-width': '2px',
+    })
+  })
 })

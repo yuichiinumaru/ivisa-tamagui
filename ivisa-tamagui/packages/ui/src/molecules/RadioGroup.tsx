@@ -11,6 +11,7 @@ import {
 
 import { Skeleton } from '../atoms/Skeleton'
 
+// Defines the basic frame for a single radio button item.
 const RadioGroupItemFrame = styled(TamaguiRadioGroup.Item, {
   name: 'RadioGroupItem',
   width: 16,
@@ -51,6 +52,7 @@ const RadioGroupItemFrame = styled(TamaguiRadioGroup.Item, {
   },
 })
 
+// Defines the indicator (the dot inside the radio button).
 const RadioGroupIndicator = styled(TamaguiRadioGroup.Indicator, {
   name: 'RadioGroupIndicator',
   backgroundColor: '$blue10',

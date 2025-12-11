@@ -1,31 +1,52 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { BarChart } from './BarChart'
+import { Charts } from './Charts'
+import { YStack } from 'tamagui'
 
-const meta: Meta<typeof BarChart> = {
+const meta: Meta<typeof Charts> = {
   title: 'Organisms/Charts',
-  component: BarChart,
+  component: Charts,
   args: {
     data: [
-      { month: 'Jan', value: 100 },
-      { month: 'Feb', value: 200 },
-      { month: 'Mar', value: 150 },
-      { month: 'Apr', value: 300 },
-      { month: 'May', value: 250 },
+      { mes: 'Jan', valor: 180 },
+      { mes: 'Fev', valor: 250 },
+      { mes: 'Mar', valor: 120 },
+      { mes: 'Abr', valor: 350 },
+      { mes: 'Mai', valor: 200 },
     ],
-    xKey: 'month',
-    yKey: 'value',
+    xKey: 'mes',
+    yKey: 'valor',
     height: 300,
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof BarChart>
+type Story = StoryObj<typeof Charts>
 
-export const Bar: Story = {}
+export const Padrao: Story = {}
 
-export const ColoredBar: Story = {
+export const Carregando: Story = {
   args: {
-    color: '$secondary',
+    isLoading: true,
   },
+}
+
+export const EstadoVazio: Story = {
+  args: {
+    data: [],
+  },
+}
+
+export const ComErro: Story = {
+  args: {
+    error: new Error('Falha ao carregar dados'),
+  },
+}
+
+export const EstresseDeLayout: Story = {
+  render: (args) => (
+    <YStack width={300} height={400} borderColor="$borderColor" borderWidth={1} padding="$2">
+      <Charts {...args} />
+    </YStack>
+  ),
 }

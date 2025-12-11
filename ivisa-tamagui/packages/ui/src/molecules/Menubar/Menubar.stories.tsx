@@ -15,6 +15,7 @@ import {
   MenubarTrigger,
 } from './Menubar'
 import React from 'react'
+import { Button } from '../../atoms/Button'
 
 const meta: Meta<typeof Menubar> = {
   title: 'Molecules/Menubar',
@@ -32,93 +33,84 @@ export const Default: Story = {
   render: (args) => (
     <Menubar {...args}>
       <MenubarMenu>
-        <MenubarTrigger>File</MenubarTrigger>
+        <MenubarTrigger>Arquivo</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+            Nova Guia <MenubarShortcut>⌘T</MenubarShortcut>
           </MenubarItem>
           <MenubarItem>
-            New Window <MenubarShortcut>⌘N</MenubarShortcut>
+            Nova Janela <MenubarShortcut>⌘N</MenubarShortcut>
           </MenubarItem>
-          <MenubarItem disabled>New Incognito Window</MenubarItem>
+          <MenubarItem disabled>Nova Janela Anônima</MenubarItem>
           <MenubarSeparator />
           <MenubarSub>
-            <MenubarSubTrigger>Share</MenubarSubTrigger>
+            <MenubarSubTrigger>Compartilhar</MenubarSubTrigger>
             <MenubarSubContent>
-              <MenubarItem>Email link</MenubarItem>
-              <MenubarItem>Messages</MenubarItem>
-              <MenubarItem>Notes</MenubarItem>
+              <MenubarItem>E-mail com link</MenubarItem>
+              <MenubarItem>Mensagens</MenubarItem>
+              <MenubarItem>Notas</MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
           <MenubarSeparator />
           <MenubarItem>
-            Print... <MenubarShortcut>⌘P</MenubarShortcut>
+            Imprimir... <MenubarShortcut>⌘P</MenubarShortcut>
           </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
+    </Menubar>
+  ),
+}
 
+export const Loading: Story = {
+  render: (args) => <Menubar {...args} isLoading />,
+}
+
+export const WithError: Story = {
+  render: (args) => (
+    <Menubar {...args} hasError>
       <MenubarMenu>
-        <MenubarTrigger>Edit</MenubarTrigger>
+        <MenubarTrigger>Arquivo</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            Undo <MenubarShortcut>⌘Z</MenubarShortcut>
+            Nova Guia <MenubarShortcut>⌘T</MenubarShortcut>
           </MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
+  ),
+}
+
+export const Disabled: Story = {
+  render: (args) => (
+    <Menubar {...args} isDisabled>
+      <MenubarMenu>
+        <MenubarTrigger>Arquivo</MenubarTrigger>
+        <MenubarContent>
           <MenubarItem>
-            Redo <MenubarShortcut>⇧⌘Z</MenubarShortcut>
+            Nova Guia <MenubarShortcut>⌘T</MenubarShortcut>
           </MenubarItem>
-          <MenubarSeparator />
-          <MenubarSub>
-            <MenubarSubTrigger>Find</MenubarSubTrigger>
-            <MenubarSubContent>
-              <MenubarItem>Search the web</MenubarItem>
-              <MenubarSeparator />
-              <MenubarItem>Find...</MenubarItem>
-              <MenubarItem>Find Next</MenubarItem>
-              <MenubarItem>Find Previous</MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarSeparator />
-          <MenubarItem>Cut</MenubarItem>
-          <MenubarItem>Copy</MenubarItem>
-          <MenubarItem>Paste</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
+    </Menubar>
+  ),
+}
 
+export const WithRightSlot: Story = {
+  render: (args) => (
+    <Menubar
+      {...args}
+      rightSlot={
+        <Button size="small" variant="primary">
+          Salvar
+        </Button>
+      }
+    >
       <MenubarMenu>
-        <MenubarTrigger>View</MenubarTrigger>
+        <MenubarTrigger>Arquivo</MenubarTrigger>
         <MenubarContent>
-          <MenubarCheckboxItem checked>
-            Always Show Bookmarks Bar
-          </MenubarCheckboxItem>
-          <MenubarCheckboxItem checked={false}>
-            Always Show Full URLs
-          </MenubarCheckboxItem>
-          <MenubarSeparator />
-          <MenubarItem inset>
-            Reload <MenubarShortcut>⌘R</MenubarShortcut>
+          <MenubarItem>
+            Nova Guia <MenubarShortcut>⌘T</MenubarShortcut>
           </MenubarItem>
-          <MenubarItem disabled inset>
-            Force Reload <MenubarShortcut>⇧⌘R</MenubarShortcut>
-          </MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem inset>Toggle Fullscreen</MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem inset>Hide Sidebar</MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
-
-      <MenubarMenu>
-        <MenubarTrigger>Profiles</MenubarTrigger>
-        <MenubarContent>
-          <MenubarRadioGroup value="benoit">
-            <MenubarRadioItem value="andy">Andy</MenubarRadioItem>
-            <MenubarRadioItem value="benoit">Benoit</MenubarRadioItem>
-            <MenubarRadioItem value="luis">Luis</MenubarRadioItem>
-          </MenubarRadioGroup>
-          <MenubarSeparator />
-          <MenubarItem inset>Edit...</MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem inset>Add Profile...</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>
