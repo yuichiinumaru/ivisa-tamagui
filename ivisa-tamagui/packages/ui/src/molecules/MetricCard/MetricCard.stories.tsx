@@ -1,3 +1,4 @@
+
 import type { Meta, StoryObj } from '@storybook/react'
 import { YStack } from 'tamagui'
 import { Button } from '../../atoms/Button'
@@ -7,14 +8,6 @@ const meta: Meta<typeof MetricCard> = {
   title: 'Molecules/MetricCard',
   component: MetricCard,
   tags: ['autodocs'],
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'Um cartão para exibir uma métrica chave, seu valor e uma tendência opcional.',
-      },
-    },
-  },
   argTypes: {
     'metric.title': { control: 'text', description: 'O título da métrica.' },
     'metric.value': { control: 'text', description: 'O valor principal da métrica.' },
@@ -28,6 +21,19 @@ const meta: Meta<typeof MetricCard> = {
     hasError: { control: 'boolean', description: 'Aplica um estilo de erro (borda vermelha).' },
     rightSlot: { control: false, description: 'Um slot para ações ou ícones à direita.' },
   },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'O `MetricCard` é um componente de molécula usado para exibir um único ponto de dados chave, como receita total ou assinantes ativos. Ele pode mostrar uma tendência e suporta estados de carregamento e erro.',
+      },
+    },
+  },
+  render: (args) => (
+    <YStack width={300}>
+      <MetricCard {...args} />
+    </YStack>
+  ),
 }
 
 export default meta
