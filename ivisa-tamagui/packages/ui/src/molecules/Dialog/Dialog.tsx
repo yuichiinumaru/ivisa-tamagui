@@ -82,7 +82,7 @@ interface DialogFooterProps extends XStackProps {
   actions?: ReactNode
 }
 
-const DialogFooterComponent = React.forwardRef<any, DialogFooterProps>(
+const DialogFooterComponent = React.forwardRef<React.ElementRef<typeof XStack>, DialogFooterProps>(
   ({ actions, children, ...props }, ref) => (
     <XStack {...props} ref={ref}>
       {actions ?? children}
