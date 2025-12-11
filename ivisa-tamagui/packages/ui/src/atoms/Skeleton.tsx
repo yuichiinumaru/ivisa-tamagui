@@ -1,54 +1,18 @@
-import { YStack, styled, GetProps, keyframes } from 'tamagui'
-
-/**
- * Defines the keyframes for a pulsing animation, commonly used in skeleton loaders.
- * This animation gently fades the component in and out to indicate a loading state.
- */
-const pulse = keyframes({
-  '0%, 100%': {
-    opacity: 1,
-  },
-  '50%': {
-    opacity: 0.5,
-  },
-})
+import { YStack, styled, GetProps } from 'tamagui'
 
 const SkeletonFrame = styled(YStack, {
   name: 'Skeleton',
-  backgroundColor: '$muted', // Cor de fundo suave para o esqueleto
-  borderRadius: '$4', // Bordas arredondadas
-
-  variants: {
-    animationType: {
-      pulse: {
-        animationName: pulse.name,
-        animationDuration: '2s',
-        animationTimingFunction: 'cubic-bezier(0.4, 0, 0.6, 1)',
-        animationIterationCount: 'infinite',
-      },
-      none: {},
-    },
-  } as const,
-
-  defaultVariants: {
-    animationType: 'pulse',
-  },
+  backgroundColor: '$muted',
+  borderRadius: '$4',
 })
 
-/**
- * Skeleton (Esqueleto)
- *
- * Um componente usado para exibir um placeholder visual do conteúdo enquanto ele está carregando,
- * melhorando a percepção de performance da aplicação.
- *
- * O `aria-hidden="true"` é adicionado para garantir que leitores de tela ignorem este
- * elemento puramente presentacional.
- */
-export const Skeleton = SkeletonFrame.styleable((props, ref) => (
-  <SkeletonFrame {...props} ref={ref} aria-hidden="true" />
-))
+export type SkeletonProps = GetProps<typeof SkeletonFrame>
 
-/**
- * As propriedades para o componente Skeleton.
- */
-export type SkeletonProps = GetProps<typeof Skeleton>
+export const Skeleton = SkeletonFrame.styleable<SkeletonProps>((props, ref) => (
+  <SkeletonFrame
+    ref={ref}
+    {...props}
+    data-testid="skeleton"
+    aria-hidden="true"
+  />
+))
