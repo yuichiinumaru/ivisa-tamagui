@@ -2318,8 +2318,7 @@ import { Stack, styled as styled3 } from "tamagui";
 import { forwardRef as forwardRef2 } from "react";
 
 // src/atoms/Skeleton.tsx
-import { YStack as YStack2, styled as styled2 } from "tamagui";
-import { keyframes } from "@tamagui/core";
+import { YStack as YStack2, styled as styled2, keyframes } from "tamagui";
 import { jsx as jsx2 } from "react/jsx-runtime";
 var pulse = keyframes({
   "0%, 100%": {
