@@ -1,2 +1,5 @@
 yarn run v1.22.22
-$ yarn workspace @ivisa/ui storybook
+$ storybook dev -p 6006
+/bin/sh: 1: storybook: not found
+error Command failed with exit code 127.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
