@@ -3,8 +3,8 @@ import {
   GetProps,
   Label,
   RadioGroup as TamaguiRadioGroup,
-  StackProps,
   styled,
+  Text,
   XStack,
   YStack,
 } from 'tamagui'
@@ -16,36 +16,30 @@ const RadioGroupItemFrame = styled(TamaguiRadioGroup.Item, {
   name: 'RadioGroupItem',
   width: 16,
   height: 16,
-  borderRadius: '$10', // Fully rounded
+  borderRadius: '$10',
   borderWidth: 1,
   borderColor: '$borderColor',
   backgroundColor: '$background',
   alignItems: 'center',
   justifyContent: 'center',
 
-  // Focus style for accessibility
   focusStyle: {
     outlineColor: '$blue10',
     outlineStyle: 'solid',
     outlineWidth: 2,
   },
-
-  // Hover style for interactivity
   hoverStyle: {
     borderColor: '$borderColorHover',
   },
-
-  // Pressed style for feedback
   pressStyle: {
     borderColor: '$blue10',
     backgroundColor: '$backgroundPress',
   },
 
-  // Variants for different states
   variants: {
     hasError: {
       true: {
-        borderColor: '$red10', // Red border for error state
+        borderColor: '$red10',
       },
     },
     disabled: {
@@ -74,13 +68,8 @@ const RadioGroupIndicator = styled(TamaguiRadioGroup.Indicator, {
   },
 })
 
-// Props for a single RadioGroup item, extending the frame's props.
 export type RadioGroupItemProps = GetProps<typeof RadioGroupItemFrame>
 
-/**
- * A composite component representing a single item in a RadioGroup.
- * It includes the frame and the indicator.
- */
 const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupItemFrame>,
   RadioGroupItemProps
@@ -91,28 +80,22 @@ const RadioGroupItem = React.forwardRef<
     </RadioGroupItemFrame>
   )
 })
-
 RadioGroupItem.displayName = 'RadioGroupItem'
 
-// Type definition for a single radio option.
 export type RadioOption = {
   value: string
   label: string
   disabled?: boolean
 }
 
-// Props for the main RadioGroup component.
 export type RadioGroupProps = GetProps<typeof TamaguiRadioGroup> & {
   options: RadioOption[]
   orientation?: 'vertical' | 'horizontal'
   isLoading?: boolean
   hasError?: boolean
+  errorMessage?: string
 }
 
-/**
- * A molecule component that presents a set of radio buttons,
- * allowing the user to select one option from a set.
- */
 export const RadioGroup = React.forwardRef<
   React.ElementRef<typeof TamaguiRadioGroup>,
   RadioGroupProps
@@ -123,15 +106,14 @@ export const RadioGroup = React.forwardRef<
       orientation = 'vertical',
       isLoading = false,
       hasError = false,
+      errorMessage,
       ...props
     },
     ref
   ) => {
-    // The container stack changes based on the orientation prop.
     const Container = orientation === 'vertical' ? YStack : XStack
 
     if (isLoading) {
-      // If loading, render a skeleton layout.
       return (
         <Container gap="$2" aria-busy="true" aria-live="polite">
           {options.map((option) => (
@@ -145,31 +127,36 @@ export const RadioGroup = React.forwardRef<
     }
 
     return (
-      <TamaguiRadioGroup ref={ref} {...props}>
-        <Container gap="$2">
-          {options.map((option) => (
-            <XStack key={option.value} alignItems="center" space="$2">
-              <RadioGroupItem
-                value={option.value}
-                id={option.value}
-                hasError={hasError}
-                disabled={option.disabled || props.disabled}
-                aria-label={option.label}
-              />
-              <Label
-                htmlFor={option.value}
-                disabled={option.disabled || props.disabled}
-                ellipse
-                numberOfLines={1}
-              >
-                {option.label}
-              </Label>
-            </XStack>
-          ))}
-        </Container>
-      </TamaguiRadioGroup>
+      <YStack>
+        <TamaguiRadioGroup ref={ref} {...props}>
+          <Container gap="$2">
+            {options.map((option) => (
+              <XStack key={option.value} alignItems="center" space="$2">
+                <RadioGroupItem
+                  value={option.value}
+                  id={option.value}
+                  hasError={hasError}
+                  disabled={option.disabled || props.disabled}
+                />
+                <Label
+                  htmlFor={option.value}
+                  disabled={option.disabled || props.disabled}
+                  ellipse
+                  numberOfLines={1}
+                >
+                  {option.label}
+                </Label>
+              </XStack>
+            ))}
+          </Container>
+        </TamaguiRadioGroup>
+        {hasError && errorMessage && (
+          <Text color="$red10" fontSize="$2" marginTop="$2">
+            {errorMessage}
+          </Text>
+        )}
+      </YStack>
     )
   }
 )
-
 RadioGroup.displayName = 'RadioGroup'

@@ -1,31 +1,46 @@
 import React from 'react'
 import { Button as TamaguiButton, styled, GetProps, TamaguiElement } from 'tamagui'
+import { Spinner } from '../Spinner'
 
-// 💀 The Rite of Resurrection: Strict Typing & Token Usage
 const StyledButton = styled(TamaguiButton, {
   name: 'Button',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: '$sm',
   variants: {
     variant: {
       default: {
         backgroundColor: '$primary',
-        color: '$primaryForeground', // Fixed: $background -> $primaryForeground for better contrast
+        color: '$primaryForeground',
         hoverStyle: {
           backgroundColor: '$primaryHover',
-        }
+        },
+        pressStyle: {
+          backgroundColor: '$primary',
+          opacity: 0.8,
+        },
       },
       secondary: {
         backgroundColor: '$secondary',
-        color: '$secondaryForeground', // Fixed: $background -> $secondaryForeground
+        color: '$secondaryForeground',
         hoverStyle: {
           backgroundColor: '$secondaryHover',
-        }
+        },
+        pressStyle: {
+          backgroundColor: '$secondary',
+          opacity: 0.8,
+        },
       },
       destructive: {
         backgroundColor: '$destructive',
-        color: '$destructiveForeground', // Fixed
+        color: '$destructiveForeground',
         hoverStyle: {
           opacity: 0.9,
-        }
+        },
+        pressStyle: {
+          opacity: 0.8,
+        },
       },
       outline: {
         backgroundColor: 'transparent',
@@ -34,60 +49,110 @@ const StyledButton = styled(TamaguiButton, {
         color: '$foreground',
         hoverStyle: {
           backgroundColor: '$muted',
-        }
+        },
+        pressStyle: {
+          backgroundColor: '$muted',
+          opacity: 0.8,
+        },
       },
       ghost: {
         backgroundColor: 'transparent',
         color: '$foreground',
         hoverStyle: {
           backgroundColor: '$muted',
-        }
-      }
+        },
+        pressStyle: {
+          backgroundColor: '$muted',
+          opacity: 0.8,
+        },
+      },
     },
     size: {
       sm: {
-        height: '$sm', // 32px
-        px: '$md',     // 12px
-        fontSize: '$2' // Font tokens are numeric (1-9)
+        height: '$sm',
+        px: '$md',
+        fontSize: '$2',
       },
       default: {
-        height: '$md', // 40px
-        px: '$lg',     // 16px
-        fontSize: '$3'
+        height: '$md',
+        px: '$lg',
+        fontSize: '$3',
       },
       lg: {
-        height: '$lg', // 48px
-        px: '$xl',     // 24px
-        fontSize: '$4'
-      }
-    }
+        height: '$lg',
+        px: '$xl',
+        fontSize: '$4',
+      },
+    },
   } as const,
   defaultVariants: {
     variant: 'default',
-    size: 'default'
-  }
+    size: 'default',
+  },
 })
 
 type StyledButtonProps = GetProps<typeof StyledButton>
 
 export interface ButtonProps extends Omit<StyledButtonProps, 'variant' | 'size'> {
+  /**
+   * Define o estilo visual do botão.
+   * @default 'default'
+   */
   variant?: StyledButtonProps['variant']
+  /**
+   * Define o tamanho do botão.
+   * @default 'default'
+   */
   size?: StyledButtonProps['size']
+  /**
+   * O conteúdo a ser exibido dentro do botão.
+   */
   children?: React.ReactNode
+  /**
+   * Um ícone a ser exibido à esquerda do texto do botão.
+   */
+  leftIcon?: React.ReactNode
+  /**
+   * Um ícone a ser exibido à direita do texto do botão.
+   */
+  rightIcon?: React.ReactNode
+  /**
+   * Se `true`, exibe um spinner de carregamento e desativa o botão.
+   * @default false
+   */
+  loading?: boolean
+  /**
+   * Se `true`, permite que o botão assuma as propriedades de seu filho direto.
+   * @default false
+   */
+  asChild?: boolean
 }
 
 const Button = React.forwardRef<TamaguiElement, ButtonProps>(
-  ({ variant = 'default', size = 'default', ...props }, ref) => {
+  (
+    { variant = 'default', size = 'default', children, leftIcon, rightIcon, loading, asChild, ...props },
+    ref
+  ) => {
     return (
       <StyledButton
         ref={ref}
         variant={variant}
         size={size}
-        // 💀 Security: Explicitly disable submit default unless requested
-        // This prevents accidental form submissions when using buttons for UI
+        disabled={loading || props.disabled}
         type={props.type || 'button'}
         {...props}
-      />
+        asChild={asChild}
+      >
+        {loading ? (
+          <Spinner />
+        ) : (
+          <>
+            {leftIcon}
+            {children}
+            {rightIcon}
+          </>
+        )}
+      </StyledButton>
     )
   }
 )

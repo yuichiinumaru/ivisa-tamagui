@@ -2,11 +2,11 @@
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { ChevronDown } from '@tamagui/lucide-icons'
 import React, { useContext, useState } from 'react'
-import AnimateHeight from 'react-animate-height'
 import { Button, GetProps, Text, XStack, YStack, styled } from 'tamagui'
 import { Skeleton } from '../atoms/Skeleton'
 
 const CollapsibleContext = React.createContext<{ open: boolean }>({ open: false })
+export const useCollapsibleContext = () => useContext(CollapsibleContext)
 
 // 1. Compound Components
 export const CollapsibleRoot = styled(CollapsiblePrimitive.Root, {
@@ -36,24 +36,13 @@ export const CollapsibleTrigger = styled(XStack, {
   },
 })
 
-export const CollapsibleContent = React.forwardRef<
-  React.ElementRef<typeof CollapsiblePrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content> & {
-    animationDuration?: number
-    animationEasing?: string
-  }
->(({ children, animationDuration = 300, animationEasing = 'ease-in-out', ...props }, ref) => {
-  const { open } = useContext(CollapsibleContext)
-
-  return (
-    <CollapsiblePrimitive.Content forceMount ref={ref} {...props} asChild>
-      <YStack>
-        <AnimateHeight duration={animationDuration} easing={animationEasing} height={open ? 'auto' : 0}>
-          {children}
-        </AnimateHeight>
-      </YStack>
-    </CollapsiblePrimitive.Content>
-  )
+export const CollapsibleContent = styled(CollapsiblePrimitive.Content, {
+  name: 'CollapsibleContent',
+  overflow: 'hidden',
+  paddingTop: '$4',
+  animation: 'quick',
+  enterStyle: { opacity: 0, height: 0 },
+  exitStyle: { opacity: 0, height: 0 },
 })
 
 // 2. Facade Component
@@ -63,8 +52,6 @@ type CollapsibleFacadeProps = GetProps<typeof CollapsibleRoot> & {
   isDisabled?: boolean
   title?: React.ReactNode
   rightSlot?: React.ReactNode
-  animationDuration?: number
-  animationEasing?: string
 }
 
 export const Collapsible = React.forwardRef<
@@ -79,8 +66,6 @@ export const Collapsible = React.forwardRef<
       isDisabled = false,
       title,
       rightSlot,
-      animationDuration,
-      animationEasing,
       open: openProp,
       defaultOpen,
       onOpenChange,
@@ -124,10 +109,7 @@ export const Collapsible = React.forwardRef<
             </CollapsibleTrigger>
           </CollapsiblePrimitive.Trigger>
 
-          <CollapsibleContent
-            animationDuration={animationDuration}
-            animationEasing={animationEasing}
-          >
+          <CollapsibleContent>
             {isLoading ? (
               <YStack space="$2" data-testid="skeleton-container">
                 <Skeleton height={40} />

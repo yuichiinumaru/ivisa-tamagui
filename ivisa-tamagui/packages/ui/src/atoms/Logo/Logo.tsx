@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { Svg, Path } from 'react-native-svg'
-import { Stack, StackProps, useTheme } from 'tamagui'
-import { Slot } from '@tamagui/core'
+import { Stack, StackProps, useTheme, Slot } from 'tamagui'
 
 // These are simple placeholder SVGs. In a real-world scenario,
 // these would be complex paths from a design file.

@@ -5,10 +5,13 @@ import {
   CollapsibleContent,
   CollapsibleRoot,
   CollapsibleTrigger,
+  useCollapsibleContext,
 } from './Collapsible'
-import { Badge, Button, Text, XStack, YStack } from 'tamagui'
+import { Badge, Button, Square, Text, XStack, YStack } from 'tamagui'
 import { ChevronsUpDown } from '@tamagui/lucide-icons'
 import React from 'react'
+import { userEvent, within } from '@storybook/testing-library'
+import { expect } from '@storybook/jest'
 
 const meta: Meta<typeof Collapsible> = {
   title: 'Molecules/Collapsible',
@@ -35,14 +38,6 @@ const meta: Meta<typeof Collapsible> = {
       control: false,
       description: 'A slot for custom React nodes to the right of the title.',
     },
-    animationDuration: {
-      control: 'number',
-      description: 'The duration of the animation in milliseconds.',
-    },
-    animationEasing: {
-      control: 'text',
-      description: 'The easing function for the animation.',
-    },
   },
 }
 
@@ -66,6 +61,13 @@ export const Padrao: Story = {
   args: {
     title: '3 repositórios favoritados',
     children: renderContent(),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const trigger = canvas.getByText('3 repositórios favoritados')
+    await userEvent.click(trigger)
+    const content = canvas.getByText('@radix-ui/colors')
+    await expect(content).toBeVisible()
   },
 }
 
@@ -117,26 +119,28 @@ export const TesteDeEstresse: Story = {
   ],
 }
 
-export const Composicao: Story = {
-  name: 'Composição (Compound Pattern)',
+const AnimatedChevron = () => {
+  const { open } = useCollapsibleContext()
+  return (
+    <Square animation="quick" rotate={open ? '180deg' : '0deg'}>
+      <ChevronsUpDown size={16} />
+    </Square>
+  )
+}
+
+export const ComposicaoAnimada: Story = {
+  name: 'Composição Animada (Context Hook)',
   render: () => (
     <CollapsibleRoot>
       <CollapsibleTrigger>
         <Text fontSize="$4" fontWeight="bold">
           Título Personalizado
         </Text>
-        <Button size="$3" chromeless icon={ChevronsUpDown} />
+        <Button size="$3" chromeless>
+          <AnimatedChevron />
+        </Button>
       </CollapsibleTrigger>
       <CollapsibleContent>{renderContent()}</CollapsibleContent>
     </CollapsibleRoot>
   ),
-}
-
-export const AnimacaoPersonalizada: Story = {
-  name: 'Animação Personalizada',
-  args: {
-    ...Padrao.args,
-    animationDuration: 1000,
-    animationEasing: 'ease-out',
-  },
 }

@@ -23,4 +23,17 @@ describe('RadioGroup', () => {
     // Check for elements with aria-busy attribute, which is set on the container.
     expect(container.querySelector('[aria-busy="true"]')).toBeInTheDocument()
   })
+
+  it('renders error message when hasError is true and errorMessage is provided', () => {
+    const errorMessage = 'This is an error message'
+    render(
+      <RadioGroup
+        options={OPTIONS}
+        hasError
+        errorMessage={errorMessage}
+      />
+    )
+
+    expect(screen.getByText(errorMessage)).toBeInTheDocument()
+  })
 })
