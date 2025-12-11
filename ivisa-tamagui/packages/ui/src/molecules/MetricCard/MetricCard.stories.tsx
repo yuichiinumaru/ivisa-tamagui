@@ -1,22 +1,25 @@
+
 import type { Meta, StoryObj } from '@storybook/react'
+import { YStack } from 'tamagui'
 import { Button } from '../../atoms/Button'
 import { MetricCard } from './MetricCard'
-import { YStack } from 'tamagui'
 
 const meta: Meta<typeof MetricCard> = {
   title: 'Molecules/MetricCard',
   component: MetricCard,
   tags: ['autodocs'],
   argTypes: {
-    isLoading: {
-      control: 'boolean',
+    'metric.title': { control: 'text', description: 'O título da métrica.' },
+    'metric.value': { control: 'text', description: 'O valor principal da métrica.' },
+    'metric.trend': {
+      control: 'select',
+      options: ['up', 'down', 'neutral'],
+      description: 'A direção da tendência.',
     },
-    hasError: {
-      control: 'boolean',
-    },
-    isDisabled: {
-      control: 'boolean',
-    },
+    'metric.trendValue': { control: 'text', description: 'O valor da tendência.' },
+    isLoading: { control: 'boolean', description: 'Exibe o estado de carregamento com um skeleton.' },
+    hasError: { control: 'boolean', description: 'Aplica um estilo de erro (borda vermelha).' },
+    rightSlot: { control: false, description: 'Um slot para ações ou ícones à direita.' },
   },
   parameters: {
     docs: {
@@ -36,74 +39,63 @@ const meta: Meta<typeof MetricCard> = {
 export default meta
 type Story = StoryObj<typeof MetricCard>
 
-export const Padrao: Story = {
-  name: 'Padrão',
+export const Playground: Story = {
+  name: 'Brinquedo',
   args: {
     metric: {
       title: 'Receita Total',
-      value: 'R$ 45.231,89',
-      trend: {
-        value: '+20.1% em relação ao mês passado',
-        direction: 'up',
-      },
+      value: 'R$ 54.230,00',
+      trend: 'up',
+      trendValue: '+20.1% vs mês passado',
     },
     isLoading: false,
     hasError: false,
-    isDisabled: false,
-  },
-}
-
-export const Carregando: Story = {
-  name: 'Carregando',
-  args: {
-    metric: {
-      title: 'Receita Total',
-      value: 'R$ 45.231,89',
-    },
-    isLoading: true,
-  },
-}
-
-export const ComErro: Story = {
-  name: 'Com Erro',
-  args: {
-    ...Padrao.args,
-    hasError: true,
-  },
-}
-
-export const Desabilitado: Story = {
-  name: 'Desabilitado',
-  args: {
-    ...Padrao.args,
-    isDisabled: true,
-  },
-}
-
-export const ComAcao: Story = {
-  name: 'Com Ação',
-  args: {
-    ...Padrao.args,
     rightSlot: <Button size="sm">Ver Detalhes</Button>,
   },
 }
 
-export const LarguraRestrita: Story = {
-  name: 'Largura Restrita',
+export const Loading: Story = {
+  name: 'Carregando',
   args: {
-    metric: {
-      title: 'Receita Total de Assinaturas Mensais Recorrentes',
-      value: 'R$ 1.150.231,89',
-      trend: {
-        value: '+20.1% em relação ao mês passado',
-        direction: 'up',
-      },
-    },
-    rightSlot: <Button size="sm">Detalhes</Button>,
+    ...Playground.args,
+    isLoading: true,
   },
+}
+
+export const ErrorState: Story = {
+  name: 'Erro',
+  args: {
+    ...Playground.args,
+    hasError: true,
+  },
+}
+
+export const PartialData: Story = {
+  name: 'Dados Parciais (Sem Tendência)',
+  args: {
+    ...Playground.args,
+    metric: {
+      title: 'Usuários Ativos',
+      value: '1.204',
+    },
+    rightSlot: undefined,
+  },
+}
+
+export const NarrowContainer: Story = {
+  name: 'Container Estreito',
   render: (args) => (
-    <YStack width={250}>
+    <YStack width={200}>
       <MetricCard {...args} />
     </YStack>
   ),
+  args: {
+    ...Playground.args,
+    metric: {
+      title: 'Receita Total Mensal Recorrente',
+      value: 'R$ 54.230,00',
+      trend: 'up',
+      trendValue: '+20.1% vs mês passado',
+    },
+  },
 }

@@ -12,6 +12,7 @@ const HorizontalBarGroupFrame = styled(XStack, {
   borderWidth: 1,
   borderColor: '$borderColor',
   borderRadius: '$2',
+  cursor: 'default',
 
   variants: {
     error: {
@@ -20,13 +21,30 @@ const HorizontalBarGroupFrame = styled(XStack, {
       },
     },
 
+    success: {
+      true: {
+        borderColor: '$green10',
+      },
+    },
+
+    warning: {
+      true: {
+        borderColor: '$yellow10',
+      },
+    },
+
     disabled: {
       true: {
         opacity: 0.5,
         backgroundColor: '$background',
+        cursor: 'not-allowed',
       },
     },
   } as const,
+
+  pressStyle: {
+    backgroundColor: '$backgroundHover',
+  },
 })
 
 const HorizontalBarGroupContent = styled(YStack, {
@@ -48,9 +66,13 @@ type HorizontalBarGroupProps = GetProps<typeof HorizontalBarGroupFrame> & {
   }
   title?: string
   subtitle?: string
+  leftSlot?: ReactNode
   actions?: ReactNode
   isLoading?: boolean
   hasError?: boolean
+  isSuccess?: boolean
+  isWarning?: boolean
+  onPress?: () => void
 }
 
 const HorizontalBarGroup = HorizontalBarGroupFrame.styleable<HorizontalBarGroupProps>(
@@ -59,27 +81,37 @@ const HorizontalBarGroup = HorizontalBarGroupFrame.styleable<HorizontalBarGroupP
       item,
       title: titleProp,
       subtitle: subtitleProp,
+      leftSlot,
       actions,
       isLoading = false,
       hasError = false,
+      isSuccess = false,
+      isWarning = false,
+      onPress,
       ...props
     },
     ref
   ) => {
     const title = item?.title ?? titleProp
     const subtitle = item?.subtitle ?? subtitleProp
+    const isPressable = !!onPress
 
     return (
-      <HorizontalBarGroupFrame ref={ref} error={hasError} {...props}>
+      <HorizontalBarGroupFrame
+        ref={ref}
+        error={hasError}
+        success={isSuccess}
+        warning={isWarning}
+        onPress={onPress}
+        cursor={isPressable ? 'pointer' : 'default'}
+        {...props}
+      >
+        {leftSlot}
         <HorizontalBarGroupContent>
           {isLoading ? (
             <Skeleton height={20} width={180} />
           ) : (
-            title && (
-              <H5 ellipse>
-                {title}
-              </H5>
-            )
+            title && <H5 ellipse>{title}</H5>
           )}
           {isLoading ? (
             <Skeleton height={14} width={280} />

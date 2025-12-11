@@ -1,7 +1,9 @@
 
 import { MoreVertical } from '@tamagui/lucide-icons'
 import type { Meta, StoryObj } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 import { YStack } from 'tamagui'
+import { Avatar } from '../../atoms/Avatar'
 import { Button } from '../../atoms/Button'
 import { HorizontalBarGroup } from './HorizontalBarGroup'
 
@@ -22,6 +24,10 @@ const meta: Meta<typeof HorizontalBarGroup> = {
       control: 'object',
       description: 'An object containing title and subtitle.',
     },
+    leftSlot: {
+      control: 'none',
+      description: 'ReactNode for content to the left of the title.',
+    },
     actions: {
       control: 'none',
       description: 'ReactNode for actions, typically Buttons.',
@@ -34,9 +40,21 @@ const meta: Meta<typeof HorizontalBarGroup> = {
       control: 'boolean',
       description: 'Applies error styling.',
     },
+    isSuccess: {
+      control: 'boolean',
+      description: 'Applies success styling.',
+    },
+    isWarning: {
+      control: 'boolean',
+      description: 'Applies warning styling.',
+    },
     disabled: {
       control: 'boolean',
       description: 'Applies disabled styling.',
+    },
+    onPress: {
+      action: 'pressed',
+      description: 'Function to call when the group is pressed.',
     },
   },
   render: (args) => (
@@ -59,6 +77,7 @@ const defaultArgs = {
       <Button icon={<MoreVertical />} variant="secondary" />
     </>
   ),
+  onPress: action('onPress'),
 }
 
 export const Default: Story = {
@@ -68,6 +87,38 @@ export const Default: Story = {
     docs: {
       description: {
         story: 'Exibição padrão do componente com título, subtítulo e ações.',
+      },
+    },
+  },
+}
+
+export const WithLeftSlot: Story = {
+  args: {
+    ...defaultArgs,
+    leftSlot: <Avatar circular size="$6" src="https://i.pravatar.cc/300" />,
+  },
+  name: 'Com Slot Esquerdo (Avatar)',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Exibe o componente com um Avatar no `leftSlot`, ideal para listas de usuários ou contatos.',
+      },
+    },
+  },
+}
+
+export const Pressable: Story = {
+  args: {
+    ...defaultArgs,
+    actions: undefined,
+  },
+  name: 'Pressionável',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'O componente inteiro se torna um alvo de clique quando a propriedade `onPress` é fornecida.',
       },
     },
   },
@@ -83,6 +134,36 @@ export const Loading: Story = {
     docs: {
       description: {
         story: 'Exibe o componente no estado de carregamento, mostrando esqueletos.',
+      },
+    },
+  },
+}
+
+export const WithSuccess: Story = {
+  args: {
+    ...defaultArgs,
+    isSuccess: true,
+  },
+  name: 'Com Sucesso',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Exibe o componente com uma borda de sucesso, indicando uma operação bem-sucedida.',
+      },
+    },
+  },
+}
+
+export const WithWarning: Story = {
+  args: {
+    ...defaultArgs,
+    isWarning: true,
+  },
+  name: 'Com Aviso',
+  parameters: {
+    docs: {
+      description: {
+        story: 'Exibe o componente com uma borda de aviso, indicando um alerta.',
       },
     },
   },

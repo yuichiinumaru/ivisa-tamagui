@@ -91,6 +91,7 @@ const AlertDialogFooter = styled(XStack, {
 
 const AlertDialogAction = TamaguiAlertDialog.Action
 const AlertDialogCancel = TamaguiAlertDialog.Cancel
+const AlertDialogTrigger = TamaguiAlertDialog.Trigger
 
 const AlertDialogPortal = TamaguiAlertDialog.Portal
 
@@ -180,5 +181,5 @@ export {
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogPortal,
-  AlertDialogTrigger: TamaguiAlertDialog.Trigger,
+  AlertDialogTrigger,
 }

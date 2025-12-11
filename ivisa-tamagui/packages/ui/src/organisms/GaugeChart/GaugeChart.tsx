@@ -1,23 +1,122 @@
-import { styled, YStack, GetProps, Text } from 'tamagui'
+import React, { ReactNode } from 'react'
+import { GetProps, Text, YStack, useTheme } from 'tamagui'
+import { VictoryPie } from 'victory-native'
+import { Skeleton } from '../../atoms/Skeleton'
+import {
+  GaugeChartFrame,
+  GaugeChartTitle,
+  GaugeChartValueText,
+} from './GaugeChart.parts'
 
-export const GaugeChartFrame = styled(YStack, {
-  name: 'GaugeChart',
-  alignItems: 'center',
-  justifyContent: 'center',
-  size: 200,
-})
-
-export type GaugeChartProps = GetProps<typeof GaugeChartFrame> & {
-    value: number
+// Skeleton Component for Loading State
+const GaugeChartSkeleton = () => {
+  return (
+    <GaugeChartFrame>
+      <YStack alignItems="center" gap="$2" width="100%">
+        <Skeleton width={150} height={24} />
+        <Skeleton circle width={200} height={100} />
+        <Skeleton width={100} height={20} />
+      </YStack>
+    </GaugeChartFrame>
+  )
 }
 
-export const GaugeChart = GaugeChartFrame.styleable<GaugeChartProps>((props, ref) => {
-    const { value, ...rest } = props
+export type GaugeChartProps = GetProps<typeof GaugeChartFrame> & {
+  title: string
+  value: number // Percentage value (0-100)
+  footerContent?: ReactNode
+  isLoading?: boolean
+  error?: string | null
+  emptyMessage?: string
+  primaryColor?: string
+  secondaryColor?: string
+  tag?: 'section' | 'aside' | 'div'
+}
+
+export const GaugeChart = ({
+  title,
+  value,
+  footerContent,
+  isLoading = false,
+  error = null,
+  emptyMessage = 'Sem dados para exibir.',
+  primaryColor: primaryColorProp,
+  secondaryColor: secondaryColorProp,
+  tag = 'div',
+  ...rest
+}: GaugeChartProps) => {
+  const theme = useTheme()
+  const primaryColor = primaryColorProp || theme.blue10?.val || '#007BFF'
+  const secondaryColor = secondaryColorProp || theme.gray6?.val || '#E0E0E0'
+
+  if (isLoading) {
+    return <GaugeChartSkeleton />
+  }
+
+  if (error) {
     return (
-        <GaugeChartFrame ref={ref} {...rest}>
-           <Text>Gauge Chart: {value}%</Text>
-        </GaugeChartFrame>
+      <GaugeChartFrame tag={tag} {...rest}>
+        <Text color="$red10" textAlign="center">
+          Erro ao carregar dados: {error}
+        </Text>
+      </GaugeChartFrame>
     )
-})
+  }
+
+  const chartData = [
+    { x: 'value', y: value, fill: primaryColor },
+    { x: 'remainder', y: 100 - value, fill: secondaryColor },
+  ]
+
+  // Render empty state if value is 0 or data is otherwise invalid
+  if (value === 0) {
+    return (
+      <GaugeChartFrame tag={tag} {...rest}>
+        <GaugeChartTitle>{title}</GaugeChartTitle>
+        <Text color="$gray10" textAlign="center">
+          {emptyMessage}
+        </Text>
+        {footerContent}
+      </GaugeChartFrame>
+    )
+  }
+
+  return (
+    <GaugeChartFrame tag={tag} {...rest}>
+      {/* Title */}
+      <GaugeChartTitle>{title}</GaugeChartTitle>
+
+      {/* Chart Container */}
+      <YStack position="relative" alignItems="center" justifyContent="center">
+        <VictoryPie
+          data={chartData}
+          innerRadius={80}
+          cornerRadius={25}
+          labels={() => null}
+          startAngle={-90}
+          endAngle={90}
+          width={240}
+          height={240}
+          padding={0}
+          style={{
+            data: {
+              fill: ({ datum }) => datum.fill,
+            },
+            parent: {
+              // This negative margin is a workaround to visually center the semi-circle
+              // chart within its container, as VictoryPie's default layout adds
+              // unwanted vertical space for a full circle.
+              marginTop: -60,
+            }
+          }}
+        />
+        <GaugeChartValueText>{`${Math.round(value)}%`}</GaugeChartValueText>
+      </YStack>
+
+      {/* Footer Slot */}
+      {footerContent && <YStack>{footerContent}</YStack>}
+    </GaugeChartFrame>
+  )
+}
 
 export default GaugeChart

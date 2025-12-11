@@ -1,111 +1,102 @@
-import { ReactNode } from 'react'
-import { styled, YStack, Text, XStack, Paragraph } from 'tamagui'
-import { ArrowUp, ArrowDown } from '@tamagui/lucide-icons'
 
+import { ReactNode } from 'react'
+import { GetProps, H4, styled, Text, XStack, YStack } from 'tamagui'
+import { ArrowUp, ArrowDown, Minus } from '@tamagui/lucide-icons'
 import { Skeleton } from '../../atoms/Skeleton'
 
-export const METRIC_CARD_NAME = 'MetricCard'
-
-const MetricCardFrame = styled(YStack, {
-  name: METRIC_CARD_NAME,
-  backgroundColor: '$background',
-  borderRadius: '$4',
-  p: '$4',
-  gap: '$4',
-  borderColor: '$borderColor',
-  borderWidth: 1,
-
-  variants: {
-    error: {
-      true: {
-        borderColor: '$red10',
-      },
-    },
-    disabled: {
-      true: {
-        opacity: 0.5,
-      },
-    },
-  },
-})
-
-const MetricCardTrend = styled(XStack, {
-  name: 'MetricCardTrend',
-  gap: '$2',
-  alignItems: 'center',
-
-  variants: {
-    direction: {
-      up: {
-        color: '$green10',
-      },
-      down: {
-        color: '$red10',
-      },
-      neutral: {
-        color: '$gray10',
-      },
-    },
-  } as const,
-})
-
-export type MetricCardMetric = {
+type Metric = {
   title: string
   value: string
-  trend?: {
-    value: string
-    direction: 'up' | 'down' | 'neutral'
-  }
+  trend?: 'up' | 'down' | 'neutral'
+  trendValue?: string
 }
 
-export type MetricCardProps = {
-  metric: MetricCardMetric
+const MetricCardFrame = styled(YStack, {
+  name: 'MetricCard',
+  padding: '$4',
+  borderRadius: '$2',
+  backgroundColor: '$background',
+  borderWidth: 1,
+  borderColor: '$borderColor',
+  gap: '$4',
+})
+
+const MetricCardHeader = styled(XStack, {
+  name: 'MetricCardHeader',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  gap: '$2',
+})
+
+const MetricCardContent = styled(YStack, {
+  name: 'MetricCardContent',
+  gap: '$1',
+})
+
+type MetricCardProps = GetProps<typeof MetricCardFrame> & {
+  metric: Metric
   isLoading?: boolean
   hasError?: boolean
-  isDisabled?: boolean
   rightSlot?: ReactNode
 }
 
-export const MetricCard = ({ metric, isLoading = false, hasError = false, isDisabled = false, rightSlot }: MetricCardProps) => {
-  const { title, value, trend } = metric
+const trendMap = {
+  up: {
+    icon: <ArrowUp size="$1" color="$green10" />,
+    color: '$green10',
+    label: 'Aumento de',
+  },
+  down: {
+    icon: <ArrowDown size="$1" color="$red10" />,
+    color: '$red10',
+    label: 'Queda de',
+  },
+  neutral: {
+    icon: <Minus size="$1" color="$gray10" />,
+    color: '$gray10',
+    label: 'Estável em',
+  },
+}
 
-  if (isLoading) {
+const MetricCardComponent = MetricCardFrame.styleable<MetricCardProps>(
+  ({ metric, isLoading, hasError, rightSlot, ...rest }, ref) => {
+    const { title, value, trend, trendValue } = metric
+
+    if (isLoading) {
+      return (
+        <MetricCardFrame ref={ref} {...rest}>
+          <Skeleton height={120} />
+        </MetricCardFrame>
+      )
+    }
+
+    const trendInfo = trend ? trendMap[trend] : null
+
     return (
-      <MetricCardFrame>
-        <XStack justifyContent="space-between" alignItems="center">
-          <Skeleton width={100} height={20} />
-          {rightSlot && <Skeleton width={80} height={40} />}
-        </XStack>
-        <YStack gap="$2">
-          <Skeleton width={150} height={30} />
-          <Skeleton width={120} height={16} />
-        </YStack>
+      <MetricCardFrame ref={ref} borderColor={hasError ? '$red10' : '$borderColor'} {...rest}>
+        <MetricCardHeader>
+          <H4>{title}</H4>
+          {rightSlot}
+        </MetricCardHeader>
+        <MetricCardContent>
+          <Text fontSize="$8" fontWeight="bold">
+            {value}
+          </Text>
+          {trendInfo && trendValue && (
+            <XStack
+              gap="$1.5"
+              alignItems="center"
+              aria-label={`${trendInfo.label} ${trendValue}`}
+            >
+              {trendInfo.icon}
+              <Text color={trendInfo.color}>{trendValue}</Text>
+            </XStack>
+          )}
+        </MetricCardContent>
       </MetricCardFrame>
     )
-  }
+  },
+)
 
-  const TrendIcon = trend?.direction === 'up' ? ArrowUp : trend?.direction === 'down' ? ArrowDown : null
-
-  return (
-    <MetricCardFrame error={hasError} disabled={isDisabled}>
-      <XStack justifyContent="space-between" alignItems="flex-start" gap="$4">
-        <Paragraph size="$5" fontWeight="500" numberOfLines={1} ellipse>
-          {title}
-        </Paragraph>
-        {rightSlot}
-      </XStack>
-
-      <YStack gap="$1">
-        <Text fontSize="$8" fontWeight="bold" numberOfLines={1} ellipse>
-          {value}
-        </Text>
-        {trend && (
-          <MetricCardTrend direction={trend.direction}>
-            {TrendIcon && <TrendIcon size={16} />}
-            <Paragraph size="$3">{trend.value}</Paragraph>
-          </MetricCardTrend>
-        )}
-      </YStack>
-    </MetricCardFrame>
-  )
-}
+export const MetricCard = MetricCardComponent
+export type { MetricCardProps }

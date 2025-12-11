@@ -26,6 +26,9 @@ const meta: Meta<typeof RadioGroup> = {
     hasError: {
       control: { type: 'boolean' },
     },
+    errorMessage: {
+      control: { type: 'text' },
+    },
   },
 }
 
@@ -46,9 +49,7 @@ export const Default: Story = {
     defaultValue: 'comfortable',
     orientation: 'vertical',
   },
-  render: (args) => (
-    <RadioGroup {...args} />
-  ),
+  render: (args) => <RadioGroup {...args} />,
 }
 
 export const Horizontal: Story = {
@@ -56,9 +57,7 @@ export const Horizontal: Story = {
     ...Default.args,
     orientation: 'horizontal',
   },
-  render: (args) => (
-    <RadioGroup {...args} />
-  ),
+  render: (args) => <RadioGroup {...args} />,
 }
 
 export const Disabled: Story = {
@@ -66,9 +65,7 @@ export const Disabled: Story = {
     ...Default.args,
     disabled: true,
   },
-  render: (args) => (
-    <RadioGroup {...args} />
-  ),
+  render: (args) => <RadioGroup {...args} />,
 }
 
 export const Error: Story = {
@@ -76,9 +73,16 @@ export const Error: Story = {
     ...Default.args,
     hasError: true,
   },
-  render: (args) => (
-    <RadioGroup {...args} />
-  ),
+  render: (args) => <RadioGroup {...args} />,
+}
+
+export const ErrorWithMessage: Story = {
+  args: {
+    ...Default.args,
+    hasError: true,
+    errorMessage: 'Este campo é obrigatório.',
+  },
+  render: (args) => <RadioGroup {...args} />,
 }
 
 export const Loading: Story = {
@@ -86,9 +90,7 @@ export const Loading: Story = {
     ...Default.args,
     isLoading: true,
   },
-  render: (args) => (
-    <RadioGroup {...args} />
-  ),
+  render: (args) => <RadioGroup {...args} />,
 }
 
 export const NarrowContainer: Story = {
@@ -98,8 +100,14 @@ export const NarrowContainer: Story = {
   args: {
     ...Default.args,
     options: [
-      { value: 'long-1', label: 'Este é um texto muito longo que deve ser truncado.' },
-      { value: 'long-2', label: 'Outro exemplo de texto longo para verificar o comportamento.' },
+      {
+        value: 'long-1',
+        label: 'Este é um texto muito longo que deve ser truncado.',
+      },
+      {
+        value: 'long-2',
+        label: 'Outro exemplo de texto longo para verificar o comportamento.',
+      },
     ],
   },
   render: (args) => (

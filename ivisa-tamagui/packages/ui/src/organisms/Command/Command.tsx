@@ -1,15 +1,15 @@
 import React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
-import { styled, View, Text, GetProps, TamaguiElement, useTheme, XStack } from 'tamagui'
-import { Search } from '@tamagui/lucide-icons'
+import { styled, Text, GetProps, TamaguiElement, XStack, YStack } from 'tamagui'
+import { Search, PackageSearch, AlertTriangle } from '@tamagui/lucide-icons'
 import { Dialog, DialogContent } from '../../molecules/Dialog'
+import { Skeleton } from '../../atoms/Skeleton'
 
 // --- Styled Wrappers ---
 
 // Command Root
-const CommandFrame = styled(View, {
+const CommandFrame = styled(YStack, {
   name: 'Command',
-  flexDirection: 'column',
   overflow: 'hidden',
   backgroundColor: '$background',
   borderRadius: '$md',
@@ -35,7 +35,7 @@ interface CommandDialogProps extends React.ComponentPropsWithoutRef<typeof Dialo
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
     <Dialog {...props}>
-      <DialogContent padding={0} overflow="hidden" maxWidth={600}>
+      <DialogContent p="$0" overflow="hidden" maw={600}>
         <Command>
           {children}
         </Command>
@@ -50,91 +50,133 @@ const CommandInputFrame = styled(XStack, {
   alignItems: 'center',
   borderBottomWidth: 1,
   borderBottomColor: '$borderColor',
-  paddingHorizontal: '$md',
+  paddingHorizontal: '$3',
+  gap: '$2',
 })
 
-const CommandInputIcon = () => (
-  <View>
-    <Search size={20} color="$mutedForeground" marginRight="$sm" />
-  </View>
-)
+const StyledCommandInput = styled(CommandPrimitive.Input, {
+  flex: 1,
+  height: '$11',
+  fontSize: '$4',
+  outlineStyle: 'none',
+  borderWidth: 0,
+  backgroundColor: 'transparent',
+  color: '$color',
+})
 
-const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & GetProps<typeof CommandInputFrame>>(
-  ({ ...props }, ref) => {
-    const theme = useTheme()
+const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>, React.ComponentPropsWithoutRef<typeof StyledCommandInput>>(
+  (props, ref) => {
     return (
       <CommandInputFrame>
-        <CommandInputIcon />
-        <CommandPrimitive.Input
-          ref={ref}
-          style={{
-            flex: 1,
-            height: 44,
-            fontSize: 14,
-            outline: 'none',
-            border: 'none',
-            background: 'transparent',
-            color: theme.foreground?.val || '#000',
-          }}
-          {...props}
-        />
+        <Search size="$1" color="$color10" />
+        <StyledCommandInput ref={ref} {...props} />
       </CommandInputFrame>
     )
   }
 )
 CommandInput.displayName = CommandPrimitive.Input.displayName
 
+// --- Skeleton ---
+const CommandSkeleton = () => (
+  <YStack gap="$2" p="$1">
+    <Skeleton height="$4" width="80%" />
+    <Skeleton height="$4" width="60%" />
+    <Skeleton height="$4" width="90%" />
+  </YStack>
+)
+
+// --- Error ---
+const CommandError = ({ message }: { message: string }) => (
+  <YStack ai="center" jc="center" gap="$2" p="$4">
+    <AlertTriangle color="$red10" />
+    <Text color="$red10" fontSize="$4">
+      {message}
+    </Text>
+  </YStack>
+)
+
 // Command List
-const CommandListFrame = styled(View, {
-  maxHeight: 300,
-  overflow: 'scroll',
+const CommandListFrame = styled(YStack, {
+  name: 'CommandList',
+  maxHeight: '$15', // 300px
+  overflowY: 'auto',
+  overflowX: 'hidden',
 })
 
-const CommandList = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.List> & GetProps<typeof CommandListFrame>>(
-  ({ ...props }, ref) => (
-    <CommandListFrame ref={ref} asChild>
-      <CommandPrimitive.List {...props} />
+interface CommandListProps
+  extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>,
+    GetProps<typeof CommandListFrame> {
+  isLoading?: boolean
+  error?: string | null
+}
+
+const CommandList = React.forwardRef<TamaguiElement, CommandListProps>(
+  ({ children, isLoading = false, error = null, ...props }, ref) => (
+    <CommandListFrame ref={ref}>
+      {isLoading ? (
+        <CommandSkeleton />
+      ) : error ? (
+        <CommandError message={error} />
+      ) : (
+        <CommandPrimitive.List {...props}>{children}</CommandPrimitive.List>
+      )}
     </CommandListFrame>
   )
 )
 CommandList.displayName = CommandPrimitive.List.displayName
 
 // Command Empty
-const CommandEmpty = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Empty>, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>>(
-  (props, ref) => (
-    <CommandPrimitive.Empty
-      ref={ref}
-      style={{
-        padding: 24,
-        textAlign: 'center',
-        fontSize: 14,
-      }}
-      {...props}
-    />
+const CommandEmptyContainer = styled(YStack, {
+  padding: '$6',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: '$2',
+})
+
+const CommandEmptyText = styled(Text, {
+  fontSize: '$4',
+  color: '$color10',
+})
+
+interface CommandEmptyProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty> {
+  title?: string,
+  icon?: React.ReactNode,
+}
+
+const CommandEmpty = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Empty>, CommandEmptyProps>(
+  ({ title = "Nenhum resultado encontrado.", icon = <PackageSearch />, ...props }, ref) => (
+    <CommandPrimitive.Empty ref={ref} asChild {...props}>
+      <CommandEmptyContainer>
+        {icon}
+        <CommandEmptyText>{title}</CommandEmptyText>
+      </CommandEmptyContainer>
+    </CommandPrimitive.Empty>
   )
 )
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName
 
 // Command Group
-const CommandGroupFrame = styled(View, {
+const CommandGroupFrame = styled(YStack, {
   overflow: 'hidden',
   padding: '$1',
 })
 
-const CommandGroup = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group> & GetProps<typeof CommandGroupFrame>>(
-  ({ heading, ...props }, ref) => (
-    <CommandGroupFrame ref={ref} asChild>
-      <CommandPrimitive.Group heading={heading} {...props} />
-    </CommandGroupFrame>
-  )
-)
+const CommandGroup = React.forwardRef<
+  TamaguiElement,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group> & GetProps<typeof CommandGroupFrame>
+>(({ heading, ...props }, ref) => (
+  <CommandGroupFrame ref={ref} asChild>
+    {/* @ts-expect-error CMDK is not correctly typed */}
+    <CommandPrimitive.Group heading={heading} {...props} />
+  </CommandGroupFrame>
+))
 CommandGroup.displayName = CommandPrimitive.Group.displayName
 
 // Command Separator
-const CommandSeparatorFrame = styled(View, {
-  height: 1,
+const CommandSeparatorFrame = styled(YStack, {
+  height: '$px',
   backgroundColor: '$borderColor',
-  marginHorizontal: '-$1',
+  margin: '-$1',
 })
 
 const CommandSeparator = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator> & GetProps<typeof CommandSeparatorFrame>>(
@@ -147,38 +189,40 @@ const CommandSeparator = React.forwardRef<TamaguiElement, React.ComponentPropsWi
 CommandSeparator.displayName = CommandPrimitive.Separator.displayName
 
 // Command Item
-const CommandItemFrame = styled(View, {
-  flexDirection: 'row',
+const CommandItemFrame = styled(XStack, {
+  name: 'CommandItem',
   alignItems: 'center',
-  padding: '$2',
+  paddingVertical: '$2',
+  paddingHorizontal: '$3',
   borderRadius: '$sm',
   cursor: 'pointer',
+  userSelect: 'none',
   hoverStyle: {
-    backgroundColor: '$muted',
+    backgroundColor: '$backgroundHover',
+  },
+  focusStyle: {
+    backgroundColor: '$backgroundFocus',
+  },
+  disabledStyle: {
+    opacity: 0.5,
+    pointerEvents: 'none',
   },
 })
 
 const CommandItem = React.forwardRef<TamaguiElement, React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> & GetProps<typeof CommandItemFrame>>(
   ({ ...props }, ref) => (
     <CommandItemFrame ref={ref} asChild>
-      <CommandPrimitive.Item
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          userSelect: 'none',
-        }}
-        {...props}
-      />
+      <CommandPrimitive.Item {...props} />
     </CommandItemFrame>
   )
 )
 CommandItem.displayName = CommandPrimitive.Item.displayName
 
+// Command Shortcut
 const CommandShortcut = styled(Text, {
   marginLeft: 'auto',
   fontSize: '$2',
-  color: '$mutedForeground',
+  color: '$color11',
 })
 
 export {
