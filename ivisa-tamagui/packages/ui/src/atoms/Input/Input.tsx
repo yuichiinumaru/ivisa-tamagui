@@ -14,14 +14,7 @@ type InputContextValue = {
 const InputContext = React.createContext<InputContextValue | null>(null);
 
 const useInputContext = () => {
-  const context = useContext(InputContext);
-  if (!context) {
-    // Fail Loudly: Enforce Composition Pattern
-    // TODO: Ideally this would be allowed for standalone Fields, but the current design assumes Context.
-    // For now, we keep the strict check to match the Necromancer Doctrine of "Fail Loudly".
-    throw new Error('Input compound components (Input.Field, Input.Icon, Input.Button) must be used within <Input.Box>');
-  }
-  return context;
+  return useContext(InputContext);
 }
 
 // --- Variants Definition ---
@@ -188,7 +181,8 @@ const UnframedInputStyled = styled(TamaguiInput, {
 // --- Components ---
 
 const InputField = React.forwardRef<TamaguiElement, GetProps<typeof UnframedInputStyled>>((props, ref) => {
-  const { size } = useInputContext()
+  const context = useInputContext()
+  const size = props.size || context?.size || 'default'
   return <UnframedInputStyled ref={ref} size={size} {...props} />
 })
 InputField.displayName = 'Input.Field'

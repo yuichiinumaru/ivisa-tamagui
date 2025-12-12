@@ -58,4 +58,10 @@ describe('Input', () => {
 
     expect(input.getAttribute('type')).toBe('text');
   });
+
+  it('renders standalone Input.Field without context', () => {
+    expect(() => {
+        render(<Input.Field testID="standalone-field" />);
+    }).not.toThrow();
+  });
 });
