@@ -6,7 +6,7 @@ import React from 'react'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 jest.mock('@radix-ui/react-menubar', () => {
     const React = require('react');
-    const ForwardRefDiv = React.forwardRef(({ children, ...props }: any, ref: any) => <div ref={ref} {...props}>{children}</div>);
+    const ForwardRefDiv = React.forwardRef(({ children, alignOffset, sideOffset, ...props }: any, ref: any) => <div ref={ref} {...props}>{children}</div>);
     ForwardRefDiv.displayName = 'MockDiv';
 
     const ForwardRefButton = React.forwardRef(({ children, ...props }: any, ref: any) => <button ref={ref} {...props}>{children}</button>);

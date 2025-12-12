@@ -49,9 +49,10 @@ type CarouselContextProps<T> = {
   emptyState: React.ReactNode
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CarouselContext = React.createContext<CarouselContextProps<any> | null>(null)
 
-function useCarousel<T = any>() {
+function useCarousel<T = unknown>() {
   const context = React.useContext<CarouselContextProps<T> | null>(CarouselContext)
   if (!context) {
     throw new Error('useCarousel must be used within a <Carousel />')

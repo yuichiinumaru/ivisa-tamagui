@@ -99,7 +99,7 @@ const MenubarContentFrame = styled(Content, {
   display: 'flex',
   flexDirection: 'column',
   gap: '$1',
-})
+} as any)
 
 const MenubarContent = React.forwardRef<React.ElementRef<typeof Content>, GetProps<typeof MenubarContentFrame>>(({ align = 'start', alignOffset = -4, sideOffset = 8, ...props }, ref) => (
   <Portal>

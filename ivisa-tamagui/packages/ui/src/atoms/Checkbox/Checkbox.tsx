@@ -26,7 +26,7 @@ const StyledCheckbox = styled(TamaguiCheckbox, {
 
   variants: {
     size: {
-      '...size': (val: SizeTokens, { props }) => {
+      '...size': (val: SizeTokens, { props: _props }) => {
         return {
           width: val,
           height: val,
