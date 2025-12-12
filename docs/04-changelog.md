@@ -26,3 +26,6 @@
 
 ### 🧬 Evolution Phase 5.1 (Intelligent Organisms)
 - **New Organism:** `SchemaForm` - Dynamic form builder wrapping `react-hook-form` and rendering mapped UI components.
+## [Refactor] - 2025-02-12
+- **Input:** Refactored `Input` to allow standalone fields (removed mandatory context check).
+- **Testing:** Fixed `packages/ui` Jest configuration to resolve monorepo dependencies correctly.
