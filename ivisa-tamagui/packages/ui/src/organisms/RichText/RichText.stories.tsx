@@ -9,7 +9,15 @@ const meta: Meta<typeof RichText> = {
   parameters: {
     docs: {
       description: {
-        component: 'Um editor de rich text robusto baseado no Tiptap, integrado com o design system Tamagui.',
+        component: `
+### Uso
+Editor de texto rico baseado em Tiptap. Ideal para entradas de texto longo com formatação (negrito, itálico, listas).
+
+### Recursos
+- **Formatado**: Suporta HTML como entrada/saída.
+- **Editável**: Pode ser usado em modo somente leitura.
+- **Integrado**: Estilização consistente com o sistema de design.
+`,
       },
     },
   },

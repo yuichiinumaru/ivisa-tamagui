@@ -11,8 +11,16 @@ const meta: Meta<typeof ComponentErrorBoundary> = {
     layout: 'centered',
     docs: {
       description: {
-        component:
-          'A molecule that catches JavaScript errors in its child component tree, logs them, and displays a fallback UI with recovery options.',
+        component: `
+### Uso
+Captura erros de JavaScript na árvore de componentes filhos, registra-os e exibe uma interface de fallback com opções de recuperação.
+Impede que a aplicação inteira trave.
+
+### Props
+- **componentName**: Nome do componente envelopado para logs.
+- **fallback**: UI customizada para erro (opcional).
+- **onReset**: Callback executado ao tentar recuperar.
+`,
       },
     },
   },
@@ -20,19 +28,19 @@ const meta: Meta<typeof ComponentErrorBoundary> = {
   argTypes: {
     componentName: {
       control: { type: 'text' },
-      description: 'The name of the component being wrapped, used for logging purposes.',
+      description: 'Nome do componente sendo envolvido, usado para fins de log.',
     },
     onReset: {
       action: 'reset',
-      description: 'A callback function to reset the component state and re-render the children.',
+      description: 'Função de callback para resetar o estado do componente e re-renderizar os filhos.',
     },
     fallback: {
       control: { type: 'object' },
-      description: 'A custom ReactNode to display as a fallback UI instead of the default one.',
+      description: 'Um ReactNode personalizado para exibir como UI de fallback em vez do padrão.',
     },
     children: {
       control: { disable: true },
-      description: 'The child components to render within the error boundary.',
+      description: 'Os componentes filhos a serem renderizados dentro do limite de erro.',
     },
   },
 }
@@ -43,11 +51,11 @@ type Story = StoryObj<typeof ComponentErrorBoundary>
 
 const BuggyComponent = ({ shouldThrow }: { shouldThrow: boolean }) => {
   if (shouldThrow) {
-    throw new Error('Component crashed intentionally for the story!')
+    throw new Error('O componente falhou intencionalmente para o story!')
   }
   return (
     <YStack p="$4" backgroundColor="$green4" borderRadius="$4">
-      <Paragraph color="$color">I am a safe component. No errors here!</Paragraph>
+      <Paragraph color="$color">Eu sou um componente seguro. Sem erros aqui!</Paragraph>
     </YStack>
   )
 }
@@ -74,7 +82,7 @@ const InteractiveStory = ({
         <BuggyComponent shouldThrow={shouldThrow} />
       </ComponentErrorBoundary>
       <Button onPress={() => updateArgs({ shouldThrow: true })} disabled={shouldThrow}>
-        Trigger Error
+        Disparar Erro
       </Button>
     </YStack>
   )
@@ -90,7 +98,7 @@ export const Default: Story = {
     docs: {
       description: {
         story:
-          'This is the default state. The child component renders normally. Click "Trigger Error" to see the fallback UI.',
+          'Este é o estado padrão. O componente filho renderiza normalmente. Clique em "Disparar Erro" para ver a UI de fallback.',
       },
     },
   },
@@ -106,7 +114,7 @@ export const WithErrorAndRecovery: Story = {
     docs: {
       description: {
         story:
-          'This story shows the default error fallback UI with a "Tentar Novamente" (Try Again) button. Clicking it will reset the error state and re-render the child component.',
+          'Este story mostra a UI de fallback padrão com um botão "Tentar Novamente". Clicar nele resetará o estado de erro e re-renderizará o componente filho.',
       },
     },
   },
@@ -127,7 +135,7 @@ export const StressTestNarrowContainer: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'This story demonstrates how the fallback UI adapts to a narrow container.',
+        story: 'Este story demonstra como a UI de fallback se adapta a um contêiner estreito.',
       },
     },
   },
@@ -146,8 +154,8 @@ const CustomFallback = () => (
   >
     <Text fontSize="$8">🤔</Text>
     <YStack>
-      <Paragraph fontWeight="bold">Oops, custom fallback!</Paragraph>
-      <Paragraph fontSize="$2">Something went wrong, but we have a custom UI for it.</Paragraph>
+      <Paragraph fontWeight="bold">Oops, fallback personalizado!</Paragraph>
+      <Paragraph fontSize="$2">Algo deu errado, mas temos uma UI personalizada para isso.</Paragraph>
     </YStack>
   </XStack>
 )
@@ -162,7 +170,7 @@ export const WithCustomFallback: Story = {
     docs: {
       description: {
         story:
-          'This story shows how you can provide a custom `fallback` component to be rendered on error.',
+          'Este story mostra como você pode fornecer um componente `fallback` personalizado para ser renderizado em caso de erro.',
       },
     },
   },

@@ -1,13 +1,28 @@
-import { Button } from '../../atoms/Button'
 import type { Meta, StoryObj } from '@storybook/react'
+import { Activity, DollarSign, Users } from '@tamagui/lucide-icons'
 import { RadialChartContent } from './RadialChartContent'
-import { YStack } from 'tamagui'
-import { DollarSign, Activity } from '@tamagui/lucide-icons'
+import { Button, Text } from 'tamagui'
 
 const meta: Meta<typeof RadialChartContent> = {
   title: 'Moléculas/RadialChartContent',
   component: RadialChartContent,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### Uso
+Exibe métricas resumidas, ideal para dashboards ou como conteúdo complementar de gráficos.
+
+### Variantes
+- **Padrão**: Exibe título, ícone e pontos de dados.
+- **Loading**: Exibe esqueletos.
+- **Erro**: Aplica borda de erro.
+- **Slot Direito**: Permite ações ou informações adicionais à direita.
+`,
+      },
+    },
+  },
   argTypes: {
     title: { control: 'text' },
     subtitle: { control: 'text' },
@@ -15,76 +30,55 @@ const meta: Meta<typeof RadialChartContent> = {
     hasError: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
   },
-  args: {
-    title: 'Receita Total',
-    subtitle: 'Faturamento dos últimos 6 meses',
-    data: [
-      { label: 'Realizado', value: 'R$ 50.000', color: '$green10' },
-      { label: 'Meta', value: 'R$ 80.000', color: '$blue10' },
-    ],
-    rightSlot: <Button>Ver Detalhes</Button>,
-    isLoading: false,
-    hasError: false,
-    isDisabled: false,
-  },
 }
 
 export default meta
+
 type Story = StoryObj<typeof RadialChartContent>
 
-export const Default: Story = {}
+const dataSample = [
+  { label: 'Total', value: '1.234' },
+  { label: 'Ativos', value: '890', color: '$green10' },
+]
 
-export const Loading: Story = {
+export const Padrao: Story = {
   args: {
+    title: 'Engajamento',
+    subtitle: 'Métricas de usuários ativos na semana',
+    icon: <Users size="$2" />,
+    data: dataSample,
+  },
+}
+
+export const ComIconesNosDados: Story = {
+  args: {
+    title: 'Vendas',
+    subtitle: 'Relatório financeiro',
+    icon: <DollarSign size="$2" />,
+    data: [
+      { label: 'Receita', value: 'R$ 10k', icon: DollarSign, color: '$green10' },
+      { label: 'Custo', value: 'R$ 2k', icon: Activity, color: '$red10' },
+    ],
+  },
+}
+
+export const Carregando: Story = {
+  args: {
+    ...Padrao.args,
     isLoading: true,
   },
 }
 
-export const Error: Story = {
+export const ComErro: Story = {
   args: {
+    ...Padrao.args,
     hasError: true,
   },
 }
 
-export const Disabled: Story = {
+export const ComSlotDireito: Story = {
   args: {
-    isDisabled: true,
-  },
-}
-
-export const PartialData: Story = {
-  args: {
-    subtitle: undefined,
-    rightSlot: undefined,
-    data: [{ label: 'Realizado', value: 'R$ 50.000' }],
-  },
-}
-
-export const CustomDataPointIcon: Story = {
-  name: 'Custom Data Point Icon',
-  args: {
-    data: [
-      { label: 'Realizado', value: 'R$ 50.000', color: '$green10', icon: DollarSign },
-      { label: 'Meta', value: 'R$ 80.000', color: '$blue10', icon: DollarSign },
-    ],
-  },
-}
-
-export const CustomMainIcon: Story = {
-  name: 'Custom Main Icon',
-  args: {
-    icon: <Activity />,
-  },
-}
-
-export const ConstrainedWidth: Story = {
-  render: (args) => (
-    <YStack w="$20">
-      <RadialChartContent {...args} />
-    </YStack>
-  ),
-  args: {
-    title: 'Receita Total com Título Muito Longo Que Deveria Truncar',
-    subtitle: 'Este é um subtítulo igualmente longo para testar o comportamento do componente',
+    ...Padrao.args,
+    rightSlot: <Button size="$2">Detalhes</Button>,
   },
 }

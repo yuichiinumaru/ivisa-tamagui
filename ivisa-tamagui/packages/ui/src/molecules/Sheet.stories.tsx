@@ -20,6 +20,20 @@ const meta: Meta<typeof Sheet> = {
   component: Sheet,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: `
+### Uso
+Sheets são painéis deslizantes (geralmente laterais ou inferiores) usados para edição de detalhes, menus de navegação ou fluxos secundários.
+
+### Variantes
+- **Padrão**: Com cabeçalho, conteúdo e rodapé.
+- **Loading**: Exibe esqueleto no conteúdo.
+- **Erro**: Indica erro visual.
+- **Scrollable**: Gerencia conteúdo longo com rolagem interna.
+`,
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {

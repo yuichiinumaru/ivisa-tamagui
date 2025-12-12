@@ -23,6 +23,21 @@ const meta: Meta<typeof Stepper> = {
   title: 'Moléculas/Stepper',
   component: Stepper,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### Uso
+Componente de passos (wizard) para dividir fluxos complexos em etapas menores. Utiliza \`ScrollView\` horizontal para transição.
+
+### Funcionalidades
+- **Navegação**: Botões ou triggers para avançar/voltar.
+- **Validação**: Pode bloquear avanço se passo atual for inválido.
+- **Customização**: Renderiza passos como filhos (\`Stepper.Page\`).
+`,
+      },
+    },
+  },
   args: {
     steps: steps,
     actions: (nextStep, prevStep, isFirstStep, isLastStep, isDisabled) => (

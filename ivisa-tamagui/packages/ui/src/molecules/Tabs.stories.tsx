@@ -1,106 +1,86 @@
-import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from './Tabs'
-import { YStack, Text } from 'tamagui'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './Card'
-import { Label, Input } from 'tamagui'
-import { Button } from '../atoms/Button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs'
+import { Text, YStack, Button } from 'tamagui'
 
 const meta: Meta<typeof Tabs> = {
   title: 'Moléculas/Tabs',
   component: Tabs,
-  parameters: {
-    layout: 'centered',
-  },
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+### Uso
+Componente de abas para organizar conteúdo em diferentes visualizações. Suporta renderização controlada por dados (prop \`tabs\`) ou composição (children).
+
+### Variantes
+- **Padrão**: Abas funcionais com estados de ativação.
+- **Loading**: Exibe esqueleto no conteúdo.
+- **Erro**: Indica erro visual na lista de abas.
+- **Desabilitado**: Desabilita interações.
+`,
+      },
+    },
+  },
   argTypes: {
+    defaultValue: { control: 'text' },
     isLoading: { control: 'boolean' },
-    hasError: { control: 'boolean' },
     isDisabled: { control: 'boolean' },
+    hasError: { control: 'boolean' },
   },
 }
 
 export default meta
 
-type Story = StoryObj<typeof meta>
-
-const accountContent = (
-  <Card>
-    <CardHeader>
-      <CardTitle>Conta</CardTitle>
-      <CardDescription>
-        Faça alterações em sua conta aqui. Clique em salvar quando terminar.
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <YStack space="$2">
-        <Label htmlFor="name">Nome</Label>
-        <Input id="name" defaultValue="Pedro Duarte" />
-        <Label htmlFor="username">Nome de usuário</Label>
-        <Input id="username" defaultValue="@peduarte" />
-      </YStack>
-    </CardContent>
-    <CardFooter>
-      <Button>Salvar alterações</Button>
-    </CardFooter>
-  </Card>
-)
-
-const passwordContent = (
-  <Card>
-    <CardHeader>
-      <CardTitle>Senha</CardTitle>
-      <CardDescription>
-        Altere sua senha aqui. Após salvar, você será desconectado.
-      </CardDescription>
-    </CardHeader>
-    <CardContent>
-      <YStack space="$2">
-        <Label htmlFor="current">Senha atual</Label>
-        <Input id="current" type="password" />
-        <Label htmlFor="new">Nova senha</Label>
-        <Input id="new" type="password" />
-      </YStack>
-    </CardContent>
-    <CardFooter>
-      <Button>Salvar senha</Button>
-    </CardFooter>
-  </Card>
-)
+type Story = StoryObj<typeof Tabs>
 
 const tabsData = [
-  { value: 'account', label: 'Conta', content: accountContent },
-  { value: 'password', label: 'Senha', content: passwordContent },
+  {
+    value: 'tab1',
+    label: 'Conta',
+    content: (
+      <YStack gap="$2">
+        <Text fontWeight="bold">Minha Conta</Text>
+        <Text>Gerencie suas configurações de conta aqui.</Text>
+      </YStack>
+    ),
+  },
+  {
+    value: 'tab2',
+    label: 'Senha',
+    content: (
+      <YStack gap="$2">
+        <Text fontWeight="bold">Alterar Senha</Text>
+        <Text>Atualize sua senha periodicamente.</Text>
+      </YStack>
+    ),
+  },
 ]
 
 export const Padrao: Story = {
   args: {
-    defaultValue: 'account',
-    width: 400,
+    defaultValue: 'tab1',
     tabs: tabsData,
   },
 }
 
-export const ComAcoes: Story = {
+export const Composicao: Story = {
+  render: (args) => (
+    <Tabs {...args}>
+      <TabsList>
+        <TabsTrigger value="tab1">Geral</TabsTrigger>
+        <TabsTrigger value="tab2">Avançado</TabsTrigger>
+      </TabsList>
+      <TabsContent value="tab1">
+        <Text>Configurações Gerais</Text>
+      </TabsContent>
+      <TabsContent value="tab2">
+        <Text>Configurações Avançadas</Text>
+      </TabsContent>
+    </Tabs>
+  ),
   args: {
-    defaultValue: 'account',
-    width: 400,
-    tabs: tabsData,
-    actions: <Button size="$2">Exportar</Button>,
-  },
-}
-
-export const Desabilitado: Story = {
-  args: {
-    ...Padrao.args,
-    isDisabled: true,
-  },
-}
-
-export const ComErro: Story = {
-  args: {
-    ...Padrao.args,
-    hasError: true,
+    defaultValue: 'tab1',
   },
 }
 
@@ -111,13 +91,23 @@ export const Carregando: Story = {
   },
 }
 
-export const ContainerEstreito: Story = {
+export const ComErro: Story = {
   args: {
-    defaultValue: 'account',
-    width: 250,
-    tabs: tabsData.map((tab) => ({
-      ...tab,
-      label: <Text ellipsize>{tab.label}</Text>,
-    })),
+    ...Padrao.args,
+    hasError: true,
+  },
+}
+
+export const Desabilitado: Story = {
+  args: {
+    ...Padrao.args,
+    isDisabled: true,
+  },
+}
+
+export const ComAcoes: Story = {
+  args: {
+    ...Padrao.args,
+    actions: <Button size="$2">Salvar</Button>,
   },
 }

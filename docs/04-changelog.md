@@ -35,3 +35,7 @@
 - **Task List Update:** Updated `docs/02-tasks.md` to reflect the completed state of refactored components.
 - **Protocol Validation:** Confirmed components like `Collapsible`, `Sheet`, `Dot`, `NavLink` follow the new Portuguese localization and architecture standards.
 - **Backlog:** Added "Atoms Coverage" task for components missing tests (`Stack`, `Dot`, `NavLink`).
+
+## [Documentation Update] - 2025-05-27
+- **Docs Sync:** Updated `docs/01-plan.md` to match the current phase status (Phase 4).
+- **Storybook:** Started comprehensive population of Storybook documentation (Task 25).

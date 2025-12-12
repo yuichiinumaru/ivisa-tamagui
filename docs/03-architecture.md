@@ -85,6 +85,7 @@ We use a VS Code Multi-Root Workspace (`ivisa.code-workspace`) to manage the `iv
 3.  **Workspace Features:**
     - **Context Isolation:** Search results and file watchers in `referencias` are excluded from the main project context to improve performance and reduce noise.
     - **Side-by-Side Reference:** You can easily browse `sushi` or `tamagui-kitchen-sink` code and copy/adapt patterns into `packages/ui`.
+    - **Consistency:** The `ivisa.code-workspace` file is version controlled and should be used by all team members to ensure a consistent development environment.
 
 ## 7. Testing & Documentation
 
