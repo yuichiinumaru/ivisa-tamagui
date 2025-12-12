@@ -9,7 +9,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import { ScrollView, Text, YStack } from 'tamagui'
+import { ScrollView, Text, XStack, YStack } from 'tamagui'
 import { Button } from '../../atoms/Button'
 import { Skeleton } from '../../atoms/Skeleton'
 import { Empty } from '../../molecules/Empty'
@@ -36,13 +36,13 @@ export interface DataTableLocalization {
 }
 
 const DEFAULT_LOCALIZATION: DataTableLocalization = {
-  noResults: 'No results.',
-  previousPage: 'Previous',
-  nextPage: 'Next',
-  pageOf: (currentPage, pageCount) => `Page ${currentPage} of ${pageCount}`,
-  errorTitle: 'Something went wrong',
-  errorBody: 'There was an error loading the data. Please try again.',
-  retry: 'Retry',
+  noResults: 'Nenhum resultado encontrado.',
+  previousPage: 'Anterior',
+  nextPage: 'Próximo',
+  pageOf: (currentPage, pageCount) => `Página ${currentPage} de ${pageCount}`,
+  errorTitle: 'Algo deu errado',
+  errorBody: 'Houve um erro ao carregar os dados. Por favor, tente novamente.',
+  retry: 'Tentar novamente',
 }
 
 export interface DataTableProps<TData, TValue> {

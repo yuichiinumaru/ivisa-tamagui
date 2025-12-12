@@ -35,11 +35,11 @@ const meta: Meta<typeof RankingChart> = {
         description: 'A mensagem de erro a ser exibida.',
     },
     headerActions: {
-        control: 'object',
+        control: false,
         description: 'Ações a serem exibidas no cabeçalho.',
     },
     emptyStateCTA: {
-        control: 'object',
+        control: false,
         description: 'CTA a ser exibido no estado vazio.',
     },
   },

@@ -11,29 +11,29 @@
 ### ⚛️ ATOMS
 **Goal:** Refactor for PT-BR, A11y, and Robustness using the "Atom Algorithm".
 
-- [/] Refactor `Alert` (Dispatched)
-- [/] Refactor `AspectRatio` (Dispatched)
+- [~] Refactor `Alert` (Dispatched)
+- [~] Refactor `AspectRatio` (Dispatched)
 - [ ] Refactor `Avatar` (Harvested) -> Dispatched
-- [/] Refactor `Badge` (Dispatched)
-- [/] Refactor `Button` (Dispatched)
-- [/] Refactor `Checkbox` (Dispatched)
-- [/] Refactor `Input` (Dispatched)
-- [/] Refactor `Kbd` (Dispatched)
-- [/] Refactor `Label` (Dispatched)
-- [/] Refactor `Progress` (Dispatched)
-- [/] Refactor `ScrollArea` (Dispatched)
-- [/] Refactor `Separator` (Dispatched)
-- [/] Refactor `Skeleton` (Dispatched)
-- [/] Refactor `Slider` (Dispatched)
-- [/] Refactor `Spinner` (Dispatched)
-- [/] Refactor `Stack` (Dispatched)
-- [/] Refactor `Switch` (Dispatched)
-- [/] Refactor `Textarea` (Dispatched)
-- [/] Refactor `Toggle` (Dispatched)
-- [/] Refactor `Typography` (Dispatched)
-- [/] Implement `NavLink` (New - BI Sidebar) (Dispatched)
-- [/] Implement `Logo` (New - BI Sidebar) (Dispatched)
-- [/] Implement `Dot` (New - BI Charts) (Dispatched)
+- [~] Refactor `Badge` (Dispatched)
+- [~] Refactor `Button` (Dispatched)
+- [~] Refactor `Checkbox` (Dispatched)
+- [~] Refactor `Input` (Dispatched)
+- [~] Refactor `Kbd` (Dispatched)
+- [~] Refactor `Label` (Dispatched)
+- [~] Refactor `Progress` (Dispatched)
+- [~] Refactor `ScrollArea` (Dispatched)
+- [~] Refactor `Separator` (Dispatched)
+- [~] Refactor `Skeleton` (Dispatched)
+- [~] Refactor `Slider` (Dispatched)
+- [~] Refactor `Spinner` (Dispatched)
+- [~] Refactor `Stack` (Dispatched)
+- [~] Refactor `Switch` (Dispatched)
+- [~] Refactor `Textarea` (Dispatched)
+- [~] Refactor `Toggle` (Dispatched)
+- [~] Refactor `Typography` (Dispatched)
+- [~] Implement `NavLink` (New - BI Sidebar) (Dispatched)
+- [~] Implement `Logo` (New - BI Sidebar) (Dispatched)
+- [~] Implement `Dot` (New - BI Charts) (Dispatched)
 
 ### 🧪 MOLECULES
 **Goal:** Upgrade for State Orchestration and Layout Integrity using the "Molecule Algorithm".
@@ -99,6 +99,22 @@
 - [DISPATCHED] Implement `TimeSeriesChart` (New - BI)
 - [DISPATCHED] Implement `GaugeChart` (New - BI)
 - [DISPATCHED] Implement `RankingChart` (New - BI)
+
+---
+
+## 🚀 Priority 2: Intelligent Organisms (Phase 5)
+**Goal:** Transition from "Parts" to "Solutions" using complex logic and composition.
+
+- [x] Implement `SchemaForm` (Dynamic Form Engine)
+- [ ] Implement `Scheduler` (Big Calendar)
+- [ ] Implement `ChatWidget` (AI Interface)
+- [ ] Implement `CookieBanner` (Compliance)
+- [ ] Implement `AnimatedSegmentedControl` (Smart Tabs)
+- [ ] Implement `WizardForm` (Multi-Step Logic)
+- [ ] Implement `FilterBar` (Advanced Search)
+- [ ] Implement `NotificationFeed` (History)
+- [ ] Implement `MediaGrid` (Asset Manager)
+- [ ] Implement `AuthScreen` (Unified Login)
 
 ---
 

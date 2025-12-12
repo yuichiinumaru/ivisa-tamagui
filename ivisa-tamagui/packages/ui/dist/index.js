@@ -2359,6 +2359,7 @@ __export(index_exports, {
   ResizablePanel: () => ResizablePanel,
   ResizablePanelGroup: () => ResizablePanelGroup,
   RichText: () => RichText,
+  SchemaForm: () => SchemaForm,
   ScrollArea: () => ScrollArea,
   Select: () => SelectRoot,
   SelectContent: () => SelectContent,
@@ -2558,16 +2559,7 @@ var import_react2 = require("react");
 
 // src/atoms/Skeleton.tsx
 var import_tamagui2 = require("tamagui");
-var import_core = require("@tamagui/core");
 var import_jsx_runtime2 = require("react/jsx-runtime");
-var pulse = (0, import_core.keyframes)({
-  "0%, 100%": {
-    opacity: 1
-  },
-  "50%": {
-    opacity: 0.5
-  }
-});
 var SkeletonFrame = (0, import_tamagui2.styled)(import_tamagui2.YStack, {
   name: "Skeleton",
   backgroundColor: "$muted",
@@ -2575,7 +2567,7 @@ var SkeletonFrame = (0, import_tamagui2.styled)(import_tamagui2.YStack, {
   variants: {
     animationType: {
       pulse: {
-        animationName: pulse.name,
+        animationName: "skeleton-pulse",
         animationDuration: "2s",
         animationIterationCount: "infinite"
       },
@@ -2789,7 +2781,8 @@ var AccordionContentFrame = (0, import_tamagui5.styled)(import_tamagui5.Accordio
 var AccordionItem = import_react4.default.forwardRef(({ children, isLoading, hasError, ...props }, ref) => {
   const childrenWithProps = import_react4.default.Children.map(children, (child) => {
     if (import_react4.default.isValidElement(child)) {
-      if (child.type.displayName === "AccordionContent") {
+      const type = child.type;
+      if (type.displayName === "AccordionContent") {
         return import_react4.default.cloneElement(child, { isLoading });
       }
     }
@@ -3073,7 +3066,7 @@ var AlertDialog = ({
 // src/atoms/Badge.tsx
 var import_react7 = require("react");
 var import_tamagui9 = require("tamagui");
-var import_core2 = require("@tamagui/core");
+var import_core = require("@tamagui/core");
 var import_jsx_runtime9 = require("react/jsx-runtime");
 var badgeVariants = {
   variant: {
@@ -3186,7 +3179,7 @@ var BadgeText = (0, import_tamagui9.styled)(import_tamagui9.Text, {
 });
 var Badge = (0, import_react7.forwardRef)(
   ({ children, asChild, variant = "default", size = "md", leftIcon, rightIcon, ...props }, ref) => {
-    const Component3 = asChild ? import_core2.Slot : BadgeFrame;
+    const Component3 = asChild ? import_core.Slot : BadgeFrame;
     const renderIcon = (icon) => {
       if (!icon) return null;
       return (0, import_react7.cloneElement)(icon, {
@@ -3930,7 +3923,7 @@ var Blockquote = (0, import_tamagui14.styled)(Text5, {
 var import_tamagui15 = require("tamagui");
 
 // ../../node_modules/@tamagui/progress/dist/esm/Progress.mjs
-var import_core6 = require("@tamagui/core");
+var import_core5 = require("@tamagui/core");
 
 // ../../node_modules/@tamagui/create-context/dist/esm/create-context.mjs
 var React13 = __toESM(require("react"), 1);
@@ -4454,15 +4447,15 @@ var stepTokenUpOrDown = (type, current, options = defaultOptions) => {
 var getTokenRelative = stepTokenUpOrDown;
 
 // ../../node_modules/@tamagui/stacks/dist/esm/Stacks.mjs
-var import_core4 = require("@tamagui/core");
+var import_core3 = require("@tamagui/core");
 
 // ../../node_modules/@tamagui/stacks/dist/esm/getElevation.mjs
-var import_core3 = require("@tamagui/core");
+var import_core2 = require("@tamagui/core");
 var getElevation = (size, extras) => {
   if (!size) return;
   const {
     tokens: tokens2
-  } = extras, token = tokens2.size[size], sizeNum = (0, import_core3.isVariable)(token) ? +token.val : size;
+  } = extras, token = tokens2.size[size], sizeNum = (0, import_core2.isVariable)(token) ? +token.val : size;
   return getSizedElevation(sizeNum, extras);
 };
 var getSizedElevation = (val, {
@@ -4471,7 +4464,7 @@ var getSizedElevation = (val, {
 }) => {
   let num = 0;
   if (val === true) {
-    const val2 = (0, import_core3.getVariableValue)(tokens2.size.true);
+    const val2 = (0, import_core2.getVariableValue)(tokens2.size.true);
     typeof val2 == "number" ? num = val2 : num = 10;
   } else num = +val;
   if (num === 0) return;
@@ -4483,7 +4476,7 @@ var getSizedElevation = (val, {
       height,
       width: 0
     },
-    ...import_core3.isAndroid ? {
+    ...import_core2.isAndroid ? {
       elevationAndroid: 2 * height
     } : {}
   };
@@ -4513,17 +4506,17 @@ var variants = {
   },
   inset: getInset
 };
-var YStack5 = (0, import_core4.styled)(import_core4.View, {
+var YStack5 = (0, import_core3.styled)(import_core3.View, {
   flexDirection: "column",
   variants
 });
 YStack5.displayName = "YStack";
-var XStack6 = (0, import_core4.styled)(import_core4.View, {
+var XStack5 = (0, import_core3.styled)(import_core3.View, {
   flexDirection: "row",
   variants
 });
-XStack6.displayName = "XStack";
-var ZStack = (0, import_core4.styled)(YStack5, {
+XStack5.displayName = "XStack";
+var ZStack = (0, import_core3.styled)(YStack5, {
   position: "relative"
 }, {
   neverFlatten: true,
@@ -4631,7 +4624,7 @@ var focusTheme = {
 };
 
 // ../../node_modules/@tamagui/stacks/dist/esm/ThemeableStack.mjs
-var import_core5 = require("@tamagui/core");
+var import_core4 = require("@tamagui/core");
 var chromelessStyle = {
   backgroundColor: "transparent",
   borderColor: "transparent",
@@ -4669,7 +4662,7 @@ var themeableVariants = {
     }
   }
 };
-var ThemeableStack = (0, import_core5.styled)(YStack5, {
+var ThemeableStack = (0, import_core4.styled)(YStack5, {
   variants: themeableVariants
 });
 
@@ -4680,7 +4673,7 @@ var PROGRESS_NAME = "Progress";
 var [createProgressContext, createProgressScope] = createContextScope(PROGRESS_NAME);
 var [ProgressProvider, useProgressContext] = createProgressContext(PROGRESS_NAME);
 var INDICATOR_NAME = "ProgressIndicator";
-var ProgressIndicatorFrame = (0, import_core6.styled)(ThemeableStack, {
+var ProgressIndicatorFrame = (0, import_core5.styled)(ThemeableStack, {
   name: INDICATOR_NAME,
   variants: {
     unstyled: {
@@ -4732,7 +4725,7 @@ function isValidValueNumber(value, max) {
   return isNumber(value) && !Number.isNaN(value) && value <= max && value >= 0;
 }
 var DEFAULT_MAX = 100;
-var ProgressFrame = (0, import_core6.styled)(ThemeableStack, {
+var ProgressFrame = (0, import_core5.styled)(ThemeableStack, {
   name: "Progress",
   variants: {
     unstyled: {
@@ -4744,10 +4737,10 @@ var ProgressFrame = (0, import_core6.styled)(ThemeableStack, {
     },
     size: {
       "...size": (val) => {
-        const size = Math.round((0, import_core6.getVariableValue)(getSize(val)) * 0.25);
+        const size = Math.round((0, import_core5.getVariableValue)(getSize(val)) * 0.25);
         return {
           height: size,
-          minWidth: (0, import_core6.getVariableValue)(size) * 20,
+          minWidth: (0, import_core5.getVariableValue)(size) * 20,
           width: "100%"
         };
       }
@@ -5490,10 +5483,10 @@ var CollapsibleTrigger = (0, import_tamagui22.styled)(import_tamagui22.XStack, {
 var CollapsibleContent = (0, import_tamagui22.styled)(CollapsiblePrimitive.Content, {
   name: "CollapsibleContent",
   overflow: "hidden",
-  paddingTop: "$4",
-  animation: "quick",
-  enterStyle: { opacity: 0, height: 0 },
-  exitStyle: { opacity: 0, height: 0 }
+  paddingTop: "$4"
+  // animation: 'quick',
+  // enterStyle: { opacity: 0, height: 0 },
+  // exitStyle: { opacity: 0, height: 0 },
 });
 var Collapsible = import_react23.default.forwardRef(
   ({
@@ -9660,24 +9653,18 @@ var RichTextToolbar = ({ editor }) => {
             }
           });
         },
-        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Tooltip, { placement: "top", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TooltipTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Icon, { size: 16 }) }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TooltipContent, { children: label })
-        ] }, name))
+        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Icon, { size: 16 }) }) }, name))
       }
     ),
-    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Tooltip, { placement: "top", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TooltipTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
-        Button,
-        {
-          variant: editor.isActive("heading", { level }) ? "secondary" : "ghost",
-          onPress: () => editor.chain().focus().toggleHeading({ level }).run(),
-          "aria-label": label,
-          children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Icon, { size: 16 })
-        }
-      ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TooltipContent, { children: label })
-    ] }, level))
+    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+      Button,
+      {
+        variant: editor.isActive("heading", { level }) ? "secondary" : "ghost",
+        onPress: () => editor.chain().focus().toggleHeading({ level }).run(),
+        "aria-label": label,
+        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Icon, { size: 16 })
+      }
+    ) }, level))
   ] });
 };
 var RichTextFrame = ({
@@ -9877,13 +9864,13 @@ var import_jsx_runtime59 = require("react/jsx-runtime");
 var DEFAULT_PAGE_SIZE = 10;
 var MAX_ROWS_WITHOUT_PAGINATION = 100;
 var DEFAULT_LOCALIZATION = {
-  noResults: "No results.",
-  previousPage: "Previous",
-  nextPage: "Next",
-  pageOf: (currentPage, pageCount) => `Page ${currentPage} of ${pageCount}`,
-  errorTitle: "Something went wrong",
-  errorBody: "There was an error loading the data. Please try again.",
-  retry: "Retry"
+  noResults: "Nenhum resultado encontrado.",
+  previousPage: "Anterior",
+  nextPage: "Pr\xF3ximo",
+  pageOf: (currentPage, pageCount) => `P\xE1gina ${currentPage} de ${pageCount}`,
+  errorTitle: "Algo deu errado",
+  errorBody: "Houve um erro ao carregar os dados. Por favor, tente novamente.",
+  retry: "Tentar novamente"
 };
 function DataTable({
   columns,
@@ -9956,7 +9943,7 @@ function DataTable({
     ] }) }) }),
     showPagination && table.getPageCount() > 1 && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(TableRow, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(import_tamagui58.YStack, { flex: 1 }),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(import_tamagui58.XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
         /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(import_tamagui58.Text, { fontSize: "$2", color: "$color", children: localization.pageOf(
           table.getState().pagination.pageIndex + 1,
           table.getPageCount()
@@ -10499,7 +10486,7 @@ var Charts = ({
 }) => {
   const theme = (0, import_tamagui62.useTheme)();
   const themeColor = theme[color];
-  const barColor = themeColor ? themeColor.get() : color;
+  const barColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
@@ -10755,20 +10742,122 @@ var FileUpload = ({
   ] });
 };
 
-// src/molecules/Field/Field.tsx
-var import_react54 = __toESM(require("react"));
+// src/organisms/SchemaForm/SchemaForm.tsx
+var import_react_hook_form2 = require("react-hook-form");
 var import_tamagui65 = require("tamagui");
 var import_jsx_runtime66 = require("react/jsx-runtime");
-var FieldFrame = (0, import_tamagui65.styled)(import_tamagui65.YStack, {
+var renderFieldInput = (field, formField) => {
+  const commonProps = {
+    disabled: field.disabled,
+    id: field.name
+  };
+  switch (field.type) {
+    case "text":
+    case "email":
+    case "password":
+    case "number":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+        Input,
+        {
+          ...formField,
+          ...commonProps,
+          placeholder: field.placeholder,
+          type: field.type === "number" ? "number" : field.type
+        }
+      );
+    case "textarea":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Textarea, { ...formField, ...commonProps, placeholder: field.placeholder });
+    case "switch":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+        Switch,
+        {
+          checked: formField.value,
+          onCheckedChange: formField.onChange,
+          disabled: field.disabled
+        }
+      );
+    case "checkbox":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+        Checkbox,
+        {
+          checked: formField.value,
+          onCheckedChange: formField.onChange,
+          disabled: field.disabled
+        }
+      );
+    case "date":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+        DatePicker,
+        {
+          date: formField.value,
+          onDateChange: formField.onChange,
+          placeholder: field.placeholder,
+          disabled: field.disabled
+        }
+      );
+    case "select":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
+        SelectRoot,
+        {
+          value: formField.value,
+          onValueChange: formField.onChange,
+          disabled: field.disabled,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Trigger, { placeholder: field.placeholder, children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Value, { placeholder: field.placeholder }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Sheet, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Content, { children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Viewport, { children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Group, { children: field.options?.map((opt, i) => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(SelectRoot.Item, { index: i, value: opt.value, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.ItemText, { children: opt.label }),
+              /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.ItemIndicator, { marginLeft: "auto" })
+            ] }, opt.value)) }) }) })
+          ]
+        }
+      );
+    default:
+      return null;
+  }
+};
+function SchemaForm({
+  schema,
+  defaultValues,
+  onSubmit,
+  submitText = "Enviar",
+  isLoading
+}) {
+  const form = (0, import_react_hook_form2.useForm)({ defaultValues });
+  return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Form, { ...form, children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormRoot, { tag: "form", onSubmit: form.handleSubmit(onSubmit), children: /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(import_tamagui65.YStack, { gap: "$4", children: [
+    schema.map((field) => /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+      FormField,
+      {
+        control: form.control,
+        name: field.name,
+        rules: { required: field.required ? "Campo obrigat\xF3rio" : false },
+        render: ({ field: formField }) => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(FormItem, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormLabel, { children: field.label }),
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormControl, { children: renderFieldInput(field, formField) }),
+          field.description && /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormDescription, { children: field.description }),
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormMessage, {})
+        ] })
+      },
+      field.name
+    )),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Button, { type: "submit", loading: isLoading, theme: "active", children: submitText })
+  ] }) }) });
+}
+
+// src/molecules/Field/Field.tsx
+var import_react54 = __toESM(require("react"));
+var import_tamagui66 = require("tamagui");
+var import_jsx_runtime67 = require("react/jsx-runtime");
+var FieldFrame = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
   name: "Field",
   gap: "$2"
 });
 var FieldLabel = Label;
-var FieldControlFrame = (0, import_tamagui65.styled)(import_tamagui65.YStack, {
+var FieldControlFrame = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
   name: "FieldControl",
   flex: 1
 });
-var FieldErrorFrame = (0, import_tamagui65.styled)(import_tamagui65.Text, {
+var FieldErrorFrame = (0, import_tamagui66.styled)(import_tamagui66.Text, {
   name: "FieldError",
   color: "$destructive",
   fontSize: "$2"
@@ -10782,9 +10871,9 @@ var FieldRoot = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(FieldFrame, { ...props, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Skeleton, { height: "$4", width: "$20" }),
-      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Skeleton, { height: "$10" })
+    return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(FieldFrame, { ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(Skeleton, { height: "$4", width: "$20" }),
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(Skeleton, { height: "$10" })
     ] });
   }
   const childrenArray = import_react54.default.Children.toArray(children);
@@ -10814,7 +10903,7 @@ var FieldRoot = ({
         clonedInput
       );
       if (rightSlot) {
-        return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(import_tamagui65.XStack, { gap: "$2", alignItems: "center", children: [
+        return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(import_tamagui66.XStack, { gap: "$2", alignItems: "center", children: [
           finalControl,
           rightSlot
         ] }, `field-child-${index}`);
@@ -10823,7 +10912,7 @@ var FieldRoot = ({
     }
     return child;
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FieldFrame, { ...props, children: finalChildren });
+  return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(FieldFrame, { ...props, children: finalChildren });
 };
 FieldRoot.displayName = "Field";
 var Field = Object.assign(FieldRoot, {
@@ -10833,10 +10922,10 @@ var Field = Object.assign(FieldRoot, {
 });
 
 // src/molecules/InputGroup/InputGroup.tsx
-var import_tamagui66 = require("tamagui");
+var import_tamagui67 = require("tamagui");
 var import_react55 = require("react");
-var import_jsx_runtime67 = require("react/jsx-runtime");
-var InputGroupFrame = (0, import_tamagui66.styled)(import_tamagui66.XStack, {
+var import_jsx_runtime68 = require("react/jsx-runtime");
+var InputGroupFrame = (0, import_tamagui67.styled)(import_tamagui67.XStack, {
   name: "InputGroup",
   alignItems: "center",
   borderWidth: 1,
@@ -10864,7 +10953,7 @@ var InputGroup = ({
   isDisabled: isDisabled2
 }) => {
   const childrenArray = import_react55.Children.toArray(children);
-  return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
     import_react55.Children.map(childrenArray, (child) => {
       if (child.type === Input) {
         return (0, import_react55.cloneElement)(child, {
@@ -10886,22 +10975,22 @@ var InputGroup = ({
       }
       return child;
     }),
-    isLoading && /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Spinner, {})
+    isLoading && /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Spinner, {})
   ] });
 };
 
 // src/molecules/NativeSelect/NativeSelect.tsx
 var import_lucide_icons29 = require("@tamagui/lucide-icons");
 var import_react56 = require("react");
-var import_tamagui68 = require("tamagui");
+var import_tamagui69 = require("tamagui");
 
 // src/molecules/NativeSelect/NativeSelect.styles.ts
-var import_tamagui67 = require("tamagui");
-var SelectContainer = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
+var import_tamagui68 = require("tamagui");
+var SelectContainer = (0, import_tamagui68.styled)(import_tamagui68.YStack, {
   name: "SelectContainer",
   gap: "$2"
 });
-var SelectTrigger2 = (0, import_tamagui67.styled)(import_tamagui67.XStack, {
+var SelectTrigger2 = (0, import_tamagui68.styled)(import_tamagui68.XStack, {
   name: "SelectTrigger",
   alignItems: "center",
   justifyContent: "space-between",
@@ -10925,7 +11014,7 @@ var SelectTrigger2 = (0, import_tamagui67.styled)(import_tamagui67.XStack, {
     }
   }
 });
-var SelectElement = (0, import_tamagui67.styled)("select", {
+var SelectElement = (0, import_tamagui68.styled)("select", {
   name: "Select",
   flex: 1,
   height: "100%",
@@ -10937,7 +11026,7 @@ var SelectElement = (0, import_tamagui67.styled)("select", {
   // Reset native styles
   appearance: "none"
 });
-var Label8 = (0, import_tamagui67.styled)(import_tamagui67.Label, {
+var Label8 = (0, import_tamagui68.styled)(import_tamagui68.Label, {
   name: "Label",
   color: "$color",
   fontSize: "$4",
@@ -10951,22 +11040,22 @@ var Label8 = (0, import_tamagui67.styled)(import_tamagui67.Label, {
 });
 
 // src/molecules/NativeSelect/NativeSelect.tsx
-var import_jsx_runtime68 = require("react/jsx-runtime");
+var import_jsx_runtime69 = require("react/jsx-runtime");
 var NativeSelect = (0, import_react56.forwardRef)(
   ({ children, label, id: id2, hasError = false, isLoading = false, disabled = false, ...props }, ref) => {
     const internalId = (0, import_react56.useId)();
     const selectId = id2 || internalId;
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(SelectContainer, { children: [
-        label && /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Skeleton, { height: 20, width: 100 }),
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Skeleton, { height: 40 })
+      return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(SelectContainer, { children: [
+        label && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Skeleton, { height: 20, width: 100 }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Skeleton, { height: 40 })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(SelectContainer, { children: [
-      label && /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Label8, { htmlFor: selectId, hasError, children: label }),
-      /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(SelectTrigger2, { hasError, disabled, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(SelectElement, { id: selectId, ref, disabled, ...props, children }),
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui68.YStack, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_lucide_icons29.AlertCircle, { size: 16, color: "$red10" }) : /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_lucide_icons29.ChevronDown, { size: 16, color: "$color10" }) })
+    return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(SelectContainer, { children: [
+      label && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Label8, { htmlFor: selectId, hasError, children: label }),
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(SelectTrigger2, { hasError, disabled, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(SelectElement, { id: selectId, ref, disabled, ...props, children }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui69.YStack, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_lucide_icons29.AlertCircle, { size: 16, color: "$red10" }) : /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_lucide_icons29.ChevronDown, { size: 16, color: "$color10" }) })
       ] })
     ] });
   }
@@ -10974,19 +11063,19 @@ var NativeSelect = (0, import_react56.forwardRef)(
 NativeSelect.displayName = "NativeSelect";
 
 // src/providers/AppProviders.tsx
-var import_tamagui72 = require("tamagui");
+var import_tamagui73 = require("tamagui");
 var import_portal2 = require("@tamagui/portal");
 
 // src/tamagui.config.ts
-var import_tamagui71 = require("tamagui");
+var import_tamagui72 = require("tamagui");
 
 // ../../node_modules/@tamagui/use-presence/dist/esm/PresenceContext.mjs
 var React55 = __toESM(require("react"), 1);
-var import_jsx_runtime69 = require("react/jsx-runtime");
+var import_jsx_runtime70 = require("react/jsx-runtime");
 var PresenceContext = React55.createContext(null);
 var ResetPresence = (props) => {
   const parent = React55.useContext(PresenceContext);
-  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(PresenceContext.Provider, {
+  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(PresenceContext.Provider, {
     value: props.disable ? parent : null,
     children: props.children
   });
@@ -11853,11 +11942,11 @@ function createIdentifier(prefix, name, key) {
   var hashedString = hash_default(name + key);
   return process.env.NODE_ENV !== "production" ? prefix + "-" + name + "-" + hashedString : prefix + "-" + hashedString;
 }
-function createKeyframes(keyframes2) {
+function createKeyframes(keyframes) {
   var prefixes4 = ["-webkit-", ""];
-  var identifier = createIdentifier("r", "animation", JSON.stringify(keyframes2));
-  var steps = "{" + Object.keys(keyframes2).map((stepName) => {
-    var rule = keyframes2[stepName];
+  var identifier = createIdentifier("r", "animation", JSON.stringify(keyframes));
+  var steps = "{" + Object.keys(keyframes).map((stepName) => {
+    var rule = keyframes[stepName];
     var block = createDeclarationBlock(rule);
     return "" + stepName + block;
   }).join("") + "}";
@@ -11873,11 +11962,11 @@ function processKeyframesValue(keyframesValue) {
   var animationNames = [];
   var rules = [];
   var value = Array.isArray(keyframesValue) ? keyframesValue : [keyframesValue];
-  value.forEach((keyframes2) => {
-    if (typeof keyframes2 === "string") {
-      animationNames.push(keyframes2);
+  value.forEach((keyframes) => {
+    if (typeof keyframes === "string") {
+      animationNames.push(keyframes);
     } else {
-      var _createKeyframes = createKeyframes(keyframes2), identifier = _createKeyframes[0], keyframesRules = _createKeyframes[1];
+      var _createKeyframes = createKeyframes(keyframes), identifier = _createKeyframes[0], keyframesRules = _createKeyframes[1];
       animationNames.push(identifier);
       rules.push(...keyframesRules);
     }
@@ -22871,7 +22960,7 @@ function getValue2(input, isColor = false) {
 }
 
 // src/theme/tokens.ts
-var import_tamagui69 = require("tamagui");
+var import_tamagui70 = require("tamagui");
 var palette = {
   transparent: "transparent",
   white: "#FFFFFF",
@@ -23036,7 +23125,7 @@ var zIndexScale = {
   true: 0
   // default (base)
 };
-var tokens = (0, import_tamagui69.createTokens)({
+var tokens = (0, import_tamagui70.createTokens)({
   color: {
     ...palette
   },
@@ -23163,11 +23252,11 @@ var darkColors = {
 };
 
 // src/theme/index.ts
-var import_tamagui70 = require("tamagui");
-var lightTheme = (0, import_tamagui70.createTheme)({
+var import_tamagui71 = require("tamagui");
+var lightTheme = (0, import_tamagui71.createTheme)({
   ...lightColors
 });
-var darkTheme = (0, import_tamagui70.createTheme)({
+var darkTheme = (0, import_tamagui71.createTheme)({
   ...darkColors
 });
 var themes = {
@@ -23176,7 +23265,7 @@ var themes = {
 };
 
 // src/tamagui.config.ts
-var ceraProFont = (0, import_tamagui71.createFont)({
+var ceraProFont = (0, import_tamagui72.createFont)({
   family: "Cera Pro",
   size: {
     1: 12,
@@ -23239,7 +23328,7 @@ var animations = createAnimations({
     stiffness: 250
   }
 });
-var config = (0, import_tamagui71.createTamagui)({
+var config = (0, import_tamagui72.createTamagui)({
   // Animations
   animations,
   // Fonts
@@ -23305,8 +23394,8 @@ var config = (0, import_tamagui71.createTamagui)({
 var tamagui_config_default = config;
 
 // src/providers/AppProviders.tsx
-var import_jsx_runtime70 = require("react/jsx-runtime");
-var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui72.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(ErrorBoundary, { componentName: "AppProviders", children }) }) });
+var import_jsx_runtime71 = require("react/jsx-runtime");
+var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_tamagui73.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ErrorBoundary, { componentName: "AppProviders", children }) }) });
 
 // src/fonts.ts
 var fonts = {
@@ -23482,6 +23571,7 @@ var fonts = {
   ResizablePanel,
   ResizablePanelGroup,
   RichText,
+  SchemaForm,
   ScrollArea,
   Select,
   SelectContent,

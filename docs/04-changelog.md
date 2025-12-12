@@ -23,3 +23,6 @@
 ## [Deployment Fix] - 2025-02-12
 - **Vercel:** Created `vercel.json` to fix hanging build (Storybook dev server) and set correct output directory.
 - **Cleanup:** Removed forbidden `pnpm-workspace.yaml`.
+
+### 🧬 Evolution Phase 5.1 (Intelligent Organisms)
+- **New Organism:** `SchemaForm` - Dynamic form builder wrapping `react-hook-form` and rendering mapped UI components.
