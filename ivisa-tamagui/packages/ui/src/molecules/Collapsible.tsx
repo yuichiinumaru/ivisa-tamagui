@@ -40,9 +40,9 @@ export const CollapsibleContent = styled(CollapsiblePrimitive.Content, {
   name: 'CollapsibleContent',
   overflow: 'hidden',
   paddingTop: '$4',
-  animation: 'quick',
-  enterStyle: { opacity: 0, height: 0 },
-  exitStyle: { opacity: 0, height: 0 },
+  // animation: 'quick',
+  // enterStyle: { opacity: 0, height: 0 },
+  // exitStyle: { opacity: 0, height: 0 },
 })
 
 // 2. Facade Component
