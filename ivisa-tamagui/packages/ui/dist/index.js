@@ -4510,11 +4510,11 @@ var YStack5 = (0, import_core3.styled)(import_core3.View, {
   variants
 });
 YStack5.displayName = "YStack";
-var XStack6 = (0, import_core3.styled)(import_core3.View, {
+var XStack5 = (0, import_core3.styled)(import_core3.View, {
   flexDirection: "row",
   variants
 });
-XStack6.displayName = "XStack";
+XStack5.displayName = "XStack";
 var ZStack = (0, import_core3.styled)(YStack5, {
   position: "relative"
 }, {
@@ -5482,10 +5482,10 @@ var CollapsibleTrigger = (0, import_tamagui22.styled)(import_tamagui22.XStack, {
 var CollapsibleContent = (0, import_tamagui22.styled)(CollapsiblePrimitive.Content, {
   name: "CollapsibleContent",
   overflow: "hidden",
-  paddingTop: "$4",
-  animation: "quick",
-  enterStyle: { opacity: 0, height: 0 },
-  exitStyle: { opacity: 0, height: 0 }
+  paddingTop: "$4"
+  // animation: 'quick',
+  // enterStyle: { opacity: 0, height: 0 },
+  // exitStyle: { opacity: 0, height: 0 },
 });
 var Collapsible = import_react23.default.forwardRef(
   ({
@@ -9652,24 +9652,18 @@ var RichTextToolbar = ({ editor }) => {
             }
           });
         },
-        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Tooltip, { placement: "top", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TooltipTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Icon, { size: 16 }) }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TooltipContent, { children: label })
-        ] }, name))
+        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Icon, { size: 16 }) }) }, name))
       }
     ),
-    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Tooltip, { placement: "top", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TooltipTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
-        Button,
-        {
-          variant: editor.isActive("heading", { level }) ? "secondary" : "ghost",
-          onPress: () => editor.chain().focus().toggleHeading({ level }).run(),
-          "aria-label": label,
-          children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Icon, { size: 16 })
-        }
-      ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TooltipContent, { children: label })
-    ] }, level))
+    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+      Button,
+      {
+        variant: editor.isActive("heading", { level }) ? "secondary" : "ghost",
+        onPress: () => editor.chain().focus().toggleHeading({ level }).run(),
+        "aria-label": label,
+        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Icon, { size: 16 })
+      }
+    ) }, level))
   ] });
 };
 var RichTextFrame = ({
@@ -9948,7 +9942,7 @@ function DataTable({
     ] }) }) }),
     showPagination && table.getPageCount() > 1 && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(TableRow, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(import_tamagui58.YStack, { flex: 1 }),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(import_tamagui58.XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
         /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(import_tamagui58.Text, { fontSize: "$2", color: "$color", children: localization.pageOf(
           table.getState().pagination.pageIndex + 1,
           table.getPageCount()

@@ -9,7 +9,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import { ScrollView, Text, YStack } from 'tamagui'
+import { ScrollView, Text, XStack, YStack } from 'tamagui'
 import { Button } from '../../atoms/Button'
 import { Skeleton } from '../../atoms/Skeleton'
 import { Empty } from '../../molecules/Empty'

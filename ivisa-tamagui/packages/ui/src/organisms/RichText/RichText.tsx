@@ -27,7 +27,7 @@ import DOMPurify from 'isomorphic-dompurify'
 
 import { Button } from '../../atoms/Button'
 import { Skeleton } from '../../atoms/Skeleton'
-import { Tooltip, TooltipContent, TooltipTrigger } from '../../molecules/Tooltip'
+import { Tooltip } from '../../molecules/Tooltip'
 import { ToggleGroup, ToggleGroupItem } from '../../molecules/ToggleGroup'
 
 import './proseMirror.css'
@@ -92,29 +92,23 @@ const RichTextToolbar = ({ editor }) => {
         }}
       >
         {toggleGroupItems.map(({ name, icon: Icon, label }) => (
-          <Tooltip key={name} placement="top">
-            <TooltipTrigger asChild>
-              <ToggleGroupItem value={name} aria-label={label}>
-                <Icon size={16} />
-              </ToggleGroupItem>
-            </TooltipTrigger>
-            <TooltipContent>{label}</TooltipContent>
+          <Tooltip key={name} placement="top" content={label}>
+            <ToggleGroupItem value={name} aria-label={label}>
+              <Icon size={16} />
+            </ToggleGroupItem>
           </Tooltip>
         ))}
       </ToggleGroup>
 
       {headingItems.map(({ level, icon: Icon, label }) => (
-        <Tooltip key={level} placement="top">
-          <TooltipTrigger asChild>
-            <Button
-              variant={editor.isActive('heading', { level }) ? 'secondary' : 'ghost'}
-              onPress={() => editor.chain().focus().toggleHeading({ level }).run()}
-              aria-label={label}
-            >
-              <Icon size={16} />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>{label}</TooltipContent>
+        <Tooltip key={level} placement="top" content={label}>
+          <Button
+            variant={editor.isActive('heading', { level }) ? 'secondary' : 'ghost'}
+            onPress={() => editor.chain().focus().toggleHeading({ level }).run()}
+            aria-label={label}
+          >
+            <Icon size={16} />
+          </Button>
         </Tooltip>
       ))}
     </Toolbar>

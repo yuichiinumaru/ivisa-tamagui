@@ -2191,10 +2191,10 @@ var require_nullthrows = __commonJS({
 
 // src/atoms/Alert.tsx
 import { Children, cloneElement, forwardRef, isValidElement } from "react";
-import { styled, Text, XStack as XStack2, YStack } from "tamagui";
+import { styled, Text, XStack, YStack } from "tamagui";
 import { X } from "@tamagui/lucide-icons";
 import { jsx, jsxs } from "react/jsx-runtime";
-var AlertFrame = styled(XStack2, {
+var AlertFrame = styled(XStack, {
   name: "Alert",
   tag: "div",
   alignItems: "center",
@@ -2246,7 +2246,7 @@ var AlertDescriptionFrame = styled(Text, {
   color: "$color11"
   // Will inherit color from the parent AlertFrame variant
 });
-var AlertCloseButton = styled(XStack2, {
+var AlertCloseButton = styled(XStack, {
   name: "AlertCloseButton",
   tag: "button",
   als: "flex-start",
@@ -2581,7 +2581,7 @@ import React6 from "react";
 import {
   AlertDialog as TamaguiAlertDialog,
   styled as styled8,
-  XStack as XStack4,
+  XStack as XStack3,
   YStack as YStack4,
   Spinner as Spinner2
 } from "tamagui";
@@ -2780,7 +2780,7 @@ var AlertDialogDescription = styled8(TamaguiAlertDialog.Description, {
   color: "$mutedForeground",
   lineHeight: "$4"
 });
-var AlertDialogFooter = styled8(XStack4, {
+var AlertDialogFooter = styled8(XStack3, {
   name: "AlertDialogFooter",
   flexDirection: "row",
   justifyContent: "flex-end",
@@ -2971,7 +2971,7 @@ Badge.displayName = "Badge";
 // src/atoms/Input/Input.tsx
 import { Eye, EyeOff } from "@tamagui/lucide-icons";
 import React7, { useContext, useState as useState2 } from "react";
-import { Input as TamaguiInput, styled as styled10, XStack as XStack5, View as View2, Text as Text4 } from "tamagui";
+import { Input as TamaguiInput, styled as styled10, XStack as XStack4, View as View2, Text as Text4 } from "tamagui";
 import { jsx as jsx10, jsxs as jsxs7 } from "react/jsx-runtime";
 var InputContext = React7.createContext(null);
 var useInputContext = () => {
@@ -3057,7 +3057,7 @@ var StyledInput = styled10(TamaguiInput, {
     size: "default"
   }
 });
-var InputFrame = styled10(XStack5, {
+var InputFrame = styled10(XStack4, {
   name: "InputFrame",
   alignItems: "center",
   borderRadius: "$md",
@@ -3078,7 +3078,7 @@ var InputFrame = styled10(XStack5, {
     size: "default"
   }
 });
-var SimpleInputFrame = styled10(XStack5, {
+var SimpleInputFrame = styled10(XStack4, {
   name: "SimpleInputFrame",
   alignItems: "center",
   borderRadius: "$md",
@@ -3696,7 +3696,7 @@ var Blockquote = styled14(Text5, {
 });
 
 // src/atoms/Progress/Progress.tsx
-import { styled as styled18, Text as Text6, XStack as XStack7, YStack as YStack6 } from "tamagui";
+import { styled as styled18, Text as Text6, XStack as XStack6, YStack as YStack6 } from "tamagui";
 
 // ../../node_modules/@tamagui/progress/dist/esm/Progress.mjs
 import { getVariableValue as getVariableValue2, styled as styled17 } from "@tamagui/core";
@@ -4287,11 +4287,11 @@ var YStack5 = styled15(View3, {
   variants
 });
 YStack5.displayName = "YStack";
-var XStack6 = styled15(View3, {
+var XStack5 = styled15(View3, {
   flexDirection: "row",
   variants
 });
-XStack6.displayName = "XStack";
+XStack5.displayName = "XStack";
 var ZStack = styled15(YStack5, {
   position: "relative"
 }, {
@@ -4617,7 +4617,7 @@ var ProgressComponent = React19.forwardRef(
     }
     let content = /* @__PURE__ */ jsx19(ProgressFrame2, { ref, value, size, ...props, children: /* @__PURE__ */ jsx19(ProgressIndicatorFrame2, { status, animation: "bouncy" }) });
     if (showValue) {
-      content = /* @__PURE__ */ jsxs12(XStack7, { alignItems: "center", gap: "$3", width: "100%", children: [
+      content = /* @__PURE__ */ jsxs12(XStack6, { alignItems: "center", gap: "$3", width: "100%", children: [
         content,
         /* @__PURE__ */ jsxs12(
           Text6,
@@ -4784,7 +4784,7 @@ import React22 from "react";
 import {
   TextArea as TamaguiTextArea,
   styled as styled22,
-  XStack as XStack8,
+  XStack as XStack7,
   YStack as YStack7
 } from "tamagui";
 
@@ -4907,7 +4907,7 @@ var TextareaImpl = React22.forwardRef(
     return /* @__PURE__ */ jsxs13(YStack7, { width: "100%", space: "$2", children: [
       label && /* @__PURE__ */ jsx23(Label, { htmlFor: id2, children: label }),
       /* @__PURE__ */ jsxs13(
-        XStack8,
+        XStack7,
         {
           alignItems: "center",
           space: "$2",
@@ -4957,7 +4957,7 @@ var Textarea = withErrorLogging(
 
 // src/atoms/Checkbox/Checkbox.tsx
 import React24 from "react";
-import { Checkbox as TamaguiCheckbox, styled as styled23, Label as Label2, XStack as XStack9, YStack as YStack8, Text as Text7 } from "tamagui";
+import { Checkbox as TamaguiCheckbox, styled as styled23, Label as Label2, XStack as XStack8, YStack as YStack8, Text as Text7 } from "tamagui";
 import { Check, Minus } from "@tamagui/lucide-icons";
 
 // ../../node_modules/@tamagui/use-controllable-state/dist/esm/useControllableState.mjs
@@ -5096,7 +5096,7 @@ var CheckboxImpl = React24.forwardRef(
       strategy: "prop-wins"
     });
     return /* @__PURE__ */ jsxs14(YStack8, { space: "$1.5", children: [
-      /* @__PURE__ */ jsxs14(XStack9, { alignItems: "center", space: "$2", children: [
+      /* @__PURE__ */ jsxs14(XStack8, { alignItems: "center", space: "$2", children: [
         /* @__PURE__ */ jsx24(
           StyledCheckbox,
           {
@@ -5128,7 +5128,7 @@ var Checkbox = withErrorLogging(
 );
 
 // src/molecules/Card/Card.tsx
-import { styled as styled24, Text as Text8, XStack as XStack10, YStack as YStack9 } from "tamagui";
+import { styled as styled24, Text as Text8, XStack as XStack9, YStack as YStack9 } from "tamagui";
 import { jsx as jsx25, jsxs as jsxs15 } from "react/jsx-runtime";
 var CardFrame = styled24(YStack9, {
   name: "Card",
@@ -5189,7 +5189,7 @@ var CardContent = styled24(YStack9, {
   name: "CardContent",
   gap: "$4"
 });
-var CardFooter = styled24(XStack10, {
+var CardFooter = styled24(XStack9, {
   name: "CardFooter",
   borderTopWidth: 1,
   borderTopColor: "$borderColor",
@@ -5232,7 +5232,7 @@ var Card = ({
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { ChevronDown as ChevronDown2 } from "@tamagui/lucide-icons";
 import React25, { useContext as useContext5, useState as useState5 } from "react";
-import { Button as Button3, Text as Text9, XStack as XStack11, YStack as YStack10, styled as styled25 } from "tamagui";
+import { Button as Button3, Text as Text9, XStack as XStack10, YStack as YStack10, styled as styled25 } from "tamagui";
 import { jsx as jsx26, jsxs as jsxs16 } from "react/jsx-runtime";
 var CollapsibleContext = React25.createContext({ open: false });
 var useCollapsibleContext = () => useContext5(CollapsibleContext);
@@ -5240,7 +5240,7 @@ var CollapsibleRoot = styled25(CollapsiblePrimitive.Root, {
   name: "Collapsible",
   width: "100%"
 });
-var CollapsibleTrigger = styled25(XStack11, {
+var CollapsibleTrigger = styled25(XStack10, {
   name: "CollapsibleTrigger",
   alignItems: "center",
   justifyContent: "space-between",
@@ -5264,10 +5264,10 @@ var CollapsibleTrigger = styled25(XStack11, {
 var CollapsibleContent = styled25(CollapsiblePrimitive.Content, {
   name: "CollapsibleContent",
   overflow: "hidden",
-  paddingTop: "$4",
-  animation: "quick",
-  enterStyle: { opacity: 0, height: 0 },
-  exitStyle: { opacity: 0, height: 0 }
+  paddingTop: "$4"
+  // animation: 'quick',
+  // enterStyle: { opacity: 0, height: 0 },
+  // exitStyle: { opacity: 0, height: 0 },
 });
 var Collapsible = React25.forwardRef(
   ({
@@ -5308,7 +5308,7 @@ var Collapsible = React25.forwardRef(
               "aria-invalid": hasError,
               children: [
                 /* @__PURE__ */ jsx26(Text9, { fontSize: "$4", fontWeight: "bold", ellipse: true, children: title }),
-                /* @__PURE__ */ jsxs16(XStack11, { gap: "$2", alignItems: "center", flexShrink: 0, children: [
+                /* @__PURE__ */ jsxs16(XStack10, { gap: "$2", alignItems: "center", flexShrink: 0, children: [
                   rightSlot,
                   /* @__PURE__ */ jsx26(Button3, { size: "$3", chromeless: true, icon: ChevronDown2 })
                 ] })
@@ -5333,7 +5333,7 @@ import {
   Dialog as TamaguiDialog,
   styled as styled26,
   Unspaced,
-  XStack as XStack12,
+  XStack as XStack11,
   YStack as YStack11
 } from "tamagui";
 import { jsx as jsx27, jsxs as jsxs17 } from "react/jsx-runtime";
@@ -5396,7 +5396,7 @@ var DialogDescription = styled26(TamaguiDialog.Description, {
   lineHeight: "$4"
 });
 var DialogFooterComponent = React26.forwardRef(
-  ({ actions, children, ...props }, ref) => /* @__PURE__ */ jsx27(XStack12, { ...props, ref, children: actions ?? children })
+  ({ actions, children, ...props }, ref) => /* @__PURE__ */ jsx27(XStack11, { ...props, ref, children: actions ?? children })
 );
 var DialogFooter = styled26(DialogFooterComponent, {
   name: "DialogFooter",
@@ -5440,7 +5440,7 @@ import React28, { useState as useState6 } from "react";
 import {
   Sheet as TamaguiSheet,
   styled as styled27,
-  XStack as XStack13,
+  XStack as XStack12,
   YStack as YStack12,
   H2 as H22,
   Paragraph as Paragraph3,
@@ -5508,7 +5508,7 @@ var SheetContent = forwardRef6(
               /* @__PURE__ */ jsx28(Skeleton, { height: 40 })
             ] })
           ] }),
-          /* @__PURE__ */ jsx28(XStack13, { justifyContent: "flex-end", marginTop: "$4", children: /* @__PURE__ */ jsx28(Skeleton, { height: 44, width: 120 }) })
+          /* @__PURE__ */ jsx28(XStack12, { justifyContent: "flex-end", marginTop: "$4", children: /* @__PURE__ */ jsx28(Skeleton, { height: 44, width: 120 }) })
         ] }) : children
       ] })
     ] });
@@ -5522,7 +5522,7 @@ var SheetHeader = styled27(YStack12, {
 });
 var SheetFooterComponent = forwardRef6(
   ({ children, actions, ...props }, ref) => {
-    return /* @__PURE__ */ jsxs18(XStack13, { ref, ...props, children: [
+    return /* @__PURE__ */ jsxs18(XStack12, { ref, ...props, children: [
       children,
       actions
     ] });
@@ -5892,7 +5892,7 @@ var PopoverAnchor = TamaguiPopover.Anchor;
 var PopoverClose = TamaguiPopover.Close;
 
 // src/molecules/HoverCard/HoverCard.tsx
-import { Avatar as Avatar2, Paragraph as Paragraph4, Popover as Popover2, XStack as XStack14, YStack as YStack15, Text as Text11 } from "tamagui";
+import { Avatar as Avatar2, Paragraph as Paragraph4, Popover as Popover2, XStack as XStack13, YStack as YStack15, Text as Text11 } from "tamagui";
 import { AlertTriangle } from "@tamagui/lucide-icons";
 import { jsx as jsx32, jsxs as jsxs22 } from "react/jsx-runtime";
 var HoverCard = ({ children, ...rest }) => {
@@ -5916,14 +5916,14 @@ var HoverCardProfileContent = ({
     }
   };
   if (hasError) {
-    return /* @__PURE__ */ jsx32(YStack15, { ...containerProps, children: /* @__PURE__ */ jsxs22(XStack14, { space: "$2", ai: "center", jc: "center", children: [
+    return /* @__PURE__ */ jsx32(YStack15, { ...containerProps, children: /* @__PURE__ */ jsxs22(XStack13, { space: "$2", ai: "center", jc: "center", children: [
       /* @__PURE__ */ jsx32(AlertTriangle, { color: "$red10", size: "$1" }),
       /* @__PURE__ */ jsx32(Text11, { color: "$red10", fontSize: "$2", children: "N\xE3o foi poss\xEDvel carregar o perfil." })
     ] }) });
   }
   if (isLoading) {
     return /* @__PURE__ */ jsxs22(YStack15, { ...containerProps, children: [
-      /* @__PURE__ */ jsxs22(XStack14, { space: "$4", ai: "center", children: [
+      /* @__PURE__ */ jsxs22(XStack13, { space: "$4", ai: "center", children: [
         /* @__PURE__ */ jsx32(Skeleton, { br: "$12", w: "$10", h: "$10" }),
         /* @__PURE__ */ jsxs22(YStack15, { space: "$1", children: [
           /* @__PURE__ */ jsx32(Skeleton, { h: "$2", w: "$12" }),
@@ -5932,15 +5932,15 @@ var HoverCardProfileContent = ({
       ] }),
       /* @__PURE__ */ jsx32(Skeleton, { h: "$2" }),
       /* @__PURE__ */ jsx32(Skeleton, { h: "$2" }),
-      /* @__PURE__ */ jsxs22(XStack14, { space: "$4", children: [
+      /* @__PURE__ */ jsxs22(XStack13, { space: "$4", children: [
         /* @__PURE__ */ jsx32(Skeleton, { h: "$2", w: "$12" }),
         /* @__PURE__ */ jsx32(Skeleton, { h: "$2", w: "$12" })
       ] }),
-      actions && /* @__PURE__ */ jsx32(XStack14, { jc: "flex-end", children: actions })
+      actions && /* @__PURE__ */ jsx32(XStack13, { jc: "flex-end", children: actions })
     ] });
   }
   return /* @__PURE__ */ jsxs22(YStack15, { ...containerProps, children: [
-    /* @__PURE__ */ jsxs22(XStack14, { space: "$4", ai: "center", children: [
+    /* @__PURE__ */ jsxs22(XStack13, { space: "$4", ai: "center", children: [
       /* @__PURE__ */ jsx32(Avatar2, { circular: true, size: "$10", children: /* @__PURE__ */ jsx32(Avatar2.Image, { source: { uri: user.avatar } }) }),
       /* @__PURE__ */ jsxs22(YStack15, { space: "$1", f: 1, children: [
         /* @__PURE__ */ jsx32(Paragraph4, { size: "$3", fontWeight: "bold", ellipse: true, children: user.name }),
@@ -5948,7 +5948,7 @@ var HoverCardProfileContent = ({
       ] })
     ] }),
     user.bio && /* @__PURE__ */ jsx32(Paragraph4, { size: "$2", ellipse: true, children: user.bio }),
-    /* @__PURE__ */ jsxs22(XStack14, { space: "$4", children: [
+    /* @__PURE__ */ jsxs22(XStack13, { space: "$4", children: [
       /* @__PURE__ */ jsxs22(Paragraph4, { size: "$2", children: [
         /* @__PURE__ */ jsx32(Paragraph4, { fontWeight: "bold", children: user.following }),
         " Seguindo"
@@ -5958,7 +5958,7 @@ var HoverCardProfileContent = ({
         " Seguidores"
       ] })
     ] }),
-    actions && /* @__PURE__ */ jsx32(XStack14, { jc: "flex-end", children: actions })
+    actions && /* @__PURE__ */ jsx32(XStack13, { jc: "flex-end", children: actions })
   ] });
 };
 
@@ -5969,7 +5969,7 @@ import {
   RadioGroup as TamaguiRadioGroup,
   styled as styled30,
   Text as Text12,
-  XStack as XStack15,
+  XStack as XStack14,
   YStack as YStack16
 } from "tamagui";
 import { jsx as jsx33, jsxs as jsxs23 } from "react/jsx-runtime";
@@ -6037,15 +6037,15 @@ var RadioGroup2 = React30.forwardRef(
     errorMessage,
     ...props
   }, ref) => {
-    const Container = orientation === "vertical" ? YStack16 : XStack15;
+    const Container = orientation === "vertical" ? YStack16 : XStack14;
     if (isLoading) {
-      return /* @__PURE__ */ jsx33(Container, { gap: "$2", "aria-busy": "true", "aria-live": "polite", children: options.map((option) => /* @__PURE__ */ jsxs23(XStack15, { alignItems: "center", space: "$2", children: [
+      return /* @__PURE__ */ jsx33(Container, { gap: "$2", "aria-busy": "true", "aria-live": "polite", children: options.map((option) => /* @__PURE__ */ jsxs23(XStack14, { alignItems: "center", space: "$2", children: [
         /* @__PURE__ */ jsx33(Skeleton, { width: 16, height: 16, borderRadius: "$10" }),
         /* @__PURE__ */ jsx33(Skeleton, { width: 100, height: 16 })
       ] }, option.value)) });
     }
     return /* @__PURE__ */ jsxs23(YStack16, { children: [
-      /* @__PURE__ */ jsx33(TamaguiRadioGroup, { ref, ...props, children: /* @__PURE__ */ jsx33(Container, { gap: "$2", children: options.map((option) => /* @__PURE__ */ jsxs23(XStack15, { alignItems: "center", space: "$2", children: [
+      /* @__PURE__ */ jsx33(TamaguiRadioGroup, { ref, ...props, children: /* @__PURE__ */ jsx33(Container, { gap: "$2", children: options.map((option) => /* @__PURE__ */ jsxs23(XStack14, { alignItems: "center", space: "$2", children: [
         /* @__PURE__ */ jsx33(
           RadioGroupItem,
           {
@@ -6076,7 +6076,7 @@ RadioGroup2.displayName = "RadioGroup";
 import {
   styled as styled31,
   YStack as YStack17,
-  XStack as XStack16,
+  XStack as XStack15,
   Separator as Separator3,
   Theme
 } from "tamagui";
@@ -6101,7 +6101,7 @@ var useResizablePanelGroup = () => {
   }
   return context;
 };
-var ResizablePanelGroupFrame = styled31(XStack16, {
+var ResizablePanelGroupFrame = styled31(XStack15, {
   name: "ResizablePanelGroup",
   flex: 1,
   width: "100%",
@@ -6426,12 +6426,12 @@ import {
   Select as TamaguiSelect,
   Sheet as Sheet2,
   styled as styled32,
-  XStack as XStack17,
+  XStack as XStack16,
   YStack as YStack18
 } from "tamagui";
 import { jsx as jsx35, jsxs as jsxs25 } from "react/jsx-runtime";
 var SelectRoot = (props) => /* @__PURE__ */ jsx35(TamaguiSelect, { ...props });
-var SelectTriggerFrame = styled32(XStack17, {
+var SelectTriggerFrame = styled32(XStack16, {
   name: "SelectTrigger",
   width: "100%",
   flexDirection: "row",
@@ -6561,13 +6561,13 @@ SelectRoot.Sheet = SelectSheet;
 import { Star } from "@tamagui/lucide-icons";
 import { forwardRef as forwardRef9, useState as useState8 } from "react";
 import {
-  XStack as XStack18,
+  XStack as XStack17,
   getVariableValue as getVariableValue3,
   styled as styled33,
   withStaticProperties as withStaticProperties4
 } from "tamagui";
 import { jsx as jsx36, jsxs as jsxs26 } from "react/jsx-runtime";
-var StarRatingFrame = styled33(XStack18, {
+var StarRatingFrame = styled33(XStack17, {
   name: "StarRating",
   gap: "$1",
   variants: {
@@ -6579,7 +6579,7 @@ var StarRatingFrame = styled33(XStack18, {
     }
   }
 });
-var StarIconContainer = styled33(XStack18, {
+var StarIconContainer = styled33(XStack17, {
   name: "StarIconContainer",
   cursor: "pointer",
   variants: {
@@ -6661,7 +6661,7 @@ var StarRating = withStaticProperties4(StarRatingComponent, {});
 
 // src/molecules/Toast.tsx
 import { createContext as createContext6, useContext as useContext9, useState as useState9, useCallback as useCallback5 } from "react";
-import { styled as styled34, XStack as XStack19, YStack as YStack19, Text as Text13, Button as Button5, AnimatePresence } from "tamagui";
+import { styled as styled34, XStack as XStack18, YStack as YStack19, Text as Text13, Button as Button5, AnimatePresence } from "tamagui";
 import { Portal as Portal2 } from "@tamagui/portal";
 import { X as X3 } from "@tamagui/lucide-icons";
 import { jsx as jsx37, jsxs as jsxs27 } from "react/jsx-runtime";
@@ -6685,7 +6685,7 @@ var ToastViewportFrame = styled34(YStack19, {
   zIndex: 1e4,
   pointerEvents: "box-none"
 });
-var ToastFrame = styled34(XStack19, {
+var ToastFrame = styled34(XStack18, {
   name: "Toast",
   backgroundColor: "$background",
   borderRadius: "$6",
@@ -6837,7 +6837,7 @@ var ToastDescription = ToastDescriptionComponent;
 
 // src/molecules/Tabs.tsx
 import { createContext as createContext7, useContext as useContext10 } from "react";
-import { Tabs as TamaguiTabs, styled as styled35, YStack as YStack20, XStack as XStack20 } from "tamagui";
+import { Tabs as TamaguiTabs, styled as styled35, YStack as YStack20, XStack as XStack19 } from "tamagui";
 import { Fragment as Fragment6, jsx as jsx38, jsxs as jsxs28 } from "react/jsx-runtime";
 var TabsContext = createContext7({});
 var useTabsContext = () => {
@@ -6926,7 +6926,7 @@ var TabsList = ({
 }) => {
   const { hasError } = useTabsContext();
   return /* @__PURE__ */ jsxs28(
-    XStack20,
+    XStack19,
     {
       backgroundColor: "$muted",
       borderRadius: "$4",
@@ -6958,7 +6958,7 @@ var TabsContent = (props) => {
 // src/molecules/Calendar/Calendar.tsx
 import { useState as useState10 } from "react";
 import { useDatePicker } from "@rehookify/datepicker";
-import { YStack as YStack21, XStack as XStack21, Text as Text14, styled as styled36 } from "tamagui";
+import { YStack as YStack21, XStack as XStack20, Text as Text14, styled as styled36 } from "tamagui";
 import { ChevronLeft, ChevronRight as ChevronRight2 } from "@tamagui/lucide-icons";
 import { jsx as jsx39, jsxs as jsxs29 } from "react/jsx-runtime";
 var MONTHS_PT_BR = [
@@ -6999,7 +6999,7 @@ var CalendarContainer = styled36(YStack21, {
     }
   }
 });
-var CalendarHeader = styled36(XStack21, {
+var CalendarHeader = styled36(XStack20, {
   justifyContent: "space-between",
   alignItems: "center"
 });
@@ -7012,7 +7012,7 @@ var CalendarTitle = styled36(Text14, {
 var CalendarGrid = styled36(YStack21, {
   gap: "$2"
 });
-var WeekDaysGrid = styled36(XStack21, {
+var WeekDaysGrid = styled36(XStack20, {
   gap: "$2"
 });
 var WeekDayText = styled36(Text14, {
@@ -7022,7 +7022,7 @@ var WeekDayText = styled36(Text14, {
   fontSize: "$2",
   fontWeight: "600"
 });
-var DaysGrid = styled36(XStack21, {
+var DaysGrid = styled36(XStack20, {
   flexWrap: "wrap",
   gap: "$2"
 });
@@ -7081,8 +7081,8 @@ var DayText = styled36(Text14, {
   }
 });
 var SkeletonGrid = () => /* @__PURE__ */ jsxs29(YStack21, { gap: "$2", "data-testid": "calendar-skeleton", children: [
-  /* @__PURE__ */ jsx39(XStack21, { gap: "$2", justifyContent: "space-around", children: Array.from({ length: 7 }).map((_, i) => /* @__PURE__ */ jsx39(Skeleton, { width: 40, height: 20, borderRadius: "$2" }, i)) }),
-  /* @__PURE__ */ jsx39(XStack21, { flexWrap: "wrap", gap: "$2", justifyContent: "space-around", children: Array.from({ length: 35 }).map((_, i) => /* @__PURE__ */ jsx39(Skeleton, { width: 40, height: 40, borderRadius: "$4" }, i)) })
+  /* @__PURE__ */ jsx39(XStack20, { gap: "$2", justifyContent: "space-around", children: Array.from({ length: 7 }).map((_, i) => /* @__PURE__ */ jsx39(Skeleton, { width: 40, height: 20, borderRadius: "$2" }, i)) }),
+  /* @__PURE__ */ jsx39(XStack20, { flexWrap: "wrap", gap: "$2", justifyContent: "space-around", children: Array.from({ length: 35 }).map((_, i) => /* @__PURE__ */ jsx39(Skeleton, { width: 40, height: 40, borderRadius: "$4" }, i)) })
 ] });
 var Calendar = ({
   selectedDate,
@@ -7154,9 +7154,9 @@ import { Calendar as CalendarIcon } from "@tamagui/lucide-icons";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import React37 from "react";
-import { Adapt as Adapt2, Popover as Popover3, Sheet as Sheet3, styled as styled37, XStack as XStack22 } from "tamagui";
+import { Adapt as Adapt2, Popover as Popover3, Sheet as Sheet3, styled as styled37, XStack as XStack21 } from "tamagui";
 import { jsx as jsx40, jsxs as jsxs30 } from "react/jsx-runtime";
-var DatePickerFrame = styled37(XStack22, {
+var DatePickerFrame = styled37(XStack21, {
   name: "DatePickerFrame",
   alignItems: "center",
   borderRadius: "$md",
@@ -7508,9 +7508,9 @@ import {
   ChevronsRight
 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo3 } from "react";
-import { Button as Button6, Text as Text15, VisuallyHidden, XStack as XStack23, styled as styled39 } from "tamagui";
+import { Button as Button6, Text as Text15, VisuallyHidden, XStack as XStack22, styled as styled39 } from "tamagui";
 import { jsx as jsx42, jsxs as jsxs31 } from "react/jsx-runtime";
-var PaginationRoot = styled39(XStack23, {
+var PaginationRoot = styled39(XStack22, {
   name: "PaginationRoot",
   alignItems: "center",
   gap: "$sm",
@@ -7649,7 +7649,7 @@ var Pagination = ({
   };
   if (isLoading) {
     return /* @__PURE__ */ jsxs31(
-      XStack23,
+      XStack22,
       {
         alignItems: "center",
         gap: "$sm",
@@ -7815,23 +7815,23 @@ var Pagination = ({
 Pagination.displayName = "Pagination";
 
 // src/molecules/Breadcrumb/Breadcrumb.tsx
-import { Anchor, Button as Button7, Text as Text16, XStack as XStack24, styled as styled40 } from "tamagui";
+import { Anchor, Button as Button7, Text as Text16, XStack as XStack23, styled as styled40 } from "tamagui";
 import { jsx as jsx43, jsxs as jsxs32 } from "react/jsx-runtime";
-var BreadcrumbRoot = styled40(XStack24, {
+var BreadcrumbRoot = styled40(XStack23, {
   name: "BreadcrumbRoot",
   alignItems: "center",
   justifyContent: "space-between",
   gap: "$4",
   width: "100%"
 });
-var BreadcrumbList = styled40(XStack24, {
+var BreadcrumbList = styled40(XStack23, {
   name: "BreadcrumbList",
   gap: "$sm",
   alignItems: "center",
   flexWrap: "nowrap",
   overflow: "hidden"
 });
-var BreadcrumbItemWrapper = styled40(XStack24, {
+var BreadcrumbItemWrapper = styled40(XStack23, {
   name: "BreadcrumbItem",
   alignItems: "center",
   gap: "$sm"
@@ -7907,7 +7907,7 @@ var Breadcrumb = ({
         !isLast && /* @__PURE__ */ jsx43(BreadcrumbSeparator, { "aria-hidden": true, children: separator })
       ] }, `${item.label}-${index}`);
     }) }),
-    rightSlot && /* @__PURE__ */ jsx43(XStack24, { children: rightSlot })
+    rightSlot && /* @__PURE__ */ jsx43(XStack23, { children: rightSlot })
   ] });
 };
 Breadcrumb.displayName = "Breadcrumb";
@@ -7990,7 +7990,7 @@ function withErrorBoundary(WrappedComponent, errorBoundaryProps) {
 import React41 from "react";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { Check as Check4, ChevronRight as ChevronRight4, Circle as Circle2 } from "@tamagui/lucide-icons";
-import { styled as styled41, XStack as XStack25, Text as Text17, YStack as YStack25 } from "tamagui";
+import { styled as styled41, XStack as XStack24, Text as Text17, YStack as YStack25 } from "tamagui";
 import { jsx as jsx45, jsxs as jsxs34 } from "react/jsx-runtime";
 var StyledContent = styled41(ContextMenuPrimitive.Content, {
   name: "ContextMenuContent",
@@ -8193,7 +8193,7 @@ var ContextMenuComponent = ({
     if (item.items && item.items.length > 0) {
       return /* @__PURE__ */ jsxs34(ContextMenuPrimitive.Sub, { children: [
         /* @__PURE__ */ jsxs34(StyledSubTrigger, { disabled: item.disabled, children: [
-          /* @__PURE__ */ jsxs34(XStack25, { gap: "$2", alignItems: "center", children: [
+          /* @__PURE__ */ jsxs34(XStack24, { gap: "$2", alignItems: "center", children: [
             item.icon,
             /* @__PURE__ */ jsx45(Text17, { ellipse: true, children: item.label })
           ] }),
@@ -8224,7 +8224,7 @@ var ContextMenuComponent = ({
       ] }, key);
     }
     return /* @__PURE__ */ jsxs34(StyledItem, { disabled: item.disabled, onSelect: item.onSelect, children: [
-      /* @__PURE__ */ jsxs34(XStack25, { gap: "$2", alignItems: "center", children: [
+      /* @__PURE__ */ jsxs34(XStack24, { gap: "$2", alignItems: "center", children: [
         item.icon,
         /* @__PURE__ */ jsx45(Text17, { ellipse: true, children: item.label })
       ] }),
@@ -8253,7 +8253,7 @@ var ContextMenu = ContextMenuComponent;
 
 // src/molecules/NavigationMenu.tsx
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
-import { styled as styled42, YStack as YStack26, XStack as XStack26 } from "tamagui";
+import { styled as styled42, YStack as YStack26, XStack as XStack25 } from "tamagui";
 import { jsx as jsx46, jsxs as jsxs35 } from "react/jsx-runtime";
 var NavigationMenu = styled42(NavigationMenuPrimitive.Root, {
   name: "NavigationMenu",
@@ -8384,7 +8384,7 @@ var NavigationMenuComponent = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsxs35(XStack26, { alignItems: "center", gap: "$4", children: [
+    return /* @__PURE__ */ jsxs35(XStack25, { alignItems: "center", gap: "$4", children: [
       /* @__PURE__ */ jsx46(Skeleton, { height: 32, width: 120 }),
       /* @__PURE__ */ jsx46(Skeleton, { height: 32, width: 120 }),
       /* @__PURE__ */ jsx46(Skeleton, { height: 32, width: 120 })
@@ -8884,7 +8884,7 @@ var ToggleGroup = withStaticProperties5(ToggleGroupRoot, {
 });
 
 // src/molecules/Tooltip/Tooltip.tsx
-import { Tooltip as TamaguiTooltip, styled as styled46, Paragraph as Paragraph7, YStack as YStack29, XStack as XStack27 } from "tamagui";
+import { Tooltip as TamaguiTooltip, styled as styled46, Paragraph as Paragraph7, YStack as YStack29, XStack as XStack26 } from "tamagui";
 import React44 from "react";
 import { jsx as jsx50, jsxs as jsxs38 } from "react/jsx-runtime";
 var TooltipContent = styled46(TamaguiTooltip.Content, {
@@ -8935,7 +8935,7 @@ var Tooltip = React44.forwardRef(({ children, content, isLoading = false, hasErr
       /* @__PURE__ */ jsx50(TooltipArrow, { hasError }),
       /* @__PURE__ */ jsxs38(YStack29, { gap: "$2", children: [
         typeof content === "string" ? /* @__PURE__ */ jsx50(Paragraph7, { size: "$2", children: content }) : content,
-        actions && /* @__PURE__ */ jsx50(XStack27, { gap: "$2", children: actions })
+        actions && /* @__PURE__ */ jsx50(XStack26, { gap: "$2", children: actions })
       ] })
     ] })
   ] });
@@ -8943,7 +8943,7 @@ var Tooltip = React44.forwardRef(({ children, content, isLoading = false, hasErr
 Tooltip.displayName = "Tooltip";
 
 // src/molecules/Stepper/Stepper.tsx
-import { Text as Text18, XStack as XStack28, YStack as YStack31 } from "tamagui";
+import { Text as Text18, XStack as XStack27, YStack as YStack31 } from "tamagui";
 
 // src/molecules/Stepper/Stepper.context.tsx
 import { createContext as createContext9, useContext as useContext12, useState as useState11 } from "react";
@@ -9013,7 +9013,7 @@ var StepperContent = () => {
     return /* @__PURE__ */ jsxs39(YStack31, { space: "$2", "data-testid": "skeleton-container", children: [
       /* @__PURE__ */ jsx52(Skeleton, { height: 28, width: 250 }),
       /* @__PURE__ */ jsx52(Skeleton, { height: 120 }),
-      /* @__PURE__ */ jsxs39(XStack28, { justifyContent: "space-between", children: [
+      /* @__PURE__ */ jsxs39(XStack27, { justifyContent: "space-between", children: [
         /* @__PURE__ */ jsx52(Skeleton, { height: 44, width: 110 }),
         /* @__PURE__ */ jsx52(Skeleton, { height: 44, width: 110 })
       ] })
@@ -9048,7 +9048,7 @@ var StepperContent = () => {
         children: steps[currentStep].content
       }
     ),
-    /* @__PURE__ */ jsx52(XStack28, { justifyContent: "space-between", children: actions(nextStep, prevStep, isFirstStep, isLastStep, isDisabled2) })
+    /* @__PURE__ */ jsx52(XStack27, { justifyContent: "space-between", children: actions(nextStep, prevStep, isFirstStep, isLastStep, isDisabled2) })
   ] });
 };
 var Stepper2 = ({
@@ -9072,10 +9072,10 @@ var Stepper2 = ({
 };
 
 // src/molecules/AvatarGroup/AvatarGroup.tsx
-import { Text as Text19, XStack as XStack29, styled as styled47 } from "tamagui";
+import { Text as Text19, XStack as XStack28, styled as styled47 } from "tamagui";
 import { jsx as jsx53, jsxs as jsxs40 } from "react/jsx-runtime";
 var AVATAR_GROUP_ITEM_BORDER_WIDTH = 2;
-var AvatarGroupFrame = styled47(XStack29, {
+var AvatarGroupFrame = styled47(XStack28, {
   name: "AvatarGroup",
   alignItems: "center",
   flexDirection: "row",
@@ -9093,7 +9093,7 @@ var AvatarGroupFrame = styled47(XStack29, {
     size: "$10"
   }
 });
-var AvatarGroupItemFrame = styled47(XStack29, {
+var AvatarGroupItemFrame = styled47(XStack28, {
   name: "AvatarGroupItem",
   justifyContent: "center",
   alignItems: "center",
@@ -9182,9 +9182,9 @@ var AvatarGroup = ({
 
 // src/molecules/BadgeCounter/BadgeCounter.tsx
 import { forwardRef as forwardRef11 } from "react";
-import { styled as styled48, XStack as XStack30, YStack as YStack32 } from "tamagui";
+import { styled as styled48, XStack as XStack29, YStack as YStack32 } from "tamagui";
 import { jsx as jsx54, jsxs as jsxs41 } from "react/jsx-runtime";
-var BadgeCounterFrame = styled48(XStack30, {
+var BadgeCounterFrame = styled48(XStack29, {
   name: "BadgeCounter",
   tag: "div",
   position: "relative",
@@ -9470,7 +9470,7 @@ import {
   ScrollView as ScrollView2,
   styled as styled50,
   withStaticProperties as withStaticProperties6,
-  XStack as XStack31,
+  XStack as XStack30,
   YStack as YStack35
 } from "tamagui";
 import DOMPurify from "isomorphic-dompurify";
@@ -9493,7 +9493,7 @@ var EditorContentContainer = styled50(ScrollView2, {
   minHeight: 150,
   padding: "$3"
 });
-var Toolbar = styled50(XStack31, {
+var Toolbar = styled50(XStack30, {
   name: "RichTextToolbar",
   padding: "$2",
   borderBottomWidth: 1,
@@ -9528,24 +9528,18 @@ var RichTextToolbar = ({ editor }) => {
             }
           });
         },
-        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ jsxs43(Tooltip, { placement: "top", children: [
-          /* @__PURE__ */ jsx57(TooltipTrigger, { asChild: true, children: /* @__PURE__ */ jsx57(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ jsx57(Icon, { size: 16 }) }) }),
-          /* @__PURE__ */ jsx57(TooltipContent, { children: label })
-        ] }, name))
+        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ jsx57(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ jsx57(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ jsx57(Icon, { size: 16 }) }) }, name))
       }
     ),
-    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ jsxs43(Tooltip, { placement: "top", children: [
-      /* @__PURE__ */ jsx57(TooltipTrigger, { asChild: true, children: /* @__PURE__ */ jsx57(
-        Button,
-        {
-          variant: editor.isActive("heading", { level }) ? "secondary" : "ghost",
-          onPress: () => editor.chain().focus().toggleHeading({ level }).run(),
-          "aria-label": label,
-          children: /* @__PURE__ */ jsx57(Icon, { size: 16 })
-        }
-      ) }),
-      /* @__PURE__ */ jsx57(TooltipContent, { children: label })
-    ] }, level))
+    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ jsx57(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ jsx57(
+      Button,
+      {
+        variant: editor.isActive("heading", { level }) ? "secondary" : "ghost",
+        onPress: () => editor.chain().focus().toggleHeading({ level }).run(),
+        "aria-label": label,
+        children: /* @__PURE__ */ jsx57(Icon, { size: 16 })
+      }
+    ) }, level))
   ] });
 };
 var RichTextFrame = ({
@@ -9594,13 +9588,13 @@ import {
   getSortedRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import { ScrollView as ScrollView3, Text as Text24, YStack as YStack38 } from "tamagui";
+import { ScrollView as ScrollView3, Text as Text24, XStack as XStack33, YStack as YStack38 } from "tamagui";
 
 // src/molecules/Empty/Empty.tsx
 import { Ban } from "@tamagui/lucide-icons";
 import { YStack as YStack36, Text as Text22, styled as styled51 } from "tamagui";
 import { cloneElement as cloneElement6 } from "react";
-import { XStack as XStack32 } from "tamagui";
+import { XStack as XStack31 } from "tamagui";
 import { jsx as jsx58, jsxs as jsxs44 } from "react/jsx-runtime";
 var EmptyFrame = styled51(YStack36, {
   name: "Empty",
@@ -9682,12 +9676,12 @@ var Empty = ({
       title && /* @__PURE__ */ jsx58(EmptyTitle, { hasError, children: title }),
       description && /* @__PURE__ */ jsx58(EmptyDescription, { hasError, children: description })
     ] }),
-    actions && /* @__PURE__ */ jsx58(XStack32, { marginTop: "$2", children: actions })
+    actions && /* @__PURE__ */ jsx58(XStack31, { marginTop: "$2", children: actions })
   ] });
 };
 
 // src/organisms/DataTable/DataTable.parts.tsx
-import { Text as Text23, View as View6, XStack as XStack33, YStack as YStack37, styled as styled52 } from "tamagui";
+import { Text as Text23, View as View6, XStack as XStack32, YStack as YStack37, styled as styled52 } from "tamagui";
 var MIN_COLUMN_WIDTH = 100;
 var BORDER_WIDTH = 1;
 var TableContainer = styled52(YStack37, {
@@ -9703,7 +9697,7 @@ var TableHeader = styled52(YStack37, {
   borderBottomWidth: BORDER_WIDTH,
   borderColor: "$borderColor"
 });
-var TableRow = styled52(XStack33, {
+var TableRow = styled52(XStack32, {
   name: "TableRow",
   borderBottomWidth: BORDER_WIDTH,
   borderColor: "$borderColor",
@@ -9740,7 +9734,7 @@ var NoResultsCell = styled52(View6, {
   alignItems: "center",
   padding: "$4"
 });
-var HeaderActionsContainer = styled52(XStack33, {
+var HeaderActionsContainer = styled52(XStack32, {
   name: "HeaderActionsContainer",
   paddingHorizontal: "$4",
   paddingBottom: "$3",
@@ -9831,7 +9825,7 @@ function DataTable({
     ] }) }) }),
     showPagination && table.getPageCount() > 1 && /* @__PURE__ */ jsxs45(TableRow, { children: [
       /* @__PURE__ */ jsx59(YStack38, { flex: 1 }),
-      /* @__PURE__ */ jsxs45(XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
+      /* @__PURE__ */ jsxs45(XStack33, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
         /* @__PURE__ */ jsx59(Text24, { fontSize: "$2", color: "$color", children: localization.pageOf(
           table.getState().pagination.pageIndex + 1,
           table.getPageCount()

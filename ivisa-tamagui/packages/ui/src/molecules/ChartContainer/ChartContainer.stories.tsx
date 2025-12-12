@@ -29,7 +29,7 @@ const meta: Meta<typeof ChartContainer> = {
       description: 'Mensagem de erro customizada a ser exibida.',
     },
     rightSlot: {
-      control: 'object',
+      control: false,
       description: 'Permite adicionar um componente à direita do título.',
     },
   },

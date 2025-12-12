@@ -23,10 +23,10 @@ export default meta
 type Story = StoryObj<typeof KPIGrid>
 
 const mockData = [
-  { title: 'Receita Total', value: 'R$ 45.231,89', trend: 'up' },
-  { title: 'Assinaturas', value: '+2.350', trend: 'up' },
-  { title: 'Vendas', value: '1.235', trend: 'down' },
-  { title: 'Taxa de Churn', value: '5,8%', trend: 'neutral' },
+  { metric: { title: 'Receita Total', value: 'R$ 45.231,89', trend: 'up' as const } },
+  { metric: { title: 'Assinaturas', value: '+2.350', trend: 'up' as const } },
+  { metric: { title: 'Vendas', value: '1.235', trend: 'down' as const } },
+  { metric: { title: 'Taxa de Churn', value: '5,8%', trend: 'neutral' as const } },
 ]
 
 export const GoldenPath: Story = {
