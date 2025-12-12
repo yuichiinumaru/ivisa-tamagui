@@ -2975,11 +2975,7 @@ import { Input as TamaguiInput, styled as styled10, XStack as XStack4, View as V
 import { jsx as jsx10, jsxs as jsxs7 } from "react/jsx-runtime";
 var InputContext = React7.createContext(null);
 var useInputContext = () => {
-  const context = useContext(InputContext);
-  if (!context) {
-    throw new Error("Input compound components (Input.Field, Input.Icon, Input.Button) must be used within <Input.Box>");
-  }
-  return context;
+  return useContext(InputContext);
 };
 var inputVariants = {
   variant: {
@@ -3128,7 +3124,8 @@ var UnframedInputStyled = styled10(TamaguiInput, {
   }
 });
 var InputField = React7.forwardRef((props, ref) => {
-  const { size } = useInputContext();
+  const context = useInputContext();
+  const size = props.size || context?.size || "default";
   return /* @__PURE__ */ jsx10(UnframedInputStyled, { ref, size, ...props });
 });
 InputField.displayName = "Input.Field";
@@ -4735,7 +4732,7 @@ var ScrollAreaFrame = styled21(TamaguiScrollView, {
   variants: {
     scrollbar: {
       default: {
-        // @ts-ignore
+        // @ts-expect-error - Tamagui CSS syntax
         "&::-webkit-scrollbar": {
           width: 8,
           height: 8
@@ -5021,7 +5018,7 @@ var StyledCheckbox = styled23(TamaguiCheckbox, {
   },
   variants: {
     size: {
-      "...size": (val, { props }) => {
+      "...size": (val, { props: _props }) => {
         return {
           width: val,
           height: val
