@@ -11,94 +11,17 @@
 ### ⚛️ ATOMS
 **Goal:** Refactor for PT-BR, A11y, and Robustness using the "Atom Algorithm".
 
-- [~] Refactor `Alert` (Dispatched)
-- [~] Refactor `AspectRatio` (Dispatched)
-- [ ] Refactor `Avatar` (Harvested) -> Dispatched
-- [~] Refactor `Badge` (Dispatched)
-- [~] Refactor `Button` (Dispatched)
-- [~] Refactor `Checkbox` (Dispatched)
-- [~] Refactor `Input` (Dispatched)
-- [~] Refactor `Kbd` (Dispatched)
-- [~] Refactor `Label` (Dispatched)
-- [~] Refactor `Progress` (Dispatched)
-- [~] Refactor `ScrollArea` (Dispatched)
-- [~] Refactor `Separator` (Dispatched)
-- [~] Refactor `Skeleton` (Dispatched)
-- [~] Refactor `Slider` (Dispatched)
-- [~] Refactor `Spinner` (Dispatched)
-- [~] Refactor `Stack` (Dispatched)
-- [~] Refactor `Switch` (Dispatched)
-- [~] Refactor `Textarea` (Dispatched)
-- [~] Refactor `Toggle` (Dispatched)
-- [~] Refactor `Typography` (Dispatched)
-- [~] Implement `NavLink` (New - BI Sidebar) (Dispatched)
-- [~] Implement `Logo` (New - BI Sidebar) (Dispatched)
-- [~] Implement `Dot` (New - BI Charts) (Dispatched)
+*(All Priority 1 Atoms have been refactored and moved to 'Completed Tasks'.)*
 
 ### 🧪 MOLECULES
 **Goal:** Upgrade for State Orchestration and Layout Integrity using the "Molecule Algorithm".
 
-- [x] Refactor `Accordion` (Merged)
-- [x] Refactor `AlertDialog` (Merged)
-- [x] Refactor `AvatarGroup` (Merged)
-- [x] Refactor `BadgeCounter` (Merged)
-- [x] Refactor `Breadcrumb` (Merged)
-- [x] Refactor `ButtonGroup` (Merged)
-- [x] Refactor `Calendar` (Merged)
-- [x] Refactor `Card` (Merged)
-- [ ] Refactor `Collapsible` (RE-DISPATCHED: sessions/7658640210671527458)
-- [x] Refactor `ComponentErrorBoundary` (Merged)
-- [x] Refactor `ContextMenu` (Merged)
-- [x] Refactor `Dialog` (Merged)
-- [x] Refactor `Drawer` (Merged)
-- [ ] Refactor `Empty` (RE-DISPATCHED: sessions/4631933430795898581)
-- [x] Refactor `Field` (Merged)
-- [x] Refactor `HoverCard` (Merged)
-- [x] Refactor `InputGroup` (Merged)
-- [x] Refactor `Item` (Merged)
-- [x] Refactor `Menubar` (Merged)
-- [x] Refactor `MonthsPicker` (Merged)
-- [x] Refactor `NativeSelect` (Merged)
-- [x] Refactor `NavigationMenu` (Merged)
-- [x] Refactor `OTPInput` (Merged)
-- [x] Refactor `Pagination` (Merged)
-- [x] Refactor `Popover` (Merged)
-- [x] Refactor `RadioGroup` (Merged)
-- [x] Refactor `Resizable` (Merged)
-- [x] Refactor `Select` (Merged)
-- [!] Refactor `Sheet` (Conflict - PR #146)
-- [ ] Refactor `Sonner` (RE-DISPATCHED: sessions/14881574663270584859)
-- [x] Refactor `StarRating` (Merged)
-- [x] Refactor `Stepper` (Merged)
-- [x] Refactor `Table` (Merged)
-- [x] Refactor `Tabs` (Merged)
-- [x] Refactor `Toast` (Merged)
-- [x] Refactor `ToggleGroup` (Merged)
-- [x] Refactor `Tooltip` (Merged)
-- [ ] Implement `MetricCard` (New - BI) (RE-DISPATCHED: sessions/5069382544934931143)
-- [x] Implement `NavGroup` (New - BI) (Merged)
-- [x] Implement `ChartContainer` (New - BI Wrapper) (Merged)
-- [x] Implement `RadialChartContent` (New - BI) (Merged)
-- [x] Implement `HorizontalBarGroup` (New - BI) (Merged)
+*(All Priority 1 Molecules have been refactored and moved to 'Completed Tasks'.)*
 
 ### 🧬 ORGANISMS
 **Goal:** Upgrade for Data Lifecycle and Container Agnosticism using the "Organism Algorithm".
 
-- [DISPATCHED] Refactor `Autocomplete`
-- [DISPATCHED] Refactor `Carousel`
-- [DISPATCHED] Refactor `Charts` (General Library)
-- [DISPATCHED] Refactor `Command`
-- [DISPATCHED] Refactor `DashboardLayout` -> Refactor to `DashboardShell` (BI)
-- [DISPATCHED] Refactor `DataTable`
-- [DISPATCHED] Refactor `FileUpload`
-- [DISPATCHED] Refactor `Form`
-- [DISPATCHED] Refactor `RichText`
-- [DISPATCHED] Refactor `Sidebar` (App Shell)
-- [DISPATCHED] Refactor `Timeline`
-- [DISPATCHED] Implement `KPIGrid` (New - BI)
-- [DISPATCHED] Implement `TimeSeriesChart` (New - BI)
-- [DISPATCHED] Implement `GaugeChart` (New - BI)
-- [DISPATCHED] Implement `RankingChart` (New - BI)
+*(All Priority 1 Organisms have been implemented and moved to 'Completed Tasks'.)*
 
 ---
 
@@ -154,6 +77,7 @@
 37 - [ ] **QA & Cleanup**
   - [ ] 37a – **Resolve Linting Errors**: Fix remaining lint warnings in `packages/ui` (if any).
   - [ ] 37b – **Standardize Structure**: Ensure all tests are co-located or strictly organized.
+  - [ ] 37c – **Atoms Coverage**: Add tests for `Stack`, `Dot`, `NavLink`.
   - [ ] 38a – **Fix Disabled Tests**: Resolve issues in `Command`, `Menubar`, `DropdownMenu`, and `Autocomplete` tests.
   - [ ] 38b – **Molecules Coverage**: Add tests for `HoverCard`, `NavigationMenu`, `OTPInput`, `Resizable`.
   - [ ] 38c – **Interaction Tests**: Improve reliability of tests involving Radix/Headless interactions in JSDOM.
@@ -162,6 +86,86 @@
 
 ## ✅ Completed Tasks
 
+- [x] Refactor `Alert`
+- [x] Refactor `AspectRatio`
+- [x] Refactor `Avatar`
+- [x] Refactor `Badge`
+- [x] Refactor `Button`
+- [x] Refactor `Checkbox`
+- [x] Refactor `Input`
+- [x] Refactor `Kbd`
+- [x] Refactor `Label`
+- [x] Refactor `Progress`
+- [x] Refactor `ScrollArea`
+- [x] Refactor `Separator`
+- [x] Refactor `Skeleton`
+- [x] Refactor `Slider`
+- [x] Refactor `Spinner`
+- [x] Refactor `Stack`
+- [x] Refactor `Switch`
+- [x] Refactor `Textarea`
+- [x] Refactor `Toggle`
+- [x] Refactor `Typography`
+- [x] Implement `NavLink`
+- [x] Implement `Logo`
+- [x] Implement `Dot`
+- [x] Refactor `Accordion`
+- [x] Refactor `AlertDialog`
+- [x] Refactor `AvatarGroup`
+- [x] Refactor `BadgeCounter`
+- [x] Refactor `Breadcrumb`
+- [x] Refactor `ButtonGroup`
+- [x] Refactor `Calendar`
+- [x] Refactor `Card`
+- [x] Refactor `Collapsible`
+- [x] Refactor `ComponentErrorBoundary`
+- [x] Refactor `ContextMenu`
+- [x] Refactor `Dialog`
+- [x] Refactor `Drawer`
+- [x] Refactor `Empty`
+- [x] Refactor `Field`
+- [x] Refactor `HoverCard`
+- [x] Refactor `InputGroup`
+- [x] Refactor `Item`
+- [x] Refactor `Menubar`
+- [x] Refactor `MonthsPicker`
+- [x] Refactor `NativeSelect`
+- [x] Refactor `NavigationMenu`
+- [x] Refactor `OTPInput`
+- [x] Refactor `Pagination`
+- [x] Refactor `Popover`
+- [x] Refactor `RadioGroup`
+- [x] Refactor `Resizable`
+- [x] Refactor `Select`
+- [x] Refactor `Sheet`
+- [x] Refactor `Sonner`
+- [x] Refactor `StarRating`
+- [x] Refactor `Stepper`
+- [x] Refactor `Table`
+- [x] Refactor `Tabs`
+- [x] Refactor `Toast`
+- [x] Refactor `ToggleGroup`
+- [x] Refactor `Tooltip`
+- [x] Implement `MetricCard`
+- [x] Implement `NavGroup`
+- [x] Implement `ChartContainer`
+- [x] Implement `RadialChartContent`
+- [x] Implement `HorizontalBarGroup`
+- [x] Refactor `Autocomplete`
+- [x] Refactor `Carousel`
+- [x] Refactor `Charts`
+- [x] Refactor `Command`
+- [x] Refactor `DashboardShell` (formerly DashboardLayout)
+- [x] Refactor `DataTable`
+- [x] Refactor `FileUpload`
+- [x] Refactor `Form`
+- [x] Refactor `RichText`
+- [x] Refactor `Sidebar`
+- [x] Refactor `Timeline`
+- [x] Implement `KPIGrid`
+- [x] Implement `TimeSeriesChart`
+- [x] Implement `GaugeChart`
+- [x] Implement `RankingChart`
 - [x] **Restore Visual Check**: Re-implement `scripts/visual-check.js`.
 - [x] **Fix Current Unit Test Failures (P0)**: Fixed snapshot/style mismatches in `Button`, `Typography`, etc.
 - [x] **Implement Security Scanning (P1)**: Integrated security scanner.
