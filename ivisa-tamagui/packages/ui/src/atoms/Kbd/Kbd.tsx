@@ -128,7 +128,7 @@ const Kbd = React.forwardRef<TamaguiElement, KbdProps>(
     return (
       <Comp ref={ref} size={size} variant={variant} {...props} tag="kbd">
         {iconBefore}
-        <KbdText size={size as any}>{children}</KbdText>
+        <KbdText size={size}>{children}</KbdText>
         {iconAfter}
       </Comp>
     )
