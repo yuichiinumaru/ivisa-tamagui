@@ -10628,16 +10628,118 @@ var FileUpload = ({
   ] });
 };
 
+// src/organisms/SchemaForm/SchemaForm.tsx
+import { useForm } from "react-hook-form";
+import { YStack as YStack45 } from "tamagui";
+import { jsx as jsx66, jsxs as jsxs52 } from "react/jsx-runtime";
+var renderFieldInput = (field, formField) => {
+  const commonProps = {
+    disabled: field.disabled,
+    id: field.name
+  };
+  switch (field.type) {
+    case "text":
+    case "email":
+    case "password":
+    case "number":
+      return /* @__PURE__ */ jsx66(
+        Input,
+        {
+          ...formField,
+          ...commonProps,
+          placeholder: field.placeholder,
+          type: field.type === "number" ? "number" : field.type
+        }
+      );
+    case "textarea":
+      return /* @__PURE__ */ jsx66(Textarea, { ...formField, ...commonProps, placeholder: field.placeholder });
+    case "switch":
+      return /* @__PURE__ */ jsx66(
+        Switch,
+        {
+          checked: formField.value,
+          onCheckedChange: formField.onChange,
+          disabled: field.disabled
+        }
+      );
+    case "checkbox":
+      return /* @__PURE__ */ jsx66(
+        Checkbox,
+        {
+          checked: formField.value,
+          onCheckedChange: formField.onChange,
+          disabled: field.disabled
+        }
+      );
+    case "date":
+      return /* @__PURE__ */ jsx66(
+        DatePicker,
+        {
+          date: formField.value,
+          onDateChange: formField.onChange,
+          placeholder: field.placeholder,
+          disabled: field.disabled
+        }
+      );
+    case "select":
+      return /* @__PURE__ */ jsxs52(
+        SelectRoot,
+        {
+          value: formField.value,
+          onValueChange: formField.onChange,
+          disabled: field.disabled,
+          children: [
+            /* @__PURE__ */ jsx66(SelectRoot.Trigger, { placeholder: field.placeholder, children: /* @__PURE__ */ jsx66(SelectRoot.Value, { placeholder: field.placeholder }) }),
+            /* @__PURE__ */ jsx66(SelectRoot.Sheet, {}),
+            /* @__PURE__ */ jsx66(SelectRoot.Content, { children: /* @__PURE__ */ jsx66(SelectRoot.Viewport, { children: /* @__PURE__ */ jsx66(SelectRoot.Group, { children: field.options?.map((opt, i) => /* @__PURE__ */ jsxs52(SelectRoot.Item, { index: i, value: opt.value, children: [
+              /* @__PURE__ */ jsx66(SelectRoot.ItemText, { children: opt.label }),
+              /* @__PURE__ */ jsx66(SelectRoot.ItemIndicator, { marginLeft: "auto" })
+            ] }, opt.value)) }) }) })
+          ]
+        }
+      );
+    default:
+      return null;
+  }
+};
+function SchemaForm({
+  schema,
+  defaultValues,
+  onSubmit,
+  submitText = "Enviar",
+  isLoading
+}) {
+  const form = useForm({ defaultValues });
+  return /* @__PURE__ */ jsx66(Form, { ...form, children: /* @__PURE__ */ jsx66(FormRoot, { tag: "form", onSubmit: form.handleSubmit(onSubmit), children: /* @__PURE__ */ jsxs52(YStack45, { gap: "$4", children: [
+    schema.map((field) => /* @__PURE__ */ jsx66(
+      FormField,
+      {
+        control: form.control,
+        name: field.name,
+        rules: { required: field.required ? "Campo obrigat\xF3rio" : false },
+        render: ({ field: formField }) => /* @__PURE__ */ jsxs52(FormItem, { children: [
+          /* @__PURE__ */ jsx66(FormLabel, { children: field.label }),
+          /* @__PURE__ */ jsx66(FormControl, { children: renderFieldInput(field, formField) }),
+          field.description && /* @__PURE__ */ jsx66(FormDescription, { children: field.description }),
+          /* @__PURE__ */ jsx66(FormMessage, {})
+        ] })
+      },
+      field.name
+    )),
+    /* @__PURE__ */ jsx66(Button, { type: "submit", loading: isLoading, theme: "active", children: submitText })
+  ] }) }) });
+}
+
 // src/molecules/Field/Field.tsx
 import React53 from "react";
-import { styled as styled58, Text as Text31, XStack as XStack37, YStack as YStack45 } from "tamagui";
-import { jsx as jsx66, jsxs as jsxs52 } from "react/jsx-runtime";
-var FieldFrame = styled58(YStack45, {
+import { styled as styled58, Text as Text31, XStack as XStack37, YStack as YStack46 } from "tamagui";
+import { jsx as jsx67, jsxs as jsxs53 } from "react/jsx-runtime";
+var FieldFrame = styled58(YStack46, {
   name: "Field",
   gap: "$2"
 });
 var FieldLabel = Label;
-var FieldControlFrame = styled58(YStack45, {
+var FieldControlFrame = styled58(YStack46, {
   name: "FieldControl",
   flex: 1
 });
@@ -10655,9 +10757,9 @@ var FieldRoot = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsxs52(FieldFrame, { ...props, children: [
-      /* @__PURE__ */ jsx66(Skeleton, { height: "$4", width: "$20" }),
-      /* @__PURE__ */ jsx66(Skeleton, { height: "$10" })
+    return /* @__PURE__ */ jsxs53(FieldFrame, { ...props, children: [
+      /* @__PURE__ */ jsx67(Skeleton, { height: "$4", width: "$20" }),
+      /* @__PURE__ */ jsx67(Skeleton, { height: "$10" })
     ] });
   }
   const childrenArray = React53.Children.toArray(children);
@@ -10687,7 +10789,7 @@ var FieldRoot = ({
         clonedInput
       );
       if (rightSlot) {
-        return /* @__PURE__ */ jsxs52(XStack37, { gap: "$2", alignItems: "center", children: [
+        return /* @__PURE__ */ jsxs53(XStack37, { gap: "$2", alignItems: "center", children: [
           finalControl,
           rightSlot
         ] }, `field-child-${index}`);
@@ -10696,7 +10798,7 @@ var FieldRoot = ({
     }
     return child;
   });
-  return /* @__PURE__ */ jsx66(FieldFrame, { ...props, children: finalChildren });
+  return /* @__PURE__ */ jsx67(FieldFrame, { ...props, children: finalChildren });
 };
 FieldRoot.displayName = "Field";
 var Field = Object.assign(FieldRoot, {
@@ -10708,7 +10810,7 @@ var Field = Object.assign(FieldRoot, {
 // src/molecules/InputGroup/InputGroup.tsx
 import { Spinner as Spinner5, XStack as XStack38, styled as styled59 } from "tamagui";
 import { cloneElement as cloneElement7, Children as Children5 } from "react";
-import { jsx as jsx67, jsxs as jsxs53 } from "react/jsx-runtime";
+import { jsx as jsx68, jsxs as jsxs54 } from "react/jsx-runtime";
 var InputGroupFrame = styled59(XStack38, {
   name: "InputGroup",
   alignItems: "center",
@@ -10737,7 +10839,7 @@ var InputGroup = ({
   isDisabled: isDisabled2
 }) => {
   const childrenArray = Children5.toArray(children);
-  return /* @__PURE__ */ jsxs53(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
+  return /* @__PURE__ */ jsxs54(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
     Children5.map(childrenArray, (child) => {
       if (child.type === Input) {
         return cloneElement7(child, {
@@ -10759,18 +10861,18 @@ var InputGroup = ({
       }
       return child;
     }),
-    isLoading && /* @__PURE__ */ jsx67(Spinner5, {})
+    isLoading && /* @__PURE__ */ jsx68(Spinner5, {})
   ] });
 };
 
 // src/molecules/NativeSelect/NativeSelect.tsx
 import { ChevronDown as ChevronDown6, AlertCircle as AlertCircle3 } from "@tamagui/lucide-icons";
 import { forwardRef as forwardRef13, useId as useId3 } from "react";
-import { YStack as YStack47 } from "tamagui";
+import { YStack as YStack48 } from "tamagui";
 
 // src/molecules/NativeSelect/NativeSelect.styles.ts
-import { Label as TamaguiLabel2, styled as styled60, XStack as XStack39, YStack as YStack46 } from "tamagui";
-var SelectContainer = styled60(YStack46, {
+import { Label as TamaguiLabel2, styled as styled60, XStack as XStack39, YStack as YStack47 } from "tamagui";
+var SelectContainer = styled60(YStack47, {
   name: "SelectContainer",
   gap: "$2"
 });
@@ -10824,22 +10926,22 @@ var Label8 = styled60(TamaguiLabel2, {
 });
 
 // src/molecules/NativeSelect/NativeSelect.tsx
-import { jsx as jsx68, jsxs as jsxs54 } from "react/jsx-runtime";
+import { jsx as jsx69, jsxs as jsxs55 } from "react/jsx-runtime";
 var NativeSelect = forwardRef13(
   ({ children, label, id: id2, hasError = false, isLoading = false, disabled = false, ...props }, ref) => {
     const internalId = useId3();
     const selectId = id2 || internalId;
     if (isLoading) {
-      return /* @__PURE__ */ jsxs54(SelectContainer, { children: [
-        label && /* @__PURE__ */ jsx68(Skeleton, { height: 20, width: 100 }),
-        /* @__PURE__ */ jsx68(Skeleton, { height: 40 })
+      return /* @__PURE__ */ jsxs55(SelectContainer, { children: [
+        label && /* @__PURE__ */ jsx69(Skeleton, { height: 20, width: 100 }),
+        /* @__PURE__ */ jsx69(Skeleton, { height: 40 })
       ] });
     }
-    return /* @__PURE__ */ jsxs54(SelectContainer, { children: [
-      label && /* @__PURE__ */ jsx68(Label8, { htmlFor: selectId, hasError, children: label }),
-      /* @__PURE__ */ jsxs54(SelectTrigger2, { hasError, disabled, children: [
-        /* @__PURE__ */ jsx68(SelectElement, { id: selectId, ref, disabled, ...props, children }),
-        /* @__PURE__ */ jsx68(YStack47, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ jsx68(AlertCircle3, { size: 16, color: "$red10" }) : /* @__PURE__ */ jsx68(ChevronDown6, { size: 16, color: "$color10" }) })
+    return /* @__PURE__ */ jsxs55(SelectContainer, { children: [
+      label && /* @__PURE__ */ jsx69(Label8, { htmlFor: selectId, hasError, children: label }),
+      /* @__PURE__ */ jsxs55(SelectTrigger2, { hasError, disabled, children: [
+        /* @__PURE__ */ jsx69(SelectElement, { id: selectId, ref, disabled, ...props, children }),
+        /* @__PURE__ */ jsx69(YStack48, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ jsx69(AlertCircle3, { size: 16, color: "$red10" }) : /* @__PURE__ */ jsx69(ChevronDown6, { size: 16, color: "$color10" }) })
       ] })
     ] });
   }
@@ -10855,11 +10957,11 @@ import { createTamagui, createFont } from "tamagui";
 
 // ../../node_modules/@tamagui/use-presence/dist/esm/PresenceContext.mjs
 import * as React55 from "react";
-import { jsx as jsx69 } from "react/jsx-runtime";
+import { jsx as jsx70 } from "react/jsx-runtime";
 var PresenceContext = React55.createContext(null);
 var ResetPresence = (props) => {
   const parent = React55.useContext(PresenceContext);
-  return /* @__PURE__ */ jsx69(PresenceContext.Provider, {
+  return /* @__PURE__ */ jsx70(PresenceContext.Provider, {
     value: props.disable ? parent : null,
     children: props.children
   });
@@ -23178,8 +23280,8 @@ var config = createTamagui({
 var tamagui_config_default = config;
 
 // src/providers/AppProviders.tsx
-import { jsx as jsx70 } from "react/jsx-runtime";
-var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ jsx70(TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ jsx70(PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ jsx70(ErrorBoundary, { componentName: "AppProviders", children }) }) });
+import { jsx as jsx71 } from "react/jsx-runtime";
+var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ jsx71(TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ jsx71(PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ jsx71(ErrorBoundary, { componentName: "AppProviders", children }) }) });
 
 // src/fonts.ts
 var fonts = {
@@ -23354,6 +23456,7 @@ export {
   ResizablePanel,
   ResizablePanelGroup,
   RichText,
+  SchemaForm,
   ScrollArea,
   SelectRoot as Select,
   SelectContent,

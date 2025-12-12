@@ -2359,6 +2359,7 @@ __export(index_exports, {
   ResizablePanel: () => ResizablePanel,
   ResizablePanelGroup: () => ResizablePanelGroup,
   RichText: () => RichText,
+  SchemaForm: () => SchemaForm,
   ScrollArea: () => ScrollArea,
   Select: () => SelectRoot,
   SelectContent: () => SelectContent,
@@ -10741,20 +10742,122 @@ var FileUpload = ({
   ] });
 };
 
-// src/molecules/Field/Field.tsx
-var import_react54 = __toESM(require("react"));
+// src/organisms/SchemaForm/SchemaForm.tsx
+var import_react_hook_form2 = require("react-hook-form");
 var import_tamagui65 = require("tamagui");
 var import_jsx_runtime66 = require("react/jsx-runtime");
-var FieldFrame = (0, import_tamagui65.styled)(import_tamagui65.YStack, {
+var renderFieldInput = (field, formField) => {
+  const commonProps = {
+    disabled: field.disabled,
+    id: field.name
+  };
+  switch (field.type) {
+    case "text":
+    case "email":
+    case "password":
+    case "number":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+        Input,
+        {
+          ...formField,
+          ...commonProps,
+          placeholder: field.placeholder,
+          type: field.type === "number" ? "number" : field.type
+        }
+      );
+    case "textarea":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Textarea, { ...formField, ...commonProps, placeholder: field.placeholder });
+    case "switch":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+        Switch,
+        {
+          checked: formField.value,
+          onCheckedChange: formField.onChange,
+          disabled: field.disabled
+        }
+      );
+    case "checkbox":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+        Checkbox,
+        {
+          checked: formField.value,
+          onCheckedChange: formField.onChange,
+          disabled: field.disabled
+        }
+      );
+    case "date":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+        DatePicker,
+        {
+          date: formField.value,
+          onDateChange: formField.onChange,
+          placeholder: field.placeholder,
+          disabled: field.disabled
+        }
+      );
+    case "select":
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
+        SelectRoot,
+        {
+          value: formField.value,
+          onValueChange: formField.onChange,
+          disabled: field.disabled,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Trigger, { placeholder: field.placeholder, children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Value, { placeholder: field.placeholder }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Sheet, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Content, { children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Viewport, { children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.Group, { children: field.options?.map((opt, i) => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(SelectRoot.Item, { index: i, value: opt.value, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.ItemText, { children: opt.label }),
+              /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(SelectRoot.ItemIndicator, { marginLeft: "auto" })
+            ] }, opt.value)) }) }) })
+          ]
+        }
+      );
+    default:
+      return null;
+  }
+};
+function SchemaForm({
+  schema,
+  defaultValues,
+  onSubmit,
+  submitText = "Enviar",
+  isLoading
+}) {
+  const form = (0, import_react_hook_form2.useForm)({ defaultValues });
+  return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Form, { ...form, children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormRoot, { tag: "form", onSubmit: form.handleSubmit(onSubmit), children: /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(import_tamagui65.YStack, { gap: "$4", children: [
+    schema.map((field) => /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+      FormField,
+      {
+        control: form.control,
+        name: field.name,
+        rules: { required: field.required ? "Campo obrigat\xF3rio" : false },
+        render: ({ field: formField }) => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(FormItem, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormLabel, { children: field.label }),
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormControl, { children: renderFieldInput(field, formField) }),
+          field.description && /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormDescription, { children: field.description }),
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FormMessage, {})
+        ] })
+      },
+      field.name
+    )),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Button, { type: "submit", loading: isLoading, theme: "active", children: submitText })
+  ] }) }) });
+}
+
+// src/molecules/Field/Field.tsx
+var import_react54 = __toESM(require("react"));
+var import_tamagui66 = require("tamagui");
+var import_jsx_runtime67 = require("react/jsx-runtime");
+var FieldFrame = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
   name: "Field",
   gap: "$2"
 });
 var FieldLabel = Label;
-var FieldControlFrame = (0, import_tamagui65.styled)(import_tamagui65.YStack, {
+var FieldControlFrame = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
   name: "FieldControl",
   flex: 1
 });
-var FieldErrorFrame = (0, import_tamagui65.styled)(import_tamagui65.Text, {
+var FieldErrorFrame = (0, import_tamagui66.styled)(import_tamagui66.Text, {
   name: "FieldError",
   color: "$destructive",
   fontSize: "$2"
@@ -10768,9 +10871,9 @@ var FieldRoot = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(FieldFrame, { ...props, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Skeleton, { height: "$4", width: "$20" }),
-      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Skeleton, { height: "$10" })
+    return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(FieldFrame, { ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(Skeleton, { height: "$4", width: "$20" }),
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(Skeleton, { height: "$10" })
     ] });
   }
   const childrenArray = import_react54.default.Children.toArray(children);
@@ -10800,7 +10903,7 @@ var FieldRoot = ({
         clonedInput
       );
       if (rightSlot) {
-        return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(import_tamagui65.XStack, { gap: "$2", alignItems: "center", children: [
+        return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(import_tamagui66.XStack, { gap: "$2", alignItems: "center", children: [
           finalControl,
           rightSlot
         ] }, `field-child-${index}`);
@@ -10809,7 +10912,7 @@ var FieldRoot = ({
     }
     return child;
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(FieldFrame, { ...props, children: finalChildren });
+  return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(FieldFrame, { ...props, children: finalChildren });
 };
 FieldRoot.displayName = "Field";
 var Field = Object.assign(FieldRoot, {
@@ -10819,10 +10922,10 @@ var Field = Object.assign(FieldRoot, {
 });
 
 // src/molecules/InputGroup/InputGroup.tsx
-var import_tamagui66 = require("tamagui");
+var import_tamagui67 = require("tamagui");
 var import_react55 = require("react");
-var import_jsx_runtime67 = require("react/jsx-runtime");
-var InputGroupFrame = (0, import_tamagui66.styled)(import_tamagui66.XStack, {
+var import_jsx_runtime68 = require("react/jsx-runtime");
+var InputGroupFrame = (0, import_tamagui67.styled)(import_tamagui67.XStack, {
   name: "InputGroup",
   alignItems: "center",
   borderWidth: 1,
@@ -10850,7 +10953,7 @@ var InputGroup = ({
   isDisabled: isDisabled2
 }) => {
   const childrenArray = import_react55.Children.toArray(children);
-  return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
     import_react55.Children.map(childrenArray, (child) => {
       if (child.type === Input) {
         return (0, import_react55.cloneElement)(child, {
@@ -10872,22 +10975,22 @@ var InputGroup = ({
       }
       return child;
     }),
-    isLoading && /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Spinner, {})
+    isLoading && /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Spinner, {})
   ] });
 };
 
 // src/molecules/NativeSelect/NativeSelect.tsx
 var import_lucide_icons29 = require("@tamagui/lucide-icons");
 var import_react56 = require("react");
-var import_tamagui68 = require("tamagui");
+var import_tamagui69 = require("tamagui");
 
 // src/molecules/NativeSelect/NativeSelect.styles.ts
-var import_tamagui67 = require("tamagui");
-var SelectContainer = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
+var import_tamagui68 = require("tamagui");
+var SelectContainer = (0, import_tamagui68.styled)(import_tamagui68.YStack, {
   name: "SelectContainer",
   gap: "$2"
 });
-var SelectTrigger2 = (0, import_tamagui67.styled)(import_tamagui67.XStack, {
+var SelectTrigger2 = (0, import_tamagui68.styled)(import_tamagui68.XStack, {
   name: "SelectTrigger",
   alignItems: "center",
   justifyContent: "space-between",
@@ -10911,7 +11014,7 @@ var SelectTrigger2 = (0, import_tamagui67.styled)(import_tamagui67.XStack, {
     }
   }
 });
-var SelectElement = (0, import_tamagui67.styled)("select", {
+var SelectElement = (0, import_tamagui68.styled)("select", {
   name: "Select",
   flex: 1,
   height: "100%",
@@ -10923,7 +11026,7 @@ var SelectElement = (0, import_tamagui67.styled)("select", {
   // Reset native styles
   appearance: "none"
 });
-var Label8 = (0, import_tamagui67.styled)(import_tamagui67.Label, {
+var Label8 = (0, import_tamagui68.styled)(import_tamagui68.Label, {
   name: "Label",
   color: "$color",
   fontSize: "$4",
@@ -10937,22 +11040,22 @@ var Label8 = (0, import_tamagui67.styled)(import_tamagui67.Label, {
 });
 
 // src/molecules/NativeSelect/NativeSelect.tsx
-var import_jsx_runtime68 = require("react/jsx-runtime");
+var import_jsx_runtime69 = require("react/jsx-runtime");
 var NativeSelect = (0, import_react56.forwardRef)(
   ({ children, label, id: id2, hasError = false, isLoading = false, disabled = false, ...props }, ref) => {
     const internalId = (0, import_react56.useId)();
     const selectId = id2 || internalId;
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(SelectContainer, { children: [
-        label && /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Skeleton, { height: 20, width: 100 }),
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Skeleton, { height: 40 })
+      return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(SelectContainer, { children: [
+        label && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Skeleton, { height: 20, width: 100 }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Skeleton, { height: 40 })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(SelectContainer, { children: [
-      label && /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Label8, { htmlFor: selectId, hasError, children: label }),
-      /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(SelectTrigger2, { hasError, disabled, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(SelectElement, { id: selectId, ref, disabled, ...props, children }),
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui68.YStack, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_lucide_icons29.AlertCircle, { size: 16, color: "$red10" }) : /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_lucide_icons29.ChevronDown, { size: 16, color: "$color10" }) })
+    return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(SelectContainer, { children: [
+      label && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Label8, { htmlFor: selectId, hasError, children: label }),
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(SelectTrigger2, { hasError, disabled, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(SelectElement, { id: selectId, ref, disabled, ...props, children }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui69.YStack, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_lucide_icons29.AlertCircle, { size: 16, color: "$red10" }) : /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_lucide_icons29.ChevronDown, { size: 16, color: "$color10" }) })
       ] })
     ] });
   }
@@ -10960,19 +11063,19 @@ var NativeSelect = (0, import_react56.forwardRef)(
 NativeSelect.displayName = "NativeSelect";
 
 // src/providers/AppProviders.tsx
-var import_tamagui72 = require("tamagui");
+var import_tamagui73 = require("tamagui");
 var import_portal2 = require("@tamagui/portal");
 
 // src/tamagui.config.ts
-var import_tamagui71 = require("tamagui");
+var import_tamagui72 = require("tamagui");
 
 // ../../node_modules/@tamagui/use-presence/dist/esm/PresenceContext.mjs
 var React55 = __toESM(require("react"), 1);
-var import_jsx_runtime69 = require("react/jsx-runtime");
+var import_jsx_runtime70 = require("react/jsx-runtime");
 var PresenceContext = React55.createContext(null);
 var ResetPresence = (props) => {
   const parent = React55.useContext(PresenceContext);
-  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(PresenceContext.Provider, {
+  return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(PresenceContext.Provider, {
     value: props.disable ? parent : null,
     children: props.children
   });
@@ -22857,7 +22960,7 @@ function getValue2(input, isColor = false) {
 }
 
 // src/theme/tokens.ts
-var import_tamagui69 = require("tamagui");
+var import_tamagui70 = require("tamagui");
 var palette = {
   transparent: "transparent",
   white: "#FFFFFF",
@@ -23022,7 +23125,7 @@ var zIndexScale = {
   true: 0
   // default (base)
 };
-var tokens = (0, import_tamagui69.createTokens)({
+var tokens = (0, import_tamagui70.createTokens)({
   color: {
     ...palette
   },
@@ -23149,11 +23252,11 @@ var darkColors = {
 };
 
 // src/theme/index.ts
-var import_tamagui70 = require("tamagui");
-var lightTheme = (0, import_tamagui70.createTheme)({
+var import_tamagui71 = require("tamagui");
+var lightTheme = (0, import_tamagui71.createTheme)({
   ...lightColors
 });
-var darkTheme = (0, import_tamagui70.createTheme)({
+var darkTheme = (0, import_tamagui71.createTheme)({
   ...darkColors
 });
 var themes = {
@@ -23162,7 +23265,7 @@ var themes = {
 };
 
 // src/tamagui.config.ts
-var ceraProFont = (0, import_tamagui71.createFont)({
+var ceraProFont = (0, import_tamagui72.createFont)({
   family: "Cera Pro",
   size: {
     1: 12,
@@ -23225,7 +23328,7 @@ var animations = createAnimations({
     stiffness: 250
   }
 });
-var config = (0, import_tamagui71.createTamagui)({
+var config = (0, import_tamagui72.createTamagui)({
   // Animations
   animations,
   // Fonts
@@ -23291,8 +23394,8 @@ var config = (0, import_tamagui71.createTamagui)({
 var tamagui_config_default = config;
 
 // src/providers/AppProviders.tsx
-var import_jsx_runtime70 = require("react/jsx-runtime");
-var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui72.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(ErrorBoundary, { componentName: "AppProviders", children }) }) });
+var import_jsx_runtime71 = require("react/jsx-runtime");
+var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_tamagui73.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ErrorBoundary, { componentName: "AppProviders", children }) }) });
 
 // src/fonts.ts
 var fonts = {
@@ -23468,6 +23571,7 @@ var fonts = {
   ResizablePanel,
   ResizablePanelGroup,
   RichText,
+  SchemaForm,
   ScrollArea,
   Select,
   SelectContent,

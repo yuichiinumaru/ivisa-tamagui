@@ -17,7 +17,7 @@
 - [~] Refactor `Badge` (Dispatched)
 - [~] Refactor `Button` (Dispatched)
 - [~] Refactor `Checkbox` (Dispatched)
-- [x] Refactor `Input` (Merged)
+- [~] Refactor `Input` (Dispatched)
 - [~] Refactor `Kbd` (Dispatched)
 - [~] Refactor `Label` (Dispatched)
 - [~] Refactor `Progress` (Dispatched)
@@ -99,6 +99,22 @@
 - [DISPATCHED] Implement `TimeSeriesChart` (New - BI)
 - [DISPATCHED] Implement `GaugeChart` (New - BI)
 - [DISPATCHED] Implement `RankingChart` (New - BI)
+
+---
+
+## 🚀 Priority 2: Intelligent Organisms (Phase 5)
+**Goal:** Transition from "Parts" to "Solutions" using complex logic and composition.
+
+- [x] Implement `SchemaForm` (Dynamic Form Engine)
+- [ ] Implement `Scheduler` (Big Calendar)
+- [ ] Implement `ChatWidget` (AI Interface)
+- [ ] Implement `CookieBanner` (Compliance)
+- [ ] Implement `AnimatedSegmentedControl` (Smart Tabs)
+- [ ] Implement `WizardForm` (Multi-Step Logic)
+- [ ] Implement `FilterBar` (Advanced Search)
+- [ ] Implement `NotificationFeed` (History)
+- [ ] Implement `MediaGrid` (Asset Manager)
+- [ ] Implement `AuthScreen` (Unified Login)
 
 ---
 
