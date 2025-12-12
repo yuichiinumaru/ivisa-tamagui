@@ -85,9 +85,9 @@
 
 ### Phase 4 – Web-Specific UX & Full Documentation
 - **Navigation Menu / Menubar / Context Menu:** For desktop-style navigation, use Radix Primitives and render them with Tamagui primitives. (Completed)
-- **Missing Atoms (Parity):** Implement `Label` and `Kbd`.
-- **Populate Storybook Content (Primary Documentation):** Since markdown specs are deprecated, Storybook is the source of truth. Flesh out Storybook with comprehensive stories for every component.
-- **Spec Cleanup:** Remove empty markdown templates.
+- **Missing Atoms (Parity):** Implement `Label` and `Kbd`. (Completed)
+- **Populate Storybook Content (Primary Documentation):** Since markdown specs are deprecated, Storybook is the source of truth. Flesh out Storybook with comprehensive stories for every component. (Completed)
+- **Spec Cleanup:** Remove empty markdown templates. (Completed)
 - Document sourcing decisions for each composite.
 
 ### Phase 5 – Integration & Handoff
