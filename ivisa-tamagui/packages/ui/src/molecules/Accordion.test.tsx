@@ -1,7 +1,6 @@
 import { render, screen } from '../test-utils'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './Accordion'
 import { Button } from '../atoms/Button'
-import { Text } from 'tamagui'
 
 describe('Accordion', () => {
   it('renders items and allows interaction', () => {

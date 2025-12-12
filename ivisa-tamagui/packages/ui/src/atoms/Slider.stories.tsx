@@ -53,7 +53,7 @@ export const Padrao: Story = {
     step: 1,
     'aria-label': 'Slider Padrão',
   },
-  play: async ({ canvasElement, args }) => {
+  play: async ({ canvasElement }) => {
     const canvas = within(canvasElement)
     const slider = canvas.getByRole('slider', { name: /slider padrão/i })
     await userEvent.tab()

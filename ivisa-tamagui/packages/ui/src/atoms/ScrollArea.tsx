@@ -23,7 +23,7 @@ const ScrollAreaFrame = styled(TamaguiScrollView, {
   variants: {
     scrollbar: {
       default: {
-        // @ts-ignore
+        // @ts-expect-error - Tamagui CSS syntax
         '&::-webkit-scrollbar': {
           width: 8,
           height: 8,
