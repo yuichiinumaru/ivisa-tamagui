@@ -17,7 +17,7 @@
 - [~] Refactor `Badge` (Dispatched)
 - [~] Refactor `Button` (Dispatched)
 - [~] Refactor `Checkbox` (Dispatched)
-- [~] Refactor `Input` (Dispatched)
+- [x] Refactor `Input` (Merged)
 - [~] Refactor `Kbd` (Dispatched)
 - [~] Refactor `Label` (Dispatched)
 - [~] Refactor `Progress` (Dispatched)
