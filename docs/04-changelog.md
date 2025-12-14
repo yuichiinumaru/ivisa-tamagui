@@ -39,3 +39,11 @@
 ## [Documentation Update] - 2025-05-27
 - **Docs Sync:** Updated `docs/01-plan.md` to match the current phase status (Phase 4).
 - **Storybook:** Started comprehensive population of Storybook documentation (Task 25).
+
+## [0.5.0] - 2025-12-14
+### Integrated
+- **Atoms Refactored:** Alert, AspectRatio, Avatar, Badge, Button, Checkbox, Input, Label, Progress, ScrollArea, Separator, Skeleton, Slider, Spinner, Stack, Switch, Textarea, Toggle, Typography.
+- **Molecules Refactored:** Accordion, AlertDialog, AvatarGroup, BadgeCounter, Breadcrumb, ButtonGroup, Calendar, Card, Collapsible, ComponentErrorBoundary, ContextMenu, Dialog, Drawer, Empty, Field, HoverCard, InputGroup, Item, Menubar, MonthsPicker, NativeSelect, NavigationMenu, OTPInput, Pagination, Popover, RadioGroup, Resizable, Select, Sheet, Sonner, StarRating, Stepper, Table, Tabs, Toast, ToggleGroup, Tooltip.
+- **Organisms Implemented:** Autocomplete, Carousel, Charts, Command, DashboardShell, DataTable, FileUpload, Form, RichText, Sidebar, Timeline.
+- **BI Components:** KPIGrid, TimeSeriesChart, GaugeChart, RankingChart.
+- **Infrastructure:** Visual Check scripts restored, Security Scanning integrated, Linting errors resolved (70+).
