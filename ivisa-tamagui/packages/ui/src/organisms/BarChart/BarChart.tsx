@@ -1,6 +1,14 @@
 import { Skeleton } from '../../atoms/Skeleton'
 import { YStack, Text, useTheme } from 'tamagui'
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryContainer } from 'victory'
+import {
+  BarChart as RechartsBarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
 import { AlertTriangle, BarChart3 } from '@tamagui/lucide-icons'
 import React from 'react'
 
@@ -26,11 +34,13 @@ export const BarChart = ({
   headerContent,
 }: BarChartProps) => {
   const theme = useTheme()
+  // Resolve theme color safely
   const themeColor = theme[color as keyof typeof theme]
   const barColor =
     themeColor && typeof themeColor === 'object' && 'get' in themeColor
       ? (themeColor as { get: () => string }).get()
       : color
+
   const axisColor = theme.borderColor?.get() || '#ccc'
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
@@ -59,35 +69,39 @@ export const BarChart = ({
     }
 
     return (
-      <VictoryChart
-        domainPadding={{ x: 20 }}
-        height={height}
-        containerComponent={<VictoryContainer responsive={true} />}
-      >
-        <VictoryAxis
-          style={{
-            axis: { stroke: axisColor },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: 'inherit' },
-          }}
-        />
-        <VictoryAxis
-          dependentAxis
-          style={{
-            axis: { stroke: 'transparent' },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: 'inherit' },
-            grid: { stroke: gridColor, strokeDasharray: '4, 4' },
-          }}
-        />
-        <VictoryBar
-          data={data}
-          x={xKey}
-          y={yKey}
-          style={{
-            data: { fill: barColor },
-          }}
-          cornerRadius={{ top: 4 }}
-        />
-      </VictoryChart>
+      <YStack height={height} width="100%">
+        <ResponsiveContainer width="100%" height="100%">
+          <RechartsBarChart
+            data={data}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
+            <XAxis
+              dataKey={xKey}
+              stroke={axisColor}
+              tick={{ fill: textColor, fontSize: 12 }}
+              tickLine={false}
+              axisLine={{ stroke: axisColor }}
+            />
+            <YAxis
+              stroke={axisColor}
+              tick={{ fill: textColor, fontSize: 12 }}
+              tickLine={false}
+              axisLine={false}
+            />
+            <Tooltip
+              cursor={{ fill: 'transparent' }}
+              contentStyle={{ borderRadius: '8px', border: `1px solid ${gridColor}` }}
+            />
+            <Bar dataKey={yKey} fill={barColor} radius={[4, 4, 0, 0]} />
+          </RechartsBarChart>
+        </ResponsiveContainer>
+      </YStack>
     )
   }
 

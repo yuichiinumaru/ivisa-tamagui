@@ -10355,7 +10355,15 @@ var Sidebar = (props) => {
 
 // src/organisms/BarChart/BarChart.tsx
 import { YStack as YStack42, Text as Text28, useTheme } from "tamagui";
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryContainer } from "victory";
+import {
+  BarChart as RechartsBarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip as Tooltip2,
+  ResponsiveContainer
+} from "recharts";
 import { AlertTriangle as AlertTriangle4, BarChart3 } from "@tamagui/lucide-icons";
 import { jsx as jsx63, jsxs as jsxs49 } from "react/jsx-runtime";
 var BarChart = ({
@@ -10390,48 +10398,48 @@ var BarChart = ({
         /* @__PURE__ */ jsx63(Text28, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsxs49(
-      VictoryChart,
+    return /* @__PURE__ */ jsx63(YStack42, { height, width: "100%", children: /* @__PURE__ */ jsx63(ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs49(
+      RechartsBarChart,
       {
-        domainPadding: { x: 20 },
-        height,
-        containerComponent: /* @__PURE__ */ jsx63(VictoryContainer, { responsive: true }),
+        data,
+        margin: {
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5
+        },
         children: [
+          /* @__PURE__ */ jsx63(CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
           /* @__PURE__ */ jsx63(
-            VictoryAxis,
+            XAxis,
             {
-              style: {
-                axis: { stroke: axisColor },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" }
-              }
+              dataKey: xKey,
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: { stroke: axisColor }
             }
           ),
           /* @__PURE__ */ jsx63(
-            VictoryAxis,
+            YAxis,
             {
-              dependentAxis: true,
-              style: {
-                axis: { stroke: "transparent" },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" },
-                grid: { stroke: gridColor, strokeDasharray: "4, 4" }
-              }
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: false
             }
           ),
           /* @__PURE__ */ jsx63(
-            VictoryBar,
+            Tooltip2,
             {
-              data,
-              x: xKey,
-              y: yKey,
-              style: {
-                data: { fill: barColor }
-              },
-              cornerRadius: { top: 4 }
+              cursor: { fill: "transparent" },
+              contentStyle: { borderRadius: "8px", border: `1px solid ${gridColor}` }
             }
-          )
+          ),
+          /* @__PURE__ */ jsx63(Bar, { dataKey: yKey, fill: barColor, radius: [4, 4, 0, 0] })
         ]
       }
-    );
+    ) }) });
   };
   return /* @__PURE__ */ jsxs49(YStack42, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
@@ -10444,12 +10452,14 @@ var Charts = BarChart;
 // src/organisms/LineChart/LineChart.tsx
 import { YStack as YStack43, styled as styled56, Text as Text29, useTheme as useTheme2, XStack as XStack36 } from "tamagui";
 import {
-  VictoryChart as VictoryChart2,
-  VictoryLine,
-  VictoryAxis as VictoryAxis2,
-  VictoryVoronoiContainer,
-  VictoryTooltip
-} from "victory";
+  LineChart as RechartsLineChart,
+  Line,
+  XAxis as XAxis2,
+  YAxis as YAxis2,
+  CartesianGrid as CartesianGrid2,
+  Tooltip as Tooltip3,
+  ResponsiveContainer as ResponsiveContainer2
+} from "recharts";
 import { AlertCircle as AlertCircle3, Inbox as Inbox2 } from "@tamagui/lucide-icons";
 import { jsx as jsx64, jsxs as jsxs50 } from "react/jsx-runtime";
 var LineChartContainer = styled56(YStack43, {
@@ -10514,61 +10524,57 @@ var LineChart = ({
         /* @__PURE__ */ jsx64(Text29, { fontSize: "$2", color: "$color11", children: "N\xE3o h\xE1 informa\xE7\xF5es dispon\xEDveis no momento." })
       ] });
     }
-    return /* @__PURE__ */ jsxs50(
-      VictoryChart2,
+    return /* @__PURE__ */ jsx64(YStack43, { width: "100%", height: 300, children: /* @__PURE__ */ jsx64(ResponsiveContainer2, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs50(
+      RechartsLineChart,
       {
-        height: 300,
-        padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ jsx64(
-          VictoryVoronoiContainer,
-          {
-            voronoiDimension: "x",
-            labels: ({ datum }) => `${datum[yKey]}`,
-            labelComponent: /* @__PURE__ */ jsx64(
-              VictoryTooltip,
-              {
-                cornerRadius: 4,
-                flyoutStyle: { fill: theme.background?.get() || "white" },
-                style: { fill: textColor }
-              }
-            )
-          }
-        ),
+        data,
+        margin: { top: 20, right: 30, left: 20, bottom: 5 },
         children: [
+          /* @__PURE__ */ jsx64(CartesianGrid2, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
           /* @__PURE__ */ jsx64(
-            VictoryAxis2,
+            XAxis2,
             {
-              style: {
-                axis: { stroke: axisColor },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" }
-              }
+              dataKey: xKey,
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: { stroke: axisColor }
             }
           ),
           /* @__PURE__ */ jsx64(
-            VictoryAxis2,
+            YAxis2,
             {
-              dependentAxis: true,
-              style: {
-                axis: { stroke: "transparent" },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" },
-                grid: { stroke: gridColor, strokeDasharray: "4, 4" }
-              }
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: false
             }
           ),
           /* @__PURE__ */ jsx64(
-            VictoryLine,
+            Tooltip3,
             {
-              data,
-              x: xKey,
-              y: yKey,
-              style: {
-                data: { stroke: lineColor, strokeWidth: 2 }
-              }
+              contentStyle: {
+                borderRadius: "8px",
+                border: `1px solid ${gridColor}`,
+                backgroundColor: theme.background?.get() || "white"
+              },
+              cursor: { stroke: gridColor }
+            }
+          ),
+          /* @__PURE__ */ jsx64(
+            Line,
+            {
+              type: "monotone",
+              dataKey: yKey,
+              stroke: lineColor,
+              strokeWidth: 2,
+              dot: { r: 4, fill: lineColor, strokeWidth: 2, stroke: theme.background?.get() || "white" },
+              activeDot: { r: 6, strokeWidth: 0 }
             }
           )
         ]
       }
-    );
+    ) }) });
   };
   return /* @__PURE__ */ jsxs50(LineChartContainer, { children: [
     /* @__PURE__ */ jsxs50(Header, { children: [
@@ -10583,7 +10589,7 @@ var TimeSeriesChart = LineChart;
 
 // src/organisms/PieChart/PieChart.tsx
 import { YStack as YStack44, styled as styled57, Text as Text30, useTheme as useTheme3 } from "tamagui";
-import { VictoryPie, VictoryTooltip as VictoryTooltip2, VictoryContainer as VictoryContainer2 } from "victory";
+import { PieChart as RechartsPieChart, Pie, Cell, Tooltip as Tooltip4, ResponsiveContainer as ResponsiveContainer3 } from "recharts";
 import { AlertCircle as AlertCircle4, Inbox as Inbox3 } from "@tamagui/lucide-icons";
 import { jsx as jsx65, jsxs as jsxs51 } from "react/jsx-runtime";
 var PieChartContainer = styled57(YStack44, {
@@ -10630,7 +10636,8 @@ var PieChart = ({
     theme.red10?.get() || "#DC3545",
     theme.purple10?.get() || "#6F42C1"
   ];
-  const innerRadius = variant === "donut" ? height / 4 : 0;
+  const innerRadius = variant === "donut" ? "60%" : "0%";
+  const outerRadius = "80%";
   const renderContent = () => {
     if (isLoading) {
       return /* @__PURE__ */ jsx65(Skeleton, { width: height, height, circle: true });
@@ -10648,24 +10655,33 @@ var PieChart = ({
         /* @__PURE__ */ jsx65(Text30, { children: "Sem dados para exibir" })
       ] });
     }
-    return /* @__PURE__ */ jsx65(
-      VictoryPie,
-      {
-        data,
-        x: xKey,
-        y: yKey,
-        height,
-        colorScale,
-        innerRadius,
-        padAngle: 2,
-        cornerRadius: 4,
-        labelComponent: /* @__PURE__ */ jsx65(VictoryTooltip2, {}),
-        style: {
-          labels: { fill: theme.color?.get() || "#000", fontSize: 14 }
-        },
-        containerComponent: /* @__PURE__ */ jsx65(VictoryContainer2, { responsive: true })
-      }
-    );
+    return /* @__PURE__ */ jsx65(YStack44, { width: "100%", height, children: /* @__PURE__ */ jsx65(ResponsiveContainer3, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs51(RechartsPieChart, { children: [
+      /* @__PURE__ */ jsx65(
+        Pie,
+        {
+          data,
+          dataKey: yKey,
+          nameKey: xKey,
+          cx: "50%",
+          cy: "50%",
+          innerRadius,
+          outerRadius,
+          paddingAngle: 2,
+          children: data.map((_, index) => /* @__PURE__ */ jsx65(Cell, { fill: colorScale[index % colorScale.length] }, `cell-${index}`))
+        }
+      ),
+      /* @__PURE__ */ jsx65(
+        Tooltip4,
+        {
+          contentStyle: {
+            borderRadius: "8px",
+            border: `1px solid ${theme.borderColor?.get() || "#eee"}`,
+            backgroundColor: theme.background?.get() || "white"
+          },
+          itemStyle: { color: theme.color?.get() || "#000" }
+        }
+      )
+    ] }) }) });
   };
   return /* @__PURE__ */ jsxs51(PieChartContainer, { children: [
     title && /* @__PURE__ */ jsx65(Text30, { fontSize: "$5", fontWeight: "bold", children: title }),
@@ -10673,17 +10689,19 @@ var PieChart = ({
     footerContent
   ] });
 };
+var DonutChart = (props) => /* @__PURE__ */ jsx65(PieChart, { ...props, variant: "donut" });
 
 // src/organisms/AreaChart/AreaChart.tsx
 import { YStack as YStack45, styled as styled58, Text as Text31, useTheme as useTheme4 } from "tamagui";
 import {
-  VictoryChart as VictoryChart3,
-  VictoryArea,
-  VictoryStack,
-  VictoryAxis as VictoryAxis3,
-  VictoryVoronoiContainer as VictoryVoronoiContainer2,
-  VictoryTooltip as VictoryTooltip3
-} from "victory";
+  AreaChart as RechartsAreaChart,
+  Area,
+  XAxis as XAxis3,
+  YAxis as YAxis3,
+  CartesianGrid as CartesianGrid3,
+  Tooltip as Tooltip5,
+  ResponsiveContainer as ResponsiveContainer4
+} from "recharts";
 import { AlertCircle as AlertCircle5, Inbox as Inbox4 } from "@tamagui/lucide-icons";
 import { jsx as jsx66, jsxs as jsxs52 } from "react/jsx-runtime";
 var AreaChartContainer = styled58(YStack45, {
@@ -10748,58 +10766,93 @@ var AreaChart = ({
         /* @__PURE__ */ jsx66(Text31, { children: "Sem dados para exibir" })
       ] });
     }
-    const renderSeries = () => {
-      if (stacked && isMultiSeries) {
-        return /* @__PURE__ */ jsx66(VictoryStack, { colorScale, children: data.map((series, i) => /* @__PURE__ */ jsx66(VictoryArea, { data: series, x: xKey, y: yKey }, i)) });
+    let chartData = [];
+    const seriesKeys = [];
+    if (isMultiSeries) {
+      const seriesData = data;
+      if (seriesData.length > 0) {
+        chartData = seriesData[0].map((item, index) => {
+          const mergedItem = { [xKey]: item[xKey] };
+          seriesData.forEach((series, sIndex) => {
+            const key = `series_${sIndex}`;
+            seriesKeys.push(key);
+            mergedItem[key] = series[yKey];
+          });
+          return mergedItem;
+        });
       }
-      return /* @__PURE__ */ jsx66(
-        VictoryArea,
-        {
-          data,
-          x: xKey,
-          y: yKey,
-          style: { data: { fill: colorScale[0], fillOpacity: 0.7, stroke: colorScale[0], strokeWidth: 2 } }
-        }
-      );
-    };
-    return /* @__PURE__ */ jsxs52(
-      VictoryChart3,
+    } else {
+      chartData = data;
+      seriesKeys.push(yKey);
+    }
+    return /* @__PURE__ */ jsx66(YStack45, { width: "100%", height, children: /* @__PURE__ */ jsx66(ResponsiveContainer4, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs52(
+      RechartsAreaChart,
       {
-        height,
-        padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ jsx66(
-          VictoryVoronoiContainer2,
-          {
-            voronoiDimension: "x",
-            labels: ({ datum }) => `${datum[yKey]}`,
-            labelComponent: /* @__PURE__ */ jsx66(VictoryTooltip3, {})
-          }
-        ),
+        data: chartData,
+        margin: { top: 20, right: 30, left: 20, bottom: 5 },
         children: [
+          /* @__PURE__ */ jsx66(CartesianGrid3, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
           /* @__PURE__ */ jsx66(
-            VictoryAxis3,
+            XAxis3,
             {
-              style: {
-                axis: { stroke: axisColor },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12 }
-              }
+              dataKey: xKey,
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: { stroke: axisColor }
             }
           ),
           /* @__PURE__ */ jsx66(
-            VictoryAxis3,
+            YAxis3,
             {
-              dependentAxis: true,
-              style: {
-                axis: { stroke: "transparent" },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12 },
-                grid: { stroke: gridColor, strokeDasharray: "4, 4" }
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: false
+            }
+          ),
+          /* @__PURE__ */ jsx66(
+            Tooltip5,
+            {
+              contentStyle: {
+                borderRadius: "8px",
+                border: `1px solid ${gridColor}`,
+                backgroundColor: theme.background?.get() || "white"
               }
             }
           ),
-          renderSeries()
+          isMultiSeries ? (
+            // Multi-series logic
+            seriesKeys.map((key, index) => (
+              // Logic to avoid duplicates in seriesKeys loop if constructed above incorrectly.
+              // Actually seriesKeys will have duplicates if I push in map. Fixed above.
+              // Wait, I pushed in map, so it will duplicate. Let's fix loop.
+              /* @__PURE__ */ jsx66(
+                Area,
+                {
+                  type: "monotone",
+                  dataKey: key,
+                  stackId: stacked ? "1" : void 0,
+                  stroke: colorScale[index % colorScale.length],
+                  fill: colorScale[index % colorScale.length],
+                  fillOpacity: 0.6
+                },
+                key
+              )
+            )).filter((_, i) => i < data.length)
+          ) : /* @__PURE__ */ jsx66(
+            Area,
+            {
+              type: "monotone",
+              dataKey: yKey,
+              stroke: colorScale[0],
+              fill: colorScale[0],
+              fillOpacity: 0.6
+            }
+          )
         ]
       }
-    );
+    ) }) });
   };
   return /* @__PURE__ */ jsxs52(AreaChartContainer, { children: [
     title && /* @__PURE__ */ jsx66(Text31, { fontSize: "$5", fontWeight: "bold", children: title }),
@@ -10811,11 +10864,11 @@ var AreaChart = ({
 // src/organisms/ScatterChart/ScatterChart.tsx
 import { YStack as YStack46, styled as styled59, Text as Text32, useTheme as useTheme5 } from "tamagui";
 import {
-  VictoryChart as VictoryChart4,
+  VictoryChart,
   VictoryScatter,
-  VictoryAxis as VictoryAxis4,
-  VictoryVoronoiContainer as VictoryVoronoiContainer3,
-  VictoryTooltip as VictoryTooltip4
+  VictoryAxis,
+  VictoryVoronoiContainer,
+  VictoryTooltip
 } from "victory";
 import { AlertCircle as AlertCircle6, Inbox as Inbox5 } from "@tamagui/lucide-icons";
 import { jsx as jsx67, jsxs as jsxs53 } from "react/jsx-runtime";
@@ -10877,21 +10930,21 @@ var ScatterChart = ({
       ] });
     }
     return /* @__PURE__ */ jsxs53(
-      VictoryChart4,
+      VictoryChart,
       {
         height,
         padding: { top: 20, bottom: 50, left: 50, right: 20 },
         containerComponent: /* @__PURE__ */ jsx67(
-          VictoryVoronoiContainer3,
+          VictoryVoronoiContainer,
           {
             voronoiDimension: "x",
             labels: ({ datum }) => `${datum[yKey]}`,
-            labelComponent: /* @__PURE__ */ jsx67(VictoryTooltip4, {})
+            labelComponent: /* @__PURE__ */ jsx67(VictoryTooltip, {})
           }
         ),
         children: [
           /* @__PURE__ */ jsx67(
-            VictoryAxis4,
+            VictoryAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -10900,7 +10953,7 @@ var ScatterChart = ({
             }
           ),
           /* @__PURE__ */ jsx67(
-            VictoryAxis4,
+            VictoryAxis,
             {
               dependentAxis: true,
               style: {
@@ -10934,10 +10987,10 @@ var ScatterChart = ({
 // src/organisms/ComboChart/ComboChart.tsx
 import { YStack as YStack47, styled as styled60, Text as Text33, useTheme as useTheme6 } from "tamagui";
 import {
-  VictoryChart as VictoryChart5,
-  VictoryAxis as VictoryAxis5,
-  VictoryVoronoiContainer as VictoryVoronoiContainer4,
-  VictoryTooltip as VictoryTooltip5,
+  VictoryChart as VictoryChart2,
+  VictoryAxis as VictoryAxis2,
+  VictoryVoronoiContainer as VictoryVoronoiContainer2,
+  VictoryTooltip as VictoryTooltip2,
   VictoryGroup
 } from "victory";
 import { AlertCircle as AlertCircle7, Inbox as Inbox6 } from "@tamagui/lucide-icons";
@@ -10994,14 +11047,14 @@ var ComboChart = ({
       ] });
     }
     return /* @__PURE__ */ jsxs54(
-      VictoryChart5,
+      VictoryChart2,
       {
         height,
         padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ jsx68(VictoryVoronoiContainer4, { labelComponent: /* @__PURE__ */ jsx68(VictoryTooltip5, {}) }),
+        containerComponent: /* @__PURE__ */ jsx68(VictoryVoronoiContainer2, { labelComponent: /* @__PURE__ */ jsx68(VictoryTooltip2, {}) }),
         children: [
           /* @__PURE__ */ jsx68(
-            VictoryAxis5,
+            VictoryAxis2,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11010,7 +11063,7 @@ var ComboChart = ({
             }
           ),
           /* @__PURE__ */ jsx68(
-            VictoryAxis5,
+            VictoryAxis2,
             {
               dependentAxis: true,
               style: {
@@ -11034,7 +11087,7 @@ var ComboChart = ({
 
 // src/organisms/BoxPlotChart/BoxPlotChart.tsx
 import { YStack as YStack48, Text as Text34, useTheme as useTheme7 } from "tamagui";
-import { VictoryChart as VictoryChart6, VictoryBoxPlot, VictoryAxis as VictoryAxis6, VictoryContainer as VictoryContainer3 } from "victory";
+import { VictoryChart as VictoryChart3, VictoryBoxPlot, VictoryAxis as VictoryAxis3, VictoryContainer } from "victory";
 import { AlertTriangle as AlertTriangle5, BarChart as BoxPlotIcon } from "@tamagui/lucide-icons";
 import { jsx as jsx69, jsxs as jsxs55 } from "react/jsx-runtime";
 var BoxPlotChart = ({
@@ -11074,14 +11127,14 @@ var BoxPlotChart = ({
       ] });
     }
     return /* @__PURE__ */ jsxs55(
-      VictoryChart6,
+      VictoryChart3,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx69(VictoryContainer3, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx69(VictoryContainer, { responsive: true }),
         children: [
           /* @__PURE__ */ jsx69(
-            VictoryAxis6,
+            VictoryAxis3,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11090,7 +11143,7 @@ var BoxPlotChart = ({
             }
           ),
           /* @__PURE__ */ jsx69(
-            VictoryAxis6,
+            VictoryAxis3,
             {
               dependentAxis: true,
               style: {
@@ -11131,7 +11184,7 @@ var BoxPlotChart = ({
 
 // src/organisms/RadarChart/RadarChart.tsx
 import { YStack as YStack49, Text as Text35, useTheme as useTheme8 } from "tamagui";
-import { VictoryChart as VictoryChart7, VictoryPolarAxis, VictoryArea as VictoryArea2, VictoryGroup as VictoryGroup2, VictoryContainer as VictoryContainer4 } from "victory";
+import { VictoryChart as VictoryChart4, VictoryPolarAxis, VictoryArea, VictoryGroup as VictoryGroup2, VictoryContainer as VictoryContainer2 } from "victory";
 import { AlertTriangle as AlertTriangle6, Activity as RadarIcon } from "@tamagui/lucide-icons";
 import { jsx as jsx70, jsxs as jsxs56 } from "react/jsx-runtime";
 var RadarChart = ({
@@ -11169,19 +11222,19 @@ var RadarChart = ({
     const datasets = Array.isArray(data[0]) ? data : [data];
     const colors = Array.isArray(color) ? color : [color];
     return /* @__PURE__ */ jsxs56(
-      VictoryChart7,
+      VictoryChart4,
       {
         polar: true,
         height,
         domainPadding: { x: 20, y: 20 },
-        containerComponent: /* @__PURE__ */ jsx70(VictoryContainer4, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx70(VictoryContainer2, { responsive: true }),
         children: [
           /* @__PURE__ */ jsx70(
             VictoryGroup2,
             {
               colorScale: colors.map((c) => getColor(c)),
               style: { data: { fillOpacity: 0.2, strokeWidth: 2 } },
-              children: datasets.map((dataset, i) => /* @__PURE__ */ jsx70(VictoryArea2, { data: dataset }, i))
+              children: datasets.map((dataset, i) => /* @__PURE__ */ jsx70(VictoryArea, { data: dataset }, i))
             }
           ),
           datasets[0]?.map((d, i) => {
@@ -11210,7 +11263,7 @@ var RadarChart = ({
 
 // src/organisms/PolarChart/PolarChart.tsx
 import { YStack as YStack50, Text as Text36, useTheme as useTheme9 } from "tamagui";
-import { VictoryChart as VictoryChart8, VictoryPolarAxis as VictoryPolarAxis2, VictoryBar as VictoryBar2, VictoryContainer as VictoryContainer5, VictoryTheme } from "victory";
+import { VictoryChart as VictoryChart5, VictoryPolarAxis as VictoryPolarAxis2, VictoryBar, VictoryContainer as VictoryContainer3, VictoryTheme } from "victory";
 import { AlertTriangle as AlertTriangle7, PieChart as PolarIcon } from "@tamagui/lucide-icons";
 import { jsx as jsx71, jsxs as jsxs57 } from "react/jsx-runtime";
 var PolarChart = ({
@@ -11248,13 +11301,13 @@ var PolarChart = ({
     }
     const colors = Array.isArray(color) ? color : [color];
     return /* @__PURE__ */ jsxs57(
-      VictoryChart8,
+      VictoryChart5,
       {
         polar: true,
         height,
         domainPadding: { x: 20, y: 20 },
         theme: VictoryTheme.material,
-        containerComponent: /* @__PURE__ */ jsx71(VictoryContainer5, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx71(VictoryContainer3, { responsive: true }),
         children: [
           /* @__PURE__ */ jsx71(
             VictoryPolarAxis2,
@@ -11267,7 +11320,7 @@ var PolarChart = ({
             }
           ),
           /* @__PURE__ */ jsx71(
-            VictoryBar2,
+            VictoryBar,
             {
               data,
               x: xKey,
@@ -11294,7 +11347,7 @@ var PolarChart = ({
 
 // src/organisms/WaterfallChart/WaterfallChart.tsx
 import { YStack as YStack51, Text as Text37, useTheme as useTheme10 } from "tamagui";
-import { VictoryChart as VictoryChart9, VictoryBar as VictoryBar3, VictoryAxis as VictoryAxis7, VictoryContainer as VictoryContainer6 } from "victory";
+import { VictoryChart as VictoryChart6, VictoryBar as VictoryBar2, VictoryAxis as VictoryAxis4, VictoryContainer as VictoryContainer4 } from "victory";
 import { AlertTriangle as AlertTriangle8, BarChart as WaterfallIcon } from "@tamagui/lucide-icons";
 import { jsx as jsx72, jsxs as jsxs58 } from "react/jsx-runtime";
 var WaterfallChart = ({
@@ -11357,14 +11410,14 @@ var WaterfallChart = ({
       };
     });
     return /* @__PURE__ */ jsxs58(
-      VictoryChart9,
+      VictoryChart6,
       {
         domainPadding: { x: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx72(VictoryContainer6, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx72(VictoryContainer4, { responsive: true }),
         children: [
           /* @__PURE__ */ jsx72(
-            VictoryAxis7,
+            VictoryAxis4,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11373,7 +11426,7 @@ var WaterfallChart = ({
             }
           ),
           /* @__PURE__ */ jsx72(
-            VictoryAxis7,
+            VictoryAxis4,
             {
               dependentAxis: true,
               style: {
@@ -11384,7 +11437,7 @@ var WaterfallChart = ({
             }
           ),
           /* @__PURE__ */ jsx72(
-            VictoryBar3,
+            VictoryBar2,
             {
               data: processedData,
               x: xKey,
@@ -11414,7 +11467,7 @@ var WaterfallChart = ({
 
 // src/organisms/FunnelChart/FunnelChart.tsx
 import { YStack as YStack52, Text as Text38, useTheme as useTheme11 } from "tamagui";
-import { VictoryChart as VictoryChart10, VictoryBar as VictoryBar4, VictoryAxis as VictoryAxis8, VictoryContainer as VictoryContainer7, VictoryLabel as VictoryLabel2 } from "victory";
+import { VictoryChart as VictoryChart7, VictoryBar as VictoryBar3, VictoryAxis as VictoryAxis5, VictoryContainer as VictoryContainer5, VictoryLabel as VictoryLabel2 } from "victory";
 import { AlertTriangle as AlertTriangle9, Filter as FunnelIcon } from "@tamagui/lucide-icons";
 import { jsx as jsx73, jsxs as jsxs59 } from "react/jsx-runtime";
 var FunnelChart = ({
@@ -11458,14 +11511,14 @@ var FunnelChart = ({
       };
     });
     return /* @__PURE__ */ jsxs59(
-      VictoryChart10,
+      VictoryChart7,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx73(VictoryContainer7, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx73(VictoryContainer5, { responsive: true }),
         children: [
           /* @__PURE__ */ jsx73(
-            VictoryAxis8,
+            VictoryAxis5,
             {
               dependentAxis: true,
               style: {
@@ -11476,7 +11529,7 @@ var FunnelChart = ({
             }
           ),
           /* @__PURE__ */ jsx73(
-            VictoryAxis8,
+            VictoryAxis5,
             {
               style: {
                 axis: { stroke: "transparent" },
@@ -11485,7 +11538,7 @@ var FunnelChart = ({
             }
           ),
           /* @__PURE__ */ jsx73(
-            VictoryBar4,
+            VictoryBar3,
             {
               horizontal: true,
               data: processedData,
@@ -11512,7 +11565,7 @@ var FunnelChart = ({
 
 // src/organisms/BulletChart/BulletChart.tsx
 import { YStack as YStack53, Text as Text39, useTheme as useTheme12 } from "tamagui";
-import { VictoryChart as VictoryChart11, VictoryBar as VictoryBar5, VictoryAxis as VictoryAxis9, VictoryContainer as VictoryContainer8, VictoryScatter as VictoryScatter2 } from "victory";
+import { VictoryChart as VictoryChart8, VictoryBar as VictoryBar4, VictoryAxis as VictoryAxis6, VictoryContainer as VictoryContainer6, VictoryScatter as VictoryScatter2 } from "victory";
 import { AlertTriangle as AlertTriangle10, BarChart as BulletIcon } from "@tamagui/lucide-icons";
 import { jsx as jsx74, jsxs as jsxs60 } from "react/jsx-runtime";
 var BulletChart = ({
@@ -11555,14 +11608,14 @@ var BulletChart = ({
       ] });
     }
     return /* @__PURE__ */ jsxs60(
-      VictoryChart11,
+      VictoryChart8,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx74(VictoryContainer8, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx74(VictoryContainer6, { responsive: true }),
         children: [
           /* @__PURE__ */ jsx74(
-            VictoryAxis9,
+            VictoryAxis6,
             {
               dependentAxis: true,
               style: {
@@ -11572,7 +11625,7 @@ var BulletChart = ({
             }
           ),
           /* @__PURE__ */ jsx74(
-            VictoryAxis9,
+            VictoryAxis6,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11581,7 +11634,7 @@ var BulletChart = ({
             }
           ),
           /* @__PURE__ */ jsx74(
-            VictoryBar5,
+            VictoryBar4,
             {
               data,
               x: xKey,
@@ -11591,7 +11644,7 @@ var BulletChart = ({
             }
           ),
           /* @__PURE__ */ jsx74(
-            VictoryBar5,
+            VictoryBar4,
             {
               data,
               x: xKey,
@@ -11760,7 +11813,7 @@ var SunburstChart = ({
 // src/organisms/ParallelCoordinates/ParallelCoordinates.tsx
 import { useMemo as useMemo9 } from "react";
 import { YStack as YStack55, Text as Text41, useTheme as useTheme14 } from "tamagui";
-import { VictoryChart as VictoryChart12, VictoryLine as VictoryLine2, VictoryAxis as VictoryAxis10, VictoryGroup as VictoryGroup4 } from "victory";
+import { VictoryChart as VictoryChart9, VictoryLine, VictoryAxis as VictoryAxis7, VictoryGroup as VictoryGroup4 } from "victory";
 import { AlertTriangle as AlertTriangle12, Activity } from "@tamagui/lucide-icons";
 import { jsx as jsx76, jsxs as jsxs62 } from "react/jsx-runtime";
 var ParallelCoordinates = ({
@@ -11816,14 +11869,14 @@ var ParallelCoordinates = ({
       ] });
     }
     return /* @__PURE__ */ jsxs62(
-      VictoryChart12,
+      VictoryChart9,
       {
         domain: { x: [0, attributes.length + 1], y: [0, 1] },
         height,
         width,
         children: [
           attributes.map((attr, i) => /* @__PURE__ */ jsx76(
-            VictoryAxis10,
+            VictoryAxis7,
             {
               dependentAxis: true,
               label: attr,
@@ -11838,7 +11891,7 @@ var ParallelCoordinates = ({
             attr
           )),
           /* @__PURE__ */ jsx76(VictoryGroup4, { children: normalizedData.map((series, i) => /* @__PURE__ */ jsx76(
-            VictoryLine2,
+            VictoryLine,
             {
               data: series,
               style: {
@@ -11860,7 +11913,7 @@ var ParallelCoordinates = ({
 // src/organisms/MarimekkoChart/MarimekkoChart.tsx
 import { useMemo as useMemo10 } from "react";
 import { YStack as YStack56, Text as Text42, useTheme as useTheme15 } from "tamagui";
-import { VictoryChart as VictoryChart13, VictoryBar as VictoryBar6, VictoryAxis as VictoryAxis11, VictoryContainer as VictoryContainer9 } from "victory";
+import { VictoryChart as VictoryChart10, VictoryBar as VictoryBar5, VictoryAxis as VictoryAxis8, VictoryContainer as VictoryContainer7 } from "victory";
 import { AlertTriangle as AlertTriangle13, BarChart2 } from "@tamagui/lucide-icons";
 import { jsx as jsx77, jsxs as jsxs63 } from "react/jsx-runtime";
 var MarimekkoChart = ({
@@ -11914,15 +11967,15 @@ var MarimekkoChart = ({
       ] });
     }
     return /* @__PURE__ */ jsxs63(
-      VictoryChart13,
+      VictoryChart10,
       {
         domainPadding: { x: 0 },
         height,
         width,
-        containerComponent: /* @__PURE__ */ jsx77(VictoryContainer9, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx77(VictoryContainer7, { responsive: true }),
         children: [
           /* @__PURE__ */ jsx77(
-            VictoryAxis11,
+            VictoryAxis8,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11931,7 +11984,7 @@ var MarimekkoChart = ({
             }
           ),
           /* @__PURE__ */ jsx77(
-            VictoryAxis11,
+            VictoryAxis8,
             {
               dependentAxis: true,
               style: {
@@ -11942,7 +11995,7 @@ var MarimekkoChart = ({
             }
           ),
           /* @__PURE__ */ jsx77(
-            VictoryBar6,
+            VictoryBar5,
             {
               data: processedData,
               x: "_x",
@@ -11974,7 +12027,7 @@ var MarimekkoChart = ({
 // src/organisms/RidgelinePlot/RidgelinePlot.tsx
 import { useMemo as useMemo11 } from "react";
 import { YStack as YStack57, Text as Text43, useTheme as useTheme16 } from "tamagui";
-import { VictoryChart as VictoryChart14, VictoryArea as VictoryArea3, VictoryAxis as VictoryAxis12 } from "victory";
+import { VictoryChart as VictoryChart11, VictoryArea as VictoryArea2, VictoryAxis as VictoryAxis9 } from "victory";
 import { AlertTriangle as AlertTriangle14, Activity as Activity2 } from "@tamagui/lucide-icons";
 import { jsx as jsx78, jsxs as jsxs64 } from "react/jsx-runtime";
 var RidgelinePlot = ({
@@ -12026,14 +12079,14 @@ var RidgelinePlot = ({
       ] });
     }
     return /* @__PURE__ */ jsxs64(
-      VictoryChart14,
+      VictoryChart11,
       {
         height,
         width,
         domainPadding: { x: 20, y: 10 },
         children: [
           /* @__PURE__ */ jsx78(
-            VictoryAxis12,
+            VictoryAxis9,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -12042,7 +12095,7 @@ var RidgelinePlot = ({
             }
           ),
           processedSeries.map((s, i) => /* @__PURE__ */ jsx78(
-            VictoryArea3,
+            VictoryArea2,
             {
               data: s.processedData,
               style: {
@@ -12664,7 +12717,7 @@ function SchemaForm({
 
 // src/organisms/HeatmapChart/HeatmapChart.tsx
 import { YStack as YStack63, Text as Text48, useTheme as useTheme19 } from "tamagui";
-import { VictoryScatter as VictoryScatter3, VictoryChart as VictoryChart15, VictoryAxis as VictoryAxis13, VictoryContainer as VictoryContainer10 } from "victory";
+import { VictoryScatter as VictoryScatter3, VictoryChart as VictoryChart12, VictoryAxis as VictoryAxis10, VictoryContainer as VictoryContainer8 } from "victory";
 import { AlertTriangle as AlertTriangle17, Grid } from "@tamagui/lucide-icons";
 import { useMemo as useMemo14 } from "react";
 import { jsx as jsx84, jsxs as jsxs70 } from "react/jsx-runtime";
@@ -12720,14 +12773,14 @@ var HeatmapChart = ({
       ] });
     }
     return /* @__PURE__ */ jsxs70(
-      VictoryChart15,
+      VictoryChart12,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx84(VictoryContainer10, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx84(VictoryContainer8, { responsive: true }),
         children: [
           /* @__PURE__ */ jsx84(
-            VictoryAxis13,
+            VictoryAxis10,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -12736,7 +12789,7 @@ var HeatmapChart = ({
             }
           ),
           /* @__PURE__ */ jsx84(
-            VictoryAxis13,
+            VictoryAxis10,
             {
               dependentAxis: true,
               style: {
@@ -13258,7 +13311,7 @@ var ChordDiagram = ({
 import { YStack as YStack67, Text as Text52, useTheme as useTheme23 } from "tamagui";
 import { AlertTriangle as AlertTriangle21, Share2 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo18 } from "react";
-import Svg7, { Circle as Circle6, Line, Text as SvgText6, G as G7 } from "react-native-svg";
+import Svg7, { Circle as Circle6, Line as Line2, Text as SvgText6, G as G7 } from "react-native-svg";
 import { jsx as jsx88, jsxs as jsxs74 } from "react/jsx-runtime";
 var runSimulation = (nodes, links, width, height) => {
   const simNodes = nodes.map((n, i) => ({
@@ -13359,7 +13412,7 @@ var NetworkGraph = ({
     }
     return /* @__PURE__ */ jsx88(Svg7, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs74(G7, { children: [
       layout2.links.map((link, i) => /* @__PURE__ */ jsx88(
-        Line,
+        Line2,
         {
           x1: link.source.x,
           y1: link.source.y,
@@ -26374,6 +26427,7 @@ export {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
+  DonutChart,
   Drawer,
   DrawerClose,
   DrawerContent,

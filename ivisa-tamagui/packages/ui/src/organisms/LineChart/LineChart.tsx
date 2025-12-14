@@ -1,12 +1,14 @@
 import React from 'react'
 import { YStack, styled, Text, useTheme, XStack } from 'tamagui'
 import {
-  VictoryChart,
-  VictoryLine,
-  VictoryAxis,
-  VictoryVoronoiContainer,
-  VictoryTooltip,
-} from 'victory'
+  LineChart as RechartsLineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
 
@@ -98,46 +100,45 @@ export const LineChart = ({
       )
     }
     return (
-      <VictoryChart
-        height={300}
-        padding={{ top: 20, bottom: 50, left: 50, right: 20 }}
-        containerComponent={
-          <VictoryVoronoiContainer
-            voronoiDimension="x"
-            labels={({ datum }) => `${datum[yKey]}`}
-            labelComponent={
-              <VictoryTooltip
-                cornerRadius={4}
-                flyoutStyle={{ fill: theme.background?.get() || 'white' }}
-                style={{ fill: textColor }}
-              />
-            }
-          />
-        }
-      >
-        <VictoryAxis
-          style={{
-            axis: { stroke: axisColor },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: 'inherit' },
-          }}
-        />
-        <VictoryAxis
-          dependentAxis
-          style={{
-            axis: { stroke: 'transparent' },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: 'inherit' },
-            grid: { stroke: gridColor, strokeDasharray: '4, 4' },
-          }}
-        />
-        <VictoryLine
-          data={data}
-          x={xKey}
-          y={yKey}
-          style={{
-            data: { stroke: lineColor, strokeWidth: 2 },
-          }}
-        />
-      </VictoryChart>
+      <YStack width="100%" height={300}>
+        <ResponsiveContainer width="100%" height="100%">
+          <RechartsLineChart
+            data={data}
+            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
+            <XAxis
+              dataKey={xKey}
+              stroke={axisColor}
+              tick={{ fill: textColor, fontSize: 12 }}
+              tickLine={false}
+              axisLine={{ stroke: axisColor }}
+            />
+            <YAxis
+              stroke={axisColor}
+              tick={{ fill: textColor, fontSize: 12 }}
+              tickLine={false}
+              axisLine={false}
+            />
+            <Tooltip
+              contentStyle={{
+                borderRadius: '8px',
+                border: `1px solid ${gridColor}`,
+                backgroundColor: theme.background?.get() || 'white',
+              }}
+              cursor={{ stroke: gridColor }}
+            />
+            <Line
+              type="monotone"
+              dataKey={yKey}
+              stroke={lineColor}
+              strokeWidth={2}
+              dot={{ r: 4, fill: lineColor, strokeWidth: 2, stroke: theme.background?.get() || 'white' }}
+              activeDot={{ r: 6, strokeWidth: 0 }}
+            />
+          </RechartsLineChart>
+        </ResponsiveContainer>
+      </YStack>
     )
   }
 
