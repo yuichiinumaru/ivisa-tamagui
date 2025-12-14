@@ -164,6 +164,7 @@ const SelectItemText = TamaguiSelect.ItemText;
 const SelectGroup = TamaguiSelect.Group;
 const SelectLabel = TamaguiSelect.Label;
 const SelectViewport = TamaguiSelect.Viewport;
+const SelectPortal = TamaguiSelect.Portal; // Alias for Portal
 
 SelectRoot.Trigger = SelectTrigger;
 SelectRoot.Value = SelectValue;
@@ -174,6 +175,7 @@ SelectRoot.ItemIndicator = SelectItemIndicator;
 SelectRoot.Group = SelectGroup;
 SelectRoot.Label = SelectLabel;
 SelectRoot.Sheet = SelectSheet;
+SelectRoot.Portal = SelectPortal; // Attach to Root
 
 export {
   SelectRoot as Select,
@@ -187,4 +189,5 @@ export {
   SelectLabel,
   SelectSheet,
   SelectViewport,
+  SelectPortal,
 };

@@ -160,15 +160,22 @@ export const DashboardShell = DashboardShellFrame.styleable<DashboardShellProps>
       <DashboardShellFrame ref={ref} {...props}>
         <XStack flex={1} position="relative">
           {isMobile && isSidebarOpen && <Overlay onPress={toggleSidebar} />}
-          {sidebar && !isLoading && (!isMobile || isSidebarOpen) && <Sidebar>{sidebar}</Sidebar>}
-          {sidebar && isLoading && (!isMobile || isSidebarOpen) && (
+
+          {/* Sidebar Area - Always rendered if sidebar exists to preserve layout or toggle logic */}
+          {sidebar && (!isMobile || isSidebarOpen) && (
             <Sidebar>
-              <Skeleton height={30} width={120} />
-              <YStack gap="$2">
-                <Skeleton height={20} />
-                <Skeleton height={20} />
-                <Skeleton height={20} />
-              </YStack>
+              {isLoading ? (
+                <>
+                  <Skeleton height={30} width={120} />
+                  <YStack gap="$2">
+                    <Skeleton height={20} />
+                    <Skeleton height={20} />
+                    <Skeleton height={20} />
+                  </YStack>
+                </>
+              ) : (
+                sidebar
+              )}
             </Sidebar>
           )}
 
@@ -182,9 +189,10 @@ export const DashboardShell = DashboardShellFrame.styleable<DashboardShellProps>
                     variant="tertiary"
                   />
                 )}
-                {header && !isLoading && header}
+                {/* Header Content - Rendered inside container always */}
+                {!isLoading && header}
+                {isLoading && header && <Skeleton height={24} width={200} />}
               </XStack>
-              {header && isLoading && <Skeleton height={40} flex={1} />}
             </Header>
             <Main>
               {renderContent({
