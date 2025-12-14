@@ -68,12 +68,12 @@
   - [ ] Implement `BulletChart`
   - [ ] Implement `RadialBar` (Apple Watch Rings style)
 - [ ] **Complex & Custom Charts (Wave 3)**
-  - [ ] Implement `HeatmapChart` (Matrix & Calendar/GitHub style)
+  - [~] Implement `HeatmapChart` (Matrix & Calendar/GitHub style)
   - [ ] Implement `GanttChart` (Project/Inspection Phases)
-  - [ ] Implement `TreemapChart`
-  - [ ] Implement `SankeyDiagram`
-  - [ ] Implement `ChordDiagram`
-  - [ ] Implement `NetworkGraph` (Force-Directed)
+  - [~] Implement `TreemapChart`
+  - [~] Implement `SankeyDiagram`
+  - [~] Implement `ChordDiagram`
+  - [~] Implement `NetworkGraph` (Force-Directed)
   - [ ] Implement `SunburstChart`
   - [ ] Implement `ParallelCoordinates`
   - [ ] Implement `MarimekkoChart`
