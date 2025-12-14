@@ -1,0 +1,424 @@
+{
+  "atoms": [
+    {
+      "name": "Button",
+      "path": "packages/ui/src/atoms/Button"
+    },
+    {
+      "name": "Checkbox",
+      "path": "packages/ui/src/atoms/Checkbox"
+    },
+    {
+      "name": "Dot",
+      "path": "packages/ui/src/atoms/Dot"
+    },
+    {
+      "name": "Input",
+      "path": "packages/ui/src/atoms/Input"
+    },
+    {
+      "name": "Kbd",
+      "path": "packages/ui/src/atoms/Kbd"
+    },
+    {
+      "name": "Label",
+      "path": "packages/ui/src/atoms/Label"
+    },
+    {
+      "name": "Logo",
+      "path": "packages/ui/src/atoms/Logo"
+    },
+    {
+      "name": "NavLink",
+      "path": "packages/ui/src/atoms/NavLink"
+    },
+    {
+      "name": "Progress",
+      "path": "packages/ui/src/atoms/Progress"
+    },
+    {
+      "name": "Spinner",
+      "path": "packages/ui/src/atoms/Spinner"
+    },
+    {
+      "name": "Textarea",
+      "path": "packages/ui/src/atoms/Textarea"
+    },
+    {
+      "name": "Toggle",
+      "path": "packages/ui/src/atoms/Toggle"
+    }
+  ],
+  "molecules": [
+    {
+      "name": "AlertDialog",
+      "path": "packages/ui/src/molecules/AlertDialog"
+    },
+    {
+      "name": "AvatarGroup",
+      "path": "packages/ui/src/molecules/AvatarGroup"
+    },
+    {
+      "name": "BadgeCounter",
+      "path": "packages/ui/src/molecules/BadgeCounter"
+    },
+    {
+      "name": "Breadcrumb",
+      "path": "packages/ui/src/molecules/Breadcrumb"
+    },
+    {
+      "name": "ButtonGroup",
+      "path": "packages/ui/src/molecules/ButtonGroup"
+    },
+    {
+      "name": "Calendar",
+      "path": "packages/ui/src/molecules/Calendar"
+    },
+    {
+      "name": "Card",
+      "path": "packages/ui/src/molecules/Card"
+    },
+    {
+      "name": "ChartContainer",
+      "path": "packages/ui/src/molecules/ChartContainer"
+    },
+    {
+      "name": "ContextMenu",
+      "path": "packages/ui/src/molecules/ContextMenu"
+    },
+    {
+      "name": "Dialog",
+      "path": "packages/ui/src/molecules/Dialog"
+    },
+    {
+      "name": "DropdownMenu",
+      "path": "packages/ui/src/molecules/DropdownMenu"
+    },
+    {
+      "name": "Empty",
+      "path": "packages/ui/src/molecules/Empty"
+    },
+    {
+      "name": "Field",
+      "path": "packages/ui/src/molecules/Field"
+    },
+    {
+      "name": "HorizontalBarGroup",
+      "path": "packages/ui/src/molecules/HorizontalBarGroup"
+    },
+    {
+      "name": "HoverCard",
+      "path": "packages/ui/src/molecules/HoverCard"
+    },
+    {
+      "name": "InputGroup",
+      "path": "packages/ui/src/molecules/InputGroup"
+    },
+    {
+      "name": "Item",
+      "path": "packages/ui/src/molecules/Item"
+    },
+    {
+      "name": "Menubar",
+      "path": "packages/ui/src/molecules/Menubar"
+    },
+    {
+      "name": "MetricCard",
+      "path": "packages/ui/src/molecules/MetricCard"
+    },
+    {
+      "name": "MonthsPicker",
+      "path": "packages/ui/src/molecules/MonthsPicker"
+    },
+    {
+      "name": "NativeSelect",
+      "path": "packages/ui/src/molecules/NativeSelect"
+    },
+    {
+      "name": "NavGroup",
+      "path": "packages/ui/src/molecules/NavGroup"
+    },
+    {
+      "name": "NotificationCard",
+      "path": "packages/ui/src/molecules/NotificationCard"
+    },
+    {
+      "name": "OTPInput",
+      "path": "packages/ui/src/molecules/OTPInput"
+    },
+    {
+      "name": "PageHeader",
+      "path": "packages/ui/src/molecules/PageHeader"
+    },
+    {
+      "name": "Pagination",
+      "path": "packages/ui/src/molecules/Pagination"
+    },
+    {
+      "name": "Popover",
+      "path": "packages/ui/src/molecules/Popover"
+    },
+    {
+      "name": "RadialChartContent",
+      "path": "packages/ui/src/molecules/RadialChartContent"
+    },
+    {
+      "name": "Select",
+      "path": "packages/ui/src/molecules/Select"
+    },
+    {
+      "name": "Sonner",
+      "path": "packages/ui/src/molecules/Sonner"
+    },
+    {
+      "name": "StarRating",
+      "path": "packages/ui/src/molecules/StarRating"
+    },
+    {
+      "name": "Stepper",
+      "path": "packages/ui/src/molecules/Stepper"
+    },
+    {
+      "name": "Table",
+      "path": "packages/ui/src/molecules/Table"
+    },
+    {
+      "name": "ToggleGroup",
+      "path": "packages/ui/src/molecules/ToggleGroup"
+    },
+    {
+      "name": "Tooltip",
+      "path": "packages/ui/src/molecules/Tooltip"
+    }
+  ],
+  "organisms": [
+    {
+      "name": "A11yToolbar",
+      "path": "packages/ui/src/organisms/A11yToolbar"
+    },
+    {
+      "name": "AnimatedSegmentedControl",
+      "path": "packages/ui/src/organisms/AnimatedSegmentedControl"
+    },
+    {
+      "name": "AreaChart",
+      "path": "packages/ui/src/organisms/AreaChart"
+    },
+    {
+      "name": "AuthScreen",
+      "path": "packages/ui/src/organisms/AuthScreen"
+    },
+    {
+      "name": "Autocomplete",
+      "path": "packages/ui/src/organisms/Autocomplete"
+    },
+    {
+      "name": "BarChart",
+      "path": "packages/ui/src/organisms/BarChart"
+    },
+    {
+      "name": "BoxPlotChart",
+      "path": "packages/ui/src/organisms/BoxPlotChart"
+    },
+    {
+      "name": "BulletChart",
+      "path": "packages/ui/src/organisms/BulletChart"
+    },
+    {
+      "name": "Calendar",
+      "path": "packages/ui/src/organisms/Calendar"
+    },
+    {
+      "name": "Carousel",
+      "path": "packages/ui/src/organisms/Carousel"
+    },
+    {
+      "name": "ChatWidget",
+      "path": "packages/ui/src/organisms/ChatWidget"
+    },
+    {
+      "name": "ChordDiagram",
+      "path": "packages/ui/src/organisms/ChordDiagram"
+    },
+    {
+      "name": "ComboChart",
+      "path": "packages/ui/src/organisms/ComboChart"
+    },
+    {
+      "name": "Command",
+      "path": "packages/ui/src/organisms/Command"
+    },
+    {
+      "name": "CookieBanner",
+      "path": "packages/ui/src/organisms/CookieBanner"
+    },
+    {
+      "name": "DashboardLayout",
+      "path": "packages/ui/src/organisms/DashboardLayout"
+    },
+    {
+      "name": "DashboardShell",
+      "path": "packages/ui/src/organisms/DashboardShell"
+    },
+    {
+      "name": "DataTable",
+      "path": "packages/ui/src/organisms/DataTable"
+    },
+    {
+      "name": "DecompositionTree",
+      "path": "packages/ui/src/organisms/DecompositionTree"
+    },
+    {
+      "name": "DiffViewer",
+      "path": "packages/ui/src/organisms/DiffViewer"
+    },
+    {
+      "name": "FileUpload",
+      "path": "packages/ui/src/organisms/FileUpload"
+    },
+    {
+      "name": "FilterBar",
+      "path": "packages/ui/src/organisms/FilterBar"
+    },
+    {
+      "name": "Form",
+      "path": "packages/ui/src/organisms/Form"
+    },
+    {
+      "name": "FunnelChart",
+      "path": "packages/ui/src/organisms/FunnelChart"
+    },
+    {
+      "name": "GaugeChart",
+      "path": "packages/ui/src/organisms/GaugeChart"
+    },
+    {
+      "name": "HeatmapChart",
+      "path": "packages/ui/src/organisms/HeatmapChart"
+    },
+    {
+      "name": "ImageAnnotator",
+      "path": "packages/ui/src/organisms/ImageAnnotator"
+    },
+    {
+      "name": "KPIGrid",
+      "path": "packages/ui/src/organisms/KPIGrid"
+    },
+    {
+      "name": "LineChart",
+      "path": "packages/ui/src/organisms/LineChart"
+    },
+    {
+      "name": "LocationStatus",
+      "path": "packages/ui/src/organisms/LocationStatus"
+    },
+    {
+      "name": "Maps",
+      "path": "packages/ui/src/organisms/Maps"
+    },
+    {
+      "name": "MarimekkoChart",
+      "path": "packages/ui/src/organisms/MarimekkoChart"
+    },
+    {
+      "name": "MediaGrid",
+      "path": "packages/ui/src/organisms/MediaGrid"
+    },
+    {
+      "name": "NetworkGraph",
+      "path": "packages/ui/src/organisms/NetworkGraph"
+    },
+    {
+      "name": "NotificationFeed",
+      "path": "packages/ui/src/organisms/NotificationFeed"
+    },
+    {
+      "name": "PDFPreview",
+      "path": "packages/ui/src/organisms/PDFPreview"
+    },
+    {
+      "name": "ParallelCoordinates",
+      "path": "packages/ui/src/organisms/ParallelCoordinates"
+    },
+    {
+      "name": "PieChart",
+      "path": "packages/ui/src/organisms/PieChart"
+    },
+    {
+      "name": "PolarChart",
+      "path": "packages/ui/src/organisms/PolarChart"
+    },
+    {
+      "name": "RadarChart",
+      "path": "packages/ui/src/organisms/RadarChart"
+    },
+    {
+      "name": "RankingChart",
+      "path": "packages/ui/src/organisms/RankingChart"
+    },
+    {
+      "name": "RichText",
+      "path": "packages/ui/src/organisms/RichText"
+    },
+    {
+      "name": "RidgelinePlot",
+      "path": "packages/ui/src/organisms/RidgelinePlot"
+    },
+    {
+      "name": "SankeyDiagram",
+      "path": "packages/ui/src/organisms/SankeyDiagram"
+    },
+    {
+      "name": "ScannerView",
+      "path": "packages/ui/src/organisms/ScannerView"
+    },
+    {
+      "name": "ScatterChart",
+      "path": "packages/ui/src/organisms/ScatterChart"
+    },
+    {
+      "name": "Scheduler",
+      "path": "packages/ui/src/organisms/Scheduler"
+    },
+    {
+      "name": "SchemaForm",
+      "path": "packages/ui/src/organisms/SchemaForm"
+    },
+    {
+      "name": "Sidebar",
+      "path": "packages/ui/src/organisms/Sidebar"
+    },
+    {
+      "name": "SignaturePad",
+      "path": "packages/ui/src/organisms/SignaturePad"
+    },
+    {
+      "name": "SunburstChart",
+      "path": "packages/ui/src/organisms/SunburstChart"
+    },
+    {
+      "name": "Timeline",
+      "path": "packages/ui/src/organisms/Timeline"
+    },
+    {
+      "name": "TimelineAudit",
+      "path": "packages/ui/src/organisms/TimelineAudit"
+    },
+    {
+      "name": "TreemapChart",
+      "path": "packages/ui/src/organisms/TreemapChart"
+    },
+    {
+      "name": "Video",
+      "path": "packages/ui/src/organisms/Video"
+    },
+    {
+      "name": "WaterfallChart",
+      "path": "packages/ui/src/organisms/WaterfallChart"
+    },
+    {
+      "name": "WizardForm",
+      "path": "packages/ui/src/organisms/WizardForm"
+    }
+  ]
+}

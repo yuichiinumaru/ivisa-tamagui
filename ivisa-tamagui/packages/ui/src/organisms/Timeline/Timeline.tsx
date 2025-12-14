@@ -17,13 +17,18 @@ const TimelineItemFrame = styled(XStack, {
   gap: '$4',
 })
 
+const TimelineConnectorWrapper = styled(YStack, {
+  alignItems: 'center',
+  width: 20,
+  position: 'relative',
+})
+
 const TimelineConnector = styled(View, {
   width: 2,
   backgroundColor: '$borderColor',
   position: 'absolute',
   top: 24,
   bottom: -24,
-  left: 9, // center of dot (w=20 / 2 - 1)
   zIndex: 0,
 })
 
@@ -68,10 +73,10 @@ export type TimelineItemProps = {
 export const TimelineItem = ({ title, description, time, isLast, children }: TimelineItemProps & { children?: React.ReactNode }) => {
   return (
     <TimelineItemFrame>
-      <View>
+      <TimelineConnectorWrapper>
         <TimelineDot />
         {!isLast && <TimelineConnector />}
-      </View>
+      </TimelineConnectorWrapper>
       <TimelineContent>
         {time && <TimelineTime>{time}</TimelineTime>}
         {title && <TimelineTitle>{title}</TimelineTitle>}
@@ -86,9 +91,9 @@ const TimelineSkeleton = () => (
   <TimelineFrame data-testid="timeline-skeleton">
     {[...Array(3)].map((_, index) => (
       <TimelineItemFrame key={index}>
-        <View>
+        <TimelineConnectorWrapper>
           <Skeleton width={20} height={20} borderRadius={10} />
-        </View>
+        </TimelineConnectorWrapper>
         <TimelineContent>
           <Skeleton width="50%" height={15} />
           <Skeleton width="80%" height={15} />
