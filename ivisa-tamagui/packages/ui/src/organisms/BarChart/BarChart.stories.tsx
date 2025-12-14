@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Charts } from './Charts'
+import { BarChart } from './BarChart'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof Charts> = {
-  title: 'Organismos/Charts',
-  component: Charts,
+const meta: Meta<typeof BarChart> = {
+  title: 'Organisms/BarChart',
+  component: BarChart,
   args: {
     data: [
       { mes: 'Jan', valor: 180 },
@@ -21,7 +21,7 @@ const meta: Meta<typeof Charts> = {
 
 export default meta
 
-type Story = StoryObj<typeof Charts>
+type Story = StoryObj<typeof BarChart>
 
 export const Padrao: Story = {}
 
@@ -46,7 +46,7 @@ export const ComErro: Story = {
 export const EstresseDeLayout: Story = {
   render: (args) => (
     <YStack width={300} height={400} borderColor="$borderColor" borderWidth={1} padding="$2">
-      <Charts {...args} />
+      <BarChart {...args} />
     </YStack>
   ),
 }

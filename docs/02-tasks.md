@@ -83,6 +83,23 @@
 
 ---
 
+## 🚀 Phase 5b: Field Operations & Legal Tools
+**Goal:** Specific components for government field work (Sanitary Surveillance) and legal compliance.
+
+- [ ] **Field Operations (Wave 4)**
+  - [ ] Implement `SignaturePad` (Canvas based)
+  - [ ] Implement `ImageAnnotator` (Draw on Image)
+  - [ ] Implement `ScannerView` (QR/Barcode Overlay)
+  - [ ] Implement `LocationStatus` (GPS Accuracy & Timestamp)
+- [ ] **Legal & Compliance (Wave 5)**
+  - [ ] Implement `DiffViewer` (Text comparison)
+  - [ ] Implement `PDFPreview` (Responsive rendering)
+  - [ ] Implement `TimelineAudit` (Immutable logs)
+  - [ ] Implement `GeoFenceSelector` (Map Polygon Drawing)
+  - [ ] Implement `A11yToolbar` (Gov standard compliance)
+
+---
+
 ## 🚀 Current Focus: Phase 4 – Web-Specific UX & Full Documentation
 
 25 - [x] **Populate Storybook as Source of Truth** (DOC)
@@ -97,7 +114,7 @@
 
 ---
 
-## ⏭️ Upcoming: Phase 5b – Integration & Handoff
+## ⏭️ Upcoming: Phase 5c – Integration & Handoff
 
 27 - [ ] **Integrate Design System into Flows** (FDD, UX)
   - [ ] 27a – Replace ad-hoc UI in chat, settings, and key dashboards with `packages/ui` components.

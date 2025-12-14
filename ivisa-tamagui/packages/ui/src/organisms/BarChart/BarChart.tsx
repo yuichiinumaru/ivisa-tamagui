@@ -4,7 +4,7 @@ import { VictoryBar, VictoryChart, VictoryAxis, VictoryContainer } from 'victory
 import { AlertTriangle, BarChart3 } from '@tamagui/lucide-icons'
 import React from 'react'
 
-export interface ChartsProps {
+export interface BarChartProps {
   data?: Record<string, unknown>[]
   xKey: string
   yKey: string
@@ -15,7 +15,7 @@ export interface ChartsProps {
   headerContent?: React.ReactNode
 }
 
-export const Charts = ({
+export const BarChart = ({
   data,
   xKey,
   yKey,
@@ -24,7 +24,7 @@ export const Charts = ({
   isLoading = false,
   error = null,
   headerContent,
-}: ChartsProps) => {
+}: BarChartProps) => {
   const theme = useTheme()
   const themeColor = theme[color as keyof typeof theme]
   const barColor =
@@ -98,3 +98,9 @@ export const Charts = ({
     </YStack>
   )
 }
+
+// Aliases
+export const ColumnChart = BarChart
+// Backward compatibility
+export const Charts = BarChart
+export type ChartsProps = BarChartProps
