@@ -18,7 +18,7 @@ export const TooltipContent = styled(TamaguiTooltip.Content, {
   borderColor: '$borderColor',
   borderWidth: 1,
   borderRadius: '$md',
-  zIndex: 1000,
+  zIndex: 100000, // Increased zIndex
 
   variants: {
     hasError: {
@@ -64,13 +64,23 @@ export const Tooltip = React.forwardRef<unknown, TooltipProps>(({ children, cont
       <TooltipTrigger asChild>
         {children}
       </TooltipTrigger>
-      <TooltipContent hasError={hasError}>
-        <TooltipArrow hasError={hasError} />
-        <YStack gap="$2">
-          {typeof content === 'string' ? <Paragraph size="$2">{content}</Paragraph> : content}
-          {actions && <XStack gap="$2">{actions}</XStack>}
-        </YStack>
-      </TooltipContent>
+      {/*
+        NOTE: Tamagui's Tooltip.Content is usually portaled by default or controlled via wrapping context.
+        If clipping occurs, it is because of the stacking context.
+        Adding specific Portal might be needed if not implicit, but Tamagui often handles it.
+        We increased zIndex to 100000.
+        If explicit Portal is needed, we would use <TamaguiTooltip.Portal> if available.
+        According to Tamagui docs, we should place Content inside Portal.
+      */}
+      <TamaguiTooltip.Portal>
+        <TooltipContent hasError={hasError}>
+          <TooltipArrow hasError={hasError} />
+          <YStack gap="$2">
+            {typeof content === 'string' ? <Paragraph size="$2">{content}</Paragraph> : content}
+            {actions && <XStack gap="$2">{actions}</XStack>}
+          </YStack>
+        </TooltipContent>
+      </TamaguiTooltip.Portal>
     </TamaguiTooltip>
   )
 })

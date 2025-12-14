@@ -4,7 +4,6 @@ import { expect } from '@storybook/test';
 import { YStack } from 'tamagui';
 
 import { Avatar } from './Avatar';
-import { Button } from './Button';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Átomos/Avatar',
@@ -72,7 +71,7 @@ export const Padrao: Story = {
   args: {
     size: '$10',
     shape: 'circle',
-    imageUrl: 'https://github.com/ivisa.png',
+    imageUrl: 'https://github.com/tamagui.png',
     fallbackText: 'AV',
     accessibilityLabel: 'Avatar de Usuário',
   },
@@ -132,7 +131,7 @@ export const Carregando: Story = {
   name: 'Carregando (com Skeleton)',
   args: {
     ...Padrao.args,
-    imageUrl: 'https://delay.pics/v1/2000/https://github.com/ivisa.png',
+    imageUrl: 'https://delay.pics/v1/2000/https://github.com/tamagui.png',
   },
 };
 

@@ -279,6 +279,8 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
       )
     }
 
+    const { value, defaultValue, ...restProps } = props;
+
     return (
       <SimpleInputFrame
         ref={ref}
@@ -292,7 +294,9 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
           variant={variant}
           size={size}
           disabled={loading}
-          {...props}
+          value={value}
+          defaultValue={defaultValue}
+          {...restProps}
           type={isPassword && isPasswordVisible ? 'text' : props.type}
         />
         {loading && (
@@ -306,6 +310,13 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
               icon={isPasswordVisible ? EyeOff : Eye}
               onPress={() => setIsPasswordVisible(!isPasswordVisible)}
               chromeless
+              size="$2"
+              p={0}
+              w={30}
+              h="100%"
+              bg="transparent"
+              hoverStyle={{ bg: 'transparent' }}
+              pressStyle={{ bg: 'transparent', opacity: 0.5 }}
             />
           </InputIcon>
         )}

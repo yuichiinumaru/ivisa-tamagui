@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Button matches snapshot 1`] = `
 <DocumentFragment>
@@ -20,9 +20,13 @@ exports[`Button matches snapshot 1`] = `
           role="button"
           style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; min-width: 0px; flex-shrink: 0; padding-right: var(--t-space-lg); padding-left: var(--t-space-lg); height: var(--t-size-md); justify-content: center; align-items: center; flex-wrap: nowrap; flex-direction: row; cursor: pointer; background-color: var(--primary); border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; opacity: 1; gap: var(--t-space-sm); color: var(--primaryForeground);"
           tabindex="0"
-          type="button"
         >
-          Snapshot
+          <div
+            class="_dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0"
+            style="flex-direction: row; align-items: center; opacity: 1; gap: 8px;"
+          >
+            Snapshot
+          </div>
         </button>
         <div
           style="display: contents;"

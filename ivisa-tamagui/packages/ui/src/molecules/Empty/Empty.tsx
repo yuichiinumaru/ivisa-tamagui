@@ -1,6 +1,6 @@
 import { Ban } from '@tamagui/lucide-icons'
 import React from 'react'
-import { YStack, Text, GetProps, styled } from 'tamagui'
+import { YStack, Text, GetProps, styled, Image, ImageProps } from 'tamagui'
 import { cloneElement } from 'react'
 import { Skeleton } from '../../atoms/Skeleton'
 import { XStack } from 'tamagui'
@@ -61,6 +61,8 @@ const EmptyDescription = styled(Text, {
 
 type EmptyProps = GetProps<typeof EmptyFrame> & {
   icon?: React.ReactElement
+  image?: string
+  imageProps?: ImageProps
   title?: string
   description?: string
   actions?: React.ReactNode
@@ -81,6 +83,8 @@ const EmptySkeleton = () => (
 
 export const Empty = ({
   icon,
+  image,
+  imageProps,
   title,
   description,
   actions,
@@ -92,20 +96,38 @@ export const Empty = ({
     return <EmptySkeleton />
   }
 
-  const iconToRender = icon ? (
-    cloneElement(icon, {
-      size: 32,
-      color: hasError ? '$red10' : '$gray10',
-    })
-  ) : (
-    <Ban size={32} color={hasError ? '$red10' : '$gray10'} />
-  )
+  let content;
+
+  if (image) {
+     content = (
+      <Image
+        source={{ uri: image }}
+        width={200}
+        height={150}
+        resizeMode="contain"
+        {...imageProps}
+      />
+     )
+  } else {
+    const iconElement = icon ? (
+      cloneElement(icon, {
+        size: 32,
+        color: hasError ? '$red10' : '$gray10',
+      })
+    ) : (
+      <Ban size={32} color={hasError ? '$red10' : '$gray10'} />
+    );
+
+    content = (
+      <EmptyIconFrame hasError={hasError} data-testid="empty-icon-frame" data-has-error={hasError}>
+        {iconElement}
+      </EmptyIconFrame>
+    );
+  }
 
   return (
     <EmptyFrame {...props}>
-      <EmptyIconFrame hasError={hasError} data-testid="empty-icon-frame" data-has-error={hasError}>
-        {iconToRender}
-      </EmptyIconFrame>
+      {content}
       <YStack gap="$1" alignItems="center">
         {title && <EmptyTitle hasError={hasError}>{title}</EmptyTitle>}
         {description && <EmptyDescription hasError={hasError}>{description}</EmptyDescription>}
