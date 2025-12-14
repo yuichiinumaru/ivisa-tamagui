@@ -23,7 +23,7 @@ const SkeletonFrame = styled(YStack, {
 })
 
 export const Skeleton = SkeletonFrame.styleable((props, ref) => (
-  <SkeletonFrame {...props} ref={ref} aria-hidden="true" />
+  <SkeletonFrame {...props} ref={ref} aria-hidden="true" data-testid="skeleton" />
 ))
 
 export type SkeletonProps = GetProps<typeof Skeleton>

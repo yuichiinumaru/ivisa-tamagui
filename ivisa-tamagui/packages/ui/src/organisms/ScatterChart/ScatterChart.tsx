@@ -1,8 +1,8 @@
 import React from 'react'
-import { YStack, styled, Text, useTheme, XStack } from 'tamagui'
+import { YStack, styled, Text, useTheme } from 'tamagui'
 import {
   VictoryChart,
-  VictoryLine,
+  VictoryScatter,
   VictoryAxis,
   VictoryVoronoiContainer,
   VictoryTooltip,
@@ -10,8 +10,8 @@ import {
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
 
-const TimeSeriesChartContainer = styled(YStack, {
-  name: 'TimeSeriesChart',
+const ScatterChartContainer = styled(YStack, {
+  name: 'ScatterChart',
   padding: '$4',
   borderRadius: '$4',
   backgroundColor: '$background',
@@ -20,13 +20,7 @@ const TimeSeriesChartContainer = styled(YStack, {
   tag: 'section',
 })
 
-const Header = styled(XStack, {
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '$2',
-})
-
-const ChartContainer = styled(YStack, {
+const ChartWrapper = styled(YStack, {
   flex: 1,
   minHeight: 300,
   justifyContent: 'center',
@@ -41,39 +35,41 @@ const StateContainer = styled(YStack, {
   padding: '$4',
 })
 
-export interface TimeSeriesChartProps {
+export interface ScatterChartProps {
   title?: string
   data: Record<string, unknown>[]
   xKey: string
   yKey: string
+  bubbleKey?: string // Key for bubble size
   color?: string
+  height?: number
   isLoading?: boolean
   error?: string
-  headerActions?: React.ReactNode
   footerContent?: React.ReactNode
 }
 
-export const TimeSeriesChart = ({
+export const ScatterChart = ({
   title,
   data,
   xKey,
   yKey,
-  color = '$primary',
+  bubbleKey,
+  color,
+  height = 300,
   isLoading = false,
   error,
-  headerActions,
   footerContent,
-}: TimeSeriesChartProps) => {
+}: ScatterChartProps) => {
   const theme = useTheme()
-  const themeColor = theme[color as keyof typeof theme]
-  const lineColor = themeColor ? (themeColor as unknown as { get: () => string }).get() : color
+  const defaultColor = theme.blue10?.get() || '#007BFF'
+  const scatterColor = color ? (theme[color as keyof typeof theme] as any)?.get() || color : defaultColor
   const axisColor = theme.borderColor?.get() || '#ccc'
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
 
   const renderContent = () => {
     if (isLoading) {
-      return <Skeleton width="100%" height={300} />
+      return <Skeleton width="100%" height={height} />
     }
     if (error) {
       return (
@@ -86,69 +82,62 @@ export const TimeSeriesChart = ({
         </StateContainer>
       )
     }
+
     if (!data || data.length === 0) {
       return (
         <StateContainer>
           <Inbox size="$2" />
           <Text>Sem dados para exibir</Text>
-          <Text fontSize="$2" color="$color11">
-            Não há informações disponíveis no momento.
-          </Text>
         </StateContainer>
       )
     }
+
     return (
       <VictoryChart
-        height={300}
+        height={height}
         padding={{ top: 20, bottom: 50, left: 50, right: 20 }}
         containerComponent={
           <VictoryVoronoiContainer
             voronoiDimension="x"
-            labels={({ datum }) => `${datum.y}`}
-            labelComponent={
-              <VictoryTooltip
-                cornerRadius={4}
-                flyoutStyle={{ fill: theme.background?.get() || 'white' }}
-                style={{ fill: textColor }}
-              />
-            }
+            labels={({ datum }) => `${datum[yKey]}`}
+            labelComponent={<VictoryTooltip />}
           />
         }
       >
         <VictoryAxis
           style={{
             axis: { stroke: axisColor },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: 'inherit' },
+            tickLabels: { fill: textColor, padding: 5, fontSize: 12 },
           }}
         />
         <VictoryAxis
           dependentAxis
           style={{
             axis: { stroke: 'transparent' },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: 'inherit' },
+            tickLabels: { fill: textColor, padding: 5, fontSize: 12 },
             grid: { stroke: gridColor, strokeDasharray: '4, 4' },
           }}
         />
-        <VictoryLine
+        <VictoryScatter
           data={data}
           x={xKey}
           y={yKey}
-          style={{
-            data: { stroke: lineColor, strokeWidth: 2 },
-          }}
+          size={bubbleKey ? ({ datum }) => Math.max(3, datum[bubbleKey] / 2) : 5}
+          style={{ data: { fill: scatterColor } }}
         />
       </VictoryChart>
     )
   }
 
   return (
-    <TimeSeriesChartContainer>
-      <Header>
-        {title && <Text fontSize="$5">{title}</Text>}
-        {headerActions}
-      </Header>
-      <ChartContainer>{renderContent()}</ChartContainer>
+    <ScatterChartContainer>
+      {title && (
+        <Text fontSize="$5" fontWeight="bold">
+          {title}
+        </Text>
+      )}
+      <ChartWrapper>{renderContent()}</ChartWrapper>
       {footerContent}
-    </TimeSeriesChartContainer>
+    </ScatterChartContainer>
   )
 }

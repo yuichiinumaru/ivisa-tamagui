@@ -1,17 +1,17 @@
 import React from 'react'
-import { YStack, styled, Text, useTheme, XStack } from 'tamagui'
+import { YStack, styled, Text, useTheme } from 'tamagui'
 import {
   VictoryChart,
-  VictoryLine,
   VictoryAxis,
   VictoryVoronoiContainer,
   VictoryTooltip,
-} from 'victory-native'
+  VictoryGroup,
+} from 'victory'
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
 
-const TimeSeriesChartContainer = styled(YStack, {
-  name: 'TimeSeriesChart',
+const ComboChartContainer = styled(YStack, {
+  name: 'ComboChart',
   padding: '$4',
   borderRadius: '$4',
   backgroundColor: '$background',
@@ -20,13 +20,7 @@ const TimeSeriesChartContainer = styled(YStack, {
   tag: 'section',
 })
 
-const Header = styled(XStack, {
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  gap: '$2',
-})
-
-const ChartContainer = styled(YStack, {
+const ChartWrapper = styled(YStack, {
   flex: 1,
   minHeight: 300,
   justifyContent: 'center',
@@ -41,39 +35,31 @@ const StateContainer = styled(YStack, {
   padding: '$4',
 })
 
-export interface TimeSeriesChartProps {
+export interface ComboChartProps {
   title?: string
-  data: Record<string, unknown>[]
-  xKey: string
-  yKey: string
-  color?: string
+  children: React.ReactNode // Pass VictoryBar, VictoryLine, etc. as children
+  height?: number
   isLoading?: boolean
   error?: string
-  headerActions?: React.ReactNode
   footerContent?: React.ReactNode
 }
 
-export const TimeSeriesChart = ({
+export const ComboChart = ({
   title,
-  data,
-  xKey,
-  yKey,
-  color = '$primary',
+  children,
+  height = 300,
   isLoading = false,
   error,
-  headerActions,
   footerContent,
-}: TimeSeriesChartProps) => {
+}: ComboChartProps) => {
   const theme = useTheme()
-  const themeColor = theme[color as keyof typeof theme]
-  const lineColor = themeColor ? (themeColor as unknown as { get: () => string }).get() : color
   const axisColor = theme.borderColor?.get() || '#ccc'
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
 
   const renderContent = () => {
     if (isLoading) {
-      return <Skeleton width="100%" height={300} />
+      return <Skeleton width="100%" height={height} />
     }
     if (error) {
       return (
@@ -86,33 +72,22 @@ export const TimeSeriesChart = ({
         </StateContainer>
       )
     }
-    if (!data || data.length === 0) {
+
+    if (!children) {
       return (
         <StateContainer>
           <Inbox size="$2" />
           <Text>Sem dados para exibir</Text>
-          <Text fontSize="$2" color="$color11">
-            Não há informações disponíveis no momento.
-          </Text>
         </StateContainer>
       )
     }
+
     return (
       <VictoryChart
-        height={300}
+        height={height}
         padding={{ top: 20, bottom: 50, left: 50, right: 20 }}
         containerComponent={
-          <VictoryVoronoiContainer
-            voronoiDimension="x"
-            labels={({ datum }) => `${datum.y}`}
-            labelComponent={
-              <VictoryTooltip
-                cornerRadius={4}
-                flyoutStyle={{ fill: theme.background?.get() || 'white' }}
-                style={{ fill: textColor }}
-              />
-            }
-          />
+          <VictoryVoronoiContainer labelComponent={<VictoryTooltip />} />
         }
       >
         <VictoryAxis
@@ -129,26 +104,22 @@ export const TimeSeriesChart = ({
             grid: { stroke: gridColor, strokeDasharray: '4, 4' },
           }}
         />
-        <VictoryLine
-          data={data}
-          x={xKey}
-          y={yKey}
-          style={{
-            data: { stroke: lineColor, strokeWidth: 2 },
-          }}
-        />
+        <VictoryGroup>
+          {children}
+        </VictoryGroup>
       </VictoryChart>
     )
   }
 
   return (
-    <TimeSeriesChartContainer>
-      <Header>
-        {title && <Text fontSize="$5">{title}</Text>}
-        {headerActions}
-      </Header>
-      <ChartContainer>{renderContent()}</ChartContainer>
+    <ComboChartContainer>
+      {title && (
+        <Text fontSize="$5" fontWeight="bold">
+          {title}
+        </Text>
+      )}
+      <ChartWrapper>{renderContent()}</ChartWrapper>
       {footerContent}
-    </TimeSeriesChartContainer>
+    </ComboChartContainer>
   )
 }

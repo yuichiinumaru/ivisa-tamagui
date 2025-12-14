@@ -1,0 +1,54 @@
+import type { Meta, StoryObj } from '@storybook/react'
+import { PieChart } from './PieChart'
+
+const meta: Meta<typeof PieChart> = {
+  title: 'Organisms/PieChart',
+  component: PieChart,
+  argTypes: {
+    isLoading: { control: 'boolean' },
+    error: { control: 'text' },
+    variant: {
+      control: 'radio',
+      options: ['pie', 'donut'],
+    },
+  },
+}
+
+export default meta
+type Story = StoryObj<typeof PieChart>
+
+const mockData = [
+  { label: 'Aprovados', value: 60 },
+  { label: 'Pendentes', value: 25 },
+  { label: 'Reprovados', value: 15 },
+]
+
+export const PieVariant: Story = {
+  args: {
+    title: 'Status de Inspeções',
+    data: mockData,
+    xKey: 'label',
+    yKey: 'value',
+    variant: 'pie',
+  },
+}
+
+export const DonutVariant: Story = {
+  args: {
+    title: 'Distribuição Orçamentária',
+    data: mockData,
+    xKey: 'label',
+    yKey: 'value',
+    variant: 'donut',
+  },
+}
+
+export const Loading: Story = {
+  args: {
+    title: 'Carregando...',
+    data: [],
+    xKey: 'label',
+    yKey: 'value',
+    isLoading: true,
+  },
+}
