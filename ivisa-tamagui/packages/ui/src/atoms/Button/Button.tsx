@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button as TamaguiButton, styled, GetProps, TamaguiElement } from 'tamagui'
+import { Button as TamaguiButton, styled, GetProps, TamaguiElement, View } from 'tamagui'
 import { Spinner } from '../Spinner'
 
 const StyledButton = styled(TamaguiButton, {
@@ -144,14 +144,15 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>(
         {...props}
         asChild={asChild}
       >
-        {loading ? (
-          <Spinner />
-        ) : (
-          <>
+        <View style={{ flexDirection: 'row', alignItems: 'center', opacity: loading ? 0 : 1, gap: 8 }}>
             {leftIcon}
             {children}
             {rightIcon}
-          </>
+        </View>
+        {loading && (
+          <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
+            <Spinner color="$current" />
+          </View>
         )}
       </StyledButton>
     )
