@@ -33,9 +33,9 @@
 - [ ] Implement `ChatWidget` (AI Interface)
 - [ ] Implement `CookieBanner` (Compliance)
 - [ ] Implement `AnimatedSegmentedControl` (Smart Tabs)
-- [ ] Implement `WizardForm` (Multi-Step Logic)
-- [ ] Implement `FilterBar` (Advanced Search)
-- [ ] Implement `NotificationFeed` (History)
+- [x] Implement `WizardForm` (Multi-Step Logic)
+- [x] Implement `FilterBar` (Advanced Search)
+- [x] Implement `NotificationFeed` (History)
 - [ ] Implement `MediaGrid` (Asset Manager)
 - [ ] Implement `AuthScreen` (Unified Login)
 
@@ -140,6 +140,64 @@
   - [ ] 38a – **Fix Disabled Tests**: Resolve issues in `Command`, `Menubar`, `DropdownMenu`, and `Autocomplete` tests.
   - [ ] 38b – **Molecules Coverage**: Add tests for `HoverCard`, `NavigationMenu`, `OTPInput`, `Resizable`.
   - [ ] 38c – **Interaction Tests**: Improve reliability of tests involving Radix/Headless interactions in JSDOM.
+
+---
+
+## 🚀 Phase 7: AI Backend & MCP Integration (The Component Foundry)
+**Goal:** Create a robust Model Context Protocol (MCP) server that acts as an intelligent librarian for the Design System, allowing AI agents to query, retrieve, and assemble UI components with strict adherence to the system's rules.
+
+### 🛠️ 7a – Component Registry Extraction (The Harvester)
+**Context:** Before serving components, we need to extract metadata (props, types, examples) from the codebase into a machine-readable format.
+- [ ] **Design Schema Definition** `[Backend]`
+    - Define the JSON Schema for `registry.json` (id, name, type, props, dependencies, code_snippet, usage_example).
+- [ ] **AST Extraction Script** `[Node/TS]`
+    - Implement a Node.js script using `ts-morph` or `react-docgen` to parse `packages/ui` source files.
+    - Automate extraction of Component descriptions (JSDoc) and Prop Types.
+- [ ] **Storybook Scraper** `[Node]`
+    - Implement logic to read `.stories.tsx` files to extract "Gold Standard" usage examples for each component.
+    - *Rationale:* Agents perform better with few-shot examples; Storybook is the perfect source for this.
+- [ ] **Registry Build Pipeline** `[CI/CD]`
+    - Create a `npm run build:registry` script that generates the `registry.json` file.
+    - Integrate this into the CI pipeline to ensure the AI registry is always in sync with the latest UI package version.
+
+### 🧠 7b – MCP Server Implementation (The Brain)
+**Context:** Building the server using `fastapi-mcp` to serve the registry to AI clients (Cursor, Windsurf, Claude).
+- [ ] **Server Initialization** `[Python/FastAPI]`
+    - Initialize the `ivisa-mcp-server` repository using `fastapi-mcp`.
+    - Configure basic logging and health checks (`/health`).
+- [ ] **Resource: Design Tokens** `[MCP]`
+    - Implement `@mcp.resource("ivisa://tokens/all")`: Return JSON with all colors, spacing, radius, and typography tokens.
+    - *Goal:* Allow agents to reference correct hex codes and spacing units without hallucinating magic numbers.
+- [ ] **Tool: Component Search** `[MCP]`
+    - Implement `@mcp.tool("search_components")`: Fuzzy search logic to find components by name or description (e.g., query "user card" returns `Card` and `Avatar`).
+- [ ] **Tool: Component Retrieval** `[MCP]`
+    - Implement `@mcp.tool("get_component_source")`: Return the full code, required imports, and a usage example for a specific component ID.
+    - *Critical:* Ensure the output format is copy-paste ready for the agent.
+- [ ] **Tool: Icon Retrieval** `[MCP]`
+    - Implement `@mcp.tool("search_icons")`: Integration with Lucide/Phosphor (whatever you use) to help agents find the correct icon name.
+
+### ⚡ 7c – Advanced Agent Capabilities (The Logic)
+**Context:** Going beyond simple retrieval to intelligent scaffolding.
+- [ ] **Template Scaffolding** `[MCP]`
+    - Create a `templates/` directory in the backend with standard layouts (e.g., `DashboardLayout`, `FormLayout`, `DataGridPage`).
+    - Implement `@mcp.tool("scaffold_page")`: Returns a full page structure based on a selected template.
+- [ ] **Validation Logic** `[MCP]`
+    - Implement `@mcp.tool("validate_usage")`: Accepting a code snippet and checking if it violates basic Design System rules (e.g., using inline styles instead of Tamagui props).
+- [ ] **Context Awareness (Rio Specifics)** `[MCP]`
+    - Implement a resource `ivisa://context/rules`: Return a summary of "Frontend Guidelines for Rio City Hall" (Accessibility requirements, Color contrast rules).
+
+### 🚢 7d – Infrastructure & Connectivity
+**Context:** Making the server accessible to local IDEs and potentially remote agents.
+- [ ] **Dockerization** `[DevOps]`
+    - Create a `Dockerfile` for the FastAPI server (optimized for Python 3.11+).
+    - Ensure `registry.json` is mounted or copied correctly into the container.
+- [ ] **MCP Proxy Setup** `[DevOps]`
+    - Implement `mcp-proxy` configuration to bridge SSE (Server-Sent Events) to Stdio.
+    - *Goal:* Allow local IDEs (like Cursor) to connect to the Dockerized server easily.
+- [ ] **Authentication Layer** `[Security]`
+    - Implement basic API Key authentication in `fastapi-mcp` to prevent unauthorized access if deployed publicly.
+- [ ] **IDE Configuration Guide** `[DOC]`
+    - Write a `docs/AI_AGENT_SETUP.md` explaining how developers can add the MCP server to their Cursor/Windsurf `settings.json`.
 
 ---
 
