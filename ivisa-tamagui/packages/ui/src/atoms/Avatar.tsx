@@ -36,7 +36,7 @@ const AvatarFrame = styled(TamaguiAvatar, {
   variants: {
     shape: {
       circle: {
-        circular: true,
+        borderRadius: 100000,
       },
       square: {
         borderRadius: 0,

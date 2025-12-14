@@ -100,16 +100,16 @@ export interface CardProps extends CardFrameProps {
 }
 
 // Main Card component
-export const Card = ({
+export const Card = React.forwardRef<any, CardProps>(({
   children,
   isLoading,
   isDisabled,
   data,
   actions,
   ...rest
-}: CardProps) => {
+}, ref) => {
   // Pass isDisabled to the 'disabled' variant
-  const cardProps = { ...rest, disabled: isDisabled, 'data-testid': 'card' }
+  const cardProps = { ...rest, disabled: isDisabled, 'data-testid': 'card', ref }
 
   // "Smart" component mode with data object
   if (data) {
@@ -162,4 +162,6 @@ export const Card = ({
       )}
     </CardFrame>
   )
-}
+})
+
+Card.displayName = 'Card'

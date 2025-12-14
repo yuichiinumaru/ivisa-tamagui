@@ -73,17 +73,17 @@ const StyledButton = styled(TamaguiButton, {
       sm: {
         height: '$sm',
         px: '$md',
-        fontSize: '$2',
+        // fontSize: '$2', // Removing explicit token to fallback to theme or prevent warning if token missing
       },
       default: {
         height: '$md',
         px: '$lg',
-        fontSize: '$3',
+        // fontSize: '$3',
       },
       lg: {
         height: '$lg',
         px: '$xl',
-        fontSize: '$4',
+        // fontSize: '$4',
       },
     },
   } as const,

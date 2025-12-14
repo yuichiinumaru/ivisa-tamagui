@@ -14,7 +14,7 @@ import { Slot } from '@radix-ui/react-slot';
  * @param {React.ReactNode} children - The text content to display.
  * @param {'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span'} variant - The semantic HTML tag and style to apply.
  */
-export const Typography = ({ leftIcon, rightIcon, loading, children, variant, asChild, ...props }) => {
+export const Typography = React.forwardRef(({ leftIcon, rightIcon, loading, children, variant, asChild, ...props }: any, ref) => {
   const components = {
     h1: TamaguiH1,
     h2: TamaguiH2,
@@ -32,14 +32,19 @@ export const Typography = ({ leftIcon, rightIcon, loading, children, variant, as
     return <Skeleton width="100%" height={props.fontSize || 16} />;
   }
 
+  // Filter out props that leak to DOM
+  const { defaultProps, uppercase, ...safeProps } = props;
+
   return (
-    <Component {...props} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', ...props.style }}>
+    <Component ref={ref} {...safeProps} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', ...props.style }}>
       {leftIcon}
       {children}
       {rightIcon}
     </Component>
   );
-};
+});
+
+Typography.displayName = 'Typography';
 
 const commonStyles = {
   hoverStyle: {

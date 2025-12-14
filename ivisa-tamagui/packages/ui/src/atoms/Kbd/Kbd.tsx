@@ -138,3 +138,4 @@ const Kbd = React.forwardRef<TamaguiElement, KbdProps>(
 Kbd.displayName = 'Kbd'
 
 export { Kbd }
+export default Kbd
