@@ -124,7 +124,7 @@ export const AvatarGroup = ({
       {remainingCount > 0 && (
         <AvatarGroupItemFrame
           size={size}
-          zIndex={0}
+          zIndex={limit + 1}
           hasError={hasError}
           data-testid="avatar-group-remainder"
           data-haserror={hasError}
