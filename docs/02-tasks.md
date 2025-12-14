@@ -42,7 +42,7 @@
 ---
 
 ## 🚀 Phase 5a: BI & Data Visualization Expansion
-**Goal:** Implement a comprehensive suite of data visualization components using Victory (primary) and custom SVG (fallback).
+**Goal:** Implement a comprehensive suite of data visualization components using Recharts (Shadcn Charts) as primary and Victory as native fallback.
 
 - [ ] **Review & Enhance Existing BI Components**
   - [ ] Review `DataTable` against requirements (Add Sparklines support)

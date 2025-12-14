@@ -2609,6 +2609,8 @@ var StyledButton = styled7(TamaguiButton, {
   alignItems: "center",
   justifyContent: "center",
   gap: "$sm",
+  // Force Cera Pro via body token
+  fontFamily: "$body",
   variants: {
     variant: {
       default: {
@@ -2700,7 +2702,6 @@ var Button = React5.forwardRef(
         variant,
         size,
         disabled: loading || props.disabled,
-        type: props.type || "button",
         ...props,
         asChild,
         children: loading ? /* @__PURE__ */ jsx7(Spinner, {}) : /* @__PURE__ */ jsxs4(Fragment2, { children: [
@@ -11031,10 +11032,1351 @@ var ComboChart = ({
   ] });
 };
 
-// src/organisms/Timeline/Timeline.tsx
-import { YStack as YStack48, XStack as XStack37, styled as styled61, View as View8, Text as Text34 } from "tamagui";
+// src/organisms/BoxPlotChart/BoxPlotChart.tsx
+import { YStack as YStack48, Text as Text34, useTheme as useTheme7 } from "tamagui";
+import { VictoryChart as VictoryChart6, VictoryBoxPlot, VictoryAxis as VictoryAxis6, VictoryContainer as VictoryContainer3 } from "victory";
+import { AlertTriangle as AlertTriangle5, BarChart as BoxPlotIcon } from "@tamagui/lucide-icons";
 import { jsx as jsx69, jsxs as jsxs55 } from "react/jsx-runtime";
-var TimelineFrame = styled61(YStack48, {
+var BoxPlotChart = ({
+  data,
+  xKey = "x",
+  minKey = "min",
+  maxKey = "max",
+  q1Key = "q1",
+  q3Key = "q3",
+  medianKey = "median",
+  color = "$primary",
+  height = 300,
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme7();
+  const themeColor = theme[color];
+  const boxColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const gridColor = theme.borderColor?.get() || "#eee";
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx69(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs55(YStack48, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx69(AlertTriangle5, { color: "$red10" }),
+        /* @__PURE__ */ jsx69(Text34, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data || data.length === 0) {
+      return /* @__PURE__ */ jsxs55(YStack48, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx69(BoxPlotIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx69(Text34, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    return /* @__PURE__ */ jsxs55(
+      VictoryChart6,
+      {
+        domainPadding: { x: 20, y: 20 },
+        height,
+        containerComponent: /* @__PURE__ */ jsx69(VictoryContainer3, { responsive: true }),
+        children: [
+          /* @__PURE__ */ jsx69(
+            VictoryAxis6,
+            {
+              style: {
+                axis: { stroke: axisColor },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx69(
+            VictoryAxis6,
+            {
+              dependentAxis: true,
+              style: {
+                axis: { stroke: "transparent" },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" },
+                grid: { stroke: gridColor, strokeDasharray: "4, 4" }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx69(
+            VictoryBoxPlot,
+            {
+              data,
+              x: xKey,
+              min: minKey,
+              max: maxKey,
+              q1: q1Key,
+              q3: q3Key,
+              median: medianKey,
+              style: {
+                min: { stroke: boxColor, strokeWidth: 2 },
+                max: { stroke: boxColor, strokeWidth: 2 },
+                q1: { fill: boxColor, fillOpacity: 0.5, stroke: boxColor, strokeWidth: 2 },
+                q3: { fill: boxColor, fillOpacity: 0.5, stroke: boxColor, strokeWidth: 2 },
+                median: { stroke: textColor, strokeWidth: 2 }
+              }
+            }
+          )
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs55(YStack48, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/RadarChart/RadarChart.tsx
+import { YStack as YStack49, Text as Text35, useTheme as useTheme8 } from "tamagui";
+import { VictoryChart as VictoryChart7, VictoryPolarAxis, VictoryArea as VictoryArea2, VictoryGroup as VictoryGroup2, VictoryContainer as VictoryContainer4 } from "victory";
+import { AlertTriangle as AlertTriangle6, Activity as RadarIcon } from "@tamagui/lucide-icons";
+import { jsx as jsx70, jsxs as jsxs56 } from "react/jsx-runtime";
+var RadarChart = ({
+  data,
+  keys,
+  color = "$primary",
+  height = 300,
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme8();
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const getColor = (c) => {
+    const themeColor = theme[c];
+    return themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : c;
+  };
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx70(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs56(YStack49, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx70(AlertTriangle6, { color: "$red10" }),
+        /* @__PURE__ */ jsx70(Text35, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data || data.length === 0 || !keys) {
+      return /* @__PURE__ */ jsxs56(YStack49, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx70(RadarIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx70(Text35, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    const datasets = Array.isArray(data[0]) ? data : [data];
+    const colors = Array.isArray(color) ? color : [color];
+    return /* @__PURE__ */ jsxs56(
+      VictoryChart7,
+      {
+        polar: true,
+        height,
+        domainPadding: { x: 20, y: 20 },
+        containerComponent: /* @__PURE__ */ jsx70(VictoryContainer4, { responsive: true }),
+        children: [
+          /* @__PURE__ */ jsx70(
+            VictoryGroup2,
+            {
+              colorScale: colors.map((c) => getColor(c)),
+              style: { data: { fillOpacity: 0.2, strokeWidth: 2 } },
+              children: datasets.map((dataset, i) => /* @__PURE__ */ jsx70(VictoryArea2, { data: dataset }, i))
+            }
+          ),
+          datasets[0]?.map((d, i) => {
+            return /* @__PURE__ */ jsx70(VictoryPolarAxis, { dependentAxis: true, style: { axisLabel: { padding: 10 } }, labelPlacement: "vertical" }, i);
+          }),
+          /* @__PURE__ */ jsx70(
+            VictoryPolarAxis,
+            {
+              labelPlacement: "parallel",
+              tickFormat: () => "",
+              style: {
+                axis: { stroke: axisColor },
+                grid: { stroke: axisColor, opacity: 0.5 }
+              }
+            }
+          )
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs56(YStack49, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/PolarChart/PolarChart.tsx
+import { YStack as YStack50, Text as Text36, useTheme as useTheme9 } from "tamagui";
+import { VictoryChart as VictoryChart8, VictoryPolarAxis as VictoryPolarAxis2, VictoryBar as VictoryBar2, VictoryContainer as VictoryContainer5, VictoryTheme } from "victory";
+import { AlertTriangle as AlertTriangle7, PieChart as PolarIcon } from "@tamagui/lucide-icons";
+import { jsx as jsx71, jsxs as jsxs57 } from "react/jsx-runtime";
+var PolarChart = ({
+  data,
+  xKey,
+  yKey,
+  color = "$primary",
+  height = 300,
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme9();
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const getColor = (c) => {
+    const themeColor = theme[c];
+    return themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : c;
+  };
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx71(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs57(YStack50, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx71(AlertTriangle7, { color: "$red10" }),
+        /* @__PURE__ */ jsx71(Text36, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data || data.length === 0) {
+      return /* @__PURE__ */ jsxs57(YStack50, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx71(PolarIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx71(Text36, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    const colors = Array.isArray(color) ? color : [color];
+    return /* @__PURE__ */ jsxs57(
+      VictoryChart8,
+      {
+        polar: true,
+        height,
+        domainPadding: { x: 20, y: 20 },
+        theme: VictoryTheme.material,
+        containerComponent: /* @__PURE__ */ jsx71(VictoryContainer5, { responsive: true }),
+        children: [
+          /* @__PURE__ */ jsx71(
+            VictoryPolarAxis2,
+            {
+              style: {
+                axis: { stroke: axisColor },
+                grid: { stroke: axisColor, opacity: 0.5 },
+                tickLabels: { fill: textColor, fontSize: 12 }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx71(
+            VictoryBar2,
+            {
+              data,
+              x: xKey,
+              y: yKey,
+              style: {
+                data: {
+                  fill: (d) => {
+                    return getColor(colors[d.index % colors.length] || colors[0]);
+                  },
+                  width: 30
+                }
+              }
+            }
+          )
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs57(YStack50, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/WaterfallChart/WaterfallChart.tsx
+import { YStack as YStack51, Text as Text37, useTheme as useTheme10 } from "tamagui";
+import { VictoryChart as VictoryChart9, VictoryBar as VictoryBar3, VictoryAxis as VictoryAxis7, VictoryContainer as VictoryContainer6 } from "victory";
+import { AlertTriangle as AlertTriangle8, BarChart as WaterfallIcon } from "@tamagui/lucide-icons";
+import { jsx as jsx72, jsxs as jsxs58 } from "react/jsx-runtime";
+var WaterfallChart = ({
+  data,
+  xKey,
+  yKey,
+  color = "$green10",
+  negativeColor = "$red10",
+  totalColor = "$blue10",
+  height = 300,
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme10();
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const gridColor = theme.borderColor?.get() || "#eee";
+  const getColor = (c) => {
+    const themeColor = theme[c];
+    return themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : c;
+  };
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx72(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs58(YStack51, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx72(AlertTriangle8, { color: "$red10" }),
+        /* @__PURE__ */ jsx72(Text37, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data || data.length === 0) {
+      return /* @__PURE__ */ jsxs58(YStack51, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx72(WaterfallIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx72(Text37, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    let runningTotal = 0;
+    const processedData = data.map((d) => {
+      const val = d[yKey];
+      const isTotal = d.isTotal;
+      let y0 = runningTotal;
+      let y = runningTotal + val;
+      if (isTotal) {
+        y0 = 0;
+        y = runningTotal;
+        if (val !== void 0 && val !== null) {
+          y = val;
+        }
+      } else {
+        runningTotal += val;
+      }
+      return {
+        ...d,
+        _y0: y0,
+        _y: y,
+        _val: val,
+        _isTotal: isTotal
+      };
+    });
+    return /* @__PURE__ */ jsxs58(
+      VictoryChart9,
+      {
+        domainPadding: { x: 20 },
+        height,
+        containerComponent: /* @__PURE__ */ jsx72(VictoryContainer6, { responsive: true }),
+        children: [
+          /* @__PURE__ */ jsx72(
+            VictoryAxis7,
+            {
+              style: {
+                axis: { stroke: axisColor },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx72(
+            VictoryAxis7,
+            {
+              dependentAxis: true,
+              style: {
+                axis: { stroke: "transparent" },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" },
+                grid: { stroke: gridColor, strokeDasharray: "4, 4" }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx72(
+            VictoryBar3,
+            {
+              data: processedData,
+              x: xKey,
+              y: "_y",
+              y0: "_y0",
+              style: {
+                data: {
+                  fill: (d) => {
+                    if (d.datum._isTotal) return getColor(totalColor);
+                    if (d.datum._val < 0) return getColor(negativeColor);
+                    return getColor(color);
+                  }
+                }
+              },
+              cornerRadius: { top: 2, bottom: 2 }
+            }
+          )
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs58(YStack51, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/FunnelChart/FunnelChart.tsx
+import { YStack as YStack52, Text as Text38, useTheme as useTheme11 } from "tamagui";
+import { VictoryChart as VictoryChart10, VictoryBar as VictoryBar4, VictoryAxis as VictoryAxis8, VictoryContainer as VictoryContainer7, VictoryLabel as VictoryLabel2 } from "victory";
+import { AlertTriangle as AlertTriangle9, Filter as FunnelIcon } from "@tamagui/lucide-icons";
+import { jsx as jsx73, jsxs as jsxs59 } from "react/jsx-runtime";
+var FunnelChart = ({
+  data,
+  xKey,
+  yKey,
+  color = "$primary",
+  height = 300,
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme11();
+  const themeColor = theme[color];
+  const barColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx73(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs59(YStack52, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx73(AlertTriangle9, { color: "$red10" }),
+        /* @__PURE__ */ jsx73(Text38, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data || data.length === 0) {
+      return /* @__PURE__ */ jsxs59(YStack52, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx73(FunnelIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx73(Text38, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    const processedData = data.map((d) => {
+      const val = Number(d[yKey]) || 0;
+      return {
+        ...d,
+        _y0: -val / 2,
+        _y: val / 2,
+        _label: val
+      };
+    });
+    return /* @__PURE__ */ jsxs59(
+      VictoryChart10,
+      {
+        domainPadding: { x: 20, y: 20 },
+        height,
+        containerComponent: /* @__PURE__ */ jsx73(VictoryContainer7, { responsive: true }),
+        children: [
+          /* @__PURE__ */ jsx73(
+            VictoryAxis8,
+            {
+              dependentAxis: true,
+              style: {
+                axis: { stroke: "transparent" },
+                tickLabels: { fill: "transparent" },
+                grid: { stroke: "transparent" }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx73(
+            VictoryAxis8,
+            {
+              style: {
+                axis: { stroke: "transparent" },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 12 }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx73(
+            VictoryBar4,
+            {
+              horizontal: true,
+              data: processedData,
+              x: xKey,
+              y: "_y",
+              y0: "_y0",
+              style: {
+                data: { fill: barColor, width: 30 },
+                labels: { fill: textColor }
+              },
+              labels: ({ datum }) => datum._label,
+              labelComponent: /* @__PURE__ */ jsx73(VictoryLabel2, {})
+            }
+          )
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs59(YStack52, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/BulletChart/BulletChart.tsx
+import { YStack as YStack53, Text as Text39, useTheme as useTheme12 } from "tamagui";
+import { VictoryChart as VictoryChart11, VictoryBar as VictoryBar5, VictoryAxis as VictoryAxis9, VictoryContainer as VictoryContainer8, VictoryScatter as VictoryScatter2 } from "victory";
+import { AlertTriangle as AlertTriangle10, BarChart as BulletIcon } from "@tamagui/lucide-icons";
+import { jsx as jsx74, jsxs as jsxs60 } from "react/jsx-runtime";
+var BulletChart = ({
+  data,
+  xKey,
+  yKey,
+  targetKey,
+  rangeKey,
+  color = "$primary",
+  targetColor = "$red10",
+  rangeColor = "$gray5",
+  height = 300,
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme12();
+  const themeColor = theme[color];
+  const barColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
+  const themeTargetColor = theme[targetColor];
+  const targetMarkColor = themeTargetColor && typeof themeTargetColor === "object" && "get" in themeTargetColor ? themeTargetColor.get() : targetColor;
+  const themeRangeColor = theme[rangeColor];
+  const rangeBarColor = themeRangeColor && typeof themeRangeColor === "object" && "get" in themeRangeColor ? themeRangeColor.get() : rangeColor;
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx74(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs60(YStack53, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx74(AlertTriangle10, { color: "$red10" }),
+        /* @__PURE__ */ jsx74(Text39, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data || data.length === 0) {
+      return /* @__PURE__ */ jsxs60(YStack53, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx74(BulletIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx74(Text39, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    return /* @__PURE__ */ jsxs60(
+      VictoryChart11,
+      {
+        domainPadding: { x: 20, y: 20 },
+        height,
+        containerComponent: /* @__PURE__ */ jsx74(VictoryContainer8, { responsive: true }),
+        children: [
+          /* @__PURE__ */ jsx74(
+            VictoryAxis9,
+            {
+              dependentAxis: true,
+              style: {
+                axis: { stroke: axisColor },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx74(
+            VictoryAxis9,
+            {
+              style: {
+                axis: { stroke: axisColor },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx74(
+            VictoryBar5,
+            {
+              data,
+              x: xKey,
+              y: rangeKey,
+              style: { data: { fill: rangeBarColor, width: 40 } },
+              cornerRadius: { top: 2 }
+            }
+          ),
+          /* @__PURE__ */ jsx74(
+            VictoryBar5,
+            {
+              data,
+              x: xKey,
+              y: yKey,
+              style: { data: { fill: barColor, width: 15 } },
+              cornerRadius: { top: 2 }
+            }
+          ),
+          /* @__PURE__ */ jsx74(
+            VictoryScatter2,
+            {
+              data,
+              x: xKey,
+              y: targetKey,
+              size: 8,
+              symbol: "minus",
+              style: { data: { fill: targetMarkColor, strokeWidth: 2 } }
+            }
+          )
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs60(YStack53, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/SunburstChart/SunburstChart.tsx
+import { useMemo as useMemo8 } from "react";
+import { YStack as YStack54, Text as Text40, useTheme as useTheme13 } from "tamagui";
+import { Svg, Path, G } from "react-native-svg";
+import { AlertTriangle as AlertTriangle11, PieChart as PieChart2 } from "@tamagui/lucide-icons";
+import { jsx as jsx75, jsxs as jsxs61 } from "react/jsx-runtime";
+var calculateSunburst = (data, radius, centerX, centerY) => {
+  const arcs = [];
+  const calculateValues = (node) => {
+    if (!node.children || node.children.length === 0) {
+      return node.value || 0;
+    }
+    const sum = node.children.reduce((acc, child) => acc + calculateValues(child), 0);
+    node.value = sum;
+    return sum;
+  };
+  const root = JSON.parse(JSON.stringify(data));
+  const totalValue = calculateValues(root);
+  if (totalValue === 0) return [];
+  const maxDepth = 4;
+  const levelThickness = radius / (maxDepth + 1);
+  const processNode = (node, startAngle, endAngle, depth) => {
+    if (depth > maxDepth) return;
+    const innerRadius = depth * levelThickness;
+    const outerRadius = (depth + 1) * levelThickness;
+    const startRad = startAngle - Math.PI / 2;
+    const endRad = endAngle - Math.PI / 2;
+    const x1 = centerX + innerRadius * Math.cos(startRad);
+    const y1 = centerY + innerRadius * Math.sin(startRad);
+    const x2 = centerX + outerRadius * Math.cos(startRad);
+    const y2 = centerY + outerRadius * Math.sin(startRad);
+    const x3 = centerX + outerRadius * Math.cos(endRad);
+    const y3 = centerY + outerRadius * Math.sin(endRad);
+    const x4 = centerX + innerRadius * Math.cos(endRad);
+    const y4 = centerY + innerRadius * Math.sin(endRad);
+    const largeArc = endAngle - startAngle > Math.PI ? 1 : 0;
+    let path = "";
+    if (depth === 0) {
+      path = `M ${centerX} ${centerY - outerRadius} A ${outerRadius} ${outerRadius} 0 1 1 ${centerX} ${centerY + outerRadius} A ${outerRadius} ${outerRadius} 0 1 1 ${centerX} ${centerY - outerRadius} Z`;
+    } else {
+      path = `
+            M ${x1} ${y1}
+            L ${x2} ${y2}
+            A ${outerRadius} ${outerRadius} 0 ${largeArc} 1 ${x3} ${y3}
+            L ${x4} ${y4}
+            A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${x1} ${y1}
+            Z
+        `;
+    }
+    const nodeColor = node.color || "#ccc";
+    arcs.push({
+      path,
+      color: nodeColor,
+      data: node,
+      depth,
+      value: node.value || 0
+    });
+    if (node.children) {
+      let currentAngle = startAngle;
+      node.children.forEach((child) => {
+        const childValue = child.value || 0;
+        const sliceAngle = childValue / (node.value || 1) * (endAngle - startAngle);
+        processNode(child, currentAngle, currentAngle + sliceAngle, depth + 1);
+        currentAngle += sliceAngle;
+      });
+    }
+  };
+  processNode(root, 0, 2 * Math.PI, 0);
+  return arcs;
+};
+var SunburstChart = ({
+  data,
+  width = 300,
+  height = 300,
+  color = "$primary",
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme13();
+  const themeColor = theme[color];
+  const radius = Math.min(width, height) / 2;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const arcs = useMemo8(() => {
+    if (!data) return [];
+    const colorPalette = [
+      theme.blue9?.get() || "#3b82f6",
+      theme.green9?.get() || "#22c55e",
+      theme.yellow9?.get() || "#eab308",
+      theme.red9?.get() || "#ef4444",
+      theme.purple9?.get() || "#a855f7"
+    ];
+    const enrichData = (node, index, depth) => {
+      return {
+        ...node,
+        color: node.color || colorPalette[(index + depth) % colorPalette.length],
+        children: node.children?.map((child, i) => enrichData(child, i, depth + 1))
+      };
+    };
+    const enrichedData = enrichData(data, 0, 0);
+    return calculateSunburst(enrichedData, radius, centerX, centerY);
+  }, [data, radius, centerX, centerY, theme]);
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx75(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs61(YStack54, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx75(AlertTriangle11, { color: "$red10" }),
+        /* @__PURE__ */ jsx75(Text40, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data) {
+      return /* @__PURE__ */ jsxs61(YStack54, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx75(PieChart2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx75(Text40, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    return /* @__PURE__ */ jsx75(Svg, { width, height, children: /* @__PURE__ */ jsx75(G, { children: arcs.map((arc, i) => /* @__PURE__ */ jsx75(
+      Path,
+      {
+        d: arc.path,
+        fill: arc.color,
+        stroke: theme.background?.get() || "white",
+        strokeWidth: 1
+      },
+      i
+    )) }) });
+  };
+  return /* @__PURE__ */ jsxs61(YStack54, { width: "100%", gap: "$4", paddingHorizontal: "$4", alignItems: "center", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/ParallelCoordinates/ParallelCoordinates.tsx
+import { useMemo as useMemo9 } from "react";
+import { YStack as YStack55, Text as Text41, useTheme as useTheme14 } from "tamagui";
+import { VictoryChart as VictoryChart12, VictoryLine as VictoryLine2, VictoryAxis as VictoryAxis10, VictoryGroup as VictoryGroup4 } from "victory";
+import { AlertTriangle as AlertTriangle12, Activity } from "@tamagui/lucide-icons";
+import { jsx as jsx76, jsxs as jsxs62 } from "react/jsx-runtime";
+var ParallelCoordinates = ({
+  data,
+  attributes,
+  width = 600,
+  height = 400,
+  color = "$primary",
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme14();
+  const themeColor = theme[color];
+  const lineColor = themeColor ? themeColor.get() : color;
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const normalizedData = useMemo9(() => {
+    if (!data || data.length === 0) return [];
+    const bounds = attributes.reduce((acc, attr) => {
+      const values = data.map((d) => d[attr]);
+      acc[attr] = {
+        min: Math.min(...values),
+        max: Math.max(...values)
+      };
+      return acc;
+    }, {});
+    return data.map((d) => {
+      const points = attributes.map((attr, i) => {
+        const { min, max } = bounds[attr];
+        const val = d[attr];
+        const range2 = max - min;
+        const y = range2 === 0 ? 0.5 : (val - min) / range2;
+        return { x: i + 1, y, val };
+      });
+      return points;
+    });
+  }, [data, attributes]);
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx76(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs62(YStack55, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx76(AlertTriangle12, { color: "$red10" }),
+        /* @__PURE__ */ jsx76(Text41, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data || data.length === 0) {
+      return /* @__PURE__ */ jsxs62(YStack55, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx76(Activity, { color: "$gray10" }),
+        /* @__PURE__ */ jsx76(Text41, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    return /* @__PURE__ */ jsxs62(
+      VictoryChart12,
+      {
+        domain: { x: [0, attributes.length + 1], y: [0, 1] },
+        height,
+        width,
+        children: [
+          attributes.map((attr, i) => /* @__PURE__ */ jsx76(
+            VictoryAxis10,
+            {
+              dependentAxis: true,
+              label: attr,
+              style: {
+                axis: { stroke: axisColor },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 10, fontFamily: "inherit" },
+                axisLabel: { padding: 30, fontSize: 12, fill: textColor },
+                grid: { stroke: "none" }
+              },
+              offsetX: (i + 1) / (attributes.length + 1) * width
+            },
+            attr
+          )),
+          /* @__PURE__ */ jsx76(VictoryGroup4, { children: normalizedData.map((series, i) => /* @__PURE__ */ jsx76(
+            VictoryLine2,
+            {
+              data: series,
+              style: {
+                data: { stroke: lineColor, opacity: 0.7, strokeWidth: 1 }
+              }
+            },
+            i
+          )) })
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs62(YStack55, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/MarimekkoChart/MarimekkoChart.tsx
+import { useMemo as useMemo10 } from "react";
+import { YStack as YStack56, Text as Text42, useTheme as useTheme15 } from "tamagui";
+import { VictoryChart as VictoryChart13, VictoryBar as VictoryBar6, VictoryAxis as VictoryAxis11, VictoryContainer as VictoryContainer9 } from "victory";
+import { AlertTriangle as AlertTriangle13, BarChart2 } from "@tamagui/lucide-icons";
+import { jsx as jsx77, jsxs as jsxs63 } from "react/jsx-runtime";
+var MarimekkoChart = ({
+  data,
+  xKey,
+  yKey,
+  widthKey,
+  color = "$primary",
+  width = 600,
+  height = 400,
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme15();
+  const themeColor = theme[color];
+  const barColor = themeColor ? themeColor.get() : color;
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const processedData = useMemo10(() => {
+    if (!data || data.length === 0) return [];
+    let currentX = 0;
+    return data.map((d) => {
+      const w2 = Number(d[widthKey]) || 0;
+      const midpoint = currentX + w2 / 2;
+      currentX += w2;
+      return {
+        ...d,
+        _x: midpoint,
+        _width: w2,
+        _y: Number(d[yKey]),
+        label: d[xKey]
+        // for tooltip or axis
+      };
+    });
+  }, [data, xKey, yKey, widthKey]);
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx77(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs63(YStack56, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx77(AlertTriangle13, { color: "$red10" }),
+        /* @__PURE__ */ jsx77(Text42, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data || data.length === 0) {
+      return /* @__PURE__ */ jsxs63(YStack56, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx77(BarChart2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx77(Text42, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    return /* @__PURE__ */ jsxs63(
+      VictoryChart13,
+      {
+        domainPadding: { x: 0 },
+        height,
+        width,
+        containerComponent: /* @__PURE__ */ jsx77(VictoryContainer9, { responsive: true }),
+        children: [
+          /* @__PURE__ */ jsx77(
+            VictoryAxis11,
+            {
+              style: {
+                axis: { stroke: axisColor },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 10, fontFamily: "inherit" }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx77(
+            VictoryAxis11,
+            {
+              dependentAxis: true,
+              style: {
+                axis: { stroke: "transparent" },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" },
+                grid: { stroke: theme.borderColor?.get() || "#eee", strokeDasharray: "4, 4" }
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx77(
+            VictoryBar6,
+            {
+              data: processedData,
+              x: "_x",
+              y: "_y",
+              style: {
+                data: {
+                  fill: barColor,
+                  stroke: theme.background?.get() || "white",
+                  strokeWidth: 1
+                }
+              },
+              barWidth: ({ datum }) => {
+                const totalWidth = processedData.reduce((acc, d) => acc + d._width, 0);
+                const chartInnerWidth = width - 100;
+                return datum._width / totalWidth * chartInnerWidth;
+              }
+            }
+          )
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs63(YStack56, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/RidgelinePlot/RidgelinePlot.tsx
+import { useMemo as useMemo11 } from "react";
+import { YStack as YStack57, Text as Text43, useTheme as useTheme16 } from "tamagui";
+import { VictoryChart as VictoryChart14, VictoryArea as VictoryArea3, VictoryAxis as VictoryAxis12 } from "victory";
+import { AlertTriangle as AlertTriangle14, Activity as Activity2 } from "@tamagui/lucide-icons";
+import { jsx as jsx78, jsxs as jsxs64 } from "react/jsx-runtime";
+var RidgelinePlot = ({
+  series,
+  width = 600,
+  height = 400,
+  overlap = 0.5,
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme16();
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const processedSeries = useMemo11(() => {
+    if (!series || series.length === 0) return [];
+    const numSeries = series.length;
+    const rowHeight = 100;
+    const maxY = Math.max(...series.flatMap((s) => s.data.map((d) => d.y))) || 1;
+    return series.map((s, i) => {
+      const yOffset = i * (rowHeight * (1 - overlap));
+      const data = s.data.map((d) => ({
+        x: d.x,
+        y: yOffset + d.y / maxY * rowHeight,
+        y0: yOffset
+        // Baseline for area
+      }));
+      return {
+        ...s,
+        processedData: data,
+        yOffset
+      };
+    }).reverse();
+  }, [series, overlap]);
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx78(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs64(YStack57, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx78(AlertTriangle14, { color: "$red10" }),
+        /* @__PURE__ */ jsx78(Text43, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!series || series.length === 0) {
+      return /* @__PURE__ */ jsxs64(YStack57, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx78(Activity2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx78(Text43, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    return /* @__PURE__ */ jsxs64(
+      VictoryChart14,
+      {
+        height,
+        width,
+        domainPadding: { x: 20, y: 10 },
+        children: [
+          /* @__PURE__ */ jsx78(
+            VictoryAxis12,
+            {
+              style: {
+                axis: { stroke: axisColor },
+                tickLabels: { fill: textColor, padding: 5, fontSize: 10, fontFamily: "inherit" }
+              }
+            }
+          ),
+          processedSeries.map((s, i) => /* @__PURE__ */ jsx78(
+            VictoryArea3,
+            {
+              data: s.processedData,
+              style: {
+                data: {
+                  fill: s.color || theme.blue9?.get() || "#3b82f6",
+                  fillOpacity: 0.8,
+                  stroke: theme.background?.get() || "white",
+                  strokeWidth: 1
+                }
+              }
+            },
+            s.id
+          ))
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ jsxs64(YStack57, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/DecompositionTree/DecompositionTree.tsx
+import { useMemo as useMemo12 } from "react";
+import { YStack as YStack58, Text as Text44, useTheme as useTheme17 } from "tamagui";
+import { Svg as Svg2, Path as Path2, G as G2, Rect, Text as SvgText2 } from "react-native-svg";
+import { AlertTriangle as AlertTriangle15, GitMerge } from "@tamagui/lucide-icons";
+import { jsx as jsx79, jsxs as jsxs65 } from "react/jsx-runtime";
+var calculateTreeLayout = (data, width, height, nodeWidth = 100, nodeHeight = 40, gapX = 50, gapY = 20) => {
+  let nextY = 0;
+  const computeSize = (node) => {
+    if (!node.children || node.children.length === 0) {
+      return nodeHeight + gapY;
+    }
+    const childrenSize = node.children.reduce((acc, child) => acc + computeSize(child), 0);
+    return childrenSize;
+  };
+  const layout2 = (node, depth, startY) => {
+    const myHeight = computeSize(node);
+    const x = depth * (nodeWidth + gapX) + 20;
+    let childStartY = startY;
+    const children = [];
+    if (node.children) {
+      node.children.forEach((child) => {
+        const childH = computeSize(child);
+        children.push(layout2(child, depth + 1, childStartY));
+        childStartY += childH;
+      });
+    }
+    let y = startY + myHeight / 2 - nodeHeight / 2;
+    if (children.length > 0) {
+      const firstChildY = children[0].y;
+      const lastChildY = children[children.length - 1].y;
+      y = (firstChildY + lastChildY) / 2;
+    } else {
+      y = startY + (myHeight - gapY) / 2;
+    }
+    return {
+      x,
+      y,
+      width: nodeWidth,
+      height: nodeHeight,
+      data: node,
+      children
+    };
+  };
+  return layout2(data, 0, 0);
+};
+var flattenTree = (root) => {
+  const nodes = [];
+  const links = [];
+  const traverse = (node) => {
+    nodes.push(node);
+    if (node.children) {
+      node.children.forEach((child) => {
+        links.push({
+          x1: node.x + node.width,
+          y1: node.y + node.height / 2,
+          x2: child.x,
+          y2: child.y + child.height / 2
+        });
+        traverse(child);
+      });
+    }
+  };
+  traverse(root);
+  return { nodes, links };
+};
+var DecompositionTree = ({
+  data,
+  width = 800,
+  height = 500,
+  color = "$primary",
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme17();
+  const { nodes, links } = useMemo12(() => {
+    if (!data) return { nodes: [], links: [] };
+    const root = calculateTreeLayout(data, width, height);
+    return flattenTree(root);
+  }, [data, width, height]);
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx79(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs65(YStack58, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx79(AlertTriangle15, { color: "$red10" }),
+        /* @__PURE__ */ jsx79(Text44, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data) {
+      return /* @__PURE__ */ jsxs65(YStack58, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx79(GitMerge, { color: "$gray10" }),
+        /* @__PURE__ */ jsx79(Text44, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    return /* @__PURE__ */ jsx79(Svg2, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs65(G2, { children: [
+      links.map((link, i) => {
+        const midX = (link.x1 + link.x2) / 2;
+        const d = `M ${link.x1} ${link.y1} C ${midX} ${link.y1}, ${midX} ${link.y2}, ${link.x2} ${link.y2}`;
+        return /* @__PURE__ */ jsx79(
+          Path2,
+          {
+            d,
+            stroke: theme.borderColor?.get() || "#ccc",
+            strokeWidth: 2,
+            fill: "none"
+          },
+          `link-${i}`
+        );
+      }),
+      nodes.map((node, i) => /* @__PURE__ */ jsxs65(G2, { x: node.x, y: node.y, children: [
+        /* @__PURE__ */ jsx79(
+          Rect,
+          {
+            width: node.width,
+            height: node.height,
+            rx: 4,
+            fill: node.data.color || theme.background?.get() || "white",
+            stroke: theme.blue9?.get() || "#3b82f6",
+            strokeWidth: 2
+          }
+        ),
+        /* @__PURE__ */ jsx79(
+          SvgText2,
+          {
+            x: node.width / 2,
+            y: node.height / 2 - 5,
+            textAnchor: "middle",
+            fontSize: 12,
+            fontWeight: "bold",
+            fill: theme.color?.get() || "black",
+            children: node.data.label
+          }
+        ),
+        /* @__PURE__ */ jsx79(
+          SvgText2,
+          {
+            x: node.width / 2,
+            y: node.height / 2 + 10,
+            textAnchor: "middle",
+            fontSize: 10,
+            fill: theme.color10?.get() || "#666",
+            children: node.data.value
+          }
+        )
+      ] }, `node-${i}`))
+    ] }) });
+  };
+  return /* @__PURE__ */ jsxs65(YStack58, { width: "100%", gap: "$4", paddingHorizontal: "$4", overflow: "scroll", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/Maps/Maps.tsx
+import { useMemo as useMemo13 } from "react";
+import { YStack as YStack59, Text as Text45, useTheme as useTheme18 } from "tamagui";
+import { Svg as Svg3, Path as Path3, G as G3, Circle as Circle4 } from "react-native-svg";
+import { AlertTriangle as AlertTriangle16, Map as Map2 } from "@tamagui/lucide-icons";
+import { jsx as jsx80, jsxs as jsxs66 } from "react/jsx-runtime";
+var project = (lon, lat, width, height, bounds) => {
+  const [minLon, minLat, maxLon, maxLat] = bounds;
+  const xPct = (lon - minLon) / (maxLon - minLon);
+  const yPct = (lat - minLat) / (maxLat - minLat);
+  const x = xPct * width;
+  const y = height - yPct * height;
+  return [x, y];
+};
+var getBounds = (features) => {
+  let minLon = Infinity, minLat = Infinity, maxLon = -Infinity, maxLat = -Infinity;
+  const visit = (coords) => {
+    if (typeof coords[0] === "number") {
+      const [lon, lat] = coords;
+      minLon = Math.min(minLon, lon);
+      minLat = Math.min(minLat, lat);
+      maxLon = Math.max(maxLon, lon);
+      maxLat = Math.max(maxLat, lat);
+    } else {
+      coords.forEach(visit);
+    }
+  };
+  features.forEach((f) => visit(f.geometry.coordinates));
+  return [minLon, minLat, maxLon, maxLat];
+};
+var geoPath = (feature, width, height, bounds) => {
+  const { geometry } = feature;
+  const drawRing = (ring) => {
+    return ring.map((pt, i) => {
+      const [x, y] = project(pt[0], pt[1], width, height, bounds);
+      return `${i === 0 ? "M" : "L"} ${x} ${y}`;
+    }).join(" ") + "Z";
+  };
+  if (geometry.type === "Polygon") {
+    return geometry.coordinates.map(drawRing).join(" ");
+  } else if (geometry.type === "MultiPolygon") {
+    return geometry.coordinates.map((poly) => poly.map(drawRing).join(" ")).join(" ");
+  }
+  return "";
+};
+var Maps = ({
+  data,
+  type = "choropleth",
+  valueKey = "value",
+  width = 600,
+  height = 400,
+  color = "$primary",
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = useTheme18();
+  const themeColor = theme[color];
+  const { paths, circles } = useMemo13(() => {
+    if (!data || !data.features) return { paths: [], circles: [] };
+    const bounds = getBounds(data.features);
+    const values = data.features.map((f) => f.properties[valueKey]).filter((v) => typeof v === "number");
+    const maxVal = Math.max(...values) || 1;
+    const minVal = Math.min(...values) || 0;
+    const paths2 = data.features.map((f) => {
+      const d = geoPath(f, width, height, bounds);
+      let fill = theme.background?.get() || "#eee";
+      if (type === "choropleth") {
+        const val = f.properties[valueKey];
+        if (typeof val === "number") {
+          const intensity = (val - minVal) / (maxVal - minVal);
+          fill = `rgba(59, 130, 246, ${0.2 + 0.8 * intensity})`;
+        }
+      } else {
+        fill = "#e5e7eb";
+      }
+      return { d, fill, feature: f };
+    });
+    const circles2 = [];
+    if (type === "dotDensity") {
+      data.features.forEach((f) => {
+        const coords = f.geometry.type === "Polygon" ? f.geometry.coordinates[0] : f.geometry.coordinates[0][0];
+        let sumX = 0, sumY = 0, count = 0;
+        coords.forEach((pt) => {
+          sumX += pt[0];
+          sumY += pt[1];
+          count++;
+        });
+        const cx = sumX / count;
+        const cy = sumY / count;
+        const [x, y] = project(cx, cy, width, height, bounds);
+        const val = f.properties[valueKey];
+        if (val) {
+          circles2.push({
+            cx: x,
+            cy: y,
+            r: Math.sqrt(val) / 2,
+            // scale size
+            fill: theme.red9?.get() || "#ef4444"
+          });
+        }
+      });
+    }
+    return { paths: paths2, circles: circles2 };
+  }, [data, width, height, type, valueKey, theme]);
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx80(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ jsxs66(YStack59, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx80(AlertTriangle16, { color: "$red10" }),
+        /* @__PURE__ */ jsx80(Text45, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data) {
+      return /* @__PURE__ */ jsxs66(YStack59, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx80(Map2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx80(Text45, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    return /* @__PURE__ */ jsx80(Svg3, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs66(G3, { children: [
+      paths.map((p, i) => /* @__PURE__ */ jsx80(
+        Path3,
+        {
+          d: p.d,
+          fill: p.fill,
+          stroke: theme.background?.get() || "white",
+          strokeWidth: 0.5
+        },
+        i
+      )),
+      circles.map((c, i) => /* @__PURE__ */ jsx80(
+        Circle4,
+        {
+          cx: c.cx,
+          cy: c.cy,
+          r: c.r,
+          fill: c.fill,
+          opacity: 0.6
+        },
+        `c-${i}`
+      ))
+    ] }) });
+  };
+  return /* @__PURE__ */ jsxs66(YStack59, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/Timeline/Timeline.tsx
+import { YStack as YStack60, XStack as XStack37, styled as styled61, View as View8, Text as Text46 } from "tamagui";
+import { jsx as jsx81, jsxs as jsxs67 } from "react/jsx-runtime";
+var TimelineFrame = styled61(YStack60, {
   name: "Timeline",
   tag: "ul",
   width: "100%",
@@ -11064,69 +12406,69 @@ var TimelineDot = styled61(View8, {
   borderColor: "$primary",
   zIndex: 1
 });
-var TimelineContent = styled61(YStack48, {
+var TimelineContent = styled61(YStack60, {
   flex: 1,
   gap: "$1"
 });
-var TimelineTime = styled61(Text34, {
+var TimelineTime = styled61(Text46, {
   fontSize: "$2",
   color: "$mutedForeground"
 });
-var TimelineTitle = styled61(Text34, {
+var TimelineTitle = styled61(Text46, {
   fontSize: "$3",
   fontWeight: "bold",
   color: "$foreground"
 });
-var TimelineDescription = styled61(Text34, {
+var TimelineDescription = styled61(Text46, {
   fontSize: "$3",
   color: "$foreground"
 });
 var TimelineItem = ({ title, description, time, isLast, children }) => {
-  return /* @__PURE__ */ jsxs55(TimelineItemFrame, { children: [
-    /* @__PURE__ */ jsxs55(View8, { children: [
-      /* @__PURE__ */ jsx69(TimelineDot, {}),
-      !isLast && /* @__PURE__ */ jsx69(TimelineConnector, {})
+  return /* @__PURE__ */ jsxs67(TimelineItemFrame, { children: [
+    /* @__PURE__ */ jsxs67(View8, { children: [
+      /* @__PURE__ */ jsx81(TimelineDot, {}),
+      !isLast && /* @__PURE__ */ jsx81(TimelineConnector, {})
     ] }),
-    /* @__PURE__ */ jsxs55(TimelineContent, { children: [
-      time && /* @__PURE__ */ jsx69(TimelineTime, { children: time }),
-      title && /* @__PURE__ */ jsx69(TimelineTitle, { children: title }),
-      description && /* @__PURE__ */ jsx69(TimelineDescription, { children: description }),
+    /* @__PURE__ */ jsxs67(TimelineContent, { children: [
+      time && /* @__PURE__ */ jsx81(TimelineTime, { children: time }),
+      title && /* @__PURE__ */ jsx81(TimelineTitle, { children: title }),
+      description && /* @__PURE__ */ jsx81(TimelineDescription, { children: description }),
       children
     ] })
   ] });
 };
-var TimelineSkeleton = () => /* @__PURE__ */ jsx69(TimelineFrame, { "data-testid": "timeline-skeleton", children: [...Array(3)].map((_, index) => /* @__PURE__ */ jsxs55(TimelineItemFrame, { children: [
-  /* @__PURE__ */ jsx69(View8, { children: /* @__PURE__ */ jsx69(Skeleton, { width: 20, height: 20, borderRadius: 10 }) }),
-  /* @__PURE__ */ jsxs55(TimelineContent, { children: [
-    /* @__PURE__ */ jsx69(Skeleton, { width: "50%", height: 15 }),
-    /* @__PURE__ */ jsx69(Skeleton, { width: "80%", height: 15 })
+var TimelineSkeleton = () => /* @__PURE__ */ jsx81(TimelineFrame, { "data-testid": "timeline-skeleton", children: [...Array(3)].map((_, index) => /* @__PURE__ */ jsxs67(TimelineItemFrame, { children: [
+  /* @__PURE__ */ jsx81(View8, { children: /* @__PURE__ */ jsx81(Skeleton, { width: 20, height: 20, borderRadius: 10 }) }),
+  /* @__PURE__ */ jsxs67(TimelineContent, { children: [
+    /* @__PURE__ */ jsx81(Skeleton, { width: "50%", height: 15 }),
+    /* @__PURE__ */ jsx81(Skeleton, { width: "80%", height: 15 })
   ] })
 ] }, index)) });
 var Timeline = ({ items, children, isLoading, isEmpty, hasError }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsx69(TimelineSkeleton, {});
+    return /* @__PURE__ */ jsx81(TimelineSkeleton, {});
   }
   if (hasError) {
-    return /* @__PURE__ */ jsxs55(Alert, { variant: "destructive", children: [
-      /* @__PURE__ */ jsx69(Alert.Title, { children: "Erro" }),
-      /* @__PURE__ */ jsx69(Alert.Description, { children: "Ocorreu um erro ao carregar os dados. Por favor, tente novamente." })
+    return /* @__PURE__ */ jsxs67(Alert, { variant: "destructive", children: [
+      /* @__PURE__ */ jsx81(Alert.Title, { children: "Erro" }),
+      /* @__PURE__ */ jsx81(Alert.Description, { children: "Ocorreu um erro ao carregar os dados. Por favor, tente novamente." })
     ] });
   }
   if (isEmpty || items && items.length === 0 && !children) {
-    return /* @__PURE__ */ jsx69(Empty, { title: "Nenhum item encontrado", description: "N\xE3o h\xE1 itens para serem exibidos no momento." });
+    return /* @__PURE__ */ jsx81(Empty, { title: "Nenhum item encontrado", description: "N\xE3o h\xE1 itens para serem exibidos no momento." });
   }
   if (items) {
-    return /* @__PURE__ */ jsx69(TimelineFrame, { children: items.map((item, index) => /* @__PURE__ */ jsx69(TimelineItem, { ...item, isLast: index === items.length - 1 }, index)) });
+    return /* @__PURE__ */ jsx81(TimelineFrame, { children: items.map((item, index) => /* @__PURE__ */ jsx81(TimelineItem, { ...item, isLast: index === items.length - 1 }, index)) });
   }
-  return /* @__PURE__ */ jsx69(TimelineFrame, { children });
+  return /* @__PURE__ */ jsx81(TimelineFrame, { children });
 };
 
 // src/organisms/FileUpload/FileUpload.tsx
 import { useRef as useRef4 } from "react";
-import { YStack as YStack49, styled as styled62, Text as Text35 } from "tamagui";
+import { YStack as YStack61, styled as styled62, Text as Text47 } from "tamagui";
 import { Upload } from "@tamagui/lucide-icons";
-import { jsx as jsx70, jsxs as jsxs56 } from "react/jsx-runtime";
-var FileUploadFrame = styled62(YStack49, {
+import { jsx as jsx82, jsxs as jsxs68 } from "react/jsx-runtime";
+var FileUploadFrame = styled62(YStack61, {
   name: "FileUpload",
   borderWidth: 2,
   borderColor: "$borderColor",
@@ -11173,16 +12515,16 @@ var FileUpload = ({
     }
   };
   if (isLoading) {
-    return /* @__PURE__ */ jsxs56(FileUploadFrame, { ...props, children: [
-      /* @__PURE__ */ jsx70(Skeleton, { height: 32, width: 32, borderRadius: "$12" }),
-      /* @__PURE__ */ jsxs56(YStack49, { gap: "$1", alignItems: "center", width: "100%", children: [
-        /* @__PURE__ */ jsx70(Skeleton, { height: 20, width: "60%" }),
-        /* @__PURE__ */ jsx70(Skeleton, { height: 16, width: "80%" })
+    return /* @__PURE__ */ jsxs68(FileUploadFrame, { ...props, children: [
+      /* @__PURE__ */ jsx82(Skeleton, { height: 32, width: 32, borderRadius: "$12" }),
+      /* @__PURE__ */ jsxs68(YStack61, { gap: "$1", alignItems: "center", width: "100%", children: [
+        /* @__PURE__ */ jsx82(Skeleton, { height: 20, width: "60%" }),
+        /* @__PURE__ */ jsx82(Skeleton, { height: 16, width: "80%" })
       ] })
     ] });
   }
-  return /* @__PURE__ */ jsxs56(FileUploadFrame, { hasError, ...props, children: [
-    /* @__PURE__ */ jsxs56(
+  return /* @__PURE__ */ jsxs68(FileUploadFrame, { hasError, ...props, children: [
+    /* @__PURE__ */ jsxs68(
       Button,
       {
         variant: "ghost",
@@ -11195,16 +12537,16 @@ var FileUpload = ({
         disabled: isLoading,
         "aria-label": title,
         children: [
-          /* @__PURE__ */ jsx70(Upload, { size: 32, color: hasError ? "$red10" : "$gray10" }),
-          /* @__PURE__ */ jsxs56(YStack49, { gap: "$1", alignItems: "center", children: [
-            /* @__PURE__ */ jsx70(Text35, { fontWeight: "bold", color: hasError ? "$red11" : void 0, children: title }),
-            /* @__PURE__ */ jsx70(Text35, { fontSize: "$2", color: hasError ? "$red10" : "$gray11", children: subtitle })
+          /* @__PURE__ */ jsx82(Upload, { size: 32, color: hasError ? "$red10" : "$gray10" }),
+          /* @__PURE__ */ jsxs68(YStack61, { gap: "$1", alignItems: "center", children: [
+            /* @__PURE__ */ jsx82(Text47, { fontWeight: "bold", color: hasError ? "$red11" : void 0, children: title }),
+            /* @__PURE__ */ jsx82(Text47, { fontSize: "$2", color: hasError ? "$red10" : "$gray11", children: subtitle })
           ] })
         ]
       }
     ),
-    hasError && errorMessage && /* @__PURE__ */ jsx70(Text35, { fontSize: "$2", color: "$red11", textAlign: "center", children: errorMessage }),
-    typeof document !== "undefined" && /* @__PURE__ */ jsx70(
+    hasError && errorMessage && /* @__PURE__ */ jsx82(Text47, { fontSize: "$2", color: "$red11", textAlign: "center", children: errorMessage }),
+    typeof document !== "undefined" && /* @__PURE__ */ jsx82(
       "input",
       {
         type: "file",
@@ -11220,8 +12562,8 @@ var FileUpload = ({
 
 // src/organisms/SchemaForm/SchemaForm.tsx
 import { useForm } from "react-hook-form";
-import { YStack as YStack50 } from "tamagui";
-import { jsx as jsx71, jsxs as jsxs57 } from "react/jsx-runtime";
+import { YStack as YStack62 } from "tamagui";
+import { jsx as jsx83, jsxs as jsxs69 } from "react/jsx-runtime";
 var renderFieldInput = (field, formField) => {
   const commonProps = {
     disabled: field.disabled,
@@ -11232,7 +12574,7 @@ var renderFieldInput = (field, formField) => {
     case "email":
     case "password":
     case "number":
-      return /* @__PURE__ */ jsx71(
+      return /* @__PURE__ */ jsx83(
         Input,
         {
           ...formField,
@@ -11242,9 +12584,9 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "textarea":
-      return /* @__PURE__ */ jsx71(Textarea, { ...formField, ...commonProps, placeholder: field.placeholder });
+      return /* @__PURE__ */ jsx83(Textarea, { ...formField, ...commonProps, placeholder: field.placeholder });
     case "switch":
-      return /* @__PURE__ */ jsx71(
+      return /* @__PURE__ */ jsx83(
         Switch,
         {
           checked: formField.value,
@@ -11253,7 +12595,7 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "checkbox":
-      return /* @__PURE__ */ jsx71(
+      return /* @__PURE__ */ jsx83(
         Checkbox,
         {
           checked: formField.value,
@@ -11262,7 +12604,7 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "date":
-      return /* @__PURE__ */ jsx71(
+      return /* @__PURE__ */ jsx83(
         DatePicker,
         {
           date: formField.value,
@@ -11272,18 +12614,18 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "select":
-      return /* @__PURE__ */ jsxs57(
+      return /* @__PURE__ */ jsxs69(
         SelectRoot,
         {
           value: formField.value,
           onValueChange: formField.onChange,
           disabled: field.disabled,
           children: [
-            /* @__PURE__ */ jsx71(SelectRoot.Trigger, { placeholder: field.placeholder, children: /* @__PURE__ */ jsx71(SelectRoot.Value, { placeholder: field.placeholder }) }),
-            /* @__PURE__ */ jsx71(SelectRoot.Sheet, {}),
-            /* @__PURE__ */ jsx71(SelectRoot.Content, { children: /* @__PURE__ */ jsx71(SelectRoot.Viewport, { children: /* @__PURE__ */ jsx71(SelectRoot.Group, { children: field.options?.map((opt, i) => /* @__PURE__ */ jsxs57(SelectRoot.Item, { index: i, value: opt.value, children: [
-              /* @__PURE__ */ jsx71(SelectRoot.ItemText, { children: opt.label }),
-              /* @__PURE__ */ jsx71(SelectRoot.ItemIndicator, { marginLeft: "auto" })
+            /* @__PURE__ */ jsx83(SelectRoot.Trigger, { placeholder: field.placeholder, children: /* @__PURE__ */ jsx83(SelectRoot.Value, { placeholder: field.placeholder }) }),
+            /* @__PURE__ */ jsx83(SelectRoot.Sheet, {}),
+            /* @__PURE__ */ jsx83(SelectRoot.Content, { children: /* @__PURE__ */ jsx83(SelectRoot.Viewport, { children: /* @__PURE__ */ jsx83(SelectRoot.Group, { children: field.options?.map((opt, i) => /* @__PURE__ */ jsxs69(SelectRoot.Item, { index: i, value: opt.value, children: [
+              /* @__PURE__ */ jsx83(SelectRoot.ItemText, { children: opt.label }),
+              /* @__PURE__ */ jsx83(SelectRoot.ItemIndicator, { marginLeft: "auto" })
             ] }, opt.value)) }) }) })
           ]
         }
@@ -11300,32 +12642,32 @@ function SchemaForm({
   isLoading
 }) {
   const form = useForm({ defaultValues });
-  return /* @__PURE__ */ jsx71(Form, { ...form, children: /* @__PURE__ */ jsx71(FormRoot, { tag: "form", onSubmit: form.handleSubmit(onSubmit), children: /* @__PURE__ */ jsxs57(YStack50, { gap: "$4", children: [
-    schema.map((field) => /* @__PURE__ */ jsx71(
+  return /* @__PURE__ */ jsx83(Form, { ...form, children: /* @__PURE__ */ jsx83(FormRoot, { tag: "form", onSubmit: form.handleSubmit(onSubmit), children: /* @__PURE__ */ jsxs69(YStack62, { gap: "$4", children: [
+    schema.map((field) => /* @__PURE__ */ jsx83(
       FormField,
       {
         control: form.control,
         name: field.name,
         rules: { required: field.required ? "Campo obrigat\xF3rio" : false },
-        render: ({ field: formField }) => /* @__PURE__ */ jsxs57(FormItem, { children: [
-          /* @__PURE__ */ jsx71(FormLabel, { children: field.label }),
-          /* @__PURE__ */ jsx71(FormControl, { children: renderFieldInput(field, formField) }),
-          field.description && /* @__PURE__ */ jsx71(FormDescription, { children: field.description }),
-          /* @__PURE__ */ jsx71(FormMessage, {})
+        render: ({ field: formField }) => /* @__PURE__ */ jsxs69(FormItem, { children: [
+          /* @__PURE__ */ jsx83(FormLabel, { children: field.label }),
+          /* @__PURE__ */ jsx83(FormControl, { children: renderFieldInput(field, formField) }),
+          field.description && /* @__PURE__ */ jsx83(FormDescription, { children: field.description }),
+          /* @__PURE__ */ jsx83(FormMessage, {})
         ] })
       },
       field.name
     )),
-    /* @__PURE__ */ jsx71(Button, { type: "submit", loading: isLoading, theme: "active", children: submitText })
+    /* @__PURE__ */ jsx83(Button, { type: "submit", loading: isLoading, theme: "active", children: submitText })
   ] }) }) });
 }
 
 // src/organisms/HeatmapChart/HeatmapChart.tsx
-import { YStack as YStack51, Text as Text36, useTheme as useTheme7 } from "tamagui";
-import { VictoryScatter as VictoryScatter2, VictoryChart as VictoryChart6, VictoryAxis as VictoryAxis6, VictoryContainer as VictoryContainer3 } from "victory";
-import { AlertTriangle as AlertTriangle5, Grid } from "@tamagui/lucide-icons";
-import { useMemo as useMemo8 } from "react";
-import { jsx as jsx72, jsxs as jsxs58 } from "react/jsx-runtime";
+import { YStack as YStack63, Text as Text48, useTheme as useTheme19 } from "tamagui";
+import { VictoryScatter as VictoryScatter3, VictoryChart as VictoryChart15, VictoryAxis as VictoryAxis13, VictoryContainer as VictoryContainer10 } from "victory";
+import { AlertTriangle as AlertTriangle17, Grid } from "@tamagui/lucide-icons";
+import { useMemo as useMemo14 } from "react";
+import { jsx as jsx84, jsxs as jsxs70 } from "react/jsx-runtime";
 var HeatmapChart = ({
   data,
   xKey,
@@ -11336,10 +12678,10 @@ var HeatmapChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = useTheme7();
+  const theme = useTheme19();
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
-  const processedData = useMemo8(() => {
+  const processedData = useMemo14(() => {
     if (!data) return [];
     const values = data.map((d) => Number(d[valueKey]));
     const min = Math.min(...values);
@@ -11363,29 +12705,29 @@ var HeatmapChart = ({
   };
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx72(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx84(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ jsxs58(YStack51, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx72(AlertTriangle5, { color: "$red10" }),
-        /* @__PURE__ */ jsx72(Text36, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs70(YStack63, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx84(AlertTriangle17, { color: "$red10" }),
+        /* @__PURE__ */ jsx84(Text48, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs58(YStack51, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx72(Grid, { color: "$gray10" }),
-        /* @__PURE__ */ jsx72(Text36, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs70(YStack63, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx84(Grid, { color: "$gray10" }),
+        /* @__PURE__ */ jsx84(Text48, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsxs58(
-      VictoryChart6,
+    return /* @__PURE__ */ jsxs70(
+      VictoryChart15,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx72(VictoryContainer3, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx84(VictoryContainer10, { responsive: true }),
         children: [
-          /* @__PURE__ */ jsx72(
-            VictoryAxis6,
+          /* @__PURE__ */ jsx84(
+            VictoryAxis13,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11393,8 +12735,8 @@ var HeatmapChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx72(
-            VictoryAxis6,
+          /* @__PURE__ */ jsx84(
+            VictoryAxis13,
             {
               dependentAxis: true,
               style: {
@@ -11403,8 +12745,8 @@ var HeatmapChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx72(
-            VictoryScatter2,
+          /* @__PURE__ */ jsx84(
+            VictoryScatter3,
             {
               data: processedData,
               symbol: "square",
@@ -11420,18 +12762,18 @@ var HeatmapChart = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs58(YStack51, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs70(YStack63, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/TreemapChart/TreemapChart.tsx
-import { YStack as YStack52, Text as Text37, useTheme as useTheme8 } from "tamagui";
-import { AlertTriangle as AlertTriangle6, Grid as Grid2 } from "@tamagui/lucide-icons";
-import { useMemo as useMemo9 } from "react";
-import Svg, { Rect as SvgRect, Text as SvgText, G } from "react-native-svg";
-import { jsx as jsx73, jsxs as jsxs59 } from "react/jsx-runtime";
+import { YStack as YStack64, Text as Text49, useTheme as useTheme20 } from "tamagui";
+import { AlertTriangle as AlertTriangle18, Grid as Grid2 } from "@tamagui/lucide-icons";
+import { useMemo as useMemo15 } from "react";
+import Svg4, { Rect as SvgRect, Text as SvgText3, G as G4 } from "react-native-svg";
+import { jsx as jsx85, jsxs as jsxs71 } from "react/jsx-runtime";
 var layout = (nodes, container) => {
   if (nodes.length === 0) return [];
   if (nodes.length === 1) {
@@ -11485,9 +12827,9 @@ var TreemapChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = useTheme8();
+  const theme = useTheme20();
   const textColor = theme.color?.get() || "#fff";
-  const processedNodes = useMemo9(() => {
+  const processedNodes = useMemo15(() => {
     if (!data) return [];
     const nodes = data.map((d) => ({
       value: Number(d[valueKey]),
@@ -11511,22 +12853,22 @@ var TreemapChart = ({
   const getColor = (index) => colors[index % colors.length];
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx73(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx85(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ jsxs59(YStack52, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx73(AlertTriangle6, { color: "$red10" }),
-        /* @__PURE__ */ jsx73(Text37, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs71(YStack64, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx85(AlertTriangle18, { color: "$red10" }),
+        /* @__PURE__ */ jsx85(Text49, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs59(YStack52, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx73(Grid2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx73(Text37, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs71(YStack64, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx85(Grid2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx85(Text49, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsx73(Svg, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ jsxs59(G, { children: [
-      /* @__PURE__ */ jsx73(
+    return /* @__PURE__ */ jsx85(Svg4, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ jsxs71(G4, { children: [
+      /* @__PURE__ */ jsx85(
         SvgRect,
         {
           x: node.rect?.x,
@@ -11538,8 +12880,8 @@ var TreemapChart = ({
           strokeWidth: "1"
         }
       ),
-      node.rect && node.rect.w > 20 && node.rect.h > 15 && /* @__PURE__ */ jsx73(
-        SvgText,
+      node.rect && node.rect.w > 20 && node.rect.h > 15 && /* @__PURE__ */ jsx85(
+        SvgText3,
         {
           x: (node.rect.x || 0) + (node.rect.w || 0) / 2,
           y: (node.rect.y || 0) + (node.rect.h || 0) / 2,
@@ -11552,18 +12894,18 @@ var TreemapChart = ({
       )
     ] }, i)) });
   };
-  return /* @__PURE__ */ jsxs59(YStack52, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs71(YStack64, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/SankeyDiagram/SankeyDiagram.tsx
-import { YStack as YStack53, Text as Text38, useTheme as useTheme9 } from "tamagui";
-import { AlertTriangle as AlertTriangle7, Activity } from "@tamagui/lucide-icons";
-import { useMemo as useMemo10 } from "react";
-import Svg2, { Rect, Text as SvgText2, Path, G as G2 } from "react-native-svg";
-import { jsx as jsx74, jsxs as jsxs60 } from "react/jsx-runtime";
+import { YStack as YStack65, Text as Text50, useTheme as useTheme21 } from "tamagui";
+import { AlertTriangle as AlertTriangle19, Activity as Activity3 } from "@tamagui/lucide-icons";
+import { useMemo as useMemo16 } from "react";
+import Svg5, { Rect as Rect2, Text as SvgText4, Path as Path4, G as G5 } from "react-native-svg";
+import { jsx as jsx86, jsxs as jsxs72 } from "react/jsx-runtime";
 var computeLayout = (data, width, height) => {
   const { nodes: rawNodes, links: rawLinks } = data;
   const nodes = rawNodes.map((n) => ({
@@ -11650,30 +12992,30 @@ var SankeyDiagram = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = useTheme9();
+  const theme = useTheme21();
   const primaryColor = theme.primary?.get() || "#0070f3";
-  const layout2 = useMemo10(() => {
+  const layout2 = useMemo16(() => {
     if (!data || data.nodes.length === 0) return null;
     return computeLayout(data, width, height);
   }, [data, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx74(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx86(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ jsxs60(YStack53, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx74(AlertTriangle7, { color: "$red10" }),
-        /* @__PURE__ */ jsx74(Text38, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs72(YStack65, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx86(AlertTriangle19, { color: "$red10" }),
+        /* @__PURE__ */ jsx86(Text50, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.nodes.length === 0) {
-      return /* @__PURE__ */ jsxs60(YStack53, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx74(Activity, { color: "$gray10" }),
-        /* @__PURE__ */ jsx74(Text38, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs72(YStack65, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx86(Activity3, { color: "$gray10" }),
+        /* @__PURE__ */ jsx86(Text50, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const { nodes, links } = layout2;
-    return /* @__PURE__ */ jsxs60(Svg2, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: [
+    return /* @__PURE__ */ jsxs72(Svg5, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: [
       links.map((link, i) => {
         const x0 = link.sourceNode.x + 20;
         const x1 = link.targetNode.x;
@@ -11681,8 +13023,8 @@ var SankeyDiagram = ({
         const y1 = link.y1;
         const midX = (x0 + x1) / 2;
         const d = `M ${x0} ${y0} C ${midX} ${y0}, ${midX} ${y1}, ${x1} ${y1}`;
-        return /* @__PURE__ */ jsx74(
-          Path,
+        return /* @__PURE__ */ jsx86(
+          Path4,
           {
             d,
             stroke: primaryColor,
@@ -11693,9 +13035,9 @@ var SankeyDiagram = ({
           `link-${i}`
         );
       }),
-      nodes.map((node, i) => /* @__PURE__ */ jsxs60(G2, { children: [
-        /* @__PURE__ */ jsx74(
-          Rect,
+      nodes.map((node, i) => /* @__PURE__ */ jsxs72(G5, { children: [
+        /* @__PURE__ */ jsx86(
+          Rect2,
           {
             x: node.x,
             y: node.y,
@@ -11705,8 +13047,8 @@ var SankeyDiagram = ({
             fillOpacity: 0.8
           }
         ),
-        /* @__PURE__ */ jsx74(
-          SvgText2,
+        /* @__PURE__ */ jsx86(
+          SvgText4,
           {
             x: node.x + 25,
             y: node.y + node.dy / 2,
@@ -11719,18 +13061,18 @@ var SankeyDiagram = ({
       ] }, `node-${i}`))
     ] });
   };
-  return /* @__PURE__ */ jsxs60(YStack53, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs72(YStack65, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/ChordDiagram/ChordDiagram.tsx
-import { YStack as YStack54, Text as Text39, useTheme as useTheme10 } from "tamagui";
-import { AlertTriangle as AlertTriangle8, Circle as Circle4 } from "@tamagui/lucide-icons";
-import { useMemo as useMemo11 } from "react";
-import Svg3, { Path as Path2, G as G3, Text as SvgText3 } from "react-native-svg";
-import { jsx as jsx75, jsxs as jsxs61 } from "react/jsx-runtime";
+import { YStack as YStack66, Text as Text51, useTheme as useTheme22 } from "tamagui";
+import { AlertTriangle as AlertTriangle20, Circle as Circle5 } from "@tamagui/lucide-icons";
+import { useMemo as useMemo17 } from "react";
+import Svg6, { Path as Path5, G as G6, Text as SvgText5 } from "react-native-svg";
+import { jsx as jsx87, jsxs as jsxs73 } from "react/jsx-runtime";
 var polarToCartesian = (centerX, centerY, radius, angleInRadians) => {
   return {
     x: centerX + radius * Math.cos(angleInRadians),
@@ -11846,31 +13188,31 @@ var ChordDiagram = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = useTheme10();
-  const layout2 = useMemo11(() => {
+  const theme = useTheme22();
+  const layout2 = useMemo17(() => {
     if (!matrix || matrix.length === 0) return null;
     return computeLayout2(matrix, labels || [], width, height);
   }, [matrix, labels, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx75(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx87(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ jsxs61(YStack54, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx75(AlertTriangle8, { color: "$red10" }),
-        /* @__PURE__ */ jsx75(Text39, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs73(YStack66, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx87(AlertTriangle20, { color: "$red10" }),
+        /* @__PURE__ */ jsx87(Text51, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.groups.length === 0) {
-      return /* @__PURE__ */ jsxs61(YStack54, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx75(Circle4, { color: "$gray10" }),
-        /* @__PURE__ */ jsx75(Text39, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs73(YStack66, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx87(Circle5, { color: "$gray10" }),
+        /* @__PURE__ */ jsx87(Text51, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const { groups, ribbons, cx, cy, outerRadius } = layout2;
-    return /* @__PURE__ */ jsx75(Svg3, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs61(G3, { children: [
-      ribbons.map((ribbon, i) => /* @__PURE__ */ jsx75(
-        Path2,
+    return /* @__PURE__ */ jsx87(Svg6, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs73(G6, { children: [
+      ribbons.map((ribbon, i) => /* @__PURE__ */ jsx87(
+        Path5,
         {
           d: ribbon.d,
           fill: ribbon.color,
@@ -11881,17 +13223,17 @@ var ChordDiagram = ({
       )),
       groups.map((group, i) => {
         const labelPos = polarToCartesian(cx, cy, outerRadius + 20, group.midAngle);
-        return /* @__PURE__ */ jsxs61(G3, { children: [
-          /* @__PURE__ */ jsx75(
-            Path2,
+        return /* @__PURE__ */ jsxs73(G6, { children: [
+          /* @__PURE__ */ jsx87(
+            Path5,
             {
               d: group.path,
               fill: group.color,
               stroke: theme.borderColor?.get() || "white"
             }
           ),
-          /* @__PURE__ */ jsx75(
-            SvgText3,
+          /* @__PURE__ */ jsx87(
+            SvgText5,
             {
               x: labelPos.x,
               y: labelPos.y,
@@ -11906,18 +13248,18 @@ var ChordDiagram = ({
       })
     ] }) });
   };
-  return /* @__PURE__ */ jsxs61(YStack54, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs73(YStack66, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/NetworkGraph/NetworkGraph.tsx
-import { YStack as YStack55, Text as Text40, useTheme as useTheme11 } from "tamagui";
-import { AlertTriangle as AlertTriangle9, Share2 } from "@tamagui/lucide-icons";
-import { useMemo as useMemo12 } from "react";
-import Svg4, { Circle as Circle5, Line, Text as SvgText4, G as G4 } from "react-native-svg";
-import { jsx as jsx76, jsxs as jsxs62 } from "react/jsx-runtime";
+import { YStack as YStack67, Text as Text52, useTheme as useTheme23 } from "tamagui";
+import { AlertTriangle as AlertTriangle21, Share2 } from "@tamagui/lucide-icons";
+import { useMemo as useMemo18 } from "react";
+import Svg7, { Circle as Circle6, Line, Text as SvgText6, G as G7 } from "react-native-svg";
+import { jsx as jsx88, jsxs as jsxs74 } from "react/jsx-runtime";
 var runSimulation = (nodes, links, width, height) => {
   const simNodes = nodes.map((n, i) => ({
     ...n,
@@ -11993,30 +13335,30 @@ var NetworkGraph = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = useTheme11();
+  const theme = useTheme23();
   const primaryColor = theme.primary?.get() || "#0070f3";
-  const layout2 = useMemo12(() => {
+  const layout2 = useMemo18(() => {
     if (!data || data.nodes.length === 0) return null;
     return runSimulation(data.nodes, data.links, width, height);
   }, [data, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx76(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx88(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ jsxs62(YStack55, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx76(AlertTriangle9, { color: "$red10" }),
-        /* @__PURE__ */ jsx76(Text40, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs74(YStack67, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx88(AlertTriangle21, { color: "$red10" }),
+        /* @__PURE__ */ jsx88(Text52, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.nodes.length === 0) {
-      return /* @__PURE__ */ jsxs62(YStack55, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx76(Share2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx76(Text40, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs74(YStack67, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx88(Share2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx88(Text52, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsx76(Svg4, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs62(G4, { children: [
-      layout2.links.map((link, i) => /* @__PURE__ */ jsx76(
+    return /* @__PURE__ */ jsx88(Svg7, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs74(G7, { children: [
+      layout2.links.map((link, i) => /* @__PURE__ */ jsx88(
         Line,
         {
           x1: link.source.x,
@@ -12028,9 +13370,9 @@ var NetworkGraph = ({
         },
         `link-${i}`
       )),
-      layout2.nodes.map((node, i) => /* @__PURE__ */ jsxs62(G4, { children: [
-        /* @__PURE__ */ jsx76(
-          Circle5,
+      layout2.nodes.map((node, i) => /* @__PURE__ */ jsxs74(G7, { children: [
+        /* @__PURE__ */ jsx88(
+          Circle6,
           {
             cx: node.x,
             cy: node.y,
@@ -12040,8 +13382,8 @@ var NetworkGraph = ({
             strokeWidth: "2"
           }
         ),
-        /* @__PURE__ */ jsx76(
-          SvgText4,
+        /* @__PURE__ */ jsx88(
+          SvgText6,
           {
             x: node.x,
             y: node.y + 5,
@@ -12055,7 +13397,7 @@ var NetworkGraph = ({
       ] }, `node-${i}`))
     ] }) });
   };
-  return /* @__PURE__ */ jsxs62(YStack55, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs74(YStack67, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
@@ -12063,9 +13405,9 @@ var NetworkGraph = ({
 
 // src/organisms/MediaGrid/MediaGrid.tsx
 import { useState as useState16 } from "react";
-import { YStack as YStack56, XStack as XStack38, Text as Text41, Image, Button as Button9, ScrollView as ScrollView5, Stack as Stack2 } from "tamagui";
+import { YStack as YStack68, XStack as XStack38, Text as Text53, Image, Button as Button9, ScrollView as ScrollView5, Stack as Stack2 } from "tamagui";
 import { Check as Check7, Trash2, Upload as Upload2, Grip, List as ListIcon } from "@tamagui/lucide-icons";
-import { jsx as jsx77, jsxs as jsxs63 } from "react/jsx-runtime";
+import { jsx as jsx89, jsxs as jsxs75 } from "react/jsx-runtime";
 var MediaGrid = ({
   items,
   selectedIds = [],
@@ -12087,11 +13429,11 @@ var MediaGrid = ({
       setInternalViewMode(mode);
     }
   };
-  return /* @__PURE__ */ jsxs63(YStack56, { gap: "$4", f: 1, children: [
-    /* @__PURE__ */ jsxs63(XStack38, { justifyContent: "space-between", alignItems: "center", children: [
-      /* @__PURE__ */ jsxs63(XStack38, { gap: "$2", children: [
-        onUpload && /* @__PURE__ */ jsx77(Button9, { icon: Upload2, onPress: onUpload, children: "Upload" }),
-        selectedIds.length > 0 && onDelete && /* @__PURE__ */ jsxs63(
+  return /* @__PURE__ */ jsxs75(YStack68, { gap: "$4", f: 1, children: [
+    /* @__PURE__ */ jsxs75(XStack38, { justifyContent: "space-between", alignItems: "center", children: [
+      /* @__PURE__ */ jsxs75(XStack38, { gap: "$2", children: [
+        onUpload && /* @__PURE__ */ jsx89(Button9, { icon: Upload2, onPress: onUpload, children: "Upload" }),
+        selectedIds.length > 0 && onDelete && /* @__PURE__ */ jsxs75(
           Button9,
           {
             theme: "red",
@@ -12105,8 +13447,8 @@ var MediaGrid = ({
           }
         )
       ] }),
-      /* @__PURE__ */ jsxs63(XStack38, { gap: "$2", backgroundColor: "$background", padding: "$1", borderRadius: "$4", children: [
-        /* @__PURE__ */ jsx77(
+      /* @__PURE__ */ jsxs75(XStack38, { gap: "$2", backgroundColor: "$background", padding: "$1", borderRadius: "$4", children: [
+        /* @__PURE__ */ jsx89(
           Button9,
           {
             size: "$3",
@@ -12116,7 +13458,7 @@ var MediaGrid = ({
             onPress: () => handleViewModeChange("grid")
           }
         ),
-        /* @__PURE__ */ jsx77(
+        /* @__PURE__ */ jsx89(
           Button9,
           {
             size: "$3",
@@ -12128,8 +13470,8 @@ var MediaGrid = ({
         )
       ] })
     ] }),
-    /* @__PURE__ */ jsx77(ScrollView5, { children: /* @__PURE__ */ jsxs63(XStack38, { flexWrap: "wrap", gap: "$4", children: [
-      items.map((item) => /* @__PURE__ */ jsx77(
+    /* @__PURE__ */ jsx89(ScrollView5, { children: /* @__PURE__ */ jsxs75(XStack38, { flexWrap: "wrap", gap: "$4", children: [
+      items.map((item) => /* @__PURE__ */ jsx89(
         MediaItemCard,
         {
           item,
@@ -12139,7 +13481,7 @@ var MediaGrid = ({
         },
         item.id
       )),
-      items.length === 0 && !isLoading && /* @__PURE__ */ jsx77(YStack56, { f: 1, alignItems: "center", justifyContent: "center", padding: "$10", children: /* @__PURE__ */ jsx77(Text41, { color: "$color10", children: "No media found" }) })
+      items.length === 0 && !isLoading && /* @__PURE__ */ jsx89(YStack68, { f: 1, alignItems: "center", justifyContent: "center", padding: "$10", children: /* @__PURE__ */ jsx89(Text53, { color: "$color10", children: "No media found" }) })
     ] }) })
   ] });
 };
@@ -12150,7 +13492,7 @@ var MediaItemCard = ({
   viewMode
 }) => {
   if (viewMode === "list") {
-    return /* @__PURE__ */ jsxs63(
+    return /* @__PURE__ */ jsxs75(
       XStack38,
       {
         width: "100%",
@@ -12165,7 +13507,7 @@ var MediaItemCard = ({
         borderColor: selected ? "$blue10" : "$borderColor",
         borderRadius: "$4",
         children: [
-          /* @__PURE__ */ jsx77(
+          /* @__PURE__ */ jsx89(
             Image,
             {
               source: { uri: item.thumbnailUrl || item.url },
@@ -12175,20 +13517,20 @@ var MediaItemCard = ({
               objectFit: "cover"
             }
           ),
-          /* @__PURE__ */ jsxs63(YStack56, { f: 1, children: [
-            /* @__PURE__ */ jsx77(Text41, { fontWeight: "bold", children: item.title }),
-            /* @__PURE__ */ jsxs63(Text41, { fontSize: "$2", color: "$color10", children: [
+          /* @__PURE__ */ jsxs75(YStack68, { f: 1, children: [
+            /* @__PURE__ */ jsx89(Text53, { fontWeight: "bold", children: item.title }),
+            /* @__PURE__ */ jsxs75(Text53, { fontSize: "$2", color: "$color10", children: [
               item.type,
               " \u2022 ",
               formatBytes(item.size)
             ] })
           ] }),
-          selected && /* @__PURE__ */ jsx77(Check7, { color: "$blue10" })
+          selected && /* @__PURE__ */ jsx89(Check7, { color: "$blue10" })
         ]
       }
     );
   }
-  return /* @__PURE__ */ jsxs63(
+  return /* @__PURE__ */ jsxs75(
     Card,
     {
       width: 180,
@@ -12202,7 +13544,7 @@ var MediaItemCard = ({
       pressStyle: { scale: 0.98 },
       animation: "quick",
       children: [
-        /* @__PURE__ */ jsx77(
+        /* @__PURE__ */ jsx89(
           Image,
           {
             source: { uri: item.thumbnailUrl || item.url },
@@ -12211,7 +13553,7 @@ var MediaItemCard = ({
             objectFit: "cover"
           }
         ),
-        selected && /* @__PURE__ */ jsx77(
+        selected && /* @__PURE__ */ jsx89(
           Stack2,
           {
             position: "absolute",
@@ -12220,11 +13562,11 @@ var MediaItemCard = ({
             backgroundColor: "$blue10",
             padding: 4,
             borderRadius: 100,
-            children: /* @__PURE__ */ jsx77(Check7, { size: 12, color: "white" })
+            children: /* @__PURE__ */ jsx89(Check7, { size: 12, color: "white" })
           }
         ),
-        /* @__PURE__ */ jsx77(
-          YStack56,
+        /* @__PURE__ */ jsx89(
+          YStack68,
           {
             position: "absolute",
             bottom: 0,
@@ -12232,7 +13574,7 @@ var MediaItemCard = ({
             right: 0,
             backgroundColor: "rgba(0,0,0,0.5)",
             padding: "$2",
-            children: /* @__PURE__ */ jsx77(Text41, { color: "white", numberOfLines: 1, fontSize: "$2", children: item.title })
+            children: /* @__PURE__ */ jsx89(Text53, { color: "white", numberOfLines: 1, fontSize: "$2", children: item.title })
           }
         )
       ]
@@ -12251,8 +13593,8 @@ function formatBytes(bytes, decimals = 2) {
 
 // src/organisms/AuthScreen/AuthScreen.tsx
 import { useState as useState17 } from "react";
-import { YStack as YStack57, XStack as XStack39, Text as Text42, Button as Button10, Input as Input2, Separator as Separator8, Image as Image2, Spinner as Spinner5 } from "tamagui";
-import { jsx as jsx78, jsxs as jsxs64 } from "react/jsx-runtime";
+import { YStack as YStack69, XStack as XStack39, Text as Text54, Button as Button10, Input as Input2, Separator as Separator8, Image as Image2, Spinner as Spinner5 } from "tamagui";
+import { jsx as jsx90, jsxs as jsxs76 } from "react/jsx-runtime";
 var AuthScreen = ({
   logo,
   title,
@@ -12279,15 +13621,15 @@ var AuthScreen = ({
       onForgotPassword(email);
     }
   };
-  return /* @__PURE__ */ jsx78(YStack57, { f: 1, alignItems: "center", justifyContent: "center", padding: "$4", backgroundColor: "$background", children: /* @__PURE__ */ jsxs64(Card, { width: "100%", maxWidth: 400, padding: "$6", gap: "$4", elevation: "$2", children: [
-    /* @__PURE__ */ jsxs64(YStack57, { alignItems: "center", gap: "$2", marginBottom: "$4", children: [
-      typeof logo === "string" ? /* @__PURE__ */ jsx78(Image2, { source: { uri: logo }, width: 60, height: 60, borderRadius: "$2" }) : logo,
-      /* @__PURE__ */ jsx78(Text42, { fontSize: "$6", fontWeight: "bold", children: title || (view === "login" ? "Welcome Back" : "Create Account") }),
-      subtitle && /* @__PURE__ */ jsx78(Text42, { color: "$color10", textAlign: "center", children: subtitle })
+  return /* @__PURE__ */ jsx90(YStack69, { f: 1, alignItems: "center", justifyContent: "center", padding: "$4", backgroundColor: "$background", children: /* @__PURE__ */ jsxs76(Card, { width: "100%", maxWidth: 400, padding: "$6", gap: "$4", elevation: "$2", children: [
+    /* @__PURE__ */ jsxs76(YStack69, { alignItems: "center", gap: "$2", marginBottom: "$4", children: [
+      typeof logo === "string" ? /* @__PURE__ */ jsx90(Image2, { source: { uri: logo }, width: 60, height: 60, borderRadius: "$2" }) : logo,
+      /* @__PURE__ */ jsx90(Text54, { fontSize: "$6", fontWeight: "bold", children: title || (view === "login" ? "Welcome Back" : "Create Account") }),
+      subtitle && /* @__PURE__ */ jsx90(Text54, { color: "$color10", textAlign: "center", children: subtitle })
     ] }),
-    error2 && /* @__PURE__ */ jsx78(YStack57, { backgroundColor: "$red2", padding: "$2", borderRadius: "$2", children: /* @__PURE__ */ jsx78(Text42, { color: "$red10", children: error2 }) }),
-    /* @__PURE__ */ jsxs64(YStack57, { gap: "$3", children: [
-      view === "register" && /* @__PURE__ */ jsx78(
+    error2 && /* @__PURE__ */ jsx90(YStack69, { backgroundColor: "$red2", padding: "$2", borderRadius: "$2", children: /* @__PURE__ */ jsx90(Text54, { color: "$red10", children: error2 }) }),
+    /* @__PURE__ */ jsxs76(YStack69, { gap: "$3", children: [
+      view === "register" && /* @__PURE__ */ jsx90(
         Input2,
         {
           placeholder: "Name",
@@ -12295,7 +13637,7 @@ var AuthScreen = ({
           onChangeText: setName
         }
       ),
-      /* @__PURE__ */ jsx78(
+      /* @__PURE__ */ jsx90(
         Input2,
         {
           placeholder: "Email",
@@ -12304,7 +13646,7 @@ var AuthScreen = ({
           autoCapitalize: "none"
         }
       ),
-      view !== "forgot-password" && /* @__PURE__ */ jsx78(
+      view !== "forgot-password" && /* @__PURE__ */ jsx90(
         Input2,
         {
           placeholder: "Password",
@@ -12313,7 +13655,7 @@ var AuthScreen = ({
           secureTextEntry: true
         }
       ),
-      view === "register" && /* @__PURE__ */ jsx78(
+      view === "register" && /* @__PURE__ */ jsx90(
         Input2,
         {
           placeholder: "Confirm Password",
@@ -12322,8 +13664,8 @@ var AuthScreen = ({
           secureTextEntry: true
         }
       ),
-      view === "login" && onForgotPassword && /* @__PURE__ */ jsx78(
-        Text42,
+      view === "login" && onForgotPassword && /* @__PURE__ */ jsx90(
+        Text54,
         {
           fontSize: "$2",
           color: "$blue10",
@@ -12333,24 +13675,24 @@ var AuthScreen = ({
           children: "Forgot password?"
         }
       ),
-      /* @__PURE__ */ jsx78(
+      /* @__PURE__ */ jsx90(
         Button10,
         {
           themeInverse: true,
           onPress: handleSubmit,
           disabled: isLoading,
-          icon: isLoading ? /* @__PURE__ */ jsx78(Spinner5, {}) : void 0,
+          icon: isLoading ? /* @__PURE__ */ jsx90(Spinner5, {}) : void 0,
           children: view === "login" ? "Sign In" : view === "register" ? "Sign Up" : "Reset Password"
         }
       )
     ] }),
-    socialProviders && socialProviders.length > 0 && view === "login" && /* @__PURE__ */ jsxs64(YStack57, { gap: "$3", marginTop: "$2", children: [
-      /* @__PURE__ */ jsxs64(XStack39, { alignItems: "center", gap: "$2", children: [
-        /* @__PURE__ */ jsx78(Separator8, {}),
-        /* @__PURE__ */ jsx78(Text42, { fontSize: "$2", color: "$color10", children: "Or continue with" }),
-        /* @__PURE__ */ jsx78(Separator8, {})
+    socialProviders && socialProviders.length > 0 && view === "login" && /* @__PURE__ */ jsxs76(YStack69, { gap: "$3", marginTop: "$2", children: [
+      /* @__PURE__ */ jsxs76(XStack39, { alignItems: "center", gap: "$2", children: [
+        /* @__PURE__ */ jsx90(Separator8, {}),
+        /* @__PURE__ */ jsx90(Text54, { fontSize: "$2", color: "$color10", children: "Or continue with" }),
+        /* @__PURE__ */ jsx90(Separator8, {})
       ] }),
-      /* @__PURE__ */ jsx78(XStack39, { gap: "$2", justifyContent: "center", children: socialProviders.map((provider) => /* @__PURE__ */ jsx78(
+      /* @__PURE__ */ jsx90(XStack39, { gap: "$2", justifyContent: "center", children: socialProviders.map((provider) => /* @__PURE__ */ jsx90(
         Button10,
         {
           icon: provider.icon,
@@ -12361,11 +13703,11 @@ var AuthScreen = ({
         provider.name
       )) })
     ] }),
-    /* @__PURE__ */ jsx78(YStack57, { alignItems: "center", marginTop: "$4", children: view === "login" ? /* @__PURE__ */ jsxs64(Text42, { fontSize: "$2", color: "$color10", children: [
+    /* @__PURE__ */ jsx90(YStack69, { alignItems: "center", marginTop: "$4", children: view === "login" ? /* @__PURE__ */ jsxs76(Text54, { fontSize: "$2", color: "$color10", children: [
       "Don't have an account?",
       " ",
-      /* @__PURE__ */ jsx78(
-        Text42,
+      /* @__PURE__ */ jsx90(
+        Text54,
         {
           color: "$blue10",
           fontWeight: "bold",
@@ -12374,11 +13716,11 @@ var AuthScreen = ({
           children: "Sign Up"
         }
       )
-    ] }) : /* @__PURE__ */ jsxs64(Text42, { fontSize: "$2", color: "$color10", children: [
+    ] }) : /* @__PURE__ */ jsxs76(Text54, { fontSize: "$2", color: "$color10", children: [
       "Already have an account?",
       " ",
-      /* @__PURE__ */ jsx78(
-        Text42,
+      /* @__PURE__ */ jsx90(
+        Text54,
         {
           color: "$blue10",
           fontWeight: "bold",
@@ -12392,19 +13734,19 @@ var AuthScreen = ({
 };
 
 // src/molecules/Field/Field.tsx
-import React60 from "react";
-import { styled as styled63, Text as Text43, XStack as XStack40, YStack as YStack58 } from "tamagui";
-import { jsx as jsx79, jsxs as jsxs65 } from "react/jsx-runtime";
-var FieldFrame = styled63(YStack58, {
+import React66 from "react";
+import { styled as styled63, Text as Text55, XStack as XStack40, YStack as YStack70 } from "tamagui";
+import { jsx as jsx91, jsxs as jsxs77 } from "react/jsx-runtime";
+var FieldFrame = styled63(YStack70, {
   name: "Field",
   gap: "$2"
 });
 var FieldLabel = Label;
-var FieldControlFrame = styled63(YStack58, {
+var FieldControlFrame = styled63(YStack70, {
   name: "FieldControl",
   flex: 1
 });
-var FieldErrorFrame = styled63(Text43, {
+var FieldErrorFrame = styled63(Text55, {
   name: "FieldError",
   color: "$destructive",
   fontSize: "$2"
@@ -12418,39 +13760,39 @@ var FieldRoot = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsxs65(FieldFrame, { ...props, children: [
-      /* @__PURE__ */ jsx79(Skeleton, { height: "$4", width: "$20" }),
-      /* @__PURE__ */ jsx79(Skeleton, { height: "$10" })
+    return /* @__PURE__ */ jsxs77(FieldFrame, { ...props, children: [
+      /* @__PURE__ */ jsx91(Skeleton, { height: "$4", width: "$20" }),
+      /* @__PURE__ */ jsx91(Skeleton, { height: "$10" })
     ] });
   }
-  const childrenArray = React60.Children.toArray(children);
+  const childrenArray = React66.Children.toArray(children);
   const finalChildren = childrenArray.map((child, index) => {
-    if (!React60.isValidElement(child)) {
+    if (!React66.isValidElement(child)) {
       return child;
     }
     if (child.type === FieldLabel) {
-      return React60.cloneElement(child, {
+      return React66.cloneElement(child, {
         key: `field-child-${index}`,
         state: hasError ? "error" : void 0,
         disabled: isDisabled2
       });
     }
     if (child.type === FieldControlFrame) {
-      const inputChild = React60.Children.only(child.props.children);
-      const clonedInput = React60.cloneElement(
+      const inputChild = React66.Children.only(child.props.children);
+      const clonedInput = React66.cloneElement(
         inputChild,
         {
           state: hasError ? "error" : void 0,
           disabled: isDisabled2
         }
       );
-      const finalControl = React60.cloneElement(
+      const finalControl = React66.cloneElement(
         child,
         { key: `field-child-${index}` },
         clonedInput
       );
       if (rightSlot) {
-        return /* @__PURE__ */ jsxs65(XStack40, { gap: "$2", alignItems: "center", children: [
+        return /* @__PURE__ */ jsxs77(XStack40, { gap: "$2", alignItems: "center", children: [
           finalControl,
           rightSlot
         ] }, `field-child-${index}`);
@@ -12459,7 +13801,7 @@ var FieldRoot = ({
     }
     return child;
   });
-  return /* @__PURE__ */ jsx79(FieldFrame, { ...props, children: finalChildren });
+  return /* @__PURE__ */ jsx91(FieldFrame, { ...props, children: finalChildren });
 };
 FieldRoot.displayName = "Field";
 var Field = Object.assign(FieldRoot, {
@@ -12471,7 +13813,7 @@ var Field = Object.assign(FieldRoot, {
 // src/molecules/InputGroup/InputGroup.tsx
 import { Spinner as Spinner6, XStack as XStack41, styled as styled64 } from "tamagui";
 import { cloneElement as cloneElement7, Children as Children5 } from "react";
-import { jsx as jsx80, jsxs as jsxs66 } from "react/jsx-runtime";
+import { jsx as jsx92, jsxs as jsxs78 } from "react/jsx-runtime";
 var InputGroupFrame = styled64(XStack41, {
   name: "InputGroup",
   alignItems: "center",
@@ -12500,7 +13842,7 @@ var InputGroup = ({
   isDisabled: isDisabled2
 }) => {
   const childrenArray = Children5.toArray(children);
-  return /* @__PURE__ */ jsxs66(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
+  return /* @__PURE__ */ jsxs78(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
     Children5.map(childrenArray, (child) => {
       if (child.type === Input) {
         return cloneElement7(child, {
@@ -12522,18 +13864,18 @@ var InputGroup = ({
       }
       return child;
     }),
-    isLoading && /* @__PURE__ */ jsx80(Spinner6, {})
+    isLoading && /* @__PURE__ */ jsx92(Spinner6, {})
   ] });
 };
 
 // src/molecules/NativeSelect/NativeSelect.tsx
 import { ChevronDown as ChevronDown6, AlertCircle as AlertCircle8 } from "@tamagui/lucide-icons";
 import { forwardRef as forwardRef13, useId as useId3 } from "react";
-import { YStack as YStack60 } from "tamagui";
+import { YStack as YStack72 } from "tamagui";
 
 // src/molecules/NativeSelect/NativeSelect.styles.ts
-import { Label as TamaguiLabel2, styled as styled65, XStack as XStack42, YStack as YStack59 } from "tamagui";
-var SelectContainer = styled65(YStack59, {
+import { Label as TamaguiLabel2, styled as styled65, XStack as XStack42, YStack as YStack71 } from "tamagui";
+var SelectContainer = styled65(YStack71, {
   name: "SelectContainer",
   gap: "$2"
 });
@@ -12587,22 +13929,22 @@ var Label8 = styled65(TamaguiLabel2, {
 });
 
 // src/molecules/NativeSelect/NativeSelect.tsx
-import { jsx as jsx81, jsxs as jsxs67 } from "react/jsx-runtime";
+import { jsx as jsx93, jsxs as jsxs79 } from "react/jsx-runtime";
 var NativeSelect = forwardRef13(
   ({ children, label, id: id2, hasError = false, isLoading = false, disabled = false, ...props }, ref) => {
     const internalId = useId3();
     const selectId = id2 || internalId;
     if (isLoading) {
-      return /* @__PURE__ */ jsxs67(SelectContainer, { children: [
-        label && /* @__PURE__ */ jsx81(Skeleton, { height: 20, width: 100 }),
-        /* @__PURE__ */ jsx81(Skeleton, { height: 40 })
+      return /* @__PURE__ */ jsxs79(SelectContainer, { children: [
+        label && /* @__PURE__ */ jsx93(Skeleton, { height: 20, width: 100 }),
+        /* @__PURE__ */ jsx93(Skeleton, { height: 40 })
       ] });
     }
-    return /* @__PURE__ */ jsxs67(SelectContainer, { children: [
-      label && /* @__PURE__ */ jsx81(Label8, { htmlFor: selectId, hasError, children: label }),
-      /* @__PURE__ */ jsxs67(SelectTrigger2, { hasError, disabled, children: [
-        /* @__PURE__ */ jsx81(SelectElement, { id: selectId, ref, disabled, ...props, children }),
-        /* @__PURE__ */ jsx81(YStack60, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ jsx81(AlertCircle8, { size: 16, color: "$red10" }) : /* @__PURE__ */ jsx81(ChevronDown6, { size: 16, color: "$color10" }) })
+    return /* @__PURE__ */ jsxs79(SelectContainer, { children: [
+      label && /* @__PURE__ */ jsx93(Label8, { htmlFor: selectId, hasError, children: label }),
+      /* @__PURE__ */ jsxs79(SelectTrigger2, { hasError, disabled, children: [
+        /* @__PURE__ */ jsx93(SelectElement, { id: selectId, ref, disabled, ...props, children }),
+        /* @__PURE__ */ jsx93(YStack72, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ jsx93(AlertCircle8, { size: 16, color: "$red10" }) : /* @__PURE__ */ jsx93(ChevronDown6, { size: 16, color: "$color10" }) })
       ] })
     ] });
   }
@@ -12617,21 +13959,21 @@ import { PortalProvider } from "@tamagui/portal";
 import { createTamagui, createFont } from "tamagui";
 
 // ../../node_modules/@tamagui/use-presence/dist/esm/PresenceContext.mjs
-import * as React62 from "react";
-import { jsx as jsx82 } from "react/jsx-runtime";
-var PresenceContext = React62.createContext(null);
+import * as React68 from "react";
+import { jsx as jsx94 } from "react/jsx-runtime";
+var PresenceContext = React68.createContext(null);
 var ResetPresence = (props) => {
-  const parent = React62.useContext(PresenceContext);
-  return /* @__PURE__ */ jsx82(PresenceContext.Provider, {
+  const parent = React68.useContext(PresenceContext);
+  return /* @__PURE__ */ jsx94(PresenceContext.Provider, {
     value: props.disable ? parent : null,
     children: props.children
   });
 };
 
 // ../../node_modules/@tamagui/use-presence/dist/esm/usePresence.mjs
-import * as React63 from "react";
+import * as React69 from "react";
 function usePresence() {
-  const context = React63.useContext(PresenceContext);
+  const context = React69.useContext(PresenceContext);
   if (!context) return [true, null, context];
   const {
     id: id2,
@@ -12639,11 +13981,11 @@ function usePresence() {
     onExitComplete,
     register
   } = context;
-  return React63.useEffect(() => register(id2), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id2), context] : [true, void 0, context];
+  return React69.useEffect(() => register(id2), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id2), context] : [true, void 0, context];
 }
 
 // ../../node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
-import React90 from "react";
+import React96 from "react";
 
 // ../../node_modules/react-native-web/dist/modules/AccessibilityUtil/isDisabled.js
 var isDisabled = (props) => props.disabled || Array.isArray(props.accessibilityStates) && props.accessibilityStates.indexOf("disabled") > -1;
@@ -14389,10 +15731,10 @@ var createDOMProps = (elementType, props, options) => {
 var createDOMProps_default = createDOMProps;
 
 // ../../node_modules/react-native-web/dist/exports/createElement/index.js
-import React65 from "react";
+import React71 from "react";
 
 // ../../node_modules/react-native-web/dist/modules/useLocale/index.js
-import React64, { createContext as createContext12, useContext as useContext16 } from "react";
+import React70, { createContext as createContext12, useContext as useContext16 } from "react";
 
 // ../../node_modules/react-native-web/dist/modules/useLocale/isLocaleRTL.js
 var rtlScripts = /* @__PURE__ */ new Set(["Arab", "Syrc", "Samr", "Mand", "Thaa", "Mend", "Nkoo", "Adlm", "Rohg", "Hebr"]);
@@ -14477,7 +15819,7 @@ function getLocaleDirection(locale) {
 function LocaleProvider(props) {
   var direction = props.direction, locale = props.locale, children = props.children;
   var needsContext = direction || locale;
-  return needsContext ? /* @__PURE__ */ React64.createElement(LocaleContext.Provider, {
+  return needsContext ? /* @__PURE__ */ React70.createElement(LocaleContext.Provider, {
     children,
     value: {
       direction: locale ? getLocaleDirection(locale) : direction,
@@ -14497,8 +15839,8 @@ var createElement = (component, props, options) => {
   }
   var Component3 = accessibilityComponent || component;
   var domProps = createDOMProps_default(Component3, props, options);
-  var element = /* @__PURE__ */ React65.createElement(Component3, domProps);
-  var elementWithLocaleProvider = domProps.dir ? /* @__PURE__ */ React65.createElement(LocaleProvider, {
+  var element = /* @__PURE__ */ React71.createElement(Component3, domProps);
+  var elementWithLocaleProvider = domProps.dir ? /* @__PURE__ */ React71.createElement(LocaleProvider, {
     children: element,
     direction: domProps.dir,
     locale: domProps.lang
@@ -14742,7 +16084,7 @@ var Platform_default = Platform;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedFlatList.js
 var import_extends7 = __toESM(require_extends());
-import * as React80 from "react";
+import * as React86 from "react";
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/FlatList/index.js
 var import_extends5 = __toESM(require_extends());
@@ -14751,7 +16093,7 @@ var import_objectSpread212 = __toESM(require_objectSpread2());
 
 // ../../node_modules/react-native-web/dist/exports/View/index.js
 var import_objectWithoutPropertiesLoose4 = __toESM(require_objectWithoutPropertiesLoose());
-import * as React70 from "react";
+import * as React76 from "react";
 
 // ../../node_modules/react-native-web/dist/modules/forwardedProps/index.js
 var defaultProps = {
@@ -15000,10 +16342,10 @@ function useElementLayout(ref, onLayout) {
 }
 
 // ../../node_modules/react-native-web/dist/modules/useMergeRefs/index.js
-import * as React67 from "react";
+import * as React73 from "react";
 
 // ../../node_modules/react-native-web/dist/modules/mergeRefs/index.js
-import * as React66 from "react";
+import * as React72 from "react";
 function mergeRefs() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
@@ -15031,7 +16373,7 @@ function useMergeRefs() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
-  return React67.useMemo(
+  return React73.useMemo(
     () => mergeRefs(...args),
     // eslint-disable-next-line
     [...args]
@@ -15039,10 +16381,10 @@ function useMergeRefs() {
 }
 
 // ../../node_modules/react-native-web/dist/modules/useStable/index.js
-import * as React68 from "react";
+import * as React74 from "react";
 var UNINITIALIZED = typeof Symbol === "function" && typeof /* @__PURE__ */ Symbol() === "symbol" ? /* @__PURE__ */ Symbol() : Object.freeze({});
 function useStable(getInitialValue) {
-  var ref = React68.useRef(UNINITIALIZED);
+  var ref = React74.useRef(UNINITIALIZED);
   if (ref.current === UNINITIALIZED) {
     ref.current = getInitialValue();
   }
@@ -15063,7 +16405,7 @@ function usePlatformMethods(_ref) {
 }
 
 // ../../node_modules/react-native-web/dist/modules/useResponderEvents/index.js
-import * as React69 from "react";
+import * as React75 from "react";
 
 // ../../node_modules/react-native-web/dist/modules/useResponderEvents/createResponderEvent.js
 var emptyFunction = () => {
@@ -15825,7 +17167,7 @@ function getResponderNode() {
 var emptyObject8 = {};
 var idCounter = 0;
 function useStable2(getInitialValue) {
-  var ref = React69.useRef(null);
+  var ref = React75.useRef(null);
   if (ref.current == null) {
     ref.current = getInitialValue();
   }
@@ -15836,14 +17178,14 @@ function useResponderEvents(hostRef, config2) {
     config2 = emptyObject8;
   }
   var id2 = useStable2(() => idCounter++);
-  var isAttachedRef = React69.useRef(false);
-  React69.useEffect(() => {
+  var isAttachedRef = React75.useRef(false);
+  React75.useEffect(() => {
     attachListeners();
     return () => {
       removeNode(id2);
     };
   }, [id2]);
-  React69.useEffect(() => {
+  React75.useEffect(() => {
     var _config = config2, onMoveShouldSetResponder = _config.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = _config.onMoveShouldSetResponderCapture, onScrollShouldSetResponder = _config.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = _config.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = _config.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = _config.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = _config.onStartShouldSetResponder, onStartShouldSetResponderCapture = _config.onStartShouldSetResponderCapture;
     var requiresResponderSystem = onMoveShouldSetResponder != null || onMoveShouldSetResponderCapture != null || onScrollShouldSetResponder != null || onScrollShouldSetResponderCapture != null || onSelectionChangeShouldSetResponder != null || onSelectionChangeShouldSetResponderCapture != null || onStartShouldSetResponder != null || onStartShouldSetResponderCapture != null;
     var node = hostRef.current;
@@ -15855,10 +17197,10 @@ function useResponderEvents(hostRef, config2) {
       isAttachedRef.current = false;
     }
   }, [config2, hostRef, id2]);
-  React69.useDebugValue({
+  React75.useDebugValue({
     isResponder: hostRef.current === getResponderNode()
   });
-  React69.useDebugValue(config2);
+  React75.useDebugValue(config2);
 }
 
 // ../../node_modules/react-native-web/dist/exports/Text/TextAncestorContext.js
@@ -15876,17 +17218,17 @@ var forwardPropsList = Object.assign({}, defaultProps, accessibilityProps, click
   pointerEvents: true
 });
 var pickProps = (props) => pick(props, forwardPropsList);
-var View9 = /* @__PURE__ */ React70.forwardRef((props, forwardedRef) => {
+var View9 = /* @__PURE__ */ React76.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, onLayout = props.onLayout, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, rest = (0, import_objectWithoutPropertiesLoose4.default)(props, _excluded4);
   if (process.env.NODE_ENV !== "production") {
-    React70.Children.toArray(props.children).forEach((item) => {
+    React76.Children.toArray(props.children).forEach((item) => {
       if (typeof item === "string") {
         console.error("Unexpected text node: " + item + ". A text node cannot be a child of a <View>.");
       }
     });
   }
-  var hasTextAncestor = React70.useContext(TextAncestorContext_default);
-  var hostRef = React70.useRef(null);
+  var hasTextAncestor = React76.useContext(TextAncestorContext_default);
+  var hostRef = React76.useRef(null);
   var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
   useElementLayout(hostRef, onLayout);
   useResponderEvents(hostRef, {
@@ -16014,7 +17356,7 @@ var deepDiffer_default = deepDiffer;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/FlatList/index.js
 var import_invariant11 = __toESM(require_invariant());
-import * as React78 from "react";
+import * as React84 from "react";
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 var import_createForOfIteratorHelperLoose3 = __toESM(require_createForOfIteratorHelperLoose());
@@ -16023,11 +17365,11 @@ var import_objectSpread211 = __toESM(require_objectSpread2());
 
 // ../../node_modules/react-native-web/dist/exports/RefreshControl/index.js
 var import_objectWithoutPropertiesLoose5 = __toESM(require_objectWithoutPropertiesLoose());
-import React71 from "react";
+import React77 from "react";
 var _excluded5 = ["colors", "enabled", "onRefresh", "progressBackgroundColor", "progressViewOffset", "refreshing", "size", "tintColor", "title", "titleColor"];
 function RefreshControl(props) {
   var colors = props.colors, enabled = props.enabled, onRefresh = props.onRefresh, progressBackgroundColor = props.progressBackgroundColor, progressViewOffset = props.progressViewOffset, refreshing = props.refreshing, size = props.size, tintColor = props.tintColor, title = props.title, titleColor = props.titleColor, rest = (0, import_objectWithoutPropertiesLoose5.default)(props, _excluded5);
-  return /* @__PURE__ */ React71.createElement(View_default, rest);
+  return /* @__PURE__ */ React77.createElement(View_default, rest);
 }
 var RefreshControl_default = RefreshControl;
 
@@ -16192,7 +17534,7 @@ var import_invariant2 = __toESM(require_invariant());
 // ../../node_modules/react-native-web/dist/exports/ScrollView/ScrollViewBase.js
 var import_extends = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose6 = __toESM(require_objectWithoutPropertiesLoose());
-import * as React72 from "react";
+import * as React78 from "react";
 var _excluded6 = ["onScroll", "onTouchMove", "onWheel", "scrollEnabled", "scrollEventThrottle", "showsHorizontalScrollIndicator", "showsVerticalScrollIndicator", "style"];
 function normalizeScrollEvent(e) {
   return {
@@ -16229,14 +17571,14 @@ function shouldEmitScrollEvent(lastTick, eventThrottle) {
   var timeSinceLastTick = Date.now() - lastTick;
   return eventThrottle > 0 && timeSinceLastTick >= eventThrottle;
 }
-var ScrollViewBase = /* @__PURE__ */ React72.forwardRef((props, forwardedRef) => {
+var ScrollViewBase = /* @__PURE__ */ React78.forwardRef((props, forwardedRef) => {
   var onScroll = props.onScroll, onTouchMove = props.onTouchMove, onWheel = props.onWheel, _props$scrollEnabled = props.scrollEnabled, scrollEnabled = _props$scrollEnabled === void 0 ? true : _props$scrollEnabled, _props$scrollEventThr = props.scrollEventThrottle, scrollEventThrottle = _props$scrollEventThr === void 0 ? 0 : _props$scrollEventThr, showsHorizontalScrollIndicator = props.showsHorizontalScrollIndicator, showsVerticalScrollIndicator = props.showsVerticalScrollIndicator, style = props.style, rest = (0, import_objectWithoutPropertiesLoose6.default)(props, _excluded6);
-  var scrollState = React72.useRef({
+  var scrollState = React78.useRef({
     isScrolling: false,
     scrollLastTick: 0
   });
-  var scrollTimeout = React72.useRef(null);
-  var scrollRef = React72.useRef(null);
+  var scrollTimeout = React78.useRef(null);
+  var scrollRef = React78.useRef(null);
   function createPreventableScrollHandler(handler) {
     return (e) => {
       if (scrollEnabled) {
@@ -16282,7 +17624,7 @@ var ScrollViewBase = /* @__PURE__ */ React72.forwardRef((props, forwardedRef) =>
     }
   }
   var hideScrollbar = showsHorizontalScrollIndicator === false || showsVerticalScrollIndicator === false;
-  return /* @__PURE__ */ React72.createElement(View_default, (0, import_extends.default)({}, rest, {
+  return /* @__PURE__ */ React78.createElement(View_default, (0, import_extends.default)({}, rest, {
     onScroll: handleScroll,
     onTouchMove: createPreventableScrollHandler(onTouchMove),
     onWheel: createPreventableScrollHandler(onWheel),
@@ -16304,11 +17646,11 @@ var ScrollViewBase_default = ScrollViewBase;
 
 // ../../node_modules/react-native-web/dist/exports/ScrollView/index.js
 var import_warning = __toESM(require_warning());
-import React73 from "react";
+import React79 from "react";
 var _excluded7 = ["contentContainerStyle", "horizontal", "onContentSizeChange", "refreshControl", "stickyHeaderIndices", "pagingEnabled", "forwardedRef", "keyboardDismissMode", "onScroll", "centerContent"];
 var emptyObject9 = {};
 var IS_ANIMATING_TOUCH_START_THRESHOLD_MS = 16;
-var ScrollView6 = class extends React73.Component {
+var ScrollView6 = class extends React79.Component {
   constructor() {
     super(...arguments);
     this._scrollNodeRef = null;
@@ -16777,17 +18119,17 @@ var ScrollView6 = class extends React73.Component {
       };
     }
     var hasStickyHeaderIndices = !horizontal && Array.isArray(stickyHeaderIndices);
-    var children = hasStickyHeaderIndices || pagingEnabled ? React73.Children.map(this.props.children, (child, i) => {
+    var children = hasStickyHeaderIndices || pagingEnabled ? React79.Children.map(this.props.children, (child, i) => {
       var isSticky = hasStickyHeaderIndices && stickyHeaderIndices.indexOf(i) > -1;
       if (child != null && (isSticky || pagingEnabled)) {
-        return /* @__PURE__ */ React73.createElement(View_default, {
+        return /* @__PURE__ */ React79.createElement(View_default, {
           style: [isSticky && styles3.stickyHeader, pagingEnabled && styles3.pagingEnabledChild]
         }, child);
       } else {
         return child;
       }
     }) : this.props.children;
-    var contentContainer = /* @__PURE__ */ React73.createElement(View_default, (0, import_extends2.default)({}, contentSizeChangeProps, {
+    var contentContainer = /* @__PURE__ */ React79.createElement(View_default, (0, import_extends2.default)({}, contentSizeChangeProps, {
       children,
       collapsable: false,
       ref: this._setInnerViewRef,
@@ -16816,11 +18158,11 @@ var ScrollView6 = class extends React73.Component {
     });
     var ScrollViewClass = ScrollViewBase_default;
     (0, import_invariant2.default)(ScrollViewClass !== void 0, "ScrollViewClass must not be undefined");
-    var scrollView = /* @__PURE__ */ React73.createElement(ScrollViewClass, (0, import_extends2.default)({}, props, {
+    var scrollView = /* @__PURE__ */ React79.createElement(ScrollViewClass, (0, import_extends2.default)({}, props, {
       ref: this._setScrollNodeRef
     }), contentContainer);
     if (refreshControl) {
-      return /* @__PURE__ */ React73.cloneElement(refreshControl, {
+      return /* @__PURE__ */ React79.cloneElement(refreshControl, {
         style: props.style
       }, scrollView);
     }
@@ -16870,8 +18212,8 @@ var styles3 = StyleSheet_default.create({
     scrollSnapAlign: "start"
   }
 });
-var ForwardedScrollView = /* @__PURE__ */ React73.forwardRef((props, forwardedRef) => {
-  return /* @__PURE__ */ React73.createElement(ScrollView6, (0, import_extends2.default)({}, props, {
+var ForwardedScrollView = /* @__PURE__ */ React79.forwardRef((props, forwardedRef) => {
+  return /* @__PURE__ */ React79.createElement(ScrollView6, (0, import_extends2.default)({}, props, {
     forwardedRef
   }));
 });
@@ -17515,8 +18857,8 @@ var FillRateHelper_default = FillRateHelper;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/StateSafePureComponent.js
 var import_invariant7 = __toESM(require_invariant());
-import * as React74 from "react";
-var StateSafePureComponent = class extends React74.PureComponent {
+import * as React80 from "react";
+var StateSafePureComponent = class extends React80.PureComponent {
   constructor(props) {
     super(props);
     this._inAsyncStateUpdate = false;
@@ -17725,16 +19067,16 @@ var import_objectSpread210 = __toESM(require_objectSpread2());
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/VirtualizedListContext.js
 var import_objectSpread29 = __toESM(require_objectSpread2());
-import * as React75 from "react";
-import { useContext as useContext18, useMemo as useMemo14 } from "react";
+import * as React81 from "react";
+import { useContext as useContext18, useMemo as useMemo20 } from "react";
 var __DEV__2 = process.env.NODE_ENV !== "production";
-var VirtualizedListContext = /* @__PURE__ */ React75.createContext(null);
+var VirtualizedListContext = /* @__PURE__ */ React81.createContext(null);
 if (__DEV__2) {
   VirtualizedListContext.displayName = "VirtualizedListContext";
 }
 function VirtualizedListContextProvider(_ref2) {
   var children = _ref2.children, value = _ref2.value;
-  var context = useMemo14(() => ({
+  var context = useMemo20(() => ({
     cellKey: null,
     getScrollMetrics: value.getScrollMetrics,
     horizontal: value.horizontal,
@@ -17742,25 +19084,25 @@ function VirtualizedListContextProvider(_ref2) {
     registerAsNestedChild: value.registerAsNestedChild,
     unregisterAsNestedChild: value.unregisterAsNestedChild
   }), [value.getScrollMetrics, value.horizontal, value.getOutermostParentListRef, value.registerAsNestedChild, value.unregisterAsNestedChild]);
-  return /* @__PURE__ */ React75.createElement(VirtualizedListContext.Provider, {
+  return /* @__PURE__ */ React81.createElement(VirtualizedListContext.Provider, {
     value: context
   }, children);
 }
 function VirtualizedListCellContextProvider(_ref3) {
   var cellKey = _ref3.cellKey, children = _ref3.children;
   var currContext = useContext18(VirtualizedListContext);
-  var context = useMemo14(() => currContext == null ? null : (0, import_objectSpread29.default)((0, import_objectSpread29.default)({}, currContext), {}, {
+  var context = useMemo20(() => currContext == null ? null : (0, import_objectSpread29.default)((0, import_objectSpread29.default)({}, currContext), {}, {
     cellKey
   }), [currContext, cellKey]);
-  return /* @__PURE__ */ React75.createElement(VirtualizedListContext.Provider, {
+  return /* @__PURE__ */ React81.createElement(VirtualizedListContext.Provider, {
     value: context
   }, children);
 }
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
 var import_invariant9 = __toESM(require_invariant());
-import * as React76 from "react";
-var CellRenderer = class extends React76.Component {
+import * as React82 from "react";
+var CellRenderer = class extends React82.Component {
   constructor() {
     super(...arguments);
     this.state = {
@@ -17814,7 +19156,7 @@ var CellRenderer = class extends React76.Component {
       console.warn("VirtualizedList: Both ListItemComponent and renderItem props are present. ListItemComponent will take precedence over renderItem.");
     }
     if (ListItemComponent) {
-      return /* @__PURE__ */ React76.createElement(ListItemComponent, {
+      return /* @__PURE__ */ React82.createElement(ListItemComponent, {
         item,
         index,
         separators: this._separators
@@ -17832,20 +19174,20 @@ var CellRenderer = class extends React76.Component {
   render() {
     var _this$props4 = this.props, CellRendererComponent = _this$props4.CellRendererComponent, ItemSeparatorComponent = _this$props4.ItemSeparatorComponent, ListItemComponent = _this$props4.ListItemComponent, cellKey = _this$props4.cellKey, horizontal = _this$props4.horizontal, item = _this$props4.item, index = _this$props4.index, inversionStyle = _this$props4.inversionStyle, onCellFocusCapture = _this$props4.onCellFocusCapture, onCellLayout = _this$props4.onCellLayout, renderItem = _this$props4.renderItem;
     var element = this._renderElement(renderItem, ListItemComponent, item, index);
-    var itemSeparator = /* @__PURE__ */ React76.isValidElement(ItemSeparatorComponent) ? (
+    var itemSeparator = /* @__PURE__ */ React82.isValidElement(ItemSeparatorComponent) ? (
       // $FlowFixMe[incompatible-type]
       ItemSeparatorComponent
     ) : (
       // $FlowFixMe[incompatible-type]
-      ItemSeparatorComponent && /* @__PURE__ */ React76.createElement(ItemSeparatorComponent, this.state.separatorProps)
+      ItemSeparatorComponent && /* @__PURE__ */ React82.createElement(ItemSeparatorComponent, this.state.separatorProps)
     );
     var cellStyle = inversionStyle ? horizontal ? [styles4.rowReverse, inversionStyle] : [styles4.columnReverse, inversionStyle] : horizontal ? [styles4.row, inversionStyle] : inversionStyle;
-    var result = !CellRendererComponent ? /* @__PURE__ */ React76.createElement(View_default, (0, import_extends3.default)({
+    var result = !CellRendererComponent ? /* @__PURE__ */ React82.createElement(View_default, (0, import_extends3.default)({
       style: cellStyle,
       onFocusCapture: onCellFocusCapture
     }, onCellLayout && {
       onLayout: this._onLayout
-    }), element, itemSeparator) : /* @__PURE__ */ React76.createElement(CellRendererComponent, (0, import_extends3.default)({
+    }), element, itemSeparator) : /* @__PURE__ */ React82.createElement(CellRendererComponent, (0, import_extends3.default)({
       cellKey,
       index,
       item,
@@ -17854,7 +19196,7 @@ var CellRenderer = class extends React76.Component {
     }, onCellLayout && {
       onLayout: this._onLayout
     }), element, itemSeparator);
-    return /* @__PURE__ */ React76.createElement(VirtualizedListCellContextProvider, {
+    return /* @__PURE__ */ React82.createElement(VirtualizedListCellContextProvider, {
       cellKey: this.props.cellKey
     }, result);
   }
@@ -17988,7 +19330,7 @@ function keyExtractor(item, index) {
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 var import_invariant10 = __toESM(require_invariant());
 var import_nullthrows = __toESM(require_nullthrows());
-import * as React77 from "react";
+import * as React83 from "react";
 var __DEV__3 = process.env.NODE_ENV !== "production";
 var ON_EDGE_REACHED_EPSILON = 1e-3;
 var _usedIndexForKey = false;
@@ -18241,15 +19583,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     this._defaultRenderScrollComponent = (props) => {
       var onRefresh = props.onRefresh;
       if (this._isNestedWithSameOrientation()) {
-        return /* @__PURE__ */ React77.createElement(View_default, props);
+        return /* @__PURE__ */ React83.createElement(View_default, props);
       } else if (onRefresh) {
         var _props$refreshing;
         (0, import_invariant10.default)(typeof props.refreshing === "boolean", "`refreshing` prop must be set as a boolean in order to use `onRefresh`, but got `" + JSON.stringify((_props$refreshing = props.refreshing) !== null && _props$refreshing !== void 0 ? _props$refreshing : "undefined") + "`");
         return (
           // $FlowFixMe[prop-missing] Invalid prop usage
           // $FlowFixMe[incompatible-use]
-          /* @__PURE__ */ React77.createElement(ScrollView_default, (0, import_extends4.default)({}, props, {
-            refreshControl: props.refreshControl == null ? /* @__PURE__ */ React77.createElement(
+          /* @__PURE__ */ React83.createElement(ScrollView_default, (0, import_extends4.default)({}, props, {
+            refreshControl: props.refreshControl == null ? /* @__PURE__ */ React83.createElement(
               RefreshControl_default,
               {
                 refreshing: props.refreshing,
@@ -18260,7 +19602,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
           }))
         );
       } else {
-        return /* @__PURE__ */ React77.createElement(ScrollView_default, props);
+        return /* @__PURE__ */ React83.createElement(ScrollView_default, props);
       }
     };
     this._onCellLayout = (e, cellKey, index) => {
@@ -18744,7 +20086,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
         stickyHeaderIndices.push(cells.length);
       }
       var shouldListenForLayout = getItemLayout == null || debug || _this._fillRateHelper.enabled();
-      cells.push(/* @__PURE__ */ React77.createElement(CellRenderer, (0, import_extends4.default)({
+      cells.push(/* @__PURE__ */ React83.createElement(CellRenderer, (0, import_extends4.default)({
         CellRendererComponent,
         ItemSeparatorComponent: ii < end ? ItemSeparatorComponent : void 0,
         ListItemComponent,
@@ -18809,15 +20151,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       if (stickyIndicesFromProps.has(0)) {
         stickyHeaderIndices.push(0);
       }
-      var _element = /* @__PURE__ */ React77.isValidElement(ListHeaderComponent) ? ListHeaderComponent : (
+      var _element = /* @__PURE__ */ React83.isValidElement(ListHeaderComponent) ? ListHeaderComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React77.createElement(ListHeaderComponent, null)
+        /* @__PURE__ */ React83.createElement(ListHeaderComponent, null)
       );
-      cells.push(/* @__PURE__ */ React77.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React83.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getCellKey() + "-header",
         key: "$header"
-      }, /* @__PURE__ */ React77.createElement(
+      }, /* @__PURE__ */ React83.createElement(
         View_default,
         {
           onLayout: this._onLayoutHeader,
@@ -18829,15 +20171,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     }
     var itemCount = this.props.getItemCount(data);
     if (itemCount === 0 && ListEmptyComponent) {
-      var _element2 = /* @__PURE__ */ React77.isValidElement(ListEmptyComponent) ? ListEmptyComponent : (
+      var _element2 = /* @__PURE__ */ React83.isValidElement(ListEmptyComponent) ? ListEmptyComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React77.createElement(ListEmptyComponent, null)
+        /* @__PURE__ */ React83.createElement(ListEmptyComponent, null)
       );
-      cells.push(/* @__PURE__ */ React77.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React83.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getCellKey() + "-empty",
         key: "$empty"
-      }, /* @__PURE__ */ React77.cloneElement(_element2, {
+      }, /* @__PURE__ */ React83.cloneElement(_element2, {
         onLayout: (event3) => {
           this._onLayoutEmpty(event3);
           if (_element2.props.onLayout) {
@@ -18865,7 +20207,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
           var firstMetrics = this.__getFrameMetricsApprox(section.first, this.props);
           var lastMetrics = this.__getFrameMetricsApprox(last, this.props);
           var spacerSize = lastMetrics.offset + lastMetrics.length - firstMetrics.offset;
-          cells.push(/* @__PURE__ */ React77.createElement(View_default, {
+          cells.push(/* @__PURE__ */ React83.createElement(View_default, {
             key: "$spacer-" + section.first,
             style: {
               [spacerKey]: spacerSize
@@ -18881,15 +20223,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       }
     }
     if (ListFooterComponent) {
-      var _element3 = /* @__PURE__ */ React77.isValidElement(ListFooterComponent) ? ListFooterComponent : (
+      var _element3 = /* @__PURE__ */ React83.isValidElement(ListFooterComponent) ? ListFooterComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React77.createElement(ListFooterComponent, null)
+        /* @__PURE__ */ React83.createElement(ListFooterComponent, null)
       );
-      cells.push(/* @__PURE__ */ React77.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React83.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getFooterCellKey(),
         key: "$footer"
-      }, /* @__PURE__ */ React77.createElement(
+      }, /* @__PURE__ */ React83.createElement(
         View_default,
         {
           onLayout: this._onLayoutFooter,
@@ -18914,7 +20256,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       style: inversionStyle ? [inversionStyle, this.props.style] : this.props.style
     });
     this._hasMore = this.state.cellsAroundViewport.last < itemCount - 1;
-    var innerRet = /* @__PURE__ */ React77.createElement(VirtualizedListContextProvider, {
+    var innerRet = /* @__PURE__ */ React83.createElement(VirtualizedListContextProvider, {
       value: {
         cellKey: null,
         getScrollMetrics: this._getScrollMetrics,
@@ -18923,12 +20265,12 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
         registerAsNestedChild: this._registerAsNestedChild,
         unregisterAsNestedChild: this._unregisterAsNestedChild
       }
-    }, /* @__PURE__ */ React77.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+    }, /* @__PURE__ */ React83.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
       ref: this._captureScrollRef
     }, cells));
     var ret = innerRet;
     if (this.props.debug) {
-      return /* @__PURE__ */ React77.createElement(View_default, {
+      return /* @__PURE__ */ React83.createElement(View_default, {
         style: styles5.debug
       }, ret, this._renderDebugOverlay());
     } else {
@@ -19016,20 +20358,20 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     var windowLen = frameLast.offset + frameLast.length - windowTop;
     var visTop = this._scrollMetrics.offset;
     var visLen = this._scrollMetrics.visibleLength;
-    return /* @__PURE__ */ React77.createElement(View_default, {
+    return /* @__PURE__ */ React83.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlay]
-    }, framesInLayout.map((f, ii2) => /* @__PURE__ */ React77.createElement(View_default, {
+    }, framesInLayout.map((f, ii2) => /* @__PURE__ */ React83.createElement(View_default, {
       key: "f" + ii2,
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrame, {
         top: f.offset * normalize,
         height: f.length * normalize
       }]
-    })), /* @__PURE__ */ React77.createElement(View_default, {
+    })), /* @__PURE__ */ React83.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrameLast, {
         top: windowTop * normalize,
         height: windowLen * normalize
       }]
-    }), /* @__PURE__ */ React77.createElement(View_default, {
+    }), /* @__PURE__ */ React83.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrameVis, {
         top: visTop * normalize,
         height: visLen * normalize
@@ -19215,7 +20557,7 @@ function numColumnsOrDefault(numColumns) {
 function isArrayLike(data) {
   return typeof Object(data).length === "number";
 }
-var FlatList = class extends React78.PureComponent {
+var FlatList = class extends React84.PureComponent {
   /**
    * Scrolls to the end of the content. May be janky without `getItemLayout` prop.
    */
@@ -19343,7 +20685,7 @@ var FlatList = class extends React78.PureComponent {
       var cols = numColumnsOrDefault(numColumns);
       var render = (props) => {
         if (ListItemComponent) {
-          return /* @__PURE__ */ React78.createElement(ListItemComponent, props);
+          return /* @__PURE__ */ React84.createElement(ListItemComponent, props);
         } else if (renderItem) {
           return renderItem(props);
         } else {
@@ -19354,7 +20696,7 @@ var FlatList = class extends React78.PureComponent {
         if (cols > 1) {
           var _item2 = info.item, _index = info.index;
           (0, import_invariant11.default)(Array.isArray(_item2), "Expected array of items with numColumns > 1");
-          return /* @__PURE__ */ React78.createElement(View_default, {
+          return /* @__PURE__ */ React84.createElement(View_default, {
             style: [styles6.row, columnWrapperStyle]
           }, _item2.map((it, kk) => {
             var element = render({
@@ -19363,7 +20705,7 @@ var FlatList = class extends React78.PureComponent {
               index: _index * cols + kk,
               separators: info.separators
             });
-            return element != null ? /* @__PURE__ */ React78.createElement(React78.Fragment, {
+            return element != null ? /* @__PURE__ */ React84.createElement(React84.Fragment, {
               key: kk
             }, element) : null;
           }));
@@ -19453,7 +20795,7 @@ var FlatList = class extends React78.PureComponent {
     var renderer = strictMode ? this._memoizedRenderer : this._renderer;
     return (
       // $FlowFixMe[incompatible-exact] - `restProps` (`Props`) is inexact.
-      /* @__PURE__ */ React78.createElement(VirtualizedList_default, (0, import_extends5.default)({}, restProps, {
+      /* @__PURE__ */ React84.createElement(VirtualizedList_default, (0, import_extends5.default)({}, restProps, {
         getItem: this._getItem,
         getItemCount: this._getItemCount,
         keyExtractor: this._keyExtractor,
@@ -21027,11 +22369,11 @@ function useRefEffect(effect) {
 }
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/useAnimatedProps.js
-import { useCallback as useCallback8, useEffect as useEffect7, useMemo as useMemo15, useReducer, useRef as useRef10 } from "react";
+import { useCallback as useCallback8, useEffect as useEffect7, useMemo as useMemo21, useReducer, useRef as useRef10 } from "react";
 function useAnimatedProps(props) {
   var _useReducer = useReducer((count) => count + 1, 0), scheduleUpdate = _useReducer[1];
   var onUpdateRef = useRef10(null);
-  var node = useMemo15(() => new AnimatedProps_default(props, () => onUpdateRef.current == null ? void 0 : onUpdateRef.current()), [props]);
+  var node = useMemo21(() => new AnimatedProps_default(props, () => onUpdateRef.current == null ? void 0 : onUpdateRef.current()), [props]);
   useAnimatedPropsLifecycle(node);
   var refEffect = useCallback8((instance) => {
     node.setNativeView(instance);
@@ -21124,16 +22466,16 @@ function useMergeRefs2() {
 }
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/createAnimatedComponent.js
-import * as React79 from "react";
+import * as React85 from "react";
 var _excluded9 = ["style"];
 function createAnimatedComponent(Component3) {
-  return /* @__PURE__ */ React79.forwardRef((props, forwardedRef) => {
+  return /* @__PURE__ */ React85.forwardRef((props, forwardedRef) => {
     var _useAnimatedProps = useAnimatedProps(props), reducedProps = _useAnimatedProps[0], callbackRef = _useAnimatedProps[1];
     var ref = useMergeRefs2(callbackRef, forwardedRef);
     var passthroughAnimatedPropExplicitValues = reducedProps.passthroughAnimatedPropExplicitValues, style = reducedProps.style;
     var _ref = passthroughAnimatedPropExplicitValues !== null && passthroughAnimatedPropExplicitValues !== void 0 ? passthroughAnimatedPropExplicitValues : {}, passthroughStyle = _ref.style, passthroughProps = (0, import_objectWithoutPropertiesLoose9.default)(_ref, _excluded9);
     var mergedStyle = [style, passthroughStyle];
-    return /* @__PURE__ */ React79.createElement(Component3, (0, import_extends6.default)({}, reducedProps, passthroughProps, {
+    return /* @__PURE__ */ React85.createElement(Component3, (0, import_extends6.default)({}, reducedProps, passthroughProps, {
       style: mergedStyle,
       ref
     }));
@@ -21141,7 +22483,7 @@ function createAnimatedComponent(Component3) {
 }
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedFlatList.js
-var FlatListWithEventThrottle = /* @__PURE__ */ React80.forwardRef((props, ref) => /* @__PURE__ */ React80.createElement(FlatList_default2, (0, import_extends7.default)({
+var FlatListWithEventThrottle = /* @__PURE__ */ React86.forwardRef((props, ref) => /* @__PURE__ */ React86.createElement(FlatList_default2, (0, import_extends7.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -21149,13 +22491,13 @@ var FlatListWithEventThrottle = /* @__PURE__ */ React80.forwardRef((props, ref) 
 var AnimatedFlatList_default = createAnimatedComponent(FlatListWithEventThrottle);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedImage.js
-import * as React82 from "react";
+import * as React88 from "react";
 
 // ../../node_modules/react-native-web/dist/exports/Image/index.js
 var import_objectSpread217 = __toESM(require_objectSpread2());
 var import_extends8 = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose10 = __toESM(require_objectWithoutPropertiesLoose());
-import * as React81 from "react";
+import * as React87 from "react";
 
 // ../../node_modules/react-native-web/dist/modules/AssetRegistry/index.js
 var assets = [];
@@ -21334,20 +22676,20 @@ var IDLE = "IDLE";
 var _filterId = 0;
 var svgDataUriPattern = /^(data:image\/svg\+xml;utf8,)(.*)/;
 function createTintColorSVG(tintColor, id2) {
-  return tintColor && id2 != null ? /* @__PURE__ */ React81.createElement("svg", {
+  return tintColor && id2 != null ? /* @__PURE__ */ React87.createElement("svg", {
     style: {
       position: "absolute",
       height: 0,
       visibility: "hidden",
       width: 0
     }
-  }, /* @__PURE__ */ React81.createElement("defs", null, /* @__PURE__ */ React81.createElement("filter", {
+  }, /* @__PURE__ */ React87.createElement("defs", null, /* @__PURE__ */ React87.createElement("filter", {
     id: "tint-" + id2,
     suppressHydrationWarning: true
-  }, /* @__PURE__ */ React81.createElement("feFlood", {
+  }, /* @__PURE__ */ React87.createElement("feFlood", {
     floodColor: "" + tintColor,
     key: tintColor
-  }), /* @__PURE__ */ React81.createElement("feComposite", {
+  }), /* @__PURE__ */ React87.createElement("feComposite", {
     in2: "SourceAlpha",
     operator: "in"
   })))) : null;
@@ -21427,7 +22769,7 @@ function resolveAssetUri(source) {
   }
   return uri;
 }
-var Image3 = /* @__PURE__ */ React81.forwardRef((props, ref) => {
+var Image3 = /* @__PURE__ */ React87.forwardRef((props, ref) => {
   var _ariaLabel = props["aria-label"], accessibilityLabel = props.accessibilityLabel, blurRadius = props.blurRadius, defaultSource = props.defaultSource, draggable = props.draggable, onError = props.onError, onLayout = props.onLayout, onLoad = props.onLoad, onLoadEnd = props.onLoadEnd, onLoadStart = props.onLoadStart, pointerEvents = props.pointerEvents, source = props.source, style = props.style, rest = (0, import_objectWithoutPropertiesLoose10.default)(props, _excluded10);
   var ariaLabel = _ariaLabel || accessibilityLabel;
   if (process.env.NODE_ENV !== "production") {
@@ -21435,7 +22777,7 @@ var Image3 = /* @__PURE__ */ React81.forwardRef((props, ref) => {
       throw new Error("The <Image> component cannot contain children. If you want to render content on top of the image, consider using the <ImageBackground> component or absolute positioning.");
     }
   }
-  var _React$useState = React81.useState(() => {
+  var _React$useState = React87.useState(() => {
     var uri2 = resolveAssetUri(source);
     if (uri2 != null) {
       var isLoaded = ImageLoader_default.has(uri2);
@@ -21445,11 +22787,11 @@ var Image3 = /* @__PURE__ */ React81.forwardRef((props, ref) => {
     }
     return IDLE;
   }), state = _React$useState[0], updateState = _React$useState[1];
-  var _React$useState2 = React81.useState({}), layout2 = _React$useState2[0], updateLayout = _React$useState2[1];
-  var hasTextAncestor = React81.useContext(TextAncestorContext_default);
-  var hiddenImageRef = React81.useRef(null);
-  var filterRef = React81.useRef(_filterId++);
-  var requestRef = React81.useRef(null);
+  var _React$useState2 = React87.useState({}), layout2 = _React$useState2[0], updateLayout = _React$useState2[1];
+  var hasTextAncestor = React87.useContext(TextAncestorContext_default);
+  var hiddenImageRef = React87.useRef(null);
+  var filterRef = React87.useRef(_filterId++);
+  var requestRef = React87.useRef(null);
   var shouldDisplaySource = state === LOADED || state === LOADING && defaultSource == null;
   var _extractNonStandardSt = extractNonStandardStyleProps(style, blurRadius, filterRef.current, props.tintColor), _resizeMode = _extractNonStandardSt[0], filter = _extractNonStandardSt[1], _tintColor = _extractNonStandardSt[2];
   var resizeMode = props.resizeMode || _resizeMode || "cover";
@@ -21486,7 +22828,7 @@ var Image3 = /* @__PURE__ */ React81.forwardRef((props, ref) => {
     }
   }
   var uri = resolveAssetUri(source);
-  React81.useEffect(() => {
+  React87.useEffect(() => {
     abortPendingRequest();
     if (uri != null) {
       updateState(LOADING);
@@ -21523,7 +22865,7 @@ var Image3 = /* @__PURE__ */ React81.forwardRef((props, ref) => {
     }
     return abortPendingRequest;
   }, [uri, requestRef, updateState, onError, onLoad, onLoadEnd, onLoadStart]);
-  return /* @__PURE__ */ React81.createElement(View_default, (0, import_extends8.default)({}, rest, {
+  return /* @__PURE__ */ React87.createElement(View_default, (0, import_extends8.default)({}, rest, {
     "aria-label": ariaLabel,
     onLayout: handleLayout,
     pointerEvents,
@@ -21540,7 +22882,7 @@ var Image3 = /* @__PURE__ */ React81.forwardRef((props, ref) => {
         boxShadow: null
       }
     ]
-  }), /* @__PURE__ */ React81.createElement(View_default, {
+  }), /* @__PURE__ */ React87.createElement(View_default, {
     style: [styles7.image, resizeModeStyles[resizeMode], {
       backgroundImage,
       filter
@@ -21629,8 +22971,8 @@ var AnimatedImage_default = createAnimatedComponent(Image_default);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedScrollView.js
 var import_extends9 = __toESM(require_extends());
-import * as React83 from "react";
-var ScrollViewWithEventThrottle = /* @__PURE__ */ React83.forwardRef((props, ref) => /* @__PURE__ */ React83.createElement(ScrollView_default, (0, import_extends9.default)({
+import * as React89 from "react";
+var ScrollViewWithEventThrottle = /* @__PURE__ */ React89.forwardRef((props, ref) => /* @__PURE__ */ React89.createElement(ScrollView_default, (0, import_extends9.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -21639,12 +22981,12 @@ var AnimatedScrollView_default = createAnimatedComponent(ScrollViewWithEventThro
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
 var import_extends12 = __toESM(require_extends());
-import * as React86 from "react";
+import * as React92 from "react";
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
 var import_extends11 = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose12 = __toESM(require_objectWithoutPropertiesLoose());
-import * as React85 from "react";
+import * as React91 from "react";
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedSectionList/index.js
 var import_extends10 = __toESM(require_extends());
@@ -21652,9 +22994,9 @@ var import_createForOfIteratorHelperLoose5 = __toESM(require_createForOfIterator
 var import_objectWithoutPropertiesLoose11 = __toESM(require_objectWithoutPropertiesLoose());
 var import_objectSpread218 = __toESM(require_objectSpread2());
 var import_invariant19 = __toESM(require_invariant());
-import * as React84 from "react";
+import * as React90 from "react";
 var _excluded11 = ["ItemSeparatorComponent", "SectionSeparatorComponent", "renderItem", "renderSectionFooter", "renderSectionHeader", "sections", "stickySectionHeadersEnabled"];
-var VirtualizedSectionList = class extends React84.PureComponent {
+var VirtualizedSectionList = class extends React90.PureComponent {
   constructor() {
     super(...arguments);
     this._keyExtractor = (item, index) => {
@@ -21713,7 +23055,7 @@ var VirtualizedSectionList = class extends React84.PureComponent {
           var renderItem = info.section.renderItem || this.props.renderItem;
           var SeparatorComponent = this._getSeparatorComponent(index, info, listItemCount);
           (0, import_invariant19.default)(renderItem, "no renderItem!");
-          return /* @__PURE__ */ React84.createElement(ItemWithSeparator, {
+          return /* @__PURE__ */ React90.createElement(ItemWithSeparator, {
             SeparatorComponent,
             LeadingSeparatorComponent: infoIndex === 0 ? this.props.SectionSeparatorComponent : void 0,
             cellKey: info.key,
@@ -21803,7 +23145,7 @@ var VirtualizedSectionList = class extends React84.PureComponent {
       itemCount += this.props.getItemCount(section.data);
     }
     var renderItem = this._renderItem(itemCount);
-    return /* @__PURE__ */ React84.createElement(VirtualizedList_default, (0, import_extends10.default)({}, passThroughProps, {
+    return /* @__PURE__ */ React90.createElement(VirtualizedList_default, (0, import_extends10.default)({}, passThroughProps, {
       keyExtractor: this._keyExtractor,
       stickyHeaderIndices,
       renderItem,
@@ -21894,23 +23236,23 @@ var VirtualizedSectionList = class extends React84.PureComponent {
 };
 function ItemWithSeparator(props) {
   var LeadingSeparatorComponent = props.LeadingSeparatorComponent, SeparatorComponent = props.SeparatorComponent, cellKey = props.cellKey, prevCellKey = props.prevCellKey, setSelfHighlightCallback = props.setSelfHighlightCallback, updateHighlightFor = props.updateHighlightFor, setSelfUpdatePropsCallback = props.setSelfUpdatePropsCallback, updatePropsFor = props.updatePropsFor, item = props.item, index = props.index, section = props.section, inverted = props.inverted;
-  var _React$useState = React84.useState(false), leadingSeparatorHiglighted = _React$useState[0], setLeadingSeparatorHighlighted = _React$useState[1];
-  var _React$useState2 = React84.useState(false), separatorHighlighted = _React$useState2[0], setSeparatorHighlighted = _React$useState2[1];
-  var _React$useState3 = React84.useState({
+  var _React$useState = React90.useState(false), leadingSeparatorHiglighted = _React$useState[0], setLeadingSeparatorHighlighted = _React$useState[1];
+  var _React$useState2 = React90.useState(false), separatorHighlighted = _React$useState2[0], setSeparatorHighlighted = _React$useState2[1];
+  var _React$useState3 = React90.useState({
     leadingItem: props.leadingItem,
     leadingSection: props.leadingSection,
     section: props.section,
     trailingItem: props.item,
     trailingSection: props.trailingSection
   }), leadingSeparatorProps = _React$useState3[0], setLeadingSeparatorProps = _React$useState3[1];
-  var _React$useState4 = React84.useState({
+  var _React$useState4 = React90.useState({
     leadingItem: props.item,
     leadingSection: props.leadingSection,
     section: props.section,
     trailingItem: props.trailingItem,
     trailingSection: props.trailingSection
   }), separatorProps = _React$useState4[0], setSeparatorProps = _React$useState4[1];
-  React84.useEffect(() => {
+  React90.useEffect(() => {
     setSelfHighlightCallback(cellKey, setSeparatorHighlighted);
     setSelfUpdatePropsCallback(cellKey, setSeparatorProps);
     return () => {
@@ -21951,19 +23293,19 @@ function ItemWithSeparator(props) {
     section,
     separators
   });
-  var leadingSeparator = LeadingSeparatorComponent != null && /* @__PURE__ */ React84.createElement(LeadingSeparatorComponent, (0, import_extends10.default)({
+  var leadingSeparator = LeadingSeparatorComponent != null && /* @__PURE__ */ React90.createElement(LeadingSeparatorComponent, (0, import_extends10.default)({
     highlighted: leadingSeparatorHiglighted
   }, leadingSeparatorProps));
-  var separator = SeparatorComponent != null && /* @__PURE__ */ React84.createElement(SeparatorComponent, (0, import_extends10.default)({
+  var separator = SeparatorComponent != null && /* @__PURE__ */ React90.createElement(SeparatorComponent, (0, import_extends10.default)({
     highlighted: separatorHighlighted
   }, separatorProps));
-  return leadingSeparator || separator ? /* @__PURE__ */ React84.createElement(View_default, null, inverted === false ? leadingSeparator : separator, element, inverted === false ? separator : leadingSeparator) : element;
+  return leadingSeparator || separator ? /* @__PURE__ */ React90.createElement(View_default, null, inverted === false ? leadingSeparator : separator, element, inverted === false ? separator : leadingSeparator) : element;
 }
 var VirtualizedSectionList_default = VirtualizedSectionList;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
 var _excluded12 = ["stickySectionHeadersEnabled"];
-var SectionList = class extends React85.PureComponent {
+var SectionList = class extends React91.PureComponent {
   constructor() {
     super(...arguments);
     this._captureRef = (ref) => {
@@ -22021,7 +23363,7 @@ var SectionList = class extends React85.PureComponent {
   render() {
     var _this$props = this.props, _stickySectionHeadersEnabled = _this$props.stickySectionHeadersEnabled, restProps = (0, import_objectWithoutPropertiesLoose12.default)(_this$props, _excluded12);
     var stickySectionHeadersEnabled = _stickySectionHeadersEnabled !== null && _stickySectionHeadersEnabled !== void 0 ? _stickySectionHeadersEnabled : Platform_default.OS === "ios";
-    return /* @__PURE__ */ React85.createElement(VirtualizedSectionList_default, (0, import_extends11.default)({}, restProps, {
+    return /* @__PURE__ */ React91.createElement(VirtualizedSectionList_default, (0, import_extends11.default)({}, restProps, {
       stickySectionHeadersEnabled,
       ref: this._captureRef,
       getItemCount: (items) => items.length,
@@ -22034,7 +23376,7 @@ var SectionList = class extends React85.PureComponent {
 var SectionList_default = SectionList;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
-var SectionListWithEventThrottle = /* @__PURE__ */ React86.forwardRef((props, ref) => /* @__PURE__ */ React86.createElement(SectionList_default, (0, import_extends12.default)({
+var SectionListWithEventThrottle = /* @__PURE__ */ React92.forwardRef((props, ref) => /* @__PURE__ */ React92.createElement(SectionList_default, (0, import_extends12.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -22042,12 +23384,12 @@ var SectionListWithEventThrottle = /* @__PURE__ */ React86.forwardRef((props, re
 var AnimatedSectionList_default = createAnimatedComponent(SectionListWithEventThrottle);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
-import * as React88 from "react";
+import * as React94 from "react";
 
 // ../../node_modules/react-native-web/dist/exports/Text/index.js
 var import_objectSpread219 = __toESM(require_objectSpread2());
 var import_objectWithoutPropertiesLoose13 = __toESM(require_objectWithoutPropertiesLoose());
-import * as React87 from "react";
+import * as React93 from "react";
 var _excluded13 = ["hrefAttrs", "numberOfLines", "onClick", "onLayout", "onPress", "onMoveShouldSetResponder", "onMoveShouldSetResponderCapture", "onResponderEnd", "onResponderGrant", "onResponderMove", "onResponderReject", "onResponderRelease", "onResponderStart", "onResponderTerminate", "onResponderTerminationRequest", "onScrollShouldSetResponder", "onScrollShouldSetResponderCapture", "onSelectionChangeShouldSetResponder", "onSelectionChangeShouldSetResponderCapture", "onStartShouldSetResponder", "onStartShouldSetResponderCapture", "selectable"];
 var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clickProps, focusProps, keyboardProps, mouseProps, touchProps, styleProps, {
   href: true,
@@ -22055,10 +23397,10 @@ var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clic
   pointerEvents: true
 });
 var pickProps2 = (props) => pick(props, forwardPropsList2);
-var Text44 = /* @__PURE__ */ React87.forwardRef((props, forwardedRef) => {
+var Text56 = /* @__PURE__ */ React93.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, numberOfLines = props.numberOfLines, onClick = props.onClick, onLayout = props.onLayout, onPress = props.onPress, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, selectable = props.selectable, rest = (0, import_objectWithoutPropertiesLoose13.default)(props, _excluded13);
-  var hasTextAncestor = React87.useContext(TextAncestorContext_default);
-  var hostRef = React87.useRef(null);
+  var hasTextAncestor = React93.useContext(TextAncestorContext_default);
+  var hostRef = React93.useRef(null);
   var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
   useElementLayout(hostRef, onLayout);
   useResponderEvents(hostRef, {
@@ -22079,7 +23421,7 @@ var Text44 = /* @__PURE__ */ React87.forwardRef((props, forwardedRef) => {
     onStartShouldSetResponder,
     onStartShouldSetResponderCapture
   });
-  var handleClick = React87.useCallback((e) => {
+  var handleClick = React93.useCallback((e) => {
     if (onClick != null) {
       onClick(e);
     } else if (onPress != null) {
@@ -22123,11 +23465,11 @@ var Text44 = /* @__PURE__ */ React87.forwardRef((props, forwardedRef) => {
   var element = createElement_default(component, supportedProps, {
     writingDirection
   });
-  return hasTextAncestor ? element : /* @__PURE__ */ React87.createElement(TextAncestorContext_default.Provider, {
+  return hasTextAncestor ? element : /* @__PURE__ */ React93.createElement(TextAncestorContext_default.Provider, {
     value: true
   }, element);
 });
-Text44.displayName = "Text";
+Text56.displayName = "Text";
 var textStyle = {
   backgroundColor: "transparent",
   border: "0 solid black",
@@ -22177,13 +23519,13 @@ var styles8 = StyleSheet_default.create({
     cursor: "pointer"
   }
 });
-var Text_default = Text44;
+var Text_default = Text56;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
 var AnimatedText_default = createAnimatedComponent(Text_default);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedView.js
-import * as React89 from "react";
+import * as React95 from "react";
 var AnimatedView_default = createAnimatedComponent(View_default);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
@@ -24279,7 +25621,7 @@ var costlyToAnimateStyleKey = {
 var AnimatedView = Animated_default2.View;
 var AnimatedText = Animated_default2.Text;
 function useAnimatedNumber(initial) {
-  const state = React90.useRef(null);
+  const state = React96.useRef(null);
   return state.current || (state.current = {
     composite: null,
     val: new Animated_default2.Value(initial),
@@ -24332,7 +25674,7 @@ var useAnimatedNumberReaction = ({
   const onChange = useEvent((current) => {
     onValue(current.value);
   });
-  React90.useEffect(() => {
+  React96.useEffect(() => {
     const id2 = value.getInstance().addListener(onChange);
     return () => {
       value.getInstance().removeListener(id2);
@@ -24358,7 +25700,7 @@ function createAnimations(animations2) {
       componentState,
       presence
     }) => {
-      const isDisabled2 = isWeb && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = React90.useRef({}), animatedTranforms = React90.useRef([]), animationsState = React90.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = React90.useMemo(() => isWeb ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = React90.useMemo(() => {
+      const isDisabled2 = isWeb && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = React96.useRef({}), animatedTranforms = React96.useRef([]), animationsState = React96.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = React96.useMemo(() => isWeb ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = React96.useMemo(() => {
         const runners = [], completions = [], nonAnimatedStyle = {};
         for (const key in style) {
           const val = style[key];
@@ -24941,8 +26283,8 @@ var config = createTamagui({
 var tamagui_config_default = config;
 
 // src/providers/AppProviders.tsx
-import { jsx as jsx83 } from "react/jsx-runtime";
-var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ jsx83(TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ jsx83(PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ jsx83(ErrorBoundary, { componentName: "AppProviders", children }) }) });
+import { jsx as jsx95 } from "react/jsx-runtime";
+var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ jsx95(TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ jsx95(PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ jsx95(ErrorBoundary, { componentName: "AppProviders", children }) }) });
 
 // src/fonts.ts
 var fonts = {
@@ -24982,7 +26324,9 @@ export {
   BadgeText,
   BarChart,
   Blockquote,
+  BoxPlotChart,
   Breadcrumb,
+  BulletChart,
   Button,
   Calendar,
   Card,
@@ -25018,6 +26362,7 @@ export {
   ContextMenu,
   DataTable,
   DatePicker,
+  DecompositionTree,
   Dialog,
   DialogClose,
   DialogContentComposite as DialogContent,
@@ -25066,6 +26411,7 @@ export {
   FormLabel,
   FormMessage,
   FormRoot,
+  FunnelChart,
   H1,
   H2,
   H3,
@@ -25084,6 +26430,8 @@ export {
   Label,
   LeadText,
   LineChart,
+  Maps,
+  MarimekkoChart,
   MediaGrid,
   Menubar,
   MenubarCheckboxItem,
@@ -25116,18 +26464,22 @@ export {
   OTPInput,
   Pagination,
   Paragraph2 as Paragraph,
+  ParallelCoordinates,
   PieChart,
+  PolarChart,
   Popover,
   PopoverAnchor,
   PopoverClose,
   PopoverContent,
   PopoverTrigger,
   Progress2 as Progress,
+  RadarChart,
   RadioGroup2 as RadioGroup,
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
   RichText,
+  RidgelinePlot,
   SankeyDiagram,
   ScatterChart,
   SchemaForm,
@@ -25166,6 +26518,7 @@ export {
   Spinner,
   StarRating,
   Stepper2 as Stepper,
+  SunburstChart,
   Switch,
   Tabs,
   TabsContent,
@@ -25191,6 +26544,7 @@ export {
   TreemapChart,
   Typography,
   TypographyText,
+  WaterfallChart,
   tamagui_config_default as config,
   fonts,
   useCollapsibleContext,

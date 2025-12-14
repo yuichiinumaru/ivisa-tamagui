@@ -35,7 +35,7 @@ const config = {
     docs: {
         autodocs: false,
     },
-    staticDirs: ['../public'],
+    staticDirs: ['../public', '../src/assets'],
     webpackFinal: async (config) => {
         if (!config.resolve) config.resolve = {};
         if (!config.module) config.module = { rules: [] };

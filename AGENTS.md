@@ -21,6 +21,22 @@ You are working on the **Ivisa Tamagui Design System**, a mission-critical infra
 
 ---
 
+## 3. Jules Optimization Strategy
+To maximize the efficiency of the Jules Swarm:
+1.  **Local vs. Jules:**
+    *   **Quick Fixes (< 15 mins):** Execute LOCALLY. Do not dispatch a swarm for simple typos or missing exports.
+    *   **Heavy Work:** Dispatch Jules for complex refactors, test coverage expansion, and "Wave" implementations.
+2.  **Sync First:** ALWAYS `git push` before dispatching a swarm. Jules cannot see local changes.
+3.  **Parallelization:** When refactoring multiple components (e.g., Molecules), dispatch separate sessions for each to merge them in parallel.
+
+## 4. Visual Integrity Mandate
+1.  **Typography:** All text-bearing components (Buttons, Inputs, Cards) must explicitly resolve to the **Cera Pro** font family via Tamagui tokens (`$body` / `$heading`). Do not rely on valid system fallbacks.
+2.  **Mock Data:** Use valid, localized mock data (e.g. `faker.js` pt-BR) for Stories. Never use `null` or "test test test".
+3.  **Assets:** Ensure `packages/ui/src/assets` is correctly mapped in Storybook.
+
+
+---
+
 ## 2. Project Structure
 The repository follows a strict **Atomic Design** layout in `packages/ui/src/`:
 - **Atoms (`atoms/`)**: Single element (Button, Input).
@@ -71,3 +87,9 @@ The repository follows a strict **Atomic Design** layout in `packages/ui/src/`:
 | **Stepper** | 3 | ⏳ | — | Button, Card, Form | 3-4d |
 
 > **Note:** See `ORGANISMS-catalog.md` for detailed specifications, dependencies, and implementation patterns for all 30 organisms.
+
+## 6. Large-Scale Analysis (The "Python First" Rule)
+**Context:** When dealing with massive log files (e.g., >10k lines) or widespread codebase patterns, do not attempt to read everything into the LLM context.
+*   **Strategy:** Write and execute **strategic Python scripts** to parse, filter, and summarize the data.
+*   **Action:** Use `start_process` to run these scripts and read their output.
+*   **Benefit:** Avoids context blowup and provides structured, quantitative data (counts, categories, top offenders).

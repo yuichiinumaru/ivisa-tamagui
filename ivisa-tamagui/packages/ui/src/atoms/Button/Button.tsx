@@ -8,6 +8,8 @@ const StyledButton = styled(TamaguiButton, {
   alignItems: 'center',
   justifyContent: 'center',
   gap: '$sm',
+  // Force Cera Pro via body token
+  fontFamily: '$body',
   variants: {
     variant: {
       default: {
@@ -139,7 +141,6 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>(
         variant={variant}
         size={size}
         disabled={loading || props.disabled}
-        type={props.type || 'button'}
         {...props}
         asChild={asChild}
       >
