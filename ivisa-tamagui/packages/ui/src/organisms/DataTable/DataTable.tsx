@@ -1,4 +1,4 @@
-import { AlertCircle } from '@tamagui/lucide-icons'
+import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
 import React, { useState } from 'react'
 import type { ColumnDef, ColumnFiltersState, SortingState } from '@tanstack/react-table'
 import {
@@ -149,7 +149,12 @@ export function DataTable<TData, TValue>({
       return (
         <TableRow>
           <NoResultsCell>
-            {emptyState || <Empty title={localization.noResults} />}
+            {emptyState || (
+              <Empty
+                icon={<Inbox size="$5" color="$gray10" />}
+                title={localization.noResults}
+              />
+            )}
           </NoResultsCell>
         </TableRow>
       )
