@@ -25,8 +25,17 @@ describe('Scheduler', () => {
       const onAdd = jest.fn()
       render(<Scheduler onAddEvent={onAdd} />)
 
-      const btn = screen.getByRole('button', { name: /novo evento/i })
+      // Button text was changed to "Novo"
+      const btn = screen.getByRole('button', { name: /Novo/i })
       fireEvent.click(btn)
       expect(onAdd).toHaveBeenCalled()
+  })
+
+  it('toggles view to month', () => {
+      render(<Scheduler />)
+      const toggleBtn = screen.getByRole('button', { name: /Mês/i })
+      fireEvent.click(toggleBtn)
+      // In month view, we expect to see 'Dom', 'Seg', etc. and 'Semana' button
+      expect(screen.getByRole('button', { name: /Semana/i })).toBeInTheDocument()
   })
 })

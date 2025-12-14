@@ -58,6 +58,10 @@ const PreferenceRow = styled(XStack, {
 })
 
 // --- Organism ---
+/**
+ * CookieBanner component for GDPR/LGPD compliance.
+ * Includes a main banner and a preferences dialog.
+ */
 export const CookieBanner = ({
   onAcceptAll,
   onRejectAll,

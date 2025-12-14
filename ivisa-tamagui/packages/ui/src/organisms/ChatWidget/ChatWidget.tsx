@@ -102,10 +102,14 @@ export const ChatWidget = ({
   // Auto-scroll to bottom
   useEffect(() => {
     // Basic timeout to allow render
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
         // @ts-expect-error - Tamagui ScrollView ref type
-        scrollRef.current?.scrollToEnd({ animated: true })
+        if (scrollRef.current && typeof scrollRef.current.scrollToEnd === 'function') {
+             // @ts-expect-error - Tamagui ScrollView ref type
+            scrollRef.current.scrollToEnd({ animated: true })
+        }
     }, 100)
+    return () => clearTimeout(timeout)
   }, [messages, isTyping])
 
   return (
