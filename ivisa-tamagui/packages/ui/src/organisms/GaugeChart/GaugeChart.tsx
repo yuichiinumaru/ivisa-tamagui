@@ -24,6 +24,7 @@ const GaugeChartSkeleton = () => {
 export type GaugeChartProps = GetProps<typeof GaugeChartFrame> & {
   title: string
   value: number // Percentage value (0-100)
+  variant?: 'default' | 'radial'
   footerContent?: ReactNode
   isLoading?: boolean
   error?: string | null
@@ -36,6 +37,7 @@ export type GaugeChartProps = GetProps<typeof GaugeChartFrame> & {
 export const GaugeChart = ({
   title,
   value,
+  variant = 'default',
   footerContent,
   isLoading = false,
   error = null,
@@ -81,6 +83,14 @@ export const GaugeChart = ({
     )
   }
 
+  // Configuration for variants
+  const isRadial = variant === 'radial'
+  const startAngle = isRadial ? 0 : -90
+  const endAngle = isRadial ? 360 : 90
+  const innerRadius = isRadial ? 80 : 80
+  const cornerRadius = isRadial ? 40 : 25
+  const parentStyle = isRadial ? {} : { marginTop: -60 }
+
   return (
     <GaugeChartFrame tag={tag} {...rest}>
       {/* Title */}
@@ -90,11 +100,11 @@ export const GaugeChart = ({
       <YStack position="relative" alignItems="center" justifyContent="center">
         <VictoryPie
           data={chartData}
-          innerRadius={80}
-          cornerRadius={25}
+          innerRadius={innerRadius}
+          cornerRadius={cornerRadius}
           labels={() => null}
-          startAngle={-90}
-          endAngle={90}
+          startAngle={startAngle}
+          endAngle={endAngle}
           width={240}
           height={240}
           padding={0}
@@ -102,12 +112,7 @@ export const GaugeChart = ({
             data: {
               fill: ({ datum }) => datum.fill,
             },
-            parent: {
-              // This negative margin is a workaround to visually center the semi-circle
-              // chart within its container, as VictoryPie's default layout adds
-              // unwanted vertical space for a full circle.
-              marginTop: -60,
-            }
+            parent: parentStyle,
           }}
         />
         <GaugeChartValueText>{`${Math.round(value)}%`}</GaugeChartValueText>

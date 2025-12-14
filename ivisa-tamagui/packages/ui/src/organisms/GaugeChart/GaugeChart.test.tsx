@@ -1,44 +1,29 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { GaugeChart } from './GaugeChart'
-import { TamaguiProvider } from 'tamagui'
-import config from '../../../../tamagui.config'
+import { AppProviders } from '../../providers/AppProviders'
 
 describe('GaugeChart', () => {
   it('renders the title and value', () => {
-    render(
-        <TamaguiProvider config={config}>
-            <GaugeChart title="Test Chart" value={50} />
-        </TamaguiProvider>
-    )
-    expect(screen.getByText('Test Chart')).toBeInTheDocument()
-    expect(screen.getByText('50%')).toBeInTheDocument()
+    render(<GaugeChart title="Test Chart" value={50} />, { wrapper: AppProviders })
+    expect(screen.getByText('Test Chart')).toBeTruthy()
+    expect(screen.getByText('50%')).toBeTruthy()
   })
 
   it('renders the loading state', () => {
-    const { container } = render(
-        <TamaguiProvider config={config}>
-            <GaugeChart title="Test Chart" value={50} isLoading />
-        </TamaguiProvider>
-    )
-    expect(container.querySelector('.tamagui-skeleton')).toBeInTheDocument()
+    render(<GaugeChart title="Test Chart" value={50} isLoading />, { wrapper: AppProviders })
+    expect(screen.getAllByTestId('skeleton').length).toBeGreaterThan(0)
   })
 
   it('renders the error state', () => {
-    render(
-        <TamaguiProvider config={config}>
-            <GaugeChart title="Test Chart" value={50} error="Test Error" />
-        </TamaguiProvider>
-    )
-    expect(screen.getByText('Erro ao carregar dados: Test Error')).toBeInTheDocument()
+    render(<GaugeChart title="Test Chart" value={50} error="Test Error" />, {
+      wrapper: AppProviders,
+    })
+    expect(screen.getByText('Erro ao carregar dados: Test Error')).toBeTruthy()
   })
 
   it('renders the empty state', () => {
-    render(
-        <TamaguiProvider config={config}>
-            <GaugeChart title="Test Chart" value={0} />
-        </TamaguiProvider>
-    )
-    expect(screen.getByText('Sem dados para exibir.')).toBeInTheDocument()
+    render(<GaugeChart title="Test Chart" value={0} />, { wrapper: AppProviders })
+    expect(screen.getByText('Sem dados para exibir.')).toBeTruthy()
   })
 })

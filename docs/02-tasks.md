@@ -41,6 +41,48 @@
 
 ---
 
+## 🚀 Phase 5a: BI & Data Visualization Expansion
+**Goal:** Implement a comprehensive suite of data visualization components using Victory (primary) and custom SVG (fallback).
+
+- [ ] **Review & Enhance Existing BI Components**
+  - [ ] Review `DataTable` against requirements (Add Sparklines support)
+  - [ ] Review `KPIGrid` (KPI Cards) against requirements (Add Sparklines/Trend support)
+  - [ ] Review `GaugeChart` against requirements (Consider RadialBar variant)
+  - [ ] Review `TimeSeriesChart` (Line Chart)
+  - [ ] Review `Timeline` organism for BI suitability (History/Licensing view)
+- [ ] **Standard Charts (Wave 1)**
+  - [ ] Refactor `Charts` to `BarChart` (and `ColumnChart` alias)
+  - [ ] Implement `LineChart` (Generic Categorical)
+  - [ ] Implement `PieChart` (Pie & Donut variants)
+  - [ ] Implement `AreaChart` (Standard & Stacked)
+  - [ ] Implement `ScatterChart` (Scatter & Bubble)
+  - [ ] Implement `ComboChart` (Mixed Bar/Line/Scatter)
+  - [ ] Implement `Sparkline` (Micro-charts for tables/cards)
+- [ ] **Advanced Charts (Wave 2)**
+  - [ ] Implement `PopulationPyramid` (Bi-directional Bar Chart)
+  - [ ] Implement `BoxPlotChart` (Box & Whisker)
+  - [ ] Implement `RadarChart` (Spider/Radar)
+  - [ ] Implement `PolarChart` (Rose/Coxcomb/Polar Area)
+  - [ ] Implement `WaterfallChart`
+  - [ ] Implement `FunnelChart`
+  - [ ] Implement `BulletChart`
+  - [ ] Implement `RadialBar` (Apple Watch Rings style)
+- [ ] **Complex & Custom Charts (Wave 3)**
+  - [ ] Implement `HeatmapChart` (Matrix & Calendar/GitHub style)
+  - [ ] Implement `GanttChart` (Project/Inspection Phases)
+  - [ ] Implement `TreemapChart`
+  - [ ] Implement `SankeyDiagram`
+  - [ ] Implement `ChordDiagram`
+  - [ ] Implement `NetworkGraph` (Force-Directed)
+  - [ ] Implement `SunburstChart`
+  - [ ] Implement `ParallelCoordinates`
+  - [ ] Implement `MarimekkoChart`
+  - [ ] Implement `RidgelinePlot` (Joyplot)
+  - [ ] Implement `DecompositionTree`
+  - [ ] Implement `GeoMap` (Choropleth & Dot Density for Rio)
+
+---
+
 ## 🚀 Current Focus: Phase 4 – Web-Specific UX & Full Documentation
 
 25 - [x] **Populate Storybook as Source of Truth** (DOC)
@@ -55,7 +97,7 @@
 
 ---
 
-## ⏭️ Upcoming: Phase 5 – Integration & Handoff
+## ⏭️ Upcoming: Phase 5b – Integration & Handoff
 
 27 - [ ] **Integrate Design System into Flows** (FDD, UX)
   - [ ] 27a – Replace ad-hoc UI in chat, settings, and key dashboards with `packages/ui` components.

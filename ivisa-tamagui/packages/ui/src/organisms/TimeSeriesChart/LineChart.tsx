@@ -10,8 +10,8 @@ import {
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
 
-const TimeSeriesChartContainer = styled(YStack, {
-  name: 'TimeSeriesChart',
+const LineChartContainer = styled(YStack, {
+  name: 'LineChart',
   padding: '$4',
   borderRadius: '$4',
   backgroundColor: '$background',
@@ -41,7 +41,7 @@ const StateContainer = styled(YStack, {
   padding: '$4',
 })
 
-export interface TimeSeriesChartProps {
+export interface LineChartProps {
   title?: string
   data: Record<string, unknown>[]
   xKey: string
@@ -53,7 +53,7 @@ export interface TimeSeriesChartProps {
   footerContent?: React.ReactNode
 }
 
-export const TimeSeriesChart = ({
+export const LineChart = ({
   title,
   data,
   xKey,
@@ -63,7 +63,7 @@ export const TimeSeriesChart = ({
   error,
   headerActions,
   footerContent,
-}: TimeSeriesChartProps) => {
+}: LineChartProps) => {
   const theme = useTheme()
   const themeColor = theme[color as keyof typeof theme]
   const lineColor = themeColor ? (themeColor as unknown as { get: () => string }).get() : color
@@ -104,7 +104,7 @@ export const TimeSeriesChart = ({
         containerComponent={
           <VictoryVoronoiContainer
             voronoiDimension="x"
-            labels={({ datum }) => `${datum.y}`}
+            labels={({ datum }) => `${datum[yKey]}`}
             labelComponent={
               <VictoryTooltip
                 cornerRadius={4}
@@ -142,13 +142,17 @@ export const TimeSeriesChart = ({
   }
 
   return (
-    <TimeSeriesChartContainer>
+    <LineChartContainer>
       <Header>
         {title && <Text fontSize="$5">{title}</Text>}
         {headerActions}
       </Header>
       <ChartContainer>{renderContent()}</ChartContainer>
       {footerContent}
-    </TimeSeriesChartContainer>
+    </LineChartContainer>
   )
 }
+
+// Backward compatibility alias
+export const TimeSeriesChart = LineChart
+export type TimeSeriesChartProps = LineChartProps
