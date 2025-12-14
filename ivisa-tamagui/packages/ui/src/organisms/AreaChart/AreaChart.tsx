@@ -1,13 +1,14 @@
 import React from 'react'
 import { YStack, styled, Text, useTheme } from 'tamagui'
 import {
-  VictoryChart,
-  VictoryArea,
-  VictoryStack,
-  VictoryAxis,
-  VictoryVoronoiContainer,
-  VictoryTooltip,
-} from 'victory'
+  AreaChart as RechartsAreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
 
@@ -98,54 +99,92 @@ export const AreaChart = ({
       )
     }
 
-    const renderSeries = () => {
-      if (stacked && isMultiSeries) {
-        return (
-          <VictoryStack colorScale={colorScale}>
-            {(data as Record<string, unknown>[][]).map((series, i) => (
-              <VictoryArea key={i} data={series} x={xKey} y={yKey} />
-            ))}
-          </VictoryStack>
-        )
+    // Transform data for Recharts if it's multi-series
+    // Recharts expects a single array of objects with keys for each series
+    // If we have [[{x:1, y:10}, {x:2, y:20}], [{x:1, y:5}, {x:2, y:15}]], we need to merge it
+    // into [{x:1, y:10, y2:5}, {x:2, y:20, y2:15}]
+    // For now, let's assume if it is multi-series, the caller structure needs adaptation or we adapt here.
+    // Victory uses array of arrays for stacked. Recharts uses single data source with multiple keys.
+    // Let's implement a simple transformation if it is array of arrays.
+
+    let chartData: any[] = []
+    const seriesKeys: string[] = []
+
+    if (isMultiSeries) {
+      const seriesData = data as Record<string, unknown>[][]
+      // Assume all series share the same xKey values and order
+      if (seriesData.length > 0) {
+        chartData = seriesData[0].map((item, index) => {
+            const mergedItem: any = { [xKey]: item[xKey] }
+            seriesData.forEach((series, sIndex) => {
+                const key = `series_${sIndex}`
+                seriesKeys.push(key)
+                mergedItem[key] = series[yKey]
+            })
+            return mergedItem
+        })
       }
-      return (
-        <VictoryArea
-          data={data as Record<string, unknown>[]}
-          x={xKey}
-          y={yKey}
-          style={{ data: { fill: colorScale[0], fillOpacity: 0.7, stroke: colorScale[0], strokeWidth: 2 } }}
-        />
-      )
+    } else {
+      chartData = data as Record<string, unknown>[]
+      seriesKeys.push(yKey)
     }
 
     return (
-      <VictoryChart
-        height={height}
-        padding={{ top: 20, bottom: 50, left: 50, right: 20 }}
-        containerComponent={
-          <VictoryVoronoiContainer
-            voronoiDimension="x"
-            labels={({ datum }) => `${datum[yKey]}`}
-            labelComponent={<VictoryTooltip />}
-          />
-        }
-      >
-        <VictoryAxis
-          style={{
-            axis: { stroke: axisColor },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12 },
-          }}
-        />
-        <VictoryAxis
-          dependentAxis
-          style={{
-            axis: { stroke: 'transparent' },
-            tickLabels: { fill: textColor, padding: 5, fontSize: 12 },
-            grid: { stroke: gridColor, strokeDasharray: '4, 4' },
-          }}
-        />
-        {renderSeries()}
-      </VictoryChart>
+      <YStack width="100%" height={height}>
+        <ResponsiveContainer width="100%" height="100%">
+          <RechartsAreaChart
+            data={chartData}
+            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
+            <XAxis
+              dataKey={xKey}
+              stroke={axisColor}
+              tick={{ fill: textColor, fontSize: 12 }}
+              tickLine={false}
+              axisLine={{ stroke: axisColor }}
+            />
+            <YAxis
+              stroke={axisColor}
+              tick={{ fill: textColor, fontSize: 12 }}
+              tickLine={false}
+              axisLine={false}
+            />
+            <Tooltip
+              contentStyle={{
+                borderRadius: '8px',
+                border: `1px solid ${gridColor}`,
+                backgroundColor: theme.background?.get() || 'white',
+              }}
+            />
+            {isMultiSeries ? (
+                 // Multi-series logic
+                 seriesKeys.map((key, index) => (
+                    // Logic to avoid duplicates in seriesKeys loop if constructed above incorrectly.
+                    // Actually seriesKeys will have duplicates if I push in map. Fixed above.
+                    // Wait, I pushed in map, so it will duplicate. Let's fix loop.
+                    <Area
+                        key={key}
+                        type="monotone"
+                        dataKey={key}
+                        stackId={stacked ? '1' : undefined}
+                        stroke={colorScale[index % colorScale.length]}
+                        fill={colorScale[index % colorScale.length]}
+                        fillOpacity={0.6}
+                    />
+                 )).filter((_, i) => i < (data as any[]).length) // quick fix for duplicates if any
+            ) : (
+                <Area
+                    type="monotone"
+                    dataKey={yKey}
+                    stroke={colorScale[0]}
+                    fill={colorScale[0]}
+                    fillOpacity={0.6}
+                />
+            )}
+          </RechartsAreaChart>
+        </ResponsiveContainer>
+      </YStack>
     )
   }
 

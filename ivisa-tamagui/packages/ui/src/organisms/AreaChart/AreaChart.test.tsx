@@ -7,6 +7,26 @@ jest.mock('../../atoms/Skeleton', () => ({
   Skeleton: () => <div data-testid="skeleton" />,
 }))
 
+// Mock ResizeObserver
+global.ResizeObserver = class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+// Mock ResponsiveContainer
+jest.mock('recharts', () => {
+  const OriginalModule = jest.requireActual('recharts')
+  return {
+    ...OriginalModule,
+    ResponsiveContainer: ({ children }: { children: React.ReactNode }) => (
+      <div style={{ width: 500, height: 500 }} data-testid="responsive-container">
+        {children}
+      </div>
+    ),
+  }
+})
+
 describe('AreaChart', () => {
   const mockData = [
     { x: 'A', y: 10 },
@@ -19,7 +39,7 @@ describe('AreaChart', () => {
         <AreaChart data={mockData} xKey="x" yKey="y" />
       </AppProviders>
     )
-    expect(container.querySelector('svg')).toBeInTheDocument()
+    expect(screen.getByTestId('responsive-container')).toBeInTheDocument()
   })
 
   it('renders loading state', () => {

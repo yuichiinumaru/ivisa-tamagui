@@ -2274,6 +2274,7 @@ __export(index_exports, {
   DialogPortal: () => DialogPortal,
   DialogTitle: () => DialogTitle,
   DialogTrigger: () => DialogTrigger,
+  DonutChart: () => DonutChart,
   Drawer: () => Drawer,
   DrawerClose: () => DrawerClose,
   DrawerContent: () => DrawerContent,
@@ -10496,7 +10497,7 @@ var Sidebar = (props) => {
 
 // src/organisms/BarChart/BarChart.tsx
 var import_tamagui62 = require("tamagui");
-var import_victory = require("victory");
+var import_recharts = require("recharts");
 var import_lucide_icons27 = require("@tamagui/lucide-icons");
 var import_jsx_runtime63 = require("react/jsx-runtime");
 var BarChart = ({
@@ -10531,48 +10532,48 @@ var BarChart = ({
         /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_tamagui62.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
-      import_victory.VictoryChart,
+    return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_tamagui62.YStack, { height, width: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_recharts.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
+      import_recharts.BarChart,
       {
-        domainPadding: { x: 20 },
-        height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_victory.VictoryContainer, { responsive: true }),
+        data,
+        margin: {
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5
+        },
         children: [
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_recharts.CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
           /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
-            import_victory.VictoryAxis,
+            import_recharts.XAxis,
             {
-              style: {
-                axis: { stroke: axisColor },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" }
-              }
+              dataKey: xKey,
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: { stroke: axisColor }
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
-            import_victory.VictoryAxis,
+            import_recharts.YAxis,
             {
-              dependentAxis: true,
-              style: {
-                axis: { stroke: "transparent" },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" },
-                grid: { stroke: gridColor, strokeDasharray: "4, 4" }
-              }
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: false
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
-            import_victory.VictoryBar,
+            import_recharts.Tooltip,
             {
-              data,
-              x: xKey,
-              y: yKey,
-              style: {
-                data: { fill: barColor }
-              },
-              cornerRadius: { top: 4 }
+              cursor: { fill: "transparent" },
+              contentStyle: { borderRadius: "8px", border: `1px solid ${gridColor}` }
             }
-          )
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_recharts.Bar, { dataKey: yKey, fill: barColor, radius: [4, 4, 0, 0] })
         ]
       }
-    );
+    ) }) });
   };
   return /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(import_tamagui62.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
@@ -10584,7 +10585,7 @@ var Charts = BarChart;
 
 // src/organisms/LineChart/LineChart.tsx
 var import_tamagui63 = require("tamagui");
-var import_victory2 = require("victory");
+var import_recharts2 = require("recharts");
 var import_lucide_icons28 = require("@tamagui/lucide-icons");
 var import_jsx_runtime64 = require("react/jsx-runtime");
 var LineChartContainer = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
@@ -10649,61 +10650,57 @@ var LineChart = ({
         /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.Text, { fontSize: "$2", color: "$color11", children: "N\xE3o h\xE1 informa\xE7\xF5es dispon\xEDveis no momento." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
-      import_victory2.VictoryChart,
+    return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.YStack, { width: "100%", height: 300, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_recharts2.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
+      import_recharts2.LineChart,
       {
-        height: 300,
-        padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
-          import_victory2.VictoryVoronoiContainer,
-          {
-            voronoiDimension: "x",
-            labels: ({ datum }) => `${datum[yKey]}`,
-            labelComponent: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
-              import_victory2.VictoryTooltip,
-              {
-                cornerRadius: 4,
-                flyoutStyle: { fill: theme.background?.get() || "white" },
-                style: { fill: textColor }
-              }
-            )
-          }
-        ),
+        data,
+        margin: { top: 20, right: 30, left: 20, bottom: 5 },
         children: [
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_recharts2.CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
           /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
-            import_victory2.VictoryAxis,
+            import_recharts2.XAxis,
             {
-              style: {
-                axis: { stroke: axisColor },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" }
-              }
+              dataKey: xKey,
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: { stroke: axisColor }
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
-            import_victory2.VictoryAxis,
+            import_recharts2.YAxis,
             {
-              dependentAxis: true,
-              style: {
-                axis: { stroke: "transparent" },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12, fontFamily: "inherit" },
-                grid: { stroke: gridColor, strokeDasharray: "4, 4" }
-              }
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: false
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
-            import_victory2.VictoryLine,
+            import_recharts2.Tooltip,
             {
-              data,
-              x: xKey,
-              y: yKey,
-              style: {
-                data: { stroke: lineColor, strokeWidth: 2 }
-              }
+              contentStyle: {
+                borderRadius: "8px",
+                border: `1px solid ${gridColor}`,
+                backgroundColor: theme.background?.get() || "white"
+              },
+              cursor: { stroke: gridColor }
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+            import_recharts2.Line,
+            {
+              type: "monotone",
+              dataKey: yKey,
+              stroke: lineColor,
+              strokeWidth: 2,
+              dot: { r: 4, fill: lineColor, strokeWidth: 2, stroke: theme.background?.get() || "white" },
+              activeDot: { r: 6, strokeWidth: 0 }
             }
           )
         ]
       }
-    );
+    ) }) });
   };
   return /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(LineChartContainer, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(Header, { children: [
@@ -10718,7 +10715,7 @@ var TimeSeriesChart = LineChart;
 
 // src/organisms/PieChart/PieChart.tsx
 var import_tamagui64 = require("tamagui");
-var import_victory3 = require("victory");
+var import_recharts3 = require("recharts");
 var import_lucide_icons29 = require("@tamagui/lucide-icons");
 var import_jsx_runtime65 = require("react/jsx-runtime");
 var PieChartContainer = (0, import_tamagui64.styled)(import_tamagui64.YStack, {
@@ -10765,7 +10762,8 @@ var PieChart = ({
     theme.red10?.get() || "#DC3545",
     theme.purple10?.get() || "#6F42C1"
   ];
-  const innerRadius = variant === "donut" ? height / 4 : 0;
+  const innerRadius = variant === "donut" ? "60%" : "0%";
+  const outerRadius = "80%";
   const renderContent = () => {
     if (isLoading) {
       return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Skeleton, { width: height, height, circle: true });
@@ -10783,24 +10781,33 @@ var PieChart = ({
         /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.Text, { children: "Sem dados para exibir" })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
-      import_victory3.VictoryPie,
-      {
-        data,
-        x: xKey,
-        y: yKey,
-        height,
-        colorScale,
-        innerRadius,
-        padAngle: 2,
-        cornerRadius: 4,
-        labelComponent: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_victory3.VictoryTooltip, {}),
-        style: {
-          labels: { fill: theme.color?.get() || "#000", fontSize: 14 }
-        },
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_victory3.VictoryContainer, { responsive: true })
-      }
-    );
+    return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.YStack, { width: "100%", height, children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_recharts3.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_recharts3.PieChart, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+        import_recharts3.Pie,
+        {
+          data,
+          dataKey: yKey,
+          nameKey: xKey,
+          cx: "50%",
+          cy: "50%",
+          innerRadius,
+          outerRadius,
+          paddingAngle: 2,
+          children: data.map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_recharts3.Cell, { fill: colorScale[index % colorScale.length] }, `cell-${index}`))
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+        import_recharts3.Tooltip,
+        {
+          contentStyle: {
+            borderRadius: "8px",
+            border: `1px solid ${theme.borderColor?.get() || "#eee"}`,
+            backgroundColor: theme.background?.get() || "white"
+          },
+          itemStyle: { color: theme.color?.get() || "#000" }
+        }
+      )
+    ] }) }) });
   };
   return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(PieChartContainer, { children: [
     title && /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
@@ -10808,10 +10815,11 @@ var PieChart = ({
     footerContent
   ] });
 };
+var DonutChart = (props) => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(PieChart, { ...props, variant: "donut" });
 
 // src/organisms/AreaChart/AreaChart.tsx
 var import_tamagui65 = require("tamagui");
-var import_victory4 = require("victory");
+var import_recharts4 = require("recharts");
 var import_lucide_icons30 = require("@tamagui/lucide-icons");
 var import_jsx_runtime66 = require("react/jsx-runtime");
 var AreaChartContainer = (0, import_tamagui65.styled)(import_tamagui65.YStack, {
@@ -10876,58 +10884,93 @@ var AreaChart = ({
         /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.Text, { children: "Sem dados para exibir" })
       ] });
     }
-    const renderSeries = () => {
-      if (stacked && isMultiSeries) {
-        return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_victory4.VictoryStack, { colorScale, children: data.map((series, i) => /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_victory4.VictoryArea, { data: series, x: xKey, y: yKey }, i)) });
+    let chartData = [];
+    const seriesKeys = [];
+    if (isMultiSeries) {
+      const seriesData = data;
+      if (seriesData.length > 0) {
+        chartData = seriesData[0].map((item, index) => {
+          const mergedItem = { [xKey]: item[xKey] };
+          seriesData.forEach((series, sIndex) => {
+            const key = `series_${sIndex}`;
+            seriesKeys.push(key);
+            mergedItem[key] = series[yKey];
+          });
+          return mergedItem;
+        });
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
-        import_victory4.VictoryArea,
-        {
-          data,
-          x: xKey,
-          y: yKey,
-          style: { data: { fill: colorScale[0], fillOpacity: 0.7, stroke: colorScale[0], strokeWidth: 2 } }
-        }
-      );
-    };
-    return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
-      import_victory4.VictoryChart,
+    } else {
+      chartData = data;
+      seriesKeys.push(yKey);
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.YStack, { width: "100%", height, children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_recharts4.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
+      import_recharts4.AreaChart,
       {
-        height,
-        padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
-          import_victory4.VictoryVoronoiContainer,
-          {
-            voronoiDimension: "x",
-            labels: ({ datum }) => `${datum[yKey]}`,
-            labelComponent: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_victory4.VictoryTooltip, {})
-          }
-        ),
+        data: chartData,
+        margin: { top: 20, right: 30, left: 20, bottom: 5 },
         children: [
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_recharts4.CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
           /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
-            import_victory4.VictoryAxis,
+            import_recharts4.XAxis,
             {
-              style: {
-                axis: { stroke: axisColor },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12 }
-              }
+              dataKey: xKey,
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: { stroke: axisColor }
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
-            import_victory4.VictoryAxis,
+            import_recharts4.YAxis,
             {
-              dependentAxis: true,
-              style: {
-                axis: { stroke: "transparent" },
-                tickLabels: { fill: textColor, padding: 5, fontSize: 12 },
-                grid: { stroke: gridColor, strokeDasharray: "4, 4" }
+              stroke: axisColor,
+              tick: { fill: textColor, fontSize: 12 },
+              tickLine: false,
+              axisLine: false
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+            import_recharts4.Tooltip,
+            {
+              contentStyle: {
+                borderRadius: "8px",
+                border: `1px solid ${gridColor}`,
+                backgroundColor: theme.background?.get() || "white"
               }
             }
           ),
-          renderSeries()
+          isMultiSeries ? (
+            // Multi-series logic
+            seriesKeys.map((key, index) => (
+              // Logic to avoid duplicates in seriesKeys loop if constructed above incorrectly.
+              // Actually seriesKeys will have duplicates if I push in map. Fixed above.
+              // Wait, I pushed in map, so it will duplicate. Let's fix loop.
+              /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+                import_recharts4.Area,
+                {
+                  type: "monotone",
+                  dataKey: key,
+                  stackId: stacked ? "1" : void 0,
+                  stroke: colorScale[index % colorScale.length],
+                  fill: colorScale[index % colorScale.length],
+                  fillOpacity: 0.6
+                },
+                key
+              )
+            )).filter((_, i) => i < data.length)
+          ) : /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+            import_recharts4.Area,
+            {
+              type: "monotone",
+              dataKey: yKey,
+              stroke: colorScale[0],
+              fill: colorScale[0],
+              fillOpacity: 0.6
+            }
+          )
         ]
       }
-    );
+    ) }) });
   };
   return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(AreaChartContainer, { children: [
     title && /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
@@ -10938,7 +10981,7 @@ var AreaChart = ({
 
 // src/organisms/ScatterChart/ScatterChart.tsx
 var import_tamagui66 = require("tamagui");
-var import_victory5 = require("victory");
+var import_victory = require("victory");
 var import_lucide_icons31 = require("@tamagui/lucide-icons");
 var import_jsx_runtime67 = require("react/jsx-runtime");
 var ScatterChartContainer = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
@@ -10999,21 +11042,21 @@ var ScatterChart = ({
       ] });
     }
     return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
-      import_victory5.VictoryChart,
+      import_victory.VictoryChart,
       {
         height,
         padding: { top: 20, bottom: 50, left: 50, right: 20 },
         containerComponent: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
-          import_victory5.VictoryVoronoiContainer,
+          import_victory.VictoryVoronoiContainer,
           {
             voronoiDimension: "x",
             labels: ({ datum }) => `${datum[yKey]}`,
-            labelComponent: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_victory5.VictoryTooltip, {})
+            labelComponent: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_victory.VictoryTooltip, {})
           }
         ),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
-            import_victory5.VictoryAxis,
+            import_victory.VictoryAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11022,7 +11065,7 @@ var ScatterChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
-            import_victory5.VictoryAxis,
+            import_victory.VictoryAxis,
             {
               dependentAxis: true,
               style: {
@@ -11033,7 +11076,7 @@ var ScatterChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
-            import_victory5.VictoryScatter,
+            import_victory.VictoryScatter,
             {
               data,
               x: xKey,
@@ -11055,7 +11098,7 @@ var ScatterChart = ({
 
 // src/organisms/ComboChart/ComboChart.tsx
 var import_tamagui67 = require("tamagui");
-var import_victory6 = require("victory");
+var import_victory2 = require("victory");
 var import_lucide_icons32 = require("@tamagui/lucide-icons");
 var import_jsx_runtime68 = require("react/jsx-runtime");
 var ComboChartContainer = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
@@ -11110,14 +11153,14 @@ var ComboChart = ({
       ] });
     }
     return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
-      import_victory6.VictoryChart,
+      import_victory2.VictoryChart,
       {
         height,
         padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_victory6.VictoryVoronoiContainer, { labelComponent: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_victory6.VictoryTooltip, {}) }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_victory2.VictoryVoronoiContainer, { labelComponent: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_victory2.VictoryTooltip, {}) }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
-            import_victory6.VictoryAxis,
+            import_victory2.VictoryAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11126,7 +11169,7 @@ var ComboChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
-            import_victory6.VictoryAxis,
+            import_victory2.VictoryAxis,
             {
               dependentAxis: true,
               style: {
@@ -11136,7 +11179,7 @@ var ComboChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_victory6.VictoryGroup, { children })
+          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_victory2.VictoryGroup, { children })
         ]
       }
     );
@@ -11150,7 +11193,7 @@ var ComboChart = ({
 
 // src/organisms/BoxPlotChart/BoxPlotChart.tsx
 var import_tamagui68 = require("tamagui");
-var import_victory7 = require("victory");
+var import_victory3 = require("victory");
 var import_lucide_icons33 = require("@tamagui/lucide-icons");
 var import_jsx_runtime69 = require("react/jsx-runtime");
 var BoxPlotChart = ({
@@ -11190,14 +11233,14 @@ var BoxPlotChart = ({
       ] });
     }
     return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
-      import_victory7.VictoryChart,
+      import_victory3.VictoryChart,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_victory7.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_victory3.VictoryContainer, { responsive: true }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
-            import_victory7.VictoryAxis,
+            import_victory3.VictoryAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11206,7 +11249,7 @@ var BoxPlotChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
-            import_victory7.VictoryAxis,
+            import_victory3.VictoryAxis,
             {
               dependentAxis: true,
               style: {
@@ -11217,7 +11260,7 @@ var BoxPlotChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
-            import_victory7.VictoryBoxPlot,
+            import_victory3.VictoryBoxPlot,
             {
               data,
               x: xKey,
@@ -11247,7 +11290,7 @@ var BoxPlotChart = ({
 
 // src/organisms/RadarChart/RadarChart.tsx
 var import_tamagui69 = require("tamagui");
-var import_victory8 = require("victory");
+var import_victory4 = require("victory");
 var import_lucide_icons34 = require("@tamagui/lucide-icons");
 var import_jsx_runtime70 = require("react/jsx-runtime");
 var RadarChart = ({
@@ -11285,26 +11328,26 @@ var RadarChart = ({
     const datasets = Array.isArray(data[0]) ? data : [data];
     const colors = Array.isArray(color) ? color : [color];
     return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(
-      import_victory8.VictoryChart,
+      import_victory4.VictoryChart,
       {
         polar: true,
         height,
         domainPadding: { x: 20, y: 20 },
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory8.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory4.VictoryContainer, { responsive: true }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
-            import_victory8.VictoryGroup,
+            import_victory4.VictoryGroup,
             {
               colorScale: colors.map((c) => getColor(c)),
               style: { data: { fillOpacity: 0.2, strokeWidth: 2 } },
-              children: datasets.map((dataset, i) => /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory8.VictoryArea, { data: dataset }, i))
+              children: datasets.map((dataset, i) => /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory4.VictoryArea, { data: dataset }, i))
             }
           ),
           datasets[0]?.map((d, i) => {
-            return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory8.VictoryPolarAxis, { dependentAxis: true, style: { axisLabel: { padding: 10 } }, labelPlacement: "vertical" }, i);
+            return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory4.VictoryPolarAxis, { dependentAxis: true, style: { axisLabel: { padding: 10 } }, labelPlacement: "vertical" }, i);
           }),
           /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
-            import_victory8.VictoryPolarAxis,
+            import_victory4.VictoryPolarAxis,
             {
               labelPlacement: "parallel",
               tickFormat: () => "",
@@ -11326,7 +11369,7 @@ var RadarChart = ({
 
 // src/organisms/PolarChart/PolarChart.tsx
 var import_tamagui70 = require("tamagui");
-var import_victory9 = require("victory");
+var import_victory5 = require("victory");
 var import_lucide_icons35 = require("@tamagui/lucide-icons");
 var import_jsx_runtime71 = require("react/jsx-runtime");
 var PolarChart = ({
@@ -11364,16 +11407,16 @@ var PolarChart = ({
     }
     const colors = Array.isArray(color) ? color : [color];
     return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(
-      import_victory9.VictoryChart,
+      import_victory5.VictoryChart,
       {
         polar: true,
         height,
         domainPadding: { x: 20, y: 20 },
-        theme: import_victory9.VictoryTheme.material,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_victory9.VictoryContainer, { responsive: true }),
+        theme: import_victory5.VictoryTheme.material,
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_victory5.VictoryContainer, { responsive: true }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
-            import_victory9.VictoryPolarAxis,
+            import_victory5.VictoryPolarAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11383,7 +11426,7 @@ var PolarChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
-            import_victory9.VictoryBar,
+            import_victory5.VictoryBar,
             {
               data,
               x: xKey,
@@ -11410,7 +11453,7 @@ var PolarChart = ({
 
 // src/organisms/WaterfallChart/WaterfallChart.tsx
 var import_tamagui71 = require("tamagui");
-var import_victory10 = require("victory");
+var import_victory6 = require("victory");
 var import_lucide_icons36 = require("@tamagui/lucide-icons");
 var import_jsx_runtime72 = require("react/jsx-runtime");
 var WaterfallChart = ({
@@ -11473,14 +11516,14 @@ var WaterfallChart = ({
       };
     });
     return /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)(
-      import_victory10.VictoryChart,
+      import_victory6.VictoryChart,
       {
         domainPadding: { x: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_victory10.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_victory6.VictoryContainer, { responsive: true }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
-            import_victory10.VictoryAxis,
+            import_victory6.VictoryAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11489,7 +11532,7 @@ var WaterfallChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
-            import_victory10.VictoryAxis,
+            import_victory6.VictoryAxis,
             {
               dependentAxis: true,
               style: {
@@ -11500,7 +11543,7 @@ var WaterfallChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
-            import_victory10.VictoryBar,
+            import_victory6.VictoryBar,
             {
               data: processedData,
               x: xKey,
@@ -11530,7 +11573,7 @@ var WaterfallChart = ({
 
 // src/organisms/FunnelChart/FunnelChart.tsx
 var import_tamagui72 = require("tamagui");
-var import_victory11 = require("victory");
+var import_victory7 = require("victory");
 var import_lucide_icons37 = require("@tamagui/lucide-icons");
 var import_jsx_runtime73 = require("react/jsx-runtime");
 var FunnelChart = ({
@@ -11574,14 +11617,14 @@ var FunnelChart = ({
       };
     });
     return /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(
-      import_victory11.VictoryChart,
+      import_victory7.VictoryChart,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_victory11.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_victory7.VictoryContainer, { responsive: true }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
-            import_victory11.VictoryAxis,
+            import_victory7.VictoryAxis,
             {
               dependentAxis: true,
               style: {
@@ -11592,7 +11635,7 @@ var FunnelChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
-            import_victory11.VictoryAxis,
+            import_victory7.VictoryAxis,
             {
               style: {
                 axis: { stroke: "transparent" },
@@ -11601,7 +11644,7 @@ var FunnelChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
-            import_victory11.VictoryBar,
+            import_victory7.VictoryBar,
             {
               horizontal: true,
               data: processedData,
@@ -11613,7 +11656,7 @@ var FunnelChart = ({
                 labels: { fill: textColor }
               },
               labels: ({ datum }) => datum._label,
-              labelComponent: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_victory11.VictoryLabel, {})
+              labelComponent: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_victory7.VictoryLabel, {})
             }
           )
         ]
@@ -11628,7 +11671,7 @@ var FunnelChart = ({
 
 // src/organisms/BulletChart/BulletChart.tsx
 var import_tamagui73 = require("tamagui");
-var import_victory12 = require("victory");
+var import_victory8 = require("victory");
 var import_lucide_icons38 = require("@tamagui/lucide-icons");
 var import_jsx_runtime74 = require("react/jsx-runtime");
 var BulletChart = ({
@@ -11671,14 +11714,14 @@ var BulletChart = ({
       ] });
     }
     return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(
-      import_victory12.VictoryChart,
+      import_victory8.VictoryChart,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_victory12.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_victory8.VictoryContainer, { responsive: true }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
-            import_victory12.VictoryAxis,
+            import_victory8.VictoryAxis,
             {
               dependentAxis: true,
               style: {
@@ -11688,7 +11731,7 @@ var BulletChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
-            import_victory12.VictoryAxis,
+            import_victory8.VictoryAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -11697,7 +11740,7 @@ var BulletChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
-            import_victory12.VictoryBar,
+            import_victory8.VictoryBar,
             {
               data,
               x: xKey,
@@ -11707,7 +11750,7 @@ var BulletChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
-            import_victory12.VictoryBar,
+            import_victory8.VictoryBar,
             {
               data,
               x: xKey,
@@ -11717,7 +11760,7 @@ var BulletChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
-            import_victory12.VictoryScatter,
+            import_victory8.VictoryScatter,
             {
               data,
               x: xKey,
@@ -11876,7 +11919,7 @@ var SunburstChart = ({
 // src/organisms/ParallelCoordinates/ParallelCoordinates.tsx
 var import_react54 = require("react");
 var import_tamagui75 = require("tamagui");
-var import_victory13 = require("victory");
+var import_victory9 = require("victory");
 var import_lucide_icons40 = require("@tamagui/lucide-icons");
 var import_jsx_runtime76 = require("react/jsx-runtime");
 var ParallelCoordinates = ({
@@ -11932,14 +11975,14 @@ var ParallelCoordinates = ({
       ] });
     }
     return /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(
-      import_victory13.VictoryChart,
+      import_victory9.VictoryChart,
       {
         domain: { x: [0, attributes.length + 1], y: [0, 1] },
         height,
         width,
         children: [
           attributes.map((attr, i) => /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
-            import_victory13.VictoryAxis,
+            import_victory9.VictoryAxis,
             {
               dependentAxis: true,
               label: attr,
@@ -11953,8 +11996,8 @@ var ParallelCoordinates = ({
             },
             attr
           )),
-          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_victory13.VictoryGroup, { children: normalizedData.map((series, i) => /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
-            import_victory13.VictoryLine,
+          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_victory9.VictoryGroup, { children: normalizedData.map((series, i) => /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+            import_victory9.VictoryLine,
             {
               data: series,
               style: {
@@ -11976,7 +12019,7 @@ var ParallelCoordinates = ({
 // src/organisms/MarimekkoChart/MarimekkoChart.tsx
 var import_react55 = require("react");
 var import_tamagui76 = require("tamagui");
-var import_victory14 = require("victory");
+var import_victory10 = require("victory");
 var import_lucide_icons41 = require("@tamagui/lucide-icons");
 var import_jsx_runtime77 = require("react/jsx-runtime");
 var MarimekkoChart = ({
@@ -12030,15 +12073,15 @@ var MarimekkoChart = ({
       ] });
     }
     return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(
-      import_victory14.VictoryChart,
+      import_victory10.VictoryChart,
       {
         domainPadding: { x: 0 },
         height,
         width,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_victory14.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_victory10.VictoryContainer, { responsive: true }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
-            import_victory14.VictoryAxis,
+            import_victory10.VictoryAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -12047,7 +12090,7 @@ var MarimekkoChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
-            import_victory14.VictoryAxis,
+            import_victory10.VictoryAxis,
             {
               dependentAxis: true,
               style: {
@@ -12058,7 +12101,7 @@ var MarimekkoChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
-            import_victory14.VictoryBar,
+            import_victory10.VictoryBar,
             {
               data: processedData,
               x: "_x",
@@ -12090,7 +12133,7 @@ var MarimekkoChart = ({
 // src/organisms/RidgelinePlot/RidgelinePlot.tsx
 var import_react56 = require("react");
 var import_tamagui77 = require("tamagui");
-var import_victory15 = require("victory");
+var import_victory11 = require("victory");
 var import_lucide_icons42 = require("@tamagui/lucide-icons");
 var import_jsx_runtime78 = require("react/jsx-runtime");
 var RidgelinePlot = ({
@@ -12142,14 +12185,14 @@ var RidgelinePlot = ({
       ] });
     }
     return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(
-      import_victory15.VictoryChart,
+      import_victory11.VictoryChart,
       {
         height,
         width,
         domainPadding: { x: 20, y: 10 },
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(
-            import_victory15.VictoryAxis,
+            import_victory11.VictoryAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -12158,7 +12201,7 @@ var RidgelinePlot = ({
             }
           ),
           processedSeries.map((s, i) => /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(
-            import_victory15.VictoryArea,
+            import_victory11.VictoryArea,
             {
               data: s.processedData,
               style: {
@@ -12780,7 +12823,7 @@ function SchemaForm({
 
 // src/organisms/HeatmapChart/HeatmapChart.tsx
 var import_tamagui83 = require("tamagui");
-var import_victory16 = require("victory");
+var import_victory12 = require("victory");
 var import_lucide_icons46 = require("@tamagui/lucide-icons");
 var import_react60 = require("react");
 var import_jsx_runtime84 = require("react/jsx-runtime");
@@ -12836,14 +12879,14 @@ var HeatmapChart = ({
       ] });
     }
     return /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(
-      import_victory16.VictoryChart,
+      import_victory12.VictoryChart,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_victory16.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_victory12.VictoryContainer, { responsive: true }),
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
-            import_victory16.VictoryAxis,
+            import_victory12.VictoryAxis,
             {
               style: {
                 axis: { stroke: axisColor },
@@ -12852,7 +12895,7 @@ var HeatmapChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
-            import_victory16.VictoryAxis,
+            import_victory12.VictoryAxis,
             {
               dependentAxis: true,
               style: {
@@ -12862,7 +12905,7 @@ var HeatmapChart = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
-            import_victory16.VictoryScatter,
+            import_victory12.VictoryScatter,
             {
               data: processedData,
               symbol: "square",
@@ -26491,6 +26534,7 @@ var fonts = {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
+  DonutChart,
   Drawer,
   DrawerClose,
   DrawerContent,

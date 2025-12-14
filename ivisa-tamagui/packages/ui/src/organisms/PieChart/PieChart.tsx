@@ -1,6 +1,6 @@
 import React from 'react'
 import { YStack, styled, Text, useTheme } from 'tamagui'
-import { VictoryPie, VictoryTooltip, VictoryContainer } from 'victory'
+import { PieChart as RechartsPieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
 
@@ -65,7 +65,8 @@ export const PieChart = ({
     theme.purple10?.get() || '#6F42C1',
   ]
 
-  const innerRadius = variant === 'donut' ? height / 4 : 0
+  const innerRadius = variant === 'donut' ? '60%' : '0%'
+  const outerRadius = '80%'
 
   const renderContent = () => {
     if (isLoading) {
@@ -92,21 +93,34 @@ export const PieChart = ({
     }
 
     return (
-      <VictoryPie
-        data={data}
-        x={xKey}
-        y={yKey}
-        height={height}
-        colorScale={colorScale}
-        innerRadius={innerRadius}
-        padAngle={2}
-        cornerRadius={4}
-        labelComponent={<VictoryTooltip />}
-        style={{
-          labels: { fill: theme.color?.get() || '#000', fontSize: 14 },
-        }}
-        containerComponent={<VictoryContainer responsive={true} />}
-      />
+      <YStack width="100%" height={height}>
+        <ResponsiveContainer width="100%" height="100%">
+          <RechartsPieChart>
+            <Pie
+              data={data}
+              dataKey={yKey}
+              nameKey={xKey}
+              cx="50%"
+              cy="50%"
+              innerRadius={innerRadius}
+              outerRadius={outerRadius}
+              paddingAngle={2}
+            >
+              {data.map((_, index) => (
+                <Cell key={`cell-${index}`} fill={colorScale[index % colorScale.length]} />
+              ))}
+            </Pie>
+            <Tooltip
+              contentStyle={{
+                borderRadius: '8px',
+                border: `1px solid ${theme.borderColor?.get() || '#eee'}`,
+                backgroundColor: theme.background?.get() || 'white',
+              }}
+              itemStyle={{ color: theme.color?.get() || '#000' }}
+            />
+          </RechartsPieChart>
+        </ResponsiveContainer>
+      </YStack>
     )
   }
 
@@ -122,3 +136,6 @@ export const PieChart = ({
     </PieChartContainer>
   )
 }
+
+// Aliases
+export const DonutChart = (props: PieChartProps) => <PieChart {...props} variant="donut" />
