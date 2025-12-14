@@ -37,6 +37,8 @@ export * from './molecules/DatePicker';
 export * from './molecules/OTPInput';
 export * from './molecules/Pagination';
 export * from './molecules/Breadcrumb';
+export * from './molecules/PageHeader/PageHeader';
+export * from './molecules/NotificationCard/NotificationCard';
 export * from './molecules/ComponentErrorBoundary';
 export * from './molecules/ContextMenu';
 export * from './molecules/NavigationMenu';

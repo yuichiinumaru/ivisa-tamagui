@@ -166,10 +166,7 @@ export const Calendar = ({
 }: CalendarProps) => {
   const [selectedDates, onDatesChange] = useState<Date[]>(selectedDate ? [selectedDate] : [])
 
-  const {
-    data: { calendars },
-    propGetters: { dayButton, subtractOffset, addOffset },
-  } = useDatePicker({
+  const dp = useDatePicker({
     selectedDates,
     onDatesChange: (dates) => {
       onDatesChange(dates)
@@ -190,10 +187,16 @@ export const Calendar = ({
     }
   })
 
+  const calendars = dp.data?.calendars || []
   const currentMonth = calendars[0]
 
-  const { onClick: onPrevClick } = subtractOffset({ months: 1 })
-  const { onClick: onNextClick } = addOffset({ months: 1 })
+  // Guard clause to prevent crash if data is not ready and not loading
+  if (!currentMonth && !isLoading) {
+    return null
+  }
+
+  const { onClick: onPrevClick } = dp.propGetters.subtractOffset({ months: 1 })
+  const { onClick: onNextClick } = dp.propGetters.addOffset({ months: 1 })
 
   return (
     <CalendarContainer disabled={isDisabled} hasError={hasError} data-testid="calendar-container">
@@ -214,8 +217,8 @@ export const Calendar = ({
               ))}
             </WeekDaysGrid>
             <DaysGrid>
-              {currentMonth.days.map((day, index) => {
-                const { onClick: onDayClick, ...dayProps } = dayButton(day)
+              {(currentMonth?.days || []).map((day, index) => {
+                const { onClick: onDayClick, ...dayProps } = dp.propGetters.dayButton(day)
                 return (
                   <DayButtonFrame
                     key={index}
