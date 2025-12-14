@@ -1,4 +1,4 @@
-import { GetProps, styled, Text, XStack, YStack } from 'tamagui'
+import { GetProps, styled, Text, XStack, YStack, Image } from 'tamagui'
 import React from 'react'
 import { Skeleton } from '../../atoms/Skeleton'
 
@@ -52,6 +52,7 @@ export const CardTitle = styled(Text, {
   fontSize: '$6',
   fontWeight: '600',
   color: '$foreground',
+  ellipse: true,
 })
 
 export const CardDescription = styled(Text, {
@@ -88,6 +89,7 @@ interface CardData {
   title: string
   description?: string
   content: React.ReactNode
+  heroImage?: string
 }
 
 export interface CardProps extends CardFrameProps {
@@ -112,23 +114,36 @@ export const Card = ({
   // "Smart" component mode with data object
   if (data) {
     return (
-      <CardFrame {...cardProps}>
-        <CardHeader>
-          <CardTitle>{data.title}</CardTitle>
-          {data.description && <CardDescription>{data.description}</CardDescription>}
-        </CardHeader>
-        <CardContent>
-          {isLoading ? (
-            <YStack gap="$2" f={1} p="$1">
-              <Skeleton h="$4" w="75%" />
-              <Skeleton h="$2.5" w="100%" />
-              <Skeleton h="$2.5" w="90%" />
-            </YStack>
-          ) : (
-            data.content
-          )}
-        </CardContent>
-        {actions && <CardFooter>{actions}</CardFooter>}
+      <CardFrame {...cardProps} p={0} overflow="hidden">
+        {data.heroImage && (
+            <Image
+              source={{ uri: data.heroImage }}
+              width="100%"
+              height={200}
+              resizeMode="cover"
+              borderTopLeftRadius="$lg"
+              borderTopRightRadius="$lg"
+              accessibilityLabel="Hero image"
+            />
+        )}
+        <YStack p="$lg" gap="$4">
+            <CardHeader>
+              <CardTitle>{data.title}</CardTitle>
+              {data.description && <CardDescription>{data.description}</CardDescription>}
+            </CardHeader>
+            <CardContent>
+              {isLoading ? (
+                <YStack gap="$2" f={1} p="$1">
+                  <Skeleton h="$4" w="75%" />
+                  <Skeleton h="$2.5" w="100%" />
+                  <Skeleton h="$2.5" w="90%" />
+                </YStack>
+              ) : (
+                data.content
+              )}
+            </CardContent>
+            {actions && <CardFooter>{actions}</CardFooter>}
+        </YStack>
       </CardFrame>
     )
   }

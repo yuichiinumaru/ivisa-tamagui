@@ -55,6 +55,7 @@ const DropdownMenuSubContentFrame = styled(DropdownMenuPrimitive.SubContent, {
   shadowRadius: 5,
   elevation: 5,
   animation: 'quick',
+  zIndex: 200000,
 })
 
 const DropdownMenuSubContent = React.forwardRef<
@@ -76,6 +77,7 @@ const DropdownMenuContentFrame = styled(DropdownMenuPrimitive.Content, {
   shadowRadius: 10,
   shadowOpacity: 0.2,
   elevation: 10,
+  zIndex: 200000,
   // animation handled by radix/css? or we assume Tamagui handles it?
 })
 
