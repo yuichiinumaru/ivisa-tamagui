@@ -41,6 +41,43 @@
 
 ---
 
+## 🚀 Phase 5a: BI & Data Visualization Expansion
+**Goal:** Implement a comprehensive suite of data visualization components using Victory (or custom SVG where Victory is insufficient, strictly avoiding new dependencies).
+
+- [ ] **Review & Enhance Existing BI Components**
+  - [ ] Review `DataTable` against requirements
+  - [ ] Review `KPIGrid` (KPI Cards) against requirements
+  - [ ] Review `GaugeChart` against requirements
+  - [ ] Review `TimeSeriesChart` (Line Chart) and consider a generic `LineChart` variant
+- [ ] **Standard Charts (Wave 1)**
+  - [ ] Refactor `Charts` to `BarChart` (and `ColumnChart` alias)
+  - [ ] Implement `LineChart` (Generic Categorical)
+  - [ ] Implement `PieChart` (Pie & Donut variants)
+  - [ ] Implement `AreaChart` (Standard & Stacked)
+  - [ ] Implement `ScatterChart` (Scatter & Bubble)
+  - [ ] Implement `ComboChart` (Mixed Bar/Line/Scatter)
+- [ ] **Advanced Charts (Wave 2)**
+  - [ ] Implement `BoxPlotChart`
+  - [ ] Implement `RadarChart` (Spider/Radar)
+  - [ ] Implement `PolarChart` (Rose/Coxcomb/Polar Area)
+  - [ ] Implement `WaterfallChart`
+  - [ ] Implement `FunnelChart`
+  - [ ] Implement `BulletChart`
+- [ ] **Complex & Custom Charts (Wave 3)**
+  - [ ] Implement `HeatmapChart`
+  - [ ] Implement `TreemapChart`
+  - [ ] Implement `SankeyDiagram`
+  - [ ] Implement `ChordDiagram`
+  - [ ] Implement `NetworkGraph` (Force-Directed)
+  - [ ] Implement `SunburstChart`
+  - [ ] Implement `ParallelCoordinates`
+  - [ ] Implement `MarimekkoChart`
+  - [ ] Implement `RidgelinePlot` (Joyplot)
+  - [ ] Implement `DecompositionTree`
+  - [ ] Implement `Maps` (Geo)
+
+---
+
 ## 🚀 Current Focus: Phase 4 – Web-Specific UX & Full Documentation
 
 25 - [x] **Populate Storybook as Source of Truth** (DOC)
@@ -55,7 +92,7 @@
 
 ---
 
-## ⏭️ Upcoming: Phase 5 – Integration & Handoff
+## ⏭️ Upcoming: Phase 5b – Integration & Handoff
 
 27 - [ ] **Integrate Design System into Flows** (FDD, UX)
   - [ ] 27a – Replace ad-hoc UI in chat, settings, and key dashboards with `packages/ui` components.
