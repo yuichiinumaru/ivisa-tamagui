@@ -42,13 +42,14 @@
 ---
 
 ## 🚀 Phase 5a: BI & Data Visualization Expansion
-**Goal:** Implement a comprehensive suite of data visualization components using Victory (or custom SVG where Victory is insufficient, strictly avoiding new dependencies).
+**Goal:** Implement a comprehensive suite of data visualization components using Victory (primary) and custom SVG (fallback).
 
 - [ ] **Review & Enhance Existing BI Components**
-  - [ ] Review `DataTable` against requirements
-  - [ ] Review `KPIGrid` (KPI Cards) against requirements
-  - [ ] Review `GaugeChart` against requirements
-  - [ ] Review `TimeSeriesChart` (Line Chart) and consider a generic `LineChart` variant
+  - [ ] Review `DataTable` against requirements (Add Sparklines support)
+  - [ ] Review `KPIGrid` (KPI Cards) against requirements (Add Sparklines/Trend support)
+  - [ ] Review `GaugeChart` against requirements (Consider RadialBar variant)
+  - [ ] Review `TimeSeriesChart` (Line Chart)
+  - [ ] Review `Timeline` organism for BI suitability (History/Licensing view)
 - [ ] **Standard Charts (Wave 1)**
   - [ ] Refactor `Charts` to `BarChart` (and `ColumnChart` alias)
   - [ ] Implement `LineChart` (Generic Categorical)
@@ -56,15 +57,19 @@
   - [ ] Implement `AreaChart` (Standard & Stacked)
   - [ ] Implement `ScatterChart` (Scatter & Bubble)
   - [ ] Implement `ComboChart` (Mixed Bar/Line/Scatter)
+  - [ ] Implement `Sparkline` (Micro-charts for tables/cards)
 - [ ] **Advanced Charts (Wave 2)**
-  - [ ] Implement `BoxPlotChart`
+  - [ ] Implement `PopulationPyramid` (Bi-directional Bar Chart)
+  - [ ] Implement `BoxPlotChart` (Box & Whisker)
   - [ ] Implement `RadarChart` (Spider/Radar)
   - [ ] Implement `PolarChart` (Rose/Coxcomb/Polar Area)
   - [ ] Implement `WaterfallChart`
   - [ ] Implement `FunnelChart`
   - [ ] Implement `BulletChart`
+  - [ ] Implement `RadialBar` (Apple Watch Rings style)
 - [ ] **Complex & Custom Charts (Wave 3)**
-  - [ ] Implement `HeatmapChart`
+  - [ ] Implement `HeatmapChart` (Matrix & Calendar/GitHub style)
+  - [ ] Implement `GanttChart` (Project/Inspection Phases)
   - [ ] Implement `TreemapChart`
   - [ ] Implement `SankeyDiagram`
   - [ ] Implement `ChordDiagram`
@@ -74,7 +79,7 @@
   - [ ] Implement `MarimekkoChart`
   - [ ] Implement `RidgelinePlot` (Joyplot)
   - [ ] Implement `DecompositionTree`
-  - [ ] Implement `Maps` (Geo)
+  - [ ] Implement `GeoMap` (Choropleth & Dot Density for Rio)
 
 ---
 
