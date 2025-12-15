@@ -1,5 +1,7 @@
 import React from 'react'
-import { YStack, XStack, Text, ScrollArea, Button } from 'tamagui'
+import { YStack, XStack, Text } from 'tamagui'
+import { Button } from '../../atoms/Button'
+import { ScrollArea } from '../../atoms/ScrollArea'
 import { Bell } from '@tamagui/lucide-icons'
 
 export interface Notification {

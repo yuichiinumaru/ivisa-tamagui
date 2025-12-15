@@ -199,6 +199,10 @@ export const tokens = createTokens({
     color10: palette.ivisaGray900,
     color11: palette.ivisaGray950,
     color12: palette.black,
+
+    // Fix missing tokens
+    red10: palette.red700,
+    outlineColor: palette.rioDeepBlue,
   },
   space: spaceScale,
   size: sizeScale,
@@ -263,6 +267,7 @@ export const lightColors = {
   muted: palette.slate100,
   mutedForeground: palette.slate500,
   ring: palette.rioDeepBlue,
+  outlineColor: palette.rioDeepBlue,
 };
 
 export const darkColors = {
@@ -322,6 +327,7 @@ export const darkColors = {
   muted: palette.slate800,
   mutedForeground: palette.slate400,
   ring: palette.rioGradientEnd,
+  outlineColor: palette.rioGradientEnd,
 };
 
 export const colorTokens = {

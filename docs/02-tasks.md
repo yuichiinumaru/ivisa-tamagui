@@ -23,7 +23,7 @@
 - [ ] **Calendar/DatePicker:** Fix critical render crash (`Cannot read properties of null (reading 'map')`). Ensure headless lib initializes with valid data. `JULES`
 - [ ] **Accordion:** Fix crash on missing data arrays. `JULES`
 - [ ] **PageHeader:** Fix `displayName` read error on children. `JULES`
-- [ ] **NotificationCard:** Re-implement or fix render crash if component is restored. `JULES`
+ - [x] **NotificationCard:** Fixed `NotificationFeed` import crashes. `JULES`
 
 ### 🛠️ 1.2 Charting Engine Reborn (Organisms)
 - [ ] **Refactor to Recharts:** Replace Victory with Recharts for:
@@ -57,7 +57,7 @@
 ## 🌊 Wave 3: Organism Expansion (Product)
 **Goal:** High-fidelity components for real apps.
 
-- [ ] **DataTable:** Fix empty state illustration; ensure safe sorting on null data. `JULES`
+ - [~] **DataTable:** Fix DOM nesting violations. `JULES`
 - [ ] **DashboardShell:** Fix loading skeleton layout shifts. `JULES`
 - [ ] **Timeline:** Fix SVG transform errors. `JULES`
 - [ ] **Form:** Fix z-index clipping of internal popovers. `JULES`

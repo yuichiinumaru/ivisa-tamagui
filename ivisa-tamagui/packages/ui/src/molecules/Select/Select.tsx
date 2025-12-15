@@ -176,6 +176,7 @@ SelectRoot.Group = SelectGroup;
 SelectRoot.Label = SelectLabel;
 SelectRoot.Sheet = SelectSheet;
 SelectRoot.Portal = SelectPortal; // Attach to Root
+SelectRoot.Viewport = SelectViewport; // Attach to Root
 
 export {
   SelectRoot as Select,

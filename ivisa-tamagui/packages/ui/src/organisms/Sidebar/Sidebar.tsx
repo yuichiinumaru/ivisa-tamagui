@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AnimatePresence, ScrollView, Separator, Text, YStack, styled } from 'tamagui';
 import { Button } from '../../atoms/Button';
 import { ChevronLeft, ChevronRight, Menu, AlertCircle, Inbox } from '@tamagui/lucide-icons';
-import { Sheet, SheetContent, SheetTrigger } from '../../molecules/Sheet';
+import { Sheet } from '../../molecules/Sheet';
 import { Skeleton } from '../../atoms/Skeleton';
 
 // --- Styled Components ---
@@ -204,17 +204,17 @@ const MobileSidebar = ({ children, header, footer, isLoading, isEmpty, emptyMess
 
     return (
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger asChild>
+        <Sheet.Trigger asChild>
           <Button icon={Menu} circular />
-        </SheetTrigger>
-        <SheetContent position="left" size="$xl">
+        </Sheet.Trigger>
+        <Sheet.Content position="left" size="$xl">
           <YStack gap="$4" paddingTop="$6" paddingHorizontal="$4" flex={1}>
             {renderContent()}
             <Button onPress={() => setOpen(false)} chromeless>
               Fechar
             </Button>
           </YStack>
-        </SheetContent>
+        </Sheet.Content>
       </Sheet>
     );
   };
