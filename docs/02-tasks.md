@@ -6,7 +6,7 @@
 
 ---
 
-## � Wave 0: Local Stabilization (Done)
+##  Wave 0: Local Stabilization (Done)
 **Goal:** Fix infrastructure and "stupid" bugs locally before unleashing Swarm.
 
 - [x] **Fix Critical Exports:** Remove ghost `NotificationCard` export.
@@ -20,19 +20,19 @@
 **Goal:** Fix Critical Logic Crashes & Core Functionality.
 
 ### 🛠️ 1.1 "Headless" Crash Fixes (Molecules)
-- [ ] **Calendar/DatePicker:** Fix critical render crash (`Cannot read properties of null (reading 'map')`). Ensure headless lib initializes with valid data. `JULES`
-- [ ] **Accordion:** Fix crash on missing data arrays. `JULES`
-- [ ] **PageHeader:** Fix `displayName` read error on children. `JULES`
- - [x] **NotificationCard:** Fixed `NotificationFeed` import crashes. `JULES`
+- [x] **Calendar/DatePicker:** Fix critical render crash (`Cannot read properties of null (reading 'map')`). Ensure headless lib initializes with valid data. `JULES`
+- [x] **Accordion:** Fix crash on missing data arrays. `JULES`
+- [x] **PageHeader:** Fix `displayName` read error on children. `JULES`
+- [x] **NotificationCard:** Fixed `NotificationFeed` import crashes. `JULES`
 
 ### 🛠️ 1.2 Charting Engine Reborn (Organisms)
-- [ ] **Refactor to Recharts:** Replace Victory with Recharts for:
-    - [ ] `BarChart` / `ColumnChart`
-    - [ ] `LineChart`
-    - [ ] `PieChart` / `DonutChart`
-    - [ ] `AreaChart`
-- [ ] **Fix SVG Nesting:** Ensure no `<tspan>` inside `<text>` violations. `JULES`
-- [ ] **Fix ResizeObserver:** Solve infinite loop performance degradation. `JULES`
+- [x] **Refactor to Recharts:** Replace Victory with Recharts for:
+    - [x] `BarChart` / `ColumnChart`
+    - [x] `LineChart`
+    - [x] `PieChart` / `DonutChart`
+    - [x] `AreaChart`
+- [x] **Fix SVG Nesting:** Ensure no `<tspan>` inside `<text>` violations. `JULES`
+- [x] **Fix ResizeObserver:** Solve infinite loop performance degradation. `JULES`
 
 ---
 
@@ -57,7 +57,7 @@
 ## 🌊 Wave 3: Organism Expansion (Product)
 **Goal:** High-fidelity components for real apps.
 
- - [~] **DataTable:** Fix DOM nesting violations. `JULES`
+- [~] **DataTable:** Fix DOM nesting violations. `JULES`
 - [ ] **DashboardShell:** Fix loading skeleton layout shifts. `JULES`
 - [ ] **Timeline:** Fix SVG transform errors. `JULES`
 - [ ] **Form:** Fix z-index clipping of internal popovers. `JULES`
@@ -90,3 +90,22 @@
 - [ ] **Component Registry:** Auto-generate JSON registry from source. `NODE`
 - [ ] **MCP Server:** Python/FastAPI server to serve registry & docs. `PYTHON`
 - [ ] **Scaffolding Tool:** Agent tool to generate full page layouts. `MCP`
+
+---
+
+## 💎 Wave 7: Storybook Perfection (Carbon Copy)
+**Goal:** Elevate Storybook to World-Class status inspired by IBM Carbon.
+
+### 7.1 Localization & Structure
+- [x] **Hierarchy:** Rename to `Átomos`, `Moléculas`, `Organismos` and Chart consolidation. `JULES`
+- [ ] **Overview Pages:** Create `Overview.mdx` for key organisms. `JULES`
+
+### 7.2 The Skeleton Crew
+- [ ] **Skeleton Audit:** Ensure every data-fetching component has a Skeleton story. `JULES`
+- [ ] **DataTable Skeleton:** Implement perfect loading state. `JULES`
+- [ ] **Charts Skeleton:** Implement placeholder visuals for charts. `JULES`
+
+### 7.3 Advanced Patterns
+- [ ] **Breadcrumb:** Implement "Collapse to Dropdown" behavior. `JULES`
+- [ ] **ComboButton:** Create Split/Combo Button molecule. `JULES`
+- [ ] **Component Status:** Add Stable/Experimental/Deprecated badges to docs. `JULES`

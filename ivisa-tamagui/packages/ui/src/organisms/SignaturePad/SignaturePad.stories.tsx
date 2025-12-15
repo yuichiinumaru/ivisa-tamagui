@@ -14,7 +14,7 @@ const meta: Meta<typeof SignaturePad> = {
 export default meta
 type Story = StoryObj<typeof SignaturePad>
 
-export const Default: Story = {}
+export const Padrao: Story = {}
 
 export const BlueInk: Story = {
   args: {

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { SunburstChart, SunburstData } from './SunburstChart'
 
 const meta: Meta<typeof SunburstChart> = {
-  title: 'Organisms/Complex & Custom Charts/SunburstChart',
+  title: 'Organismos/Gráficos/SunburstChart',
   component: SunburstChart,
   parameters: {
     layout: 'centered',
@@ -44,7 +44,7 @@ const sampleData: SunburstData = {
   ],
 }
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     data: sampleData,
     width: 400,
@@ -52,14 +52,14 @@ export const Default: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     data: sampleData,
     isLoading: true,
   },
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   args: {
     data: sampleData,
     error: new Error('Failed to load data'),

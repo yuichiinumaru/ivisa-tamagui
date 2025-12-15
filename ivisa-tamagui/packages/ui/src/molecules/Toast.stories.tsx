@@ -155,7 +155,7 @@ const PartialDataToastDemo = () => {
 
 // --- Stories ---
 
-export const Default: Story = {
+export const Padrao: Story = {
   name: 'Padrao',
   render: () => <ToastDemo />,
   parameters: {
@@ -188,7 +188,7 @@ export const StressTestPartialData: Story = {
   },
 }
 
-export const LoadingState: Story = {
+export const CarregandoState: Story = {
   name: 'Estado de Carregamento',
   render: () => <ToastDemo />, // The loading button is inside the main demo
   parameters: {

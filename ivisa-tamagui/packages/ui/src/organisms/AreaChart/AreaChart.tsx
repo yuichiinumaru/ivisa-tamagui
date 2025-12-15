@@ -114,12 +114,14 @@ export const AreaChart = ({
       const seriesData = data as Record<string, unknown>[][]
       // Assume all series share the same xKey values and order
       if (seriesData.length > 0) {
+        // Generate keys once
+        seriesData.forEach((_, sIndex) => seriesKeys.push(`series_${sIndex}`))
+
         chartData = seriesData[0].map((item, index) => {
             const mergedItem: any = { [xKey]: item[xKey] }
             seriesData.forEach((series, sIndex) => {
                 const key = `series_${sIndex}`
-                seriesKeys.push(key)
-                mergedItem[key] = series[yKey]
+                mergedItem[key] = series[index]?.[yKey]
             })
             return mergedItem
         })
@@ -158,11 +160,7 @@ export const AreaChart = ({
               }}
             />
             {isMultiSeries ? (
-                 // Multi-series logic
                  seriesKeys.map((key, index) => (
-                    // Logic to avoid duplicates in seriesKeys loop if constructed above incorrectly.
-                    // Actually seriesKeys will have duplicates if I push in map. Fixed above.
-                    // Wait, I pushed in map, so it will duplicate. Let's fix loop.
                     <Area
                         key={key}
                         type="monotone"
@@ -172,7 +170,7 @@ export const AreaChart = ({
                         fill={colorScale[index % colorScale.length]}
                         fillOpacity={0.6}
                     />
-                 )).filter((_, i) => i < (data as any[]).length) // quick fix for duplicates if any
+                 ))
             ) : (
                 <Area
                     type="monotone"

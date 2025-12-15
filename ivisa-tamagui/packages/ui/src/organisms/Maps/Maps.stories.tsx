@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Maps, GeoJSON } from './Maps'
 
 const meta: Meta<typeof Maps> = {
-  title: 'Organisms/Complex & Custom Charts/Maps',
+  title: 'Organismos/Gráficos/Maps',
   component: Maps,
   parameters: {
     layout: 'centered',
@@ -78,7 +78,7 @@ export const DotDensity: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     data: sampleData,
     isLoading: true,

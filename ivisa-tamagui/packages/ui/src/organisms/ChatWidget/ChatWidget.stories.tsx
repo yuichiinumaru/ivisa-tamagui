@@ -23,7 +23,7 @@ const mockMessages: Message[] = [
     { id: '3', role: 'assistant', content: 'Claro. Por favor, informe seu CPF ou CNPJ.', timestamp: new Date(Date.now() - 60000) },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     messages: mockMessages,
   },

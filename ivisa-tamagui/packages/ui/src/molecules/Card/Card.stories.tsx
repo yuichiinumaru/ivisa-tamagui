@@ -41,7 +41,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 // Base story using composition
-export const Default: Story = {
+export const Padrao: Story = {
   render: (args) => (
     <Card width={350} {...args}>
       <CardHeader>
@@ -76,7 +76,7 @@ export const Elevated: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   ...Default,
   args: {
     ...Default.args,
@@ -92,7 +92,7 @@ export const Disabled: Story = {
   },
 }
 
-export const WithError: Story = {
+export const ComErro: Story = {
   ...Default,
   args: {
     ...Default.args,
@@ -134,7 +134,7 @@ export const PartialData: Story = {
 }
 
 
-export const Constrained: Story = {
+export const Restrito: Story = {
     render: (args) => (
         <YStack width={280} ai="center">
              <Card {...args}>
