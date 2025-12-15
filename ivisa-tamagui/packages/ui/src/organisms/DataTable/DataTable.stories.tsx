@@ -4,7 +4,7 @@ import { Text, YStack } from 'tamagui'
 import { createColumnHelper } from '@tanstack/react-table'
 
 const meta: Meta<typeof DataTable> = {
-  title: 'Organisms/DataTable',
+  title: 'Organismos/DataTable',
   component: DataTable,
   argTypes: {
     isLoading: { control: 'boolean' },
@@ -89,14 +89,14 @@ const columns = [
   }),
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     data,
     columns,
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     data: [],
     columns,
@@ -104,7 +104,7 @@ export const Loading: Story = {
   },
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   args: {
     data: [],
     columns,

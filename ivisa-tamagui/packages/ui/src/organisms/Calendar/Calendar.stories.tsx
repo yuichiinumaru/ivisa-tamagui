@@ -19,4 +19,4 @@ export default meta
 
 type Story = StoryObj<typeof Calendar>
 
-export const Default: Story = {}
+export const Padrao: Story = {}

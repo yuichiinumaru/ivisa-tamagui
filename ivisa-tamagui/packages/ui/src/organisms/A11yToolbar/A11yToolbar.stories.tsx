@@ -13,7 +13,7 @@ const meta: Meta<typeof A11yToolbar> = {
 export default meta
 type Story = StoryObj<typeof A11yToolbar>
 
-export const Default: Story = {}
+export const Padrao: Story = {}
 
 export const DarkMode: Story = {
   args: {

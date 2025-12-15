@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { LineChart } from './LineChart'
 
 const meta: Meta<typeof LineChart> = {
-  title: 'Organisms/LineChart',
+  title: 'Organismos/Gráficos/LineChart',
   component: LineChart,
   argTypes: {
     isLoading: { control: 'boolean' },
@@ -29,7 +29,7 @@ const categoryData = [
   { category: 'D', score: 20 },
 ]
 
-export const DefaultTimeSeries: Story = {
+export const PadraoTimeSeries: Story = {
   args: {
     title: 'Vendas Mensais',
     data: timeData,
@@ -48,7 +48,7 @@ export const CategoricalLine: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     title: 'Carregando...',
     data: [],
@@ -58,7 +58,7 @@ export const Loading: Story = {
   },
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   args: {
     title: 'Erro',
     data: [],

@@ -54,7 +54,7 @@ export const Playground: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   name: 'Carregando',
   args: {
     ...Playground.args,
@@ -62,7 +62,7 @@ export const Loading: Story = {
   },
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   name: 'Erro',
   args: {
     ...Playground.args,

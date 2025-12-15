@@ -12,7 +12,7 @@ const matrix = [
 const labels = ['Preto', 'Loiro', 'Castanho', 'Ruivo'];
 
 const meta: Meta<typeof ChordDiagram> = {
-  title: 'Organisms/ChordDiagram',
+  title: 'Organismos/Gráficos/ChordDiagram',
   component: ChordDiagram,
   args: {
     matrix,

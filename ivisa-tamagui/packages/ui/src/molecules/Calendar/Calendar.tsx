@@ -200,7 +200,7 @@ export const Calendar = ({
   const { onClick: onNextClick } = dp.propGetters.addOffset({ months: 1 })
 
   return (
-    <CalendarContainer disabled={isDisabled} hasError={hasError} data-testid="calendar-container">
+    <CalendarContainer disabled={isDisabled} hasError={hasError} data-testid="calendar-container" data-has-error={hasError}>
       <CalendarHeader>
         <Button icon={ChevronLeft} circular variant="ghost" onPress={onPrevClick} disabled={isLoading} />
         <CalendarTitle>

@@ -3,7 +3,7 @@ import { BarChart } from './BarChart'
 import { YStack } from 'tamagui'
 
 const meta: Meta<typeof BarChart> = {
-  title: 'Organisms/BarChart',
+  title: 'Organismos/Gráficos/BarChart',
   component: BarChart,
   args: {
     data: [

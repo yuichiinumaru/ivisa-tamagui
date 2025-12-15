@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { NotificationFeed } from './NotificationFeed'
 
 const meta: Meta<typeof NotificationFeed> = {
-  title: 'Organisms/NotificationFeed',
+  title: 'Organismos/NotificationFeed',
   component: NotificationFeed,
   parameters: {
     layout: 'centered',
@@ -44,7 +44,7 @@ const notifications = [
   },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     notifications: notifications,
     onMarkAsRead: (id) => console.log('Mark read:', id),

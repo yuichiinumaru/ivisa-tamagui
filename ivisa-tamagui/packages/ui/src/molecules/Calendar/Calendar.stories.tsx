@@ -111,7 +111,7 @@ export const WithMinAndMaxDates: Story = {
   ),
 }
 
-export const LoadingState: Story = {
+export const CarregandoState: Story = {
   name: 'Estado de Carregamento (Loading)',
   args: {
     isLoading: true,
@@ -128,7 +128,7 @@ export const DisabledState: Story = {
   render: renderWithDate,
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   name: 'Estado de Erro (Error)',
   args: {
     hasError: true,

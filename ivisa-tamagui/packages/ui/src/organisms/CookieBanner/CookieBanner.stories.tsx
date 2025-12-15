@@ -19,7 +19,7 @@ export default meta
 
 type Story = StoryObj<typeof CookieBanner>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     isOpen: true,
   },

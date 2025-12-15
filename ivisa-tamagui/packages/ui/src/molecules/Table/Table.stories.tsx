@@ -78,7 +78,7 @@ type Story = StoryObj<typeof Table>
 // STORIES
 // =================================================================================================
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     columns: columns,
     data: invoices,
@@ -86,7 +86,7 @@ export const Default: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     ...Default.args,
     isLoading: true,

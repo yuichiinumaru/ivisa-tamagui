@@ -57,7 +57,7 @@ const DatePickerWithState = (props: DatePickerProps) => {
   return <DatePicker {...props} date={date} onDateChange={setDate} />
 }
 
-export const Default: Story = {
+export const Padrao: Story = {
   render: (props) => <DatePickerWithState {...props} />,
 }
 
@@ -82,7 +82,7 @@ export const Large: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   render: (props) => <DatePickerWithState {...props} />,
   args: {
     loading: true,
@@ -103,7 +103,7 @@ export const Error: Story = {
   },
 }
 
-export const Success: Story = {
+export const Sucesso: Story = {
   render: (props) => <DatePickerWithState {...props} />,
   args: {
     state: 'success',

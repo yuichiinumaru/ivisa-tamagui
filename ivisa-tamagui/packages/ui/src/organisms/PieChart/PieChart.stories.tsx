@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { PieChart } from './PieChart'
 
 const meta: Meta<typeof PieChart> = {
-  title: 'Organisms/PieChart',
+  title: 'Organismos/Gráficos/PieChart',
   component: PieChart,
   argTypes: {
     isLoading: { control: 'boolean' },
@@ -43,7 +43,7 @@ export const DonutVariant: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     title: 'Carregando...',
     data: [],

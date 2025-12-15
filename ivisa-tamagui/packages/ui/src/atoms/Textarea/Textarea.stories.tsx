@@ -38,7 +38,7 @@ export default meta
 
 type Story = StoryObj<typeof Textarea>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     variant: 'default',
     size: 'default',
@@ -96,7 +96,7 @@ export const Invalid: Story = {
   },
 }
 
-export const LongText: Story = {
+export const TextoLongo: Story = {
   args: {
     ...Default.args,
     defaultValue:
@@ -104,7 +104,7 @@ export const LongText: Story = {
   },
 }
 
-export const ConstrainedContainer: Story = {
+export const RestritoContainer: Story = {
   args: {
     ...Default.args,
   },
@@ -117,7 +117,7 @@ export const ConstrainedContainer: Story = {
   ],
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     ...Default.args,
     loading: true,
