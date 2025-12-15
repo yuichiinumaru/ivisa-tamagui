@@ -18,6 +18,7 @@ export * from './atoms/Toggle';
 export * from './atoms/ScrollArea';
 export * from './atoms/Textarea';
 export * from './atoms/Checkbox';
+export * from './atoms/Kbd';
 export * from './molecules/Card';
 export * from './molecules/Collapsible';
 export * from './molecules/Dialog';

@@ -172,6 +172,33 @@ const zIndexScale = {
 export const tokens = createTokens({
   color: {
     ...palette,
+    // Standard Tamagui / Radix Grays (Mapped to IVISA Grays)
+    gray1: palette.ivisaGray50,
+    gray2: palette.ivisaGray100,
+    gray3: palette.ivisaGray200,
+    gray4: palette.ivisaGray300,
+    gray5: palette.ivisaGray400,
+    gray6: palette.ivisaGray500,
+    gray7: palette.ivisaGray600,
+    gray8: palette.ivisaGray700,
+    gray9: palette.ivisaGray800,
+    gray10: palette.ivisaGray900,
+    gray11: palette.ivisaGray950,
+    gray12: palette.black,
+
+    // Semantic Colors (Mappings for consistency)
+    color1: palette.ivisaGray50,
+    color2: palette.ivisaGray100,
+    color3: palette.ivisaGray200,
+    color4: palette.ivisaGray300,
+    color5: palette.ivisaGray400,
+    color6: palette.ivisaGray500,
+    color7: palette.ivisaGray600,
+    color8: palette.ivisaGray700,
+    color9: palette.ivisaGray800,
+    color10: palette.ivisaGray900,
+    color11: palette.ivisaGray950,
+    color12: palette.black,
   },
   space: spaceScale,
   size: sizeScale,

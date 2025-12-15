@@ -31,17 +31,17 @@ const meta: Meta<typeof AvatarGroup> = {
     hasError: false,
     items: [
       {
-        src: 'https://github.com/ivisa-co.png',
+        src: 'https://i.pravatar.cc/150?u=ivisa',
         fallback: 'IV',
         alt: 'Avatar da Ivisa',
       },
       {
-        src: 'https://github.com/tamagui.png',
+        src: 'https://i.pravatar.cc/150?u=tamagui',
         fallback: 'TM',
         alt: 'Avatar do Tamagui',
       },
       {
-        src: 'https://github.com/shadcn.png',
+        src: 'https://i.pravatar.cc/150?u=shadcn',
         fallback: 'CN',
         alt: 'Avatar do Shadcn',
       },

@@ -4,7 +4,7 @@ import './Skeleton.css'
 const SkeletonFrame = styled(YStack, {
   name: 'Skeleton',
   backgroundColor: '$muted',
-  borderRadius: '$4',
+  borderRadius: '$sm',
 
   variants: {
     animationType: {
@@ -15,6 +15,11 @@ const SkeletonFrame = styled(YStack, {
       },
       none: {},
     },
+    round: {
+      true: {
+        borderRadius: '$full',
+      },
+    },
   } as const,
 
   defaultVariants: {
@@ -23,7 +28,7 @@ const SkeletonFrame = styled(YStack, {
 })
 
 export const Skeleton = SkeletonFrame.styleable((props, ref) => (
-  <SkeletonFrame {...props} ref={ref} aria-hidden="true" data-testid="skeleton" />
+  <SkeletonFrame {...props} ref={ref} aria-hidden={true} data-testid="skeleton" />
 ))
 
 export type SkeletonProps = GetProps<typeof Skeleton>

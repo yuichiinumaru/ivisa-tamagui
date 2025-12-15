@@ -27,17 +27,17 @@ const meta: Meta<typeof Checkbox> = {
       description: 'O texto a ser exibido ao lado do checkbox.',
     },
     size: {
-        control: { type: 'select' },
-        options: ['$3', '$4', '$5', '$6'],
-        description: 'Define o tamanho do checkbox.'
+      control: { type: 'select' },
+      options: ['$3', '$4', '$5', '$6'],
+      description: 'Define o tamanho do checkbox.'
     },
     error: {
-        control: { type: 'boolean' },
-        description: 'Aplica o estilo de erro ao checkbox.'
+      control: { type: 'boolean' },
+      description: 'Aplica o estilo de erro ao checkbox.'
     },
     errorMessage: {
-        control: { type: 'text' },
-        description: 'Mensagem de erro a ser exibida e associada para acessibilidade.'
+      control: { type: 'text' },
+      description: 'Mensagem de erro a ser exibida e associada para acessibilidade.'
     }
   },
   parameters: {
@@ -74,61 +74,61 @@ export const Padrao: Story = {
 }
 
 export const NaoControlado: Story = {
-    name: "Não Controlado (defaultChecked)",
-    args: {
-      defaultChecked: true,
-      label: 'Aceitar termos e condições',
-      id: 'default-checked-checkbox'
-    },
-    parameters: {
-      docs: {
-        description: {
-            story: 'O checkbox começa marcado e seu estado é gerenciado internamente.'
-        },
-        source: {
-          code: `<Checkbox id="default-checked-checkbox" defaultChecked={true} label="Aceitar termos e condições" />`,
-        },
+  name: "Não Controlado (defaultChecked)",
+  args: {
+    defaultChecked: true,
+    label: 'Aceitar termos e condições',
+    id: 'default-checked-checkbox'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'O checkbox começa marcado e seu estado é gerenciado internamente.'
       },
-    }
+      source: {
+        code: `<Checkbox id="default-checked-checkbox" defaultChecked={true} label="Aceitar termos e condições" />`,
+      },
+    },
+  }
 }
 
 export const Indeterminado: Story = {
-    name: "Indeterminado",
-    args: {
-      checked: 'indeterminate',
-      id: 'indeterminate-checkbox',
-      label: 'Estado de seleção mista'
-    },
-    parameters: {
-      docs: {
-        description: {
-          story: 'O estado indeterminado é visual apenas. O checkbox se comporta como desmarcado.'
-        },
-        source: {
-          code: `<Checkbox id="indeterminate-checkbox" checked="indeterminate" label="Estado de seleção mista" />`,
-        },
+  name: "Indeterminado",
+  args: {
+    checked: 'indeterminate',
+    id: 'indeterminate-checkbox',
+    label: 'Estado de seleção mista'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'O estado indeterminado é visual apenas. O checkbox se comporta como desmarcado.'
       },
-    }
+      source: {
+        code: `<Checkbox id="indeterminate-checkbox" checked="indeterminate" label="Estado de seleção mista" />`,
+      },
+    },
+  }
 }
 
 export const ComErro: Story = {
-    name: "Com Erro",
-    args: {
-      error: true,
-      id: 'error-checkbox',
-      label: 'Eu aceito os termos',
-      errorMessage: 'Você deve aceitar os termos para continuar.'
-    },
-    parameters: {
-      docs: {
-        description: {
-            story: 'Exibe o checkbox com uma borda de erro e uma mensagem para indicar uma validação falha.'
-        },
-        source: {
-          code: `<Checkbox id="error-checkbox" error={true} label="Eu aceito os termos" errorMessage="Você deve aceitar os termos para continuar." />`,
-        },
+  name: "Com Erro",
+  args: {
+    error: true,
+    id: 'error-checkbox',
+    label: 'Eu aceito os termos',
+    errorMessage: 'Você deve aceitar os termos para continuar.'
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Exibe o checkbox com uma borda de erro e uma mensagem para indicar uma validação falha.'
       },
-    }
+      source: {
+        code: `<Checkbox id="error-checkbox" error={true} label="Eu aceito os termos" errorMessage="Você deve aceitar os termos para continuar." />`,
+      },
+    },
+  }
 }
 
 export const Desativado: Story = {
@@ -142,7 +142,7 @@ export const Desativado: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const checkbox = canvas.getByLabelText('Aceitar termos e condições');
-    await userEvent.click(checkbox);
+    expect(checkbox).toBeDisabled();
   },
   parameters: {
     docs: {
@@ -154,17 +154,17 @@ export const Desativado: Story = {
 }
 
 export const Tamanhos: Story = {
-    name: "Tamanhos",
-    render: (args) => (
-        <XStack space="$4" alignItems="center">
-            <Checkbox {...args} size="$3" id="size-3" label="Pequeno" checked={args.checked} />
-            <Checkbox {...args} size="$4" id="size-4" label="Médio" checked={args.checked} />
-            <Checkbox {...args} size="$5" id="size-5" label="Grande" checked={args.checked} />
-        </XStack>
-    ),
-    args: {
-        checked: true
-    }
+  name: "Tamanhos",
+  render: (args) => (
+    <XStack space="$4" alignItems="center">
+      <Checkbox {...args} size="$3" id="size-3" label="Pequeno" checked={args.checked} />
+      <Checkbox {...args} size="$4" id="size-4" label="Médio" checked={args.checked} />
+      <Checkbox {...args} size="$5" id="size-5" label="Grande" checked={args.checked} />
+    </XStack>
+  ),
+  args: {
+    checked: true
+  }
 }
 
 export const Texto_Longo: Story = {

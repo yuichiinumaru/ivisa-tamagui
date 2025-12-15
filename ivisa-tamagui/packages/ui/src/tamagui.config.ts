@@ -18,6 +18,16 @@ const ceraProFont = createFont({
     7: 32,
     8: 48,
     9: 64,
+    // Named tokens to match `size` prop usage
+    xs: 12,
+    sm: 14,
+    md: 16,
+    lg: 18,
+    xl: 20,
+    '2xl': 24,
+    '3xl': 32,
+    '4xl': 48,
+    '5xl': 64,
   },
   lineHeight: {
     1: 16,

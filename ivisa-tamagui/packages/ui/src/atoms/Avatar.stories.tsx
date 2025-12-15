@@ -71,19 +71,19 @@ export const Padrao: Story = {
   args: {
     size: '$10',
     shape: 'circle',
-    imageUrl: 'https://github.com/tamagui.png',
+    imageUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
     fallbackText: 'AV',
     accessibilityLabel: 'Avatar de Usuário',
   },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement);
     await step('Verificar a renderização do avatar pela label de acessibilidade', async () => {
-        const avatar = canvas.getByLabelText('Avatar de Usuário');
-        expect(avatar).toBeInTheDocument();
+      const avatar = canvas.getByLabelText('Avatar de Usuário');
+      expect(avatar).toBeInTheDocument();
     });
     await step('Verificar se a imagem do avatar é carregada', async () => {
-        const image = canvas.getByAltText('Avatar de Usuário');
-        expect(image).toBeInTheDocument();
+      const image = canvas.getByAltText('Avatar de Usuário');
+      expect(image).toBeInTheDocument();
     });
   },
 };
@@ -131,7 +131,7 @@ export const Carregando: Story = {
   name: 'Carregando (com Skeleton)',
   args: {
     ...Padrao.args,
-    imageUrl: 'https://delay.pics/v1/2000/https://github.com/tamagui.png',
+    imageUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026704d',
   },
 };
 

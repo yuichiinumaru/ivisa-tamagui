@@ -148,12 +148,18 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
       });
     };
 
+    if (asChild) {
+      return (
+        <Component {...props} variant={variant} size={size} ref={ref}>
+          {children}
+        </Component>
+      );
+    }
+
     return (
       <Component {...props} variant={variant} size={size} ref={ref}>
         {renderIcon(leftIcon)}
-        {asChild ? (
-          children
-        ) : typeof children === 'string' ? (
+        {typeof children === 'string' ? (
           <BadgeText variant={variant} size={size}>{children}</BadgeText>
         ) : (
           children

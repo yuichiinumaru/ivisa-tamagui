@@ -35,7 +35,7 @@ export const Typography = ({ leftIcon, rightIcon, loading, children, variant, as
   return (
     <Component {...props} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', ...props.style }}>
       {leftIcon}
-      {children}
+      <TamaguiText>{children}</TamaguiText>
       {rightIcon}
     </Component>
   );

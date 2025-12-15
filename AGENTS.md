@@ -17,7 +17,7 @@ You are working on the **Ivisa Tamagui Design System**, a mission-critical infra
 8.  **Stop-Loss:** If a refactor breaks > 3 tests and takes > 30 mins to fix, REVERT and Re-Plan.
 9.  **Package Manager Mandate:** You MUST use **Yarn** (`yarn`). Use of `npm` or `pnpm` is STRICTLY FORBIDDEN.
 10. **Testing Framework Mandate:** You MUST use **Jest** (`jest`). Use of `vitest` is STRICTLY FORBIDDEN.
-11. **Build Integrity Mandate:** You MUST use `yarn build:ci` to verify builds. This command mirrors the Vercel deployment pipeline (Build + Storybook). If `yarn build:ci` fails, the task is incomplete.
+11. **Build Integrity Mandate:** You MUST run `yarn install && yarn build:ci && yarn storybook` to fully verify the environment, dependencies, and UI. This mirrors the complete verification pipeline. If this sequence fails, the task is incomplete.
 
 ---
 

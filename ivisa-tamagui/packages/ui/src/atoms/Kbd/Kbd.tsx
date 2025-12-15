@@ -1,13 +1,11 @@
 import React from 'react'
-import { styled, Text, GetProps, TamaguiElement, Slot, XStack } from 'tamagui'
+import { styled, Text, GetProps, TamaguiElement, XStack } from 'tamagui'
 
 const StyledKbd = styled(XStack, {
   name: 'Kbd',
   tag: 'kbd',
-  fontFamily: '$body',
   backgroundColor: '$background',
-  color: '$color',
-  borderRadius: '$2',
+  borderRadius: '$xs',
   borderWidth: 1,
   borderColor: '$borderColor',
   justifyContent: 'center',
@@ -64,14 +62,14 @@ const KbdText = styled(Text, {
   fontFamily: '$body',
   color: '$color',
   variants: {
-      size: {
-        sm: { fontSize: 10, fontWeight: '400' },
-        default: { fontSize: 12, fontWeight: '500' },
-        lg: { fontSize: 14, fontWeight: '600' },
-      }
+    size: {
+      sm: { fontSize: 10, fontWeight: '400' },
+      default: { fontSize: 12, fontWeight: '500' },
+      lg: { fontSize: 14, fontWeight: '600' },
+    }
   },
   defaultVariants: {
-      size: 'default'
+    size: 'default'
   }
 })
 
@@ -123,14 +121,13 @@ const Kbd = React.forwardRef<TamaguiElement, KbdProps>(
     },
     ref,
   ) => {
-    const Comp = asChild ? Slot : StyledKbd
     // Pass size to Text as well
     return (
-      <Comp ref={ref} size={size} variant={variant} {...props} tag="kbd">
+      <StyledKbd ref={ref} size={size} variant={variant} {...props} asChild={asChild} tag="kbd">
         {iconBefore}
         <KbdText size={size}>{children}</KbdText>
         {iconAfter}
-      </Comp>
+      </StyledKbd>
     )
   },
 )
