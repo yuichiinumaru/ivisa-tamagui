@@ -72,7 +72,7 @@ const renderStory = (args) => {
   return <Component {...args} />;
 };
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     children: 'Este é um texto padrão.',
     variant: 'p',
@@ -89,7 +89,7 @@ export const Default: Story = {
   },
 };
 
-export const LongText: Story = {
+export const TextoLongo: Story = {
   args: {
     children: 'Este é um texto muito longo para testar o comportamento de quebra de linha e truncamento. O pedido do rei, no entanto, não foi tão facilmente atendido. Era um pedido que testaria os limites de seu poder e a leialdade de seus súditos.',
     variant: 'p',
@@ -97,7 +97,7 @@ export const LongText: Story = {
   render: renderStory,
 };
 
-export const Constrained: Story = {
+export const Restrito: Story = {
   args: {
     children: 'Este texto está dentro de um contêiner com uma largura máxima de 100px.',
     variant: 'p',
@@ -112,7 +112,7 @@ export const Constrained: Story = {
   render: renderStory,
 };
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     children: 'Este texto não deve ser visível.',
     variant: 'p',

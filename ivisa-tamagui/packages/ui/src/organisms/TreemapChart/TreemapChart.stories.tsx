@@ -14,7 +14,7 @@ const data = [
 ]
 
 const meta: Meta<typeof TreemapChart> = {
-  title: 'Organisms/TreemapChart',
+  title: 'Organismos/Gráficos/TreemapChart',
   component: TreemapChart,
   args: {
     data,

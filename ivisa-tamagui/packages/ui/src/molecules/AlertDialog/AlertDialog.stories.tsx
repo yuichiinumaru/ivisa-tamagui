@@ -42,13 +42,13 @@ const defaultArgs = {
   cancelText: 'Cancelar',
 }
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     ...defaultArgs,
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     ...defaultArgs,
     isLoading: true,

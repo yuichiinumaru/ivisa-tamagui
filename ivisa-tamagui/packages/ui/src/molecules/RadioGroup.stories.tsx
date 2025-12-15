@@ -43,7 +43,7 @@ const OPTIONS = [
   { value: 'disabled-option', label: 'Desativado', disabled: true },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     options: OPTIONS,
     defaultValue: 'comfortable',
@@ -85,7 +85,7 @@ export const ErrorWithMessage: Story = {
   render: (args) => <RadioGroup {...args} />,
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     ...Default.args,
     isLoading: true,

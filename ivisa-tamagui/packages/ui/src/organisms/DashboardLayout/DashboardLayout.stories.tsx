@@ -20,7 +20,7 @@ export default meta
 
 type Story = StoryObj<typeof DashboardLayout>
 
-export const Default: Story = {
+export const Padrao: Story = {
   render: () => (
     <DashboardLayout
       header={

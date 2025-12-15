@@ -54,7 +54,7 @@ export const GoldenPath: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     isLoading: true,
   },

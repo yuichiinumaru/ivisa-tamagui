@@ -14,7 +14,7 @@ const meta: Meta<typeof ImageAnnotator> = {
 export default meta
 type Story = StoryObj<typeof ImageAnnotator>
 
-export const Default: Story = {}
+export const Padrao: Story = {}
 
 export const InspectionMode: Story = {
   args: {

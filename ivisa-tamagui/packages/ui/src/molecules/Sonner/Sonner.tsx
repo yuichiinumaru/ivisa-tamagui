@@ -6,10 +6,11 @@ type ToasterProps = React.ComponentProps<typeof SonnerPrimitive>
 
 export const Sonner = (props: ToasterProps) => {
   const theme = useTheme()
+  const sonnerTheme = theme.name === 'escuro' ? 'dark' : 'light'
 
   return (
     <SonnerPrimitive
-      theme={theme.name as 'light' | 'dark' | 'system'}
+      theme={sonnerTheme}
       toastOptions={{
         unstyled: true,
       }}

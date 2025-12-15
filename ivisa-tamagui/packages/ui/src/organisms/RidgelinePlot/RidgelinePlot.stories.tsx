@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { RidgelinePlot } from './RidgelinePlot'
 
 const meta: Meta<typeof RidgelinePlot> = {
-  title: 'Organisms/Complex & Custom Charts/RidgelinePlot',
+  title: 'Organismos/Gráficos/RidgelinePlot',
   component: RidgelinePlot,
   parameters: {
     layout: 'centered',
@@ -31,7 +31,7 @@ const sampleSeries = [
     { id: '2023', label: '2023', data: generateDist(45, 20), color: '#f43f5e' },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     series: sampleSeries,
     width: 600,
@@ -40,7 +40,7 @@ export const Default: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     series: sampleSeries,
     isLoading: true,

@@ -3,7 +3,7 @@ import { MediaGrid } from './MediaGrid';
 import { MediaItem } from './MediaGrid.props';
 
 const meta: Meta<typeof MediaGrid> = {
-  title: 'Organisms/MediaGrid',
+  title: 'Organismos/MediaGrid',
   component: MediaGrid,
   tags: ['autodocs'],
   argTypes: {
@@ -26,7 +26,7 @@ const mockItems: MediaItem[] = Array.from({ length: 10 }).map((_, i) => ({
   createdAt: new Date().toISOString(),
 }));
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     items: mockItems,
     viewMode: 'grid',
@@ -46,7 +46,7 @@ export const Empty: Story = {
   },
 };
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     items: [],
     isLoading: true,

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { AreaChart } from './AreaChart'
 
 const meta: Meta<typeof AreaChart> = {
-  title: 'Organisms/AreaChart',
+  title: 'Organismos/Gráficos/AreaChart',
   component: AreaChart,
   argTypes: {
     isLoading: { control: 'boolean' },
@@ -32,7 +32,7 @@ const stackedData = [
   ],
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     title: 'Evolução Mensal',
     data: singleData,

@@ -34,7 +34,7 @@ export default meta
 
 type Story = StoryObj<typeof Input>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     placeholder: 'Digite algo...',
   },
@@ -125,7 +125,7 @@ export const Sizes: Story = {
   ),
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     loading: true,
     placeholder: 'Carregando...',
@@ -150,7 +150,7 @@ export const ComposedLoading: Story = {
 }
 
 
-export const LongText: Story = {
+export const TextoLongo: Story = {
   args: {
     defaultValue: 'Este é um texto muito longo para testar o comportamento do input com strings que excedem seu tamanho horizontal para garantir que o overflow ou o scroll funcionem como esperado.',
   },
@@ -186,7 +186,7 @@ export const Password: Story = {
   },
 }
 
-export const Success: Story = {
+export const Sucesso: Story = {
   args: {
     state: 'success',
     defaultValue: 'contato@ivisa.com',

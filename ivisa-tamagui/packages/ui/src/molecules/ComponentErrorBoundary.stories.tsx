@@ -88,7 +88,7 @@ const InteractiveStory = ({
   )
 }
 
-export const Default: Story = {
+export const Padrao: Story = {
   render: (args) => <InteractiveStory args={args}> </InteractiveStory>,
   args: {
     componentName: 'DefaultStory',
