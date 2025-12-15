@@ -187,7 +187,8 @@ export const Calendar = ({
     }
   })
 
-  const calendars = dp.data?.calendars || []
+  // Ensure data exists before accessing
+  const calendars = dp.data?.calendars ?? []
   const currentMonth = calendars[0]
 
   // Guard clause to prevent crash if data is not ready and not loading
@@ -203,7 +204,7 @@ export const Calendar = ({
       <CalendarHeader>
         <Button icon={ChevronLeft} circular variant="ghost" onPress={onPrevClick} disabled={isLoading} />
         <CalendarTitle>
-          {isLoading ? <Skeleton width={120} height={24} /> : (currentMonth ? `${currentMonth.month} ${currentMonth.year}`: '')}
+          {isLoading ? <Skeleton width={120} height={24} /> : (currentMonth ? `${currentMonth.month} ${currentMonth.year}` : '')}
         </CalendarTitle>
         <Button icon={ChevronRight} circular variant="ghost" onPress={onNextClick} disabled={isLoading} />
       </CalendarHeader>

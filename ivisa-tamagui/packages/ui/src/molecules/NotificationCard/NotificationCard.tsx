@@ -66,14 +66,14 @@ export const NotificationCard = React.forwardRef<React.ElementRef<typeof Notific
         {unread && <UnreadIndicator />}
 
         <Avatar size="$4" circular>
-            <Avatar.Image src={avatarSrc} />
-            <Avatar.Fallback backgroundColor="$muted" alignItems="center" justifyContent="center">
-                {avatarFallback ? (
-                    <Paragraph>{avatarFallback}</Paragraph>
-                ) : (
-                    <Bell size={16} color="$mutedForeground" />
-                )}
-            </Avatar.Fallback>
+          <Avatar.Image src={avatarSrc} />
+          <Avatar.Fallback backgroundColor="$muted" alignItems="center" justifyContent="center">
+            {avatarFallback ? (
+              <Paragraph>{avatarFallback}</Paragraph>
+            ) : (
+              <Bell size={16} color="$mutedForeground" />
+            )}
+          </Avatar.Fallback>
         </Avatar>
 
         <NotificationContent>
@@ -83,16 +83,16 @@ export const NotificationCard = React.forwardRef<React.ElementRef<typeof Notific
         </NotificationContent>
 
         {onDismiss && (
-            <Button
-                size="$2"
-                variant="ghost"
-                circular
-                icon={X}
-                onPress={(e) => {
-                    e.stopPropagation()
-                    onDismiss()
-                }}
-            />
+          <Button
+            size="$2"
+            variant="ghost"
+            borderRadius="$full"
+            icon={X}
+            onPress={(e) => {
+              e.stopPropagation()
+              onDismiss()
+            }}
+          />
         )}
       </NotificationCardFrame>
     )

@@ -79,7 +79,8 @@ const AccordionItem = React.forwardRef<React.ElementRef<typeof AccordionItemFram
         if (React.isValidElement(child)) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const type = child.type as any
-            if (type?.displayName === 'AccordionContent') {
+            // Safe check for displayName
+            if (type && type.displayName === 'AccordionContent') {
                 return React.cloneElement(child as React.ReactElement<AccordionContentProps>, { isLoading })
             }
         }
