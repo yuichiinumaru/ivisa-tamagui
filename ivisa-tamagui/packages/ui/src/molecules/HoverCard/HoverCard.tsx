@@ -1,6 +1,8 @@
-import { Avatar, Paragraph, Popover, PopoverProps, XStack, YStack, Text } from 'tamagui'
+import { Paragraph, PopoverProps, XStack, YStack, Text } from 'tamagui'
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertTriangle } from '@tamagui/lucide-icons'
+import { Avatar } from '../../atoms/Avatar'
+import { Popover } from '../Popover'
 
 export const HoverCard = ({ children, ...rest }: PopoverProps) => {
   return (

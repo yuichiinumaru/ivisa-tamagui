@@ -1,5 +1,6 @@
 import React from 'react'
-import { GetProps, Input as TamaguiInput, YStack, isWeb, styled } from 'tamagui'
+import { GetProps, YStack, isWeb, styled } from 'tamagui'
+import { Input as TamaguiInput } from '../../atoms/Input'
 
 import { Skeleton } from '../../atoms/Skeleton'
 import { withErrorLogging } from '../../utils/withErrorLogging'

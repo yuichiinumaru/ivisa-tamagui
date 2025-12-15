@@ -1,9 +1,10 @@
 import { ChevronDown } from '@tamagui/lucide-icons'
 import React, { useMemo } from 'react'
-import { Adapt, Select, Sheet, styled } from 'tamagui'
+import { Adapt, styled } from 'tamagui'
 
 import { Skeleton } from '../../atoms/Skeleton'
-import { SelectContent, SelectItem, SelectTrigger, SelectValue, SelectViewport } from '../Select'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectViewport } from '../Select'
+import { Sheet } from '../Sheet'
 
 export interface MonthsPickerProps {
   value?: string
