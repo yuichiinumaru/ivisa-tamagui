@@ -15,7 +15,6 @@ const AvatarGroupFrame = styled(XStack, {
       '...size': (val, { tokens }) => {
         return {
           height: tokens.size[val] ?? val,
-          paddingLeft: (tokens.size[val] ?? val) * 0.4,
         }
       },
     },
@@ -43,6 +42,8 @@ const AvatarGroupItemFrame = styled(XStack, {
           height: tokens.size[val] ?? val,
           // Overlap by 40% of the avatar's size
           marginLeft: (tokens.size[val] ?? val) * -0.4,
+          // Explicitly clear zIndex for children to avoid prop leakage
+          zIndex: undefined,
         }
       },
     },
@@ -124,7 +125,7 @@ export const AvatarGroup = ({
       {remainingCount > 0 && (
         <AvatarGroupItemFrame
           size={size}
-          zIndex={limit + 1}
+          zIndex={0}
           hasError={hasError}
           data-testid="avatar-group-remainder"
           data-haserror={hasError}

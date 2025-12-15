@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { XStack, YStack, Text } from 'tamagui'
+import React, { useState } from 'react'
+import { XStack, YStack, Text, Adapt } from 'tamagui'
 import { Input } from '../../atoms/Input'
-// import { Select } from '../../molecules/Select'
-// import { DatePicker } from '../../molecules/DatePicker'
-import { Select, Adapt, Sheet } from 'tamagui'
-// Mocking DatePicker for now as it might be causing issues or we use a simpler one
-// import { DatePicker } from '../../molecules/DatePicker'
+import { Select } from '../../molecules/Select'
+import { Sheet } from '../../molecules/Sheet'
 import { Button } from '../../atoms/Button'
 import { Search, Filter } from '@tamagui/lucide-icons'
 

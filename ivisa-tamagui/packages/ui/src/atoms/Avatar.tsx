@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Avatar as TamaguiAvatar, styled, GetProps, Text, Stack } from 'tamagui'
+import { Avatar as TamaguiAvatar, styled, GetProps, Text } from 'tamagui'
 import { Skeleton } from './Skeleton'
 
 // --- Funções de Utilitário ---
@@ -36,13 +36,13 @@ const AvatarFrame = styled(TamaguiAvatar, {
   variants: {
     shape: {
       circle: {
-        borderRadius: '$full',
+        borderRadius: 100000,
       },
       square: {
         borderRadius: 0,
       },
       rounded: {
-        borderRadius: '$sm',
+        borderRadius: '$4',
       },
     },
   },
@@ -65,7 +65,7 @@ const AvatarImageComponent = React.forwardRef<HTMLImageElement, AvatarImageProps
 
     return (
       <>
-        {isLoading && <Skeleton round width="100%" height="100%" />}
+        {isLoading && <Skeleton circular width="100%" height="100%" />}
         <TamaguiAvatar.Image
           ref={ref}
           src={src}
@@ -92,14 +92,14 @@ const AvatarFallbackView = styled(TamaguiAvatar.Fallback, {
   backgroundColor: '$background',
 })
 
-const AvatarIndicatorFrame = styled(Stack, {
+const AvatarIndicatorFrame = styled('div', {
   name: 'AvatarIndicator',
   position: 'absolute',
   bottom: 0,
   right: 0,
   width: '$4',
   height: '$4',
-  borderRadius: '$full',
+  borderRadius: '$round',
   backgroundColor: '$green10',
   borderWidth: 2,
   borderColor: '$background',
@@ -122,16 +122,16 @@ const AvatarRoot = React.forwardRef<HTMLSpanElement, AvatarProps>(
   ({ src, fallback, accessibilityLabel, children, ...props }, ref) => {
     // If children are provided, render them (Composition mode)
     if (children) {
-      return (
-        <AvatarFrame ref={ref} {...props} aria-label={accessibilityLabel}>
-          {children}
-        </AvatarFrame>
-      )
+        return (
+            <AvatarFrame ref={ref} {...props} aria-label={accessibilityLabel}>
+                {children}
+            </AvatarFrame>
+        )
     }
 
     // Otherwise use Facade mode (src + fallback props)
     return (
-      <AvatarFrame ref={ref} {...props}>
+      <AvatarFrame ref={ref} {...props} aria-label={accessibilityLabel}>
         <AvatarImageComponent src={src} accessibilityLabel={accessibilityLabel} />
         <AvatarFallbackView>
           {typeof fallback === 'string' ? <Text>{fallback}</Text> : fallback}

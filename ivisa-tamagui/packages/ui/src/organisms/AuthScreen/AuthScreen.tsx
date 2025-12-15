@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { AuthScreenProps } from './AuthScreen.props';
-import { YStack, XStack, Text, Button, Input, Separator, Image, Spinner } from 'tamagui';
+import { YStack, XStack, Text, Image } from 'tamagui';
+import { Button } from '../../atoms/Button';
+import { Input } from '../../atoms/Input';
+import { Separator } from '../../atoms/Separator';
+import { Spinner } from '../../atoms/Spinner';
 import { Card } from '../../molecules/Card';
 
 export const AuthScreen = ({

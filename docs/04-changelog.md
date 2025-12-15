@@ -19,3 +19,15 @@
 ### Changed
 - **Documentation:**
   - Updated `AGENTS.md` with insights on debugging Tamagui/Storybook console errors.
+
+### Reintegrated
+- **From Wave 3 Branch:**
+  - `Button`: Added Spinner logic for loading state.
+  - `AvatarGroup`: Fixed z-index stacking context for avatars.
+  - `Card`, `Typography`, `AspectRatio`: Fixed Storybook console warnings (refs, leaked props).
+  - `Kbd`: Fixed export.
+
+### Refactored
+- **Architecture Compliance:**
+  - `Breadcrumb`, `DatePicker`, `HoverCard`, `MonthsPicker`, `OTPInput`, `Pagination`, `Toast`, `DropdownMenu`: Updated to import Atoms/Molecules from local packages instead of `tamagui`.
+  - `AuthScreen`, `FilterBar`, `Form`: Fixed imports to use local Atoms (Input, Button, Select, Label).
