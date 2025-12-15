@@ -28,6 +28,10 @@ const ceraProFont = createFont({
     '3xl': 32,
     '4xl': 48,
     '5xl': 64,
+    // Aliases for safety
+    default: 16,
+    true: 16,
+    '$3': 16,
   },
   lineHeight: {
     1: 16,

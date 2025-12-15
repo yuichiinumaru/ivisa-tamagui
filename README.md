@@ -2,6 +2,8 @@
 
 Modern, Tamagui-first recreation of shadcn/ui ergonomics for the Ivisa product surfaces. This workspace hosts the mono-repo, documentation, automation scripts, and the `ivisa-tamagui` package that exposes tokens, atoms, molecules, and organisms built on Tamagui primitives plus headless logic integrations.
 
+**Live Preview:** [https://ivisa-tamagui.vercel.app/](https://ivisa-tamagui.vercel.app/)
+
 > 📘 **Onboarding shortcut:** Start with [`AGENTS.md`](./AGENTS.md). It documents safety rules (archive instead of delete), tooling, and the Atomic Design methodology enforced across the repo.
 
 ## Repository Layout
