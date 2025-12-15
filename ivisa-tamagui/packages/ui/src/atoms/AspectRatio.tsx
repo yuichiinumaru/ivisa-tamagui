@@ -38,12 +38,15 @@ export interface AspectRatioProps extends Omit<GetProps<typeof AspectRatioFrame>
 
 export const AspectRatio = forwardRef<TamaguiElement, AspectRatioProps>(
   ({ ratio, variant = 'square', loading, children, ...props }, ref) => {
+    // Filter out animation props that might leak to DOM if passed from parent
+    const { animationName, animationDuration, ...safeProps } = props as any
+
     return (
       <AspectRatioFrame
         ref={ref}
         variant={variant}
         aspectRatio={ratio}
-        {...props}
+        {...safeProps}
       >
         {loading ? <Skeleton width="100%" height="100%" data-testid="skeleton-loader" /> : children}
       </AspectRatioFrame>

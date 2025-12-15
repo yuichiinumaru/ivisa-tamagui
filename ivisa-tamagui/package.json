@@ -10,6 +10,7 @@
   "scripts": {
     "build": "yarn workspace @ivisa/ui build",
     "lint": "eslint .",
+    "lint:arch": "node ../scripts/lint-architecture.js",
     "test": "jest",
     "typecheck": "yarn workspace @ivisa/ui typecheck",
     "scan:security": "yarn audit",

@@ -7,7 +7,8 @@ import {
   FormProvider,
   useFormContext,
 } from "react-hook-form"
-import { View, Label, Text, styled, YStack, GetProps, TamaguiElement } from "tamagui"
+import { View, Text, styled, YStack, GetProps, TamaguiElement } from "tamagui"
+import { Label } from "../../atoms/Label"
 
 const Form = FormProvider
 

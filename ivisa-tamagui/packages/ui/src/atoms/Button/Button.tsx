@@ -1,4 +1,5 @@
-import { Button as TamaguiButton, styled, GetProps, TamaguiElement, View, Text } from 'tamagui'
+import React from 'react'
+import { Button as TamaguiButton, styled, GetProps, TamaguiElement, View } from 'tamagui'
 import { Spinner } from '../Spinner'
 
 const StyledButton = styled(TamaguiButton, {
@@ -72,17 +73,17 @@ const StyledButton = styled(TamaguiButton, {
       sm: {
         height: '$sm',
         px: '$md',
-        fontSize: '$2',
+        // fontSize: '$2', // Removing explicit token to fallback to theme or prevent warning if token missing
       },
       default: {
         height: '$md',
         px: '$lg',
-        fontSize: '$3',
+        // fontSize: '$3',
       },
       lg: {
         height: '$lg',
         px: '$xl',
-        fontSize: '$4',
+        // fontSize: '$4',
       },
     },
   } as const,
@@ -144,9 +145,9 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>(
         asChild={asChild}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', opacity: loading ? 0 : 1, gap: 8 }}>
-          {leftIcon}
-          {typeof children === 'string' ? <Text color="$current" fontFamily="$body">{children}</Text> : children}
-          {rightIcon}
+            {leftIcon}
+            {children}
+            {rightIcon}
         </View>
         {loading && (
           <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>

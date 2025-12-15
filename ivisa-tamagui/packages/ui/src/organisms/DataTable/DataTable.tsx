@@ -172,11 +172,11 @@ export function DataTable<TData, TValue>({
   }
 
   return (
-    <YStack gap="$3" tag="table" aria-label="Data table">
+    <YStack gap="$3">
       {headerActions && <HeaderActionsContainer>{headerActions}</HeaderActionsContainer>}
       <TableContainer>
         <ScrollView horizontal showsHorizontalScrollIndicator>
-          <YStack minWidth="100%">
+          <YStack minWidth="100%" tag="table" aria-label="Data table">
             {/* Header */}
             <TableHeader tag="thead">
               {table.getHeaderGroups().map((headerGroup) => (

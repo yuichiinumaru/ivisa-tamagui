@@ -170,33 +170,4 @@ export const NoFooter: Story = {
   ),
 }
 
-export const Composition: Story = {
-  name: 'Composição Avançada',
-  args: {
-    trigger: <Button>Abrir com Composição</Button>,
-  },
-  render: ({ trigger }) => {
-    return (
-      <Drawer.Content>
-        {trigger}
-        <Drawer.Portal>
-          <Drawer.Overlay />
-          <Drawer.Content animation="medium" enterStyle={{ y: 300 }} exitStyle={{ y: 300 }}>
-            <Drawer.Handle />
-            <YStack padding="$4" space>
-              <Drawer.Title>Título Customizado</Drawer.Title>
-              <Paragraph>
-                Este layout foi construído usando as partes de baixo nível do Drawer para controle
-                total.
-              </Paragraph>
-              <Button theme="green">Ação Customizada</Button>
-              <Drawer.Close asChild>
-                <Button>Fechar</Button>
-              </Drawer.Close>
-            </YStack>
-          </Drawer.Content>
-        </Drawer.Portal>
-      </Drawer.Content>
-    )
-  },
-}
+// Composition story removed as Drawer component structure enforces specific layout
