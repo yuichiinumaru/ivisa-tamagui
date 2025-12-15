@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react'
-import { styled, XStack, YStack, Text, Button, AnimatePresence } from 'tamagui'
+import { styled, XStack, YStack, Text, AnimatePresence } from 'tamagui'
 import { Portal } from '@tamagui/portal'
 import { X } from '@tamagui/lucide-icons'
+import { Button } from '../atoms/Button'
 import { Skeleton } from '../atoms/Skeleton'
 
 // --- Types ---

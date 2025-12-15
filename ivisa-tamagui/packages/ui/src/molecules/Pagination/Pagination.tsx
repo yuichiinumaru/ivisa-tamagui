@@ -5,7 +5,8 @@ import {
   ChevronsRight,
 } from '@tamagui/lucide-icons'
 import React, { useMemo } from 'react'
-import { Button, GetProps, Text, VisuallyHidden, XStack, styled } from 'tamagui'
+import { GetProps, Text, VisuallyHidden, XStack, styled } from 'tamagui'
+import { Button } from '../../atoms/Button'
 
 import { Skeleton } from '../../atoms/Skeleton'
 

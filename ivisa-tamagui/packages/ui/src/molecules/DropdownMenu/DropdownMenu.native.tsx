@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
-import { View, Text, styled, Button, XStack, YStack, Separator } from 'tamagui'
+import { View, Text, styled, XStack, YStack, Separator } from 'tamagui'
+import { Button } from '../../atoms/Button'
 import { Sheet } from '../Sheet'
 import { Check, Circle } from '@tamagui/lucide-icons'
 

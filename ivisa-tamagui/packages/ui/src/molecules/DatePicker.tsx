@@ -2,13 +2,14 @@ import { Calendar as CalendarIcon } from '@tamagui/lucide-icons'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import React from 'react'
-import { Adapt, Popover, PopoverProps, Sheet, styled, XStack, YStack } from 'tamagui'
+import { Adapt, PopoverProps, styled, XStack, YStack } from 'tamagui'
 
 import { Button, ButtonProps } from '../atoms/Button'
+import { Sheet } from './Sheet'
 import { Input, InputProps } from '../atoms/Input'
 import { Skeleton } from '../atoms/Skeleton'
 import { Calendar } from './Calendar'
-import { PopoverContent, PopoverTrigger } from './Popover'
+import { Popover, PopoverContent, PopoverTrigger } from './Popover'
 
 const DatePickerFrame = styled(XStack, {
   name: 'DatePickerFrame',

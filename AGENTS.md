@@ -109,3 +109,8 @@ The repository follows a strict **Atomic Design** layout in `packages/ui/src/`:
 3.  **Missing Tokens:**
     *   **Cause:** Usage of tokens (`$color12`, `$md`) that exist in generic tokens but are missing from specific Theme or Font configurations.
     *   **Action:** Add aliases in `tamagui.config.ts` (e.g., `default: 16` for fonts) or map missing colors in `tokens.ts`.
+
+4.  **Architecture Violations:**
+    *   **Context:** Importing Atoms/Molecules (e.g., `Button`) directly from `tamagui` or `@tamagui/ui` instead of the local package (`../../atoms/Button`) causes styling inconsistencies and breaks the Design System contract.
+    *   **Action:** Run `yarn lint:arch` to detect these violations.
+    *   **Fix:** Replace `import { Button } from 'tamagui'` with `import { Button } from '../../atoms/Button'`.

@@ -1,6 +1,7 @@
 import { Skeleton } from '../../atoms/Skeleton'
 import React from 'react'
-import { Anchor, Button, GetProps, Text, XStack, styled } from 'tamagui'
+import { Anchor, GetProps, Text, XStack, styled } from 'tamagui'
+import { Button } from '../../atoms/Button'
 
 const BreadcrumbRoot = styled(XStack, {
   name: 'BreadcrumbRoot',
