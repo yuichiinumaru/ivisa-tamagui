@@ -121,7 +121,7 @@ export const Carregando: Story = {
   render: renderStory,
 };
 
-export const WithIcons: Story = {
+export const ComIcones: Story = {
   args: {
     children: 'Texto com ícones',
     variant: 'p',

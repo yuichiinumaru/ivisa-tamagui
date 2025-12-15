@@ -52,7 +52,7 @@ export const Filled: Story = {
   },
 }
 
-export const WithIcon: Story = {
+export const ComIcone: Story = {
   render: () => (
     <YStack gap="$4" width={300}>
       <Text>Input com Ícone à Esquerda</Text>
@@ -74,7 +74,7 @@ export const WithIcon: Story = {
   ),
 }
 
-export const WithButton: Story = {
+export const ComBotao: Story = {
   render: () => (
     <YStack gap="$4" width={300}>
       <Text>Input com Botão</Text>
@@ -169,7 +169,7 @@ export const ConstraintCheck: Story = {
   )
 }
 
-export const WithHint: Story = {
+export const ComDica: Story = {
   render: () => (
     <YStack gap="$4" width={300}>
       <Text>Input com Dica</Text>

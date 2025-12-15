@@ -47,7 +47,7 @@ export const Padrao: Story = {
   render: renderDefaultField,
 }
 
-export const WithError: Story = {
+export const ComErro: Story = {
   name: 'Com Erro',
   args: {
     ...Default.args,

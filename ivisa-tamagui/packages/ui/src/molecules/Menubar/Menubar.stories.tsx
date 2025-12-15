@@ -62,7 +62,7 @@ export const Carregando: Story = {
   render: (args) => <Menubar {...args} isLoading />,
 }
 
-export const WithError: Story = {
+export const ComErro: Story = {
   render: (args) => (
     <Menubar {...args} hasError>
       <MenubarMenu>

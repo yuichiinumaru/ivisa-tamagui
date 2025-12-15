@@ -16,14 +16,6 @@ const prefRioTheme = createTheme({
   ...prefRioColors,
 });
 
-const escuroTheme = createTheme({
-  ...escuroColors,
-});
-
-const prefRioTheme = createTheme({
-  ...prefRioColors,
-});
-
 export const themes = {
   claro: claroTheme,
   escuro: escuroTheme,

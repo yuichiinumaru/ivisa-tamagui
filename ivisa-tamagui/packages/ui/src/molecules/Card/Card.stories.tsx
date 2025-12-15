@@ -92,7 +92,7 @@ export const Disabled: Story = {
   },
 }
 
-export const WithError: Story = {
+export const ComErro: Story = {
   ...Default,
   args: {
     ...Default.args,

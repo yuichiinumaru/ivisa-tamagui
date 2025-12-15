@@ -41,7 +41,7 @@ export const Padrao: Story = {
   },
 }
 
-export const Stacked: Story = {
+export const Empilhado: Story = {
   args: {
     title: 'Vendas por Região (Stacked)',
     data: stackedData,

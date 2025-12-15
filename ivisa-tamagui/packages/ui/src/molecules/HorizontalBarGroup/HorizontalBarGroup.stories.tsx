@@ -139,7 +139,7 @@ export const Carregando: Story = {
   },
 }
 
-export const WithSuccess: Story = {
+export const ComSucesso: Story = {
   args: {
     ...defaultArgs,
     isSuccess: true,
@@ -154,7 +154,7 @@ export const WithSuccess: Story = {
   },
 }
 
-export const WithWarning: Story = {
+export const ComAviso: Story = {
   args: {
     ...defaultArgs,
     isWarning: true,
@@ -169,7 +169,7 @@ export const WithWarning: Story = {
   },
 }
 
-export const WithError: Story = {
+export const ComErro: Story = {
   args: {
     ...defaultArgs,
     hasError: true,

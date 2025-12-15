@@ -104,7 +104,7 @@ export const Padrao: Story = {
   },
 }
 
-export const WithErrorAndRecovery: Story = {
+export const ComErroAndRecovery: Story = {
   render: (args) => <InteractiveStory args={args}> </InteractiveStory>,
   args: {
     componentName: 'RecoveryStory',
