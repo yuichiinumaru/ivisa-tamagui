@@ -20,9 +20,9 @@
 **Goal:** Fix Critical Logic Crashes & Core Functionality.
 
 ### 🛠️ 1.1 "Headless" Crash Fixes (Molecules)
-- [ ] **Calendar/DatePicker:** Fix critical render crash (`Cannot read properties of null (reading 'map')`). Ensure headless lib initializes with valid data. `JULES`
-- [ ] **Accordion:** Fix crash on missing data arrays. `JULES`
-- [ ] **PageHeader:** Fix `displayName` read error on children. `JULES`
+- [x] **Calendar/DatePicker:** Fix critical render crash (`Cannot read properties of null (reading 'map')`). Ensure headless lib initializes with valid data. `JULES`
+- [x] **Accordion:** Fix crash on missing data arrays. `JULES`
+- [x] **PageHeader:** Fix `displayName` read error on children. `JULES`
 - [x] **NotificationCard:** Fixed `NotificationFeed` import crashes. `JULES`
 
 ### 🛠️ 1.2 Charting Engine Reborn (Organisms)
