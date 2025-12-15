@@ -1,5 +1,5 @@
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import type { ColumnDef, ColumnFiltersState, SortingState } from '@tanstack/react-table'
 import {
   flexRender,
@@ -85,9 +85,14 @@ export function DataTable<TData, TValue>({
     showPagination = true
   }
 
+  // 🛡️ Fix: Memoize data to prevent mutation of frozen arrays (Storybook args)
+  // and ensure useReactTable has a stable reference.
+  const safeData = useMemo(() => [...(data ?? [])], [data])
+  const safeColumns = useMemo(() => columns, [columns])
+
   const table = useReactTable({
-    data: data ?? [],
-    columns,
+    data: safeData,
+    columns: safeColumns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onSortingChange: setSorting,
