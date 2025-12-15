@@ -3,7 +3,7 @@ import { ComboChart } from './ComboChart'
 import { VictoryBar, VictoryLine } from 'victory'
 
 const meta: Meta<typeof ComboChart> = {
-  title: 'Organisms/ComboChart',
+  title: 'Organismos/Gráficos/ComboChart',
   component: ComboChart,
   argTypes: {
     isLoading: { control: 'boolean' },
@@ -26,7 +26,7 @@ const dataLine = [
   { x: 'C', y: 20 },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     title: 'Misto (Barra + Linha)',
     children: (

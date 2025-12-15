@@ -14,7 +14,7 @@ const meta: Meta<typeof DiffViewer> = {
 export default meta
 type Story = StoryObj<typeof DiffViewer>
 
-export const Default: Story = {}
+export const Padrao: Story = {}
 
 export const NoChanges: Story = {
   args: {

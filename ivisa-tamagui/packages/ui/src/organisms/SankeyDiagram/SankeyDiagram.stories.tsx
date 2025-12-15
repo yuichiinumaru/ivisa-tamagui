@@ -28,7 +28,7 @@ const data = {
 }
 
 const meta: Meta<typeof SankeyDiagram> = {
-  title: 'Organisms/SankeyDiagram',
+  title: 'Organismos/Gráficos/SankeyDiagram',
   component: SankeyDiagram,
   args: {
     data,

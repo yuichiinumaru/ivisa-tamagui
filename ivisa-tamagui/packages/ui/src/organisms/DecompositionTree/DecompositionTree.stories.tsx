@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { DecompositionTree, TreeNode } from './DecompositionTree'
 
 const meta: Meta<typeof DecompositionTree> = {
-  title: 'Organisms/Complex & Custom Charts/DecompositionTree',
+  title: 'Organismos/Gráficos/DecompositionTree',
   component: DecompositionTree,
   parameters: {
     layout: 'centered',
@@ -39,7 +39,7 @@ const sampleData: TreeNode = {
   ]
 }
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     data: sampleData,
     width: 600,
@@ -47,14 +47,14 @@ export const Default: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     data: sampleData,
     isLoading: true,
   },
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   args: {
     data: sampleData,
     error: new Error('Failed to load data'),

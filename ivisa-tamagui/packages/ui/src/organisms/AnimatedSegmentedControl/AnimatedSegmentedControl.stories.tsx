@@ -25,7 +25,7 @@ const items = [
     { value: 'archived', label: 'Arquivados' },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   render: (args) => {
       const [val, setVal] = useState('all')
       return <AnimatedSegmentedControl {...args} value={val} onValueChange={(v) => {

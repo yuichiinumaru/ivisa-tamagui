@@ -38,7 +38,7 @@ const renderDefault = (args: SeparatorProps) => {
   )
 }
 
-export const Default: Story = {
+export const Padrao: Story = {
   render: renderDefault,
   args: {
     orientation: 'horizontal',
@@ -49,7 +49,7 @@ export const Default: Story = {
   },
 }
 
-export const ConstrainedWidth: Story = {
+export const RestritoWidth: Story = {
   render: (args) => (
     <YStack maxWidth={100} borderWidth={1} borderColor="$borderColor" padding="$2" gap="$2" alignItems="center">
       <Text fontSize="$2" textAlign="center">Container de 100px</Text>

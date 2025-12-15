@@ -64,7 +64,7 @@ export const ZeroData: Story = {
     },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
     args: {
       title: 'Ranking de Produtos',
       data: [],

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { AuthScreen } from './AuthScreen';
 
 const meta: Meta<typeof AuthScreen> = {
-  title: 'Organisms/AuthScreen',
+  title: 'Organismos/AuthScreen',
   component: AuthScreen,
   tags: ['autodocs'],
   argTypes: {
@@ -40,7 +40,7 @@ export const WithSocial: Story = {
   },
 };
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     isLoading: true,
   },

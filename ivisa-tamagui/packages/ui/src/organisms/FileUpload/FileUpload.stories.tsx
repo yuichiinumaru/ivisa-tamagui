@@ -36,7 +36,7 @@ export const GoldenPath: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   name: 'Carregando (Loading)',
   args: {
     isLoading: true,

@@ -41,7 +41,7 @@ export const ZeroData: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     isLoading: true,
   },

@@ -80,7 +80,7 @@ const defaultArgs = {
   onPress: action('onPress'),
 }
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: defaultArgs,
   name: 'Padrão',
   parameters: {
@@ -124,7 +124,7 @@ export const Pressable: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     ...defaultArgs,
     isLoading: true,
@@ -233,7 +233,7 @@ export const WithItemProp: Story = {
   },
 }
 
-export const Constrained: Story = {
+export const Restrito: Story = {
   ...Default,
   name: 'Container Estreito',
   render: (args) => (

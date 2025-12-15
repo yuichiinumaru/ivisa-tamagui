@@ -20,8 +20,12 @@
 - **Theming & Tokens:**
   - Fixed "Missing Token" warnings by adding `red10` and `outlineColor` to `tokens.ts`.
   - Fixed "No font size found" warnings by adding `default`, `true`, and `$3` aliases to `tamagui.config.ts`.
+  - Enforced 3-Theme Constraint: `Claro`, `Escuro`, `Pref.Rio` (removed generic `Dark` and renamed `Light` to `Claro`).
 
 ### Changed
+- **Storybook Structure:**
+  - **Localization:** Renamed hierarchy to `Átomos`, `Moléculas`, `Organismos` and standard stories to `Padrao`, `Carregando`, `Erro`.
+  - **Organization:** Consolidated all Chart organisms into `Organismos/Gráficos/` (flattening "Complex" charts).
 - **Documentation:**
   - Updated `AGENTS.md` with insights on debugging Tamagui/Storybook console errors.
 

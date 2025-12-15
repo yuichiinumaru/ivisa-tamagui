@@ -97,7 +97,7 @@ const TriggerArea = ({
   </YStack>
 )
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     items: defaultItems,
     isLoading: false,
@@ -113,7 +113,7 @@ export const Default: Story = {
   ),
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   ...Default,
   args: {
     ...Default.args,
@@ -177,7 +177,7 @@ export const PartialData: Story = {
   ),
 }
 
-export const ConstrainedWidth: Story = {
+export const RestritoWidth: Story = {
   ...Default,
   args: {
     ...Default.args,

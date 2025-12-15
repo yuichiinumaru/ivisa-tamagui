@@ -3,7 +3,7 @@ import { BoxPlotChart } from './BoxPlotChart'
 import { boxPlotData } from './BoxPlotChart.mocks'
 
 const meta: Meta<typeof BoxPlotChart> = {
-  title: 'Organisms/BoxPlotChart',
+  title: 'Organismos/Gráficos/BoxPlotChart',
   component: BoxPlotChart,
   parameters: {
     layout: 'centered',
@@ -14,7 +14,7 @@ const meta: Meta<typeof BoxPlotChart> = {
 export default meta
 type Story = StoryObj<typeof BoxPlotChart>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     data: boxPlotData,
     xKey: 'x',
@@ -26,13 +26,13 @@ export const Default: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     isLoading: true,
   },
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   args: {
     error: new Error('Failed to load'),
   },

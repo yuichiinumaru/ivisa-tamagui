@@ -37,7 +37,7 @@ const renderDefaultField = (args) => (
   </Field>
 )
 
-export const Default: Story = {
+export const Padrao: Story = {
   name: 'Padrão',
   args: {
     isLoading: false,
@@ -65,7 +65,7 @@ export const Disabled: Story = {
   render: renderDefaultField,
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   name: 'Carregando (Skeleton)',
   args: {
     ...Default.args,
@@ -90,7 +90,7 @@ export const WithRightSlot: Story = {
   ),
 }
 
-export const ConstrainedWidth: Story = {
+export const RestritoWidth: Story = {
   name: 'Largura Restrita',
   parameters: {
     docs: {

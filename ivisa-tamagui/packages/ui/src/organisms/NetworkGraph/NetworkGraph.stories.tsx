@@ -21,7 +21,7 @@ const data = {
 }
 
 const meta: Meta<typeof NetworkGraph> = {
-  title: 'Organisms/NetworkGraph',
+  title: 'Organismos/NetworkGraph',
   component: NetworkGraph,
   args: {
     data,
