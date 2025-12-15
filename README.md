@@ -29,7 +29,6 @@ bento/       # (optional) Marketing layouts from Tamagui Bento Free
 ## Requirements
 
 - Node.js 20+
-- **Yarn** (v1) - `npm` and `pnpm` are forbidden.
 - Python 3.10+ (for helper scripts)
 - Playwright browsers (install via `npx playwright install chromium`)
 
