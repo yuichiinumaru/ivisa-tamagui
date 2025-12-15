@@ -61,7 +61,7 @@ export default meta
 
 type Story = StoryObj<typeof Stack>
 
-export const Default: Story = {
+export const Padrao: Story = {
     name: "Padrão",
     args: {}
 }
@@ -115,7 +115,7 @@ export const AsChild: Story = {
     },
 }
 
-export const LongText: Story = {
+export const TextoLongo: Story = {
     name: 'Teste de Estresse: Texto Longo',
     render: (args) => (
         <VStack {...args}>
@@ -131,7 +131,7 @@ export const LongText: Story = {
     )
 };
 
-export const ConstrainedContainer: Story = {
+export const RestritoContainer: Story = {
     name: 'Teste de Estresse: Container Restrito',
     decorators: [
       (Story) => (

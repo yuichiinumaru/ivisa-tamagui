@@ -12,7 +12,7 @@ export interface AppProvidersProps extends PropsWithChildren {
   theme?: ThemeName;
 }
 
-export const AppProviders = ({ theme = 'light', children }: AppProvidersProps) => (
+export const AppProviders = ({ theme = 'claro', children }: AppProvidersProps) => (
   <TamaguiProvider config={config} defaultTheme={theme}>
     <PortalProvider shouldAddRootHost>
       <ComponentErrorBoundary componentName="AppProviders">

@@ -37,7 +37,7 @@ const meta: Meta<typeof NavLink> = {
 export default meta
 type Story = StoryObj<typeof NavLink>
 
-export const Default: Story = {
+export const Padrao: Story = {
   name: 'Padrão',
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement)
@@ -72,7 +72,7 @@ export const WithBothIcons: Story = {
   },
 }
 
-export const LongText: Story = {
+export const TextoLongo: Story = {
   name: 'Texto Longo',
   args: {
     children:
@@ -80,7 +80,7 @@ export const LongText: Story = {
   },
 }
 
-export const ConstrainedWidth: Story = {
+export const RestritoWidth: Story = {
   name: 'Largura Restrita',
   args: {
     children: 'Link Restrito',

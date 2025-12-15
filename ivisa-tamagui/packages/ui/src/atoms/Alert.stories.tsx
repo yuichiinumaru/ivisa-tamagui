@@ -36,7 +36,7 @@ export default meta
 
 type Story = StoryObj<typeof Alert>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     variant: 'default',
     title: 'Atenção!',
@@ -52,7 +52,7 @@ export const Default: Story = {
   )
 }
 
-export const Success: Story = {
+export const Sucesso: Story = {
   args: {
     variant: 'success',
     title: 'Sucesso!',
@@ -68,7 +68,7 @@ export const Success: Story = {
   )
 }
 
-export const Warning: Story = {
+export const Aviso: Story = {
     args: {
       variant: 'warning',
       title: 'Aviso!',
@@ -84,7 +84,7 @@ export const Warning: Story = {
     )
   }
 
-export const Destructive: Story = {
+export const Destrutivo: Story = {
   args: {
     variant: 'destructive',
     title: 'Erro!',
@@ -100,7 +100,7 @@ export const Destructive: Story = {
   )
 }
 
-export const LongText: Story = {
+export const TextoLongo: Story = {
     args: {
       variant: 'default',
       title: 'Texto Longo',
@@ -115,7 +115,7 @@ export const LongText: Story = {
       )
   }
 
-  export const Constrained: Story = {
+  export const Restrito: Story = {
       render: (args) => (
           <div style={{ maxWidth: '300px', border: '1px solid red', padding: '1rem' }}>
               <Alert {...args}>
@@ -132,7 +132,7 @@ export const LongText: Story = {
       },
   }
 
-  export const OnlyTitle: Story = {
+  export const ApenasTitulo: Story = {
     args: {
       variant: 'default',
       title: 'Apenas um título, sem descrição.',

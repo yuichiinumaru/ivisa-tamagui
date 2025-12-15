@@ -42,7 +42,7 @@ export default meta
 
 type Story = StoryObj<typeof Drawer>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     title: 'Editar Perfil',
     description: 'Faça alterações no seu perfil aqui. Clique em salvar quando terminar.',
@@ -74,7 +74,7 @@ export const Default: Story = {
   ),
 }
 
-export const LoadingState: Story = {
+export const CarregandoState: Story = {
   args: {
     ...Default.args,
     isLoading: true,
@@ -88,7 +88,7 @@ export const LoadingState: Story = {
   ),
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   args: {
     ...Default.args,
     hasError: true,

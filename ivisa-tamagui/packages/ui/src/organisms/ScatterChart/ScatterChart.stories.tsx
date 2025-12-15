@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ScatterChart } from './ScatterChart'
 
 const meta: Meta<typeof ScatterChart> = {
-  title: 'Organisms/ScatterChart',
+  title: 'Organismos/Gráficos/ScatterChart',
   component: ScatterChart,
   argTypes: {
     isLoading: { control: 'boolean' },
@@ -21,7 +21,7 @@ const scatterData = [
   { x: 40, y: 60, size: 20 },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     title: 'Dispersão de Casos',
     data: scatterData,

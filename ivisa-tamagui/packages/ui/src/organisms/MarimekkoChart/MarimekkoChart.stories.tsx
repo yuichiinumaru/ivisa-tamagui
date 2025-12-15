@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { MarimekkoChart } from './MarimekkoChart'
 
 const meta: Meta<typeof MarimekkoChart> = {
-  title: 'Organisms/Complex & Custom Charts/MarimekkoChart',
+  title: 'Organismos/Gráficos/MarimekkoChart',
   component: MarimekkoChart,
   parameters: {
     layout: 'centered',
@@ -20,7 +20,7 @@ const sampleData = [
   { segment: 'Segment 4', marketShare: 10, growth: 5 },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     data: sampleData,
     xKey: 'segment',
@@ -31,7 +31,7 @@ export const Default: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     data: sampleData,
     xKey: 'segment',
@@ -41,7 +41,7 @@ export const Loading: Story = {
   },
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   args: {
     data: sampleData,
     xKey: 'segment',

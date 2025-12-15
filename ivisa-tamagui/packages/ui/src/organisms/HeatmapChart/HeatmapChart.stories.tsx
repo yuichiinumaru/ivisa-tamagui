@@ -20,7 +20,7 @@ const generateData = () => {
 }
 
 const meta: Meta<typeof HeatmapChart> = {
-  title: 'Organisms/HeatmapChart',
+  title: 'Organismos/Gráficos/HeatmapChart',
   component: HeatmapChart,
   args: {
     data: generateData(),

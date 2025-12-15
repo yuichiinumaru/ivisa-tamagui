@@ -13,9 +13,9 @@ const meta: Meta<typeof PDFPreview> = {
 export default meta
 type Story = StoryObj<typeof PDFPreview>
 
-export const Default: Story = {}
+export const Padrao: Story = {}
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     isLoading: true,
   },

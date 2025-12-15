@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { FilterBar } from './FilterBar'
 
 const meta: Meta<typeof FilterBar> = {
-  title: 'Organisms/FilterBar',
+  title: 'Organismos/FilterBar',
   component: FilterBar,
   parameters: {
     layout: 'padded',
@@ -50,7 +50,7 @@ const filters = [
   }
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     filters: filters,
     onFilterChange: (values) => console.log('Filters changed:', values),
