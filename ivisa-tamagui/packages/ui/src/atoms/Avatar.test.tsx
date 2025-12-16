@@ -1,12 +1,14 @@
-import { render, screen } from '../test-utils'
+import { render, screen, fireEvent } from '../test-utils'
 import { Avatar } from './Avatar'
 import React from 'react'
 
 describe('Avatar', () => {
   it('renders image', () => {
     render(<Avatar src="https://github.com/shadcn.png" fallback="CN" />)
-    const img = screen.getByRole('img')
+    const img = screen.getByRole('img', { hidden: true })
     expect(img).toHaveAttribute('src', 'https://github.com/shadcn.png')
+
+    fireEvent.load(img)
   })
 
   it('renders fallback', () => {

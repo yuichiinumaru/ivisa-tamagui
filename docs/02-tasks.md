@@ -40,17 +40,17 @@
 **Goal:** Fix "Ugly" UI, Broken Assets, and Prop Leaks.
 
 ### 🎨 2.1 Atoms & Assets
-- [ ] **Avatar:** Fix broken image assets (404s). `JULES`
-- [ ] **Empty:** Fix broken illustration path. `JULES`
-- [ ] **Button:** Add visible Spinner for loading state; fix height jumps. `JULES`
-- [ ] **Input:** Fix icon alignment; remove `uncontrolled` warnings. `JULES`
-- [ ] **Tooltip:** Fix z-index clipping. `JULES`
+- [x] **Avatar:** Fix broken image assets (404s). `JULES`
+- [x] **Empty:** Fix broken illustration path. `JULES`
+- [x] **Button:** Add visible Spinner for loading state; fix height jumps. `JULES`
+- [x] **Input:** Fix icon alignment; remove `uncontrolled` warnings. `JULES`
+- [x] **Tooltip:** Fix z-index clipping. `JULES`
 
 ### 🎨 2.2 Molecules Polish
-- [ ] **Card:** Fix Hero Image assets; implement text overflow for long titles. `JULES`
-- [ ] **AvatarGroup:** Fix border clipping on counters. `JULES`
-- [ ] **DropdownMenu:** Fix z-index clipping by parent. `JULES`
-- [ ] **Select:** Stop `hasError` prop leakage to DOM. `JULES`
+- [x] **Card:** Fix Hero Image assets; implement text overflow for long titles. `JULES`
+- [x] **AvatarGroup:** Fix border clipping on counters. `JULES`
+- [x] **DropdownMenu:** Fix z-index clipping by parent. `JULES`
+- [x] **Select:** Stop `hasError` prop leakage to DOM. `JULES`
 
 ---
 

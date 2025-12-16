@@ -71,7 +71,7 @@ export const Padrao: Story = {
   args: {
     size: '$10',
     shape: 'circle',
-    imageUrl: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
+    imageUrl: 'https://github.com/tamagui.png',
     fallbackText: 'AV',
     accessibilityLabel: 'Avatar de Usuário',
   },
