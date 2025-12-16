@@ -26,13 +26,13 @@
 - [x] **NotificationCard:** Fixed `NotificationFeed` import crashes. `JULES`
 
 ### 🛠️ 1.2 Charting Engine Reborn (Organisms)
-- [ ] **Refactor to Recharts:** Replace Victory with Recharts for:
-    - [ ] `BarChart` / `ColumnChart`
-    - [ ] `LineChart`
-    - [ ] `PieChart` / `DonutChart`
-    - [ ] `AreaChart`
-- [ ] **Fix SVG Nesting:** Ensure no `<tspan>` inside `<text>` violations. `JULES`
-- [ ] **Fix ResizeObserver:** Solve infinite loop performance degradation. `JULES`
+- [x] **Refactor to Recharts:** Replace Victory with Recharts for:
+    - [x] `BarChart` / `ColumnChart`
+    - [x] `LineChart`
+    - [x] `PieChart` / `DonutChart`
+    - [x] `AreaChart`
+- [x] **Fix SVG Nesting:** Ensure no `<tspan>` inside `<text>` violations. `JULES`
+- [x] **Fix ResizeObserver:** Solve infinite loop performance degradation. `JULES`
 
 ---
 

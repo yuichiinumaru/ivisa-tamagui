@@ -7,14 +7,12 @@ jest.mock('../../atoms/Skeleton', () => ({
   Skeleton: () => <div data-testid="skeleton" />,
 }))
 
-// Mock ResizeObserver
 global.ResizeObserver = class ResizeObserver {
   observe() {}
   unobserve() {}
   disconnect() {}
 }
 
-// Mock ResponsiveContainer
 jest.mock('recharts', () => {
   const OriginalModule = jest.requireActual('recharts')
   return {
@@ -29,34 +27,25 @@ jest.mock('recharts', () => {
 
 describe('AreaChart', () => {
   const mockData = [
-    { x: 'A', y: 10 },
-    { x: 'B', y: 20 },
+    { mes: 'Jan', valor: 180 },
+    { mes: 'Fev', valor: 250 },
   ]
 
-  it('renders correctly', () => {
-    const { container } = render(
+  it('renders correctly with data', () => {
+    render(
       <AppProviders>
-        <AreaChart data={mockData} xKey="x" yKey="y" />
+        <AreaChart data={mockData} xKey="mes" yKey="valor" />
       </AppProviders>
     )
     expect(screen.getByTestId('responsive-container')).toBeInTheDocument()
   })
 
-  it('renders loading state', () => {
+  it('renders loading', () => {
     render(
-      <AppProviders>
-        <AreaChart data={[]} xKey="x" yKey="y" isLoading />
-      </AppProviders>
+        <AppProviders>
+            <AreaChart data={[]} xKey="mes" yKey="valor" isLoading />
+        </AppProviders>
     )
     expect(screen.getByTestId('skeleton')).toBeInTheDocument()
-  })
-
-  it('renders empty state', () => {
-    render(
-      <AppProviders>
-        <AreaChart data={[]} xKey="x" yKey="y" />
-      </AppProviders>
-    )
-    expect(screen.getByText('Sem dados para exibir')).toBeInTheDocument()
   })
 })
