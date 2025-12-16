@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { ParallelCoordinates } from './ParallelCoordinates'
 
 const meta: Meta<typeof ParallelCoordinates> = {
-  title: 'Organisms/Complex & Custom Charts/ParallelCoordinates',
+  title: 'Organismos/Gráficos/ParallelCoordinates',
   component: ParallelCoordinates,
   parameters: {
     layout: 'centered',
@@ -20,7 +20,7 @@ const sampleData = [
   { economy: 1, cylinders: 8, displacement: 300, power: 200, weight: 4000, acceleration: 8 },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     data: sampleData,
     attributes: ['economy', 'cylinders', 'displacement', 'power', 'weight', 'acceleration'],
@@ -29,7 +29,7 @@ export const Default: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     data: sampleData,
     attributes: ['economy'],
@@ -37,7 +37,7 @@ export const Loading: Story = {
   },
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   args: {
     data: sampleData,
     attributes: ['economy'],

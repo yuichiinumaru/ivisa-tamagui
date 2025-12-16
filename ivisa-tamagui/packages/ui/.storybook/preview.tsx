@@ -10,7 +10,7 @@ const allThemes = Object.keys(config.themes)
 const preview: Preview = {
   decorators: [
     (Story, context) => {
-      const theme = context.globals.theme || "light"
+      const theme = context.globals.theme || "claro"
 
       return (
         <TamaguiProvider config={config} defaultTheme={theme}>
@@ -21,7 +21,7 @@ const preview: Preview = {
   ],
 
   initialGlobals: {
-    theme: allThemes[0] ?? "light",
+    theme: allThemes[0] ?? "claro",
   },
 
   globalTypes: {

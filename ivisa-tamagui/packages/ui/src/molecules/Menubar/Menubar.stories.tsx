@@ -26,7 +26,7 @@ export default meta
 
 type Story = StoryObj<typeof Menubar>
 
-export const Default: Story = {
+export const Padrao: Story = {
   render: (args) => (
     <Menubar {...args}>
       <MenubarMenu>
@@ -58,11 +58,11 @@ export const Default: Story = {
   ),
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   render: (args) => <Menubar {...args} isLoading />,
 }
 
-export const WithError: Story = {
+export const ComErro: Story = {
   render: (args) => (
     <Menubar {...args} hasError>
       <MenubarMenu>

@@ -3,7 +3,7 @@ import { GaugeChart } from './GaugeChart'
 import { Text } from 'tamagui'
 
 const meta: Meta<typeof GaugeChart> = {
-  title: 'Organisms/GaugeChart',
+  title: 'Organismos/Gráficos/GaugeChart',
   component: GaugeChart,
   argTypes: {
     isLoading: { control: 'boolean' },
@@ -19,7 +19,7 @@ const meta: Meta<typeof GaugeChart> = {
 export default meta
 type Story = StoryObj<typeof GaugeChart>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     title: 'Meta de Vacinação',
     value: 75,
@@ -36,7 +36,7 @@ export const RadialVariant: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   args: {
     title: 'Carregando...',
     value: 0,
@@ -44,7 +44,7 @@ export const Loading: Story = {
   },
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   args: {
     title: 'Erro',
     value: 0,

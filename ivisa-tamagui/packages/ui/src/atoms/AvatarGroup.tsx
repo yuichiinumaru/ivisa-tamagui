@@ -16,6 +16,8 @@ const AvatarGroupFrame = styled(YStack, {
       true: {
         '& > *': {
           marginLeft: '-$2',
+          borderWidth: 2,
+          borderColor: '$background',
         },
       },
     },

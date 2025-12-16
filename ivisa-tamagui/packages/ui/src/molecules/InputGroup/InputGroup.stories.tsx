@@ -39,7 +39,7 @@ const meta: Meta<typeof InputGroup> = {
 export default meta
 type Story = StoryObj<typeof InputGroup>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     isDisabled: false,
     hasError: false,

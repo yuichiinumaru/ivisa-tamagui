@@ -124,7 +124,7 @@ const render = (args) => (
   </Popover>
 )
 
-export const Default: Story = {
+export const Padrao: Story = {
   name: 'Padrão',
   args: {
     isLoading: false,
@@ -134,7 +134,7 @@ export const Default: Story = {
   render,
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   name: 'Carregando',
   args: {
     isLoading: true,
@@ -142,7 +142,7 @@ export const Loading: Story = {
   render,
 }
 
-export const ErrorState: Story = {
+export const Erro: Story = {
   name: 'Estado de Erro',
   args: {
     hasError: true,
@@ -158,7 +158,7 @@ export const Disabled: Story = {
   render,
 }
 
-export const Constrained: Story = {
+export const Restrito: Story = {
   name: 'Container Estreito',
   args: {
     isLoading: false,

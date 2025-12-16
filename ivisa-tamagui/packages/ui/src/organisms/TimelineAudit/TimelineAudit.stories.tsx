@@ -37,4 +37,4 @@ const meta: Meta<typeof TimelineAudit> = {
 export default meta
 type Story = StoryObj<typeof TimelineAudit>
 
-export const Default: Story = {}
+export const Padrao: Story = {}

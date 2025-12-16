@@ -4,7 +4,7 @@ import { WizardForm } from './WizardForm'
 import { z } from 'zod'
 
 const meta: Meta<typeof WizardForm> = {
-  title: 'Organisms/WizardForm',
+  title: 'Organismos/WizardForm',
   component: WizardForm,
   parameters: {
     layout: 'centered',
@@ -56,7 +56,7 @@ const steps = [
   },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     steps: steps,
     onSubmit: (data) => console.log('Form Submitted:', data),

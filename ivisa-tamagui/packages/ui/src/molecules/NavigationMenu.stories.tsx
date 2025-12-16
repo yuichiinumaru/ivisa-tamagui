@@ -34,7 +34,7 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     isLoading: false,
     hasError: false,
@@ -81,7 +81,7 @@ export const WithRightSlot: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
   ...Default,
   args: {
     ...Default.args,

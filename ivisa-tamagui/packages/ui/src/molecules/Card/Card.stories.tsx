@@ -41,7 +41,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 // Base story using composition
-export const Default: Story = {
+export const Padrao: Story = {
   render: (args) => (
     <Card width={350} {...args}>
       <CardHeader>
@@ -69,34 +69,48 @@ export const Default: Story = {
 }
 
 export const Elevated: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     variant: 'elevated',
   },
 }
 
-export const Loading: Story = {
-  ...Default,
+export const Carregando: Story = {
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isLoading: true,
   },
 }
 
-export const Disabled: Story = {
-  ...Default,
+export const Desabilitado: Story = {
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isDisabled: true,
   },
 }
 
-export const WithError: Story = {
-  ...Default,
+export const ComErro: Story = {
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     hasError: true,
+  },
+}
+
+export const ComImagemHero: Story = {
+  render: (args) => <Card width={350} {...args} />,
+  args: {
+    ...Padrao.args,
+    data: {
+      title: 'Cartão com Imagem',
+      description: 'Exemplo de cartão usando uma imagem de destaque (hero image).',
+      content: <Text>Conteúdo do cartão.</Text>,
+      heroImage: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80',
+    },
+    actions: <Button>Ação</Button>,
   },
 }
 
@@ -134,7 +148,7 @@ export const PartialData: Story = {
 }
 
 
-export const Constrained: Story = {
+export const Restrito: Story = {
     render: (args) => (
         <YStack width={280} ai="center">
              <Card {...args}>

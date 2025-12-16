@@ -11,14 +11,14 @@ exports[`Button matches snapshot 1`] = `
       style="display: contents;"
     >
       <span
-        class=" t_light is_Theme"
+        class=" t_claro is_Theme"
         style="color: var(--color); display: contents;"
       >
         <button
           class="is_Button "
           data-disable-theme="true"
           role="button"
-          style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; min-width: 0px; flex-shrink: 0; padding-right: var(--t-space-lg); padding-left: var(--t-space-lg); height: var(--t-size-md); justify-content: center; align-items: center; flex-wrap: nowrap; flex-direction: row; cursor: pointer; background-color: var(--primary); border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; opacity: 1; gap: var(--t-space-sm); color: var(--primaryForeground);"
+          style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; min-width: 0px; flex-shrink: 0; padding-right: var(--t-space-lg); padding-left: var(--t-space-lg); height: var(--t-size-md); justify-content: center; align-items: center; flex-wrap: nowrap; flex-direction: row; cursor: pointer; background-color: var(--primary); border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; outline-color: rgba(0, 0, 0, 0); border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; opacity: 1; gap: var(--t-space-sm); color: var(--primaryForeground);"
           tabindex="0"
         >
           <div

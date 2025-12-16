@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Textarea renders multiline textbox with accessible label and default styles 1`] = `
 <DocumentFragment>
@@ -11,7 +11,7 @@ exports[`Textarea renders multiline textbox with accessible label and default st
       style="display: contents;"
     >
       <span
-        class=" t_light is_Theme"
+        class=" t_claro is_Theme"
         style="color: var(--color); display: contents;"
       >
         <div
@@ -23,9 +23,10 @@ exports[`Textarea renders multiline textbox with accessible label and default st
             <input
               aria-invalid="false"
               aria-label="Description"
-              class="is_TextArea font_body _btc-0hover-borderColor69916956 _brc-0hover-borderColor69916956 _borderBottomColor-0hover-borderColor69916956 _borderLeftColor-0hover-borderColor69916956 _btc-0focus-transparent _brc-0focus-transparent _borderBottomColor-0focus-transparent _borderLeftColor-0focus-transparent _outlineWidth-0focus-visible-2px _outlineStyle-0focus-visible-solid _btw-0focus-0px _brw-0focus-0px _borderBottomWidth-0focus-0px _borderLeftWidth-0focus-0px _borderBottomStyle-0focus-solid _borderTopStyle-0focus-solid _borderLeftStyle-0focus-solid _borderRightStyle-0focus-solid _o-0disabled-0--6 _ws-pre-wrap _pr-t-space-0 _pl-t-space-0 _h-auto _ff-f-family _pt-t-space-0 _pb-t-space-0 _btw-0px _brw-0px _borderBottomWidth-0px _borderLeftWidth-0px _outlineWidth-0px _col-color _btc-transparent _brc-transparent _borderBottomColor-transparent _borderLeftColor-transparent _backgroundColor-transparent _minWidth-0px _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid _w-10037 _minHeight-124px is_Textarea font_body "
+              class="is_TextArea font_body _btc-0hover-borderColor69916956 _brc-0hover-borderColor69916956 _borderBottomColor-0hover-borderColor69916956 _borderLeftColor-0hover-borderColor69916956 _btc-0focus-transparent _brc-0focus-transparent _borderBottomColor-0focus-transparent _borderLeftColor-0focus-transparent _outlineColor-0focus-visible-outlineColo114 _outlineWidth-0focus-visible-2px _outlineStyle-0focus-visible-solid _btw-0focus-0px _brw-0focus-0px _borderBottomWidth-0focus-0px _borderLeftWidth-0focus-0px _borderBottomStyle-0focus-solid _borderTopStyle-0focus-solid _borderLeftStyle-0focus-solid _borderRightStyle-0focus-solid _o-0disabled-0--6 _ws-pre-wrap _pr-t-space-0 _pl-t-space-0 _h-auto _ff-f-family _fontWeight-f-weight-3 _ls-f-letterSpa1360334203 _fontSize-f-size-3 _lh-f-lineHeigh112922 _pt-t-space-0 _pb-t-space-0 _btw-0px _brw-0px _borderBottomWidth-0px _borderLeftWidth-0px _outlineWidth-0px _col-color _btc-transparent _brc-transparent _borderBottomColor-transparent _borderLeftColor-transparent _backgroundColor-transparent _minWidth-0px _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid _w-10037 _minHeight-124px is_Textarea font_body "
               data-disable-theme="true"
               id=":r1:"
+              placeholdertextcolor="var(--c-gray10)"
               rows="4"
               tabindex="0"
               value="Initial value"

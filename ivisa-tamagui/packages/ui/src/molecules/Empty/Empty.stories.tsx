@@ -89,6 +89,16 @@ export const ApenasTitulo: Story = {
   },
 }
 
+export const ComImagem: Story = {
+  name: 'Com Imagem',
+  args: {
+    title: 'Galeria Vazia',
+    description: 'Adicione fotos para começar.',
+    image: 'https://placehold.co/400x300.png',
+    actions: <Button>Upload</Button>,
+  },
+}
+
 export const ContainerEstreito: Story = {
   name: 'Container Estreito',
   args: {

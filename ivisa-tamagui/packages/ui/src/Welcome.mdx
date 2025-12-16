@@ -1,18 +1,34 @@
-import { Meta } from "@storybook/blocks";
+import { Meta, Canvas } from "@storybook/blocks";
+import * as DataTableStories from './organisms/DataTable/DataTable.stories';
 
 <Meta title="Bem-vindo" />
 
-# Bem-vindo ao Design System @ivisa/ui
+# Design System @ivisa/ui 🚀
 
-Este é o catálogo de componentes, átomos, moléculas e organismos da nossa interface.
+Bem-vindo ao catálogo oficial de componentes da IVISA.
 
-## Estrutura
+## 🎨 Temas e Personalização
 
-- **Átomos**: Componentes básicos e indivisíveis (ex: Botões, Badges, Tipografia).
-- **Moléculas**: Combinações de átomos (ex: Inputs com labels, Checkboxes com texto).
-- **Organismos**: Estruturas complexas formadas por moléculas e átomos (ex: Tabelas, Dashboards, Navegação).
+Este Design System suporta múltiplos temas para atender diferentes contextos.
+**Experimente agora:** Utilize o ícone de pincel (🖌️) na barra de ferramentas superior para alternar entre:
 
-## Fontes
+*   **Light** (Padrão): Limpo, profissional, alto contraste.
+*   **Dark**: Modo noturno equilibrado.
+*   **Escuro**: Variante "Glassmorphism" com fundos translúcidos e tons de azul profundo (Cyberpunk/Futurista).
+*   **Pref.Rio**: Tema institucional seguindo a paleta oficial da Prefeitura do Rio (Azul/Cinza).
 
-A fonte utilizada neste projeto é a **Cera Pro**.
-Ela está sendo servida localmente para garantir consistência em todos os dispositivos.
+## 🏆 Organismos em Destaque
+
+Nossos organismos são componentes complexos que integram lógica de negócios e UI.
+
+### DataTable
+Tabelas de alta performance com ordenação, paginação e suporte a estados de carregamento.
+
+<Canvas of={DataTableStories.Padrao} />
+
+## 📚 Documentação
+Consulte a pasta `docs/` para guias detalhados de arquitetura e contribuição.
+
+- **Átomos**: Blocos de construção (Botões, Inputs).
+- **Moléculas**: Componentes funcionais (Forms, Cards).
+- **Organismos**: Lógica complexa (Tabelas, Gráficos).

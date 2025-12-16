@@ -2,12 +2,17 @@
 
 ## [Unreleased]
 
+### Added
+- **Themes:**
+  - `Escuro`: New Dark Glassmorphism theme with deep blue tones and translucent backgrounds.
+  - `Pref.Rio`: Institutional theme following the official color palette of Rio de Janeiro City Hall and Arial/Helvetica typography.
+- **Storybook:**
+  - Added theme switcher to the toolbar.
+  - Updated `Welcome.mdx` to showcase themes and `DataTable`.
+
 ### Fixed
 - **Critical Crashes:**
-  - `Select`: Added missing `Viewport` static property to `Select` composite to prevent "Element type is invalid" crashes in Forms.
-  - `Sidebar`: Fixed `MobileSidebar` crash by using `Sheet.Trigger` and `Sheet.Content` composite properties instead of named exports.
-  - `NotificationFeed`: Fixed invalid imports (removed `ScrollArea` and `Button` import from `tamagui` core, redirected to Atoms).
-  - `Drawer`: Removed invalid "Composition" story that attempted to use internal components without proper Context providers.
+  - `DataTable`: Fixed "Cannot assign to read only property" error by memoizing `data` and `columns` props before passing them to `useReactTable`. This prevents mutation of frozen Storybook args.
 
 - **DOM Nesting Violations:**
   - `DataTable`: Fixed illegal HTML structure (`<thead>` inside `<div>`) by moving the `tag="table"` prop to the inner container.
@@ -15,8 +20,12 @@
 - **Theming & Tokens:**
   - Fixed "Missing Token" warnings by adding `red10` and `outlineColor` to `tokens.ts`.
   - Fixed "No font size found" warnings by adding `default`, `true`, and `$3` aliases to `tamagui.config.ts`.
+  - Enforced 3-Theme Constraint: `Claro`, `Escuro`, `Pref.Rio` (removed generic `Dark` and renamed `Light` to `Claro`).
 
 ### Changed
+- **Storybook Structure:**
+  - **Localization:** Renamed hierarchy to `Átomos`, `Moléculas`, `Organismos` and standard stories to `Padrao`, `Carregando`, `Erro`.
+  - **Organization:** Consolidated all Chart organisms into `Organismos/Gráficos/` (flattening "Complex" charts).
 - **Documentation:**
   - Updated `AGENTS.md` with insights on debugging Tamagui/Storybook console errors.
 

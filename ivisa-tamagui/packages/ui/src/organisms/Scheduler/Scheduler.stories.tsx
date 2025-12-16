@@ -38,7 +38,7 @@ const mockEvents = [
   },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
   args: {
     events: mockEvents,
     onEventClick: (e) => alert(`Clicou no evento: ${e.title}`),
@@ -46,7 +46,7 @@ export const Default: Story = {
   },
 }
 
-export const Loading: Story = {
+export const Carregando: Story = {
     args: {
         isLoading: true,
         events: []

@@ -88,7 +88,7 @@ const InteractiveStory = ({
   )
 }
 
-export const Default: Story = {
+export const Padrao: Story = {
   render: (args) => <InteractiveStory args={args}> </InteractiveStory>,
   args: {
     componentName: 'DefaultStory',
@@ -104,7 +104,7 @@ export const Default: Story = {
   },
 }
 
-export const WithErrorAndRecovery: Story = {
+export const ComErroAndRecovery: Story = {
   render: (args) => <InteractiveStory args={args}> </InteractiveStory>,
   args: {
     componentName: 'RecoveryStory',
