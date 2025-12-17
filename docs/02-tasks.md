@@ -61,6 +61,7 @@
 - [ ] **DashboardShell:** Fix loading skeleton layout shifts. `JULES`
 - [ ] **Timeline:** Fix SVG transform errors. `JULES`
 - [ ] **Form:** Fix z-index clipping of internal popovers. `JULES`
+- [ ] **AgentAnimations:** Create `AgentAnimationPanel` and `AgentAnimationModal` for visualizing agent events. `JULES`
 
 ---
 
