@@ -61,3 +61,25 @@
     const { animationName, animationDuration, ...validProps } = props;
     return <Frame {...validProps} />;
     ```
+
+### 2.3 Text Nodes in React Native Web
+*   **Context**: React Native Web (and Tamagui) requires all text strings to be wrapped in `<Text>` components. Raw strings inside `View` (div) cause "Unexpected text node" errors.
+*   **Rule**: Always wrap children that might be strings in `<Text>`.
+*   **Standard**:
+    ```typescript
+    <View>
+      {typeof children === 'string' ? <Text>{children}</Text> : children}
+    </View>
+    ```
+
+### 2.4 Controlled vs Uncontrolled Inputs
+*   **Context**: Passing both `value` and `defaultValue` to an input causes React warnings and undefined behavior.
+*   **Rule**: Logic must strictly separate controlled (`value` !== undefined) and uncontrolled states.
+*   **Standard**:
+    ```typescript
+    // Do NOT force value="" if undefined
+    <Input
+      value={value} // if undefined, React treats as uncontrolled
+      defaultValue={defaultValue}
+    />
+    ```

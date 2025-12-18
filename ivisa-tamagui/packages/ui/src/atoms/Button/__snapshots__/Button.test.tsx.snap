@@ -25,7 +25,11 @@ exports[`Button matches snapshot 1`] = `
             class="_dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0"
             style="flex-direction: row; align-items: center; opacity: 1; gap: 8px;"
           >
-            Snapshot
+            <span
+              class="font_unset _dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color"
+            >
+              Snapshot
+            </span>
           </div>
         </button>
         <div
