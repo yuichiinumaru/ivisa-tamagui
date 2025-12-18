@@ -1,113 +1,107 @@
+
+import {
+  DataTable,
+  DataTableProps,
+} from './DataTable'
 import type { Meta, StoryObj } from '@storybook/react'
-import { DataTable } from './DataTable'
-import { Text, YStack } from 'tamagui'
 import { createColumnHelper } from '@tanstack/react-table'
+import { MoreHorizontal } from '@tamagui/lucide-icons'
+import { Button } from '../../atoms/Button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '../../molecules/DropdownMenu'
 
 const meta: Meta<typeof DataTable> = {
   title: 'Organismos/DataTable',
   component: DataTable,
-  argTypes: {
-    isLoading: { control: 'boolean' },
-    error: { control: 'text' },
+  parameters: {
+    layout: 'padded',
   },
 }
 
 export default meta
 type Story = StoryObj<typeof DataTable>
 
-type Payment = {
+type Person = {
   id: string
-  amount: number
-  status: 'pending' | 'processing' | 'success' | 'failed'
-  email: string
-  trend: number[]
+  firstName: string
+  lastName: string
+  age: number
+  status: 'active' | 'inactive' | 'pending'
 }
 
-const data: Payment[] = [
-  {
-    id: '728ed52f',
-    amount: 100,
-    status: 'pending',
-    email: 'm@example.com',
-    trend: [10, 20, 15, 30, 40, 35, 50],
-  },
-  {
-    id: '489e1d42',
-    amount: 125,
-    status: 'processing',
-    email: 'example@gmail.com',
-    trend: [50, 40, 45, 30, 20, 25, 10],
-  },
-]
-
-const columnHelper = createColumnHelper<Payment>()
-
-const SimpleSparkline = ({ data }: { data: number[] }) => {
-  const max = Math.max(...data)
-  const min = Math.min(...data)
-  const range = max - min || 1
-  const height = 20
-  const width = 100
-  const step = width / (data.length - 1)
-
-  const points = data
-    .map((val, index) => {
-      const x = index * step
-      const y = height - ((val - min) / range) * height
-      return `${x},${y}`
-    })
-    .join(' ')
-
-  return (
-    <svg width={width} height={height} style={{ overflow: 'visible' }}>
-      <polyline
-        points={points}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-    </svg>
-  )
-}
+const columnHelper = createColumnHelper<Person>()
 
 const columns = [
+  columnHelper.accessor('firstName', {
+    header: 'Nome',
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor('lastName', {
+    header: 'Sobrenome',
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor('age', {
+    header: 'Idade',
+    cell: (info) => info.getValue(),
+  }),
   columnHelper.accessor('status', {
     header: 'Status',
-    cell: (info) => <Text>{info.getValue()}</Text>,
+    cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor('email', {
-    header: 'Email',
-    cell: (info) => <Text>{info.getValue()}</Text>,
-  }),
-  columnHelper.accessor('amount', {
-    header: 'Amount',
-    cell: (info) => <Text>${info.getValue()}</Text>,
-  }),
-  columnHelper.accessor('trend', {
-    header: 'Trend (Sparkline)',
-    cell: (info) => <SimpleSparkline data={info.getValue()} />,
+  columnHelper.display({
+    id: 'actions',
+    cell: () => (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="sm" icon={<MoreHorizontal size={16} />} />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>Editar</DropdownMenuItem>
+          <DropdownMenuItem>Excluir</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    ),
   }),
 ]
 
-export const Padrao: Story = {
+const data: Person[] = [
+  { id: '1', firstName: 'João', lastName: 'Silva', age: 30, status: 'active' },
+  { id: '2', firstName: 'Maria', lastName: 'Santos', age: 25, status: 'pending' },
+  { id: '3', firstName: 'Pedro', lastName: 'Oliveira', age: 40, status: 'inactive' },
+  { id: '4', firstName: 'Ana', lastName: 'Costa', age: 28, status: 'active' },
+  { id: '5', firstName: 'Lucas', lastName: 'Pereira', age: 35, status: 'active' },
+]
+
+export const Default: Story = {
   args: {
-    data,
     columns,
+    data,
   },
 }
 
-export const Carregando: Story = {
+export const Loading: Story = {
   args: {
-    data: [],
     columns,
+    data: [],
     isLoading: true,
   },
 }
 
-export const Erro: Story = {
+export const EmptyState: Story = {
   args: {
-    data: [],
     columns,
-    error: new Error('Failed to fetch data'),
+    data: [],
+  },
+}
+
+export const ErrorState: Story = {
+  args: {
+    columns,
+    data: [],
+    error: new Error('Falha ao carregar dados'),
   },
 }
