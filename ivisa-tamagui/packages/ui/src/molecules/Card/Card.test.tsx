@@ -27,17 +27,17 @@ describe('Card', () => {
   it('displays a skeleton when isLoading is true', () => {
     render(<Card isLoading />)
     // Assuming Skeleton renders a specific role or testId
-    expect(screen.getByTestId('card').querySelector('.tamagui-skeleton')).toBeInTheDocument()
+    expect(screen.getAllByTestId('skeleton').length).toBeGreaterThan(0)
   })
 
   it('is disabled when isDisabled is true', () => {
     render(<Card isDisabled />)
-    expect(screen.getByTestId('card')).toHaveStyle('opacity: 0.65')
+    expect(screen.getByTestId('card')).toHaveAttribute('data-disabled', 'true')
   })
 
   it('shows an error state when hasError is true', () => {
     render(<Card hasError />)
-    expect(screen.getByTestId('card')).toHaveStyle('border-color: var(--red10)')
+    expect(screen.getByTestId('card')).toHaveAttribute('data-has-error', 'true')
   })
 
   it('renders correctly with the data prop', () => {

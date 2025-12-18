@@ -1,5 +1,5 @@
 
-import { Tooltip as TamaguiTooltip, TooltipProps as TamaguiTooltipProps, styled, Paragraph, YStack, XStack } from 'tamagui'
+import { Tooltip as TamaguiTooltip, TooltipProps as TamaguiTooltipProps, styled, Paragraph, YStack, XStack, Portal } from 'tamagui'
 import React from 'react'
 import { Skeleton } from '../../atoms/Skeleton'
 
@@ -72,7 +72,7 @@ export const Tooltip = React.forwardRef<unknown, TooltipProps>(({ children, cont
         If explicit Portal is needed, we would use <TamaguiTooltip.Portal> if available.
         According to Tamagui docs, we should place Content inside Portal.
       */}
-      <TamaguiTooltip.Portal>
+      <Portal>
         <TooltipContent hasError={hasError}>
           <TooltipArrow hasError={hasError} />
           <YStack gap="$2">
@@ -80,7 +80,7 @@ export const Tooltip = React.forwardRef<unknown, TooltipProps>(({ children, cont
             {actions && <XStack gap="$2">{actions}</XStack>}
           </YStack>
         </TooltipContent>
-      </TamaguiTooltip.Portal>
+      </Portal>
     </TamaguiTooltip>
   )
 })

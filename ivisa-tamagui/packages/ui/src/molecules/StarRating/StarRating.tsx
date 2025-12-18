@@ -115,6 +115,7 @@ const StarRatingComponent = forwardRef<TamaguiElement, StarRatingProps>(
               onHoverOut={() => !disabled && setHoverRating(null)}
               onPress={() => handlePress(ratingValue)}
               aria-label={`Avaliação ${ratingValue} de ${count}`}
+              data-testid={`star-${ratingValue}`}
             >
               <Icon
                 {...iconProps}

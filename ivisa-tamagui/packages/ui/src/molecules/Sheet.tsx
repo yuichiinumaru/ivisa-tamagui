@@ -191,6 +191,7 @@ const Sheet = withStaticProperties(SheetComponent, {
   Description: SheetDescription,
   Close: SheetClose,
   Trigger: SheetTrigger,
+  ScrollView: TamaguiSheet.ScrollView,
 })
 
 // 5. EXPORTS
