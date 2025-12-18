@@ -57,10 +57,11 @@
 ## 🌊 Wave 3: Organism Expansion (Product)
 **Goal:** High-fidelity components for real apps.
 
-- [~] **DataTable:** Fix DOM nesting violations. `JULES`
-- [ ] **DashboardShell:** Fix loading skeleton layout shifts. `JULES`
+- [x] **DataTable:** Fix DOM nesting violations. `JULES`
+- [x] **DashboardShell:** Fix loading skeleton layout shifts. `JULES`
 - [ ] **Timeline:** Fix SVG transform errors. `JULES`
 - [ ] **Form:** Fix z-index clipping of internal popovers. `JULES`
+- [x] **AgentAnimations:** Create `AgentAnimationPanel` and `AgentAnimationModal` for visualizing agent events. `JULES`
 
 ---
 
@@ -87,7 +88,7 @@
 ## 🚀 Wave 6: The AI Backend (MCP)
 **Goal:** "The Component Foundry" - Serve components to Agents.
 
-- [ ] **Component Registry:** Auto-generate JSON registry from source. `NODE`
+- [x] **Component Registry:** Auto-generate JSON registry from source. `NODE`
 - [ ] **MCP Server:** Python/FastAPI server to serve registry & docs. `PYTHON`
 - [ ] **Scaffolding Tool:** Agent tool to generate full page layouts. `MCP`
 
@@ -102,10 +103,37 @@
 
 ### 7.2 The Skeleton Crew
 - [ ] **Skeleton Audit:** Ensure every data-fetching component has a Skeleton story. `JULES`
-- [ ] **DataTable Skeleton:** Implement perfect loading state. `JULES`
+- [x] **DataTable Skeleton:** Implement perfect loading state. `JULES`
 - [ ] **Charts Skeleton:** Implement placeholder visuals for charts. `JULES`
 
 ### 7.3 Advanced Patterns
 - [ ] **Breadcrumb:** Implement "Collapse to Dropdown" behavior. `JULES`
 - [ ] **ComboButton:** Create Split/Combo Button molecule. `JULES`
 - [ ] **Component Status:** Add Stable/Experimental/Deprecated badges to docs. `JULES`
+
+---
+
+## 💠 Wave 8: Storybook Professionalization (Adobe Spectrum)
+**Goal:** Adopt patterns from Adobe Spectrum Web Components to reach enterprise grade.
+
+### 8.1 Taxonomy & Organization
+- [ ] **Docs/Canvas Separation:** Ensure `*.stories.tsx` exports `Default` for Canvas and uses MDX for Docs. `JULES`
+- [ ] **T-Shirt Sizing:** Standardize `size` props (`$sm`, `$md`, `$lg`, `$xl`) across all components. `JULES`
+- [ ] **Density Modes:** Implement `density` (Compact/Spacious) prop/context globally. `JULES`
+
+### 8.2 Component Variations
+- [ ] **Quiet Variants:** Add `variant="quiet"`/`ghost` to Inputs, Selects, Tabs, Buttons. `JULES`
+- [ ] **Static/Overlay:** Add stories for components on fixed dark/colored backgrounds. `JULES`
+- [ ] **Pending States:** Ensure visible loading states for Inputs, Selects, Buttons. `JULES`
+
+### 8.3 Micro-Behaviors & Edge Cases
+- [ ] **Mobile Views:** Add stories using Viewport to force mobile modes (e.g. Picker -> Sheet). `JULES`
+- [ ] **Virtualization:** Implement/Doc `virtualized` modes for Tables/Lists. `JULES`
+- [ ] **Drag & Drop:** Visualize "Drag Over" states for file uploads. `JULES`
+- [ ] **Stress Testing:** Add "Long Text", "Nesting" (Popover inside Dialog), and "Scroll" stories. `JULES`
+
+### 8.4 Missing Atoms (Gap Analysis)
+- [x] **Meter:** Implement capacity/relevance indicator. `JULES`
+- [x] **StatusLight:** Implement semantic dot (Green/Yellow/Red) with text. `JULES`
+- [ ] **Coachmark:** Implement onboarding popover + highlight. `JULES`
+- [ ] **Dropzone:** Implement file drag-and-drop UI. `JULES`

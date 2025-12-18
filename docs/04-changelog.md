@@ -3,12 +3,13 @@
 ## [Unreleased]
 
 ### Added
-- **Themes:**
-  - `Escuro`: New Dark Glassmorphism theme with deep blue tones and translucent backgrounds.
-  - `Pref.Rio`: Institutional theme following the official color palette of Rio de Janeiro City Hall and Arial/Helvetica typography.
-- **Storybook:**
-  - Added theme switcher to the toolbar.
-  - Updated `Welcome.mdx` to showcase themes and `DataTable`.
+- **Organisms:**
+  - `AgentAnimationPanel`: New component for visualizing real-time agent events with status indicators.
+  - `AgentAnimationModal`: New wrapper component that presents the animation panel inside a Dialog.
+- **Documentation:**
+  - `docs/09-storybook-improvement-adobe.md`: Comprehensive report on Storybook improvements based on Adobe Spectrum analysis, including gap analysis and micro-behavior recommendations.
+- **Infrastructure:**
+  - Added `ts-jest` to workspace root dev dependencies to fix test configuration issues in the monorepo.
 
 ### Fixed
 - **Critical Crashes:**
