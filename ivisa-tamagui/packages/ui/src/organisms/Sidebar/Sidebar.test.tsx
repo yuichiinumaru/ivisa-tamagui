@@ -1,7 +1,6 @@
 // @vitest-environment jsdom
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
-import { render } from '../../test-utils';
+import { fireEvent, render } from '@testing-library/react';
 import { Sidebar } from './Sidebar';
 
 jest.mock('tamagui', () => {
@@ -9,7 +8,11 @@ jest.mock('tamagui', () => {
   // Partial mock to avoid circular dep in config
   return {
     // ...jest.requireActual('tamagui'), // Avoid actual import if it triggers config
-    styled: (Comp, opts) => Comp,
+    styled: (Comp, opts) => {
+        const StyledComp = (props) => React.createElement(Comp, props);
+        StyledComp.styleable = (fn) => fn;
+        return StyledComp;
+    },
     Text: (props) => React.createElement('div', props),
     YStack: (props) => React.createElement('div', props),
     AnimatePresence: ({ children }) => React.createElement(React.Fragment, null, children),
@@ -19,6 +22,8 @@ jest.mock('tamagui', () => {
     Spacer: (props) => React.createElement('div', props),
     Theme: ({ children }) => children,
     TamaguiProvider: ({ children }) => children,
+    Separator: (props) => React.createElement('div', props),
+    ScrollView: ({ children }) => React.createElement('div', {}, children),
     createTokens: (tokens) => tokens, // Mock createTokens to satisfy other imports
     createTamagui: () => ({}),
     createTheme: (theme) => theme,
@@ -26,11 +31,28 @@ jest.mock('tamagui', () => {
   };
 });
 
-jest.mock('../../molecules/Sheet', () => ({
-    Sheet: ({ children }) => <>{children}</>,
-    SheetTrigger: ({ children }) => <>{children}</>,
-    SheetContent: ({ children }) => <>{children}</>,
-}));
+jest.mock('../../molecules/Sheet', () => {
+    const React = require('react');
+    const MockComponent = ({ children }) => React.createElement('div', {}, children);
+    return {
+        Sheet: Object.assign(MockComponent, {
+            Frame: MockComponent,
+            Overlay: MockComponent,
+            Handle: MockComponent,
+            Content: MockComponent,
+            Header: MockComponent,
+            Footer: MockComponent,
+            Title: MockComponent,
+            Description: MockComponent,
+            Close: MockComponent,
+            Trigger: MockComponent,
+            ScrollView: MockComponent,
+            Portal: MockComponent,
+        }),
+        SheetTrigger: MockComponent,
+        SheetContent: MockComponent,
+    };
+});
 
 jest.mock('../../atoms/Button', () => ({
     Button: React.forwardRef(({ icon: Icon, onPress, ...props }, ref) => (

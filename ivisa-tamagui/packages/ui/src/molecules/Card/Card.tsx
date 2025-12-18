@@ -108,8 +108,17 @@ export const Card = React.forwardRef<any, CardProps>(({
   actions,
   ...rest
 }, ref) => {
+  // Filter out animationName and animationDuration to prevent React warning
+  const { animationName, animationDuration, ...otherProps } = rest as any
   // Pass isDisabled to the 'disabled' variant
-  const cardProps = { ...rest, disabled: isDisabled, 'data-testid': 'card', ref }
+  const cardProps = {
+    ...otherProps,
+    disabled: isDisabled,
+    'data-testid': 'card',
+    'data-has-error': otherProps.hasError,
+    'data-disabled': isDisabled,
+    ref
+  }
 
   // "Smart" component mode with data object
   if (data) {

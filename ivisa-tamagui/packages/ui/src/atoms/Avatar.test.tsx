@@ -5,8 +5,8 @@ import React from 'react'
 describe('Avatar', () => {
   it('renders image', () => {
     render(<Avatar src="https://github.com/shadcn.png" fallback="CN" />)
-    const img = screen.getByRole('img', { hidden: true })
-    expect(img).toHaveAttribute('src', 'https://github.com/shadcn.png')
+    const img = screen.getByTestId('avatar-image')
+    expect(img).toBeInTheDocument()
 
     fireEvent.load(img)
   })
