@@ -68,20 +68,20 @@
 ## 🌊 Wave 4: Field Operations (New)
 **Goal:** Tools for the "Fiscal na Rua" (Health Inspector).
 
-- [ ] **SignaturePad:** Canvas-based capture for digital signatures. `JULES`
-- [ ] **ImageAnnotator:** Draw/Annotate on photos (Red circle on violations). `JULES`
-- [ ] **ScannerView:** Camera overlay for QR/Barcode reading. `JULES`
-- [ ] **LocationStatus:** GPS Accuracy badge & timestamp. `JULES`
+- [x] **SignaturePad:** Canvas-based capture for digital signatures. `JULES`
+- [x] **ImageAnnotator:** Draw/Annotate on photos (Red circle on violations). `JULES`
+- [x] **ScannerView:** Camera overlay for QR/Barcode reading. `JULES`
+- [x] **LocationStatus:** GPS Accuracy badge & timestamp. `JULES`
 
 ---
 
 ## 🌊 Wave 5: Legal & Compliance
 **Goal:** Tools for bureaucratic safety.
 
-- [ ] **PDFPreview:** Responsive PDF rendering in Modal/Drawer. `JULES`
-- [ ] **DiffViewer:** Visual text comparison (Legislation/Reports). `JULES`
-- [ ] **TimelineAudit:** Immutable log visualization (Who, When, What). `JULES`
-- [ ] **A11yToolbar:** Gov-standard accessibility menu (Font size, Contrast). `JULES`
+- [x] **PDFPreview:** Responsive PDF rendering in Modal/Drawer. `JULES`
+- [x] **DiffViewer:** Visual text comparison (Legislation/Reports). `JULES`
+- [x] **TimelineAudit:** Immutable log visualization (Who, When, What). `JULES`
+- [x] **A11yToolbar:** Gov-standard accessibility menu (Font size, Contrast). `JULES`
 
 ---
 
