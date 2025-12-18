@@ -3,13 +3,24 @@
 ## [Unreleased]
 
 ### Added
+- **Analysis:** `docs/atlassian-storybook/01-analysis.md` - Deep dive into Atlassian Design System patterns (AI, Governance, Foundations).
+- **Roadmap:** "Wave 9: Intelligence & Governance" added to `docs/02-tasks.md`.
 - **Organisms:**
-  - `AgentAnimationPanel`: New component for visualizing real-time agent events with status indicators.
-  - `AgentAnimationModal`: New wrapper component that presents the animation panel inside a Dialog.
+  - `AgentAnimationPanel`: New component for visualizing real-time agent events.
+  - `AgentAnimationModal`: New wrapper component for the panel.
+- **Atoms:**
+  - `Meter`: Capacity/relevance indicator.
+  - `StatusLight`: Semantic dot with text.
 - **Documentation:**
-  - `docs/09-storybook-improvement-adobe.md`: Comprehensive report on Storybook improvements based on Adobe Spectrum analysis, including gap analysis and micro-behavior recommendations.
+  - `docs/09-storybook-improvement-adobe.md`: Report on Storybook improvements based on Adobe Spectrum.
 - **Infrastructure:**
-  - Added `ts-jest` to workspace root dev dependencies to fix test configuration issues in the monorepo.
+  - Added `ts-jest` to workspace root dev dependencies.
+- **Themes:**
+  - `Escuro`: New Dark Glassmorphism theme with deep blue tones and translucent backgrounds.
+  - `Pref.Rio`: Institutional theme following the official color palette of Rio de Janeiro City Hall and Arial/Helvetica typography.
+- **Storybook:**
+  - Added theme switcher to the toolbar.
+  - Updated `Welcome.mdx` to showcase themes and `DataTable`.
 
 ### Fixed
 - **Critical Crashes:**
@@ -24,6 +35,7 @@
   - Enforced 3-Theme Constraint: `Claro`, `Escuro`, `Pref.Rio` (removed generic `Dark` and renamed `Light` to `Claro`).
 
 ### Changed
+- **Task Management:** Reorganized `docs/02-tasks.md` to archive completed waves and prioritize new strategic goals (Wave 9).
 - **Storybook Structure:**
   - **Localization:** Renamed hierarchy to `Átomos`, `Moléculas`, `Organismos` and standard stories to `Padrao`, `Carregando`, `Erro`.
   - **Organization:** Consolidated all Chart organisms into `Organismos/Gráficos/` (flattening "Complex" charts).
