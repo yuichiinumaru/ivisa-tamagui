@@ -9,6 +9,7 @@ import {
   Paragraph,
   SheetProps as TamaguiSheetProps,
   withStaticProperties,
+  Portal,
 } from 'tamagui'
 import React, { createContext, useContext, forwardRef } from 'react'
 import { Skeleton } from '../atoms/Skeleton'
@@ -85,7 +86,7 @@ const SheetContent = forwardRef<React.ElementRef<typeof SheetContentFrame>, Shee
     const { isLoading, hasError } = useSheetContext()
 
     return (
-      <TamaguiSheet.Portal>
+      <Portal>
         <SheetOverlay />
         <SheetContentFrame ref={ref} {...props} hasError={hasError}>
           <SheetHandle />
@@ -113,7 +114,7 @@ const SheetContent = forwardRef<React.ElementRef<typeof SheetContentFrame>, Shee
             children
           )}
         </SheetContentFrame>
-      </TamaguiSheet.Portal>
+      </Portal>
     )
   }
 )
@@ -180,7 +181,7 @@ const SheetTrigger = TamaguiSheet.Trigger
 // 4. COMPOSITE COMPONENT
 // =================================================================================================
 const Sheet = withStaticProperties(SheetComponent, {
-  Portal: TamaguiSheet.Portal,
+  Portal: Portal,
   Overlay: SheetOverlay,
   Frame: SheetContentFrame,
   Handle: SheetHandle,
@@ -191,6 +192,7 @@ const Sheet = withStaticProperties(SheetComponent, {
   Description: SheetDescription,
   Close: SheetClose,
   Trigger: SheetTrigger,
+  ScrollView: TamaguiSheet.ScrollView,
 })
 
 // 5. EXPORTS

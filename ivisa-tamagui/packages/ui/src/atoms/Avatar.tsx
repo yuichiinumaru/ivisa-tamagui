@@ -73,6 +73,7 @@ const AvatarImageComponent = React.forwardRef<HTMLImageElement, AvatarImageProps
           accessibilityLabel={accessibilityLabel}
           onLoad={() => setIsLoading(false)}
           onError={() => setIsLoading(false)}
+          data-testid="avatar-image"
           style={{ display: isLoading ? 'none' : 'flex', width: '100%', height: '100%' }}
         />
       </>

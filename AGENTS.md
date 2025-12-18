@@ -114,3 +114,9 @@ The repository follows a strict **Atomic Design** layout in `packages/ui/src/`:
     *   **Context:** Importing Atoms/Molecules (e.g., `Button`) directly from `tamagui` or `@tamagui/ui` instead of the local package (`../../atoms/Button`) causes styling inconsistencies and breaks the Design System contract.
     *   **Action:** Run `yarn lint:arch` to detect these violations.
     *   **Fix:** Replace `import { Button } from 'tamagui'` with `import { Button } from '../../atoms/Button'`.
+
+5.  **Test Failure Patterns:**
+    *   **"Missing theme":** Often caused by conflicting mocks in `test-utils` or `AppProviders`. Use a local `TamaguiProvider` wrapper in the test file.
+    *   **"SkeletonFrame.styleable is not a function":** Caused by aggressive mocking of `tamagui`. Ensure the `styled` mock returns a component with a `.styleable` method.
+    *   **"Found multiple elements":** Check for duplicate labels (e.g. inside `Select`). Use `getAllByText` or specific selectors.
+    *   **"React does not recognize prop":** Filter out `animationName`, `animationDuration` before passing props to DOM elements.

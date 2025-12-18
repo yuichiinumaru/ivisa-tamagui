@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Toggle, ToggleProps } from './Toggle';
 import { Bold, Italic, Loader } from '@tamagui/lucide-icons';
-import { userEvent, within } from '@storybook/test';
+import { userEvent, within, fn } from '@storybook/test';
 import { expect } from '@storybook/test';
 import { Stack } from 'tamagui';
 
@@ -38,6 +38,9 @@ const meta: Meta<typeof Toggle> = {
       action: 'onPressedChange',
       description: 'Função chamada quando o estado pressionado muda.',
     },
+  },
+  args: {
+    onPressedChange: fn(),
   },
   parameters: {
     docs: {

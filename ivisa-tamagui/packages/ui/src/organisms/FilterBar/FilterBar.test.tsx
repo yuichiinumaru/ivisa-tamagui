@@ -39,7 +39,7 @@ describe('FilterBar', () => {
 
     expect(screen.getByPlaceholderText('Buscar...')).toBeTruthy()
     // Select placeholder is usually rendered in a trigger or button
-    expect(screen.getByText('Status')).toBeTruthy()
+    expect(screen.getAllByText('Status').length).toBeGreaterThan(0)
     expect(screen.getByText('Data')).toBeTruthy()
   })
 
