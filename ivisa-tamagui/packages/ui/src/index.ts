@@ -105,3 +105,5 @@ export * from './fonts';
 export { default as config } from './tamagui.config';
 export * from './organisms/AgentAnimationPanel/AgentAnimationPanel';
 export * from './organisms/AgentAnimationModal/AgentAnimationModal';
+export * from './atoms/StatusLight/StatusLight';
+export * from './atoms/Meter/Meter';

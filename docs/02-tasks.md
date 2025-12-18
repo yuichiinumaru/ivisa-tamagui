@@ -59,8 +59,8 @@
 
 - [x] **DataTable:** Fix DOM nesting violations. `JULES`
 - [x] **DashboardShell:** Fix loading skeleton layout shifts. `JULES`
-- [x] **Timeline:** Fix SVG transform errors. `JULES`
-- [x] **Form:** Fix z-index clipping of internal popovers. `JULES`
+- [ ] **Timeline:** Fix SVG transform errors. `JULES`
+- [ ] **Form:** Fix z-index clipping of internal popovers. `JULES`
 - [x] **AgentAnimations:** Create `AgentAnimationPanel` and `AgentAnimationModal` for visualizing agent events. `JULES`
 
 ---
@@ -103,7 +103,7 @@
 
 ### 7.2 The Skeleton Crew
 - [ ] **Skeleton Audit:** Ensure every data-fetching component has a Skeleton story. `JULES`
-- [ ] **DataTable Skeleton:** Implement perfect loading state. `JULES`
+- [x] **DataTable Skeleton:** Implement perfect loading state. `JULES`
 - [ ] **Charts Skeleton:** Implement placeholder visuals for charts. `JULES`
 
 ### 7.3 Advanced Patterns
@@ -133,7 +133,7 @@
 - [ ] **Stress Testing:** Add "Long Text", "Nesting" (Popover inside Dialog), and "Scroll" stories. `JULES`
 
 ### 8.4 Missing Atoms (Gap Analysis)
-- [ ] **Meter:** Implement capacity/relevance indicator. `JULES`
-- [ ] **StatusLight:** Implement semantic dot (Green/Yellow/Red) with text. `JULES`
+- [x] **Meter:** Implement capacity/relevance indicator. `JULES`
+- [x] **StatusLight:** Implement semantic dot (Green/Yellow/Red) with text. `JULES`
 - [ ] **Coachmark:** Implement onboarding popover + highlight. `JULES`
 - [ ] **Dropzone:** Implement file drag-and-drop UI. `JULES`
