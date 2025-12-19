@@ -1,0 +1,5 @@
+CONSOLE: info: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+CONSOLE: warning: No font size found default {font: $body} in size tokens [$1, $2, $3, $4, $5, $6, $7, $8, $9, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $default, $true]
+NAVIGATION ERROR: Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "http://localhost:6006/iframe.html?id=%C3%A1tomos-button--primario&viewMode=story", waiting until "networkidle"

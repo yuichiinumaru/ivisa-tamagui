@@ -1,0 +1,17 @@
+CONSOLE: info: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+CONSOLE: startGroupCollapsed: [tamagui] Warning: missing token borderRadius in category radius - $4 (open for details)
+CONSOLE: info: Note: this could just be due to you not setting all the theme tokens Tamagui expects, which is harmless, but
+                    it also often can be because you have a duplicated Tamagui in your bundle, which can cause tricky bugs.
+CONSOLE: info: To see if you have duplicated dependencies, in Chrome DevTools hit CMD+P and type TamaguiProvider.
+                    If you see both a .cjs and a .mjs entry, it's duplicated.
+CONSOLE: info: You can debug that issue by opening the .mjs and .cjs files and setting a breakpoint at the top of each.
+CONSOLE: info: We only log this warning one time as it's sometimes harmless, to disable this log entirely set process.env.TAMAGUI_DISABLE_MISSING_TOKEN_LOG=1.
+CONSOLE: endGroup: console.groupEnd
+CONSOLE: warning: No font size found sm {font: $body} in size tokens [$1, $2, $3, $4, $5, $6, $7, $8, $9, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $default, $true]
+CONSOLE: warning: No font size found sm {font: $body} in size tokens [$1, $2, $3, $4, $5, $6, $7, $8, $9, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $default, $true]
+CONSOLE: warning: No font size found sm {font: $body} in size tokens [$1, $2, $3, $4, $5, $6, $7, $8, $9, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $default, $true]
+CONSOLE: warning: No font size found sm {font: $body} in size tokens [$1, $2, $3, $4, $5, $6, $7, $8, $9, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $default, $true]
+CONSOLE: warning: No font size found sm {font: $body} in size tokens [$1, $2, $3, $4, $5, $6, $7, $8, $9, $xs, $sm, $md, $lg, $xl, $2xl, $3xl, $4xl, $5xl, $default, $true]
+NAVIGATION ERROR: Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "http://localhost:6006/iframe.html?id=organismos-a11ytoolbar--padrao&viewMode=story", waiting until "networkidle"
