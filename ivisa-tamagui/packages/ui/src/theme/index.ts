@@ -20,4 +20,7 @@ export const themes = {
   claro: claroTheme,
   escuro: escuroTheme,
   'pref.rio': prefRioTheme,
+  // Default aliases
+  light: claroTheme,
+  dark: escuroTheme,
 };
