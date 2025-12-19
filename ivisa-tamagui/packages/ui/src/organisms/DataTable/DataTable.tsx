@@ -1,5 +1,5 @@
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, isValidElement } from 'react'
 import type { ColumnDef, ColumnFiltersState, SortingState } from '@tanstack/react-table'
 import {
   flexRender,
@@ -20,6 +20,8 @@ import {
   TableContainer,
   TableHeader,
   TableRow,
+  TableHeadText,
+  TableCellText,
 } from './DataTable.parts'
 
 // --- Component Definition ---
@@ -57,6 +59,13 @@ export interface DataTableProps<TData, TValue> {
   localization?: Partial<DataTableLocalization>
 }
 
+// Helper for Text Wrapping
+const renderCellContent = (content: React.ReactNode, isHeader: boolean) => {
+  if (isValidElement(content)) return content
+  const Wrapper = isHeader ? TableHeadText : TableCellText
+  return <Wrapper>{content}</Wrapper>
+}
+
 export function DataTable<TData, TValue>({
   columns,
   data,
@@ -76,7 +85,7 @@ export function DataTable<TData, TValue>({
 
   // 🛡️ Guard: Performance Protection
   if (!showPagination && data.length > MAX_ROWS_WITHOUT_PAGINATION) {
-    if (process.env.NODE_ENV === 'development') {
+    if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
       console.warn(
         `DataTable: Rendering ${data.length} rows without pagination is a performance hazard. ` +
           `Pagination has been forcibly enabled.`
@@ -119,9 +128,9 @@ export function DataTable<TData, TValue>({
   const renderTableBody = () => {
     if (isLoading) {
       return Array.from({ length: table.getState().pagination.pageSize }).map((_, i) => (
-        <TableRow key={`skeleton-${i}`}>
+        <TableRow key={`skeleton-${i}`} tag="tr">
           {columns.map((_, j) => (
-            <TableCellFrame key={`skeleton-cell-${j}`}>
+            <TableCellFrame key={`skeleton-cell-${j}`} tag="td">
               <Skeleton height="$4" />
             </TableCellFrame>
           ))}
@@ -131,8 +140,8 @@ export function DataTable<TData, TValue>({
 
     if (error) {
       return (
-        <TableRow>
-          <NoResultsCell>
+        <TableRow tag="tr">
+          <NoResultsCell tag="td" {...({ colSpan: columns.length } as any)}>
             <Empty
               icon={<AlertCircle size="$5" color="$red10" />}
               title={localization.errorTitle}
@@ -152,8 +161,8 @@ export function DataTable<TData, TValue>({
 
     if (rows.length === 0) {
       return (
-        <TableRow>
-          <NoResultsCell>
+        <TableRow tag="tr">
+          <NoResultsCell tag="td" {...({ colSpan: columns.length } as any)}>
             {emptyState || (
               <Empty
                 icon={<Inbox size="$5" color="$gray10" />}
@@ -166,10 +175,10 @@ export function DataTable<TData, TValue>({
     }
 
     return rows.map((row) => (
-      <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
+      <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'} tag="tr">
         {row.getVisibleCells().map((cell) => (
-          <TableCellFrame key={cell.id}>
-            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          <TableCellFrame key={cell.id} tag="td">
+            {renderCellContent(flexRender(cell.column.columnDef.cell, cell.getContext()), false)}
           </TableCellFrame>
         ))}
       </TableRow>
@@ -190,7 +199,7 @@ export function DataTable<TData, TValue>({
                     <TableCellFrame key={header.id} tag="th">
                       {header.isPlaceholder
                         ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
+                        : renderCellContent(flexRender(header.column.columnDef.header, header.getContext()), true)}
                     </TableCellFrame>
                   ))}
                 </TableRow>
@@ -205,7 +214,7 @@ export function DataTable<TData, TValue>({
 
       {/* Pagination Controls */}
       {showPagination && table.getPageCount() > 1 && (
-        <TableRow>
+        <XStack paddingVertical="$3" paddingHorizontal="$4" alignItems="center">
           <YStack flex={1} />
           <XStack alignItems="center" justifyContent="flex-end" gap="$2">
             <Text fontSize="$2" color="$color">
@@ -231,7 +240,7 @@ export function DataTable<TData, TValue>({
               {localization.nextPage}
             </Button>
           </XStack>
-        </TableRow>
+        </XStack>
       )}
     </YStack>
   )
