@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { userEvent, within } from '@storybook/test'
+import { userEvent, within, expect } from '@storybook/test'
 import { Checkbox } from './Checkbox'
 import { YStack, XStack } from 'tamagui'
 import { Spinner } from '../Spinner'
