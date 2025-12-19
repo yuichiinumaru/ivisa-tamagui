@@ -295,7 +295,7 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
           size={size}
           disabled={loading}
           value={value}
-          defaultValue={defaultValue}
+          defaultValue={value !== undefined ? undefined : defaultValue}
           {...restProps}
           type={isPassword && isPasswordVisible ? 'text' : props.type}
         />

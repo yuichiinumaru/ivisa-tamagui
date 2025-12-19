@@ -35,7 +35,6 @@ const meta: Meta<typeof Toggle> = {
       description: 'Ícone a ser exibido à direita do texto.',
     },
     onPressedChange: {
-      action: 'onPressedChange',
       description: 'Função chamada quando o estado pressionado muda.',
     },
   },
