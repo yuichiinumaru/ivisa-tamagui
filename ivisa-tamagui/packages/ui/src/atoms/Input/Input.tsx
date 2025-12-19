@@ -268,7 +268,7 @@ const InputMain = React.forwardRef<TamaguiElement, InputProps>(
 
     // 🛡️ Necromancer Guard: Zero Ambiguity
     if (children) {
-      if (process.env.NODE_ENV === 'development') {
+      if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
         console.warn("Input: Passing 'children' to <Input /> is deprecated. Use <Input.Box> for composite inputs.")
       }
       // Legacy support (Transition Phase)

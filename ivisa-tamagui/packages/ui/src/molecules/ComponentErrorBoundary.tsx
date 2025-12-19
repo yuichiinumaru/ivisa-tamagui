@@ -65,7 +65,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             </Paragraph>
           </YStack>
 
-          {process.env.NODE_ENV === 'development' && this.state.error && (
+          {typeof process !== 'undefined' && process.env.NODE_ENV === 'development' && this.state.error && (
             <YStack
               gap="$2"
               p="$3"
