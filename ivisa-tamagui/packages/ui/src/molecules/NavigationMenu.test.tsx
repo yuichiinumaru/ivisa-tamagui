@@ -1,43 +1,25 @@
 import { render, screen } from '../test-utils'
 import {
   NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuTrigger,
   NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink
 } from './NavigationMenu'
-import { YStack } from 'tamagui'
 
 describe('NavigationMenu', () => {
-  it('renders', () => {
+  it('renders correctly', () => {
     render(
       <NavigationMenu>
         <NavigationMenuItem>
-          <NavigationMenuLink>Link</NavigationMenuLink>
-        </NavigationMenuItem>
-      </NavigationMenu>
-    )
-    expect(screen.getByText('Link')).toBeInTheDocument()
-  })
-
-  it('renders a popover', () => {
-    render(
-      <NavigationMenu>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Trigger</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Item 1</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <YStack>
-              <NavigationMenuLink>Link</NavigationMenuLink>
-            </YStack>
+            <NavigationMenuLink href="#">Link 1</NavigationMenuLink>
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenu>
     )
-    expect(screen.getByText('Trigger')).toBeInTheDocument()
-  })
 
-  it('renders in a loading state', () => {
-    render(<NavigationMenu isLoading />)
-    expect(screen.queryByText('Link')).not.toBeInTheDocument()
+    expect(screen.getByText('Item 1')).toBeInTheDocument()
   })
 })

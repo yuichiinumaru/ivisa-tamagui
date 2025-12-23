@@ -85,36 +85,35 @@ const SheetContent = forwardRef<React.ElementRef<typeof SheetContentFrame>, Shee
   ({ children, ...props }, ref) => {
     const { isLoading, hasError } = useSheetContext()
 
+    // Fixed: Removed internal Portal and Overlay to allow flexible composition (e.g. in Drawer)
+    // The consumer (Drawer or user) must wrap this in Portal/Overlay if needed.
     return (
-      <Portal>
-        <SheetOverlay />
-        <SheetContentFrame ref={ref} {...props} hasError={hasError}>
-          <SheetHandle />
-          {isLoading ? (
-            <YStack gap="$4" py="$4">
-              <YStack gap="$2" marginBottom="$4">
-                <Skeleton height={30} width="60%" />
-                <Skeleton height={20} width="90%" />
-              </YStack>
-              <YStack gap="$4" py="$4">
-                <YStack gap="$2">
-                  <Skeleton height={16} width="30%" />
-                  <Skeleton height={40} />
-                </YStack>
-                <YStack gap="$2">
-                  <Skeleton height={16} width="30%" />
-                  <Skeleton height={40} />
-                </YStack>
-              </YStack>
-              <XStack justifyContent="flex-end" marginTop="$4">
-                <Skeleton height={44} width={120} />
-              </XStack>
+      <SheetContentFrame ref={ref} {...props} hasError={hasError}>
+        <SheetHandle />
+        {isLoading ? (
+          <YStack gap="$4" py="$4">
+            <YStack gap="$2" marginBottom="$4">
+              <Skeleton height={30} width="60%" />
+              <Skeleton height={20} width="90%" />
             </YStack>
-          ) : (
-            children
-          )}
-        </SheetContentFrame>
-      </Portal>
+            <YStack gap="$4" py="$4">
+              <YStack gap="$2">
+                <Skeleton height={16} width="30%" />
+                <Skeleton height={40} />
+              </YStack>
+              <YStack gap="$2">
+                <Skeleton height={16} width="30%" />
+                <Skeleton height={40} />
+              </YStack>
+            </YStack>
+            <XStack justifyContent="flex-end" marginTop="$4">
+              <Skeleton height={44} width={120} />
+            </XStack>
+          </YStack>
+        ) : (
+          children
+        )}
+      </SheetContentFrame>
     )
   }
 )
