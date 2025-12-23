@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Sheet as BaseSheet } from './Sheet'
-import { YStack } from 'tamagui'
+import { YStack, Portal } from 'tamagui'
 import { Skeleton } from '../atoms/Skeleton'
 
 export type DrawerProps = {
@@ -65,13 +65,27 @@ function DrawerComponent({
       })
     : null
 
+  // Use explicit Portal and Overlay, but ensure Content doesn't duplicate them.
+  // Since BaseSheet.Content usually includes Portal/Overlay in standard Tamagui usage (or at least Frame),
+  // we need to see how BaseSheet (Sheet.tsx) defines Content.
+  // Sheet.tsx defines Content as wrapping SheetOverlay and Frame in a Portal.
+  // So Drawer should NOT render Portal or Overlay manually if using BaseSheet.Content.
+
+  // Refactor: Use standard Tamagui Sheet pattern.
+  // <Sheet>
+  //   <Sheet.Trigger />
+  //   <Sheet.Content /> (which includes Portal/Overlay/Frame)
+  // </Sheet>
+
   return (
     <>
       {triggerWithPress}
       <BaseSheet open={open} onOpenChange={setOpen}>
-        <BaseSheet.Portal>
-          <BaseSheet.Overlay />
-          <BaseSheet.Content animation="medium" enterStyle={{ y: 300 }} exitStyle={{ y: 300 }}>
+        {/* BaseSheet.Content in Sheet.tsx already includes Portal and Overlay if unmodified. */}
+        {/* So we just render Content. */}
+        {/* However, we need to inject the children into the Frame. */}
+        <BaseSheet.Content animation="medium" enterStyle={{ y: 300 }} exitStyle={{ y: 300 }}>
+            {/* Sheet.tsx Content renders children inside the Frame. */}
             <BaseSheet.Handle />
             <BaseSheet.Header>
               <BaseSheet.Title color={hasError ? '$red10' : undefined}>{title}</BaseSheet.Title>
@@ -88,8 +102,7 @@ function DrawerComponent({
               )}
             </YStack>
             {footer && <BaseSheet.Footer>{footer}</BaseSheet.Footer>}
-          </BaseSheet.Content>
-        </BaseSheet.Portal>
+        </BaseSheet.Content>
       </BaseSheet>
     </>
   )

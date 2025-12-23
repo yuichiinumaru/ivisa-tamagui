@@ -76,7 +76,8 @@ const data: Person[] = [
   { id: '5', firstName: 'Lucas', lastName: 'Pereira', age: 35, status: 'active' },
 ]
 
-export const Default: Story = {
+export const Padrao: Story = {
+  name: 'Padrão (Default)',
   args: {
     columns,
     data,

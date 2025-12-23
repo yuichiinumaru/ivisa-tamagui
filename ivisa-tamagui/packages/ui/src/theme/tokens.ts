@@ -123,17 +123,18 @@ const palette = {
   ivisaDarkBlueGray950: '#192833',
 };
 
+// Breathing System: Increased spacing scale
 const spaceScale = {
   0: 0,
-  xs: 4,
-  sm: 8,
-  md: 12,
-  lg: 16,
-  xl: 24,
-  '2xl': 32,
-  '3xl': 40,
-  '4xl': 48,
-  true: 12, // default (md)
+  xs: 8,    // was 4
+  sm: 12,   // was 8
+  md: 16,   // was 12
+  lg: 24,   // was 16
+  xl: 32,   // was 24
+  '2xl': 40,// was 32
+  '3xl': 48,// was 40
+  '4xl': 64,// was 48
+  true: 16, // default (md)
 };
 
 const sizeScale = {

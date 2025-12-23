@@ -73,17 +73,14 @@ const StyledButton = styled(TamaguiButton, {
       sm: {
         height: '$sm',
         px: '$md',
-        // fontSize: '$2', // Removing explicit token to fallback to theme or prevent warning if token missing
       },
       default: {
         height: '$md',
         px: '$lg',
-        // fontSize: '$3',
       },
       lg: {
         height: '$lg',
         px: '$xl',
-        // fontSize: '$4',
       },
     },
   } as const,
@@ -130,6 +127,14 @@ export interface ButtonProps extends Omit<StyledButtonProps, 'variant' | 'size'>
   asChild?: boolean
 }
 
+// Helper to wrap text strings in Text component
+const renderChildren = (child: React.ReactNode): React.ReactNode => {
+  if (typeof child === 'string' || typeof child === 'number') {
+    return <Text>{child}</Text>
+  }
+  return child
+}
+
 const Button = React.forwardRef<TamaguiElement, ButtonProps>(
   (
     { variant = 'default', size = 'default', children, leftIcon, rightIcon, loading, asChild, ...props },
@@ -146,7 +151,7 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>(
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', opacity: loading ? 0 : 1, gap: 8 }}>
             {leftIcon}
-            {typeof children === 'string' ? <Text>{children}</Text> : children}
+            {React.Children.map(children, renderChildren)}
             {rightIcon}
         </View>
         {loading && (
