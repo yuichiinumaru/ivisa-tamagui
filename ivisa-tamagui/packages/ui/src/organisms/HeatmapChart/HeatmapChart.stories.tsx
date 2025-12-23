@@ -28,7 +28,6 @@ const meta: Meta<typeof HeatmapChart> = {
     yKey: 'time',
     valueKey: 'count',
     height: 350,
-    headerContent: <Heading size="$4">Ocupação por Horário</Heading>
   },
 }
 
@@ -36,7 +35,14 @@ export default meta
 
 type Story = StoryObj<typeof HeatmapChart>
 
-export const Padrao: Story = {}
+export const Padrao: Story = {
+  render: (args) => (
+    <HeatmapChart
+      {...args}
+      headerContent={<Heading size="$4">Ocupação por Horário</Heading>}
+    />
+  ),
+}
 
 export const Carregando: Story = {
   args: {

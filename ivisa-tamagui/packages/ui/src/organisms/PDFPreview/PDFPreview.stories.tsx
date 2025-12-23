@@ -6,7 +6,9 @@ const meta: Meta<typeof PDFPreview> = {
   component: PDFPreview,
   tags: ['autodocs'],
   args: {
-    fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    // Uses the local asset downloaded to packages/ui/public/assets/
+    fileUrl: '/assets/2510.09244.pdf',
+    title: 'Visual Multi-Agent System Architecture',
   },
 }
 

@@ -1,0 +1,21 @@
+CONSOLE: info: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+CONSOLE: startGroupCollapsed: [tamagui] Warning: missing token borderRadius in category radius - $4 (open for details)
+CONSOLE: info: Note: this could just be due to you not setting all the theme tokens Tamagui expects, which is harmless, but
+                    it also often can be because you have a duplicated Tamagui in your bundle, which can cause tricky bugs.
+CONSOLE: info: To see if you have duplicated dependencies, in Chrome DevTools hit CMD+P and type TamaguiProvider.
+                    If you see both a .cjs and a .mjs entry, it's duplicated.
+CONSOLE: info: You can debug that issue by opening the .mjs and .cjs files and setting a breakpoint at the top of each.
+CONSOLE: info: We only log this warning one time as it's sometimes harmless, to disable this log entirely set process.env.TAMAGUI_DISABLE_MISSING_TOKEN_LOG=1.
+CONSOLE: endGroup: console.groupEnd
+CONSOLE: error: TypeError: undefined is not a spy or a call to a spy!
+    at assertIsMock (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:3636:5607)
+    at getSpy (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:3636:5710)
+    at Proxy.<anonymous> (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:3662:687)
+    at Proxy.<anonymous> (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:3635:7750)
+    at Proxy.methodWrapper (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:3552:21356)
+    at play (http://localhost:6006/atoms-NavLink-NavLink-stories.iframe.bundle.js:269:75)
+    at async Dn.runPhase (http://localhost:6006/sb-preview/runtime.js:6408:94)
+    at async Dn.render (http://localhost:6006/sb-preview/runtime.js:6524:14)
+NAVIGATION ERROR: Page.goto: Timeout 8000ms exceeded.
+Call log:
+  - navigating to "http://localhost:6006/iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story", waiting until "networkidle"
