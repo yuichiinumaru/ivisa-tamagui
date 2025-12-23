@@ -1,0 +1,4 @@
+CONSOLE: info: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+NAVIGATION ERROR: Page.goto: Timeout 8000ms exceeded.
+Call log:
+  - navigating to "http://localhost:6006/iframe.html?id=%C3%A1tomos-proporcaodatela--padrao&viewMode=story", waiting until "networkidle"

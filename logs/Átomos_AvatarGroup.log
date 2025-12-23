@@ -1,0 +1,107 @@
+CONSOLE: info: %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold
+CONSOLE: error: Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s animationName animationname
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13347:13
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:11435:7
+    at http://localhost:6006/src_atoms_Avatar_tsx.iframe.bundle.js:110:103
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at Provider (http://localhost:6006/vendors-node_modules_tamagui_avatar_dist_esm_Avatar_mjs-node_modules_tamagui_dist_esm_views_T-da63551.iframe.bundle.js:188:11)
+    at http://localhost:6006/vendors-node_modules_tamagui_avatar_dist_esm_Avatar_mjs-node_modules_tamagui_dist_esm_views_T-da63551.iframe.bundle.js:116:9
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at http://localhost:6006/src_atoms_Avatar_tsx.iframe.bundle.js:157:93
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at AvatarGroup (http://localhost:6006/atoms-AvatarGroup-stories.iframe.bundle.js:171:28)
+    at PortalProviderComponent (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:5044:5)
+    at span
+    at span
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13347:13
+    at ThemeProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13569:39)
+    at Provider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:8752:7)
+    at span
+    at UnmountedClassName (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13219:78)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13175:3)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:4222:106)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:72138:28)
+    at unboundStoryFn (http://localhost:6006/sb-preview/runtime.js:5503:109)
+    at ErrorBoundary (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:3345:43632)
+CONSOLE: error: Warning: React does not recognize the `%s` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `%s` instead. If you accidentally passed it from a parent component, remove it from the DOM element.%s animationDuration animationduration
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13347:13
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:11435:7
+    at http://localhost:6006/src_atoms_Avatar_tsx.iframe.bundle.js:110:103
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at Provider (http://localhost:6006/vendors-node_modules_tamagui_avatar_dist_esm_Avatar_mjs-node_modules_tamagui_dist_esm_views_T-da63551.iframe.bundle.js:188:11)
+    at http://localhost:6006/vendors-node_modules_tamagui_avatar_dist_esm_Avatar_mjs-node_modules_tamagui_dist_esm_views_T-da63551.iframe.bundle.js:116:9
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at http://localhost:6006/src_atoms_Avatar_tsx.iframe.bundle.js:157:93
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at AvatarGroup (http://localhost:6006/atoms-AvatarGroup-stories.iframe.bundle.js:171:28)
+    at PortalProviderComponent (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:5044:5)
+    at span
+    at span
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13347:13
+    at ThemeProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13569:39)
+    at Provider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:8752:7)
+    at span
+    at UnmountedClassName (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13219:78)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13175:3)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:4222:106)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:72138:28)
+    at unboundStoryFn (http://localhost:6006/sb-preview/runtime.js:5503:109)
+    at ErrorBoundary (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:3345:43632)
+CONSOLE: error: Warning: Received `%s` for a non-boolean attribute `%s`.
+
+If you want to write it to the DOM, pass a string instead: %s="%s" or %s={value.toString()}.%s true circular circular true circular
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13347:13
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:11435:7
+    at http://localhost:6006/src_atoms_Avatar_tsx.iframe.bundle.js:110:103
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at Provider (http://localhost:6006/vendors-node_modules_tamagui_avatar_dist_esm_Avatar_mjs-node_modules_tamagui_dist_esm_views_T-da63551.iframe.bundle.js:188:11)
+    at http://localhost:6006/vendors-node_modules_tamagui_avatar_dist_esm_Avatar_mjs-node_modules_tamagui_dist_esm_views_T-da63551.iframe.bundle.js:116:9
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at http://localhost:6006/src_atoms_Avatar_tsx.iframe.bundle.js:157:93
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at AvatarGroup (http://localhost:6006/atoms-AvatarGroup-stories.iframe.bundle.js:171:28)
+    at PortalProviderComponent (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:5044:5)
+    at span
+    at span
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13347:13
+    at ThemeProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13569:39)
+    at Provider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:8752:7)
+    at span
+    at UnmountedClassName (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13219:78)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13175:3)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:4222:106)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:72138:28)
+    at unboundStoryFn (http://localhost:6006/sb-preview/runtime.js:5503:109)
+    at ErrorBoundary (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:3345:43632)
+CONSOLE: error: Warning: Invalid attribute name: `%s`%s & > *
+    at div
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:7289:77
+    at AvatarGroup (http://localhost:6006/atoms-AvatarGroup-stories.iframe.bundle.js:171:28)
+    at PortalProviderComponent (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:5044:5)
+    at span
+    at span
+    at http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13347:13
+    at ThemeProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13569:39)
+    at Provider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:8752:7)
+    at span
+    at UnmountedClassName (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13219:78)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:13175:3)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:4222:106)
+    at TamaguiProvider (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:72138:28)
+    at unboundStoryFn (http://localhost:6006/sb-preview/runtime.js:5503:109)
+    at ErrorBoundary (http://localhost:6006/vendors-node_modules_storybook_addon-essentials_dist_actions_preview_mjs-node_modules_storybo-2cdc83.iframe.bundle.js:3345:43632)
+NAVIGATION ERROR: Page.goto: Timeout 8000ms exceeded.
+Call log:
+  - navigating to "http://localhost:6006/iframe.html?id=%C3%A1tomos-avatargroup--padrao&viewMode=story", waiting until "networkidle"
