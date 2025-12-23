@@ -56,49 +56,49 @@ export const Padrao: Story = {
 
 export const Filled: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     variant: 'filled',
   },
 }
 
 export const Subtle: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     variant: 'subtle',
   },
 }
 
 export const Small: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     size: 'sm',
   },
 }
 
 export const Large: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     size: 'lg',
   },
 }
 
 export const Disabled: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     disabled: true,
   },
 }
 
 export const Invalid: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     invalid: true,
   },
 }
 
 export const TextoLongo: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     defaultValue:
       'This is a very long text to test the wrapping behavior of the textarea component. It should wrap to the next line when it reaches the end of the container.',
   },
@@ -106,7 +106,7 @@ export const TextoLongo: Story = {
 
 export const RestritoContainer: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
   },
   decorators: [
     (Story) => (
@@ -119,7 +119,7 @@ export const RestritoContainer: Story = {
 
 export const Carregando: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     loading: true,
   },
 }

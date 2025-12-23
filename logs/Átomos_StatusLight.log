@@ -1,0 +1,3 @@
+NAVIGATION ERROR: Page.goto: Timeout 8000ms exceeded.
+Call log:
+  - navigating to "http://localhost:6006/iframe.html?id=%C3%A1tomos-statuslight--default&viewMode=story", waiting until "networkidle"
