@@ -55,11 +55,12 @@ const NavMenu = ({ items, collapsed }) => (
   <YStack gap="$2">
     {items.map((item) => (
       <Button
-        key={item.id}
-        icon={item.icon}
-        justifyContent={collapsed ? 'center' : 'flex-start'}
+        key={item.label}
+        icon={item.icon ? <item.icon size="$1" /> : undefined}
         chromeless
-        size="$4"
+        size="default"
+        justifyContent="flex-start"
+        onPress={item.onPress}
       >
         {!collapsed && <Text>{item.label}</Text>}
       </Button>
@@ -165,21 +166,21 @@ export const Error: Story = {
 };
 
 export const Floating: Story = {
-    name: 'Floating Variant',
-    args: {
-      ...GoldenPath.args,
-      variant: 'floating',
-    },
-    render: (args) => (
-        <YStack height={600} flexDirection="row" position="relative">
-          <Sidebar {...args} header={renderHeader(args.isCollapsed)} footer={renderFooter(args.isCollapsed)} children={renderSidebarContent(args.isCollapsed)} />
-          <YStack flex={1} padding="$4" backgroundColor="$background">
-            <Text>Conteúdo Principal da Aplicação</Text>
-            <Text>O sidebar flutua sobre este conteúdo.</Text>
-          </YStack>
-        </YStack>
-      ),
-  };
+  name: 'Floating Variant',
+  args: {
+    ...GoldenPath.args,
+    variant: 'floating',
+  },
+  render: (args) => (
+    <YStack height={600} flexDirection="row" position="relative">
+      <Sidebar {...args} header={renderHeader(args.isCollapsed)} footer={renderFooter(args.isCollapsed)} children={renderSidebarContent(args.isCollapsed)} />
+      <YStack flex={1} padding="$4" backgroundColor="$background">
+        <Text>Conteúdo Principal da Aplicação</Text>
+        <Text>O sidebar flutua sobre este conteúdo.</Text>
+      </YStack>
+    </YStack>
+  ),
+};
 
 export const LayoutStressTest: Story = {
   name: 'Layout Stress (Narrow Container)',

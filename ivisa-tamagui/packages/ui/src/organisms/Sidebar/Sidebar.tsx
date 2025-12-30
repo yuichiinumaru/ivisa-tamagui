@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { AnimatePresence, ScrollView, Separator, Text, YStack, styled } from 'tamagui';
 import { Button } from '../../atoms/Button';
-import { ChevronLeft, ChevronRight, Menu, AlertCircle, Inbox } from '@tamagui/lucide-icons';
+import { ChevronLeft, ChevronRight, MenuSquare, AlertCircle, Inbox } from '@tamagui/lucide-icons';
 import { Sheet } from '../../molecules/Sheet';
 import { Skeleton } from '../../atoms/Skeleton';
+
+
 
 // --- Styled Components ---
 
@@ -53,15 +55,15 @@ const SidebarFooter = styled(YStack, {
 // --- Data Lifecycle Components ---
 
 const SidebarSkeleton = () => (
-    <YStack gap="$4" padding="$4" width="100%">
-    <Skeleton height={40} />
+  <YStack gap="$4" padding="$4" width="100%">
+    <Skeleton height="$10" />
     <YStack gap="$3">
-      <Skeleton height={32} />
-      <Skeleton height={32} />
-      <Skeleton height={32} />
+      <Skeleton height="$8" />
+      <Skeleton height="$8" />
+      <Skeleton height="$8" />
     </YStack>
     <YStack flex={1} />
-    <Skeleton height={40} />
+    <Skeleton height="$10" />
   </YStack>
 );
 
@@ -163,61 +165,65 @@ const DesktopSidebar = ({
 
       {isCollapsible && (
         <Button
-          icon={isCollapsed ? ChevronRight : ChevronLeft}
           onPress={toggleSidebar}
           circular
-          size="$3"
+          size="sm"
           position="absolute"
           top={20}
           right={-15}
           zIndex={20}
-        />
+        >
+          {isCollapsed ? <ChevronRight size="$1.5" /> : <ChevronLeft size="$1.5" />}
+        </Button>
       )}
     </SidebarContainer>
   );
 };
 
 const MobileSidebar = ({ children, header, footer, isLoading, isEmpty, emptyMessage = 'Sem conteúdo', error }: SidebarProps) => {
-    const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    const renderContent = () => {
-      if (isLoading) {
-        return <SidebarSkeleton />;
-      }
-      if (error) {
-        return <ErrorState message={error} />;
-      }
-      if (isEmpty) {
-        return <EmptyState message={emptyMessage} />;
-      }
-      return (
-        <>
-          {header && <SidebarHeader>{header}</SidebarHeader>}
-          <ScrollView>
-            <YStack gap="$2">{children}</YStack>
-          </ScrollView>
-          <YStack flex={1} />
-          {footer && <SidebarFooter>{footer}</SidebarFooter>}
-        </>
-      );
-    };
-
+  const renderContent = () => {
+    if (isLoading) {
+      return <SidebarSkeleton />;
+    }
+    if (error) {
+      return <ErrorState message={error} />;
+    }
+    if (isEmpty) {
+      return <EmptyState message={emptyMessage} />;
+    }
     return (
-      <Sheet open={open} onOpenChange={setOpen}>
-        <Sheet.Trigger asChild>
-          <Button icon={Menu} circular />
-        </Sheet.Trigger>
-        <Sheet.Content position="left" size="$xl">
-          <YStack gap="$4" paddingTop="$6" paddingHorizontal="$4" flex={1}>
-            {renderContent()}
-            <Button onPress={() => setOpen(false)} chromeless>
-              Fechar
-            </Button>
-          </YStack>
-        </Sheet.Content>
-      </Sheet>
+      <>
+        {header && <SidebarHeader>{header}</SidebarHeader>}
+        <ScrollView>
+          <YStack gap="$2">{children}</YStack>
+        </ScrollView>
+        <YStack flex={1} />
+        {footer && <SidebarFooter>{footer}</SidebarFooter>}
+      </>
     );
   };
+
+  return (
+    <Sheet open={open} onOpenChange={setOpen} modal snapPoints={[90]}>
+      <Sheet.Trigger asChild>
+        <Button circular>
+          <MenuSquare size="$1.5" />
+        </Button>
+      </Sheet.Trigger>
+      {/* <Sheet.Overlay /> */}
+      <Sheet.Content alignItems="flex-start" justifyContent="flex-start">
+        <YStack gap="$4" paddingTop="$6" paddingHorizontal="$4" flex={1} height="100%" width={300} backgroundColor="$background">
+          {renderContent()}
+          <Button onPress={() => setOpen(false)} chromeless>
+            Fechar
+          </Button>
+        </YStack>
+      </Sheet.Content>
+    </Sheet>
+  );
+};
 
 export const Sidebar = (props: SidebarProps) => {
   return (
