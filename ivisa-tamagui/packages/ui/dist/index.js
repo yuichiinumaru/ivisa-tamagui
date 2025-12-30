@@ -2198,6 +2198,8 @@ __export(index_exports, {
   AccordionContent: () => AccordionContent,
   AccordionItem: () => AccordionItem,
   AccordionTrigger: () => AccordionTrigger,
+  AgentAnimationModal: () => AgentAnimationModal,
+  AgentAnimationPanel: () => AgentAnimationPanel,
   Alert: () => Alert,
   AlertDialog: () => AlertDialog,
   AlertDialogAction: () => AlertDialogAction,
@@ -2331,6 +2333,7 @@ __export(index_exports, {
   IndicatorArrow: () => IndicatorArrow,
   Input: () => Input,
   InputGroup: () => InputGroup,
+  Kbd: () => Kbd,
   Label: () => Label,
   LeadText: () => LeadText,
   LineChart: () => LineChart,
@@ -2354,6 +2357,7 @@ __export(index_exports, {
   MenubarSubContent: () => MenubarSubContent,
   MenubarSubTrigger: () => MenubarSubTrigger,
   MenubarTrigger: () => MenubarTrigger,
+  Meter: () => Meter,
   MonthsPicker: () => MonthsPicker,
   MutedText: () => MutedText,
   NativeSelect: () => NativeSelect,
@@ -2428,6 +2432,7 @@ __export(index_exports, {
   SliderTrack: () => SliderTrack,
   Spinner: () => Spinner,
   StarRating: () => StarRating,
+  StatusLight: () => StatusLight,
   Stepper: () => Stepper2,
   SunburstChart: () => SunburstChart,
   Switch: () => Switch,
@@ -2602,7 +2607,7 @@ var import_jsx_runtime2 = require("react/jsx-runtime");
 var SkeletonFrame = (0, import_tamagui2.styled)(import_tamagui2.YStack, {
   name: "Skeleton",
   backgroundColor: "$muted",
-  borderRadius: "$4",
+  borderRadius: "$sm",
   variants: {
     animationType: {
       pulse: {
@@ -2612,9 +2617,9 @@ var SkeletonFrame = (0, import_tamagui2.styled)(import_tamagui2.YStack, {
       },
       none: {}
     },
-    circular: {
+    round: {
       true: {
-        borderRadius: "$round"
+        borderRadius: "$full"
       }
     }
   },
@@ -2622,7 +2627,7 @@ var SkeletonFrame = (0, import_tamagui2.styled)(import_tamagui2.YStack, {
     animationType: "pulse"
   }
 });
-var Skeleton = SkeletonFrame.styleable((props, ref) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(SkeletonFrame, { ...props, ref, "aria-hidden": "true", "data-testid": "skeleton" }));
+var Skeleton = SkeletonFrame.styleable((props, ref) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(SkeletonFrame, { ...props, ref, "aria-hidden": true, "data-testid": "skeleton" }));
 
 // src/atoms/AspectRatio.tsx
 var import_jsx_runtime3 = require("react/jsx-runtime");
@@ -2647,13 +2652,14 @@ var AspectRatioFrame = (0, import_tamagui3.styled)(import_tamagui3.Stack, {
 });
 var AspectRatio = (0, import_react2.forwardRef)(
   ({ ratio, variant = "square", loading, children, ...props }, ref) => {
+    const { animationName, animationDuration, ...safeProps } = props;
     return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
       AspectRatioFrame,
       {
         ref,
         variant,
         aspectRatio: ratio,
-        ...props,
+        ...safeProps,
         children: loading ? /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(Skeleton, { width: "100%", height: "100%", "data-testid": "skeleton-loader" }) : children
       }
     );
@@ -2685,7 +2691,7 @@ var AvatarFrame = (0, import_tamagui4.styled)(import_tamagui4.Avatar, {
   variants: {
     shape: {
       circle: {
-        circular: true
+        borderRadius: 1e5
       },
       square: {
         borderRadius: 0
@@ -2713,6 +2719,7 @@ var AvatarImageComponent = import_react3.default.forwardRef(
           accessibilityLabel,
           onLoad: () => setIsLoading(false),
           onError: () => setIsLoading(false),
+          "data-testid": "avatar-image",
           style: { display: isLoading ? "none" : "flex", width: "100%", height: "100%" }
         }
       )
@@ -2749,7 +2756,7 @@ var AvatarRoot = import_react3.default.forwardRef(
     if (children) {
       return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(AvatarFrame, { ref, ...props, "aria-label": accessibilityLabel, children });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(AvatarFrame, { ref, ...props, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(AvatarFrame, { ref, ...props, "aria-label": accessibilityLabel, children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(AvatarImageComponent, { src, accessibilityLabel }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(AvatarFallbackView, { children: typeof fallback === "string" ? /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_tamagui4.Text, { children: fallback }) : fallback })
     ] });
@@ -2826,7 +2833,7 @@ var AccordionItem = import_react4.default.forwardRef(({ children, isLoading, has
   const childrenWithProps = import_react4.default.Children.map(children, (child) => {
     if (import_react4.default.isValidElement(child)) {
       const type = child.type;
-      if (type?.displayName === "AccordionContent") {
+      if (type && type.displayName === "AccordionContent") {
         return import_react4.default.cloneElement(child, { isLoading });
       }
     }
@@ -2855,10 +2862,11 @@ var AccordionContent = import_react4.default.forwardRef(({ children, isLoading, 
 AccordionContent.displayName = "AccordionContent";
 
 // src/molecules/AlertDialog/AlertDialog.tsx
-var import_react5 = __toESM(require("react"));
+var import_react6 = __toESM(require("react"));
 var import_tamagui8 = require("tamagui");
 
 // src/atoms/Button/Button.tsx
+var import_react5 = __toESM(require("react"));
 var import_tamagui7 = require("tamagui");
 
 // src/atoms/Spinner/Spinner.tsx
@@ -2944,18 +2952,15 @@ var StyledButton = (0, import_tamagui7.styled)(import_tamagui7.Button, {
     size: {
       sm: {
         height: "$sm",
-        px: "$md",
-        fontSize: "$2"
+        px: "$md"
       },
       default: {
         height: "$md",
-        px: "$lg",
-        fontSize: "$3"
+        px: "$lg"
       },
       lg: {
         height: "$lg",
-        px: "$xl",
-        fontSize: "$4"
+        px: "$xl"
       }
     }
   },
@@ -2964,7 +2969,13 @@ var StyledButton = (0, import_tamagui7.styled)(import_tamagui7.Button, {
     size: "default"
   }
 });
-var Button = React.forwardRef(
+var renderChildren = (child) => {
+  if (typeof child === "string" || typeof child === "number") {
+    return /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_tamagui7.Text, { children: child });
+  }
+  return child;
+};
+var Button = import_react5.default.forwardRef(
   ({ variant = "default", size = "default", children, leftIcon, rightIcon, loading, asChild, ...props }, ref) => {
     return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(
       StyledButton,
@@ -2978,10 +2989,10 @@ var Button = React.forwardRef(
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)(import_tamagui7.View, { style: { flexDirection: "row", alignItems: "center", opacity: loading ? 0 : 1, gap: 8 }, children: [
             leftIcon,
-            typeof children === "string" ? /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_tamagui7.Text, { color: "$current", fontFamily: "$body", children }) : children,
+            import_react5.default.Children.map(children, renderChildren),
             rightIcon
           ] }),
-          loading && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_tamagui7.View, { style: { position: "absolute", top: 0, left: 0, right: 0, bottom: 0, alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Spinner, { color: "$current" }) })
+          loading && /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(import_tamagui7.View, { style: { position: "absolute", top: 0, left: 0, right: 0, bottom: 0, alignItems: "center", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(Spinner, { color: "$current", size: "small" }) })
         ]
       }
     );
@@ -3066,7 +3077,7 @@ var AlertDialogAction = import_tamagui8.AlertDialog.Action;
 var AlertDialogCancel = import_tamagui8.AlertDialog.Cancel;
 var AlertDialogTrigger = import_tamagui8.AlertDialog.Trigger;
 var AlertDialogPortal = import_tamagui8.AlertDialog.Portal;
-var AlertDialogContentComposite = import_react5.default.forwardRef(({ hasError, ...props }, ref) => {
+var AlertDialogContentComposite = import_react6.default.forwardRef(({ hasError, ...props }, ref) => {
   return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(AlertDialogPortal, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(AlertDialogOverlay, {}, "overlay"),
     /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(AlertDialogContent, { ref, error: hasError, ...props }, "content")
@@ -3111,7 +3122,7 @@ var AlertDialog = ({
 };
 
 // src/atoms/Badge.tsx
-var import_react6 = require("react");
+var import_react7 = require("react");
 var import_tamagui9 = require("tamagui");
 var import_core = require("@tamagui/core");
 var import_jsx_runtime9 = require("react/jsx-runtime");
@@ -3224,12 +3235,12 @@ var BadgeText = (0, import_tamagui9.styled)(import_tamagui9.Text, {
     size: "md"
   }
 });
-var Badge = (0, import_react6.forwardRef)(
+var Badge = (0, import_react7.forwardRef)(
   ({ children, asChild, variant = "default", size = "md", leftIcon, rightIcon, ...props }, ref) => {
     const Component3 = asChild ? import_core.Slot : BadgeFrame;
     const renderIcon = (icon) => {
       if (!icon) return null;
-      return (0, import_react6.cloneElement)(icon, {
+      return (0, import_react7.cloneElement)(icon, {
         size: 12
         // Consistent icon size
       });
@@ -3248,12 +3259,12 @@ Badge.displayName = "Badge";
 
 // src/atoms/Input/Input.tsx
 var import_lucide_icons3 = require("@tamagui/lucide-icons");
-var import_react7 = __toESM(require("react"));
+var import_react8 = __toESM(require("react"));
 var import_tamagui10 = require("tamagui");
 var import_jsx_runtime10 = require("react/jsx-runtime");
-var InputContext = import_react7.default.createContext(null);
+var InputContext = import_react8.default.createContext(null);
 var useInputContext = () => {
-  return (0, import_react7.useContext)(InputContext);
+  return (0, import_react8.useContext)(InputContext);
 };
 var inputVariants = {
   variant: {
@@ -3401,7 +3412,7 @@ var UnframedInputStyled = (0, import_tamagui10.styled)(import_tamagui10.Input, {
     }
   }
 });
-var InputField = import_react7.default.forwardRef((props, ref) => {
+var InputField = import_react8.default.forwardRef((props, ref) => {
   const context = useInputContext();
   const size = props.size || context?.size || "default";
   return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(UnframedInputStyled, { ref, size, ...props });
@@ -3426,7 +3437,7 @@ var InputHint = (0, import_tamagui10.styled)(import_tamagui10.Text, {
   color: "$mutedForeground",
   marginTop: "$2"
 });
-var InputBox = import_react7.default.forwardRef(
+var InputBox = import_react8.default.forwardRef(
   ({ variant = "default", size = "default", loading = false, state, children, ...props }, ref) => {
     return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(InputContext.Provider, { value: { size, loading }, children: /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)(InputFrame, { ref, variant, size, loading, state, ...props, children: [
       children,
@@ -3435,12 +3446,12 @@ var InputBox = import_react7.default.forwardRef(
   }
 );
 InputBox.displayName = "Input.Box";
-var InputMain = import_react7.default.forwardRef(
+var InputMain = import_react8.default.forwardRef(
   ({ variant = "default", size = "default", loading = false, state, children, ...props }, ref) => {
-    const [isPasswordVisible, setIsPasswordVisible] = (0, import_react7.useState)(false);
+    const [isPasswordVisible, setIsPasswordVisible] = (0, import_react8.useState)(false);
     const isPassword = props.type === "password";
     if (children) {
-      if (process.env.NODE_ENV === "development") {
+      if (typeof process !== "undefined" && process.env.NODE_ENV === "development") {
         console.warn("Input: Passing 'children' to <Input /> is deprecated. Use <Input.Box> for composite inputs.");
       }
       return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(InputBox, { ref, variant, size, loading, state, ...props, children });
@@ -3463,7 +3474,7 @@ var InputMain = import_react7.default.forwardRef(
               size,
               disabled: loading,
               value,
-              defaultValue: defaultValue2,
+              defaultValue: value !== void 0 ? void 0 : defaultValue2,
               ...restProps,
               type: isPassword && isPasswordVisible ? "text" : props.type
             }
@@ -3500,7 +3511,7 @@ var Input = Object.assign(InputMain, {
 
 // src/atoms/Label/Label.tsx
 var import_tamagui11 = require("tamagui");
-var import_react8 = __toESM(require("react"));
+var import_react9 = __toESM(require("react"));
 var import_jsx_runtime11 = require("react/jsx-runtime");
 var LabelFrame = (0, import_tamagui11.styled)(import_tamagui11.Label, {
   name: "Label",
@@ -3529,7 +3540,7 @@ var LabelFrame = (0, import_tamagui11.styled)(import_tamagui11.Label, {
     }
   }
 });
-var Label = import_react8.default.forwardRef(
+var Label = import_react9.default.forwardRef(
   ({ children, required, ...props }, ref) => {
     return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)(LabelFrame, { ref, ...props, children: [
       children,
@@ -3539,7 +3550,7 @@ var Label = import_react8.default.forwardRef(
 );
 
 // src/atoms/Switch.tsx
-var import_react9 = __toESM(require("react"));
+var import_react10 = __toESM(require("react"));
 var import_tamagui12 = require("tamagui");
 var import_jsx_runtime12 = require("react/jsx-runtime");
 var SwitchFrame = (0, import_tamagui12.styled)(import_tamagui12.Switch, {
@@ -3622,7 +3633,7 @@ var SwitchThumb = (0, import_tamagui12.styled)(import_tamagui12.Switch.Thumb, {
     size: "medium"
   }
 });
-var SwitchComponent = import_react9.default.forwardRef(({ loading = false, disabled, size, ...props }, ref) => {
+var SwitchComponent = import_react10.default.forwardRef(({ loading = false, disabled, size, ...props }, ref) => {
   const isDisabled2 = loading || disabled;
   return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)(
     SwitchFrame,
@@ -3652,7 +3663,7 @@ var Switch = SwitchComponent;
 
 // src/atoms/Slider.tsx
 var import_tamagui13 = require("tamagui");
-var import_react10 = __toESM(require("react"));
+var import_react11 = __toESM(require("react"));
 var import_jsx_runtime13 = require("react/jsx-runtime");
 var SliderFrame = (0, import_tamagui13.styled)(import_tamagui13.Slider, {
   name: "Slider",
@@ -3696,7 +3707,7 @@ var SliderThumb = (0, import_tamagui13.styled)(import_tamagui13.Slider.Thumb, {
     cursor: "pointer"
   }
 });
-var Slider = import_react10.default.forwardRef(({
+var Slider = import_react11.default.forwardRef(({
   "aria-label": ariaLabel = "Deslizante",
   disabled = false,
   loading = false,
@@ -3710,6 +3721,7 @@ var Slider = import_react10.default.forwardRef(({
 Slider.displayName = "Slider";
 
 // src/atoms/Typography.tsx
+var import_react12 = __toESM(require("react"));
 var import_tamagui14 = require("tamagui");
 
 // ../../node_modules/@radix-ui/react-slot/dist/index.mjs
@@ -3837,7 +3849,7 @@ function getElementRef(element) {
 
 // src/atoms/Typography.tsx
 var import_jsx_runtime15 = require("react/jsx-runtime");
-var Typography = ({ leftIcon, rightIcon, loading, children, variant, asChild, ...props }) => {
+var Typography = import_react12.default.forwardRef(({ leftIcon, rightIcon, loading, children, variant, asChild, ...props }, ref) => {
   const components = {
     h1: import_tamagui14.H1,
     h2: import_tamagui14.H2,
@@ -3852,12 +3864,14 @@ var Typography = ({ leftIcon, rightIcon, loading, children, variant, asChild, ..
   if (loading) {
     return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Skeleton, { width: "100%", height: props.fontSize || 16 });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Component3, { ...props, style: { display: "flex", alignItems: "center", gap: "0.5rem", ...props.style }, children: [
+  const { defaultProps: defaultProps2, uppercase, ...safeProps } = props;
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(Component3, { ref, ...safeProps, style: { display: "flex", alignItems: "center", gap: "0.5rem", ...props.style }, children: [
     leftIcon,
-    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_tamagui14.Text, { children }),
+    children,
     rightIcon
   ] });
-};
+});
+Typography.displayName = "Typography";
 var commonStyles = {
   hoverStyle: {
     color: "$colorHover"
@@ -3983,26 +3997,26 @@ var import_tamagui15 = require("tamagui");
 var import_core5 = require("@tamagui/core");
 
 // ../../node_modules/@tamagui/create-context/dist/esm/create-context.mjs
-var React13 = __toESM(require("react"), 1);
+var React14 = __toESM(require("react"), 1);
 var import_jsx_runtime16 = require("react/jsx-runtime");
 function createContextScope(scopeName, createContextScopeDeps = []) {
   let defaultContexts = [];
   function createContext22(rootComponentName, defaultContext) {
-    const BaseContext = React13.createContext(defaultContext), index = defaultContexts.length;
+    const BaseContext = React14.createContext(defaultContext), index = defaultContexts.length;
     defaultContexts = [...defaultContexts, defaultContext];
     function Provider(props) {
       const {
         scope,
         children,
         ...context
-      } = props, Context = scope?.[scopeName]?.[index] || BaseContext, value = React13.useMemo(() => context, Object.values(context));
+      } = props, Context = scope?.[scopeName]?.[index] || BaseContext, value = React14.useMemo(() => context, Object.values(context));
       return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Context.Provider, {
         value,
         children
       });
     }
     function useContext21(consumerName, scope, options) {
-      const Context = scope?.[scopeName]?.[index] || BaseContext, context = React13.useContext(Context);
+      const Context = scope?.[scopeName]?.[index] || BaseContext, context = React14.useContext(Context);
       if (context) return context;
       if (defaultContext !== void 0) return defaultContext;
       const missingContextMessage = `\`${consumerName}\` must be used within \`${rootComponentName}\``;
@@ -4012,10 +4026,10 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
     return [Provider, useContext21];
   }
   const createScope = () => {
-    const scopeContexts = defaultContexts.map((defaultContext) => React13.createContext(defaultContext));
+    const scopeContexts = defaultContexts.map((defaultContext) => React14.createContext(defaultContext));
     return function(scope) {
       const contexts = scope?.[scopeName] || scopeContexts;
-      return React13.useMemo(() => ({
+      return React14.useMemo(() => ({
         [`__scope${scopeName}`]: {
           ...scope,
           [scopeName]: contexts
@@ -4044,7 +4058,7 @@ function composeContextScopes(...scopes) {
           ...currentScope
         };
       }, {});
-      return React13.useMemo(() => ({
+      return React14.useMemo(() => ({
         [`__scope${baseScope.scopeName}`]: nextScopes
       }), [nextScopes]);
     };
@@ -4053,16 +4067,16 @@ function composeContextScopes(...scopes) {
 }
 
 // ../../node_modules/@tamagui/is-equal-shallow/dist/esm/index.mjs
-var import_react11 = require("react");
+var import_react13 = require("react");
 
 // ../../node_modules/@tamagui/constants/dist/esm/constants.mjs
-var import_react12 = __toESM(require("react"), 1);
-var IS_REACT_19 = typeof import_react12.default.use < "u";
+var import_react14 = __toESM(require("react"), 1);
+var IS_REACT_19 = typeof import_react14.default.use < "u";
 var isWeb = true;
 var isWindowDefined = typeof window < "u";
 var isServer = isWeb && !isWindowDefined;
 var isClient = isWeb && isWindowDefined;
-var useIsomorphicLayoutEffect = isServer ? import_react12.useEffect : import_react12.useLayoutEffect;
+var useIsomorphicLayoutEffect = isServer ? import_react14.useEffect : import_react14.useLayoutEffect;
 var isChrome = typeof navigator < "u" && /Chrome/.test(navigator.userAgent || "");
 var isWebTouchable = isClient && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 var isAndroid = false;
@@ -4423,12 +4437,12 @@ var stylePropsText = {
 };
 
 // ../../node_modules/@tamagui/helpers/dist/esm/withStaticProperties.mjs
-var import_react13 = __toESM(require("react"), 1);
+var import_react15 = __toESM(require("react"), 1);
 var Decorated = /* @__PURE__ */ Symbol();
 var withStaticProperties2 = (component, staticProps) => {
   const next = (() => {
     if (component[Decorated]) {
-      const _ = import_react13.default.forwardRef((props, ref) => import_react13.default.createElement(component, {
+      const _ = import_react15.default.forwardRef((props, ref) => import_react15.default.createElement(component, {
         ...props,
         ref
       }));
@@ -4450,20 +4464,20 @@ function isVariable(v) {
 }
 
 // ../../node_modules/@tamagui/use-did-finish-ssr/dist/esm/index.mjs
-var React16 = __toESM(require("react"), 1);
+var React17 = __toESM(require("react"), 1);
 
 // ../../node_modules/@tamagui/use-did-finish-ssr/dist/esm/ClientOnly.mjs
-var import_react14 = require("react");
+var import_react16 = require("react");
 var import_jsx_runtime17 = require("react/jsx-runtime");
-var ClientOnlyContext = (0, import_react14.createContext)(false);
+var ClientOnlyContext = (0, import_react16.createContext)(false);
 
 // ../../node_modules/@tamagui/use-event/dist/esm/useGet.mjs
-var React17 = __toESM(require("react"), 1);
+var React18 = __toESM(require("react"), 1);
 function useGet(currentValue, initialValue, forwardToFunction) {
-  const curRef = React17.useRef(initialValue ?? currentValue);
+  const curRef = React18.useRef(initialValue ?? currentValue);
   return useIsomorphicLayoutEffect(() => {
     curRef.current = currentValue;
-  }), React17.useCallback(forwardToFunction ? (...args) => curRef.current?.apply(null, args) : () => curRef.current, []);
+  }), React18.useCallback(forwardToFunction ? (...args) => curRef.current?.apply(null, args) : () => curRef.current, []);
 }
 
 // ../../node_modules/@tamagui/use-event/dist/esm/useEvent.mjs
@@ -4724,7 +4738,7 @@ var ThemeableStack = (0, import_core4.styled)(YStack5, {
 });
 
 // ../../node_modules/@tamagui/progress/dist/esm/Progress.mjs
-var React18 = __toESM(require("react"), 1);
+var React19 = __toESM(require("react"), 1);
 var import_jsx_runtime18 = require("react/jsx-runtime");
 var PROGRESS_NAME = "Progress";
 var [createProgressContext, createProgressScope] = createContextScope(PROGRESS_NAME);
@@ -4816,7 +4830,7 @@ var Progress = withStaticProperties2(ProgressFrame.styleable(function(props, for
     getValueLabel = defaultGetValueLabel,
     size = "$true",
     ...progressProps
-  } = props, max = isValidMaxNumber(maxProp) ? maxProp : DEFAULT_MAX, value = isValidValueNumber(valueProp, max) ? valueProp : null, valueLabel = isNumber(value) ? getValueLabel(value, max) : void 0, [width, setWidth] = React18.useState(0);
+  } = props, max = isValidMaxNumber(maxProp) ? maxProp : DEFAULT_MAX, value = isValidValueNumber(valueProp, max) ? valueProp : null, valueLabel = isNumber(value) ? getValueLabel(value, max) : void 0, [width, setWidth] = React19.useState(0);
   return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(ProgressProvider, {
     scope: __scopeProgress,
     value,
@@ -4846,7 +4860,7 @@ var Progress = withStaticProperties2(ProgressFrame.styleable(function(props, for
 });
 
 // src/atoms/Progress/Progress.tsx
-var import_react15 = __toESM(require("react"));
+var import_react17 = __toESM(require("react"));
 var import_jsx_runtime19 = require("react/jsx-runtime");
 var ProgressIndicatorFrame2 = (0, import_tamagui15.styled)(ProgressIndicator, {
   name: "ProgressIndicator",
@@ -4891,7 +4905,7 @@ var ProgressLabel = (0, import_tamagui15.styled)(import_tamagui15.Text, {
   fontWeight: "$body"
   // Ensure readable weight
 });
-var ProgressComponent = import_react15.default.forwardRef(
+var ProgressComponent = import_react17.default.forwardRef(
   ({ value, showValue, label, status, size, children, ...props }, ref) => {
     if (children) {
       return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ProgressFrame2, { ref, value, size, ...props, children });
@@ -4959,7 +4973,7 @@ var Separator = SeparatorFrame;
 
 // src/atoms/Toggle/Toggle.tsx
 var import_tamagui17 = require("tamagui");
-var import_react16 = __toESM(require("react"));
+var import_react18 = __toESM(require("react"));
 var import_jsx_runtime20 = require("react/jsx-runtime");
 var ToggleFrame = (0, import_tamagui17.styled)(import_tamagui17.Button, {
   name: "Toggle",
@@ -4983,7 +4997,7 @@ var ToggleFrame = (0, import_tamagui17.styled)(import_tamagui17.Button, {
     }
   }
 });
-var Toggle = import_react16.default.forwardRef(
+var Toggle = import_react18.default.forwardRef(
   (props, ref) => {
     const { pressed, onPressedChange, onPress, leftIcon, rightIcon, ...rest } = props;
     return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
@@ -5007,7 +5021,7 @@ Toggle.displayName = "Toggle";
 
 // src/atoms/ScrollArea.tsx
 var import_tamagui18 = require("tamagui");
-var import_react17 = require("react");
+var import_react19 = require("react");
 var import_jsx_runtime21 = require("react/jsx-runtime");
 var ScrollAreaFrame = (0, import_tamagui18.styled)(import_tamagui18.ScrollView, {
   name: "ScrollArea",
@@ -5055,17 +5069,17 @@ var ScrollAreaFrame = (0, import_tamagui18.styled)(import_tamagui18.ScrollView, 
     scrollbar: "default"
   }
 });
-var ScrollArea = (0, import_react17.forwardRef)((props, ref) => {
+var ScrollArea = (0, import_react19.forwardRef)((props, ref) => {
   return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(ScrollAreaFrame, { ...props, ref });
 });
 ScrollArea.displayName = "ScrollArea";
 
 // src/atoms/Textarea/Textarea.tsx
-var import_react19 = __toESM(require("react"));
+var import_react21 = __toESM(require("react"));
 var import_tamagui19 = require("tamagui");
 
 // src/utils/withErrorLogging.tsx
-var import_react18 = __toESM(require("react"));
+var import_react20 = __toESM(require("react"));
 
 // src/utils/logging.ts
 function logComponentError(componentName, error2, componentStack) {
@@ -5082,7 +5096,7 @@ ${componentStack}`);
 // src/utils/withErrorLogging.tsx
 var import_jsx_runtime22 = require("react/jsx-runtime");
 function withErrorLogging(componentName, Component3) {
-  const Wrapped = import_react18.default.forwardRef((props, ref) => {
+  const Wrapped = import_react20.default.forwardRef((props, ref) => {
     try {
       return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(Component3, { ...props, ref });
     } catch (error2) {
@@ -5166,7 +5180,7 @@ var StyledTextarea = (0, import_tamagui19.styled)(import_tamagui19.TextArea, {
     size: "default"
   }
 });
-var TextareaImpl = import_react19.default.forwardRef(
+var TextareaImpl = import_react21.default.forwardRef(
   ({
     variant = "default",
     size = "default",
@@ -5179,7 +5193,7 @@ var TextareaImpl = import_react19.default.forwardRef(
     ...props
   }, ref) => {
     const defaultStyle = { resize: "vertical" };
-    const id2 = import_react19.default.useId();
+    const id2 = import_react21.default.useId();
     return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(import_tamagui19.YStack, { width: "100%", space: "$2", children: [
       label && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Label, { htmlFor: id2, children: label }),
       /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(
@@ -5232,17 +5246,17 @@ var Textarea = withErrorLogging(
 );
 
 // src/atoms/Checkbox/Checkbox.tsx
-var import_react21 = __toESM(require("react"));
+var import_react23 = __toESM(require("react"));
 var import_tamagui20 = require("tamagui");
 var import_lucide_icons4 = require("@tamagui/lucide-icons");
 
 // ../../node_modules/@tamagui/use-controllable-state/dist/esm/useControllableState.mjs
-var React23 = __toESM(require("react"), 1);
+var React24 = __toESM(require("react"), 1);
 
 // ../../node_modules/@tamagui/start-transition/dist/esm/index.mjs
-var import_react20 = require("react");
+var import_react22 = require("react");
 var startTransition = (callback) => {
-  (0, import_react20.startTransition)(callback);
+  (0, import_react22.startTransition)(callback);
 };
 
 // ../../node_modules/@tamagui/use-controllable-state/dist/esm/useControllableState.mjs
@@ -5255,12 +5269,12 @@ function useControllableState({
   preventUpdate,
   transition: transition2
 }) {
-  const [state, setState] = React23.useState(prop ?? defaultProp), previous = React23.useRef(state), propWins = strategy === "prop-wins" && prop !== void 0, value = propWins ? prop : state, onChangeCb = useEvent(onChange || idFn), transitionFn = transition2 ? startTransition : emptyCallbackFn;
-  React23.useEffect(() => {
+  const [state, setState] = React24.useState(prop ?? defaultProp), previous = React24.useRef(state), propWins = strategy === "prop-wins" && prop !== void 0, value = propWins ? prop : state, onChangeCb = useEvent(onChange || idFn), transitionFn = transition2 ? startTransition : emptyCallbackFn;
+  React24.useEffect(() => {
     prop !== void 0 && (previous.current = prop, transitionFn(() => {
       setState(prop);
     }));
-  }, [prop]), React23.useEffect(() => {
+  }, [prop]), React24.useEffect(() => {
     propWins || state !== previous.current && (previous.current = state, onChangeCb(state));
   }, [onChangeCb, state, propWins]);
   const setter = useEvent((next) => {
@@ -5350,7 +5364,7 @@ var StyledIndicator = (0, import_tamagui20.styled)(import_tamagui20.Checkbox.Ind
   width: "100%",
   height: "100%"
 });
-var CheckboxImpl = import_react21.default.forwardRef(
+var CheckboxImpl = import_react23.default.forwardRef(
   ({
     checked: checkedProp,
     defaultChecked,
@@ -5363,7 +5377,7 @@ var CheckboxImpl = import_react21.default.forwardRef(
     size,
     ...props
   }, ref) => {
-    const realId = id2 || import_react21.default.useId();
+    const realId = id2 || import_react23.default.useId();
     const errorId = errorMessage ? `${realId}-error` : void 0;
     const [checked, setChecked] = useControllableState({
       prop: checkedProp,
@@ -5403,10 +5417,102 @@ var Checkbox = withErrorLogging(
   CheckboxImpl
 );
 
-// src/molecules/Card/Card.tsx
+// src/atoms/Kbd/Kbd.tsx
+var import_react24 = __toESM(require("react"));
 var import_tamagui21 = require("tamagui");
 var import_jsx_runtime25 = require("react/jsx-runtime");
-var CardFrame = (0, import_tamagui21.styled)(import_tamagui21.YStack, {
+var StyledKbd = (0, import_tamagui21.styled)(import_tamagui21.XStack, {
+  name: "Kbd",
+  tag: "kbd",
+  fontFamily: "$body",
+  backgroundColor: "$background",
+  color: "$color",
+  borderRadius: "$2",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  justifyContent: "center",
+  alignItems: "center",
+  hoverStyle: {
+    backgroundColor: "$backgroundHover"
+  },
+  pressStyle: {
+    backgroundColor: "$backgroundPress"
+  },
+  variants: {
+    variant: {
+      default: {
+        backgroundColor: "$background",
+        color: "$color",
+        borderColor: "$borderColor"
+      },
+      subtle: {
+        backgroundColor: "$backgroundFocus",
+        color: "$color",
+        borderColor: "$backgroundFocus"
+      }
+    },
+    size: {
+      sm: {
+        paddingHorizontal: 4,
+        paddingVertical: 1,
+        minWidth: 16
+      },
+      default: {
+        paddingHorizontal: 6,
+        paddingVertical: 2,
+        minWidth: 20
+      },
+      lg: {
+        paddingHorizontal: 8,
+        paddingVertical: 3,
+        minWidth: 24
+      }
+    }
+  },
+  defaultVariants: {
+    size: "default",
+    variant: "default"
+  }
+});
+var KbdText = (0, import_tamagui21.styled)(import_tamagui21.Text, {
+  fontFamily: "$body",
+  color: "$color",
+  variants: {
+    size: {
+      sm: { fontSize: 10, fontWeight: "400" },
+      default: { fontSize: 12, fontWeight: "500" },
+      lg: { fontSize: 14, fontWeight: "600" }
+    }
+  },
+  defaultVariants: {
+    size: "default"
+  }
+});
+var Kbd = import_react24.default.forwardRef(
+  ({
+    size = "default",
+    variant = "default",
+    asChild = false,
+    iconBefore,
+    iconAfter,
+    children,
+    ...props
+  }, ref) => {
+    const Comp = asChild ? import_tamagui21.Slot : StyledKbd;
+    return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(Comp, { ref, size, variant, ...props, tag: "kbd", children: [
+      iconBefore,
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(KbdText, { size, children }),
+      iconAfter
+    ] });
+  }
+);
+Kbd.displayName = "Kbd";
+
+// src/molecules/Card/Card.tsx
+var import_tamagui22 = require("tamagui");
+var import_react25 = __toESM(require("react"));
+var import_jsx_runtime26 = require("react/jsx-runtime");
+var CardFrame = (0, import_tamagui22.styled)(import_tamagui22.YStack, {
   name: "Card",
   role: "article",
   backgroundColor: "$background",
@@ -5445,28 +5551,28 @@ var CardFrame = (0, import_tamagui21.styled)(import_tamagui21.YStack, {
     variant: "default"
   }
 });
-var CardHeader = (0, import_tamagui21.styled)(import_tamagui21.YStack, {
+var CardHeader = (0, import_tamagui22.styled)(import_tamagui22.YStack, {
   name: "CardHeader",
   gap: "$1.5"
 });
-var CardTitle = (0, import_tamagui21.styled)(import_tamagui21.Text, {
+var CardTitle = (0, import_tamagui22.styled)(import_tamagui22.Text, {
   name: "CardTitle",
   fontSize: "$6",
   fontWeight: "600",
   color: "$foreground",
   ellipse: true
 });
-var CardDescription = (0, import_tamagui21.styled)(import_tamagui21.Text, {
+var CardDescription = (0, import_tamagui22.styled)(import_tamagui22.Text, {
   name: "CardDescription",
   fontSize: "$3",
   color: "$mutedForeground",
   lineHeight: "$3"
 });
-var CardContent = (0, import_tamagui21.styled)(import_tamagui21.YStack, {
+var CardContent = (0, import_tamagui22.styled)(import_tamagui22.YStack, {
   name: "CardContent",
   gap: "$4"
 });
-var CardFooter = (0, import_tamagui21.styled)(import_tamagui21.XStack, {
+var CardFooter = (0, import_tamagui22.styled)(import_tamagui22.XStack, {
   name: "CardFooter",
   borderTopWidth: 1,
   borderTopColor: "$borderColor",
@@ -5475,19 +5581,27 @@ var CardFooter = (0, import_tamagui21.styled)(import_tamagui21.XStack, {
   justifyContent: "flex-end",
   alignItems: "center"
 });
-var Card = ({
+var Card = import_react25.default.forwardRef(({
   children,
   isLoading,
   isDisabled: isDisabled2,
   data,
   actions,
   ...rest
-}) => {
-  const cardProps = { ...rest, disabled: isDisabled2, "data-testid": "card" };
+}, ref) => {
+  const { animationName, animationDuration, ...otherProps } = rest;
+  const cardProps = {
+    ...otherProps,
+    disabled: isDisabled2,
+    "data-testid": "card",
+    "data-has-error": otherProps.hasError,
+    "data-disabled": isDisabled2,
+    ref
+  };
   if (data) {
-    return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(CardFrame, { ...cardProps, p: 0, overflow: "hidden", children: [
-      data.heroImage && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
-        import_tamagui21.Image,
+    return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(CardFrame, { ...cardProps, p: 0, overflow: "hidden", children: [
+      data.heroImage && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
+        import_tamagui22.Image,
         {
           source: { uri: data.heroImage },
           width: "100%",
@@ -5498,40 +5612,41 @@ var Card = ({
           accessibilityLabel: "Hero image"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_tamagui21.YStack, { p: "$lg", gap: "$4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(CardHeader, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(CardTitle, { children: data.title }),
-          data.description && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(CardDescription, { children: data.description })
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_tamagui22.YStack, { p: "$lg", gap: "$4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(CardHeader, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(CardTitle, { children: data.title }),
+          data.description && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(CardDescription, { children: data.description })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(CardContent, { children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_tamagui21.YStack, { gap: "$2", f: 1, p: "$1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Skeleton, { h: "$4", w: "75%" }),
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Skeleton, { h: "$2.5", w: "100%" }),
-          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Skeleton, { h: "$2.5", w: "90%" })
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(CardContent, { children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_tamagui22.YStack, { gap: "$2", f: 1, p: "$1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Skeleton, { h: "$4", w: "75%" }),
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Skeleton, { h: "$2.5", w: "100%" }),
+          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Skeleton, { h: "$2.5", w: "90%" })
         ] }) : data.content }),
-        actions && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(CardFooter, { children: actions })
+        actions && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(CardFooter, { children: actions })
       ] })
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(CardFrame, { ...cardProps, children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_tamagui21.YStack, { gap: "$2", f: 1, p: "$1", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Skeleton, { h: "$4", w: "75%" }),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Skeleton, { h: "$2.5", w: "100%" }),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Skeleton, { h: "$2.5", w: "90%" })
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(CardFrame, { ...cardProps, children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_tamagui22.YStack, { gap: "$2", f: 1, p: "$1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Skeleton, { h: "$4", w: "75%" }),
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Skeleton, { h: "$2.5", w: "100%" }),
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Skeleton, { h: "$2.5", w: "90%" })
   ] }) : children });
-};
+});
+Card.displayName = "Card";
 
 // src/molecules/Collapsible.tsx
 var CollapsiblePrimitive = __toESM(require("@radix-ui/react-collapsible"));
 var import_lucide_icons5 = require("@tamagui/lucide-icons");
-var import_react22 = __toESM(require("react"));
-var import_tamagui22 = require("tamagui");
-var import_jsx_runtime26 = require("react/jsx-runtime");
-var CollapsibleContext = import_react22.default.createContext({ open: false });
-var useCollapsibleContext = () => (0, import_react22.useContext)(CollapsibleContext);
-var CollapsibleRoot = (0, import_tamagui22.styled)(CollapsiblePrimitive.Root, {
+var import_react26 = __toESM(require("react"));
+var import_tamagui23 = require("tamagui");
+var import_jsx_runtime27 = require("react/jsx-runtime");
+var CollapsibleContext = import_react26.default.createContext({ open: false });
+var useCollapsibleContext = () => (0, import_react26.useContext)(CollapsibleContext);
+var CollapsibleRoot = (0, import_tamagui23.styled)(CollapsiblePrimitive.Root, {
   name: "Collapsible",
   width: "100%"
 });
-var CollapsibleTrigger = (0, import_tamagui22.styled)(import_tamagui22.XStack, {
+var CollapsibleTrigger = (0, import_tamagui23.styled)(import_tamagui23.XStack, {
   name: "CollapsibleTrigger",
   alignItems: "center",
   justifyContent: "space-between",
@@ -5552,7 +5667,7 @@ var CollapsibleTrigger = (0, import_tamagui22.styled)(import_tamagui22.XStack, {
     }
   }
 });
-var CollapsibleContent = (0, import_tamagui22.styled)(CollapsiblePrimitive.Content, {
+var CollapsibleContent = (0, import_tamagui23.styled)(CollapsiblePrimitive.Content, {
   name: "CollapsibleContent",
   overflow: "hidden",
   paddingTop: "$4"
@@ -5560,7 +5675,7 @@ var CollapsibleContent = (0, import_tamagui22.styled)(CollapsiblePrimitive.Conte
   // enterStyle: { opacity: 0, height: 0 },
   // exitStyle: { opacity: 0, height: 0 },
 });
-var Collapsible = import_react22.default.forwardRef(
+var Collapsible = import_react26.default.forwardRef(
   ({
     children,
     isLoading = false,
@@ -5573,7 +5688,7 @@ var Collapsible = import_react22.default.forwardRef(
     onOpenChange,
     ...props
   }, ref) => {
-    const [openState, setOpenState] = (0, import_react22.useState)(defaultOpen || false);
+    const [openState, setOpenState] = (0, import_react26.useState)(defaultOpen || false);
     const open = openProp !== void 0 ? openProp : openState;
     const handleOpenChange = (newOpen) => {
       if (openProp === void 0) {
@@ -5581,7 +5696,7 @@ var Collapsible = import_react22.default.forwardRef(
       }
       onOpenChange?.(newOpen);
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(CollapsibleContext.Provider, { value: { open }, children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(CollapsibleContext.Provider, { value: { open }, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
       CollapsibleRoot,
       {
         ...props,
@@ -5590,7 +5705,7 @@ var Collapsible = import_react22.default.forwardRef(
         onOpenChange: handleOpenChange,
         defaultOpen,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(CollapsiblePrimitive.Trigger, { asChild: true, disabled: isDisabled2 || isLoading, children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(CollapsiblePrimitive.Trigger, { asChild: true, disabled: isDisabled2 || isLoading, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(
             CollapsibleTrigger,
             {
               hasError,
@@ -5598,17 +5713,17 @@ var Collapsible = import_react22.default.forwardRef(
               "data-has-error": hasError,
               "aria-invalid": hasError,
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_tamagui22.Text, { fontSize: "$4", fontWeight: "bold", ellipse: true, children: title }),
-                /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_tamagui22.XStack, { gap: "$2", alignItems: "center", flexShrink: 0, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui23.Text, { fontSize: "$4", fontWeight: "bold", ellipse: true, children: title }),
+                /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_tamagui23.XStack, { gap: "$2", alignItems: "center", flexShrink: 0, children: [
                   rightSlot,
-                  /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_tamagui22.Button, { size: "$3", chromeless: true, icon: import_lucide_icons5.ChevronDown })
+                  /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui23.Button, { size: "$3", chromeless: true, icon: import_lucide_icons5.ChevronDown })
                 ] })
               ]
             }
           ) }),
-          /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(CollapsibleContent, { children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(import_tamagui22.YStack, { space: "$2", "data-testid": "skeleton-container", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Skeleton, { height: 40 }),
-            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Skeleton, { height: 40 })
+          /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(CollapsibleContent, { children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(import_tamagui23.YStack, { space: "$2", "data-testid": "skeleton-container", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Skeleton, { height: 40 }),
+            /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Skeleton, { height: 40 })
           ] }) : children })
         ]
       }
@@ -5618,10 +5733,10 @@ var Collapsible = import_react22.default.forwardRef(
 
 // src/molecules/Dialog/Dialog.tsx
 var import_lucide_icons6 = require("@tamagui/lucide-icons");
-var import_react23 = __toESM(require("react"));
-var import_tamagui23 = require("tamagui");
-var import_jsx_runtime27 = require("react/jsx-runtime");
-var DialogOverlay = (0, import_tamagui23.styled)(import_tamagui23.Dialog.Overlay, {
+var import_react27 = __toESM(require("react"));
+var import_tamagui24 = require("tamagui");
+var import_jsx_runtime28 = require("react/jsx-runtime");
+var DialogOverlay = (0, import_tamagui24.styled)(import_tamagui24.Dialog.Overlay, {
   name: "DialogOverlay",
   backgroundColor: "rgba(0, 0, 0, 0.5)",
   animation: "quick",
@@ -5629,7 +5744,7 @@ var DialogOverlay = (0, import_tamagui23.styled)(import_tamagui23.Dialog.Overlay
   enterStyle: { opacity: 0 },
   exitStyle: { opacity: 0 }
 });
-var DialogContent = (0, import_tamagui23.styled)(import_tamagui23.Dialog.Content, {
+var DialogContent = (0, import_tamagui24.styled)(import_tamagui24.Dialog.Content, {
   name: "DialogContent",
   backgroundColor: "$background",
   borderRadius: "$lg",
@@ -5661,45 +5776,45 @@ var DialogContent = (0, import_tamagui23.styled)(import_tamagui23.Dialog.Content
     }
   }
 });
-var DialogHeader = (0, import_tamagui23.styled)(import_tamagui23.YStack, {
+var DialogHeader = (0, import_tamagui24.styled)(import_tamagui24.YStack, {
   name: "DialogHeader",
   marginBottom: "$md",
   gap: "$sm"
 });
-var DialogTitle = (0, import_tamagui23.styled)(import_tamagui23.Dialog.Title, {
+var DialogTitle = (0, import_tamagui24.styled)(import_tamagui24.Dialog.Title, {
   name: "DialogTitle",
   fontSize: "$6",
   fontWeight: "600",
   color: "$foreground",
   ellipse: true
 });
-var DialogDescription = (0, import_tamagui23.styled)(import_tamagui23.Dialog.Description, {
+var DialogDescription = (0, import_tamagui24.styled)(import_tamagui24.Dialog.Description, {
   name: "DialogDescription",
   fontSize: "$3",
   color: "$mutedForeground",
   lineHeight: "$4"
 });
-var DialogFooterComponent = import_react23.default.forwardRef(
-  ({ actions, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui23.XStack, { ...props, ref, children: actions ?? children })
+var DialogFooterComponent = import_react27.default.forwardRef(
+  ({ actions, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_tamagui24.XStack, { ...props, ref, children: actions ?? children })
 );
-var DialogFooter = (0, import_tamagui23.styled)(DialogFooterComponent, {
+var DialogFooter = (0, import_tamagui24.styled)(DialogFooterComponent, {
   name: "DialogFooter",
   flexDirection: "row",
   justifyContent: "flex-end",
   gap: "$3",
   marginTop: "$md"
 });
-var Dialog = import_tamagui23.Dialog;
-var DialogTrigger = import_tamagui23.Dialog.Trigger;
-var DialogPortal = import_tamagui23.Dialog.Portal;
-var DialogClose = import_tamagui23.Dialog.Close;
-var DialogContentComposite = import_react23.default.forwardRef(({ children, isLoading = false, hasError = false, ...props }, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(DialogPortal, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(DialogOverlay, {}, "overlay"),
-    /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)(DialogContent, { ref, hasError, ...props, children: [
-      isLoading ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(Skeleton, { height: 250 }) : children,
-      /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui23.Unspaced, { children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(import_tamagui23.Dialog.Close, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
-        import_tamagui23.Button,
+var Dialog = import_tamagui24.Dialog;
+var DialogTrigger = import_tamagui24.Dialog.Trigger;
+var DialogPortal = import_tamagui24.Dialog.Portal;
+var DialogClose = import_tamagui24.Dialog.Close;
+var DialogContentComposite = import_react27.default.forwardRef(({ children, isLoading = false, hasError = false, ...props }, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(DialogPortal, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(DialogOverlay, {}, "overlay"),
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(DialogContent, { ref, hasError, ...props, children: [
+      isLoading ? /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Skeleton, { height: 250 }) : children,
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_tamagui24.Unspaced, { children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_tamagui24.Dialog.Close, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+        import_tamagui24.Button,
         {
           "aria-label": "Fechar",
           position: "absolute",
@@ -5718,31 +5833,31 @@ var DialogContentComposite = import_react23.default.forwardRef(({ children, isLo
 DialogContentComposite.displayName = "DialogContent";
 
 // src/molecules/Drawer.tsx
-var import_react25 = __toESM(require("react"));
+var import_react29 = __toESM(require("react"));
 
 // src/molecules/Sheet.tsx
-var import_tamagui24 = require("tamagui");
-var import_react24 = require("react");
-var import_jsx_runtime28 = require("react/jsx-runtime");
-var SheetContext = (0, import_react24.createContext)({
+var import_tamagui25 = require("tamagui");
+var import_react28 = require("react");
+var import_jsx_runtime29 = require("react/jsx-runtime");
+var SheetContext = (0, import_react28.createContext)({
   isLoading: false,
   hasError: false
 });
-var useSheetContext = () => (0, import_react24.useContext)(SheetContext);
-var SheetComponent = ({ isLoading = false, hasError = false, children, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(SheetContext.Provider, { value: { isLoading, hasError }, children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_tamagui24.Sheet, { ...props, children }) });
-var SheetOverlay = (0, import_tamagui24.styled)(import_tamagui24.Sheet.Overlay, {
+var useSheetContext = () => (0, import_react28.useContext)(SheetContext);
+var SheetComponent = ({ isLoading = false, hasError = false, children, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(SheetContext.Provider, { value: { isLoading, hasError }, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_tamagui25.Sheet, { ...props, children }) });
+var SheetOverlay = (0, import_tamagui25.styled)(import_tamagui25.Sheet.Overlay, {
   name: "SheetOverlay",
   backgroundColor: "$black",
   opacity: 0.5,
   enterStyle: { opacity: 0 },
   exitStyle: { opacity: 0 }
 });
-var SheetHandle = (0, import_tamagui24.styled)(import_tamagui24.Sheet.Handle, {
+var SheetHandle = (0, import_tamagui25.styled)(import_tamagui25.Sheet.Handle, {
   name: "SheetHandle",
   backgroundColor: "$borderColor",
   opacity: 0.8
 });
-var SheetContentFrame = (0, import_tamagui24.styled)(import_tamagui24.Sheet.Frame, {
+var SheetContentFrame = (0, import_tamagui25.styled)(import_tamagui25.Sheet.Frame, {
   name: "SheetContent",
   backgroundColor: "$background",
   padding: "$4",
@@ -5762,71 +5877,68 @@ var SheetContentFrame = (0, import_tamagui24.styled)(import_tamagui24.Sheet.Fram
     }
   }
 });
-var SheetContent = (0, import_react24.forwardRef)(
+var SheetContent = (0, import_react28.forwardRef)(
   ({ children, ...props }, ref) => {
     const { isLoading, hasError } = useSheetContext();
-    return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_tamagui24.Sheet.Portal, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(SheetOverlay, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(SheetContentFrame, { ref, ...props, hasError, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(SheetHandle, {}),
-        isLoading ? /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_tamagui24.YStack, { gap: "$4", py: "$4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_tamagui24.YStack, { gap: "$2", marginBottom: "$4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Skeleton, { height: 30, width: "60%" }),
-            /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Skeleton, { height: 20, width: "90%" })
+    return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(SheetContentFrame, { ref, ...props, hasError, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(SheetHandle, {}),
+      isLoading ? /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_tamagui25.YStack, { gap: "$4", py: "$4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_tamagui25.YStack, { gap: "$2", marginBottom: "$4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Skeleton, { height: 30, width: "60%" }),
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Skeleton, { height: 20, width: "90%" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_tamagui25.YStack, { gap: "$4", py: "$4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_tamagui25.YStack, { gap: "$2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Skeleton, { height: 16, width: "30%" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Skeleton, { height: 40 })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_tamagui24.YStack, { gap: "$4", py: "$4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_tamagui24.YStack, { gap: "$2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Skeleton, { height: 16, width: "30%" }),
-              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Skeleton, { height: 40 })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_tamagui24.YStack, { gap: "$2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Skeleton, { height: 16, width: "30%" }),
-              /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Skeleton, { height: 40 })
-            ] })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_tamagui24.XStack, { justifyContent: "flex-end", marginTop: "$4", children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(Skeleton, { height: 44, width: 120 }) })
-        ] }) : children
-      ] })
+          /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_tamagui25.YStack, { gap: "$2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Skeleton, { height: 16, width: "30%" }),
+            /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Skeleton, { height: 40 })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_tamagui25.XStack, { justifyContent: "flex-end", marginTop: "$4", children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Skeleton, { height: 44, width: 120 }) })
+      ] }) : children
     ] });
   }
 );
 SheetContent.displayName = "SheetContent";
-var SheetHeader = (0, import_tamagui24.styled)(import_tamagui24.YStack, {
+var SheetHeader = (0, import_tamagui25.styled)(import_tamagui25.YStack, {
   name: "SheetHeader",
   gap: "$2",
   marginBottom: "$4"
 });
-var SheetFooterComponent = (0, import_react24.forwardRef)(
+var SheetFooterComponent = (0, import_react28.forwardRef)(
   ({ children, actions, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(import_tamagui24.XStack, { ref, ...props, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_tamagui25.XStack, { ref, ...props, children: [
       children,
       actions
     ] });
   }
 );
-var SheetFooter = (0, import_tamagui24.styled)(SheetFooterComponent, {
+var SheetFooter = (0, import_tamagui25.styled)(SheetFooterComponent, {
   name: "SheetFooter",
   justifyContent: "flex-end",
   gap: "$2",
   marginTop: "$4"
 });
-var SheetTitle = (0, import_tamagui24.styled)(import_tamagui24.H2, {
+var SheetTitle = (0, import_tamagui25.styled)(import_tamagui25.H2, {
   name: "SheetTitle",
   fontWeight: "bold",
   fontSize: "$6",
   color: "$foreground"
 });
-var SheetDescription = (0, import_tamagui24.styled)(import_tamagui24.Paragraph, {
+var SheetDescription = (0, import_tamagui25.styled)(import_tamagui25.Paragraph, {
   name: "SheetDescription",
   fontSize: "$3",
   color: "$mutedForeground"
 });
-var SheetCloseFrame = (0, import_tamagui24.styled)(Button, {
+var SheetCloseFrame = (0, import_tamagui25.styled)(Button, {
   name: "SheetClose"
 });
 var SheetClose = SheetCloseFrame.styleable((props, ref) => {
-  const context = import_tamagui24.Sheet.useSheetContext();
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+  const context = import_tamagui25.Sheet.useSheetContext();
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
     SheetCloseFrame,
     {
       ref,
@@ -5835,9 +5947,9 @@ var SheetClose = SheetCloseFrame.styleable((props, ref) => {
     }
   );
 });
-var SheetTrigger = import_tamagui24.Sheet.Trigger;
-var Sheet = (0, import_tamagui24.withStaticProperties)(SheetComponent, {
-  Portal: import_tamagui24.Sheet.Portal,
+var SheetTrigger = import_tamagui25.Sheet.Trigger;
+var Sheet = (0, import_tamagui25.withStaticProperties)(SheetComponent, {
+  Portal: import_tamagui25.Portal,
   Overlay: SheetOverlay,
   Frame: SheetContentFrame,
   Handle: SheetHandle,
@@ -5847,12 +5959,13 @@ var Sheet = (0, import_tamagui24.withStaticProperties)(SheetComponent, {
   Title: SheetTitle,
   Description: SheetDescription,
   Close: SheetClose,
-  Trigger: SheetTrigger
+  Trigger: SheetTrigger,
+  ScrollView: import_tamagui25.Sheet.ScrollView
 });
 
 // src/molecules/Drawer.tsx
-var import_tamagui25 = require("tamagui");
-var import_jsx_runtime29 = require("react/jsx-runtime");
+var import_tamagui26 = require("tamagui");
+var import_jsx_runtime30 = require("react/jsx-runtime");
 function DrawerComponent({
   trigger,
   title,
@@ -5864,27 +5977,27 @@ function DrawerComponent({
   open: controlledOpen,
   onOpenChange: setControlledOpen
 }) {
-  const [internalOpen, setInternalOpen] = (0, import_react25.useState)(false);
+  const [internalOpen, setInternalOpen] = (0, import_react29.useState)(false);
   const open = controlledOpen ?? internalOpen;
   const setOpen = setControlledOpen ?? setInternalOpen;
-  const triggerWithPress = trigger ? import_react25.default.cloneElement(trigger, {
+  const triggerWithPress = trigger ? import_react29.default.cloneElement(trigger, {
     onPress: () => setOpen(true)
   }) : null;
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_jsx_runtime29.Fragment, { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_jsx_runtime30.Fragment, { children: [
     triggerWithPress,
-    /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Sheet, { open, onOpenChange: setOpen, children: /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(Sheet.Portal, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Sheet.Overlay, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(Sheet.Content, { animation: "medium", enterStyle: { y: 300 }, exitStyle: { y: 300 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Sheet.Handle, {}),
-        /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(Sheet.Header, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Sheet.Title, { color: hasError ? "$red10" : void 0, children: title }),
-          description && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Sheet.Description, { children: description })
+    /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Sheet, { open, onOpenChange: setOpen, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(Sheet.Portal, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Sheet.Overlay, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(Sheet.Content, { animation: "medium", enterStyle: { y: 300 }, exitStyle: { y: 300 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Sheet.Handle, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(Sheet.Header, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Sheet.Title, { color: hasError ? "$red10" : void 0, children: title }),
+          description && /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Sheet.Description, { children: description })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(import_tamagui25.YStack, { flex: 1, paddingVertical: "$4", children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(import_tamagui25.YStack, { space: true, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Skeleton, { height: 40 }),
-          /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Skeleton, { height: 20, width: "75%" })
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui26.YStack, { flex: 1, paddingVertical: "$4", children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(import_tamagui26.YStack, { space: true, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Skeleton, { height: 40 }),
+          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Skeleton, { height: 20, width: "75%" })
         ] }) : children }),
-        footer && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(Sheet.Footer, { children: footer })
+        footer && /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(Sheet.Footer, { children: footer })
       ] })
     ] }) })
   ] });
@@ -5913,18 +6026,18 @@ var DrawerDescription = Sheet.Description;
 var DrawerClose = Sheet.Close;
 
 // src/molecules/DropdownMenu/DropdownMenu.tsx
-var React29 = __toESM(require("react"));
+var React32 = __toESM(require("react"));
 var DropdownMenuPrimitive = __toESM(require("@radix-ui/react-dropdown-menu"));
-var import_tamagui26 = require("tamagui");
+var import_tamagui27 = require("tamagui");
 var import_lucide_icons7 = require("@tamagui/lucide-icons");
-var import_jsx_runtime30 = require("react/jsx-runtime");
+var import_jsx_runtime31 = require("react/jsx-runtime");
 var DropdownMenu = DropdownMenuPrimitive.Root;
 var DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 var DropdownMenuGroup = DropdownMenuPrimitive.Group;
 var DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 var DropdownMenuSub = DropdownMenuPrimitive.Sub;
 var DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
-var DropdownMenuSubTriggerFrame = (0, import_tamagui26.styled)(DropdownMenuPrimitive.SubTrigger, {
+var DropdownMenuSubTriggerFrame = (0, import_tamagui27.styled)(DropdownMenuPrimitive.SubTrigger, {
   flexDirection: "row",
   alignItems: "center",
   paddingVertical: "$2",
@@ -5939,7 +6052,7 @@ var DropdownMenuSubTriggerFrame = (0, import_tamagui26.styled)(DropdownMenuPrimi
     backgroundColor: "$accent"
   }
 });
-var DropdownMenuSubTrigger = React29.forwardRef(({ className: _className, children, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+var DropdownMenuSubTrigger = React32.forwardRef(({ className: _className, children, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
   DropdownMenuSubTriggerFrame,
   {
     ref,
@@ -5947,12 +6060,12 @@ var DropdownMenuSubTrigger = React29.forwardRef(({ className: _className, childr
     ...props,
     children: [
       children,
-      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui26.View, { marginLeft: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_icons7.ChevronRight, { size: 16 }) })
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui27.View, { marginLeft: "auto", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_lucide_icons7.ChevronRight, { size: 16 }) })
     ]
   }
 ));
 DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName;
-var DropdownMenuSubContentFrame = (0, import_tamagui26.styled)(DropdownMenuPrimitive.SubContent, {
+var DropdownMenuSubContentFrame = (0, import_tamagui27.styled)(DropdownMenuPrimitive.SubContent, {
   minWidth: 180,
   // roughly 8rem
   backgroundColor: "$background",
@@ -5966,9 +6079,9 @@ var DropdownMenuSubContentFrame = (0, import_tamagui26.styled)(DropdownMenuPrimi
   animation: "quick",
   zIndex: 2e5
 });
-var DropdownMenuSubContent = React29.forwardRef(({ className: _className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(DropdownMenuSubContentFrame, { ref, ...props }));
+var DropdownMenuSubContent = React32.forwardRef(({ className: _className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(DropdownMenuSubContentFrame, { ref, ...props }));
 DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName;
-var DropdownMenuContentFrame = (0, import_tamagui26.styled)(DropdownMenuPrimitive.Content, {
+var DropdownMenuContentFrame = (0, import_tamagui27.styled)(DropdownMenuPrimitive.Content, {
   minWidth: 220,
   backgroundColor: "$background",
   borderRadius: "$md",
@@ -5982,7 +6095,7 @@ var DropdownMenuContentFrame = (0, import_tamagui26.styled)(DropdownMenuPrimitiv
   zIndex: 2e5
   // animation handled by radix/css? or we assume Tamagui handles it?
 });
-var DropdownMenuContent = React29.forwardRef(({ className: _className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(DropdownMenuPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+var DropdownMenuContent = React32.forwardRef(({ className: _className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(DropdownMenuPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
   DropdownMenuContentFrame,
   {
     ref,
@@ -5991,7 +6104,7 @@ var DropdownMenuContent = React29.forwardRef(({ className: _className, sideOffse
   }
 ) }));
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
-var DropdownMenuItemFrame = (0, import_tamagui26.styled)(DropdownMenuPrimitive.Item, {
+var DropdownMenuItemFrame = (0, import_tamagui27.styled)(DropdownMenuPrimitive.Item, {
   flexDirection: "row",
   alignItems: "center",
   paddingVertical: "$2",
@@ -6008,7 +6121,7 @@ var DropdownMenuItemFrame = (0, import_tamagui26.styled)(DropdownMenuPrimitive.I
     backgroundColor: "$accent"
   }
 });
-var DropdownMenuItem = React29.forwardRef(({ className: _className, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+var DropdownMenuItem = React32.forwardRef(({ className: _className, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
   DropdownMenuItemFrame,
   {
     ref,
@@ -6017,7 +6130,7 @@ var DropdownMenuItem = React29.forwardRef(({ className: _className, inset, ...pr
   }
 ));
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
-var DropdownMenuCheckboxItemFrame = (0, import_tamagui26.styled)(DropdownMenuPrimitive.CheckboxItem, {
+var DropdownMenuCheckboxItemFrame = (0, import_tamagui27.styled)(DropdownMenuPrimitive.CheckboxItem, {
   flexDirection: "row",
   alignItems: "center",
   paddingVertical: "$2",
@@ -6029,20 +6142,20 @@ var DropdownMenuCheckboxItemFrame = (0, import_tamagui26.styled)(DropdownMenuPri
   hoverStyle: { backgroundColor: "$accent" },
   focusStyle: { backgroundColor: "$accent" }
 });
-var DropdownMenuCheckboxItem = React29.forwardRef(({ className: _className, children, checked, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+var DropdownMenuCheckboxItem = React32.forwardRef(({ className: _className, children, checked, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
   DropdownMenuCheckboxItemFrame,
   {
     ref,
     checked,
     ...props,
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui26.View, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_icons7.Check, { size: 16 }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui27.View, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_lucide_icons7.Check, { size: 16 }) }) }),
       children
     ]
   }
 ));
 DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName;
-var DropdownMenuRadioItemFrame = (0, import_tamagui26.styled)(DropdownMenuPrimitive.RadioItem, {
+var DropdownMenuRadioItemFrame = (0, import_tamagui27.styled)(DropdownMenuPrimitive.RadioItem, {
   flexDirection: "row",
   alignItems: "center",
   paddingVertical: "$2",
@@ -6054,12 +6167,12 @@ var DropdownMenuRadioItemFrame = (0, import_tamagui26.styled)(DropdownMenuPrimit
   hoverStyle: { backgroundColor: "$accent" },
   focusStyle: { backgroundColor: "$accent" }
 });
-var DropdownMenuRadioItem = React29.forwardRef(({ className: _className, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(DropdownMenuRadioItemFrame, { ref, ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_tamagui26.View, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(import_lucide_icons7.Circle, { size: 8, fill: "currentColor" }) }) }),
+var DropdownMenuRadioItem = React32.forwardRef(({ className: _className, children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(DropdownMenuRadioItemFrame, { ref, ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui27.View, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_lucide_icons7.Circle, { size: 8, fill: "currentColor" }) }) }),
   children
 ] }));
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
-var DropdownMenuLabel = (0, import_tamagui26.styled)(DropdownMenuPrimitive.Label, {
+var DropdownMenuLabel = (0, import_tamagui27.styled)(DropdownMenuPrimitive.Label, {
   paddingHorizontal: "$2",
   paddingVertical: "$1.5",
   fontSize: "$3",
@@ -6067,12 +6180,12 @@ var DropdownMenuLabel = (0, import_tamagui26.styled)(DropdownMenuPrimitive.Label
   color: "$foreground"
   // Ensure visibility
 });
-var DropdownMenuSeparator = (0, import_tamagui26.styled)(DropdownMenuPrimitive.Separator, {
+var DropdownMenuSeparator = (0, import_tamagui27.styled)(DropdownMenuPrimitive.Separator, {
   height: 1,
   backgroundColor: "$muted",
   marginVertical: "$1"
 });
-var DropdownMenuShortcut = (0, import_tamagui26.styled)(import_tamagui26.Text, {
+var DropdownMenuShortcut = (0, import_tamagui27.styled)(import_tamagui27.Text, {
   marginLeft: "auto",
   fontSize: "$2",
   color: "$mutedForeground",
@@ -6080,18 +6193,18 @@ var DropdownMenuShortcut = (0, import_tamagui26.styled)(import_tamagui26.Text, {
 });
 
 // src/molecules/Popover/Popover.tsx
-var import_tamagui27 = require("tamagui");
-var import_react26 = require("react");
-var import_jsx_runtime31 = require("react/jsx-runtime");
-var PopoverContext = (0, import_react26.createContext)({});
+var import_tamagui28 = require("tamagui");
+var import_react30 = require("react");
+var import_jsx_runtime32 = require("react/jsx-runtime");
+var PopoverContext = (0, import_react30.createContext)({});
 var usePopoverContext = () => {
-  const context = (0, import_react26.useContext)(PopoverContext);
+  const context = (0, import_react30.useContext)(PopoverContext);
   if (!context) {
     throw new Error("usePopoverContext must be used within a Popover");
   }
   return context;
 };
-var PopoverContentFrame = (0, import_tamagui27.styled)(import_tamagui27.Popover.Content, {
+var PopoverContentFrame = (0, import_tamagui28.styled)(import_tamagui28.Popover.Content, {
   name: "PopoverContent",
   backgroundColor: "$background",
   borderColor: "$borderColor",
@@ -6123,20 +6236,20 @@ var PopoverContentFrame = (0, import_tamagui27.styled)(import_tamagui27.Popover.
     }
   }
 });
-var PopoverArrow = (0, import_tamagui27.styled)(import_tamagui27.Popover.Arrow, {
+var PopoverArrow = (0, import_tamagui28.styled)(import_tamagui28.Popover.Arrow, {
   name: "PopoverArrow",
   borderWidth: 1,
   borderColor: "$borderColor",
   backgroundColor: "$background"
 });
-var PopoverContent = (0, import_react26.forwardRef)(
+var PopoverContent = (0, import_react30.forwardRef)(
   ({ children, actions, ...props }, ref) => {
     const { isLoading, hasError } = usePopoverContext();
-    return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(PopoverContentFrame, { ref, ...props, hasError, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(PopoverArrow, { size: "$3" }),
-      /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(import_tamagui27.YStack, { gap: "$3", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(PopoverContentFrame, { ref, ...props, hasError, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(PopoverArrow, { size: "$3" }),
+      /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.YStack, { gap: "$3", children: [
         children,
-        actions && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui27.YStack, { children: actions })
+        actions && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.YStack, { children: actions })
       ] })
     ] });
   }
@@ -6149,31 +6262,31 @@ var Popover = ({
   isDisabled: isDisabled2,
   ...props
 }) => {
-  const contextValue = (0, import_react26.useMemo)(
+  const contextValue = (0, import_react30.useMemo)(
     () => ({ isLoading, hasError, isDisabled: isDisabled2 }),
     [isLoading, hasError, isDisabled2]
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(PopoverContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui27.Popover, { ...props, children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(PopoverContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Popover, { ...props, children }) });
 };
-var PopoverTrigger = (0, import_react26.forwardRef)(
+var PopoverTrigger = (0, import_react30.forwardRef)(
   (props, ref) => {
     const { isDisabled: isDisabled2, isLoading } = usePopoverContext();
-    return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(import_tamagui27.Popover.Trigger, { ref, ...props, disabled: isDisabled2 || isLoading });
+    return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Popover.Trigger, { ref, ...props, disabled: isDisabled2 || isLoading });
   }
 );
 PopoverTrigger.displayName = "PopoverTrigger";
-var PopoverAnchor = import_tamagui27.Popover.Anchor;
-var PopoverClose = import_tamagui27.Popover.Close;
+var PopoverAnchor = import_tamagui28.Popover.Anchor;
+var PopoverClose = import_tamagui28.Popover.Close;
 
 // src/molecules/HoverCard/HoverCard.tsx
-var import_tamagui28 = require("tamagui");
+var import_tamagui29 = require("tamagui");
 var import_lucide_icons8 = require("@tamagui/lucide-icons");
-var import_jsx_runtime32 = require("react/jsx-runtime");
+var import_jsx_runtime33 = require("react/jsx-runtime");
 var HoverCard = ({ children, ...rest }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Popover, { placement: "top", hoverable: true, ...rest, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Popover, { placement: "top", hoverable: true, ...rest, children });
 };
-var HoverCardTrigger = import_tamagui28.Popover.Trigger;
-var HoverCardContent = import_tamagui28.Popover.Content;
+var HoverCardTrigger = Popover.Trigger;
+var HoverCardContent = Popover.Content;
 var HoverCardProfileContent = ({
   user,
   isLoading,
@@ -6190,57 +6303,57 @@ var HoverCardProfileContent = ({
     }
   };
   if (hasError) {
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.YStack, { ...containerProps, children: /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.XStack, { space: "$2", ai: "center", jc: "center", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_lucide_icons8.AlertTriangle, { color: "$red10", size: "$1" }),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Text, { color: "$red10", fontSize: "$2", children: "N\xE3o foi poss\xEDvel carregar o perfil." })
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.YStack, { ...containerProps, children: /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.XStack, { space: "$2", ai: "center", jc: "center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_lucide_icons8.AlertTriangle, { color: "$red10", size: "$1" }),
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.Text, { color: "$red10", fontSize: "$2", children: "N\xE3o foi poss\xEDvel carregar o perfil." })
     ] }) });
   }
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.YStack, { ...containerProps, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.XStack, { space: "$4", ai: "center", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Skeleton, { br: "$12", w: "$10", h: "$10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.YStack, { space: "$1", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Skeleton, { h: "$2", w: "$12" }),
-          /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Skeleton, { h: "$2", w: "$8" })
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.YStack, { ...containerProps, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.XStack, { space: "$4", ai: "center", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Skeleton, { br: "$12", w: "$10", h: "$10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.YStack, { space: "$1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Skeleton, { h: "$2", w: "$12" }),
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Skeleton, { h: "$2", w: "$8" })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Skeleton, { h: "$2" }),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Skeleton, { h: "$2" }),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.XStack, { space: "$4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Skeleton, { h: "$2", w: "$12" }),
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(Skeleton, { h: "$2", w: "$12" })
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Skeleton, { h: "$2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Skeleton, { h: "$2" }),
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.XStack, { space: "$4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Skeleton, { h: "$2", w: "$12" }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Skeleton, { h: "$2", w: "$12" })
       ] }),
-      actions && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.XStack, { jc: "flex-end", children: actions })
+      actions && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.XStack, { jc: "flex-end", children: actions })
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.YStack, { ...containerProps, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.XStack, { space: "$4", ai: "center", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Avatar, { circular: true, size: "$10", children: /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Avatar.Image, { source: { uri: user.avatar } }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.YStack, { space: "$1", f: 1, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Paragraph, { size: "$3", fontWeight: "bold", ellipse: true, children: user.name }),
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Paragraph, { size: "$2", color: "$gray11", ellipse: true, children: user.handle })
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.YStack, { ...containerProps, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.XStack, { space: "$4", ai: "center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Avatar, { circular: true, size: "$10", children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Avatar.Image, { source: { uri: user.avatar } }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.YStack, { space: "$1", f: 1, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.Paragraph, { size: "$3", fontWeight: "bold", ellipse: true, children: user.name }),
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.Paragraph, { size: "$2", color: "$gray11", ellipse: true, children: user.handle })
       ] })
     ] }),
-    user.bio && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Paragraph, { size: "$2", ellipse: true, children: user.bio }),
-    /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.XStack, { space: "$4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.Paragraph, { size: "$2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Paragraph, { fontWeight: "bold", children: user.following }),
+    user.bio && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.Paragraph, { size: "$2", ellipse: true, children: user.bio }),
+    /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.XStack, { space: "$4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.Paragraph, { size: "$2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.Paragraph, { fontWeight: "bold", children: user.following }),
         " Seguindo"
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(import_tamagui28.Paragraph, { size: "$2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.Paragraph, { fontWeight: "bold", children: user.followers }),
+      /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.Paragraph, { size: "$2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.Paragraph, { fontWeight: "bold", children: user.followers }),
         " Seguidores"
       ] })
     ] }),
-    actions && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(import_tamagui28.XStack, { jc: "flex-end", children: actions })
+    actions && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.XStack, { jc: "flex-end", children: actions })
   ] });
 };
 
 // src/molecules/RadioGroup.tsx
-var import_react27 = __toESM(require("react"));
-var import_tamagui29 = require("tamagui");
-var import_jsx_runtime33 = require("react/jsx-runtime");
-var RadioGroupItemFrame = (0, import_tamagui29.styled)(import_tamagui29.RadioGroup.Item, {
+var import_react31 = __toESM(require("react"));
+var import_tamagui30 = require("tamagui");
+var import_jsx_runtime34 = require("react/jsx-runtime");
+var RadioGroupItemFrame = (0, import_tamagui30.styled)(import_tamagui30.RadioGroup.Item, {
   name: "RadioGroupItem",
   width: 16,
   height: 16,
@@ -6277,7 +6390,7 @@ var RadioGroupItemFrame = (0, import_tamagui29.styled)(import_tamagui29.RadioGro
     }
   }
 });
-var RadioGroupIndicator = (0, import_tamagui29.styled)(import_tamagui29.RadioGroup.Indicator, {
+var RadioGroupIndicator = (0, import_tamagui30.styled)(import_tamagui30.RadioGroup.Indicator, {
   name: "RadioGroupIndicator",
   backgroundColor: "$blue10",
   width: 8,
@@ -6291,11 +6404,11 @@ var RadioGroupIndicator = (0, import_tamagui29.styled)(import_tamagui29.RadioGro
     }
   }
 });
-var RadioGroupItem = import_react27.default.forwardRef((props, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(RadioGroupItemFrame, { ref, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(RadioGroupIndicator, { disabled: props.disabled }) });
+var RadioGroupItem = import_react31.default.forwardRef((props, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(RadioGroupItemFrame, { ref, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(RadioGroupIndicator, { disabled: props.disabled }) });
 });
 RadioGroupItem.displayName = "RadioGroupItem";
-var RadioGroup2 = import_react27.default.forwardRef(
+var RadioGroup2 = import_react31.default.forwardRef(
   ({
     options,
     orientation = "vertical",
@@ -6304,16 +6417,16 @@ var RadioGroup2 = import_react27.default.forwardRef(
     errorMessage,
     ...props
   }, ref) => {
-    const Container = orientation === "vertical" ? import_tamagui29.YStack : import_tamagui29.XStack;
+    const Container = orientation === "vertical" ? import_tamagui30.YStack : import_tamagui30.XStack;
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Container, { gap: "$2", "aria-busy": "true", "aria-live": "polite", children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.XStack, { alignItems: "center", space: "$2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Skeleton, { width: 16, height: 16, borderRadius: "$10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Skeleton, { width: 100, height: 16 })
+      return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Container, { gap: "$2", "aria-busy": "true", "aria-live": "polite", children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(import_tamagui30.XStack, { alignItems: "center", space: "$2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Skeleton, { width: 16, height: 16, borderRadius: "$10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Skeleton, { width: 100, height: 16 })
       ] }, option.value)) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.YStack, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.RadioGroup, { ref, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(Container, { gap: "$2", children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(import_tamagui29.XStack, { alignItems: "center", space: "$2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(import_tamagui30.YStack, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui30.RadioGroup, { ref, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Container, { gap: "$2", children: options.map((option) => /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(import_tamagui30.XStack, { alignItems: "center", space: "$2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
           RadioGroupItem,
           {
             value: option.value,
@@ -6322,8 +6435,8 @@ var RadioGroup2 = import_react27.default.forwardRef(
             disabled: option.disabled || props.disabled
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
-          import_tamagui29.Label,
+        /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+          import_tamagui30.Label,
           {
             htmlFor: option.value,
             disabled: option.disabled || props.disabled,
@@ -6333,26 +6446,26 @@ var RadioGroup2 = import_react27.default.forwardRef(
           }
         )
       ] }, option.value)) }) }),
-      hasError && errorMessage && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(import_tamagui29.Text, { color: "$red10", fontSize: "$2", marginTop: "$2", children: errorMessage })
+      hasError && errorMessage && /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui30.Text, { color: "$red10", fontSize: "$2", marginTop: "$2", children: errorMessage })
     ] });
   }
 );
 RadioGroup2.displayName = "RadioGroup";
 
 // src/molecules/Resizable.tsx
-var import_tamagui30 = require("tamagui");
-var import_react28 = __toESM(require("react"));
+var import_tamagui31 = require("tamagui");
+var import_react32 = __toESM(require("react"));
 var import_lucide_icons9 = require("@tamagui/lucide-icons");
-var import_jsx_runtime34 = require("react/jsx-runtime");
-var ResizablePanelGroupContext = (0, import_react28.createContext)(null);
+var import_jsx_runtime35 = require("react/jsx-runtime");
+var ResizablePanelGroupContext = (0, import_react32.createContext)(null);
 var useResizablePanelGroup = () => {
-  const context = (0, import_react28.useContext)(ResizablePanelGroupContext);
+  const context = (0, import_react32.useContext)(ResizablePanelGroupContext);
   if (!context) {
     throw new Error("useResizablePanelGroup must be used within a ResizablePanelGroup");
   }
   return context;
 };
-var ResizablePanelGroupFrame = (0, import_tamagui30.styled)(import_tamagui30.XStack, {
+var ResizablePanelGroupFrame = (0, import_tamagui31.styled)(import_tamagui31.XStack, {
   name: "ResizablePanelGroup",
   flex: 1,
   width: "100%",
@@ -6382,7 +6495,7 @@ var ResizablePanelGroupFrame = (0, import_tamagui30.styled)(import_tamagui30.XSt
     direction: "horizontal"
   }
 });
-var ResizablePanelGroup = import_react28.default.forwardRef(({
+var ResizablePanelGroup = import_react32.default.forwardRef(({
   direction = "horizontal",
   children,
   isDisabled: disabledProp = false,
@@ -6391,28 +6504,28 @@ var ResizablePanelGroup = import_react28.default.forwardRef(({
   keyboardStep = 5,
   ...props
 }, ref) => {
-  const groupRef = (0, import_react28.useRef)(null);
+  const groupRef = (0, import_react32.useRef)(null);
   const isDisabled2 = disabledProp || isLoading;
-  const childArray = import_react28.Children.toArray(children);
-  const panelIds = import_react28.Children.map(childArray, (child) => {
-    return (0, import_react28.isValidElement)(child) && child.type === ResizablePanel ? (0, import_react28.useId)() : null;
+  const childArray = import_react32.Children.toArray(children);
+  const panelIds = import_react32.Children.map(childArray, (child) => {
+    return (0, import_react32.isValidElement)(child) && child.type === ResizablePanel ? (0, import_react32.useId)() : null;
   }).filter(Boolean);
-  const [panelSizes, setPanelSizes] = (0, import_react28.useState)(() => {
+  const [panelSizes, setPanelSizes] = (0, import_react32.useState)(() => {
     const sizes = [];
-    import_react28.Children.forEach(childArray, (child) => {
-      if ((0, import_react28.isValidElement)(child) && child.type === ResizablePanel) {
+    import_react32.Children.forEach(childArray, (child) => {
+      if ((0, import_react32.isValidElement)(child) && child.type === ResizablePanel) {
         sizes.push(child.props.defaultSize || 50);
       }
     });
     return sizes;
   });
-  const panelMinSizes = (0, import_react28.useRef)([]);
-  import_react28.Children.forEach(childArray, (child) => {
-    if ((0, import_react28.isValidElement)(child) && child.type === ResizablePanel) {
+  const panelMinSizes = (0, import_react32.useRef)([]);
+  import_react32.Children.forEach(childArray, (child) => {
+    if ((0, import_react32.isValidElement)(child) && child.type === ResizablePanel) {
       panelMinSizes.current.push(child.props.minSize || 10);
     }
   });
-  const adjustPanelSize = (0, import_react28.useCallback)((handleIndex2, delta) => {
+  const adjustPanelSize = (0, import_react32.useCallback)((handleIndex2, delta) => {
     setPanelSizes((prevSizes) => {
       const newSizes = [...prevSizes];
       const leftPanelIndex = handleIndex2;
@@ -6434,9 +6547,9 @@ var ResizablePanelGroup = import_react28.default.forwardRef(({
       return newSizes;
     });
   }, []);
-  const activeHandleIndex = (0, import_react28.useRef)(null);
-  const dragStartPositions = (0, import_react28.useRef)(null);
-  const onDragging = (0, import_react28.useCallback)((event3) => {
+  const activeHandleIndex = (0, import_react32.useRef)(null);
+  const dragStartPositions = (0, import_react32.useRef)(null);
+  const onDragging = (0, import_react32.useCallback)((event3) => {
     if (activeHandleIndex.current === null || !dragStartPositions.current) return;
     const groupElement = groupRef.current;
     if (!groupElement) return;
@@ -6468,7 +6581,7 @@ var ResizablePanelGroup = import_react28.default.forwardRef(({
       ...newSizes.slice(rightPanelIndex + 1)
     ]);
   }, [direction]);
-  const stopDragging = (0, import_react28.useCallback)(() => {
+  const stopDragging = (0, import_react32.useCallback)(() => {
     activeHandleIndex.current = null;
     dragStartPositions.current = null;
     document.body.style.cursor = "default";
@@ -6476,7 +6589,7 @@ var ResizablePanelGroup = import_react28.default.forwardRef(({
     window.removeEventListener("pointermove", onDragging);
     window.removeEventListener("pointerup", stopDragging);
   }, [onDragging]);
-  const startDragging = (0, import_react28.useCallback)((handleIndex2, event3) => {
+  const startDragging = (0, import_react32.useCallback)((handleIndex2, event3) => {
     event3.preventDefault();
     activeHandleIndex.current = handleIndex2;
     const groupElement = groupRef.current;
@@ -6529,7 +6642,7 @@ var ResizablePanelGroup = import_react28.default.forwardRef(({
     isDisabled: isDisabled2,
     panelIds
   };
-  const content = /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
+  const content = /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
     ResizablePanelGroupFrame,
     {
       ref: groupRef,
@@ -6537,18 +6650,18 @@ var ResizablePanelGroup = import_react28.default.forwardRef(({
       isDisabled: isDisabled2,
       hasError,
       ...props,
-      children: import_react28.Children.map(childArray, (child) => {
-        if ((0, import_react28.isValidElement)(child)) {
+      children: import_react32.Children.map(childArray, (child) => {
+        if ((0, import_react32.isValidElement)(child)) {
           if (child.type === ResizablePanel) {
             const index = panelIndex++;
-            return (0, import_react28.cloneElement)(child, {
+            return (0, import_react32.cloneElement)(child, {
               id: panelIds[index],
               size: panelSizes[index]
             });
           }
           if (child.type === ResizableHandle) {
             const index = handleIndex++;
-            return (0, import_react28.cloneElement)(child, {
+            return (0, import_react32.cloneElement)(child, {
               handleIndex: index
             });
           }
@@ -6557,17 +6670,17 @@ var ResizablePanelGroup = import_react28.default.forwardRef(({
       })
     }
   );
-  return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(ResizablePanelGroupContext.Provider, { value: contextValue, children: hasError ? /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_tamagui30.Theme, { name: "red", children: content }) : content });
+  return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(ResizablePanelGroupContext.Provider, { value: contextValue, children: hasError ? /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Theme, { name: "red", children: content }) : content });
 });
 ResizablePanelGroup.displayName = "ResizablePanelGroup";
-var ResizablePanelFrame = (0, import_tamagui30.styled)(import_tamagui30.YStack, {
+var ResizablePanelFrame = (0, import_tamagui31.styled)(import_tamagui31.YStack, {
   name: "ResizablePanel"
 });
-var ResizablePanel = import_react28.default.forwardRef(({ children, size, ...props }, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(ResizablePanelFrame, { ref, flexBasis: `${size}%`, ...props, children });
+var ResizablePanel = import_react32.default.forwardRef(({ children, size, ...props }, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(ResizablePanelFrame, { ref, flexBasis: `${size}%`, ...props, children });
 });
 ResizablePanel.displayName = "ResizablePanel";
-var ResizableHandleFrame = (0, import_tamagui30.styled)(import_tamagui30.YStack, {
+var ResizableHandleFrame = (0, import_tamagui31.styled)(import_tamagui31.YStack, {
   name: "ResizableHandle",
   alignItems: "center",
   justifyContent: "center",
@@ -6593,7 +6706,7 @@ var ResizableHandleFrame = (0, import_tamagui30.styled)(import_tamagui30.YStack,
     }
   }
 });
-var ResizableHandleIndicator = (0, import_tamagui30.styled)(import_tamagui30.Separator, {
+var ResizableHandleIndicator = (0, import_tamagui31.styled)(import_tamagui31.Separator, {
   variants: {
     direction: {
       vertical: {
@@ -6607,7 +6720,7 @@ var ResizableHandleIndicator = (0, import_tamagui30.styled)(import_tamagui30.Sep
     }
   }
 });
-var ResizableHandle = import_react28.default.forwardRef(({ withHandle, handleIndex, ...props }, ref) => {
+var ResizableHandle = import_react32.default.forwardRef(({ withHandle, handleIndex, ...props }, ref) => {
   const {
     direction,
     startDragging,
@@ -6633,7 +6746,7 @@ var ResizableHandle = import_react28.default.forwardRef(({ withHandle, handleInd
   const minSize = getPanelMinSize(leftPanelIndex);
   const totalSize = getPanelSize(leftPanelIndex) + getPanelSize(rightPanelIndex);
   const maxSize = totalSize - getPanelMinSize(rightPanelIndex);
-  return /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(
     ResizableHandleFrame,
     {
       ref,
@@ -6649,9 +6762,9 @@ var ResizableHandle = import_react28.default.forwardRef(({ withHandle, handleInd
       "aria-valuemax": maxSize,
       "aria-controls": panelIds[leftPanelIndex],
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(ResizableHandleIndicator, { direction }),
-        withHandle && /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
-          import_tamagui30.YStack,
+        /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(ResizableHandleIndicator, { direction }),
+        withHandle && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+          import_tamagui31.YStack,
           {
             position: "absolute",
             padding: "$1.5",
@@ -6659,7 +6772,7 @@ var ResizableHandle = import_react28.default.forwardRef(({ withHandle, handleInd
             backgroundColor: "$background",
             borderWidth: 1,
             borderColor: "$borderColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(import_lucide_icons9.GripVertical, { size: 16, color: "$color", "aria-label": "Arrastar para redimensionar" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_lucide_icons9.GripVertical, { size: 16, color: "$color", "aria-label": "Arrastar para redimensionar" })
           }
         )
       ]
@@ -6670,11 +6783,11 @@ ResizableHandle.displayName = "ResizableHandle";
 
 // src/molecules/Select/Select.tsx
 var import_lucide_icons10 = require("@tamagui/lucide-icons");
-var import_react29 = __toESM(require("react"));
-var import_tamagui31 = require("tamagui");
-var import_jsx_runtime35 = require("react/jsx-runtime");
-var SelectRoot = (props) => /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Select, { ...props });
-var SelectTriggerFrame = (0, import_tamagui31.styled)(import_tamagui31.XStack, {
+var import_react33 = __toESM(require("react"));
+var import_tamagui32 = require("tamagui");
+var import_jsx_runtime36 = require("react/jsx-runtime");
+var SelectRoot = (props) => /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.Select, { ...props });
+var SelectTriggerFrame = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
   name: "SelectTrigger",
   width: "100%",
   flexDirection: "row",
@@ -6714,40 +6827,40 @@ var SelectTriggerFrame = (0, import_tamagui31.styled)(import_tamagui31.XStack, {
     }
   }
 });
-var SelectTrigger = import_react29.default.forwardRef(
+var SelectTrigger = import_react33.default.forwardRef(
   ({ children, hasError, disabled, isLoading, rightSlot, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Select.Trigger, { asChild: true, disabled: disabled || isLoading, ref, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(SelectTriggerFrame, { tabIndex: 0, isError: hasError, disabled: disabled || isLoading, ...props, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.Select.Trigger, { asChild: true, disabled: disabled || isLoading, ref, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(SelectTriggerFrame, { tabIndex: 0, isError: hasError, disabled: disabled || isLoading, ...props, children: [
       children,
-      isLoading ? /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(Spinner, {}) : rightSlot || /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_lucide_icons10.ChevronDown, { size: 12, color: "$mutedForeground" })
+      isLoading ? /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Spinner, {}) : rightSlot || /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_lucide_icons10.ChevronDown, { size: 12, color: "$mutedForeground" })
     ] }) });
   }
 );
-var SelectContent = (props) => /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(import_tamagui31.Select.Content, { zIndex: 2e5, ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
-    import_tamagui31.Select.ScrollUpButton,
+var SelectContent = (props) => /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(import_tamagui32.Select.Content, { zIndex: 2e5, ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+    import_tamagui32.Select.ScrollUpButton,
     {
       alignItems: "center",
       justifyContent: "center",
       position: "relative",
       width: "100%",
       height: "$3",
-      children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.YStack, { zIndex: 10, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_lucide_icons10.ChevronDown, { size: 12 }) })
+      children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.YStack, { zIndex: 10, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_lucide_icons10.ChevronDown, { size: 12 }) })
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Select.Viewport, { minWidth: 200, children: props.children }),
-  /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
-    import_tamagui31.Select.ScrollDownButton,
+  /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.Select.Viewport, { minWidth: 200, children: props.children }),
+  /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+    import_tamagui32.Select.ScrollDownButton,
     {
       alignItems: "center",
       justifyContent: "center",
       position: "relative",
       width: "100%",
       height: "$3",
-      children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.YStack, { zIndex: 10, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_lucide_icons10.ChevronDown, { size: 12 }) })
+      children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.YStack, { zIndex: 10, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_lucide_icons10.ChevronDown, { size: 12 }) })
     }
   )
 ] });
-var SelectItem = (0, import_tamagui31.styled)(import_tamagui31.Select.Item, {
+var SelectItem = (0, import_tamagui32.styled)(import_tamagui32.Select.Item, {
   name: "SelectItem",
   paddingHorizontal: "$3",
   paddingVertical: "$2",
@@ -6765,11 +6878,11 @@ var SelectItem = (0, import_tamagui31.styled)(import_tamagui31.Select.Item, {
     }
   }
 });
-var SelectItemIndicator = (props) => /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Select.ItemIndicator, { marginLeft: "auto", ...props, children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_lucide_icons10.Check, { size: 16 }) });
-var SelectSheet = (props) => /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(
-  import_tamagui31.Sheet,
+var SelectItemIndicator = (props) => /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.Select.ItemIndicator, { marginLeft: "auto", ...props, children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_lucide_icons10.Check, { size: 16 }) });
+var SelectSheet = (props) => /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(
+  import_tamagui32.Sheet,
   {
-    native: !import_tamagui31.isWeb,
+    native: !import_tamagui32.isWeb,
     modal: true,
     dismissOnSnapToBottom: true,
     animationConfig: {
@@ -6780,17 +6893,17 @@ var SelectSheet = (props) => /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(impor
     },
     ...props,
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Sheet.Frame, { children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Sheet.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Adapt.Contents, {}) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(import_tamagui31.Sheet.Overlay, { animation: "lazy", enterStyle: { opacity: 0 }, exitStyle: { opacity: 0 } })
+      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.Sheet.Frame, { children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.Sheet.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.Adapt.Contents, {}) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(import_tamagui32.Sheet.Overlay, { animation: "lazy", enterStyle: { opacity: 0 }, exitStyle: { opacity: 0 } })
     ]
   }
 ) });
-var SelectValue = import_tamagui31.Select.Value;
-var SelectItemText = import_tamagui31.Select.ItemText;
-var SelectGroup = import_tamagui31.Select.Group;
-var SelectLabel = import_tamagui31.Select.Label;
-var SelectViewport = import_tamagui31.Select.Viewport;
-var SelectPortal = import_tamagui31.Select.Portal;
+var SelectValue = import_tamagui32.Select.Value;
+var SelectItemText = import_tamagui32.Select.ItemText;
+var SelectGroup = import_tamagui32.Select.Group;
+var SelectLabel = import_tamagui32.Select.Label;
+var SelectViewport = import_tamagui32.Select.Viewport;
+var SelectPortal = import_tamagui32.Select.Portal;
 SelectRoot.Trigger = SelectTrigger;
 SelectRoot.Value = SelectValue;
 SelectRoot.Content = SelectContent;
@@ -6801,13 +6914,14 @@ SelectRoot.Group = SelectGroup;
 SelectRoot.Label = SelectLabel;
 SelectRoot.Sheet = SelectSheet;
 SelectRoot.Portal = SelectPortal;
+SelectRoot.Viewport = SelectViewport;
 
 // src/molecules/StarRating/StarRating.tsx
 var import_lucide_icons11 = require("@tamagui/lucide-icons");
-var import_react30 = require("react");
-var import_tamagui32 = require("tamagui");
-var import_jsx_runtime36 = require("react/jsx-runtime");
-var StarRatingFrame = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
+var import_react34 = require("react");
+var import_tamagui33 = require("tamagui");
+var import_jsx_runtime37 = require("react/jsx-runtime");
+var StarRatingFrame = (0, import_tamagui33.styled)(import_tamagui33.XStack, {
   name: "StarRating",
   gap: "$1",
   variants: {
@@ -6819,7 +6933,7 @@ var StarRatingFrame = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
     }
   }
 });
-var StarIconContainer = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
+var StarIconContainer = (0, import_tamagui33.styled)(import_tamagui33.XStack, {
   name: "StarIconContainer",
   cursor: "pointer",
   variants: {
@@ -6831,7 +6945,7 @@ var StarIconContainer = (0, import_tamagui32.styled)(import_tamagui32.XStack, {
     }
   }
 });
-var StarRatingComponent = (0, import_react30.forwardRef)(
+var StarRatingComponent = (0, import_react34.forwardRef)(
   ({
     count = 5,
     onChange,
@@ -6848,13 +6962,13 @@ var StarRatingComponent = (0, import_react30.forwardRef)(
     rightSlot,
     ...frameProps
   }, ref) => {
-    const [internalRating, setInternalRating] = (0, import_react30.useState)(defaultValue2);
-    const [hoverRating, setHoverRating] = (0, import_react30.useState)(null);
+    const [internalRating, setInternalRating] = (0, import_react34.useState)(defaultValue2);
+    const [hoverRating, setHoverRating] = (0, import_react34.useState)(null);
     const isControlled = value !== void 0;
     const currentRating = isControlled ? value : internalRating;
-    const colorActive = (0, import_tamagui32.getVariableValue)(colorActiveProp);
-    const colorError = (0, import_tamagui32.getVariableValue)("$red10");
-    const colorInactive = (0, import_tamagui32.getVariableValue)(colorInactiveProp);
+    const colorActive = (0, import_tamagui33.getVariableValue)(colorActiveProp);
+    const colorError = (0, import_tamagui33.getVariableValue)("$red10");
+    const colorInactive = (0, import_tamagui33.getVariableValue)(colorInactiveProp);
     const handlePress = (ratingToSet) => {
       if (disabled || isLoading) return;
       const newRating = currentRating === ratingToSet ? null : ratingToSet;
@@ -6864,14 +6978,14 @@ var StarRatingComponent = (0, import_react30.forwardRef)(
       onChange?.(newRating);
     };
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(StarRatingFrame, { ...frameProps, ref, children: Array.from({ length: count }, (_, i) => /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(Skeleton, { width: size, height: size, br: "$10" }, i)) });
+      return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(StarRatingFrame, { ...frameProps, ref, children: Array.from({ length: count }, (_, i) => /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Skeleton, { width: size, height: size, br: "$10" }, i)) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(StarRatingFrame, { ...frameProps, ref, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(StarRatingFrame, { ...frameProps, ref, children: [
       Array.from({ length: count }, (_, i) => {
         const ratingValue = i + 1;
         const isFilled = ratingValue <= (hoverRating ?? currentRating ?? 0);
         const starColor = hasError ? colorError : isFilled ? colorActive : colorInactive;
-        return /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
           StarIconContainer,
           {
             disabled,
@@ -6879,7 +6993,8 @@ var StarRatingComponent = (0, import_react30.forwardRef)(
             onHoverOut: () => !disabled && setHoverRating(null),
             onPress: () => handlePress(ratingValue),
             "aria-label": `Avalia\xE7\xE3o ${ratingValue} de ${count}`,
-            children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+            "data-testid": `star-${ratingValue}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
               Icon,
               {
                 ...iconProps,
@@ -6897,23 +7012,23 @@ var StarRatingComponent = (0, import_react30.forwardRef)(
   }
 );
 StarRatingComponent.displayName = "StarRating";
-var StarRating = (0, import_tamagui32.withStaticProperties)(StarRatingComponent, {});
+var StarRating = (0, import_tamagui33.withStaticProperties)(StarRatingComponent, {});
 
 // src/molecules/Toast.tsx
-var import_react31 = require("react");
-var import_tamagui33 = require("tamagui");
+var import_react35 = require("react");
+var import_tamagui34 = require("tamagui");
 var import_portal = require("@tamagui/portal");
 var import_lucide_icons12 = require("@tamagui/lucide-icons");
-var import_jsx_runtime37 = require("react/jsx-runtime");
-var ToastContext = (0, import_react31.createContext)(void 0);
+var import_jsx_runtime38 = require("react/jsx-runtime");
+var ToastContext = (0, import_react35.createContext)(void 0);
 var useToast = () => {
-  const context = (0, import_react31.useContext)(ToastContext);
+  const context = (0, import_react35.useContext)(ToastContext);
   if (!context) {
     throw new Error("useToast deve ser usado dentro de um ToastProvider");
   }
   return context;
 };
-var ToastViewportFrame = (0, import_tamagui33.styled)(import_tamagui33.YStack, {
+var ToastViewportFrame = (0, import_tamagui34.styled)(import_tamagui34.YStack, {
   name: "ToastViewport",
   position: "absolute",
   bottom: "$4",
@@ -6925,7 +7040,7 @@ var ToastViewportFrame = (0, import_tamagui33.styled)(import_tamagui33.YStack, {
   zIndex: 1e4,
   pointerEvents: "box-none"
 });
-var ToastFrame = (0, import_tamagui33.styled)(import_tamagui33.XStack, {
+var ToastFrame = (0, import_tamagui34.styled)(import_tamagui34.XStack, {
   name: "Toast",
   backgroundColor: "$background",
   borderRadius: "$6",
@@ -6958,7 +7073,7 @@ var ToastFrame = (0, import_tamagui33.styled)(import_tamagui33.XStack, {
     variant: "default"
   }
 });
-var ToastTitleComponent = (0, import_tamagui33.styled)(import_tamagui33.Text, {
+var ToastTitleComponent = (0, import_tamagui34.styled)(import_tamagui34.Text, {
   name: "ToastTitle",
   fontWeight: "600",
   fontSize: "$4",
@@ -6979,7 +7094,7 @@ var ToastTitleComponent = (0, import_tamagui33.styled)(import_tamagui33.Text, {
     }
   }
 });
-var ToastDescriptionComponent = (0, import_tamagui33.styled)(import_tamagui33.Text, {
+var ToastDescriptionComponent = (0, import_tamagui34.styled)(import_tamagui34.Text, {
   name: "ToastDescription",
   fontSize: "$2",
   color: "$colorPress",
@@ -7000,7 +7115,7 @@ var ToastDescriptionComponent = (0, import_tamagui33.styled)(import_tamagui33.Te
     }
   }
 });
-var ToastCloseButton = (0, import_tamagui33.styled)(import_tamagui33.Button, {
+var ToastCloseButton = (0, import_tamagui34.styled)(Button, {
   size: "$2",
   circular: true,
   chromeless: true,
@@ -7012,8 +7127,8 @@ var ToastCloseButton = (0, import_tamagui33.styled)(import_tamagui33.Button, {
   focusStyle: { opacity: 1, outlineWidth: 2, outlineColor: "$blue8" }
 });
 var ToastProvider = ({ children }) => {
-  const [toasts, setToasts] = (0, import_react31.useState)([]);
-  const toast = (0, import_react31.useCallback)(({ duration = 5e3, isLoading = false, ...props }) => {
+  const [toasts, setToasts] = (0, import_react35.useState)([]);
+  const toast = (0, import_react35.useCallback)(({ duration = 5e3, isLoading = false, ...props }) => {
     const id2 = Math.random().toString(36).substring(2, 9);
     const effectiveDuration = isLoading ? 0 : duration;
     const newToast = { ...props, id: id2, duration: effectiveDuration, isLoading };
@@ -7024,17 +7139,17 @@ var ToastProvider = ({ children }) => {
       }, effectiveDuration);
     }
   }, []);
-  const dismiss = (0, import_react31.useCallback)((id2) => {
+  const dismiss = (0, import_react35.useCallback)((id2) => {
     setToasts((prev) => prev.filter((t) => t.id !== id2));
   }, []);
-  return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(ToastContext.Provider, { value: { toasts, toast, dismiss }, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(ToastContext.Provider, { value: { toasts, toast, dismiss }, children: [
     children,
-    /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_portal.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ToastViewportFrame, { role: "status", "aria-live": "polite", children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_tamagui33.AnimatePresence, { children: toasts.map((t) => /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ToastItem, { toast: t, onDismiss: () => dismiss(t.id) }, t.id)) }) }) })
+    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_portal.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(ToastViewportFrame, { role: "status", "aria-live": "polite", children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_tamagui34.AnimatePresence, { children: toasts.map((t) => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(ToastItem, { toast: t, onDismiss: () => dismiss(t.id) }, t.id)) }) }) })
   ] });
 };
 var ToastItem = ({ toast, onDismiss }) => {
   if (toast.isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
       ToastFrame,
       {
         animation: "quick",
@@ -7042,14 +7157,14 @@ var ToastItem = ({ toast, onDismiss }) => {
         opacity: 1,
         scale: 1,
         y: 0,
-        children: /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(import_tamagui33.YStack, { flex: 1, gap: "$2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Skeleton, { width: 150, height: 20 }),
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(Skeleton, { width: 250, height: 15 })
+        children: /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_tamagui34.YStack, { flex: 1, gap: "$2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Skeleton, { width: 150, height: 20 }),
+          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Skeleton, { width: 250, height: 15 })
         ] })
       }
     );
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
     ToastFrame,
     {
       variant: toast.variant,
@@ -7060,12 +7175,12 @@ var ToastItem = ({ toast, onDismiss }) => {
       scale: 1,
       y: 0,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(import_tamagui33.YStack, { flex: 1, gap: "$1", children: [
-          toast.title && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ToastTitleComponent, { variant: toast.variant, children: toast.title }),
-          toast.description && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ToastDescriptionComponent, { variant: toast.variant, children: toast.description })
+        /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_tamagui34.YStack, { flex: 1, gap: "$1", children: [
+          toast.title && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(ToastTitleComponent, { variant: toast.variant, children: toast.title }),
+          toast.description && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(ToastDescriptionComponent, { variant: toast.variant, children: toast.description })
         ] }),
         toast.action,
-        /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(ToastCloseButton, { onPress: onDismiss, "aria-label": "Fechar", children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_lucide_icons12.X, { size: "$1" }) })
+        /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(ToastCloseButton, { onPress: onDismiss, "aria-label": "Fechar", children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_lucide_icons12.X, { size: "$1" }) })
       ]
     }
   );
@@ -7076,30 +7191,30 @@ var ToastTitle = ToastTitleComponent;
 var ToastDescription = ToastDescriptionComponent;
 
 // src/molecules/Tabs.tsx
-var import_react32 = require("react");
-var import_tamagui34 = require("tamagui");
-var import_jsx_runtime38 = require("react/jsx-runtime");
-var TabsContext = (0, import_react32.createContext)({});
+var import_react36 = require("react");
+var import_tamagui35 = require("tamagui");
+var import_jsx_runtime39 = require("react/jsx-runtime");
+var TabsContext = (0, import_react36.createContext)({});
 var useTabsContext = () => {
-  const context = (0, import_react32.useContext)(TabsContext);
+  const context = (0, import_react36.useContext)(TabsContext);
   if (!context) {
     throw new Error("useTabsContext must be used within a Tabs component");
   }
   return context;
 };
-var TabsFrame = (0, import_tamagui34.styled)(import_tamagui34.Tabs, {
+var TabsFrame = (0, import_tamagui35.styled)(import_tamagui35.Tabs, {
   name: "Tabs",
   flexDirection: "column",
   gap: "$2"
 });
-var InnerTabsList = (0, import_tamagui34.styled)(import_tamagui34.Tabs.List, {
+var InnerTabsList = (0, import_tamagui35.styled)(import_tamagui35.Tabs.List, {
   name: "TabsList",
   flexDirection: "row",
   gap: "$1",
   flexShrink: 1,
   backgroundColor: "transparent"
 });
-var StyledTabsTrigger = (0, import_tamagui34.styled)(import_tamagui34.Tabs.Tab, {
+var StyledTabsTrigger = (0, import_tamagui35.styled)(import_tamagui35.Tabs.Tab, {
   name: "TabsTrigger",
   backgroundColor: "transparent",
   borderRadius: "$3",
@@ -7129,7 +7244,7 @@ var StyledTabsTrigger = (0, import_tamagui34.styled)(import_tamagui34.Tabs.Tab, 
     }
   }
 });
-var StyledTabsContent = (0, import_tamagui34.styled)(import_tamagui34.Tabs.Content, {
+var StyledTabsContent = (0, import_tamagui35.styled)(import_tamagui35.Tabs.Content, {
   name: "TabsContent",
   backgroundColor: "$background",
   padding: "$4",
@@ -7153,11 +7268,11 @@ var Tabs = ({
   children,
   ...props
 }) => {
-  const content = tabs ? /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_jsx_runtime38.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(TabsList, { actions, children: tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(TabsTrigger, { value: tab.value, children: tab.label }, tab.value)) }),
-    tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(TabsContent, { value: tab.value, children: tab.content }, tab.value))
+  const content = tabs ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_jsx_runtime39.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(TabsList, { actions, children: tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(TabsTrigger, { value: tab.value, children: tab.label }, tab.value)) }),
+    tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(TabsContent, { value: tab.value, children: tab.content }, tab.value))
   ] }) : children;
-  return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(TabsContext.Provider, { value: { isLoading, hasError, isDisabled: isDisabled2 }, children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(TabsFrame, { ...props, children: content }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(TabsContext.Provider, { value: { isLoading, hasError, isDisabled: isDisabled2 }, children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(TabsFrame, { ...props, children: content }) });
 };
 var TabsList = ({
   actions,
@@ -7165,8 +7280,8 @@ var TabsList = ({
   ...props
 }) => {
   const { hasError } = useTabsContext();
-  return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
-    import_tamagui34.XStack,
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+    import_tamagui35.XStack,
     {
       backgroundColor: "$muted",
       borderRadius: "$4",
@@ -7176,31 +7291,31 @@ var TabsList = ({
       borderColor: hasError ? "$destructive" : void 0,
       borderWidth: hasError ? 1 : 0,
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(InnerTabsList, { ...props, children }),
-        actions && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(import_tamagui34.YStack, { ml: "auto", children: actions })
+        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(InnerTabsList, { ...props, children }),
+        actions && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_tamagui35.YStack, { ml: "auto", children: actions })
       ]
     }
   );
 };
 var TabsTrigger = (props) => {
   const { isDisabled: isDisabled2 } = useTabsContext();
-  return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(StyledTabsTrigger, { disabled: isDisabled2, ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(StyledTabsTrigger, { disabled: isDisabled2, ...props });
 };
 var TabsContent = (props) => {
   const { isLoading } = useTabsContext();
-  return isLoading ? /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(import_tamagui34.YStack, { space: true, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Skeleton, { height: 40 }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Skeleton, { height: 20 }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Skeleton, { height: 20 })
-  ] }) : /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(StyledTabsContent, { ...props });
+  return isLoading ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_tamagui35.YStack, { space: true, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Skeleton, { height: 40 }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Skeleton, { height: 20 }),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Skeleton, { height: 20 })
+  ] }) : /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(StyledTabsContent, { ...props });
 };
 
 // src/molecules/Calendar/Calendar.tsx
-var import_react33 = require("react");
+var import_react37 = require("react");
 var import_datepicker = require("@rehookify/datepicker");
-var import_tamagui35 = require("tamagui");
+var import_tamagui36 = require("tamagui");
 var import_lucide_icons13 = require("@tamagui/lucide-icons");
-var import_jsx_runtime39 = require("react/jsx-runtime");
+var import_jsx_runtime40 = require("react/jsx-runtime");
 var MONTHS_PT_BR = [
   "Janeiro",
   "Fevereiro",
@@ -7216,7 +7331,7 @@ var MONTHS_PT_BR = [
   "Dezembro"
 ];
 var WEEK_DAYS_PT_BR = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "S\xE1b"];
-var CalendarContainer = (0, import_tamagui35.styled)(import_tamagui35.YStack, {
+var CalendarContainer = (0, import_tamagui36.styled)(import_tamagui36.YStack, {
   name: "Calendar",
   padding: "$4",
   borderRadius: "$6",
@@ -7239,34 +7354,34 @@ var CalendarContainer = (0, import_tamagui35.styled)(import_tamagui35.YStack, {
     }
   }
 });
-var CalendarHeader = (0, import_tamagui35.styled)(import_tamagui35.XStack, {
+var CalendarHeader = (0, import_tamagui36.styled)(import_tamagui36.XStack, {
   justifyContent: "space-between",
   alignItems: "center"
 });
-var CalendarTitle = (0, import_tamagui35.styled)(import_tamagui35.Text, {
+var CalendarTitle = (0, import_tamagui36.styled)(import_tamagui36.Text, {
   fontSize: "$5",
   fontWeight: "600",
   textAlign: "center",
   flex: 1
 });
-var CalendarGrid = (0, import_tamagui35.styled)(import_tamagui35.YStack, {
+var CalendarGrid = (0, import_tamagui36.styled)(import_tamagui36.YStack, {
   gap: "$2"
 });
-var WeekDaysGrid = (0, import_tamagui35.styled)(import_tamagui35.XStack, {
+var WeekDaysGrid = (0, import_tamagui36.styled)(import_tamagui36.XStack, {
   gap: "$2"
 });
-var WeekDayText = (0, import_tamagui35.styled)(import_tamagui35.Text, {
+var WeekDayText = (0, import_tamagui36.styled)(import_tamagui36.Text, {
   flex: 1,
   textAlign: "center",
   color: "$mutedForeground",
   fontSize: "$2",
   fontWeight: "600"
 });
-var DaysGrid = (0, import_tamagui35.styled)(import_tamagui35.XStack, {
+var DaysGrid = (0, import_tamagui36.styled)(import_tamagui36.XStack, {
   flexWrap: "wrap",
   gap: "$2"
 });
-var DayButtonFrame = (0, import_tamagui35.styled)(Button, {
+var DayButtonFrame = (0, import_tamagui36.styled)(Button, {
   width: 40,
   height: 40,
   padding: 0,
@@ -7309,7 +7424,7 @@ var DayButtonFrame = (0, import_tamagui35.styled)(Button, {
     variant: "ghost"
   }
 });
-var DayText = (0, import_tamagui35.styled)(import_tamagui35.Text, {
+var DayText = (0, import_tamagui36.styled)(import_tamagui36.Text, {
   fontSize: "$4",
   color: "$foreground",
   variants: {
@@ -7320,9 +7435,9 @@ var DayText = (0, import_tamagui35.styled)(import_tamagui35.Text, {
     }
   }
 });
-var SkeletonGrid = () => /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(import_tamagui35.YStack, { gap: "$2", "data-testid": "calendar-skeleton", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_tamagui35.XStack, { gap: "$2", justifyContent: "space-around", children: Array.from({ length: 7 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Skeleton, { width: 40, height: 20, borderRadius: "$2" }, i)) }),
-  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(import_tamagui35.XStack, { flexWrap: "wrap", gap: "$2", justifyContent: "space-around", children: Array.from({ length: 35 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Skeleton, { width: 40, height: 40, borderRadius: "$4" }, i)) })
+var SkeletonGrid = () => /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_tamagui36.YStack, { gap: "$2", "data-testid": "calendar-skeleton", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_tamagui36.XStack, { gap: "$2", justifyContent: "space-around", children: Array.from({ length: 7 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Skeleton, { width: 40, height: 20, borderRadius: "$2" }, i)) }),
+  /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_tamagui36.XStack, { flexWrap: "wrap", gap: "$2", justifyContent: "space-around", children: Array.from({ length: 35 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Skeleton, { width: 40, height: 40, borderRadius: "$4" }, i)) })
 ] });
 var Calendar = ({
   selectedDate,
@@ -7333,7 +7448,7 @@ var Calendar = ({
   isDisabled: isDisabled2 = false,
   hasError = false
 }) => {
-  const [selectedDates, onDatesChange] = (0, import_react33.useState)(selectedDate ? [selectedDate] : []);
+  const [selectedDates, onDatesChange] = (0, import_react37.useState)(selectedDate ? [selectedDate] : []);
   const dp = (0, import_datepicker.useDatePicker)({
     selectedDates,
     onDatesChange: (dates) => {
@@ -7355,24 +7470,24 @@ var Calendar = ({
       weekdays: WEEK_DAYS_PT_BR
     }
   });
-  const calendars = dp.data?.calendars || [];
+  const calendars = dp.data?.calendars ?? [];
   const currentMonth = calendars[0];
   if (!currentMonth && !isLoading) {
     return null;
   }
   const { onClick: onPrevClick } = dp.propGetters.subtractOffset({ months: 1 });
   const { onClick: onNextClick } = dp.propGetters.addOffset({ months: 1 });
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(CalendarContainer, { disabled: isDisabled2, hasError, "data-testid": "calendar-container", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(CalendarHeader, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Button, { icon: import_lucide_icons13.ChevronLeft, circular: true, variant: "ghost", onPress: onPrevClick, disabled: isLoading }),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(CalendarTitle, { children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Skeleton, { width: 120, height: 24 }) : currentMonth ? `${currentMonth.month} ${currentMonth.year}` : "" }),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Button, { icon: import_lucide_icons13.ChevronRight, circular: true, variant: "ghost", onPress: onNextClick, disabled: isLoading })
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(CalendarContainer, { disabled: isDisabled2, hasError, "data-testid": "calendar-container", "data-has-error": hasError, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(CalendarHeader, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Button, { icon: import_lucide_icons13.ChevronLeft, circular: true, variant: "ghost", onPress: onPrevClick, disabled: isLoading }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(CalendarTitle, { children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Skeleton, { width: 120, height: 24 }) : currentMonth ? `${currentMonth.month} ${currentMonth.year}` : "" }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Button, { icon: import_lucide_icons13.ChevronRight, circular: true, variant: "ghost", onPress: onNextClick, disabled: isLoading })
     ] }),
-    isLoading ? /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(SkeletonGrid, {}) : currentMonth ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(CalendarGrid, { "data-testid": "calendar-grid", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(WeekDaysGrid, { children: WEEK_DAYS_PT_BR.map((day) => /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(WeekDayText, { children: day.substring(0, 3) }, day)) }),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(DaysGrid, { children: (currentMonth?.days || []).map((day, index) => {
+    isLoading ? /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(SkeletonGrid, {}) : currentMonth ? /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(CalendarGrid, { "data-testid": "calendar-grid", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(WeekDaysGrid, { children: WEEK_DAYS_PT_BR.map((day) => /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(WeekDayText, { children: day.substring(0, 3) }, day)) }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(DaysGrid, { children: (currentMonth?.days || []).map((day, index) => {
         const { onClick: onDayClick, ...dayProps } = dp.propGetters.dayButton(day);
-        return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
           DayButtonFrame,
           {
             selected: day.selected,
@@ -7381,7 +7496,7 @@ var Calendar = ({
             disabled: day.disabled,
             onPress: onDayClick,
             ...dayProps,
-            children: /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(DayText, { selected: day.selected, children: day.day })
+            children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(DayText, { selected: day.selected, children: day.day })
           },
           index
         );
@@ -7394,10 +7509,10 @@ var Calendar = ({
 var import_lucide_icons14 = require("@tamagui/lucide-icons");
 var import_date_fns = require("date-fns");
 var import_locale = require("date-fns/locale");
-var import_react34 = __toESM(require("react"));
-var import_tamagui36 = require("tamagui");
-var import_jsx_runtime40 = require("react/jsx-runtime");
-var DatePickerFrame = (0, import_tamagui36.styled)(import_tamagui36.XStack, {
+var import_react38 = __toESM(require("react"));
+var import_tamagui37 = require("tamagui");
+var import_jsx_runtime41 = require("react/jsx-runtime");
+var DatePickerFrame = (0, import_tamagui37.styled)(import_tamagui37.XStack, {
   name: "DatePickerFrame",
   alignItems: "center",
   borderRadius: "$md",
@@ -7436,7 +7551,7 @@ var DatePickerFrame = (0, import_tamagui36.styled)(import_tamagui36.XStack, {
     }
   }
 });
-var DatePicker = import_react34.default.forwardRef(
+var DatePicker = import_react38.default.forwardRef(
   ({
     date,
     onDateChange,
@@ -7450,16 +7565,16 @@ var DatePicker = import_react34.default.forwardRef(
     buttonProps,
     ...props
   }, ref) => {
-    const [open, setOpen] = import_react34.default.useState(false);
+    const [open, setOpen] = import_react38.default.useState(false);
     const handleDateSelect = (selectedDate) => {
       onDateChange?.(selectedDate);
       setOpen(false);
     };
     if (loading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Skeleton, { height: 40, borderRadius: "$md" });
+      return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Skeleton, { height: 40, borderRadius: "$md" });
     }
-    const trigger = /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(DatePickerFrame, { variant, state, disabled, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+    const trigger = /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(DatePickerFrame, { variant, state, disabled, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
         Input.Box,
         {
           flex: 1,
@@ -7469,7 +7584,7 @@ var DatePicker = import_react34.default.forwardRef(
             borderWidth: 0,
             outlineWidth: 0
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
             Input.Field,
             {
               size,
@@ -7482,7 +7597,7 @@ var DatePicker = import_react34.default.forwardRef(
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
         Button,
         {
           ref,
@@ -7494,29 +7609,29 @@ var DatePicker = import_react34.default.forwardRef(
         }
       ) })
     ] });
-    return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_tamagui36.Popover, { open, onOpenChange: setOpen, ...props, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(Popover, { open, onOpenChange: setOpen, ...props, children: [
       trigger,
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_tamagui36.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_tamagui36.Sheet, { modal: true, dismissOnSnapToBottom: true, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_tamagui36.Sheet.Frame, { padding: "$4", children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_tamagui36.Adapt.Contents, {}) }),
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(import_tamagui36.Sheet.Overlay, {})
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_tamagui37.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(Sheet, { modal: true, dismissOnSnapToBottom: true, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Sheet.Frame, { padding: "$4", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(import_tamagui37.Adapt.Contents, {}) }),
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Sheet.Overlay, {})
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(PopoverContent, { p: 0, children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Calendar, { selectedDate: date, onDateChange: handleDateSelect }) })
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(PopoverContent, { p: 0, children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Calendar, { selectedDate: date, onDateChange: handleDateSelect }) })
     ] });
   }
 );
 DatePicker.displayName = "DatePicker";
 
 // src/molecules/OTPInput/OTPInput.tsx
-var import_react35 = __toESM(require("react"));
-var import_tamagui37 = require("tamagui");
-var import_jsx_runtime41 = require("react/jsx-runtime");
-var OTPInputFrame = (0, import_tamagui37.styled)(import_tamagui37.YStack, {
+var import_react39 = __toESM(require("react"));
+var import_tamagui38 = require("tamagui");
+var import_jsx_runtime42 = require("react/jsx-runtime");
+var OTPInputFrame = (0, import_tamagui38.styled)(import_tamagui38.YStack, {
   name: "OTPInputFrame",
   flexDirection: "row",
   gap: "$sm",
   alignItems: "center"
 });
-var OTPCellInput = (0, import_tamagui37.styled)(import_tamagui37.Input, {
+var OTPCellInput = (0, import_tamagui38.styled)(Input, {
   name: "OTPInputCell",
   width: 48,
   height: "$2xl",
@@ -7560,7 +7675,7 @@ var valueToArray = (value, length) => {
   }
   return chars;
 };
-var OTPInputImpl = import_react35.default.forwardRef(
+var OTPInputImpl = import_react39.default.forwardRef(
   ({
     length: lengthProp = 6,
     value: valueProp,
@@ -7576,22 +7691,22 @@ var OTPInputImpl = import_react35.default.forwardRef(
     inputProps,
     ...frameProps
   }, ref) => {
-    const length = import_react35.default.useMemo(() => Math.max(1, Math.floor(lengthProp)), [lengthProp]);
-    const [internalValue, setInternalValue] = import_react35.default.useState(
+    const length = import_react39.default.useMemo(() => Math.max(1, Math.floor(lengthProp)), [lengthProp]);
+    const [internalValue, setInternalValue] = import_react39.default.useState(
       () => sanitizeToLength(defaultValue2 ?? "", allowedCharacters, length)
     );
     const isControlled = valueProp !== void 0;
-    const resolvedValue = import_react35.default.useMemo(
+    const resolvedValue = import_react39.default.useMemo(
       () => sanitizeToLength((valueProp ?? internalValue) || "", allowedCharacters, length),
       [allowedCharacters, internalValue, length, valueProp]
     );
-    import_react35.default.useEffect(() => {
+    import_react39.default.useEffect(() => {
       if (!isControlled) {
         setInternalValue((prev) => sanitizeToLength(prev, allowedCharacters, length));
       }
     }, [allowedCharacters, isControlled, length]);
-    const inputRefs = import_react35.default.useRef([]);
-    const setValue = import_react35.default.useCallback(
+    const inputRefs = import_react39.default.useRef([]);
+    const setValue = import_react39.default.useCallback(
       (next) => {
         const sanitized = sanitizeToLength(next, allowedCharacters, length);
         if (!isControlled) {
@@ -7602,15 +7717,15 @@ var OTPInputImpl = import_react35.default.forwardRef(
       },
       [allowedCharacters, isControlled, length, onChange]
     );
-    const valueArray = import_react35.default.useMemo(() => valueToArray(resolvedValue, length), [resolvedValue, length]);
-    const focusInput = import_react35.default.useCallback((index) => {
+    const valueArray = import_react39.default.useMemo(() => valueToArray(resolvedValue, length), [resolvedValue, length]);
+    const focusInput = import_react39.default.useCallback((index) => {
       const node = inputRefs.current[index];
       if (node && typeof node.focus === "function") {
         node.focus();
       }
     }, []);
-    const selectInput = import_react35.default.useCallback((index) => {
-      if (!import_tamagui37.isWeb) return;
+    const selectInput = import_react39.default.useCallback((index) => {
+      if (!import_tamagui38.isWeb) return;
       const node = inputRefs.current[index];
       if (node && typeof node.select === "function") {
         node.select();
@@ -7618,7 +7733,7 @@ var OTPInputImpl = import_react35.default.forwardRef(
         node.setSelectionRange(0, node.value?.length ?? 0);
       }
     }, []);
-    const notifyCompletion = import_react35.default.useCallback(
+    const notifyCompletion = import_react39.default.useCallback(
       (chars) => {
         if (chars.every(Boolean)) {
           onComplete?.(chars.join(""));
@@ -7626,7 +7741,7 @@ var OTPInputImpl = import_react35.default.forwardRef(
       },
       [onComplete]
     );
-    const setCharacterAtIndex = import_react35.default.useCallback(
+    const setCharacterAtIndex = import_react39.default.useCallback(
       (index, char) => {
         const chars = valueToArray(resolvedValue, length);
         chars[index] = char;
@@ -7635,7 +7750,7 @@ var OTPInputImpl = import_react35.default.forwardRef(
       },
       [length, notifyCompletion, resolvedValue, setValue]
     );
-    const handleInputChange = import_react35.default.useCallback(
+    const handleInputChange = import_react39.default.useCallback(
       (index, rawValue) => {
         const sanitized = sanitizeChar(rawValue.slice(-1), allowedCharacters);
         if (!sanitized) {
@@ -7649,9 +7764,9 @@ var OTPInputImpl = import_react35.default.forwardRef(
       },
       [allowedCharacters, focusInput, length, setCharacterAtIndex]
     );
-    const handlePaste = import_react35.default.useCallback(
+    const handlePaste = import_react39.default.useCallback(
       (index, event3) => {
-        if (!import_tamagui37.isWeb) return;
+        if (!import_tamagui38.isWeb) return;
         event3.preventDefault?.();
         const data = event3.clipboardData?.getData("text") ?? "";
         const sanitized = sanitizeToLength(data, allowedCharacters, length - index);
@@ -7670,7 +7785,7 @@ var OTPInputImpl = import_react35.default.forwardRef(
       },
       [allowedCharacters, focusInput, length, notifyCompletion, resolvedValue, selectInput, setValue]
     );
-    const handleKeyDown = import_react35.default.useCallback(
+    const handleKeyDown = import_react39.default.useCallback(
       (index, event3) => {
         if (event3.key === "Backspace") {
           const hasValue = valueArray[index];
@@ -7694,16 +7809,16 @@ var OTPInputImpl = import_react35.default.forwardRef(
       },
       [focusInput, length, setCharacterAtIndex, valueArray]
     );
-    import_react35.default.useEffect(() => {
+    import_react39.default.useEffect(() => {
       if (autoFocus) {
         focusInput(0);
         selectInput(0);
       }
     }, [autoFocus, focusInput, selectInput]);
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(OTPInputFrame, { ref, ...frameProps, children: Array.from({ length }, (_, index) => /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Skeleton, { width: 48, height: 48 }, `otp-skeleton-${index}`)) });
+      return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(OTPInputFrame, { ref, ...frameProps, children: Array.from({ length }, (_, index) => /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Skeleton, { width: 48, height: 48 }, `otp-skeleton-${index}`)) });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(OTPInputFrame, { ref, ...frameProps, children: valueArray.map((char, index) => /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(OTPInputFrame, { ref, ...frameProps, children: valueArray.map((char, index) => /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
       OTPCellInput,
       {
         ref: (node) => {
@@ -7717,7 +7832,7 @@ var OTPInputImpl = import_react35.default.forwardRef(
           handleInputChange(index, e.target?.value ?? "");
         },
         onChangeText: (text) => handleInputChange(index, text ?? ""),
-        ...import_tamagui37.isWeb ? {
+        ...import_tamagui38.isWeb ? {
           onKeyDown: (event3) => handleKeyDown(index, event3),
           onPaste: (event3) => handlePaste(index, event3),
           type: mask ? "password" : "text",
@@ -7731,7 +7846,7 @@ var OTPInputImpl = import_react35.default.forwardRef(
         autoFocus: autoFocus && index === 0,
         autoCorrect: false,
         autoCapitalize: "none",
-        disabled: import_tamagui37.isWeb ? disabled : void 0,
+        disabled: import_tamagui38.isWeb ? disabled : void 0,
         ...inputProps
       },
       `otp-input-${index}`
@@ -7743,10 +7858,10 @@ var OTPInput = withErrorLogging("OTPInput", OTPInputImpl);
 
 // src/molecules/Pagination/Pagination.tsx
 var import_lucide_icons15 = require("@tamagui/lucide-icons");
-var import_react36 = require("react");
-var import_tamagui38 = require("tamagui");
-var import_jsx_runtime42 = require("react/jsx-runtime");
-var PaginationRoot = (0, import_tamagui38.styled)(import_tamagui38.XStack, {
+var import_react40 = require("react");
+var import_tamagui39 = require("tamagui");
+var import_jsx_runtime43 = require("react/jsx-runtime");
+var PaginationRoot = (0, import_tamagui39.styled)(import_tamagui39.XStack, {
   name: "PaginationRoot",
   alignItems: "center",
   gap: "$sm",
@@ -7761,7 +7876,7 @@ var PaginationRoot = (0, import_tamagui38.styled)(import_tamagui38.XStack, {
     }
   }
 });
-var PaginationButton = (0, import_tamagui38.styled)(import_tamagui38.Button, {
+var PaginationButton = (0, import_tamagui39.styled)(Button, {
   name: "PaginationButton",
   unstyled: true,
   borderRadius: "$full",
@@ -7818,7 +7933,7 @@ var PaginationButton = (0, import_tamagui38.styled)(import_tamagui38.Button, {
     active: false
   }
 });
-var PaginationEllipsis = (0, import_tamagui38.styled)(import_tamagui38.Text, {
+var PaginationEllipsis = (0, import_tamagui39.styled)(import_tamagui39.Text, {
   name: "PaginationEllipsis",
   color: "$mutedForeground",
   px: "$sm",
@@ -7830,7 +7945,7 @@ var range = (start, end) => {
   return Array.from({ length }, (_, index) => start + index);
 };
 var usePaginationRange = ({ currentPage, totalPages, siblingCount }) => {
-  return (0, import_react36.useMemo)(() => {
+  return (0, import_react40.useMemo)(() => {
     if (totalPages <= 0) return [];
     const totalPageNumbers = siblingCount * 2 + 5;
     if (totalPageNumbers >= totalPages) {
@@ -7884,14 +7999,14 @@ var Pagination = ({
     onPageChange?.(page);
   };
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
-      import_tamagui38.XStack,
+    return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+      import_tamagui39.XStack,
       {
         alignItems: "center",
         gap: "$sm",
         "aria-label": "Carregando pagina\xE7\xE3o",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             Skeleton,
             {
               width: 32,
@@ -7899,7 +8014,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             Skeleton,
             {
               width: 32,
@@ -7907,7 +8022,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             Skeleton,
             {
               width: 40,
@@ -7915,7 +8030,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             Skeleton,
             {
               width: 40,
@@ -7923,7 +8038,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             Skeleton,
             {
               width: 40,
@@ -7931,7 +8046,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             Skeleton,
             {
               width: 32,
@@ -7939,7 +8054,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             Skeleton,
             {
               width: 32,
@@ -7956,7 +8071,7 @@ var Pagination = ({
   }
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
     PaginationRoot,
     {
       role: "navigation",
@@ -7964,7 +8079,7 @@ var Pagination = ({
       hasError,
       children: [
         leftSlot,
-        showEdges && /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
+        showEdges && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
           PaginationButton,
           {
             size,
@@ -7972,12 +8087,12 @@ var Pagination = ({
             "aria-label": "Primeira p\xE1gina",
             onPress: () => handleChange(1),
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_tamagui38.VisuallyHidden, { children: "Primeira p\xE1gina" }),
-              /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_lucide_icons15.ChevronsLeft, {})
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_tamagui39.VisuallyHidden, { children: "Primeira p\xE1gina" }),
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_lucide_icons15.ChevronsLeft, {})
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
           PaginationButton,
           {
             size,
@@ -7985,14 +8100,14 @@ var Pagination = ({
             "aria-label": "P\xE1gina anterior",
             onPress: () => handleChange(currentPage - 1),
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_tamagui38.VisuallyHidden, { children: "P\xE1gina anterior" }),
-              /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_lucide_icons15.ChevronLeft, {})
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_tamagui39.VisuallyHidden, { children: "P\xE1gina anterior" }),
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_lucide_icons15.ChevronLeft, {})
             ]
           }
         ),
         paginationRange.map((pageNumber, index) => {
           if (pageNumber === DOTS) {
-            return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+            return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
               PaginationEllipsis,
               {
                 "aria-hidden": true,
@@ -8003,7 +8118,7 @@ var Pagination = ({
           }
           const pageValue = pageNumber;
           const isActive = pageValue === currentPage;
-          return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
             PaginationButton,
             {
               size,
@@ -8017,7 +8132,7 @@ var Pagination = ({
             pageValue
           );
         }),
-        /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
           PaginationButton,
           {
             size,
@@ -8025,12 +8140,12 @@ var Pagination = ({
             "aria-label": "Pr\xF3xima p\xE1gina",
             onPress: () => handleChange(currentPage + 1),
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_tamagui38.VisuallyHidden, { children: "Pr\xF3xima p\xE1gina" }),
-              /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_lucide_icons15.ChevronRight, {})
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_tamagui39.VisuallyHidden, { children: "Pr\xF3xima p\xE1gina" }),
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_lucide_icons15.ChevronRight, {})
             ]
           }
         ),
-        showEdges && /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(
+        showEdges && /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
           PaginationButton,
           {
             size,
@@ -8038,8 +8153,8 @@ var Pagination = ({
             "aria-label": "\xDAltima p\xE1gina",
             onPress: () => handleChange(totalPages),
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_tamagui38.VisuallyHidden, { children: "\xDAltima p\xE1gina" }),
-              /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(import_lucide_icons15.ChevronsRight, {})
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_tamagui39.VisuallyHidden, { children: "\xDAltima p\xE1gina" }),
+              /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_lucide_icons15.ChevronsRight, {})
             ]
           }
         ),
@@ -8051,33 +8166,33 @@ var Pagination = ({
 Pagination.displayName = "Pagination";
 
 // src/molecules/Breadcrumb/Breadcrumb.tsx
-var import_tamagui39 = require("tamagui");
-var import_jsx_runtime43 = require("react/jsx-runtime");
-var BreadcrumbRoot = (0, import_tamagui39.styled)(import_tamagui39.XStack, {
+var import_tamagui40 = require("tamagui");
+var import_jsx_runtime44 = require("react/jsx-runtime");
+var BreadcrumbRoot = (0, import_tamagui40.styled)(import_tamagui40.XStack, {
   name: "BreadcrumbRoot",
   alignItems: "center",
   justifyContent: "space-between",
   gap: "$4",
   width: "100%"
 });
-var BreadcrumbList = (0, import_tamagui39.styled)(import_tamagui39.XStack, {
+var BreadcrumbList = (0, import_tamagui40.styled)(import_tamagui40.XStack, {
   name: "BreadcrumbList",
   gap: "$sm",
   alignItems: "center",
   flexWrap: "nowrap",
   overflow: "hidden"
 });
-var BreadcrumbItemWrapper = (0, import_tamagui39.styled)(import_tamagui39.XStack, {
+var BreadcrumbItemWrapper = (0, import_tamagui40.styled)(import_tamagui40.XStack, {
   name: "BreadcrumbItem",
   alignItems: "center",
   gap: "$sm"
 });
-var BreadcrumbSeparator = (0, import_tamagui39.styled)(import_tamagui39.Text, {
+var BreadcrumbSeparator = (0, import_tamagui40.styled)(import_tamagui40.Text, {
   name: "BreadcrumbSeparator",
   color: "$mutedForeground",
   fontSize: "$2"
 });
-var BreadcrumbLink = (0, import_tamagui39.styled)(import_tamagui39.Anchor, {
+var BreadcrumbLink = (0, import_tamagui40.styled)(import_tamagui40.Anchor, {
   name: "BreadcrumbLink",
   color: "$foreground",
   fontWeight: "500",
@@ -8086,7 +8201,7 @@ var BreadcrumbLink = (0, import_tamagui39.styled)(import_tamagui39.Anchor, {
   },
   ellipse: true
 });
-var BreadcrumbButton = (0, import_tamagui39.styled)(import_tamagui39.Button, {
+var BreadcrumbButton = (0, import_tamagui40.styled)(Button, {
   name: "BreadcrumbButton",
   unstyled: true,
   padding: 0,
@@ -8096,13 +8211,13 @@ var BreadcrumbButton = (0, import_tamagui39.styled)(import_tamagui39.Button, {
     opacity: 0.8
   }
 });
-var BreadcrumbButtonLabel = (0, import_tamagui39.styled)(import_tamagui39.Text, {
+var BreadcrumbButtonLabel = (0, import_tamagui40.styled)(import_tamagui40.Text, {
   name: "BreadcrumbButtonLabel",
   color: "$foreground",
   fontWeight: "500",
   ellipse: true
 });
-var BreadcrumbCurrent = (0, import_tamagui39.styled)(import_tamagui39.Text, {
+var BreadcrumbCurrent = (0, import_tamagui40.styled)(import_tamagui40.Text, {
   name: "BreadcrumbCurrent",
   color: "$mutedForeground",
   fontWeight: "600",
@@ -8116,21 +8231,21 @@ var Breadcrumb = ({
   rightSlot = null
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(BreadcrumbRoot, { "data-testid": "breadcrumb-skeleton", children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(BreadcrumbList, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(Skeleton, { height: 20, width: 80 }),
-      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(Skeleton, { height: 20, width: 100 }),
-      /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(Skeleton, { height: 20, width: 120 })
+    return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(BreadcrumbRoot, { "data-testid": "breadcrumb-skeleton", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(BreadcrumbList, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Skeleton, { height: 20, width: 80 }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Skeleton, { height: 20, width: 100 }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Skeleton, { height: 20, width: 120 })
     ] }) });
   }
   if (!items || items.length === 0) {
     return null;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(BreadcrumbRoot, { role: "navigation", "aria-label": ariaLabel, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(BreadcrumbList, { role: "list", children: items.map((item, index) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(BreadcrumbRoot, { role: "navigation", "aria-label": ariaLabel, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(BreadcrumbList, { role: "list", children: items.map((item, index) => {
       const isLast = index === items.length - 1;
       const linkRel = item.rel ?? (item.target === "_blank" ? "noreferrer noopener" : void 0);
-      return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(BreadcrumbItemWrapper, { role: "listitem", children: [
-        isLast ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(BreadcrumbCurrent, { "aria-current": "page", children: item.label }) : item.href ? /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(BreadcrumbItemWrapper, { role: "listitem", children: [
+        isLast ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(BreadcrumbCurrent, { "aria-current": "page", children: item.label }) : item.href ? /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
           BreadcrumbLink,
           {
             href: item.href,
@@ -8139,69 +8254,69 @@ var Breadcrumb = ({
             onPress: item.onPress,
             children: item.label
           }
-        ) : /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(BreadcrumbButton, { onPress: item.onPress, children: /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(BreadcrumbButtonLabel, { children: item.label }) }),
-        !isLast && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(BreadcrumbSeparator, { "aria-hidden": true, children: separator })
+        ) : /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(BreadcrumbButton, { onPress: item.onPress, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(BreadcrumbButtonLabel, { children: item.label }) }),
+        !isLast && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(BreadcrumbSeparator, { "aria-hidden": true, children: separator })
       ] }, `${item.label}-${index}`);
     }) }),
-    rightSlot && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(import_tamagui39.XStack, { children: rightSlot })
+    rightSlot && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_tamagui40.XStack, { children: rightSlot })
   ] });
 };
 Breadcrumb.displayName = "Breadcrumb";
 
 // src/molecules/PageHeader/PageHeader.tsx
-var import_react37 = __toESM(require("react"));
-var import_tamagui40 = require("tamagui");
-var import_jsx_runtime44 = require("react/jsx-runtime");
-var PageHeaderFrame = (0, import_tamagui40.styled)(import_tamagui40.YStack, {
+var import_react41 = __toESM(require("react"));
+var import_tamagui41 = require("tamagui");
+var import_jsx_runtime45 = require("react/jsx-runtime");
+var PageHeaderFrame = (0, import_tamagui41.styled)(import_tamagui41.YStack, {
   name: "PageHeader",
   gap: "$4",
   paddingBottom: "$4",
   width: "100%"
 });
-var HeaderTop = (0, import_tamagui40.styled)(import_tamagui40.XStack, {
+var HeaderTop = (0, import_tamagui41.styled)(import_tamagui41.XStack, {
   justifyContent: "space-between",
   alignItems: "center",
   width: "100%",
   flexWrap: "wrap",
   gap: "$4"
 });
-var HeaderContent = (0, import_tamagui40.styled)(import_tamagui40.YStack, {
+var HeaderContent = (0, import_tamagui41.styled)(import_tamagui41.YStack, {
   gap: "$1",
   flex: 1
 });
-var PageTitle = (0, import_tamagui40.styled)(import_tamagui40.H3, {
+var PageTitle = (0, import_tamagui41.styled)(import_tamagui41.H3, {
   color: "$foreground"
 });
-var PageDescription = (0, import_tamagui40.styled)(import_tamagui40.Paragraph, {
+var PageDescription = (0, import_tamagui41.styled)(import_tamagui41.Paragraph, {
   color: "$mutedForeground"
 });
-var PageActions = (0, import_tamagui40.styled)(import_tamagui40.XStack, {
+var PageActions = (0, import_tamagui41.styled)(import_tamagui41.XStack, {
   gap: "$2",
   alignItems: "center"
 });
-var PageHeader = import_react37.default.forwardRef(
+var PageHeader = import_react41.default.forwardRef(
   ({ title, description, actions, children, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(PageHeaderFrame, { ref, ...props, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(HeaderTop, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(HeaderContent, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PageTitle, { children: title }),
-          description && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PageDescription, { children: description })
+    return /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(PageHeaderFrame, { ref, ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(HeaderTop, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(HeaderContent, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(PageTitle, { children: title }),
+          description && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(PageDescription, { children: description })
         ] }),
-        actions && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PageActions, { children: actions })
+        actions && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(PageActions, { children: actions })
       ] }),
       children,
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Separator, {})
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Separator, {})
     ] });
   }
 );
 PageHeader.displayName = "PageHeader";
 
 // src/molecules/NotificationCard/NotificationCard.tsx
-var import_react38 = __toESM(require("react"));
-var import_tamagui41 = require("tamagui");
+var import_react42 = __toESM(require("react"));
+var import_tamagui42 = require("tamagui");
 var import_lucide_icons16 = require("@tamagui/lucide-icons");
-var import_jsx_runtime45 = require("react/jsx-runtime");
-var NotificationCardFrame = (0, import_tamagui41.styled)(Card, {
+var import_jsx_runtime46 = require("react/jsx-runtime");
+var NotificationCardFrame = (0, import_tamagui42.styled)(Card, {
   name: "NotificationCard",
   padding: "$4",
   width: "100%",
@@ -8210,26 +8325,26 @@ var NotificationCardFrame = (0, import_tamagui41.styled)(Card, {
   alignItems: "flex-start",
   position: "relative"
 });
-var NotificationContent = (0, import_tamagui41.styled)(import_tamagui41.YStack, {
+var NotificationContent = (0, import_tamagui42.styled)(import_tamagui42.YStack, {
   flex: 1,
   gap: "$1"
 });
-var NotificationTitle = (0, import_tamagui41.styled)(import_tamagui41.Paragraph, {
+var NotificationTitle = (0, import_tamagui42.styled)(import_tamagui42.Paragraph, {
   fontWeight: "600",
   fontSize: "$3",
   color: "$foreground"
 });
-var NotificationDescription = (0, import_tamagui41.styled)(import_tamagui41.Paragraph, {
+var NotificationDescription = (0, import_tamagui42.styled)(import_tamagui42.Paragraph, {
   fontSize: "$3",
   color: "$mutedForeground",
   lineHeight: "$4"
 });
-var NotificationTime = (0, import_tamagui41.styled)(import_tamagui41.Paragraph, {
+var NotificationTime = (0, import_tamagui42.styled)(import_tamagui42.Paragraph, {
   fontSize: "$2",
   color: "$mutedForeground",
   marginTop: "$1"
 });
-var UnreadIndicator = (0, import_tamagui41.styled)(import_tamagui41.XStack, {
+var UnreadIndicator = (0, import_tamagui42.styled)(import_tamagui42.XStack, {
   width: 8,
   height: 8,
   borderRadius: "$full",
@@ -8238,25 +8353,25 @@ var UnreadIndicator = (0, import_tamagui41.styled)(import_tamagui41.XStack, {
   top: "$4",
   right: "$4"
 });
-var NotificationCard = import_react38.default.forwardRef(
+var NotificationCard = import_react42.default.forwardRef(
   ({ title, description, time, unread, avatarSrc, avatarFallback, onDismiss, onPress, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(NotificationCardFrame, { ref, ...props, onPress, hoverStyle: { backgroundColor: "$muted" }, pressStyle: { opacity: 0.8 }, children: [
-      unread && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(UnreadIndicator, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(Avatar, { size: "$4", circular: true, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Avatar.Image, { src: avatarSrc }),
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Avatar.Fallback, { backgroundColor: "$muted", alignItems: "center", justifyContent: "center", children: avatarFallback ? /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_tamagui41.Paragraph, { children: avatarFallback }) : /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(import_lucide_icons16.Bell, { size: 16, color: "$mutedForeground" }) })
+    return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(NotificationCardFrame, { ref, ...props, onPress, hoverStyle: { backgroundColor: "$muted" }, pressStyle: { opacity: 0.8 }, children: [
+      unread && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(UnreadIndicator, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(Avatar, { size: "$4", circular: true, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Avatar.Image, { src: avatarSrc }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Avatar.Fallback, { backgroundColor: "$muted", alignItems: "center", justifyContent: "center", children: avatarFallback ? /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_tamagui42.Paragraph, { children: avatarFallback }) : /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_lucide_icons16.Bell, { size: 16, color: "$mutedForeground" }) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(NotificationContent, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(NotificationTitle, { children: title }),
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(NotificationDescription, { children: description }),
-        time && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(NotificationTime, { children: time })
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(NotificationContent, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(NotificationTitle, { children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(NotificationDescription, { children: description }),
+        time && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(NotificationTime, { children: time })
       ] }),
-      onDismiss && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+      onDismiss && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
         Button,
         {
           size: "$2",
           variant: "ghost",
-          circular: true,
+          borderRadius: "$full",
           icon: import_lucide_icons16.X,
           onPress: (e) => {
             e.stopPropagation();
@@ -8271,14 +8386,14 @@ NotificationCard.displayName = "NotificationCard";
 
 // src/molecules/ComponentErrorBoundary.tsx
 var import_lucide_icons17 = require("@tamagui/lucide-icons");
-var import_react39 = require("react");
-var import_tamagui42 = require("tamagui");
-var import_jsx_runtime46 = require("react/jsx-runtime");
+var import_react43 = require("react");
+var import_tamagui43 = require("tamagui");
+var import_jsx_runtime47 = require("react/jsx-runtime");
 var initialState = {
   hasError: false,
   error: void 0
 };
-var ErrorBoundary = class extends import_react39.Component {
+var ErrorBoundary = class extends import_react43.Component {
   state = initialState;
   static getDerivedStateFromError(error2) {
     return { hasError: true, error: error2 };
@@ -8293,10 +8408,10 @@ var ErrorBoundary = class extends import_react39.Component {
   render() {
     if (this.state.hasError) {
       if (this.props.fallback) {
-        return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_jsx_runtime46.Fragment, { children: this.props.fallback });
+        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_jsx_runtime47.Fragment, { children: this.props.fallback });
       }
-      return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
-        import_tamagui42.YStack,
+      return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+        import_tamagui43.YStack,
         {
           gap: "$4",
           p: "$6",
@@ -8309,47 +8424,47 @@ var ErrorBoundary = class extends import_react39.Component {
           justifyContent: "center",
           testID: "component-error-boundary-fallback",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_lucide_icons17.AlertTriangle, { size: "$3", color: "$red10" }),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(import_tamagui42.YStack, { gap: "$2", alignItems: "center", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_tamagui42.H4, { color: "$red10", children: "Algo deu errado" }),
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_tamagui42.Paragraph, { textAlign: "center", color: "$gray11", children: "Ocorreu um erro inesperado neste componente. Por favor, tente novamente. Se o problema persistir, entre em contato com o suporte." })
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_lucide_icons17.AlertTriangle, { size: "$3", color: "$red10" }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(import_tamagui43.YStack, { gap: "$2", alignItems: "center", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.H4, { color: "$red10", children: "Algo deu errado" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.Paragraph, { textAlign: "center", color: "$gray11", children: "Ocorreu um erro inesperado neste componente. Por favor, tente novamente. Se o problema persistir, entre em contato com o suporte." })
             ] }),
-            process.env.NODE_ENV === "development" && this.state.error && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
-              import_tamagui42.YStack,
+            typeof process !== "undefined" && process.env.NODE_ENV === "development" && this.state.error && /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              import_tamagui43.YStack,
               {
                 gap: "$2",
                 p: "$3",
                 borderRadius: "$2",
                 backgroundColor: "$backgroundPress",
                 alignSelf: "stretch",
-                children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_tamagui42.Paragraph, { size: "$2", fontFamily: "$mono", children: this.state.error.message })
+                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.Paragraph, { size: "$2", fontFamily: "$mono", children: this.state.error.message })
               }
             ),
-            this.props.onReset && /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(import_jsx_runtime46.Fragment, { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_tamagui42.Separator, {}),
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_tamagui42.Button, { theme: "primary", onPress: this.resetBoundary, children: "Tentar Novamente" })
+            this.props.onReset && /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(import_jsx_runtime47.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.Separator, {}),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.Button, { theme: "primary", onPress: this.resetBoundary, children: "Tentar Novamente" })
             ] })
           ]
         }
       );
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_jsx_runtime46.Fragment, { children: this.props.children });
+    return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_jsx_runtime47.Fragment, { children: this.props.children });
   }
 };
 function withErrorBoundary(WrappedComponent, errorBoundaryProps) {
-  const ComponentWithErrorBoundary = (props) => /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(ErrorBoundary, { ...errorBoundaryProps, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(WrappedComponent, { ...props }) });
+  const ComponentWithErrorBoundary = (props) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ErrorBoundary, { ...errorBoundaryProps, children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(WrappedComponent, { ...props }) });
   const componentName = WrappedComponent.displayName || WrappedComponent.name || "Component";
   ComponentWithErrorBoundary.displayName = `withErrorBoundary(${componentName})`;
   return ComponentWithErrorBoundary;
 }
 
 // src/molecules/ContextMenu/ContextMenu.tsx
-var import_react40 = __toESM(require("react"));
+var import_react44 = __toESM(require("react"));
 var ContextMenuPrimitive = __toESM(require("@radix-ui/react-context-menu"));
 var import_lucide_icons18 = require("@tamagui/lucide-icons");
-var import_tamagui43 = require("tamagui");
-var import_jsx_runtime47 = require("react/jsx-runtime");
-var StyledContent = (0, import_tamagui43.styled)(ContextMenuPrimitive.Content, {
+var import_tamagui44 = require("tamagui");
+var import_jsx_runtime48 = require("react/jsx-runtime");
+var StyledContent = (0, import_tamagui44.styled)(ContextMenuPrimitive.Content, {
   name: "ContextMenuContent",
   minWidth: 220,
   zIndex: 200,
@@ -8364,9 +8479,9 @@ var StyledContent = (0, import_tamagui43.styled)(ContextMenuPrimitive.Content, {
   shadowOpacity: 0.1,
   shadowRadius: 12
 });
-var ContextMenuContent = import_react40.default.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ContextMenuPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(StyledContent, { ref, ...props, children }) }));
+var ContextMenuContent = import_react44.default.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContextMenuPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(StyledContent, { ref, ...props, children }) }));
 ContextMenuContent.displayName = "ContextMenuContent";
-var StyledItem = (0, import_tamagui43.styled)(ContextMenuPrimitive.Item, {
+var StyledItem = (0, import_tamagui44.styled)(ContextMenuPrimitive.Item, {
   name: "ContextMenuItem",
   fontSize: "$2",
   lineHeight: "$2",
@@ -8396,7 +8511,7 @@ var StyledItem = (0, import_tamagui43.styled)(ContextMenuPrimitive.Item, {
     color: "$accentForeground"
   }
 });
-var StyledCheckboxItem = (0, import_tamagui43.styled)(ContextMenuPrimitive.CheckboxItem, {
+var StyledCheckboxItem = (0, import_tamagui44.styled)(ContextMenuPrimitive.CheckboxItem, {
   name: "ContextMenuCheckboxItem",
   fontSize: "$2",
   lineHeight: "$2",
@@ -8424,7 +8539,7 @@ var StyledCheckboxItem = (0, import_tamagui43.styled)(ContextMenuPrimitive.Check
     backgroundColor: "$accent"
   }
 });
-var StyledRadioItem = (0, import_tamagui43.styled)(ContextMenuPrimitive.RadioItem, {
+var StyledRadioItem = (0, import_tamagui44.styled)(ContextMenuPrimitive.RadioItem, {
   name: "ContextMenuRadioItem",
   fontSize: "$2",
   lineHeight: "$2",
@@ -8452,7 +8567,7 @@ var StyledRadioItem = (0, import_tamagui43.styled)(ContextMenuPrimitive.RadioIte
     backgroundColor: "$accent"
   }
 });
-var StyledSubTrigger = (0, import_tamagui43.styled)(ContextMenuPrimitive.SubTrigger, {
+var StyledSubTrigger = (0, import_tamagui44.styled)(ContextMenuPrimitive.SubTrigger, {
   name: "ContextMenuSubTrigger",
   fontSize: "$2",
   lineHeight: "$2",
@@ -8480,7 +8595,7 @@ var StyledSubTrigger = (0, import_tamagui43.styled)(ContextMenuPrimitive.SubTrig
     backgroundColor: "$accent"
   }
 });
-var StyledSubContent = (0, import_tamagui43.styled)(ContextMenuPrimitive.SubContent, {
+var StyledSubContent = (0, import_tamagui44.styled)(ContextMenuPrimitive.SubContent, {
   name: "ContextMenuSubContent",
   minWidth: 220,
   zIndex: 200,
@@ -8495,9 +8610,9 @@ var StyledSubContent = (0, import_tamagui43.styled)(ContextMenuPrimitive.SubCont
   shadowOpacity: 0.1,
   shadowRadius: 12
 });
-var ContextMenuSubContent = import_react40.default.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ContextMenuPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(StyledSubContent, { ref, ...props, children }) }));
+var ContextMenuSubContent = import_react44.default.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContextMenuPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(StyledSubContent, { ref, ...props, children }) }));
 ContextMenuSubContent.displayName = "ContextMenuSubContent";
-var ContextMenuItemIndicator = (0, import_tamagui43.styled)(ContextMenuPrimitive.ItemIndicator, {
+var ContextMenuItemIndicator = (0, import_tamagui44.styled)(ContextMenuPrimitive.ItemIndicator, {
   position: "absolute",
   left: "$2",
   width: "$3.5",
@@ -8506,7 +8621,7 @@ var ContextMenuItemIndicator = (0, import_tamagui43.styled)(ContextMenuPrimitive
   alignItems: "center",
   justifyContent: "center"
 });
-var StyledLabel = (0, import_tamagui43.styled)(ContextMenuPrimitive.Label, {
+var StyledLabel = (0, import_tamagui44.styled)(ContextMenuPrimitive.Label, {
   name: "ContextMenuLabel",
   padding: "$2",
   paddingLeft: "$6",
@@ -8515,13 +8630,13 @@ var StyledLabel = (0, import_tamagui43.styled)(ContextMenuPrimitive.Label, {
   fontWeight: "600",
   color: "$color"
 });
-var StyledSeparator = (0, import_tamagui43.styled)(ContextMenuPrimitive.Separator, {
+var StyledSeparator = (0, import_tamagui44.styled)(ContextMenuPrimitive.Separator, {
   name: "ContextMenuSeparator",
   height: 1,
   margin: "$1",
   backgroundColor: "$borderColor"
 });
-var ContextMenuShortcut = (0, import_tamagui43.styled)(import_tamagui43.Text, {
+var ContextMenuShortcut = (0, import_tamagui44.styled)(import_tamagui44.Text, {
   name: "ContextMenuShortcut",
   marginLeft: "auto",
   fontSize: "$2",
@@ -8542,55 +8657,55 @@ var ContextMenuComponent = ({
   const renderItems = (menuItems) => menuItems.map((item, index) => {
     const key = `context-menu-item-${item.label}-${index}`;
     if (item.isSeparator) {
-      return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(StyledSeparator, {}, key);
+      return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(StyledSeparator, {}, key);
     }
     if (item.isLabel) {
-      return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(StyledLabel, { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.Text, { ellipse: true, children: item.label }) }, key);
+      return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(StyledLabel, { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(import_tamagui44.Text, { ellipse: true, children: item.label }) }, key);
     }
     if (item.items && item.items.length > 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(ContextMenuPrimitive.Sub, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(StyledSubTrigger, { disabled: item.disabled, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(import_tamagui43.XStack, { gap: "$2", alignItems: "center", children: [
+      return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(ContextMenuPrimitive.Sub, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(StyledSubTrigger, { disabled: item.disabled, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(import_tamagui44.XStack, { gap: "$2", alignItems: "center", children: [
             item.icon,
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.Text, { ellipse: true, children: item.label })
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(import_tamagui44.Text, { ellipse: true, children: item.label })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_lucide_icons18.ChevronRight, { size: "$1", marginLeft: "auto" })
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(import_lucide_icons18.ChevronRight, { size: "$1", marginLeft: "auto" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ContextMenuSubContent, { children: renderItems(item.items) })
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContextMenuSubContent, { children: renderItems(item.items) })
       ] }, key);
     }
     if (item.isCheckbox) {
-      return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+      return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
         StyledCheckboxItem,
         {
           checked: item.checked,
           onCheckedChange: item.onCheckedChange,
           disabled: item.disabled,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ContextMenuItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_lucide_icons18.Check, { size: "$1" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.Text, { ellipse: true, children: item.label })
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContextMenuItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(import_lucide_icons18.Check, { size: "$1" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(import_tamagui44.Text, { ellipse: true, children: item.label })
           ]
         },
         key
       );
     }
     if (item.isRadio) {
-      return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(StyledRadioItem, { value: item.value, disabled: item.disabled, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ContextMenuItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_lucide_icons18.Circle, { size: "$1" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.Text, { ellipse: true, children: item.label })
+      return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(StyledRadioItem, { value: item.value, disabled: item.disabled, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContextMenuItemIndicator, { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(import_lucide_icons18.Circle, { size: "$1" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(import_tamagui44.Text, { ellipse: true, children: item.label })
       ] }, key);
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(StyledItem, { disabled: item.disabled, onSelect: item.onSelect, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(import_tamagui43.XStack, { gap: "$2", alignItems: "center", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(StyledItem, { disabled: item.disabled, onSelect: item.onSelect, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(import_tamagui44.XStack, { gap: "$2", alignItems: "center", children: [
         item.icon,
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(import_tamagui43.Text, { ellipse: true, children: item.label })
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(import_tamagui44.Text, { ellipse: true, children: item.label })
       ] }),
-      item.shortcut && /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ContextMenuShortcut, { children: item.shortcut })
+      item.shortcut && /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContextMenuShortcut, { children: item.shortcut })
     ] }, key);
   });
   const radioItems = items.filter((item) => item.isRadio);
-  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(ContextMenuPrimitive.Root, { ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ContextMenuPrimitive.Trigger, { asChild: true, disabled: isDisabled2, children: import_react40.default.cloneElement(children, {
+  return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(ContextMenuPrimitive.Root, { ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContextMenuPrimitive.Trigger, { asChild: true, disabled: isDisabled2, children: import_react44.default.cloneElement(children, {
       ...children.props,
       disabled: isDisabled2,
       ...hasError && {
@@ -8598,11 +8713,11 @@ var ContextMenuComponent = ({
         borderWidth: 2
       }
     }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ContextMenuContent, { children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(import_tamagui43.YStack, { gap: "$2", padding: "$2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Skeleton, { height: 20 }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Skeleton, { height: 20 }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Skeleton, { height: 20 })
-    ] }) : radioItems.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ContextMenuPrimitive.RadioGroup, { value: radioGroupValue, onValueChange: onRadioGroupChange, children: renderItems(items) }) : renderItems(items) })
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContextMenuContent, { children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(import_tamagui44.YStack, { gap: "$2", padding: "$2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Skeleton, { height: 20 }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Skeleton, { height: 20 }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Skeleton, { height: 20 })
+    ] }) : radioItems.length > 0 ? /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContextMenuPrimitive.RadioGroup, { value: radioGroupValue, onValueChange: onRadioGroupChange, children: renderItems(items) }) : renderItems(items) })
   ] });
 };
 ContextMenuComponent.displayName = "ContextMenu";
@@ -8610,9 +8725,9 @@ var ContextMenu = ContextMenuComponent;
 
 // src/molecules/NavigationMenu.tsx
 var NavigationMenuPrimitive = __toESM(require("@radix-ui/react-navigation-menu"));
-var import_tamagui44 = require("tamagui");
-var import_jsx_runtime48 = require("react/jsx-runtime");
-var NavigationMenu = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Root, {
+var import_tamagui45 = require("tamagui");
+var import_jsx_runtime49 = require("react/jsx-runtime");
+var NavigationMenu = (0, import_tamagui45.styled)(NavigationMenuPrimitive.Root, {
   name: "NavigationMenu",
   position: "relative",
   display: "flex",
@@ -8635,7 +8750,7 @@ var NavigationMenu = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Root, 
     }
   }
 });
-var NavigationMenuList = (0, import_tamagui44.styled)(NavigationMenuPrimitive.List, {
+var NavigationMenuList = (0, import_tamagui45.styled)(NavigationMenuPrimitive.List, {
   name: "NavigationMenuList",
   display: "flex",
   gap: "$2",
@@ -8647,11 +8762,11 @@ var NavigationMenuList = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Li
   borderWidth: 1,
   borderColor: "$borderColor"
 });
-var NavigationMenuItem = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Item, {
+var NavigationMenuItem = (0, import_tamagui45.styled)(NavigationMenuPrimitive.Item, {
   name: "NavigationMenuItem",
   tag: "li"
 });
-var NavigationMenuTrigger = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Trigger, {
+var NavigationMenuTrigger = (0, import_tamagui45.styled)(NavigationMenuPrimitive.Trigger, {
   name: "NavigationMenuTrigger",
   ellipse: true,
   borderRadius: "$md",
@@ -8672,7 +8787,7 @@ var NavigationMenuTrigger = (0, import_tamagui44.styled)(NavigationMenuPrimitive
     borderColor: "$primary"
   }
 });
-var NavigationMenuContent = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Content, {
+var NavigationMenuContent = (0, import_tamagui45.styled)(NavigationMenuPrimitive.Content, {
   name: "NavigationMenuContent",
   position: "absolute",
   top: "calc(100% + 0.5rem)",
@@ -8685,7 +8800,7 @@ var NavigationMenuContent = (0, import_tamagui44.styled)(NavigationMenuPrimitive
   minWidth: 320,
   zIndex: 20
 });
-var NavigationMenuLink = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Link, {
+var NavigationMenuLink = (0, import_tamagui45.styled)(NavigationMenuPrimitive.Link, {
   name: "NavigationMenuLink",
   ellipse: true,
   display: "block",
@@ -8701,7 +8816,7 @@ var NavigationMenuLink = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Li
     outlineColor: "$primary"
   }
 });
-var NavigationMenuIndicator = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Indicator, {
+var NavigationMenuIndicator = (0, import_tamagui45.styled)(NavigationMenuPrimitive.Indicator, {
   name: "NavigationMenuIndicator",
   display: "flex",
   alignItems: "flex-end",
@@ -8710,7 +8825,7 @@ var NavigationMenuIndicator = (0, import_tamagui44.styled)(NavigationMenuPrimiti
   top: "100%",
   transition: "width, transform 200ms ease"
 });
-var IndicatorArrow = (0, import_tamagui44.styled)(import_tamagui44.YStack, {
+var IndicatorArrow = (0, import_tamagui45.styled)(import_tamagui45.YStack, {
   width: 20,
   height: 20,
   backgroundColor: "$background",
@@ -8721,7 +8836,7 @@ var IndicatorArrow = (0, import_tamagui44.styled)(import_tamagui44.YStack, {
   transform: "rotate(45deg)",
   marginTop: -8
 });
-var NavigationMenuViewport = (0, import_tamagui44.styled)(NavigationMenuPrimitive.Viewport, {
+var NavigationMenuViewport = (0, import_tamagui45.styled)(NavigationMenuPrimitive.Viewport, {
   name: "NavigationMenuViewport",
   position: "absolute",
   top: "100%",
@@ -8741,13 +8856,13 @@ var NavigationMenuComponent = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(import_tamagui44.XStack, { alignItems: "center", gap: "$4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Skeleton, { height: 32, width: 120 }),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Skeleton, { height: 32, width: 120 }),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Skeleton, { height: 32, width: 120 })
+    return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_tamagui45.XStack, { alignItems: "center", gap: "$4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Skeleton, { height: 32, width: 120 }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Skeleton, { height: 32, width: 120 }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Skeleton, { height: 32, width: 120 })
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(NavigationMenu, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(NavigationMenuList, { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(NavigationMenu, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(NavigationMenuList, { children: [
     children,
     rightSlot
   ] }) });
@@ -8756,11 +8871,11 @@ var NavigationMenuComponent = ({
 // src/molecules/Menubar/Menubar.tsx
 var import_react_menubar = require("@radix-ui/react-menubar");
 var import_lucide_icons19 = require("@tamagui/lucide-icons");
-var import_react41 = __toESM(require("react"));
-var import_tamagui45 = require("tamagui");
+var import_react45 = __toESM(require("react"));
 var import_tamagui46 = require("tamagui");
-var import_jsx_runtime49 = require("react/jsx-runtime");
-var MenubarFrame = (0, import_tamagui45.styled)(import_react_menubar.Root, {
+var import_tamagui47 = require("tamagui");
+var import_jsx_runtime50 = require("react/jsx-runtime");
+var MenubarFrame = (0, import_tamagui46.styled)(import_react_menubar.Root, {
   name: "Menubar",
   display: "flex",
   flexDirection: "row",
@@ -8776,7 +8891,7 @@ var MenubarFrame = (0, import_tamagui45.styled)(import_react_menubar.Root, {
 var MenubarMenu = import_react_menubar.Menu;
 var MenubarGroup = import_react_menubar.Group;
 var MenubarPortal = import_react_menubar.Portal;
-var MenubarTriggerFrame = (0, import_tamagui45.styled)(import_react_menubar.Trigger, {
+var MenubarTriggerFrame = (0, import_tamagui46.styled)(import_react_menubar.Trigger, {
   name: "MenubarTrigger",
   display: "flex",
   alignItems: "center",
@@ -8810,9 +8925,9 @@ var MenubarTriggerFrame = (0, import_tamagui45.styled)(import_react_menubar.Trig
     }
   }
 });
-var MenubarTrigger = import_react41.default.forwardRef((props, ref) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(MenubarTriggerFrame, { ref, ...props }));
+var MenubarTrigger = import_react45.default.forwardRef((props, ref) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MenubarTriggerFrame, { ref, ...props }));
 MenubarTrigger.displayName = import_react_menubar.Trigger.displayName;
-var MenubarContentFrame = (0, import_tamagui45.styled)(import_react_menubar.Content, {
+var MenubarContentFrame = (0, import_tamagui46.styled)(import_react_menubar.Content, {
   name: "MenubarContent",
   minWidth: 192,
   overflow: "hidden",
@@ -8830,7 +8945,7 @@ var MenubarContentFrame = (0, import_tamagui45.styled)(import_react_menubar.Cont
   flexDirection: "column",
   gap: "$1"
 });
-var MenubarContent = import_react41.default.forwardRef(({ align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_react_menubar.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+var MenubarContent = import_react45.default.forwardRef(({ align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_react_menubar.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
   MenubarContentFrame,
   {
     ref,
@@ -8841,7 +8956,7 @@ var MenubarContent = import_react41.default.forwardRef(({ align = "start", align
   }
 ) }));
 MenubarContent.displayName = import_react_menubar.Content.displayName;
-var MenubarItemFrame = (0, import_tamagui45.styled)(import_react_menubar.Item, {
+var MenubarItemFrame = (0, import_tamagui46.styled)(import_react_menubar.Item, {
   name: "MenubarItem",
   position: "relative",
   display: "flex",
@@ -8870,7 +8985,7 @@ var MenubarItemFrame = (0, import_tamagui45.styled)(import_react_menubar.Item, {
     }
   }
 });
-var MenubarItem = import_react41.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+var MenubarItem = import_react45.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
   MenubarItemFrame,
   {
     ref,
@@ -8879,7 +8994,7 @@ var MenubarItem = import_react41.default.forwardRef(({ inset, ...props }, ref) =
   }
 ));
 MenubarItem.displayName = import_react_menubar.Item.displayName;
-var MenubarCheckboxItemFrame = (0, import_tamagui45.styled)(import_react_menubar.CheckboxItem, {
+var MenubarCheckboxItemFrame = (0, import_tamagui46.styled)(import_react_menubar.CheckboxItem, {
   name: "MenubarCheckboxItem",
   position: "relative",
   display: "flex",
@@ -8909,7 +9024,7 @@ var MenubarCheckboxItemFrame = (0, import_tamagui45.styled)(import_react_menubar
     }
   }
 });
-var MenubarItemIndicatorFrame = (0, import_tamagui45.styled)(import_react_menubar.ItemIndicator, {
+var MenubarItemIndicatorFrame = (0, import_tamagui46.styled)(import_react_menubar.ItemIndicator, {
   position: "absolute",
   left: "$2",
   display: "flex",
@@ -8918,12 +9033,12 @@ var MenubarItemIndicatorFrame = (0, import_tamagui45.styled)(import_react_menuba
   width: "$4",
   height: "$4"
 });
-var MenubarCheckboxItem = import_react41.default.forwardRef(({ children, checked, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(MenubarCheckboxItemFrame, { ref, checked, ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_lucide_icons19.Check, { size: 14 }) }),
+var MenubarCheckboxItem = import_react45.default.forwardRef(({ children, checked, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(MenubarCheckboxItemFrame, { ref, checked, ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_lucide_icons19.Check, { size: 14 }) }),
   children
 ] }));
 MenubarCheckboxItem.displayName = import_react_menubar.CheckboxItem.displayName;
-var MenubarRadioItemFrame = (0, import_tamagui45.styled)(import_react_menubar.RadioItem, {
+var MenubarRadioItemFrame = (0, import_tamagui46.styled)(import_react_menubar.RadioItem, {
   name: "MenubarRadioItem",
   position: "relative",
   display: "flex",
@@ -8953,12 +9068,12 @@ var MenubarRadioItemFrame = (0, import_tamagui45.styled)(import_react_menubar.Ra
     }
   }
 });
-var MenubarRadioItem = import_react41.default.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(MenubarRadioItemFrame, { ref, ...props, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_lucide_icons19.Circle, { size: 8, fill: "currentColor" }) }),
+var MenubarRadioItem = import_react45.default.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(MenubarRadioItemFrame, { ref, ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_lucide_icons19.Circle, { size: 8, fill: "currentColor" }) }),
   children
 ] }));
 MenubarRadioItem.displayName = import_react_menubar.RadioItem.displayName;
-var MenubarLabelFrame = (0, import_tamagui45.styled)(import_react_menubar.Label, {
+var MenubarLabelFrame = (0, import_tamagui46.styled)(import_react_menubar.Label, {
   name: "MenubarLabel",
   paddingHorizontal: "$2",
   paddingVertical: "$1.5",
@@ -8967,22 +9082,22 @@ var MenubarLabelFrame = (0, import_tamagui45.styled)(import_react_menubar.Label,
   color: "$foreground",
   paddingLeft: "$2"
 });
-var MenubarLabel = import_react41.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(MenubarLabelFrame, { ref, paddingLeft: inset ? "$8" : "$2", ...props }));
+var MenubarLabel = import_react45.default.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MenubarLabelFrame, { ref, paddingLeft: inset ? "$8" : "$2", ...props }));
 MenubarLabel.displayName = import_react_menubar.Label.displayName;
-var MenubarSeparator = (0, import_tamagui45.styled)(import_react_menubar.Separator, {
+var MenubarSeparator = (0, import_tamagui46.styled)(import_react_menubar.Separator, {
   name: "MenubarSeparator",
   height: 1,
   backgroundColor: "$muted",
   marginHorizontal: "-$1"
 });
-var MenubarShortcut = (0, import_tamagui45.styled)(import_tamagui45.Paragraph, {
+var MenubarShortcut = (0, import_tamagui46.styled)(import_tamagui46.Paragraph, {
   name: "MenubarShortcut",
   marginLeft: "auto",
   fontSize: "$1",
   color: "$mutedForeground",
   letterSpacing: "$1"
 });
-var MenubarSubTriggerFrame = (0, import_tamagui45.styled)(import_react_menubar.SubTrigger, {
+var MenubarSubTriggerFrame = (0, import_tamagui46.styled)(import_react_menubar.SubTrigger, {
   name: "MenubarSubTrigger",
   display: "flex",
   flexDirection: "row",
@@ -9010,7 +9125,7 @@ var MenubarSubTriggerFrame = (0, import_tamagui45.styled)(import_react_menubar.S
     }
   }
 });
-var MenubarSubTrigger = import_react41.default.forwardRef(({ children, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+var MenubarSubTrigger = import_react45.default.forwardRef(({ children, inset, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
   MenubarSubTriggerFrame,
   {
     ref,
@@ -9018,12 +9133,12 @@ var MenubarSubTrigger = import_react41.default.forwardRef(({ children, inset, ..
     ...props,
     children: [
       children,
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_lucide_icons19.ChevronRight, { size: 14, style: { marginLeft: "auto" } })
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_lucide_icons19.ChevronRight, { size: 14, style: { marginLeft: "auto" } })
     ]
   }
 ));
 MenubarSubTrigger.displayName = import_react_menubar.SubTrigger.displayName;
-var MenubarSubContentFrame = (0, import_tamagui45.styled)(import_react_menubar.SubContent, {
+var MenubarSubContentFrame = (0, import_tamagui46.styled)(import_react_menubar.SubContent, {
   name: "MenubarSubContent",
   minWidth: 128,
   overflow: "hidden",
@@ -9038,7 +9153,7 @@ var MenubarSubContentFrame = (0, import_tamagui45.styled)(import_react_menubar.S
   shadowOpacity: 0.1,
   zIndex: 50
 });
-var MenubarSubContent = import_react41.default.forwardRef(({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(MenubarSubContentFrame, { ref, ...props }));
+var MenubarSubContent = import_react45.default.forwardRef(({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MenubarSubContentFrame, { ref, ...props }));
 MenubarSubContent.displayName = import_react_menubar.SubContent.displayName;
 var MenubarSub = import_react_menubar.Sub;
 var MenubarRadioGroup = import_react_menubar.RadioGroup;
@@ -9052,9 +9167,9 @@ var Menubar = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_tamagui45.YStack, { width: "100%", space: "$2", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Skeleton, { height: "$4", width: "100%" }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_tamagui46.YStack, { width: "100%", space: "$2", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Skeleton, { height: "$4", width: "100%" }) });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
     MenubarRoot,
     {
       ...props,
@@ -9062,8 +9177,8 @@ var Menubar = ({
       borderColor: hasError ? "$red10" : "$borderColor",
       children: [
         children,
-        rightSlot && /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(import_jsx_runtime49.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(import_tamagui46.Spacer, {}),
+        rightSlot && /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_jsx_runtime50.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_tamagui47.Spacer, {}),
           rightSlot
         ] })
       ]
@@ -9073,10 +9188,10 @@ var Menubar = ({
 
 // src/molecules/MonthsPicker/MonthsPicker.tsx
 var import_lucide_icons20 = require("@tamagui/lucide-icons");
-var import_react42 = require("react");
-var import_tamagui47 = require("tamagui");
-var import_jsx_runtime50 = require("react/jsx-runtime");
-var MonthsPickerTrigger = (0, import_tamagui47.styled)(SelectTrigger, {
+var import_react46 = require("react");
+var import_tamagui48 = require("tamagui");
+var import_jsx_runtime51 = require("react/jsx-runtime");
+var MonthsPickerTrigger = (0, import_tamagui48.styled)(SelectTrigger, {
   name: "MonthsPickerTrigger",
   width: 200,
   variants: {
@@ -9101,7 +9216,7 @@ var MonthsPicker = ({
   hasError = false,
   isDisabled: isDisabled2 = false
 }) => {
-  const meses = (0, import_react42.useMemo)(
+  const meses = (0, import_react46.useMemo)(
     () => [
       "Janeiro",
       "Fevereiro",
@@ -9119,35 +9234,35 @@ var MonthsPicker = ({
     []
   );
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Skeleton, { width: 200, height: 35 });
+    return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Skeleton, { width: 200, height: 35 });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_tamagui47.Select, { value, onValueChange, disabled: isDisabled2, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MonthsPickerTrigger, { error: hasError, disabled: isDisabled2, iconAfter: import_lucide_icons20.ChevronDown, children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(SelectValue, { placeholder }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_tamagui47.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_tamagui47.Sheet, { modal: true, dismissOnSnapToBottom: true, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_tamagui47.Sheet.Frame, { children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_tamagui47.Sheet.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_tamagui47.Adapt.Contents, {}) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(import_tamagui47.Sheet.Overlay, {})
+  return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(SelectRoot, { value, onValueChange, disabled: isDisabled2, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(MonthsPickerTrigger, { error: hasError, disabled: isDisabled2, iconAfter: import_lucide_icons20.ChevronDown, children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(SelectValue, { placeholder }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import_tamagui48.Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(Sheet, { modal: true, dismissOnSnapToBottom: true, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Sheet.Frame, { children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Sheet.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import_tamagui48.Adapt.Contents, {}) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Sheet.Overlay, {})
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(SelectContent, { children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(SelectViewport, { children: meses.map((mes, index) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(SelectItem, { index, value: mes, children: mes }, mes)) }) })
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(SelectContent, { children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(SelectViewport, { children: meses.map((mes, index) => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(SelectItem, { index, value: mes, children: mes }, mes)) }) })
   ] });
 };
 
 // src/molecules/ToggleGroup/ToggleGroup.tsx
-var import_react43 = require("react");
-var import_tamagui48 = require("tamagui");
-var import_jsx_runtime51 = require("react/jsx-runtime");
-var ToggleGroupContext = (0, import_react43.createContext)({
+var import_react47 = require("react");
+var import_tamagui49 = require("tamagui");
+var import_jsx_runtime52 = require("react/jsx-runtime");
+var ToggleGroupContext = (0, import_react47.createContext)({
   disabled: false,
   error: false,
   loading: false
 });
 var useToggleGroupContext = () => {
-  const context = (0, import_react43.useContext)(ToggleGroupContext);
+  const context = (0, import_react47.useContext)(ToggleGroupContext);
   if (!context) {
     throw new Error("useToggleGroupContext must be used within a ToggleGroupProvider");
   }
   return context;
 };
-var ToggleGroupItemFrame = (0, import_tamagui48.styled)(import_tamagui48.ToggleGroup.Item, {
+var ToggleGroupItemFrame = (0, import_tamagui49.styled)(import_tamagui49.ToggleGroup.Item, {
   name: "ToggleGroupItem",
   backgroundColor: "transparent",
   borderRadius: "$4",
@@ -9189,11 +9304,11 @@ var ToggleGroupItemFrame = (0, import_tamagui48.styled)(import_tamagui48.ToggleG
     }
   }
 });
-var ToggleGroupItem = (0, import_react43.forwardRef)((props, ref) => {
+var ToggleGroupItem = (0, import_react47.forwardRef)((props, ref) => {
   const { disabled, error: error2 } = useToggleGroupContext();
-  return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(ToggleGroupItemFrame, { ref, ...props, disabled: disabled || props.disabled, error: error2 });
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(ToggleGroupItemFrame, { ref, ...props, disabled: disabled || props.disabled, error: error2 });
 });
-var ToggleGroupFrame = (0, import_tamagui48.styled)(import_tamagui48.ToggleGroup, {
+var ToggleGroupFrame = (0, import_tamagui49.styled)(import_tamagui49.ToggleGroup, {
   name: "ToggleGroup",
   flexDirection: "row",
   alignItems: "center",
@@ -9210,24 +9325,24 @@ var ToggleGroupFrame = (0, import_tamagui48.styled)(import_tamagui48.ToggleGroup
     }
   }
 });
-var ToggleGroupRoot = (0, import_react43.forwardRef)((props, ref) => {
+var ToggleGroupRoot = (0, import_react47.forwardRef)((props, ref) => {
   const { children, disabled, error: error2, loading, ...rest } = props;
-  const contextValue = (0, import_react43.useMemo)(() => ({ disabled, error: error2, loading }), [disabled, error2, loading]);
+  const contextValue = (0, import_react47.useMemo)(() => ({ disabled, error: error2, loading }), [disabled, error2, loading]);
   if (loading) {
-    const childCount = import_react43.Children.count(children);
-    return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import_tamagui48.YStack, { flexDirection: "row", gap: "$1", alignItems: "center", children: Array.from({ length: childCount > 0 ? childCount : 3 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Skeleton, { height: "$10", width: "$10", borderRadius: "$4" }, i)) });
+    const childCount = import_react47.Children.count(children);
+    return /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(import_tamagui49.YStack, { flexDirection: "row", gap: "$1", alignItems: "center", children: Array.from({ length: childCount > 0 ? childCount : 3 }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Skeleton, { height: "$10", width: "$10", borderRadius: "$4" }, i)) });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(ToggleGroupContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(ToggleGroupFrame, { ref, ...rest, disabled, error: error2, children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(ToggleGroupContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(ToggleGroupFrame, { ref, ...rest, disabled, error: error2, children }) });
 });
-var ToggleGroup = (0, import_tamagui48.withStaticProperties)(ToggleGroupRoot, {
+var ToggleGroup = (0, import_tamagui49.withStaticProperties)(ToggleGroupRoot, {
   Item: ToggleGroupItem
 });
 
 // src/molecules/Tooltip/Tooltip.tsx
-var import_tamagui49 = require("tamagui");
-var import_react44 = __toESM(require("react"));
-var import_jsx_runtime52 = require("react/jsx-runtime");
-var TooltipContent = (0, import_tamagui49.styled)(import_tamagui49.Tooltip.Content, {
+var import_tamagui50 = require("tamagui");
+var import_react48 = __toESM(require("react"));
+var import_jsx_runtime53 = require("react/jsx-runtime");
+var TooltipContent = (0, import_tamagui50.styled)(import_tamagui50.Tooltip.Content, {
   name: "TooltipContent",
   enterStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
   exitStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
@@ -9252,7 +9367,7 @@ var TooltipContent = (0, import_tamagui49.styled)(import_tamagui49.Tooltip.Conte
     }
   }
 });
-var TooltipArrow = (0, import_tamagui49.styled)(import_tamagui49.Tooltip.Arrow, {
+var TooltipArrow = (0, import_tamagui50.styled)(import_tamagui50.Tooltip.Arrow, {
   name: "TooltipArrow",
   borderColor: "$borderColor",
   borderWidth: 1,
@@ -9265,18 +9380,18 @@ var TooltipArrow = (0, import_tamagui49.styled)(import_tamagui49.Tooltip.Arrow, 
     }
   }
 });
-var TooltipTrigger = import_tamagui49.Tooltip.Trigger;
-var Tooltip = import_react44.default.forwardRef(({ children, content, isLoading = false, hasError = false, isDisabled: isDisabled2 = false, actions, ...props }, _ref) => {
+var TooltipTrigger = import_tamagui50.Tooltip.Trigger;
+var Tooltip = import_react48.default.forwardRef(({ children, content, isLoading = false, hasError = false, isDisabled: isDisabled2 = false, actions, ...props }, _ref) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Skeleton, {});
+    return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(Skeleton, {});
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(import_tamagui49.Tooltip, { ...props, disabled: isDisabled2, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TooltipTrigger, { asChild: true, children }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(import_tamagui49.Tooltip.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(TooltipContent, { hasError, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TooltipArrow, { hasError }),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(import_tamagui49.YStack, { gap: "$2", children: [
-        typeof content === "string" ? /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(import_tamagui49.Paragraph, { size: "$2", children: content }) : content,
-        actions && /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(import_tamagui49.XStack, { gap: "$2", children: actions })
+  return /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(import_tamagui50.Tooltip, { ...props, disabled: isDisabled2, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(TooltipTrigger, { asChild: true, children }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(import_tamagui50.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(TooltipContent, { hasError, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(TooltipArrow, { hasError }),
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(import_tamagui50.YStack, { gap: "$2", children: [
+        typeof content === "string" ? /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(import_tamagui50.Paragraph, { size: "$2", children: content }) : content,
+        actions && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(import_tamagui50.XStack, { gap: "$2", children: actions })
       ] })
     ] }) })
   ] });
@@ -9284,13 +9399,13 @@ var Tooltip = import_react44.default.forwardRef(({ children, content, isLoading 
 Tooltip.displayName = "Tooltip";
 
 // src/molecules/Stepper/Stepper.tsx
-var import_tamagui51 = require("tamagui");
+var import_tamagui52 = require("tamagui");
 
 // src/molecules/Stepper/Stepper.context.tsx
-var import_react45 = require("react");
-var import_tamagui50 = require("tamagui");
-var import_jsx_runtime53 = require("react/jsx-runtime");
-var StepperContext = (0, import_react45.createContext)(null);
+var import_react49 = require("react");
+var import_tamagui51 = require("tamagui");
+var import_jsx_runtime54 = require("react/jsx-runtime");
+var StepperContext = (0, import_react49.createContext)(null);
 var StepperContextProvider = ({
   steps,
   isLoading,
@@ -9299,7 +9414,7 @@ var StepperContextProvider = ({
   children,
   actions
 }) => {
-  const [currentStep, setCurrentStep] = (0, import_react45.useState)(0);
+  const [currentStep, setCurrentStep] = (0, import_react49.useState)(0);
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -9322,21 +9437,21 @@ var StepperContextProvider = ({
     isDisabled: isDisabled2,
     actions
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(StepperContext.Provider, { value, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(StepperContext.Provider, { value, children });
 };
 var useStepper = () => {
-  const context = (0, import_react45.useContext)(StepperContext);
+  const context = (0, import_react49.useContext)(StepperContext);
   if (!context) {
     throw new Error("useStepper must be used within a StepperContextProvider");
   }
   return context;
 };
 var Stepper = ({ children }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(import_tamagui50.YStack, { children });
+  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(import_tamagui51.YStack, { children });
 };
 
 // src/molecules/Stepper/Stepper.tsx
-var import_jsx_runtime54 = require("react/jsx-runtime");
+var import_jsx_runtime55 = require("react/jsx-runtime");
 var StepperContent = () => {
   const {
     currentStep,
@@ -9351,21 +9466,21 @@ var StepperContent = () => {
     actions
   } = useStepper();
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_tamagui51.YStack, { space: "$2", "data-testid": "skeleton-container", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Skeleton, { height: 28, width: 250 }),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Skeleton, { height: 120 }),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_tamagui51.XStack, { justifyContent: "space-between", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Skeleton, { height: 44, width: 110 }),
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Skeleton, { height: 44, width: 110 })
+    return /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(import_tamagui52.YStack, { space: "$2", "data-testid": "skeleton-container", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Skeleton, { height: 28, width: 250 }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Skeleton, { height: 120 }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(import_tamagui52.XStack, { justifyContent: "space-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Skeleton, { height: 44, width: 110 }),
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Skeleton, { height: 44, width: 110 })
       ] })
     ] });
   }
   if (!steps || steps.length === 0) {
-    return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(import_tamagui51.Text, { children: "N\xE3o h\xE1 passos para exibir." });
+    return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(import_tamagui52.Text, { children: "N\xE3o h\xE1 passos para exibir." });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_tamagui51.YStack, { space: "$4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
-      import_tamagui51.Text,
+  return /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(import_tamagui52.YStack, { space: "$4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      import_tamagui52.Text,
       {
         color: hasError ? "$red10" : "$color",
         fontSize: "$6",
@@ -9376,8 +9491,8 @@ var StepperContent = () => {
         children: steps[currentStep].title
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
-      import_tamagui51.YStack,
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      import_tamagui52.YStack,
       {
         borderWidth: 1,
         borderColor: hasError ? "$red10" : "$borderColor",
@@ -9389,7 +9504,7 @@ var StepperContent = () => {
         children: steps[currentStep].content
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(import_tamagui51.XStack, { justifyContent: "space-between", children: actions(nextStep, prevStep, isFirstStep, isLastStep, isDisabled2) })
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(import_tamagui52.XStack, { justifyContent: "space-between", children: actions(nextStep, prevStep, isFirstStep, isLastStep, isDisabled2) })
   ] });
 };
 var Stepper2 = ({
@@ -9399,7 +9514,7 @@ var Stepper2 = ({
   isDisabled: isDisabled2 = false,
   actions
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
     StepperContextProvider,
     {
       steps,
@@ -9407,16 +9522,16 @@ var Stepper2 = ({
       hasError,
       isDisabled: isDisabled2,
       actions,
-      children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Stepper, { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(StepperContent, {}) })
+      children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Stepper, { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(StepperContent, {}) })
     }
   );
 };
 
 // src/molecules/AvatarGroup/AvatarGroup.tsx
-var import_tamagui52 = require("tamagui");
-var import_jsx_runtime55 = require("react/jsx-runtime");
+var import_tamagui53 = require("tamagui");
+var import_jsx_runtime56 = require("react/jsx-runtime");
 var AVATAR_GROUP_ITEM_BORDER_WIDTH = 2;
-var AvatarGroupFrame = (0, import_tamagui52.styled)(import_tamagui52.XStack, {
+var AvatarGroupFrame = (0, import_tamagui53.styled)(import_tamagui53.XStack, {
   name: "AvatarGroup",
   alignItems: "center",
   flexDirection: "row",
@@ -9424,8 +9539,7 @@ var AvatarGroupFrame = (0, import_tamagui52.styled)(import_tamagui52.XStack, {
     size: {
       "...size": (val, { tokens: tokens2 }) => {
         return {
-          height: tokens2.size[val] ?? val,
-          paddingLeft: (tokens2.size[val] ?? val) * 0.4
+          height: tokens2.size[val] ?? val
         };
       }
     }
@@ -9434,7 +9548,7 @@ var AvatarGroupFrame = (0, import_tamagui52.styled)(import_tamagui52.XStack, {
     size: "$10"
   }
 });
-var AvatarGroupItemFrame = (0, import_tamagui52.styled)(import_tamagui52.XStack, {
+var AvatarGroupItemFrame = (0, import_tamagui53.styled)(import_tamagui53.XStack, {
   name: "AvatarGroupItem",
   justifyContent: "center",
   alignItems: "center",
@@ -9449,7 +9563,9 @@ var AvatarGroupItemFrame = (0, import_tamagui52.styled)(import_tamagui52.XStack,
           width: tokens2.size[val] ?? val,
           height: tokens2.size[val] ?? val,
           // Overlap by 40% of the avatar's size
-          marginLeft: (tokens2.size[val] ?? val) * -0.4
+          marginLeft: (tokens2.size[val] ?? val) * -0.4,
+          // Explicitly clear zIndex for children to avoid prop leakage
+          zIndex: void 0
         };
       }
     },
@@ -9472,13 +9588,13 @@ var AvatarGroup = ({
   ...rest
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(AvatarGroupFrame, { size, ...rest, "data-testid": "avatar-group-frame", children: Array.from({ length: limit }).map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(AvatarGroupFrame, { size, ...rest, "data-testid": "avatar-group-frame", children: Array.from({ length: limit }).map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
       AvatarGroupItemFrame,
       {
         size,
         zIndex: limit - index,
         "data-testid": `avatar-group-skeleton-${index}`,
-        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Skeleton, { circular: true, width: "100%", height: "100%" })
+        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Skeleton, { circular: true, width: "100%", height: "100%" })
       },
       `skeleton-${index}`
     )) });
@@ -9488,8 +9604,8 @@ var AvatarGroup = ({
   }
   const visibleItems = items.slice(0, limit);
   const remainingCount = Math.max(0, items.length - limit);
-  return /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(AvatarGroupFrame, { size, ...rest, "data-testid": "avatar-group-frame", children: [
-    visibleItems.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(AvatarGroupFrame, { size, ...rest, "data-testid": "avatar-group-frame", children: [
+    visibleItems.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
       AvatarGroupItemFrame,
       {
         size,
@@ -9497,22 +9613,22 @@ var AvatarGroup = ({
         hasError,
         "data-testid": `avatar-group-item-${index}`,
         "data-haserror": hasError,
-        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(Avatar, { size, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(AvatarImage, { alt: item.alt ?? item.fallback, src: item.src }),
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(AvatarFallback, { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(import_tamagui52.Text, { children: item.fallback }) })
+        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(Avatar, { size, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(AvatarImage, { alt: item.alt ?? item.fallback, src: item.src }),
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(AvatarFallback, { children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(import_tamagui53.Text, { children: item.fallback }) })
         ] })
       },
       `avatar-${index}`
     )),
-    remainingCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+    remainingCount > 0 && /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
       AvatarGroupItemFrame,
       {
         size,
-        zIndex: limit + 1,
+        zIndex: 0,
         hasError,
         "data-testid": "avatar-group-remainder",
         "data-haserror": hasError,
-        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Avatar, { size, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(AvatarFallback, { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(import_tamagui52.Text, { size: "$4", fontWeight: "bold", children: [
+        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Avatar, { size, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(AvatarFallback, { children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(import_tamagui53.Text, { size: "$4", fontWeight: "bold", children: [
           "+",
           remainingCount
         ] }) }) })
@@ -9522,10 +9638,10 @@ var AvatarGroup = ({
 };
 
 // src/molecules/BadgeCounter/BadgeCounter.tsx
-var import_react46 = require("react");
-var import_tamagui53 = require("tamagui");
-var import_jsx_runtime56 = require("react/jsx-runtime");
-var BadgeCounterFrame = (0, import_tamagui53.styled)(import_tamagui53.XStack, {
+var import_react50 = require("react");
+var import_tamagui54 = require("tamagui");
+var import_jsx_runtime57 = require("react/jsx-runtime");
+var BadgeCounterFrame = (0, import_tamagui54.styled)(import_tamagui54.XStack, {
   name: "BadgeCounter",
   tag: "div",
   position: "relative",
@@ -9547,18 +9663,18 @@ var BadgeCounterFrame = (0, import_tamagui53.styled)(import_tamagui53.XStack, {
     }
   }
 });
-var BadgeCounterContent = (0, import_tamagui53.styled)(import_tamagui53.YStack, {
+var BadgeCounterContent = (0, import_tamagui54.styled)(import_tamagui54.YStack, {
   name: "BadgeCounterContent",
   flex: 1
 });
-var BadgePosition = (0, import_tamagui53.styled)(import_tamagui53.YStack, {
+var BadgePosition = (0, import_tamagui54.styled)(import_tamagui54.YStack, {
   name: "BadgePosition",
   position: "absolute",
   zIndex: 1,
   top: -5,
   right: -5
 });
-var BadgeCounter = (0, import_react46.forwardRef)(
+var BadgeCounter = (0, import_react50.forwardRef)(
   ({
     children,
     count = 0,
@@ -9570,13 +9686,13 @@ var BadgeCounter = (0, import_react46.forwardRef)(
     ...props
   }, ref) => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Skeleton, { width: "$10", height: "$10", borderRadius: "$10" });
+      return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Skeleton, { width: "$10", height: "$10", borderRadius: "$10" });
     }
     const shouldShowBadge = showZero || count > 0;
     const displayCount = count > max ? `${max}+` : count;
-    return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(BadgeCounterFrame, { ref, hasError, disabled, ...props, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(BadgeCounterContent, { children }),
-      shouldShowBadge && /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(BadgePosition, { children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Badge, { variant: "destructive", size: "sm", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(BadgeText, { variant: "destructive", size: "sm", children: displayCount }) }) })
+    return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(BadgeCounterFrame, { ref, hasError, disabled, ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(BadgeCounterContent, { children }),
+      shouldShowBadge && /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(BadgePosition, { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Badge, { variant: "destructive", size: "sm", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(BadgeText, { variant: "destructive", size: "sm", children: displayCount }) }) })
     ] });
   }
 );
@@ -9584,9 +9700,9 @@ BadgeCounter.displayName = "BadgeCounter";
 
 // src/organisms/Autocomplete/Autocomplete.tsx
 var import_lucide_icons21 = require("@tamagui/lucide-icons");
-var import_react47 = require("react");
-var import_tamagui54 = require("tamagui");
-var import_jsx_runtime57 = require("react/jsx-runtime");
+var import_react51 = require("react");
+var import_tamagui55 = require("tamagui");
+var import_jsx_runtime58 = require("react/jsx-runtime");
 var Autocomplete = ({
   options,
   value,
@@ -9597,9 +9713,9 @@ var Autocomplete = ({
   isLoading = false,
   hasError = false
 }) => {
-  const [open, setOpen] = (0, import_react47.useState)(false);
-  const [search, setSearch] = (0, import_react47.useState)("");
-  const filteredOptions = (0, import_react47.useMemo)(() => {
+  const [open, setOpen] = (0, import_react51.useState)(false);
+  const [search, setSearch] = (0, import_react51.useState)("");
+  const filteredOptions = (0, import_react51.useMemo)(() => {
     if (!search) return options;
     return options.filter((opt) => opt.label.toLowerCase().includes(search.toLowerCase()));
   }, [options, search]);
@@ -9609,16 +9725,16 @@ var Autocomplete = ({
     setSearch("");
   };
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Skeleton, { width: "100%", height: 40 });
+    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Skeleton, { width: "100%", height: 40 });
   }
   if (hasError) {
-    return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(import_tamagui54.YStack, { gap: "$2", alignItems: "center", padding: "$4", backgroundColor: "$red2", borderRadius: "$4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_lucide_icons21.XCircle, { color: "$red10" }),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_tamagui54.Text, { color: "$red10", children: errorMessage })
+    return /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(import_tamagui55.YStack, { gap: "$2", alignItems: "center", padding: "$4", backgroundColor: "$red2", borderRadius: "$4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_lucide_icons21.XCircle, { color: "$red10" }),
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_tamagui55.Text, { color: "$red10", children: errorMessage })
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Popover, { open, onOpenChange: setOpen, placement: "bottom-start", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(Popover, { open, onOpenChange: setOpen, placement: "bottom-start", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       Button,
       {
         role: "combobox",
@@ -9627,19 +9743,19 @@ var Autocomplete = ({
         width: "100%",
         iconAfter: import_lucide_icons21.ChevronDown,
         flex: 1,
-        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_tamagui54.Text, { numberOfLines: 1, ellipse: true, children: value ? value.label : placeholder })
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_tamagui55.Text, { numberOfLines: 1, ellipse: true, children: value ? value.label : placeholder })
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(PopoverContent, { padding: 0, width: "100%", minWidth: 200, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_tamagui54.YStack, { padding: "$2", borderBottomWidth: 1, borderBottomColor: "$borderColor", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Input, { placeholder: "Buscar...", value: search, onChangeText: setSearch }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_tamagui54.ScrollView, { maxHeight: 200, keyboardShouldPersistTaps: "handled", children: filteredOptions.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_tamagui54.YStack, { gap: "$2", padding: "$4", alignItems: "center", justifyContent: "center", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_tamagui54.Text, { color: "$color11", children: emptyMessage }) }) : /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_tamagui54.YGroup, { children: filteredOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_tamagui54.YGroup.Item, { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
-        import_tamagui54.ListItem,
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(PopoverContent, { padding: 0, width: "100%", minWidth: 200, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_tamagui55.YStack, { padding: "$2", borderBottomWidth: 1, borderBottomColor: "$borderColor", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Input, { placeholder: "Buscar...", value: search, onChangeText: setSearch }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_tamagui55.ScrollView, { maxHeight: 200, keyboardShouldPersistTaps: "handled", children: filteredOptions.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_tamagui55.YStack, { gap: "$2", padding: "$4", alignItems: "center", justifyContent: "center", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_tamagui55.Text, { color: "$color11", children: emptyMessage }) }) : /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_tamagui55.YGroup, { children: filteredOptions.map((option) => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_tamagui55.YGroup.Item, { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+        import_tamagui55.ListItem,
         {
           hoverTheme: true,
           pressTheme: true,
           onPress: () => handleSelect(option),
           icon: value?.value === option.value ? import_lucide_icons21.Check : void 0,
-          children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(import_tamagui54.Text, { children: option.label })
+          children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_tamagui55.Text, { children: option.label })
         }
       ) }, option.value)) }) })
     ] })
@@ -9647,21 +9763,21 @@ var Autocomplete = ({
 };
 
 // src/organisms/Form/Form.tsx
-var React49 = __toESM(require("react"));
+var React52 = __toESM(require("react"));
 var import_react_hook_form = require("react-hook-form");
-var import_tamagui55 = require("tamagui");
-var import_jsx_runtime58 = require("react/jsx-runtime");
+var import_tamagui56 = require("tamagui");
+var import_jsx_runtime59 = require("react/jsx-runtime");
 var Form = import_react_hook_form.FormProvider;
-var FormFieldContext = React49.createContext(null);
+var FormFieldContext = React52.createContext(null);
 var FormField = ({
   ...props
 }) => {
-  const contextValue = React49.useMemo(() => ({ name: props.name }), [props.name]);
-  return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(FormFieldContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(import_react_hook_form.Controller, { ...props }) });
+  const contextValue = React52.useMemo(() => ({ name: props.name }), [props.name]);
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(FormFieldContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(import_react_hook_form.Controller, { ...props }) });
 };
 var useFormField = () => {
-  const fieldContext = React49.useContext(FormFieldContext);
-  const itemContext = React49.useContext(FormItemContext);
+  const fieldContext = React52.useContext(FormFieldContext);
+  const itemContext = React52.useContext(FormItemContext);
   const { getFieldState, formState } = (0, import_react_hook_form.useFormContext)();
   if (!fieldContext) {
     throw new Error("useFormField should be used within <FormField>");
@@ -9680,30 +9796,30 @@ var useFormField = () => {
     ...fieldState
   };
 };
-var FormItemContext = React49.createContext(null);
-var FormRoot = (0, import_tamagui55.styled)(import_tamagui55.YStack, {
+var FormItemContext = React52.createContext(null);
+var FormRoot = (0, import_tamagui56.styled)(import_tamagui56.YStack, {
   name: "FormRoot",
   gap: "$4"
 });
-var FormFooter = (0, import_tamagui55.styled)(import_tamagui55.YStack, {
+var FormFooter = (0, import_tamagui56.styled)(import_tamagui56.YStack, {
   name: "FormFooter",
   flexDirection: "row",
   justifyContent: "flex-end",
   gap: "$2"
 });
-var FormItemFrame = (0, import_tamagui55.styled)(import_tamagui55.YStack, {
+var FormItemFrame = (0, import_tamagui56.styled)(import_tamagui56.YStack, {
   name: "FormItem",
   space: "$sm"
 });
-var FormItem = React49.forwardRef(
+var FormItem = React52.forwardRef(
   ({ ...props }, ref) => {
-    const id2 = React49.useId();
-    const contextValue = React49.useMemo(() => ({ id: id2 }), [id2]);
-    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(FormItemContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(FormItemFrame, { ref, ...props }) });
+    const id2 = React52.useId();
+    const contextValue = React52.useMemo(() => ({ id: id2 }), [id2]);
+    return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(FormItemContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(FormItemFrame, { ref, ...props }) });
   }
 );
 FormItem.displayName = "FormItem";
-var FormLabelFrame = (0, import_tamagui55.styled)(import_tamagui55.Label, {
+var FormLabelFrame = (0, import_tamagui56.styled)(Label, {
   name: "FormLabel",
   color: "$color",
   fontWeight: "500",
@@ -9716,10 +9832,10 @@ var FormLabelFrame = (0, import_tamagui55.styled)(import_tamagui55.Label, {
     }
   }
 });
-var FormLabel = React49.forwardRef(
+var FormLabel = React52.forwardRef(
   ({ ...props }, ref) => {
     const { error: error2, formItemId } = useFormField();
-    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
       FormLabelFrame,
       {
         ref,
@@ -9731,11 +9847,11 @@ var FormLabel = React49.forwardRef(
   }
 );
 FormLabel.displayName = "FormLabel";
-var FormControl = React49.forwardRef(
+var FormControl = React52.forwardRef(
   ({ ...props }, ref) => {
     const { error: error2, formItemId, formDescriptionId, formMessageId } = useFormField();
-    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
-      import_tamagui55.View,
+    return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      import_tamagui56.View,
       {
         ref,
         id: formItemId,
@@ -9747,15 +9863,15 @@ var FormControl = React49.forwardRef(
   }
 );
 FormControl.displayName = "FormControl";
-var FormDescriptionFrame = (0, import_tamagui55.styled)(import_tamagui55.Text, {
+var FormDescriptionFrame = (0, import_tamagui56.styled)(import_tamagui56.Text, {
   name: "FormDescription",
   fontSize: "$2",
   color: "$mutedForeground"
 });
-var FormDescription = React49.forwardRef(
+var FormDescription = React52.forwardRef(
   ({ ...props }, ref) => {
     const { formDescriptionId } = useFormField();
-    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
       FormDescriptionFrame,
       {
         ref,
@@ -9766,20 +9882,20 @@ var FormDescription = React49.forwardRef(
   }
 );
 FormDescription.displayName = "FormDescription";
-var FormMessageFrame = (0, import_tamagui55.styled)(import_tamagui55.Text, {
+var FormMessageFrame = (0, import_tamagui56.styled)(import_tamagui56.Text, {
   name: "FormMessage",
   fontSize: "$2",
   fontWeight: "500",
   color: "$destructive"
 });
-var FormMessage = React49.forwardRef(
+var FormMessage = React52.forwardRef(
   ({ children, ...props }, ref) => {
     const { error: error2, formMessageId } = useFormField();
     const body = error2 ? String(error2?.message) : children;
     if (!body) {
       return null;
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
       FormMessageFrame,
       {
         ref,
@@ -9793,13 +9909,13 @@ var FormMessage = React49.forwardRef(
 FormMessage.displayName = "FormMessage";
 
 // src/organisms/RichText/RichText.tsx
-var import_react48 = require("@tiptap/react");
+var import_react52 = require("@tiptap/react");
 var import_starter_kit = __toESM(require("@tiptap/starter-kit"));
 var import_lucide_icons22 = require("@tamagui/lucide-icons");
-var import_tamagui56 = require("tamagui");
+var import_tamagui57 = require("tamagui");
 var import_isomorphic_dompurify = __toESM(require("isomorphic-dompurify"));
-var import_jsx_runtime59 = require("react/jsx-runtime");
-var EditorContainer = (0, import_tamagui56.styled)(import_tamagui56.YStack, {
+var import_jsx_runtime60 = require("react/jsx-runtime");
+var EditorContainer = (0, import_tamagui57.styled)(import_tamagui57.YStack, {
   name: "RichTextEditor",
   borderWidth: 1,
   borderColor: "$borderColor",
@@ -9812,12 +9928,12 @@ var EditorContainer = (0, import_tamagui56.styled)(import_tamagui56.YStack, {
     }
   }
 });
-var EditorContentContainer = (0, import_tamagui56.styled)(import_tamagui56.ScrollView, {
+var EditorContentContainer = (0, import_tamagui57.styled)(import_tamagui57.ScrollView, {
   name: "EditorContentContainer",
   minHeight: 150,
   padding: "$3"
 });
-var Toolbar = (0, import_tamagui56.styled)(import_tamagui56.XStack, {
+var Toolbar = (0, import_tamagui57.styled)(import_tamagui57.XStack, {
   name: "RichTextToolbar",
   padding: "$2",
   borderBottomWidth: 1,
@@ -9839,8 +9955,8 @@ var RichTextToolbar = ({ editor }) => {
     { level: 2, icon: import_lucide_icons22.Heading2, label: "T\xEDtulo 2" },
     { level: 3, icon: import_lucide_icons22.Heading3, label: "T\xEDtulo 3" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Toolbar, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(Toolbar, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
       ToggleGroup,
       {
         type: "multiple",
@@ -9852,16 +9968,16 @@ var RichTextToolbar = ({ editor }) => {
             }
           });
         },
-        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Icon, { size: 16 }) }) }, name))
+        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Icon, { size: 16 }) }) }, name))
       }
     ),
-    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
       Button,
       {
         variant: editor.isActive("heading", { level }) ? "secondary" : "ghost",
         onPress: () => editor.chain().focus().toggleHeading({ level }).run(),
         "aria-label": label,
-        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Icon, { size: 16 })
+        children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Icon, { size: 16 })
       }
     ) }, level))
   ] });
@@ -9875,7 +9991,7 @@ var RichTextFrame = ({
   headerActions,
   ...props
 }) => {
-  const editor = (0, import_react48.useEditor)({
+  const editor = (0, import_react52.useEditor)({
     extensions: [import_starter_kit.default],
     content: value,
     editable: !isLoading && editable,
@@ -9888,39 +10004,39 @@ var RichTextFrame = ({
     }
   });
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(import_tamagui56.YStack, { gap: "$2", ...props, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Skeleton, { height: 40 }),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Skeleton, { height: 150 })
+    return /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(import_tamagui57.YStack, { gap: "$2", ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Skeleton, { height: 40 }),
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Skeleton, { height: 150 })
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(EditorContainer, { hasError, ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(RichTextToolbar, { editor }),
+  return /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(EditorContainer, { hasError, ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(RichTextToolbar, { editor }),
     headerActions,
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(EditorContentContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(import_react48.EditorContent, { editor }) })
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(EditorContentContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(import_react52.EditorContent, { editor }) })
   ] });
 };
-var RichText = (0, import_tamagui56.withStaticProperties)(RichTextFrame, {});
+var RichText = (0, import_tamagui57.withStaticProperties)(RichTextFrame, {});
 
 // src/organisms/DataTable/DataTable.tsx
 var import_lucide_icons24 = require("@tamagui/lucide-icons");
-var import_react50 = require("react");
+var import_react54 = require("react");
 var import_react_table = require("@tanstack/react-table");
-var import_tamagui60 = require("tamagui");
+var import_tamagui61 = require("tamagui");
 
 // src/molecules/Empty/Empty.tsx
 var import_lucide_icons23 = require("@tamagui/lucide-icons");
-var import_tamagui57 = require("tamagui");
-var import_react49 = require("react");
 var import_tamagui58 = require("tamagui");
-var import_jsx_runtime60 = require("react/jsx-runtime");
-var EmptyFrame = (0, import_tamagui57.styled)(import_tamagui57.YStack, {
+var import_react53 = require("react");
+var import_tamagui59 = require("tamagui");
+var import_jsx_runtime61 = require("react/jsx-runtime");
+var EmptyFrame = (0, import_tamagui58.styled)(import_tamagui58.YStack, {
   name: "Empty",
   alignItems: "center",
   justifyContent: "center",
   padding: "$4",
   gap: "$2"
 });
-var EmptyIconFrame = (0, import_tamagui57.styled)(import_tamagui57.YStack, {
+var EmptyIconFrame = (0, import_tamagui58.styled)(import_tamagui58.YStack, {
   name: "EmptyIcon",
   padding: "$3",
   borderRadius: 100,
@@ -9935,7 +10051,7 @@ var EmptyIconFrame = (0, import_tamagui57.styled)(import_tamagui57.YStack, {
     }
   }
 });
-var EmptyTitle = (0, import_tamagui57.styled)(import_tamagui57.Text, {
+var EmptyTitle = (0, import_tamagui58.styled)(import_tamagui58.Text, {
   name: "EmptyTitle",
   fontSize: "$5",
   fontWeight: "600",
@@ -9949,7 +10065,7 @@ var EmptyTitle = (0, import_tamagui57.styled)(import_tamagui57.Text, {
     }
   }
 });
-var EmptyDescription = (0, import_tamagui57.styled)(import_tamagui57.Text, {
+var EmptyDescription = (0, import_tamagui58.styled)(import_tamagui58.Text, {
   name: "EmptyDescription",
   fontSize: "$3",
   color: "$gray10",
@@ -9963,13 +10079,13 @@ var EmptyDescription = (0, import_tamagui57.styled)(import_tamagui57.Text, {
     }
   }
 });
-var EmptySkeleton = () => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(EmptyFrame, { "data-testid": "empty-skeleton", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Skeleton, { width: 64, height: 64, borderRadius: 100 }),
-  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(import_tamagui57.YStack, { gap: "$1", alignItems: "center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Skeleton, { width: 120, height: 20 }),
-    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Skeleton, { width: 240, height: 15 })
+var EmptySkeleton = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(EmptyFrame, { "data-testid": "empty-skeleton", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Skeleton, { width: 64, height: 64, borderRadius: 100 }),
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(import_tamagui58.YStack, { gap: "$1", alignItems: "center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Skeleton, { width: 120, height: 20 }),
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Skeleton, { width: 240, height: 15 })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Skeleton, { width: 100, height: 40, marginTop: "$2" })
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Skeleton, { width: 100, height: 40, marginTop: "$2" })
 ] });
 var Empty = ({
   icon,
@@ -9983,12 +10099,12 @@ var Empty = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(EmptySkeleton, {});
+    return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(EmptySkeleton, {});
   }
   let content;
   if (image) {
-    content = /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
-      import_tamagui57.Image,
+    content = /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+      import_tamagui58.Image,
       {
         source: { uri: image },
         width: 200,
@@ -9998,40 +10114,40 @@ var Empty = ({
       }
     );
   } else {
-    const iconElement = icon ? (0, import_react49.cloneElement)(icon, {
+    const iconElement = icon ? (0, import_react53.cloneElement)(icon, {
       size: 32,
       color: hasError ? "$red10" : "$gray10"
-    }) : /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(import_lucide_icons23.Ban, { size: 32, color: hasError ? "$red10" : "$gray10" });
-    content = /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(EmptyIconFrame, { hasError, "data-testid": "empty-icon-frame", "data-has-error": hasError, children: iconElement });
+    }) : /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_lucide_icons23.Ban, { size: 32, color: hasError ? "$red10" : "$gray10" });
+    content = /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(EmptyIconFrame, { hasError, "data-testid": "empty-icon-frame", "data-has-error": hasError, children: iconElement });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(EmptyFrame, { ...props, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(EmptyFrame, { ...props, children: [
     content,
-    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(import_tamagui57.YStack, { gap: "$1", alignItems: "center", children: [
-      title && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(EmptyTitle, { hasError, children: title }),
-      description && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(EmptyDescription, { hasError, children: description })
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(import_tamagui58.YStack, { gap: "$1", alignItems: "center", children: [
+      title && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(EmptyTitle, { hasError, children: title }),
+      description && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(EmptyDescription, { hasError, children: description })
     ] }),
-    actions && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(import_tamagui58.XStack, { marginTop: "$2", children: actions })
+    actions && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_tamagui59.XStack, { marginTop: "$2", children: actions })
   ] });
 };
 
 // src/organisms/DataTable/DataTable.parts.tsx
-var import_tamagui59 = require("tamagui");
+var import_tamagui60 = require("tamagui");
 var MIN_COLUMN_WIDTH = 100;
 var BORDER_WIDTH = 1;
-var TableContainer = (0, import_tamagui59.styled)(import_tamagui59.YStack, {
+var TableContainer = (0, import_tamagui60.styled)(import_tamagui60.YStack, {
   name: "TableContainer",
   borderColor: "$borderColor",
   borderWidth: BORDER_WIDTH,
   borderRadius: "$4",
   overflow: "hidden"
 });
-var TableHeader = (0, import_tamagui59.styled)(import_tamagui59.YStack, {
+var TableHeader = (0, import_tamagui60.styled)(import_tamagui60.YStack, {
   name: "TableHeader",
   backgroundColor: "$background",
   borderBottomWidth: BORDER_WIDTH,
   borderColor: "$borderColor"
 });
-var TableRow = (0, import_tamagui59.styled)(import_tamagui59.XStack, {
+var TableRow = (0, import_tamagui60.styled)(import_tamagui60.XStack, {
   name: "TableRow",
   borderBottomWidth: BORDER_WIDTH,
   borderColor: "$borderColor",
@@ -10045,30 +10161,30 @@ var TableRow = (0, import_tamagui59.styled)(import_tamagui59.XStack, {
     backgroundColor: "$backgroundPress"
   }
 });
-var TableHeadText = (0, import_tamagui59.styled)(import_tamagui59.Text, {
+var TableHeadText = (0, import_tamagui60.styled)(import_tamagui60.Text, {
   name: "TableHeadText",
   color: "$color",
   fontSize: "$2",
   fontWeight: "600"
 });
-var TableCellText = (0, import_tamagui59.styled)(import_tamagui59.Text, {
+var TableCellText = (0, import_tamagui60.styled)(import_tamagui60.Text, {
   name: "TableCellText",
   color: "$color",
   fontSize: "$2"
 });
-var TableCellFrame = (0, import_tamagui59.styled)(import_tamagui59.View, {
+var TableCellFrame = (0, import_tamagui60.styled)(import_tamagui60.View, {
   name: "TableCellFrame",
   flex: 1,
   minWidth: MIN_COLUMN_WIDTH
 });
-var NoResultsCell = (0, import_tamagui59.styled)(import_tamagui59.View, {
+var NoResultsCell = (0, import_tamagui60.styled)(import_tamagui60.View, {
   name: "NoResultsCell",
   flex: 1,
   justifyContent: "center",
   alignItems: "center",
   padding: "$4"
 });
-var HeaderActionsContainer = (0, import_tamagui59.styled)(import_tamagui59.XStack, {
+var HeaderActionsContainer = (0, import_tamagui60.styled)(import_tamagui60.XStack, {
   name: "HeaderActionsContainer",
   paddingHorizontal: "$4",
   paddingBottom: "$3",
@@ -10076,7 +10192,7 @@ var HeaderActionsContainer = (0, import_tamagui59.styled)(import_tamagui59.XStac
 });
 
 // src/organisms/DataTable/DataTable.tsx
-var import_jsx_runtime61 = require("react/jsx-runtime");
+var import_jsx_runtime62 = require("react/jsx-runtime");
 var DEFAULT_PAGE_SIZE = 10;
 var MAX_ROWS_WITHOUT_PAGINATION = 100;
 var DEFAULT_LOCALIZATION = {
@@ -10087,6 +10203,11 @@ var DEFAULT_LOCALIZATION = {
   errorTitle: "Algo deu errado",
   errorBody: "Houve um erro ao carregar os dados. Por favor, tente novamente.",
   retry: "Tentar novamente"
+};
+var renderCellContent = (content, isHeader) => {
+  if ((0, import_react54.isValidElement)(content)) return content;
+  const Wrapper = isHeader ? TableHeadText : TableCellText;
+  return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(Wrapper, { children: content });
 };
 function DataTable({
   columns,
@@ -10099,21 +10220,23 @@ function DataTable({
   headerActions,
   localization: customLocalization
 }) {
-  const [sorting, setSorting] = (0, import_react50.useState)([]);
-  const [columnFilters, setColumnFilters] = (0, import_react50.useState)([]);
+  const [sorting, setSorting] = (0, import_react54.useState)([]);
+  const [columnFilters, setColumnFilters] = (0, import_react54.useState)([]);
   const localization = { ...DEFAULT_LOCALIZATION, ...customLocalization };
   let showPagination = initialShowPagination;
   if (!showPagination && data.length > MAX_ROWS_WITHOUT_PAGINATION) {
-    if (process.env.NODE_ENV === "development") {
+    if (typeof process !== "undefined" && process.env.NODE_ENV === "development") {
       console.warn(
         `DataTable: Rendering ${data.length} rows without pagination is a performance hazard. Pagination has been forcibly enabled.`
       );
     }
     showPagination = true;
   }
+  const safeData = (0, import_react54.useMemo)(() => [...data ?? []], [data]);
+  const safeColumns = (0, import_react54.useMemo)(() => columns, [columns]);
   const table = (0, import_react_table.useReactTable)({
-    data: data ?? [],
-    columns,
+    data: safeData,
+    columns: safeColumns,
     getCoreRowModel: (0, import_react_table.getCoreRowModel)(),
     getPaginationRowModel: (0, import_react_table.getPaginationRowModel)(),
     onSortingChange: setSorting,
@@ -10133,44 +10256,44 @@ function DataTable({
   const rows = showPagination ? table.getRowModel().rows : table.getRowModel().rows.slice(0, MAX_ROWS_WITHOUT_PAGINATION);
   const renderTableBody = () => {
     if (isLoading) {
-      return Array.from({ length: table.getState().pagination.pageSize }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableRow, { children: columns.map((_2, j) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableCellFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Skeleton, { height: "$4" }) }, `skeleton-cell-${j}`)) }, `skeleton-${i}`));
+      return Array.from({ length: table.getState().pagination.pageSize }).map((_, i) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableRow, { tag: "tr", children: columns.map((_2, j) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableCellFrame, { tag: "td", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(Skeleton, { height: "$4" }) }, `skeleton-cell-${j}`)) }, `skeleton-${i}`));
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableRow, { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(NoResultsCell, { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableRow, { tag: "tr", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(NoResultsCell, { tag: "td", ...{ colSpan: columns.length }, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
         Empty,
         {
-          icon: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_lucide_icons24.AlertCircle, { size: "$5", color: "$red10" }),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_lucide_icons24.AlertCircle, { size: "$5", color: "$red10" }),
           title: localization.errorTitle,
           body: localization.errorBody,
-          action: onRetry && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Button, { variant: "outline", onPress: onRetry, children: localization.retry })
+          action: onRetry && /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(Button, { variant: "outline", onPress: onRetry, children: localization.retry })
         }
       ) }) });
     }
     if (rows.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableRow, { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(NoResultsCell, { children: emptyState || /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableRow, { tag: "tr", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(NoResultsCell, { tag: "td", ...{ colSpan: columns.length }, children: emptyState || /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
         Empty,
         {
-          icon: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_lucide_icons24.Inbox, { size: "$5", color: "$gray10" }),
+          icon: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_lucide_icons24.Inbox, { size: "$5", color: "$gray10" }),
           title: localization.noResults
         }
       ) }) });
     }
-    return rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableRow, { "data-state": row.getIsSelected() && "selected", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableCellFrame, { children: (0, import_react_table.flexRender)(cell.column.columnDef.cell, cell.getContext()) }, cell.id)) }, row.id));
+    return rows.map((row) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableRow, { "data-state": row.getIsSelected() && "selected", tag: "tr", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableCellFrame, { tag: "td", children: renderCellContent((0, import_react_table.flexRender)(cell.column.columnDef.cell, cell.getContext()), false) }, cell.id)) }, row.id));
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(import_tamagui60.YStack, { gap: "$3", tag: "table", "aria-label": "Data table", children: [
-    headerActions && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(HeaderActionsContainer, { children: headerActions }),
-    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_tamagui60.ScrollView, { horizontal: true, showsHorizontalScrollIndicator: true, children: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(import_tamagui60.YStack, { minWidth: "100%", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableHeader, { tag: "thead", children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableRow, { tag: "tr", children: headerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TableCellFrame, { tag: "th", children: header.isPlaceholder ? null : (0, import_react_table.flexRender)(header.column.columnDef.header, header.getContext()) }, header.id)) }, headerGroup.id)) }),
-      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_tamagui60.YStack, { tag: "tbody", children: renderTableBody() })
+  return /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(import_tamagui61.YStack, { gap: "$3", children: [
+    headerActions && /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(HeaderActionsContainer, { children: headerActions }),
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableContainer, { children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_tamagui61.ScrollView, { horizontal: true, showsHorizontalScrollIndicator: true, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(import_tamagui61.YStack, { minWidth: "100%", tag: "table", "aria-label": "Data table", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableHeader, { tag: "thead", children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableRow, { tag: "tr", children: headerGroup.headers.map((header) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TableCellFrame, { tag: "th", children: header.isPlaceholder ? null : renderCellContent((0, import_react_table.flexRender)(header.column.columnDef.header, header.getContext()), true) }, header.id)) }, headerGroup.id)) }),
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_tamagui61.YStack, { tag: "tbody", children: renderTableBody() })
     ] }) }) }),
-    showPagination && table.getPageCount() > 1 && /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(TableRow, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_tamagui60.YStack, { flex: 1 }),
-      /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(import_tamagui60.XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_tamagui60.Text, { fontSize: "$2", color: "$color", children: localization.pageOf(
+    showPagination && table.getPageCount() > 1 && /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(import_tamagui61.XStack, { paddingVertical: "$3", paddingHorizontal: "$4", alignItems: "center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_tamagui61.YStack, { flex: 1 }),
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(import_tamagui61.XStack, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_tamagui61.Text, { fontSize: "$2", color: "$color", children: localization.pageOf(
           table.getState().pagination.pageIndex + 1,
           table.getPageCount()
         ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
           Button,
           {
             variant: "outline",
@@ -10180,7 +10303,7 @@ function DataTable({
             children: localization.previousPage
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
           Button,
           {
             variant: "outline",
@@ -10198,33 +10321,33 @@ function DataTable({
 // src/organisms/Carousel/Carousel.tsx
 var import_lucide_icons25 = require("@tamagui/lucide-icons");
 var import_embla_carousel_react = __toESM(require("embla-carousel-react"));
-var import_react51 = __toESM(require("react"));
-var import_tamagui61 = require("tamagui");
-var import_jsx_runtime62 = require("react/jsx-runtime");
-var CarouselContext = import_react51.default.createContext(null);
+var import_react55 = __toESM(require("react"));
+var import_tamagui62 = require("tamagui");
+var import_jsx_runtime63 = require("react/jsx-runtime");
+var CarouselContext = import_react55.default.createContext(null);
 function useCarousel() {
-  const context = import_react51.default.useContext(CarouselContext);
+  const context = import_react55.default.useContext(CarouselContext);
   if (!context) {
     throw new Error("useCarousel must be used within a <Carousel />");
   }
   return context;
 }
-var CarouselFrame = (0, import_tamagui61.styled)(import_tamagui61.YStack, {
+var CarouselFrame = (0, import_tamagui62.styled)(import_tamagui62.YStack, {
   name: "CarouselFrame",
   position: "relative",
   width: "100%"
 });
-var CarouselContentFrame = (0, import_tamagui61.styled)(import_tamagui61.XStack, {
+var CarouselContentFrame = (0, import_tamagui62.styled)(import_tamagui62.XStack, {
   name: "CarouselContent"
   // Negative margin is applied here to counteract item padding
 });
-var CarouselItemFrame = (0, import_tamagui61.styled)(import_tamagui61.YStack, {
+var CarouselItemFrame = (0, import_tamagui62.styled)(import_tamagui62.YStack, {
   name: "CarouselItem",
   minWidth: 0,
   flex: "0 0 100%",
   position: "relative"
 });
-var CarouselNavButton = (0, import_tamagui61.styled)(Button, {
+var CarouselNavButton = (0, import_tamagui62.styled)(Button, {
   name: "CarouselNavButton",
   circular: true,
   size: "$4",
@@ -10245,7 +10368,7 @@ var CarouselNavButton = (0, import_tamagui61.styled)(Button, {
     }
   }
 });
-var StateContainer = (0, import_tamagui61.styled)(import_tamagui61.YStack, {
+var StateContainer = (0, import_tamagui62.styled)(import_tamagui62.YStack, {
   name: "StateContainer",
   alignItems: "center",
   justifyContent: "center",
@@ -10273,16 +10396,16 @@ var Carousel = ({
     { ...opts, axis: orientation === "horizontal" ? "x" : "y" },
     plugins
   );
-  const [canScrollPrev, setCanScrollPrev] = (0, import_react51.useState)(false);
-  const [canScrollNext, setCanScrollNext] = (0, import_react51.useState)(false);
-  const onSelect = (0, import_react51.useCallback)((api2) => {
+  const [canScrollPrev, setCanScrollPrev] = (0, import_react55.useState)(false);
+  const [canScrollNext, setCanScrollNext] = (0, import_react55.useState)(false);
+  const onSelect = (0, import_react55.useCallback)((api2) => {
     if (!api2) return;
     setCanScrollPrev(api2.canScrollPrev());
     setCanScrollNext(api2.canScrollNext());
   }, []);
-  const scrollPrev = (0, import_react51.useCallback)(() => api?.scrollPrev(), [api]);
-  const scrollNext = (0, import_react51.useCallback)(() => api?.scrollNext(), [api]);
-  (0, import_react51.useEffect)(() => {
+  const scrollPrev = (0, import_react55.useCallback)(() => api?.scrollPrev(), [api]);
+  const scrollNext = (0, import_react55.useCallback)(() => api?.scrollNext(), [api]);
+  (0, import_react55.useEffect)(() => {
     if (!api) return;
     if (setApi) setApi(api);
     onSelect(api);
@@ -10306,10 +10429,10 @@ var Carousel = ({
     error: error2,
     emptyState
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(CarouselContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(CarouselFrame, { role: "region", "aria-roledescription": "carousel", ...props, children }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CarouselContext.Provider, { value: contextValue, children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CarouselFrame, { role: "region", "aria-roledescription": "carousel", ...props, children }) });
 };
 Carousel.displayName = "Carousel";
-var CarouselContent = import_react51.default.forwardRef(
+var CarouselContent = import_react55.default.forwardRef(
   ({ renderItem, ...props }, ref) => {
     const {
       carouselRef,
@@ -10319,29 +10442,29 @@ var CarouselContent = import_react51.default.forwardRef(
       error: error2,
       emptyState
     } = useCarousel();
-    const renderChildren = () => {
+    const renderChildren2 = () => {
       if (isLoading) {
-        return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_tamagui61.XStack, { space: "$2", width: "100%", pl: "$2", children: Array.from({ length: 3 }).map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(CarouselItem, { flexBasis: "33.33%", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(import_tamagui61.YStack, { flex: 1, space: "$2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(Skeleton, { height: 150 }),
-          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(Skeleton, { height: 20 }),
-          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(Skeleton, { height: 20, width: "75%" })
+        return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_tamagui62.XStack, { space: "$2", width: "100%", pl: "$2", children: Array.from({ length: 3 }).map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CarouselItem, { flexBasis: "33.33%", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(import_tamagui62.YStack, { flex: 1, space: "$2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(Skeleton, { height: 150 }),
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(Skeleton, { height: 20 }),
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(Skeleton, { height: 20, width: "75%" })
         ] }) }, index)) });
       }
       if (error2) {
-        return /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(StateContainer, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_lucide_icons25.HelpCircle, { size: "$4", color: "$red10" }),
-          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_tamagui61.Text, { color: "$red10", textAlign: "center", children: error2 })
+        return /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(StateContainer, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_lucide_icons25.HelpCircle, { size: "$4", color: "$red10" }),
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_tamagui62.Text, { color: "$red10", textAlign: "center", children: error2 })
         ] });
       }
       if (!data || data.length === 0) {
-        return emptyState || /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(StateContainer, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_lucide_icons25.HelpCircle, { size: "$4", color: "$gray10" }),
-          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_tamagui61.Text, { color: "$gray10", textAlign: "center", children: "Nenhum item para exibir." })
+        return emptyState || /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(StateContainer, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_lucide_icons25.HelpCircle, { size: "$4", color: "$gray10" }),
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_tamagui62.Text, { color: "$gray10", textAlign: "center", children: "Nenhum item para exibir." })
         ] });
       }
       return data.map((item, index) => renderItem(item, index));
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(import_tamagui61.View, { ref: carouselRef, overflow: "hidden", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_tamagui62.View, { ref: carouselRef, overflow: "hidden", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
       CarouselContentFrame,
       {
         ref,
@@ -10349,16 +10472,16 @@ var CarouselContent = import_react51.default.forwardRef(
         marginLeft: orientation === "horizontal" ? "-$2" : "$0",
         marginTop: orientation === "vertical" ? "-$2" : "$0",
         ...props,
-        children: renderChildren()
+        children: renderChildren2()
       }
     ) });
   }
 );
 CarouselContent.displayName = "CarouselContent";
-var CarouselItem = import_react51.default.forwardRef(
+var CarouselItem = import_react55.default.forwardRef(
   (props, ref) => {
     const { orientation } = useCarousel();
-    return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
       CarouselItemFrame,
       {
         ref,
@@ -10372,9 +10495,9 @@ var CarouselItem = import_react51.default.forwardRef(
   }
 );
 CarouselItem.displayName = "CarouselItem";
-var CarouselPrevious = import_react51.default.forwardRef((props, ref) => {
+var CarouselPrevious = import_react55.default.forwardRef((props, ref) => {
   const { scrollPrev, canScrollPrev } = useCarousel();
-  return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
     CarouselNavButton,
     {
       ref,
@@ -10388,9 +10511,9 @@ var CarouselPrevious = import_react51.default.forwardRef((props, ref) => {
   );
 });
 CarouselPrevious.displayName = "CarouselPrevious";
-var CarouselNext = import_react51.default.forwardRef((props, ref) => {
+var CarouselNext = import_react55.default.forwardRef((props, ref) => {
   const { scrollNext, canScrollNext } = useCarousel();
-  return /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
     CarouselNavButton,
     {
       ref,
@@ -10406,12 +10529,12 @@ var CarouselNext = import_react51.default.forwardRef((props, ref) => {
 CarouselNext.displayName = "CarouselNext";
 
 // src/organisms/Command/Command.tsx
-var import_react52 = __toESM(require("react"));
+var import_react56 = __toESM(require("react"));
 var import_cmdk = require("cmdk");
-var import_tamagui62 = require("tamagui");
+var import_tamagui63 = require("tamagui");
 var import_lucide_icons26 = require("@tamagui/lucide-icons");
-var import_jsx_runtime63 = require("react/jsx-runtime");
-var CommandFrame = (0, import_tamagui62.styled)(import_tamagui62.YStack, {
+var import_jsx_runtime64 = require("react/jsx-runtime");
+var CommandFrame = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
   name: "Command",
   overflow: "hidden",
   backgroundColor: "$background",
@@ -10419,16 +10542,16 @@ var CommandFrame = (0, import_tamagui62.styled)(import_tamagui62.YStack, {
   width: "100%",
   height: "100%"
 });
-var Command = import_react52.default.forwardRef(
+var Command = import_react56.default.forwardRef(
   ({ className, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CommandFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_cmdk.Command, { className, ...props }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(CommandFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_cmdk.Command, { className, ...props }) });
   }
 );
 Command.displayName = import_cmdk.Command.displayName;
 var CommandDialog = ({ children, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(Dialog, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(DialogContentComposite, { p: "$0", overflow: "hidden", maw: 600, children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(Command, { children }) }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Dialog, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(DialogContentComposite, { p: "$0", overflow: "hidden", maw: 600, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Command, { children }) }) });
 };
-var CommandInputFrame = (0, import_tamagui62.styled)(import_tamagui62.XStack, {
+var CommandInputFrame = (0, import_tamagui63.styled)(import_tamagui63.XStack, {
   name: "CommandInput",
   alignItems: "center",
   borderBottomWidth: 1,
@@ -10436,7 +10559,7 @@ var CommandInputFrame = (0, import_tamagui62.styled)(import_tamagui62.XStack, {
   paddingHorizontal: "$3",
   gap: "$2"
 });
-var StyledCommandInput = (0, import_tamagui62.styled)(import_cmdk.Command.Input, {
+var StyledCommandInput = (0, import_tamagui63.styled)(import_cmdk.Command.Input, {
   flex: 1,
   height: "$11",
   fontSize: "$4",
@@ -10445,68 +10568,68 @@ var StyledCommandInput = (0, import_tamagui62.styled)(import_cmdk.Command.Input,
   backgroundColor: "transparent",
   color: "$color"
 });
-var CommandInput = import_react52.default.forwardRef(
+var CommandInput = import_react56.default.forwardRef(
   (props, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(CommandInputFrame, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_lucide_icons26.Search, { size: "$1", color: "$color10" }),
-      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(StyledCommandInput, { ref, ...props })
+    return /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(CommandInputFrame, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_lucide_icons26.Search, { size: "$1", color: "$color10" }),
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(StyledCommandInput, { ref, ...props })
     ] });
   }
 );
 CommandInput.displayName = import_cmdk.Command.Input.displayName;
-var CommandSkeleton = () => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(import_tamagui62.YStack, { gap: "$2", p: "$1", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(Skeleton, { height: "$4", width: "80%" }),
-  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(Skeleton, { height: "$4", width: "60%" }),
-  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(Skeleton, { height: "$4", width: "90%" })
+var CommandSkeleton = () => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_tamagui63.YStack, { gap: "$2", p: "$1", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Skeleton, { height: "$4", width: "80%" }),
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Skeleton, { height: "$4", width: "60%" }),
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Skeleton, { height: "$4", width: "90%" })
 ] });
-var CommandError = ({ message }) => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(import_tamagui62.YStack, { ai: "center", jc: "center", gap: "$2", p: "$4", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_lucide_icons26.AlertTriangle, { color: "$red10" }),
-  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_tamagui62.Text, { color: "$red10", fontSize: "$4", children: message })
+var CommandError = ({ message }) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_tamagui63.YStack, { ai: "center", jc: "center", gap: "$2", p: "$4", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_lucide_icons26.AlertTriangle, { color: "$red10" }),
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.Text, { color: "$red10", fontSize: "$4", children: message })
 ] });
-var CommandListFrame = (0, import_tamagui62.styled)(import_tamagui62.YStack, {
+var CommandListFrame = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
   name: "CommandList",
   maxHeight: "$15",
   // 300px
   overflowY: "auto",
   overflowX: "hidden"
 });
-var CommandList = import_react52.default.forwardRef(
-  ({ children, isLoading = false, error: error2 = null, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CommandListFrame, { ref, children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CommandSkeleton, {}) : error2 ? /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CommandError, { message: error2 }) : /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_cmdk.Command.List, { ...props, children }) })
+var CommandList = import_react56.default.forwardRef(
+  ({ children, isLoading = false, error: error2 = null, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(CommandListFrame, { ref, children: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(CommandSkeleton, {}) : error2 ? /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(CommandError, { message: error2 }) : /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_cmdk.Command.List, { ...props, children }) })
 );
 CommandList.displayName = import_cmdk.Command.List.displayName;
-var CommandEmptyContainer = (0, import_tamagui62.styled)(import_tamagui62.YStack, {
+var CommandEmptyContainer = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
   padding: "$6",
   justifyContent: "center",
   alignItems: "center",
   gap: "$2"
 });
-var CommandEmptyText = (0, import_tamagui62.styled)(import_tamagui62.Text, {
+var CommandEmptyText = (0, import_tamagui63.styled)(import_tamagui63.Text, {
   fontSize: "$4",
   color: "$color10"
 });
-var CommandEmpty = import_react52.default.forwardRef(
-  ({ title = "Nenhum resultado encontrado.", icon = /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_lucide_icons26.PackageSearch, {}), ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_cmdk.Command.Empty, { ref, asChild: true, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(CommandEmptyContainer, { children: [
+var CommandEmpty = import_react56.default.forwardRef(
+  ({ title = "Nenhum resultado encontrado.", icon = /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_lucide_icons26.PackageSearch, {}), ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_cmdk.Command.Empty, { ref, asChild: true, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(CommandEmptyContainer, { children: [
     icon,
-    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CommandEmptyText, { children: title })
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(CommandEmptyText, { children: title })
   ] }) })
 );
 CommandEmpty.displayName = import_cmdk.Command.Empty.displayName;
-var CommandGroupFrame = (0, import_tamagui62.styled)(import_tamagui62.YStack, {
+var CommandGroupFrame = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
   overflow: "hidden",
   padding: "$1"
 });
-var CommandGroup = import_react52.default.forwardRef(({ heading, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CommandGroupFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_cmdk.Command.Group, { heading, ...props }) }));
+var CommandGroup = import_react56.default.forwardRef(({ heading, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(CommandGroupFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_cmdk.Command.Group, { heading, ...props }) }));
 CommandGroup.displayName = import_cmdk.Command.Group.displayName;
-var CommandSeparatorFrame = (0, import_tamagui62.styled)(import_tamagui62.YStack, {
+var CommandSeparatorFrame = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
   height: "$px",
   backgroundColor: "$borderColor",
   margin: "-$1"
 });
-var CommandSeparator = import_react52.default.forwardRef(
-  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CommandSeparatorFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_cmdk.Command.Separator, { ...props }) })
+var CommandSeparator = import_react56.default.forwardRef(
+  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(CommandSeparatorFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_cmdk.Command.Separator, { ...props }) })
 );
 CommandSeparator.displayName = import_cmdk.Command.Separator.displayName;
-var CommandItemFrame = (0, import_tamagui62.styled)(import_tamagui62.XStack, {
+var CommandItemFrame = (0, import_tamagui63.styled)(import_tamagui63.XStack, {
   name: "CommandItem",
   alignItems: "center",
   paddingVertical: "$2",
@@ -10525,22 +10648,22 @@ var CommandItemFrame = (0, import_tamagui62.styled)(import_tamagui62.XStack, {
     pointerEvents: "none"
   }
 });
-var CommandItem = import_react52.default.forwardRef(
-  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CommandItemFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(import_cmdk.Command.Item, { ...props }) })
+var CommandItem = import_react56.default.forwardRef(
+  ({ ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(CommandItemFrame, { ref, asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_cmdk.Command.Item, { ...props }) })
 );
 CommandItem.displayName = import_cmdk.Command.Item.displayName;
-var CommandShortcut = (0, import_tamagui62.styled)(import_tamagui62.Text, {
+var CommandShortcut = (0, import_tamagui63.styled)(import_tamagui63.Text, {
   marginLeft: "auto",
   fontSize: "$2",
   color: "$color11"
 });
 
 // src/organisms/Sidebar/Sidebar.tsx
-var import_react53 = require("react");
-var import_tamagui63 = require("tamagui");
+var import_react57 = require("react");
+var import_tamagui64 = require("tamagui");
 var import_lucide_icons27 = require("@tamagui/lucide-icons");
-var import_jsx_runtime64 = require("react/jsx-runtime");
-var SidebarContainer = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
+var import_jsx_runtime65 = require("react/jsx-runtime");
+var SidebarContainer = (0, import_tamagui64.styled)(import_tamagui64.YStack, {
   name: "SidebarContainer",
   tag: "aside",
   borderRightWidth: 1,
@@ -10568,33 +10691,33 @@ var SidebarContainer = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
     }
   }
 });
-var SidebarHeader = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
+var SidebarHeader = (0, import_tamagui64.styled)(import_tamagui64.YStack, {
   name: "SidebarHeader"
 });
-var SidebarContent = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
+var SidebarContent = (0, import_tamagui64.styled)(import_tamagui64.YStack, {
   name: "SidebarContent",
   f: 1
 });
-var SidebarFooter = (0, import_tamagui63.styled)(import_tamagui63.YStack, {
+var SidebarFooter = (0, import_tamagui64.styled)(import_tamagui64.YStack, {
   name: "SidebarFooter"
 });
-var SidebarSkeleton = () => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_tamagui63.YStack, { gap: "$4", padding: "$4", width: "100%", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Skeleton, { height: 40 }),
-  /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_tamagui63.YStack, { gap: "$3", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Skeleton, { height: 32 }),
-    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Skeleton, { height: 32 }),
-    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Skeleton, { height: 32 })
+var SidebarSkeleton = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_tamagui64.YStack, { gap: "$4", padding: "$4", width: "100%", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Skeleton, { height: 40 }),
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_tamagui64.YStack, { gap: "$3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Skeleton, { height: 32 }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Skeleton, { height: 32 }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Skeleton, { height: 32 })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.YStack, { flex: 1 }),
-  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Skeleton, { height: 40 })
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.YStack, { flex: 1 }),
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Skeleton, { height: 40 })
 ] });
-var EmptyState = ({ message }) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_tamagui63.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_lucide_icons27.Inbox, { size: "$2", color: "$gray10" }),
-  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.Text, { color: "$gray11", fontSize: "$3", children: message })
+var EmptyState = ({ message }) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_tamagui64.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_lucide_icons27.Inbox, { size: "$2", color: "$gray10" }),
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.Text, { color: "$gray11", fontSize: "$3", children: message })
 ] });
-var ErrorState = ({ message }) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_tamagui63.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_lucide_icons27.AlertCircle, { size: "$2", color: "$red10" }),
-  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.Text, { color: "$red10", fontSize: "$3", textAlign: "center", children: message })
+var ErrorState = ({ message }) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_tamagui64.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_lucide_icons27.AlertCircle, { size: "$2", color: "$red10" }),
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.Text, { color: "$red10", fontSize: "$3", textAlign: "center", children: message })
 ] });
 var DesktopSidebar = ({
   header,
@@ -10608,7 +10731,7 @@ var DesktopSidebar = ({
   emptyMessage = "Sem conte\xFAdo",
   error: error2
 }) => {
-  const [isCollapsedInternal, setIsCollapsedInternal] = (0, import_react53.useState)(false);
+  const [isCollapsedInternal, setIsCollapsedInternal] = (0, import_react57.useState)(false);
   const isControlled = isCollapsedProp !== void 0;
   const isCollapsed = isControlled ? isCollapsedProp : isCollapsedInternal;
   const toggleSidebar = () => {
@@ -10620,9 +10743,9 @@ var DesktopSidebar = ({
   };
   const isCollapsible = variant === "collapsible";
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SidebarContainer, { collapsed: isCollapsible && isCollapsed, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SidebarSkeleton, {}) });
+    return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SidebarContainer, { collapsed: isCollapsible && isCollapsed, children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SidebarSkeleton, {}) });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
     SidebarContainer,
     {
       collapsible: isCollapsible,
@@ -10633,14 +10756,14 @@ var DesktopSidebar = ({
         zIndex: 10
       },
       children: [
-        header && /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SidebarHeader, { children: header }),
-        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.Separator, {}),
-        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SidebarContent, { children: error2 ? /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(ErrorState, { message: error2 }) : isEmpty ? /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(EmptyState, { message: emptyMessage }) : /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.YStack, { gap: "$2", children }) }) }),
-        footer && /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_jsx_runtime64.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.Separator, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SidebarFooter, { children: footer })
+        header && /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SidebarHeader, { children: header }),
+        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.Separator, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SidebarContent, { children: error2 ? /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ErrorState, { message: error2 }) : isEmpty ? /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(EmptyState, { message: emptyMessage }) : /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.YStack, { gap: "$2", children }) }) }),
+        footer && /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_jsx_runtime65.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.Separator, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SidebarFooter, { children: footer })
         ] }),
-        isCollapsible && /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+        isCollapsible && /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           Button,
           {
             icon: isCollapsed ? import_lucide_icons27.ChevronRight : import_lucide_icons27.ChevronLeft,
@@ -10658,44 +10781,44 @@ var DesktopSidebar = ({
   );
 };
 var MobileSidebar = ({ children, header, footer, isLoading, isEmpty, emptyMessage = "Sem conte\xFAdo", error: error2 }) => {
-  const [open, setOpen] = (0, import_react53.useState)(false);
+  const [open, setOpen] = (0, import_react57.useState)(false);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SidebarSkeleton, {});
+      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SidebarSkeleton, {});
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(ErrorState, { message: error2 });
+      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ErrorState, { message: error2 });
     }
     if (isEmpty) {
-      return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(EmptyState, { message: emptyMessage });
+      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(EmptyState, { message: emptyMessage });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_jsx_runtime64.Fragment, { children: [
-      header && /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SidebarHeader, { children: header }),
-      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.YStack, { gap: "$2", children }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.YStack, { flex: 1 }),
-      footer && /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SidebarFooter, { children: footer })
+    return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_jsx_runtime65.Fragment, { children: [
+      header && /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SidebarHeader, { children: header }),
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.YStack, { gap: "$2", children }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.YStack, { flex: 1 }),
+      footer && /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(SidebarFooter, { children: footer })
     ] });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(Sheet, { open, onOpenChange: setOpen, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SheetTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Button, { icon: import_lucide_icons27.Menu, circular: true }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SheetContent, { position: "left", size: "$xl", children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_tamagui63.YStack, { gap: "$4", paddingTop: "$6", paddingHorizontal: "$4", flex: 1, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(Sheet, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Sheet.Trigger, { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Button, { icon: import_lucide_icons27.Menu, circular: true }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Sheet.Content, { position: "left", size: "$xl", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_tamagui64.YStack, { gap: "$4", paddingTop: "$6", paddingHorizontal: "$4", flex: 1, children: [
       renderContent(),
-      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Button, { onPress: () => setOpen(false), chromeless: true, children: "Fechar" })
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Button, { onPress: () => setOpen(false), chromeless: true, children: "Fechar" })
     ] }) })
   ] });
 };
 var Sidebar = (props) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_jsx_runtime64.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.YStack, { display: "none", $sm: { display: "flex" }, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(MobileSidebar, { ...props }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(import_tamagui63.YStack, { display: "flex", $sm: { display: "none" }, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(DesktopSidebar, { ...props }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_jsx_runtime65.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.YStack, { display: "none", $sm: { display: "flex" }, children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(MobileSidebar, { ...props }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.YStack, { display: "flex", $sm: { display: "none" }, children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(DesktopSidebar, { ...props }) })
   ] });
 };
 
 // src/organisms/BarChart/BarChart.tsx
-var import_tamagui64 = require("tamagui");
+var import_tamagui65 = require("tamagui");
 var import_recharts = require("recharts");
 var import_lucide_icons28 = require("@tamagui/lucide-icons");
-var import_jsx_runtime65 = require("react/jsx-runtime");
+var import_jsx_runtime66 = require("react/jsx-runtime");
 var BarChart = ({
   data,
   xKey,
@@ -10706,7 +10829,7 @@ var BarChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui64.useTheme)();
+  const theme = (0, import_tamagui65.useTheme)();
   const themeColor = theme[color];
   const barColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
@@ -10714,21 +10837,21 @@ var BarChart = ({
   const gridColor = theme.borderColor?.get() || "#eee";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_tamagui64.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_lucide_icons28.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(import_tamagui65.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_lucide_icons28.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_tamagui64.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_lucide_icons28.BarChart3, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(import_tamagui65.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_lucide_icons28.BarChart3, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_tamagui64.YStack, { height, width: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_recharts.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.YStack, { height, width: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_recharts.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
       import_recharts.BarChart,
       {
         data,
@@ -10739,8 +10862,8 @@ var BarChart = ({
           bottom: 5
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_recharts.CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_recharts.CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
             import_recharts.XAxis,
             {
               dataKey: xKey,
@@ -10750,7 +10873,7 @@ var BarChart = ({
               axisLine: { stroke: axisColor }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
             import_recharts.YAxis,
             {
               stroke: axisColor,
@@ -10759,19 +10882,19 @@ var BarChart = ({
               axisLine: false
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
             import_recharts.Tooltip,
             {
               cursor: { fill: "transparent" },
               contentStyle: { borderRadius: "8px", border: `1px solid ${gridColor}` }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(import_recharts.Bar, { dataKey: yKey, fill: barColor, radius: [4, 4, 0, 0] })
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_recharts.Bar, { dataKey: yKey, fill: barColor, radius: [4, 4, 0, 0] })
         ]
       }
     ) }) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(import_tamagui64.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(import_tamagui65.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
@@ -10780,11 +10903,11 @@ var ColumnChart = BarChart;
 var Charts = BarChart;
 
 // src/organisms/LineChart/LineChart.tsx
-var import_tamagui65 = require("tamagui");
+var import_tamagui66 = require("tamagui");
 var import_recharts2 = require("recharts");
 var import_lucide_icons29 = require("@tamagui/lucide-icons");
-var import_jsx_runtime66 = require("react/jsx-runtime");
-var LineChartContainer = (0, import_tamagui65.styled)(import_tamagui65.YStack, {
+var import_jsx_runtime67 = require("react/jsx-runtime");
+var LineChartContainer = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
   name: "LineChart",
   padding: "$4",
   borderRadius: "$4",
@@ -10793,18 +10916,18 @@ var LineChartContainer = (0, import_tamagui65.styled)(import_tamagui65.YStack, {
   width: "100%",
   tag: "section"
 });
-var Header = (0, import_tamagui65.styled)(import_tamagui65.XStack, {
+var Header = (0, import_tamagui66.styled)(import_tamagui66.XStack, {
   justifyContent: "space-between",
   alignItems: "center",
   gap: "$2"
 });
-var ChartContainer = (0, import_tamagui65.styled)(import_tamagui65.YStack, {
+var ChartContainer = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
   flex: 1,
   minHeight: 300,
   justifyContent: "center",
   alignItems: "center"
 });
-var StateContainer2 = (0, import_tamagui65.styled)(import_tamagui65.YStack, {
+var StateContainer2 = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -10822,7 +10945,7 @@ var LineChart = ({
   headerActions,
   footerContent
 }) => {
-  const theme = (0, import_tamagui65.useTheme)();
+  const theme = (0, import_tamagui66.useTheme)();
   const themeColor = theme[color];
   const lineColor = themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
@@ -10830,30 +10953,30 @@ var LineChart = ({
   const gridColor = theme.borderColor?.get() || "#eee";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Skeleton, { width: "100%", height: 300 });
+      return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(Skeleton, { width: "100%", height: 300 });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(StateContainer2, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_lucide_icons29.AlertCircle, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.Text, { fontSize: "$2", color: "$color11", children: error2 })
+      return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(StateContainer2, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_lucide_icons29.AlertCircle, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Text, { fontSize: "$2", color: "$color11", children: error2 })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(StateContainer2, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_lucide_icons29.Inbox, { size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.Text, { children: "Sem dados para exibir" }),
-        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.Text, { fontSize: "$2", color: "$color11", children: "N\xE3o h\xE1 informa\xE7\xF5es dispon\xEDveis no momento." })
+      return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(StateContainer2, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_lucide_icons29.Inbox, { size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Text, { children: "Sem dados para exibir" }),
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Text, { fontSize: "$2", color: "$color11", children: "N\xE3o h\xE1 informa\xE7\xF5es dispon\xEDveis no momento." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.YStack, { width: "100%", height: 300, children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_recharts2.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.YStack, { width: "100%", height: 300, children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_recharts2.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
       import_recharts2.LineChart,
       {
         data,
         margin: { top: 20, right: 30, left: 20, bottom: 5 },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_recharts2.CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
-          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_recharts2.CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
+          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             import_recharts2.XAxis,
             {
               dataKey: xKey,
@@ -10863,7 +10986,7 @@ var LineChart = ({
               axisLine: { stroke: axisColor }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             import_recharts2.YAxis,
             {
               stroke: axisColor,
@@ -10872,7 +10995,7 @@ var LineChart = ({
               axisLine: false
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             import_recharts2.Tooltip,
             {
               contentStyle: {
@@ -10883,7 +11006,7 @@ var LineChart = ({
               cursor: { stroke: gridColor }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             import_recharts2.Line,
             {
               type: "monotone",
@@ -10898,23 +11021,23 @@ var LineChart = ({
       }
     ) }) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(LineChartContainer, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(Header, { children: [
-      title && /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(import_tamagui65.Text, { fontSize: "$5", children: title }),
+  return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(LineChartContainer, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(Header, { children: [
+      title && /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Text, { fontSize: "$5", children: title }),
       headerActions
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(ChartContainer, { children: renderContent() }),
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(ChartContainer, { children: renderContent() }),
     footerContent
   ] });
 };
 var TimeSeriesChart = LineChart;
 
 // src/organisms/PieChart/PieChart.tsx
-var import_tamagui66 = require("tamagui");
+var import_tamagui67 = require("tamagui");
 var import_recharts3 = require("recharts");
 var import_lucide_icons30 = require("@tamagui/lucide-icons");
-var import_jsx_runtime67 = require("react/jsx-runtime");
-var PieChartContainer = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
+var import_jsx_runtime68 = require("react/jsx-runtime");
+var PieChartContainer = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
   name: "PieChart",
   padding: "$4",
   borderRadius: "$4",
@@ -10924,13 +11047,13 @@ var PieChartContainer = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
   alignItems: "center",
   tag: "section"
 });
-var ChartWrapper = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
+var ChartWrapper = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
   minHeight: 300
 });
-var StateContainer3 = (0, import_tamagui66.styled)(import_tamagui66.YStack, {
+var StateContainer3 = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -10949,7 +11072,7 @@ var PieChart = ({
   error: error2,
   footerContent
 }) => {
-  const theme = (0, import_tamagui66.useTheme)();
+  const theme = (0, import_tamagui67.useTheme)();
   const defaultColor2 = theme.blue10?.get() || "#007BFF";
   const colorScale = colors || [
     defaultColor2,
@@ -10962,23 +11085,23 @@ var PieChart = ({
   const outerRadius = "80%";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(Skeleton, { width: height, height, circle: true });
+      return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Skeleton, { width: height, height, circle: true });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(StateContainer3, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_lucide_icons30.AlertCircle, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Text, { fontSize: "$2", color: "$color11", children: error2 })
+      return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(StateContainer3, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_lucide_icons30.AlertCircle, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Text, { fontSize: "$2", color: "$color11", children: error2 })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(StateContainer3, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_lucide_icons30.Inbox, { size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Text, { children: "Sem dados para exibir" })
+      return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(StateContainer3, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_lucide_icons30.Inbox, { size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Text, { children: "Sem dados para exibir" })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.YStack, { width: "100%", height, children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_recharts3.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(import_recharts3.PieChart, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.YStack, { width: "100%", height, children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_recharts3.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(import_recharts3.PieChart, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
         import_recharts3.Pie,
         {
           data,
@@ -10989,10 +11112,10 @@ var PieChart = ({
           innerRadius,
           outerRadius,
           paddingAngle: 2,
-          children: data.map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_recharts3.Cell, { fill: colorScale[index % colorScale.length] }, `cell-${index}`))
+          children: data.map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_recharts3.Cell, { fill: colorScale[index % colorScale.length] }, `cell-${index}`))
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
         import_recharts3.Tooltip,
         {
           contentStyle: {
@@ -11005,20 +11128,20 @@ var PieChart = ({
       )
     ] }) }) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(PieChartContainer, { children: [
-    title && /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(import_tamagui66.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
-    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(ChartWrapper, { children: renderContent() }),
+  return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(PieChartContainer, { children: [
+    title && /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(ChartWrapper, { children: renderContent() }),
     footerContent
   ] });
 };
-var DonutChart = (props) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(PieChart, { ...props, variant: "donut" });
+var DonutChart = (props) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(PieChart, { ...props, variant: "donut" });
 
 // src/organisms/AreaChart/AreaChart.tsx
-var import_tamagui67 = require("tamagui");
+var import_tamagui68 = require("tamagui");
 var import_recharts4 = require("recharts");
 var import_lucide_icons31 = require("@tamagui/lucide-icons");
-var import_jsx_runtime68 = require("react/jsx-runtime");
-var AreaChartContainer = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
+var import_jsx_runtime69 = require("react/jsx-runtime");
+var AreaChartContainer = (0, import_tamagui68.styled)(import_tamagui68.YStack, {
   name: "AreaChart",
   padding: "$4",
   borderRadius: "$4",
@@ -11027,13 +11150,13 @@ var AreaChartContainer = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
   width: "100%",
   tag: "section"
 });
-var ChartWrapper2 = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
+var ChartWrapper2 = (0, import_tamagui68.styled)(import_tamagui68.YStack, {
   flex: 1,
   minHeight: 300,
   justifyContent: "center",
   alignItems: "center"
 });
-var StateContainer4 = (0, import_tamagui67.styled)(import_tamagui67.YStack, {
+var StateContainer4 = (0, import_tamagui68.styled)(import_tamagui68.YStack, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -11052,7 +11175,7 @@ var AreaChart = ({
   error: error2,
   footerContent
 }) => {
-  const theme = (0, import_tamagui67.useTheme)();
+  const theme = (0, import_tamagui68.useTheme)();
   const defaultColor2 = theme.blue10?.get() || "#007BFF";
   const colorScale = colors || [
     defaultColor2,
@@ -11064,20 +11187,20 @@ var AreaChart = ({
   const gridColor = theme.borderColor?.get() || "#eee";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Skeleton, { width: "100%", height });
+      return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Skeleton, { width: "100%", height });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(StateContainer4, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_lucide_icons31.AlertCircle, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Text, { fontSize: "$2", color: "$color11", children: error2 })
+      return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(StateContainer4, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_lucide_icons31.AlertCircle, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui68.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui68.Text, { fontSize: "$2", color: "$color11", children: error2 })
       ] });
     }
     const isMultiSeries = Array.isArray(data) && Array.isArray(data[0]);
     if (!data || isMultiSeries && data.length === 0 || !isMultiSeries && data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(StateContainer4, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_lucide_icons31.Inbox, { size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Text, { children: "Sem dados para exibir" })
+      return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(StateContainer4, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_lucide_icons31.Inbox, { size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui68.Text, { children: "Sem dados para exibir" })
       ] });
     }
     let chartData = [];
@@ -11085,12 +11208,12 @@ var AreaChart = ({
     if (isMultiSeries) {
       const seriesData = data;
       if (seriesData.length > 0) {
+        seriesData.forEach((_, sIndex) => seriesKeys.push(`series_${sIndex}`));
         chartData = seriesData[0].map((item, index) => {
           const mergedItem = { [xKey]: item[xKey] };
           seriesData.forEach((series, sIndex) => {
             const key = `series_${sIndex}`;
-            seriesKeys.push(key);
-            mergedItem[key] = series[yKey];
+            mergedItem[key] = series[index]?.[yKey];
           });
           return mergedItem;
         });
@@ -11099,14 +11222,14 @@ var AreaChart = ({
       chartData = data;
       seriesKeys.push(yKey);
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.YStack, { width: "100%", height, children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_recharts4.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui68.YStack, { width: "100%", height, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_recharts4.ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
       import_recharts4.AreaChart,
       {
         data: chartData,
         margin: { top: 20, right: 30, left: 20, bottom: 5 },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_recharts4.CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
-          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_recharts4.CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             import_recharts4.XAxis,
             {
               dataKey: xKey,
@@ -11116,7 +11239,7 @@ var AreaChart = ({
               axisLine: { stroke: axisColor }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             import_recharts4.YAxis,
             {
               stroke: axisColor,
@@ -11125,7 +11248,7 @@ var AreaChart = ({
               axisLine: false
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             import_recharts4.Tooltip,
             {
               contentStyle: {
@@ -11135,26 +11258,18 @@ var AreaChart = ({
               }
             }
           ),
-          isMultiSeries ? (
-            // Multi-series logic
-            seriesKeys.map((key, index) => (
-              // Logic to avoid duplicates in seriesKeys loop if constructed above incorrectly.
-              // Actually seriesKeys will have duplicates if I push in map. Fixed above.
-              // Wait, I pushed in map, so it will duplicate. Let's fix loop.
-              /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
-                import_recharts4.Area,
-                {
-                  type: "monotone",
-                  dataKey: key,
-                  stackId: stacked ? "1" : void 0,
-                  stroke: colorScale[index % colorScale.length],
-                  fill: colorScale[index % colorScale.length],
-                  fillOpacity: 0.6
-                },
-                key
-              )
-            )).filter((_, i) => i < data.length)
-          ) : /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
+          isMultiSeries ? seriesKeys.map((key, index) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+            import_recharts4.Area,
+            {
+              type: "monotone",
+              dataKey: key,
+              stackId: stacked ? "1" : void 0,
+              stroke: colorScale[index % colorScale.length],
+              fill: colorScale[index % colorScale.length],
+              fillOpacity: 0.6
+            },
+            key
+          )) : /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             import_recharts4.Area,
             {
               type: "monotone",
@@ -11168,19 +11283,19 @@ var AreaChart = ({
       }
     ) }) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(AreaChartContainer, { children: [
-    title && /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(import_tamagui67.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
-    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(ChartWrapper2, { children: renderContent() }),
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(AreaChartContainer, { children: [
+    title && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui68.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartWrapper2, { children: renderContent() }),
     footerContent
   ] });
 };
 
 // src/organisms/ScatterChart/ScatterChart.tsx
-var import_tamagui68 = require("tamagui");
+var import_tamagui69 = require("tamagui");
 var import_victory = require("victory");
 var import_lucide_icons32 = require("@tamagui/lucide-icons");
-var import_jsx_runtime69 = require("react/jsx-runtime");
-var ScatterChartContainer = (0, import_tamagui68.styled)(import_tamagui68.YStack, {
+var import_jsx_runtime70 = require("react/jsx-runtime");
+var ScatterChartContainer = (0, import_tamagui69.styled)(import_tamagui69.YStack, {
   name: "ScatterChart",
   padding: "$4",
   borderRadius: "$4",
@@ -11189,13 +11304,13 @@ var ScatterChartContainer = (0, import_tamagui68.styled)(import_tamagui68.YStack
   width: "100%",
   tag: "section"
 });
-var ChartWrapper3 = (0, import_tamagui68.styled)(import_tamagui68.YStack, {
+var ChartWrapper3 = (0, import_tamagui69.styled)(import_tamagui69.YStack, {
   flex: 1,
   minHeight: 300,
   justifyContent: "center",
   alignItems: "center"
 });
-var StateContainer5 = (0, import_tamagui68.styled)(import_tamagui68.YStack, {
+var StateContainer5 = (0, import_tamagui69.styled)(import_tamagui69.YStack, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -11214,7 +11329,7 @@ var ScatterChart = ({
   error: error2,
   footerContent
 }) => {
-  const theme = (0, import_tamagui68.useTheme)();
+  const theme = (0, import_tamagui69.useTheme)();
   const defaultColor2 = theme.blue10?.get() || "#007BFF";
   const scatterColor = color ? theme[color]?.get() || color : defaultColor2;
   const axisColor = theme.borderColor?.get() || "#ccc";
@@ -11222,36 +11337,36 @@ var ScatterChart = ({
   const gridColor = theme.borderColor?.get() || "#eee";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Skeleton, { width: "100%", height });
+      return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(Skeleton, { width: "100%", height });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(StateContainer5, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_lucide_icons32.AlertCircle, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui68.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui68.Text, { fontSize: "$2", color: "$color11", children: error2 })
+      return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(StateContainer5, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_lucide_icons32.AlertCircle, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui69.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui69.Text, { fontSize: "$2", color: "$color11", children: error2 })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(StateContainer5, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_lucide_icons32.Inbox, { size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui68.Text, { children: "Sem dados para exibir" })
+      return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(StateContainer5, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_lucide_icons32.Inbox, { size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui69.Text, { children: "Sem dados para exibir" })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(
       import_victory.VictoryChart,
       {
         height,
         padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
           import_victory.VictoryVoronoiContainer,
           {
             voronoiDimension: "x",
             labels: ({ datum }) => `${datum[yKey]}`,
-            labelComponent: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_victory.VictoryTooltip, {})
+            labelComponent: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory.VictoryTooltip, {})
           }
         ),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
             import_victory.VictoryAxis,
             {
               style: {
@@ -11260,7 +11375,7 @@ var ScatterChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
             import_victory.VictoryAxis,
             {
               dependentAxis: true,
@@ -11271,7 +11386,7 @@ var ScatterChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
             import_victory.VictoryScatter,
             {
               data,
@@ -11285,19 +11400,19 @@ var ScatterChart = ({
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(ScatterChartContainer, { children: [
-    title && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_tamagui68.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
-    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartWrapper3, { children: renderContent() }),
+  return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(ScatterChartContainer, { children: [
+    title && /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui69.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(ChartWrapper3, { children: renderContent() }),
     footerContent
   ] });
 };
 
 // src/organisms/ComboChart/ComboChart.tsx
-var import_tamagui69 = require("tamagui");
+var import_tamagui70 = require("tamagui");
 var import_victory2 = require("victory");
 var import_lucide_icons33 = require("@tamagui/lucide-icons");
-var import_jsx_runtime70 = require("react/jsx-runtime");
-var ComboChartContainer = (0, import_tamagui69.styled)(import_tamagui69.YStack, {
+var import_jsx_runtime71 = require("react/jsx-runtime");
+var ComboChartContainer = (0, import_tamagui70.styled)(import_tamagui70.YStack, {
   name: "ComboChart",
   padding: "$4",
   borderRadius: "$4",
@@ -11306,13 +11421,13 @@ var ComboChartContainer = (0, import_tamagui69.styled)(import_tamagui69.YStack, 
   width: "100%",
   tag: "section"
 });
-var ChartWrapper4 = (0, import_tamagui69.styled)(import_tamagui69.YStack, {
+var ChartWrapper4 = (0, import_tamagui70.styled)(import_tamagui70.YStack, {
   flex: 1,
   minHeight: 300,
   justifyContent: "center",
   alignItems: "center"
 });
-var StateContainer6 = (0, import_tamagui69.styled)(import_tamagui69.YStack, {
+var StateContainer6 = (0, import_tamagui70.styled)(import_tamagui70.YStack, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -11327,35 +11442,35 @@ var ComboChart = ({
   error: error2,
   footerContent
 }) => {
-  const theme = (0, import_tamagui69.useTheme)();
+  const theme = (0, import_tamagui70.useTheme)();
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(Skeleton, { width: "100%", height });
+      return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Skeleton, { width: "100%", height });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(StateContainer6, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_lucide_icons33.AlertCircle, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui69.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui69.Text, { fontSize: "$2", color: "$color11", children: error2 })
+      return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(StateContainer6, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_lucide_icons33.AlertCircle, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_tamagui70.Text, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_tamagui70.Text, { fontSize: "$2", color: "$color11", children: error2 })
       ] });
     }
     if (!children) {
-      return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(StateContainer6, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_lucide_icons33.Inbox, { size: "$2" }),
-        /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui69.Text, { children: "Sem dados para exibir" })
+      return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(StateContainer6, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_lucide_icons33.Inbox, { size: "$2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_tamagui70.Text, { children: "Sem dados para exibir" })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(
       import_victory2.VictoryChart,
       {
         height,
         padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory2.VictoryVoronoiContainer, { labelComponent: /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory2.VictoryTooltip, {}) }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_victory2.VictoryVoronoiContainer, { labelComponent: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_victory2.VictoryTooltip, {}) }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
             import_victory2.VictoryAxis,
             {
               style: {
@@ -11364,7 +11479,7 @@ var ComboChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
             import_victory2.VictoryAxis,
             {
               dependentAxis: true,
@@ -11375,23 +11490,23 @@ var ComboChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_victory2.VictoryGroup, { children })
+          /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_victory2.VictoryGroup, { children })
         ]
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime70.jsxs)(ComboChartContainer, { children: [
-    title && /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(import_tamagui69.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
-    /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(ChartWrapper4, { children: renderContent() }),
+  return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(ComboChartContainer, { children: [
+    title && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_tamagui70.Text, { fontSize: "$5", fontWeight: "bold", children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(ChartWrapper4, { children: renderContent() }),
     footerContent
   ] });
 };
 
 // src/organisms/BoxPlotChart/BoxPlotChart.tsx
-var import_tamagui70 = require("tamagui");
+var import_tamagui71 = require("tamagui");
 var import_victory3 = require("victory");
 var import_lucide_icons34 = require("@tamagui/lucide-icons");
-var import_jsx_runtime71 = require("react/jsx-runtime");
+var import_jsx_runtime72 = require("react/jsx-runtime");
 var BoxPlotChart = ({
   data,
   xKey = "x",
@@ -11406,7 +11521,7 @@ var BoxPlotChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui70.useTheme)();
+  const theme = (0, import_tamagui71.useTheme)();
   const themeColor = theme[color];
   const boxColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
@@ -11414,28 +11529,28 @@ var BoxPlotChart = ({
   const gridColor = theme.borderColor?.get() || "#eee";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(import_tamagui70.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_lucide_icons34.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_tamagui70.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)(import_tamagui71.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_lucide_icons34.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_tamagui71.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(import_tamagui70.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_lucide_icons34.BarChart, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_tamagui70.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)(import_tamagui71.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_lucide_icons34.BarChart, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_tamagui71.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)(
       import_victory3.VictoryChart,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(import_victory3.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_victory3.VictoryContainer, { responsive: true }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
             import_victory3.VictoryAxis,
             {
               style: {
@@ -11444,7 +11559,7 @@ var BoxPlotChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
             import_victory3.VictoryAxis,
             {
               dependentAxis: true,
@@ -11455,7 +11570,7 @@ var BoxPlotChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
             import_victory3.VictoryBoxPlot,
             {
               data,
@@ -11478,100 +11593,20 @@ var BoxPlotChart = ({
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime71.jsxs)(import_tamagui70.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
-    headerContent,
-    renderContent()
-  ] });
-};
-
-// src/organisms/RadarChart/RadarChart.tsx
-var import_tamagui71 = require("tamagui");
-var import_victory4 = require("victory");
-var import_lucide_icons35 = require("@tamagui/lucide-icons");
-var import_jsx_runtime72 = require("react/jsx-runtime");
-var RadarChart = ({
-  data,
-  keys,
-  color = "$primary",
-  height = 300,
-  isLoading = false,
-  error: error2 = null,
-  headerContent
-}) => {
-  const theme = (0, import_tamagui71.useTheme)();
-  const axisColor = theme.borderColor?.get() || "#ccc";
-  const textColor = theme.color?.get() || "#000";
-  const getColor = (c) => {
-    const themeColor = theme[c];
-    return themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : c;
-  };
-  const renderContent = () => {
-    if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(Skeleton, { height, width: "100%" });
-    }
-    if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)(import_tamagui71.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_lucide_icons35.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_tamagui71.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
-      ] });
-    }
-    if (!data || data.length === 0 || !keys) {
-      return /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)(import_tamagui71.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_lucide_icons35.Activity, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_tamagui71.Text, { children: "N\xE3o h\xE1 dados para exibir." })
-      ] });
-    }
-    const datasets = Array.isArray(data[0]) ? data : [data];
-    const colors = Array.isArray(color) ? color : [color];
-    return /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)(
-      import_victory4.VictoryChart,
-      {
-        polar: true,
-        height,
-        domainPadding: { x: 20, y: 20 },
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_victory4.VictoryContainer, { responsive: true }),
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
-            import_victory4.VictoryGroup,
-            {
-              colorScale: colors.map((c) => getColor(c)),
-              style: { data: { fillOpacity: 0.2, strokeWidth: 2 } },
-              children: datasets.map((dataset, i) => /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_victory4.VictoryArea, { data: dataset }, i))
-            }
-          ),
-          datasets[0]?.map((d, i) => {
-            return /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(import_victory4.VictoryPolarAxis, { dependentAxis: true, style: { axisLabel: { padding: 10 } }, labelPlacement: "vertical" }, i);
-          }),
-          /* @__PURE__ */ (0, import_jsx_runtime72.jsx)(
-            import_victory4.VictoryPolarAxis,
-            {
-              labelPlacement: "parallel",
-              tickFormat: () => "",
-              style: {
-                axis: { stroke: axisColor },
-                grid: { stroke: axisColor, opacity: 0.5 }
-              }
-            }
-          )
-        ]
-      }
-    );
-  };
   return /* @__PURE__ */ (0, import_jsx_runtime72.jsxs)(import_tamagui71.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
-// src/organisms/PolarChart/PolarChart.tsx
+// src/organisms/RadarChart/RadarChart.tsx
 var import_tamagui72 = require("tamagui");
-var import_victory5 = require("victory");
-var import_lucide_icons36 = require("@tamagui/lucide-icons");
+var import_victory4 = require("victory");
+var import_lucide_icons35 = require("@tamagui/lucide-icons");
 var import_jsx_runtime73 = require("react/jsx-runtime");
-var PolarChart = ({
+var RadarChart = ({
   data,
-  xKey,
-  yKey,
+  keys,
   color = "$primary",
   height = 300,
   isLoading = false,
@@ -11591,27 +11626,107 @@ var PolarChart = ({
     }
     if (error2) {
       return /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(import_tamagui72.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_lucide_icons36.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_lucide_icons35.AlertTriangle, { color: "$red10" }),
         /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_tamagui72.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
-    if (!data || data.length === 0) {
+    if (!data || data.length === 0 || !keys) {
       return /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(import_tamagui72.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_lucide_icons36.PieChart, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_lucide_icons35.Activity, { color: "$gray10" }),
         /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_tamagui72.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
+    const datasets = Array.isArray(data[0]) ? data : [data];
     const colors = Array.isArray(color) ? color : [color];
     return /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(
+      import_victory4.VictoryChart,
+      {
+        polar: true,
+        height,
+        domainPadding: { x: 20, y: 20 },
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_victory4.VictoryContainer, { responsive: true }),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
+            import_victory4.VictoryGroup,
+            {
+              colorScale: colors.map((c) => getColor(c)),
+              style: { data: { fillOpacity: 0.2, strokeWidth: 2 } },
+              children: datasets.map((dataset, i) => /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_victory4.VictoryArea, { data: dataset }, i))
+            }
+          ),
+          datasets[0]?.map((d, i) => {
+            return /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_victory4.VictoryPolarAxis, { dependentAxis: true, style: { axisLabel: { padding: 10 } }, labelPlacement: "vertical" }, i);
+          }),
+          /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
+            import_victory4.VictoryPolarAxis,
+            {
+              labelPlacement: "parallel",
+              tickFormat: () => "",
+              style: {
+                axis: { stroke: axisColor },
+                grid: { stroke: axisColor, opacity: 0.5 }
+              }
+            }
+          )
+        ]
+      }
+    );
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(import_tamagui72.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+    headerContent,
+    renderContent()
+  ] });
+};
+
+// src/organisms/PolarChart/PolarChart.tsx
+var import_tamagui73 = require("tamagui");
+var import_victory5 = require("victory");
+var import_lucide_icons36 = require("@tamagui/lucide-icons");
+var import_jsx_runtime74 = require("react/jsx-runtime");
+var PolarChart = ({
+  data,
+  xKey,
+  yKey,
+  color = "$primary",
+  height = 300,
+  isLoading = false,
+  error: error2 = null,
+  headerContent
+}) => {
+  const theme = (0, import_tamagui73.useTheme)();
+  const axisColor = theme.borderColor?.get() || "#ccc";
+  const textColor = theme.color?.get() || "#000";
+  const getColor = (c) => {
+    const themeColor = theme[c];
+    return themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : c;
+  };
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Skeleton, { height, width: "100%" });
+    }
+    if (error2) {
+      return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(import_tamagui73.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_lucide_icons36.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_tamagui73.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      ] });
+    }
+    if (!data || data.length === 0) {
+      return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(import_tamagui73.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_lucide_icons36.PieChart, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_tamagui73.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      ] });
+    }
+    const colors = Array.isArray(color) ? color : [color];
+    return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(
       import_victory5.VictoryChart,
       {
         polar: true,
         height,
         domainPadding: { x: 20, y: 20 },
         theme: import_victory5.VictoryTheme.material,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(import_victory5.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_victory5.VictoryContainer, { responsive: true }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
             import_victory5.VictoryPolarAxis,
             {
               style: {
@@ -11621,7 +11736,7 @@ var PolarChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime73.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
             import_victory5.VictoryBar,
             {
               data,
@@ -11641,17 +11756,17 @@ var PolarChart = ({
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime73.jsxs)(import_tamagui72.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(import_tamagui73.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/WaterfallChart/WaterfallChart.tsx
-var import_tamagui73 = require("tamagui");
+var import_tamagui74 = require("tamagui");
 var import_victory6 = require("victory");
 var import_lucide_icons37 = require("@tamagui/lucide-icons");
-var import_jsx_runtime74 = require("react/jsx-runtime");
+var import_jsx_runtime75 = require("react/jsx-runtime");
 var WaterfallChart = ({
   data,
   xKey,
@@ -11664,7 +11779,7 @@ var WaterfallChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui73.useTheme)();
+  const theme = (0, import_tamagui74.useTheme)();
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
@@ -11674,18 +11789,18 @@ var WaterfallChart = ({
   };
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(import_tamagui73.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_lucide_icons37.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_tamagui73.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)(import_tamagui74.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_lucide_icons37.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_tamagui74.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(import_tamagui73.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_lucide_icons37.BarChart, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_tamagui73.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)(import_tamagui74.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_lucide_icons37.BarChart, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_tamagui74.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     let runningTotal = 0;
@@ -11711,14 +11826,14 @@ var WaterfallChart = ({
         _isTotal: isTotal
       };
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)(
       import_victory6.VictoryChart,
       {
         domainPadding: { x: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(import_victory6.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_victory6.VictoryContainer, { responsive: true }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
             import_victory6.VictoryAxis,
             {
               style: {
@@ -11727,7 +11842,7 @@ var WaterfallChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
             import_victory6.VictoryAxis,
             {
               dependentAxis: true,
@@ -11738,7 +11853,7 @@ var WaterfallChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime74.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
             import_victory6.VictoryBar,
             {
               data: processedData,
@@ -11761,17 +11876,17 @@ var WaterfallChart = ({
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime74.jsxs)(import_tamagui73.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)(import_tamagui74.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/FunnelChart/FunnelChart.tsx
-var import_tamagui74 = require("tamagui");
+var import_tamagui75 = require("tamagui");
 var import_victory7 = require("victory");
 var import_lucide_icons38 = require("@tamagui/lucide-icons");
-var import_jsx_runtime75 = require("react/jsx-runtime");
+var import_jsx_runtime76 = require("react/jsx-runtime");
 var FunnelChart = ({
   data,
   xKey,
@@ -11782,25 +11897,25 @@ var FunnelChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui74.useTheme)();
+  const theme = (0, import_tamagui75.useTheme)();
   const themeColor = theme[color];
   const barColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)(import_tamagui74.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_lucide_icons38.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_tamagui74.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(import_tamagui75.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_lucide_icons38.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_tamagui75.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)(import_tamagui74.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_lucide_icons38.Filter, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_tamagui74.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(import_tamagui75.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_lucide_icons38.Filter, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_tamagui75.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const processedData = data.map((d) => {
@@ -11812,14 +11927,14 @@ var FunnelChart = ({
         _label: val
       };
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(
       import_victory7.VictoryChart,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_victory7.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_victory7.VictoryContainer, { responsive: true }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
             import_victory7.VictoryAxis,
             {
               dependentAxis: true,
@@ -11830,7 +11945,7 @@ var FunnelChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
             import_victory7.VictoryAxis,
             {
               style: {
@@ -11839,7 +11954,7 @@ var FunnelChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
             import_victory7.VictoryBar,
             {
               horizontal: true,
@@ -11852,24 +11967,24 @@ var FunnelChart = ({
                 labels: { fill: textColor }
               },
               labels: ({ datum }) => datum._label,
-              labelComponent: /* @__PURE__ */ (0, import_jsx_runtime75.jsx)(import_victory7.VictoryLabel, {})
+              labelComponent: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_victory7.VictoryLabel, {})
             }
           )
         ]
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime75.jsxs)(import_tamagui74.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(import_tamagui75.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/BulletChart/BulletChart.tsx
-var import_tamagui75 = require("tamagui");
+var import_tamagui76 = require("tamagui");
 var import_victory8 = require("victory");
 var import_lucide_icons39 = require("@tamagui/lucide-icons");
-var import_jsx_runtime76 = require("react/jsx-runtime");
+var import_jsx_runtime77 = require("react/jsx-runtime");
 var BulletChart = ({
   data,
   xKey,
@@ -11884,7 +11999,7 @@ var BulletChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui75.useTheme)();
+  const theme = (0, import_tamagui76.useTheme)();
   const themeColor = theme[color];
   const barColor = themeColor && typeof themeColor === "object" && "get" in themeColor ? themeColor.get() : color;
   const themeTargetColor = theme[targetColor];
@@ -11895,28 +12010,28 @@ var BulletChart = ({
   const textColor = theme.color?.get() || "#000";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(import_tamagui75.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_lucide_icons39.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_tamagui75.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(import_tamagui76.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_lucide_icons39.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_tamagui76.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(import_tamagui75.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_lucide_icons39.BarChart, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_tamagui75.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(import_tamagui76.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_lucide_icons39.BarChart, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_tamagui76.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(
       import_victory8.VictoryChart,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(import_victory8.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_victory8.VictoryContainer, { responsive: true }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
             import_victory8.VictoryAxis,
             {
               dependentAxis: true,
@@ -11926,7 +12041,7 @@ var BulletChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
             import_victory8.VictoryAxis,
             {
               style: {
@@ -11935,7 +12050,7 @@ var BulletChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
             import_victory8.VictoryBar,
             {
               data,
@@ -11945,7 +12060,7 @@ var BulletChart = ({
               cornerRadius: { top: 2 }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
             import_victory8.VictoryBar,
             {
               data,
@@ -11955,7 +12070,7 @@ var BulletChart = ({
               cornerRadius: { top: 2 }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime76.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
             import_victory8.VictoryScatter,
             {
               data,
@@ -11970,18 +12085,18 @@ var BulletChart = ({
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime76.jsxs)(import_tamagui75.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(import_tamagui76.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/SunburstChart/SunburstChart.tsx
-var import_react54 = require("react");
-var import_tamagui76 = require("tamagui");
+var import_react58 = require("react");
+var import_tamagui77 = require("tamagui");
 var import_react_native_svg = require("react-native-svg");
 var import_lucide_icons40 = require("@tamagui/lucide-icons");
-var import_jsx_runtime77 = require("react/jsx-runtime");
+var import_jsx_runtime78 = require("react/jsx-runtime");
 var calculateSunburst = (data, radius, centerX, centerY) => {
   const arcs = [];
   const calculateValues = (node) => {
@@ -12055,12 +12170,12 @@ var SunburstChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui76.useTheme)();
+  const theme = (0, import_tamagui77.useTheme)();
   const themeColor = theme[color];
   const radius = Math.min(width, height) / 2;
   const centerX = width / 2;
   const centerY = height / 2;
-  const arcs = (0, import_react54.useMemo)(() => {
+  const arcs = (0, import_react58.useMemo)(() => {
     if (!data) return [];
     const colorPalette = [
       theme.blue9?.get() || "#3b82f6",
@@ -12081,21 +12196,21 @@ var SunburstChart = ({
   }, [data, radius, centerX, centerY, theme]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(import_tamagui76.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_lucide_icons40.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_tamagui76.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(import_tamagui77.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_lucide_icons40.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_tamagui77.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data) {
-      return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(import_tamagui76.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_lucide_icons40.PieChart, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_tamagui76.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(import_tamagui77.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_lucide_icons40.PieChart, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_tamagui77.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_react_native_svg.Svg, { width, height, children: /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(import_react_native_svg.G, { children: arcs.map((arc, i) => /* @__PURE__ */ (0, import_jsx_runtime77.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_react_native_svg.Svg, { width, height, children: /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_react_native_svg.G, { children: arcs.map((arc, i) => /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(
       import_react_native_svg.Path,
       {
         d: arc.path,
@@ -12106,18 +12221,18 @@ var SunburstChart = ({
       i
     )) }) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime77.jsxs)(import_tamagui76.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", alignItems: "center", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(import_tamagui77.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", alignItems: "center", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/ParallelCoordinates/ParallelCoordinates.tsx
-var import_react55 = require("react");
-var import_tamagui77 = require("tamagui");
+var import_react59 = require("react");
+var import_tamagui78 = require("tamagui");
 var import_victory9 = require("victory");
 var import_lucide_icons41 = require("@tamagui/lucide-icons");
-var import_jsx_runtime78 = require("react/jsx-runtime");
+var import_jsx_runtime79 = require("react/jsx-runtime");
 var ParallelCoordinates = ({
   data,
   attributes,
@@ -12128,12 +12243,12 @@ var ParallelCoordinates = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui77.useTheme)();
+  const theme = (0, import_tamagui78.useTheme)();
   const themeColor = theme[color];
   const lineColor = themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
-  const normalizedData = (0, import_react55.useMemo)(() => {
+  const normalizedData = (0, import_react59.useMemo)(() => {
     if (!data || data.length === 0) return [];
     const bounds = attributes.reduce((acc, attr) => {
       const values = data.map((d) => d[attr]);
@@ -12156,28 +12271,28 @@ var ParallelCoordinates = ({
   }, [data, attributes]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(import_tamagui77.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_lucide_icons41.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_tamagui77.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)(import_tamagui78.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_lucide_icons41.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_tamagui78.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(import_tamagui77.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_lucide_icons41.Activity, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_tamagui77.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)(import_tamagui78.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_lucide_icons41.Activity, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_tamagui78.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)(
       import_victory9.VictoryChart,
       {
         domain: { x: [0, attributes.length + 1], y: [0, 1] },
         height,
         width,
         children: [
-          attributes.map((attr, i) => /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(
+          attributes.map((attr, i) => /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
             import_victory9.VictoryAxis,
             {
               dependentAxis: true,
@@ -12192,7 +12307,7 @@ var ParallelCoordinates = ({
             },
             attr
           )),
-          /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(import_victory9.VictoryGroup, { children: normalizedData.map((series, i) => /* @__PURE__ */ (0, import_jsx_runtime78.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_victory9.VictoryGroup, { children: normalizedData.map((series, i) => /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
             import_victory9.VictoryLine,
             {
               data: series,
@@ -12206,18 +12321,18 @@ var ParallelCoordinates = ({
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime78.jsxs)(import_tamagui77.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)(import_tamagui78.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/MarimekkoChart/MarimekkoChart.tsx
-var import_react56 = require("react");
-var import_tamagui78 = require("tamagui");
+var import_react60 = require("react");
+var import_tamagui79 = require("tamagui");
 var import_victory10 = require("victory");
 var import_lucide_icons42 = require("@tamagui/lucide-icons");
-var import_jsx_runtime79 = require("react/jsx-runtime");
+var import_jsx_runtime80 = require("react/jsx-runtime");
 var MarimekkoChart = ({
   data,
   xKey,
@@ -12230,12 +12345,12 @@ var MarimekkoChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui78.useTheme)();
+  const theme = (0, import_tamagui79.useTheme)();
   const themeColor = theme[color];
   const barColor = themeColor ? themeColor.get() : color;
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
-  const processedData = (0, import_react56.useMemo)(() => {
+  const processedData = (0, import_react60.useMemo)(() => {
     if (!data || data.length === 0) return [];
     let currentX = 0;
     return data.map((d) => {
@@ -12254,29 +12369,29 @@ var MarimekkoChart = ({
   }, [data, xKey, yKey, widthKey]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)(import_tamagui78.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_lucide_icons42.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_tamagui78.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(import_tamagui79.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_lucide_icons42.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_tamagui79.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)(import_tamagui78.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_lucide_icons42.BarChart2, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_tamagui78.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(import_tamagui79.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_lucide_icons42.BarChart2, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_tamagui79.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(
       import_victory10.VictoryChart,
       {
         domainPadding: { x: 0 },
         height,
         width,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(import_victory10.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_victory10.VictoryContainer, { responsive: true }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
             import_victory10.VictoryAxis,
             {
               style: {
@@ -12285,7 +12400,7 @@ var MarimekkoChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
             import_victory10.VictoryAxis,
             {
               dependentAxis: true,
@@ -12296,7 +12411,7 @@ var MarimekkoChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime79.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
             import_victory10.VictoryBar,
             {
               data: processedData,
@@ -12320,18 +12435,18 @@ var MarimekkoChart = ({
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime79.jsxs)(import_tamagui78.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(import_tamagui79.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/RidgelinePlot/RidgelinePlot.tsx
-var import_react57 = require("react");
-var import_tamagui79 = require("tamagui");
+var import_react61 = require("react");
+var import_tamagui80 = require("tamagui");
 var import_victory11 = require("victory");
 var import_lucide_icons43 = require("@tamagui/lucide-icons");
-var import_jsx_runtime80 = require("react/jsx-runtime");
+var import_jsx_runtime81 = require("react/jsx-runtime");
 var RidgelinePlot = ({
   series,
   width = 600,
@@ -12341,10 +12456,10 @@ var RidgelinePlot = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui79.useTheme)();
+  const theme = (0, import_tamagui80.useTheme)();
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
-  const processedSeries = (0, import_react57.useMemo)(() => {
+  const processedSeries = (0, import_react61.useMemo)(() => {
     if (!series || series.length === 0) return [];
     const numSeries = series.length;
     const rowHeight = 100;
@@ -12366,28 +12481,28 @@ var RidgelinePlot = ({
   }, [series, overlap]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(import_tamagui79.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_lucide_icons43.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_tamagui79.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(import_tamagui80.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(import_lucide_icons43.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(import_tamagui80.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!series || series.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(import_tamagui79.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_lucide_icons43.Activity, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(import_tamagui79.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(import_tamagui80.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(import_lucide_icons43.Activity, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(import_tamagui80.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(
       import_victory11.VictoryChart,
       {
         height,
         width,
         domainPadding: { x: 20, y: 10 },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
             import_victory11.VictoryAxis,
             {
               style: {
@@ -12396,7 +12511,7 @@ var RidgelinePlot = ({
               }
             }
           ),
-          processedSeries.map((s, i) => /* @__PURE__ */ (0, import_jsx_runtime80.jsx)(
+          processedSeries.map((s, i) => /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
             import_victory11.VictoryArea,
             {
               data: s.processedData,
@@ -12415,18 +12530,18 @@ var RidgelinePlot = ({
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime80.jsxs)(import_tamagui79.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(import_tamagui80.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/DecompositionTree/DecompositionTree.tsx
-var import_react58 = require("react");
-var import_tamagui80 = require("tamagui");
+var import_react62 = require("react");
+var import_tamagui81 = require("tamagui");
 var import_react_native_svg2 = require("react-native-svg");
 var import_lucide_icons44 = require("@tamagui/lucide-icons");
-var import_jsx_runtime81 = require("react/jsx-runtime");
+var import_jsx_runtime82 = require("react/jsx-runtime");
 var calculateTreeLayout = (data, width, height, nodeWidth = 100, nodeHeight = 40, gapX = 50, gapY = 20) => {
   let nextY = 0;
   const computeSize = (node) => {
@@ -12496,33 +12611,33 @@ var DecompositionTree = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui80.useTheme)();
-  const { nodes, links } = (0, import_react58.useMemo)(() => {
+  const theme = (0, import_tamagui81.useTheme)();
+  const { nodes, links } = (0, import_react62.useMemo)(() => {
     if (!data) return { nodes: [], links: [] };
     const root = calculateTreeLayout(data, width, height);
     return flattenTree(root);
   }, [data, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(import_tamagui80.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(import_lucide_icons44.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(import_tamagui80.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)(import_tamagui81.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_lucide_icons44.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_tamagui81.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data) {
-      return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(import_tamagui80.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(import_lucide_icons44.GitMerge, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(import_tamagui80.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)(import_tamagui81.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_lucide_icons44.GitMerge, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_tamagui81.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(import_react_native_svg2.Svg, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(import_react_native_svg2.G, { children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_react_native_svg2.Svg, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)(import_react_native_svg2.G, { children: [
       links.map((link, i) => {
         const midX = (link.x1 + link.x2) / 2;
         const d = `M ${link.x1} ${link.y1} C ${midX} ${link.y1}, ${midX} ${link.y2}, ${link.x2} ${link.y2}`;
-        return /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(
           import_react_native_svg2.Path,
           {
             d,
@@ -12533,8 +12648,8 @@ var DecompositionTree = ({
           `link-${i}`
         );
       }),
-      nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(import_react_native_svg2.G, { x: node.x, y: node.y, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
+      nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)(import_react_native_svg2.G, { x: node.x, y: node.y, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(
           import_react_native_svg2.Rect,
           {
             width: node.width,
@@ -12545,7 +12660,7 @@ var DecompositionTree = ({
             strokeWidth: 2
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(
           import_react_native_svg2.Text,
           {
             x: node.width / 2,
@@ -12557,7 +12672,7 @@ var DecompositionTree = ({
             children: node.data.label
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime81.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(
           import_react_native_svg2.Text,
           {
             x: node.width / 2,
@@ -12571,18 +12686,18 @@ var DecompositionTree = ({
       ] }, `node-${i}`))
     ] }) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime81.jsxs)(import_tamagui80.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", overflow: "scroll", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)(import_tamagui81.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", overflow: "scroll", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/Maps/Maps.tsx
-var import_react59 = require("react");
-var import_tamagui81 = require("tamagui");
+var import_react63 = require("react");
+var import_tamagui82 = require("tamagui");
 var import_react_native_svg3 = require("react-native-svg");
 var import_lucide_icons45 = require("@tamagui/lucide-icons");
-var import_jsx_runtime82 = require("react/jsx-runtime");
+var import_jsx_runtime83 = require("react/jsx-runtime");
 var project = (lon, lat, width, height, bounds) => {
   const [minLon, minLat, maxLon, maxLat] = bounds;
   const xPct = (lon - minLon) / (maxLon - minLon);
@@ -12633,9 +12748,9 @@ var Maps = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui81.useTheme)();
+  const theme = (0, import_tamagui82.useTheme)();
   const themeColor = theme[color];
-  const { paths, circles } = (0, import_react59.useMemo)(() => {
+  const { paths, circles } = (0, import_react63.useMemo)(() => {
     if (!data || !data.features) return { paths: [], circles: [] };
     const bounds = getBounds(data.features);
     const values = data.features.map((f) => f.properties[valueKey]).filter((v) => typeof v === "number");
@@ -12684,22 +12799,22 @@ var Maps = ({
   }, [data, width, height, type, valueKey, theme]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)(import_tamagui81.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_lucide_icons45.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_tamagui81.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(import_tamagui82.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(import_lucide_icons45.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(import_tamagui82.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data) {
-      return /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)(import_tamagui81.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_lucide_icons45.Map, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_tamagui81.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(import_tamagui82.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(import_lucide_icons45.Map, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(import_tamagui82.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(import_react_native_svg3.Svg, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)(import_react_native_svg3.G, { children: [
-      paths.map((p, i) => /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(import_react_native_svg3.Svg, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(import_react_native_svg3.G, { children: [
+      paths.map((p, i) => /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(
         import_react_native_svg3.Path,
         {
           d: p.d,
@@ -12709,7 +12824,7 @@ var Maps = ({
         },
         i
       )),
-      circles.map((c, i) => /* @__PURE__ */ (0, import_jsx_runtime82.jsx)(
+      circles.map((c, i) => /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(
         import_react_native_svg3.Circle,
         {
           cx: c.cx,
@@ -12722,32 +12837,32 @@ var Maps = ({
       ))
     ] }) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime82.jsxs)(import_tamagui81.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(import_tamagui82.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/Timeline/Timeline.tsx
-var import_tamagui82 = require("tamagui");
-var import_jsx_runtime83 = require("react/jsx-runtime");
-var TimelineFrame = (0, import_tamagui82.styled)(import_tamagui82.YStack, {
+var import_tamagui83 = require("tamagui");
+var import_jsx_runtime84 = require("react/jsx-runtime");
+var TimelineFrame = (0, import_tamagui83.styled)(import_tamagui83.YStack, {
   name: "Timeline",
   tag: "ul",
   width: "100%",
   gap: "$4"
 });
-var TimelineItemFrame = (0, import_tamagui82.styled)(import_tamagui82.XStack, {
+var TimelineItemFrame = (0, import_tamagui83.styled)(import_tamagui83.XStack, {
   name: "TimelineItem",
   tag: "li",
   gap: "$4"
 });
-var TimelineConnectorWrapper = (0, import_tamagui82.styled)(import_tamagui82.YStack, {
+var TimelineConnectorWrapper = (0, import_tamagui83.styled)(import_tamagui83.YStack, {
   alignItems: "center",
   width: 20,
   position: "relative"
 });
-var TimelineConnector = (0, import_tamagui82.styled)(import_tamagui82.View, {
+var TimelineConnector = (0, import_tamagui83.styled)(import_tamagui83.View, {
   width: 2,
   backgroundColor: "$borderColor",
   position: "absolute",
@@ -12755,7 +12870,7 @@ var TimelineConnector = (0, import_tamagui82.styled)(import_tamagui82.View, {
   bottom: -24,
   zIndex: 0
 });
-var TimelineDot = (0, import_tamagui82.styled)(import_tamagui82.View, {
+var TimelineDot = (0, import_tamagui83.styled)(import_tamagui83.View, {
   width: 20,
   height: 20,
   borderRadius: 10,
@@ -12764,68 +12879,68 @@ var TimelineDot = (0, import_tamagui82.styled)(import_tamagui82.View, {
   borderColor: "$primary",
   zIndex: 1
 });
-var TimelineContent = (0, import_tamagui82.styled)(import_tamagui82.YStack, {
+var TimelineContent = (0, import_tamagui83.styled)(import_tamagui83.YStack, {
   flex: 1,
   gap: "$1"
 });
-var TimelineTime = (0, import_tamagui82.styled)(import_tamagui82.Text, {
+var TimelineTime = (0, import_tamagui83.styled)(import_tamagui83.Text, {
   fontSize: "$2",
   color: "$mutedForeground"
 });
-var TimelineTitle = (0, import_tamagui82.styled)(import_tamagui82.Text, {
+var TimelineTitle = (0, import_tamagui83.styled)(import_tamagui83.Text, {
   fontSize: "$3",
   fontWeight: "bold",
   color: "$foreground"
 });
-var TimelineDescription = (0, import_tamagui82.styled)(import_tamagui82.Text, {
+var TimelineDescription = (0, import_tamagui83.styled)(import_tamagui83.Text, {
   fontSize: "$3",
   color: "$foreground"
 });
 var TimelineItem = ({ title, description, time, isLast, children }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(TimelineItemFrame, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(TimelineConnectorWrapper, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineDot, {}),
-      !isLast && /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineConnector, {})
+  return /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(TimelineItemFrame, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(TimelineConnectorWrapper, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineDot, {}),
+      !isLast && /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineConnector, {})
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(TimelineContent, { children: [
-      time && /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineTime, { children: time }),
-      title && /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineTitle, { children: title }),
-      description && /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineDescription, { children: description }),
+    /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(TimelineContent, { children: [
+      time && /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineTime, { children: time }),
+      title && /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineTitle, { children: title }),
+      description && /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineDescription, { children: description }),
       children
     ] })
   ] });
 };
-var TimelineSkeleton = () => /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineFrame, { "data-testid": "timeline-skeleton", children: [...Array(3)].map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(TimelineItemFrame, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineConnectorWrapper, { children: /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Skeleton, { width: 20, height: 20, borderRadius: 10 }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(TimelineContent, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Skeleton, { width: "50%", height: 15 }),
-    /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Skeleton, { width: "80%", height: 15 })
+var TimelineSkeleton = () => /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineFrame, { "data-testid": "timeline-skeleton", children: [...Array(3)].map((_, index) => /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(TimelineItemFrame, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineConnectorWrapper, { children: /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Skeleton, { width: 20, height: 20, borderRadius: 10 }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(TimelineContent, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Skeleton, { width: "50%", height: 15 }),
+    /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Skeleton, { width: "80%", height: 15 })
   ] })
 ] }, index)) });
 var Timeline = ({ items, children, isLoading, isEmpty, hasError }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineSkeleton, {});
+    return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineSkeleton, {});
   }
   if (hasError) {
-    return /* @__PURE__ */ (0, import_jsx_runtime83.jsxs)(Alert, { variant: "destructive", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Alert.Title, { children: "Erro" }),
-      /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Alert.Description, { children: "Ocorreu um erro ao carregar os dados. Por favor, tente novamente." })
+    return /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(Alert, { variant: "destructive", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Alert.Title, { children: "Erro" }),
+      /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Alert.Description, { children: "Ocorreu um erro ao carregar os dados. Por favor, tente novamente." })
     ] });
   }
   if (isEmpty || items && items.length === 0 && !children) {
-    return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(Empty, { title: "Nenhum item encontrado", description: "N\xE3o h\xE1 itens para serem exibidos no momento." });
+    return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Empty, { title: "Nenhum item encontrado", description: "N\xE3o h\xE1 itens para serem exibidos no momento." });
   }
   if (items) {
-    return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineFrame, { children: items.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineItem, { ...item, isLast: index === items.length - 1 }, index)) });
+    return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineFrame, { children: items.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineItem, { ...item, isLast: index === items.length - 1 }, index)) });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime83.jsx)(TimelineFrame, { children });
+  return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(TimelineFrame, { children });
 };
 
 // src/organisms/LocationStatus/LocationStatus.tsx
-var import_tamagui83 = require("tamagui");
+var import_tamagui84 = require("tamagui");
 var import_lucide_icons46 = require("@tamagui/lucide-icons");
-var import_jsx_runtime84 = require("react/jsx-runtime");
-var LocationStatusFrame = (0, import_tamagui83.styled)(import_tamagui83.YStack, {
+var import_jsx_runtime85 = require("react/jsx-runtime");
+var LocationStatusFrame = (0, import_tamagui84.styled)(import_tamagui84.YStack, {
   name: "LocationStatus",
   padding: "$4",
   borderRadius: "$4",
@@ -12834,29 +12949,29 @@ var LocationStatusFrame = (0, import_tamagui83.styled)(import_tamagui83.YStack, 
   borderColor: "$borderColor",
   gap: "$3"
 });
-var HeaderRow = (0, import_tamagui83.styled)(import_tamagui83.XStack, {
+var HeaderRow = (0, import_tamagui84.styled)(import_tamagui84.XStack, {
   justifyContent: "space-between",
   alignItems: "center"
 });
-var Title = (0, import_tamagui83.styled)(import_tamagui83.Text, {
+var Title = (0, import_tamagui84.styled)(import_tamagui84.Text, {
   fontSize: "$4",
   fontWeight: "bold",
   color: "$foreground"
 });
-var InfoRow = (0, import_tamagui83.styled)(import_tamagui83.XStack, {
+var InfoRow = (0, import_tamagui84.styled)(import_tamagui84.XStack, {
   gap: "$4",
   alignItems: "center",
   flexWrap: "wrap"
 });
-var InfoItem = (0, import_tamagui83.styled)(import_tamagui83.XStack, {
+var InfoItem = (0, import_tamagui84.styled)(import_tamagui84.XStack, {
   gap: "$2",
   alignItems: "center"
 });
-var Label8 = (0, import_tamagui83.styled)(import_tamagui83.Text, {
+var Label7 = (0, import_tamagui84.styled)(import_tamagui84.Text, {
   fontSize: "$2",
   color: "$mutedForeground"
 });
-var Value = (0, import_tamagui83.styled)(import_tamagui83.Text, {
+var Value = (0, import_tamagui84.styled)(import_tamagui84.Text, {
   fontSize: "$3",
   fontWeight: "500",
   color: "$foreground"
@@ -12878,15 +12993,15 @@ var LocationStatus = ({
 }) => {
   const accuracyLevel = getAccuracyLevel(accuracy);
   const formattedTime = timestamp ? new Date(timestamp).toLocaleTimeString("pt-BR") : "-";
-  return /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(LocationStatusFrame, { ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(HeaderRow, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(import_tamagui83.XStack, { gap: "$2", alignItems: "center", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_lucide_icons46.MapPin, { size: "$1" }),
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Title, { children: "Status da Localiza\xE7\xE3o" })
+  return /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(LocationStatusFrame, { ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(HeaderRow, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(import_tamagui84.XStack, { gap: "$2", alignItems: "center", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_lucide_icons46.MapPin, { size: "$1" }),
+        /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Title, { children: "Status da Localiza\xE7\xE3o" })
       ] }),
-      isSearching && /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Badge, { variant: "outline", children: "Buscando..." }),
-      error2 && /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Badge, { variant: "destructive", children: "Erro" }),
-      !isSearching && !error2 && accuracy !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(Badge, { style: { backgroundColor: accuracyLevel.color, color: "white" }, children: [
+      isSearching && /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Badge, { variant: "outline", children: "Buscando..." }),
+      error2 && /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Badge, { variant: "destructive", children: "Erro" }),
+      !isSearching && !error2 && accuracy !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(Badge, { style: { backgroundColor: accuracyLevel.color, color: "white" }, children: [
         "Precis\xE3o: ",
         accuracyLevel.label,
         " (",
@@ -12894,36 +13009,36 @@ var LocationStatus = ({
         "m)"
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(InfoRow, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(InfoItem, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_lucide_icons46.Navigation, { size: "$1", color: "$mutedForeground" }),
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(import_tamagui83.YStack, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Label8, { children: "Coordenadas" }),
-          /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(Value, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(InfoRow, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(InfoItem, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_lucide_icons46.Navigation, { size: "$1", color: "$mutedForeground" }),
+        /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(import_tamagui84.YStack, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Label7, { children: "Coordenadas" }),
+          /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(Value, { children: [
             latitude?.toFixed(6) ?? "-",
             ", ",
             longitude?.toFixed(6) ?? "-"
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(InfoItem, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_lucide_icons46.Clock, { size: "$1", color: "$mutedForeground" }),
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(import_tamagui83.YStack, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Label8, { children: "Atualizado em" }),
-          /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Value, { children: formattedTime })
+      /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(InfoItem, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_lucide_icons46.Clock, { size: "$1", color: "$mutedForeground" }),
+        /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(import_tamagui84.YStack, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Label7, { children: "Atualizado em" }),
+          /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Value, { children: formattedTime })
         ] })
       ] })
     ] }),
-    error2 && /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_tamagui83.Text, { color: "$destructive", fontSize: "$2", children: error2 })
+    error2 && /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_tamagui84.Text, { color: "$destructive", fontSize: "$2", children: error2 })
   ] });
 };
 
 // src/organisms/ScannerView/ScannerView.tsx
-var import_react60 = __toESM(require("react"));
-var import_tamagui84 = require("tamagui");
+var import_react64 = __toESM(require("react"));
+var import_tamagui85 = require("tamagui");
 var import_lucide_icons47 = require("@tamagui/lucide-icons");
-var import_jsx_runtime85 = require("react/jsx-runtime");
-var ScannerFrame = (0, import_tamagui84.styled)(import_tamagui84.YStack, {
+var import_jsx_runtime86 = require("react/jsx-runtime");
+var ScannerFrame = (0, import_tamagui85.styled)(import_tamagui85.YStack, {
   name: "ScannerView",
   position: "relative",
   width: "100%",
@@ -12932,13 +13047,13 @@ var ScannerFrame = (0, import_tamagui84.styled)(import_tamagui84.YStack, {
   borderRadius: "$4",
   overflow: "hidden"
 });
-var CameraPlaceholder = (0, import_tamagui84.styled)(import_tamagui84.YStack, {
+var CameraPlaceholder = (0, import_tamagui85.styled)(import_tamagui85.YStack, {
   flex: 1,
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: "#1a1a1a"
 });
-var Overlay = (0, import_tamagui84.styled)(import_tamagui84.YStack, {
+var Overlay = (0, import_tamagui85.styled)(import_tamagui85.YStack, {
   position: "absolute",
   top: 0,
   left: 0,
@@ -12948,7 +13063,7 @@ var Overlay = (0, import_tamagui84.styled)(import_tamagui84.YStack, {
   justifyContent: "center",
   zIndex: 10
 });
-var ScanFrame = (0, import_tamagui84.styled)(import_tamagui84.YStack, {
+var ScanFrame = (0, import_tamagui85.styled)(import_tamagui85.YStack, {
   width: 250,
   height: 250,
   borderWidth: 2,
@@ -12959,14 +13074,14 @@ var ScanFrame = (0, import_tamagui84.styled)(import_tamagui84.YStack, {
   alignItems: "center",
   justifyContent: "center"
 });
-var ScanLine = (0, import_tamagui84.styled)(import_tamagui84.YStack, {
+var ScanLine = (0, import_tamagui85.styled)(import_tamagui85.YStack, {
   width: "100%",
   height: 2,
   backgroundColor: "$green10",
   position: "absolute",
   top: "50%"
 });
-var Controls = (0, import_tamagui84.styled)(import_tamagui84.XStack, {
+var Controls = (0, import_tamagui85.styled)(import_tamagui85.XStack, {
   position: "absolute",
   bottom: "$4",
   left: 0,
@@ -12975,7 +13090,7 @@ var Controls = (0, import_tamagui84.styled)(import_tamagui84.XStack, {
   gap: "$4",
   zIndex: 20
 });
-var StatusText = (0, import_tamagui84.styled)(import_tamagui84.Text, {
+var StatusText = (0, import_tamagui85.styled)(import_tamagui85.Text, {
   color: "#fff",
   marginTop: "$4",
   fontSize: "$3",
@@ -12992,7 +13107,7 @@ var ScannerView = ({
   mockData,
   ...props
 }) => {
-  const [scanned, setScanned] = import_react60.default.useState(false);
+  const [scanned, setScanned] = import_react64.default.useState(false);
   const handleScan = () => {
     setScanned(true);
     if (onScan && mockData) {
@@ -13000,30 +13115,30 @@ var ScannerView = ({
     }
     setTimeout(() => setScanned(false), 2e3);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(ScannerFrame, { ...props, children: !isActive ? /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(CameraPlaceholder, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_lucide_icons47.Camera, { size: "$6", color: "$gray10" }),
-    /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_tamagui84.Text, { color: "$gray10", marginTop: "$4", children: "C\xE2mera desativada" })
-  ] }) : /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(import_jsx_runtime85.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(CameraPlaceholder, { children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(import_lucide_icons47.Maximize, { size: "$8", color: "#333" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(Overlay, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(ScanFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(ScanLine, { style: { opacity: scanned ? 0 : 1 } }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(StatusText, { children: "Posicione o c\xF3digo no quadro" })
+  return /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ScannerFrame, { ...props, children: !isActive ? /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(CameraPlaceholder, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(import_lucide_icons47.Camera, { size: "$6", color: "$gray10" }),
+    /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(import_tamagui85.Text, { color: "$gray10", marginTop: "$4", children: "C\xE2mera desativada" })
+  ] }) : /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(import_jsx_runtime86.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(CameraPlaceholder, { children: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(import_lucide_icons47.Maximize, { size: "$8", color: "#333" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(Overlay, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ScanFrame, { children: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(ScanLine, { style: { opacity: scanned ? 0 : 1 } }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(StatusText, { children: "Posicione o c\xF3digo no quadro" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime85.jsxs)(Controls, { children: [
-      mockData && /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Button, { onPress: handleScan, variant: "default", children: "Simular Scan" }),
-      onClose && /* @__PURE__ */ (0, import_jsx_runtime85.jsx)(Button, { onPress: onClose, variant: "destructive", icon: import_lucide_icons47.X, circular: true })
+    /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(Controls, { children: [
+      mockData && /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Button, { onPress: handleScan, variant: "default", children: "Simular Scan" }),
+      onClose && /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Button, { onPress: onClose, variant: "destructive", icon: import_lucide_icons47.X, circular: true })
     ] })
   ] }) });
 };
 
 // src/organisms/SignaturePad/SignaturePad.tsx
-var import_react61 = require("react");
-var import_tamagui85 = require("tamagui");
+var import_react65 = require("react");
+var import_tamagui86 = require("tamagui");
 var import_react_native_svg4 = require("react-native-svg");
 var import_lucide_icons48 = require("@tamagui/lucide-icons");
-var import_tamagui86 = require("tamagui");
-var import_jsx_runtime86 = require("react/jsx-runtime");
-var SignatureContainer = (0, import_tamagui85.styled)(import_tamagui85.YStack, {
+var import_tamagui87 = require("tamagui");
+var import_jsx_runtime87 = require("react/jsx-runtime");
+var SignatureContainer = (0, import_tamagui86.styled)(import_tamagui86.YStack, {
   name: "SignaturePad",
   width: "100%",
   height: 200,
@@ -13035,7 +13150,7 @@ var SignatureContainer = (0, import_tamagui85.styled)(import_tamagui85.YStack, {
   position: "relative",
   cursor: "crosshair"
 });
-var Controls2 = (0, import_tamagui85.styled)(import_tamagui85.XStack, {
+var Controls2 = (0, import_tamagui86.styled)(import_tamagui86.XStack, {
   padding: "$2",
   justifyContent: "flex-end",
   gap: "$2",
@@ -13043,7 +13158,7 @@ var Controls2 = (0, import_tamagui85.styled)(import_tamagui85.XStack, {
   borderTopWidth: 1,
   borderColor: "$borderColor"
 });
-var HelperText = (0, import_tamagui85.styled)(import_tamagui85.YStack, {
+var HelperText = (0, import_tamagui86.styled)(import_tamagui86.YStack, {
   position: "absolute",
   top: 0,
   left: 0,
@@ -13061,9 +13176,9 @@ var SignaturePad = ({
   strokeWidth = 3,
   ...props
 }) => {
-  const [currentPath, setCurrentPath] = (0, import_react61.useState)([]);
-  const [paths, setPaths] = (0, import_react61.useState)([]);
-  const isDrawing = (0, import_react61.useRef)(false);
+  const [currentPath, setCurrentPath] = (0, import_react65.useState)([]);
+  const [paths, setPaths] = (0, import_react65.useState)([]);
+  const isDrawing = (0, import_react65.useRef)(false);
   const getPoint = (e) => {
     if (e.nativeEvent) {
       const x = e.nativeEvent.offsetX ?? e.nativeEvent.locationX ?? 0;
@@ -13108,8 +13223,8 @@ var SignaturePad = ({
     const fullSvg = paths.join(" ");
     if (onSave) onSave(fullSvg);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(import_tamagui85.YStack, { width: "100%", gap: "$2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime87.jsxs)(import_tamagui86.YStack, { width: "100%", gap: "$2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime87.jsxs)(
       SignatureContainer,
       {
         ...props,
@@ -13118,8 +13233,8 @@ var SignaturePad = ({
         onMouseUp: handleEnd,
         onMouseLeave: handleEnd,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(import_react_native_svg4.Svg, { height: "100%", width: "100%", viewBox: "0 0 500 200", style: { position: "absolute", top: 0, left: 0, zIndex: 10 }, children: [
-            paths.map((d, i) => /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime87.jsxs)(import_react_native_svg4.Svg, { height: "100%", width: "100%", viewBox: "0 0 500 200", style: { position: "absolute", top: 0, left: 0, zIndex: 10 }, children: [
+            paths.map((d, i) => /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(
               import_react_native_svg4.Path,
               {
                 d,
@@ -13131,7 +13246,7 @@ var SignaturePad = ({
               },
               i
             )),
-            currentPath.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(
+            currentPath.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(
               import_react_native_svg4.Path,
               {
                 d: pointsToPath(currentPath),
@@ -13143,21 +13258,21 @@ var SignaturePad = ({
               }
             )
           ] }),
-          paths.length === 0 && currentPath.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(HelperText, { children: /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(import_tamagui86.Text, { color: "$gray8", children: "Assine aqui" }) })
+          paths.length === 0 && currentPath.length === 0 && /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(HelperText, { children: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(import_tamagui87.Text, { color: "$gray8", children: "Assine aqui" }) })
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime86.jsxs)(Controls2, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Button, { variant: "outline", icon: import_lucide_icons48.Eraser, onPress: handleClear, children: "Limpar" }),
-      /* @__PURE__ */ (0, import_jsx_runtime86.jsx)(Button, { variant: "default", icon: import_lucide_icons48.Check, onPress: handleSave, children: "Salvar" })
+    /* @__PURE__ */ (0, import_jsx_runtime87.jsxs)(Controls2, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(Button, { variant: "outline", icon: import_lucide_icons48.Eraser, onPress: handleClear, children: "Limpar" }),
+      /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(Button, { variant: "default", icon: import_lucide_icons48.Check, onPress: handleSave, children: "Salvar" })
     ] })
   ] });
 };
 
 // src/organisms/ImageAnnotator/ImageAnnotator.tsx
-var import_tamagui87 = require("tamagui");
-var import_jsx_runtime87 = require("react/jsx-runtime");
-var AnnotatorContainer = (0, import_tamagui87.styled)(import_tamagui87.YStack, {
+var import_tamagui88 = require("tamagui");
+var import_jsx_runtime88 = require("react/jsx-runtime");
+var AnnotatorContainer = (0, import_tamagui88.styled)(import_tamagui88.YStack, {
   name: "ImageAnnotator",
   width: "100%",
   position: "relative",
@@ -13167,7 +13282,7 @@ var AnnotatorContainer = (0, import_tamagui87.styled)(import_tamagui87.YStack, {
   overflow: "hidden",
   backgroundColor: "$background"
 });
-var ImageLayer = (0, import_tamagui87.styled)(import_tamagui87.YStack, {
+var ImageLayer = (0, import_tamagui88.styled)(import_tamagui88.YStack, {
   width: "100%",
   height: 400,
   position: "absolute",
@@ -13175,7 +13290,7 @@ var ImageLayer = (0, import_tamagui87.styled)(import_tamagui87.YStack, {
   left: 0,
   zIndex: 0
 });
-var DrawingLayer = (0, import_tamagui87.styled)(import_tamagui87.YStack, {
+var DrawingLayer = (0, import_tamagui88.styled)(import_tamagui88.YStack, {
   width: "100%",
   height: 400,
   zIndex: 10
@@ -13188,9 +13303,9 @@ var ImageAnnotator = ({
   // Red by default for annotations
   ...props
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime87.jsxs)(AnnotatorContainer, { ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(ImageLayer, { children: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(
-      import_tamagui87.Image,
+  return /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)(AnnotatorContainer, { ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(ImageLayer, { children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
+      import_tamagui88.Image,
       {
         source: { uri: imageUrl },
         width: "100%",
@@ -13199,7 +13314,7 @@ var ImageAnnotator = ({
         ...imageProps
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(DrawingLayer, { children: /* @__PURE__ */ (0, import_jsx_runtime87.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(DrawingLayer, { children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
       SignaturePad,
       {
         height: "100%",
@@ -13213,10 +13328,10 @@ var ImageAnnotator = ({
 };
 
 // src/organisms/PDFPreview/PDFPreview.tsx
-var import_tamagui88 = require("tamagui");
+var import_tamagui89 = require("tamagui");
 var import_lucide_icons49 = require("@tamagui/lucide-icons");
-var import_jsx_runtime88 = require("react/jsx-runtime");
-var PDFContainer = (0, import_tamagui88.styled)(import_tamagui88.YStack, {
+var import_jsx_runtime89 = require("react/jsx-runtime");
+var PDFContainer = (0, import_tamagui89.styled)(import_tamagui89.YStack, {
   name: "PDFPreview",
   width: "100%",
   height: 500,
@@ -13227,13 +13342,13 @@ var PDFContainer = (0, import_tamagui88.styled)(import_tamagui88.YStack, {
   overflow: "hidden",
   position: "relative"
 });
-var PDFFrame = (0, import_tamagui88.styled)(import_tamagui88.YStack, {
+var PDFFrame = (0, import_tamagui89.styled)(import_tamagui89.YStack, {
   tag: "iframe",
   width: "100%",
   height: "100%",
   borderWidth: 0
 });
-var Placeholder = (0, import_tamagui88.styled)(import_tamagui88.YStack, {
+var Placeholder = (0, import_tamagui89.styled)(import_tamagui89.YStack, {
   flex: 1,
   alignItems: "center",
   justifyContent: "center",
@@ -13247,15 +13362,15 @@ var PDFPreview = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(PDFContainer, { ...props, alignItems: "center", justifyContent: "center", children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(import_tamagui88.Spinner, { size: "large" }) });
+    return /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(PDFContainer, { ...props, alignItems: "center", justifyContent: "center", children: /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(import_tamagui89.Spinner, { size: "large" }) });
   }
   if (error2 || !fileUrl) {
-    return /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(PDFContainer, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)(Placeholder, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(import_lucide_icons49.FileText, { size: "$6", color: "$gray8" }),
-      /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(import_tamagui88.Text, { color: "$gray10", children: error2 || "Nenhum documento selecionado" })
+    return /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(PDFContainer, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)(Placeholder, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(import_lucide_icons49.FileText, { size: "$6", color: "$gray8" }),
+      /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(import_tamagui89.Text, { color: "$gray10", children: error2 || "Nenhum documento selecionado" })
     ] }) });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(PDFContainer, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(PDFContainer, { ...props, children: /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(
     PDFFrame,
     {
       src: `${fileUrl}#toolbar=0`,
@@ -13266,9 +13381,9 @@ var PDFPreview = ({
 };
 
 // src/organisms/DiffViewer/DiffViewer.tsx
-var import_tamagui89 = require("tamagui");
-var import_jsx_runtime89 = require("react/jsx-runtime");
-var DiffContainer = (0, import_tamagui89.styled)(import_tamagui89.YStack, {
+var import_tamagui90 = require("tamagui");
+var import_jsx_runtime90 = require("react/jsx-runtime");
+var DiffContainer = (0, import_tamagui90.styled)(import_tamagui90.YStack, {
   name: "DiffViewer",
   width: "100%",
   borderWidth: 1,
@@ -13277,19 +13392,19 @@ var DiffContainer = (0, import_tamagui89.styled)(import_tamagui89.YStack, {
   overflow: "hidden",
   backgroundColor: "$background"
 });
-var Header2 = (0, import_tamagui89.styled)(import_tamagui89.XStack, {
+var Header2 = (0, import_tamagui90.styled)(import_tamagui90.XStack, {
   backgroundColor: "$muted",
   padding: "$2",
   borderBottomWidth: 1,
   borderColor: "$borderColor",
   justifyContent: "space-between"
 });
-var DiffContent = (0, import_tamagui89.styled)(import_tamagui89.XStack, {
+var DiffContent = (0, import_tamagui90.styled)(import_tamagui90.XStack, {
   width: "100%",
   height: 400
   // Fixed height for scrolling
 });
-var Pane = (0, import_tamagui89.styled)(import_tamagui89.YStack, {
+var Pane = (0, import_tamagui90.styled)(import_tamagui90.YStack, {
   flex: 1,
   height: "100%",
   borderRightWidth: 1,
@@ -13302,7 +13417,7 @@ var Pane = (0, import_tamagui89.styled)(import_tamagui89.YStack, {
     }
   }
 });
-var Line2 = (0, import_tamagui89.styled)(import_tamagui89.XStack, {
+var Line2 = (0, import_tamagui90.styled)(import_tamagui90.XStack, {
   width: "100%",
   minHeight: 24,
   paddingHorizontal: "$2",
@@ -13315,7 +13430,7 @@ var Line2 = (0, import_tamagui89.styled)(import_tamagui89.XStack, {
     }
   }
 });
-var LineNumber = (0, import_tamagui89.styled)(import_tamagui89.Text, {
+var LineNumber = (0, import_tamagui90.styled)(import_tamagui90.Text, {
   width: 40,
   color: "$mutedForeground",
   fontSize: "$2",
@@ -13326,7 +13441,7 @@ var LineNumber = (0, import_tamagui89.styled)(import_tamagui89.Text, {
   borderColor: "$borderColor",
   marginRight: "$2"
 });
-var LineText = (0, import_tamagui89.styled)(import_tamagui89.Text, {
+var LineText = (0, import_tamagui90.styled)(import_tamagui90.Text, {
   fontSize: "$3",
   fontFamily: "$mono",
   color: "$foreground",
@@ -13359,28 +13474,28 @@ var DiffViewer = ({
   ...props
 }) => {
   const diffs = computeDiff(oldText, newText);
-  return /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)(DiffContainer, { ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)(Header2, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(import_tamagui89.Text, { fontWeight: "bold", flex: 1, textAlign: "center", children: oldTitle }),
-      /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(import_tamagui89.Text, { fontWeight: "bold", flex: 1, textAlign: "center", children: newTitle })
+  return /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)(DiffContainer, { ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)(Header2, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(import_tamagui90.Text, { fontWeight: "bold", flex: 1, textAlign: "center", children: oldTitle }),
+      /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(import_tamagui90.Text, { fontWeight: "bold", flex: 1, textAlign: "center", children: newTitle })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(import_tamagui89.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)(DiffContent, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(Pane, { children: diffs.map((line, i) => /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)(Line2, { type: line.type === "removed" || line.type === "modified" ? "removed" : "neutral", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(LineNumber, { children: line.num }),
-        /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(LineText, { children: line.oldL })
+    /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(import_tamagui90.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)(DiffContent, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(Pane, { children: diffs.map((line, i) => /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)(Line2, { type: line.type === "removed" || line.type === "modified" ? "removed" : "neutral", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(LineNumber, { children: line.num }),
+        /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(LineText, { children: line.oldL })
       ] }, `old-${i}`)) }),
-      /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(Pane, { last: true, children: diffs.map((line, i) => /* @__PURE__ */ (0, import_jsx_runtime89.jsxs)(Line2, { type: line.type === "added" || line.type === "modified" ? "added" : "neutral", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(LineNumber, { children: line.num }),
-        /* @__PURE__ */ (0, import_jsx_runtime89.jsx)(LineText, { children: line.newL })
+      /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(Pane, { last: true, children: diffs.map((line, i) => /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)(Line2, { type: line.type === "added" || line.type === "modified" ? "added" : "neutral", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(LineNumber, { children: line.num }),
+        /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(LineText, { children: line.newL })
       ] }, `new-${i}`)) })
     ] }) })
   ] });
 };
 
 // src/organisms/TimelineAudit/TimelineAudit.tsx
-var import_tamagui90 = require("tamagui");
-var import_jsx_runtime90 = require("react/jsx-runtime");
-var AuditContainer = (0, import_tamagui90.styled)(import_tamagui90.YStack, {
+var import_tamagui91 = require("tamagui");
+var import_jsx_runtime91 = require("react/jsx-runtime");
+var AuditContainer = (0, import_tamagui91.styled)(import_tamagui91.YStack, {
   name: "TimelineAudit",
   width: "100%",
   gap: "$4",
@@ -13390,11 +13505,11 @@ var AuditContainer = (0, import_tamagui90.styled)(import_tamagui90.YStack, {
   borderColor: "$borderColor",
   borderRadius: "$4"
 });
-var AuditItem = (0, import_tamagui90.styled)(import_tamagui90.XStack, {
+var AuditItem = (0, import_tamagui91.styled)(import_tamagui91.XStack, {
   gap: "$3",
   position: "relative"
 });
-var Line3 = (0, import_tamagui90.styled)(import_tamagui90.YStack, {
+var Line3 = (0, import_tamagui91.styled)(import_tamagui91.YStack, {
   position: "absolute",
   left: 11,
   // Center of circle (24/2) - (2/2)
@@ -13405,7 +13520,7 @@ var Line3 = (0, import_tamagui90.styled)(import_tamagui90.YStack, {
   backgroundColor: "$borderColor",
   zIndex: 0
 });
-var AvatarCircle = (0, import_tamagui90.styled)(import_tamagui90.Circle, {
+var AvatarCircle = (0, import_tamagui91.styled)(import_tamagui91.Circle, {
   width: 24,
   height: 24,
   backgroundColor: "$primary",
@@ -13413,70 +13528,70 @@ var AvatarCircle = (0, import_tamagui90.styled)(import_tamagui90.Circle, {
   justifyContent: "center",
   zIndex: 1
 });
-var AvatarText = (0, import_tamagui90.styled)(import_tamagui90.Text, {
+var AvatarText = (0, import_tamagui91.styled)(import_tamagui91.Text, {
   color: "white",
   fontSize: 10,
   fontWeight: "bold"
 });
-var Content6 = (0, import_tamagui90.styled)(import_tamagui90.YStack, {
+var Content6 = (0, import_tamagui91.styled)(import_tamagui91.YStack, {
   flex: 1,
   gap: "$1",
   paddingBottom: "$4"
 });
-var HeaderRow2 = (0, import_tamagui90.styled)(import_tamagui90.XStack, {
+var HeaderRow2 = (0, import_tamagui91.styled)(import_tamagui91.XStack, {
   alignItems: "center",
   gap: "$2",
   flexWrap: "wrap"
 });
-var UserText = (0, import_tamagui90.styled)(import_tamagui90.Text, {
+var UserText = (0, import_tamagui91.styled)(import_tamagui91.Text, {
   fontWeight: "bold",
   color: "$foreground",
   fontSize: "$3"
 });
-var ActionText = (0, import_tamagui90.styled)(import_tamagui90.Text, {
+var ActionText = (0, import_tamagui91.styled)(import_tamagui91.Text, {
   color: "$mutedForeground",
   fontSize: "$3"
 });
-var TimeText = (0, import_tamagui90.styled)(import_tamagui90.Text, {
+var TimeText = (0, import_tamagui91.styled)(import_tamagui91.Text, {
   color: "$gray10",
   fontSize: "$2",
   marginLeft: "auto"
 });
-var DiffBox = (0, import_tamagui90.styled)(import_tamagui90.YStack, {
+var DiffBox = (0, import_tamagui91.styled)(import_tamagui91.YStack, {
   backgroundColor: "$muted",
   padding: "$2",
   borderRadius: "$2",
   marginTop: "$2"
 });
-var DiffText = (0, import_tamagui90.styled)(import_tamagui90.Text, {
+var DiffText = (0, import_tamagui91.styled)(import_tamagui91.Text, {
   fontFamily: "$mono",
   fontSize: "$2",
   color: "$foreground"
 });
 var TimelineAudit = ({ events, ...props }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(AuditContainer, { ...props, children: events.map((event3, index) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(AuditContainer, { ...props, children: events.map((event3, index) => {
     const isLast = index === events.length - 1;
-    return /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)(AuditItem, { children: [
-      !isLast && /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(Line3, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(AvatarCircle, { children: /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(AvatarText, { children: event3.userInitials || event3.user.substring(0, 2).toUpperCase() }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)(Content6, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime90.jsxs)(HeaderRow2, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(UserText, { children: event3.user }),
-          /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(ActionText, { children: event3.action }),
-          /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(TimeText, { children: new Date(event3.timestamp).toLocaleString() })
+    return /* @__PURE__ */ (0, import_jsx_runtime91.jsxs)(AuditItem, { children: [
+      !isLast && /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(Line3, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(AvatarCircle, { children: /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(AvatarText, { children: event3.userInitials || event3.user.substring(0, 2).toUpperCase() }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime91.jsxs)(Content6, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime91.jsxs)(HeaderRow2, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(UserText, { children: event3.user }),
+          /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(ActionText, { children: event3.action }),
+          /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(TimeText, { children: new Date(event3.timestamp).toLocaleString() })
         ] }),
-        event3.details && /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(import_tamagui90.Text, { fontSize: "$3", children: event3.details }),
-        event3.diff && /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(DiffBox, { children: /* @__PURE__ */ (0, import_jsx_runtime90.jsx)(DiffText, { children: event3.diff }) })
+        event3.details && /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(import_tamagui91.Text, { fontSize: "$3", children: event3.details }),
+        event3.diff && /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(DiffBox, { children: /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(DiffText, { children: event3.diff }) })
       ] })
     ] }, event3.id);
   }) });
 };
 
 // src/organisms/A11yToolbar/A11yToolbar.tsx
-var import_tamagui91 = require("tamagui");
+var import_tamagui92 = require("tamagui");
 var import_lucide_icons50 = require("@tamagui/lucide-icons");
-var import_jsx_runtime91 = require("react/jsx-runtime");
-var ToolbarContainer = (0, import_tamagui91.styled)(import_tamagui91.XStack, {
+var import_jsx_runtime92 = require("react/jsx-runtime");
+var ToolbarContainer = (0, import_tamagui92.styled)(import_tamagui92.XStack, {
   name: "A11yToolbar",
   padding: "$2",
   backgroundColor: "$background",
@@ -13486,7 +13601,7 @@ var ToolbarContainer = (0, import_tamagui91.styled)(import_tamagui91.XStack, {
   gap: "$2",
   alignItems: "center"
 });
-var Separator8 = (0, import_tamagui91.styled)(import_tamagui91.YStack, {
+var Separator8 = (0, import_tamagui92.styled)(import_tamagui92.YStack, {
   width: 1,
   height: 24,
   backgroundColor: "$borderColor",
@@ -13500,13 +13615,13 @@ var A11yToolbar = ({
   isDark = false,
   ...props
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime91.jsxs)(ToolbarContainer, { ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(import_tamagui91.Text, { fontSize: "$2", fontWeight: "bold", marginRight: "$2", children: "Acessibilidade:" }),
-    /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(Button, { icon: import_lucide_icons50.ZoomOut, size: "sm", variant: "outline", onPress: onZoomOut, "aria-label": "Diminuir fonte" }),
-    /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(Button, { icon: import_lucide_icons50.Type, size: "sm", variant: "ghost", disabled: true, "aria-label": "Tamanho da fonte" }),
-    /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(Button, { icon: import_lucide_icons50.ZoomIn, size: "sm", variant: "outline", onPress: onZoomIn, "aria-label": "Aumentar fonte" }),
-    /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(Separator8, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime92.jsxs)(ToolbarContainer, { ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(import_tamagui92.Text, { fontSize: "$2", fontWeight: "bold", marginRight: "$2", children: "Acessibilidade:" }),
+    /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(Button, { icon: import_lucide_icons50.ZoomOut, size: "sm", variant: "outline", onPress: onZoomOut, "aria-label": "Diminuir fonte" }),
+    /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(Button, { icon: import_lucide_icons50.Type, size: "sm", variant: "ghost", disabled: true, "aria-label": "Tamanho da fonte" }),
+    /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(Button, { icon: import_lucide_icons50.ZoomIn, size: "sm", variant: "outline", onPress: onZoomIn, "aria-label": "Aumentar fonte" }),
+    /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(Separator8, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(
       Button,
       {
         icon: isDark ? import_lucide_icons50.Sun : import_lucide_icons50.Moon,
@@ -13516,7 +13631,7 @@ var A11yToolbar = ({
         "aria-label": isDark ? "Modo Claro" : "Modo Escuro"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime91.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(
       Button,
       {
         size: "sm",
@@ -13529,11 +13644,11 @@ var A11yToolbar = ({
 };
 
 // src/organisms/FileUpload/FileUpload.tsx
-var import_react62 = require("react");
-var import_tamagui92 = require("tamagui");
+var import_react66 = require("react");
+var import_tamagui93 = require("tamagui");
 var import_lucide_icons51 = require("@tamagui/lucide-icons");
-var import_jsx_runtime92 = require("react/jsx-runtime");
-var FileUploadFrame = (0, import_tamagui92.styled)(import_tamagui92.YStack, {
+var import_jsx_runtime93 = require("react/jsx-runtime");
+var FileUploadFrame = (0, import_tamagui93.styled)(import_tamagui93.YStack, {
   name: "FileUpload",
   borderWidth: 2,
   borderColor: "$borderColor",
@@ -13564,7 +13679,7 @@ var FileUpload = ({
   errorMessage = "Ocorreu um erro. Tente novamente.",
   ...props
 }) => {
-  const inputRef = (0, import_react62.useRef)(null);
+  const inputRef = (0, import_react66.useRef)(null);
   const handlePress = () => {
     if (isLoading) return;
     if (typeof document !== "undefined" && inputRef.current) {
@@ -13580,16 +13695,16 @@ var FileUpload = ({
     }
   };
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime92.jsxs)(FileUploadFrame, { ...props, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(Skeleton, { height: 32, width: 32, borderRadius: "$12" }),
-      /* @__PURE__ */ (0, import_jsx_runtime92.jsxs)(import_tamagui92.YStack, { gap: "$1", alignItems: "center", width: "100%", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(Skeleton, { height: 20, width: "60%" }),
-        /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(Skeleton, { height: 16, width: "80%" })
+    return /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(FileUploadFrame, { ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(Skeleton, { height: 32, width: 32, borderRadius: "$12" }),
+      /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(import_tamagui93.YStack, { gap: "$1", alignItems: "center", width: "100%", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(Skeleton, { height: 20, width: "60%" }),
+        /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(Skeleton, { height: 16, width: "80%" })
       ] })
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime92.jsxs)(FileUploadFrame, { hasError, ...props, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime92.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(FileUploadFrame, { hasError, ...props, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(
       Button,
       {
         variant: "ghost",
@@ -13602,16 +13717,16 @@ var FileUpload = ({
         disabled: isLoading,
         "aria-label": title,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(import_lucide_icons51.Upload, { size: 32, color: hasError ? "$red10" : "$gray10" }),
-          /* @__PURE__ */ (0, import_jsx_runtime92.jsxs)(import_tamagui92.YStack, { gap: "$1", alignItems: "center", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(import_tamagui92.Text, { fontWeight: "bold", color: hasError ? "$red11" : void 0, children: title }),
-            /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(import_tamagui92.Text, { fontSize: "$2", color: hasError ? "$red10" : "$gray11", children: subtitle })
+          /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(import_lucide_icons51.Upload, { size: 32, color: hasError ? "$red10" : "$gray10" }),
+          /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(import_tamagui93.YStack, { gap: "$1", alignItems: "center", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(import_tamagui93.Text, { fontWeight: "bold", color: hasError ? "$red11" : void 0, children: title }),
+            /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(import_tamagui93.Text, { fontSize: "$2", color: hasError ? "$red10" : "$gray11", children: subtitle })
           ] })
         ]
       }
     ),
-    hasError && errorMessage && /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(import_tamagui92.Text, { fontSize: "$2", color: "$red11", textAlign: "center", children: errorMessage }),
-    typeof document !== "undefined" && /* @__PURE__ */ (0, import_jsx_runtime92.jsx)(
+    hasError && errorMessage && /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(import_tamagui93.Text, { fontSize: "$2", color: "$red11", textAlign: "center", children: errorMessage }),
+    typeof document !== "undefined" && /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
       "input",
       {
         type: "file",
@@ -13627,8 +13742,8 @@ var FileUpload = ({
 
 // src/organisms/SchemaForm/SchemaForm.tsx
 var import_react_hook_form2 = require("react-hook-form");
-var import_tamagui93 = require("tamagui");
-var import_jsx_runtime93 = require("react/jsx-runtime");
+var import_tamagui94 = require("tamagui");
+var import_jsx_runtime94 = require("react/jsx-runtime");
 var renderFieldInput = (field, formField) => {
   const commonProps = {
     disabled: field.disabled,
@@ -13639,7 +13754,7 @@ var renderFieldInput = (field, formField) => {
     case "email":
     case "password":
     case "number":
-      return /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
         Input,
         {
           ...formField,
@@ -13649,9 +13764,9 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "textarea":
-      return /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(Textarea, { ...formField, ...commonProps, placeholder: field.placeholder });
+      return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Textarea, { ...formField, ...commonProps, placeholder: field.placeholder });
     case "switch":
-      return /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
         Switch,
         {
           checked: formField.value,
@@ -13660,7 +13775,7 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "checkbox":
-      return /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
         Checkbox,
         {
           checked: formField.value,
@@ -13669,7 +13784,7 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "date":
-      return /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
         DatePicker,
         {
           date: formField.value,
@@ -13679,18 +13794,18 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "select":
-      return /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(
+      return /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)(
         SelectRoot,
         {
           value: formField.value,
           onValueChange: formField.onChange,
           disabled: field.disabled,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(SelectRoot.Trigger, { placeholder: field.placeholder, children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(SelectRoot.Value, { placeholder: field.placeholder }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(SelectRoot.Sheet, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(SelectRoot.Content, { children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(SelectRoot.Viewport, { children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(SelectRoot.Group, { children: field.options?.map((opt, i) => /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(SelectRoot.Item, { index: i, value: opt.value, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(SelectRoot.ItemText, { children: opt.label }),
-              /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(SelectRoot.ItemIndicator, { marginLeft: "auto" })
+            /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(SelectRoot.Trigger, { placeholder: field.placeholder, children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(SelectRoot.Value, { placeholder: field.placeholder }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(SelectRoot.Sheet, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(SelectRoot.Content, { children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(SelectRoot.Viewport, { children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(SelectRoot.Group, { children: field.options?.map((opt, i) => /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)(SelectRoot.Item, { index: i, value: opt.value, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(SelectRoot.ItemText, { children: opt.label }),
+              /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(SelectRoot.ItemIndicator, { marginLeft: "auto" })
             ] }, opt.value)) }) }) })
           ]
         }
@@ -13707,32 +13822,32 @@ function SchemaForm({
   isLoading
 }) {
   const form = (0, import_react_hook_form2.useForm)({ defaultValues });
-  return /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(Form, { ...form, children: /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(FormRoot, { tag: "form", onSubmit: form.handleSubmit(onSubmit), children: /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(import_tamagui93.YStack, { gap: "$4", children: [
-    schema.map((field) => /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Form, { ...form, children: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(FormRoot, { tag: "form", onSubmit: form.handleSubmit(onSubmit), children: /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)(import_tamagui94.YStack, { gap: "$4", children: [
+    schema.map((field) => /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
       FormField,
       {
         control: form.control,
         name: field.name,
         rules: { required: field.required ? "Campo obrigat\xF3rio" : false },
-        render: ({ field: formField }) => /* @__PURE__ */ (0, import_jsx_runtime93.jsxs)(FormItem, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(FormLabel, { children: field.label }),
-          /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(FormControl, { children: renderFieldInput(field, formField) }),
-          field.description && /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(FormDescription, { children: field.description }),
-          /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(FormMessage, {})
+        render: ({ field: formField }) => /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)(FormItem, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(FormLabel, { children: field.label }),
+          /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(FormControl, { children: renderFieldInput(field, formField) }),
+          field.description && /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(FormDescription, { children: field.description }),
+          /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(FormMessage, {})
         ] })
       },
       field.name
     )),
-    /* @__PURE__ */ (0, import_jsx_runtime93.jsx)(Button, { type: "submit", loading: isLoading, theme: "active", children: submitText })
+    /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Button, { type: "submit", loading: isLoading, theme: "active", children: submitText })
   ] }) }) });
 }
 
 // src/organisms/HeatmapChart/HeatmapChart.tsx
-var import_tamagui94 = require("tamagui");
+var import_tamagui95 = require("tamagui");
 var import_victory12 = require("victory");
 var import_lucide_icons52 = require("@tamagui/lucide-icons");
-var import_react63 = require("react");
-var import_jsx_runtime94 = require("react/jsx-runtime");
+var import_react67 = require("react");
+var import_jsx_runtime95 = require("react/jsx-runtime");
 var HeatmapChart = ({
   data,
   xKey,
@@ -13743,10 +13858,10 @@ var HeatmapChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui94.useTheme)();
+  const theme = (0, import_tamagui95.useTheme)();
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
-  const processedData = (0, import_react63.useMemo)(() => {
+  const processedData = (0, import_react67.useMemo)(() => {
     if (!data) return [];
     const values = data.map((d) => Number(d[valueKey]));
     const min = Math.min(...values);
@@ -13770,28 +13885,28 @@ var HeatmapChart = ({
   };
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)(import_tamagui94.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(import_lucide_icons52.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(import_tamagui94.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(import_tamagui95.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_lucide_icons52.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_tamagui95.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)(import_tamagui94.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(import_lucide_icons52.Grid, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(import_tamagui94.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(import_tamagui95.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_lucide_icons52.Grid, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_tamagui95.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(
       import_victory12.VictoryChart,
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(import_victory12.VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_victory12.VictoryContainer, { responsive: true }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
             import_victory12.VictoryAxis,
             {
               style: {
@@ -13800,7 +13915,7 @@ var HeatmapChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
             import_victory12.VictoryAxis,
             {
               dependentAxis: true,
@@ -13810,7 +13925,7 @@ var HeatmapChart = ({
               }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime94.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
             import_victory12.VictoryScatter,
             {
               data: processedData,
@@ -13827,18 +13942,18 @@ var HeatmapChart = ({
       }
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime94.jsxs)(import_tamagui94.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(import_tamagui95.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/TreemapChart/TreemapChart.tsx
-var import_tamagui95 = require("tamagui");
+var import_tamagui96 = require("tamagui");
 var import_lucide_icons53 = require("@tamagui/lucide-icons");
-var import_react64 = require("react");
+var import_react68 = require("react");
 var import_react_native_svg5 = __toESM(require("react-native-svg"));
-var import_jsx_runtime95 = require("react/jsx-runtime");
+var import_jsx_runtime96 = require("react/jsx-runtime");
 var layout = (nodes, container) => {
   if (nodes.length === 0) return [];
   if (nodes.length === 1) {
@@ -13892,9 +14007,9 @@ var TreemapChart = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui95.useTheme)();
+  const theme = (0, import_tamagui96.useTheme)();
   const textColor = theme.color?.get() || "#fff";
-  const processedNodes = (0, import_react64.useMemo)(() => {
+  const processedNodes = (0, import_react68.useMemo)(() => {
     if (!data) return [];
     const nodes = data.map((d) => ({
       value: Number(d[valueKey]),
@@ -13918,22 +14033,22 @@ var TreemapChart = ({
   const getColor = (index) => colors[index % colors.length];
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(import_tamagui95.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_lucide_icons53.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_tamagui95.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(import_tamagui96.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(import_lucide_icons53.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(import_tamagui96.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(import_tamagui95.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_lucide_icons53.Grid, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_tamagui95.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(import_tamagui96.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(import_lucide_icons53.Grid, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(import_tamagui96.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(import_react_native_svg5.default, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(import_react_native_svg5.G, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(import_react_native_svg5.default, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(import_react_native_svg5.G, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(
         import_react_native_svg5.Rect,
         {
           x: node.rect?.x,
@@ -13945,7 +14060,7 @@ var TreemapChart = ({
           strokeWidth: "1"
         }
       ),
-      node.rect && node.rect.w > 20 && node.rect.h > 15 && /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
+      node.rect && node.rect.w > 20 && node.rect.h > 15 && /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(
         import_react_native_svg5.Text,
         {
           x: (node.rect.x || 0) + (node.rect.w || 0) / 2,
@@ -13959,18 +14074,18 @@ var TreemapChart = ({
       )
     ] }, i)) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(import_tamagui95.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(import_tamagui96.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/SankeyDiagram/SankeyDiagram.tsx
-var import_tamagui96 = require("tamagui");
+var import_tamagui97 = require("tamagui");
 var import_lucide_icons54 = require("@tamagui/lucide-icons");
-var import_react65 = require("react");
+var import_react69 = require("react");
 var import_react_native_svg6 = __toESM(require("react-native-svg"));
-var import_jsx_runtime96 = require("react/jsx-runtime");
+var import_jsx_runtime97 = require("react/jsx-runtime");
 var computeLayout = (data, width, height) => {
   const { nodes: rawNodes, links: rawLinks } = data;
   const nodes = rawNodes.map((n) => ({
@@ -14057,30 +14172,30 @@ var SankeyDiagram = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui96.useTheme)();
+  const theme = (0, import_tamagui97.useTheme)();
   const primaryColor = theme.primary?.get() || "#0070f3";
-  const layout2 = (0, import_react65.useMemo)(() => {
+  const layout2 = (0, import_react69.useMemo)(() => {
     if (!data || data.nodes.length === 0) return null;
     return computeLayout(data, width, height);
   }, [data, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(import_tamagui96.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(import_lucide_icons54.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(import_tamagui96.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_tamagui97.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_lucide_icons54.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_tamagui97.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.nodes.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(import_tamagui96.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(import_lucide_icons54.Activity, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(import_tamagui96.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_tamagui97.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_lucide_icons54.Activity, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_tamagui97.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const { nodes, links } = layout2;
-    return /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(import_react_native_svg6.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_react_native_svg6.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: [
       links.map((link, i) => {
         const x0 = link.sourceNode.x + 20;
         const x1 = link.targetNode.x;
@@ -14088,7 +14203,7 @@ var SankeyDiagram = ({
         const y1 = link.y1;
         const midX = (x0 + x1) / 2;
         const d = `M ${x0} ${y0} C ${midX} ${y0}, ${midX} ${y1}, ${x1} ${y1}`;
-        return /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
           import_react_native_svg6.Path,
           {
             d,
@@ -14100,8 +14215,8 @@ var SankeyDiagram = ({
           `link-${i}`
         );
       }),
-      nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(import_react_native_svg6.G, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(
+      nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_react_native_svg6.G, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
           import_react_native_svg6.Rect,
           {
             x: node.x,
@@ -14112,7 +14227,7 @@ var SankeyDiagram = ({
             fillOpacity: 0.8
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
           import_react_native_svg6.Text,
           {
             x: node.x + 25,
@@ -14126,18 +14241,18 @@ var SankeyDiagram = ({
       ] }, `node-${i}`))
     ] });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime96.jsxs)(import_tamagui96.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_tamagui97.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/ChordDiagram/ChordDiagram.tsx
-var import_tamagui97 = require("tamagui");
+var import_tamagui98 = require("tamagui");
 var import_lucide_icons55 = require("@tamagui/lucide-icons");
-var import_react66 = require("react");
+var import_react70 = require("react");
 var import_react_native_svg7 = __toESM(require("react-native-svg"));
-var import_jsx_runtime97 = require("react/jsx-runtime");
+var import_jsx_runtime98 = require("react/jsx-runtime");
 var polarToCartesian = (centerX, centerY, radius, angleInRadians) => {
   return {
     x: centerX + radius * Math.cos(angleInRadians),
@@ -14253,30 +14368,30 @@ var ChordDiagram = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui97.useTheme)();
-  const layout2 = (0, import_react66.useMemo)(() => {
+  const theme = (0, import_tamagui98.useTheme)();
+  const layout2 = (0, import_react70.useMemo)(() => {
     if (!matrix || matrix.length === 0) return null;
     return computeLayout2(matrix, labels || [], width, height);
   }, [matrix, labels, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_tamagui97.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_lucide_icons55.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_tamagui97.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_tamagui98.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_lucide_icons55.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_tamagui98.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.groups.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_tamagui97.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_lucide_icons55.Circle, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_tamagui97.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_tamagui98.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_lucide_icons55.Circle, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_tamagui98.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const { groups, ribbons, cx, cy, outerRadius } = layout2;
-    return /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_react_native_svg7.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_react_native_svg7.G, { children: [
-      ribbons.map((ribbon, i) => /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_react_native_svg7.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_react_native_svg7.G, { children: [
+      ribbons.map((ribbon, i) => /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
         import_react_native_svg7.Path,
         {
           d: ribbon.d,
@@ -14288,8 +14403,8 @@ var ChordDiagram = ({
       )),
       groups.map((group, i) => {
         const labelPos = polarToCartesian(cx, cy, outerRadius + 20, group.midAngle);
-        return /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_react_native_svg7.G, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_react_native_svg7.G, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
             import_react_native_svg7.Path,
             {
               d: group.path,
@@ -14297,7 +14412,7 @@ var ChordDiagram = ({
               stroke: theme.borderColor?.get() || "white"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
             import_react_native_svg7.Text,
             {
               x: labelPos.x,
@@ -14313,18 +14428,18 @@ var ChordDiagram = ({
       })
     ] }) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_tamagui97.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_tamagui98.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/NetworkGraph/NetworkGraph.tsx
-var import_tamagui98 = require("tamagui");
+var import_tamagui99 = require("tamagui");
 var import_lucide_icons56 = require("@tamagui/lucide-icons");
-var import_react67 = require("react");
+var import_react71 = require("react");
 var import_react_native_svg8 = __toESM(require("react-native-svg"));
-var import_jsx_runtime98 = require("react/jsx-runtime");
+var import_jsx_runtime99 = require("react/jsx-runtime");
 var runSimulation = (nodes, links, width, height) => {
   const simNodes = nodes.map((n, i) => ({
     ...n,
@@ -14400,30 +14515,30 @@ var NetworkGraph = ({
   error: error2 = null,
   headerContent
 }) => {
-  const theme = (0, import_tamagui98.useTheme)();
+  const theme = (0, import_tamagui99.useTheme)();
   const primaryColor = theme.primary?.get() || "#0070f3";
-  const layout2 = (0, import_react67.useMemo)(() => {
+  const layout2 = (0, import_react71.useMemo)(() => {
     if (!data || data.nodes.length === 0) return null;
     return runSimulation(data.nodes, data.links, width, height);
   }, [data, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(Skeleton, { height, width: "100%" });
     }
     if (error2) {
-      return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_tamagui98.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_lucide_icons56.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_tamagui98.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_lucide_icons56.AlertTriangle, { color: "$red10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_tamagui99.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.nodes.length === 0) {
-      return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_tamagui98.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_lucide_icons56.Share2, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_tamagui98.Text, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_lucide_icons56.Share2, { color: "$gray10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_tamagui99.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(import_react_native_svg8.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_react_native_svg8.G, { children: [
-      layout2.links.map((link, i) => /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_react_native_svg8.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_react_native_svg8.G, { children: [
+      layout2.links.map((link, i) => /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
         import_react_native_svg8.Line,
         {
           x1: link.source.x,
@@ -14435,8 +14550,8 @@ var NetworkGraph = ({
         },
         `link-${i}`
       )),
-      layout2.nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_react_native_svg8.G, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
+      layout2.nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_react_native_svg8.G, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
           import_react_native_svg8.Circle,
           {
             cx: node.x,
@@ -14447,7 +14562,7 @@ var NetworkGraph = ({
             strokeWidth: "2"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
           import_react_native_svg8.Text,
           {
             x: node.x,
@@ -14462,17 +14577,17 @@ var NetworkGraph = ({
       ] }, `node-${i}`))
     ] }) });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_tamagui98.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/MediaGrid/MediaGrid.tsx
-var import_react68 = require("react");
-var import_tamagui99 = require("tamagui");
+var import_react72 = require("react");
+var import_tamagui100 = require("tamagui");
 var import_lucide_icons57 = require("@tamagui/lucide-icons");
-var import_jsx_runtime99 = require("react/jsx-runtime");
+var import_jsx_runtime100 = require("react/jsx-runtime");
 var MediaGrid = ({
   items,
   selectedIds = [],
@@ -14485,7 +14600,7 @@ var MediaGrid = ({
   onViewModeChange,
   acceptedTypes
 }) => {
-  const [internalViewMode, setInternalViewMode] = (0, import_react68.useState)(viewMode);
+  const [internalViewMode, setInternalViewMode] = (0, import_react72.useState)(viewMode);
   const currentViewMode = onViewModeChange ? viewMode : internalViewMode;
   const handleViewModeChange = (mode) => {
     if (onViewModeChange) {
@@ -14494,12 +14609,12 @@ var MediaGrid = ({
       setInternalViewMode(mode);
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.YStack, { gap: "$4", f: 1, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.XStack, { justifyContent: "space-between", alignItems: "center", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.XStack, { gap: "$2", children: [
-        onUpload && /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_tamagui99.Button, { icon: import_lucide_icons57.Upload, onPress: onUpload, children: "Upload" }),
-        selectedIds.length > 0 && onDelete && /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(
-          import_tamagui99.Button,
+  return /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.YStack, { gap: "$4", f: 1, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.XStack, { justifyContent: "space-between", alignItems: "center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.XStack, { gap: "$2", children: [
+        onUpload && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Button, { icon: import_lucide_icons57.Upload, onPress: onUpload, children: "Upload" }),
+        selectedIds.length > 0 && onDelete && /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(
+          import_tamagui100.Button,
           {
             theme: "red",
             icon: import_lucide_icons57.Trash2,
@@ -14512,9 +14627,9 @@ var MediaGrid = ({
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.XStack, { gap: "$2", backgroundColor: "$background", padding: "$1", borderRadius: "$4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-          import_tamagui99.Button,
+      /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.XStack, { gap: "$2", backgroundColor: "$background", padding: "$1", borderRadius: "$4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
+          import_tamagui100.Button,
           {
             size: "$3",
             chromeless: currentViewMode !== "grid",
@@ -14523,8 +14638,8 @@ var MediaGrid = ({
             onPress: () => handleViewModeChange("grid")
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-          import_tamagui99.Button,
+        /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
+          import_tamagui100.Button,
           {
             size: "$3",
             chromeless: currentViewMode !== "list",
@@ -14535,8 +14650,8 @@ var MediaGrid = ({
         )
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_tamagui99.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.XStack, { flexWrap: "wrap", gap: "$4", children: [
-      items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.ScrollView, { children: /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.XStack, { flexWrap: "wrap", gap: "$4", children: [
+      items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
         MediaItemCard,
         {
           item,
@@ -14546,7 +14661,7 @@ var MediaGrid = ({
         },
         item.id
       )),
-      items.length === 0 && !isLoading && /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_tamagui99.YStack, { f: 1, alignItems: "center", justifyContent: "center", padding: "$10", children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_tamagui99.Text, { color: "$color10", children: "No media found" }) })
+      items.length === 0 && !isLoading && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.YStack, { f: 1, alignItems: "center", justifyContent: "center", padding: "$10", children: /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Text, { color: "$color10", children: "No media found" }) })
     ] }) })
   ] });
 };
@@ -14557,8 +14672,8 @@ var MediaItemCard = ({
   viewMode
 }) => {
   if (viewMode === "list") {
-    return /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(
-      import_tamagui99.XStack,
+    return /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(
+      import_tamagui100.XStack,
       {
         width: "100%",
         backgroundColor: "$background",
@@ -14572,8 +14687,8 @@ var MediaItemCard = ({
         borderColor: selected ? "$blue10" : "$borderColor",
         borderRadius: "$4",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-            import_tamagui99.Image,
+          /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
+            import_tamagui100.Image,
             {
               source: { uri: item.thumbnailUrl || item.url },
               width: 40,
@@ -14582,20 +14697,20 @@ var MediaItemCard = ({
               objectFit: "cover"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.YStack, { f: 1, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_tamagui99.Text, { fontWeight: "bold", children: item.title }),
-            /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_tamagui99.Text, { fontSize: "$2", color: "$color10", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.YStack, { f: 1, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Text, { fontWeight: "bold", children: item.title }),
+            /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.Text, { fontSize: "$2", color: "$color10", children: [
               item.type,
               " \u2022 ",
               formatBytes(item.size)
             ] })
           ] }),
-          selected && /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_lucide_icons57.Check, { color: "$blue10" })
+          selected && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_lucide_icons57.Check, { color: "$blue10" })
         ]
       }
     );
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(
     Card,
     {
       width: 180,
@@ -14609,8 +14724,8 @@ var MediaItemCard = ({
       pressStyle: { scale: 0.98 },
       animation: "quick",
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-          import_tamagui99.Image,
+        /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
+          import_tamagui100.Image,
           {
             source: { uri: item.thumbnailUrl || item.url },
             width: "100%",
@@ -14618,8 +14733,8 @@ var MediaItemCard = ({
             objectFit: "cover"
           }
         ),
-        selected && /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-          import_tamagui99.Stack,
+        selected && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
+          import_tamagui100.Stack,
           {
             position: "absolute",
             top: 8,
@@ -14627,11 +14742,11 @@ var MediaItemCard = ({
             backgroundColor: "$blue10",
             padding: 4,
             borderRadius: 100,
-            children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_lucide_icons57.Check, { size: 12, color: "white" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_lucide_icons57.Check, { size: 12, color: "white" })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-          import_tamagui99.YStack,
+        /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
+          import_tamagui100.YStack,
           {
             position: "absolute",
             bottom: 0,
@@ -14639,7 +14754,7 @@ var MediaItemCard = ({
             right: 0,
             backgroundColor: "rgba(0,0,0,0.5)",
             padding: "$2",
-            children: /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_tamagui99.Text, { color: "white", numberOfLines: 1, fontSize: "$2", children: item.title })
+            children: /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Text, { color: "white", numberOfLines: 1, fontSize: "$2", children: item.title })
           }
         )
       ]
@@ -14657,9 +14772,9 @@ function formatBytes(bytes, decimals = 2) {
 }
 
 // src/organisms/AuthScreen/AuthScreen.tsx
-var import_react69 = require("react");
-var import_tamagui100 = require("tamagui");
-var import_jsx_runtime100 = require("react/jsx-runtime");
+var import_react73 = require("react");
+var import_tamagui101 = require("tamagui");
+var import_jsx_runtime101 = require("react/jsx-runtime");
 var AuthScreen = ({
   logo,
   title,
@@ -14672,11 +14787,11 @@ var AuthScreen = ({
   defaultView = "login",
   error: error2
 }) => {
-  const [view, setView] = (0, import_react69.useState)(defaultView);
-  const [email, setEmail] = (0, import_react69.useState)("");
-  const [password, setPassword] = (0, import_react69.useState)("");
-  const [confirmPassword, setConfirmPassword] = (0, import_react69.useState)("");
-  const [name, setName] = (0, import_react69.useState)("");
+  const [view, setView] = (0, import_react73.useState)(defaultView);
+  const [email, setEmail] = (0, import_react73.useState)("");
+  const [password, setPassword] = (0, import_react73.useState)("");
+  const [confirmPassword, setConfirmPassword] = (0, import_react73.useState)("");
+  const [name, setName] = (0, import_react73.useState)("");
   const handleSubmit = () => {
     if (view === "login" && onLogin) {
       onLogin({ email, password });
@@ -14686,24 +14801,24 @@ var AuthScreen = ({
       onForgotPassword(email);
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.YStack, { f: 1, alignItems: "center", justifyContent: "center", padding: "$4", backgroundColor: "$background", children: /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(Card, { width: "100%", maxWidth: 400, padding: "$6", gap: "$4", elevation: "$2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.YStack, { alignItems: "center", gap: "$2", marginBottom: "$4", children: [
-      typeof logo === "string" ? /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Image, { source: { uri: logo }, width: 60, height: 60, borderRadius: "$2" }) : logo,
-      /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Text, { fontSize: "$6", fontWeight: "bold", children: title || (view === "login" ? "Welcome Back" : "Create Account") }),
-      subtitle && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Text, { color: "$color10", textAlign: "center", children: subtitle })
+  return /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(import_tamagui101.YStack, { f: 1, alignItems: "center", justifyContent: "center", padding: "$4", backgroundColor: "$background", children: /* @__PURE__ */ (0, import_jsx_runtime101.jsxs)(Card, { width: "100%", maxWidth: 400, padding: "$6", gap: "$4", elevation: "$2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime101.jsxs)(import_tamagui101.YStack, { alignItems: "center", gap: "$2", marginBottom: "$4", children: [
+      typeof logo === "string" ? /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(import_tamagui101.Image, { source: { uri: logo }, width: 60, height: 60, borderRadius: "$2" }) : logo,
+      /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(import_tamagui101.Text, { fontSize: "$6", fontWeight: "bold", children: title || (view === "login" ? "Welcome Back" : "Create Account") }),
+      subtitle && /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(import_tamagui101.Text, { color: "$color10", textAlign: "center", children: subtitle })
     ] }),
-    error2 && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.YStack, { backgroundColor: "$red2", padding: "$2", borderRadius: "$2", children: /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Text, { color: "$red10", children: error2 }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.YStack, { gap: "$3", children: [
-      view === "register" && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_tamagui100.Input,
+    error2 && /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(import_tamagui101.YStack, { backgroundColor: "$red2", padding: "$2", borderRadius: "$2", children: /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(import_tamagui101.Text, { color: "$red10", children: error2 }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime101.jsxs)(import_tamagui101.YStack, { gap: "$3", children: [
+      view === "register" && /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
+        Input,
         {
           placeholder: "Name",
           value: name,
           onChangeText: setName
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_tamagui100.Input,
+      /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
+        Input,
         {
           placeholder: "Email",
           value: email,
@@ -14711,8 +14826,8 @@ var AuthScreen = ({
           autoCapitalize: "none"
         }
       ),
-      view !== "forgot-password" && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_tamagui100.Input,
+      view !== "forgot-password" && /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
+        Input,
         {
           placeholder: "Password",
           value: password,
@@ -14720,8 +14835,8 @@ var AuthScreen = ({
           secureTextEntry: true
         }
       ),
-      view === "register" && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_tamagui100.Input,
+      view === "register" && /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
+        Input,
         {
           placeholder: "Confirm Password",
           value: confirmPassword,
@@ -14729,8 +14844,8 @@ var AuthScreen = ({
           secureTextEntry: true
         }
       ),
-      view === "login" && onForgotPassword && /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_tamagui100.Text,
+      view === "login" && onForgotPassword && /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
+        import_tamagui101.Text,
         {
           fontSize: "$2",
           color: "$blue10",
@@ -14740,25 +14855,25 @@ var AuthScreen = ({
           children: "Forgot password?"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_tamagui100.Button,
+      /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
+        Button,
         {
           themeInverse: true,
           onPress: handleSubmit,
           disabled: isLoading,
-          icon: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Spinner, {}) : void 0,
+          icon: isLoading ? /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(Spinner, {}) : void 0,
           children: view === "login" ? "Sign In" : view === "register" ? "Sign Up" : "Reset Password"
         }
       )
     ] }),
-    socialProviders && socialProviders.length > 0 && view === "login" && /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.YStack, { gap: "$3", marginTop: "$2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.XStack, { alignItems: "center", gap: "$2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Separator, {}),
-        /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Text, { fontSize: "$2", color: "$color10", children: "Or continue with" }),
-        /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Separator, {})
+    socialProviders && socialProviders.length > 0 && view === "login" && /* @__PURE__ */ (0, import_jsx_runtime101.jsxs)(import_tamagui101.YStack, { gap: "$3", marginTop: "$2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime101.jsxs)(import_tamagui101.XStack, { alignItems: "center", gap: "$2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(Separator, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(import_tamagui101.Text, { fontSize: "$2", color: "$color10", children: "Or continue with" }),
+        /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(Separator, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.XStack, { gap: "$2", justifyContent: "center", children: socialProviders.map((provider) => /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_tamagui100.Button,
+      /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(import_tamagui101.XStack, { gap: "$2", justifyContent: "center", children: socialProviders.map((provider) => /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
+        Button,
         {
           icon: provider.icon,
           onPress: provider.onClick,
@@ -14768,11 +14883,11 @@ var AuthScreen = ({
         provider.name
       )) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.YStack, { alignItems: "center", marginTop: "$4", children: view === "login" ? /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.Text, { fontSize: "$2", color: "$color10", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(import_tamagui101.YStack, { alignItems: "center", marginTop: "$4", children: view === "login" ? /* @__PURE__ */ (0, import_jsx_runtime101.jsxs)(import_tamagui101.Text, { fontSize: "$2", color: "$color10", children: [
       "Don't have an account?",
       " ",
-      /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_tamagui100.Text,
+      /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
+        import_tamagui101.Text,
         {
           color: "$blue10",
           fontWeight: "bold",
@@ -14781,11 +14896,11 @@ var AuthScreen = ({
           children: "Sign Up"
         }
       )
-    ] }) : /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_tamagui100.Text, { fontSize: "$2", color: "$color10", children: [
+    ] }) : /* @__PURE__ */ (0, import_jsx_runtime101.jsxs)(import_tamagui101.Text, { fontSize: "$2", color: "$color10", children: [
       "Already have an account?",
       " ",
-      /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_tamagui100.Text,
+      /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(
+        import_tamagui101.Text,
         {
           color: "$blue10",
           fontWeight: "bold",
@@ -14799,19 +14914,19 @@ var AuthScreen = ({
 };
 
 // src/molecules/Field/Field.tsx
-var import_react70 = __toESM(require("react"));
-var import_tamagui101 = require("tamagui");
-var import_jsx_runtime101 = require("react/jsx-runtime");
-var FieldFrame = (0, import_tamagui101.styled)(import_tamagui101.YStack, {
+var import_react74 = __toESM(require("react"));
+var import_tamagui102 = require("tamagui");
+var import_jsx_runtime102 = require("react/jsx-runtime");
+var FieldFrame = (0, import_tamagui102.styled)(import_tamagui102.YStack, {
   name: "Field",
   gap: "$2"
 });
 var FieldLabel = Label;
-var FieldControlFrame = (0, import_tamagui101.styled)(import_tamagui101.YStack, {
+var FieldControlFrame = (0, import_tamagui102.styled)(import_tamagui102.YStack, {
   name: "FieldControl",
   flex: 1
 });
-var FieldErrorFrame = (0, import_tamagui101.styled)(import_tamagui101.Text, {
+var FieldErrorFrame = (0, import_tamagui102.styled)(import_tamagui102.Text, {
   name: "FieldError",
   color: "$destructive",
   fontSize: "$2"
@@ -14825,39 +14940,39 @@ var FieldRoot = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ (0, import_jsx_runtime101.jsxs)(FieldFrame, { ...props, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(Skeleton, { height: "$4", width: "$20" }),
-      /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(Skeleton, { height: "$10" })
+    return /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(FieldFrame, { ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(Skeleton, { height: "$4", width: "$20" }),
+      /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(Skeleton, { height: "$10" })
     ] });
   }
-  const childrenArray = import_react70.default.Children.toArray(children);
+  const childrenArray = import_react74.default.Children.toArray(children);
   const finalChildren = childrenArray.map((child, index) => {
-    if (!import_react70.default.isValidElement(child)) {
+    if (!import_react74.default.isValidElement(child)) {
       return child;
     }
     if (child.type === FieldLabel) {
-      return import_react70.default.cloneElement(child, {
+      return import_react74.default.cloneElement(child, {
         key: `field-child-${index}`,
         state: hasError ? "error" : void 0,
         disabled: isDisabled2
       });
     }
     if (child.type === FieldControlFrame) {
-      const inputChild = import_react70.default.Children.only(child.props.children);
-      const clonedInput = import_react70.default.cloneElement(
+      const inputChild = import_react74.default.Children.only(child.props.children);
+      const clonedInput = import_react74.default.cloneElement(
         inputChild,
         {
           state: hasError ? "error" : void 0,
           disabled: isDisabled2
         }
       );
-      const finalControl = import_react70.default.cloneElement(
+      const finalControl = import_react74.default.cloneElement(
         child,
         { key: `field-child-${index}` },
         clonedInput
       );
       if (rightSlot) {
-        return /* @__PURE__ */ (0, import_jsx_runtime101.jsxs)(import_tamagui101.XStack, { gap: "$2", alignItems: "center", children: [
+        return /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(import_tamagui102.XStack, { gap: "$2", alignItems: "center", children: [
           finalControl,
           rightSlot
         ] }, `field-child-${index}`);
@@ -14866,7 +14981,7 @@ var FieldRoot = ({
     }
     return child;
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime101.jsx)(FieldFrame, { ...props, children: finalChildren });
+  return /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(FieldFrame, { ...props, children: finalChildren });
 };
 FieldRoot.displayName = "Field";
 var Field = Object.assign(FieldRoot, {
@@ -14876,10 +14991,10 @@ var Field = Object.assign(FieldRoot, {
 });
 
 // src/molecules/InputGroup/InputGroup.tsx
-var import_tamagui102 = require("tamagui");
-var import_react71 = require("react");
-var import_jsx_runtime102 = require("react/jsx-runtime");
-var InputGroupFrame = (0, import_tamagui102.styled)(import_tamagui102.XStack, {
+var import_tamagui103 = require("tamagui");
+var import_react75 = require("react");
+var import_jsx_runtime103 = require("react/jsx-runtime");
+var InputGroupFrame = (0, import_tamagui103.styled)(import_tamagui103.XStack, {
   name: "InputGroup",
   alignItems: "center",
   borderWidth: 1,
@@ -14906,11 +15021,11 @@ var InputGroup = ({
   hasError,
   isDisabled: isDisabled2
 }) => {
-  const childrenArray = import_react71.Children.toArray(children);
-  return /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
-    import_react71.Children.map(childrenArray, (child) => {
+  const childrenArray = import_react75.Children.toArray(children);
+  return /* @__PURE__ */ (0, import_jsx_runtime103.jsxs)(InputGroupFrame, { hasError, disabled: isDisabled2, gap: "$2", children: [
+    import_react75.Children.map(childrenArray, (child) => {
       if (child.type === Input) {
-        return (0, import_react71.cloneElement)(child, {
+        return (0, import_react75.cloneElement)(child, {
           disabled: isDisabled2,
           borderWidth: 0,
           backgroundColor: "transparent",
@@ -14922,29 +15037,29 @@ var InputGroup = ({
         });
       }
       if (child.type === Button) {
-        return (0, import_react71.cloneElement)(child, {
+        return (0, import_react75.cloneElement)(child, {
           disabled: isDisabled2 || isLoading,
           variant: "ghost"
         });
       }
       return child;
     }),
-    isLoading && /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(import_tamagui102.Spinner, {})
+    isLoading && /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(import_tamagui103.Spinner, {})
   ] });
 };
 
 // src/molecules/NativeSelect/NativeSelect.tsx
 var import_lucide_icons58 = require("@tamagui/lucide-icons");
-var import_react72 = require("react");
-var import_tamagui104 = require("tamagui");
+var import_react76 = require("react");
+var import_tamagui105 = require("tamagui");
 
 // src/molecules/NativeSelect/NativeSelect.styles.ts
-var import_tamagui103 = require("tamagui");
-var SelectContainer = (0, import_tamagui103.styled)(import_tamagui103.YStack, {
+var import_tamagui104 = require("tamagui");
+var SelectContainer = (0, import_tamagui104.styled)(import_tamagui104.YStack, {
   name: "SelectContainer",
   gap: "$2"
 });
-var SelectTrigger2 = (0, import_tamagui103.styled)(import_tamagui103.XStack, {
+var SelectTrigger2 = (0, import_tamagui104.styled)(import_tamagui104.XStack, {
   name: "SelectTrigger",
   alignItems: "center",
   justifyContent: "space-between",
@@ -14968,7 +15083,7 @@ var SelectTrigger2 = (0, import_tamagui103.styled)(import_tamagui103.XStack, {
     }
   }
 });
-var SelectElement = (0, import_tamagui103.styled)("select", {
+var SelectElement = (0, import_tamagui104.styled)("select", {
   name: "Select",
   flex: 1,
   height: "100%",
@@ -14980,7 +15095,7 @@ var SelectElement = (0, import_tamagui103.styled)("select", {
   // Reset native styles
   appearance: "none"
 });
-var Label9 = (0, import_tamagui103.styled)(import_tamagui103.Label, {
+var Label8 = (0, import_tamagui104.styled)(import_tamagui104.Label, {
   name: "Label",
   color: "$color",
   fontSize: "$4",
@@ -14994,22 +15109,22 @@ var Label9 = (0, import_tamagui103.styled)(import_tamagui103.Label, {
 });
 
 // src/molecules/NativeSelect/NativeSelect.tsx
-var import_jsx_runtime103 = require("react/jsx-runtime");
-var NativeSelect = (0, import_react72.forwardRef)(
+var import_jsx_runtime104 = require("react/jsx-runtime");
+var NativeSelect = (0, import_react76.forwardRef)(
   ({ children, label, id: id2, hasError = false, isLoading = false, disabled = false, ...props }, ref) => {
-    const internalId = (0, import_react72.useId)();
+    const internalId = (0, import_react76.useId)();
     const selectId = id2 || internalId;
     if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime103.jsxs)(SelectContainer, { children: [
-        label && /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(Skeleton, { height: 20, width: 100 }),
-        /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(Skeleton, { height: 40 })
+      return /* @__PURE__ */ (0, import_jsx_runtime104.jsxs)(SelectContainer, { children: [
+        label && /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(Skeleton, { height: 20, width: 100 }),
+        /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(Skeleton, { height: 40 })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime103.jsxs)(SelectContainer, { children: [
-      label && /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(Label9, { htmlFor: selectId, hasError, children: label }),
-      /* @__PURE__ */ (0, import_jsx_runtime103.jsxs)(SelectTrigger2, { hasError, disabled, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(SelectElement, { id: selectId, ref, disabled, ...props, children }),
-        /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(import_tamagui104.YStack, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(import_lucide_icons58.AlertCircle, { size: 16, color: "$red10" }) : /* @__PURE__ */ (0, import_jsx_runtime103.jsx)(import_lucide_icons58.ChevronDown, { size: 16, color: "$color10" }) })
+    return /* @__PURE__ */ (0, import_jsx_runtime104.jsxs)(SelectContainer, { children: [
+      label && /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(Label8, { htmlFor: selectId, hasError, children: label }),
+      /* @__PURE__ */ (0, import_jsx_runtime104.jsxs)(SelectTrigger2, { hasError, disabled, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(SelectElement, { id: selectId, ref, disabled, ...props, children }),
+        /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(import_tamagui105.YStack, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(import_lucide_icons58.AlertCircle, { size: 16, color: "$red10" }) : /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(import_lucide_icons58.ChevronDown, { size: 16, color: "$color10" }) })
       ] })
     ] });
   }
@@ -15017,28 +15132,28 @@ var NativeSelect = (0, import_react72.forwardRef)(
 NativeSelect.displayName = "NativeSelect";
 
 // src/providers/AppProviders.tsx
-var import_tamagui108 = require("tamagui");
+var import_tamagui109 = require("tamagui");
 var import_portal2 = require("@tamagui/portal");
 
 // src/tamagui.config.ts
-var import_tamagui107 = require("tamagui");
+var import_tamagui108 = require("tamagui");
 
 // ../../node_modules/@tamagui/use-presence/dist/esm/PresenceContext.mjs
-var React72 = __toESM(require("react"), 1);
-var import_jsx_runtime104 = require("react/jsx-runtime");
-var PresenceContext = React72.createContext(null);
+var React75 = __toESM(require("react"), 1);
+var import_jsx_runtime105 = require("react/jsx-runtime");
+var PresenceContext = React75.createContext(null);
 var ResetPresence = (props) => {
-  const parent = React72.useContext(PresenceContext);
-  return /* @__PURE__ */ (0, import_jsx_runtime104.jsx)(PresenceContext.Provider, {
+  const parent = React75.useContext(PresenceContext);
+  return /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(PresenceContext.Provider, {
     value: props.disable ? parent : null,
     children: props.children
   });
 };
 
 // ../../node_modules/@tamagui/use-presence/dist/esm/usePresence.mjs
-var React73 = __toESM(require("react"), 1);
+var React76 = __toESM(require("react"), 1);
 function usePresence() {
-  const context = React73.useContext(PresenceContext);
+  const context = React76.useContext(PresenceContext);
   if (!context) return [true, null, context];
   const {
     id: id2,
@@ -15046,11 +15161,11 @@ function usePresence() {
     onExitComplete,
     register
   } = context;
-  return React73.useEffect(() => register(id2), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id2), context] : [true, void 0, context];
+  return React76.useEffect(() => register(id2), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id2), context] : [true, void 0, context];
 }
 
 // ../../node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
-var import_react83 = __toESM(require("react"), 1);
+var import_react87 = __toESM(require("react"), 1);
 
 // ../../node_modules/react-native-web/dist/modules/AccessibilityUtil/isDisabled.js
 var isDisabled = (props) => props.disabled || Array.isArray(props.accessibilityStates) && props.accessibilityStates.indexOf("disabled") > -1;
@@ -16796,10 +16911,10 @@ var createDOMProps = (elementType, props, options) => {
 var createDOMProps_default = createDOMProps;
 
 // ../../node_modules/react-native-web/dist/exports/createElement/index.js
-var import_react74 = __toESM(require("react"));
+var import_react78 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/modules/useLocale/index.js
-var import_react73 = __toESM(require("react"));
+var import_react77 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/modules/useLocale/isLocaleRTL.js
 var rtlScripts = /* @__PURE__ */ new Set(["Arab", "Syrc", "Samr", "Mand", "Thaa", "Mend", "Nkoo", "Adlm", "Rohg", "Hebr"]);
@@ -16877,14 +16992,14 @@ var defaultLocale = {
   direction: "ltr",
   locale: "en-US"
 };
-var LocaleContext = /* @__PURE__ */ (0, import_react73.createContext)(defaultLocale);
+var LocaleContext = /* @__PURE__ */ (0, import_react77.createContext)(defaultLocale);
 function getLocaleDirection(locale) {
   return isLocaleRTL(locale) ? "rtl" : "ltr";
 }
 function LocaleProvider(props) {
   var direction = props.direction, locale = props.locale, children = props.children;
   var needsContext = direction || locale;
-  return needsContext ? /* @__PURE__ */ import_react73.default.createElement(LocaleContext.Provider, {
+  return needsContext ? /* @__PURE__ */ import_react77.default.createElement(LocaleContext.Provider, {
     children,
     value: {
       direction: locale ? getLocaleDirection(locale) : direction,
@@ -16893,7 +17008,7 @@ function LocaleProvider(props) {
   }) : children;
 }
 function useLocaleContext() {
-  return (0, import_react73.useContext)(LocaleContext);
+  return (0, import_react77.useContext)(LocaleContext);
 }
 
 // ../../node_modules/react-native-web/dist/exports/createElement/index.js
@@ -16904,8 +17019,8 @@ var createElement = (component, props, options) => {
   }
   var Component3 = accessibilityComponent || component;
   var domProps = createDOMProps_default(Component3, props, options);
-  var element = /* @__PURE__ */ import_react74.default.createElement(Component3, domProps);
-  var elementWithLocaleProvider = domProps.dir ? /* @__PURE__ */ import_react74.default.createElement(LocaleProvider, {
+  var element = /* @__PURE__ */ import_react78.default.createElement(Component3, domProps);
+  var elementWithLocaleProvider = domProps.dir ? /* @__PURE__ */ import_react78.default.createElement(LocaleProvider, {
     children: element,
     direction: domProps.dir,
     locale: domProps.lang
@@ -17149,7 +17264,7 @@ var Platform_default = Platform;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedFlatList.js
 var import_extends7 = __toESM(require_extends());
-var React90 = __toESM(require("react"));
+var React93 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/FlatList/index.js
 var import_extends5 = __toESM(require_extends());
@@ -17158,7 +17273,7 @@ var import_objectSpread212 = __toESM(require_objectSpread2());
 
 // ../../node_modules/react-native-web/dist/exports/View/index.js
 var import_objectWithoutPropertiesLoose4 = __toESM(require_objectWithoutPropertiesLoose());
-var React80 = __toESM(require("react"));
+var React83 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/modules/forwardedProps/index.js
 var defaultProps = {
@@ -17332,8 +17447,8 @@ function pick(obj, list) {
 }
 
 // ../../node_modules/react-native-web/dist/modules/useLayoutEffect/index.js
-var import_react75 = require("react");
-var useLayoutEffectImpl = canUseDom_default ? import_react75.useLayoutEffect : import_react75.useEffect;
+var import_react79 = require("react");
+var useLayoutEffectImpl = canUseDom_default ? import_react79.useLayoutEffect : import_react79.useEffect;
 var useLayoutEffect_default = useLayoutEffectImpl;
 
 // ../../node_modules/react-native-web/dist/modules/useElementLayout/index.js
@@ -17407,10 +17522,10 @@ function useElementLayout(ref, onLayout) {
 }
 
 // ../../node_modules/react-native-web/dist/modules/useMergeRefs/index.js
-var React77 = __toESM(require("react"));
+var React80 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/modules/mergeRefs/index.js
-var React76 = __toESM(require("react"));
+var React79 = __toESM(require("react"));
 function mergeRefs() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
@@ -17438,7 +17553,7 @@ function useMergeRefs() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
-  return React77.useMemo(
+  return React80.useMemo(
     () => mergeRefs(...args),
     // eslint-disable-next-line
     [...args]
@@ -17446,10 +17561,10 @@ function useMergeRefs() {
 }
 
 // ../../node_modules/react-native-web/dist/modules/useStable/index.js
-var React78 = __toESM(require("react"));
+var React81 = __toESM(require("react"));
 var UNINITIALIZED = typeof Symbol === "function" && typeof /* @__PURE__ */ Symbol() === "symbol" ? /* @__PURE__ */ Symbol() : Object.freeze({});
 function useStable(getInitialValue) {
-  var ref = React78.useRef(UNINITIALIZED);
+  var ref = React81.useRef(UNINITIALIZED);
   if (ref.current === UNINITIALIZED) {
     ref.current = getInitialValue();
   }
@@ -17470,7 +17585,7 @@ function usePlatformMethods(_ref) {
 }
 
 // ../../node_modules/react-native-web/dist/modules/useResponderEvents/index.js
-var React79 = __toESM(require("react"));
+var React82 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/modules/useResponderEvents/createResponderEvent.js
 var emptyFunction = () => {
@@ -18232,7 +18347,7 @@ function getResponderNode() {
 var emptyObject8 = {};
 var idCounter = 0;
 function useStable2(getInitialValue) {
-  var ref = React79.useRef(null);
+  var ref = React82.useRef(null);
   if (ref.current == null) {
     ref.current = getInitialValue();
   }
@@ -18243,14 +18358,14 @@ function useResponderEvents(hostRef, config2) {
     config2 = emptyObject8;
   }
   var id2 = useStable2(() => idCounter++);
-  var isAttachedRef = React79.useRef(false);
-  React79.useEffect(() => {
+  var isAttachedRef = React82.useRef(false);
+  React82.useEffect(() => {
     attachListeners();
     return () => {
       removeNode(id2);
     };
   }, [id2]);
-  React79.useEffect(() => {
+  React82.useEffect(() => {
     var _config = config2, onMoveShouldSetResponder = _config.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = _config.onMoveShouldSetResponderCapture, onScrollShouldSetResponder = _config.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = _config.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = _config.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = _config.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = _config.onStartShouldSetResponder, onStartShouldSetResponderCapture = _config.onStartShouldSetResponderCapture;
     var requiresResponderSystem = onMoveShouldSetResponder != null || onMoveShouldSetResponderCapture != null || onScrollShouldSetResponder != null || onScrollShouldSetResponderCapture != null || onSelectionChangeShouldSetResponder != null || onSelectionChangeShouldSetResponderCapture != null || onStartShouldSetResponder != null || onStartShouldSetResponderCapture != null;
     var node = hostRef.current;
@@ -18262,15 +18377,15 @@ function useResponderEvents(hostRef, config2) {
       isAttachedRef.current = false;
     }
   }, [config2, hostRef, id2]);
-  React79.useDebugValue({
+  React82.useDebugValue({
     isResponder: hostRef.current === getResponderNode()
   });
-  React79.useDebugValue(config2);
+  React82.useDebugValue(config2);
 }
 
 // ../../node_modules/react-native-web/dist/exports/Text/TextAncestorContext.js
-var import_react76 = require("react");
-var TextAncestorContext = /* @__PURE__ */ (0, import_react76.createContext)(false);
+var import_react80 = require("react");
+var TextAncestorContext = /* @__PURE__ */ (0, import_react80.createContext)(false);
 var TextAncestorContext_default = TextAncestorContext;
 
 // ../../node_modules/react-native-web/dist/exports/View/index.js
@@ -18283,17 +18398,17 @@ var forwardPropsList = Object.assign({}, defaultProps, accessibilityProps, click
   pointerEvents: true
 });
 var pickProps = (props) => pick(props, forwardPropsList);
-var View10 = /* @__PURE__ */ React80.forwardRef((props, forwardedRef) => {
+var View10 = /* @__PURE__ */ React83.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, onLayout = props.onLayout, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, rest = (0, import_objectWithoutPropertiesLoose4.default)(props, _excluded4);
   if (process.env.NODE_ENV !== "production") {
-    React80.Children.toArray(props.children).forEach((item) => {
+    React83.Children.toArray(props.children).forEach((item) => {
       if (typeof item === "string") {
         console.error("Unexpected text node: " + item + ". A text node cannot be a child of a <View>.");
       }
     });
   }
-  var hasTextAncestor = React80.useContext(TextAncestorContext_default);
-  var hostRef = React80.useRef(null);
+  var hasTextAncestor = React83.useContext(TextAncestorContext_default);
+  var hostRef = React83.useRef(null);
   var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
   useElementLayout(hostRef, onLayout);
   useResponderEvents(hostRef, {
@@ -18421,7 +18536,7 @@ var deepDiffer_default = deepDiffer;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/FlatList/index.js
 var import_invariant11 = __toESM(require_invariant());
-var React88 = __toESM(require("react"));
+var React91 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 var import_createForOfIteratorHelperLoose3 = __toESM(require_createForOfIteratorHelperLoose());
@@ -18430,11 +18545,11 @@ var import_objectSpread211 = __toESM(require_objectSpread2());
 
 // ../../node_modules/react-native-web/dist/exports/RefreshControl/index.js
 var import_objectWithoutPropertiesLoose5 = __toESM(require_objectWithoutPropertiesLoose());
-var import_react77 = __toESM(require("react"));
+var import_react81 = __toESM(require("react"));
 var _excluded5 = ["colors", "enabled", "onRefresh", "progressBackgroundColor", "progressViewOffset", "refreshing", "size", "tintColor", "title", "titleColor"];
 function RefreshControl(props) {
   var colors = props.colors, enabled = props.enabled, onRefresh = props.onRefresh, progressBackgroundColor = props.progressBackgroundColor, progressViewOffset = props.progressViewOffset, refreshing = props.refreshing, size = props.size, tintColor = props.tintColor, title = props.title, titleColor = props.titleColor, rest = (0, import_objectWithoutPropertiesLoose5.default)(props, _excluded5);
-  return /* @__PURE__ */ import_react77.default.createElement(View_default, rest);
+  return /* @__PURE__ */ import_react81.default.createElement(View_default, rest);
 }
 var RefreshControl_default = RefreshControl;
 
@@ -18599,7 +18714,7 @@ var import_invariant2 = __toESM(require_invariant());
 // ../../node_modules/react-native-web/dist/exports/ScrollView/ScrollViewBase.js
 var import_extends = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose6 = __toESM(require_objectWithoutPropertiesLoose());
-var React82 = __toESM(require("react"));
+var React85 = __toESM(require("react"));
 var _excluded6 = ["onScroll", "onTouchMove", "onWheel", "scrollEnabled", "scrollEventThrottle", "showsHorizontalScrollIndicator", "showsVerticalScrollIndicator", "style"];
 function normalizeScrollEvent(e) {
   return {
@@ -18636,14 +18751,14 @@ function shouldEmitScrollEvent(lastTick, eventThrottle) {
   var timeSinceLastTick = Date.now() - lastTick;
   return eventThrottle > 0 && timeSinceLastTick >= eventThrottle;
 }
-var ScrollViewBase = /* @__PURE__ */ React82.forwardRef((props, forwardedRef) => {
+var ScrollViewBase = /* @__PURE__ */ React85.forwardRef((props, forwardedRef) => {
   var onScroll = props.onScroll, onTouchMove = props.onTouchMove, onWheel = props.onWheel, _props$scrollEnabled = props.scrollEnabled, scrollEnabled = _props$scrollEnabled === void 0 ? true : _props$scrollEnabled, _props$scrollEventThr = props.scrollEventThrottle, scrollEventThrottle = _props$scrollEventThr === void 0 ? 0 : _props$scrollEventThr, showsHorizontalScrollIndicator = props.showsHorizontalScrollIndicator, showsVerticalScrollIndicator = props.showsVerticalScrollIndicator, style = props.style, rest = (0, import_objectWithoutPropertiesLoose6.default)(props, _excluded6);
-  var scrollState = React82.useRef({
+  var scrollState = React85.useRef({
     isScrolling: false,
     scrollLastTick: 0
   });
-  var scrollTimeout = React82.useRef(null);
-  var scrollRef = React82.useRef(null);
+  var scrollTimeout = React85.useRef(null);
+  var scrollRef = React85.useRef(null);
   function createPreventableScrollHandler(handler) {
     return (e) => {
       if (scrollEnabled) {
@@ -18689,7 +18804,7 @@ var ScrollViewBase = /* @__PURE__ */ React82.forwardRef((props, forwardedRef) =>
     }
   }
   var hideScrollbar = showsHorizontalScrollIndicator === false || showsVerticalScrollIndicator === false;
-  return /* @__PURE__ */ React82.createElement(View_default, (0, import_extends.default)({}, rest, {
+  return /* @__PURE__ */ React85.createElement(View_default, (0, import_extends.default)({}, rest, {
     onScroll: handleScroll,
     onTouchMove: createPreventableScrollHandler(onTouchMove),
     onWheel: createPreventableScrollHandler(onWheel),
@@ -18710,12 +18825,12 @@ var styles2 = StyleSheet_default.create({
 var ScrollViewBase_default = ScrollViewBase;
 
 // ../../node_modules/react-native-web/dist/exports/ScrollView/index.js
-var import_react78 = __toESM(require("react"));
+var import_react82 = __toESM(require("react"));
 var import_warning = __toESM(require_warning());
 var _excluded7 = ["contentContainerStyle", "horizontal", "onContentSizeChange", "refreshControl", "stickyHeaderIndices", "pagingEnabled", "forwardedRef", "keyboardDismissMode", "onScroll", "centerContent"];
 var emptyObject9 = {};
 var IS_ANIMATING_TOUCH_START_THRESHOLD_MS = 16;
-var ScrollView7 = class extends import_react78.default.Component {
+var ScrollView7 = class extends import_react82.default.Component {
   constructor() {
     super(...arguments);
     this._scrollNodeRef = null;
@@ -19184,17 +19299,17 @@ var ScrollView7 = class extends import_react78.default.Component {
       };
     }
     var hasStickyHeaderIndices = !horizontal && Array.isArray(stickyHeaderIndices);
-    var children = hasStickyHeaderIndices || pagingEnabled ? import_react78.default.Children.map(this.props.children, (child, i) => {
+    var children = hasStickyHeaderIndices || pagingEnabled ? import_react82.default.Children.map(this.props.children, (child, i) => {
       var isSticky = hasStickyHeaderIndices && stickyHeaderIndices.indexOf(i) > -1;
       if (child != null && (isSticky || pagingEnabled)) {
-        return /* @__PURE__ */ import_react78.default.createElement(View_default, {
+        return /* @__PURE__ */ import_react82.default.createElement(View_default, {
           style: [isSticky && styles3.stickyHeader, pagingEnabled && styles3.pagingEnabledChild]
         }, child);
       } else {
         return child;
       }
     }) : this.props.children;
-    var contentContainer = /* @__PURE__ */ import_react78.default.createElement(View_default, (0, import_extends2.default)({}, contentSizeChangeProps, {
+    var contentContainer = /* @__PURE__ */ import_react82.default.createElement(View_default, (0, import_extends2.default)({}, contentSizeChangeProps, {
       children,
       collapsable: false,
       ref: this._setInnerViewRef,
@@ -19223,11 +19338,11 @@ var ScrollView7 = class extends import_react78.default.Component {
     });
     var ScrollViewClass = ScrollViewBase_default;
     (0, import_invariant2.default)(ScrollViewClass !== void 0, "ScrollViewClass must not be undefined");
-    var scrollView = /* @__PURE__ */ import_react78.default.createElement(ScrollViewClass, (0, import_extends2.default)({}, props, {
+    var scrollView = /* @__PURE__ */ import_react82.default.createElement(ScrollViewClass, (0, import_extends2.default)({}, props, {
       ref: this._setScrollNodeRef
     }), contentContainer);
     if (refreshControl) {
-      return /* @__PURE__ */ import_react78.default.cloneElement(refreshControl, {
+      return /* @__PURE__ */ import_react82.default.cloneElement(refreshControl, {
         style: props.style
       }, scrollView);
     }
@@ -19277,8 +19392,8 @@ var styles3 = StyleSheet_default.create({
     scrollSnapAlign: "start"
   }
 });
-var ForwardedScrollView = /* @__PURE__ */ import_react78.default.forwardRef((props, forwardedRef) => {
-  return /* @__PURE__ */ import_react78.default.createElement(ScrollView7, (0, import_extends2.default)({}, props, {
+var ForwardedScrollView = /* @__PURE__ */ import_react82.default.forwardRef((props, forwardedRef) => {
+  return /* @__PURE__ */ import_react82.default.createElement(ScrollView7, (0, import_extends2.default)({}, props, {
     forwardedRef
   }));
 });
@@ -19922,8 +20037,8 @@ var FillRateHelper_default = FillRateHelper;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/StateSafePureComponent.js
 var import_invariant7 = __toESM(require_invariant());
-var React84 = __toESM(require("react"));
-var StateSafePureComponent = class extends React84.PureComponent {
+var React87 = __toESM(require("react"));
+var StateSafePureComponent = class extends React87.PureComponent {
   constructor(props) {
     super(props);
     this._inAsyncStateUpdate = false;
@@ -20132,16 +20247,16 @@ var import_objectSpread210 = __toESM(require_objectSpread2());
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/VirtualizedListContext.js
 var import_objectSpread29 = __toESM(require_objectSpread2());
-var React85 = __toESM(require("react"));
-var import_react79 = require("react");
+var React88 = __toESM(require("react"));
+var import_react83 = require("react");
 var __DEV__2 = process.env.NODE_ENV !== "production";
-var VirtualizedListContext = /* @__PURE__ */ React85.createContext(null);
+var VirtualizedListContext = /* @__PURE__ */ React88.createContext(null);
 if (__DEV__2) {
   VirtualizedListContext.displayName = "VirtualizedListContext";
 }
 function VirtualizedListContextProvider(_ref2) {
   var children = _ref2.children, value = _ref2.value;
-  var context = (0, import_react79.useMemo)(() => ({
+  var context = (0, import_react83.useMemo)(() => ({
     cellKey: null,
     getScrollMetrics: value.getScrollMetrics,
     horizontal: value.horizontal,
@@ -20149,25 +20264,25 @@ function VirtualizedListContextProvider(_ref2) {
     registerAsNestedChild: value.registerAsNestedChild,
     unregisterAsNestedChild: value.unregisterAsNestedChild
   }), [value.getScrollMetrics, value.horizontal, value.getOutermostParentListRef, value.registerAsNestedChild, value.unregisterAsNestedChild]);
-  return /* @__PURE__ */ React85.createElement(VirtualizedListContext.Provider, {
+  return /* @__PURE__ */ React88.createElement(VirtualizedListContext.Provider, {
     value: context
   }, children);
 }
 function VirtualizedListCellContextProvider(_ref3) {
   var cellKey = _ref3.cellKey, children = _ref3.children;
-  var currContext = (0, import_react79.useContext)(VirtualizedListContext);
-  var context = (0, import_react79.useMemo)(() => currContext == null ? null : (0, import_objectSpread29.default)((0, import_objectSpread29.default)({}, currContext), {}, {
+  var currContext = (0, import_react83.useContext)(VirtualizedListContext);
+  var context = (0, import_react83.useMemo)(() => currContext == null ? null : (0, import_objectSpread29.default)((0, import_objectSpread29.default)({}, currContext), {}, {
     cellKey
   }), [currContext, cellKey]);
-  return /* @__PURE__ */ React85.createElement(VirtualizedListContext.Provider, {
+  return /* @__PURE__ */ React88.createElement(VirtualizedListContext.Provider, {
     value: context
   }, children);
 }
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
 var import_invariant9 = __toESM(require_invariant());
-var React86 = __toESM(require("react"));
-var CellRenderer = class extends React86.Component {
+var React89 = __toESM(require("react"));
+var CellRenderer = class extends React89.Component {
   constructor() {
     super(...arguments);
     this.state = {
@@ -20221,7 +20336,7 @@ var CellRenderer = class extends React86.Component {
       console.warn("VirtualizedList: Both ListItemComponent and renderItem props are present. ListItemComponent will take precedence over renderItem.");
     }
     if (ListItemComponent) {
-      return /* @__PURE__ */ React86.createElement(ListItemComponent, {
+      return /* @__PURE__ */ React89.createElement(ListItemComponent, {
         item,
         index,
         separators: this._separators
@@ -20239,20 +20354,20 @@ var CellRenderer = class extends React86.Component {
   render() {
     var _this$props4 = this.props, CellRendererComponent = _this$props4.CellRendererComponent, ItemSeparatorComponent = _this$props4.ItemSeparatorComponent, ListItemComponent = _this$props4.ListItemComponent, cellKey = _this$props4.cellKey, horizontal = _this$props4.horizontal, item = _this$props4.item, index = _this$props4.index, inversionStyle = _this$props4.inversionStyle, onCellFocusCapture = _this$props4.onCellFocusCapture, onCellLayout = _this$props4.onCellLayout, renderItem = _this$props4.renderItem;
     var element = this._renderElement(renderItem, ListItemComponent, item, index);
-    var itemSeparator = /* @__PURE__ */ React86.isValidElement(ItemSeparatorComponent) ? (
+    var itemSeparator = /* @__PURE__ */ React89.isValidElement(ItemSeparatorComponent) ? (
       // $FlowFixMe[incompatible-type]
       ItemSeparatorComponent
     ) : (
       // $FlowFixMe[incompatible-type]
-      ItemSeparatorComponent && /* @__PURE__ */ React86.createElement(ItemSeparatorComponent, this.state.separatorProps)
+      ItemSeparatorComponent && /* @__PURE__ */ React89.createElement(ItemSeparatorComponent, this.state.separatorProps)
     );
     var cellStyle = inversionStyle ? horizontal ? [styles4.rowReverse, inversionStyle] : [styles4.columnReverse, inversionStyle] : horizontal ? [styles4.row, inversionStyle] : inversionStyle;
-    var result = !CellRendererComponent ? /* @__PURE__ */ React86.createElement(View_default, (0, import_extends3.default)({
+    var result = !CellRendererComponent ? /* @__PURE__ */ React89.createElement(View_default, (0, import_extends3.default)({
       style: cellStyle,
       onFocusCapture: onCellFocusCapture
     }, onCellLayout && {
       onLayout: this._onLayout
-    }), element, itemSeparator) : /* @__PURE__ */ React86.createElement(CellRendererComponent, (0, import_extends3.default)({
+    }), element, itemSeparator) : /* @__PURE__ */ React89.createElement(CellRendererComponent, (0, import_extends3.default)({
       cellKey,
       index,
       item,
@@ -20261,7 +20376,7 @@ var CellRenderer = class extends React86.Component {
     }, onCellLayout && {
       onLayout: this._onLayout
     }), element, itemSeparator);
-    return /* @__PURE__ */ React86.createElement(VirtualizedListCellContextProvider, {
+    return /* @__PURE__ */ React89.createElement(VirtualizedListCellContextProvider, {
       cellKey: this.props.cellKey
     }, result);
   }
@@ -20395,7 +20510,7 @@ function keyExtractor(item, index) {
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedList/index.js
 var import_invariant10 = __toESM(require_invariant());
 var import_nullthrows = __toESM(require_nullthrows());
-var React87 = __toESM(require("react"));
+var React90 = __toESM(require("react"));
 var __DEV__3 = process.env.NODE_ENV !== "production";
 var ON_EDGE_REACHED_EPSILON = 1e-3;
 var _usedIndexForKey = false;
@@ -20648,15 +20763,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     this._defaultRenderScrollComponent = (props) => {
       var onRefresh = props.onRefresh;
       if (this._isNestedWithSameOrientation()) {
-        return /* @__PURE__ */ React87.createElement(View_default, props);
+        return /* @__PURE__ */ React90.createElement(View_default, props);
       } else if (onRefresh) {
         var _props$refreshing;
         (0, import_invariant10.default)(typeof props.refreshing === "boolean", "`refreshing` prop must be set as a boolean in order to use `onRefresh`, but got `" + JSON.stringify((_props$refreshing = props.refreshing) !== null && _props$refreshing !== void 0 ? _props$refreshing : "undefined") + "`");
         return (
           // $FlowFixMe[prop-missing] Invalid prop usage
           // $FlowFixMe[incompatible-use]
-          /* @__PURE__ */ React87.createElement(ScrollView_default, (0, import_extends4.default)({}, props, {
-            refreshControl: props.refreshControl == null ? /* @__PURE__ */ React87.createElement(
+          /* @__PURE__ */ React90.createElement(ScrollView_default, (0, import_extends4.default)({}, props, {
+            refreshControl: props.refreshControl == null ? /* @__PURE__ */ React90.createElement(
               RefreshControl_default,
               {
                 refreshing: props.refreshing,
@@ -20667,7 +20782,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
           }))
         );
       } else {
-        return /* @__PURE__ */ React87.createElement(ScrollView_default, props);
+        return /* @__PURE__ */ React90.createElement(ScrollView_default, props);
       }
     };
     this._onCellLayout = (e, cellKey, index) => {
@@ -21151,7 +21266,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
         stickyHeaderIndices.push(cells.length);
       }
       var shouldListenForLayout = getItemLayout == null || debug || _this._fillRateHelper.enabled();
-      cells.push(/* @__PURE__ */ React87.createElement(CellRenderer, (0, import_extends4.default)({
+      cells.push(/* @__PURE__ */ React90.createElement(CellRenderer, (0, import_extends4.default)({
         CellRendererComponent,
         ItemSeparatorComponent: ii < end ? ItemSeparatorComponent : void 0,
         ListItemComponent,
@@ -21216,15 +21331,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       if (stickyIndicesFromProps.has(0)) {
         stickyHeaderIndices.push(0);
       }
-      var _element = /* @__PURE__ */ React87.isValidElement(ListHeaderComponent) ? ListHeaderComponent : (
+      var _element = /* @__PURE__ */ React90.isValidElement(ListHeaderComponent) ? ListHeaderComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React87.createElement(ListHeaderComponent, null)
+        /* @__PURE__ */ React90.createElement(ListHeaderComponent, null)
       );
-      cells.push(/* @__PURE__ */ React87.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React90.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getCellKey() + "-header",
         key: "$header"
-      }, /* @__PURE__ */ React87.createElement(
+      }, /* @__PURE__ */ React90.createElement(
         View_default,
         {
           onLayout: this._onLayoutHeader,
@@ -21236,15 +21351,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     }
     var itemCount = this.props.getItemCount(data);
     if (itemCount === 0 && ListEmptyComponent) {
-      var _element2 = /* @__PURE__ */ React87.isValidElement(ListEmptyComponent) ? ListEmptyComponent : (
+      var _element2 = /* @__PURE__ */ React90.isValidElement(ListEmptyComponent) ? ListEmptyComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React87.createElement(ListEmptyComponent, null)
+        /* @__PURE__ */ React90.createElement(ListEmptyComponent, null)
       );
-      cells.push(/* @__PURE__ */ React87.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React90.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getCellKey() + "-empty",
         key: "$empty"
-      }, /* @__PURE__ */ React87.cloneElement(_element2, {
+      }, /* @__PURE__ */ React90.cloneElement(_element2, {
         onLayout: (event3) => {
           this._onLayoutEmpty(event3);
           if (_element2.props.onLayout) {
@@ -21272,7 +21387,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
           var firstMetrics = this.__getFrameMetricsApprox(section.first, this.props);
           var lastMetrics = this.__getFrameMetricsApprox(last, this.props);
           var spacerSize = lastMetrics.offset + lastMetrics.length - firstMetrics.offset;
-          cells.push(/* @__PURE__ */ React87.createElement(View_default, {
+          cells.push(/* @__PURE__ */ React90.createElement(View_default, {
             key: "$spacer-" + section.first,
             style: {
               [spacerKey]: spacerSize
@@ -21288,15 +21403,15 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       }
     }
     if (ListFooterComponent) {
-      var _element3 = /* @__PURE__ */ React87.isValidElement(ListFooterComponent) ? ListFooterComponent : (
+      var _element3 = /* @__PURE__ */ React90.isValidElement(ListFooterComponent) ? ListFooterComponent : (
         // $FlowFixMe[not-a-component]
         // $FlowFixMe[incompatible-type-arg]
-        /* @__PURE__ */ React87.createElement(ListFooterComponent, null)
+        /* @__PURE__ */ React90.createElement(ListFooterComponent, null)
       );
-      cells.push(/* @__PURE__ */ React87.createElement(VirtualizedListCellContextProvider, {
+      cells.push(/* @__PURE__ */ React90.createElement(VirtualizedListCellContextProvider, {
         cellKey: this._getFooterCellKey(),
         key: "$footer"
-      }, /* @__PURE__ */ React87.createElement(
+      }, /* @__PURE__ */ React90.createElement(
         View_default,
         {
           onLayout: this._onLayoutFooter,
@@ -21321,7 +21436,7 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
       style: inversionStyle ? [inversionStyle, this.props.style] : this.props.style
     });
     this._hasMore = this.state.cellsAroundViewport.last < itemCount - 1;
-    var innerRet = /* @__PURE__ */ React87.createElement(VirtualizedListContextProvider, {
+    var innerRet = /* @__PURE__ */ React90.createElement(VirtualizedListContextProvider, {
       value: {
         cellKey: null,
         getScrollMetrics: this._getScrollMetrics,
@@ -21330,12 +21445,12 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
         registerAsNestedChild: this._registerAsNestedChild,
         unregisterAsNestedChild: this._unregisterAsNestedChild
       }
-    }, /* @__PURE__ */ React87.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+    }, /* @__PURE__ */ React90.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
       ref: this._captureScrollRef
     }, cells));
     var ret = innerRet;
     if (this.props.debug) {
-      return /* @__PURE__ */ React87.createElement(View_default, {
+      return /* @__PURE__ */ React90.createElement(View_default, {
         style: styles5.debug
       }, ret, this._renderDebugOverlay());
     } else {
@@ -21423,20 +21538,20 @@ var VirtualizedList = class _VirtualizedList extends StateSafePureComponent {
     var windowLen = frameLast.offset + frameLast.length - windowTop;
     var visTop = this._scrollMetrics.offset;
     var visLen = this._scrollMetrics.visibleLength;
-    return /* @__PURE__ */ React87.createElement(View_default, {
+    return /* @__PURE__ */ React90.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlay]
-    }, framesInLayout.map((f, ii2) => /* @__PURE__ */ React87.createElement(View_default, {
+    }, framesInLayout.map((f, ii2) => /* @__PURE__ */ React90.createElement(View_default, {
       key: "f" + ii2,
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrame, {
         top: f.offset * normalize,
         height: f.length * normalize
       }]
-    })), /* @__PURE__ */ React87.createElement(View_default, {
+    })), /* @__PURE__ */ React90.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrameLast, {
         top: windowTop * normalize,
         height: windowLen * normalize
       }]
-    }), /* @__PURE__ */ React87.createElement(View_default, {
+    }), /* @__PURE__ */ React90.createElement(View_default, {
       style: [styles5.debugOverlayBase, styles5.debugOverlayFrameVis, {
         top: visTop * normalize,
         height: visLen * normalize
@@ -21622,7 +21737,7 @@ function numColumnsOrDefault(numColumns) {
 function isArrayLike(data) {
   return typeof Object(data).length === "number";
 }
-var FlatList = class extends React88.PureComponent {
+var FlatList = class extends React91.PureComponent {
   /**
    * Scrolls to the end of the content. May be janky without `getItemLayout` prop.
    */
@@ -21750,7 +21865,7 @@ var FlatList = class extends React88.PureComponent {
       var cols = numColumnsOrDefault(numColumns);
       var render = (props) => {
         if (ListItemComponent) {
-          return /* @__PURE__ */ React88.createElement(ListItemComponent, props);
+          return /* @__PURE__ */ React91.createElement(ListItemComponent, props);
         } else if (renderItem) {
           return renderItem(props);
         } else {
@@ -21761,7 +21876,7 @@ var FlatList = class extends React88.PureComponent {
         if (cols > 1) {
           var _item2 = info.item, _index = info.index;
           (0, import_invariant11.default)(Array.isArray(_item2), "Expected array of items with numColumns > 1");
-          return /* @__PURE__ */ React88.createElement(View_default, {
+          return /* @__PURE__ */ React91.createElement(View_default, {
             style: [styles6.row, columnWrapperStyle]
           }, _item2.map((it, kk) => {
             var element = render({
@@ -21770,7 +21885,7 @@ var FlatList = class extends React88.PureComponent {
               index: _index * cols + kk,
               separators: info.separators
             });
-            return element != null ? /* @__PURE__ */ React88.createElement(React88.Fragment, {
+            return element != null ? /* @__PURE__ */ React91.createElement(React91.Fragment, {
               key: kk
             }, element) : null;
           }));
@@ -21860,7 +21975,7 @@ var FlatList = class extends React88.PureComponent {
     var renderer = strictMode ? this._memoizedRenderer : this._renderer;
     return (
       // $FlowFixMe[incompatible-exact] - `restProps` (`Props`) is inexact.
-      /* @__PURE__ */ React88.createElement(VirtualizedList_default, (0, import_extends5.default)({}, restProps, {
+      /* @__PURE__ */ React91.createElement(VirtualizedList_default, (0, import_extends5.default)({}, restProps, {
         getItem: this._getItem,
         getItemCount: this._getItemCount,
         keyExtractor: this._keyExtractor,
@@ -23419,10 +23534,10 @@ var AnimatedProps = class extends AnimatedNode_default {
 var AnimatedProps_default = AnimatedProps;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Utilities/useRefEffect.js
-var import_react80 = require("react");
+var import_react84 = require("react");
 function useRefEffect(effect) {
-  var cleanupRef = (0, import_react80.useRef)(void 0);
-  return (0, import_react80.useCallback)((instance) => {
+  var cleanupRef = (0, import_react84.useRef)(void 0);
+  return (0, import_react84.useCallback)((instance) => {
     if (cleanupRef.current) {
       cleanupRef.current();
       cleanupRef.current = void 0;
@@ -23434,13 +23549,13 @@ function useRefEffect(effect) {
 }
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/useAnimatedProps.js
-var import_react81 = require("react");
+var import_react85 = require("react");
 function useAnimatedProps(props) {
-  var _useReducer = (0, import_react81.useReducer)((count) => count + 1, 0), scheduleUpdate = _useReducer[1];
-  var onUpdateRef = (0, import_react81.useRef)(null);
-  var node = (0, import_react81.useMemo)(() => new AnimatedProps_default(props, () => onUpdateRef.current == null ? void 0 : onUpdateRef.current()), [props]);
+  var _useReducer = (0, import_react85.useReducer)((count) => count + 1, 0), scheduleUpdate = _useReducer[1];
+  var onUpdateRef = (0, import_react85.useRef)(null);
+  var node = (0, import_react85.useMemo)(() => new AnimatedProps_default(props, () => onUpdateRef.current == null ? void 0 : onUpdateRef.current()), [props]);
   useAnimatedPropsLifecycle(node);
-  var refEffect = (0, import_react81.useCallback)((instance) => {
+  var refEffect = (0, import_react85.useCallback)((instance) => {
     node.setNativeView(instance);
     onUpdateRef.current = () => {
       scheduleUpdate();
@@ -23471,9 +23586,9 @@ function reduceAnimatedProps(node) {
   });
 }
 function useAnimatedPropsLifecycle(node) {
-  var prevNodeRef = (0, import_react81.useRef)(null);
-  var isUnmountingRef = (0, import_react81.useRef)(false);
-  (0, import_react81.useEffect)(() => {
+  var prevNodeRef = (0, import_react85.useRef)(null);
+  var isUnmountingRef = (0, import_react85.useRef)(false);
+  (0, import_react85.useEffect)(() => {
     NativeAnimatedHelper_default.API.flushQueue();
   });
   useLayoutEffect_default(() => {
@@ -23507,12 +23622,12 @@ function getEventTarget(instance) {
 }
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Utilities/useMergeRefs.js
-var import_react82 = require("react");
+var import_react86 = require("react");
 function useMergeRefs2() {
   for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
     refs[_key] = arguments[_key];
   }
-  return (0, import_react82.useCallback)(
+  return (0, import_react86.useCallback)(
     (current) => {
       for (var _i = 0, _refs = refs; _i < _refs.length; _i++) {
         var ref = _refs[_i];
@@ -23531,16 +23646,16 @@ function useMergeRefs2() {
 }
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/createAnimatedComponent.js
-var React89 = __toESM(require("react"));
+var React92 = __toESM(require("react"));
 var _excluded9 = ["style"];
 function createAnimatedComponent(Component3) {
-  return /* @__PURE__ */ React89.forwardRef((props, forwardedRef) => {
+  return /* @__PURE__ */ React92.forwardRef((props, forwardedRef) => {
     var _useAnimatedProps = useAnimatedProps(props), reducedProps = _useAnimatedProps[0], callbackRef = _useAnimatedProps[1];
     var ref = useMergeRefs2(callbackRef, forwardedRef);
     var passthroughAnimatedPropExplicitValues = reducedProps.passthroughAnimatedPropExplicitValues, style = reducedProps.style;
     var _ref = passthroughAnimatedPropExplicitValues !== null && passthroughAnimatedPropExplicitValues !== void 0 ? passthroughAnimatedPropExplicitValues : {}, passthroughStyle = _ref.style, passthroughProps = (0, import_objectWithoutPropertiesLoose9.default)(_ref, _excluded9);
     var mergedStyle = [style, passthroughStyle];
-    return /* @__PURE__ */ React89.createElement(Component3, (0, import_extends6.default)({}, reducedProps, passthroughProps, {
+    return /* @__PURE__ */ React92.createElement(Component3, (0, import_extends6.default)({}, reducedProps, passthroughProps, {
       style: mergedStyle,
       ref
     }));
@@ -23548,7 +23663,7 @@ function createAnimatedComponent(Component3) {
 }
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedFlatList.js
-var FlatListWithEventThrottle = /* @__PURE__ */ React90.forwardRef((props, ref) => /* @__PURE__ */ React90.createElement(FlatList_default2, (0, import_extends7.default)({
+var FlatListWithEventThrottle = /* @__PURE__ */ React93.forwardRef((props, ref) => /* @__PURE__ */ React93.createElement(FlatList_default2, (0, import_extends7.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -23556,13 +23671,13 @@ var FlatListWithEventThrottle = /* @__PURE__ */ React90.forwardRef((props, ref) 
 var AnimatedFlatList_default = createAnimatedComponent(FlatListWithEventThrottle);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedImage.js
-var React92 = __toESM(require("react"));
+var React95 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/exports/Image/index.js
 var import_objectSpread217 = __toESM(require_objectSpread2());
 var import_extends8 = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose10 = __toESM(require_objectWithoutPropertiesLoose());
-var React91 = __toESM(require("react"));
+var React94 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/modules/AssetRegistry/index.js
 var assets = [];
@@ -23741,20 +23856,20 @@ var IDLE = "IDLE";
 var _filterId = 0;
 var svgDataUriPattern = /^(data:image\/svg\+xml;utf8,)(.*)/;
 function createTintColorSVG(tintColor, id2) {
-  return tintColor && id2 != null ? /* @__PURE__ */ React91.createElement("svg", {
+  return tintColor && id2 != null ? /* @__PURE__ */ React94.createElement("svg", {
     style: {
       position: "absolute",
       height: 0,
       visibility: "hidden",
       width: 0
     }
-  }, /* @__PURE__ */ React91.createElement("defs", null, /* @__PURE__ */ React91.createElement("filter", {
+  }, /* @__PURE__ */ React94.createElement("defs", null, /* @__PURE__ */ React94.createElement("filter", {
     id: "tint-" + id2,
     suppressHydrationWarning: true
-  }, /* @__PURE__ */ React91.createElement("feFlood", {
+  }, /* @__PURE__ */ React94.createElement("feFlood", {
     floodColor: "" + tintColor,
     key: tintColor
-  }), /* @__PURE__ */ React91.createElement("feComposite", {
+  }), /* @__PURE__ */ React94.createElement("feComposite", {
     in2: "SourceAlpha",
     operator: "in"
   })))) : null;
@@ -23834,7 +23949,7 @@ function resolveAssetUri(source) {
   }
   return uri;
 }
-var Image6 = /* @__PURE__ */ React91.forwardRef((props, ref) => {
+var Image6 = /* @__PURE__ */ React94.forwardRef((props, ref) => {
   var _ariaLabel = props["aria-label"], accessibilityLabel = props.accessibilityLabel, blurRadius = props.blurRadius, defaultSource = props.defaultSource, draggable = props.draggable, onError = props.onError, onLayout = props.onLayout, onLoad = props.onLoad, onLoadEnd = props.onLoadEnd, onLoadStart = props.onLoadStart, pointerEvents = props.pointerEvents, source = props.source, style = props.style, rest = (0, import_objectWithoutPropertiesLoose10.default)(props, _excluded10);
   var ariaLabel = _ariaLabel || accessibilityLabel;
   if (process.env.NODE_ENV !== "production") {
@@ -23842,7 +23957,7 @@ var Image6 = /* @__PURE__ */ React91.forwardRef((props, ref) => {
       throw new Error("The <Image> component cannot contain children. If you want to render content on top of the image, consider using the <ImageBackground> component or absolute positioning.");
     }
   }
-  var _React$useState = React91.useState(() => {
+  var _React$useState = React94.useState(() => {
     var uri2 = resolveAssetUri(source);
     if (uri2 != null) {
       var isLoaded = ImageLoader_default.has(uri2);
@@ -23852,11 +23967,11 @@ var Image6 = /* @__PURE__ */ React91.forwardRef((props, ref) => {
     }
     return IDLE;
   }), state = _React$useState[0], updateState = _React$useState[1];
-  var _React$useState2 = React91.useState({}), layout2 = _React$useState2[0], updateLayout = _React$useState2[1];
-  var hasTextAncestor = React91.useContext(TextAncestorContext_default);
-  var hiddenImageRef = React91.useRef(null);
-  var filterRef = React91.useRef(_filterId++);
-  var requestRef = React91.useRef(null);
+  var _React$useState2 = React94.useState({}), layout2 = _React$useState2[0], updateLayout = _React$useState2[1];
+  var hasTextAncestor = React94.useContext(TextAncestorContext_default);
+  var hiddenImageRef = React94.useRef(null);
+  var filterRef = React94.useRef(_filterId++);
+  var requestRef = React94.useRef(null);
   var shouldDisplaySource = state === LOADED || state === LOADING && defaultSource == null;
   var _extractNonStandardSt = extractNonStandardStyleProps(style, blurRadius, filterRef.current, props.tintColor), _resizeMode = _extractNonStandardSt[0], filter = _extractNonStandardSt[1], _tintColor = _extractNonStandardSt[2];
   var resizeMode = props.resizeMode || _resizeMode || "cover";
@@ -23893,7 +24008,7 @@ var Image6 = /* @__PURE__ */ React91.forwardRef((props, ref) => {
     }
   }
   var uri = resolveAssetUri(source);
-  React91.useEffect(() => {
+  React94.useEffect(() => {
     abortPendingRequest();
     if (uri != null) {
       updateState(LOADING);
@@ -23930,7 +24045,7 @@ var Image6 = /* @__PURE__ */ React91.forwardRef((props, ref) => {
     }
     return abortPendingRequest;
   }, [uri, requestRef, updateState, onError, onLoad, onLoadEnd, onLoadStart]);
-  return /* @__PURE__ */ React91.createElement(View_default, (0, import_extends8.default)({}, rest, {
+  return /* @__PURE__ */ React94.createElement(View_default, (0, import_extends8.default)({}, rest, {
     "aria-label": ariaLabel,
     onLayout: handleLayout,
     pointerEvents,
@@ -23947,7 +24062,7 @@ var Image6 = /* @__PURE__ */ React91.forwardRef((props, ref) => {
         boxShadow: null
       }
     ]
-  }), /* @__PURE__ */ React91.createElement(View_default, {
+  }), /* @__PURE__ */ React94.createElement(View_default, {
     style: [styles7.image, resizeModeStyles[resizeMode], {
       backgroundImage,
       filter
@@ -24036,8 +24151,8 @@ var AnimatedImage_default = createAnimatedComponent(Image_default);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedScrollView.js
 var import_extends9 = __toESM(require_extends());
-var React93 = __toESM(require("react"));
-var ScrollViewWithEventThrottle = /* @__PURE__ */ React93.forwardRef((props, ref) => /* @__PURE__ */ React93.createElement(ScrollView_default, (0, import_extends9.default)({
+var React96 = __toESM(require("react"));
+var ScrollViewWithEventThrottle = /* @__PURE__ */ React96.forwardRef((props, ref) => /* @__PURE__ */ React96.createElement(ScrollView_default, (0, import_extends9.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -24046,12 +24161,12 @@ var AnimatedScrollView_default = createAnimatedComponent(ScrollViewWithEventThro
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
 var import_extends12 = __toESM(require_extends());
-var React96 = __toESM(require("react"));
+var React99 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
 var import_extends11 = __toESM(require_extends());
 var import_objectWithoutPropertiesLoose12 = __toESM(require_objectWithoutPropertiesLoose());
-var React95 = __toESM(require("react"));
+var React98 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/VirtualizedSectionList/index.js
 var import_extends10 = __toESM(require_extends());
@@ -24059,9 +24174,9 @@ var import_createForOfIteratorHelperLoose5 = __toESM(require_createForOfIterator
 var import_objectWithoutPropertiesLoose11 = __toESM(require_objectWithoutPropertiesLoose());
 var import_objectSpread218 = __toESM(require_objectSpread2());
 var import_invariant19 = __toESM(require_invariant());
-var React94 = __toESM(require("react"));
+var React97 = __toESM(require("react"));
 var _excluded11 = ["ItemSeparatorComponent", "SectionSeparatorComponent", "renderItem", "renderSectionFooter", "renderSectionHeader", "sections", "stickySectionHeadersEnabled"];
-var VirtualizedSectionList = class extends React94.PureComponent {
+var VirtualizedSectionList = class extends React97.PureComponent {
   constructor() {
     super(...arguments);
     this._keyExtractor = (item, index) => {
@@ -24120,7 +24235,7 @@ var VirtualizedSectionList = class extends React94.PureComponent {
           var renderItem = info.section.renderItem || this.props.renderItem;
           var SeparatorComponent = this._getSeparatorComponent(index, info, listItemCount);
           (0, import_invariant19.default)(renderItem, "no renderItem!");
-          return /* @__PURE__ */ React94.createElement(ItemWithSeparator, {
+          return /* @__PURE__ */ React97.createElement(ItemWithSeparator, {
             SeparatorComponent,
             LeadingSeparatorComponent: infoIndex === 0 ? this.props.SectionSeparatorComponent : void 0,
             cellKey: info.key,
@@ -24210,7 +24325,7 @@ var VirtualizedSectionList = class extends React94.PureComponent {
       itemCount += this.props.getItemCount(section.data);
     }
     var renderItem = this._renderItem(itemCount);
-    return /* @__PURE__ */ React94.createElement(VirtualizedList_default, (0, import_extends10.default)({}, passThroughProps, {
+    return /* @__PURE__ */ React97.createElement(VirtualizedList_default, (0, import_extends10.default)({}, passThroughProps, {
       keyExtractor: this._keyExtractor,
       stickyHeaderIndices,
       renderItem,
@@ -24301,23 +24416,23 @@ var VirtualizedSectionList = class extends React94.PureComponent {
 };
 function ItemWithSeparator(props) {
   var LeadingSeparatorComponent = props.LeadingSeparatorComponent, SeparatorComponent = props.SeparatorComponent, cellKey = props.cellKey, prevCellKey = props.prevCellKey, setSelfHighlightCallback = props.setSelfHighlightCallback, updateHighlightFor = props.updateHighlightFor, setSelfUpdatePropsCallback = props.setSelfUpdatePropsCallback, updatePropsFor = props.updatePropsFor, item = props.item, index = props.index, section = props.section, inverted = props.inverted;
-  var _React$useState = React94.useState(false), leadingSeparatorHiglighted = _React$useState[0], setLeadingSeparatorHighlighted = _React$useState[1];
-  var _React$useState2 = React94.useState(false), separatorHighlighted = _React$useState2[0], setSeparatorHighlighted = _React$useState2[1];
-  var _React$useState3 = React94.useState({
+  var _React$useState = React97.useState(false), leadingSeparatorHiglighted = _React$useState[0], setLeadingSeparatorHighlighted = _React$useState[1];
+  var _React$useState2 = React97.useState(false), separatorHighlighted = _React$useState2[0], setSeparatorHighlighted = _React$useState2[1];
+  var _React$useState3 = React97.useState({
     leadingItem: props.leadingItem,
     leadingSection: props.leadingSection,
     section: props.section,
     trailingItem: props.item,
     trailingSection: props.trailingSection
   }), leadingSeparatorProps = _React$useState3[0], setLeadingSeparatorProps = _React$useState3[1];
-  var _React$useState4 = React94.useState({
+  var _React$useState4 = React97.useState({
     leadingItem: props.item,
     leadingSection: props.leadingSection,
     section: props.section,
     trailingItem: props.trailingItem,
     trailingSection: props.trailingSection
   }), separatorProps = _React$useState4[0], setSeparatorProps = _React$useState4[1];
-  React94.useEffect(() => {
+  React97.useEffect(() => {
     setSelfHighlightCallback(cellKey, setSeparatorHighlighted);
     setSelfUpdatePropsCallback(cellKey, setSeparatorProps);
     return () => {
@@ -24358,19 +24473,19 @@ function ItemWithSeparator(props) {
     section,
     separators
   });
-  var leadingSeparator = LeadingSeparatorComponent != null && /* @__PURE__ */ React94.createElement(LeadingSeparatorComponent, (0, import_extends10.default)({
+  var leadingSeparator = LeadingSeparatorComponent != null && /* @__PURE__ */ React97.createElement(LeadingSeparatorComponent, (0, import_extends10.default)({
     highlighted: leadingSeparatorHiglighted
   }, leadingSeparatorProps));
-  var separator = SeparatorComponent != null && /* @__PURE__ */ React94.createElement(SeparatorComponent, (0, import_extends10.default)({
+  var separator = SeparatorComponent != null && /* @__PURE__ */ React97.createElement(SeparatorComponent, (0, import_extends10.default)({
     highlighted: separatorHighlighted
   }, separatorProps));
-  return leadingSeparator || separator ? /* @__PURE__ */ React94.createElement(View_default, null, inverted === false ? leadingSeparator : separator, element, inverted === false ? separator : leadingSeparator) : element;
+  return leadingSeparator || separator ? /* @__PURE__ */ React97.createElement(View_default, null, inverted === false ? leadingSeparator : separator, element, inverted === false ? separator : leadingSeparator) : element;
 }
 var VirtualizedSectionList_default = VirtualizedSectionList;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/SectionList/index.js
 var _excluded12 = ["stickySectionHeadersEnabled"];
-var SectionList = class extends React95.PureComponent {
+var SectionList = class extends React98.PureComponent {
   constructor() {
     super(...arguments);
     this._captureRef = (ref) => {
@@ -24428,7 +24543,7 @@ var SectionList = class extends React95.PureComponent {
   render() {
     var _this$props = this.props, _stickySectionHeadersEnabled = _this$props.stickySectionHeadersEnabled, restProps = (0, import_objectWithoutPropertiesLoose12.default)(_this$props, _excluded12);
     var stickySectionHeadersEnabled = _stickySectionHeadersEnabled !== null && _stickySectionHeadersEnabled !== void 0 ? _stickySectionHeadersEnabled : Platform_default.OS === "ios";
-    return /* @__PURE__ */ React95.createElement(VirtualizedSectionList_default, (0, import_extends11.default)({}, restProps, {
+    return /* @__PURE__ */ React98.createElement(VirtualizedSectionList_default, (0, import_extends11.default)({}, restProps, {
       stickySectionHeadersEnabled,
       ref: this._captureRef,
       getItemCount: (items) => items.length,
@@ -24441,7 +24556,7 @@ var SectionList = class extends React95.PureComponent {
 var SectionList_default = SectionList;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedSectionList.js
-var SectionListWithEventThrottle = /* @__PURE__ */ React96.forwardRef((props, ref) => /* @__PURE__ */ React96.createElement(SectionList_default, (0, import_extends12.default)({
+var SectionListWithEventThrottle = /* @__PURE__ */ React99.forwardRef((props, ref) => /* @__PURE__ */ React99.createElement(SectionList_default, (0, import_extends12.default)({
   scrollEventThrottle: 1e-4
 }, props, {
   ref
@@ -24449,12 +24564,12 @@ var SectionListWithEventThrottle = /* @__PURE__ */ React96.forwardRef((props, re
 var AnimatedSectionList_default = createAnimatedComponent(SectionListWithEventThrottle);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
-var React98 = __toESM(require("react"));
+var React101 = __toESM(require("react"));
 
 // ../../node_modules/react-native-web/dist/exports/Text/index.js
 var import_objectSpread219 = __toESM(require_objectSpread2());
 var import_objectWithoutPropertiesLoose13 = __toESM(require_objectWithoutPropertiesLoose());
-var React97 = __toESM(require("react"));
+var React100 = __toESM(require("react"));
 var _excluded13 = ["hrefAttrs", "numberOfLines", "onClick", "onLayout", "onPress", "onMoveShouldSetResponder", "onMoveShouldSetResponderCapture", "onResponderEnd", "onResponderGrant", "onResponderMove", "onResponderReject", "onResponderRelease", "onResponderStart", "onResponderTerminate", "onResponderTerminationRequest", "onScrollShouldSetResponder", "onScrollShouldSetResponderCapture", "onSelectionChangeShouldSetResponder", "onSelectionChangeShouldSetResponderCapture", "onStartShouldSetResponder", "onStartShouldSetResponderCapture", "selectable"];
 var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clickProps, focusProps, keyboardProps, mouseProps, touchProps, styleProps, {
   href: true,
@@ -24462,10 +24577,10 @@ var forwardPropsList2 = Object.assign({}, defaultProps, accessibilityProps, clic
   pointerEvents: true
 });
 var pickProps2 = (props) => pick(props, forwardPropsList2);
-var Text64 = /* @__PURE__ */ React97.forwardRef((props, forwardedRef) => {
+var Text65 = /* @__PURE__ */ React100.forwardRef((props, forwardedRef) => {
   var hrefAttrs = props.hrefAttrs, numberOfLines = props.numberOfLines, onClick = props.onClick, onLayout = props.onLayout, onPress = props.onPress, onMoveShouldSetResponder = props.onMoveShouldSetResponder, onMoveShouldSetResponderCapture = props.onMoveShouldSetResponderCapture, onResponderEnd = props.onResponderEnd, onResponderGrant = props.onResponderGrant, onResponderMove = props.onResponderMove, onResponderReject = props.onResponderReject, onResponderRelease = props.onResponderRelease, onResponderStart = props.onResponderStart, onResponderTerminate = props.onResponderTerminate, onResponderTerminationRequest = props.onResponderTerminationRequest, onScrollShouldSetResponder = props.onScrollShouldSetResponder, onScrollShouldSetResponderCapture = props.onScrollShouldSetResponderCapture, onSelectionChangeShouldSetResponder = props.onSelectionChangeShouldSetResponder, onSelectionChangeShouldSetResponderCapture = props.onSelectionChangeShouldSetResponderCapture, onStartShouldSetResponder = props.onStartShouldSetResponder, onStartShouldSetResponderCapture = props.onStartShouldSetResponderCapture, selectable = props.selectable, rest = (0, import_objectWithoutPropertiesLoose13.default)(props, _excluded13);
-  var hasTextAncestor = React97.useContext(TextAncestorContext_default);
-  var hostRef = React97.useRef(null);
+  var hasTextAncestor = React100.useContext(TextAncestorContext_default);
+  var hostRef = React100.useRef(null);
   var _useLocaleContext = useLocaleContext(), contextDirection = _useLocaleContext.direction;
   useElementLayout(hostRef, onLayout);
   useResponderEvents(hostRef, {
@@ -24486,7 +24601,7 @@ var Text64 = /* @__PURE__ */ React97.forwardRef((props, forwardedRef) => {
     onStartShouldSetResponder,
     onStartShouldSetResponderCapture
   });
-  var handleClick = React97.useCallback((e) => {
+  var handleClick = React100.useCallback((e) => {
     if (onClick != null) {
       onClick(e);
     } else if (onPress != null) {
@@ -24530,11 +24645,11 @@ var Text64 = /* @__PURE__ */ React97.forwardRef((props, forwardedRef) => {
   var element = createElement_default(component, supportedProps, {
     writingDirection
   });
-  return hasTextAncestor ? element : /* @__PURE__ */ React97.createElement(TextAncestorContext_default.Provider, {
+  return hasTextAncestor ? element : /* @__PURE__ */ React100.createElement(TextAncestorContext_default.Provider, {
     value: true
   }, element);
 });
-Text64.displayName = "Text";
+Text65.displayName = "Text";
 var textStyle = {
   backgroundColor: "transparent",
   border: "0 solid black",
@@ -24584,13 +24699,13 @@ var styles8 = StyleSheet_default.create({
     cursor: "pointer"
   }
 });
-var Text_default = Text64;
+var Text_default = Text65;
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedText.js
 var AnimatedText_default = createAnimatedComponent(Text_default);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/components/AnimatedView.js
-var React99 = __toESM(require("react"));
+var React102 = __toESM(require("react"));
 var AnimatedView_default = createAnimatedComponent(View_default);
 
 // ../../node_modules/react-native-web/dist/vendor/react-native/Animated/AnimatedMock.js
@@ -26686,7 +26801,7 @@ var costlyToAnimateStyleKey = {
 var AnimatedView = Animated_default2.View;
 var AnimatedText = Animated_default2.Text;
 function useAnimatedNumber(initial) {
-  const state = import_react83.default.useRef(null);
+  const state = import_react87.default.useRef(null);
   return state.current || (state.current = {
     composite: null,
     val: new Animated_default2.Value(initial),
@@ -26739,7 +26854,7 @@ var useAnimatedNumberReaction = ({
   const onChange = useEvent((current) => {
     onValue(current.value);
   });
-  import_react83.default.useEffect(() => {
+  import_react87.default.useEffect(() => {
     const id2 = value.getInstance().addListener(onChange);
     return () => {
       value.getInstance().removeListener(id2);
@@ -26765,7 +26880,7 @@ function createAnimations(animations2) {
       componentState,
       presence
     }) => {
-      const isDisabled2 = isWeb && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react83.default.useRef({}), animatedTranforms = import_react83.default.useRef([]), animationsState = import_react83.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react83.default.useMemo(() => isWeb ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react83.default.useMemo(() => {
+      const isDisabled2 = isWeb && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = import_react87.default.useRef({}), animatedTranforms = import_react87.default.useRef([]), animationsState = import_react87.default.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = import_react87.default.useMemo(() => isWeb ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = import_react87.default.useMemo(() => {
         const runners = [], completions = [], nonAnimatedStyle = {};
         for (const key in style) {
           const val = style[key];
@@ -26914,7 +27029,7 @@ function getValue2(input, isColor = false) {
 }
 
 // src/theme/tokens.ts
-var import_tamagui105 = require("tamagui");
+var import_tamagui106 = require("tamagui");
 var palette = {
   transparent: "transparent",
   white: "#FFFFFF",
@@ -27035,15 +27150,23 @@ var palette = {
 };
 var spaceScale = {
   0: 0,
-  xs: 4,
-  sm: 8,
-  md: 12,
-  lg: 16,
-  xl: 24,
-  "2xl": 32,
-  "3xl": 40,
-  "4xl": 48,
-  true: 12
+  xs: 8,
+  // was 4
+  sm: 12,
+  // was 8
+  md: 16,
+  // was 12
+  lg: 24,
+  // was 16
+  xl: 32,
+  // was 24
+  "2xl": 40,
+  // was 32
+  "3xl": 48,
+  // was 40
+  "4xl": 64,
+  // was 48
+  true: 16
   // default (md)
 };
 var sizeScale = {
@@ -27079,9 +27202,38 @@ var zIndexScale = {
   true: 0
   // default (base)
 };
-var tokens = (0, import_tamagui105.createTokens)({
+var tokens = (0, import_tamagui106.createTokens)({
   color: {
-    ...palette
+    ...palette,
+    // Standard Tamagui / Radix Grays (Mapped to IVISA Grays)
+    gray1: palette.ivisaGray50,
+    gray2: palette.ivisaGray100,
+    gray3: palette.ivisaGray200,
+    gray4: palette.ivisaGray300,
+    gray5: palette.ivisaGray400,
+    gray6: palette.ivisaGray500,
+    gray7: palette.ivisaGray600,
+    gray8: palette.ivisaGray700,
+    gray9: palette.ivisaGray800,
+    gray10: palette.ivisaGray900,
+    gray11: palette.ivisaGray950,
+    gray12: palette.black,
+    // Semantic Colors (Mappings for consistency)
+    color1: palette.ivisaGray50,
+    color2: palette.ivisaGray100,
+    color3: palette.ivisaGray200,
+    color4: palette.ivisaGray300,
+    color5: palette.ivisaGray400,
+    color6: palette.ivisaGray500,
+    color7: palette.ivisaGray600,
+    color8: palette.ivisaGray700,
+    color9: palette.ivisaGray800,
+    color10: palette.ivisaGray900,
+    color11: palette.ivisaGray950,
+    color12: palette.black,
+    // Fix missing tokens
+    red10: palette.red700,
+    outlineColor: palette.rioDeepBlue
   },
   space: spaceScale,
   size: sizeScale,
@@ -27144,7 +27296,8 @@ var lightColors = {
   infoForeground: palette.white,
   muted: palette.slate100,
   mutedForeground: palette.slate500,
-  ring: palette.rioDeepBlue
+  ring: palette.rioDeepBlue,
+  outlineColor: palette.rioDeepBlue
 };
 var darkColors = {
   background: palette.slate900,
@@ -27202,24 +27355,130 @@ var darkColors = {
   infoForeground: palette.white,
   muted: palette.slate800,
   mutedForeground: palette.slate400,
-  ring: palette.rioGradientEnd
+  ring: palette.rioGradientEnd,
+  outlineColor: palette.rioGradientEnd
 };
 
 // src/theme/index.ts
-var import_tamagui106 = require("tamagui");
-var lightTheme = (0, import_tamagui106.createTheme)({
+var import_tamagui107 = require("tamagui");
+
+// src/theme/escuro.ts
+var escuroColors = {
+  ...darkColors,
+  // Base Backgrounds (Black & Deep Blue)
+  background: "#000000",
+  backgroundHover: "#050A14",
+  // Very dark blue
+  backgroundPress: "#0A1429",
+  backgroundFocus: "#0A1429",
+  backgroundStrong: "#020408",
+  // Borders (Subtle Blue)
+  borderColor: "#1E293B",
+  borderColorHover: "#334155",
+  borderColorFocus: "#3B82F6",
+  // Bright Blue Focus
+  // Text (White)
+  color: "#FFFFFF",
+  colorHover: "#E2E8F0",
+  colorPress: "#CBD5E1",
+  colorFocus: "#FFFFFF",
+  // Primary Action (Blue)
+  primary: "#1E40AF",
+  // Blue 800
+  primaryHover: "#1D4ED8",
+  // Blue 700
+  primaryPress: "#2563EB",
+  // Blue 600
+  primaryFocus: "#2563EB",
+  primaryForeground: "#FFFFFF",
+  // Secondary
+  secondary: "#0F172A",
+  // Slate 900
+  secondaryHover: "#1E293B",
+  secondaryPress: "#334155",
+  secondaryForeground: "#FFFFFF",
+  // Glassmorphism hints (used in specific components if they use these tokens)
+  shadowColor: "rgba(59, 130, 246, 0.2)",
+  // Blue glow
+  shadowColorHover: "rgba(59, 130, 246, 0.4)"
+};
+
+// src/theme/prefRio.ts
+var rioPalette = {
+  primary: "#003399",
+  primaryLight: "#0066CC",
+  secondary: "#333333",
+  tertiary: "#666666",
+  white: "#FFFFFF",
+  gray1: "#EEEEEE",
+  gray2: "#F5F5F5",
+  success: "#009900",
+  error: "#CC0000",
+  warning: "#FFA500",
+  info: "#0066CC"
+};
+var prefRioColors = {
+  ...lightColors,
+  // Backgrounds
+  background: rioPalette.white,
+  backgroundHover: rioPalette.gray1,
+  backgroundPress: rioPalette.gray2,
+  backgroundFocus: rioPalette.gray1,
+  backgroundStrong: rioPalette.secondary,
+  // Dark background for strong contrast areas
+  // Borders
+  borderColor: rioPalette.gray1,
+  borderColorHover: rioPalette.tertiary,
+  borderColorFocus: rioPalette.primary,
+  borderColorPress: rioPalette.primary,
+  // Text
+  color: rioPalette.secondary,
+  // Main text #333333
+  colorHover: rioPalette.tertiary,
+  colorPress: rioPalette.primary,
+  colorFocus: rioPalette.primary,
+  // Primary Actions
+  primary: rioPalette.primary,
+  primaryHover: rioPalette.primaryLight,
+  primaryPress: "#002266",
+  primaryFocus: rioPalette.primary,
+  primaryForeground: rioPalette.white,
+  // Secondary Actions
+  secondary: rioPalette.gray1,
+  secondaryHover: "#DDD",
+  secondaryPress: "#CCC",
+  secondaryForeground: rioPalette.secondary,
+  // Status
+  success: rioPalette.success,
+  error: rioPalette.error,
+  warning: rioPalette.warning,
+  info: rioPalette.info,
+  // Shadows
+  shadowColor: "rgba(0, 0, 0, 0.1)",
+  shadowColorHover: "rgba(0, 0, 0, 0.15)"
+};
+
+// src/theme/index.ts
+var claroTheme = (0, import_tamagui107.createTheme)({
   ...lightColors
 });
-var darkTheme = (0, import_tamagui106.createTheme)({
-  ...darkColors
+var escuroTheme = (0, import_tamagui107.createTheme)({
+  ...escuroColors
+});
+var prefRioTheme = (0, import_tamagui107.createTheme)({
+  ...prefRioColors
 });
 var themes = {
-  light: lightTheme,
-  dark: darkTheme
+  claro: claroTheme,
+  escuro: escuroTheme,
+  "pref.rio": prefRioTheme,
+  // Default aliases
+  light: claroTheme,
+  dark: escuroTheme
 };
 
 // src/tamagui.config.ts
-var ceraProFont = (0, import_tamagui107.createFont)({
+var ceraProFont = (0, import_tamagui108.createFont)({
   family: "Cera Pro",
   size: {
     1: 12,
@@ -27240,7 +27499,11 @@ var ceraProFont = (0, import_tamagui107.createFont)({
     "2xl": 24,
     "3xl": 32,
     "4xl": 48,
-    "5xl": 64
+    "5xl": 64,
+    // Aliases for safety
+    default: 16,
+    true: 16,
+    "$3": 16
   },
   lineHeight: {
     1: 16,
@@ -27273,6 +27536,22 @@ var ceraProFont = (0, import_tamagui107.createFont)({
     900: { normal: "CeraPro-Black" }
   }
 });
+var arialFont = (0, import_tamagui108.createFont)({
+  family: "Arial, Helvetica, sans-serif",
+  size: ceraProFont.size,
+  lineHeight: ceraProFont.lineHeight,
+  weight: {
+    4: "400",
+    // Regular
+    7: "700"
+    // Bold
+  },
+  letterSpacing: ceraProFont.letterSpacing,
+  face: {
+    400: { normal: "Arial" },
+    700: { normal: "Arial-Bold" }
+  }
+});
 var animations = createAnimations({
   bouncy: {
     type: "spring",
@@ -27292,7 +27571,7 @@ var animations = createAnimations({
     stiffness: 250
   }
 });
-var config = (0, import_tamagui107.createTamagui)({
+var config = (0, import_tamagui108.createTamagui)({
   // Animations
   animations,
   // Fonts
@@ -27300,7 +27579,9 @@ var config = (0, import_tamagui107.createTamagui)({
     heading: ceraProFont,
     body: ceraProFont,
     brandHeading: ceraProFont,
-    brandBody: ceraProFont
+    brandBody: ceraProFont,
+    rioHeading: arialFont,
+    rioBody: arialFont
   },
   // Tokens
   tokens,
@@ -27358,8 +27639,8 @@ var config = (0, import_tamagui107.createTamagui)({
 var tamagui_config_default = config;
 
 // src/providers/AppProviders.tsx
-var import_jsx_runtime105 = require("react/jsx-runtime");
-var AppProviders = ({ theme = "light", children }) => /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(import_tamagui108.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime105.jsx)(ErrorBoundary, { componentName: "AppProviders", children }) }) });
+var import_jsx_runtime106 = require("react/jsx-runtime");
+var AppProviders = ({ theme = "claro", children }) => /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(import_tamagui109.TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(import_portal2.PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ (0, import_jsx_runtime106.jsx)(ErrorBoundary, { componentName: "AppProviders", children }) }) });
 
 // src/fonts.ts
 var fonts = {
@@ -27367,6 +27648,194 @@ var fonts = {
   CeraProMedium: null,
   CeraProBlack: null
 };
+
+// src/organisms/AgentAnimationPanel/AgentAnimationPanel.tsx
+var import_tamagui111 = require("tamagui");
+var import_lucide_icons59 = require("@tamagui/lucide-icons");
+var import_jsx_runtime107 = require("react/jsx-runtime");
+var EventList = (0, import_tamagui111.styled)(import_tamagui111.YStack, {
+  gap: "$3",
+  padding: "$2"
+});
+var EventItem = (0, import_tamagui111.styled)(import_tamagui111.XStack, {
+  backgroundColor: "$background",
+  padding: "$3",
+  borderRadius: "$md",
+  borderWidth: 1,
+  borderColor: "$borderColor",
+  alignItems: "center",
+  gap: "$3",
+  animation: "quick",
+  enterStyle: { opacity: 0, y: 10 }
+});
+var Timestamp = (0, import_tamagui111.styled)(Typography, {
+  fontSize: "$2",
+  color: "$mutedForeground",
+  minWidth: 50
+});
+var StatusIcon = ({ type }) => {
+  switch (type) {
+    case "error":
+      return /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(import_lucide_icons59.AlertCircle, { size: 16, color: "$red10" });
+    case "success":
+      return /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(import_lucide_icons59.CheckCircle, { size: 16, color: "$green10" });
+    case "working":
+      return /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(import_lucide_icons59.Activity, { size: 16, color: "$blue10" });
+    case "warning":
+      return /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(import_lucide_icons59.AlertCircle, { size: 16, color: "$yellow10" });
+    default:
+      return /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(import_lucide_icons59.Info, { size: 16, color: "$gray10" });
+  }
+};
+var AgentAnimationPanel = ({
+  agentName,
+  agentStatus,
+  events
+}) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime107.jsxs)(Card, { width: "100%", height: "100%", maxHeight: 600, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(CardHeader, { children: /* @__PURE__ */ (0, import_jsx_runtime107.jsxs)(import_tamagui111.XStack, { justifyContent: "space-between", alignItems: "center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(CardTitle, { children: agentName }),
+      /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(Badge, { variant: agentStatus === "error" ? "destructive" : "default", children: agentStatus.toUpperCase() })
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(CardContent, { children: /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(import_tamagui111.ScrollView, { maxHeight: 400, children: events.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(
+      Empty,
+      {
+        title: "Nenhum evento registrado",
+        description: "Aguardando atividades do agente..."
+      }
+    ) : /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(EventList, { children: events.map((event3) => /* @__PURE__ */ (0, import_jsx_runtime107.jsxs)(EventItem, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(StatusIcon, { type: event3.type }),
+      /* @__PURE__ */ (0, import_jsx_runtime107.jsxs)(import_tamagui111.YStack, { flex: 1, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(Typography, { children: event3.message }),
+        /* @__PURE__ */ (0, import_jsx_runtime107.jsx)(Timestamp, { children: new Date(event3.timestamp).toLocaleTimeString() })
+      ] })
+    ] }, event3.id)) }) }) })
+  ] });
+};
+
+// src/organisms/AgentAnimationModal/AgentAnimationModal.tsx
+var import_jsx_runtime108 = require("react/jsx-runtime");
+var AgentAnimationModal = ({
+  open,
+  onOpenChange,
+  ...panelProps
+}) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(Dialog, { modal: true, open, onOpenChange, children: /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(DialogContentComposite, { padding: 0, maxWidth: 600, maxHeight: "80vh", children: /* @__PURE__ */ (0, import_jsx_runtime108.jsx)(AgentAnimationPanel, { ...panelProps }) }) });
+};
+
+// src/atoms/StatusLight/StatusLight.tsx
+var import_react88 = __toESM(require("react"));
+var import_tamagui112 = require("tamagui");
+var import_jsx_runtime109 = require("react/jsx-runtime");
+var StatusLightFrame = (0, import_tamagui112.styled)(import_tamagui112.XStack, {
+  name: "StatusLight",
+  alignItems: "center",
+  gap: "$2",
+  variants: {
+    variant: {
+      neutral: {},
+      positive: {},
+      notice: {},
+      negative: {},
+      info: {}
+    },
+    disabled: {
+      true: {
+        opacity: 0.5
+      }
+    }
+  },
+  defaultVariants: {
+    variant: "neutral"
+  }
+});
+var StatusDot = (0, import_tamagui112.styled)(import_tamagui112.Circle, {
+  name: "StatusDot",
+  size: 8,
+  variants: {
+    variant: {
+      neutral: { backgroundColor: "$gray10" },
+      positive: { backgroundColor: "$green10" },
+      notice: { backgroundColor: "$yellow10" },
+      negative: { backgroundColor: "$red10" },
+      info: { backgroundColor: "$blue10" }
+    }
+  },
+  defaultVariants: {
+    variant: "neutral"
+  }
+});
+var StatusText2 = (0, import_tamagui112.styled)(import_tamagui112.Text, {
+  name: "StatusText",
+  color: "$foreground",
+  fontSize: "$3",
+  fontFamily: "$body"
+});
+var StatusLight = import_react88.default.forwardRef(
+  ({ children, variant = "neutral", ...props }, ref) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime109.jsxs)(StatusLightFrame, { ref, variant, ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime109.jsx)(StatusDot, { variant }),
+      /* @__PURE__ */ (0, import_jsx_runtime109.jsx)(StatusText2, { children })
+    ] });
+  }
+);
+StatusLight.displayName = "StatusLight";
+
+// src/atoms/Meter/Meter.tsx
+var import_react89 = __toESM(require("react"));
+var import_tamagui113 = require("tamagui");
+var import_jsx_runtime110 = require("react/jsx-runtime");
+var MeterFrame = (0, import_tamagui113.styled)(import_tamagui113.YStack, {
+  name: "Meter",
+  width: "100%",
+  gap: "$2"
+});
+var MeterHeader = (0, import_tamagui113.styled)(import_tamagui113.XStack, {
+  justifyContent: "space-between",
+  alignItems: "center"
+});
+var MeterLabel = (0, import_tamagui113.styled)(import_tamagui113.Text, {
+  fontSize: "$3",
+  fontWeight: "600",
+  color: "$foreground"
+});
+var MeterValueLabel = (0, import_tamagui113.styled)(import_tamagui113.Text, {
+  fontSize: "$3",
+  color: "$mutedForeground"
+});
+var MeterTrack = (0, import_tamagui113.styled)(import_tamagui113.View, {
+  height: 8,
+  borderRadius: 4,
+  backgroundColor: "$gray5",
+  overflow: "hidden",
+  position: "relative"
+});
+var MeterFill = (0, import_tamagui113.styled)(import_tamagui113.View, {
+  height: "100%",
+  borderRadius: 4,
+  backgroundColor: "$primary",
+  variants: {
+    variant: {
+      positive: { backgroundColor: "$green10" },
+      notice: { backgroundColor: "$yellow10" },
+      negative: { backgroundColor: "$red10" },
+      info: { backgroundColor: "$blue10" }
+    }
+  }
+});
+var Meter = import_react89.default.forwardRef(
+  ({ value, min = 0, max = 100, label, valueLabel, variant, ...props }, ref) => {
+    const percentage = Math.min(Math.max((value - min) / (max - min), 0), 1) * 100;
+    return /* @__PURE__ */ (0, import_jsx_runtime110.jsxs)(MeterFrame, { ref, ...props, children: [
+      (label || valueLabel) && /* @__PURE__ */ (0, import_jsx_runtime110.jsxs)(MeterHeader, { children: [
+        label && /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(MeterLabel, { children: label }),
+        valueLabel && /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(MeterValueLabel, { children: valueLabel })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(MeterTrack, { children: /* @__PURE__ */ (0, import_jsx_runtime110.jsx)(MeterFill, { width: `${percentage}%`, variant }) })
+    ] });
+  }
+);
+Meter.displayName = "Meter";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   A11yToolbar,
@@ -27374,6 +27843,8 @@ var fonts = {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  AgentAnimationModal,
+  AgentAnimationPanel,
   Alert,
   AlertDialog,
   AlertDialogAction,
@@ -27507,6 +27978,7 @@ var fonts = {
   IndicatorArrow,
   Input,
   InputGroup,
+  Kbd,
   Label,
   LeadText,
   LineChart,
@@ -27530,6 +28002,7 @@ var fonts = {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
+  Meter,
   MonthsPicker,
   MutedText,
   NativeSelect,
@@ -27604,6 +28077,7 @@ var fonts = {
   SliderTrack,
   Spinner,
   StarRating,
+  StatusLight,
   Stepper,
   SunburstChart,
   Switch,

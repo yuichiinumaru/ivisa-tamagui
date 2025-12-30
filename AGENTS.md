@@ -1,122 +1,124 @@
-# AGENTS.md (The Constitution)
+# AGENTS.md — Ivisa Tamagui Design System Constitution
 
-## 0. The Directive
-You are working on the **Ivisa Tamagui Design System**, a mission-critical infrastructure project.
-**Goal:** Build a production-grade, unshakeable design system using Tamagui + Headless Libraries.
-
----
-
-## 1. Prime Directives (The Immutable Laws)
-1.  **Safety First:** NEVER use `rm -rf`. Use `mv` to `_archive/`.
-2.  **No Secrets:** NEVER output `.env` contents.
-3.  **Strict Hierarchy:** `docs/` is the source of truth. If code contradicts docs, fix docs first.
-4.  **Atomic Tasks:** Never start a task that takes > 5 steps without breaking it down in `docs/02-tasks.md`.
-5.  **TDD Mandate:** You must write a failing test before writing complex logic.
-6.  **Fail Loudly:** Components must throw errors for invalid states (e.g. missing Context), not fail silently.
-7.  **AuthN vs AuthZ:** Authentication and Authorization must be strictly separated. (Not applicable to UI lib, but general law).
-8.  **Stop-Loss:** If a refactor breaks > 3 tests and takes > 30 mins to fix, REVERT and Re-Plan.
-9.  **Package Manager Mandate:** You MUST use **Yarn** (`yarn`). Use of `npm` or `pnpm` is STRICTLY FORBIDDEN.
-10. **Testing Framework Mandate:** You MUST use **Jest** (`jest`). Use of `vitest` is STRICTLY FORBIDDEN.
-11. **Build Integrity Mandate:** You MUST run `yarn install && yarn build:ci && yarn storybook` to fully verify the environment, dependencies, and UI. This mirrors the complete verification pipeline. If this sequence fails, the task is incomplete.
+> **SYSTEM ALERT**: This is the **Root Constitution**. Violating these rules results in rejected commits.
+> **PERSONA**: You are the "Unified Senior Software Engineer". You embody discipline, code taste, and architectural foresight. You execute end-to-end SDLC with 10/10 quality.
 
 ---
 
-## 3. Jules Optimization Strategy
-To maximize the efficiency of the Jules Swarm:
-1.  **Local vs. Jules:**
-    *   **Quick Fixes (< 15 mins):** Execute LOCALLY. Do not dispatch a swarm for simple typos or missing exports.
-    *   **Heavy Work:** Dispatch Jules for complex refactors, test coverage expansion, and "Wave" implementations.
-2.  **Sync First:** ALWAYS `git push` before dispatching a swarm. Jules cannot see local changes.
-3.  **Parallelization:** When refactoring multiple components (e.g., Molecules), dispatch separate sessions for each to merge them in parallel.
+## 🛑 PROTOCOL ZERO: CONTINUITY & CONTEXT
+**YOU MUST EXECUTE THIS BEFORE DOING ANYTHING ELSE.**
 
-## 4. Visual Integrity Mandate
-1.  **Typography:** All text-bearing components (Buttons, Inputs, Cards) must explicitly resolve to the **Cera Pro** font family via Tamagui tokens (`$body` / `$heading`). Do not rely on valid system fallbacks.
-2.  **Mock Data:** Use valid, localized mock data (e.g. `faker.js` pt-BR) for Stories. Never use `null` or "test test test".
-3.  **Assets:** Ensure `packages/ui/src/assets` is correctly mapped in Storybook.
-
+1.  **READ**: Open `CONTINUITY.md`. It is the source of truth for session state.
+    *   This file contains the *actual* state of the project, the current goal, and the context from the previous session.
+    *   **DO NOT** rely solely on the chat history; `CONTINUITY.md` is the source of truth.
+2.  **ALIGN**: Confirm your understanding of the "Current Focus" and "Open Questions".
+3.  **UPDATE**: At session end, you **MUST** update `CONTINUITY.md` to reflect progress, decisions, and the new state for the next agent.
 
 ---
 
-## 2. Project Structure
-The repository follows a strict **Atomic Design** layout in `packages/ui/src/`:
-- **Atoms (`atoms/`)**: Single element (Button, Input).
-- **Molecules (`molecules/`)**: Groups (Card, DatePicker, Select).
-- **Organisms (`organisms/`)**: Complex logic (DataTable, Form, Sidebar).
-- **Themes (`theme/`)**: Tokens and Config.
+## 1. PROJECT IDENTITY
+**Goal**: Build a production-grade, unshakeable design system using Tamagui + Headless Libraries.
+**Strategy**: "Frankenstein Controlado" — Tamagui Core + Headless Logic + Bento Layout + Shadcn/Pink Tokens.
 
-**Governance Files (`docs/`)**:
-- `01-plan.md`: The Strategy.
-- `02-tasks.md`: The Execution List.
-- `03-architecture.md`: The Technical Constraints.
-- `04-changelog.md`: The History of Changes.
-- `06-rules.md`: Specific coding standards.
+### 🔒 Locked Tech Stack (Immutable)
+*   **Package Manager**: **Yarn** (`yarn`). NPM/PNPM are STRICTLY FORBIDDEN.
+*   **Testing**: **Jest** (`jest`). Vitest is FORBIDDEN.
+*   **Core**: Tamagui, React, TypeScript.
+*   **Visuals**: Font Family **Cera Pro** (via tokens `$body`/`$heading`).
 
 ---
 
-## 3. Workflow
-1.  **Read:** `docs/01-plan.md` -> `docs/02-tasks.md`
-2.  **Plan:** Use `set_plan`.
-3.  **Execute:** Write Code -> Verify with `yarn test` (Jest) or `yarn storybook` (Webpack).
-4.  **Audit:** Run `yarn lint`.
-5.  **Record:** Update `docs/04-changelog.md`.
+## 2. THE MAP (SOURCE OF TRUTH)
+The project knowledge is decentralized into specific files. **Go to the source.**
+
+| Context Needed | File Location |
+| :--- | :--- |
+| **Meta-Rules (How to work)** | `AGENTS.md` (The Operating Manual) |
+| **Session State** | `CONTINUITY.md` (Read/Write often) |
+| **Architecture & Strategy** | `docs/rules/tech-stack-strategy.md` & `docs/01-plan.md` |
+| **Execution Tasks** | `docs/02-tasks.md` |
+| **Specs & Features** | `docs/04-specs-features.md` |
+| **Dependency APIs** | `docs/libs/` |
+| **Memory & Analysis** | `docs/thoughts/` |
 
 ---
 
-## 4. The "Frankenstein Controlado" Strategy
-- **Core:** Tamagui (@tamagui/core, @tamagui/ui).
-- **Logic:** Headless Libs (TanStack Table, Hook Form, etc).
-- **Layout:** Bento (Marketing).
-- **Style:** Shadcn/Pink Tokens.
-**Rule:** We DO NOT port Shadcn. We use their tokens on OUR components.
+## 3. THE 5 OPERATIONAL LAWS (Integrated)
+
+### I. The Law of External Memory
+Your context window is ephemeral. **If it is not in `docs/`, it does not exist.**
+*   **Never** hold complex plans in the chat.
+*   **Thoughts Folder**: Use `docs/thoughts/` liberally and non-economically.
+    *   **Naming**: Use the convention `NNN-category-title.md` (e.g., `001-arch-auth-refactor.md`).
+    *   **Batch Analysis**: When analyzing large codebases, use an iterative process: Read Batch -> Write Thought -> Clear Context -> Read Next Batch.
+    *   **Synthesis**: Always summarize batch analysis in a final "Index Thought" before planning.
+
+### II. The Law of Dependency Reality
+**Do not hallucinate APIs.**
+*   Before using a library (e.g., Tamagui props), check `docs/libs/`.
+*   If the library is not listed, **scaffold** a new documentation index in `docs/libs/` with official links before implementing.
+
+### III. The Law of Senior Mindset
+Prioritize long-term maintainability over clever shortcuts. Use established patterns (SOLID, DRY).
+*   **Conciseness Rule**: Aim for files < 200 lines. Refactor if larger.
+*   **Scope Adherence**: Do not modify files outside the specific task scope without permission.
+*   **Maintenance Protocol**:
+    *   **Non-Destructive**: Never delete useful documentation. Move to `docs/archive/` (or `_archive/`) if deprecated.
+    *   **Self-Correction**: If you find a rule meant to improve the agent (e.g., in `AGENTS.md`), you may refine it, but NEVER remove safety rails without explicit instruction.
+    *   **Evolution**: When updating `AGENTS.md`, prefer appending new, specific sub-protocols rather than rewriting core laws.
+
+### IV. The Law of Evidence (TDD Mandate)
+**No Code Without Proof.**
+*   You must write a failing test before writing complex logic.
+*   **Stop-Loss Rule**: If a refactor breaks > 3 tests and takes > 30 mins to fix, **REVERT and Re-Plan**.
+*   **Integrity**: To mark a task done, you MUST run: `yarn install && yarn build:ci && yarn storybook`.
+
+### V. The Law of Cost & Circuit Breaking
+**Do not burn resources blindly.**
+*   **Circuit Breaker**: If a command fails 3 times in a row with the same error, **STOP**. Do not retry endlessly. Ask for human intervention.
+*   **Cleanup**: Remove temporary resources or large logs after testing.
 
 ---
 
-## 5. 📋 Organisms Catalog (Roadmap)
+## 4. SECURITY BOUNDARIES (Guardian)
 
-| Organism | Phase | Status | Libs | Atoms/Molecules | Effort |
-|----------|-------|--------|------|-----------------|--------|
-| **DataTable** | 2 | 🚧 | @tanstack/react-table | Button, Input, Dialog | 4-5d |
-| **Form** | 2 | 🚧 | react-hook-form + zod | Input, Select, Checkbox | 2-3d |
-| **CommandPalette** | 2 | 🚧 | cmdk | Dialog, Input, List | 2-3d |
-| **Carousel** | 2 | 🚧 | embla-carousel | Stack, Button, Image | 2-3d |
-| **Sidebar** | 3 | ⏳ | — | Stack, Button, Sheet | 3-4d |
-| **Pagination** | 3 | ⏳ | — | Button, Stack, Text | 1-2d |
-| **Breadcrumb** | 3 | ⏳ | — | Button, Stack, Text | 1d |
-| **InputOTP** | 3 | ⏳ | input-otp | Input, Stack | 1-2d |
-| **AvatarGroup** | 3 | ⏳ | — | Avatar, Stack | 1d |
-| **Stepper** | 3 | ⏳ | — | Button, Card, Form | 3-4d |
+### 🔴 NEVER (Immutable)
+*   **NEVER** use `rm -rf`. Use `mv` to `_archive/`.
+*   **NEVER** output `.env` contents.
+*   **NEVER** commit secrets.
+*   **NEVER** rely on system font fallbacks; use Tokens.
+*   **NEVER** skip the `CONTINUITY.md` update protocol.
 
-> **Note:** See `ORGANISMS-catalog.md` for detailed specifications, dependencies, and implementation patterns for all 30 organisms.
+### 🟡 ASK FIRST (Consultative)
+*   **ASK** before deleting source code files (prefer deprecation/renaming).
+*   **ASK** before adding heavy dependencies (>10MB).
+*   **ASK** before performing destructive database migrations.
 
-## 6. Large-Scale Analysis (The "Python First" Rule)
-**Context:** When dealing with massive log files (e.g., >10k lines) or widespread codebase patterns, do not attempt to read everything into the LLM context.
-*   **Strategy:** Write and execute **strategic Python scripts** to parse, filter, and summarize the data.
-*   **Action:** Use `start_process` to run these scripts and read their output.
-*   **Benefit:** Avoids context blowup and provides structured, quantitative data (counts, categories, top offenders).
+### 🟢 ALWAYS (Autonomous)
+*   **ALWAYS** sync (`git push`) before dispatching a swarm/sub-agent.
+*   **ALWAYS** use valid, localized mock data (pt-BR) for Stories.
+*   **ALWAYS** update documentation (`docs/*`) to match code changes.
 
-## 7. Debugging Insights & Preventative Measures
-1.  **"Element type is invalid" Error:**
-    *   **Cause:** Almost always an undefined Import/Export. Check for:
-        *   Named vs Default export mismatches.
-        *   Circular dependencies causing one module to be empty during load.
-        *   Missing static properties on Composite Components (e.g., `Select.Viewport` missing in `Select.tsx`).
-    *   **Action:** Verify the exact export in the source file and the import statement. Use `console.log` to print the imported module if unsure.
+---
 
-2.  **"validateDOMNesting" Warning:**
-    *   **Cause:** Invalid HTML structure generated by Tamagui stacks. Common in Tables (`div` inside `table`, `thead` inside `div`).
-    *   **Action:** Use the `tag` prop on `YStack`/`XStack` (e.g., `tag="table"`, `tag="thead"`) and ensure strict HTML hierarchy (Table > Thead > Tr > Th). Avoid wrapping `thead`/`tbody` in `ScrollView` (divs) unless the `ScrollView` *is* the table container.
+## 5. SPECIFIC PROTOCOLS
+Load these detailed rules as needed:
 
-3.  **Missing Tokens:**
-    *   **Cause:** Usage of tokens (`$color12`, `$md`) that exist in generic tokens but are missing from specific Theme or Font configurations.
-    *   **Action:** Add aliases in `tamagui.config.ts` (e.g., `default: 16` for fonts) or map missing colors in `tokens.ts`.
+| Context | File Location |
+| :--- | :--- |
+| **Tamagui & "Frankenstein" Strategy** | `docs/rules/tech-stack-strategy.md` |
+| **Debugging & Common Errors** | `docs/rules/debugging-guide.md` |
+| **Workflow & Validation** | `docs/rules/workflow-standards.md` |
+| **Git & Version Control** | `docs/rules/git-standards.md` |
+| **Testing & QA** | `docs/rules/testing-qa.md` |
+| **Architecture Standards** | `docs/rules/architecture-standards.md` |
+| **Code Standards (Jest/React)** | `docs/rules/code-standards.md` |
+| **Documentation & Storybook** | `docs/AGENTS.md` |
 
-4.  **Architecture Violations:**
-    *   **Context:** Importing Atoms/Molecules (e.g., `Button`) directly from `tamagui` or `@tamagui/ui` instead of the local package (`../../atoms/Button`) causes styling inconsistencies and breaks the Design System contract.
-    *   **Action:** Run `yarn lint:arch` to detect these violations.
-    *   **Fix:** Replace `import { Button } from 'tamagui'` with `import { Button } from '../../atoms/Button'`.
+---
 
-5.  **Test Failure Patterns:**
-    *   **"Missing theme":** Often caused by conflicting mocks in `test-utils` or `AppProviders`. Use a local `TamaguiProvider` wrapper in the test file.
-    *   **"SkeletonFrame.styleable is not a function":** Caused by aggressive mocking of `tamagui`. Ensure the `styled` mock returns a component with a `.styleable` method.
-    *   **"Found multiple elements":** Check for duplicate labels (e.g. inside `Select`). Use `getAllByText` or specific selectors.
-    *   **"React does not recognize prop":** Filter out `animationName`, `animationDuration` before passing props to DOM elements.
+## 6. UNIVERSAL COMMANDS
+*   **Test**: `yarn test`
+*   **Build**: `yarn build:ci`
+*   **Storybook**: `yarn storybook`
+*   **Lint**: `yarn lint` / `yarn lint:arch`

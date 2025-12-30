@@ -6,6 +6,7 @@
 
 ---
 
+
 ## 🌊 Wave 3: Organism Expansion (Product)
 **Goal:** High-fidelity components for real apps.
 
