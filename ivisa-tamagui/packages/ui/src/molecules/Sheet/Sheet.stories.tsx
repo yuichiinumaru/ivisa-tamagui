@@ -9,11 +9,10 @@ import {
   SheetDescription,
   SheetProps,
 } from './Sheet'
-import { Button } from '../atoms/Button'
-import { Input } from '../atoms/Input'
-import { Label } from '../atoms/Label'
+import { Button } from '../../atoms/Button'
+import { Input } from '../../atoms/Input'
+import { Label } from '../../atoms/Label'
 import { YStack, XStack } from 'tamagui'
-import { StorybookArgs } from '../../../apps/storybook/.storybook/utils/StorybookArgs'
 
 const meta: Meta<typeof Sheet> = {
   title: 'Moléculas/Sheet',
@@ -68,7 +67,7 @@ const SheetStoryContent = () => (
   </>
 )
 
-const renderSheet = (args: StorybookArgs<SheetProps>) => {
+const renderSheet = (args: SheetProps) => {
   const [open, setOpen] = useState(args.open ?? false)
 
   return (

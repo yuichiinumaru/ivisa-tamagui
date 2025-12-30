@@ -45,6 +45,9 @@ export const BarChart = ({
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
 
+  // Defensive copy to prevent mutation of frozen Storybook args
+  const chartData = React.useMemo(() => (data ? [...data] : []), [data])
+
   const renderContent = () => {
     if (isLoading) {
       return <Skeleton height={height} width="100%" />
@@ -59,28 +62,20 @@ export const BarChart = ({
       )
     }
 
-    if (!data || data.length === 0) {
+    if (!chartData || chartData.length === 0) {
       return (
-        <YStack flex={1} justifyContent="center" alignItems="center" gap="$2" height={height}>
-          <BarChart3 color="$gray10" />
-          <Text>Não há dados para exibir.</Text>
+        <YStack flex={1} justifyContent="center" alignItems="center" gap="$2" height={height} backgroundColor="$background">
+          <BarChart3 color="$gray8" size={32} />
+          <Text color="$gray10">Nenhum dado disponível</Text>
         </YStack>
       )
     }
 
     return (
-      <YStack height={height} width="100%">
+      <YStack width="100%" height={height}>
         <ResponsiveContainer width="100%" height="100%">
-          <RechartsBarChart
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
+          <RechartsBarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={gridColor} />
             <XAxis
               dataKey={xKey}
               stroke={axisColor}

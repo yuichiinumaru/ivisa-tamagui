@@ -124,8 +124,50 @@ const palette = {
 };
 
 // Breathing System: Increased spacing scale
+const sizeScale = {
+  0: 0,
+  1: 4,
+  2: 8,
+  3: 12,
+  4: 16,
+  5: 20,
+  6: 24, // matches xs
+  7: 28,
+  8: 32, // matches sm
+  9: 36,
+  10: 40, // matches md
+  11: 44,
+  12: 48, // matches lg
+  13: 52,
+  14: 56, // matches xl
+  15: 60,
+  16: 64, // matches 2xl
+  17: 72,
+  18: 80, // matches 3xl
+  19: 88,
+  20: 96,
+  xs: 24,
+  sm: 32,
+  md: 40,
+  lg: 48,
+  xl: 56,
+  '2xl': 64,
+  '3xl': 80,
+  true: 40, // default (md)
+};
+
 const spaceScale = {
   0: 0,
+  1: 4,
+  2: 8,
+  3: 12,
+  4: 16,
+  5: 20,
+  6: 24,
+  7: 28,
+  8: 32,
+  9: 36,
+  10: 40,
   xs: 8,    // was 4
   sm: 12,   // was 8
   md: 16,   // was 12
@@ -135,19 +177,6 @@ const spaceScale = {
   '3xl': 48,// was 40
   '4xl': 64,// was 48
   true: 16, // default (md)
-};
-
-const sizeScale = {
-  0: 0,
-  xs: 24,
-  sm: 32,
-  md: 40,
-  lg: 48,
-  xl: 56,
-  '2xl': 64,
-  '3xl': 80,
-  '15': 300,
-  true: 40, // default (md)
 };
 
 const radiusScale = {

@@ -1,11 +1,13 @@
 import "./fonts.css"
 import React from "react"
 import { Preview } from "@storybook/react"
-import { TamaguiProvider } from "tamagui"
+import { TamaguiProvider, Theme } from "tamagui"
 import config from "../src/tamagui.config"
 
 // Lista todos os temas existentes no config
-const allThemes = Object.keys(config.themes)
+const allThemes = Object.keys(config.themes).filter(theme =>
+  ['claro', 'escuro', 'pref.rio'].includes(theme)
+)
 
 const preview: Preview = {
   decorators: [
@@ -14,7 +16,9 @@ const preview: Preview = {
 
       return (
         <TamaguiProvider config={config} defaultTheme={theme}>
-          <Story />
+          <Theme name={theme}>
+            <Story />
+          </Theme>
         </TamaguiProvider>
       )
     },

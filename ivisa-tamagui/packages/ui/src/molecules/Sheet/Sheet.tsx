@@ -12,8 +12,8 @@ import {
   Portal,
 } from 'tamagui'
 import React, { createContext, useContext, forwardRef } from 'react'
-import { Skeleton } from '../atoms/Skeleton'
-import { Button } from '../atoms/Button'
+import { Skeleton } from '../../atoms/Skeleton'
+import { Button } from '../../atoms/Button'
 
 // 1. CONTEXT for state propagation
 // =================================================================================================

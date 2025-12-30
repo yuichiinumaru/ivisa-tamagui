@@ -1,7 +1,19 @@
 import { createTamagui, createFont } from 'tamagui';
 import { createAnimations } from '@tamagui/animations-react-native';
 import { tokens } from './theme/tokens';
-import { themes } from './theme';
+import { themes as baseThemesRaw } from './theme/themes';
+
+const baseThemes = baseThemesRaw as any;
+
+// Map the generated themes to the names used in the application and Storybook
+// baseThemes contains claro, escuro, prefrio plus all component/variant sub-themes
+const themes = {
+  ...baseThemes,
+  claro: baseThemes.claro,
+  escuro: baseThemes.escuro,
+  'pref.rio': baseThemes.prefrio,
+};
+
 
 // Import the Tamagui fonts and create a font configuration
 // We can use the default fonts for now

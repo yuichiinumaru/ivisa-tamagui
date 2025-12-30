@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled, YStack, YStackProps } from 'tamagui';
+import { styled, YStack, YStackProps, XStack } from 'tamagui'; // Added XStack
 import { Text } from 'tamagui';
 import { Avatar } from './Avatar';
 
@@ -29,15 +29,15 @@ const AvatarGroupFrame = styled(YStack, {
 });
 
 const MoreIndicator = styled(YStack, {
-    name: 'MoreIndicator',
-    circular: true,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '$background',
-    borderWidth: 2,
-    borderColor: '$borderColor',
-    width: 40,
-    height: 40,
+  name: 'MoreIndicator',
+  circular: true,
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '$background',
+  borderWidth: 2,
+  borderColor: '$borderColor',
+  width: 40,
+  height: 40,
 });
 
 

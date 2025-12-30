@@ -1,6 +1,6 @@
-import { render } from '../test-utils'
+import { render } from '../../test-utils'
 import { Sheet, SheetTrigger, SheetContent } from './Sheet'
-import { Button } from '../atoms/Button/Button'
+import { Button } from '../../atoms/Button/Button'
 import { Text } from 'tamagui'
 
 describe('Sheet', () => {
