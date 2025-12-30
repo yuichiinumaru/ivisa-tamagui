@@ -68,9 +68,12 @@ export const PieChart = ({
   const innerRadius = variant === 'donut' ? '60%' : '0%'
   const outerRadius = '80%'
 
+  // Defensive copy to prevent mutation of frozen Storybook args
+  const chartData = React.useMemo(() => (data ? [...data] : []), [data])
+
   const renderContent = () => {
     if (isLoading) {
-      return <Skeleton width={height} height={height} circle />
+      return <Skeleton width="100%" height={height} />
     }
     if (error) {
       return (
@@ -83,7 +86,7 @@ export const PieChart = ({
         </StateContainer>
       )
     }
-    if (!data || data.length === 0) {
+    if (!chartData || chartData.length === 0) {
       return (
         <StateContainer>
           <Inbox size="$2" />
@@ -97,7 +100,7 @@ export const PieChart = ({
         <ResponsiveContainer width="100%" height="100%">
           <RechartsPieChart>
             <Pie
-              data={data}
+              data={chartData}
               dataKey={yKey}
               nameKey={xKey}
               cx="50%"
@@ -106,7 +109,7 @@ export const PieChart = ({
               outerRadius={outerRadius}
               paddingAngle={2}
             >
-              {data.map((_, index) => (
+              {chartData.map((_, index) => (
                 <Cell key={`cell-${index}`} fill={colorScale[index % colorScale.length]} />
               ))}
             </Pie>

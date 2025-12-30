@@ -73,10 +73,43 @@ export const AreaChart = ({
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
 
+  // Defensive copy and transformation
+  const { chartData, seriesKeys } = React.useMemo(() => {
+    let processedChartData: any[] = []
+    const processedSeriesKeys: string[] = []
+
+    if (!data) return { chartData: [], seriesKeys: [] }
+
+    const isMultiSeries = Array.isArray(data) && Array.isArray(data[0])
+
+    if (isMultiSeries) {
+      const seriesData = data as Record<string, unknown>[][]
+      if (seriesData.length > 0) {
+        seriesData.forEach((_, sIndex) => processedSeriesKeys.push(`series_${sIndex}`))
+
+        // Map based on the first series to establish x-axis points
+        processedChartData = seriesData[0].map((item, index) => {
+          const mergedItem: any = { [xKey]: item[xKey] }
+          seriesData.forEach((series, sIndex) => {
+            const key = `series_${sIndex}`
+            mergedItem[key] = series[index]?.[yKey]
+          })
+          return mergedItem
+        })
+      }
+    } else {
+      // Defensive copy for single series
+      processedChartData = [...(data as Record<string, unknown>[])]
+      processedSeriesKeys.push(yKey)
+    }
+    return { chartData: processedChartData, seriesKeys: processedSeriesKeys }
+  }, [data, xKey, yKey])
+
   const renderContent = () => {
     if (isLoading) {
       return <Skeleton width="100%" height={height} />
     }
+
     if (error) {
       return (
         <StateContainer>
@@ -89,46 +122,13 @@ export const AreaChart = ({
       )
     }
 
-    const isMultiSeries = Array.isArray(data) && Array.isArray(data[0])
-    if (!data || (isMultiSeries && data.length === 0) || (!isMultiSeries && (data as any[]).length === 0)) {
+    if (!chartData || chartData.length === 0) {
       return (
         <StateContainer>
           <Inbox size="$2" />
           <Text>Sem dados para exibir</Text>
         </StateContainer>
       )
-    }
-
-    // Transform data for Recharts if it's multi-series
-    // Recharts expects a single array of objects with keys for each series
-    // If we have [[{x:1, y:10}, {x:2, y:20}], [{x:1, y:5}, {x:2, y:15}]], we need to merge it
-    // into [{x:1, y:10, y2:5}, {x:2, y:20, y2:15}]
-    // For now, let's assume if it is multi-series, the caller structure needs adaptation or we adapt here.
-    // Victory uses array of arrays for stacked. Recharts uses single data source with multiple keys.
-    // Let's implement a simple transformation if it is array of arrays.
-
-    let chartData: any[] = []
-    const seriesKeys: string[] = []
-
-    if (isMultiSeries) {
-      const seriesData = data as Record<string, unknown>[][]
-      // Assume all series share the same xKey values and order
-      if (seriesData.length > 0) {
-        // Generate keys once
-        seriesData.forEach((_, sIndex) => seriesKeys.push(`series_${sIndex}`))
-
-        chartData = seriesData[0].map((item, index) => {
-            const mergedItem: any = { [xKey]: item[xKey] }
-            seriesData.forEach((series, sIndex) => {
-                const key = `series_${sIndex}`
-                mergedItem[key] = series[index]?.[yKey]
-            })
-            return mergedItem
-        })
-      }
-    } else {
-      chartData = data as Record<string, unknown>[]
-      seriesKeys.push(yKey)
     }
 
     return (
@@ -159,27 +159,17 @@ export const AreaChart = ({
                 backgroundColor: theme.background?.get() || 'white',
               }}
             />
-            {isMultiSeries ? (
-                 seriesKeys.map((key, index) => (
-                    <Area
-                        key={key}
-                        type="monotone"
-                        dataKey={key}
-                        stackId={stacked ? '1' : undefined}
-                        stroke={colorScale[index % colorScale.length]}
-                        fill={colorScale[index % colorScale.length]}
-                        fillOpacity={0.6}
-                    />
-                 ))
-            ) : (
-                <Area
-                    type="monotone"
-                    dataKey={yKey}
-                    stroke={colorScale[0]}
-                    fill={colorScale[0]}
-                    fillOpacity={0.6}
-                />
-            )}
+            {seriesKeys.map((key, index) => (
+              <Area
+                key={key}
+                type="monotone"
+                dataKey={key}
+                stackId={stacked ? '1' : undefined}
+                stroke={colorScale[index % colorScale.length]}
+                fill={colorScale[index % colorScale.length]}
+                fillOpacity={0.6}
+              />
+            ))}
           </RechartsAreaChart>
         </ResponsiveContainer>
       </YStack>

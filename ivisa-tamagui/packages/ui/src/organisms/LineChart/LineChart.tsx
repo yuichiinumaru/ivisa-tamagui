@@ -73,10 +73,14 @@ export const LineChart = ({
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
 
+  // Defensive copy to prevent mutation of frozen Storybook args
+  const chartData = React.useMemo(() => (data ? [...data] : []), [data])
+
   const renderContent = () => {
     if (isLoading) {
       return <Skeleton width="100%" height={300} />
     }
+
     if (error) {
       return (
         <StateContainer>
@@ -88,57 +92,59 @@ export const LineChart = ({
         </StateContainer>
       )
     }
-    if (!data || data.length === 0) {
+
+    if (!chartData || chartData.length === 0) {
       return (
         <StateContainer>
           <Inbox size="$2" />
           <Text>Sem dados para exibir</Text>
-          <Text fontSize="$2" color="$color11">
-            Não há informações disponíveis no momento.
-          </Text>
         </StateContainer>
       )
     }
+
     return (
-      <YStack width="100%" height={300}>
+      <ChartContainer>
         <ResponsiveContainer width="100%" height="100%">
           <RechartsLineChart
-            data={data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            data={chartData}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
             <XAxis
               dataKey={xKey}
               stroke={axisColor}
-              tick={{ fill: textColor, fontSize: 12 }}
+              tick={{ fill: textColor }}
               tickLine={false}
-              axisLine={{ stroke: axisColor }}
+              axisLine={false}
             />
             <YAxis
               stroke={axisColor}
-              tick={{ fill: textColor, fontSize: 12 }}
+              tick={{ fill: textColor }}
               tickLine={false}
               axisLine={false}
             />
             <Tooltip
               contentStyle={{
-                borderRadius: '8px',
-                border: `1px solid ${gridColor}`,
-                backgroundColor: theme.background?.get() || 'white',
+                backgroundColor: theme.background?.get() || '#fff',
+                borderColor: gridColor,
+                borderRadius: 8,
               }}
-              cursor={{ stroke: gridColor }}
             />
             <Line
               type="monotone"
               dataKey={yKey}
               stroke={lineColor}
+              activeDot={{ r: 8 }}
               strokeWidth={2}
-              dot={{ r: 4, fill: lineColor, strokeWidth: 2, stroke: theme.background?.get() || 'white' }}
-              activeDot={{ r: 6, strokeWidth: 0 }}
             />
           </RechartsLineChart>
         </ResponsiveContainer>
-      </YStack>
+      </ChartContainer>
     )
   }
 

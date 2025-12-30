@@ -67,6 +67,9 @@ export const ScatterChart = ({
   const textColor = theme.color?.get() || '#000'
   const gridColor = theme.borderColor?.get() || '#eee'
 
+  // Defensive copy to prevent mutation of frozen Storybook args
+  const chartData = React.useMemo(() => (data ? [...data] : []), [data])
+
   const renderContent = () => {
     if (isLoading) {
       return <Skeleton width="100%" height={height} />
@@ -83,7 +86,7 @@ export const ScatterChart = ({
       )
     }
 
-    if (!data || data.length === 0) {
+    if (!chartData || chartData.length === 0) {
       return (
         <StateContainer>
           <Inbox size="$2" />
@@ -119,7 +122,7 @@ export const ScatterChart = ({
           }}
         />
         <VictoryScatter
-          data={data}
+          data={chartData}
           x={xKey}
           y={yKey}
           size={bubbleKey ? ({ datum }) => Math.max(3, datum[bubbleKey] / 2) : 5}

@@ -80,7 +80,10 @@ export const RadarChart = ({
 
     // Let's assume data is standard: [ { x: 'Math', y: 90 }, { x: 'Science', y: 80 } ]
 
-    const datasets = Array.isArray(data[0]) ? (data as unknown as any[]) : [data]
+    // Defensive copy to prevent mutation of frozen Storybook args
+    const chartData = React.useMemo(() => (data ? [...data] : []), [data])
+
+    const datasets = Array.isArray(chartData[0]) ? (chartData as unknown as any[]) : [chartData]
     const colors = Array.isArray(color) ? color : [color]
 
     return (
@@ -105,12 +108,12 @@ export const RadarChart = ({
           )
         })}
         <VictoryPolarAxis
-            labelPlacement="parallel"
-            tickFormat={() => ''}
-            style={{
-                axis: { stroke: axisColor },
-                grid: { stroke: axisColor, opacity: 0.5 }
-            }}
+          labelPlacement="parallel"
+          tickFormat={() => ''}
+          style={{
+            axis: { stroke: axisColor },
+            grid: { stroke: axisColor, opacity: 0.5 }
+          }}
         />
 
       </VictoryChart>
