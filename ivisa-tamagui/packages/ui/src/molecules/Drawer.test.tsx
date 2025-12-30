@@ -5,6 +5,7 @@ import { Text } from 'tamagui'
 import React from 'react'
 
 // Mock the Sheet component to avoid 'useAnimatedNumber' crash in JSDOM
+// This mock simulates the structure Drawer expects from Sheet
 jest.mock('./Sheet', () => {
   const React = require('react')
   const { View } = require('react-native')
@@ -12,7 +13,6 @@ jest.mock('./Sheet', () => {
   const MockSheet = ({ children, open, onOpenChange }: any) => {
     return (
       <View data-testid="sheet-root">
-        {/* Render children if open, or always if we want to simulate Portal behavior roughly */}
         {open && children}
       </View>
     )
@@ -21,10 +21,13 @@ jest.mock('./Sheet', () => {
   const MockPart = ({ children }: any) => <View>{children}</View>
 
   const Sheet = Object.assign(MockSheet, {
-    Portal: ({ children }: any) => <>{children}</>,
+    Portal: ({ children }: any) => <>{children}</>, // Generic Portal mock
     Overlay: () => <View data-testid="sheet-overlay" />,
     Handle: () => <View />,
     Frame: MockPart,
+    // Content usually includes Portal/Overlay in the real component if unmodified,
+    // but in Drawer we might rely on it.
+    // Since we mocked Sheet, we control what Content does.
     Content: ({ children }: any) => <View data-testid="sheet-content">{children}</View>,
     Header: MockPart,
     Footer: MockPart,
@@ -35,7 +38,6 @@ jest.mock('./Sheet', () => {
 
   return {
     Sheet,
-    // Mock other named exports if necessary
     SheetContent: Sheet.Content,
     SheetOverlay: Sheet.Overlay,
     SheetHandle: Sheet.Handle,
@@ -58,14 +60,11 @@ describe('Drawer', () => {
       </Drawer>
     )
 
-    // Check if trigger is present
     const trigger = screen.getByText('Open Drawer')
     expect(trigger).toBeInTheDocument()
 
-    // Open drawer
     fireEvent.click(trigger)
 
-    // Check content
     expect(screen.getByText('Drawer Title')).toBeInTheDocument()
     expect(screen.getByText('Drawer Content')).toBeInTheDocument()
   })

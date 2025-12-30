@@ -361,6 +361,9 @@ const ResizableHandleFrame = styled(YStack, {
 });
 
 const ResizableHandleIndicator = styled(Separator, {
+    // Explicitly set background color to ensure visibility
+    borderColor: '$borderColor',
+    borderWidth: 1,
     variants: {
         direction: {
             vertical: {

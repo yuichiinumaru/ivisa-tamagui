@@ -204,7 +204,7 @@ const MobileSidebar = ({ children, header, footer, isLoading, isEmpty, emptyMess
 
     return (
       <Sheet open={open} onOpenChange={setOpen}>
-        <Sheet.Trigger>
+        <Sheet.Trigger asChild>
           <Button icon={Menu} circular />
         </Sheet.Trigger>
         <Sheet.Content position="left" size="$xl">
