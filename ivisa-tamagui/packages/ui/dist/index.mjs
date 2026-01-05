@@ -7065,17 +7065,29 @@ var StepperContextProvider = ({
   hasError,
   isDisabled,
   children,
-  actions
+  actions,
+  currentStep: currentStepProp,
+  onStepChange
 }) => {
-  const [currentStep, setCurrentStep] = useState11(0);
+  const [internalStep, setInternalStep] = useState11(0);
+  const isControlled = currentStepProp !== void 0;
+  const currentStep = isControlled ? currentStepProp : internalStep;
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
+      if (isControlled && onStepChange) {
+        onStepChange(currentStep + 1);
+      } else {
+        setInternalStep(currentStep + 1);
+      }
     }
   };
   const prevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      if (isControlled && onStepChange) {
+        onStepChange(currentStep - 1);
+      } else {
+        setInternalStep(currentStep - 1);
+      }
     }
   };
   const value = {
@@ -7165,7 +7177,9 @@ var Stepper2 = ({
   isLoading = false,
   hasError = false,
   isDisabled = false,
-  actions
+  actions,
+  currentStep,
+  onStepChange
 }) => {
   return /* @__PURE__ */ jsx56(
     StepperContextProvider,
@@ -7175,6 +7189,8 @@ var Stepper2 = ({
       hasError,
       isDisabled,
       actions,
+      currentStep,
+      onStepChange,
       children: /* @__PURE__ */ jsx56(Stepper, { children: /* @__PURE__ */ jsx56(StepperContent, {}) })
     }
   );
@@ -7422,7 +7438,8 @@ import {
   FormProvider,
   useFormContext
 } from "react-hook-form";
-import { View as View6, Text as Text23, styled as styled53, YStack as YStack35 } from "tamagui";
+import { Text as Text23, styled as styled53, YStack as YStack35 } from "tamagui";
+import { Slot as Slot4 } from "@tamagui/core";
 import { jsx as jsx60 } from "react/jsx-runtime";
 var Form = FormProvider;
 var FormFieldContext = React52.createContext(null);
@@ -7455,17 +7472,14 @@ var useFormField = () => {
 };
 var FormItemContext = React52.createContext(null);
 var FormRoot = styled53(YStack35, {
-  name: "FormRoot",
   gap: "$4"
 });
 var FormFooter = styled53(YStack35, {
-  name: "FormFooter",
   flexDirection: "row",
   justifyContent: "flex-end",
   gap: "$2"
 });
 var FormItemFrame = styled53(YStack35, {
-  name: "FormItem",
   space: "$sm"
 });
 var FormItem = React52.forwardRef(
@@ -7477,7 +7491,6 @@ var FormItem = React52.forwardRef(
 );
 FormItem.displayName = "FormItem";
 var FormLabelFrame = styled53(Label, {
-  name: "FormLabel",
   color: "$color",
   fontWeight: "500",
   fontSize: "$3",
@@ -7505,23 +7518,23 @@ var FormLabel = React52.forwardRef(
 );
 FormLabel.displayName = "FormLabel";
 var FormControl = React52.forwardRef(
-  ({ ...props }, ref) => {
+  ({ children, ...props }, ref) => {
     const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
     return /* @__PURE__ */ jsx60(
-      View6,
+      Slot4,
       {
         ref,
         id: formItemId,
         "aria-describedby": !error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`,
         "aria-invalid": !!error,
-        ...props
+        ...props,
+        children
       }
     );
   }
 );
 FormControl.displayName = "FormControl";
 var FormDescriptionFrame = styled53(Text23, {
-  name: "FormDescription",
   fontSize: "$2",
   color: "$mutedForeground"
 });
@@ -7540,29 +7553,31 @@ var FormDescription = React52.forwardRef(
 );
 FormDescription.displayName = "FormDescription";
 var FormMessageFrame = styled53(Text23, {
-  name: "FormMessage",
   fontSize: "$2",
-  fontWeight: "500",
-  color: "$destructive"
+  color: "$red10",
+  marginTop: "$2"
 });
-var FormMessage = React52.forwardRef(
-  ({ children, ...props }, ref) => {
-    const { error, formMessageId } = useFormField();
-    const body = error ? String(error?.message) : children;
-    if (!body) {
-      return null;
-    }
-    return /* @__PURE__ */ jsx60(
-      FormMessageFrame,
-      {
-        ref,
-        id: formMessageId,
-        ...props,
-        children: body
-      }
-    );
+var FormMessage = React52.forwardRef(({ className, children, name: propName, error: propError, ...props }, ref) => {
+  const fieldInfo = useFormField();
+  const { formState } = useFormContext();
+  const name = propName || fieldInfo.name;
+  const castErrors = formState.errors;
+  const fieldError = castErrors[name] || fieldInfo.error || propError;
+  const body = fieldError ? String(fieldError?.message) : children;
+  if (!body) {
+    return null;
   }
-);
+  return /* @__PURE__ */ jsx60(
+    FormMessageFrame,
+    {
+      ref,
+      id: fieldInfo.formMessageId,
+      "data-testid": `form-message-${name}`,
+      ...props,
+      children: body
+    }
+  );
+});
 FormMessage.displayName = "FormMessage";
 
 // src/organisms/RichText/RichText.tsx
