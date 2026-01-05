@@ -74,7 +74,7 @@ export * from './organisms/ParallelCoordinates';
 export * from './organisms/MarimekkoChart';
 export * from './organisms/RidgelinePlot';
 export * from './organisms/DecompositionTree';
-export * from './organisms/Maps';
+export * from './organisms/Map/Map';
 export * from './organisms/Timeline';
 export * from './organisms/LocationStatus';
 export * from './organisms/ScannerView';
