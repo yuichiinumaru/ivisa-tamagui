@@ -110,16 +110,10 @@ const config = {
         ];
         console.log('ANTIGRAVITY: Final extensions:', config.resolve.extensions);
 
-        // Ensure webpack looks in root node_modules
+        // Ensure webpack looks in correct node_modules
         config.resolve.modules = [
-            path.resolve(__dirname, '../../node_modules'), // package node_modules
-            path.resolve(__dirname, '../../../node_modules'), // root node_modules
-            'node_modules'
-        ];
-
-        // Ensure webpack looks in root node_modules
-        config.resolve.modules = [
-            path.resolve(__dirname, '../../node_modules'), // package node_modules
+            ...(config.resolve.modules || []),
+            path.resolve(__dirname, '../node_modules'), // package node_modules
             path.resolve(__dirname, '../../../node_modules'), // root node_modules
             'node_modules'
         ];
@@ -131,9 +125,14 @@ const config = {
             '@react-native/assets-registry/registry': 'react-native-web/dist/modules/AssetRegistry',
             'react-native/assets-registry/registry': 'react-native-web/dist/modules/AssetRegistry',
             '@react-native/normalize-color': 'react-native-web/dist/modules/normalizeColor',
-            'react-native/Libraries/Image/AssetRegistry': 'react-native-web/dist/modules/AssetRegistry', // Fallback
-            'react-native/Libraries/Image/AssetRegistry': 'react-native-web/dist/modules/AssetRegistry', // Fallback
+            'react-native/Libraries/Image/AssetRegistry': 'react-native-web/dist/modules/AssetRegistry',
             'victory-native': path.resolve(__dirname, '../src/mocks/victory-native.js'),
+        };
+
+        // Fix for HMR 404 errors
+        config.output = {
+            ...config.output,
+            publicPath: '/',
         };
 
         // ANTIGRAVITY FIX: Inject React to solve "ReferenceError: React is not defined" in Storybook stories

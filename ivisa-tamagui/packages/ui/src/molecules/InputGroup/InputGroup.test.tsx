@@ -1,5 +1,5 @@
 import { render, screen } from '../../test-utils';
-import { InputGroup, InputGroupItem } from './InputGroup';
+import { InputGroup } from './InputGroup';
 import { Input } from '../../atoms/Input';
 import { Button } from '../../atoms/Button';
 import { Search } from '@tamagui/lucide-icons';
@@ -9,14 +9,8 @@ describe('InputGroup', () => {
   it('renders input and button together', () => {
     render(
       <InputGroup>
-        <InputGroupItem>
-          <Input.Box>
-            <Input.Field placeholder="Enter text" />
-          </Input.Box>
-        </InputGroupItem>
-        <InputGroupItem>
-          <Button>Go</Button>
-        </InputGroupItem>
+        <Input placeholder="Enter text" />
+        <Button>Go</Button>
       </InputGroup>
     );
     expect(screen.getByPlaceholderText('Enter text')).toBeInTheDocument();
@@ -26,14 +20,8 @@ describe('InputGroup', () => {
   it('renders input and icon button together', () => {
     render(
       <InputGroup>
-        <InputGroupItem>
-          <Input.Box>
-            <Input.Field placeholder="Search..." />
-          </Input.Box>
-        </InputGroupItem>
-        <InputGroupItem>
-          <Button icon={Search} />
-        </InputGroupItem>
+        <Input placeholder="Search..." />
+        <Button icon={Search} />
       </InputGroup>
     );
     expect(screen.getByPlaceholderText('Search...')).toBeInTheDocument();

@@ -21,6 +21,8 @@ interface StepperContextProps {
   isDisabled: boolean
   children: ReactNode
   actions: ActionsRenderProp
+  currentStep?: number
+  onStepChange?: (step: number) => void
 }
 
 interface StepperContextValue {
@@ -45,18 +47,30 @@ export const StepperContextProvider = ({
   isDisabled,
   children,
   actions,
+  currentStep: currentStepProp,
+  onStepChange,
 }: StepperContextProps) => {
-  const [currentStep, setCurrentStep] = useState(0)
+  const [internalStep, setInternalStep] = useState(0)
+  const isControlled = currentStepProp !== undefined
+  const currentStep = isControlled ? currentStepProp : internalStep
 
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1)
+      if (isControlled && onStepChange) {
+        onStepChange(currentStep + 1)
+      } else {
+        setInternalStep(currentStep + 1)
+      }
     }
   }
 
   const prevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1)
+      if (isControlled && onStepChange) {
+        onStepChange(currentStep - 1)
+      } else {
+        setInternalStep(currentStep - 1)
+      }
     }
   }
 

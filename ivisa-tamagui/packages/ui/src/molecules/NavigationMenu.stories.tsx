@@ -70,9 +70,9 @@ export const Padrao: Story = {
 }
 
 export const WithRightSlot: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     rightSlot: (
       <NavigationMenuItem>
         <Button>Cadastre-se</Button>
@@ -82,31 +82,31 @@ export const WithRightSlot: Story = {
 }
 
 export const Carregando: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isLoading: true,
   },
 }
 
 export const Error: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     hasError: true,
   },
 }
 
 export const Disabled: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     disabled: true,
   },
 }
 
 export const NarrowContainer: Story = {
-  ...Default,
+  ...Padrao,
   decorators: [
     (Story) => (
       <div style={{ width: 300 }}>

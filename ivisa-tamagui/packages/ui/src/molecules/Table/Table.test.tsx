@@ -1,22 +1,17 @@
 import { render, screen } from '../../test-utils'
-import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from './Table'
+import { Table } from './Table'
 
 describe('Table', () => {
   it('renders rows and cells', () => {
-    render(
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Header</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell>Cell Data</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    )
+    const columns = [
+      { header: 'Header', accessor: 'col1' as const }
+    ]
+    const data = [
+      { id: '1', col1: 'Cell Data' }
+    ]
+
+    render(<Table columns={columns} data={data} />)
+
     expect(screen.getByText('Header')).toBeInTheDocument()
     expect(screen.getByText('Cell Data')).toBeInTheDocument()
   })

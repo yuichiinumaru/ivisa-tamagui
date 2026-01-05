@@ -234,7 +234,7 @@ export const WithItemProp: Story = {
 }
 
 export const Restrito: Story = {
-  ...Default,
+  ...Padrao,
   name: 'Container Estreito',
   render: (args) => (
     <YStack as="ul" gap="$4" listStyleType="none" padding="$0" margin="$0" width={350}>

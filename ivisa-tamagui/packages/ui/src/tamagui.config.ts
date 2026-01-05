@@ -92,6 +92,12 @@ const animations = createAnimations({
     mass: 1.2,
     stiffness: 250,
   },
+  medium: {
+    type: 'spring',
+    damping: 10,
+    mass: 0.9,
+    stiffness: 100,
+  },
 });
 
 // This is the main configuration object for Tamagui
@@ -103,8 +109,6 @@ const config = createTamagui({
   fonts: {
     heading: ceraProFont,
     body: ceraProFont,
-    brandHeading: ceraProFont,
-    brandBody: ceraProFont,
     brandHeading: ceraProFont,
     brandBody: ceraProFont,
   },

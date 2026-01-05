@@ -50,7 +50,7 @@ export const Padrao: Story = {
 export const ComErro: Story = {
   name: 'Com Erro',
   args: {
-    ...Default.args,
+    ...Padrao.args,
     hasError: true,
   },
   render: renderDefaultField,
@@ -59,7 +59,7 @@ export const ComErro: Story = {
 export const Disabled: Story = {
   name: 'Desabilitado',
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isDisabled: true,
   },
   render: renderDefaultField,
@@ -68,7 +68,7 @@ export const Disabled: Story = {
 export const Carregando: Story = {
   name: 'Carregando (Skeleton)',
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isLoading: true,
   },
   render: renderDefaultField,
@@ -77,7 +77,7 @@ export const Carregando: Story = {
 export const WithRightSlot: Story = {
   name: 'Com Ação à Direita',
   args: {
-    ...Default.args,
+    ...Padrao.args,
     rightSlot: <Button icon={<Pencil size="$1" />} />,
   },
   render: (args) => (

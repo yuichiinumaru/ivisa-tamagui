@@ -54,7 +54,7 @@ export const Padrao: Story = {
 
 export const Horizontal: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     orientation: 'horizontal',
   },
   render: (args) => <RadioGroup {...args} />,
@@ -62,7 +62,7 @@ export const Horizontal: Story = {
 
 export const Disabled: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     disabled: true,
   },
   render: (args) => <RadioGroup {...args} />,
@@ -70,7 +70,7 @@ export const Disabled: Story = {
 
 export const Error: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     hasError: true,
   },
   render: (args) => <RadioGroup {...args} />,
@@ -78,7 +78,7 @@ export const Error: Story = {
 
 export const ErrorWithMessage: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     hasError: true,
     errorMessage: 'Este campo é obrigatório.',
   },
@@ -87,7 +87,7 @@ export const ErrorWithMessage: Story = {
 
 export const Carregando: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isLoading: true,
   },
   render: (args) => <RadioGroup {...args} />,
@@ -98,7 +98,7 @@ export const NarrowContainer: Story = {
     layout: 'padded',
   },
   args: {
-    ...Default.args,
+    ...Padrao.args,
     options: [
       {
         value: 'long-1',

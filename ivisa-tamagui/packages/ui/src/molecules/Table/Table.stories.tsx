@@ -88,21 +88,21 @@ export const Padrao: Story = {
 
 export const Carregando: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isLoading: true,
   },
 }
 
 export const Empty: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     data: [],
   },
 }
 
 export const Error: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     data: undefined, // data is undefined to simulate error
     hasError: true,
   },
@@ -115,14 +115,14 @@ export const InSmallContainer: Story = {
     </YStack>
   ),
   args: {
-    ...Default.args,
+    ...Padrao.args,
     caption: 'A tabela se ajusta a um contêiner estreito com truncamento de texto.',
   },
 }
 
 export const WithFooter: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     footer: (
       <TableFooter>
         <TableRow>
@@ -144,7 +144,7 @@ export const WithFooter: Story = {
 
 export const WithPartialData: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     data: [
       ...invoices,
       {

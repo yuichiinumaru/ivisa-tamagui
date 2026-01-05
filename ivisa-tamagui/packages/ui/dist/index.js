@@ -163,6 +163,8 @@ __export(index_exports, {
   Heading: () => Heading,
   HeatmapChart: () => HeatmapChart,
   HoverCard: () => HoverCard,
+  HoverCardAnchor: () => HoverCardAnchor,
+  HoverCardClose: () => HoverCardClose,
   HoverCardContent: () => HoverCardContent,
   HoverCardProfileContent: () => HoverCardProfileContent,
   HoverCardTrigger: () => HoverCardTrigger,
@@ -663,6 +665,8 @@ var AccordionContentFrame = (0, import_tamagui5.styled)(import_tamagui5.Accordio
   overflow: "hidden",
   paddingBottom: "$4",
   animation: "quick",
+  opacity: 1,
+  minHeight: 0,
   enterStyle: { opacity: 0, height: 0 },
   exitStyle: { opacity: 0, height: 0 }
 });
@@ -4147,8 +4151,10 @@ var import_jsx_runtime34 = require("react/jsx-runtime");
 var HoverCard = ({ children, ...rest }) => {
   return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(Popover, { placement: "top", hoverable: true, ...rest, children });
 };
-var HoverCardTrigger = Popover.Trigger;
-var HoverCardContent = Popover.Content;
+var HoverCardTrigger = PopoverTrigger;
+var HoverCardContent = PopoverContent;
+var HoverCardAnchor = PopoverAnchor;
+var HoverCardClose = PopoverClose;
 var HoverCardProfileContent = ({
   user,
   isLoading,
@@ -13486,6 +13492,19 @@ var spaceScale = {
   // default (md)
 };
 var radiusScale = {
+  0: 0,
+  1: 3,
+  2: 5,
+  3: 7,
+  4: 9,
+  5: 10,
+  6: 16,
+  7: 19,
+  8: 22,
+  9: 26,
+  10: 34,
+  11: 42,
+  12: 50,
   none: 0,
   xs: 2,
   sm: 4,
@@ -13493,7 +13512,9 @@ var radiusScale = {
   // ShadCN default (0.5rem)
   lg: 12,
   xl: 24,
-  full: 9999
+  full: 9999,
+  true: 8
+  // default (md)
 };
 var zIndexScale = {
   base: 0,
@@ -13536,7 +13557,9 @@ var tokens = (0, import_tamagui107.createTokens)({
     color12: palette.black,
     // Fix missing tokens
     red10: palette.red700,
-    outlineColor: palette.rioDeepBlue
+    outlineColor: palette.rioDeepBlue,
+    mutedForeground: palette.slate500
+    // Zinc 500 equivalent
   },
   space: spaceScale,
   size: sizeScale,
@@ -13696,6 +13719,8 @@ var escuroColors = {
   secondaryHover: "#27272a",
   secondaryPress: "#3f3f46",
   secondaryForeground: "#fafafa",
+  mutedForeground: "#a1a1aa",
+  // Zinc 400
   // Glassmorphism hints
   shadowColor: "rgba(0, 0, 0, 0.4)",
   shadowColorHover: "rgba(0, 0, 0, 0.6)"
@@ -13792,33 +13817,12 @@ var builtThemes = (0, import_theme_builder.createThemes)({
         ...Colors.redDark,
         ...Colors.yellowDark,
         ...darkShadows,
+        ...escuroColors,
         shadowColor: darkShadows.shadow1,
-        // Semantic Tokens Mapping (Dark)
-        primary: darkPalette[8],
-        // Strong blue
-        primaryHover: darkPalette[7],
-        primaryPress: darkPalette[6],
-        primaryForeground: darkPalette[11],
-        // White-ish
-        secondary: darkPalette[2],
-        // Dark gray/blue
-        secondaryHover: darkPalette[3],
-        secondaryPress: darkPalette[3],
-        secondaryForeground: darkPalette[11],
-        // Light
-        muted: darkPalette[1],
-        mutedForeground: darkPalette[6],
-        accent: darkPalette[2],
-        accentForeground: darkPalette[11],
-        destructive: Colors.redDark.red10,
-        destructiveHover: Colors.redDark.red11,
-        destructivePress: Colors.redDark.red12,
-        destructiveForeground: "#FFFFFF",
-        border: darkPalette[3],
-        input: darkPalette[3],
-        ring: darkPalette[8],
-        background: darkPalette[0],
-        foreground: darkPalette[11]
+        border: escuroColors.borderColor,
+        input: escuroColors.borderColor,
+        ring: escuroColors.primary,
+        foreground: escuroColors.color
       },
       claro: {
         ...Colors.green,
@@ -13907,8 +13911,8 @@ var themes = builtThemes;
 var baseThemes = themes;
 var themes2 = {
   ...baseThemes,
-  claro: baseThemes.claro,
-  escuro: baseThemes.escuro
+  claro: baseThemes.light,
+  escuro: baseThemes.dark
 };
 var ceraProFont = (0, import_tamagui108.createFont)({
   family: "Cera Pro",
@@ -13985,6 +13989,12 @@ var animations = createAnimations({
     damping: 20,
     mass: 1.2,
     stiffness: 250
+  },
+  medium: {
+    type: "spring",
+    damping: 10,
+    mass: 0.9,
+    stiffness: 100
   }
 });
 var config = (0, import_tamagui108.createTamagui)({
@@ -13994,8 +14004,6 @@ var config = (0, import_tamagui108.createTamagui)({
   fonts: {
     heading: ceraProFont,
     body: ceraProFont,
-    brandHeading: ceraProFont,
-    brandBody: ceraProFont,
     brandHeading: ceraProFont,
     brandBody: ceraProFont
   },
@@ -14387,6 +14395,8 @@ Meter.displayName = "Meter";
   Heading,
   HeatmapChart,
   HoverCard,
+  HoverCardAnchor,
+  HoverCardClose,
   HoverCardContent,
   HoverCardProfileContent,
   HoverCardTrigger,

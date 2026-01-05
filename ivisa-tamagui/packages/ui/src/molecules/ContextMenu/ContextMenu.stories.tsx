@@ -114,9 +114,9 @@ export const Padrao: Story = {
 }
 
 export const Carregando: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isLoading: true,
   },
   render: (args) => (
@@ -127,9 +127,9 @@ export const Carregando: Story = {
 }
 
 export const Disabled: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isDisabled: true,
   },
   render: (args) => (
@@ -140,9 +140,9 @@ export const Disabled: Story = {
 }
 
 export const Error: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     hasError: true,
   },
   render: (args) => (
@@ -153,9 +153,9 @@ export const Error: Story = {
 }
 
 export const PartialData: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     items: [
       {
         label: 'Ação com ícone',
@@ -178,9 +178,9 @@ export const PartialData: Story = {
 }
 
 export const RestritoWidth: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     items: [
       {
         label: 'Este é um texto muito longo que deve ser truncado',
@@ -200,9 +200,9 @@ export const RestritoWidth: Story = {
 }
 
 export const WithCheckbox: Story = {
-  ...Default,
+  ...Padrao,
   args: {
-    ...Default.args,
+    ...Padrao.args,
     items: [
       {
         label: 'Opção 1',

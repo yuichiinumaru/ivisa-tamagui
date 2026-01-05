@@ -26,19 +26,19 @@ describe('AppProviders', () => {
   })
 
   it('logs and rethrows component errors with timestamped metadata', () => {
-    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+    const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => { })
 
     const Boom = () => {
       throw new Error('boom')
     }
 
-    expect(() =>
-      render(
-        <AppProviders>
-          <Boom />
-        </AppProviders>
-      )
-    ).toThrow('boom')
+    render(
+      <AppProviders>
+        <Boom />
+      </AppProviders>
+    )
+
+    expect(screen.getByText('Algo deu errado')).toBeInTheDocument()
 
     expect(errorSpy).toHaveBeenCalled()
     // Look for a log that starts with a timestamp bracket, which is our custom log

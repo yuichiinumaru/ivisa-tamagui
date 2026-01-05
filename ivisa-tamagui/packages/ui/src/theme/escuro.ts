@@ -32,6 +32,7 @@ export const escuroColors = {
   secondaryHover: '#27272a',
   secondaryPress: '#3f3f46',
   secondaryForeground: '#fafafa',
+  mutedForeground: '#a1a1aa', // Zinc 400
 
   // Glassmorphism hints
   shadowColor: 'rgba(0, 0, 0, 0.4)',

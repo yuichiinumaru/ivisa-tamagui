@@ -9,9 +9,9 @@ jest.mock('tamagui', () => {
   return {
     // ...jest.requireActual('tamagui'), // Avoid actual import if it triggers config
     styled: (Comp, opts) => {
-        const StyledComp = (props) => React.createElement(Comp, props);
-        StyledComp.styleable = (fn) => fn;
-        return StyledComp;
+      const StyledComp = (props) => React.createElement(Comp, props);
+      StyledComp.styleable = (fn) => fn;
+      return StyledComp;
     },
     Text: (props) => React.createElement('div', props),
     YStack: (props) => React.createElement('div', props),
@@ -32,40 +32,44 @@ jest.mock('tamagui', () => {
 });
 
 jest.mock('../../molecules/Sheet', () => {
-    const React = require('react');
-    const MockComponent = ({ children }) => React.createElement('div', {}, children);
-    return {
-        Sheet: Object.assign(MockComponent, {
-            Frame: MockComponent,
-            Overlay: MockComponent,
-            Handle: MockComponent,
-            Content: MockComponent,
-            Header: MockComponent,
-            Footer: MockComponent,
-            Title: MockComponent,
-            Description: MockComponent,
-            Close: MockComponent,
-            Trigger: MockComponent,
-            ScrollView: MockComponent,
-            Portal: MockComponent,
-        }),
-        SheetTrigger: MockComponent,
-        SheetContent: MockComponent,
-    };
+  const React = require('react');
+  const MockComponent = ({ children }) => React.createElement('div', {}, children);
+  return {
+    Sheet: Object.assign(MockComponent, {
+      Frame: MockComponent,
+      Overlay: MockComponent,
+      Handle: MockComponent,
+      Content: MockComponent,
+      Header: MockComponent,
+      Footer: MockComponent,
+      Title: MockComponent,
+      Description: MockComponent,
+      Close: MockComponent,
+      Trigger: MockComponent,
+      ScrollView: MockComponent,
+      Portal: MockComponent,
+    }),
+    SheetTrigger: MockComponent,
+    SheetContent: MockComponent,
+  };
 });
 
 jest.mock('../../atoms/Button', () => ({
-    Button: React.forwardRef(({ icon: Icon, onPress, ...props }, ref) => (
-      <button ref={ref} onClick={onPress} {...props}>
-        {Icon && <Icon />}
-      </button>
-    )),
+  Button: React.forwardRef(({ icon: Icon, onPress, children, circular, size, position, top, right, zIndex, chromeless, ...props }, ref) => (
+    <button ref={ref} onClick={onPress} {...props}>
+      {Icon && <Icon />}
+      {children}
+    </button>
+  )),
 }));
 
 jest.mock('@tamagui/lucide-icons', () => ({
-    ChevronLeft: () => <span>ChevronLeft</span>,
-    ChevronRight: () => <span>ChevronRight</span>,
-    Menu: () => <span>Menu</span>,
+  ChevronLeft: () => <span>ChevronLeft</span>,
+  ChevronRight: () => <span>ChevronRight</span>,
+  Menu: () => <span>Menu</span>,
+  MenuSquare: () => <span>MenuSquare</span>,
+  AlertCircle: () => <span>AlertCircle</span>,
+  Inbox: () => <span>Inbox</span>,
 }));
 
 

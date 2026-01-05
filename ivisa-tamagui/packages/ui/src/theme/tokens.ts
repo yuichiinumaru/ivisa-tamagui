@@ -180,6 +180,19 @@ const spaceScale = {
 };
 
 const radiusScale = {
+  0: 0,
+  1: 3,
+  2: 5,
+  3: 7,
+  4: 9,
+  5: 10,
+  6: 16,
+  7: 19,
+  8: 22,
+  9: 26,
+  10: 34,
+  11: 42,
+  12: 50,
   none: 0,
   xs: 2,
   sm: 4,
@@ -187,6 +200,7 @@ const radiusScale = {
   lg: 12,
   xl: 24,
   full: 9999,
+  true: 8, // default (md)
 };
 
 const zIndexScale = {
@@ -233,6 +247,7 @@ export const tokens = createTokens({
     // Fix missing tokens
     red10: palette.red700,
     outlineColor: palette.rioDeepBlue,
+    mutedForeground: palette.slate500, // Zinc 500 equivalent
   },
   space: spaceScale,
   size: sizeScale,

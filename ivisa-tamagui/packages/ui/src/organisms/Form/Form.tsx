@@ -8,6 +8,7 @@ import {
   useFormContext,
 } from "react-hook-form"
 import { View, Text, styled, YStack, GetProps, TamaguiElement } from "tamagui"
+import { Slot } from "@tamagui/core"
 import { Label } from "../../atoms/Label"
 
 const Form = FormProvider
@@ -69,21 +70,18 @@ type FormItemContextValue = {
 const FormItemContext = React.createContext<FormItemContextValue | null>(null)
 
 const FormRoot = styled(YStack, {
-  name: 'FormRoot',
   gap: '$4',
-})
+} as any)
 
 const FormFooter = styled(YStack, {
-  name: 'FormFooter',
   flexDirection: 'row',
   justifyContent: 'flex-end',
   gap: '$2',
-})
+} as any)
 
 const FormItemFrame = styled(YStack, {
-  name: 'FormItem',
   space: '$sm',
-})
+} as any)
 
 const FormItem = React.forwardRef<TamaguiElement, GetProps<typeof FormItemFrame>>(
   ({ ...props }, ref) => {
@@ -93,7 +91,7 @@ const FormItem = React.forwardRef<TamaguiElement, GetProps<typeof FormItemFrame>
 
     return (
       <FormItemContext.Provider value={contextValue}>
-        <FormItemFrame ref={ref} {...props} />
+        <FormItemFrame ref={ref} {...(props as any)} />
       </FormItemContext.Provider>
     )
   }
@@ -101,7 +99,6 @@ const FormItem = React.forwardRef<TamaguiElement, GetProps<typeof FormItemFrame>
 FormItem.displayName = "FormItem"
 
 const FormLabelFrame = styled(Label, {
-  name: 'FormLabel',
   color: '$color',
   fontWeight: '500',
   fontSize: '$3',
@@ -112,7 +109,7 @@ const FormLabelFrame = styled(Label, {
       }
     }
   } as const
-})
+} as any)
 
 const FormLabel = React.forwardRef<TamaguiElement, GetProps<typeof FormLabelFrame>>(
   ({ ...props }, ref) => {
@@ -123,7 +120,7 @@ const FormLabel = React.forwardRef<TamaguiElement, GetProps<typeof FormLabelFram
         ref={ref}
         htmlFor={formItemId}
         error={!!error}
-        {...props}
+        {...(props as any)}
       />
     )
   }
@@ -131,13 +128,12 @@ const FormLabel = React.forwardRef<TamaguiElement, GetProps<typeof FormLabelFram
 FormLabel.displayName = "FormLabel"
 
 const FormControl = React.forwardRef<TamaguiElement, GetProps<typeof View>>(
-  ({ ...props }, ref) => {
+  ({ children, ...props }, ref) => {
     const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
 
     return (
-      <View
+      <Slot
         ref={ref}
-        // Tamagui handles id prop mapping
         id={formItemId}
         aria-describedby={
           !error
@@ -146,17 +142,18 @@ const FormControl = React.forwardRef<TamaguiElement, GetProps<typeof View>>(
         }
         aria-invalid={!!error}
         {...props}
-      />
+      >
+        {children}
+      </Slot>
     )
   }
 )
 FormControl.displayName = "FormControl"
 
 const FormDescriptionFrame = styled(Text, {
-  name: 'FormDescription',
   fontSize: '$2',
   color: '$mutedForeground',
-})
+} as any)
 
 const FormDescription = React.forwardRef<TamaguiElement, GetProps<typeof FormDescriptionFrame>>(
   ({ ...props }, ref) => {
@@ -166,7 +163,7 @@ const FormDescription = React.forwardRef<TamaguiElement, GetProps<typeof FormDes
       <FormDescriptionFrame
         ref={ref}
         id={formDescriptionId}
-        {...props}
+        {...(props as any)}
       />
     )
   }
@@ -174,32 +171,37 @@ const FormDescription = React.forwardRef<TamaguiElement, GetProps<typeof FormDes
 FormDescription.displayName = "FormDescription"
 
 const FormMessageFrame = styled(Text, {
-  name: 'FormMessage',
   fontSize: '$2',
-  fontWeight: '500',
-  color: '$destructive',
-})
+  color: '$red10',
+  marginTop: '$2',
+} as any)
 
-const FormMessage = React.forwardRef<TamaguiElement, GetProps<typeof FormMessageFrame>>(
-  ({ children, ...props }, ref) => {
-    const { error, formMessageId } = useFormField()
-    const body = error ? String(error?.message) : children
+const FormMessage = React.forwardRef<
+  TamaguiElement,
+  GetProps<typeof FormMessageFrame> & { name?: string; error?: any }
+>(({ className, children, name: propName, error: propError, ...props }, ref) => {
+  const fieldInfo = useFormField()
+  const { formState } = useFormContext()
+  const name = propName || fieldInfo.name
+  const castErrors = formState.errors as any
+  const fieldError = castErrors[name] || fieldInfo.error || propError
+  const body = fieldError ? String(fieldError?.message) : children
 
-    if (!body) {
-      return null
-    }
-
-    return (
-      <FormMessageFrame
-        ref={ref}
-        id={formMessageId}
-        {...props}
-      >
-        {body}
-      </FormMessageFrame>
-    )
+  if (!body) {
+    return null
   }
-)
+
+  return (
+    <FormMessageFrame
+      ref={ref}
+      id={fieldInfo.formMessageId}
+      data-testid={`form-message-${name}`}
+      {...(props as any)}
+    >
+      {body}
+    </FormMessageFrame>
+  )
+})
 FormMessage.displayName = "FormMessage"
 
 export {

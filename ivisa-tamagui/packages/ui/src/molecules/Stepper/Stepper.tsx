@@ -26,6 +26,8 @@ interface StepperProps {
   hasError?: boolean
   isDisabled?: boolean
   actions: ActionsRenderProp
+  currentStep?: number
+  onStepChange?: (step: number) => void
 }
 
 const StepperContent = () => {
@@ -95,6 +97,8 @@ export const Stepper = ({
   hasError = false,
   isDisabled = false,
   actions,
+  currentStep,
+  onStepChange,
 }: StepperProps) => {
   return (
     <StepperContextProvider
@@ -103,6 +107,8 @@ export const Stepper = ({
       hasError={hasError}
       isDisabled={isDisabled}
       actions={actions}
+      currentStep={currentStep}
+      onStepChange={onStepChange}
     >
       <StepperPrimitive>
         <StepperContent />

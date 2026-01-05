@@ -76,7 +76,7 @@ export const Padrao: Story = {
 
 export const CarregandoState: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     isLoading: true,
     title: 'Carregando Dados',
     description: 'Por favor, aguarde enquanto buscamos suas informações.',
@@ -90,7 +90,7 @@ export const CarregandoState: Story = {
 
 export const Erro: Story = {
   args: {
-    ...Default.args,
+    ...Padrao.args,
     hasError: true,
     title: 'Erro ao Salvar',
     description: 'Não foi possível salvar as alterações. Verifique os campos.',
@@ -116,7 +116,7 @@ export const Erro: Story = {
 export const LongContent: Story = {
   name: 'Conteúdo Longo (Scroll)',
   args: {
-    ...Default.args,
+    ...Padrao.args,
     title: 'Termos de Serviço',
     description: 'Leia e aceite os termos para continuar.',
   },
@@ -157,7 +157,7 @@ export const LongContent: Story = {
 export const NoFooter: Story = {
   name: 'Sem Rodapé',
   args: {
-    ...Default.args,
+    ...Padrao.args,
     title: 'Aviso',
     description: 'Esta é uma notificação importante sem ações.',
   },

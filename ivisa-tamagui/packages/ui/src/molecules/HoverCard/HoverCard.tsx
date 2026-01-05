@@ -2,7 +2,7 @@ import { Paragraph, PopoverProps, XStack, YStack, Text } from 'tamagui'
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertTriangle } from '@tamagui/lucide-icons'
 import { Avatar } from '../../atoms/Avatar'
-import { Popover } from '../Popover'
+import { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, PopoverClose } from '../Popover'
 
 export const HoverCard = ({ children, ...rest }: PopoverProps) => {
   return (
@@ -12,8 +12,10 @@ export const HoverCard = ({ children, ...rest }: PopoverProps) => {
   )
 }
 
-export const HoverCardTrigger = Popover.Trigger
-export const HoverCardContent = Popover.Content
+export const HoverCardTrigger = PopoverTrigger
+export const HoverCardContent = PopoverContent
+export const HoverCardAnchor = PopoverAnchor
+export const HoverCardClose = PopoverClose
 
 type ProfileContentProps = {
   user: {

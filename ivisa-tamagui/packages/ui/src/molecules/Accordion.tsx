@@ -63,6 +63,8 @@ const AccordionContentFrame = styled(TamaguiAccordion.Content, {
     overflow: 'hidden',
     paddingBottom: '$4',
     animation: 'quick',
+    opacity: 1,
+    minHeight: 0,
     enterStyle: { opacity: 0, height: 0 },
     exitStyle: { opacity: 0, height: 0 },
 })

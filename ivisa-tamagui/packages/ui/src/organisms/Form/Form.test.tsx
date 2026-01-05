@@ -49,7 +49,7 @@ const TestForm = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
 describe('Form', () => {
   // Validation test skipped due to timing/environment issue in vitest where error message doesn't appear in time.
   // Logic seems correct and works in manual testing.
-  it.skip('validates input and shows error message', async () => {
+  it('validates input and shows error message', async () => {
     const onSubmit = jest.fn();
     const { user } = render(<TestForm onSubmit={onSubmit} />);
 
