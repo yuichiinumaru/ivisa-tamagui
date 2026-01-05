@@ -13,7 +13,7 @@ module.exports = {
         }],
     },
     transformIgnorePatterns: [
-        'node_modules/(?!(tamagui|@tamagui|react-native|react-native-web|@react-native|react-native-reanimated|victory-native|victory-.*)/)',
+        'node_modules/(?!(tamagui|@tamagui|react-native|react-native-web|@react-native|react-native-reanimated|victory-native|victory-.*|@maplibre/maplibre-react-native)/)',
     ],
     moduleNameMapper: {
         '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
