@@ -1,0 +1,3 @@
+[submodule "references/mapcn"]
+	path = references/mapcn
+	url = https://github.com/AnmolSaini16/mapcn
