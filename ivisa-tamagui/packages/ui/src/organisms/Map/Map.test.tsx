@@ -5,25 +5,25 @@ import { Text } from 'tamagui'
 
 // Mock Native MapLibre
 jest.mock('@maplibre/maplibre-react-native', () => {
-    const React = require('react');
-    const View = require('react-native').View;
+  const React = require('react');
+  const View = require('react-native').View;
 
-    return {
-        MapView: React.forwardRef(({ children, ...props }: any, ref: any) => <View {...props} testID="map-view">{children}</View>),
-        Camera: React.forwardRef((props: any, ref: any) => <View {...props} testID="map-camera" />),
-        ShapeSource: ({ children }: any) => <View>{children}</View>,
-        FillLayer: () => <View />,
-        LineLayer: () => <View />,
-        PointAnnotation: ({ children }: any) => <View testID="map-marker">{children}</View>,
-        Callout: ({ children }: any) => <View testID="map-callout">{children}</View>,
-        setAccessToken: jest.fn(),
-    }
+  return {
+    MapView: React.forwardRef(({ children, ...props }: any, ref: any) => <View {...props} data-testid="map-view">{children}</View>),
+    Camera: React.forwardRef((props: any, ref: any) => <View {...props} data-testid="map-camera" />),
+    ShapeSource: ({ children }: any) => <View>{children}</View>,
+    FillLayer: () => <View />,
+    LineLayer: () => <View />,
+    PointAnnotation: ({ children }: any) => <View data-testid="map-marker">{children}</View>,
+    Callout: ({ children }: any) => <View data-testid="map-callout">{children}</View>,
+    setAccessToken: jest.fn(),
+  }
 })
 
 // Mock Tamagui icons
 jest.mock('@tamagui/lucide-icons', () => ({
-    Plus: () => <span data-testid="icon-plus" />,
-    Minus: () => <span data-testid="icon-minus" />,
+  Plus: () => <span data-testid="icon-plus" />,
+  Minus: () => <span data-testid="icon-minus" />,
 }))
 
 describe('GeoMap', () => {
@@ -40,9 +40,9 @@ describe('GeoMap', () => {
   it('renders children (markers)', async () => {
     const { getByText } = render(
       <GeoMap>
-         <GeoMap.Marker id="m1" longitude={0} latitude={0}>
-            <Text>MarkerContent</Text>
-         </GeoMap.Marker>
+        <GeoMap.Marker id="m1" longitude={0} latitude={0}>
+          <Text>MarkerContent</Text>
+        </GeoMap.Marker>
       </GeoMap>
     )
 
@@ -51,12 +51,12 @@ describe('GeoMap', () => {
   })
 
   it('renders controls', () => {
-      const { getAllByTestId } = render(
-        <GeoMap>
-            <GeoMap.Controls />
-        </GeoMap>
-      )
-      expect(getAllByTestId('icon-plus')[0]).toBeInTheDocument()
-      expect(getAllByTestId('icon-minus')[0]).toBeInTheDocument()
+    const { getAllByTestId } = render(
+      <GeoMap>
+        <GeoMap.Controls />
+      </GeoMap>
+    )
+    expect(getAllByTestId('icon-plus')[0]).toBeInTheDocument()
+    expect(getAllByTestId('icon-minus')[0]).toBeInTheDocument()
   })
 })
