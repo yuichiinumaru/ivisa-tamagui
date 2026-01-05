@@ -2,38 +2,38 @@ import { darkColors } from './tokens';
 
 export const escuroColors = {
   ...darkColors,
-  // Base Backgrounds (Black & Deep Blue)
-  background: '#000000',
-  backgroundHover: '#050A14', // Very dark blue
-  backgroundPress: '#0A1429',
-  backgroundFocus: '#0A1429',
-  backgroundStrong: '#020408',
+  // Base Backgrounds (Zinc 950/900)
+  background: '#09090b',
+  backgroundHover: '#18181b',
+  backgroundPress: '#27272a',
+  backgroundFocus: '#27272a',
+  backgroundStrong: '#09090b',
 
-  // Borders (Subtle Blue)
-  borderColor: '#1E293B',
-  borderColorHover: '#334155',
-  borderColorFocus: '#3B82F6', // Bright Blue Focus
+  // Borders (Zinc 800)
+  borderColor: '#27272a',
+  borderColorHover: '#3f3f46',
+  borderColorFocus: '#52525b',
 
-  // Text (White)
-  color: '#FFFFFF',
-  colorHover: '#E2E8F0',
-  colorPress: '#CBD5E1',
-  colorFocus: '#FFFFFF',
+  // Text (Zinc 50)
+  color: '#fafafa',
+  colorHover: '#f4f4f5',
+  colorPress: '#e4e4e7',
+  colorFocus: '#fafafa',
 
-  // Primary Action (Blue)
-  primary: '#1E40AF', // Blue 800
-  primaryHover: '#1D4ED8', // Blue 700
-  primaryPress: '#2563EB', // Blue 600
-  primaryFocus: '#2563EB',
-  primaryForeground: '#FFFFFF',
+  // Primary Action (High Contrast Zinc 50)
+  primary: '#fafafa',
+  primaryHover: '#f4f4f5',
+  primaryPress: '#e4e4e7',
+  primaryFocus: '#fafafa',
+  primaryForeground: '#18181b', // Zinc 900 for text on primary
 
-  // Secondary
-  secondary: '#0F172A', // Slate 900
-  secondaryHover: '#1E293B',
-  secondaryPress: '#334155',
-  secondaryForeground: '#FFFFFF',
+  // Secondary (Zinc 900)
+  secondary: '#18181b',
+  secondaryHover: '#27272a',
+  secondaryPress: '#3f3f46',
+  secondaryForeground: '#fafafa',
 
-  // Glassmorphism hints (used in specific components if they use these tokens)
-  shadowColor: 'rgba(59, 130, 246, 0.2)', // Blue glow
-  shadowColorHover: 'rgba(59, 130, 246, 0.4)',
+  // Glassmorphism hints
+  shadowColor: 'rgba(0, 0, 0, 0.4)',
+  shadowColorHover: 'rgba(0, 0, 0, 0.6)',
 };

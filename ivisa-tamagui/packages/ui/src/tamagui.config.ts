@@ -9,9 +9,8 @@ const baseThemes = baseThemesRaw as any;
 // baseThemes contains claro, escuro, prefrio plus all component/variant sub-themes
 const themes = {
   ...baseThemes,
-  claro: baseThemes.claro,
-  escuro: baseThemes.escuro,
-  'pref.rio': baseThemes.prefrio,
+  claro: baseThemes.light,
+  escuro: baseThemes.dark,
 };
 
 
@@ -73,21 +72,7 @@ const ceraProFont = createFont({
   },
 });
 
-// Arial Font Configuration (Pref.Rio)
-const arialFont = createFont({
-  family: 'Arial, Helvetica, sans-serif',
-  size: ceraProFont.size,
-  lineHeight: ceraProFont.lineHeight,
-  weight: {
-    4: '400', // Regular
-    7: '700', // Bold
-  },
-  letterSpacing: ceraProFont.letterSpacing,
-  face: {
-    400: { normal: 'Arial' },
-    700: { normal: 'Arial-Bold' },
-  },
-});
+
 
 const animations = createAnimations({
   bouncy: {
@@ -120,8 +105,8 @@ const config = createTamagui({
     body: ceraProFont,
     brandHeading: ceraProFont,
     brandBody: ceraProFont,
-    rioHeading: arialFont,
-    rioBody: arialFont,
+    brandHeading: ceraProFont,
+    brandBody: ceraProFont,
   },
 
   // Tokens

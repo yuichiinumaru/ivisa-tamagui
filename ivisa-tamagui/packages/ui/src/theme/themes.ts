@@ -100,7 +100,6 @@ const darkShadows = {
 
 import { lightColors } from './tokens';
 import { escuroColors } from './escuro';
-import { prefRioColors } from './prefRio';
 
 export const builtThemes = createThemes({
   componentThemes: defaultComponentThemes,
@@ -144,29 +143,12 @@ export const builtThemes = createThemes({
         ...Colors.redDark,
         ...Colors.yellowDark,
         ...darkShadows,
+        ...escuroColors,
         shadowColor: darkShadows.shadow1,
-        // Semantic Tokens Mapping (Dark)
-        primary: darkPalette[8], // Strong blue
-        primaryHover: darkPalette[7],
-        primaryPress: darkPalette[6],
-        primaryForeground: darkPalette[11], // White-ish
-        secondary: darkPalette[2], // Dark gray/blue
-        secondaryHover: darkPalette[3],
-        secondaryPress: darkPalette[3],
-        secondaryForeground: darkPalette[11], // Light
-        muted: darkPalette[1],
-        mutedForeground: darkPalette[6],
-        accent: darkPalette[2],
-        accentForeground: darkPalette[11],
-        destructive: Colors.redDark.red10,
-        destructiveHover: Colors.redDark.red11,
-        destructivePress: Colors.redDark.red12,
-        destructiveForeground: '#FFFFFF',
-        border: darkPalette[3],
-        input: darkPalette[3],
-        ring: darkPalette[8],
-        background: darkPalette[0],
-        foreground: darkPalette[11],
+        border: escuroColors.borderColor,
+        input: escuroColors.borderColor,
+        ring: escuroColors.primary,
+        foreground: escuroColors.color,
       },
       claro: {
         ...Colors.green,
@@ -191,18 +173,6 @@ export const builtThemes = createThemes({
         input: escuroColors.borderColor,
         ring: escuroColors.primary,
         foreground: escuroColors.color,
-      },
-      prefrio: {
-        ...Colors.green,
-        ...Colors.red,
-        ...Colors.yellow,
-        ...lightShadows,
-        ...prefRioColors,
-        shadowColor: lightShadows.shadow1,
-        border: prefRioColors.borderColor,
-        input: prefRioColors.borderColor,
-        ring: prefRioColors.primary,
-        foreground: prefRioColors.color,
       },
     },
   },

@@ -3390,37 +3390,54 @@ import React31, { useState as useState6 } from "react";
 
 // src/molecules/Sheet/Sheet.tsx
 import {
-  Sheet as TamaguiSheet,
-  styled as styled28,
-  XStack as XStack13,
-  YStack as YStack12,
+  styled as styled29,
   H2 as H22,
   Paragraph as Paragraph3,
   withStaticProperties as withStaticProperties3,
   Portal
 } from "tamagui";
-import { createContext as createContext3, useContext as useContext6, forwardRef as forwardRef6 } from "react";
-import { jsx as jsx29, jsxs as jsxs19 } from "react/jsx-runtime";
+import { Sheet as TamaguiSheet, useSheet } from "@tamagui/sheet";
+import { createContext as createContext3, useContext as useContext6, forwardRef as forwardRef7 } from "react";
+
+// src/atoms/Stack.tsx
+import { forwardRef as forwardRef6 } from "react";
+import { Stack as TamaguiStack, styled as styled28 } from "tamagui";
+import { jsx as jsx29 } from "react/jsx-runtime";
+var Stack2 = forwardRef6((props, ref) => {
+  return /* @__PURE__ */ jsx29(TamaguiStack, { ref, ...props });
+});
+Stack2.displayName = "Stack";
+var HStack = styled28(TamaguiStack, {
+  name: "HStack",
+  flexDirection: "row"
+});
+var VStack = styled28(TamaguiStack, {
+  name: "VStack",
+  flexDirection: "column"
+});
+
+// src/molecules/Sheet/Sheet.tsx
+import { Fragment as Fragment4, jsx as jsx30, jsxs as jsxs19 } from "react/jsx-runtime";
+var Skeleton2 = Skeleton;
+var HStack2 = HStack;
+var VStack2 = VStack;
 var SheetContext = createContext3({
   isLoading: false,
   hasError: false
 });
-var useSheetContext = () => useContext6(SheetContext);
-var SheetComponent = ({ isLoading = false, hasError = false, children, ...props }) => /* @__PURE__ */ jsx29(SheetContext.Provider, { value: { isLoading, hasError }, children: /* @__PURE__ */ jsx29(TamaguiSheet, { ...props, children }) });
-var SheetOverlay = styled28(TamaguiSheet.Overlay, {
-  name: "SheetOverlay",
+var useSheetCustomContext = () => useContext6(SheetContext);
+var SheetComponent = ({ isLoading = false, hasError = false, children, ...props }) => /* @__PURE__ */ jsx30(SheetContext.Provider, { value: { isLoading, hasError }, children: /* @__PURE__ */ jsx30(TamaguiSheet, { ...props, children }) });
+var SheetOverlay = styled29(TamaguiSheet.Overlay, {
   backgroundColor: "$black",
   opacity: 0.5,
   enterStyle: { opacity: 0 },
   exitStyle: { opacity: 0 }
 });
-var SheetHandle = styled28(TamaguiSheet.Handle, {
-  name: "SheetHandle",
+var SheetHandle = styled29(TamaguiSheet.Handle, {
   backgroundColor: "$borderColor",
   opacity: 0.8
 });
-var SheetContentFrame = styled28(TamaguiSheet.Frame, {
-  name: "SheetContent",
+var SheetContentFrame = styled29(TamaguiSheet.Frame, {
   backgroundColor: "$background",
   padding: "$4",
   borderTopLeftRadius: "$4",
@@ -3428,7 +3445,6 @@ var SheetContentFrame = styled28(TamaguiSheet.Frame, {
   shadowColor: "$shadowColor",
   shadowOpacity: 0.2,
   shadowRadius: 10,
-  elevation: 5,
   variants: {
     hasError: {
       true: {
@@ -3439,71 +3455,66 @@ var SheetContentFrame = styled28(TamaguiSheet.Frame, {
     }
   }
 });
-var SheetContent = forwardRef6(
+var SheetContent = forwardRef7(
   ({ children, ...props }, ref) => {
-    const { isLoading, hasError } = useSheetContext();
+    const { isLoading, hasError } = useSheetCustomContext();
+    const sheet = useSheet();
     return /* @__PURE__ */ jsxs19(Portal, { children: [
-      /* @__PURE__ */ jsx29(SheetOverlay, {}),
-      /* @__PURE__ */ jsxs19(SheetContentFrame, { ref, ...props, hasError, children: [
-        /* @__PURE__ */ jsx29(SheetHandle, {}),
-        isLoading ? /* @__PURE__ */ jsxs19(YStack12, { gap: "$4", py: "$4", children: [
-          /* @__PURE__ */ jsxs19(YStack12, { gap: "$2", marginBottom: "$4", children: [
-            /* @__PURE__ */ jsx29(Skeleton, { height: 30, width: "60%" }),
-            /* @__PURE__ */ jsx29(Skeleton, { height: 20, width: "90%" })
+      /* @__PURE__ */ jsx30(SheetOverlay, {}),
+      /* @__PURE__ */ jsx30(SheetContentFrame, { ref, ...props, hasError, children: /* @__PURE__ */ jsxs19(Fragment4, { children: [
+        /* @__PURE__ */ jsx30(SheetHandle, {}),
+        isLoading ? /* @__PURE__ */ jsxs19(VStack2, { gap: "$4", py: "$4", children: [
+          /* @__PURE__ */ jsxs19(VStack2, { gap: "$2", marginBottom: "$4", children: [
+            /* @__PURE__ */ jsx30(Skeleton2, { height: 30, width: "60%" }),
+            /* @__PURE__ */ jsx30(Skeleton2, { height: 20, width: "90%" })
           ] }),
-          /* @__PURE__ */ jsxs19(YStack12, { gap: "$4", py: "$4", children: [
-            /* @__PURE__ */ jsxs19(YStack12, { gap: "$2", children: [
-              /* @__PURE__ */ jsx29(Skeleton, { height: 16, width: "30%" }),
-              /* @__PURE__ */ jsx29(Skeleton, { height: 40 })
+          /* @__PURE__ */ jsxs19(VStack2, { gap: "$4", py: "$4", children: [
+            /* @__PURE__ */ jsxs19(VStack2, { gap: "$2", children: [
+              /* @__PURE__ */ jsx30(Skeleton2, { height: 16, width: "30%" }),
+              /* @__PURE__ */ jsx30(Skeleton2, { height: 40 })
             ] }),
-            /* @__PURE__ */ jsxs19(YStack12, { gap: "$2", children: [
-              /* @__PURE__ */ jsx29(Skeleton, { height: 16, width: "30%" }),
-              /* @__PURE__ */ jsx29(Skeleton, { height: 40 })
+            /* @__PURE__ */ jsxs19(VStack2, { gap: "$2", children: [
+              /* @__PURE__ */ jsx30(Skeleton2, { height: 16, width: "30%" }),
+              /* @__PURE__ */ jsx30(Skeleton2, { height: 40 })
             ] })
           ] }),
-          /* @__PURE__ */ jsx29(XStack13, { justifyContent: "flex-end", marginTop: "$4", children: /* @__PURE__ */ jsx29(Skeleton, { height: 44, width: 120 }) })
+          /* @__PURE__ */ jsx30(HStack2, { justifyContent: "flex-end", marginTop: "$4", children: /* @__PURE__ */ jsx30(Skeleton2, { height: 44, width: 120 }) })
         ] }) : children
-      ] })
+      ] }) })
     ] });
   }
 );
 SheetContent.displayName = "SheetContent";
-var SheetHeader = styled28(YStack12, {
-  name: "SheetHeader",
+var SheetHeader = styled29(VStack, {
   gap: "$2",
   marginBottom: "$4"
 });
-var SheetFooterComponent = forwardRef6(
+var SheetFooterComponent = forwardRef7(
   ({ children, actions, ...props }, ref) => {
-    return /* @__PURE__ */ jsxs19(XStack13, { ref, ...props, children: [
+    return /* @__PURE__ */ jsxs19(HStack2, { ref, ...props, children: [
       children,
       actions
     ] });
   }
 );
-var SheetFooter = styled28(SheetFooterComponent, {
-  name: "SheetFooter",
+var SheetFooter = styled29(SheetFooterComponent, {
   justifyContent: "flex-end",
   gap: "$2",
   marginTop: "$4"
 });
-var SheetTitle = styled28(H22, {
-  name: "SheetTitle",
+var SheetTitle = styled29(H22, {
   fontWeight: "bold",
   fontSize: "$6",
   color: "$foreground"
 });
-var SheetDescription = styled28(Paragraph3, {
-  name: "SheetDescription",
+var SheetDescription = styled29(Paragraph3, {
   fontSize: "$3",
   color: "$mutedForeground"
 });
-var SheetCloseFrame = styled28(Button, {
-  name: "SheetClose"
-});
+var SheetCloseFrame = styled29(Button, {});
 var SheetClose = SheetCloseFrame.styleable((props, ref) => {
-  const context = TamaguiSheet.useSheetContext();
-  return /* @__PURE__ */ jsx29(
+  const context = useSheet();
+  return /* @__PURE__ */ jsx30(
     SheetCloseFrame,
     {
       ref,
@@ -3512,7 +3523,18 @@ var SheetClose = SheetCloseFrame.styleable((props, ref) => {
     }
   );
 });
-var SheetTrigger = TamaguiSheet.Trigger;
+var SheetTriggerFrame = styled29(VStack, {});
+var SheetTrigger = SheetTriggerFrame.styleable((props, ref) => {
+  const context = useSheet();
+  return /* @__PURE__ */ jsx30(
+    SheetTriggerFrame,
+    {
+      ref,
+      onPress: () => context.setOpen(true),
+      ...props
+    }
+  );
+});
 var Sheet = withStaticProperties3(SheetComponent, {
   Portal,
   Overlay: SheetOverlay,
@@ -3529,8 +3551,8 @@ var Sheet = withStaticProperties3(SheetComponent, {
 });
 
 // src/molecules/Drawer.tsx
-import { YStack as YStack13 } from "tamagui";
-import { Fragment as Fragment4, jsx as jsx30, jsxs as jsxs20 } from "react/jsx-runtime";
+import { YStack as YStack12 } from "tamagui";
+import { Fragment as Fragment5, jsx as jsx31, jsxs as jsxs20 } from "react/jsx-runtime";
 function DrawerComponent({
   trigger,
   title,
@@ -3548,19 +3570,19 @@ function DrawerComponent({
   const triggerWithPress = trigger ? React31.cloneElement(trigger, {
     onPress: () => setOpen(true)
   }) : null;
-  return /* @__PURE__ */ jsxs20(Fragment4, { children: [
+  return /* @__PURE__ */ jsxs20(Fragment5, { children: [
     triggerWithPress,
-    /* @__PURE__ */ jsx30(Sheet, { open, onOpenChange: setOpen, children: /* @__PURE__ */ jsxs20(Sheet.Content, { animation: "medium", enterStyle: { y: 300 }, exitStyle: { y: 300 }, children: [
-      /* @__PURE__ */ jsx30(Sheet.Handle, {}),
+    /* @__PURE__ */ jsx31(Sheet, { open, onOpenChange: setOpen, children: /* @__PURE__ */ jsxs20(Sheet.Content, { animation: "medium", enterStyle: { y: 300 }, exitStyle: { y: 300 }, children: [
+      /* @__PURE__ */ jsx31(Sheet.Handle, {}),
       /* @__PURE__ */ jsxs20(Sheet.Header, { children: [
-        /* @__PURE__ */ jsx30(Sheet.Title, { color: hasError ? "$red10" : void 0, children: title }),
-        description && /* @__PURE__ */ jsx30(Sheet.Description, { children: description })
+        /* @__PURE__ */ jsx31(Sheet.Title, { color: hasError ? "$red10" : void 0, children: title }),
+        description && /* @__PURE__ */ jsx31(Sheet.Description, { children: description })
       ] }),
-      /* @__PURE__ */ jsx30(YStack13, { flex: 1, paddingVertical: "$4", children: isLoading ? /* @__PURE__ */ jsxs20(YStack13, { space: true, children: [
-        /* @__PURE__ */ jsx30(Skeleton, { height: 40 }),
-        /* @__PURE__ */ jsx30(Skeleton, { height: 20, width: "75%" })
+      /* @__PURE__ */ jsx31(YStack12, { flex: 1, paddingVertical: "$4", children: isLoading ? /* @__PURE__ */ jsxs20(YStack12, { space: true, children: [
+        /* @__PURE__ */ jsx31(Skeleton, { height: 40 }),
+        /* @__PURE__ */ jsx31(Skeleton, { height: 20, width: "75%" })
       ] }) : children }),
-      footer && /* @__PURE__ */ jsx30(Sheet.Footer, { children: footer })
+      footer && /* @__PURE__ */ jsx31(Sheet.Footer, { children: footer })
     ] }) })
   ] });
 }
@@ -3590,16 +3612,16 @@ var DrawerClose = Sheet.Close;
 // src/molecules/DropdownMenu/DropdownMenu.tsx
 import * as React32 from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { styled as styled29, View as View5, Text as Text12 } from "tamagui";
+import { styled as styled30, View as View5, Text as Text12 } from "tamagui";
 import { Check as Check2, ChevronRight, Circle } from "@tamagui/lucide-icons";
-import { jsx as jsx31, jsxs as jsxs21 } from "react/jsx-runtime";
+import { jsx as jsx32, jsxs as jsxs21 } from "react/jsx-runtime";
 var DropdownMenu = DropdownMenuPrimitive.Root;
 var DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 var DropdownMenuGroup = DropdownMenuPrimitive.Group;
 var DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 var DropdownMenuSub = DropdownMenuPrimitive.Sub;
 var DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
-var DropdownMenuSubTriggerFrame = styled29(DropdownMenuPrimitive.SubTrigger, {
+var DropdownMenuSubTriggerFrame = styled30(DropdownMenuPrimitive.SubTrigger, {
   flexDirection: "row",
   alignItems: "center",
   paddingVertical: "$2",
@@ -3622,12 +3644,12 @@ var DropdownMenuSubTrigger = React32.forwardRef(({ className: _className, childr
     ...props,
     children: [
       children,
-      /* @__PURE__ */ jsx31(View5, { marginLeft: "auto", children: /* @__PURE__ */ jsx31(ChevronRight, { size: 16 }) })
+      /* @__PURE__ */ jsx32(View5, { marginLeft: "auto", children: /* @__PURE__ */ jsx32(ChevronRight, { size: 16 }) })
     ]
   }
 ));
 DropdownMenuSubTrigger.displayName = DropdownMenuPrimitive.SubTrigger.displayName;
-var DropdownMenuSubContentFrame = styled29(DropdownMenuPrimitive.SubContent, {
+var DropdownMenuSubContentFrame = styled30(DropdownMenuPrimitive.SubContent, {
   minWidth: 180,
   // roughly 8rem
   backgroundColor: "$background",
@@ -3641,9 +3663,9 @@ var DropdownMenuSubContentFrame = styled29(DropdownMenuPrimitive.SubContent, {
   animation: "quick",
   zIndex: 2e5
 });
-var DropdownMenuSubContent = React32.forwardRef(({ className: _className, ...props }, ref) => /* @__PURE__ */ jsx31(DropdownMenuSubContentFrame, { ref, ...props }));
+var DropdownMenuSubContent = React32.forwardRef(({ className: _className, ...props }, ref) => /* @__PURE__ */ jsx32(DropdownMenuSubContentFrame, { ref, ...props }));
 DropdownMenuSubContent.displayName = DropdownMenuPrimitive.SubContent.displayName;
-var DropdownMenuContentFrame = styled29(DropdownMenuPrimitive.Content, {
+var DropdownMenuContentFrame = styled30(DropdownMenuPrimitive.Content, {
   minWidth: 220,
   backgroundColor: "$background",
   borderRadius: "$md",
@@ -3657,7 +3679,7 @@ var DropdownMenuContentFrame = styled29(DropdownMenuPrimitive.Content, {
   zIndex: 2e5
   // animation handled by radix/css? or we assume Tamagui handles it?
 });
-var DropdownMenuContent = React32.forwardRef(({ className: _className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx31(DropdownMenuPrimitive.Portal, { children: /* @__PURE__ */ jsx31(
+var DropdownMenuContent = React32.forwardRef(({ className: _className, sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx32(DropdownMenuPrimitive.Portal, { children: /* @__PURE__ */ jsx32(
   DropdownMenuContentFrame,
   {
     ref,
@@ -3666,7 +3688,7 @@ var DropdownMenuContent = React32.forwardRef(({ className: _className, sideOffse
   }
 ) }));
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
-var DropdownMenuItemFrame = styled29(DropdownMenuPrimitive.Item, {
+var DropdownMenuItemFrame = styled30(DropdownMenuPrimitive.Item, {
   flexDirection: "row",
   alignItems: "center",
   paddingVertical: "$2",
@@ -3683,7 +3705,7 @@ var DropdownMenuItemFrame = styled29(DropdownMenuPrimitive.Item, {
     backgroundColor: "$accent"
   }
 });
-var DropdownMenuItem = React32.forwardRef(({ className: _className, inset, ...props }, ref) => /* @__PURE__ */ jsx31(
+var DropdownMenuItem = React32.forwardRef(({ className: _className, inset, ...props }, ref) => /* @__PURE__ */ jsx32(
   DropdownMenuItemFrame,
   {
     ref,
@@ -3692,7 +3714,7 @@ var DropdownMenuItem = React32.forwardRef(({ className: _className, inset, ...pr
   }
 ));
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
-var DropdownMenuCheckboxItemFrame = styled29(DropdownMenuPrimitive.CheckboxItem, {
+var DropdownMenuCheckboxItemFrame = styled30(DropdownMenuPrimitive.CheckboxItem, {
   flexDirection: "row",
   alignItems: "center",
   paddingVertical: "$2",
@@ -3711,13 +3733,13 @@ var DropdownMenuCheckboxItem = React32.forwardRef(({ className: _className, chil
     checked,
     ...props,
     children: [
-      /* @__PURE__ */ jsx31(View5, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ jsx31(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ jsx31(Check2, { size: 16 }) }) }),
+      /* @__PURE__ */ jsx32(View5, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ jsx32(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ jsx32(Check2, { size: 16 }) }) }),
       children
     ]
   }
 ));
 DropdownMenuCheckboxItem.displayName = DropdownMenuPrimitive.CheckboxItem.displayName;
-var DropdownMenuRadioItemFrame = styled29(DropdownMenuPrimitive.RadioItem, {
+var DropdownMenuRadioItemFrame = styled30(DropdownMenuPrimitive.RadioItem, {
   flexDirection: "row",
   alignItems: "center",
   paddingVertical: "$2",
@@ -3730,11 +3752,11 @@ var DropdownMenuRadioItemFrame = styled29(DropdownMenuPrimitive.RadioItem, {
   focusStyle: { backgroundColor: "$accent" }
 });
 var DropdownMenuRadioItem = React32.forwardRef(({ className: _className, children, ...props }, ref) => /* @__PURE__ */ jsxs21(DropdownMenuRadioItemFrame, { ref, ...props, children: [
-  /* @__PURE__ */ jsx31(View5, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ jsx31(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ jsx31(Circle, { size: 8, fill: "currentColor" }) }) }),
+  /* @__PURE__ */ jsx32(View5, { position: "absolute", left: "$2", justifyContent: "center", alignItems: "center", children: /* @__PURE__ */ jsx32(DropdownMenuPrimitive.ItemIndicator, { children: /* @__PURE__ */ jsx32(Circle, { size: 8, fill: "currentColor" }) }) }),
   children
 ] }));
 DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
-var DropdownMenuLabel = styled29(DropdownMenuPrimitive.Label, {
+var DropdownMenuLabel = styled30(DropdownMenuPrimitive.Label, {
   paddingHorizontal: "$2",
   paddingVertical: "$1.5",
   fontSize: "$3",
@@ -3742,12 +3764,12 @@ var DropdownMenuLabel = styled29(DropdownMenuPrimitive.Label, {
   color: "$foreground"
   // Ensure visibility
 });
-var DropdownMenuSeparator = styled29(DropdownMenuPrimitive.Separator, {
+var DropdownMenuSeparator = styled30(DropdownMenuPrimitive.Separator, {
   height: 1,
   backgroundColor: "$muted",
   marginVertical: "$1"
 });
-var DropdownMenuShortcut = styled29(Text12, {
+var DropdownMenuShortcut = styled30(Text12, {
   marginLeft: "auto",
   fontSize: "$2",
   color: "$mutedForeground",
@@ -3757,11 +3779,11 @@ var DropdownMenuShortcut = styled29(Text12, {
 // src/molecules/Popover/Popover.tsx
 import {
   Popover as TamaguiPopover,
-  styled as styled30,
-  YStack as YStack14
+  styled as styled31,
+  YStack as YStack13
 } from "tamagui";
-import { forwardRef as forwardRef8, createContext as createContext4, useContext as useContext7, useMemo as useMemo2 } from "react";
-import { jsx as jsx32, jsxs as jsxs22 } from "react/jsx-runtime";
+import { forwardRef as forwardRef9, createContext as createContext4, useContext as useContext7, useMemo as useMemo2 } from "react";
+import { jsx as jsx33, jsxs as jsxs22 } from "react/jsx-runtime";
 var PopoverContext = createContext4({});
 var usePopoverContext = () => {
   const context = useContext7(PopoverContext);
@@ -3770,7 +3792,7 @@ var usePopoverContext = () => {
   }
   return context;
 };
-var PopoverContentFrame = styled30(TamaguiPopover.Content, {
+var PopoverContentFrame = styled31(TamaguiPopover.Content, {
   name: "PopoverContent",
   backgroundColor: "$background",
   borderColor: "$borderColor",
@@ -3802,20 +3824,20 @@ var PopoverContentFrame = styled30(TamaguiPopover.Content, {
     }
   }
 });
-var PopoverArrow = styled30(TamaguiPopover.Arrow, {
+var PopoverArrow = styled31(TamaguiPopover.Arrow, {
   name: "PopoverArrow",
   borderWidth: 1,
   borderColor: "$borderColor",
   backgroundColor: "$background"
 });
-var PopoverContent = forwardRef8(
+var PopoverContent = forwardRef9(
   ({ children, actions, ...props }, ref) => {
     const { isLoading, hasError } = usePopoverContext();
     return /* @__PURE__ */ jsxs22(PopoverContentFrame, { ref, ...props, hasError, children: [
-      /* @__PURE__ */ jsx32(PopoverArrow, { size: "$3" }),
-      /* @__PURE__ */ jsxs22(YStack14, { gap: "$3", children: [
+      /* @__PURE__ */ jsx33(PopoverArrow, { size: "$3" }),
+      /* @__PURE__ */ jsxs22(YStack13, { gap: "$3", children: [
         children,
-        actions && /* @__PURE__ */ jsx32(YStack14, { children: actions })
+        actions && /* @__PURE__ */ jsx33(YStack13, { children: actions })
       ] })
     ] });
   }
@@ -3832,12 +3854,12 @@ var Popover = ({
     () => ({ isLoading, hasError, isDisabled }),
     [isLoading, hasError, isDisabled]
   );
-  return /* @__PURE__ */ jsx32(PopoverContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx32(TamaguiPopover, { ...props, children }) });
+  return /* @__PURE__ */ jsx33(PopoverContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx33(TamaguiPopover, { ...props, children }) });
 };
-var PopoverTrigger = forwardRef8(
+var PopoverTrigger = forwardRef9(
   (props, ref) => {
     const { isDisabled, isLoading } = usePopoverContext();
-    return /* @__PURE__ */ jsx32(TamaguiPopover.Trigger, { ref, ...props, disabled: isDisabled || isLoading });
+    return /* @__PURE__ */ jsx33(TamaguiPopover.Trigger, { ref, ...props, disabled: isDisabled || isLoading });
   }
 );
 PopoverTrigger.displayName = "PopoverTrigger";
@@ -3845,11 +3867,11 @@ var PopoverAnchor = TamaguiPopover.Anchor;
 var PopoverClose = TamaguiPopover.Close;
 
 // src/molecules/HoverCard/HoverCard.tsx
-import { Paragraph as Paragraph4, XStack as XStack14, YStack as YStack15, Text as Text13 } from "tamagui";
+import { Paragraph as Paragraph4, XStack as XStack13, YStack as YStack14, Text as Text13 } from "tamagui";
 import { AlertTriangle } from "@tamagui/lucide-icons";
-import { jsx as jsx33, jsxs as jsxs23 } from "react/jsx-runtime";
+import { jsx as jsx34, jsxs as jsxs23 } from "react/jsx-runtime";
 var HoverCard = ({ children, ...rest }) => {
-  return /* @__PURE__ */ jsx33(Popover, { placement: "top", hoverable: true, ...rest, children });
+  return /* @__PURE__ */ jsx34(Popover, { placement: "top", hoverable: true, ...rest, children });
 };
 var HoverCardTrigger = Popover.Trigger;
 var HoverCardContent = Popover.Content;
@@ -3869,49 +3891,49 @@ var HoverCardProfileContent = ({
     }
   };
   if (hasError) {
-    return /* @__PURE__ */ jsx33(YStack15, { ...containerProps, children: /* @__PURE__ */ jsxs23(XStack14, { space: "$2", ai: "center", jc: "center", children: [
-      /* @__PURE__ */ jsx33(AlertTriangle, { color: "$red10", size: "$1" }),
-      /* @__PURE__ */ jsx33(Text13, { color: "$red10", fontSize: "$2", children: "N\xE3o foi poss\xEDvel carregar o perfil." })
+    return /* @__PURE__ */ jsx34(YStack14, { ...containerProps, children: /* @__PURE__ */ jsxs23(XStack13, { space: "$2", ai: "center", jc: "center", children: [
+      /* @__PURE__ */ jsx34(AlertTriangle, { color: "$red10", size: "$1" }),
+      /* @__PURE__ */ jsx34(Text13, { color: "$red10", fontSize: "$2", children: "N\xE3o foi poss\xEDvel carregar o perfil." })
     ] }) });
   }
   if (isLoading) {
-    return /* @__PURE__ */ jsxs23(YStack15, { ...containerProps, children: [
-      /* @__PURE__ */ jsxs23(XStack14, { space: "$4", ai: "center", children: [
-        /* @__PURE__ */ jsx33(Skeleton, { br: "$12", w: "$10", h: "$10" }),
-        /* @__PURE__ */ jsxs23(YStack15, { space: "$1", children: [
-          /* @__PURE__ */ jsx33(Skeleton, { h: "$2", w: "$12" }),
-          /* @__PURE__ */ jsx33(Skeleton, { h: "$2", w: "$8" })
+    return /* @__PURE__ */ jsxs23(YStack14, { ...containerProps, children: [
+      /* @__PURE__ */ jsxs23(XStack13, { space: "$4", ai: "center", children: [
+        /* @__PURE__ */ jsx34(Skeleton, { br: "$12", w: "$10", h: "$10" }),
+        /* @__PURE__ */ jsxs23(YStack14, { space: "$1", children: [
+          /* @__PURE__ */ jsx34(Skeleton, { h: "$2", w: "$12" }),
+          /* @__PURE__ */ jsx34(Skeleton, { h: "$2", w: "$8" })
         ] })
       ] }),
-      /* @__PURE__ */ jsx33(Skeleton, { h: "$2" }),
-      /* @__PURE__ */ jsx33(Skeleton, { h: "$2" }),
-      /* @__PURE__ */ jsxs23(XStack14, { space: "$4", children: [
-        /* @__PURE__ */ jsx33(Skeleton, { h: "$2", w: "$12" }),
-        /* @__PURE__ */ jsx33(Skeleton, { h: "$2", w: "$12" })
+      /* @__PURE__ */ jsx34(Skeleton, { h: "$2" }),
+      /* @__PURE__ */ jsx34(Skeleton, { h: "$2" }),
+      /* @__PURE__ */ jsxs23(XStack13, { space: "$4", children: [
+        /* @__PURE__ */ jsx34(Skeleton, { h: "$2", w: "$12" }),
+        /* @__PURE__ */ jsx34(Skeleton, { h: "$2", w: "$12" })
       ] }),
-      actions && /* @__PURE__ */ jsx33(XStack14, { jc: "flex-end", children: actions })
+      actions && /* @__PURE__ */ jsx34(XStack13, { jc: "flex-end", children: actions })
     ] });
   }
-  return /* @__PURE__ */ jsxs23(YStack15, { ...containerProps, children: [
-    /* @__PURE__ */ jsxs23(XStack14, { space: "$4", ai: "center", children: [
-      /* @__PURE__ */ jsx33(Avatar, { circular: true, size: "$10", children: /* @__PURE__ */ jsx33(Avatar.Image, { source: { uri: user.avatar } }) }),
-      /* @__PURE__ */ jsxs23(YStack15, { space: "$1", f: 1, children: [
-        /* @__PURE__ */ jsx33(Paragraph4, { size: "$3", fontWeight: "bold", ellipse: true, children: user.name }),
-        /* @__PURE__ */ jsx33(Paragraph4, { size: "$2", color: "$gray11", ellipse: true, children: user.handle })
+  return /* @__PURE__ */ jsxs23(YStack14, { ...containerProps, children: [
+    /* @__PURE__ */ jsxs23(XStack13, { space: "$4", ai: "center", children: [
+      /* @__PURE__ */ jsx34(Avatar, { circular: true, size: "$10", children: /* @__PURE__ */ jsx34(Avatar.Image, { source: { uri: user.avatar } }) }),
+      /* @__PURE__ */ jsxs23(YStack14, { space: "$1", f: 1, children: [
+        /* @__PURE__ */ jsx34(Paragraph4, { size: "$3", fontWeight: "bold", ellipse: true, children: user.name }),
+        /* @__PURE__ */ jsx34(Paragraph4, { size: "$2", color: "$gray11", ellipse: true, children: user.handle })
       ] })
     ] }),
-    user.bio && /* @__PURE__ */ jsx33(Paragraph4, { size: "$2", ellipse: true, children: user.bio }),
-    /* @__PURE__ */ jsxs23(XStack14, { space: "$4", children: [
+    user.bio && /* @__PURE__ */ jsx34(Paragraph4, { size: "$2", ellipse: true, children: user.bio }),
+    /* @__PURE__ */ jsxs23(XStack13, { space: "$4", children: [
       /* @__PURE__ */ jsxs23(Paragraph4, { size: "$2", children: [
-        /* @__PURE__ */ jsx33(Paragraph4, { fontWeight: "bold", children: user.following }),
+        /* @__PURE__ */ jsx34(Paragraph4, { fontWeight: "bold", children: user.following }),
         " Seguindo"
       ] }),
       /* @__PURE__ */ jsxs23(Paragraph4, { size: "$2", children: [
-        /* @__PURE__ */ jsx33(Paragraph4, { fontWeight: "bold", children: user.followers }),
+        /* @__PURE__ */ jsx34(Paragraph4, { fontWeight: "bold", children: user.followers }),
         " Seguidores"
       ] })
     ] }),
-    actions && /* @__PURE__ */ jsx33(XStack14, { jc: "flex-end", children: actions })
+    actions && /* @__PURE__ */ jsx34(XStack13, { jc: "flex-end", children: actions })
   ] });
 };
 
@@ -3920,13 +3942,13 @@ import React33 from "react";
 import {
   Label as Label4,
   RadioGroup as TamaguiRadioGroup,
-  styled as styled31,
+  styled as styled32,
   Text as Text14,
-  XStack as XStack15,
-  YStack as YStack16
+  XStack as XStack14,
+  YStack as YStack15
 } from "tamagui";
-import { jsx as jsx34, jsxs as jsxs24 } from "react/jsx-runtime";
-var RadioGroupItemFrame = styled31(TamaguiRadioGroup.Item, {
+import { jsx as jsx35, jsxs as jsxs24 } from "react/jsx-runtime";
+var RadioGroupItemFrame = styled32(TamaguiRadioGroup.Item, {
   name: "RadioGroupItem",
   width: 16,
   height: 16,
@@ -3963,7 +3985,7 @@ var RadioGroupItemFrame = styled31(TamaguiRadioGroup.Item, {
     }
   }
 });
-var RadioGroupIndicator = styled31(TamaguiRadioGroup.Indicator, {
+var RadioGroupIndicator = styled32(TamaguiRadioGroup.Indicator, {
   name: "RadioGroupIndicator",
   backgroundColor: "$blue10",
   width: 8,
@@ -3978,7 +4000,7 @@ var RadioGroupIndicator = styled31(TamaguiRadioGroup.Indicator, {
   }
 });
 var RadioGroupItem = React33.forwardRef((props, ref) => {
-  return /* @__PURE__ */ jsx34(RadioGroupItemFrame, { ref, ...props, children: /* @__PURE__ */ jsx34(RadioGroupIndicator, { disabled: props.disabled }) });
+  return /* @__PURE__ */ jsx35(RadioGroupItemFrame, { ref, ...props, children: /* @__PURE__ */ jsx35(RadioGroupIndicator, { disabled: props.disabled }) });
 });
 RadioGroupItem.displayName = "RadioGroupItem";
 var RadioGroup2 = React33.forwardRef(
@@ -3990,16 +4012,16 @@ var RadioGroup2 = React33.forwardRef(
     errorMessage,
     ...props
   }, ref) => {
-    const Container = orientation === "vertical" ? YStack16 : XStack15;
+    const Container = orientation === "vertical" ? YStack15 : XStack14;
     if (isLoading) {
-      return /* @__PURE__ */ jsx34(Container, { gap: "$2", "aria-busy": "true", "aria-live": "polite", children: options.map((option) => /* @__PURE__ */ jsxs24(XStack15, { alignItems: "center", space: "$2", children: [
-        /* @__PURE__ */ jsx34(Skeleton, { width: 16, height: 16, borderRadius: "$10" }),
-        /* @__PURE__ */ jsx34(Skeleton, { width: 100, height: 16 })
+      return /* @__PURE__ */ jsx35(Container, { gap: "$2", "aria-busy": "true", "aria-live": "polite", children: options.map((option) => /* @__PURE__ */ jsxs24(XStack14, { alignItems: "center", space: "$2", children: [
+        /* @__PURE__ */ jsx35(Skeleton, { width: 16, height: 16, borderRadius: "$10" }),
+        /* @__PURE__ */ jsx35(Skeleton, { width: 100, height: 16 })
       ] }, option.value)) });
     }
-    return /* @__PURE__ */ jsxs24(YStack16, { children: [
-      /* @__PURE__ */ jsx34(TamaguiRadioGroup, { ref, ...props, children: /* @__PURE__ */ jsx34(Container, { gap: "$2", children: options.map((option) => /* @__PURE__ */ jsxs24(XStack15, { alignItems: "center", space: "$2", children: [
-        /* @__PURE__ */ jsx34(
+    return /* @__PURE__ */ jsxs24(YStack15, { children: [
+      /* @__PURE__ */ jsx35(TamaguiRadioGroup, { ref, ...props, children: /* @__PURE__ */ jsx35(Container, { gap: "$2", children: options.map((option) => /* @__PURE__ */ jsxs24(XStack14, { alignItems: "center", space: "$2", children: [
+        /* @__PURE__ */ jsx35(
           RadioGroupItem,
           {
             value: option.value,
@@ -4008,7 +4030,7 @@ var RadioGroup2 = React33.forwardRef(
             disabled: option.disabled || props.disabled
           }
         ),
-        /* @__PURE__ */ jsx34(
+        /* @__PURE__ */ jsx35(
           Label4,
           {
             htmlFor: option.value,
@@ -4019,7 +4041,7 @@ var RadioGroup2 = React33.forwardRef(
           }
         )
       ] }, option.value)) }) }),
-      hasError && errorMessage && /* @__PURE__ */ jsx34(Text14, { color: "$red10", fontSize: "$2", marginTop: "$2", children: errorMessage })
+      hasError && errorMessage && /* @__PURE__ */ jsx35(Text14, { color: "$red10", fontSize: "$2", marginTop: "$2", children: errorMessage })
     ] });
   }
 );
@@ -4027,9 +4049,9 @@ RadioGroup2.displayName = "RadioGroup";
 
 // src/molecules/Resizable.tsx
 import {
-  styled as styled32,
-  YStack as YStack17,
-  XStack as XStack16,
+  styled as styled33,
+  YStack as YStack16,
+  XStack as XStack15,
   Separator as Separator3,
   Theme
 } from "tamagui";
@@ -4045,7 +4067,7 @@ import React34, {
   useId
 } from "react";
 import { GripVertical } from "@tamagui/lucide-icons";
-import { jsx as jsx35, jsxs as jsxs25 } from "react/jsx-runtime";
+import { jsx as jsx36, jsxs as jsxs25 } from "react/jsx-runtime";
 var ResizablePanelGroupContext = createContext5(null);
 var useResizablePanelGroup = () => {
   const context = useContext8(ResizablePanelGroupContext);
@@ -4054,7 +4076,7 @@ var useResizablePanelGroup = () => {
   }
   return context;
 };
-var ResizablePanelGroupFrame = styled32(XStack16, {
+var ResizablePanelGroupFrame = styled33(XStack15, {
   name: "ResizablePanelGroup",
   flex: 1,
   width: "100%",
@@ -4231,7 +4253,7 @@ var ResizablePanelGroup = React34.forwardRef(({
     isDisabled,
     panelIds
   };
-  const content = /* @__PURE__ */ jsx35(
+  const content = /* @__PURE__ */ jsx36(
     ResizablePanelGroupFrame,
     {
       ref: groupRef,
@@ -4259,17 +4281,17 @@ var ResizablePanelGroup = React34.forwardRef(({
       })
     }
   );
-  return /* @__PURE__ */ jsx35(ResizablePanelGroupContext.Provider, { value: contextValue, children: hasError ? /* @__PURE__ */ jsx35(Theme, { name: "red", children: content }) : content });
+  return /* @__PURE__ */ jsx36(ResizablePanelGroupContext.Provider, { value: contextValue, children: hasError ? /* @__PURE__ */ jsx36(Theme, { name: "red", children: content }) : content });
 });
 ResizablePanelGroup.displayName = "ResizablePanelGroup";
-var ResizablePanelFrame = styled32(YStack17, {
+var ResizablePanelFrame = styled33(YStack16, {
   name: "ResizablePanel"
 });
 var ResizablePanel = React34.forwardRef(({ children, size, ...props }, ref) => {
-  return /* @__PURE__ */ jsx35(ResizablePanelFrame, { ref, flexBasis: `${size}%`, ...props, children });
+  return /* @__PURE__ */ jsx36(ResizablePanelFrame, { ref, flexBasis: `${size}%`, ...props, children });
 });
 ResizablePanel.displayName = "ResizablePanel";
-var ResizableHandleFrame = styled32(YStack17, {
+var ResizableHandleFrame = styled33(YStack16, {
   name: "ResizableHandle",
   alignItems: "center",
   justifyContent: "center",
@@ -4295,7 +4317,7 @@ var ResizableHandleFrame = styled32(YStack17, {
     }
   }
 });
-var ResizableHandleIndicator = styled32(Separator3, {
+var ResizableHandleIndicator = styled33(Separator3, {
   // Explicitly set background color to ensure visibility
   borderColor: "$borderColor",
   borderWidth: 1,
@@ -4354,9 +4376,9 @@ var ResizableHandle = React34.forwardRef(({ withHandle, handleIndex, ...props },
       "aria-valuemax": maxSize,
       "aria-controls": panelIds[leftPanelIndex],
       children: [
-        /* @__PURE__ */ jsx35(ResizableHandleIndicator, { direction }),
-        withHandle && /* @__PURE__ */ jsx35(
-          YStack17,
+        /* @__PURE__ */ jsx36(ResizableHandleIndicator, { direction }),
+        withHandle && /* @__PURE__ */ jsx36(
+          YStack16,
           {
             position: "absolute",
             padding: "$1.5",
@@ -4364,7 +4386,7 @@ var ResizableHandle = React34.forwardRef(({ withHandle, handleIndex, ...props },
             backgroundColor: "$background",
             borderWidth: 1,
             borderColor: "$borderColor",
-            children: /* @__PURE__ */ jsx35(GripVertical, { size: 16, color: "$color", "aria-label": "Arrastar para redimensionar" })
+            children: /* @__PURE__ */ jsx36(GripVertical, { size: 16, color: "$color", "aria-label": "Arrastar para redimensionar" })
           }
         )
       ]
@@ -4381,13 +4403,13 @@ import {
   isWeb as isWeb2,
   Select as TamaguiSelect,
   Sheet as Sheet2,
-  styled as styled33,
-  XStack as XStack17,
-  YStack as YStack18
+  styled as styled34,
+  XStack as XStack16,
+  YStack as YStack17
 } from "tamagui";
-import { jsx as jsx36, jsxs as jsxs26 } from "react/jsx-runtime";
-var SelectRoot = (props) => /* @__PURE__ */ jsx36(TamaguiSelect, { ...props });
-var SelectTriggerFrame = styled33(XStack17, {
+import { jsx as jsx37, jsxs as jsxs26 } from "react/jsx-runtime";
+var SelectRoot = (props) => /* @__PURE__ */ jsx37(TamaguiSelect, { ...props });
+var SelectTriggerFrame = styled34(XStack16, {
   name: "SelectTrigger",
   width: "100%",
   flexDirection: "row",
@@ -4429,14 +4451,14 @@ var SelectTriggerFrame = styled33(XStack17, {
 });
 var SelectTrigger = React35.forwardRef(
   ({ children, hasError, disabled, isLoading, rightSlot, ...props }, ref) => {
-    return /* @__PURE__ */ jsx36(TamaguiSelect.Trigger, { asChild: true, disabled: disabled || isLoading, ref, children: /* @__PURE__ */ jsxs26(SelectTriggerFrame, { tabIndex: 0, isError: hasError, disabled: disabled || isLoading, ...props, children: [
+    return /* @__PURE__ */ jsx37(TamaguiSelect.Trigger, { asChild: true, disabled: disabled || isLoading, ref, children: /* @__PURE__ */ jsxs26(SelectTriggerFrame, { tabIndex: 0, isError: hasError, disabled: disabled || isLoading, ...props, children: [
       children,
-      isLoading ? /* @__PURE__ */ jsx36(Spinner, {}) : rightSlot || /* @__PURE__ */ jsx36(ChevronDown3, { size: 12, color: "$mutedForeground" })
+      isLoading ? /* @__PURE__ */ jsx37(Spinner, {}) : rightSlot || /* @__PURE__ */ jsx37(ChevronDown3, { size: 12, color: "$mutedForeground" })
     ] }) });
   }
 );
 var SelectContent = (props) => /* @__PURE__ */ jsxs26(TamaguiSelect.Content, { zIndex: 2e5, ...props, children: [
-  /* @__PURE__ */ jsx36(
+  /* @__PURE__ */ jsx37(
     TamaguiSelect.ScrollUpButton,
     {
       alignItems: "center",
@@ -4444,11 +4466,11 @@ var SelectContent = (props) => /* @__PURE__ */ jsxs26(TamaguiSelect.Content, { z
       position: "relative",
       width: "100%",
       height: "$3",
-      children: /* @__PURE__ */ jsx36(YStack18, { zIndex: 10, children: /* @__PURE__ */ jsx36(ChevronDown3, { size: 12 }) })
+      children: /* @__PURE__ */ jsx37(YStack17, { zIndex: 10, children: /* @__PURE__ */ jsx37(ChevronDown3, { size: 12 }) })
     }
   ),
-  /* @__PURE__ */ jsx36(TamaguiSelect.Viewport, { minWidth: 200, children: props.children }),
-  /* @__PURE__ */ jsx36(
+  /* @__PURE__ */ jsx37(TamaguiSelect.Viewport, { minWidth: 200, children: props.children }),
+  /* @__PURE__ */ jsx37(
     TamaguiSelect.ScrollDownButton,
     {
       alignItems: "center",
@@ -4456,11 +4478,11 @@ var SelectContent = (props) => /* @__PURE__ */ jsxs26(TamaguiSelect.Content, { z
       position: "relative",
       width: "100%",
       height: "$3",
-      children: /* @__PURE__ */ jsx36(YStack18, { zIndex: 10, children: /* @__PURE__ */ jsx36(ChevronDown3, { size: 12 }) })
+      children: /* @__PURE__ */ jsx37(YStack17, { zIndex: 10, children: /* @__PURE__ */ jsx37(ChevronDown3, { size: 12 }) })
     }
   )
 ] });
-var SelectItem = styled33(TamaguiSelect.Item, {
+var SelectItem = styled34(TamaguiSelect.Item, {
   name: "SelectItem",
   paddingHorizontal: "$3",
   paddingVertical: "$2",
@@ -4478,8 +4500,8 @@ var SelectItem = styled33(TamaguiSelect.Item, {
     }
   }
 });
-var SelectItemIndicator = (props) => /* @__PURE__ */ jsx36(TamaguiSelect.ItemIndicator, { marginLeft: "auto", ...props, children: /* @__PURE__ */ jsx36(Check3, { size: 16 }) });
-var SelectSheet = (props) => /* @__PURE__ */ jsx36(Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ jsxs26(
+var SelectItemIndicator = (props) => /* @__PURE__ */ jsx37(TamaguiSelect.ItemIndicator, { marginLeft: "auto", ...props, children: /* @__PURE__ */ jsx37(Check3, { size: 16 }) });
+var SelectSheet = (props) => /* @__PURE__ */ jsx37(Adapt, { when: "sm", platform: "touch", children: /* @__PURE__ */ jsxs26(
   Sheet2,
   {
     native: !isWeb2,
@@ -4493,8 +4515,8 @@ var SelectSheet = (props) => /* @__PURE__ */ jsx36(Adapt, { when: "sm", platform
     },
     ...props,
     children: [
-      /* @__PURE__ */ jsx36(Sheet2.Frame, { children: /* @__PURE__ */ jsx36(Sheet2.ScrollView, { children: /* @__PURE__ */ jsx36(Adapt.Contents, {}) }) }),
-      /* @__PURE__ */ jsx36(Sheet2.Overlay, { animation: "lazy", enterStyle: { opacity: 0 }, exitStyle: { opacity: 0 } })
+      /* @__PURE__ */ jsx37(Sheet2.Frame, { children: /* @__PURE__ */ jsx37(Sheet2.ScrollView, { children: /* @__PURE__ */ jsx37(Adapt.Contents, {}) }) }),
+      /* @__PURE__ */ jsx37(Sheet2.Overlay, { animation: "lazy", enterStyle: { opacity: 0 }, exitStyle: { opacity: 0 } })
     ]
   }
 ) });
@@ -4518,15 +4540,15 @@ SelectRoot.Viewport = SelectViewport;
 
 // src/molecules/StarRating/StarRating.tsx
 import { Star } from "@tamagui/lucide-icons";
-import { forwardRef as forwardRef9, useState as useState8 } from "react";
+import { forwardRef as forwardRef10, useState as useState8 } from "react";
 import {
-  XStack as XStack18,
+  XStack as XStack17,
   getVariableValue as getVariableValue3,
-  styled as styled34,
+  styled as styled35,
   withStaticProperties as withStaticProperties4
 } from "tamagui";
-import { jsx as jsx37, jsxs as jsxs27 } from "react/jsx-runtime";
-var StarRatingFrame = styled34(XStack18, {
+import { jsx as jsx38, jsxs as jsxs27 } from "react/jsx-runtime";
+var StarRatingFrame = styled35(XStack17, {
   name: "StarRating",
   gap: "$1",
   variants: {
@@ -4538,7 +4560,7 @@ var StarRatingFrame = styled34(XStack18, {
     }
   }
 });
-var StarIconContainer = styled34(XStack18, {
+var StarIconContainer = styled35(XStack17, {
   name: "StarIconContainer",
   cursor: "pointer",
   variants: {
@@ -4550,7 +4572,7 @@ var StarIconContainer = styled34(XStack18, {
     }
   }
 });
-var StarRatingComponent = forwardRef9(
+var StarRatingComponent = forwardRef10(
   ({
     count = 5,
     onChange,
@@ -4583,14 +4605,14 @@ var StarRatingComponent = forwardRef9(
       onChange?.(newRating);
     };
     if (isLoading) {
-      return /* @__PURE__ */ jsx37(StarRatingFrame, { ...frameProps, ref, children: Array.from({ length: count }, (_, i) => /* @__PURE__ */ jsx37(Skeleton, { width: size, height: size, br: "$10" }, i)) });
+      return /* @__PURE__ */ jsx38(StarRatingFrame, { ...frameProps, ref, children: Array.from({ length: count }, (_, i) => /* @__PURE__ */ jsx38(Skeleton, { width: size, height: size, br: "$10" }, i)) });
     }
     return /* @__PURE__ */ jsxs27(StarRatingFrame, { ...frameProps, ref, children: [
       Array.from({ length: count }, (_, i) => {
         const ratingValue = i + 1;
         const isFilled = ratingValue <= (hoverRating ?? currentRating ?? 0);
         const starColor = hasError ? colorError : isFilled ? colorActive : colorInactive;
-        return /* @__PURE__ */ jsx37(
+        return /* @__PURE__ */ jsx38(
           StarIconContainer,
           {
             disabled,
@@ -4599,7 +4621,7 @@ var StarRatingComponent = forwardRef9(
             onPress: () => handlePress(ratingValue),
             "aria-label": `Avalia\xE7\xE3o ${ratingValue} de ${count}`,
             "data-testid": `star-${ratingValue}`,
-            children: /* @__PURE__ */ jsx37(
+            children: /* @__PURE__ */ jsx38(
               Icon,
               {
                 ...iconProps,
@@ -4621,10 +4643,10 @@ var StarRating = withStaticProperties4(StarRatingComponent, {});
 
 // src/molecules/Toast.tsx
 import { createContext as createContext6, useContext as useContext9, useState as useState9, useCallback as useCallback5 } from "react";
-import { styled as styled35, XStack as XStack19, YStack as YStack19, Text as Text15, AnimatePresence } from "tamagui";
+import { styled as styled36, XStack as XStack18, YStack as YStack18, Text as Text15, AnimatePresence } from "tamagui";
 import { Portal as Portal4 } from "@tamagui/portal";
 import { X as X3 } from "@tamagui/lucide-icons";
-import { jsx as jsx38, jsxs as jsxs28 } from "react/jsx-runtime";
+import { jsx as jsx39, jsxs as jsxs28 } from "react/jsx-runtime";
 var ToastContext = createContext6(void 0);
 var useToast = () => {
   const context = useContext9(ToastContext);
@@ -4633,7 +4655,7 @@ var useToast = () => {
   }
   return context;
 };
-var ToastViewportFrame = styled35(YStack19, {
+var ToastViewportFrame = styled36(YStack18, {
   name: "ToastViewport",
   position: "absolute",
   bottom: "$4",
@@ -4645,7 +4667,7 @@ var ToastViewportFrame = styled35(YStack19, {
   zIndex: 1e4,
   pointerEvents: "box-none"
 });
-var ToastFrame = styled35(XStack19, {
+var ToastFrame = styled36(XStack18, {
   name: "Toast",
   backgroundColor: "$background",
   borderRadius: "$6",
@@ -4678,7 +4700,7 @@ var ToastFrame = styled35(XStack19, {
     variant: "default"
   }
 });
-var ToastTitleComponent = styled35(Text15, {
+var ToastTitleComponent = styled36(Text15, {
   name: "ToastTitle",
   fontWeight: "600",
   fontSize: "$4",
@@ -4699,7 +4721,7 @@ var ToastTitleComponent = styled35(Text15, {
     }
   }
 });
-var ToastDescriptionComponent = styled35(Text15, {
+var ToastDescriptionComponent = styled36(Text15, {
   name: "ToastDescription",
   fontSize: "$2",
   color: "$colorPress",
@@ -4720,7 +4742,7 @@ var ToastDescriptionComponent = styled35(Text15, {
     }
   }
 });
-var ToastCloseButton = styled35(Button, {
+var ToastCloseButton = styled36(Button, {
   size: "$2",
   circular: true,
   chromeless: true,
@@ -4749,12 +4771,12 @@ var ToastProvider = ({ children }) => {
   }, []);
   return /* @__PURE__ */ jsxs28(ToastContext.Provider, { value: { toasts, toast, dismiss }, children: [
     children,
-    /* @__PURE__ */ jsx38(Portal4, { children: /* @__PURE__ */ jsx38(ToastViewportFrame, { role: "status", "aria-live": "polite", children: /* @__PURE__ */ jsx38(AnimatePresence, { children: toasts.map((t) => /* @__PURE__ */ jsx38(ToastItem, { toast: t, onDismiss: () => dismiss(t.id) }, t.id)) }) }) })
+    /* @__PURE__ */ jsx39(Portal4, { children: /* @__PURE__ */ jsx39(ToastViewportFrame, { role: "status", "aria-live": "polite", children: /* @__PURE__ */ jsx39(AnimatePresence, { children: toasts.map((t) => /* @__PURE__ */ jsx39(ToastItem, { toast: t, onDismiss: () => dismiss(t.id) }, t.id)) }) }) })
   ] });
 };
 var ToastItem = ({ toast, onDismiss }) => {
   if (toast.isLoading) {
-    return /* @__PURE__ */ jsx38(
+    return /* @__PURE__ */ jsx39(
       ToastFrame,
       {
         animation: "quick",
@@ -4762,9 +4784,9 @@ var ToastItem = ({ toast, onDismiss }) => {
         opacity: 1,
         scale: 1,
         y: 0,
-        children: /* @__PURE__ */ jsxs28(YStack19, { flex: 1, gap: "$2", children: [
-          /* @__PURE__ */ jsx38(Skeleton, { width: 150, height: 20 }),
-          /* @__PURE__ */ jsx38(Skeleton, { width: 250, height: 15 })
+        children: /* @__PURE__ */ jsxs28(YStack18, { flex: 1, gap: "$2", children: [
+          /* @__PURE__ */ jsx39(Skeleton, { width: 150, height: 20 }),
+          /* @__PURE__ */ jsx39(Skeleton, { width: 250, height: 15 })
         ] })
       }
     );
@@ -4780,12 +4802,12 @@ var ToastItem = ({ toast, onDismiss }) => {
       scale: 1,
       y: 0,
       children: [
-        /* @__PURE__ */ jsxs28(YStack19, { flex: 1, gap: "$1", children: [
-          toast.title && /* @__PURE__ */ jsx38(ToastTitleComponent, { variant: toast.variant, children: toast.title }),
-          toast.description && /* @__PURE__ */ jsx38(ToastDescriptionComponent, { variant: toast.variant, children: toast.description })
+        /* @__PURE__ */ jsxs28(YStack18, { flex: 1, gap: "$1", children: [
+          toast.title && /* @__PURE__ */ jsx39(ToastTitleComponent, { variant: toast.variant, children: toast.title }),
+          toast.description && /* @__PURE__ */ jsx39(ToastDescriptionComponent, { variant: toast.variant, children: toast.description })
         ] }),
         toast.action,
-        /* @__PURE__ */ jsx38(ToastCloseButton, { onPress: onDismiss, "aria-label": "Fechar", children: /* @__PURE__ */ jsx38(X3, { size: "$1" }) })
+        /* @__PURE__ */ jsx39(ToastCloseButton, { onPress: onDismiss, "aria-label": "Fechar", children: /* @__PURE__ */ jsx39(X3, { size: "$1" }) })
       ]
     }
   );
@@ -4797,8 +4819,8 @@ var ToastDescription = ToastDescriptionComponent;
 
 // src/molecules/Tabs.tsx
 import { createContext as createContext7, useContext as useContext10 } from "react";
-import { Tabs as TamaguiTabs, styled as styled36, YStack as YStack20, XStack as XStack20 } from "tamagui";
-import { Fragment as Fragment5, jsx as jsx39, jsxs as jsxs29 } from "react/jsx-runtime";
+import { Tabs as TamaguiTabs, styled as styled37, YStack as YStack19, XStack as XStack19 } from "tamagui";
+import { Fragment as Fragment6, jsx as jsx40, jsxs as jsxs29 } from "react/jsx-runtime";
 var TabsContext = createContext7({});
 var useTabsContext = () => {
   const context = useContext10(TabsContext);
@@ -4807,19 +4829,19 @@ var useTabsContext = () => {
   }
   return context;
 };
-var TabsFrame = styled36(TamaguiTabs, {
+var TabsFrame = styled37(TamaguiTabs, {
   name: "Tabs",
   flexDirection: "column",
   gap: "$2"
 });
-var InnerTabsList = styled36(TamaguiTabs.List, {
+var InnerTabsList = styled37(TamaguiTabs.List, {
   name: "TabsList",
   flexDirection: "row",
   gap: "$1",
   flexShrink: 1,
   backgroundColor: "transparent"
 });
-var StyledTabsTrigger = styled36(TamaguiTabs.Tab, {
+var StyledTabsTrigger = styled37(TamaguiTabs.Tab, {
   name: "TabsTrigger",
   backgroundColor: "transparent",
   borderRadius: "$3",
@@ -4849,7 +4871,7 @@ var StyledTabsTrigger = styled36(TamaguiTabs.Tab, {
     }
   }
 });
-var StyledTabsContent = styled36(TamaguiTabs.Content, {
+var StyledTabsContent = styled37(TamaguiTabs.Content, {
   name: "TabsContent",
   backgroundColor: "$background",
   padding: "$4",
@@ -4873,11 +4895,11 @@ var Tabs = ({
   children,
   ...props
 }) => {
-  const content = tabs ? /* @__PURE__ */ jsxs29(Fragment5, { children: [
-    /* @__PURE__ */ jsx39(TabsList, { actions, children: tabs.map((tab) => /* @__PURE__ */ jsx39(TabsTrigger, { value: tab.value, children: tab.label }, tab.value)) }),
-    tabs.map((tab) => /* @__PURE__ */ jsx39(TabsContent, { value: tab.value, children: tab.content }, tab.value))
+  const content = tabs ? /* @__PURE__ */ jsxs29(Fragment6, { children: [
+    /* @__PURE__ */ jsx40(TabsList, { actions, children: tabs.map((tab) => /* @__PURE__ */ jsx40(TabsTrigger, { value: tab.value, children: tab.label }, tab.value)) }),
+    tabs.map((tab) => /* @__PURE__ */ jsx40(TabsContent, { value: tab.value, children: tab.content }, tab.value))
   ] }) : children;
-  return /* @__PURE__ */ jsx39(TabsContext.Provider, { value: { isLoading, hasError, isDisabled }, children: /* @__PURE__ */ jsx39(TabsFrame, { ...props, children: content }) });
+  return /* @__PURE__ */ jsx40(TabsContext.Provider, { value: { isLoading, hasError, isDisabled }, children: /* @__PURE__ */ jsx40(TabsFrame, { ...props, children: content }) });
 };
 var TabsList = ({
   actions,
@@ -4886,7 +4908,7 @@ var TabsList = ({
 }) => {
   const { hasError } = useTabsContext();
   return /* @__PURE__ */ jsxs29(
-    XStack20,
+    XStack19,
     {
       backgroundColor: "$muted",
       borderRadius: "$4",
@@ -4896,31 +4918,31 @@ var TabsList = ({
       borderColor: hasError ? "$destructive" : void 0,
       borderWidth: hasError ? 1 : 0,
       children: [
-        /* @__PURE__ */ jsx39(InnerTabsList, { ...props, children }),
-        actions && /* @__PURE__ */ jsx39(YStack20, { ml: "auto", children: actions })
+        /* @__PURE__ */ jsx40(InnerTabsList, { ...props, children }),
+        actions && /* @__PURE__ */ jsx40(YStack19, { ml: "auto", children: actions })
       ]
     }
   );
 };
 var TabsTrigger = (props) => {
   const { isDisabled } = useTabsContext();
-  return /* @__PURE__ */ jsx39(StyledTabsTrigger, { disabled: isDisabled, ...props });
+  return /* @__PURE__ */ jsx40(StyledTabsTrigger, { disabled: isDisabled, ...props });
 };
 var TabsContent = (props) => {
   const { isLoading } = useTabsContext();
-  return isLoading ? /* @__PURE__ */ jsxs29(YStack20, { space: true, children: [
-    /* @__PURE__ */ jsx39(Skeleton, { height: 40 }),
-    /* @__PURE__ */ jsx39(Skeleton, { height: 20 }),
-    /* @__PURE__ */ jsx39(Skeleton, { height: 20 })
-  ] }) : /* @__PURE__ */ jsx39(StyledTabsContent, { ...props });
+  return isLoading ? /* @__PURE__ */ jsxs29(YStack19, { space: true, children: [
+    /* @__PURE__ */ jsx40(Skeleton, { height: 40 }),
+    /* @__PURE__ */ jsx40(Skeleton, { height: 20 }),
+    /* @__PURE__ */ jsx40(Skeleton, { height: 20 })
+  ] }) : /* @__PURE__ */ jsx40(StyledTabsContent, { ...props });
 };
 
 // src/molecules/Calendar/Calendar.tsx
 import { useState as useState10 } from "react";
 import { useDatePicker } from "@rehookify/datepicker";
-import { YStack as YStack21, XStack as XStack21, Text as Text16, styled as styled37 } from "tamagui";
+import { YStack as YStack20, XStack as XStack20, Text as Text16, styled as styled38 } from "tamagui";
 import { ChevronLeft, ChevronRight as ChevronRight2 } from "@tamagui/lucide-icons";
-import { jsx as jsx40, jsxs as jsxs30 } from "react/jsx-runtime";
+import { jsx as jsx41, jsxs as jsxs30 } from "react/jsx-runtime";
 var MONTHS_PT_BR = [
   "Janeiro",
   "Fevereiro",
@@ -4936,7 +4958,7 @@ var MONTHS_PT_BR = [
   "Dezembro"
 ];
 var WEEK_DAYS_PT_BR = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "S\xE1b"];
-var CalendarContainer = styled37(YStack21, {
+var CalendarContainer = styled38(YStack20, {
   name: "Calendar",
   padding: "$4",
   borderRadius: "$6",
@@ -4959,34 +4981,34 @@ var CalendarContainer = styled37(YStack21, {
     }
   }
 });
-var CalendarHeader = styled37(XStack21, {
+var CalendarHeader = styled38(XStack20, {
   justifyContent: "space-between",
   alignItems: "center"
 });
-var CalendarTitle = styled37(Text16, {
+var CalendarTitle = styled38(Text16, {
   fontSize: "$5",
   fontWeight: "600",
   textAlign: "center",
   flex: 1
 });
-var CalendarGrid = styled37(YStack21, {
+var CalendarGrid = styled38(YStack20, {
   gap: "$2"
 });
-var WeekDaysGrid = styled37(XStack21, {
+var WeekDaysGrid = styled38(XStack20, {
   gap: "$2"
 });
-var WeekDayText = styled37(Text16, {
+var WeekDayText = styled38(Text16, {
   flex: 1,
   textAlign: "center",
   color: "$mutedForeground",
   fontSize: "$2",
   fontWeight: "600"
 });
-var DaysGrid = styled37(XStack21, {
+var DaysGrid = styled38(XStack20, {
   flexWrap: "wrap",
   gap: "$2"
 });
-var DayButtonFrame = styled37(Button, {
+var DayButtonFrame = styled38(Button, {
   width: 40,
   height: 40,
   padding: 0,
@@ -5029,7 +5051,7 @@ var DayButtonFrame = styled37(Button, {
     variant: "ghost"
   }
 });
-var DayText = styled37(Text16, {
+var DayText = styled38(Text16, {
   fontSize: "$4",
   color: "$foreground",
   variants: {
@@ -5040,9 +5062,9 @@ var DayText = styled37(Text16, {
     }
   }
 });
-var SkeletonGrid = () => /* @__PURE__ */ jsxs30(YStack21, { gap: "$2", "data-testid": "calendar-skeleton", children: [
-  /* @__PURE__ */ jsx40(XStack21, { gap: "$2", justifyContent: "space-around", children: Array.from({ length: 7 }).map((_, i) => /* @__PURE__ */ jsx40(Skeleton, { width: 40, height: 20, borderRadius: "$2" }, i)) }),
-  /* @__PURE__ */ jsx40(XStack21, { flexWrap: "wrap", gap: "$2", justifyContent: "space-around", children: Array.from({ length: 35 }).map((_, i) => /* @__PURE__ */ jsx40(Skeleton, { width: 40, height: 40, borderRadius: "$4" }, i)) })
+var SkeletonGrid = () => /* @__PURE__ */ jsxs30(YStack20, { gap: "$2", "data-testid": "calendar-skeleton", children: [
+  /* @__PURE__ */ jsx41(XStack20, { gap: "$2", justifyContent: "space-around", children: Array.from({ length: 7 }).map((_, i) => /* @__PURE__ */ jsx41(Skeleton, { width: 40, height: 20, borderRadius: "$2" }, i)) }),
+  /* @__PURE__ */ jsx41(XStack20, { flexWrap: "wrap", gap: "$2", justifyContent: "space-around", children: Array.from({ length: 35 }).map((_, i) => /* @__PURE__ */ jsx41(Skeleton, { width: 40, height: 40, borderRadius: "$4" }, i)) })
 ] });
 var Calendar = ({
   selectedDate,
@@ -5084,15 +5106,15 @@ var Calendar = ({
   const { onClick: onNextClick } = dp.propGetters.addOffset({ months: 1 });
   return /* @__PURE__ */ jsxs30(CalendarContainer, { disabled: isDisabled, hasError, "data-testid": "calendar-container", "data-has-error": hasError, children: [
     /* @__PURE__ */ jsxs30(CalendarHeader, { children: [
-      /* @__PURE__ */ jsx40(Button, { icon: ChevronLeft, circular: true, variant: "ghost", onPress: onPrevClick, disabled: isLoading }),
-      /* @__PURE__ */ jsx40(CalendarTitle, { children: isLoading ? /* @__PURE__ */ jsx40(Skeleton, { width: 120, height: 24 }) : currentMonth ? `${currentMonth.month} ${currentMonth.year}` : "" }),
-      /* @__PURE__ */ jsx40(Button, { icon: ChevronRight2, circular: true, variant: "ghost", onPress: onNextClick, disabled: isLoading })
+      /* @__PURE__ */ jsx41(Button, { icon: ChevronLeft, circular: true, variant: "ghost", onPress: onPrevClick, disabled: isLoading }),
+      /* @__PURE__ */ jsx41(CalendarTitle, { children: isLoading ? /* @__PURE__ */ jsx41(Skeleton, { width: 120, height: 24 }) : currentMonth ? `${currentMonth.month} ${currentMonth.year}` : "" }),
+      /* @__PURE__ */ jsx41(Button, { icon: ChevronRight2, circular: true, variant: "ghost", onPress: onNextClick, disabled: isLoading })
     ] }),
-    isLoading ? /* @__PURE__ */ jsx40(SkeletonGrid, {}) : currentMonth ? /* @__PURE__ */ jsxs30(CalendarGrid, { "data-testid": "calendar-grid", children: [
-      /* @__PURE__ */ jsx40(WeekDaysGrid, { children: WEEK_DAYS_PT_BR.map((day) => /* @__PURE__ */ jsx40(WeekDayText, { children: day.substring(0, 3) }, day)) }),
-      /* @__PURE__ */ jsx40(DaysGrid, { children: (currentMonth?.days || []).map((day, index) => {
+    isLoading ? /* @__PURE__ */ jsx41(SkeletonGrid, {}) : currentMonth ? /* @__PURE__ */ jsxs30(CalendarGrid, { "data-testid": "calendar-grid", children: [
+      /* @__PURE__ */ jsx41(WeekDaysGrid, { children: WEEK_DAYS_PT_BR.map((day) => /* @__PURE__ */ jsx41(WeekDayText, { children: day.substring(0, 3) }, day)) }),
+      /* @__PURE__ */ jsx41(DaysGrid, { children: (currentMonth?.days || []).map((day, index) => {
         const { onClick: onDayClick, ...dayProps } = dp.propGetters.dayButton(day);
-        return /* @__PURE__ */ jsx40(
+        return /* @__PURE__ */ jsx41(
           DayButtonFrame,
           {
             selected: day.selected,
@@ -5101,7 +5123,7 @@ var Calendar = ({
             disabled: day.disabled,
             onPress: onDayClick,
             ...dayProps,
-            children: /* @__PURE__ */ jsx40(DayText, { selected: day.selected, children: day.day })
+            children: /* @__PURE__ */ jsx41(DayText, { selected: day.selected, children: day.day })
           },
           index
         );
@@ -5115,9 +5137,9 @@ import { Calendar as CalendarIcon } from "@tamagui/lucide-icons";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import React40 from "react";
-import { Adapt as Adapt2, styled as styled38, XStack as XStack22 } from "tamagui";
-import { jsx as jsx41, jsxs as jsxs31 } from "react/jsx-runtime";
-var DatePickerFrame = styled38(XStack22, {
+import { Adapt as Adapt2, styled as styled39, XStack as XStack21 } from "tamagui";
+import { jsx as jsx42, jsxs as jsxs31 } from "react/jsx-runtime";
+var DatePickerFrame = styled39(XStack21, {
   name: "DatePickerFrame",
   alignItems: "center",
   borderRadius: "$md",
@@ -5176,10 +5198,10 @@ var DatePicker = React40.forwardRef(
       setOpen(false);
     };
     if (loading) {
-      return /* @__PURE__ */ jsx41(Skeleton, { height: 40, borderRadius: "$md" });
+      return /* @__PURE__ */ jsx42(Skeleton, { height: 40, borderRadius: "$md" });
     }
     const trigger = /* @__PURE__ */ jsxs31(DatePickerFrame, { variant, state, disabled, children: [
-      /* @__PURE__ */ jsx41(
+      /* @__PURE__ */ jsx42(
         Input.Box,
         {
           flex: 1,
@@ -5189,7 +5211,7 @@ var DatePicker = React40.forwardRef(
             borderWidth: 0,
             outlineWidth: 0
           },
-          children: /* @__PURE__ */ jsx41(
+          children: /* @__PURE__ */ jsx42(
             Input.Field,
             {
               size,
@@ -5202,7 +5224,7 @@ var DatePicker = React40.forwardRef(
           )
         }
       ),
-      /* @__PURE__ */ jsx41(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsx41(
+      /* @__PURE__ */ jsx42(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsx42(
         Button,
         {
           ref,
@@ -5216,11 +5238,11 @@ var DatePicker = React40.forwardRef(
     ] });
     return /* @__PURE__ */ jsxs31(Popover, { open, onOpenChange: setOpen, ...props, children: [
       trigger,
-      /* @__PURE__ */ jsx41(Adapt2, { when: "sm", platform: "touch", children: /* @__PURE__ */ jsxs31(Sheet, { modal: true, dismissOnSnapToBottom: true, children: [
-        /* @__PURE__ */ jsx41(Sheet.Frame, { padding: "$4", children: /* @__PURE__ */ jsx41(Adapt2.Contents, {}) }),
-        /* @__PURE__ */ jsx41(Sheet.Overlay, {})
+      /* @__PURE__ */ jsx42(Adapt2, { when: "sm", platform: "touch", children: /* @__PURE__ */ jsxs31(Sheet, { modal: true, dismissOnSnapToBottom: true, children: [
+        /* @__PURE__ */ jsx42(Sheet.Frame, { padding: "$4", children: /* @__PURE__ */ jsx42(Adapt2.Contents, {}) }),
+        /* @__PURE__ */ jsx42(Sheet.Overlay, {})
       ] }) }),
-      /* @__PURE__ */ jsx41(PopoverContent, { p: 0, children: /* @__PURE__ */ jsx41(Calendar, { selectedDate: date, onDateChange: handleDateSelect }) })
+      /* @__PURE__ */ jsx42(PopoverContent, { p: 0, children: /* @__PURE__ */ jsx42(Calendar, { selectedDate: date, onDateChange: handleDateSelect }) })
     ] });
   }
 );
@@ -5228,15 +5250,15 @@ DatePicker.displayName = "DatePicker";
 
 // src/molecules/OTPInput/OTPInput.tsx
 import React41 from "react";
-import { YStack as YStack23, isWeb as isWeb3, styled as styled39 } from "tamagui";
-import { jsx as jsx42 } from "react/jsx-runtime";
-var OTPInputFrame = styled39(YStack23, {
+import { YStack as YStack22, isWeb as isWeb3, styled as styled40 } from "tamagui";
+import { jsx as jsx43 } from "react/jsx-runtime";
+var OTPInputFrame = styled40(YStack22, {
   name: "OTPInputFrame",
   flexDirection: "row",
   gap: "$sm",
   alignItems: "center"
 });
-var OTPCellInput = styled39(Input, {
+var OTPCellInput = styled40(Input, {
   name: "OTPInputCell",
   width: 48,
   height: "$2xl",
@@ -5421,9 +5443,9 @@ var OTPInputImpl = React41.forwardRef(
       }
     }, [autoFocus, focusInput, selectInput]);
     if (isLoading) {
-      return /* @__PURE__ */ jsx42(OTPInputFrame, { ref, ...frameProps, children: Array.from({ length }, (_, index) => /* @__PURE__ */ jsx42(Skeleton, { width: 48, height: 48 }, `otp-skeleton-${index}`)) });
+      return /* @__PURE__ */ jsx43(OTPInputFrame, { ref, ...frameProps, children: Array.from({ length }, (_, index) => /* @__PURE__ */ jsx43(Skeleton, { width: 48, height: 48 }, `otp-skeleton-${index}`)) });
     }
-    return /* @__PURE__ */ jsx42(OTPInputFrame, { ref, ...frameProps, children: valueArray.map((char, index) => /* @__PURE__ */ jsx42(
+    return /* @__PURE__ */ jsx43(OTPInputFrame, { ref, ...frameProps, children: valueArray.map((char, index) => /* @__PURE__ */ jsx43(
       OTPCellInput,
       {
         ref: (node) => {
@@ -5469,9 +5491,9 @@ import {
   ChevronsRight
 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo3 } from "react";
-import { Text as Text17, VisuallyHidden, XStack as XStack23, styled as styled40 } from "tamagui";
-import { jsx as jsx43, jsxs as jsxs32 } from "react/jsx-runtime";
-var PaginationRoot = styled40(XStack23, {
+import { Text as Text17, VisuallyHidden, XStack as XStack22, styled as styled41 } from "tamagui";
+import { jsx as jsx44, jsxs as jsxs32 } from "react/jsx-runtime";
+var PaginationRoot = styled41(XStack22, {
   name: "PaginationRoot",
   alignItems: "center",
   gap: "$sm",
@@ -5486,7 +5508,7 @@ var PaginationRoot = styled40(XStack23, {
     }
   }
 });
-var PaginationButton = styled40(Button, {
+var PaginationButton = styled41(Button, {
   name: "PaginationButton",
   unstyled: true,
   borderRadius: "$full",
@@ -5543,7 +5565,7 @@ var PaginationButton = styled40(Button, {
     active: false
   }
 });
-var PaginationEllipsis = styled40(Text17, {
+var PaginationEllipsis = styled41(Text17, {
   name: "PaginationEllipsis",
   color: "$mutedForeground",
   px: "$sm",
@@ -5610,13 +5632,13 @@ var Pagination = ({
   };
   if (isLoading) {
     return /* @__PURE__ */ jsxs32(
-      XStack23,
+      XStack22,
       {
         alignItems: "center",
         gap: "$sm",
         "aria-label": "Carregando pagina\xE7\xE3o",
         children: [
-          /* @__PURE__ */ jsx43(
+          /* @__PURE__ */ jsx44(
             Skeleton,
             {
               width: 32,
@@ -5624,7 +5646,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ jsx43(
+          /* @__PURE__ */ jsx44(
             Skeleton,
             {
               width: 32,
@@ -5632,7 +5654,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ jsx43(
+          /* @__PURE__ */ jsx44(
             Skeleton,
             {
               width: 40,
@@ -5640,7 +5662,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ jsx43(
+          /* @__PURE__ */ jsx44(
             Skeleton,
             {
               width: 40,
@@ -5648,7 +5670,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ jsx43(
+          /* @__PURE__ */ jsx44(
             Skeleton,
             {
               width: 40,
@@ -5656,7 +5678,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ jsx43(
+          /* @__PURE__ */ jsx44(
             Skeleton,
             {
               width: 32,
@@ -5664,7 +5686,7 @@ var Pagination = ({
               borderRadius: "$full"
             }
           ),
-          /* @__PURE__ */ jsx43(
+          /* @__PURE__ */ jsx44(
             Skeleton,
             {
               width: 32,
@@ -5697,8 +5719,8 @@ var Pagination = ({
             "aria-label": "Primeira p\xE1gina",
             onPress: () => handleChange(1),
             children: [
-              /* @__PURE__ */ jsx43(VisuallyHidden, { children: "Primeira p\xE1gina" }),
-              /* @__PURE__ */ jsx43(ChevronsLeft, {})
+              /* @__PURE__ */ jsx44(VisuallyHidden, { children: "Primeira p\xE1gina" }),
+              /* @__PURE__ */ jsx44(ChevronsLeft, {})
             ]
           }
         ),
@@ -5710,14 +5732,14 @@ var Pagination = ({
             "aria-label": "P\xE1gina anterior",
             onPress: () => handleChange(currentPage - 1),
             children: [
-              /* @__PURE__ */ jsx43(VisuallyHidden, { children: "P\xE1gina anterior" }),
-              /* @__PURE__ */ jsx43(ChevronLeft2, {})
+              /* @__PURE__ */ jsx44(VisuallyHidden, { children: "P\xE1gina anterior" }),
+              /* @__PURE__ */ jsx44(ChevronLeft2, {})
             ]
           }
         ),
         paginationRange.map((pageNumber, index) => {
           if (pageNumber === DOTS) {
-            return /* @__PURE__ */ jsx43(
+            return /* @__PURE__ */ jsx44(
               PaginationEllipsis,
               {
                 "aria-hidden": true,
@@ -5728,7 +5750,7 @@ var Pagination = ({
           }
           const pageValue = pageNumber;
           const isActive = pageValue === currentPage;
-          return /* @__PURE__ */ jsx43(
+          return /* @__PURE__ */ jsx44(
             PaginationButton,
             {
               size,
@@ -5750,8 +5772,8 @@ var Pagination = ({
             "aria-label": "Pr\xF3xima p\xE1gina",
             onPress: () => handleChange(currentPage + 1),
             children: [
-              /* @__PURE__ */ jsx43(VisuallyHidden, { children: "Pr\xF3xima p\xE1gina" }),
-              /* @__PURE__ */ jsx43(ChevronRight3, {})
+              /* @__PURE__ */ jsx44(VisuallyHidden, { children: "Pr\xF3xima p\xE1gina" }),
+              /* @__PURE__ */ jsx44(ChevronRight3, {})
             ]
           }
         ),
@@ -5763,8 +5785,8 @@ var Pagination = ({
             "aria-label": "\xDAltima p\xE1gina",
             onPress: () => handleChange(totalPages),
             children: [
-              /* @__PURE__ */ jsx43(VisuallyHidden, { children: "\xDAltima p\xE1gina" }),
-              /* @__PURE__ */ jsx43(ChevronsRight, {})
+              /* @__PURE__ */ jsx44(VisuallyHidden, { children: "\xDAltima p\xE1gina" }),
+              /* @__PURE__ */ jsx44(ChevronsRight, {})
             ]
           }
         ),
@@ -5776,33 +5798,33 @@ var Pagination = ({
 Pagination.displayName = "Pagination";
 
 // src/molecules/Breadcrumb/Breadcrumb.tsx
-import { Anchor, Text as Text18, XStack as XStack24, styled as styled41 } from "tamagui";
-import { jsx as jsx44, jsxs as jsxs33 } from "react/jsx-runtime";
-var BreadcrumbRoot = styled41(XStack24, {
+import { Anchor, Text as Text18, XStack as XStack23, styled as styled42 } from "tamagui";
+import { jsx as jsx45, jsxs as jsxs33 } from "react/jsx-runtime";
+var BreadcrumbRoot = styled42(XStack23, {
   name: "BreadcrumbRoot",
   alignItems: "center",
   justifyContent: "space-between",
   gap: "$4",
   width: "100%"
 });
-var BreadcrumbList = styled41(XStack24, {
+var BreadcrumbList = styled42(XStack23, {
   name: "BreadcrumbList",
   gap: "$sm",
   alignItems: "center",
   flexWrap: "nowrap",
   overflow: "hidden"
 });
-var BreadcrumbItemWrapper = styled41(XStack24, {
+var BreadcrumbItemWrapper = styled42(XStack23, {
   name: "BreadcrumbItem",
   alignItems: "center",
   gap: "$sm"
 });
-var BreadcrumbSeparator = styled41(Text18, {
+var BreadcrumbSeparator = styled42(Text18, {
   name: "BreadcrumbSeparator",
   color: "$mutedForeground",
   fontSize: "$2"
 });
-var BreadcrumbLink = styled41(Anchor, {
+var BreadcrumbLink = styled42(Anchor, {
   name: "BreadcrumbLink",
   color: "$foreground",
   fontWeight: "500",
@@ -5811,7 +5833,7 @@ var BreadcrumbLink = styled41(Anchor, {
   },
   ellipse: true
 });
-var BreadcrumbButton = styled41(Button, {
+var BreadcrumbButton = styled42(Button, {
   name: "BreadcrumbButton",
   unstyled: true,
   padding: 0,
@@ -5821,13 +5843,13 @@ var BreadcrumbButton = styled41(Button, {
     opacity: 0.8
   }
 });
-var BreadcrumbButtonLabel = styled41(Text18, {
+var BreadcrumbButtonLabel = styled42(Text18, {
   name: "BreadcrumbButtonLabel",
   color: "$foreground",
   fontWeight: "500",
   ellipse: true
 });
-var BreadcrumbCurrent = styled41(Text18, {
+var BreadcrumbCurrent = styled42(Text18, {
   name: "BreadcrumbCurrent",
   color: "$mutedForeground",
   fontWeight: "600",
@@ -5841,21 +5863,21 @@ var Breadcrumb = ({
   rightSlot = null
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsx44(BreadcrumbRoot, { "data-testid": "breadcrumb-skeleton", children: /* @__PURE__ */ jsxs33(BreadcrumbList, { children: [
-      /* @__PURE__ */ jsx44(Skeleton, { height: 20, width: 80 }),
-      /* @__PURE__ */ jsx44(Skeleton, { height: 20, width: 100 }),
-      /* @__PURE__ */ jsx44(Skeleton, { height: 20, width: 120 })
+    return /* @__PURE__ */ jsx45(BreadcrumbRoot, { "data-testid": "breadcrumb-skeleton", children: /* @__PURE__ */ jsxs33(BreadcrumbList, { children: [
+      /* @__PURE__ */ jsx45(Skeleton, { height: 20, width: 80 }),
+      /* @__PURE__ */ jsx45(Skeleton, { height: 20, width: 100 }),
+      /* @__PURE__ */ jsx45(Skeleton, { height: 20, width: 120 })
     ] }) });
   }
   if (!items || items.length === 0) {
     return null;
   }
   return /* @__PURE__ */ jsxs33(BreadcrumbRoot, { role: "navigation", "aria-label": ariaLabel, children: [
-    /* @__PURE__ */ jsx44(BreadcrumbList, { role: "list", children: items.map((item, index) => {
+    /* @__PURE__ */ jsx45(BreadcrumbList, { role: "list", children: items.map((item, index) => {
       const isLast = index === items.length - 1;
       const linkRel = item.rel ?? (item.target === "_blank" ? "noreferrer noopener" : void 0);
       return /* @__PURE__ */ jsxs33(BreadcrumbItemWrapper, { role: "listitem", children: [
-        isLast ? /* @__PURE__ */ jsx44(BreadcrumbCurrent, { "aria-current": "page", children: item.label }) : item.href ? /* @__PURE__ */ jsx44(
+        isLast ? /* @__PURE__ */ jsx45(BreadcrumbCurrent, { "aria-current": "page", children: item.label }) : item.href ? /* @__PURE__ */ jsx45(
           BreadcrumbLink,
           {
             href: item.href,
@@ -5864,43 +5886,43 @@ var Breadcrumb = ({
             onPress: item.onPress,
             children: item.label
           }
-        ) : /* @__PURE__ */ jsx44(BreadcrumbButton, { onPress: item.onPress, children: /* @__PURE__ */ jsx44(BreadcrumbButtonLabel, { children: item.label }) }),
-        !isLast && /* @__PURE__ */ jsx44(BreadcrumbSeparator, { "aria-hidden": true, children: separator })
+        ) : /* @__PURE__ */ jsx45(BreadcrumbButton, { onPress: item.onPress, children: /* @__PURE__ */ jsx45(BreadcrumbButtonLabel, { children: item.label }) }),
+        !isLast && /* @__PURE__ */ jsx45(BreadcrumbSeparator, { "aria-hidden": true, children: separator })
       ] }, `${item.label}-${index}`);
     }) }),
-    rightSlot && /* @__PURE__ */ jsx44(XStack24, { children: rightSlot })
+    rightSlot && /* @__PURE__ */ jsx45(XStack23, { children: rightSlot })
   ] });
 };
 Breadcrumb.displayName = "Breadcrumb";
 
 // src/molecules/PageHeader/PageHeader.tsx
 import React43 from "react";
-import { styled as styled42, XStack as XStack25, YStack as YStack24, H3 as H32, Paragraph as Paragraph5 } from "tamagui";
-import { jsx as jsx45, jsxs as jsxs34 } from "react/jsx-runtime";
-var PageHeaderFrame = styled42(YStack24, {
+import { styled as styled43, XStack as XStack24, YStack as YStack23, H3 as H32, Paragraph as Paragraph5 } from "tamagui";
+import { jsx as jsx46, jsxs as jsxs34 } from "react/jsx-runtime";
+var PageHeaderFrame = styled43(YStack23, {
   name: "PageHeader",
   gap: "$4",
   paddingBottom: "$4",
   width: "100%"
 });
-var HeaderTop = styled42(XStack25, {
+var HeaderTop = styled43(XStack24, {
   justifyContent: "space-between",
   alignItems: "center",
   width: "100%",
   flexWrap: "wrap",
   gap: "$4"
 });
-var HeaderContent = styled42(YStack24, {
+var HeaderContent = styled43(YStack23, {
   gap: "$1",
   flex: 1
 });
-var PageTitle = styled42(H32, {
+var PageTitle = styled43(H32, {
   color: "$foreground"
 });
-var PageDescription = styled42(Paragraph5, {
+var PageDescription = styled43(Paragraph5, {
   color: "$mutedForeground"
 });
-var PageActions = styled42(XStack25, {
+var PageActions = styled43(XStack24, {
   gap: "$2",
   alignItems: "center"
 });
@@ -5909,13 +5931,13 @@ var PageHeader = React43.forwardRef(
     return /* @__PURE__ */ jsxs34(PageHeaderFrame, { ref, ...props, children: [
       /* @__PURE__ */ jsxs34(HeaderTop, { children: [
         /* @__PURE__ */ jsxs34(HeaderContent, { children: [
-          /* @__PURE__ */ jsx45(PageTitle, { children: title }),
-          description && /* @__PURE__ */ jsx45(PageDescription, { children: description })
+          /* @__PURE__ */ jsx46(PageTitle, { children: title }),
+          description && /* @__PURE__ */ jsx46(PageDescription, { children: description })
         ] }),
-        actions && /* @__PURE__ */ jsx45(PageActions, { children: actions })
+        actions && /* @__PURE__ */ jsx46(PageActions, { children: actions })
       ] }),
       children,
-      /* @__PURE__ */ jsx45(Separator, {})
+      /* @__PURE__ */ jsx46(Separator, {})
     ] });
   }
 );
@@ -5923,10 +5945,10 @@ PageHeader.displayName = "PageHeader";
 
 // src/molecules/NotificationCard/NotificationCard.tsx
 import React44 from "react";
-import { styled as styled43, XStack as XStack26, YStack as YStack25, Paragraph as Paragraph6 } from "tamagui";
+import { styled as styled44, XStack as XStack25, YStack as YStack24, Paragraph as Paragraph6 } from "tamagui";
 import { Bell, X as X4 } from "@tamagui/lucide-icons";
-import { jsx as jsx46, jsxs as jsxs35 } from "react/jsx-runtime";
-var NotificationCardFrame = styled43(Card, {
+import { jsx as jsx47, jsxs as jsxs35 } from "react/jsx-runtime";
+var NotificationCardFrame = styled44(Card, {
   name: "NotificationCard",
   padding: "$4",
   width: "100%",
@@ -5935,26 +5957,26 @@ var NotificationCardFrame = styled43(Card, {
   alignItems: "flex-start",
   position: "relative"
 });
-var NotificationContent = styled43(YStack25, {
+var NotificationContent = styled44(YStack24, {
   flex: 1,
   gap: "$1"
 });
-var NotificationTitle = styled43(Paragraph6, {
+var NotificationTitle = styled44(Paragraph6, {
   fontWeight: "600",
   fontSize: "$3",
   color: "$foreground"
 });
-var NotificationDescription = styled43(Paragraph6, {
+var NotificationDescription = styled44(Paragraph6, {
   fontSize: "$3",
   color: "$mutedForeground",
   lineHeight: "$4"
 });
-var NotificationTime = styled43(Paragraph6, {
+var NotificationTime = styled44(Paragraph6, {
   fontSize: "$2",
   color: "$mutedForeground",
   marginTop: "$1"
 });
-var UnreadIndicator = styled43(XStack26, {
+var UnreadIndicator = styled44(XStack25, {
   width: 8,
   height: 8,
   borderRadius: "$full",
@@ -5966,17 +5988,17 @@ var UnreadIndicator = styled43(XStack26, {
 var NotificationCard = React44.forwardRef(
   ({ title, description, time, unread, avatarSrc, avatarFallback, onDismiss, onPress, ...props }, ref) => {
     return /* @__PURE__ */ jsxs35(NotificationCardFrame, { ref, ...props, onPress, hoverStyle: { backgroundColor: "$muted" }, pressStyle: { opacity: 0.8 }, children: [
-      unread && /* @__PURE__ */ jsx46(UnreadIndicator, {}),
+      unread && /* @__PURE__ */ jsx47(UnreadIndicator, {}),
       /* @__PURE__ */ jsxs35(Avatar, { size: "$4", circular: true, children: [
-        /* @__PURE__ */ jsx46(Avatar.Image, { src: avatarSrc }),
-        /* @__PURE__ */ jsx46(Avatar.Fallback, { backgroundColor: "$muted", alignItems: "center", justifyContent: "center", children: avatarFallback ? /* @__PURE__ */ jsx46(Paragraph6, { children: avatarFallback }) : /* @__PURE__ */ jsx46(Bell, { size: 16, color: "$mutedForeground" }) })
+        /* @__PURE__ */ jsx47(Avatar.Image, { src: avatarSrc }),
+        /* @__PURE__ */ jsx47(Avatar.Fallback, { backgroundColor: "$muted", alignItems: "center", justifyContent: "center", children: avatarFallback ? /* @__PURE__ */ jsx47(Paragraph6, { children: avatarFallback }) : /* @__PURE__ */ jsx47(Bell, { size: 16, color: "$mutedForeground" }) })
       ] }),
       /* @__PURE__ */ jsxs35(NotificationContent, { children: [
-        /* @__PURE__ */ jsx46(NotificationTitle, { children: title }),
-        /* @__PURE__ */ jsx46(NotificationDescription, { children: description }),
-        time && /* @__PURE__ */ jsx46(NotificationTime, { children: time })
+        /* @__PURE__ */ jsx47(NotificationTitle, { children: title }),
+        /* @__PURE__ */ jsx47(NotificationDescription, { children: description }),
+        time && /* @__PURE__ */ jsx47(NotificationTime, { children: time })
       ] }),
-      onDismiss && /* @__PURE__ */ jsx46(
+      onDismiss && /* @__PURE__ */ jsx47(
         Button,
         {
           size: "$2",
@@ -5997,8 +6019,8 @@ NotificationCard.displayName = "NotificationCard";
 // src/molecules/ComponentErrorBoundary.tsx
 import { AlertTriangle as AlertTriangle2 } from "@tamagui/lucide-icons";
 import { Component } from "react";
-import { Button as Button5, H4 as H42, Paragraph as Paragraph7, Separator as Separator4, YStack as YStack26 } from "tamagui";
-import { Fragment as Fragment6, jsx as jsx47, jsxs as jsxs36 } from "react/jsx-runtime";
+import { Button as Button5, H4 as H42, Paragraph as Paragraph7, Separator as Separator4, YStack as YStack25 } from "tamagui";
+import { Fragment as Fragment7, jsx as jsx48, jsxs as jsxs36 } from "react/jsx-runtime";
 var initialState = {
   hasError: false,
   error: void 0
@@ -6018,10 +6040,10 @@ var ErrorBoundary = class extends Component {
   render() {
     if (this.state.hasError) {
       if (this.props.fallback) {
-        return /* @__PURE__ */ jsx47(Fragment6, { children: this.props.fallback });
+        return /* @__PURE__ */ jsx48(Fragment7, { children: this.props.fallback });
       }
       return /* @__PURE__ */ jsxs36(
-        YStack26,
+        YStack25,
         {
           gap: "$4",
           p: "$6",
@@ -6034,35 +6056,35 @@ var ErrorBoundary = class extends Component {
           justifyContent: "center",
           testID: "component-error-boundary-fallback",
           children: [
-            /* @__PURE__ */ jsx47(AlertTriangle2, { size: "$3", color: "$red10" }),
-            /* @__PURE__ */ jsxs36(YStack26, { gap: "$2", alignItems: "center", children: [
-              /* @__PURE__ */ jsx47(H42, { color: "$red10", children: "Algo deu errado" }),
-              /* @__PURE__ */ jsx47(Paragraph7, { textAlign: "center", color: "$gray11", children: "Ocorreu um erro inesperado neste componente. Por favor, tente novamente. Se o problema persistir, entre em contato com o suporte." })
+            /* @__PURE__ */ jsx48(AlertTriangle2, { size: "$3", color: "$red10" }),
+            /* @__PURE__ */ jsxs36(YStack25, { gap: "$2", alignItems: "center", children: [
+              /* @__PURE__ */ jsx48(H42, { color: "$red10", children: "Algo deu errado" }),
+              /* @__PURE__ */ jsx48(Paragraph7, { textAlign: "center", color: "$gray11", children: "Ocorreu um erro inesperado neste componente. Por favor, tente novamente. Se o problema persistir, entre em contato com o suporte." })
             ] }),
-            typeof process !== "undefined" && process.env.NODE_ENV === "development" && this.state.error && /* @__PURE__ */ jsx47(
-              YStack26,
+            typeof process !== "undefined" && process.env.NODE_ENV === "development" && this.state.error && /* @__PURE__ */ jsx48(
+              YStack25,
               {
                 gap: "$2",
                 p: "$3",
                 borderRadius: "$2",
                 backgroundColor: "$backgroundPress",
                 alignSelf: "stretch",
-                children: /* @__PURE__ */ jsx47(Paragraph7, { size: "$2", fontFamily: "$mono", children: this.state.error.message })
+                children: /* @__PURE__ */ jsx48(Paragraph7, { size: "$2", fontFamily: "$mono", children: this.state.error.message })
               }
             ),
-            this.props.onReset && /* @__PURE__ */ jsxs36(Fragment6, { children: [
-              /* @__PURE__ */ jsx47(Separator4, {}),
-              /* @__PURE__ */ jsx47(Button5, { theme: "primary", onPress: this.resetBoundary, children: "Tentar Novamente" })
+            this.props.onReset && /* @__PURE__ */ jsxs36(Fragment7, { children: [
+              /* @__PURE__ */ jsx48(Separator4, {}),
+              /* @__PURE__ */ jsx48(Button5, { theme: "primary", onPress: this.resetBoundary, children: "Tentar Novamente" })
             ] })
           ]
         }
       );
     }
-    return /* @__PURE__ */ jsx47(Fragment6, { children: this.props.children });
+    return /* @__PURE__ */ jsx48(Fragment7, { children: this.props.children });
   }
 };
 function withErrorBoundary(WrappedComponent, errorBoundaryProps) {
-  const ComponentWithErrorBoundary = (props) => /* @__PURE__ */ jsx47(ErrorBoundary, { ...errorBoundaryProps, children: /* @__PURE__ */ jsx47(WrappedComponent, { ...props }) });
+  const ComponentWithErrorBoundary = (props) => /* @__PURE__ */ jsx48(ErrorBoundary, { ...errorBoundaryProps, children: /* @__PURE__ */ jsx48(WrappedComponent, { ...props }) });
   const componentName = WrappedComponent.displayName || WrappedComponent.name || "Component";
   ComponentWithErrorBoundary.displayName = `withErrorBoundary(${componentName})`;
   return ComponentWithErrorBoundary;
@@ -6072,9 +6094,9 @@ function withErrorBoundary(WrappedComponent, errorBoundaryProps) {
 import React46 from "react";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import { Check as Check4, ChevronRight as ChevronRight4, Circle as Circle2 } from "@tamagui/lucide-icons";
-import { styled as styled44, XStack as XStack27, Text as Text19, YStack as YStack27 } from "tamagui";
-import { jsx as jsx48, jsxs as jsxs37 } from "react/jsx-runtime";
-var StyledContent = styled44(ContextMenuPrimitive.Content, {
+import { styled as styled45, XStack as XStack26, Text as Text19, YStack as YStack26 } from "tamagui";
+import { jsx as jsx49, jsxs as jsxs37 } from "react/jsx-runtime";
+var StyledContent = styled45(ContextMenuPrimitive.Content, {
   name: "ContextMenuContent",
   minWidth: 220,
   zIndex: 200,
@@ -6089,9 +6111,9 @@ var StyledContent = styled44(ContextMenuPrimitive.Content, {
   shadowOpacity: 0.1,
   shadowRadius: 12
 });
-var ContextMenuContent = React46.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ jsx48(ContextMenuPrimitive.Portal, { children: /* @__PURE__ */ jsx48(StyledContent, { ref, ...props, children }) }));
+var ContextMenuContent = React46.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ jsx49(ContextMenuPrimitive.Portal, { children: /* @__PURE__ */ jsx49(StyledContent, { ref, ...props, children }) }));
 ContextMenuContent.displayName = "ContextMenuContent";
-var StyledItem = styled44(ContextMenuPrimitive.Item, {
+var StyledItem = styled45(ContextMenuPrimitive.Item, {
   name: "ContextMenuItem",
   fontSize: "$2",
   lineHeight: "$2",
@@ -6121,7 +6143,7 @@ var StyledItem = styled44(ContextMenuPrimitive.Item, {
     color: "$accentForeground"
   }
 });
-var StyledCheckboxItem = styled44(ContextMenuPrimitive.CheckboxItem, {
+var StyledCheckboxItem = styled45(ContextMenuPrimitive.CheckboxItem, {
   name: "ContextMenuCheckboxItem",
   fontSize: "$2",
   lineHeight: "$2",
@@ -6149,7 +6171,7 @@ var StyledCheckboxItem = styled44(ContextMenuPrimitive.CheckboxItem, {
     backgroundColor: "$accent"
   }
 });
-var StyledRadioItem = styled44(ContextMenuPrimitive.RadioItem, {
+var StyledRadioItem = styled45(ContextMenuPrimitive.RadioItem, {
   name: "ContextMenuRadioItem",
   fontSize: "$2",
   lineHeight: "$2",
@@ -6177,7 +6199,7 @@ var StyledRadioItem = styled44(ContextMenuPrimitive.RadioItem, {
     backgroundColor: "$accent"
   }
 });
-var StyledSubTrigger = styled44(ContextMenuPrimitive.SubTrigger, {
+var StyledSubTrigger = styled45(ContextMenuPrimitive.SubTrigger, {
   name: "ContextMenuSubTrigger",
   fontSize: "$2",
   lineHeight: "$2",
@@ -6205,7 +6227,7 @@ var StyledSubTrigger = styled44(ContextMenuPrimitive.SubTrigger, {
     backgroundColor: "$accent"
   }
 });
-var StyledSubContent = styled44(ContextMenuPrimitive.SubContent, {
+var StyledSubContent = styled45(ContextMenuPrimitive.SubContent, {
   name: "ContextMenuSubContent",
   minWidth: 220,
   zIndex: 200,
@@ -6220,9 +6242,9 @@ var StyledSubContent = styled44(ContextMenuPrimitive.SubContent, {
   shadowOpacity: 0.1,
   shadowRadius: 12
 });
-var ContextMenuSubContent = React46.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ jsx48(ContextMenuPrimitive.Portal, { children: /* @__PURE__ */ jsx48(StyledSubContent, { ref, ...props, children }) }));
+var ContextMenuSubContent = React46.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ jsx49(ContextMenuPrimitive.Portal, { children: /* @__PURE__ */ jsx49(StyledSubContent, { ref, ...props, children }) }));
 ContextMenuSubContent.displayName = "ContextMenuSubContent";
-var ContextMenuItemIndicator = styled44(ContextMenuPrimitive.ItemIndicator, {
+var ContextMenuItemIndicator = styled45(ContextMenuPrimitive.ItemIndicator, {
   position: "absolute",
   left: "$2",
   width: "$3.5",
@@ -6231,7 +6253,7 @@ var ContextMenuItemIndicator = styled44(ContextMenuPrimitive.ItemIndicator, {
   alignItems: "center",
   justifyContent: "center"
 });
-var StyledLabel = styled44(ContextMenuPrimitive.Label, {
+var StyledLabel = styled45(ContextMenuPrimitive.Label, {
   name: "ContextMenuLabel",
   padding: "$2",
   paddingLeft: "$6",
@@ -6240,13 +6262,13 @@ var StyledLabel = styled44(ContextMenuPrimitive.Label, {
   fontWeight: "600",
   color: "$color"
 });
-var StyledSeparator = styled44(ContextMenuPrimitive.Separator, {
+var StyledSeparator = styled45(ContextMenuPrimitive.Separator, {
   name: "ContextMenuSeparator",
   height: 1,
   margin: "$1",
   backgroundColor: "$borderColor"
 });
-var ContextMenuShortcut = styled44(Text19, {
+var ContextMenuShortcut = styled45(Text19, {
   name: "ContextMenuShortcut",
   marginLeft: "auto",
   fontSize: "$2",
@@ -6267,21 +6289,21 @@ var ContextMenuComponent = ({
   const renderItems = (menuItems) => menuItems.map((item, index) => {
     const key = `context-menu-item-${item.label}-${index}`;
     if (item.isSeparator) {
-      return /* @__PURE__ */ jsx48(StyledSeparator, {}, key);
+      return /* @__PURE__ */ jsx49(StyledSeparator, {}, key);
     }
     if (item.isLabel) {
-      return /* @__PURE__ */ jsx48(StyledLabel, { children: /* @__PURE__ */ jsx48(Text19, { ellipse: true, children: item.label }) }, key);
+      return /* @__PURE__ */ jsx49(StyledLabel, { children: /* @__PURE__ */ jsx49(Text19, { ellipse: true, children: item.label }) }, key);
     }
     if (item.items && item.items.length > 0) {
       return /* @__PURE__ */ jsxs37(ContextMenuPrimitive.Sub, { children: [
         /* @__PURE__ */ jsxs37(StyledSubTrigger, { disabled: item.disabled, children: [
-          /* @__PURE__ */ jsxs37(XStack27, { gap: "$2", alignItems: "center", children: [
+          /* @__PURE__ */ jsxs37(XStack26, { gap: "$2", alignItems: "center", children: [
             item.icon,
-            /* @__PURE__ */ jsx48(Text19, { ellipse: true, children: item.label })
+            /* @__PURE__ */ jsx49(Text19, { ellipse: true, children: item.label })
           ] }),
-          /* @__PURE__ */ jsx48(ChevronRight4, { size: "$1", marginLeft: "auto" })
+          /* @__PURE__ */ jsx49(ChevronRight4, { size: "$1", marginLeft: "auto" })
         ] }),
-        /* @__PURE__ */ jsx48(ContextMenuSubContent, { children: renderItems(item.items) })
+        /* @__PURE__ */ jsx49(ContextMenuSubContent, { children: renderItems(item.items) })
       ] }, key);
     }
     if (item.isCheckbox) {
@@ -6292,8 +6314,8 @@ var ContextMenuComponent = ({
           onCheckedChange: item.onCheckedChange,
           disabled: item.disabled,
           children: [
-            /* @__PURE__ */ jsx48(ContextMenuItemIndicator, { children: /* @__PURE__ */ jsx48(Check4, { size: "$1" }) }),
-            /* @__PURE__ */ jsx48(Text19, { ellipse: true, children: item.label })
+            /* @__PURE__ */ jsx49(ContextMenuItemIndicator, { children: /* @__PURE__ */ jsx49(Check4, { size: "$1" }) }),
+            /* @__PURE__ */ jsx49(Text19, { ellipse: true, children: item.label })
           ]
         },
         key
@@ -6301,21 +6323,21 @@ var ContextMenuComponent = ({
     }
     if (item.isRadio) {
       return /* @__PURE__ */ jsxs37(StyledRadioItem, { value: item.value, disabled: item.disabled, children: [
-        /* @__PURE__ */ jsx48(ContextMenuItemIndicator, { children: /* @__PURE__ */ jsx48(Circle2, { size: "$1" }) }),
-        /* @__PURE__ */ jsx48(Text19, { ellipse: true, children: item.label })
+        /* @__PURE__ */ jsx49(ContextMenuItemIndicator, { children: /* @__PURE__ */ jsx49(Circle2, { size: "$1" }) }),
+        /* @__PURE__ */ jsx49(Text19, { ellipse: true, children: item.label })
       ] }, key);
     }
     return /* @__PURE__ */ jsxs37(StyledItem, { disabled: item.disabled, onSelect: item.onSelect, children: [
-      /* @__PURE__ */ jsxs37(XStack27, { gap: "$2", alignItems: "center", children: [
+      /* @__PURE__ */ jsxs37(XStack26, { gap: "$2", alignItems: "center", children: [
         item.icon,
-        /* @__PURE__ */ jsx48(Text19, { ellipse: true, children: item.label })
+        /* @__PURE__ */ jsx49(Text19, { ellipse: true, children: item.label })
       ] }),
-      item.shortcut && /* @__PURE__ */ jsx48(ContextMenuShortcut, { children: item.shortcut })
+      item.shortcut && /* @__PURE__ */ jsx49(ContextMenuShortcut, { children: item.shortcut })
     ] }, key);
   });
   const radioItems = items.filter((item) => item.isRadio);
   return /* @__PURE__ */ jsxs37(ContextMenuPrimitive.Root, { ...props, children: [
-    /* @__PURE__ */ jsx48(ContextMenuPrimitive.Trigger, { asChild: true, disabled: isDisabled, children: React46.cloneElement(children, {
+    /* @__PURE__ */ jsx49(ContextMenuPrimitive.Trigger, { asChild: true, disabled: isDisabled, children: React46.cloneElement(children, {
       ...children.props,
       disabled: isDisabled,
       ...hasError && {
@@ -6323,11 +6345,11 @@ var ContextMenuComponent = ({
         borderWidth: 2
       }
     }) }),
-    /* @__PURE__ */ jsx48(ContextMenuContent, { children: isLoading ? /* @__PURE__ */ jsxs37(YStack27, { gap: "$2", padding: "$2", children: [
-      /* @__PURE__ */ jsx48(Skeleton, { height: 20 }),
-      /* @__PURE__ */ jsx48(Skeleton, { height: 20 }),
-      /* @__PURE__ */ jsx48(Skeleton, { height: 20 })
-    ] }) : radioItems.length > 0 ? /* @__PURE__ */ jsx48(ContextMenuPrimitive.RadioGroup, { value: radioGroupValue, onValueChange: onRadioGroupChange, children: renderItems(items) }) : renderItems(items) })
+    /* @__PURE__ */ jsx49(ContextMenuContent, { children: isLoading ? /* @__PURE__ */ jsxs37(YStack26, { gap: "$2", padding: "$2", children: [
+      /* @__PURE__ */ jsx49(Skeleton, { height: 20 }),
+      /* @__PURE__ */ jsx49(Skeleton, { height: 20 }),
+      /* @__PURE__ */ jsx49(Skeleton, { height: 20 })
+    ] }) : radioItems.length > 0 ? /* @__PURE__ */ jsx49(ContextMenuPrimitive.RadioGroup, { value: radioGroupValue, onValueChange: onRadioGroupChange, children: renderItems(items) }) : renderItems(items) })
   ] });
 };
 ContextMenuComponent.displayName = "ContextMenu";
@@ -6335,9 +6357,9 @@ var ContextMenu = ContextMenuComponent;
 
 // src/molecules/NavigationMenu.tsx
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
-import { styled as styled45, YStack as YStack28, XStack as XStack28 } from "tamagui";
-import { jsx as jsx49, jsxs as jsxs38 } from "react/jsx-runtime";
-var NavigationMenu = styled45(NavigationMenuPrimitive.Root, {
+import { styled as styled46, YStack as YStack27, XStack as XStack27 } from "tamagui";
+import { jsx as jsx50, jsxs as jsxs38 } from "react/jsx-runtime";
+var NavigationMenu = styled46(NavigationMenuPrimitive.Root, {
   name: "NavigationMenu",
   position: "relative",
   display: "flex",
@@ -6360,7 +6382,7 @@ var NavigationMenu = styled45(NavigationMenuPrimitive.Root, {
     }
   }
 });
-var NavigationMenuList = styled45(NavigationMenuPrimitive.List, {
+var NavigationMenuList = styled46(NavigationMenuPrimitive.List, {
   name: "NavigationMenuList",
   display: "flex",
   gap: "$2",
@@ -6372,11 +6394,11 @@ var NavigationMenuList = styled45(NavigationMenuPrimitive.List, {
   borderWidth: 1,
   borderColor: "$borderColor"
 });
-var NavigationMenuItem = styled45(NavigationMenuPrimitive.Item, {
+var NavigationMenuItem = styled46(NavigationMenuPrimitive.Item, {
   name: "NavigationMenuItem",
   tag: "li"
 });
-var NavigationMenuTrigger = styled45(NavigationMenuPrimitive.Trigger, {
+var NavigationMenuTrigger = styled46(NavigationMenuPrimitive.Trigger, {
   name: "NavigationMenuTrigger",
   ellipse: true,
   borderRadius: "$md",
@@ -6397,7 +6419,7 @@ var NavigationMenuTrigger = styled45(NavigationMenuPrimitive.Trigger, {
     borderColor: "$primary"
   }
 });
-var NavigationMenuContent = styled45(NavigationMenuPrimitive.Content, {
+var NavigationMenuContent = styled46(NavigationMenuPrimitive.Content, {
   name: "NavigationMenuContent",
   position: "absolute",
   top: "calc(100% + 0.5rem)",
@@ -6410,7 +6432,7 @@ var NavigationMenuContent = styled45(NavigationMenuPrimitive.Content, {
   minWidth: 320,
   zIndex: 20
 });
-var NavigationMenuLink = styled45(NavigationMenuPrimitive.Link, {
+var NavigationMenuLink = styled46(NavigationMenuPrimitive.Link, {
   name: "NavigationMenuLink",
   ellipse: true,
   display: "block",
@@ -6426,7 +6448,7 @@ var NavigationMenuLink = styled45(NavigationMenuPrimitive.Link, {
     outlineColor: "$primary"
   }
 });
-var NavigationMenuIndicator = styled45(NavigationMenuPrimitive.Indicator, {
+var NavigationMenuIndicator = styled46(NavigationMenuPrimitive.Indicator, {
   name: "NavigationMenuIndicator",
   display: "flex",
   alignItems: "flex-end",
@@ -6435,7 +6457,7 @@ var NavigationMenuIndicator = styled45(NavigationMenuPrimitive.Indicator, {
   top: "100%",
   transition: "width, transform 200ms ease"
 });
-var IndicatorArrow = styled45(YStack28, {
+var IndicatorArrow = styled46(YStack27, {
   width: 20,
   height: 20,
   backgroundColor: "$background",
@@ -6446,7 +6468,7 @@ var IndicatorArrow = styled45(YStack28, {
   transform: "rotate(45deg)",
   marginTop: -8
 });
-var NavigationMenuViewport = styled45(NavigationMenuPrimitive.Viewport, {
+var NavigationMenuViewport = styled46(NavigationMenuPrimitive.Viewport, {
   name: "NavigationMenuViewport",
   position: "absolute",
   top: "100%",
@@ -6466,13 +6488,13 @@ var NavigationMenuComponent = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsxs38(XStack28, { alignItems: "center", gap: "$4", children: [
-      /* @__PURE__ */ jsx49(Skeleton, { height: 32, width: 120 }),
-      /* @__PURE__ */ jsx49(Skeleton, { height: 32, width: 120 }),
-      /* @__PURE__ */ jsx49(Skeleton, { height: 32, width: 120 })
+    return /* @__PURE__ */ jsxs38(XStack27, { alignItems: "center", gap: "$4", children: [
+      /* @__PURE__ */ jsx50(Skeleton, { height: 32, width: 120 }),
+      /* @__PURE__ */ jsx50(Skeleton, { height: 32, width: 120 }),
+      /* @__PURE__ */ jsx50(Skeleton, { height: 32, width: 120 })
     ] });
   }
-  return /* @__PURE__ */ jsx49(NavigationMenu, { ...props, children: /* @__PURE__ */ jsxs38(NavigationMenuList, { children: [
+  return /* @__PURE__ */ jsx50(NavigationMenu, { ...props, children: /* @__PURE__ */ jsxs38(NavigationMenuList, { children: [
     children,
     rightSlot
   ] }) });
@@ -6499,10 +6521,10 @@ import {
 } from "@radix-ui/react-menubar";
 import { Check as Check5, ChevronRight as ChevronRight5, Circle as Circle3 } from "@tamagui/lucide-icons";
 import React47 from "react";
-import { styled as styled46, Paragraph as Paragraph8, YStack as YStack29 } from "tamagui";
+import { styled as styled47, Paragraph as Paragraph8, YStack as YStack28 } from "tamagui";
 import { Spacer } from "tamagui";
-import { Fragment as Fragment7, jsx as jsx50, jsxs as jsxs39 } from "react/jsx-runtime";
-var MenubarFrame = styled46(Root5, {
+import { Fragment as Fragment8, jsx as jsx51, jsxs as jsxs39 } from "react/jsx-runtime";
+var MenubarFrame = styled47(Root5, {
   name: "Menubar",
   display: "flex",
   flexDirection: "row",
@@ -6518,7 +6540,7 @@ var MenubarFrame = styled46(Root5, {
 var MenubarMenu = Menu;
 var MenubarGroup = Group2;
 var MenubarPortal = Portal6;
-var MenubarTriggerFrame = styled46(Trigger5, {
+var MenubarTriggerFrame = styled47(Trigger5, {
   name: "MenubarTrigger",
   display: "flex",
   alignItems: "center",
@@ -6552,9 +6574,9 @@ var MenubarTriggerFrame = styled46(Trigger5, {
     }
   }
 });
-var MenubarTrigger = React47.forwardRef((props, ref) => /* @__PURE__ */ jsx50(MenubarTriggerFrame, { ref, ...props }));
+var MenubarTrigger = React47.forwardRef((props, ref) => /* @__PURE__ */ jsx51(MenubarTriggerFrame, { ref, ...props }));
 MenubarTrigger.displayName = Trigger5.displayName;
-var MenubarContentFrame = styled46(Content5, {
+var MenubarContentFrame = styled47(Content5, {
   name: "MenubarContent",
   minWidth: 192,
   overflow: "hidden",
@@ -6572,7 +6594,7 @@ var MenubarContentFrame = styled46(Content5, {
   flexDirection: "column",
   gap: "$1"
 });
-var MenubarContent = React47.forwardRef(({ align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => /* @__PURE__ */ jsx50(Portal6, { children: /* @__PURE__ */ jsx50(
+var MenubarContent = React47.forwardRef(({ align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => /* @__PURE__ */ jsx51(Portal6, { children: /* @__PURE__ */ jsx51(
   MenubarContentFrame,
   {
     ref,
@@ -6583,7 +6605,7 @@ var MenubarContent = React47.forwardRef(({ align = "start", alignOffset = -4, si
   }
 ) }));
 MenubarContent.displayName = Content5.displayName;
-var MenubarItemFrame = styled46(Item4, {
+var MenubarItemFrame = styled47(Item4, {
   name: "MenubarItem",
   position: "relative",
   display: "flex",
@@ -6612,7 +6634,7 @@ var MenubarItemFrame = styled46(Item4, {
     }
   }
 });
-var MenubarItem = React47.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ jsx50(
+var MenubarItem = React47.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ jsx51(
   MenubarItemFrame,
   {
     ref,
@@ -6621,7 +6643,7 @@ var MenubarItem = React47.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ 
   }
 ));
 MenubarItem.displayName = Item4.displayName;
-var MenubarCheckboxItemFrame = styled46(CheckboxItem3, {
+var MenubarCheckboxItemFrame = styled47(CheckboxItem3, {
   name: "MenubarCheckboxItem",
   position: "relative",
   display: "flex",
@@ -6651,7 +6673,7 @@ var MenubarCheckboxItemFrame = styled46(CheckboxItem3, {
     }
   }
 });
-var MenubarItemIndicatorFrame = styled46(ItemIndicator3, {
+var MenubarItemIndicatorFrame = styled47(ItemIndicator3, {
   position: "absolute",
   left: "$2",
   display: "flex",
@@ -6661,11 +6683,11 @@ var MenubarItemIndicatorFrame = styled46(ItemIndicator3, {
   height: "$4"
 });
 var MenubarCheckboxItem = React47.forwardRef(({ children, checked, ...props }, ref) => /* @__PURE__ */ jsxs39(MenubarCheckboxItemFrame, { ref, checked, ...props, children: [
-  /* @__PURE__ */ jsx50(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ jsx50(Check5, { size: 14 }) }),
+  /* @__PURE__ */ jsx51(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ jsx51(Check5, { size: 14 }) }),
   children
 ] }));
 MenubarCheckboxItem.displayName = CheckboxItem3.displayName;
-var MenubarRadioItemFrame = styled46(RadioItem3, {
+var MenubarRadioItemFrame = styled47(RadioItem3, {
   name: "MenubarRadioItem",
   position: "relative",
   display: "flex",
@@ -6696,11 +6718,11 @@ var MenubarRadioItemFrame = styled46(RadioItem3, {
   }
 });
 var MenubarRadioItem = React47.forwardRef(({ children, ...props }, ref) => /* @__PURE__ */ jsxs39(MenubarRadioItemFrame, { ref, ...props, children: [
-  /* @__PURE__ */ jsx50(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ jsx50(Circle3, { size: 8, fill: "currentColor" }) }),
+  /* @__PURE__ */ jsx51(MenubarItemIndicatorFrame, { children: /* @__PURE__ */ jsx51(Circle3, { size: 8, fill: "currentColor" }) }),
   children
 ] }));
 MenubarRadioItem.displayName = RadioItem3.displayName;
-var MenubarLabelFrame = styled46(Label6, {
+var MenubarLabelFrame = styled47(Label6, {
   name: "MenubarLabel",
   paddingHorizontal: "$2",
   paddingVertical: "$1.5",
@@ -6709,22 +6731,22 @@ var MenubarLabelFrame = styled46(Label6, {
   color: "$foreground",
   paddingLeft: "$2"
 });
-var MenubarLabel = React47.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ jsx50(MenubarLabelFrame, { ref, paddingLeft: inset ? "$8" : "$2", ...props }));
+var MenubarLabel = React47.forwardRef(({ inset, ...props }, ref) => /* @__PURE__ */ jsx51(MenubarLabelFrame, { ref, paddingLeft: inset ? "$8" : "$2", ...props }));
 MenubarLabel.displayName = Label6.displayName;
-var MenubarSeparator = styled46(Separator6, {
+var MenubarSeparator = styled47(Separator6, {
   name: "MenubarSeparator",
   height: 1,
   backgroundColor: "$muted",
   marginHorizontal: "-$1"
 });
-var MenubarShortcut = styled46(Paragraph8, {
+var MenubarShortcut = styled47(Paragraph8, {
   name: "MenubarShortcut",
   marginLeft: "auto",
   fontSize: "$1",
   color: "$mutedForeground",
   letterSpacing: "$1"
 });
-var MenubarSubTriggerFrame = styled46(SubTrigger3, {
+var MenubarSubTriggerFrame = styled47(SubTrigger3, {
   name: "MenubarSubTrigger",
   display: "flex",
   flexDirection: "row",
@@ -6760,12 +6782,12 @@ var MenubarSubTrigger = React47.forwardRef(({ children, inset, ...props }, ref) 
     ...props,
     children: [
       children,
-      /* @__PURE__ */ jsx50(ChevronRight5, { size: 14, style: { marginLeft: "auto" } })
+      /* @__PURE__ */ jsx51(ChevronRight5, { size: 14, style: { marginLeft: "auto" } })
     ]
   }
 ));
 MenubarSubTrigger.displayName = SubTrigger3.displayName;
-var MenubarSubContentFrame = styled46(SubContent3, {
+var MenubarSubContentFrame = styled47(SubContent3, {
   name: "MenubarSubContent",
   minWidth: 128,
   overflow: "hidden",
@@ -6780,7 +6802,7 @@ var MenubarSubContentFrame = styled46(SubContent3, {
   shadowOpacity: 0.1,
   zIndex: 50
 });
-var MenubarSubContent = React47.forwardRef(({ ...props }, ref) => /* @__PURE__ */ jsx50(MenubarSubContentFrame, { ref, ...props }));
+var MenubarSubContent = React47.forwardRef(({ ...props }, ref) => /* @__PURE__ */ jsx51(MenubarSubContentFrame, { ref, ...props }));
 MenubarSubContent.displayName = SubContent3.displayName;
 var MenubarSub = Sub3;
 var MenubarRadioGroup = RadioGroup4;
@@ -6794,7 +6816,7 @@ var Menubar = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsx50(YStack29, { width: "100%", space: "$2", children: /* @__PURE__ */ jsx50(Skeleton, { height: "$4", width: "100%" }) });
+    return /* @__PURE__ */ jsx51(YStack28, { width: "100%", space: "$2", children: /* @__PURE__ */ jsx51(Skeleton, { height: "$4", width: "100%" }) });
   }
   return /* @__PURE__ */ jsxs39(
     MenubarRoot,
@@ -6804,8 +6826,8 @@ var Menubar = ({
       borderColor: hasError ? "$red10" : "$borderColor",
       children: [
         children,
-        rightSlot && /* @__PURE__ */ jsxs39(Fragment7, { children: [
-          /* @__PURE__ */ jsx50(Spacer, {}),
+        rightSlot && /* @__PURE__ */ jsxs39(Fragment8, { children: [
+          /* @__PURE__ */ jsx51(Spacer, {}),
           rightSlot
         ] })
       ]
@@ -6816,9 +6838,9 @@ var Menubar = ({
 // src/molecules/MonthsPicker/MonthsPicker.tsx
 import { ChevronDown as ChevronDown4 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo4 } from "react";
-import { Adapt as Adapt3, styled as styled47 } from "tamagui";
-import { jsx as jsx51, jsxs as jsxs40 } from "react/jsx-runtime";
-var MonthsPickerTrigger = styled47(SelectTrigger, {
+import { Adapt as Adapt3, styled as styled48 } from "tamagui";
+import { jsx as jsx52, jsxs as jsxs40 } from "react/jsx-runtime";
+var MonthsPickerTrigger = styled48(SelectTrigger, {
   name: "MonthsPickerTrigger",
   width: 200,
   variants: {
@@ -6861,22 +6883,22 @@ var MonthsPicker = ({
     []
   );
   if (isLoading) {
-    return /* @__PURE__ */ jsx51(Skeleton, { width: 200, height: 35 });
+    return /* @__PURE__ */ jsx52(Skeleton, { width: 200, height: 35 });
   }
   return /* @__PURE__ */ jsxs40(SelectRoot, { value, onValueChange, disabled: isDisabled, children: [
-    /* @__PURE__ */ jsx51(MonthsPickerTrigger, { error: hasError, disabled: isDisabled, iconAfter: ChevronDown4, children: /* @__PURE__ */ jsx51(SelectValue, { placeholder }) }),
-    /* @__PURE__ */ jsx51(Adapt3, { when: "sm", platform: "touch", children: /* @__PURE__ */ jsxs40(Sheet, { modal: true, dismissOnSnapToBottom: true, children: [
-      /* @__PURE__ */ jsx51(Sheet.Frame, { children: /* @__PURE__ */ jsx51(Sheet.ScrollView, { children: /* @__PURE__ */ jsx51(Adapt3.Contents, {}) }) }),
-      /* @__PURE__ */ jsx51(Sheet.Overlay, {})
+    /* @__PURE__ */ jsx52(MonthsPickerTrigger, { error: hasError, disabled: isDisabled, iconAfter: ChevronDown4, children: /* @__PURE__ */ jsx52(SelectValue, { placeholder }) }),
+    /* @__PURE__ */ jsx52(Adapt3, { when: "sm", platform: "touch", children: /* @__PURE__ */ jsxs40(Sheet, { modal: true, dismissOnSnapToBottom: true, children: [
+      /* @__PURE__ */ jsx52(Sheet.Frame, { children: /* @__PURE__ */ jsx52(Sheet.ScrollView, { children: /* @__PURE__ */ jsx52(Adapt3.Contents, {}) }) }),
+      /* @__PURE__ */ jsx52(Sheet.Overlay, {})
     ] }) }),
-    /* @__PURE__ */ jsx51(SelectContent, { children: /* @__PURE__ */ jsx51(SelectViewport, { children: meses.map((mes, index) => /* @__PURE__ */ jsx51(SelectItem, { index, value: mes, children: mes }, mes)) }) })
+    /* @__PURE__ */ jsx52(SelectContent, { children: /* @__PURE__ */ jsx52(SelectViewport, { children: meses.map((mes, index) => /* @__PURE__ */ jsx52(SelectItem, { index, value: mes, children: mes }, mes)) }) })
   ] });
 };
 
 // src/molecules/ToggleGroup/ToggleGroup.tsx
-import { createContext as createContext8, useContext as useContext11, useMemo as useMemo5, Children as Children4, forwardRef as forwardRef10 } from "react";
-import { ToggleGroup as TamaguiToggleGroup, styled as styled48, YStack as YStack30, withStaticProperties as withStaticProperties5 } from "tamagui";
-import { jsx as jsx52 } from "react/jsx-runtime";
+import { createContext as createContext8, useContext as useContext11, useMemo as useMemo5, Children as Children4, forwardRef as forwardRef11 } from "react";
+import { ToggleGroup as TamaguiToggleGroup, styled as styled49, YStack as YStack29, withStaticProperties as withStaticProperties5 } from "tamagui";
+import { jsx as jsx53 } from "react/jsx-runtime";
 var ToggleGroupContext = createContext8({
   disabled: false,
   error: false,
@@ -6889,7 +6911,7 @@ var useToggleGroupContext = () => {
   }
   return context;
 };
-var ToggleGroupItemFrame = styled48(TamaguiToggleGroup.Item, {
+var ToggleGroupItemFrame = styled49(TamaguiToggleGroup.Item, {
   name: "ToggleGroupItem",
   backgroundColor: "transparent",
   borderRadius: "$4",
@@ -6931,11 +6953,11 @@ var ToggleGroupItemFrame = styled48(TamaguiToggleGroup.Item, {
     }
   }
 });
-var ToggleGroupItem = forwardRef10((props, ref) => {
+var ToggleGroupItem = forwardRef11((props, ref) => {
   const { disabled, error } = useToggleGroupContext();
-  return /* @__PURE__ */ jsx52(ToggleGroupItemFrame, { ref, ...props, disabled: disabled || props.disabled, error });
+  return /* @__PURE__ */ jsx53(ToggleGroupItemFrame, { ref, ...props, disabled: disabled || props.disabled, error });
 });
-var ToggleGroupFrame = styled48(TamaguiToggleGroup, {
+var ToggleGroupFrame = styled49(TamaguiToggleGroup, {
   name: "ToggleGroup",
   flexDirection: "row",
   alignItems: "center",
@@ -6952,24 +6974,24 @@ var ToggleGroupFrame = styled48(TamaguiToggleGroup, {
     }
   }
 });
-var ToggleGroupRoot = forwardRef10((props, ref) => {
+var ToggleGroupRoot = forwardRef11((props, ref) => {
   const { children, disabled, error, loading, ...rest } = props;
   const contextValue = useMemo5(() => ({ disabled, error, loading }), [disabled, error, loading]);
   if (loading) {
     const childCount = Children4.count(children);
-    return /* @__PURE__ */ jsx52(YStack30, { flexDirection: "row", gap: "$1", alignItems: "center", children: Array.from({ length: childCount > 0 ? childCount : 3 }).map((_, i) => /* @__PURE__ */ jsx52(Skeleton, { height: "$10", width: "$10", borderRadius: "$4" }, i)) });
+    return /* @__PURE__ */ jsx53(YStack29, { flexDirection: "row", gap: "$1", alignItems: "center", children: Array.from({ length: childCount > 0 ? childCount : 3 }).map((_, i) => /* @__PURE__ */ jsx53(Skeleton, { height: "$10", width: "$10", borderRadius: "$4" }, i)) });
   }
-  return /* @__PURE__ */ jsx52(ToggleGroupContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx52(ToggleGroupFrame, { ref, ...rest, disabled, error, children }) });
+  return /* @__PURE__ */ jsx53(ToggleGroupContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx53(ToggleGroupFrame, { ref, ...rest, disabled, error, children }) });
 });
 var ToggleGroup = withStaticProperties5(ToggleGroupRoot, {
   Item: ToggleGroupItem
 });
 
 // src/molecules/Tooltip/Tooltip.tsx
-import { Tooltip as TamaguiTooltip, styled as styled49, Paragraph as Paragraph9, YStack as YStack31, XStack as XStack29, Portal as Portal7 } from "tamagui";
+import { Tooltip as TamaguiTooltip, styled as styled50, Paragraph as Paragraph9, YStack as YStack30, XStack as XStack28, Portal as Portal7 } from "tamagui";
 import React49 from "react";
-import { jsx as jsx53, jsxs as jsxs41 } from "react/jsx-runtime";
-var TooltipContent = styled49(TamaguiTooltip.Content, {
+import { jsx as jsx54, jsxs as jsxs41 } from "react/jsx-runtime";
+var TooltipContent = styled50(TamaguiTooltip.Content, {
   name: "TooltipContent",
   enterStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
   exitStyle: { x: 0, y: -5, opacity: 0, scale: 0.9 },
@@ -6994,7 +7016,7 @@ var TooltipContent = styled49(TamaguiTooltip.Content, {
     }
   }
 });
-var TooltipArrow = styled49(TamaguiTooltip.Arrow, {
+var TooltipArrow = styled50(TamaguiTooltip.Arrow, {
   name: "TooltipArrow",
   borderColor: "$borderColor",
   borderWidth: 1,
@@ -7010,15 +7032,15 @@ var TooltipArrow = styled49(TamaguiTooltip.Arrow, {
 var TooltipTrigger = TamaguiTooltip.Trigger;
 var Tooltip = React49.forwardRef(({ children, content, isLoading = false, hasError = false, isDisabled = false, actions, ...props }, _ref) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsx53(Skeleton, {});
+    return /* @__PURE__ */ jsx54(Skeleton, {});
   }
   return /* @__PURE__ */ jsxs41(TamaguiTooltip, { ...props, disabled: isDisabled, children: [
-    /* @__PURE__ */ jsx53(TooltipTrigger, { asChild: true, children }),
-    /* @__PURE__ */ jsx53(Portal7, { children: /* @__PURE__ */ jsxs41(TooltipContent, { hasError, children: [
-      /* @__PURE__ */ jsx53(TooltipArrow, { hasError }),
-      /* @__PURE__ */ jsxs41(YStack31, { gap: "$2", children: [
-        typeof content === "string" ? /* @__PURE__ */ jsx53(Paragraph9, { size: "$2", children: content }) : content,
-        actions && /* @__PURE__ */ jsx53(XStack29, { gap: "$2", children: actions })
+    /* @__PURE__ */ jsx54(TooltipTrigger, { asChild: true, children }),
+    /* @__PURE__ */ jsx54(Portal7, { children: /* @__PURE__ */ jsxs41(TooltipContent, { hasError, children: [
+      /* @__PURE__ */ jsx54(TooltipArrow, { hasError }),
+      /* @__PURE__ */ jsxs41(YStack30, { gap: "$2", children: [
+        typeof content === "string" ? /* @__PURE__ */ jsx54(Paragraph9, { size: "$2", children: content }) : content,
+        actions && /* @__PURE__ */ jsx54(XStack28, { gap: "$2", children: actions })
       ] })
     ] }) })
   ] });
@@ -7026,12 +7048,12 @@ var Tooltip = React49.forwardRef(({ children, content, isLoading = false, hasErr
 Tooltip.displayName = "Tooltip";
 
 // src/molecules/Stepper/Stepper.tsx
-import { Text as Text20, XStack as XStack30, YStack as YStack33 } from "tamagui";
+import { Text as Text20, XStack as XStack29, YStack as YStack32 } from "tamagui";
 
 // src/molecules/Stepper/Stepper.context.tsx
 import { createContext as createContext9, useContext as useContext12, useState as useState11 } from "react";
-import { YStack as YStack32 } from "tamagui";
-import { jsx as jsx54 } from "react/jsx-runtime";
+import { YStack as YStack31 } from "tamagui";
+import { jsx as jsx55 } from "react/jsx-runtime";
 var StepperContext = createContext9(null);
 var StepperContextProvider = ({
   steps,
@@ -7064,7 +7086,7 @@ var StepperContextProvider = ({
     isDisabled,
     actions
   };
-  return /* @__PURE__ */ jsx54(StepperContext.Provider, { value, children });
+  return /* @__PURE__ */ jsx55(StepperContext.Provider, { value, children });
 };
 var useStepper = () => {
   const context = useContext12(StepperContext);
@@ -7074,11 +7096,11 @@ var useStepper = () => {
   return context;
 };
 var Stepper = ({ children }) => {
-  return /* @__PURE__ */ jsx54(YStack32, { children });
+  return /* @__PURE__ */ jsx55(YStack31, { children });
 };
 
 // src/molecules/Stepper/Stepper.tsx
-import { jsx as jsx55, jsxs as jsxs42 } from "react/jsx-runtime";
+import { jsx as jsx56, jsxs as jsxs42 } from "react/jsx-runtime";
 var StepperContent = () => {
   const {
     currentStep,
@@ -7093,20 +7115,20 @@ var StepperContent = () => {
     actions
   } = useStepper();
   if (isLoading) {
-    return /* @__PURE__ */ jsxs42(YStack33, { space: "$2", "data-testid": "skeleton-container", children: [
-      /* @__PURE__ */ jsx55(Skeleton, { height: 28, width: 250 }),
-      /* @__PURE__ */ jsx55(Skeleton, { height: 120 }),
-      /* @__PURE__ */ jsxs42(XStack30, { justifyContent: "space-between", children: [
-        /* @__PURE__ */ jsx55(Skeleton, { height: 44, width: 110 }),
-        /* @__PURE__ */ jsx55(Skeleton, { height: 44, width: 110 })
+    return /* @__PURE__ */ jsxs42(YStack32, { space: "$2", "data-testid": "skeleton-container", children: [
+      /* @__PURE__ */ jsx56(Skeleton, { height: 28, width: 250 }),
+      /* @__PURE__ */ jsx56(Skeleton, { height: 120 }),
+      /* @__PURE__ */ jsxs42(XStack29, { justifyContent: "space-between", children: [
+        /* @__PURE__ */ jsx56(Skeleton, { height: 44, width: 110 }),
+        /* @__PURE__ */ jsx56(Skeleton, { height: 44, width: 110 })
       ] })
     ] });
   }
   if (!steps || steps.length === 0) {
-    return /* @__PURE__ */ jsx55(Text20, { children: "N\xE3o h\xE1 passos para exibir." });
+    return /* @__PURE__ */ jsx56(Text20, { children: "N\xE3o h\xE1 passos para exibir." });
   }
-  return /* @__PURE__ */ jsxs42(YStack33, { space: "$4", children: [
-    /* @__PURE__ */ jsx55(
+  return /* @__PURE__ */ jsxs42(YStack32, { space: "$4", children: [
+    /* @__PURE__ */ jsx56(
       Text20,
       {
         color: hasError ? "$red10" : "$color",
@@ -7118,8 +7140,8 @@ var StepperContent = () => {
         children: steps[currentStep].title
       }
     ),
-    /* @__PURE__ */ jsx55(
-      YStack33,
+    /* @__PURE__ */ jsx56(
+      YStack32,
       {
         borderWidth: 1,
         borderColor: hasError ? "$red10" : "$borderColor",
@@ -7131,7 +7153,7 @@ var StepperContent = () => {
         children: steps[currentStep].content
       }
     ),
-    /* @__PURE__ */ jsx55(XStack30, { justifyContent: "space-between", children: actions(nextStep, prevStep, isFirstStep, isLastStep, isDisabled) })
+    /* @__PURE__ */ jsx56(XStack29, { justifyContent: "space-between", children: actions(nextStep, prevStep, isFirstStep, isLastStep, isDisabled) })
   ] });
 };
 var Stepper2 = ({
@@ -7141,7 +7163,7 @@ var Stepper2 = ({
   isDisabled = false,
   actions
 }) => {
-  return /* @__PURE__ */ jsx55(
+  return /* @__PURE__ */ jsx56(
     StepperContextProvider,
     {
       steps,
@@ -7149,16 +7171,16 @@ var Stepper2 = ({
       hasError,
       isDisabled,
       actions,
-      children: /* @__PURE__ */ jsx55(Stepper, { children: /* @__PURE__ */ jsx55(StepperContent, {}) })
+      children: /* @__PURE__ */ jsx56(Stepper, { children: /* @__PURE__ */ jsx56(StepperContent, {}) })
     }
   );
 };
 
 // src/molecules/AvatarGroup/AvatarGroup.tsx
-import { Text as Text21, XStack as XStack31, styled as styled50 } from "tamagui";
-import { jsx as jsx56, jsxs as jsxs43 } from "react/jsx-runtime";
+import { Text as Text21, XStack as XStack30, styled as styled51 } from "tamagui";
+import { jsx as jsx57, jsxs as jsxs43 } from "react/jsx-runtime";
 var AVATAR_GROUP_ITEM_BORDER_WIDTH = 2;
-var AvatarGroupFrame = styled50(XStack31, {
+var AvatarGroupFrame = styled51(XStack30, {
   name: "AvatarGroup",
   alignItems: "center",
   flexDirection: "row",
@@ -7175,7 +7197,7 @@ var AvatarGroupFrame = styled50(XStack31, {
     size: "$10"
   }
 });
-var AvatarGroupItemFrame = styled50(XStack31, {
+var AvatarGroupItemFrame = styled51(XStack30, {
   name: "AvatarGroupItem",
   justifyContent: "center",
   alignItems: "center",
@@ -7215,13 +7237,13 @@ var AvatarGroup = ({
   ...rest
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsx56(AvatarGroupFrame, { size, ...rest, "data-testid": "avatar-group-frame", children: Array.from({ length: limit }).map((_, index) => /* @__PURE__ */ jsx56(
+    return /* @__PURE__ */ jsx57(AvatarGroupFrame, { size, ...rest, "data-testid": "avatar-group-frame", children: Array.from({ length: limit }).map((_, index) => /* @__PURE__ */ jsx57(
       AvatarGroupItemFrame,
       {
         size,
         zIndex: limit - index,
         "data-testid": `avatar-group-skeleton-${index}`,
-        children: /* @__PURE__ */ jsx56(Skeleton, { circular: true, width: "100%", height: "100%" })
+        children: /* @__PURE__ */ jsx57(Skeleton, { circular: true, width: "100%", height: "100%" })
       },
       `skeleton-${index}`
     )) });
@@ -7232,7 +7254,7 @@ var AvatarGroup = ({
   const visibleItems = items.slice(0, limit);
   const remainingCount = Math.max(0, items.length - limit);
   return /* @__PURE__ */ jsxs43(AvatarGroupFrame, { size, ...rest, "data-testid": "avatar-group-frame", children: [
-    visibleItems.map((item, index) => /* @__PURE__ */ jsx56(
+    visibleItems.map((item, index) => /* @__PURE__ */ jsx57(
       AvatarGroupItemFrame,
       {
         size,
@@ -7241,13 +7263,13 @@ var AvatarGroup = ({
         "data-testid": `avatar-group-item-${index}`,
         "data-haserror": hasError,
         children: /* @__PURE__ */ jsxs43(Avatar, { size, children: [
-          /* @__PURE__ */ jsx56(AvatarImage, { alt: item.alt ?? item.fallback, src: item.src }),
-          /* @__PURE__ */ jsx56(AvatarFallback, { children: /* @__PURE__ */ jsx56(Text21, { children: item.fallback }) })
+          /* @__PURE__ */ jsx57(AvatarImage, { alt: item.alt ?? item.fallback, src: item.src }),
+          /* @__PURE__ */ jsx57(AvatarFallback, { children: /* @__PURE__ */ jsx57(Text21, { children: item.fallback }) })
         ] })
       },
       `avatar-${index}`
     )),
-    remainingCount > 0 && /* @__PURE__ */ jsx56(
+    remainingCount > 0 && /* @__PURE__ */ jsx57(
       AvatarGroupItemFrame,
       {
         size,
@@ -7255,7 +7277,7 @@ var AvatarGroup = ({
         hasError,
         "data-testid": "avatar-group-remainder",
         "data-haserror": hasError,
-        children: /* @__PURE__ */ jsx56(Avatar, { size, children: /* @__PURE__ */ jsx56(AvatarFallback, { children: /* @__PURE__ */ jsxs43(Text21, { size: "$4", fontWeight: "bold", children: [
+        children: /* @__PURE__ */ jsx57(Avatar, { size, children: /* @__PURE__ */ jsx57(AvatarFallback, { children: /* @__PURE__ */ jsxs43(Text21, { size: "$4", fontWeight: "bold", children: [
           "+",
           remainingCount
         ] }) }) })
@@ -7265,10 +7287,10 @@ var AvatarGroup = ({
 };
 
 // src/molecules/BadgeCounter/BadgeCounter.tsx
-import { forwardRef as forwardRef11 } from "react";
-import { styled as styled51, XStack as XStack32, YStack as YStack34 } from "tamagui";
-import { jsx as jsx57, jsxs as jsxs44 } from "react/jsx-runtime";
-var BadgeCounterFrame = styled51(XStack32, {
+import { forwardRef as forwardRef12 } from "react";
+import { styled as styled52, XStack as XStack31, YStack as YStack33 } from "tamagui";
+import { jsx as jsx58, jsxs as jsxs44 } from "react/jsx-runtime";
+var BadgeCounterFrame = styled52(XStack31, {
   name: "BadgeCounter",
   tag: "div",
   position: "relative",
@@ -7290,18 +7312,18 @@ var BadgeCounterFrame = styled51(XStack32, {
     }
   }
 });
-var BadgeCounterContent = styled51(YStack34, {
+var BadgeCounterContent = styled52(YStack33, {
   name: "BadgeCounterContent",
   flex: 1
 });
-var BadgePosition = styled51(YStack34, {
+var BadgePosition = styled52(YStack33, {
   name: "BadgePosition",
   position: "absolute",
   zIndex: 1,
   top: -5,
   right: -5
 });
-var BadgeCounter = forwardRef11(
+var BadgeCounter = forwardRef12(
   ({
     children,
     count = 0,
@@ -7313,13 +7335,13 @@ var BadgeCounter = forwardRef11(
     ...props
   }, ref) => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx57(Skeleton, { width: "$10", height: "$10", borderRadius: "$10" });
+      return /* @__PURE__ */ jsx58(Skeleton, { width: "$10", height: "$10", borderRadius: "$10" });
     }
     const shouldShowBadge = showZero || count > 0;
     const displayCount = count > max ? `${max}+` : count;
     return /* @__PURE__ */ jsxs44(BadgeCounterFrame, { ref, hasError, disabled, ...props, children: [
-      /* @__PURE__ */ jsx57(BadgeCounterContent, { children }),
-      shouldShowBadge && /* @__PURE__ */ jsx57(BadgePosition, { children: /* @__PURE__ */ jsx57(Badge, { variant: "destructive", size: "sm", children: /* @__PURE__ */ jsx57(BadgeText, { variant: "destructive", size: "sm", children: displayCount }) }) })
+      /* @__PURE__ */ jsx58(BadgeCounterContent, { children }),
+      shouldShowBadge && /* @__PURE__ */ jsx58(BadgePosition, { children: /* @__PURE__ */ jsx58(Badge, { variant: "destructive", size: "sm", children: /* @__PURE__ */ jsx58(BadgeText, { variant: "destructive", size: "sm", children: displayCount }) }) })
     ] });
   }
 );
@@ -7328,8 +7350,8 @@ BadgeCounter.displayName = "BadgeCounter";
 // src/organisms/Autocomplete/Autocomplete.tsx
 import { Check as Check6, ChevronDown as ChevronDown5, XCircle } from "@tamagui/lucide-icons";
 import { useMemo as useMemo6, useState as useState12 } from "react";
-import { ListItem, ScrollView, Text as Text22, YGroup, YStack as YStack35 } from "tamagui";
-import { jsx as jsx58, jsxs as jsxs45 } from "react/jsx-runtime";
+import { ListItem, ScrollView, Text as Text22, YGroup, YStack as YStack34 } from "tamagui";
+import { jsx as jsx59, jsxs as jsxs45 } from "react/jsx-runtime";
 var Autocomplete = ({
   options,
   value,
@@ -7352,16 +7374,16 @@ var Autocomplete = ({
     setSearch("");
   };
   if (isLoading) {
-    return /* @__PURE__ */ jsx58(Skeleton, { width: "100%", height: 40 });
+    return /* @__PURE__ */ jsx59(Skeleton, { width: "100%", height: 40 });
   }
   if (hasError) {
-    return /* @__PURE__ */ jsxs45(YStack35, { gap: "$2", alignItems: "center", padding: "$4", backgroundColor: "$red2", borderRadius: "$4", children: [
-      /* @__PURE__ */ jsx58(XCircle, { color: "$red10" }),
-      /* @__PURE__ */ jsx58(Text22, { color: "$red10", children: errorMessage })
+    return /* @__PURE__ */ jsxs45(YStack34, { gap: "$2", alignItems: "center", padding: "$4", backgroundColor: "$red2", borderRadius: "$4", children: [
+      /* @__PURE__ */ jsx59(XCircle, { color: "$red10" }),
+      /* @__PURE__ */ jsx59(Text22, { color: "$red10", children: errorMessage })
     ] });
   }
   return /* @__PURE__ */ jsxs45(Popover, { open, onOpenChange: setOpen, placement: "bottom-start", children: [
-    /* @__PURE__ */ jsx58(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsx58(
+    /* @__PURE__ */ jsx59(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsx59(
       Button,
       {
         role: "combobox",
@@ -7370,19 +7392,19 @@ var Autocomplete = ({
         width: "100%",
         iconAfter: ChevronDown5,
         flex: 1,
-        children: /* @__PURE__ */ jsx58(Text22, { numberOfLines: 1, ellipse: true, children: value ? value.label : placeholder })
+        children: /* @__PURE__ */ jsx59(Text22, { numberOfLines: 1, ellipse: true, children: value ? value.label : placeholder })
       }
     ) }),
     /* @__PURE__ */ jsxs45(PopoverContent, { padding: 0, width: "100%", minWidth: 200, children: [
-      /* @__PURE__ */ jsx58(YStack35, { padding: "$2", borderBottomWidth: 1, borderBottomColor: "$borderColor", children: /* @__PURE__ */ jsx58(Input, { placeholder: "Buscar...", value: search, onChangeText: setSearch }) }),
-      /* @__PURE__ */ jsx58(ScrollView, { maxHeight: 200, keyboardShouldPersistTaps: "handled", children: filteredOptions.length === 0 ? /* @__PURE__ */ jsx58(YStack35, { gap: "$2", padding: "$4", alignItems: "center", justifyContent: "center", children: /* @__PURE__ */ jsx58(Text22, { color: "$color11", children: emptyMessage }) }) : /* @__PURE__ */ jsx58(YGroup, { children: filteredOptions.map((option) => /* @__PURE__ */ jsx58(YGroup.Item, { children: /* @__PURE__ */ jsx58(
+      /* @__PURE__ */ jsx59(YStack34, { padding: "$2", borderBottomWidth: 1, borderBottomColor: "$borderColor", children: /* @__PURE__ */ jsx59(Input, { placeholder: "Buscar...", value: search, onChangeText: setSearch }) }),
+      /* @__PURE__ */ jsx59(ScrollView, { maxHeight: 200, keyboardShouldPersistTaps: "handled", children: filteredOptions.length === 0 ? /* @__PURE__ */ jsx59(YStack34, { gap: "$2", padding: "$4", alignItems: "center", justifyContent: "center", children: /* @__PURE__ */ jsx59(Text22, { color: "$color11", children: emptyMessage }) }) : /* @__PURE__ */ jsx59(YGroup, { children: filteredOptions.map((option) => /* @__PURE__ */ jsx59(YGroup.Item, { children: /* @__PURE__ */ jsx59(
         ListItem,
         {
           hoverTheme: true,
           pressTheme: true,
           onPress: () => handleSelect(option),
           icon: value?.value === option.value ? Check6 : void 0,
-          children: /* @__PURE__ */ jsx58(Text22, { children: option.label })
+          children: /* @__PURE__ */ jsx59(Text22, { children: option.label })
         }
       ) }, option.value)) }) })
     ] })
@@ -7396,15 +7418,15 @@ import {
   FormProvider,
   useFormContext
 } from "react-hook-form";
-import { View as View6, Text as Text23, styled as styled52, YStack as YStack36 } from "tamagui";
-import { jsx as jsx59 } from "react/jsx-runtime";
+import { View as View6, Text as Text23, styled as styled53, YStack as YStack35 } from "tamagui";
+import { jsx as jsx60 } from "react/jsx-runtime";
 var Form = FormProvider;
 var FormFieldContext = React52.createContext(null);
 var FormField = ({
   ...props
 }) => {
   const contextValue = React52.useMemo(() => ({ name: props.name }), [props.name]);
-  return /* @__PURE__ */ jsx59(FormFieldContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx59(Controller, { ...props }) });
+  return /* @__PURE__ */ jsx60(FormFieldContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx60(Controller, { ...props }) });
 };
 var useFormField = () => {
   const fieldContext = React52.useContext(FormFieldContext);
@@ -7428,17 +7450,17 @@ var useFormField = () => {
   };
 };
 var FormItemContext = React52.createContext(null);
-var FormRoot = styled52(YStack36, {
+var FormRoot = styled53(YStack35, {
   name: "FormRoot",
   gap: "$4"
 });
-var FormFooter = styled52(YStack36, {
+var FormFooter = styled53(YStack35, {
   name: "FormFooter",
   flexDirection: "row",
   justifyContent: "flex-end",
   gap: "$2"
 });
-var FormItemFrame = styled52(YStack36, {
+var FormItemFrame = styled53(YStack35, {
   name: "FormItem",
   space: "$sm"
 });
@@ -7446,11 +7468,11 @@ var FormItem = React52.forwardRef(
   ({ ...props }, ref) => {
     const id = React52.useId();
     const contextValue = React52.useMemo(() => ({ id }), [id]);
-    return /* @__PURE__ */ jsx59(FormItemContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx59(FormItemFrame, { ref, ...props }) });
+    return /* @__PURE__ */ jsx60(FormItemContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx60(FormItemFrame, { ref, ...props }) });
   }
 );
 FormItem.displayName = "FormItem";
-var FormLabelFrame = styled52(Label, {
+var FormLabelFrame = styled53(Label, {
   name: "FormLabel",
   color: "$color",
   fontWeight: "500",
@@ -7466,7 +7488,7 @@ var FormLabelFrame = styled52(Label, {
 var FormLabel = React52.forwardRef(
   ({ ...props }, ref) => {
     const { error, formItemId } = useFormField();
-    return /* @__PURE__ */ jsx59(
+    return /* @__PURE__ */ jsx60(
       FormLabelFrame,
       {
         ref,
@@ -7481,7 +7503,7 @@ FormLabel.displayName = "FormLabel";
 var FormControl = React52.forwardRef(
   ({ ...props }, ref) => {
     const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
-    return /* @__PURE__ */ jsx59(
+    return /* @__PURE__ */ jsx60(
       View6,
       {
         ref,
@@ -7494,7 +7516,7 @@ var FormControl = React52.forwardRef(
   }
 );
 FormControl.displayName = "FormControl";
-var FormDescriptionFrame = styled52(Text23, {
+var FormDescriptionFrame = styled53(Text23, {
   name: "FormDescription",
   fontSize: "$2",
   color: "$mutedForeground"
@@ -7502,7 +7524,7 @@ var FormDescriptionFrame = styled52(Text23, {
 var FormDescription = React52.forwardRef(
   ({ ...props }, ref) => {
     const { formDescriptionId } = useFormField();
-    return /* @__PURE__ */ jsx59(
+    return /* @__PURE__ */ jsx60(
       FormDescriptionFrame,
       {
         ref,
@@ -7513,7 +7535,7 @@ var FormDescription = React52.forwardRef(
   }
 );
 FormDescription.displayName = "FormDescription";
-var FormMessageFrame = styled52(Text23, {
+var FormMessageFrame = styled53(Text23, {
   name: "FormMessage",
   fontSize: "$2",
   fontWeight: "500",
@@ -7526,7 +7548,7 @@ var FormMessage = React52.forwardRef(
     if (!body) {
       return null;
     }
-    return /* @__PURE__ */ jsx59(
+    return /* @__PURE__ */ jsx60(
       FormMessageFrame,
       {
         ref,
@@ -7552,14 +7574,14 @@ import {
 } from "@tamagui/lucide-icons";
 import {
   ScrollView as ScrollView2,
-  styled as styled53,
+  styled as styled54,
   withStaticProperties as withStaticProperties6,
-  XStack as XStack33,
-  YStack as YStack37
+  XStack as XStack32,
+  YStack as YStack36
 } from "tamagui";
 import DOMPurify from "isomorphic-dompurify";
-import { jsx as jsx60, jsxs as jsxs46 } from "react/jsx-runtime";
-var EditorContainer = styled53(YStack37, {
+import { jsx as jsx61, jsxs as jsxs46 } from "react/jsx-runtime";
+var EditorContainer = styled54(YStack36, {
   name: "RichTextEditor",
   borderWidth: 1,
   borderColor: "$borderColor",
@@ -7572,12 +7594,12 @@ var EditorContainer = styled53(YStack37, {
     }
   }
 });
-var EditorContentContainer = styled53(ScrollView2, {
+var EditorContentContainer = styled54(ScrollView2, {
   name: "EditorContentContainer",
   minHeight: 150,
   padding: "$3"
 });
-var Toolbar = styled53(XStack33, {
+var Toolbar = styled54(XStack32, {
   name: "RichTextToolbar",
   padding: "$2",
   borderBottomWidth: 1,
@@ -7600,7 +7622,7 @@ var RichTextToolbar = ({ editor }) => {
     { level: 3, icon: Heading3, label: "T\xEDtulo 3" }
   ];
   return /* @__PURE__ */ jsxs46(Toolbar, { children: [
-    /* @__PURE__ */ jsx60(
+    /* @__PURE__ */ jsx61(
       ToggleGroup,
       {
         type: "multiple",
@@ -7612,16 +7634,16 @@ var RichTextToolbar = ({ editor }) => {
             }
           });
         },
-        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ jsx60(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ jsx60(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ jsx60(Icon, { size: 16 }) }) }, name))
+        children: toggleGroupItems.map(({ name, icon: Icon, label }) => /* @__PURE__ */ jsx61(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ jsx61(ToggleGroupItem, { value: name, "aria-label": label, children: /* @__PURE__ */ jsx61(Icon, { size: 16 }) }) }, name))
       }
     ),
-    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ jsx60(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ jsx60(
+    headingItems.map(({ level, icon: Icon, label }) => /* @__PURE__ */ jsx61(Tooltip, { placement: "top", content: label, children: /* @__PURE__ */ jsx61(
       Button,
       {
         variant: editor.isActive("heading", { level }) ? "secondary" : "ghost",
         onPress: () => editor.chain().focus().toggleHeading({ level }).run(),
         "aria-label": label,
-        children: /* @__PURE__ */ jsx60(Icon, { size: 16 })
+        children: /* @__PURE__ */ jsx61(Icon, { size: 16 })
       }
     ) }, level))
   ] });
@@ -7648,15 +7670,15 @@ var RichTextFrame = ({
     }
   });
   if (isLoading) {
-    return /* @__PURE__ */ jsxs46(YStack37, { gap: "$2", ...props, children: [
-      /* @__PURE__ */ jsx60(Skeleton, { height: 40 }),
-      /* @__PURE__ */ jsx60(Skeleton, { height: 150 })
+    return /* @__PURE__ */ jsxs46(YStack36, { gap: "$2", ...props, children: [
+      /* @__PURE__ */ jsx61(Skeleton, { height: 40 }),
+      /* @__PURE__ */ jsx61(Skeleton, { height: 150 })
     ] });
   }
   return /* @__PURE__ */ jsxs46(EditorContainer, { hasError, ...props, children: [
-    /* @__PURE__ */ jsx60(RichTextToolbar, { editor }),
+    /* @__PURE__ */ jsx61(RichTextToolbar, { editor }),
     headerActions,
-    /* @__PURE__ */ jsx60(EditorContentContainer, { children: /* @__PURE__ */ jsx60(EditorContent, { editor }) })
+    /* @__PURE__ */ jsx61(EditorContentContainer, { children: /* @__PURE__ */ jsx61(EditorContent, { editor }) })
   ] });
 };
 var RichText = withStaticProperties6(RichTextFrame, {});
@@ -7672,22 +7694,22 @@ import {
   getSortedRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import { ScrollView as ScrollView3, Text as Text26, XStack as XStack36, YStack as YStack40 } from "tamagui";
+import { ScrollView as ScrollView3, Text as Text26, XStack as XStack35, YStack as YStack39 } from "tamagui";
 
 // src/molecules/Empty/Empty.tsx
 import { Ban } from "@tamagui/lucide-icons";
-import { YStack as YStack38, Text as Text24, styled as styled54, Image as Image2 } from "tamagui";
+import { YStack as YStack37, Text as Text24, styled as styled55, Image as Image2 } from "tamagui";
 import { cloneElement as cloneElement6 } from "react";
-import { XStack as XStack34 } from "tamagui";
-import { jsx as jsx61, jsxs as jsxs47 } from "react/jsx-runtime";
-var EmptyFrame = styled54(YStack38, {
+import { XStack as XStack33 } from "tamagui";
+import { jsx as jsx62, jsxs as jsxs47 } from "react/jsx-runtime";
+var EmptyFrame = styled55(YStack37, {
   name: "Empty",
   alignItems: "center",
   justifyContent: "center",
   padding: "$4",
   gap: "$2"
 });
-var EmptyIconFrame = styled54(YStack38, {
+var EmptyIconFrame = styled55(YStack37, {
   name: "EmptyIcon",
   padding: "$3",
   borderRadius: 100,
@@ -7702,7 +7724,7 @@ var EmptyIconFrame = styled54(YStack38, {
     }
   }
 });
-var EmptyTitle = styled54(Text24, {
+var EmptyTitle = styled55(Text24, {
   name: "EmptyTitle",
   fontSize: "$5",
   fontWeight: "600",
@@ -7716,7 +7738,7 @@ var EmptyTitle = styled54(Text24, {
     }
   }
 });
-var EmptyDescription = styled54(Text24, {
+var EmptyDescription = styled55(Text24, {
   name: "EmptyDescription",
   fontSize: "$3",
   color: "$gray10",
@@ -7731,12 +7753,12 @@ var EmptyDescription = styled54(Text24, {
   }
 });
 var EmptySkeleton = () => /* @__PURE__ */ jsxs47(EmptyFrame, { "data-testid": "empty-skeleton", children: [
-  /* @__PURE__ */ jsx61(Skeleton, { width: 64, height: 64, borderRadius: 100 }),
-  /* @__PURE__ */ jsxs47(YStack38, { gap: "$1", alignItems: "center", children: [
-    /* @__PURE__ */ jsx61(Skeleton, { width: 120, height: 20 }),
-    /* @__PURE__ */ jsx61(Skeleton, { width: 240, height: 15 })
+  /* @__PURE__ */ jsx62(Skeleton, { width: 64, height: 64, borderRadius: 100 }),
+  /* @__PURE__ */ jsxs47(YStack37, { gap: "$1", alignItems: "center", children: [
+    /* @__PURE__ */ jsx62(Skeleton, { width: 120, height: 20 }),
+    /* @__PURE__ */ jsx62(Skeleton, { width: 240, height: 15 })
   ] }),
-  /* @__PURE__ */ jsx61(Skeleton, { width: 100, height: 40, marginTop: "$2" })
+  /* @__PURE__ */ jsx62(Skeleton, { width: 100, height: 40, marginTop: "$2" })
 ] });
 var Empty = ({
   icon,
@@ -7750,11 +7772,11 @@ var Empty = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsx61(EmptySkeleton, {});
+    return /* @__PURE__ */ jsx62(EmptySkeleton, {});
   }
   let content;
   if (image) {
-    content = /* @__PURE__ */ jsx61(
+    content = /* @__PURE__ */ jsx62(
       Image2,
       {
         source: { uri: image },
@@ -7768,37 +7790,37 @@ var Empty = ({
     const iconElement = icon ? cloneElement6(icon, {
       size: 32,
       color: hasError ? "$red10" : "$gray10"
-    }) : /* @__PURE__ */ jsx61(Ban, { size: 32, color: hasError ? "$red10" : "$gray10" });
-    content = /* @__PURE__ */ jsx61(EmptyIconFrame, { hasError, "data-testid": "empty-icon-frame", "data-has-error": hasError, children: iconElement });
+    }) : /* @__PURE__ */ jsx62(Ban, { size: 32, color: hasError ? "$red10" : "$gray10" });
+    content = /* @__PURE__ */ jsx62(EmptyIconFrame, { hasError, "data-testid": "empty-icon-frame", "data-has-error": hasError, children: iconElement });
   }
   return /* @__PURE__ */ jsxs47(EmptyFrame, { ...props, children: [
     content,
-    /* @__PURE__ */ jsxs47(YStack38, { gap: "$1", alignItems: "center", children: [
-      title && /* @__PURE__ */ jsx61(EmptyTitle, { hasError, children: title }),
-      description && /* @__PURE__ */ jsx61(EmptyDescription, { hasError, children: description })
+    /* @__PURE__ */ jsxs47(YStack37, { gap: "$1", alignItems: "center", children: [
+      title && /* @__PURE__ */ jsx62(EmptyTitle, { hasError, children: title }),
+      description && /* @__PURE__ */ jsx62(EmptyDescription, { hasError, children: description })
     ] }),
-    actions && /* @__PURE__ */ jsx61(XStack34, { marginTop: "$2", children: actions })
+    actions && /* @__PURE__ */ jsx62(XStack33, { marginTop: "$2", children: actions })
   ] });
 };
 
 // src/organisms/DataTable/DataTable.parts.tsx
-import { Text as Text25, View as View7, XStack as XStack35, YStack as YStack39, styled as styled55 } from "tamagui";
+import { Text as Text25, View as View7, XStack as XStack34, YStack as YStack38, styled as styled56 } from "tamagui";
 var MIN_COLUMN_WIDTH = 100;
 var BORDER_WIDTH = 1;
-var TableContainer = styled55(YStack39, {
+var TableContainer = styled56(YStack38, {
   name: "TableContainer",
   borderColor: "$borderColor",
   borderWidth: BORDER_WIDTH,
   borderRadius: "$4",
   overflow: "hidden"
 });
-var TableHeader = styled55(YStack39, {
+var TableHeader = styled56(YStack38, {
   name: "TableHeader",
   backgroundColor: "$background",
   borderBottomWidth: BORDER_WIDTH,
   borderColor: "$borderColor"
 });
-var TableRow = styled55(XStack35, {
+var TableRow = styled56(XStack34, {
   name: "TableRow",
   borderBottomWidth: BORDER_WIDTH,
   borderColor: "$borderColor",
@@ -7812,30 +7834,30 @@ var TableRow = styled55(XStack35, {
     backgroundColor: "$backgroundPress"
   }
 });
-var TableHeadText = styled55(Text25, {
+var TableHeadText = styled56(Text25, {
   name: "TableHeadText",
   color: "$color",
   fontSize: "$2",
   fontWeight: "600"
 });
-var TableCellText = styled55(Text25, {
+var TableCellText = styled56(Text25, {
   name: "TableCellText",
   color: "$color",
   fontSize: "$2"
 });
-var TableCellFrame = styled55(View7, {
+var TableCellFrame = styled56(View7, {
   name: "TableCellFrame",
   flex: 1,
   minWidth: MIN_COLUMN_WIDTH
 });
-var NoResultsCell = styled55(View7, {
+var NoResultsCell = styled56(View7, {
   name: "NoResultsCell",
   flex: 1,
   justifyContent: "center",
   alignItems: "center",
   padding: "$4"
 });
-var HeaderActionsContainer = styled55(XStack35, {
+var HeaderActionsContainer = styled56(XStack34, {
   name: "HeaderActionsContainer",
   paddingHorizontal: "$4",
   paddingBottom: "$3",
@@ -7843,7 +7865,7 @@ var HeaderActionsContainer = styled55(XStack35, {
 });
 
 // src/organisms/DataTable/DataTable.tsx
-import { jsx as jsx62, jsxs as jsxs48 } from "react/jsx-runtime";
+import { jsx as jsx63, jsxs as jsxs48 } from "react/jsx-runtime";
 var DEFAULT_PAGE_SIZE = 10;
 var MAX_ROWS_WITHOUT_PAGINATION = 100;
 var DEFAULT_LOCALIZATION = {
@@ -7858,7 +7880,7 @@ var DEFAULT_LOCALIZATION = {
 var renderCellContent = (content, isHeader) => {
   if (isValidElement5(content)) return content;
   const Wrapper = isHeader ? TableHeadText : TableCellText;
-  return /* @__PURE__ */ jsx62(Wrapper, { children: content });
+  return /* @__PURE__ */ jsx63(Wrapper, { children: content });
 };
 function DataTable({
   columns,
@@ -7907,44 +7929,44 @@ function DataTable({
   const rows = showPagination ? table.getRowModel().rows : table.getRowModel().rows.slice(0, MAX_ROWS_WITHOUT_PAGINATION);
   const renderTableBody = () => {
     if (isLoading) {
-      return Array.from({ length: table.getState().pagination.pageSize }).map((_, i) => /* @__PURE__ */ jsx62(TableRow, { tag: "tr", children: columns.map((_2, j) => /* @__PURE__ */ jsx62(TableCellFrame, { tag: "td", children: /* @__PURE__ */ jsx62(Skeleton, { height: "$4" }) }, `skeleton-cell-${j}`)) }, `skeleton-${i}`));
+      return Array.from({ length: table.getState().pagination.pageSize }).map((_, i) => /* @__PURE__ */ jsx63(TableRow, { tag: "tr", children: columns.map((_2, j) => /* @__PURE__ */ jsx63(TableCellFrame, { tag: "td", children: /* @__PURE__ */ jsx63(Skeleton, { height: "$4" }) }, `skeleton-cell-${j}`)) }, `skeleton-${i}`));
     }
     if (error) {
-      return /* @__PURE__ */ jsx62(TableRow, { tag: "tr", children: /* @__PURE__ */ jsx62(NoResultsCell, { tag: "td", ...{ colSpan: columns.length }, children: /* @__PURE__ */ jsx62(
+      return /* @__PURE__ */ jsx63(TableRow, { tag: "tr", children: /* @__PURE__ */ jsx63(NoResultsCell, { tag: "td", ...{ colSpan: columns.length }, children: /* @__PURE__ */ jsx63(
         Empty,
         {
-          icon: /* @__PURE__ */ jsx62(AlertCircle, { size: "$5", color: "$red10" }),
+          icon: /* @__PURE__ */ jsx63(AlertCircle, { size: "$5", color: "$red10" }),
           title: localization.errorTitle,
           body: localization.errorBody,
-          action: onRetry && /* @__PURE__ */ jsx62(Button, { variant: "outline", onPress: onRetry, children: localization.retry })
+          action: onRetry && /* @__PURE__ */ jsx63(Button, { variant: "outline", onPress: onRetry, children: localization.retry })
         }
       ) }) });
     }
     if (rows.length === 0) {
-      return /* @__PURE__ */ jsx62(TableRow, { tag: "tr", children: /* @__PURE__ */ jsx62(NoResultsCell, { tag: "td", ...{ colSpan: columns.length }, children: emptyState || /* @__PURE__ */ jsx62(
+      return /* @__PURE__ */ jsx63(TableRow, { tag: "tr", children: /* @__PURE__ */ jsx63(NoResultsCell, { tag: "td", ...{ colSpan: columns.length }, children: emptyState || /* @__PURE__ */ jsx63(
         Empty,
         {
-          icon: /* @__PURE__ */ jsx62(Inbox, { size: "$5", color: "$gray10" }),
+          icon: /* @__PURE__ */ jsx63(Inbox, { size: "$5", color: "$gray10" }),
           title: localization.noResults
         }
       ) }) });
     }
-    return rows.map((row) => /* @__PURE__ */ jsx62(TableRow, { "data-state": row.getIsSelected() && "selected", tag: "tr", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ jsx62(TableCellFrame, { tag: "td", children: renderCellContent(flexRender(cell.column.columnDef.cell, cell.getContext()), false) }, cell.id)) }, row.id));
+    return rows.map((row) => /* @__PURE__ */ jsx63(TableRow, { "data-state": row.getIsSelected() && "selected", tag: "tr", children: row.getVisibleCells().map((cell) => /* @__PURE__ */ jsx63(TableCellFrame, { tag: "td", children: renderCellContent(flexRender(cell.column.columnDef.cell, cell.getContext()), false) }, cell.id)) }, row.id));
   };
-  return /* @__PURE__ */ jsxs48(YStack40, { gap: "$3", children: [
-    headerActions && /* @__PURE__ */ jsx62(HeaderActionsContainer, { children: headerActions }),
-    /* @__PURE__ */ jsx62(TableContainer, { children: /* @__PURE__ */ jsx62(ScrollView3, { horizontal: true, showsHorizontalScrollIndicator: true, children: /* @__PURE__ */ jsxs48(YStack40, { minWidth: "100%", tag: "table", "aria-label": "Data table", children: [
-      /* @__PURE__ */ jsx62(TableHeader, { tag: "thead", children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ jsx62(TableRow, { tag: "tr", children: headerGroup.headers.map((header) => /* @__PURE__ */ jsx62(TableCellFrame, { tag: "th", children: header.isPlaceholder ? null : renderCellContent(flexRender(header.column.columnDef.header, header.getContext()), true) }, header.id)) }, headerGroup.id)) }),
-      /* @__PURE__ */ jsx62(YStack40, { tag: "tbody", children: renderTableBody() })
+  return /* @__PURE__ */ jsxs48(YStack39, { gap: "$3", children: [
+    headerActions && /* @__PURE__ */ jsx63(HeaderActionsContainer, { children: headerActions }),
+    /* @__PURE__ */ jsx63(TableContainer, { children: /* @__PURE__ */ jsx63(ScrollView3, { horizontal: true, showsHorizontalScrollIndicator: true, children: /* @__PURE__ */ jsxs48(YStack39, { minWidth: "100%", tag: "table", "aria-label": "Data table", children: [
+      /* @__PURE__ */ jsx63(TableHeader, { tag: "thead", children: table.getHeaderGroups().map((headerGroup) => /* @__PURE__ */ jsx63(TableRow, { tag: "tr", children: headerGroup.headers.map((header) => /* @__PURE__ */ jsx63(TableCellFrame, { tag: "th", children: header.isPlaceholder ? null : renderCellContent(flexRender(header.column.columnDef.header, header.getContext()), true) }, header.id)) }, headerGroup.id)) }),
+      /* @__PURE__ */ jsx63(YStack39, { tag: "tbody", children: renderTableBody() })
     ] }) }) }),
-    showPagination && table.getPageCount() > 1 && /* @__PURE__ */ jsxs48(XStack36, { paddingVertical: "$3", paddingHorizontal: "$4", alignItems: "center", children: [
-      /* @__PURE__ */ jsx62(YStack40, { flex: 1 }),
-      /* @__PURE__ */ jsxs48(XStack36, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
-        /* @__PURE__ */ jsx62(Text26, { fontSize: "$2", color: "$color", children: localization.pageOf(
+    showPagination && table.getPageCount() > 1 && /* @__PURE__ */ jsxs48(XStack35, { paddingVertical: "$3", paddingHorizontal: "$4", alignItems: "center", children: [
+      /* @__PURE__ */ jsx63(YStack39, { flex: 1 }),
+      /* @__PURE__ */ jsxs48(XStack35, { alignItems: "center", justifyContent: "flex-end", gap: "$2", children: [
+        /* @__PURE__ */ jsx63(Text26, { fontSize: "$2", color: "$color", children: localization.pageOf(
           table.getState().pagination.pageIndex + 1,
           table.getPageCount()
         ) }),
-        /* @__PURE__ */ jsx62(
+        /* @__PURE__ */ jsx63(
           Button,
           {
             variant: "outline",
@@ -7954,7 +7976,7 @@ function DataTable({
             children: localization.previousPage
           }
         ),
-        /* @__PURE__ */ jsx62(
+        /* @__PURE__ */ jsx63(
           Button,
           {
             variant: "outline",
@@ -7977,8 +7999,8 @@ import {
 } from "@tamagui/lucide-icons";
 import useEmblaCarousel from "embla-carousel-react";
 import React54, { useCallback as useCallback6, useEffect as useEffect3, useState as useState14 } from "react";
-import { styled as styled56, Text as Text27, View as View8, XStack as XStack37, YStack as YStack41 } from "tamagui";
-import { jsx as jsx63, jsxs as jsxs49 } from "react/jsx-runtime";
+import { styled as styled57, Text as Text27, View as View8, XStack as XStack36, YStack as YStack40 } from "tamagui";
+import { jsx as jsx64, jsxs as jsxs49 } from "react/jsx-runtime";
 var CarouselContext = React54.createContext(null);
 function useCarousel() {
   const context = React54.useContext(CarouselContext);
@@ -7987,22 +8009,22 @@ function useCarousel() {
   }
   return context;
 }
-var CarouselFrame = styled56(YStack41, {
+var CarouselFrame = styled57(YStack40, {
   name: "CarouselFrame",
   position: "relative",
   width: "100%"
 });
-var CarouselContentFrame = styled56(XStack37, {
+var CarouselContentFrame = styled57(XStack36, {
   name: "CarouselContent"
   // Negative margin is applied here to counteract item padding
 });
-var CarouselItemFrame = styled56(YStack41, {
+var CarouselItemFrame = styled57(YStack40, {
   name: "CarouselItem",
   minWidth: 0,
   flex: "0 0 100%",
   position: "relative"
 });
-var CarouselNavButton = styled56(Button, {
+var CarouselNavButton = styled57(Button, {
   name: "CarouselNavButton",
   circular: true,
   size: "$4",
@@ -8023,7 +8045,7 @@ var CarouselNavButton = styled56(Button, {
     }
   }
 });
-var StateContainer = styled56(YStack41, {
+var StateContainer = styled57(YStack40, {
   name: "StateContainer",
   alignItems: "center",
   justifyContent: "center",
@@ -8084,7 +8106,7 @@ var Carousel = ({
     error,
     emptyState
   };
-  return /* @__PURE__ */ jsx63(CarouselContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx63(CarouselFrame, { role: "region", "aria-roledescription": "carousel", ...props, children }) });
+  return /* @__PURE__ */ jsx64(CarouselContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx64(CarouselFrame, { role: "region", "aria-roledescription": "carousel", ...props, children }) });
 };
 Carousel.displayName = "Carousel";
 var CarouselContent = React54.forwardRef(
@@ -8099,27 +8121,27 @@ var CarouselContent = React54.forwardRef(
     } = useCarousel();
     const renderChildren2 = () => {
       if (isLoading) {
-        return /* @__PURE__ */ jsx63(XStack37, { space: "$2", width: "100%", pl: "$2", children: Array.from({ length: 3 }).map((_, index) => /* @__PURE__ */ jsx63(CarouselItem, { flexBasis: "33.33%", children: /* @__PURE__ */ jsxs49(YStack41, { flex: 1, space: "$2", children: [
-          /* @__PURE__ */ jsx63(Skeleton, { height: 150 }),
-          /* @__PURE__ */ jsx63(Skeleton, { height: 20 }),
-          /* @__PURE__ */ jsx63(Skeleton, { height: 20, width: "75%" })
+        return /* @__PURE__ */ jsx64(XStack36, { space: "$2", width: "100%", pl: "$2", children: Array.from({ length: 3 }).map((_, index) => /* @__PURE__ */ jsx64(CarouselItem, { flexBasis: "33.33%", children: /* @__PURE__ */ jsxs49(YStack40, { flex: 1, space: "$2", children: [
+          /* @__PURE__ */ jsx64(Skeleton, { height: 150 }),
+          /* @__PURE__ */ jsx64(Skeleton, { height: 20 }),
+          /* @__PURE__ */ jsx64(Skeleton, { height: 20, width: "75%" })
         ] }) }, index)) });
       }
       if (error) {
         return /* @__PURE__ */ jsxs49(StateContainer, { children: [
-          /* @__PURE__ */ jsx63(HelpCircle, { size: "$4", color: "$red10" }),
-          /* @__PURE__ */ jsx63(Text27, { color: "$red10", textAlign: "center", children: error })
+          /* @__PURE__ */ jsx64(HelpCircle, { size: "$4", color: "$red10" }),
+          /* @__PURE__ */ jsx64(Text27, { color: "$red10", textAlign: "center", children: error })
         ] });
       }
       if (!data || data.length === 0) {
         return emptyState || /* @__PURE__ */ jsxs49(StateContainer, { children: [
-          /* @__PURE__ */ jsx63(HelpCircle, { size: "$4", color: "$gray10" }),
-          /* @__PURE__ */ jsx63(Text27, { color: "$gray10", textAlign: "center", children: "Nenhum item para exibir." })
+          /* @__PURE__ */ jsx64(HelpCircle, { size: "$4", color: "$gray10" }),
+          /* @__PURE__ */ jsx64(Text27, { color: "$gray10", textAlign: "center", children: "Nenhum item para exibir." })
         ] });
       }
       return data.map((item, index) => renderItem(item, index));
     };
-    return /* @__PURE__ */ jsx63(View8, { ref: carouselRef, overflow: "hidden", children: /* @__PURE__ */ jsx63(
+    return /* @__PURE__ */ jsx64(View8, { ref: carouselRef, overflow: "hidden", children: /* @__PURE__ */ jsx64(
       CarouselContentFrame,
       {
         ref,
@@ -8136,7 +8158,7 @@ CarouselContent.displayName = "CarouselContent";
 var CarouselItem = React54.forwardRef(
   (props, ref) => {
     const { orientation } = useCarousel();
-    return /* @__PURE__ */ jsx63(
+    return /* @__PURE__ */ jsx64(
       CarouselItemFrame,
       {
         ref,
@@ -8152,7 +8174,7 @@ var CarouselItem = React54.forwardRef(
 CarouselItem.displayName = "CarouselItem";
 var CarouselPrevious = React54.forwardRef((props, ref) => {
   const { scrollPrev, canScrollPrev } = useCarousel();
-  return /* @__PURE__ */ jsx63(
+  return /* @__PURE__ */ jsx64(
     CarouselNavButton,
     {
       ref,
@@ -8168,7 +8190,7 @@ var CarouselPrevious = React54.forwardRef((props, ref) => {
 CarouselPrevious.displayName = "CarouselPrevious";
 var CarouselNext = React54.forwardRef((props, ref) => {
   const { scrollNext, canScrollNext } = useCarousel();
-  return /* @__PURE__ */ jsx63(
+  return /* @__PURE__ */ jsx64(
     CarouselNavButton,
     {
       ref,
@@ -8186,10 +8208,10 @@ CarouselNext.displayName = "CarouselNext";
 // src/organisms/Command/Command.tsx
 import React55 from "react";
 import { Command as CommandPrimitive } from "cmdk";
-import { styled as styled57, Text as Text28, XStack as XStack38, YStack as YStack42 } from "tamagui";
+import { styled as styled58, Text as Text28, XStack as XStack37, YStack as YStack41 } from "tamagui";
 import { Search, PackageSearch, AlertTriangle as AlertTriangle3 } from "@tamagui/lucide-icons";
-import { jsx as jsx64, jsxs as jsxs50 } from "react/jsx-runtime";
-var CommandFrame = styled57(YStack42, {
+import { jsx as jsx65, jsxs as jsxs50 } from "react/jsx-runtime";
+var CommandFrame = styled58(YStack41, {
   name: "Command",
   overflow: "hidden",
   backgroundColor: "$background",
@@ -8199,14 +8221,14 @@ var CommandFrame = styled57(YStack42, {
 });
 var Command = React55.forwardRef(
   ({ className, ...props }, ref) => {
-    return /* @__PURE__ */ jsx64(CommandFrame, { ref, asChild: true, children: /* @__PURE__ */ jsx64(CommandPrimitive, { className, ...props }) });
+    return /* @__PURE__ */ jsx65(CommandFrame, { ref, asChild: true, children: /* @__PURE__ */ jsx65(CommandPrimitive, { className, ...props }) });
   }
 );
 Command.displayName = CommandPrimitive.displayName;
 var CommandDialog = ({ children, ...props }) => {
-  return /* @__PURE__ */ jsx64(Dialog, { ...props, children: /* @__PURE__ */ jsx64(DialogContentComposite, { p: "$0", overflow: "hidden", maw: 600, children: /* @__PURE__ */ jsx64(Command, { children }) }) });
+  return /* @__PURE__ */ jsx65(Dialog, { ...props, children: /* @__PURE__ */ jsx65(DialogContentComposite, { p: "$0", overflow: "hidden", maw: 600, children: /* @__PURE__ */ jsx65(Command, { children }) }) });
 };
-var CommandInputFrame = styled57(XStack38, {
+var CommandInputFrame = styled58(XStack37, {
   name: "CommandInput",
   alignItems: "center",
   borderBottomWidth: 1,
@@ -8214,7 +8236,7 @@ var CommandInputFrame = styled57(XStack38, {
   paddingHorizontal: "$3",
   gap: "$2"
 });
-var StyledCommandInput = styled57(CommandPrimitive.Input, {
+var StyledCommandInput = styled58(CommandPrimitive.Input, {
   flex: 1,
   height: "$11",
   fontSize: "$4",
@@ -8226,22 +8248,22 @@ var StyledCommandInput = styled57(CommandPrimitive.Input, {
 var CommandInput = React55.forwardRef(
   (props, ref) => {
     return /* @__PURE__ */ jsxs50(CommandInputFrame, { children: [
-      /* @__PURE__ */ jsx64(Search, { size: "$1", color: "$color10" }),
-      /* @__PURE__ */ jsx64(StyledCommandInput, { ref, ...props })
+      /* @__PURE__ */ jsx65(Search, { size: "$1", color: "$color10" }),
+      /* @__PURE__ */ jsx65(StyledCommandInput, { ref, ...props })
     ] });
   }
 );
 CommandInput.displayName = CommandPrimitive.Input.displayName;
-var CommandSkeleton = () => /* @__PURE__ */ jsxs50(YStack42, { gap: "$2", p: "$1", children: [
-  /* @__PURE__ */ jsx64(Skeleton, { height: "$4", width: "80%" }),
-  /* @__PURE__ */ jsx64(Skeleton, { height: "$4", width: "60%" }),
-  /* @__PURE__ */ jsx64(Skeleton, { height: "$4", width: "90%" })
+var CommandSkeleton = () => /* @__PURE__ */ jsxs50(YStack41, { gap: "$2", p: "$1", children: [
+  /* @__PURE__ */ jsx65(Skeleton, { height: "$4", width: "80%" }),
+  /* @__PURE__ */ jsx65(Skeleton, { height: "$4", width: "60%" }),
+  /* @__PURE__ */ jsx65(Skeleton, { height: "$4", width: "90%" })
 ] });
-var CommandError = ({ message }) => /* @__PURE__ */ jsxs50(YStack42, { ai: "center", jc: "center", gap: "$2", p: "$4", children: [
-  /* @__PURE__ */ jsx64(AlertTriangle3, { color: "$red10" }),
-  /* @__PURE__ */ jsx64(Text28, { color: "$red10", fontSize: "$4", children: message })
+var CommandError = ({ message }) => /* @__PURE__ */ jsxs50(YStack41, { ai: "center", jc: "center", gap: "$2", p: "$4", children: [
+  /* @__PURE__ */ jsx65(AlertTriangle3, { color: "$red10" }),
+  /* @__PURE__ */ jsx65(Text28, { color: "$red10", fontSize: "$4", children: message })
 ] });
-var CommandListFrame = styled57(YStack42, {
+var CommandListFrame = styled58(YStack41, {
   name: "CommandList",
   maxHeight: "$15",
   // 300px
@@ -8249,42 +8271,42 @@ var CommandListFrame = styled57(YStack42, {
   overflowX: "hidden"
 });
 var CommandList = React55.forwardRef(
-  ({ children, isLoading = false, error = null, ...props }, ref) => /* @__PURE__ */ jsx64(CommandListFrame, { ref, children: isLoading ? /* @__PURE__ */ jsx64(CommandSkeleton, {}) : error ? /* @__PURE__ */ jsx64(CommandError, { message: error }) : /* @__PURE__ */ jsx64(CommandPrimitive.List, { ...props, children }) })
+  ({ children, isLoading = false, error = null, ...props }, ref) => /* @__PURE__ */ jsx65(CommandListFrame, { ref, children: isLoading ? /* @__PURE__ */ jsx65(CommandSkeleton, {}) : error ? /* @__PURE__ */ jsx65(CommandError, { message: error }) : /* @__PURE__ */ jsx65(CommandPrimitive.List, { ...props, children }) })
 );
 CommandList.displayName = CommandPrimitive.List.displayName;
-var CommandEmptyContainer = styled57(YStack42, {
+var CommandEmptyContainer = styled58(YStack41, {
   padding: "$6",
   justifyContent: "center",
   alignItems: "center",
   gap: "$2"
 });
-var CommandEmptyText = styled57(Text28, {
+var CommandEmptyText = styled58(Text28, {
   fontSize: "$4",
   color: "$color10"
 });
 var CommandEmpty = React55.forwardRef(
-  ({ title = "Nenhum resultado encontrado.", icon = /* @__PURE__ */ jsx64(PackageSearch, {}), ...props }, ref) => /* @__PURE__ */ jsx64(CommandPrimitive.Empty, { ref, asChild: true, ...props, children: /* @__PURE__ */ jsxs50(CommandEmptyContainer, { children: [
+  ({ title = "Nenhum resultado encontrado.", icon = /* @__PURE__ */ jsx65(PackageSearch, {}), ...props }, ref) => /* @__PURE__ */ jsx65(CommandPrimitive.Empty, { ref, asChild: true, ...props, children: /* @__PURE__ */ jsxs50(CommandEmptyContainer, { children: [
     icon,
-    /* @__PURE__ */ jsx64(CommandEmptyText, { children: title })
+    /* @__PURE__ */ jsx65(CommandEmptyText, { children: title })
   ] }) })
 );
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName;
-var CommandGroupFrame = styled57(YStack42, {
+var CommandGroupFrame = styled58(YStack41, {
   overflow: "hidden",
   padding: "$1"
 });
-var CommandGroup = React55.forwardRef(({ heading, ...props }, ref) => /* @__PURE__ */ jsx64(CommandGroupFrame, { ref, asChild: true, children: /* @__PURE__ */ jsx64(CommandPrimitive.Group, { heading, ...props }) }));
+var CommandGroup = React55.forwardRef(({ heading, ...props }, ref) => /* @__PURE__ */ jsx65(CommandGroupFrame, { ref, asChild: true, children: /* @__PURE__ */ jsx65(CommandPrimitive.Group, { heading, ...props }) }));
 CommandGroup.displayName = CommandPrimitive.Group.displayName;
-var CommandSeparatorFrame = styled57(YStack42, {
+var CommandSeparatorFrame = styled58(YStack41, {
   height: "$px",
   backgroundColor: "$borderColor",
   margin: "-$1"
 });
 var CommandSeparator = React55.forwardRef(
-  ({ ...props }, ref) => /* @__PURE__ */ jsx64(CommandSeparatorFrame, { ref, asChild: true, children: /* @__PURE__ */ jsx64(CommandPrimitive.Separator, { ...props }) })
+  ({ ...props }, ref) => /* @__PURE__ */ jsx65(CommandSeparatorFrame, { ref, asChild: true, children: /* @__PURE__ */ jsx65(CommandPrimitive.Separator, { ...props }) })
 );
 CommandSeparator.displayName = CommandPrimitive.Separator.displayName;
-var CommandItemFrame = styled57(XStack38, {
+var CommandItemFrame = styled58(XStack37, {
   name: "CommandItem",
   alignItems: "center",
   paddingVertical: "$2",
@@ -8304,10 +8326,10 @@ var CommandItemFrame = styled57(XStack38, {
   }
 });
 var CommandItem = React55.forwardRef(
-  ({ ...props }, ref) => /* @__PURE__ */ jsx64(CommandItemFrame, { ref, asChild: true, children: /* @__PURE__ */ jsx64(CommandPrimitive.Item, { ...props }) })
+  ({ ...props }, ref) => /* @__PURE__ */ jsx65(CommandItemFrame, { ref, asChild: true, children: /* @__PURE__ */ jsx65(CommandPrimitive.Item, { ...props }) })
 );
 CommandItem.displayName = CommandPrimitive.Item.displayName;
-var CommandShortcut = styled57(Text28, {
+var CommandShortcut = styled58(Text28, {
   marginLeft: "auto",
   fontSize: "$2",
   color: "$color11"
@@ -8315,10 +8337,20 @@ var CommandShortcut = styled57(Text28, {
 
 // src/organisms/Sidebar/Sidebar.tsx
 import { useState as useState15 } from "react";
-import { ScrollView as ScrollView4, Separator as Separator7, Text as Text29, YStack as YStack43, styled as styled58 } from "tamagui";
-import { ChevronLeft as ChevronLeft4, ChevronRight as ChevronRight7, Menu as Menu2, AlertCircle as AlertCircle2, Inbox as Inbox2 } from "@tamagui/lucide-icons";
-import { Fragment as Fragment8, jsx as jsx65, jsxs as jsxs51 } from "react/jsx-runtime";
-var SidebarContainer = styled58(YStack43, {
+import { ScrollView as ScrollViewOriginal, Separator as Separator7, Text as TextOriginal, YStack as YStackOriginal, styled as styled59 } from "tamagui";
+import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MenuSquare as MenuSquareIcon, AlertCircle as AlertCircleIcon, Inbox as InboxIcon } from "@tamagui/lucide-icons";
+import { Fragment as Fragment9, jsx as jsx66, jsxs as jsxs51 } from "react/jsx-runtime";
+var Button6 = Button;
+var YStack42 = YStackOriginal;
+var ScrollView4 = ScrollViewOriginal;
+var Text29 = TextOriginal;
+var Skeleton3 = Skeleton;
+var ChevronLeft4 = ChevronLeftIcon;
+var ChevronRight7 = ChevronRightIcon;
+var MenuSquare = MenuSquareIcon;
+var AlertCircle2 = AlertCircleIcon;
+var Inbox2 = InboxIcon;
+var SidebarContainer = styled59(YStack42, {
   name: "SidebarContainer",
   tag: "aside",
   borderRightWidth: 1,
@@ -8346,33 +8378,33 @@ var SidebarContainer = styled58(YStack43, {
     }
   }
 });
-var SidebarHeader = styled58(YStack43, {
+var SidebarHeader = styled59(YStack42, {
   name: "SidebarHeader"
 });
-var SidebarContent = styled58(YStack43, {
+var SidebarContent = styled59(YStack42, {
   name: "SidebarContent",
   f: 1
 });
-var SidebarFooter = styled58(YStack43, {
+var SidebarFooter = styled59(YStack42, {
   name: "SidebarFooter"
 });
-var SidebarSkeleton = () => /* @__PURE__ */ jsxs51(YStack43, { gap: "$4", padding: "$4", width: "100%", children: [
-  /* @__PURE__ */ jsx65(Skeleton, { height: 40 }),
-  /* @__PURE__ */ jsxs51(YStack43, { gap: "$3", children: [
-    /* @__PURE__ */ jsx65(Skeleton, { height: 32 }),
-    /* @__PURE__ */ jsx65(Skeleton, { height: 32 }),
-    /* @__PURE__ */ jsx65(Skeleton, { height: 32 })
+var SidebarSkeleton = () => /* @__PURE__ */ jsxs51(YStack42, { gap: "$4", padding: "$4", width: "100%", children: [
+  /* @__PURE__ */ jsx66(Skeleton3, { height: "$10" }),
+  /* @__PURE__ */ jsxs51(YStack42, { gap: "$3", children: [
+    /* @__PURE__ */ jsx66(Skeleton3, { height: "$8" }),
+    /* @__PURE__ */ jsx66(Skeleton3, { height: "$8" }),
+    /* @__PURE__ */ jsx66(Skeleton3, { height: "$8" })
   ] }),
-  /* @__PURE__ */ jsx65(YStack43, { flex: 1 }),
-  /* @__PURE__ */ jsx65(Skeleton, { height: 40 })
+  /* @__PURE__ */ jsx66(YStack42, { flex: 1 }),
+  /* @__PURE__ */ jsx66(Skeleton3, { height: "$10" })
 ] });
-var EmptyState = ({ message }) => /* @__PURE__ */ jsxs51(YStack43, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", children: [
-  /* @__PURE__ */ jsx65(Inbox2, { size: "$2", color: "$gray10" }),
-  /* @__PURE__ */ jsx65(Text29, { color: "$gray11", fontSize: "$3", children: message })
+var EmptyState = ({ message }) => /* @__PURE__ */ jsxs51(YStack42, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", children: [
+  /* @__PURE__ */ jsx66(Inbox2, { size: "$2", color: "$gray10" }),
+  /* @__PURE__ */ jsx66(Text29, { color: "$gray11", fontSize: "$3", children: message })
 ] });
-var ErrorState = ({ message }) => /* @__PURE__ */ jsxs51(YStack43, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", children: [
-  /* @__PURE__ */ jsx65(AlertCircle2, { size: "$2", color: "$red10" }),
-  /* @__PURE__ */ jsx65(Text29, { color: "$red10", fontSize: "$3", textAlign: "center", children: message })
+var ErrorState = ({ message }) => /* @__PURE__ */ jsxs51(YStack42, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", children: [
+  /* @__PURE__ */ jsx66(AlertCircle2, { size: "$2", color: "$red10" }),
+  /* @__PURE__ */ jsx66(Text29, { color: "$red10", fontSize: "$3", textAlign: "center", children: message })
 ] });
 var DesktopSidebar = ({
   header,
@@ -8398,7 +8430,7 @@ var DesktopSidebar = ({
   };
   const isCollapsible = variant === "collapsible";
   if (isLoading) {
-    return /* @__PURE__ */ jsx65(SidebarContainer, { collapsed: isCollapsible && isCollapsed, children: /* @__PURE__ */ jsx65(SidebarSkeleton, {}) });
+    return /* @__PURE__ */ jsx66(SidebarContainer, { collapsed: isCollapsible && isCollapsed, children: /* @__PURE__ */ jsx66(SidebarSkeleton, {}) });
   }
   return /* @__PURE__ */ jsxs51(
     SidebarContainer,
@@ -8411,24 +8443,24 @@ var DesktopSidebar = ({
         zIndex: 10
       },
       children: [
-        header && /* @__PURE__ */ jsx65(SidebarHeader, { children: header }),
-        /* @__PURE__ */ jsx65(Separator7, {}),
-        /* @__PURE__ */ jsx65(SidebarContent, { children: error ? /* @__PURE__ */ jsx65(ErrorState, { message: error }) : isEmpty ? /* @__PURE__ */ jsx65(EmptyState, { message: emptyMessage }) : /* @__PURE__ */ jsx65(ScrollView4, { children: /* @__PURE__ */ jsx65(YStack43, { gap: "$2", children }) }) }),
-        footer && /* @__PURE__ */ jsxs51(Fragment8, { children: [
-          /* @__PURE__ */ jsx65(Separator7, {}),
-          /* @__PURE__ */ jsx65(SidebarFooter, { children: footer })
+        header && /* @__PURE__ */ jsx66(SidebarHeader, { children: header }),
+        /* @__PURE__ */ jsx66(Separator7, {}),
+        /* @__PURE__ */ jsx66(SidebarContent, { children: error ? /* @__PURE__ */ jsx66(ErrorState, { message: error }) : isEmpty ? /* @__PURE__ */ jsx66(EmptyState, { message: emptyMessage }) : /* @__PURE__ */ jsx66(ScrollView4, { children: /* @__PURE__ */ jsx66(YStack42, { gap: "$2", children }) }) }),
+        footer && /* @__PURE__ */ jsxs51(Fragment9, { children: [
+          /* @__PURE__ */ jsx66(Separator7, {}),
+          /* @__PURE__ */ jsx66(SidebarFooter, { children: footer })
         ] }),
-        isCollapsible && /* @__PURE__ */ jsx65(
-          Button,
+        isCollapsible && /* @__PURE__ */ jsx66(
+          Button6,
           {
-            icon: isCollapsed ? ChevronRight7 : ChevronLeft4,
             onPress: toggleSidebar,
             circular: true,
-            size: "$3",
+            size: "sm",
             position: "absolute",
             top: 20,
             right: -15,
-            zIndex: 20
+            zIndex: 20,
+            children: isCollapsed ? /* @__PURE__ */ jsx66(ChevronRight7, { size: "$1.5" }) : /* @__PURE__ */ jsx66(ChevronLeft4, { size: "$1.5" })
           }
         )
       ]
@@ -8439,38 +8471,38 @@ var MobileSidebar = ({ children, header, footer, isLoading, isEmpty, emptyMessag
   const [open, setOpen] = useState15(false);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx65(SidebarSkeleton, {});
+      return /* @__PURE__ */ jsx66(SidebarSkeleton, {});
     }
     if (error) {
-      return /* @__PURE__ */ jsx65(ErrorState, { message: error });
+      return /* @__PURE__ */ jsx66(ErrorState, { message: error });
     }
     if (isEmpty) {
-      return /* @__PURE__ */ jsx65(EmptyState, { message: emptyMessage });
+      return /* @__PURE__ */ jsx66(EmptyState, { message: emptyMessage });
     }
-    return /* @__PURE__ */ jsxs51(Fragment8, { children: [
-      header && /* @__PURE__ */ jsx65(SidebarHeader, { children: header }),
-      /* @__PURE__ */ jsx65(ScrollView4, { children: /* @__PURE__ */ jsx65(YStack43, { gap: "$2", children }) }),
-      /* @__PURE__ */ jsx65(YStack43, { flex: 1 }),
-      footer && /* @__PURE__ */ jsx65(SidebarFooter, { children: footer })
+    return /* @__PURE__ */ jsxs51(Fragment9, { children: [
+      header && /* @__PURE__ */ jsx66(SidebarHeader, { children: header }),
+      /* @__PURE__ */ jsx66(ScrollView4, { children: /* @__PURE__ */ jsx66(YStack42, { gap: "$2", children }) }),
+      /* @__PURE__ */ jsx66(YStack42, { flex: 1 }),
+      footer && /* @__PURE__ */ jsx66(SidebarFooter, { children: footer })
     ] });
   };
-  return /* @__PURE__ */ jsxs51(Sheet, { open, onOpenChange: setOpen, children: [
-    /* @__PURE__ */ jsx65(Sheet.Trigger, { asChild: true, children: /* @__PURE__ */ jsx65(Button, { icon: Menu2, circular: true }) }),
-    /* @__PURE__ */ jsx65(Sheet.Content, { position: "left", size: "$xl", children: /* @__PURE__ */ jsxs51(YStack43, { gap: "$4", paddingTop: "$6", paddingHorizontal: "$4", flex: 1, children: [
+  return /* @__PURE__ */ jsxs51(Sheet, { open, onOpenChange: setOpen, modal: true, snapPoints: [90], children: [
+    /* @__PURE__ */ jsx66(Sheet.Trigger, { asChild: true, children: /* @__PURE__ */ jsx66(Button6, { circular: true, children: /* @__PURE__ */ jsx66(MenuSquare, { size: "$1.5" }) }) }),
+    /* @__PURE__ */ jsx66(Sheet.Content, { alignItems: "flex-start", justifyContent: "flex-start", children: /* @__PURE__ */ jsxs51(YStack42, { gap: "$4", paddingTop: "$6", paddingHorizontal: "$4", flex: 1, height: "100%", width: 300, backgroundColor: "$background", children: [
       renderContent(),
-      /* @__PURE__ */ jsx65(Button, { onPress: () => setOpen(false), chromeless: true, children: "Fechar" })
+      /* @__PURE__ */ jsx66(Button6, { onPress: () => setOpen(false), chromeless: true, children: "Fechar" })
     ] }) })
   ] });
 };
 var Sidebar = (props) => {
-  return /* @__PURE__ */ jsxs51(Fragment8, { children: [
-    /* @__PURE__ */ jsx65(YStack43, { display: "none", $sm: { display: "flex" }, children: /* @__PURE__ */ jsx65(MobileSidebar, { ...props }) }),
-    /* @__PURE__ */ jsx65(YStack43, { display: "flex", $sm: { display: "none" }, children: /* @__PURE__ */ jsx65(DesktopSidebar, { ...props }) })
+  return /* @__PURE__ */ jsxs51(Fragment9, { children: [
+    /* @__PURE__ */ jsx66(YStack42, { display: "none", $sm: { display: "flex" }, children: /* @__PURE__ */ jsx66(MobileSidebar, { ...props }) }),
+    /* @__PURE__ */ jsx66(YStack42, { display: "flex", $sm: { display: "none" }, children: /* @__PURE__ */ jsx66(DesktopSidebar, { ...props }) })
   ] });
 };
 
 // src/organisms/BarChart/BarChart.tsx
-import { YStack as YStack44, Text as Text30, useTheme } from "tamagui";
+import { YStack as YStack43, Text as Text30, useTheme } from "tamagui";
 import {
   BarChart as RechartsBarChart,
   Bar,
@@ -8481,7 +8513,8 @@ import {
   ResponsiveContainer
 } from "recharts";
 import { AlertTriangle as AlertTriangle4, BarChart3 } from "@tamagui/lucide-icons";
-import { jsx as jsx66, jsxs as jsxs52 } from "react/jsx-runtime";
+import React57 from "react";
+import { jsx as jsx67, jsxs as jsxs52 } from "react/jsx-runtime";
 var BarChart = ({
   data,
   xKey,
@@ -8498,66 +8531,55 @@ var BarChart = ({
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
+  const chartData = React57.useMemo(() => data ? [...data] : [], [data]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx66(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx67(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs52(YStack44, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx66(AlertTriangle4, { color: "$red10" }),
-        /* @__PURE__ */ jsx66(Text30, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs52(YStack43, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx67(AlertTriangle4, { color: "$red10" }),
+        /* @__PURE__ */ jsx67(Text30, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
-    if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs52(YStack44, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx66(BarChart3, { color: "$gray10" }),
-        /* @__PURE__ */ jsx66(Text30, { children: "N\xE3o h\xE1 dados para exibir." })
+    if (!chartData || chartData.length === 0) {
+      return /* @__PURE__ */ jsxs52(YStack43, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, backgroundColor: "$background", children: [
+        /* @__PURE__ */ jsx67(BarChart3, { color: "$gray8", size: 32 }),
+        /* @__PURE__ */ jsx67(Text30, { color: "$gray10", children: "Nenhum dado dispon\xEDvel" })
       ] });
     }
-    return /* @__PURE__ */ jsx66(YStack44, { height, width: "100%", children: /* @__PURE__ */ jsx66(ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs52(
-      RechartsBarChart,
-      {
-        data,
-        margin: {
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5
-        },
-        children: [
-          /* @__PURE__ */ jsx66(CartesianGrid, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
-          /* @__PURE__ */ jsx66(
-            XAxis,
-            {
-              dataKey: xKey,
-              stroke: axisColor,
-              tick: { fill: textColor, fontSize: 12 },
-              tickLine: false,
-              axisLine: { stroke: axisColor }
-            }
-          ),
-          /* @__PURE__ */ jsx66(
-            YAxis,
-            {
-              stroke: axisColor,
-              tick: { fill: textColor, fontSize: 12 },
-              tickLine: false,
-              axisLine: false
-            }
-          ),
-          /* @__PURE__ */ jsx66(
-            Tooltip2,
-            {
-              cursor: { fill: "transparent" },
-              contentStyle: { borderRadius: "8px", border: `1px solid ${gridColor}` }
-            }
-          ),
-          /* @__PURE__ */ jsx66(Bar, { dataKey: yKey, fill: barColor, radius: [4, 4, 0, 0] })
-        ]
-      }
-    ) }) });
+    return /* @__PURE__ */ jsx67(YStack43, { width: "100%", height, children: /* @__PURE__ */ jsx67(ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs52(RechartsBarChart, { data: chartData, margin: { top: 20, right: 30, left: 20, bottom: 5 }, children: [
+      /* @__PURE__ */ jsx67(CartesianGrid, { strokeDasharray: "3 3", vertical: false, stroke: gridColor }),
+      /* @__PURE__ */ jsx67(
+        XAxis,
+        {
+          dataKey: xKey,
+          stroke: axisColor,
+          tick: { fill: textColor, fontSize: 12 },
+          tickLine: false,
+          axisLine: { stroke: axisColor }
+        }
+      ),
+      /* @__PURE__ */ jsx67(
+        YAxis,
+        {
+          stroke: axisColor,
+          tick: { fill: textColor, fontSize: 12 },
+          tickLine: false,
+          axisLine: false
+        }
+      ),
+      /* @__PURE__ */ jsx67(
+        Tooltip2,
+        {
+          cursor: { fill: "transparent" },
+          contentStyle: { borderRadius: "8px", border: `1px solid ${gridColor}` }
+        }
+      ),
+      /* @__PURE__ */ jsx67(Bar, { dataKey: yKey, fill: barColor, radius: [4, 4, 0, 0] })
+    ] }) }) });
   };
-  return /* @__PURE__ */ jsxs52(YStack44, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs52(YStack43, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
@@ -8566,7 +8588,8 @@ var ColumnChart = BarChart;
 var Charts = BarChart;
 
 // src/organisms/LineChart/LineChart.tsx
-import { YStack as YStack45, styled as styled59, Text as Text31, useTheme as useTheme2, XStack as XStack39 } from "tamagui";
+import React58 from "react";
+import { YStack as YStack44, styled as styled60, Text as Text31, useTheme as useTheme2, XStack as XStack38 } from "tamagui";
 import {
   LineChart as RechartsLineChart,
   Line,
@@ -8577,8 +8600,8 @@ import {
   ResponsiveContainer as ResponsiveContainer2
 } from "recharts";
 import { AlertCircle as AlertCircle3, Inbox as Inbox3 } from "@tamagui/lucide-icons";
-import { jsx as jsx67, jsxs as jsxs53 } from "react/jsx-runtime";
-var LineChartContainer = styled59(YStack45, {
+import { jsx as jsx68, jsxs as jsxs53 } from "react/jsx-runtime";
+var LineChartContainer = styled60(YStack44, {
   name: "LineChart",
   padding: "$4",
   borderRadius: "$4",
@@ -8587,18 +8610,18 @@ var LineChartContainer = styled59(YStack45, {
   width: "100%",
   tag: "section"
 });
-var Header = styled59(XStack39, {
+var Header = styled60(XStack38, {
   justifyContent: "space-between",
   alignItems: "center",
   gap: "$2"
 });
-var ChartContainer = styled59(YStack45, {
+var ChartContainer = styled60(YStack44, {
   flex: 1,
   minHeight: 300,
   justifyContent: "center",
   alignItems: "center"
 });
-var StateContainer2 = styled59(YStack45, {
+var StateContainer2 = styled60(YStack44, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -8622,70 +8645,73 @@ var LineChart = ({
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
+  const chartData = React58.useMemo(() => data ? [...data] : [], [data]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx67(Skeleton, { width: "100%", height: 300 });
+      return /* @__PURE__ */ jsx68(Skeleton, { width: "100%", height: 300 });
     }
     if (error) {
       return /* @__PURE__ */ jsxs53(StateContainer2, { children: [
-        /* @__PURE__ */ jsx67(AlertCircle3, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ jsx67(Text31, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ jsx67(Text31, { fontSize: "$2", color: "$color11", children: error })
+        /* @__PURE__ */ jsx68(AlertCircle3, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ jsx68(Text31, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ jsx68(Text31, { fontSize: "$2", color: "$color11", children: error })
       ] });
     }
-    if (!data || data.length === 0) {
+    if (!chartData || chartData.length === 0) {
       return /* @__PURE__ */ jsxs53(StateContainer2, { children: [
-        /* @__PURE__ */ jsx67(Inbox3, { size: "$2" }),
-        /* @__PURE__ */ jsx67(Text31, { children: "Sem dados para exibir" }),
-        /* @__PURE__ */ jsx67(Text31, { fontSize: "$2", color: "$color11", children: "N\xE3o h\xE1 informa\xE7\xF5es dispon\xEDveis no momento." })
+        /* @__PURE__ */ jsx68(Inbox3, { size: "$2" }),
+        /* @__PURE__ */ jsx68(Text31, { children: "Sem dados para exibir" })
       ] });
     }
-    return /* @__PURE__ */ jsx67(YStack45, { width: "100%", height: 300, children: /* @__PURE__ */ jsx67(ResponsiveContainer2, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs53(
+    return /* @__PURE__ */ jsx68(ChartContainer, { children: /* @__PURE__ */ jsx68(ResponsiveContainer2, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs53(
       RechartsLineChart,
       {
-        data,
-        margin: { top: 20, right: 30, left: 20, bottom: 5 },
+        data: chartData,
+        margin: {
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5
+        },
         children: [
-          /* @__PURE__ */ jsx67(CartesianGrid2, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
-          /* @__PURE__ */ jsx67(
+          /* @__PURE__ */ jsx68(CartesianGrid2, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
+          /* @__PURE__ */ jsx68(
             XAxis2,
             {
               dataKey: xKey,
               stroke: axisColor,
-              tick: { fill: textColor, fontSize: 12 },
-              tickLine: false,
-              axisLine: { stroke: axisColor }
-            }
-          ),
-          /* @__PURE__ */ jsx67(
-            YAxis2,
-            {
-              stroke: axisColor,
-              tick: { fill: textColor, fontSize: 12 },
+              tick: { fill: textColor },
               tickLine: false,
               axisLine: false
             }
           ),
-          /* @__PURE__ */ jsx67(
+          /* @__PURE__ */ jsx68(
+            YAxis2,
+            {
+              stroke: axisColor,
+              tick: { fill: textColor },
+              tickLine: false,
+              axisLine: false
+            }
+          ),
+          /* @__PURE__ */ jsx68(
             Tooltip3,
             {
               contentStyle: {
-                borderRadius: "8px",
-                border: `1px solid ${gridColor}`,
-                backgroundColor: theme.background?.get() || "white"
-              },
-              cursor: { stroke: gridColor }
+                backgroundColor: theme.background?.get() || "#fff",
+                borderColor: gridColor,
+                borderRadius: 8
+              }
             }
           ),
-          /* @__PURE__ */ jsx67(
+          /* @__PURE__ */ jsx68(
             Line,
             {
               type: "monotone",
               dataKey: yKey,
               stroke: lineColor,
-              strokeWidth: 2,
-              dot: { r: 4, fill: lineColor, strokeWidth: 2, stroke: theme.background?.get() || "white" },
-              activeDot: { r: 6, strokeWidth: 0 }
+              activeDot: { r: 8 },
+              strokeWidth: 2
             }
           )
         ]
@@ -8694,21 +8720,22 @@ var LineChart = ({
   };
   return /* @__PURE__ */ jsxs53(LineChartContainer, { children: [
     /* @__PURE__ */ jsxs53(Header, { children: [
-      title && /* @__PURE__ */ jsx67(Text31, { fontSize: "$5", children: title }),
+      title && /* @__PURE__ */ jsx68(Text31, { fontSize: "$5", children: title }),
       headerActions
     ] }),
-    /* @__PURE__ */ jsx67(ChartContainer, { children: renderContent() }),
+    /* @__PURE__ */ jsx68(ChartContainer, { children: renderContent() }),
     footerContent
   ] });
 };
 var TimeSeriesChart = LineChart;
 
 // src/organisms/PieChart/PieChart.tsx
-import { YStack as YStack46, styled as styled60, Text as Text32, useTheme as useTheme3 } from "tamagui";
+import React59 from "react";
+import { YStack as YStack45, styled as styled61, Text as Text32, useTheme as useTheme3 } from "tamagui";
 import { PieChart as RechartsPieChart, Pie, Cell, Tooltip as Tooltip4, ResponsiveContainer as ResponsiveContainer3 } from "recharts";
 import { AlertCircle as AlertCircle4, Inbox as Inbox4 } from "@tamagui/lucide-icons";
-import { jsx as jsx68, jsxs as jsxs54 } from "react/jsx-runtime";
-var PieChartContainer = styled60(YStack46, {
+import { jsx as jsx69, jsxs as jsxs54 } from "react/jsx-runtime";
+var PieChartContainer = styled61(YStack45, {
   name: "PieChart",
   padding: "$4",
   borderRadius: "$4",
@@ -8718,13 +8745,13 @@ var PieChartContainer = styled60(YStack46, {
   alignItems: "center",
   tag: "section"
 });
-var ChartWrapper = styled60(YStack46, {
+var ChartWrapper = styled61(YStack45, {
   alignItems: "center",
   justifyContent: "center",
   width: "100%",
   minHeight: 300
 });
-var StateContainer3 = styled60(YStack46, {
+var StateContainer3 = styled61(YStack45, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -8754,28 +8781,29 @@ var PieChart = ({
   ];
   const innerRadius = variant === "donut" ? "60%" : "0%";
   const outerRadius = "80%";
+  const chartData = React59.useMemo(() => data ? [...data] : [], [data]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx68(Skeleton, { width: height, height, circle: true });
+      return /* @__PURE__ */ jsx69(Skeleton, { width: "100%", height });
     }
     if (error) {
       return /* @__PURE__ */ jsxs54(StateContainer3, { children: [
-        /* @__PURE__ */ jsx68(AlertCircle4, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ jsx68(Text32, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ jsx68(Text32, { fontSize: "$2", color: "$color11", children: error })
+        /* @__PURE__ */ jsx69(AlertCircle4, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ jsx69(Text32, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ jsx69(Text32, { fontSize: "$2", color: "$color11", children: error })
       ] });
     }
-    if (!data || data.length === 0) {
+    if (!chartData || chartData.length === 0) {
       return /* @__PURE__ */ jsxs54(StateContainer3, { children: [
-        /* @__PURE__ */ jsx68(Inbox4, { size: "$2" }),
-        /* @__PURE__ */ jsx68(Text32, { children: "Sem dados para exibir" })
+        /* @__PURE__ */ jsx69(Inbox4, { size: "$2" }),
+        /* @__PURE__ */ jsx69(Text32, { children: "Sem dados para exibir" })
       ] });
     }
-    return /* @__PURE__ */ jsx68(YStack46, { width: "100%", height, children: /* @__PURE__ */ jsx68(ResponsiveContainer3, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs54(RechartsPieChart, { children: [
-      /* @__PURE__ */ jsx68(
+    return /* @__PURE__ */ jsx69(YStack45, { width: "100%", height, children: /* @__PURE__ */ jsx69(ResponsiveContainer3, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs54(RechartsPieChart, { children: [
+      /* @__PURE__ */ jsx69(
         Pie,
         {
-          data,
+          data: chartData,
           dataKey: yKey,
           nameKey: xKey,
           cx: "50%",
@@ -8783,10 +8811,10 @@ var PieChart = ({
           innerRadius,
           outerRadius,
           paddingAngle: 2,
-          children: data.map((_, index) => /* @__PURE__ */ jsx68(Cell, { fill: colorScale[index % colorScale.length] }, `cell-${index}`))
+          children: chartData.map((_, index) => /* @__PURE__ */ jsx69(Cell, { fill: colorScale[index % colorScale.length] }, `cell-${index}`))
         }
       ),
-      /* @__PURE__ */ jsx68(
+      /* @__PURE__ */ jsx69(
         Tooltip4,
         {
           contentStyle: {
@@ -8800,15 +8828,16 @@ var PieChart = ({
     ] }) }) });
   };
   return /* @__PURE__ */ jsxs54(PieChartContainer, { children: [
-    title && /* @__PURE__ */ jsx68(Text32, { fontSize: "$5", fontWeight: "bold", children: title }),
-    /* @__PURE__ */ jsx68(ChartWrapper, { children: renderContent() }),
+    title && /* @__PURE__ */ jsx69(Text32, { fontSize: "$5", fontWeight: "bold", children: title }),
+    /* @__PURE__ */ jsx69(ChartWrapper, { children: renderContent() }),
     footerContent
   ] });
 };
-var DonutChart = (props) => /* @__PURE__ */ jsx68(PieChart, { ...props, variant: "donut" });
+var DonutChart = (props) => /* @__PURE__ */ jsx69(PieChart, { ...props, variant: "donut" });
 
 // src/organisms/AreaChart/AreaChart.tsx
-import { YStack as YStack47, styled as styled61, Text as Text33, useTheme as useTheme4 } from "tamagui";
+import React60 from "react";
+import { YStack as YStack46, styled as styled62, Text as Text33, useTheme as useTheme4 } from "tamagui";
 import {
   AreaChart as RechartsAreaChart,
   Area,
@@ -8819,8 +8848,8 @@ import {
   ResponsiveContainer as ResponsiveContainer4
 } from "recharts";
 import { AlertCircle as AlertCircle5, Inbox as Inbox5 } from "@tamagui/lucide-icons";
-import { jsx as jsx69, jsxs as jsxs55 } from "react/jsx-runtime";
-var AreaChartContainer = styled61(YStack47, {
+import { jsx as jsx70, jsxs as jsxs55 } from "react/jsx-runtime";
+var AreaChartContainer = styled62(YStack46, {
   name: "AreaChart",
   padding: "$4",
   borderRadius: "$4",
@@ -8829,13 +8858,13 @@ var AreaChartContainer = styled61(YStack47, {
   width: "100%",
   tag: "section"
 });
-var ChartWrapper2 = styled61(YStack47, {
+var ChartWrapper2 = styled62(YStack46, {
   flex: 1,
   minHeight: 300,
   justifyContent: "center",
   alignItems: "center"
 });
-var StateContainer4 = styled61(YStack47, {
+var StateContainer4 = styled62(YStack46, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -8864,31 +8893,16 @@ var AreaChart = ({
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
-  const renderContent = () => {
-    if (isLoading) {
-      return /* @__PURE__ */ jsx69(Skeleton, { width: "100%", height });
-    }
-    if (error) {
-      return /* @__PURE__ */ jsxs55(StateContainer4, { children: [
-        /* @__PURE__ */ jsx69(AlertCircle5, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ jsx69(Text33, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ jsx69(Text33, { fontSize: "$2", color: "$color11", children: error })
-      ] });
-    }
+  const { chartData, seriesKeys } = React60.useMemo(() => {
+    let processedChartData = [];
+    const processedSeriesKeys = [];
+    if (!data) return { chartData: [], seriesKeys: [] };
     const isMultiSeries = Array.isArray(data) && Array.isArray(data[0]);
-    if (!data || isMultiSeries && data.length === 0 || !isMultiSeries && data.length === 0) {
-      return /* @__PURE__ */ jsxs55(StateContainer4, { children: [
-        /* @__PURE__ */ jsx69(Inbox5, { size: "$2" }),
-        /* @__PURE__ */ jsx69(Text33, { children: "Sem dados para exibir" })
-      ] });
-    }
-    let chartData = [];
-    const seriesKeys = [];
     if (isMultiSeries) {
       const seriesData = data;
       if (seriesData.length > 0) {
-        seriesData.forEach((_, sIndex) => seriesKeys.push(`series_${sIndex}`));
-        chartData = seriesData[0].map((item, index) => {
+        seriesData.forEach((_, sIndex) => processedSeriesKeys.push(`series_${sIndex}`));
+        processedChartData = seriesData[0].map((item, index) => {
           const mergedItem = { [xKey]: item[xKey] };
           seriesData.forEach((series, sIndex) => {
             const key = `series_${sIndex}`;
@@ -8898,17 +8912,36 @@ var AreaChart = ({
         });
       }
     } else {
-      chartData = data;
-      seriesKeys.push(yKey);
+      processedChartData = [...data];
+      processedSeriesKeys.push(yKey);
     }
-    return /* @__PURE__ */ jsx69(YStack47, { width: "100%", height, children: /* @__PURE__ */ jsx69(ResponsiveContainer4, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs55(
+    return { chartData: processedChartData, seriesKeys: processedSeriesKeys };
+  }, [data, xKey, yKey]);
+  const renderContent = () => {
+    if (isLoading) {
+      return /* @__PURE__ */ jsx70(Skeleton, { width: "100%", height });
+    }
+    if (error) {
+      return /* @__PURE__ */ jsxs55(StateContainer4, { children: [
+        /* @__PURE__ */ jsx70(AlertCircle5, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ jsx70(Text33, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ jsx70(Text33, { fontSize: "$2", color: "$color11", children: error })
+      ] });
+    }
+    if (!chartData || chartData.length === 0) {
+      return /* @__PURE__ */ jsxs55(StateContainer4, { children: [
+        /* @__PURE__ */ jsx70(Inbox5, { size: "$2" }),
+        /* @__PURE__ */ jsx70(Text33, { children: "Sem dados para exibir" })
+      ] });
+    }
+    return /* @__PURE__ */ jsx70(YStack46, { width: "100%", height, children: /* @__PURE__ */ jsx70(ResponsiveContainer4, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxs55(
       RechartsAreaChart,
       {
         data: chartData,
         margin: { top: 20, right: 30, left: 20, bottom: 5 },
         children: [
-          /* @__PURE__ */ jsx69(CartesianGrid3, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
-          /* @__PURE__ */ jsx69(
+          /* @__PURE__ */ jsx70(CartesianGrid3, { strokeDasharray: "3 3", stroke: gridColor, vertical: false }),
+          /* @__PURE__ */ jsx70(
             XAxis3,
             {
               dataKey: xKey,
@@ -8918,7 +8951,7 @@ var AreaChart = ({
               axisLine: { stroke: axisColor }
             }
           ),
-          /* @__PURE__ */ jsx69(
+          /* @__PURE__ */ jsx70(
             YAxis3,
             {
               stroke: axisColor,
@@ -8927,7 +8960,7 @@ var AreaChart = ({
               axisLine: false
             }
           ),
-          /* @__PURE__ */ jsx69(
+          /* @__PURE__ */ jsx70(
             Tooltip5,
             {
               contentStyle: {
@@ -8937,7 +8970,7 @@ var AreaChart = ({
               }
             }
           ),
-          isMultiSeries ? seriesKeys.map((key, index) => /* @__PURE__ */ jsx69(
+          seriesKeys.map((key, index) => /* @__PURE__ */ jsx70(
             Area,
             {
               type: "monotone",
@@ -8948,29 +8981,21 @@ var AreaChart = ({
               fillOpacity: 0.6
             },
             key
-          )) : /* @__PURE__ */ jsx69(
-            Area,
-            {
-              type: "monotone",
-              dataKey: yKey,
-              stroke: colorScale[0],
-              fill: colorScale[0],
-              fillOpacity: 0.6
-            }
-          )
+          ))
         ]
       }
     ) }) });
   };
   return /* @__PURE__ */ jsxs55(AreaChartContainer, { children: [
-    title && /* @__PURE__ */ jsx69(Text33, { fontSize: "$5", fontWeight: "bold", children: title }),
-    /* @__PURE__ */ jsx69(ChartWrapper2, { children: renderContent() }),
+    title && /* @__PURE__ */ jsx70(Text33, { fontSize: "$5", fontWeight: "bold", children: title }),
+    /* @__PURE__ */ jsx70(ChartWrapper2, { children: renderContent() }),
     footerContent
   ] });
 };
 
 // src/organisms/ScatterChart/ScatterChart.tsx
-import { YStack as YStack48, styled as styled62, Text as Text34, useTheme as useTheme5 } from "tamagui";
+import React61 from "react";
+import { YStack as YStack47, styled as styled63, Text as Text34, useTheme as useTheme5 } from "tamagui";
 import {
   VictoryChart,
   VictoryScatter,
@@ -8979,8 +9004,8 @@ import {
   VictoryTooltip
 } from "victory";
 import { AlertCircle as AlertCircle6, Inbox as Inbox6 } from "@tamagui/lucide-icons";
-import { jsx as jsx70, jsxs as jsxs56 } from "react/jsx-runtime";
-var ScatterChartContainer = styled62(YStack48, {
+import { jsx as jsx71, jsxs as jsxs56 } from "react/jsx-runtime";
+var ScatterChartContainer = styled63(YStack47, {
   name: "ScatterChart",
   padding: "$4",
   borderRadius: "$4",
@@ -8989,13 +9014,13 @@ var ScatterChartContainer = styled62(YStack48, {
   width: "100%",
   tag: "section"
 });
-var ChartWrapper3 = styled62(YStack48, {
+var ChartWrapper3 = styled63(YStack47, {
   flex: 1,
   minHeight: 300,
   justifyContent: "center",
   alignItems: "center"
 });
-var StateContainer5 = styled62(YStack48, {
+var StateContainer5 = styled63(YStack47, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -9020,21 +9045,22 @@ var ScatterChart = ({
   const axisColor = theme.borderColor?.get() || "#ccc";
   const textColor = theme.color?.get() || "#000";
   const gridColor = theme.borderColor?.get() || "#eee";
+  const chartData = React61.useMemo(() => data ? [...data] : [], [data]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx70(Skeleton, { width: "100%", height });
+      return /* @__PURE__ */ jsx71(Skeleton, { width: "100%", height });
     }
     if (error) {
       return /* @__PURE__ */ jsxs56(StateContainer5, { children: [
-        /* @__PURE__ */ jsx70(AlertCircle6, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ jsx70(Text34, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ jsx70(Text34, { fontSize: "$2", color: "$color11", children: error })
+        /* @__PURE__ */ jsx71(AlertCircle6, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ jsx71(Text34, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ jsx71(Text34, { fontSize: "$2", color: "$color11", children: error })
       ] });
     }
-    if (!data || data.length === 0) {
+    if (!chartData || chartData.length === 0) {
       return /* @__PURE__ */ jsxs56(StateContainer5, { children: [
-        /* @__PURE__ */ jsx70(Inbox6, { size: "$2" }),
-        /* @__PURE__ */ jsx70(Text34, { children: "Sem dados para exibir" })
+        /* @__PURE__ */ jsx71(Inbox6, { size: "$2" }),
+        /* @__PURE__ */ jsx71(Text34, { children: "Sem dados para exibir" })
       ] });
     }
     return /* @__PURE__ */ jsxs56(
@@ -9042,16 +9068,16 @@ var ScatterChart = ({
       {
         height,
         padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ jsx70(
+        containerComponent: /* @__PURE__ */ jsx71(
           VictoryVoronoiContainer,
           {
             voronoiDimension: "x",
             labels: ({ datum }) => `${datum[yKey]}`,
-            labelComponent: /* @__PURE__ */ jsx70(VictoryTooltip, {})
+            labelComponent: /* @__PURE__ */ jsx71(VictoryTooltip, {})
           }
         ),
         children: [
-          /* @__PURE__ */ jsx70(
+          /* @__PURE__ */ jsx71(
             VictoryAxis,
             {
               style: {
@@ -9060,7 +9086,7 @@ var ScatterChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx70(
+          /* @__PURE__ */ jsx71(
             VictoryAxis,
             {
               dependentAxis: true,
@@ -9071,10 +9097,10 @@ var ScatterChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx70(
+          /* @__PURE__ */ jsx71(
             VictoryScatter,
             {
-              data,
+              data: chartData,
               x: xKey,
               y: yKey,
               size: bubbleKey ? ({ datum }) => Math.max(3, datum[bubbleKey] / 2) : 5,
@@ -9086,14 +9112,14 @@ var ScatterChart = ({
     );
   };
   return /* @__PURE__ */ jsxs56(ScatterChartContainer, { children: [
-    title && /* @__PURE__ */ jsx70(Text34, { fontSize: "$5", fontWeight: "bold", children: title }),
-    /* @__PURE__ */ jsx70(ChartWrapper3, { children: renderContent() }),
+    title && /* @__PURE__ */ jsx71(Text34, { fontSize: "$5", fontWeight: "bold", children: title }),
+    /* @__PURE__ */ jsx71(ChartWrapper3, { children: renderContent() }),
     footerContent
   ] });
 };
 
 // src/organisms/ComboChart/ComboChart.tsx
-import { YStack as YStack49, styled as styled63, Text as Text35, useTheme as useTheme6 } from "tamagui";
+import { YStack as YStack48, styled as styled64, Text as Text35, useTheme as useTheme6 } from "tamagui";
 import {
   VictoryChart as VictoryChart2,
   VictoryAxis as VictoryAxis2,
@@ -9102,8 +9128,8 @@ import {
   VictoryGroup
 } from "victory";
 import { AlertCircle as AlertCircle7, Inbox as Inbox7 } from "@tamagui/lucide-icons";
-import { jsx as jsx71, jsxs as jsxs57 } from "react/jsx-runtime";
-var ComboChartContainer = styled63(YStack49, {
+import { jsx as jsx72, jsxs as jsxs57 } from "react/jsx-runtime";
+var ComboChartContainer = styled64(YStack48, {
   name: "ComboChart",
   padding: "$4",
   borderRadius: "$4",
@@ -9112,13 +9138,13 @@ var ComboChartContainer = styled63(YStack49, {
   width: "100%",
   tag: "section"
 });
-var ChartWrapper4 = styled63(YStack49, {
+var ChartWrapper4 = styled64(YStack48, {
   flex: 1,
   minHeight: 300,
   justifyContent: "center",
   alignItems: "center"
 });
-var StateContainer6 = styled63(YStack49, {
+var StateContainer6 = styled64(YStack48, {
   justifyContent: "center",
   alignItems: "center",
   gap: "$2",
@@ -9139,19 +9165,19 @@ var ComboChart = ({
   const gridColor = theme.borderColor?.get() || "#eee";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx71(Skeleton, { width: "100%", height });
+      return /* @__PURE__ */ jsx72(Skeleton, { width: "100%", height });
     }
     if (error) {
       return /* @__PURE__ */ jsxs57(StateContainer6, { children: [
-        /* @__PURE__ */ jsx71(AlertCircle7, { color: "$red10", size: "$2" }),
-        /* @__PURE__ */ jsx71(Text35, { color: "$red10", children: "Erro ao carregar os dados." }),
-        /* @__PURE__ */ jsx71(Text35, { fontSize: "$2", color: "$color11", children: error })
+        /* @__PURE__ */ jsx72(AlertCircle7, { color: "$red10", size: "$2" }),
+        /* @__PURE__ */ jsx72(Text35, { color: "$red10", children: "Erro ao carregar os dados." }),
+        /* @__PURE__ */ jsx72(Text35, { fontSize: "$2", color: "$color11", children: error })
       ] });
     }
     if (!children) {
       return /* @__PURE__ */ jsxs57(StateContainer6, { children: [
-        /* @__PURE__ */ jsx71(Inbox7, { size: "$2" }),
-        /* @__PURE__ */ jsx71(Text35, { children: "Sem dados para exibir" })
+        /* @__PURE__ */ jsx72(Inbox7, { size: "$2" }),
+        /* @__PURE__ */ jsx72(Text35, { children: "Sem dados para exibir" })
       ] });
     }
     return /* @__PURE__ */ jsxs57(
@@ -9159,9 +9185,9 @@ var ComboChart = ({
       {
         height,
         padding: { top: 20, bottom: 50, left: 50, right: 20 },
-        containerComponent: /* @__PURE__ */ jsx71(VictoryVoronoiContainer2, { labelComponent: /* @__PURE__ */ jsx71(VictoryTooltip2, {}) }),
+        containerComponent: /* @__PURE__ */ jsx72(VictoryVoronoiContainer2, { labelComponent: /* @__PURE__ */ jsx72(VictoryTooltip2, {}) }),
         children: [
-          /* @__PURE__ */ jsx71(
+          /* @__PURE__ */ jsx72(
             VictoryAxis2,
             {
               style: {
@@ -9170,7 +9196,7 @@ var ComboChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx71(
+          /* @__PURE__ */ jsx72(
             VictoryAxis2,
             {
               dependentAxis: true,
@@ -9181,23 +9207,23 @@ var ComboChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx71(VictoryGroup, { children })
+          /* @__PURE__ */ jsx72(VictoryGroup, { children })
         ]
       }
     );
   };
   return /* @__PURE__ */ jsxs57(ComboChartContainer, { children: [
-    title && /* @__PURE__ */ jsx71(Text35, { fontSize: "$5", fontWeight: "bold", children: title }),
-    /* @__PURE__ */ jsx71(ChartWrapper4, { children: renderContent() }),
+    title && /* @__PURE__ */ jsx72(Text35, { fontSize: "$5", fontWeight: "bold", children: title }),
+    /* @__PURE__ */ jsx72(ChartWrapper4, { children: renderContent() }),
     footerContent
   ] });
 };
 
 // src/organisms/BoxPlotChart/BoxPlotChart.tsx
-import { YStack as YStack50, Text as Text36, useTheme as useTheme7 } from "tamagui";
+import { YStack as YStack49, Text as Text36, useTheme as useTheme7 } from "tamagui";
 import { VictoryChart as VictoryChart3, VictoryBoxPlot, VictoryAxis as VictoryAxis3, VictoryContainer } from "victory";
 import { AlertTriangle as AlertTriangle5, BarChart as BoxPlotIcon } from "@tamagui/lucide-icons";
-import { jsx as jsx72, jsxs as jsxs58 } from "react/jsx-runtime";
+import { jsx as jsx73, jsxs as jsxs58 } from "react/jsx-runtime";
 var BoxPlotChart = ({
   data,
   xKey = "x",
@@ -9220,18 +9246,18 @@ var BoxPlotChart = ({
   const gridColor = theme.borderColor?.get() || "#eee";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx72(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx73(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs58(YStack50, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx72(AlertTriangle5, { color: "$red10" }),
-        /* @__PURE__ */ jsx72(Text36, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs58(YStack49, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx73(AlertTriangle5, { color: "$red10" }),
+        /* @__PURE__ */ jsx73(Text36, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs58(YStack50, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx72(BoxPlotIcon, { color: "$gray10" }),
-        /* @__PURE__ */ jsx72(Text36, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs58(YStack49, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx73(BoxPlotIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx73(Text36, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     return /* @__PURE__ */ jsxs58(
@@ -9239,9 +9265,9 @@ var BoxPlotChart = ({
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx72(VictoryContainer, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx73(VictoryContainer, { responsive: true }),
         children: [
-          /* @__PURE__ */ jsx72(
+          /* @__PURE__ */ jsx73(
             VictoryAxis3,
             {
               style: {
@@ -9250,7 +9276,7 @@ var BoxPlotChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx72(
+          /* @__PURE__ */ jsx73(
             VictoryAxis3,
             {
               dependentAxis: true,
@@ -9261,7 +9287,7 @@ var BoxPlotChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx72(
+          /* @__PURE__ */ jsx73(
             VictoryBoxPlot,
             {
               data,
@@ -9284,17 +9310,18 @@ var BoxPlotChart = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs58(YStack50, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs58(YStack49, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/RadarChart/RadarChart.tsx
-import { YStack as YStack51, Text as Text37, useTheme as useTheme8 } from "tamagui";
+import { YStack as YStack50, Text as Text37, useTheme as useTheme8 } from "tamagui";
 import { VictoryChart as VictoryChart4, VictoryPolarAxis, VictoryArea, VictoryGroup as VictoryGroup2, VictoryContainer as VictoryContainer2 } from "victory";
 import { AlertTriangle as AlertTriangle6, Activity as RadarIcon } from "@tamagui/lucide-icons";
-import { jsx as jsx73, jsxs as jsxs59 } from "react/jsx-runtime";
+import React62 from "react";
+import { jsx as jsx74, jsxs as jsxs59 } from "react/jsx-runtime";
 var RadarChart = ({
   data,
   keys,
@@ -9313,21 +9340,22 @@ var RadarChart = ({
   };
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx73(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx74(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs59(YStack51, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx73(AlertTriangle6, { color: "$red10" }),
-        /* @__PURE__ */ jsx73(Text37, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs59(YStack50, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx74(AlertTriangle6, { color: "$red10" }),
+        /* @__PURE__ */ jsx74(Text37, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0 || !keys) {
-      return /* @__PURE__ */ jsxs59(YStack51, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx73(RadarIcon, { color: "$gray10" }),
-        /* @__PURE__ */ jsx73(Text37, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs59(YStack50, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx74(RadarIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx74(Text37, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    const datasets = Array.isArray(data[0]) ? data : [data];
+    const chartData = React62.useMemo(() => data ? [...data] : [], [data]);
+    const datasets = Array.isArray(chartData[0]) ? chartData : [chartData];
     const colors = Array.isArray(color) ? color : [color];
     return /* @__PURE__ */ jsxs59(
       VictoryChart4,
@@ -9335,20 +9363,20 @@ var RadarChart = ({
         polar: true,
         height,
         domainPadding: { x: 20, y: 20 },
-        containerComponent: /* @__PURE__ */ jsx73(VictoryContainer2, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx74(VictoryContainer2, { responsive: true }),
         children: [
-          /* @__PURE__ */ jsx73(
+          /* @__PURE__ */ jsx74(
             VictoryGroup2,
             {
               colorScale: colors.map((c) => getColor(c)),
               style: { data: { fillOpacity: 0.2, strokeWidth: 2 } },
-              children: datasets.map((dataset, i) => /* @__PURE__ */ jsx73(VictoryArea, { data: dataset }, i))
+              children: datasets.map((dataset, i) => /* @__PURE__ */ jsx74(VictoryArea, { data: dataset }, i))
             }
           ),
           datasets[0]?.map((d, i) => {
-            return /* @__PURE__ */ jsx73(VictoryPolarAxis, { dependentAxis: true, style: { axisLabel: { padding: 10 } }, labelPlacement: "vertical" }, i);
+            return /* @__PURE__ */ jsx74(VictoryPolarAxis, { dependentAxis: true, style: { axisLabel: { padding: 10 } }, labelPlacement: "vertical" }, i);
           }),
-          /* @__PURE__ */ jsx73(
+          /* @__PURE__ */ jsx74(
             VictoryPolarAxis,
             {
               labelPlacement: "parallel",
@@ -9363,17 +9391,17 @@ var RadarChart = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs59(YStack51, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs59(YStack50, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/PolarChart/PolarChart.tsx
-import { YStack as YStack52, Text as Text38, useTheme as useTheme9 } from "tamagui";
+import { YStack as YStack51, Text as Text38, useTheme as useTheme9 } from "tamagui";
 import { VictoryChart as VictoryChart5, VictoryPolarAxis as VictoryPolarAxis2, VictoryBar, VictoryContainer as VictoryContainer3, VictoryTheme } from "victory";
 import { AlertTriangle as AlertTriangle7, PieChart as PolarIcon } from "@tamagui/lucide-icons";
-import { jsx as jsx74, jsxs as jsxs60 } from "react/jsx-runtime";
+import { jsx as jsx75, jsxs as jsxs60 } from "react/jsx-runtime";
 var PolarChart = ({
   data,
   xKey,
@@ -9393,18 +9421,18 @@ var PolarChart = ({
   };
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx74(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx75(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs60(YStack52, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx74(AlertTriangle7, { color: "$red10" }),
-        /* @__PURE__ */ jsx74(Text38, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs60(YStack51, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx75(AlertTriangle7, { color: "$red10" }),
+        /* @__PURE__ */ jsx75(Text38, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs60(YStack52, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx74(PolarIcon, { color: "$gray10" }),
-        /* @__PURE__ */ jsx74(Text38, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs60(YStack51, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx75(PolarIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx75(Text38, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const colors = Array.isArray(color) ? color : [color];
@@ -9415,9 +9443,9 @@ var PolarChart = ({
         height,
         domainPadding: { x: 20, y: 20 },
         theme: VictoryTheme.material,
-        containerComponent: /* @__PURE__ */ jsx74(VictoryContainer3, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx75(VictoryContainer3, { responsive: true }),
         children: [
-          /* @__PURE__ */ jsx74(
+          /* @__PURE__ */ jsx75(
             VictoryPolarAxis2,
             {
               style: {
@@ -9427,7 +9455,7 @@ var PolarChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx74(
+          /* @__PURE__ */ jsx75(
             VictoryBar,
             {
               data,
@@ -9447,17 +9475,17 @@ var PolarChart = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs60(YStack52, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs60(YStack51, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/WaterfallChart/WaterfallChart.tsx
-import { YStack as YStack53, Text as Text39, useTheme as useTheme10 } from "tamagui";
+import { YStack as YStack52, Text as Text39, useTheme as useTheme10 } from "tamagui";
 import { VictoryChart as VictoryChart6, VictoryBar as VictoryBar2, VictoryAxis as VictoryAxis4, VictoryContainer as VictoryContainer4 } from "victory";
 import { AlertTriangle as AlertTriangle8, BarChart as WaterfallIcon } from "@tamagui/lucide-icons";
-import { jsx as jsx75, jsxs as jsxs61 } from "react/jsx-runtime";
+import { jsx as jsx76, jsxs as jsxs61 } from "react/jsx-runtime";
 var WaterfallChart = ({
   data,
   xKey,
@@ -9480,18 +9508,18 @@ var WaterfallChart = ({
   };
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx75(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx76(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs61(YStack53, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx75(AlertTriangle8, { color: "$red10" }),
-        /* @__PURE__ */ jsx75(Text39, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs61(YStack52, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx76(AlertTriangle8, { color: "$red10" }),
+        /* @__PURE__ */ jsx76(Text39, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs61(YStack53, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx75(WaterfallIcon, { color: "$gray10" }),
-        /* @__PURE__ */ jsx75(Text39, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs61(YStack52, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx76(WaterfallIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx76(Text39, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     let runningTotal = 0;
@@ -9522,9 +9550,9 @@ var WaterfallChart = ({
       {
         domainPadding: { x: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx75(VictoryContainer4, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx76(VictoryContainer4, { responsive: true }),
         children: [
-          /* @__PURE__ */ jsx75(
+          /* @__PURE__ */ jsx76(
             VictoryAxis4,
             {
               style: {
@@ -9533,7 +9561,7 @@ var WaterfallChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx75(
+          /* @__PURE__ */ jsx76(
             VictoryAxis4,
             {
               dependentAxis: true,
@@ -9544,7 +9572,7 @@ var WaterfallChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx75(
+          /* @__PURE__ */ jsx76(
             VictoryBar2,
             {
               data: processedData,
@@ -9567,17 +9595,17 @@ var WaterfallChart = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs61(YStack53, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs61(YStack52, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/FunnelChart/FunnelChart.tsx
-import { YStack as YStack54, Text as Text40, useTheme as useTheme11 } from "tamagui";
+import { YStack as YStack53, Text as Text40, useTheme as useTheme11 } from "tamagui";
 import { VictoryChart as VictoryChart7, VictoryBar as VictoryBar3, VictoryAxis as VictoryAxis5, VictoryContainer as VictoryContainer5, VictoryLabel as VictoryLabel2 } from "victory";
 import { AlertTriangle as AlertTriangle9, Filter as FunnelIcon } from "@tamagui/lucide-icons";
-import { jsx as jsx76, jsxs as jsxs62 } from "react/jsx-runtime";
+import { jsx as jsx77, jsxs as jsxs62 } from "react/jsx-runtime";
 var FunnelChart = ({
   data,
   xKey,
@@ -9595,18 +9623,18 @@ var FunnelChart = ({
   const textColor = theme.color?.get() || "#000";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx76(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx77(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs62(YStack54, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx76(AlertTriangle9, { color: "$red10" }),
-        /* @__PURE__ */ jsx76(Text40, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs62(YStack53, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx77(AlertTriangle9, { color: "$red10" }),
+        /* @__PURE__ */ jsx77(Text40, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs62(YStack54, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx76(FunnelIcon, { color: "$gray10" }),
-        /* @__PURE__ */ jsx76(Text40, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs62(YStack53, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx77(FunnelIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx77(Text40, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const processedData = data.map((d) => {
@@ -9623,9 +9651,9 @@ var FunnelChart = ({
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx76(VictoryContainer5, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx77(VictoryContainer5, { responsive: true }),
         children: [
-          /* @__PURE__ */ jsx76(
+          /* @__PURE__ */ jsx77(
             VictoryAxis5,
             {
               dependentAxis: true,
@@ -9636,7 +9664,7 @@ var FunnelChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx76(
+          /* @__PURE__ */ jsx77(
             VictoryAxis5,
             {
               style: {
@@ -9645,7 +9673,7 @@ var FunnelChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx76(
+          /* @__PURE__ */ jsx77(
             VictoryBar3,
             {
               horizontal: true,
@@ -9658,24 +9686,24 @@ var FunnelChart = ({
                 labels: { fill: textColor }
               },
               labels: ({ datum }) => datum._label,
-              labelComponent: /* @__PURE__ */ jsx76(VictoryLabel2, {})
+              labelComponent: /* @__PURE__ */ jsx77(VictoryLabel2, {})
             }
           )
         ]
       }
     );
   };
-  return /* @__PURE__ */ jsxs62(YStack54, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs62(YStack53, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/BulletChart/BulletChart.tsx
-import { YStack as YStack55, Text as Text41, useTheme as useTheme12 } from "tamagui";
+import { YStack as YStack54, Text as Text41, useTheme as useTheme12 } from "tamagui";
 import { VictoryChart as VictoryChart8, VictoryBar as VictoryBar4, VictoryAxis as VictoryAxis6, VictoryContainer as VictoryContainer6, VictoryScatter as VictoryScatter2 } from "victory";
 import { AlertTriangle as AlertTriangle10, BarChart as BulletIcon } from "@tamagui/lucide-icons";
-import { jsx as jsx77, jsxs as jsxs63 } from "react/jsx-runtime";
+import { jsx as jsx78, jsxs as jsxs63 } from "react/jsx-runtime";
 var BulletChart = ({
   data,
   xKey,
@@ -9701,18 +9729,18 @@ var BulletChart = ({
   const textColor = theme.color?.get() || "#000";
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx77(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx78(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs63(YStack55, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx77(AlertTriangle10, { color: "$red10" }),
-        /* @__PURE__ */ jsx77(Text41, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs63(YStack54, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx78(AlertTriangle10, { color: "$red10" }),
+        /* @__PURE__ */ jsx78(Text41, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs63(YStack55, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx77(BulletIcon, { color: "$gray10" }),
-        /* @__PURE__ */ jsx77(Text41, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs63(YStack54, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx78(BulletIcon, { color: "$gray10" }),
+        /* @__PURE__ */ jsx78(Text41, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     return /* @__PURE__ */ jsxs63(
@@ -9720,9 +9748,9 @@ var BulletChart = ({
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx77(VictoryContainer6, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx78(VictoryContainer6, { responsive: true }),
         children: [
-          /* @__PURE__ */ jsx77(
+          /* @__PURE__ */ jsx78(
             VictoryAxis6,
             {
               dependentAxis: true,
@@ -9732,7 +9760,7 @@ var BulletChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx77(
+          /* @__PURE__ */ jsx78(
             VictoryAxis6,
             {
               style: {
@@ -9741,7 +9769,7 @@ var BulletChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx77(
+          /* @__PURE__ */ jsx78(
             VictoryBar4,
             {
               data,
@@ -9751,7 +9779,7 @@ var BulletChart = ({
               cornerRadius: { top: 2 }
             }
           ),
-          /* @__PURE__ */ jsx77(
+          /* @__PURE__ */ jsx78(
             VictoryBar4,
             {
               data,
@@ -9761,7 +9789,7 @@ var BulletChart = ({
               cornerRadius: { top: 2 }
             }
           ),
-          /* @__PURE__ */ jsx77(
+          /* @__PURE__ */ jsx78(
             VictoryScatter2,
             {
               data,
@@ -9776,7 +9804,7 @@ var BulletChart = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs63(YStack55, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs63(YStack54, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
@@ -9784,10 +9812,10 @@ var BulletChart = ({
 
 // src/organisms/SunburstChart/SunburstChart.tsx
 import { useMemo as useMemo9 } from "react";
-import { YStack as YStack56, Text as Text42, useTheme as useTheme13 } from "tamagui";
+import { YStack as YStack55, Text as Text42, useTheme as useTheme13 } from "tamagui";
 import { Svg, Path, G } from "react-native-svg";
 import { AlertTriangle as AlertTriangle11, PieChart as PieChart2 } from "@tamagui/lucide-icons";
-import { jsx as jsx78, jsxs as jsxs64 } from "react/jsx-runtime";
+import { jsx as jsx79, jsxs as jsxs64 } from "react/jsx-runtime";
 var calculateSunburst = (data, radius, centerX, centerY) => {
   const arcs = [];
   const calculateValues = (node) => {
@@ -9887,21 +9915,21 @@ var SunburstChart = ({
   }, [data, radius, centerX, centerY, theme]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx78(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx79(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs64(YStack56, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx78(AlertTriangle11, { color: "$red10" }),
-        /* @__PURE__ */ jsx78(Text42, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs64(YStack55, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx79(AlertTriangle11, { color: "$red10" }),
+        /* @__PURE__ */ jsx79(Text42, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data) {
-      return /* @__PURE__ */ jsxs64(YStack56, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx78(PieChart2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx78(Text42, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs64(YStack55, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx79(PieChart2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx79(Text42, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsx78(Svg, { width, height, children: /* @__PURE__ */ jsx78(G, { children: arcs.map((arc, i) => /* @__PURE__ */ jsx78(
+    return /* @__PURE__ */ jsx79(Svg, { width, height, children: /* @__PURE__ */ jsx79(G, { children: arcs.map((arc, i) => /* @__PURE__ */ jsx79(
       Path,
       {
         d: arc.path,
@@ -9912,7 +9940,7 @@ var SunburstChart = ({
       i
     )) }) });
   };
-  return /* @__PURE__ */ jsxs64(YStack56, { width: "100%", gap: "$4", paddingHorizontal: "$4", alignItems: "center", children: [
+  return /* @__PURE__ */ jsxs64(YStack55, { width: "100%", gap: "$4", paddingHorizontal: "$4", alignItems: "center", children: [
     headerContent,
     renderContent()
   ] });
@@ -9920,10 +9948,10 @@ var SunburstChart = ({
 
 // src/organisms/ParallelCoordinates/ParallelCoordinates.tsx
 import { useMemo as useMemo10 } from "react";
-import { YStack as YStack57, Text as Text43, useTheme as useTheme14 } from "tamagui";
+import { YStack as YStack56, Text as Text43, useTheme as useTheme14 } from "tamagui";
 import { VictoryChart as VictoryChart9, VictoryLine, VictoryAxis as VictoryAxis7, VictoryGroup as VictoryGroup4 } from "victory";
 import { AlertTriangle as AlertTriangle12, Activity } from "@tamagui/lucide-icons";
-import { jsx as jsx79, jsxs as jsxs65 } from "react/jsx-runtime";
+import { jsx as jsx80, jsxs as jsxs65 } from "react/jsx-runtime";
 var ParallelCoordinates = ({
   data,
   attributes,
@@ -9962,18 +9990,18 @@ var ParallelCoordinates = ({
   }, [data, attributes]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx79(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx80(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs65(YStack57, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx79(AlertTriangle12, { color: "$red10" }),
-        /* @__PURE__ */ jsx79(Text43, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs65(YStack56, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx80(AlertTriangle12, { color: "$red10" }),
+        /* @__PURE__ */ jsx80(Text43, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs65(YStack57, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx79(Activity, { color: "$gray10" }),
-        /* @__PURE__ */ jsx79(Text43, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs65(YStack56, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx80(Activity, { color: "$gray10" }),
+        /* @__PURE__ */ jsx80(Text43, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     return /* @__PURE__ */ jsxs65(
@@ -9983,7 +10011,7 @@ var ParallelCoordinates = ({
         height,
         width,
         children: [
-          attributes.map((attr, i) => /* @__PURE__ */ jsx79(
+          attributes.map((attr, i) => /* @__PURE__ */ jsx80(
             VictoryAxis7,
             {
               dependentAxis: true,
@@ -9998,7 +10026,7 @@ var ParallelCoordinates = ({
             },
             attr
           )),
-          /* @__PURE__ */ jsx79(VictoryGroup4, { children: normalizedData.map((series, i) => /* @__PURE__ */ jsx79(
+          /* @__PURE__ */ jsx80(VictoryGroup4, { children: normalizedData.map((series, i) => /* @__PURE__ */ jsx80(
             VictoryLine,
             {
               data: series,
@@ -10012,7 +10040,7 @@ var ParallelCoordinates = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs65(YStack57, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs65(YStack56, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
@@ -10020,10 +10048,10 @@ var ParallelCoordinates = ({
 
 // src/organisms/MarimekkoChart/MarimekkoChart.tsx
 import { useMemo as useMemo11 } from "react";
-import { YStack as YStack58, Text as Text44, useTheme as useTheme15 } from "tamagui";
+import { YStack as YStack57, Text as Text44, useTheme as useTheme15 } from "tamagui";
 import { VictoryChart as VictoryChart10, VictoryBar as VictoryBar5, VictoryAxis as VictoryAxis8, VictoryContainer as VictoryContainer7 } from "victory";
 import { AlertTriangle as AlertTriangle13, BarChart2 } from "@tamagui/lucide-icons";
-import { jsx as jsx80, jsxs as jsxs66 } from "react/jsx-runtime";
+import { jsx as jsx81, jsxs as jsxs66 } from "react/jsx-runtime";
 var MarimekkoChart = ({
   data,
   xKey,
@@ -10060,18 +10088,18 @@ var MarimekkoChart = ({
   }, [data, xKey, yKey, widthKey]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx80(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx81(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs66(YStack58, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx80(AlertTriangle13, { color: "$red10" }),
-        /* @__PURE__ */ jsx80(Text44, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs66(YStack57, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx81(AlertTriangle13, { color: "$red10" }),
+        /* @__PURE__ */ jsx81(Text44, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs66(YStack58, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx80(BarChart2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx80(Text44, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs66(YStack57, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx81(BarChart2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx81(Text44, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     return /* @__PURE__ */ jsxs66(
@@ -10080,9 +10108,9 @@ var MarimekkoChart = ({
         domainPadding: { x: 0 },
         height,
         width,
-        containerComponent: /* @__PURE__ */ jsx80(VictoryContainer7, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx81(VictoryContainer7, { responsive: true }),
         children: [
-          /* @__PURE__ */ jsx80(
+          /* @__PURE__ */ jsx81(
             VictoryAxis8,
             {
               style: {
@@ -10091,7 +10119,7 @@ var MarimekkoChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx80(
+          /* @__PURE__ */ jsx81(
             VictoryAxis8,
             {
               dependentAxis: true,
@@ -10102,7 +10130,7 @@ var MarimekkoChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx80(
+          /* @__PURE__ */ jsx81(
             VictoryBar5,
             {
               data: processedData,
@@ -10126,7 +10154,7 @@ var MarimekkoChart = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs66(YStack58, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs66(YStack57, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
@@ -10134,10 +10162,10 @@ var MarimekkoChart = ({
 
 // src/organisms/RidgelinePlot/RidgelinePlot.tsx
 import { useMemo as useMemo12 } from "react";
-import { YStack as YStack59, Text as Text45, useTheme as useTheme16 } from "tamagui";
+import { YStack as YStack58, Text as Text45, useTheme as useTheme16 } from "tamagui";
 import { VictoryChart as VictoryChart11, VictoryArea as VictoryArea2, VictoryAxis as VictoryAxis9 } from "victory";
 import { AlertTriangle as AlertTriangle14, Activity as Activity2 } from "@tamagui/lucide-icons";
-import { jsx as jsx81, jsxs as jsxs67 } from "react/jsx-runtime";
+import { jsx as jsx82, jsxs as jsxs67 } from "react/jsx-runtime";
 var RidgelinePlot = ({
   series,
   width = 600,
@@ -10172,18 +10200,18 @@ var RidgelinePlot = ({
   }, [series, overlap]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx81(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx82(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs67(YStack59, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx81(AlertTriangle14, { color: "$red10" }),
-        /* @__PURE__ */ jsx81(Text45, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs67(YStack58, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx82(AlertTriangle14, { color: "$red10" }),
+        /* @__PURE__ */ jsx82(Text45, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!series || series.length === 0) {
-      return /* @__PURE__ */ jsxs67(YStack59, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx81(Activity2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx81(Text45, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs67(YStack58, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx82(Activity2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx82(Text45, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     return /* @__PURE__ */ jsxs67(
@@ -10193,7 +10221,7 @@ var RidgelinePlot = ({
         width,
         domainPadding: { x: 20, y: 10 },
         children: [
-          /* @__PURE__ */ jsx81(
+          /* @__PURE__ */ jsx82(
             VictoryAxis9,
             {
               style: {
@@ -10202,7 +10230,7 @@ var RidgelinePlot = ({
               }
             }
           ),
-          processedSeries.map((s, i) => /* @__PURE__ */ jsx81(
+          processedSeries.map((s, i) => /* @__PURE__ */ jsx82(
             VictoryArea2,
             {
               data: s.processedData,
@@ -10221,7 +10249,7 @@ var RidgelinePlot = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs67(YStack59, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs67(YStack58, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
@@ -10229,10 +10257,10 @@ var RidgelinePlot = ({
 
 // src/organisms/DecompositionTree/DecompositionTree.tsx
 import { useMemo as useMemo13 } from "react";
-import { YStack as YStack60, Text as Text46, useTheme as useTheme17 } from "tamagui";
+import { YStack as YStack59, Text as Text46, useTheme as useTheme17 } from "tamagui";
 import { Svg as Svg2, Path as Path2, G as G2, Rect, Text as SvgText2 } from "react-native-svg";
 import { AlertTriangle as AlertTriangle15, GitMerge } from "@tamagui/lucide-icons";
-import { jsx as jsx82, jsxs as jsxs68 } from "react/jsx-runtime";
+import { jsx as jsx83, jsxs as jsxs68 } from "react/jsx-runtime";
 var calculateTreeLayout = (data, width, height, nodeWidth = 100, nodeHeight = 40, gapX = 50, gapY = 20) => {
   let nextY = 0;
   const computeSize = (node) => {
@@ -10310,25 +10338,25 @@ var DecompositionTree = ({
   }, [data, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx82(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx83(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs68(YStack60, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx82(AlertTriangle15, { color: "$red10" }),
-        /* @__PURE__ */ jsx82(Text46, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs68(YStack59, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx83(AlertTriangle15, { color: "$red10" }),
+        /* @__PURE__ */ jsx83(Text46, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data) {
-      return /* @__PURE__ */ jsxs68(YStack60, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx82(GitMerge, { color: "$gray10" }),
-        /* @__PURE__ */ jsx82(Text46, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs68(YStack59, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx83(GitMerge, { color: "$gray10" }),
+        /* @__PURE__ */ jsx83(Text46, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsx82(Svg2, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs68(G2, { children: [
+    return /* @__PURE__ */ jsx83(Svg2, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs68(G2, { children: [
       links.map((link, i) => {
         const midX = (link.x1 + link.x2) / 2;
         const d = `M ${link.x1} ${link.y1} C ${midX} ${link.y1}, ${midX} ${link.y2}, ${link.x2} ${link.y2}`;
-        return /* @__PURE__ */ jsx82(
+        return /* @__PURE__ */ jsx83(
           Path2,
           {
             d,
@@ -10340,7 +10368,7 @@ var DecompositionTree = ({
         );
       }),
       nodes.map((node, i) => /* @__PURE__ */ jsxs68(G2, { x: node.x, y: node.y, children: [
-        /* @__PURE__ */ jsx82(
+        /* @__PURE__ */ jsx83(
           Rect,
           {
             width: node.width,
@@ -10351,7 +10379,7 @@ var DecompositionTree = ({
             strokeWidth: 2
           }
         ),
-        /* @__PURE__ */ jsx82(
+        /* @__PURE__ */ jsx83(
           SvgText2,
           {
             x: node.width / 2,
@@ -10363,7 +10391,7 @@ var DecompositionTree = ({
             children: node.data.label
           }
         ),
-        /* @__PURE__ */ jsx82(
+        /* @__PURE__ */ jsx83(
           SvgText2,
           {
             x: node.width / 2,
@@ -10377,7 +10405,7 @@ var DecompositionTree = ({
       ] }, `node-${i}`))
     ] }) });
   };
-  return /* @__PURE__ */ jsxs68(YStack60, { width: "100%", gap: "$4", paddingHorizontal: "$4", overflow: "scroll", children: [
+  return /* @__PURE__ */ jsxs68(YStack59, { width: "100%", gap: "$4", paddingHorizontal: "$4", overflow: "scroll", children: [
     headerContent,
     renderContent()
   ] });
@@ -10385,10 +10413,10 @@ var DecompositionTree = ({
 
 // src/organisms/Maps/Maps.tsx
 import { useMemo as useMemo14 } from "react";
-import { YStack as YStack61, Text as Text47, useTheme as useTheme18 } from "tamagui";
+import { YStack as YStack60, Text as Text47, useTheme as useTheme18 } from "tamagui";
 import { Svg as Svg3, Path as Path3, G as G3, Circle as Circle4 } from "react-native-svg";
 import { AlertTriangle as AlertTriangle16, Map as Map2 } from "@tamagui/lucide-icons";
-import { jsx as jsx83, jsxs as jsxs69 } from "react/jsx-runtime";
+import { jsx as jsx84, jsxs as jsxs69 } from "react/jsx-runtime";
 var project = (lon, lat, width, height, bounds) => {
   const [minLon, minLat, maxLon, maxLat] = bounds;
   const xPct = (lon - minLon) / (maxLon - minLon);
@@ -10490,22 +10518,22 @@ var Maps = ({
   }, [data, width, height, type, valueKey, theme]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx83(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx84(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs69(YStack61, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx83(AlertTriangle16, { color: "$red10" }),
-        /* @__PURE__ */ jsx83(Text47, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs69(YStack60, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx84(AlertTriangle16, { color: "$red10" }),
+        /* @__PURE__ */ jsx84(Text47, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data) {
-      return /* @__PURE__ */ jsxs69(YStack61, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx83(Map2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx83(Text47, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs69(YStack60, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx84(Map2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx84(Text47, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsx83(Svg3, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs69(G3, { children: [
-      paths.map((p, i) => /* @__PURE__ */ jsx83(
+    return /* @__PURE__ */ jsx84(Svg3, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs69(G3, { children: [
+      paths.map((p, i) => /* @__PURE__ */ jsx84(
         Path3,
         {
           d: p.d,
@@ -10515,7 +10543,7 @@ var Maps = ({
         },
         i
       )),
-      circles.map((c, i) => /* @__PURE__ */ jsx83(
+      circles.map((c, i) => /* @__PURE__ */ jsx84(
         Circle4,
         {
           cx: c.cx,
@@ -10528,32 +10556,32 @@ var Maps = ({
       ))
     ] }) });
   };
-  return /* @__PURE__ */ jsxs69(YStack61, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs69(YStack60, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/Timeline/Timeline.tsx
-import { YStack as YStack62, XStack as XStack40, styled as styled64, View as View9, Text as Text48 } from "tamagui";
-import { jsx as jsx84, jsxs as jsxs70 } from "react/jsx-runtime";
-var TimelineFrame = styled64(YStack62, {
+import { YStack as YStack61, XStack as XStack39, styled as styled65, View as View9, Text as Text48 } from "tamagui";
+import { jsx as jsx85, jsxs as jsxs70 } from "react/jsx-runtime";
+var TimelineFrame = styled65(YStack61, {
   name: "Timeline",
   tag: "ul",
   width: "100%",
   gap: "$4"
 });
-var TimelineItemFrame = styled64(XStack40, {
+var TimelineItemFrame = styled65(XStack39, {
   name: "TimelineItem",
   tag: "li",
   gap: "$4"
 });
-var TimelineConnectorWrapper = styled64(YStack62, {
+var TimelineConnectorWrapper = styled65(YStack61, {
   alignItems: "center",
   width: 20,
   position: "relative"
 });
-var TimelineConnector = styled64(View9, {
+var TimelineConnector = styled65(View9, {
   width: 2,
   backgroundColor: "$borderColor",
   position: "absolute",
@@ -10561,7 +10589,7 @@ var TimelineConnector = styled64(View9, {
   bottom: -24,
   zIndex: 0
 });
-var TimelineDot = styled64(View9, {
+var TimelineDot = styled65(View9, {
   width: 20,
   height: 20,
   borderRadius: 10,
@@ -10570,68 +10598,68 @@ var TimelineDot = styled64(View9, {
   borderColor: "$primary",
   zIndex: 1
 });
-var TimelineContent = styled64(YStack62, {
+var TimelineContent = styled65(YStack61, {
   flex: 1,
   gap: "$1"
 });
-var TimelineTime = styled64(Text48, {
+var TimelineTime = styled65(Text48, {
   fontSize: "$2",
   color: "$mutedForeground"
 });
-var TimelineTitle = styled64(Text48, {
+var TimelineTitle = styled65(Text48, {
   fontSize: "$3",
   fontWeight: "bold",
   color: "$foreground"
 });
-var TimelineDescription = styled64(Text48, {
+var TimelineDescription = styled65(Text48, {
   fontSize: "$3",
   color: "$foreground"
 });
 var TimelineItem = ({ title, description, time, isLast, children }) => {
   return /* @__PURE__ */ jsxs70(TimelineItemFrame, { children: [
     /* @__PURE__ */ jsxs70(TimelineConnectorWrapper, { children: [
-      /* @__PURE__ */ jsx84(TimelineDot, {}),
-      !isLast && /* @__PURE__ */ jsx84(TimelineConnector, {})
+      /* @__PURE__ */ jsx85(TimelineDot, {}),
+      !isLast && /* @__PURE__ */ jsx85(TimelineConnector, {})
     ] }),
     /* @__PURE__ */ jsxs70(TimelineContent, { children: [
-      time && /* @__PURE__ */ jsx84(TimelineTime, { children: time }),
-      title && /* @__PURE__ */ jsx84(TimelineTitle, { children: title }),
-      description && /* @__PURE__ */ jsx84(TimelineDescription, { children: description }),
+      time && /* @__PURE__ */ jsx85(TimelineTime, { children: time }),
+      title && /* @__PURE__ */ jsx85(TimelineTitle, { children: title }),
+      description && /* @__PURE__ */ jsx85(TimelineDescription, { children: description }),
       children
     ] })
   ] });
 };
-var TimelineSkeleton = () => /* @__PURE__ */ jsx84(TimelineFrame, { "data-testid": "timeline-skeleton", children: [...Array(3)].map((_, index) => /* @__PURE__ */ jsxs70(TimelineItemFrame, { children: [
-  /* @__PURE__ */ jsx84(TimelineConnectorWrapper, { children: /* @__PURE__ */ jsx84(Skeleton, { width: 20, height: 20, borderRadius: 10 }) }),
+var TimelineSkeleton = () => /* @__PURE__ */ jsx85(TimelineFrame, { "data-testid": "timeline-skeleton", children: [...Array(3)].map((_, index) => /* @__PURE__ */ jsxs70(TimelineItemFrame, { children: [
+  /* @__PURE__ */ jsx85(TimelineConnectorWrapper, { children: /* @__PURE__ */ jsx85(Skeleton, { width: 20, height: 20, borderRadius: 10 }) }),
   /* @__PURE__ */ jsxs70(TimelineContent, { children: [
-    /* @__PURE__ */ jsx84(Skeleton, { width: "50%", height: 15 }),
-    /* @__PURE__ */ jsx84(Skeleton, { width: "80%", height: 15 })
+    /* @__PURE__ */ jsx85(Skeleton, { width: "50%", height: 15 }),
+    /* @__PURE__ */ jsx85(Skeleton, { width: "80%", height: 15 })
   ] })
 ] }, index)) });
 var Timeline = ({ items, children, isLoading, isEmpty, hasError }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsx84(TimelineSkeleton, {});
+    return /* @__PURE__ */ jsx85(TimelineSkeleton, {});
   }
   if (hasError) {
     return /* @__PURE__ */ jsxs70(Alert, { variant: "destructive", children: [
-      /* @__PURE__ */ jsx84(Alert.Title, { children: "Erro" }),
-      /* @__PURE__ */ jsx84(Alert.Description, { children: "Ocorreu um erro ao carregar os dados. Por favor, tente novamente." })
+      /* @__PURE__ */ jsx85(Alert.Title, { children: "Erro" }),
+      /* @__PURE__ */ jsx85(Alert.Description, { children: "Ocorreu um erro ao carregar os dados. Por favor, tente novamente." })
     ] });
   }
   if (isEmpty || items && items.length === 0 && !children) {
-    return /* @__PURE__ */ jsx84(Empty, { title: "Nenhum item encontrado", description: "N\xE3o h\xE1 itens para serem exibidos no momento." });
+    return /* @__PURE__ */ jsx85(Empty, { title: "Nenhum item encontrado", description: "N\xE3o h\xE1 itens para serem exibidos no momento." });
   }
   if (items) {
-    return /* @__PURE__ */ jsx84(TimelineFrame, { children: items.map((item, index) => /* @__PURE__ */ jsx84(TimelineItem, { ...item, isLast: index === items.length - 1 }, index)) });
+    return /* @__PURE__ */ jsx85(TimelineFrame, { children: items.map((item, index) => /* @__PURE__ */ jsx85(TimelineItem, { ...item, isLast: index === items.length - 1 }, index)) });
   }
-  return /* @__PURE__ */ jsx84(TimelineFrame, { children });
+  return /* @__PURE__ */ jsx85(TimelineFrame, { children });
 };
 
 // src/organisms/LocationStatus/LocationStatus.tsx
-import { YStack as YStack63, XStack as XStack41, styled as styled65, Text as Text49 } from "tamagui";
+import { YStack as YStack62, XStack as XStack40, styled as styled66, Text as Text49 } from "tamagui";
 import { MapPin, Navigation, Clock } from "@tamagui/lucide-icons";
-import { jsx as jsx85, jsxs as jsxs71 } from "react/jsx-runtime";
-var LocationStatusFrame = styled65(YStack63, {
+import { jsx as jsx86, jsxs as jsxs71 } from "react/jsx-runtime";
+var LocationStatusFrame = styled66(YStack62, {
   name: "LocationStatus",
   padding: "$4",
   borderRadius: "$4",
@@ -10640,29 +10668,29 @@ var LocationStatusFrame = styled65(YStack63, {
   borderColor: "$borderColor",
   gap: "$3"
 });
-var HeaderRow = styled65(XStack41, {
+var HeaderRow = styled66(XStack40, {
   justifyContent: "space-between",
   alignItems: "center"
 });
-var Title = styled65(Text49, {
+var Title = styled66(Text49, {
   fontSize: "$4",
   fontWeight: "bold",
   color: "$foreground"
 });
-var InfoRow = styled65(XStack41, {
+var InfoRow = styled66(XStack40, {
   gap: "$4",
   alignItems: "center",
   flexWrap: "wrap"
 });
-var InfoItem = styled65(XStack41, {
+var InfoItem = styled66(XStack40, {
   gap: "$2",
   alignItems: "center"
 });
-var Label7 = styled65(Text49, {
+var Label7 = styled66(Text49, {
   fontSize: "$2",
   color: "$mutedForeground"
 });
-var Value = styled65(Text49, {
+var Value = styled66(Text49, {
   fontSize: "$3",
   fontWeight: "500",
   color: "$foreground"
@@ -10686,12 +10714,12 @@ var LocationStatus = ({
   const formattedTime = timestamp ? new Date(timestamp).toLocaleTimeString("pt-BR") : "-";
   return /* @__PURE__ */ jsxs71(LocationStatusFrame, { ...props, children: [
     /* @__PURE__ */ jsxs71(HeaderRow, { children: [
-      /* @__PURE__ */ jsxs71(XStack41, { gap: "$2", alignItems: "center", children: [
-        /* @__PURE__ */ jsx85(MapPin, { size: "$1" }),
-        /* @__PURE__ */ jsx85(Title, { children: "Status da Localiza\xE7\xE3o" })
+      /* @__PURE__ */ jsxs71(XStack40, { gap: "$2", alignItems: "center", children: [
+        /* @__PURE__ */ jsx86(MapPin, { size: "$1" }),
+        /* @__PURE__ */ jsx86(Title, { children: "Status da Localiza\xE7\xE3o" })
       ] }),
-      isSearching && /* @__PURE__ */ jsx85(Badge, { variant: "outline", children: "Buscando..." }),
-      error && /* @__PURE__ */ jsx85(Badge, { variant: "destructive", children: "Erro" }),
+      isSearching && /* @__PURE__ */ jsx86(Badge, { variant: "outline", children: "Buscando..." }),
+      error && /* @__PURE__ */ jsx86(Badge, { variant: "destructive", children: "Erro" }),
       !isSearching && !error && accuracy !== void 0 && /* @__PURE__ */ jsxs71(Badge, { style: { backgroundColor: accuracyLevel.color, color: "white" }, children: [
         "Precis\xE3o: ",
         accuracyLevel.label,
@@ -10702,9 +10730,9 @@ var LocationStatus = ({
     ] }),
     /* @__PURE__ */ jsxs71(InfoRow, { children: [
       /* @__PURE__ */ jsxs71(InfoItem, { children: [
-        /* @__PURE__ */ jsx85(Navigation, { size: "$1", color: "$mutedForeground" }),
-        /* @__PURE__ */ jsxs71(YStack63, { children: [
-          /* @__PURE__ */ jsx85(Label7, { children: "Coordenadas" }),
+        /* @__PURE__ */ jsx86(Navigation, { size: "$1", color: "$mutedForeground" }),
+        /* @__PURE__ */ jsxs71(YStack62, { children: [
+          /* @__PURE__ */ jsx86(Label7, { children: "Coordenadas" }),
           /* @__PURE__ */ jsxs71(Value, { children: [
             latitude?.toFixed(6) ?? "-",
             ", ",
@@ -10713,23 +10741,23 @@ var LocationStatus = ({
         ] })
       ] }),
       /* @__PURE__ */ jsxs71(InfoItem, { children: [
-        /* @__PURE__ */ jsx85(Clock, { size: "$1", color: "$mutedForeground" }),
-        /* @__PURE__ */ jsxs71(YStack63, { children: [
-          /* @__PURE__ */ jsx85(Label7, { children: "Atualizado em" }),
-          /* @__PURE__ */ jsx85(Value, { children: formattedTime })
+        /* @__PURE__ */ jsx86(Clock, { size: "$1", color: "$mutedForeground" }),
+        /* @__PURE__ */ jsxs71(YStack62, { children: [
+          /* @__PURE__ */ jsx86(Label7, { children: "Atualizado em" }),
+          /* @__PURE__ */ jsx86(Value, { children: formattedTime })
         ] })
       ] })
     ] }),
-    error && /* @__PURE__ */ jsx85(Text49, { color: "$destructive", fontSize: "$2", children: error })
+    error && /* @__PURE__ */ jsx86(Text49, { color: "$destructive", fontSize: "$2", children: error })
   ] });
 };
 
 // src/organisms/ScannerView/ScannerView.tsx
-import React63 from "react";
-import { YStack as YStack64, XStack as XStack42, styled as styled66, Text as Text50 } from "tamagui";
+import React69 from "react";
+import { YStack as YStack63, XStack as XStack41, styled as styled67, Text as Text50 } from "tamagui";
 import { Camera, Maximize, X as X5 } from "@tamagui/lucide-icons";
-import { Fragment as Fragment9, jsx as jsx86, jsxs as jsxs72 } from "react/jsx-runtime";
-var ScannerFrame = styled66(YStack64, {
+import { Fragment as Fragment10, jsx as jsx87, jsxs as jsxs72 } from "react/jsx-runtime";
+var ScannerFrame = styled67(YStack63, {
   name: "ScannerView",
   position: "relative",
   width: "100%",
@@ -10738,13 +10766,13 @@ var ScannerFrame = styled66(YStack64, {
   borderRadius: "$4",
   overflow: "hidden"
 });
-var CameraPlaceholder = styled66(YStack64, {
+var CameraPlaceholder = styled67(YStack63, {
   flex: 1,
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: "#1a1a1a"
 });
-var Overlay = styled66(YStack64, {
+var Overlay = styled67(YStack63, {
   position: "absolute",
   top: 0,
   left: 0,
@@ -10754,7 +10782,7 @@ var Overlay = styled66(YStack64, {
   justifyContent: "center",
   zIndex: 10
 });
-var ScanFrame = styled66(YStack64, {
+var ScanFrame = styled67(YStack63, {
   width: 250,
   height: 250,
   borderWidth: 2,
@@ -10765,14 +10793,14 @@ var ScanFrame = styled66(YStack64, {
   alignItems: "center",
   justifyContent: "center"
 });
-var ScanLine = styled66(YStack64, {
+var ScanLine = styled67(YStack63, {
   width: "100%",
   height: 2,
   backgroundColor: "$green10",
   position: "absolute",
   top: "50%"
 });
-var Controls = styled66(XStack42, {
+var Controls = styled67(XStack41, {
   position: "absolute",
   bottom: "$4",
   left: 0,
@@ -10781,7 +10809,7 @@ var Controls = styled66(XStack42, {
   gap: "$4",
   zIndex: 20
 });
-var StatusText = styled66(Text50, {
+var StatusText = styled67(Text50, {
   color: "#fff",
   marginTop: "$4",
   fontSize: "$3",
@@ -10798,7 +10826,7 @@ var ScannerView = ({
   mockData,
   ...props
 }) => {
-  const [scanned, setScanned] = React63.useState(false);
+  const [scanned, setScanned] = React69.useState(false);
   const handleScan = () => {
     setScanned(true);
     if (onScan && mockData) {
@@ -10806,30 +10834,30 @@ var ScannerView = ({
     }
     setTimeout(() => setScanned(false), 2e3);
   };
-  return /* @__PURE__ */ jsx86(ScannerFrame, { ...props, children: !isActive ? /* @__PURE__ */ jsxs72(CameraPlaceholder, { children: [
-    /* @__PURE__ */ jsx86(Camera, { size: "$6", color: "$gray10" }),
-    /* @__PURE__ */ jsx86(Text50, { color: "$gray10", marginTop: "$4", children: "C\xE2mera desativada" })
-  ] }) : /* @__PURE__ */ jsxs72(Fragment9, { children: [
-    /* @__PURE__ */ jsx86(CameraPlaceholder, { children: /* @__PURE__ */ jsx86(Maximize, { size: "$8", color: "#333" }) }),
+  return /* @__PURE__ */ jsx87(ScannerFrame, { ...props, children: !isActive ? /* @__PURE__ */ jsxs72(CameraPlaceholder, { children: [
+    /* @__PURE__ */ jsx87(Camera, { size: "$6", color: "$gray10" }),
+    /* @__PURE__ */ jsx87(Text50, { color: "$gray10", marginTop: "$4", children: "C\xE2mera desativada" })
+  ] }) : /* @__PURE__ */ jsxs72(Fragment10, { children: [
+    /* @__PURE__ */ jsx87(CameraPlaceholder, { children: /* @__PURE__ */ jsx87(Maximize, { size: "$8", color: "#333" }) }),
     /* @__PURE__ */ jsxs72(Overlay, { children: [
-      /* @__PURE__ */ jsx86(ScanFrame, { children: /* @__PURE__ */ jsx86(ScanLine, { style: { opacity: scanned ? 0 : 1 } }) }),
-      /* @__PURE__ */ jsx86(StatusText, { children: "Posicione o c\xF3digo no quadro" })
+      /* @__PURE__ */ jsx87(ScanFrame, { children: /* @__PURE__ */ jsx87(ScanLine, { style: { opacity: scanned ? 0 : 1 } }) }),
+      /* @__PURE__ */ jsx87(StatusText, { children: "Posicione o c\xF3digo no quadro" })
     ] }),
     /* @__PURE__ */ jsxs72(Controls, { children: [
-      mockData && /* @__PURE__ */ jsx86(Button, { onPress: handleScan, variant: "default", children: "Simular Scan" }),
-      onClose && /* @__PURE__ */ jsx86(Button, { onPress: onClose, variant: "destructive", icon: X5, circular: true })
+      mockData && /* @__PURE__ */ jsx87(Button, { onPress: handleScan, variant: "default", children: "Simular Scan" }),
+      onClose && /* @__PURE__ */ jsx87(Button, { onPress: onClose, variant: "destructive", icon: X5, circular: true })
     ] })
   ] }) });
 };
 
 // src/organisms/SignaturePad/SignaturePad.tsx
 import { useRef as useRef4, useState as useState16 } from "react";
-import { styled as styled67, YStack as YStack65, XStack as XStack43 } from "tamagui";
+import { styled as styled68, YStack as YStack64, XStack as XStack42 } from "tamagui";
 import { Svg as Svg4, Path as Path4 } from "react-native-svg";
 import { Eraser, Check as Check7 } from "@tamagui/lucide-icons";
 import { Text as Text51 } from "tamagui";
-import { jsx as jsx87, jsxs as jsxs73 } from "react/jsx-runtime";
-var SignatureContainer = styled67(YStack65, {
+import { jsx as jsx88, jsxs as jsxs73 } from "react/jsx-runtime";
+var SignatureContainer = styled68(YStack64, {
   name: "SignaturePad",
   width: "100%",
   height: 200,
@@ -10841,7 +10869,7 @@ var SignatureContainer = styled67(YStack65, {
   position: "relative",
   cursor: "crosshair"
 });
-var Controls2 = styled67(XStack43, {
+var Controls2 = styled68(XStack42, {
   padding: "$2",
   justifyContent: "flex-end",
   gap: "$2",
@@ -10849,7 +10877,7 @@ var Controls2 = styled67(XStack43, {
   borderTopWidth: 1,
   borderColor: "$borderColor"
 });
-var HelperText = styled67(YStack65, {
+var HelperText = styled68(YStack64, {
   position: "absolute",
   top: 0,
   left: 0,
@@ -10914,7 +10942,7 @@ var SignaturePad = ({
     const fullSvg = paths.join(" ");
     if (onSave) onSave(fullSvg);
   };
-  return /* @__PURE__ */ jsxs73(YStack65, { width: "100%", gap: "$2", children: [
+  return /* @__PURE__ */ jsxs73(YStack64, { width: "100%", gap: "$2", children: [
     /* @__PURE__ */ jsxs73(
       SignatureContainer,
       {
@@ -10925,7 +10953,7 @@ var SignaturePad = ({
         onMouseLeave: handleEnd,
         children: [
           /* @__PURE__ */ jsxs73(Svg4, { height: "100%", width: "100%", viewBox: "0 0 500 200", style: { position: "absolute", top: 0, left: 0, zIndex: 10 }, children: [
-            paths.map((d, i) => /* @__PURE__ */ jsx87(
+            paths.map((d, i) => /* @__PURE__ */ jsx88(
               Path4,
               {
                 d,
@@ -10937,7 +10965,7 @@ var SignaturePad = ({
               },
               i
             )),
-            currentPath.length > 0 && /* @__PURE__ */ jsx87(
+            currentPath.length > 0 && /* @__PURE__ */ jsx88(
               Path4,
               {
                 d: pointsToPath(currentPath),
@@ -10949,21 +10977,21 @@ var SignaturePad = ({
               }
             )
           ] }),
-          paths.length === 0 && currentPath.length === 0 && /* @__PURE__ */ jsx87(HelperText, { children: /* @__PURE__ */ jsx87(Text51, { color: "$gray8", children: "Assine aqui" }) })
+          paths.length === 0 && currentPath.length === 0 && /* @__PURE__ */ jsx88(HelperText, { children: /* @__PURE__ */ jsx88(Text51, { color: "$gray8", children: "Assine aqui" }) })
         ]
       }
     ),
     /* @__PURE__ */ jsxs73(Controls2, { children: [
-      /* @__PURE__ */ jsx87(Button, { variant: "outline", icon: Eraser, onPress: handleClear, children: "Limpar" }),
-      /* @__PURE__ */ jsx87(Button, { variant: "default", icon: Check7, onPress: handleSave, children: "Salvar" })
+      /* @__PURE__ */ jsx88(Button, { variant: "outline", icon: Eraser, onPress: handleClear, children: "Limpar" }),
+      /* @__PURE__ */ jsx88(Button, { variant: "default", icon: Check7, onPress: handleSave, children: "Salvar" })
     ] })
   ] });
 };
 
 // src/organisms/ImageAnnotator/ImageAnnotator.tsx
-import { YStack as YStack66, styled as styled68, Image as Image3 } from "tamagui";
-import { jsx as jsx88, jsxs as jsxs74 } from "react/jsx-runtime";
-var AnnotatorContainer = styled68(YStack66, {
+import { YStack as YStack65, styled as styled69, Image as Image3 } from "tamagui";
+import { jsx as jsx89, jsxs as jsxs74 } from "react/jsx-runtime";
+var AnnotatorContainer = styled69(YStack65, {
   name: "ImageAnnotator",
   width: "100%",
   position: "relative",
@@ -10973,7 +11001,7 @@ var AnnotatorContainer = styled68(YStack66, {
   overflow: "hidden",
   backgroundColor: "$background"
 });
-var ImageLayer = styled68(YStack66, {
+var ImageLayer = styled69(YStack65, {
   width: "100%",
   height: 400,
   position: "absolute",
@@ -10981,7 +11009,7 @@ var ImageLayer = styled68(YStack66, {
   left: 0,
   zIndex: 0
 });
-var DrawingLayer = styled68(YStack66, {
+var DrawingLayer = styled69(YStack65, {
   width: "100%",
   height: 400,
   zIndex: 10
@@ -10995,7 +11023,7 @@ var ImageAnnotator = ({
   ...props
 }) => {
   return /* @__PURE__ */ jsxs74(AnnotatorContainer, { ...props, children: [
-    /* @__PURE__ */ jsx88(ImageLayer, { children: /* @__PURE__ */ jsx88(
+    /* @__PURE__ */ jsx89(ImageLayer, { children: /* @__PURE__ */ jsx89(
       Image3,
       {
         source: { uri: imageUrl },
@@ -11005,7 +11033,7 @@ var ImageAnnotator = ({
         ...imageProps
       }
     ) }),
-    /* @__PURE__ */ jsx88(DrawingLayer, { children: /* @__PURE__ */ jsx88(
+    /* @__PURE__ */ jsx89(DrawingLayer, { children: /* @__PURE__ */ jsx89(
       SignaturePad,
       {
         height: "100%",
@@ -11019,10 +11047,10 @@ var ImageAnnotator = ({
 };
 
 // src/organisms/PDFPreview/PDFPreview.tsx
-import { YStack as YStack67, styled as styled69, Text as Text52, Spinner as Spinner5 } from "tamagui";
+import { YStack as YStack66, styled as styled70, Text as Text52, Spinner as Spinner5 } from "tamagui";
 import { FileText } from "@tamagui/lucide-icons";
-import { jsx as jsx89, jsxs as jsxs75 } from "react/jsx-runtime";
-var PDFContainer = styled69(YStack67, {
+import { jsx as jsx90, jsxs as jsxs75 } from "react/jsx-runtime";
+var PDFContainer = styled70(YStack66, {
   name: "PDFPreview",
   width: "100%",
   height: 500,
@@ -11033,13 +11061,13 @@ var PDFContainer = styled69(YStack67, {
   overflow: "hidden",
   position: "relative"
 });
-var PDFFrame = styled69(YStack67, {
+var PDFFrame = styled70(YStack66, {
   tag: "iframe",
   width: "100%",
   height: "100%",
   borderWidth: 0
 });
-var Placeholder = styled69(YStack67, {
+var Placeholder = styled70(YStack66, {
   flex: 1,
   alignItems: "center",
   justifyContent: "center",
@@ -11053,15 +11081,15 @@ var PDFPreview = ({
   ...props
 }) => {
   if (isLoading) {
-    return /* @__PURE__ */ jsx89(PDFContainer, { ...props, alignItems: "center", justifyContent: "center", children: /* @__PURE__ */ jsx89(Spinner5, { size: "large" }) });
+    return /* @__PURE__ */ jsx90(PDFContainer, { ...props, alignItems: "center", justifyContent: "center", children: /* @__PURE__ */ jsx90(Spinner5, { size: "large" }) });
   }
   if (error || !fileUrl) {
-    return /* @__PURE__ */ jsx89(PDFContainer, { ...props, children: /* @__PURE__ */ jsxs75(Placeholder, { children: [
-      /* @__PURE__ */ jsx89(FileText, { size: "$6", color: "$gray8" }),
-      /* @__PURE__ */ jsx89(Text52, { color: "$gray10", children: error || "Nenhum documento selecionado" })
+    return /* @__PURE__ */ jsx90(PDFContainer, { ...props, children: /* @__PURE__ */ jsxs75(Placeholder, { children: [
+      /* @__PURE__ */ jsx90(FileText, { size: "$6", color: "$gray8" }),
+      /* @__PURE__ */ jsx90(Text52, { color: "$gray10", children: error || "Nenhum documento selecionado" })
     ] }) });
   }
-  return /* @__PURE__ */ jsx89(PDFContainer, { ...props, children: /* @__PURE__ */ jsx89(
+  return /* @__PURE__ */ jsx90(PDFContainer, { ...props, children: /* @__PURE__ */ jsx90(
     PDFFrame,
     {
       src: `${fileUrl}#toolbar=0`,
@@ -11072,9 +11100,9 @@ var PDFPreview = ({
 };
 
 // src/organisms/DiffViewer/DiffViewer.tsx
-import { YStack as YStack68, XStack as XStack44, styled as styled70, Text as Text53, ScrollView as ScrollView5 } from "tamagui";
-import { jsx as jsx90, jsxs as jsxs76 } from "react/jsx-runtime";
-var DiffContainer = styled70(YStack68, {
+import { YStack as YStack67, XStack as XStack43, styled as styled71, Text as Text53, ScrollView as ScrollView5 } from "tamagui";
+import { jsx as jsx91, jsxs as jsxs76 } from "react/jsx-runtime";
+var DiffContainer = styled71(YStack67, {
   name: "DiffViewer",
   width: "100%",
   borderWidth: 1,
@@ -11083,19 +11111,19 @@ var DiffContainer = styled70(YStack68, {
   overflow: "hidden",
   backgroundColor: "$background"
 });
-var Header2 = styled70(XStack44, {
+var Header2 = styled71(XStack43, {
   backgroundColor: "$muted",
   padding: "$2",
   borderBottomWidth: 1,
   borderColor: "$borderColor",
   justifyContent: "space-between"
 });
-var DiffContent = styled70(XStack44, {
+var DiffContent = styled71(XStack43, {
   width: "100%",
   height: 400
   // Fixed height for scrolling
 });
-var Pane = styled70(YStack68, {
+var Pane = styled71(YStack67, {
   flex: 1,
   height: "100%",
   borderRightWidth: 1,
@@ -11108,7 +11136,7 @@ var Pane = styled70(YStack68, {
     }
   }
 });
-var Line2 = styled70(XStack44, {
+var Line2 = styled71(XStack43, {
   width: "100%",
   minHeight: 24,
   paddingHorizontal: "$2",
@@ -11121,7 +11149,7 @@ var Line2 = styled70(XStack44, {
     }
   }
 });
-var LineNumber = styled70(Text53, {
+var LineNumber = styled71(Text53, {
   width: 40,
   color: "$mutedForeground",
   fontSize: "$2",
@@ -11132,7 +11160,7 @@ var LineNumber = styled70(Text53, {
   borderColor: "$borderColor",
   marginRight: "$2"
 });
-var LineText = styled70(Text53, {
+var LineText = styled71(Text53, {
   fontSize: "$3",
   fontFamily: "$mono",
   color: "$foreground",
@@ -11167,26 +11195,26 @@ var DiffViewer = ({
   const diffs = computeDiff(oldText, newText);
   return /* @__PURE__ */ jsxs76(DiffContainer, { ...props, children: [
     /* @__PURE__ */ jsxs76(Header2, { children: [
-      /* @__PURE__ */ jsx90(Text53, { fontWeight: "bold", flex: 1, textAlign: "center", children: oldTitle }),
-      /* @__PURE__ */ jsx90(Text53, { fontWeight: "bold", flex: 1, textAlign: "center", children: newTitle })
+      /* @__PURE__ */ jsx91(Text53, { fontWeight: "bold", flex: 1, textAlign: "center", children: oldTitle }),
+      /* @__PURE__ */ jsx91(Text53, { fontWeight: "bold", flex: 1, textAlign: "center", children: newTitle })
     ] }),
-    /* @__PURE__ */ jsx90(ScrollView5, { children: /* @__PURE__ */ jsxs76(DiffContent, { children: [
-      /* @__PURE__ */ jsx90(Pane, { children: diffs.map((line, i) => /* @__PURE__ */ jsxs76(Line2, { type: line.type === "removed" || line.type === "modified" ? "removed" : "neutral", children: [
-        /* @__PURE__ */ jsx90(LineNumber, { children: line.num }),
-        /* @__PURE__ */ jsx90(LineText, { children: line.oldL })
+    /* @__PURE__ */ jsx91(ScrollView5, { children: /* @__PURE__ */ jsxs76(DiffContent, { children: [
+      /* @__PURE__ */ jsx91(Pane, { children: diffs.map((line, i) => /* @__PURE__ */ jsxs76(Line2, { type: line.type === "removed" || line.type === "modified" ? "removed" : "neutral", children: [
+        /* @__PURE__ */ jsx91(LineNumber, { children: line.num }),
+        /* @__PURE__ */ jsx91(LineText, { children: line.oldL })
       ] }, `old-${i}`)) }),
-      /* @__PURE__ */ jsx90(Pane, { last: true, children: diffs.map((line, i) => /* @__PURE__ */ jsxs76(Line2, { type: line.type === "added" || line.type === "modified" ? "added" : "neutral", children: [
-        /* @__PURE__ */ jsx90(LineNumber, { children: line.num }),
-        /* @__PURE__ */ jsx90(LineText, { children: line.newL })
+      /* @__PURE__ */ jsx91(Pane, { last: true, children: diffs.map((line, i) => /* @__PURE__ */ jsxs76(Line2, { type: line.type === "added" || line.type === "modified" ? "added" : "neutral", children: [
+        /* @__PURE__ */ jsx91(LineNumber, { children: line.num }),
+        /* @__PURE__ */ jsx91(LineText, { children: line.newL })
       ] }, `new-${i}`)) })
     ] }) })
   ] });
 };
 
 // src/organisms/TimelineAudit/TimelineAudit.tsx
-import { YStack as YStack69, XStack as XStack45, styled as styled71, Text as Text54, Circle as Circle5 } from "tamagui";
-import { jsx as jsx91, jsxs as jsxs77 } from "react/jsx-runtime";
-var AuditContainer = styled71(YStack69, {
+import { YStack as YStack68, XStack as XStack44, styled as styled72, Text as Text54, Circle as Circle5 } from "tamagui";
+import { jsx as jsx92, jsxs as jsxs77 } from "react/jsx-runtime";
+var AuditContainer = styled72(YStack68, {
   name: "TimelineAudit",
   width: "100%",
   gap: "$4",
@@ -11196,11 +11224,11 @@ var AuditContainer = styled71(YStack69, {
   borderColor: "$borderColor",
   borderRadius: "$4"
 });
-var AuditItem = styled71(XStack45, {
+var AuditItem = styled72(XStack44, {
   gap: "$3",
   position: "relative"
 });
-var Line3 = styled71(YStack69, {
+var Line3 = styled72(YStack68, {
   position: "absolute",
   left: 11,
   // Center of circle (24/2) - (2/2)
@@ -11211,7 +11239,7 @@ var Line3 = styled71(YStack69, {
   backgroundColor: "$borderColor",
   zIndex: 0
 });
-var AvatarCircle = styled71(Circle5, {
+var AvatarCircle = styled72(Circle5, {
   width: 24,
   height: 24,
   backgroundColor: "$primary",
@@ -11219,70 +11247,70 @@ var AvatarCircle = styled71(Circle5, {
   justifyContent: "center",
   zIndex: 1
 });
-var AvatarText = styled71(Text54, {
+var AvatarText = styled72(Text54, {
   color: "white",
   fontSize: 10,
   fontWeight: "bold"
 });
-var Content6 = styled71(YStack69, {
+var Content6 = styled72(YStack68, {
   flex: 1,
   gap: "$1",
   paddingBottom: "$4"
 });
-var HeaderRow2 = styled71(XStack45, {
+var HeaderRow2 = styled72(XStack44, {
   alignItems: "center",
   gap: "$2",
   flexWrap: "wrap"
 });
-var UserText = styled71(Text54, {
+var UserText = styled72(Text54, {
   fontWeight: "bold",
   color: "$foreground",
   fontSize: "$3"
 });
-var ActionText = styled71(Text54, {
+var ActionText = styled72(Text54, {
   color: "$mutedForeground",
   fontSize: "$3"
 });
-var TimeText = styled71(Text54, {
+var TimeText = styled72(Text54, {
   color: "$gray10",
   fontSize: "$2",
   marginLeft: "auto"
 });
-var DiffBox = styled71(YStack69, {
+var DiffBox = styled72(YStack68, {
   backgroundColor: "$muted",
   padding: "$2",
   borderRadius: "$2",
   marginTop: "$2"
 });
-var DiffText = styled71(Text54, {
+var DiffText = styled72(Text54, {
   fontFamily: "$mono",
   fontSize: "$2",
   color: "$foreground"
 });
 var TimelineAudit = ({ events, ...props }) => {
-  return /* @__PURE__ */ jsx91(AuditContainer, { ...props, children: events.map((event, index) => {
+  return /* @__PURE__ */ jsx92(AuditContainer, { ...props, children: events.map((event, index) => {
     const isLast = index === events.length - 1;
     return /* @__PURE__ */ jsxs77(AuditItem, { children: [
-      !isLast && /* @__PURE__ */ jsx91(Line3, {}),
-      /* @__PURE__ */ jsx91(AvatarCircle, { children: /* @__PURE__ */ jsx91(AvatarText, { children: event.userInitials || event.user.substring(0, 2).toUpperCase() }) }),
+      !isLast && /* @__PURE__ */ jsx92(Line3, {}),
+      /* @__PURE__ */ jsx92(AvatarCircle, { children: /* @__PURE__ */ jsx92(AvatarText, { children: event.userInitials || event.user.substring(0, 2).toUpperCase() }) }),
       /* @__PURE__ */ jsxs77(Content6, { children: [
         /* @__PURE__ */ jsxs77(HeaderRow2, { children: [
-          /* @__PURE__ */ jsx91(UserText, { children: event.user }),
-          /* @__PURE__ */ jsx91(ActionText, { children: event.action }),
-          /* @__PURE__ */ jsx91(TimeText, { children: new Date(event.timestamp).toLocaleString() })
+          /* @__PURE__ */ jsx92(UserText, { children: event.user }),
+          /* @__PURE__ */ jsx92(ActionText, { children: event.action }),
+          /* @__PURE__ */ jsx92(TimeText, { children: new Date(event.timestamp).toLocaleString() })
         ] }),
-        event.details && /* @__PURE__ */ jsx91(Text54, { fontSize: "$3", children: event.details }),
-        event.diff && /* @__PURE__ */ jsx91(DiffBox, { children: /* @__PURE__ */ jsx91(DiffText, { children: event.diff }) })
+        event.details && /* @__PURE__ */ jsx92(Text54, { fontSize: "$3", children: event.details }),
+        event.diff && /* @__PURE__ */ jsx92(DiffBox, { children: /* @__PURE__ */ jsx92(DiffText, { children: event.diff }) })
       ] })
     ] }, event.id);
   }) });
 };
 
 // src/organisms/A11yToolbar/A11yToolbar.tsx
-import { YStack as YStack70, XStack as XStack46, styled as styled72, Text as Text55 } from "tamagui";
+import { YStack as YStack69, XStack as XStack45, styled as styled73, Text as Text55 } from "tamagui";
 import { ZoomIn, ZoomOut, Moon, Sun, Type } from "@tamagui/lucide-icons";
-import { jsx as jsx92, jsxs as jsxs78 } from "react/jsx-runtime";
-var ToolbarContainer = styled72(XStack46, {
+import { jsx as jsx93, jsxs as jsxs78 } from "react/jsx-runtime";
+var ToolbarContainer = styled73(XStack45, {
   name: "A11yToolbar",
   padding: "$2",
   backgroundColor: "$background",
@@ -11292,7 +11320,7 @@ var ToolbarContainer = styled72(XStack46, {
   gap: "$2",
   alignItems: "center"
 });
-var Separator8 = styled72(YStack70, {
+var Separator8 = styled73(YStack69, {
   width: 1,
   height: 24,
   backgroundColor: "$borderColor",
@@ -11307,12 +11335,12 @@ var A11yToolbar = ({
   ...props
 }) => {
   return /* @__PURE__ */ jsxs78(ToolbarContainer, { ...props, children: [
-    /* @__PURE__ */ jsx92(Text55, { fontSize: "$2", fontWeight: "bold", marginRight: "$2", children: "Acessibilidade:" }),
-    /* @__PURE__ */ jsx92(Button, { icon: ZoomOut, size: "sm", variant: "outline", onPress: onZoomOut, "aria-label": "Diminuir fonte" }),
-    /* @__PURE__ */ jsx92(Button, { icon: Type, size: "sm", variant: "ghost", disabled: true, "aria-label": "Tamanho da fonte" }),
-    /* @__PURE__ */ jsx92(Button, { icon: ZoomIn, size: "sm", variant: "outline", onPress: onZoomIn, "aria-label": "Aumentar fonte" }),
-    /* @__PURE__ */ jsx92(Separator8, {}),
-    /* @__PURE__ */ jsx92(
+    /* @__PURE__ */ jsx93(Text55, { fontSize: "$2", fontWeight: "bold", marginRight: "$2", children: "Acessibilidade:" }),
+    /* @__PURE__ */ jsx93(Button, { icon: ZoomOut, size: "sm", variant: "outline", onPress: onZoomOut, "aria-label": "Diminuir fonte" }),
+    /* @__PURE__ */ jsx93(Button, { icon: Type, size: "sm", variant: "ghost", disabled: true, "aria-label": "Tamanho da fonte" }),
+    /* @__PURE__ */ jsx93(Button, { icon: ZoomIn, size: "sm", variant: "outline", onPress: onZoomIn, "aria-label": "Aumentar fonte" }),
+    /* @__PURE__ */ jsx93(Separator8, {}),
+    /* @__PURE__ */ jsx93(
       Button,
       {
         icon: isDark ? Sun : Moon,
@@ -11322,7 +11350,7 @@ var A11yToolbar = ({
         "aria-label": isDark ? "Modo Claro" : "Modo Escuro"
       }
     ),
-    /* @__PURE__ */ jsx92(
+    /* @__PURE__ */ jsx93(
       Button,
       {
         size: "sm",
@@ -11336,10 +11364,10 @@ var A11yToolbar = ({
 
 // src/organisms/FileUpload/FileUpload.tsx
 import { useRef as useRef5 } from "react";
-import { YStack as YStack71, styled as styled73, Text as Text56 } from "tamagui";
+import { YStack as YStack70, styled as styled74, Text as Text56 } from "tamagui";
 import { Upload } from "@tamagui/lucide-icons";
-import { jsx as jsx93, jsxs as jsxs79 } from "react/jsx-runtime";
-var FileUploadFrame = styled73(YStack71, {
+import { jsx as jsx94, jsxs as jsxs79 } from "react/jsx-runtime";
+var FileUploadFrame = styled74(YStack70, {
   name: "FileUpload",
   borderWidth: 2,
   borderColor: "$borderColor",
@@ -11387,10 +11415,10 @@ var FileUpload = ({
   };
   if (isLoading) {
     return /* @__PURE__ */ jsxs79(FileUploadFrame, { ...props, children: [
-      /* @__PURE__ */ jsx93(Skeleton, { height: 32, width: 32, borderRadius: "$12" }),
-      /* @__PURE__ */ jsxs79(YStack71, { gap: "$1", alignItems: "center", width: "100%", children: [
-        /* @__PURE__ */ jsx93(Skeleton, { height: 20, width: "60%" }),
-        /* @__PURE__ */ jsx93(Skeleton, { height: 16, width: "80%" })
+      /* @__PURE__ */ jsx94(Skeleton, { height: 32, width: 32, borderRadius: "$12" }),
+      /* @__PURE__ */ jsxs79(YStack70, { gap: "$1", alignItems: "center", width: "100%", children: [
+        /* @__PURE__ */ jsx94(Skeleton, { height: 20, width: "60%" }),
+        /* @__PURE__ */ jsx94(Skeleton, { height: 16, width: "80%" })
       ] })
     ] });
   }
@@ -11408,16 +11436,16 @@ var FileUpload = ({
         disabled: isLoading,
         "aria-label": title,
         children: [
-          /* @__PURE__ */ jsx93(Upload, { size: 32, color: hasError ? "$red10" : "$gray10" }),
-          /* @__PURE__ */ jsxs79(YStack71, { gap: "$1", alignItems: "center", children: [
-            /* @__PURE__ */ jsx93(Text56, { fontWeight: "bold", color: hasError ? "$red11" : void 0, children: title }),
-            /* @__PURE__ */ jsx93(Text56, { fontSize: "$2", color: hasError ? "$red10" : "$gray11", children: subtitle })
+          /* @__PURE__ */ jsx94(Upload, { size: 32, color: hasError ? "$red10" : "$gray10" }),
+          /* @__PURE__ */ jsxs79(YStack70, { gap: "$1", alignItems: "center", children: [
+            /* @__PURE__ */ jsx94(Text56, { fontWeight: "bold", color: hasError ? "$red11" : void 0, children: title }),
+            /* @__PURE__ */ jsx94(Text56, { fontSize: "$2", color: hasError ? "$red10" : "$gray11", children: subtitle })
           ] })
         ]
       }
     ),
-    hasError && errorMessage && /* @__PURE__ */ jsx93(Text56, { fontSize: "$2", color: "$red11", textAlign: "center", children: errorMessage }),
-    typeof document !== "undefined" && /* @__PURE__ */ jsx93(
+    hasError && errorMessage && /* @__PURE__ */ jsx94(Text56, { fontSize: "$2", color: "$red11", textAlign: "center", children: errorMessage }),
+    typeof document !== "undefined" && /* @__PURE__ */ jsx94(
       "input",
       {
         type: "file",
@@ -11433,8 +11461,8 @@ var FileUpload = ({
 
 // src/organisms/SchemaForm/SchemaForm.tsx
 import { useForm } from "react-hook-form";
-import { YStack as YStack72 } from "tamagui";
-import { jsx as jsx94, jsxs as jsxs80 } from "react/jsx-runtime";
+import { YStack as YStack71 } from "tamagui";
+import { jsx as jsx95, jsxs as jsxs80 } from "react/jsx-runtime";
 var renderFieldInput = (field, formField) => {
   const commonProps = {
     disabled: field.disabled,
@@ -11445,7 +11473,7 @@ var renderFieldInput = (field, formField) => {
     case "email":
     case "password":
     case "number":
-      return /* @__PURE__ */ jsx94(
+      return /* @__PURE__ */ jsx95(
         Input,
         {
           ...formField,
@@ -11455,9 +11483,9 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "textarea":
-      return /* @__PURE__ */ jsx94(Textarea, { ...formField, ...commonProps, placeholder: field.placeholder });
+      return /* @__PURE__ */ jsx95(Textarea, { ...formField, ...commonProps, placeholder: field.placeholder });
     case "switch":
-      return /* @__PURE__ */ jsx94(
+      return /* @__PURE__ */ jsx95(
         Switch,
         {
           checked: formField.value,
@@ -11466,7 +11494,7 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "checkbox":
-      return /* @__PURE__ */ jsx94(
+      return /* @__PURE__ */ jsx95(
         Checkbox,
         {
           checked: formField.value,
@@ -11475,7 +11503,7 @@ var renderFieldInput = (field, formField) => {
         }
       );
     case "date":
-      return /* @__PURE__ */ jsx94(
+      return /* @__PURE__ */ jsx95(
         DatePicker,
         {
           date: formField.value,
@@ -11492,11 +11520,11 @@ var renderFieldInput = (field, formField) => {
           onValueChange: formField.onChange,
           disabled: field.disabled,
           children: [
-            /* @__PURE__ */ jsx94(SelectRoot.Trigger, { placeholder: field.placeholder, children: /* @__PURE__ */ jsx94(SelectRoot.Value, { placeholder: field.placeholder }) }),
-            /* @__PURE__ */ jsx94(SelectRoot.Sheet, {}),
-            /* @__PURE__ */ jsx94(SelectRoot.Content, { children: /* @__PURE__ */ jsx94(SelectRoot.Viewport, { children: /* @__PURE__ */ jsx94(SelectRoot.Group, { children: field.options?.map((opt, i) => /* @__PURE__ */ jsxs80(SelectRoot.Item, { index: i, value: opt.value, children: [
-              /* @__PURE__ */ jsx94(SelectRoot.ItemText, { children: opt.label }),
-              /* @__PURE__ */ jsx94(SelectRoot.ItemIndicator, { marginLeft: "auto" })
+            /* @__PURE__ */ jsx95(SelectRoot.Trigger, { placeholder: field.placeholder, children: /* @__PURE__ */ jsx95(SelectRoot.Value, { placeholder: field.placeholder }) }),
+            /* @__PURE__ */ jsx95(SelectRoot.Sheet, {}),
+            /* @__PURE__ */ jsx95(SelectRoot.Content, { children: /* @__PURE__ */ jsx95(SelectRoot.Viewport, { children: /* @__PURE__ */ jsx95(SelectRoot.Group, { children: field.options?.map((opt, i) => /* @__PURE__ */ jsxs80(SelectRoot.Item, { index: i, value: opt.value, children: [
+              /* @__PURE__ */ jsx95(SelectRoot.ItemText, { children: opt.label }),
+              /* @__PURE__ */ jsx95(SelectRoot.ItemIndicator, { marginLeft: "auto" })
             ] }, opt.value)) }) }) })
           ]
         }
@@ -11513,32 +11541,32 @@ function SchemaForm({
   isLoading
 }) {
   const form = useForm({ defaultValues });
-  return /* @__PURE__ */ jsx94(Form, { ...form, children: /* @__PURE__ */ jsx94(FormRoot, { tag: "form", onSubmit: form.handleSubmit(onSubmit), children: /* @__PURE__ */ jsxs80(YStack72, { gap: "$4", children: [
-    schema.map((field) => /* @__PURE__ */ jsx94(
+  return /* @__PURE__ */ jsx95(Form, { ...form, children: /* @__PURE__ */ jsx95(FormRoot, { tag: "form", onSubmit: form.handleSubmit(onSubmit), children: /* @__PURE__ */ jsxs80(YStack71, { gap: "$4", children: [
+    schema.map((field) => /* @__PURE__ */ jsx95(
       FormField,
       {
         control: form.control,
         name: field.name,
         rules: { required: field.required ? "Campo obrigat\xF3rio" : false },
         render: ({ field: formField }) => /* @__PURE__ */ jsxs80(FormItem, { children: [
-          /* @__PURE__ */ jsx94(FormLabel, { children: field.label }),
-          /* @__PURE__ */ jsx94(FormControl, { children: renderFieldInput(field, formField) }),
-          field.description && /* @__PURE__ */ jsx94(FormDescription, { children: field.description }),
-          /* @__PURE__ */ jsx94(FormMessage, {})
+          /* @__PURE__ */ jsx95(FormLabel, { children: field.label }),
+          /* @__PURE__ */ jsx95(FormControl, { children: renderFieldInput(field, formField) }),
+          field.description && /* @__PURE__ */ jsx95(FormDescription, { children: field.description }),
+          /* @__PURE__ */ jsx95(FormMessage, {})
         ] })
       },
       field.name
     )),
-    /* @__PURE__ */ jsx94(Button, { type: "submit", loading: isLoading, theme: "active", children: submitText })
+    /* @__PURE__ */ jsx95(Button, { type: "submit", loading: isLoading, theme: "active", children: submitText })
   ] }) }) });
 }
 
 // src/organisms/HeatmapChart/HeatmapChart.tsx
-import { YStack as YStack73, Text as Text57, useTheme as useTheme19 } from "tamagui";
+import { YStack as YStack72, Text as Text57, useTheme as useTheme19 } from "tamagui";
 import { VictoryScatter as VictoryScatter3, VictoryChart as VictoryChart12, VictoryAxis as VictoryAxis10, VictoryContainer as VictoryContainer8 } from "victory";
 import { AlertTriangle as AlertTriangle17, Grid } from "@tamagui/lucide-icons";
 import { useMemo as useMemo15 } from "react";
-import { jsx as jsx95, jsxs as jsxs81 } from "react/jsx-runtime";
+import { jsx as jsx96, jsxs as jsxs81 } from "react/jsx-runtime";
 var HeatmapChart = ({
   data,
   xKey,
@@ -11576,18 +11604,18 @@ var HeatmapChart = ({
   };
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx95(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx96(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs81(YStack73, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx95(AlertTriangle17, { color: "$red10" }),
-        /* @__PURE__ */ jsx95(Text57, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs81(YStack72, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx96(AlertTriangle17, { color: "$red10" }),
+        /* @__PURE__ */ jsx96(Text57, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs81(YStack73, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx95(Grid, { color: "$gray10" }),
-        /* @__PURE__ */ jsx95(Text57, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs81(YStack72, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx96(Grid, { color: "$gray10" }),
+        /* @__PURE__ */ jsx96(Text57, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     return /* @__PURE__ */ jsxs81(
@@ -11595,9 +11623,9 @@ var HeatmapChart = ({
       {
         domainPadding: { x: 20, y: 20 },
         height,
-        containerComponent: /* @__PURE__ */ jsx95(VictoryContainer8, { responsive: true }),
+        containerComponent: /* @__PURE__ */ jsx96(VictoryContainer8, { responsive: true }),
         children: [
-          /* @__PURE__ */ jsx95(
+          /* @__PURE__ */ jsx96(
             VictoryAxis10,
             {
               style: {
@@ -11606,7 +11634,7 @@ var HeatmapChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx95(
+          /* @__PURE__ */ jsx96(
             VictoryAxis10,
             {
               dependentAxis: true,
@@ -11616,7 +11644,7 @@ var HeatmapChart = ({
               }
             }
           ),
-          /* @__PURE__ */ jsx95(
+          /* @__PURE__ */ jsx96(
             VictoryScatter3,
             {
               data: processedData,
@@ -11633,18 +11661,18 @@ var HeatmapChart = ({
       }
     );
   };
-  return /* @__PURE__ */ jsxs81(YStack73, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs81(YStack72, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/TreemapChart/TreemapChart.tsx
-import { YStack as YStack74, Text as Text58, useTheme as useTheme20 } from "tamagui";
+import { YStack as YStack73, Text as Text58, useTheme as useTheme20 } from "tamagui";
 import { AlertTriangle as AlertTriangle18, Grid as Grid2 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo16 } from "react";
 import Svg5, { Rect as SvgRect, Text as SvgText3, G as G4 } from "react-native-svg";
-import { jsx as jsx96, jsxs as jsxs82 } from "react/jsx-runtime";
+import { jsx as jsx97, jsxs as jsxs82 } from "react/jsx-runtime";
 var layout = (nodes, container) => {
   if (nodes.length === 0) return [];
   if (nodes.length === 1) {
@@ -11724,22 +11752,22 @@ var TreemapChart = ({
   const getColor = (index) => colors[index % colors.length];
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx96(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx97(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs82(YStack74, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx96(AlertTriangle18, { color: "$red10" }),
-        /* @__PURE__ */ jsx96(Text58, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs82(YStack73, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx97(AlertTriangle18, { color: "$red10" }),
+        /* @__PURE__ */ jsx97(Text58, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
-      return /* @__PURE__ */ jsxs82(YStack74, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx96(Grid2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx96(Text58, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs82(YStack73, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx97(Grid2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx97(Text58, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsx96(Svg5, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ jsxs82(G4, { children: [
-      /* @__PURE__ */ jsx96(
+    return /* @__PURE__ */ jsx97(Svg5, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ jsxs82(G4, { children: [
+      /* @__PURE__ */ jsx97(
         SvgRect,
         {
           x: node.rect?.x,
@@ -11751,7 +11779,7 @@ var TreemapChart = ({
           strokeWidth: "1"
         }
       ),
-      node.rect && node.rect.w > 20 && node.rect.h > 15 && /* @__PURE__ */ jsx96(
+      node.rect && node.rect.w > 20 && node.rect.h > 15 && /* @__PURE__ */ jsx97(
         SvgText3,
         {
           x: (node.rect.x || 0) + (node.rect.w || 0) / 2,
@@ -11765,18 +11793,18 @@ var TreemapChart = ({
       )
     ] }, i)) });
   };
-  return /* @__PURE__ */ jsxs82(YStack74, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs82(YStack73, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/SankeyDiagram/SankeyDiagram.tsx
-import { YStack as YStack75, Text as Text59, useTheme as useTheme21 } from "tamagui";
+import { YStack as YStack74, Text as Text59, useTheme as useTheme21 } from "tamagui";
 import { AlertTriangle as AlertTriangle19, Activity as Activity3 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo17 } from "react";
 import Svg6, { Rect as Rect2, Text as SvgText4, Path as Path5, G as G5 } from "react-native-svg";
-import { jsx as jsx97, jsxs as jsxs83 } from "react/jsx-runtime";
+import { jsx as jsx98, jsxs as jsxs83 } from "react/jsx-runtime";
 var computeLayout = (data, width, height) => {
   const { nodes: rawNodes, links: rawLinks } = data;
   const nodes = rawNodes.map((n) => ({
@@ -11871,18 +11899,18 @@ var SankeyDiagram = ({
   }, [data, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx97(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx98(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs83(YStack75, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx97(AlertTriangle19, { color: "$red10" }),
-        /* @__PURE__ */ jsx97(Text59, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs83(YStack74, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx98(AlertTriangle19, { color: "$red10" }),
+        /* @__PURE__ */ jsx98(Text59, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.nodes.length === 0) {
-      return /* @__PURE__ */ jsxs83(YStack75, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx97(Activity3, { color: "$gray10" }),
-        /* @__PURE__ */ jsx97(Text59, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs83(YStack74, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx98(Activity3, { color: "$gray10" }),
+        /* @__PURE__ */ jsx98(Text59, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const { nodes, links } = layout2;
@@ -11894,7 +11922,7 @@ var SankeyDiagram = ({
         const y1 = link.y1;
         const midX = (x0 + x1) / 2;
         const d = `M ${x0} ${y0} C ${midX} ${y0}, ${midX} ${y1}, ${x1} ${y1}`;
-        return /* @__PURE__ */ jsx97(
+        return /* @__PURE__ */ jsx98(
           Path5,
           {
             d,
@@ -11907,7 +11935,7 @@ var SankeyDiagram = ({
         );
       }),
       nodes.map((node, i) => /* @__PURE__ */ jsxs83(G5, { children: [
-        /* @__PURE__ */ jsx97(
+        /* @__PURE__ */ jsx98(
           Rect2,
           {
             x: node.x,
@@ -11918,7 +11946,7 @@ var SankeyDiagram = ({
             fillOpacity: 0.8
           }
         ),
-        /* @__PURE__ */ jsx97(
+        /* @__PURE__ */ jsx98(
           SvgText4,
           {
             x: node.x + 25,
@@ -11932,18 +11960,18 @@ var SankeyDiagram = ({
       ] }, `node-${i}`))
     ] });
   };
-  return /* @__PURE__ */ jsxs83(YStack75, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs83(YStack74, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/ChordDiagram/ChordDiagram.tsx
-import { YStack as YStack76, Text as Text60, useTheme as useTheme22 } from "tamagui";
+import { YStack as YStack75, Text as Text60, useTheme as useTheme22 } from "tamagui";
 import { AlertTriangle as AlertTriangle20, Circle as Circle6 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo18 } from "react";
 import Svg7, { Path as Path6, G as G6, Text as SvgText5 } from "react-native-svg";
-import { jsx as jsx98, jsxs as jsxs84 } from "react/jsx-runtime";
+import { jsx as jsx99, jsxs as jsxs84 } from "react/jsx-runtime";
 var polarToCartesian = (centerX, centerY, radius, angleInRadians) => {
   return {
     x: centerX + radius * Math.cos(angleInRadians),
@@ -12066,23 +12094,23 @@ var ChordDiagram = ({
   }, [matrix, labels, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx98(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx99(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs84(YStack76, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx98(AlertTriangle20, { color: "$red10" }),
-        /* @__PURE__ */ jsx98(Text60, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs84(YStack75, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx99(AlertTriangle20, { color: "$red10" }),
+        /* @__PURE__ */ jsx99(Text60, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.groups.length === 0) {
-      return /* @__PURE__ */ jsxs84(YStack76, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx98(Circle6, { color: "$gray10" }),
-        /* @__PURE__ */ jsx98(Text60, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs84(YStack75, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx99(Circle6, { color: "$gray10" }),
+        /* @__PURE__ */ jsx99(Text60, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const { groups, ribbons, cx, cy, outerRadius } = layout2;
-    return /* @__PURE__ */ jsx98(Svg7, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs84(G6, { children: [
-      ribbons.map((ribbon, i) => /* @__PURE__ */ jsx98(
+    return /* @__PURE__ */ jsx99(Svg7, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs84(G6, { children: [
+      ribbons.map((ribbon, i) => /* @__PURE__ */ jsx99(
         Path6,
         {
           d: ribbon.d,
@@ -12095,7 +12123,7 @@ var ChordDiagram = ({
       groups.map((group, i) => {
         const labelPos = polarToCartesian(cx, cy, outerRadius + 20, group.midAngle);
         return /* @__PURE__ */ jsxs84(G6, { children: [
-          /* @__PURE__ */ jsx98(
+          /* @__PURE__ */ jsx99(
             Path6,
             {
               d: group.path,
@@ -12103,7 +12131,7 @@ var ChordDiagram = ({
               stroke: theme.borderColor?.get() || "white"
             }
           ),
-          /* @__PURE__ */ jsx98(
+          /* @__PURE__ */ jsx99(
             SvgText5,
             {
               x: labelPos.x,
@@ -12119,18 +12147,18 @@ var ChordDiagram = ({
       })
     ] }) });
   };
-  return /* @__PURE__ */ jsxs84(YStack76, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs84(YStack75, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
 };
 
 // src/organisms/NetworkGraph/NetworkGraph.tsx
-import { YStack as YStack77, Text as Text61, useTheme as useTheme23 } from "tamagui";
+import { YStack as YStack76, Text as Text61, useTheme as useTheme23 } from "tamagui";
 import { AlertTriangle as AlertTriangle21, Share2 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo19 } from "react";
 import Svg8, { Circle as Circle7, Line as Line4, Text as SvgText6, G as G7 } from "react-native-svg";
-import { jsx as jsx99, jsxs as jsxs85 } from "react/jsx-runtime";
+import { jsx as jsx100, jsxs as jsxs85 } from "react/jsx-runtime";
 var runSimulation = (nodes, links, width, height) => {
   const simNodes = nodes.map((n, i) => ({
     ...n,
@@ -12214,22 +12242,22 @@ var NetworkGraph = ({
   }, [data, width, height]);
   const renderContent = () => {
     if (isLoading) {
-      return /* @__PURE__ */ jsx99(Skeleton, { height, width: "100%" });
+      return /* @__PURE__ */ jsx100(Skeleton, { height, width: "100%" });
     }
     if (error) {
-      return /* @__PURE__ */ jsxs85(YStack77, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx99(AlertTriangle21, { color: "$red10" }),
-        /* @__PURE__ */ jsx99(Text61, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+      return /* @__PURE__ */ jsxs85(YStack76, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx100(AlertTriangle21, { color: "$red10" }),
+        /* @__PURE__ */ jsx100(Text61, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.nodes.length === 0) {
-      return /* @__PURE__ */ jsxs85(YStack77, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx99(Share2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx99(Text61, { children: "N\xE3o h\xE1 dados para exibir." })
+      return /* @__PURE__ */ jsxs85(YStack76, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
+        /* @__PURE__ */ jsx100(Share2, { color: "$gray10" }),
+        /* @__PURE__ */ jsx100(Text61, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsx99(Svg8, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs85(G7, { children: [
-      layout2.links.map((link, i) => /* @__PURE__ */ jsx99(
+    return /* @__PURE__ */ jsx100(Svg8, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs85(G7, { children: [
+      layout2.links.map((link, i) => /* @__PURE__ */ jsx100(
         Line4,
         {
           x1: link.source.x,
@@ -12242,7 +12270,7 @@ var NetworkGraph = ({
         `link-${i}`
       )),
       layout2.nodes.map((node, i) => /* @__PURE__ */ jsxs85(G7, { children: [
-        /* @__PURE__ */ jsx99(
+        /* @__PURE__ */ jsx100(
           Circle7,
           {
             cx: node.x,
@@ -12253,7 +12281,7 @@ var NetworkGraph = ({
             strokeWidth: "2"
           }
         ),
-        /* @__PURE__ */ jsx99(
+        /* @__PURE__ */ jsx100(
           SvgText6,
           {
             x: node.x,
@@ -12268,7 +12296,7 @@ var NetworkGraph = ({
       ] }, `node-${i}`))
     ] }) });
   };
-  return /* @__PURE__ */ jsxs85(YStack77, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
+  return /* @__PURE__ */ jsxs85(YStack76, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
     headerContent,
     renderContent()
   ] });
@@ -12276,9 +12304,9 @@ var NetworkGraph = ({
 
 // src/organisms/MediaGrid/MediaGrid.tsx
 import { useState as useState17 } from "react";
-import { YStack as YStack78, XStack as XStack47, Text as Text62, Image as Image4, Button as Button6, ScrollView as ScrollView6, Stack as Stack2 } from "tamagui";
+import { YStack as YStack77, XStack as XStack46, Text as Text62, Image as Image4, Button as Button7, ScrollView as ScrollView6, Stack as Stack3 } from "tamagui";
 import { Check as Check8, Trash2, Upload as Upload2, Grip, List as ListIcon } from "@tamagui/lucide-icons";
-import { jsx as jsx100, jsxs as jsxs86 } from "react/jsx-runtime";
+import { jsx as jsx101, jsxs as jsxs86 } from "react/jsx-runtime";
 var MediaGrid = ({
   items,
   selectedIds = [],
@@ -12300,12 +12328,12 @@ var MediaGrid = ({
       setInternalViewMode(mode);
     }
   };
-  return /* @__PURE__ */ jsxs86(YStack78, { gap: "$4", f: 1, children: [
-    /* @__PURE__ */ jsxs86(XStack47, { justifyContent: "space-between", alignItems: "center", children: [
-      /* @__PURE__ */ jsxs86(XStack47, { gap: "$2", children: [
-        onUpload && /* @__PURE__ */ jsx100(Button6, { icon: Upload2, onPress: onUpload, children: "Upload" }),
+  return /* @__PURE__ */ jsxs86(YStack77, { gap: "$4", f: 1, children: [
+    /* @__PURE__ */ jsxs86(XStack46, { justifyContent: "space-between", alignItems: "center", children: [
+      /* @__PURE__ */ jsxs86(XStack46, { gap: "$2", children: [
+        onUpload && /* @__PURE__ */ jsx101(Button7, { icon: Upload2, onPress: onUpload, children: "Upload" }),
         selectedIds.length > 0 && onDelete && /* @__PURE__ */ jsxs86(
-          Button6,
+          Button7,
           {
             theme: "red",
             icon: Trash2,
@@ -12318,9 +12346,9 @@ var MediaGrid = ({
           }
         )
       ] }),
-      /* @__PURE__ */ jsxs86(XStack47, { gap: "$2", backgroundColor: "$background", padding: "$1", borderRadius: "$4", children: [
-        /* @__PURE__ */ jsx100(
-          Button6,
+      /* @__PURE__ */ jsxs86(XStack46, { gap: "$2", backgroundColor: "$background", padding: "$1", borderRadius: "$4", children: [
+        /* @__PURE__ */ jsx101(
+          Button7,
           {
             size: "$3",
             chromeless: currentViewMode !== "grid",
@@ -12329,8 +12357,8 @@ var MediaGrid = ({
             onPress: () => handleViewModeChange("grid")
           }
         ),
-        /* @__PURE__ */ jsx100(
-          Button6,
+        /* @__PURE__ */ jsx101(
+          Button7,
           {
             size: "$3",
             chromeless: currentViewMode !== "list",
@@ -12341,8 +12369,8 @@ var MediaGrid = ({
         )
       ] })
     ] }),
-    /* @__PURE__ */ jsx100(ScrollView6, { children: /* @__PURE__ */ jsxs86(XStack47, { flexWrap: "wrap", gap: "$4", children: [
-      items.map((item) => /* @__PURE__ */ jsx100(
+    /* @__PURE__ */ jsx101(ScrollView6, { children: /* @__PURE__ */ jsxs86(XStack46, { flexWrap: "wrap", gap: "$4", children: [
+      items.map((item) => /* @__PURE__ */ jsx101(
         MediaItemCard,
         {
           item,
@@ -12352,7 +12380,7 @@ var MediaGrid = ({
         },
         item.id
       )),
-      items.length === 0 && !isLoading && /* @__PURE__ */ jsx100(YStack78, { f: 1, alignItems: "center", justifyContent: "center", padding: "$10", children: /* @__PURE__ */ jsx100(Text62, { color: "$color10", children: "No media found" }) })
+      items.length === 0 && !isLoading && /* @__PURE__ */ jsx101(YStack77, { f: 1, alignItems: "center", justifyContent: "center", padding: "$10", children: /* @__PURE__ */ jsx101(Text62, { color: "$color10", children: "No media found" }) })
     ] }) })
   ] });
 };
@@ -12364,7 +12392,7 @@ var MediaItemCard = ({
 }) => {
   if (viewMode === "list") {
     return /* @__PURE__ */ jsxs86(
-      XStack47,
+      XStack46,
       {
         width: "100%",
         backgroundColor: "$background",
@@ -12378,7 +12406,7 @@ var MediaItemCard = ({
         borderColor: selected ? "$blue10" : "$borderColor",
         borderRadius: "$4",
         children: [
-          /* @__PURE__ */ jsx100(
+          /* @__PURE__ */ jsx101(
             Image4,
             {
               source: { uri: item.thumbnailUrl || item.url },
@@ -12388,15 +12416,15 @@ var MediaItemCard = ({
               objectFit: "cover"
             }
           ),
-          /* @__PURE__ */ jsxs86(YStack78, { f: 1, children: [
-            /* @__PURE__ */ jsx100(Text62, { fontWeight: "bold", children: item.title }),
+          /* @__PURE__ */ jsxs86(YStack77, { f: 1, children: [
+            /* @__PURE__ */ jsx101(Text62, { fontWeight: "bold", children: item.title }),
             /* @__PURE__ */ jsxs86(Text62, { fontSize: "$2", color: "$color10", children: [
               item.type,
               " \u2022 ",
               formatBytes(item.size)
             ] })
           ] }),
-          selected && /* @__PURE__ */ jsx100(Check8, { color: "$blue10" })
+          selected && /* @__PURE__ */ jsx101(Check8, { color: "$blue10" })
         ]
       }
     );
@@ -12415,7 +12443,7 @@ var MediaItemCard = ({
       pressStyle: { scale: 0.98 },
       animation: "quick",
       children: [
-        /* @__PURE__ */ jsx100(
+        /* @__PURE__ */ jsx101(
           Image4,
           {
             source: { uri: item.thumbnailUrl || item.url },
@@ -12424,8 +12452,8 @@ var MediaItemCard = ({
             objectFit: "cover"
           }
         ),
-        selected && /* @__PURE__ */ jsx100(
-          Stack2,
+        selected && /* @__PURE__ */ jsx101(
+          Stack3,
           {
             position: "absolute",
             top: 8,
@@ -12433,11 +12461,11 @@ var MediaItemCard = ({
             backgroundColor: "$blue10",
             padding: 4,
             borderRadius: 100,
-            children: /* @__PURE__ */ jsx100(Check8, { size: 12, color: "white" })
+            children: /* @__PURE__ */ jsx101(Check8, { size: 12, color: "white" })
           }
         ),
-        /* @__PURE__ */ jsx100(
-          YStack78,
+        /* @__PURE__ */ jsx101(
+          YStack77,
           {
             position: "absolute",
             bottom: 0,
@@ -12445,7 +12473,7 @@ var MediaItemCard = ({
             right: 0,
             backgroundColor: "rgba(0,0,0,0.5)",
             padding: "$2",
-            children: /* @__PURE__ */ jsx100(Text62, { color: "white", numberOfLines: 1, fontSize: "$2", children: item.title })
+            children: /* @__PURE__ */ jsx101(Text62, { color: "white", numberOfLines: 1, fontSize: "$2", children: item.title })
           }
         )
       ]
@@ -12464,8 +12492,8 @@ function formatBytes(bytes, decimals = 2) {
 
 // src/organisms/AuthScreen/AuthScreen.tsx
 import { useState as useState18 } from "react";
-import { YStack as YStack79, XStack as XStack48, Text as Text63, Image as Image5 } from "tamagui";
-import { jsx as jsx101, jsxs as jsxs87 } from "react/jsx-runtime";
+import { YStack as YStack78, XStack as XStack47, Text as Text63, Image as Image5 } from "tamagui";
+import { jsx as jsx102, jsxs as jsxs87 } from "react/jsx-runtime";
 var AuthScreen = ({
   logo,
   title,
@@ -12492,15 +12520,15 @@ var AuthScreen = ({
       onForgotPassword(email);
     }
   };
-  return /* @__PURE__ */ jsx101(YStack79, { f: 1, alignItems: "center", justifyContent: "center", padding: "$4", backgroundColor: "$background", children: /* @__PURE__ */ jsxs87(Card, { width: "100%", maxWidth: 400, padding: "$6", gap: "$4", elevation: "$2", children: [
-    /* @__PURE__ */ jsxs87(YStack79, { alignItems: "center", gap: "$2", marginBottom: "$4", children: [
-      typeof logo === "string" ? /* @__PURE__ */ jsx101(Image5, { source: { uri: logo }, width: 60, height: 60, borderRadius: "$2" }) : logo,
-      /* @__PURE__ */ jsx101(Text63, { fontSize: "$6", fontWeight: "bold", children: title || (view === "login" ? "Welcome Back" : "Create Account") }),
-      subtitle && /* @__PURE__ */ jsx101(Text63, { color: "$color10", textAlign: "center", children: subtitle })
+  return /* @__PURE__ */ jsx102(YStack78, { f: 1, alignItems: "center", justifyContent: "center", padding: "$4", backgroundColor: "$background", children: /* @__PURE__ */ jsxs87(Card, { width: "100%", maxWidth: 400, padding: "$6", gap: "$4", elevation: "$2", children: [
+    /* @__PURE__ */ jsxs87(YStack78, { alignItems: "center", gap: "$2", marginBottom: "$4", children: [
+      typeof logo === "string" ? /* @__PURE__ */ jsx102(Image5, { source: { uri: logo }, width: 60, height: 60, borderRadius: "$2" }) : logo,
+      /* @__PURE__ */ jsx102(Text63, { fontSize: "$6", fontWeight: "bold", children: title || (view === "login" ? "Welcome Back" : "Create Account") }),
+      subtitle && /* @__PURE__ */ jsx102(Text63, { color: "$color10", textAlign: "center", children: subtitle })
     ] }),
-    error && /* @__PURE__ */ jsx101(YStack79, { backgroundColor: "$red2", padding: "$2", borderRadius: "$2", children: /* @__PURE__ */ jsx101(Text63, { color: "$red10", children: error }) }),
-    /* @__PURE__ */ jsxs87(YStack79, { gap: "$3", children: [
-      view === "register" && /* @__PURE__ */ jsx101(
+    error && /* @__PURE__ */ jsx102(YStack78, { backgroundColor: "$red2", padding: "$2", borderRadius: "$2", children: /* @__PURE__ */ jsx102(Text63, { color: "$red10", children: error }) }),
+    /* @__PURE__ */ jsxs87(YStack78, { gap: "$3", children: [
+      view === "register" && /* @__PURE__ */ jsx102(
         Input,
         {
           placeholder: "Name",
@@ -12508,7 +12536,7 @@ var AuthScreen = ({
           onChangeText: setName
         }
       ),
-      /* @__PURE__ */ jsx101(
+      /* @__PURE__ */ jsx102(
         Input,
         {
           placeholder: "Email",
@@ -12517,7 +12545,7 @@ var AuthScreen = ({
           autoCapitalize: "none"
         }
       ),
-      view !== "forgot-password" && /* @__PURE__ */ jsx101(
+      view !== "forgot-password" && /* @__PURE__ */ jsx102(
         Input,
         {
           placeholder: "Password",
@@ -12526,7 +12554,7 @@ var AuthScreen = ({
           secureTextEntry: true
         }
       ),
-      view === "register" && /* @__PURE__ */ jsx101(
+      view === "register" && /* @__PURE__ */ jsx102(
         Input,
         {
           placeholder: "Confirm Password",
@@ -12535,7 +12563,7 @@ var AuthScreen = ({
           secureTextEntry: true
         }
       ),
-      view === "login" && onForgotPassword && /* @__PURE__ */ jsx101(
+      view === "login" && onForgotPassword && /* @__PURE__ */ jsx102(
         Text63,
         {
           fontSize: "$2",
@@ -12546,24 +12574,24 @@ var AuthScreen = ({
           children: "Forgot password?"
         }
       ),
-      /* @__PURE__ */ jsx101(
+      /* @__PURE__ */ jsx102(
         Button,
         {
           themeInverse: true,
           onPress: handleSubmit,
           disabled: isLoading,
-          icon: isLoading ? /* @__PURE__ */ jsx101(Spinner, {}) : void 0,
+          icon: isLoading ? /* @__PURE__ */ jsx102(Spinner, {}) : void 0,
           children: view === "login" ? "Sign In" : view === "register" ? "Sign Up" : "Reset Password"
         }
       )
     ] }),
-    socialProviders && socialProviders.length > 0 && view === "login" && /* @__PURE__ */ jsxs87(YStack79, { gap: "$3", marginTop: "$2", children: [
-      /* @__PURE__ */ jsxs87(XStack48, { alignItems: "center", gap: "$2", children: [
-        /* @__PURE__ */ jsx101(Separator, {}),
-        /* @__PURE__ */ jsx101(Text63, { fontSize: "$2", color: "$color10", children: "Or continue with" }),
-        /* @__PURE__ */ jsx101(Separator, {})
+    socialProviders && socialProviders.length > 0 && view === "login" && /* @__PURE__ */ jsxs87(YStack78, { gap: "$3", marginTop: "$2", children: [
+      /* @__PURE__ */ jsxs87(XStack47, { alignItems: "center", gap: "$2", children: [
+        /* @__PURE__ */ jsx102(Separator, {}),
+        /* @__PURE__ */ jsx102(Text63, { fontSize: "$2", color: "$color10", children: "Or continue with" }),
+        /* @__PURE__ */ jsx102(Separator, {})
       ] }),
-      /* @__PURE__ */ jsx101(XStack48, { gap: "$2", justifyContent: "center", children: socialProviders.map((provider) => /* @__PURE__ */ jsx101(
+      /* @__PURE__ */ jsx102(XStack47, { gap: "$2", justifyContent: "center", children: socialProviders.map((provider) => /* @__PURE__ */ jsx102(
         Button,
         {
           icon: provider.icon,
@@ -12574,10 +12602,10 @@ var AuthScreen = ({
         provider.name
       )) })
     ] }),
-    /* @__PURE__ */ jsx101(YStack79, { alignItems: "center", marginTop: "$4", children: view === "login" ? /* @__PURE__ */ jsxs87(Text63, { fontSize: "$2", color: "$color10", children: [
+    /* @__PURE__ */ jsx102(YStack78, { alignItems: "center", marginTop: "$4", children: view === "login" ? /* @__PURE__ */ jsxs87(Text63, { fontSize: "$2", color: "$color10", children: [
       "Don't have an account?",
       " ",
-      /* @__PURE__ */ jsx101(
+      /* @__PURE__ */ jsx102(
         Text63,
         {
           color: "$blue10",
@@ -12590,7 +12618,7 @@ var AuthScreen = ({
     ] }) : /* @__PURE__ */ jsxs87(Text63, { fontSize: "$2", color: "$color10", children: [
       "Already have an account?",
       " ",
-      /* @__PURE__ */ jsx101(
+      /* @__PURE__ */ jsx102(
         Text63,
         {
           color: "$blue10",
@@ -12605,19 +12633,19 @@ var AuthScreen = ({
 };
 
 // src/molecules/Field/Field.tsx
-import React73 from "react";
-import { styled as styled74, Text as Text64, XStack as XStack49, YStack as YStack80 } from "tamagui";
-import { jsx as jsx102, jsxs as jsxs88 } from "react/jsx-runtime";
-var FieldFrame = styled74(YStack80, {
+import React79 from "react";
+import { styled as styled75, Text as Text64, XStack as XStack48, YStack as YStack79 } from "tamagui";
+import { jsx as jsx103, jsxs as jsxs88 } from "react/jsx-runtime";
+var FieldFrame = styled75(YStack79, {
   name: "Field",
   gap: "$2"
 });
 var FieldLabel = Label;
-var FieldControlFrame = styled74(YStack80, {
+var FieldControlFrame = styled75(YStack79, {
   name: "FieldControl",
   flex: 1
 });
-var FieldErrorFrame = styled74(Text64, {
+var FieldErrorFrame = styled75(Text64, {
   name: "FieldError",
   color: "$destructive",
   fontSize: "$2"
@@ -12632,38 +12660,38 @@ var FieldRoot = ({
 }) => {
   if (isLoading) {
     return /* @__PURE__ */ jsxs88(FieldFrame, { ...props, children: [
-      /* @__PURE__ */ jsx102(Skeleton, { height: "$4", width: "$20" }),
-      /* @__PURE__ */ jsx102(Skeleton, { height: "$10" })
+      /* @__PURE__ */ jsx103(Skeleton, { height: "$4", width: "$20" }),
+      /* @__PURE__ */ jsx103(Skeleton, { height: "$10" })
     ] });
   }
-  const childrenArray = React73.Children.toArray(children);
+  const childrenArray = React79.Children.toArray(children);
   const finalChildren = childrenArray.map((child, index) => {
-    if (!React73.isValidElement(child)) {
+    if (!React79.isValidElement(child)) {
       return child;
     }
     if (child.type === FieldLabel) {
-      return React73.cloneElement(child, {
+      return React79.cloneElement(child, {
         key: `field-child-${index}`,
         state: hasError ? "error" : void 0,
         disabled: isDisabled
       });
     }
     if (child.type === FieldControlFrame) {
-      const inputChild = React73.Children.only(child.props.children);
-      const clonedInput = React73.cloneElement(
+      const inputChild = React79.Children.only(child.props.children);
+      const clonedInput = React79.cloneElement(
         inputChild,
         {
           state: hasError ? "error" : void 0,
           disabled: isDisabled
         }
       );
-      const finalControl = React73.cloneElement(
+      const finalControl = React79.cloneElement(
         child,
         { key: `field-child-${index}` },
         clonedInput
       );
       if (rightSlot) {
-        return /* @__PURE__ */ jsxs88(XStack49, { gap: "$2", alignItems: "center", children: [
+        return /* @__PURE__ */ jsxs88(XStack48, { gap: "$2", alignItems: "center", children: [
           finalControl,
           rightSlot
         ] }, `field-child-${index}`);
@@ -12672,7 +12700,7 @@ var FieldRoot = ({
     }
     return child;
   });
-  return /* @__PURE__ */ jsx102(FieldFrame, { ...props, children: finalChildren });
+  return /* @__PURE__ */ jsx103(FieldFrame, { ...props, children: finalChildren });
 };
 FieldRoot.displayName = "Field";
 var Field = Object.assign(FieldRoot, {
@@ -12682,10 +12710,10 @@ var Field = Object.assign(FieldRoot, {
 });
 
 // src/molecules/InputGroup/InputGroup.tsx
-import { Spinner as Spinner6, XStack as XStack50, styled as styled75 } from "tamagui";
+import { Spinner as Spinner6, XStack as XStack49, styled as styled76 } from "tamagui";
 import { cloneElement as cloneElement7, Children as Children5 } from "react";
-import { jsx as jsx103, jsxs as jsxs89 } from "react/jsx-runtime";
-var InputGroupFrame = styled75(XStack50, {
+import { jsx as jsx104, jsxs as jsxs89 } from "react/jsx-runtime";
+var InputGroupFrame = styled76(XStack49, {
   name: "InputGroup",
   alignItems: "center",
   borderWidth: 1,
@@ -12735,22 +12763,22 @@ var InputGroup = ({
       }
       return child;
     }),
-    isLoading && /* @__PURE__ */ jsx103(Spinner6, {})
+    isLoading && /* @__PURE__ */ jsx104(Spinner6, {})
   ] });
 };
 
 // src/molecules/NativeSelect/NativeSelect.tsx
 import { ChevronDown as ChevronDown6, AlertCircle as AlertCircle8 } from "@tamagui/lucide-icons";
-import { forwardRef as forwardRef13, useId as useId3 } from "react";
-import { YStack as YStack82 } from "tamagui";
+import { forwardRef as forwardRef14, useId as useId3 } from "react";
+import { YStack as YStack81 } from "tamagui";
 
 // src/molecules/NativeSelect/NativeSelect.styles.ts
-import { Label as TamaguiLabel2, styled as styled76, XStack as XStack51, YStack as YStack81 } from "tamagui";
-var SelectContainer = styled76(YStack81, {
+import { Label as TamaguiLabel2, styled as styled77, XStack as XStack50, YStack as YStack80 } from "tamagui";
+var SelectContainer = styled77(YStack80, {
   name: "SelectContainer",
   gap: "$2"
 });
-var SelectTrigger2 = styled76(XStack51, {
+var SelectTrigger2 = styled77(XStack50, {
   name: "SelectTrigger",
   alignItems: "center",
   justifyContent: "space-between",
@@ -12774,7 +12802,7 @@ var SelectTrigger2 = styled76(XStack51, {
     }
   }
 });
-var SelectElement = styled76("select", {
+var SelectElement = styled77("select", {
   name: "Select",
   flex: 1,
   height: "100%",
@@ -12786,7 +12814,7 @@ var SelectElement = styled76("select", {
   // Reset native styles
   appearance: "none"
 });
-var Label8 = styled76(TamaguiLabel2, {
+var Label8 = styled77(TamaguiLabel2, {
   name: "Label",
   color: "$color",
   fontSize: "$4",
@@ -12800,22 +12828,22 @@ var Label8 = styled76(TamaguiLabel2, {
 });
 
 // src/molecules/NativeSelect/NativeSelect.tsx
-import { jsx as jsx104, jsxs as jsxs90 } from "react/jsx-runtime";
-var NativeSelect = forwardRef13(
+import { jsx as jsx105, jsxs as jsxs90 } from "react/jsx-runtime";
+var NativeSelect = forwardRef14(
   ({ children, label, id, hasError = false, isLoading = false, disabled = false, ...props }, ref) => {
     const internalId = useId3();
     const selectId = id || internalId;
     if (isLoading) {
       return /* @__PURE__ */ jsxs90(SelectContainer, { children: [
-        label && /* @__PURE__ */ jsx104(Skeleton, { height: 20, width: 100 }),
-        /* @__PURE__ */ jsx104(Skeleton, { height: 40 })
+        label && /* @__PURE__ */ jsx105(Skeleton, { height: 20, width: 100 }),
+        /* @__PURE__ */ jsx105(Skeleton, { height: 40 })
       ] });
     }
     return /* @__PURE__ */ jsxs90(SelectContainer, { children: [
-      label && /* @__PURE__ */ jsx104(Label8, { htmlFor: selectId, hasError, children: label }),
+      label && /* @__PURE__ */ jsx105(Label8, { htmlFor: selectId, hasError, children: label }),
       /* @__PURE__ */ jsxs90(SelectTrigger2, { hasError, disabled, children: [
-        /* @__PURE__ */ jsx104(SelectElement, { id: selectId, ref, disabled, ...props, children }),
-        /* @__PURE__ */ jsx104(YStack82, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ jsx104(AlertCircle8, { size: 16, color: "$red10" }) : /* @__PURE__ */ jsx104(ChevronDown6, { size: 16, color: "$color10" }) })
+        /* @__PURE__ */ jsx105(SelectElement, { id: selectId, ref, disabled, ...props, children }),
+        /* @__PURE__ */ jsx105(YStack81, { pointerEvents: "none", position: "absolute", right: "$3", alignItems: "center", children: hasError ? /* @__PURE__ */ jsx105(AlertCircle8, { size: 16, color: "$red10" }) : /* @__PURE__ */ jsx105(ChevronDown6, { size: 16, color: "$color10" }) })
       ] })
     ] });
   }
@@ -12830,21 +12858,21 @@ import { PortalProvider } from "@tamagui/portal";
 import { createTamagui, createFont } from "tamagui";
 
 // ../../node_modules/@tamagui/use-presence/dist/esm/PresenceContext.mjs
-import * as React75 from "react";
-import { jsx as jsx105 } from "react/jsx-runtime";
-var PresenceContext = React75.createContext(null);
+import * as React81 from "react";
+import { jsx as jsx106 } from "react/jsx-runtime";
+var PresenceContext = React81.createContext(null);
 var ResetPresence = (props) => {
-  const parent = React75.useContext(PresenceContext);
-  return /* @__PURE__ */ jsx105(PresenceContext.Provider, {
+  const parent = React81.useContext(PresenceContext);
+  return /* @__PURE__ */ jsx106(PresenceContext.Provider, {
     value: props.disable ? parent : null,
     children: props.children
   });
 };
 
 // ../../node_modules/@tamagui/use-presence/dist/esm/usePresence.mjs
-import * as React76 from "react";
+import * as React82 from "react";
 function usePresence() {
-  const context = React76.useContext(PresenceContext);
+  const context = React82.useContext(PresenceContext);
   if (!context) return [true, null, context];
   const {
     id,
@@ -12852,11 +12880,11 @@ function usePresence() {
     onExitComplete,
     register
   } = context;
-  return React76.useEffect(() => register(id), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id), context] : [true, void 0, context];
+  return React82.useEffect(() => register(id), []), !isPresent2 && onExitComplete ? [false, () => onExitComplete?.(id), context] : [true, void 0, context];
 }
 
 // ../../node_modules/@tamagui/animations-react-native/dist/esm/createAnimations.mjs
-import React77 from "react";
+import React83 from "react";
 import { Animated } from "react-native-web";
 var animatedStyleKey = {
   transform: true,
@@ -12888,7 +12916,7 @@ var costlyToAnimateStyleKey = {
 var AnimatedView = Animated.View;
 var AnimatedText = Animated.Text;
 function useAnimatedNumber(initial) {
-  const state = React77.useRef(null);
+  const state = React83.useRef(null);
   return state.current || (state.current = {
     composite: null,
     val: new Animated.Value(initial),
@@ -12941,7 +12969,7 @@ var useAnimatedNumberReaction = ({
   const onChange = useEvent((current) => {
     onValue(current.value);
   });
-  React77.useEffect(() => {
+  React83.useEffect(() => {
     const id = value.getInstance().addListener(onChange);
     return () => {
       value.getInstance().removeListener(id);
@@ -12967,7 +12995,7 @@ function createAnimations(animations2) {
       componentState,
       presence
     }) => {
-      const isDisabled = isWeb && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = React77.useRef({}), animatedTranforms = React77.useRef([]), animationsState = React77.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = React77.useMemo(() => isWeb ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = React77.useMemo(() => {
+      const isDisabled = isWeb && componentState.unmounted === true, isExiting = presence?.[0] === false, sendExitComplete = presence?.[1], animateStyles = React83.useRef({}), animatedTranforms = React83.useRef([]), animationsState = React83.useRef(/* @__PURE__ */ new WeakMap()), animateOnly = props.animateOnly || [], hasAnimateOnly = !!props.animateOnly, args = [JSON.stringify(style), componentState, isExiting, !!onDidAnimate], isThereNoNativeStyleKeys = React83.useMemo(() => isWeb ? true : Object.keys(style).some((key) => animateOnly ? !animatedStyleKey[key] && animateOnly.indexOf(key) === -1 : !animatedStyleKey[key]), args), res = React83.useMemo(() => {
         const runners = [], completions = [], nonAnimatedStyle = {};
         for (const key in style) {
           const val = style[key];
@@ -13489,97 +13517,36 @@ import * as Colors from "@tamagui/colors";
 // src/theme/escuro.ts
 var escuroColors = {
   ...darkColors,
-  // Base Backgrounds (Black & Deep Blue)
-  background: "#000000",
-  backgroundHover: "#050A14",
-  // Very dark blue
-  backgroundPress: "#0A1429",
-  backgroundFocus: "#0A1429",
-  backgroundStrong: "#020408",
-  // Borders (Subtle Blue)
-  borderColor: "#1E293B",
-  borderColorHover: "#334155",
-  borderColorFocus: "#3B82F6",
-  // Bright Blue Focus
-  // Text (White)
-  color: "#FFFFFF",
-  colorHover: "#E2E8F0",
-  colorPress: "#CBD5E1",
-  colorFocus: "#FFFFFF",
-  // Primary Action (Blue)
-  primary: "#1E40AF",
-  // Blue 800
-  primaryHover: "#1D4ED8",
-  // Blue 700
-  primaryPress: "#2563EB",
-  // Blue 600
-  primaryFocus: "#2563EB",
-  primaryForeground: "#FFFFFF",
-  // Secondary
-  secondary: "#0F172A",
-  // Slate 900
-  secondaryHover: "#1E293B",
-  secondaryPress: "#334155",
-  secondaryForeground: "#FFFFFF",
-  // Glassmorphism hints (used in specific components if they use these tokens)
-  shadowColor: "rgba(59, 130, 246, 0.2)",
-  // Blue glow
-  shadowColorHover: "rgba(59, 130, 246, 0.4)"
-};
-
-// src/theme/prefRio.ts
-var rioPalette = {
-  primary: "#003399",
-  primaryLight: "#0066CC",
-  secondary: "#333333",
-  tertiary: "#666666",
-  white: "#FFFFFF",
-  gray1: "#EEEEEE",
-  gray2: "#F5F5F5",
-  success: "#009900",
-  error: "#CC0000",
-  warning: "#FFA500",
-  info: "#0066CC"
-};
-var prefRioColors = {
-  ...lightColors,
-  // Backgrounds
-  background: rioPalette.white,
-  backgroundHover: rioPalette.gray1,
-  backgroundPress: rioPalette.gray2,
-  backgroundFocus: rioPalette.gray1,
-  backgroundStrong: rioPalette.secondary,
-  // Dark background for strong contrast areas
-  // Borders
-  borderColor: rioPalette.gray1,
-  borderColorHover: rioPalette.tertiary,
-  borderColorFocus: rioPalette.primary,
-  borderColorPress: rioPalette.primary,
-  // Text
-  color: rioPalette.secondary,
-  // Main text #333333
-  colorHover: rioPalette.tertiary,
-  colorPress: rioPalette.primary,
-  colorFocus: rioPalette.primary,
-  // Primary Actions
-  primary: rioPalette.primary,
-  primaryHover: rioPalette.primaryLight,
-  primaryPress: "#002266",
-  primaryFocus: rioPalette.primary,
-  primaryForeground: rioPalette.white,
-  // Secondary Actions
-  secondary: rioPalette.gray1,
-  secondaryHover: "#DDD",
-  secondaryPress: "#CCC",
-  secondaryForeground: rioPalette.secondary,
-  // Status
-  success: rioPalette.success,
-  error: rioPalette.error,
-  warning: rioPalette.warning,
-  info: rioPalette.info,
-  // Shadows
-  shadowColor: "rgba(0, 0, 0, 0.1)",
-  shadowColorHover: "rgba(0, 0, 0, 0.15)"
+  // Base Backgrounds (Zinc 950/900)
+  background: "#09090b",
+  backgroundHover: "#18181b",
+  backgroundPress: "#27272a",
+  backgroundFocus: "#27272a",
+  backgroundStrong: "#09090b",
+  // Borders (Zinc 800)
+  borderColor: "#27272a",
+  borderColorHover: "#3f3f46",
+  borderColorFocus: "#52525b",
+  // Text (Zinc 50)
+  color: "#fafafa",
+  colorHover: "#f4f4f5",
+  colorPress: "#e4e4e7",
+  colorFocus: "#fafafa",
+  // Primary Action (High Contrast Zinc 50)
+  primary: "#fafafa",
+  primaryHover: "#f4f4f5",
+  primaryPress: "#e4e4e7",
+  primaryFocus: "#fafafa",
+  primaryForeground: "#18181b",
+  // Zinc 900 for text on primary
+  // Secondary (Zinc 900)
+  secondary: "#18181b",
+  secondaryHover: "#27272a",
+  secondaryPress: "#3f3f46",
+  secondaryForeground: "#fafafa",
+  // Glassmorphism hints
+  shadowColor: "rgba(0, 0, 0, 0.4)",
+  shadowColorHover: "rgba(0, 0, 0, 0.6)"
 };
 
 // src/theme/themes.ts
@@ -13724,18 +13691,6 @@ var builtThemes = createThemes({
         input: escuroColors.borderColor,
         ring: escuroColors.primary,
         foreground: escuroColors.color
-      },
-      prefrio: {
-        ...Colors.green,
-        ...Colors.red,
-        ...Colors.yellow,
-        ...lightShadows,
-        ...prefRioColors,
-        shadowColor: lightShadows.shadow1,
-        border: prefRioColors.borderColor,
-        input: prefRioColors.borderColor,
-        ring: prefRioColors.primary,
-        foreground: prefRioColors.color
       }
     }
   },
@@ -13801,8 +13756,7 @@ var baseThemes = themes;
 var themes2 = {
   ...baseThemes,
   claro: baseThemes.claro,
-  escuro: baseThemes.escuro,
-  "pref.rio": baseThemes.prefrio
+  escuro: baseThemes.escuro
 };
 var ceraProFont = createFont({
   family: "Cera Pro",
@@ -13862,22 +13816,6 @@ var ceraProFont = createFont({
     900: { normal: "CeraPro-Black" }
   }
 });
-var arialFont = createFont({
-  family: "Arial, Helvetica, sans-serif",
-  size: ceraProFont.size,
-  lineHeight: ceraProFont.lineHeight,
-  weight: {
-    4: "400",
-    // Regular
-    7: "700"
-    // Bold
-  },
-  letterSpacing: ceraProFont.letterSpacing,
-  face: {
-    400: { normal: "Arial" },
-    700: { normal: "Arial-Bold" }
-  }
-});
 var animations = createAnimations({
   bouncy: {
     type: "spring",
@@ -13906,8 +13844,8 @@ var config = createTamagui({
     body: ceraProFont,
     brandHeading: ceraProFont,
     brandBody: ceraProFont,
-    rioHeading: arialFont,
-    rioBody: arialFont
+    brandHeading: ceraProFont,
+    brandBody: ceraProFont
   },
   // Tokens
   tokens,
@@ -13965,8 +13903,8 @@ var config = createTamagui({
 var tamagui_config_default = config;
 
 // src/providers/AppProviders.tsx
-import { jsx as jsx106 } from "react/jsx-runtime";
-var AppProviders = ({ theme = "claro", children }) => /* @__PURE__ */ jsx106(TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ jsx106(PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ jsx106(ErrorBoundary, { componentName: "AppProviders", children }) }) });
+import { jsx as jsx107 } from "react/jsx-runtime";
+var AppProviders = ({ theme = "claro", children }) => /* @__PURE__ */ jsx107(TamaguiProvider, { config: tamagui_config_default, defaultTheme: theme, children: /* @__PURE__ */ jsx107(PortalProvider, { shouldAddRootHost: true, children: /* @__PURE__ */ jsx107(ErrorBoundary, { componentName: "AppProviders", children }) }) });
 
 // src/fonts.ts
 var fonts = {
@@ -13976,14 +13914,14 @@ var fonts = {
 };
 
 // src/organisms/AgentAnimationPanel/AgentAnimationPanel.tsx
-import { styled as styled77, YStack as YStack83, XStack as XStack52, ScrollView as ScrollView7 } from "tamagui";
+import { styled as styled78, YStack as YStack82, XStack as XStack51, ScrollView as ScrollView7 } from "tamagui";
 import { Activity as Activity4, AlertCircle as AlertCircle9, CheckCircle, Info } from "@tamagui/lucide-icons";
-import { jsx as jsx107, jsxs as jsxs91 } from "react/jsx-runtime";
-var EventList = styled77(YStack83, {
+import { jsx as jsx108, jsxs as jsxs91 } from "react/jsx-runtime";
+var EventList = styled78(YStack82, {
   gap: "$3",
   padding: "$2"
 });
-var EventItem = styled77(XStack52, {
+var EventItem = styled78(XStack51, {
   backgroundColor: "$background",
   padding: "$3",
   borderRadius: "$md",
@@ -13994,7 +13932,7 @@ var EventItem = styled77(XStack52, {
   animation: "quick",
   enterStyle: { opacity: 0, y: 10 }
 });
-var Timestamp = styled77(Typography, {
+var Timestamp = styled78(Typography, {
   fontSize: "$2",
   color: "$mutedForeground",
   minWidth: 50
@@ -14002,15 +13940,15 @@ var Timestamp = styled77(Typography, {
 var StatusIcon = ({ type }) => {
   switch (type) {
     case "error":
-      return /* @__PURE__ */ jsx107(AlertCircle9, { size: 16, color: "$red10" });
+      return /* @__PURE__ */ jsx108(AlertCircle9, { size: 16, color: "$red10" });
     case "success":
-      return /* @__PURE__ */ jsx107(CheckCircle, { size: 16, color: "$green10" });
+      return /* @__PURE__ */ jsx108(CheckCircle, { size: 16, color: "$green10" });
     case "working":
-      return /* @__PURE__ */ jsx107(Activity4, { size: 16, color: "$blue10" });
+      return /* @__PURE__ */ jsx108(Activity4, { size: 16, color: "$blue10" });
     case "warning":
-      return /* @__PURE__ */ jsx107(AlertCircle9, { size: 16, color: "$yellow10" });
+      return /* @__PURE__ */ jsx108(AlertCircle9, { size: 16, color: "$yellow10" });
     default:
-      return /* @__PURE__ */ jsx107(Info, { size: 16, color: "$gray10" });
+      return /* @__PURE__ */ jsx108(Info, { size: 16, color: "$gray10" });
   }
 };
 var AgentAnimationPanel = ({
@@ -14019,41 +13957,41 @@ var AgentAnimationPanel = ({
   events
 }) => {
   return /* @__PURE__ */ jsxs91(Card, { width: "100%", height: "100%", maxHeight: 600, children: [
-    /* @__PURE__ */ jsx107(CardHeader, { children: /* @__PURE__ */ jsxs91(XStack52, { justifyContent: "space-between", alignItems: "center", children: [
-      /* @__PURE__ */ jsx107(CardTitle, { children: agentName }),
-      /* @__PURE__ */ jsx107(Badge, { variant: agentStatus === "error" ? "destructive" : "default", children: agentStatus.toUpperCase() })
+    /* @__PURE__ */ jsx108(CardHeader, { children: /* @__PURE__ */ jsxs91(XStack51, { justifyContent: "space-between", alignItems: "center", children: [
+      /* @__PURE__ */ jsx108(CardTitle, { children: agentName }),
+      /* @__PURE__ */ jsx108(Badge, { variant: agentStatus === "error" ? "destructive" : "default", children: agentStatus.toUpperCase() })
     ] }) }),
-    /* @__PURE__ */ jsx107(CardContent, { children: /* @__PURE__ */ jsx107(ScrollView7, { maxHeight: 400, children: events.length === 0 ? /* @__PURE__ */ jsx107(
+    /* @__PURE__ */ jsx108(CardContent, { children: /* @__PURE__ */ jsx108(ScrollView7, { maxHeight: 400, children: events.length === 0 ? /* @__PURE__ */ jsx108(
       Empty,
       {
         title: "Nenhum evento registrado",
         description: "Aguardando atividades do agente..."
       }
-    ) : /* @__PURE__ */ jsx107(EventList, { children: events.map((event) => /* @__PURE__ */ jsxs91(EventItem, { children: [
-      /* @__PURE__ */ jsx107(StatusIcon, { type: event.type }),
-      /* @__PURE__ */ jsxs91(YStack83, { flex: 1, children: [
-        /* @__PURE__ */ jsx107(Typography, { children: event.message }),
-        /* @__PURE__ */ jsx107(Timestamp, { children: new Date(event.timestamp).toLocaleTimeString() })
+    ) : /* @__PURE__ */ jsx108(EventList, { children: events.map((event) => /* @__PURE__ */ jsxs91(EventItem, { children: [
+      /* @__PURE__ */ jsx108(StatusIcon, { type: event.type }),
+      /* @__PURE__ */ jsxs91(YStack82, { flex: 1, children: [
+        /* @__PURE__ */ jsx108(Typography, { children: event.message }),
+        /* @__PURE__ */ jsx108(Timestamp, { children: new Date(event.timestamp).toLocaleTimeString() })
       ] })
     ] }, event.id)) }) }) })
   ] });
 };
 
 // src/organisms/AgentAnimationModal/AgentAnimationModal.tsx
-import { jsx as jsx108 } from "react/jsx-runtime";
+import { jsx as jsx109 } from "react/jsx-runtime";
 var AgentAnimationModal = ({
   open,
   onOpenChange,
   ...panelProps
 }) => {
-  return /* @__PURE__ */ jsx108(Dialog, { modal: true, open, onOpenChange, children: /* @__PURE__ */ jsx108(DialogContentComposite, { padding: 0, maxWidth: 600, maxHeight: "80vh", children: /* @__PURE__ */ jsx108(AgentAnimationPanel, { ...panelProps }) }) });
+  return /* @__PURE__ */ jsx109(Dialog, { modal: true, open, onOpenChange, children: /* @__PURE__ */ jsx109(DialogContentComposite, { padding: 0, maxWidth: 600, maxHeight: "80vh", children: /* @__PURE__ */ jsx109(AgentAnimationPanel, { ...panelProps }) }) });
 };
 
 // src/atoms/StatusLight/StatusLight.tsx
-import React78 from "react";
-import { styled as styled78, XStack as XStack53, Circle as Circle8, Text as Text65 } from "tamagui";
-import { jsx as jsx109, jsxs as jsxs92 } from "react/jsx-runtime";
-var StatusLightFrame = styled78(XStack53, {
+import React84 from "react";
+import { styled as styled79, XStack as XStack52, Circle as Circle8, Text as Text65 } from "tamagui";
+import { jsx as jsx110, jsxs as jsxs92 } from "react/jsx-runtime";
+var StatusLightFrame = styled79(XStack52, {
   name: "StatusLight",
   alignItems: "center",
   gap: "$2",
@@ -14075,7 +14013,7 @@ var StatusLightFrame = styled78(XStack53, {
     variant: "neutral"
   }
 });
-var StatusDot = styled78(Circle8, {
+var StatusDot = styled79(Circle8, {
   name: "StatusDot",
   size: 8,
   variants: {
@@ -14091,52 +14029,52 @@ var StatusDot = styled78(Circle8, {
     variant: "neutral"
   }
 });
-var StatusText2 = styled78(Text65, {
+var StatusText2 = styled79(Text65, {
   name: "StatusText",
   color: "$foreground",
   fontSize: "$3",
   fontFamily: "$body"
 });
-var StatusLight = React78.forwardRef(
+var StatusLight = React84.forwardRef(
   ({ children, variant = "neutral", ...props }, ref) => {
     return /* @__PURE__ */ jsxs92(StatusLightFrame, { ref, variant, ...props, children: [
-      /* @__PURE__ */ jsx109(StatusDot, { variant }),
-      /* @__PURE__ */ jsx109(StatusText2, { children })
+      /* @__PURE__ */ jsx110(StatusDot, { variant }),
+      /* @__PURE__ */ jsx110(StatusText2, { children })
     ] });
   }
 );
 StatusLight.displayName = "StatusLight";
 
 // src/atoms/Meter/Meter.tsx
-import React79 from "react";
-import { styled as styled79, XStack as XStack54, YStack as YStack84, Text as Text66, View as View10 } from "tamagui";
-import { jsx as jsx110, jsxs as jsxs93 } from "react/jsx-runtime";
-var MeterFrame = styled79(YStack84, {
+import React85 from "react";
+import { styled as styled80, XStack as XStack53, YStack as YStack83, Text as Text66, View as View10 } from "tamagui";
+import { jsx as jsx111, jsxs as jsxs93 } from "react/jsx-runtime";
+var MeterFrame = styled80(YStack83, {
   name: "Meter",
   width: "100%",
   gap: "$2"
 });
-var MeterHeader = styled79(XStack54, {
+var MeterHeader = styled80(XStack53, {
   justifyContent: "space-between",
   alignItems: "center"
 });
-var MeterLabel = styled79(Text66, {
+var MeterLabel = styled80(Text66, {
   fontSize: "$3",
   fontWeight: "600",
   color: "$foreground"
 });
-var MeterValueLabel = styled79(Text66, {
+var MeterValueLabel = styled80(Text66, {
   fontSize: "$3",
   color: "$mutedForeground"
 });
-var MeterTrack = styled79(View10, {
+var MeterTrack = styled80(View10, {
   height: 8,
   borderRadius: 4,
   backgroundColor: "$gray5",
   overflow: "hidden",
   position: "relative"
 });
-var MeterFill = styled79(View10, {
+var MeterFill = styled80(View10, {
   height: "100%",
   borderRadius: 4,
   backgroundColor: "$primary",
@@ -14149,15 +14087,15 @@ var MeterFill = styled79(View10, {
     }
   }
 });
-var Meter = React79.forwardRef(
+var Meter = React85.forwardRef(
   ({ value, min = 0, max = 100, label, valueLabel, variant, ...props }, ref) => {
     const percentage = Math.min(Math.max((value - min) / (max - min), 0), 1) * 100;
     return /* @__PURE__ */ jsxs93(MeterFrame, { ref, ...props, children: [
       (label || valueLabel) && /* @__PURE__ */ jsxs93(MeterHeader, { children: [
-        label && /* @__PURE__ */ jsx110(MeterLabel, { children: label }),
-        valueLabel && /* @__PURE__ */ jsx110(MeterValueLabel, { children: valueLabel })
+        label && /* @__PURE__ */ jsx111(MeterLabel, { children: label }),
+        valueLabel && /* @__PURE__ */ jsx111(MeterValueLabel, { children: valueLabel })
       ] }),
-      /* @__PURE__ */ jsx110(MeterTrack, { children: /* @__PURE__ */ jsx110(MeterFill, { width: `${percentage}%`, variant }) })
+      /* @__PURE__ */ jsx111(MeterTrack, { children: /* @__PURE__ */ jsx111(MeterFill, { width: `${percentage}%`, variant }) })
     ] });
   }
 );
@@ -14437,7 +14375,7 @@ export {
   useCollapsibleContext,
   useFormField,
   usePopoverContext,
-  useSheetContext,
+  useSheetCustomContext,
   useToast,
   withErrorBoundary
 };
