@@ -105,6 +105,7 @@ const config: StorybookConfig = {
       ...config.resolve.alias,
       '@ivisa/ui': path.resolve(__dirname, '../packages/ui/src'),
       'react-native': 'react-native-web/dist/index',
+      '@maplibre/maplibre-react-native': path.resolve(__dirname, '../packages/ui/src/mocks/maplibre-react-native.js'),
       'fs': path.resolve(__dirname, '../packages/ui/src/mocks/empty.js'),
       'stream': path.resolve(__dirname, '../packages/ui/src/mocks/empty.js'),
       'path': path.resolve(__dirname, '../packages/ui/src/mocks/empty.js'),
