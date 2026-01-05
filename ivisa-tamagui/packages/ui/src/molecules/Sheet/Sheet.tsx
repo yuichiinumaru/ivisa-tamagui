@@ -79,98 +79,143 @@ const SheetContentFrame = styled(TamaguiSheet.Frame as any, {
 type SheetContentProps = GetProps<typeof SheetContentFrame>
 
 const SheetContent = forwardRef<React.ElementRef<typeof SheetContentFrame>, any>(
-  ({ children, ...props }, ref) => {
+  ({ children, ...props }: any, ref) => {
     const { isLoading, hasError } = useSheetCustomContext()
     const sheet = useSheet()
 
-    // ...
+    return (
+      <Portal>
+        <SheetOverlay />
+        <SheetContentFrame ref={ref} {...props} hasError={hasError}>
+          <>
+            <SheetHandle />
+            {isLoading ? (
+              <VStack gap="$4" py="$4">
+                <VStack gap="$2" marginBottom="$4">
+                  <Skeleton height={30} width="60%" />
+                  <Skeleton height={20} width="90%" />
+                </VStack>
+                <VStack gap="$4" py="$4">
+                  <VStack gap="$2">
+                    <Skeleton height={16} width="30%" />
+                    <Skeleton height={40} />
+                  </VStack>
+                  <VStack gap="$2">
+                    <Skeleton height={16} width="30%" />
+                    <Skeleton height={40} />
+                  </VStack>
+                </VStack>
+                <HStack justifyContent="flex-end" marginTop="$4">
+                  <Skeleton height={44} width={120} />
+                </HStack>
+              </VStack>
+            ) : (
+              children
+            )}
+          </>
+        </SheetContentFrame>
+      </Portal>
+    )
+  }
+)
+SheetContent.displayName = 'SheetContent'
 
-    const SheetHeader = styled(VStackOriginal as any, {
-      gap: '$2',
-      marginBottom: '$4',
-    } as any) as any
+const SheetHeader = styled(VStackOriginal as any, {
+  gap: '$2',
+  marginBottom: '$4',
+} as any) as any
 
-    // ...
+type SheetFooterProps = GetProps<typeof HStackOriginal> & {
+  actions?: React.ReactNode
+}
 
-    const SheetFooter = styled(SheetFooterComponent as any, {
-      justifyContent: 'flex-end',
-      gap: '$2',
-      marginTop: '$4',
-    } as any) as any
+const SheetFooterComponent = forwardRef<React.ElementRef<typeof HStackOriginal>, SheetFooterProps>(
+  ({ children, actions, ...props }, ref) => {
+    return (
+      <HStack ref={ref} {...props}>
+        {children}
+        {actions}
+      </HStack>
+    )
+  }
+)
 
-    const SheetTitle = styled(H2 as any, {
-      fontWeight: 'bold',
-      fontSize: '$6',
-      color: '$foreground',
-    } as any) as any
+const SheetFooter = styled(SheetFooterComponent as any, {
+  justifyContent: 'flex-end',
+  gap: '$2',
+  marginTop: '$4',
+} as any) as any
 
-    const SheetDescription = styled(Paragraph as any, {
-      fontSize: '$3',
-      color: '$mutedForeground',
-    } as any) as any
+const SheetTitle = styled(H2 as any, {
+  fontWeight: 'bold',
+  fontSize: '$6',
+  color: '$foreground',
+} as any) as any
 
-    // ...
+const SheetDescription = styled(Paragraph as any, {
+  fontSize: '$3',
+  color: '$mutedForeground',
+} as any) as any
 
+const SheetCloseFrame = styled(Button as any, {}) as any
 
-    const SheetCloseFrame = styled(Button as any, {}) as any
+const SheetClose = SheetCloseFrame.styleable((props: any, ref: any) => {
+  const context = useSheet()
+  return (
+    <SheetCloseFrame
+      ref={ref}
+      onPress={() => context.setOpen(false)}
+      {...props}
+    />
+  )
+})
 
-    const SheetClose = SheetCloseFrame.styleable((props, ref) => {
-      const context = useSheet()
-      return (
-        <SheetCloseFrame
-          ref={ref}
-          onPress={() => context.setOpen(false)}
-          {...props}
-        />
-      )
-    })
+const SheetTriggerFrame = styled(VStackOriginal as any, {}) as any
 
-    const SheetTriggerFrame = styled(VStackOriginal as any, {}) as any
+const SheetTrigger = SheetTriggerFrame.styleable((props: any, ref: any) => {
+  const context = useSheet()
+  return (
+    <SheetTriggerFrame
+      ref={ref}
+      onPress={() => context.setOpen(true)}
+      {...props}
+    />
+  )
+})
 
-    const SheetTrigger = SheetTriggerFrame.styleable((props, ref) => {
-      const context = useSheet()
-      return (
-        <SheetTriggerFrame
-          ref={ref}
-          onPress={() => context.setOpen(true)}
-          {...props}
-        />
-      )
-    })
+// 4. COMPOSITE COMPONENT
+// =================================================================================================
+const Sheet = withStaticProperties(SheetComponent, {
+  Portal: Portal,
+  Overlay: SheetOverlay,
+  Frame: SheetContentFrame,
+  Handle: SheetHandle,
+  Content: SheetContent,
+  Header: SheetHeader,
+  Footer: SheetFooter,
+  Title: SheetTitle,
+  Description: SheetDescription,
+  Close: SheetClose,
+  Trigger: SheetTrigger,
+  ScrollView: TamaguiSheet.ScrollView,
+}) as any
 
-    // 4. COMPOSITE COMPONENT
-    // =================================================================================================
-    const Sheet = withStaticProperties(SheetComponent, {
-      Portal: Portal,
-      Overlay: SheetOverlay,
-      Frame: SheetContentFrame,
-      Handle: SheetHandle,
-      Content: SheetContent,
-      Header: SheetHeader,
-      Footer: SheetFooter,
-      Title: SheetTitle,
-      Description: SheetDescription,
-      Close: SheetClose,
-      Trigger: SheetTrigger,
-      ScrollView: TamaguiSheet.ScrollView,
-    }) as any
+// 5. EXPORTS
+// =================================================================================================
+export {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+  SheetOverlay,
+  SheetHandle,
+  SheetComponent,
+  SheetContentFrame,
+  SheetClose,
+  SheetTrigger,
+  useSheetCustomContext,
+}
 
-    // 5. EXPORTS
-    // =================================================================================================
-    export {
-      Sheet,
-      SheetContent,
-      SheetHeader,
-      SheetFooter,
-      SheetTitle,
-      SheetDescription,
-      SheetOverlay,
-      SheetHandle,
-      SheetComponent,
-      SheetContentFrame,
-      SheetClose,
-      SheetTrigger,
-      useSheetCustomContext,
-    }
-
-    export type { SheetProps, SheetContentProps, SheetFooterProps }
+export type { SheetProps, SheetContentProps, SheetFooterProps }

@@ -1,11 +1,21 @@
 import React, { useState } from 'react';
-import { AnimatePresence, ScrollView, Separator, Text, YStack, styled } from 'tamagui';
-import { Button } from '../../atoms/Button';
-import { ChevronLeft, ChevronRight, MenuSquare, AlertCircle, Inbox } from '@tamagui/lucide-icons';
-import { Sheet } from '../../molecules/Sheet';
-import { Skeleton } from '../../atoms/Skeleton';
+import { AnimatePresence, ScrollView as ScrollViewOriginal, Separator, Text as TextOriginal, YStack as YStackOriginal, styled } from 'tamagui';
+import { Button as ButtonOriginal } from '../../atoms/Button';
+import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MenuSquare as MenuSquareIcon, AlertCircle as AlertCircleIcon, Inbox as InboxIcon } from '@tamagui/lucide-icons';
+import { Sheet } from '../../molecules/Sheet'; // Sheet is already 'any' from previous fix
+import { Skeleton as SkeletonOriginal } from '../../atoms/Skeleton';
 
+const Button = ButtonOriginal as any
+const YStack = YStackOriginal as any
+const ScrollView = ScrollViewOriginal as any
+const Text = TextOriginal as any
+const Skeleton = SkeletonOriginal as any
 
+const ChevronLeft = ChevronLeftIcon as any
+const ChevronRight = ChevronRightIcon as any
+const MenuSquare = MenuSquareIcon as any
+const AlertCircle = AlertCircleIcon as any
+const Inbox = InboxIcon as any
 
 // --- Styled Components ---
 
@@ -37,20 +47,20 @@ const SidebarContainer = styled(YStack, {
       },
     },
   } as const,
-});
+} as any) as any;
 
 const SidebarHeader = styled(YStack, {
   name: 'SidebarHeader',
-});
+} as any) as any;
 
 const SidebarContent = styled(YStack, {
   name: 'SidebarContent',
   f: 1,
-});
+} as any) as any;
 
 const SidebarFooter = styled(YStack, {
   name: 'SidebarFooter',
-});
+} as any) as any;
 
 // --- Data Lifecycle Components ---
 
