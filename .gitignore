@@ -32,3 +32,7 @@ __pycache__/
 # Assets
 ivisa-tamagui/packages/ui/src/assets/fonts/
 fonts/
+
+# Verification Artifacts
+screenshots/
+logs/

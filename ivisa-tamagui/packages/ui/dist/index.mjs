@@ -1558,7 +1558,7 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
         children
       });
     }
-    function useContext16(consumerName, scope, options) {
+    function useContext17(consumerName, scope, options) {
       const Context = scope?.[scopeName]?.[index] || BaseContext, context = React14.useContext(Context);
       if (context) return context;
       if (defaultContext !== void 0) return defaultContext;
@@ -1566,7 +1566,7 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
       if (options?.fallback) return options?.warn !== false && console.warn(missingContextMessage), options.fallback;
       throw new Error(missingContextMessage);
     }
-    return [Provider, useContext16];
+    return [Provider, useContext17];
   }
   const createScope = () => {
     const scopeContexts = defaultContexts.map((defaultContext) => React14.createContext(defaultContext));
@@ -10430,159 +10430,132 @@ var DecompositionTree = ({
   ] });
 };
 
-// src/organisms/Maps/Maps.tsx
-import { useMemo as useMemo14 } from "react";
-import { YStack as YStack60, Text as Text47, useTheme as useTheme18 } from "tamagui";
-import { Svg as Svg3, Path as Path3, G as G3, Circle as Circle4 } from "react-native-svg";
-import { AlertTriangle as AlertTriangle16, Map as Map2 } from "@tamagui/lucide-icons";
+// src/organisms/Map/Map.tsx
+import { createContext as createContext11, useContext as useContext14, useState as useState16, useRef as useRef4, useEffect as useEffect4 } from "react";
+import { YStack as YStack60, Button as Button7 } from "tamagui";
+import { Plus, Minus as Minus2 } from "@tamagui/lucide-icons";
+import MapLibreGL from "@maplibre/maplibre-react-native";
 import { jsx as jsx84, jsxs as jsxs69 } from "react/jsx-runtime";
-var project = (lon, lat, width, height, bounds) => {
-  const [minLon, minLat, maxLon, maxLat] = bounds;
-  const xPct = (lon - minLon) / (maxLon - minLon);
-  const yPct = (lat - minLat) / (maxLat - minLat);
-  const x = xPct * width;
-  const y = height - yPct * height;
-  return [x, y];
-};
-var getBounds = (features) => {
-  let minLon = Infinity, minLat = Infinity, maxLon = -Infinity, maxLat = -Infinity;
-  const visit = (coords) => {
-    if (typeof coords[0] === "number") {
-      const [lon, lat] = coords;
-      minLon = Math.min(minLon, lon);
-      minLat = Math.min(minLat, lat);
-      maxLon = Math.max(maxLon, lon);
-      maxLat = Math.max(maxLat, lat);
-    } else {
-      coords.forEach(visit);
-    }
-  };
-  features.forEach((f) => visit(f.geometry.coordinates));
-  return [minLon, minLat, maxLon, maxLat];
-};
-var geoPath = (feature, width, height, bounds) => {
-  const { geometry } = feature;
-  const drawRing = (ring) => {
-    return ring.map((pt, i) => {
-      const [x, y] = project(pt[0], pt[1], width, height, bounds);
-      return `${i === 0 ? "M" : "L"} ${x} ${y}`;
-    }).join(" ") + "Z";
-  };
-  if (geometry.type === "Polygon") {
-    return geometry.coordinates.map(drawRing).join(" ");
-  } else if (geometry.type === "MultiPolygon") {
-    return geometry.coordinates.map((poly) => poly.map(drawRing).join(" ")).join(" ");
+var MapContext = createContext11(null);
+var useMap = () => {
+  const context = useContext14(MapContext);
+  if (!context) {
+    throw new Error("useMap must be used within a Map component");
   }
-  return "";
+  return context;
 };
-var Maps = ({
+var Map2 = ({
   data,
-  type = "choropleth",
-  valueKey = "value",
-  width = 600,
+  children,
+  width = "100%",
   height = 400,
-  color = "$primary",
-  isLoading = false,
-  error = null,
-  headerContent
+  initialZoom = 10,
+  styleURL = "https://demotiles.maplibre.org/style.json"
 }) => {
-  const theme = useTheme18();
-  const themeColor = theme[color];
-  const { paths, circles } = useMemo14(() => {
-    if (!data || !data.features) return { paths: [], circles: [] };
-    const bounds = getBounds(data.features);
-    const values = data.features.map((f) => f.properties[valueKey]).filter((v) => typeof v === "number");
-    const maxVal = Math.max(...values) || 1;
-    const minVal = Math.min(...values) || 0;
-    const paths2 = data.features.map((f) => {
-      const d = geoPath(f, width, height, bounds);
-      let fill = theme.background?.get() || "#eee";
-      if (type === "choropleth") {
-        const val = f.properties[valueKey];
-        if (typeof val === "number") {
-          const intensity = (val - minVal) / (maxVal - minVal);
-          fill = `rgba(59, 130, 246, ${0.2 + 0.8 * intensity})`;
-        }
-      } else {
-        fill = "#e5e7eb";
-      }
-      return { d, fill, feature: f };
-    });
-    const circles2 = [];
-    if (type === "dotDensity") {
-      data.features.forEach((f) => {
-        const coords = f.geometry.type === "Polygon" ? f.geometry.coordinates[0] : f.geometry.coordinates[0][0];
-        let sumX = 0, sumY = 0, count = 0;
-        coords.forEach((pt) => {
-          sumX += pt[0];
-          sumY += pt[1];
-          count++;
-        });
-        const cx = sumX / count;
-        const cy = sumY / count;
-        const [x, y] = project(cx, cy, width, height, bounds);
-        const val = f.properties[valueKey];
-        if (val) {
-          circles2.push({
-            cx: x,
-            cy: y,
-            r: Math.sqrt(val) / 2,
-            // scale size
-            fill: theme.red9?.get() || "#ef4444"
-          });
-        }
-      });
-    }
-    return { paths: paths2, circles: circles2 };
-  }, [data, width, height, type, valueKey, theme]);
-  const renderContent = () => {
-    if (isLoading) {
-      return /* @__PURE__ */ jsx84(Skeleton, { height, width: "100%" });
-    }
-    if (error) {
-      return /* @__PURE__ */ jsxs69(YStack60, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx84(AlertTriangle16, { color: "$red10" }),
-        /* @__PURE__ */ jsx84(Text47, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
-      ] });
-    }
-    if (!data) {
-      return /* @__PURE__ */ jsxs69(YStack60, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx84(Map2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx84(Text47, { children: "N\xE3o h\xE1 dados para exibir." })
-      ] });
-    }
-    return /* @__PURE__ */ jsx84(Svg3, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs69(G3, { children: [
-      paths.map((p, i) => /* @__PURE__ */ jsx84(
-        Path3,
-        {
-          d: p.d,
-          fill: p.fill,
-          stroke: theme.background?.get() || "white",
-          strokeWidth: 0.5
-        },
-        i
-      )),
-      circles.map((c, i) => /* @__PURE__ */ jsx84(
-        Circle4,
-        {
-          cx: c.cx,
-          cy: c.cy,
-          r: c.r,
-          fill: c.fill,
-          opacity: 0.6
-        },
-        `c-${i}`
-      ))
-    ] }) });
+  const mapRef = useRef4(null);
+  const cameraRef = useRef4(null);
+  const [zoom, setZoom] = useState16(initialZoom);
+  const onRegionDidChange = async (feature) => {
   };
-  return /* @__PURE__ */ jsxs69(YStack60, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
-    headerContent,
-    renderContent()
-  ] });
+  useEffect4(() => {
+    cameraRef.current?.zoomTo(zoom);
+  }, [zoom]);
+  return /* @__PURE__ */ jsx84(MapContext.Provider, { value: {
+    mapRef,
+    cameraRef,
+    zoom,
+    setZoom
+  }, children: /* @__PURE__ */ jsxs69(
+    YStack60,
+    {
+      width,
+      height,
+      overflow: "hidden",
+      position: "relative",
+      borderRadius: "$4",
+      children: [
+        /* @__PURE__ */ jsxs69(
+          MapLibreGL.MapView,
+          {
+            ref: mapRef,
+            style: { flex: 1 },
+            styleURL,
+            onRegionDidChange,
+            logoEnabled: false,
+            attributionEnabled: false,
+            children: [
+              /* @__PURE__ */ jsx84(
+                MapLibreGL.Camera,
+                {
+                  ref: cameraRef,
+                  defaultSettings: {
+                    zoomLevel: initialZoom,
+                    centerCoordinate: [-43.1729, -22.9068]
+                    // Rio default
+                  }
+                }
+              ),
+              children,
+              data && /* @__PURE__ */ jsxs69(MapLibreGL.ShapeSource, { id: "mapSource", shape: data, children: [
+                /* @__PURE__ */ jsx84(MapLibreGL.FillLayer, { id: "mapFill", style: { fillColor: "#3b82f6", fillOpacity: 0.5, fillOutlineColor: "#ffffff" } }),
+                /* @__PURE__ */ jsx84(MapLibreGL.LineLayer, { id: "mapLine", style: { lineColor: "#ffffff", lineWidth: 1 } })
+              ] })
+            ]
+          }
+        ),
+        /* @__PURE__ */ jsx84(MapControls, {})
+      ]
+    }
+  ) });
 };
+var MapControls = ({ showZoom = true }) => {
+  const { zoom, setZoom } = useMap();
+  return /* @__PURE__ */ jsx84(YStack60, { position: "absolute", bottom: "$4", right: "$4", gap: "$2", children: showZoom && /* @__PURE__ */ jsxs69(YStack60, { borderRadius: "$4", overflow: "hidden", elevation: "$2", backgroundColor: "$background", borderWidth: 1, borderColor: "$borderColor", children: [
+    /* @__PURE__ */ jsx84(
+      Button7,
+      {
+        size: "$3",
+        chromeless: true,
+        icon: Plus,
+        onPress: () => setZoom(zoom + 1),
+        borderRadius: 0,
+        borderBottomWidth: 1,
+        borderColor: "$borderColor"
+      }
+    ),
+    /* @__PURE__ */ jsx84(
+      Button7,
+      {
+        size: "$3",
+        chromeless: true,
+        icon: Minus2,
+        onPress: () => setZoom(zoom - 1),
+        borderRadius: 0
+      }
+    )
+  ] }) });
+};
+var MapMarker = ({ longitude, latitude, children, id }) => {
+  return /* @__PURE__ */ jsx84(
+    MapLibreGL.PointAnnotation,
+    {
+      id,
+      coordinate: [longitude, latitude],
+      children: children || /* @__PURE__ */ jsx84(YStack60, { width: 10, height: 10, backgroundColor: "$red10", borderRadius: 10 })
+    }
+  );
+};
+var MapPopup = ({ children }) => {
+  return /* @__PURE__ */ jsx84(MapLibreGL.Callout, { children: /* @__PURE__ */ jsx84(YStack60, { padding: "$2", backgroundColor: "$background", borderRadius: "$2", elevation: "$2", children }) });
+};
+var GeoMap = Object.assign(Map2, {
+  Marker: MapMarker,
+  Popup: MapPopup,
+  Controls: MapControls
+});
 
 // src/organisms/Timeline/Timeline.tsx
-import { YStack as YStack61, XStack as XStack39, styled as styled65, View as View9, Text as Text48 } from "tamagui";
+import { YStack as YStack61, XStack as XStack40, styled as styled65, View as View9, Text as Text47 } from "tamagui";
 import { jsx as jsx85, jsxs as jsxs70 } from "react/jsx-runtime";
 var TimelineFrame = styled65(YStack61, {
   name: "Timeline",
@@ -10590,7 +10563,7 @@ var TimelineFrame = styled65(YStack61, {
   width: "100%",
   gap: "$4"
 });
-var TimelineItemFrame = styled65(XStack39, {
+var TimelineItemFrame = styled65(XStack40, {
   name: "TimelineItem",
   tag: "li",
   gap: "$4"
@@ -10621,16 +10594,16 @@ var TimelineContent = styled65(YStack61, {
   flex: 1,
   gap: "$1"
 });
-var TimelineTime = styled65(Text48, {
+var TimelineTime = styled65(Text47, {
   fontSize: "$2",
   color: "$mutedForeground"
 });
-var TimelineTitle = styled65(Text48, {
+var TimelineTitle = styled65(Text47, {
   fontSize: "$3",
   fontWeight: "bold",
   color: "$foreground"
 });
-var TimelineDescription = styled65(Text48, {
+var TimelineDescription = styled65(Text47, {
   fontSize: "$3",
   color: "$foreground"
 });
@@ -10675,7 +10648,7 @@ var Timeline = ({ items, children, isLoading, isEmpty, hasError }) => {
 };
 
 // src/organisms/LocationStatus/LocationStatus.tsx
-import { YStack as YStack62, XStack as XStack40, styled as styled66, Text as Text49 } from "tamagui";
+import { YStack as YStack62, XStack as XStack41, styled as styled66, Text as Text48 } from "tamagui";
 import { MapPin, Navigation, Clock } from "@tamagui/lucide-icons";
 import { jsx as jsx86, jsxs as jsxs71 } from "react/jsx-runtime";
 var LocationStatusFrame = styled66(YStack62, {
@@ -10687,29 +10660,29 @@ var LocationStatusFrame = styled66(YStack62, {
   borderColor: "$borderColor",
   gap: "$3"
 });
-var HeaderRow = styled66(XStack40, {
+var HeaderRow = styled66(XStack41, {
   justifyContent: "space-between",
   alignItems: "center"
 });
-var Title = styled66(Text49, {
+var Title = styled66(Text48, {
   fontSize: "$4",
   fontWeight: "bold",
   color: "$foreground"
 });
-var InfoRow = styled66(XStack40, {
+var InfoRow = styled66(XStack41, {
   gap: "$4",
   alignItems: "center",
   flexWrap: "wrap"
 });
-var InfoItem = styled66(XStack40, {
+var InfoItem = styled66(XStack41, {
   gap: "$2",
   alignItems: "center"
 });
-var Label7 = styled66(Text49, {
+var Label7 = styled66(Text48, {
   fontSize: "$2",
   color: "$mutedForeground"
 });
-var Value = styled66(Text49, {
+var Value = styled66(Text48, {
   fontSize: "$3",
   fontWeight: "500",
   color: "$foreground"
@@ -10733,7 +10706,7 @@ var LocationStatus = ({
   const formattedTime = timestamp ? new Date(timestamp).toLocaleTimeString("pt-BR") : "-";
   return /* @__PURE__ */ jsxs71(LocationStatusFrame, { ...props, children: [
     /* @__PURE__ */ jsxs71(HeaderRow, { children: [
-      /* @__PURE__ */ jsxs71(XStack40, { gap: "$2", alignItems: "center", children: [
+      /* @__PURE__ */ jsxs71(XStack41, { gap: "$2", alignItems: "center", children: [
         /* @__PURE__ */ jsx86(MapPin, { size: "$1" }),
         /* @__PURE__ */ jsx86(Title, { children: "Status da Localiza\xE7\xE3o" })
       ] }),
@@ -10767,13 +10740,13 @@ var LocationStatus = ({
         ] })
       ] })
     ] }),
-    error && /* @__PURE__ */ jsx86(Text49, { color: "$destructive", fontSize: "$2", children: error })
+    error && /* @__PURE__ */ jsx86(Text48, { color: "$destructive", fontSize: "$2", children: error })
   ] });
 };
 
 // src/organisms/ScannerView/ScannerView.tsx
 import React69 from "react";
-import { YStack as YStack63, XStack as XStack41, styled as styled67, Text as Text50 } from "tamagui";
+import { YStack as YStack63, XStack as XStack42, styled as styled67, Text as Text49 } from "tamagui";
 import { Camera, Maximize, X as X5 } from "@tamagui/lucide-icons";
 import { Fragment as Fragment10, jsx as jsx87, jsxs as jsxs72 } from "react/jsx-runtime";
 var ScannerFrame = styled67(YStack63, {
@@ -10819,7 +10792,7 @@ var ScanLine = styled67(YStack63, {
   position: "absolute",
   top: "50%"
 });
-var Controls = styled67(XStack41, {
+var Controls = styled67(XStack42, {
   position: "absolute",
   bottom: "$4",
   left: 0,
@@ -10828,7 +10801,7 @@ var Controls = styled67(XStack41, {
   gap: "$4",
   zIndex: 20
 });
-var StatusText = styled67(Text50, {
+var StatusText = styled67(Text49, {
   color: "#fff",
   marginTop: "$4",
   fontSize: "$3",
@@ -10855,7 +10828,7 @@ var ScannerView = ({
   };
   return /* @__PURE__ */ jsx87(ScannerFrame, { ...props, children: !isActive ? /* @__PURE__ */ jsxs72(CameraPlaceholder, { children: [
     /* @__PURE__ */ jsx87(Camera, { size: "$6", color: "$gray10" }),
-    /* @__PURE__ */ jsx87(Text50, { color: "$gray10", marginTop: "$4", children: "C\xE2mera desativada" })
+    /* @__PURE__ */ jsx87(Text49, { color: "$gray10", marginTop: "$4", children: "C\xE2mera desativada" })
   ] }) : /* @__PURE__ */ jsxs72(Fragment10, { children: [
     /* @__PURE__ */ jsx87(CameraPlaceholder, { children: /* @__PURE__ */ jsx87(Maximize, { size: "$8", color: "#333" }) }),
     /* @__PURE__ */ jsxs72(Overlay, { children: [
@@ -10870,11 +10843,11 @@ var ScannerView = ({
 };
 
 // src/organisms/SignaturePad/SignaturePad.tsx
-import { useRef as useRef4, useState as useState16 } from "react";
-import { styled as styled68, YStack as YStack64, XStack as XStack42 } from "tamagui";
-import { Svg as Svg4, Path as Path4 } from "react-native-svg";
+import { useRef as useRef5, useState as useState17 } from "react";
+import { styled as styled68, YStack as YStack64, XStack as XStack43 } from "tamagui";
+import { Svg as Svg3, Path as Path3 } from "react-native-svg";
 import { Eraser, Check as Check7 } from "@tamagui/lucide-icons";
-import { Text as Text51 } from "tamagui";
+import { Text as Text50 } from "tamagui";
 import { jsx as jsx88, jsxs as jsxs73 } from "react/jsx-runtime";
 var SignatureContainer = styled68(YStack64, {
   name: "SignaturePad",
@@ -10888,7 +10861,7 @@ var SignatureContainer = styled68(YStack64, {
   position: "relative",
   cursor: "crosshair"
 });
-var Controls2 = styled68(XStack42, {
+var Controls2 = styled68(XStack43, {
   padding: "$2",
   justifyContent: "flex-end",
   gap: "$2",
@@ -10914,9 +10887,9 @@ var SignaturePad = ({
   strokeWidth = 3,
   ...props
 }) => {
-  const [currentPath, setCurrentPath] = useState16([]);
-  const [paths, setPaths] = useState16([]);
-  const isDrawing = useRef4(false);
+  const [currentPath, setCurrentPath] = useState17([]);
+  const [paths, setPaths] = useState17([]);
+  const isDrawing = useRef5(false);
   const getPoint = (e) => {
     if (e.nativeEvent) {
       const x = e.nativeEvent.offsetX ?? e.nativeEvent.locationX ?? 0;
@@ -10971,9 +10944,9 @@ var SignaturePad = ({
         onMouseUp: handleEnd,
         onMouseLeave: handleEnd,
         children: [
-          /* @__PURE__ */ jsxs73(Svg4, { height: "100%", width: "100%", viewBox: "0 0 500 200", style: { position: "absolute", top: 0, left: 0, zIndex: 10 }, children: [
+          /* @__PURE__ */ jsxs73(Svg3, { height: "100%", width: "100%", viewBox: "0 0 500 200", style: { position: "absolute", top: 0, left: 0, zIndex: 10 }, children: [
             paths.map((d, i) => /* @__PURE__ */ jsx88(
-              Path4,
+              Path3,
               {
                 d,
                 stroke: strokeColor,
@@ -10985,7 +10958,7 @@ var SignaturePad = ({
               i
             )),
             currentPath.length > 0 && /* @__PURE__ */ jsx88(
-              Path4,
+              Path3,
               {
                 d: pointsToPath(currentPath),
                 stroke: strokeColor,
@@ -10996,7 +10969,7 @@ var SignaturePad = ({
               }
             )
           ] }),
-          paths.length === 0 && currentPath.length === 0 && /* @__PURE__ */ jsx88(HelperText, { children: /* @__PURE__ */ jsx88(Text51, { color: "$gray8", children: "Assine aqui" }) })
+          paths.length === 0 && currentPath.length === 0 && /* @__PURE__ */ jsx88(HelperText, { children: /* @__PURE__ */ jsx88(Text50, { color: "$gray8", children: "Assine aqui" }) })
         ]
       }
     ),
@@ -11066,7 +11039,7 @@ var ImageAnnotator = ({
 };
 
 // src/organisms/PDFPreview/PDFPreview.tsx
-import { YStack as YStack66, styled as styled70, Text as Text52, Spinner as Spinner5 } from "tamagui";
+import { YStack as YStack66, styled as styled70, Text as Text51, Spinner as Spinner5 } from "tamagui";
 import { FileText } from "@tamagui/lucide-icons";
 import { jsx as jsx90, jsxs as jsxs75 } from "react/jsx-runtime";
 var PDFContainer = styled70(YStack66, {
@@ -11105,7 +11078,7 @@ var PDFPreview = ({
   if (error || !fileUrl) {
     return /* @__PURE__ */ jsx90(PDFContainer, { ...props, children: /* @__PURE__ */ jsxs75(Placeholder, { children: [
       /* @__PURE__ */ jsx90(FileText, { size: "$6", color: "$gray8" }),
-      /* @__PURE__ */ jsx90(Text52, { color: "$gray10", children: error || "Nenhum documento selecionado" })
+      /* @__PURE__ */ jsx90(Text51, { color: "$gray10", children: error || "Nenhum documento selecionado" })
     ] }) });
   }
   return /* @__PURE__ */ jsx90(PDFContainer, { ...props, children: /* @__PURE__ */ jsx90(
@@ -11119,7 +11092,7 @@ var PDFPreview = ({
 };
 
 // src/organisms/DiffViewer/DiffViewer.tsx
-import { YStack as YStack67, XStack as XStack43, styled as styled71, Text as Text53, ScrollView as ScrollView5 } from "tamagui";
+import { YStack as YStack67, XStack as XStack44, styled as styled71, Text as Text52, ScrollView as ScrollView5 } from "tamagui";
 import { jsx as jsx91, jsxs as jsxs76 } from "react/jsx-runtime";
 var DiffContainer = styled71(YStack67, {
   name: "DiffViewer",
@@ -11130,14 +11103,14 @@ var DiffContainer = styled71(YStack67, {
   overflow: "hidden",
   backgroundColor: "$background"
 });
-var Header2 = styled71(XStack43, {
+var Header2 = styled71(XStack44, {
   backgroundColor: "$muted",
   padding: "$2",
   borderBottomWidth: 1,
   borderColor: "$borderColor",
   justifyContent: "space-between"
 });
-var DiffContent = styled71(XStack43, {
+var DiffContent = styled71(XStack44, {
   width: "100%",
   height: 400
   // Fixed height for scrolling
@@ -11155,7 +11128,7 @@ var Pane = styled71(YStack67, {
     }
   }
 });
-var Line2 = styled71(XStack43, {
+var Line2 = styled71(XStack44, {
   width: "100%",
   minHeight: 24,
   paddingHorizontal: "$2",
@@ -11168,7 +11141,7 @@ var Line2 = styled71(XStack43, {
     }
   }
 });
-var LineNumber = styled71(Text53, {
+var LineNumber = styled71(Text52, {
   width: 40,
   color: "$mutedForeground",
   fontSize: "$2",
@@ -11179,7 +11152,7 @@ var LineNumber = styled71(Text53, {
   borderColor: "$borderColor",
   marginRight: "$2"
 });
-var LineText = styled71(Text53, {
+var LineText = styled71(Text52, {
   fontSize: "$3",
   fontFamily: "$mono",
   color: "$foreground",
@@ -11214,8 +11187,8 @@ var DiffViewer = ({
   const diffs = computeDiff(oldText, newText);
   return /* @__PURE__ */ jsxs76(DiffContainer, { ...props, children: [
     /* @__PURE__ */ jsxs76(Header2, { children: [
-      /* @__PURE__ */ jsx91(Text53, { fontWeight: "bold", flex: 1, textAlign: "center", children: oldTitle }),
-      /* @__PURE__ */ jsx91(Text53, { fontWeight: "bold", flex: 1, textAlign: "center", children: newTitle })
+      /* @__PURE__ */ jsx91(Text52, { fontWeight: "bold", flex: 1, textAlign: "center", children: oldTitle }),
+      /* @__PURE__ */ jsx91(Text52, { fontWeight: "bold", flex: 1, textAlign: "center", children: newTitle })
     ] }),
     /* @__PURE__ */ jsx91(ScrollView5, { children: /* @__PURE__ */ jsxs76(DiffContent, { children: [
       /* @__PURE__ */ jsx91(Pane, { children: diffs.map((line, i) => /* @__PURE__ */ jsxs76(Line2, { type: line.type === "removed" || line.type === "modified" ? "removed" : "neutral", children: [
@@ -11231,7 +11204,7 @@ var DiffViewer = ({
 };
 
 // src/organisms/TimelineAudit/TimelineAudit.tsx
-import { YStack as YStack68, XStack as XStack44, styled as styled72, Text as Text54, Circle as Circle5 } from "tamagui";
+import { YStack as YStack68, XStack as XStack45, styled as styled72, Text as Text53, Circle as Circle4 } from "tamagui";
 import { jsx as jsx92, jsxs as jsxs77 } from "react/jsx-runtime";
 var AuditContainer = styled72(YStack68, {
   name: "TimelineAudit",
@@ -11243,7 +11216,7 @@ var AuditContainer = styled72(YStack68, {
   borderColor: "$borderColor",
   borderRadius: "$4"
 });
-var AuditItem = styled72(XStack44, {
+var AuditItem = styled72(XStack45, {
   gap: "$3",
   position: "relative"
 });
@@ -11258,7 +11231,7 @@ var Line3 = styled72(YStack68, {
   backgroundColor: "$borderColor",
   zIndex: 0
 });
-var AvatarCircle = styled72(Circle5, {
+var AvatarCircle = styled72(Circle4, {
   width: 24,
   height: 24,
   backgroundColor: "$primary",
@@ -11266,7 +11239,7 @@ var AvatarCircle = styled72(Circle5, {
   justifyContent: "center",
   zIndex: 1
 });
-var AvatarText = styled72(Text54, {
+var AvatarText = styled72(Text53, {
   color: "white",
   fontSize: 10,
   fontWeight: "bold"
@@ -11276,21 +11249,21 @@ var Content6 = styled72(YStack68, {
   gap: "$1",
   paddingBottom: "$4"
 });
-var HeaderRow2 = styled72(XStack44, {
+var HeaderRow2 = styled72(XStack45, {
   alignItems: "center",
   gap: "$2",
   flexWrap: "wrap"
 });
-var UserText = styled72(Text54, {
+var UserText = styled72(Text53, {
   fontWeight: "bold",
   color: "$foreground",
   fontSize: "$3"
 });
-var ActionText = styled72(Text54, {
+var ActionText = styled72(Text53, {
   color: "$mutedForeground",
   fontSize: "$3"
 });
-var TimeText = styled72(Text54, {
+var TimeText = styled72(Text53, {
   color: "$gray10",
   fontSize: "$2",
   marginLeft: "auto"
@@ -11301,7 +11274,7 @@ var DiffBox = styled72(YStack68, {
   borderRadius: "$2",
   marginTop: "$2"
 });
-var DiffText = styled72(Text54, {
+var DiffText = styled72(Text53, {
   fontFamily: "$mono",
   fontSize: "$2",
   color: "$foreground"
@@ -11318,7 +11291,7 @@ var TimelineAudit = ({ events, ...props }) => {
           /* @__PURE__ */ jsx92(ActionText, { children: event.action }),
           /* @__PURE__ */ jsx92(TimeText, { children: new Date(event.timestamp).toLocaleString() })
         ] }),
-        event.details && /* @__PURE__ */ jsx92(Text54, { fontSize: "$3", children: event.details }),
+        event.details && /* @__PURE__ */ jsx92(Text53, { fontSize: "$3", children: event.details }),
         event.diff && /* @__PURE__ */ jsx92(DiffBox, { children: /* @__PURE__ */ jsx92(DiffText, { children: event.diff }) })
       ] })
     ] }, event.id);
@@ -11326,10 +11299,10 @@ var TimelineAudit = ({ events, ...props }) => {
 };
 
 // src/organisms/A11yToolbar/A11yToolbar.tsx
-import { YStack as YStack69, XStack as XStack45, styled as styled73, Text as Text55 } from "tamagui";
+import { YStack as YStack69, XStack as XStack46, styled as styled73, Text as Text54 } from "tamagui";
 import { ZoomIn, ZoomOut, Moon, Sun, Type } from "@tamagui/lucide-icons";
 import { jsx as jsx93, jsxs as jsxs78 } from "react/jsx-runtime";
-var ToolbarContainer = styled73(XStack45, {
+var ToolbarContainer = styled73(XStack46, {
   name: "A11yToolbar",
   padding: "$2",
   backgroundColor: "$background",
@@ -11354,7 +11327,7 @@ var A11yToolbar = ({
   ...props
 }) => {
   return /* @__PURE__ */ jsxs78(ToolbarContainer, { ...props, children: [
-    /* @__PURE__ */ jsx93(Text55, { fontSize: "$2", fontWeight: "bold", marginRight: "$2", children: "Acessibilidade:" }),
+    /* @__PURE__ */ jsx93(Text54, { fontSize: "$2", fontWeight: "bold", marginRight: "$2", children: "Acessibilidade:" }),
     /* @__PURE__ */ jsx93(Button, { icon: ZoomOut, size: "sm", variant: "outline", onPress: onZoomOut, "aria-label": "Diminuir fonte" }),
     /* @__PURE__ */ jsx93(Button, { icon: Type, size: "sm", variant: "ghost", disabled: true, "aria-label": "Tamanho da fonte" }),
     /* @__PURE__ */ jsx93(Button, { icon: ZoomIn, size: "sm", variant: "outline", onPress: onZoomIn, "aria-label": "Aumentar fonte" }),
@@ -11382,8 +11355,8 @@ var A11yToolbar = ({
 };
 
 // src/organisms/FileUpload/FileUpload.tsx
-import { useRef as useRef5 } from "react";
-import { YStack as YStack70, styled as styled74, Text as Text56 } from "tamagui";
+import { useRef as useRef6 } from "react";
+import { YStack as YStack70, styled as styled74, Text as Text55 } from "tamagui";
 import { Upload } from "@tamagui/lucide-icons";
 import { jsx as jsx94, jsxs as jsxs79 } from "react/jsx-runtime";
 var FileUploadFrame = styled74(YStack70, {
@@ -11417,7 +11390,7 @@ var FileUpload = ({
   errorMessage = "Ocorreu um erro. Tente novamente.",
   ...props
 }) => {
-  const inputRef = useRef5(null);
+  const inputRef = useRef6(null);
   const handlePress = () => {
     if (isLoading) return;
     if (typeof document !== "undefined" && inputRef.current) {
@@ -11457,13 +11430,13 @@ var FileUpload = ({
         children: [
           /* @__PURE__ */ jsx94(Upload, { size: 32, color: hasError ? "$red10" : "$gray10" }),
           /* @__PURE__ */ jsxs79(YStack70, { gap: "$1", alignItems: "center", children: [
-            /* @__PURE__ */ jsx94(Text56, { fontWeight: "bold", color: hasError ? "$red11" : void 0, children: title }),
-            /* @__PURE__ */ jsx94(Text56, { fontSize: "$2", color: hasError ? "$red10" : "$gray11", children: subtitle })
+            /* @__PURE__ */ jsx94(Text55, { fontWeight: "bold", color: hasError ? "$red11" : void 0, children: title }),
+            /* @__PURE__ */ jsx94(Text55, { fontSize: "$2", color: hasError ? "$red10" : "$gray11", children: subtitle })
           ] })
         ]
       }
     ),
-    hasError && errorMessage && /* @__PURE__ */ jsx94(Text56, { fontSize: "$2", color: "$red11", textAlign: "center", children: errorMessage }),
+    hasError && errorMessage && /* @__PURE__ */ jsx94(Text55, { fontSize: "$2", color: "$red11", textAlign: "center", children: errorMessage }),
     typeof document !== "undefined" && /* @__PURE__ */ jsx94(
       "input",
       {
@@ -11581,9 +11554,9 @@ function SchemaForm({
 }
 
 // src/organisms/HeatmapChart/HeatmapChart.tsx
-import { YStack as YStack72, Text as Text57, useTheme as useTheme19 } from "tamagui";
+import { YStack as YStack72, Text as Text56, useTheme as useTheme19 } from "tamagui";
 import { VictoryScatter as VictoryScatter3, VictoryChart as VictoryChart12, VictoryAxis as VictoryAxis10, VictoryContainer as VictoryContainer8 } from "victory";
-import { AlertTriangle as AlertTriangle17, Grid } from "@tamagui/lucide-icons";
+import { AlertTriangle as AlertTriangle16, Grid } from "@tamagui/lucide-icons";
 import { useMemo as useMemo15 } from "react";
 import { jsx as jsx96, jsxs as jsxs81 } from "react/jsx-runtime";
 var HeatmapChart = ({
@@ -11627,14 +11600,14 @@ var HeatmapChart = ({
     }
     if (error) {
       return /* @__PURE__ */ jsxs81(YStack72, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx96(AlertTriangle17, { color: "$red10" }),
-        /* @__PURE__ */ jsx96(Text57, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+        /* @__PURE__ */ jsx96(AlertTriangle16, { color: "$red10" }),
+        /* @__PURE__ */ jsx96(Text56, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
       return /* @__PURE__ */ jsxs81(YStack72, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
         /* @__PURE__ */ jsx96(Grid, { color: "$gray10" }),
-        /* @__PURE__ */ jsx96(Text57, { children: "N\xE3o h\xE1 dados para exibir." })
+        /* @__PURE__ */ jsx96(Text56, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     return /* @__PURE__ */ jsxs81(
@@ -11687,10 +11660,10 @@ var HeatmapChart = ({
 };
 
 // src/organisms/TreemapChart/TreemapChart.tsx
-import { YStack as YStack73, Text as Text58, useTheme as useTheme20 } from "tamagui";
-import { AlertTriangle as AlertTriangle18, Grid as Grid2 } from "@tamagui/lucide-icons";
+import { YStack as YStack73, Text as Text57, useTheme as useTheme20 } from "tamagui";
+import { AlertTriangle as AlertTriangle17, Grid as Grid2 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo16 } from "react";
-import Svg5, { Rect as SvgRect, Text as SvgText3, G as G4 } from "react-native-svg";
+import Svg4, { Rect as SvgRect, Text as SvgText3, G as G3 } from "react-native-svg";
 import { jsx as jsx97, jsxs as jsxs82 } from "react/jsx-runtime";
 var layout = (nodes, container) => {
   if (nodes.length === 0) return [];
@@ -11775,17 +11748,17 @@ var TreemapChart = ({
     }
     if (error) {
       return /* @__PURE__ */ jsxs82(YStack73, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx97(AlertTriangle18, { color: "$red10" }),
-        /* @__PURE__ */ jsx97(Text58, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+        /* @__PURE__ */ jsx97(AlertTriangle17, { color: "$red10" }),
+        /* @__PURE__ */ jsx97(Text57, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!data || data.length === 0) {
       return /* @__PURE__ */ jsxs82(YStack73, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
         /* @__PURE__ */ jsx97(Grid2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx97(Text58, { children: "N\xE3o h\xE1 dados para exibir." })
+        /* @__PURE__ */ jsx97(Text57, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsx97(Svg5, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ jsxs82(G4, { children: [
+    return /* @__PURE__ */ jsx97(Svg4, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ jsxs82(G3, { children: [
       /* @__PURE__ */ jsx97(
         SvgRect,
         {
@@ -11819,10 +11792,10 @@ var TreemapChart = ({
 };
 
 // src/organisms/SankeyDiagram/SankeyDiagram.tsx
-import { YStack as YStack74, Text as Text59, useTheme as useTheme21 } from "tamagui";
-import { AlertTriangle as AlertTriangle19, Activity as Activity3 } from "@tamagui/lucide-icons";
+import { YStack as YStack74, Text as Text58, useTheme as useTheme21 } from "tamagui";
+import { AlertTriangle as AlertTriangle18, Activity as Activity3 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo17 } from "react";
-import Svg6, { Rect as Rect2, Text as SvgText4, Path as Path5, G as G5 } from "react-native-svg";
+import Svg5, { Rect as Rect2, Text as SvgText4, Path as Path4, G as G4 } from "react-native-svg";
 import { jsx as jsx98, jsxs as jsxs83 } from "react/jsx-runtime";
 var computeLayout = (data, width, height) => {
   const { nodes: rawNodes, links: rawLinks } = data;
@@ -11922,18 +11895,18 @@ var SankeyDiagram = ({
     }
     if (error) {
       return /* @__PURE__ */ jsxs83(YStack74, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx98(AlertTriangle19, { color: "$red10" }),
-        /* @__PURE__ */ jsx98(Text59, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+        /* @__PURE__ */ jsx98(AlertTriangle18, { color: "$red10" }),
+        /* @__PURE__ */ jsx98(Text58, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.nodes.length === 0) {
       return /* @__PURE__ */ jsxs83(YStack74, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
         /* @__PURE__ */ jsx98(Activity3, { color: "$gray10" }),
-        /* @__PURE__ */ jsx98(Text59, { children: "N\xE3o h\xE1 dados para exibir." })
+        /* @__PURE__ */ jsx98(Text58, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const { nodes, links } = layout2;
-    return /* @__PURE__ */ jsxs83(Svg6, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: [
+    return /* @__PURE__ */ jsxs83(Svg5, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: [
       links.map((link, i) => {
         const x0 = link.sourceNode.x + 20;
         const x1 = link.targetNode.x;
@@ -11942,7 +11915,7 @@ var SankeyDiagram = ({
         const midX = (x0 + x1) / 2;
         const d = `M ${x0} ${y0} C ${midX} ${y0}, ${midX} ${y1}, ${x1} ${y1}`;
         return /* @__PURE__ */ jsx98(
-          Path5,
+          Path4,
           {
             d,
             stroke: primaryColor,
@@ -11953,7 +11926,7 @@ var SankeyDiagram = ({
           `link-${i}`
         );
       }),
-      nodes.map((node, i) => /* @__PURE__ */ jsxs83(G5, { children: [
+      nodes.map((node, i) => /* @__PURE__ */ jsxs83(G4, { children: [
         /* @__PURE__ */ jsx98(
           Rect2,
           {
@@ -11986,10 +11959,10 @@ var SankeyDiagram = ({
 };
 
 // src/organisms/ChordDiagram/ChordDiagram.tsx
-import { YStack as YStack75, Text as Text60, useTheme as useTheme22 } from "tamagui";
-import { AlertTriangle as AlertTriangle20, Circle as Circle6 } from "@tamagui/lucide-icons";
+import { YStack as YStack75, Text as Text59, useTheme as useTheme22 } from "tamagui";
+import { AlertTriangle as AlertTriangle19, Circle as Circle5 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo18 } from "react";
-import Svg7, { Path as Path6, G as G6, Text as SvgText5 } from "react-native-svg";
+import Svg6, { Path as Path5, G as G5, Text as SvgText5 } from "react-native-svg";
 import { jsx as jsx99, jsxs as jsxs84 } from "react/jsx-runtime";
 var polarToCartesian = (centerX, centerY, radius, angleInRadians) => {
   return {
@@ -12117,20 +12090,20 @@ var ChordDiagram = ({
     }
     if (error) {
       return /* @__PURE__ */ jsxs84(YStack75, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx99(AlertTriangle20, { color: "$red10" }),
-        /* @__PURE__ */ jsx99(Text60, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+        /* @__PURE__ */ jsx99(AlertTriangle19, { color: "$red10" }),
+        /* @__PURE__ */ jsx99(Text59, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.groups.length === 0) {
       return /* @__PURE__ */ jsxs84(YStack75, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx99(Circle6, { color: "$gray10" }),
-        /* @__PURE__ */ jsx99(Text60, { children: "N\xE3o h\xE1 dados para exibir." })
+        /* @__PURE__ */ jsx99(Circle5, { color: "$gray10" }),
+        /* @__PURE__ */ jsx99(Text59, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
     const { groups, ribbons, cx, cy, outerRadius } = layout2;
-    return /* @__PURE__ */ jsx99(Svg7, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs84(G6, { children: [
+    return /* @__PURE__ */ jsx99(Svg6, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs84(G5, { children: [
       ribbons.map((ribbon, i) => /* @__PURE__ */ jsx99(
-        Path6,
+        Path5,
         {
           d: ribbon.d,
           fill: ribbon.color,
@@ -12141,9 +12114,9 @@ var ChordDiagram = ({
       )),
       groups.map((group, i) => {
         const labelPos = polarToCartesian(cx, cy, outerRadius + 20, group.midAngle);
-        return /* @__PURE__ */ jsxs84(G6, { children: [
+        return /* @__PURE__ */ jsxs84(G5, { children: [
           /* @__PURE__ */ jsx99(
-            Path6,
+            Path5,
             {
               d: group.path,
               fill: group.color,
@@ -12173,10 +12146,10 @@ var ChordDiagram = ({
 };
 
 // src/organisms/NetworkGraph/NetworkGraph.tsx
-import { YStack as YStack76, Text as Text61, useTheme as useTheme23 } from "tamagui";
-import { AlertTriangle as AlertTriangle21, Share2 } from "@tamagui/lucide-icons";
+import { YStack as YStack76, Text as Text60, useTheme as useTheme23 } from "tamagui";
+import { AlertTriangle as AlertTriangle20, Share2 } from "@tamagui/lucide-icons";
 import { useMemo as useMemo19 } from "react";
-import Svg8, { Circle as Circle7, Line as Line4, Text as SvgText6, G as G7 } from "react-native-svg";
+import Svg7, { Circle as Circle6, Line as Line4, Text as SvgText6, G as G6 } from "react-native-svg";
 import { jsx as jsx100, jsxs as jsxs85 } from "react/jsx-runtime";
 var runSimulation = (nodes, links, width, height) => {
   const simNodes = nodes.map((n, i) => ({
@@ -12265,17 +12238,17 @@ var NetworkGraph = ({
     }
     if (error) {
       return /* @__PURE__ */ jsxs85(YStack76, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ jsx100(AlertTriangle21, { color: "$red10" }),
-        /* @__PURE__ */ jsx100(Text61, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
+        /* @__PURE__ */ jsx100(AlertTriangle20, { color: "$red10" }),
+        /* @__PURE__ */ jsx100(Text60, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
       ] });
     }
     if (!layout2 || layout2.nodes.length === 0) {
       return /* @__PURE__ */ jsxs85(YStack76, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
         /* @__PURE__ */ jsx100(Share2, { color: "$gray10" }),
-        /* @__PURE__ */ jsx100(Text61, { children: "N\xE3o h\xE1 dados para exibir." })
+        /* @__PURE__ */ jsx100(Text60, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ jsx100(Svg8, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs85(G7, { children: [
+    return /* @__PURE__ */ jsx100(Svg7, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ jsxs85(G6, { children: [
       layout2.links.map((link, i) => /* @__PURE__ */ jsx100(
         Line4,
         {
@@ -12288,9 +12261,9 @@ var NetworkGraph = ({
         },
         `link-${i}`
       )),
-      layout2.nodes.map((node, i) => /* @__PURE__ */ jsxs85(G7, { children: [
+      layout2.nodes.map((node, i) => /* @__PURE__ */ jsxs85(G6, { children: [
         /* @__PURE__ */ jsx100(
-          Circle7,
+          Circle6,
           {
             cx: node.x,
             cy: node.y,
@@ -12322,8 +12295,8 @@ var NetworkGraph = ({
 };
 
 // src/organisms/MediaGrid/MediaGrid.tsx
-import { useState as useState17 } from "react";
-import { YStack as YStack77, XStack as XStack46, Text as Text62, Image as Image4, Button as Button7, ScrollView as ScrollView6, Stack as Stack3 } from "tamagui";
+import { useState as useState18 } from "react";
+import { YStack as YStack77, XStack as XStack47, Text as Text61, Image as Image4, Button as Button8, ScrollView as ScrollView6, Stack as Stack3 } from "tamagui";
 import { Check as Check8, Trash2, Upload as Upload2, Grip, List as ListIcon } from "@tamagui/lucide-icons";
 import { jsx as jsx101, jsxs as jsxs86 } from "react/jsx-runtime";
 var MediaGrid = ({
@@ -12338,7 +12311,7 @@ var MediaGrid = ({
   onViewModeChange,
   acceptedTypes
 }) => {
-  const [internalViewMode, setInternalViewMode] = useState17(viewMode);
+  const [internalViewMode, setInternalViewMode] = useState18(viewMode);
   const currentViewMode = onViewModeChange ? viewMode : internalViewMode;
   const handleViewModeChange = (mode) => {
     if (onViewModeChange) {
@@ -12348,11 +12321,11 @@ var MediaGrid = ({
     }
   };
   return /* @__PURE__ */ jsxs86(YStack77, { gap: "$4", f: 1, children: [
-    /* @__PURE__ */ jsxs86(XStack46, { justifyContent: "space-between", alignItems: "center", children: [
-      /* @__PURE__ */ jsxs86(XStack46, { gap: "$2", children: [
-        onUpload && /* @__PURE__ */ jsx101(Button7, { icon: Upload2, onPress: onUpload, children: "Upload" }),
+    /* @__PURE__ */ jsxs86(XStack47, { justifyContent: "space-between", alignItems: "center", children: [
+      /* @__PURE__ */ jsxs86(XStack47, { gap: "$2", children: [
+        onUpload && /* @__PURE__ */ jsx101(Button8, { icon: Upload2, onPress: onUpload, children: "Upload" }),
         selectedIds.length > 0 && onDelete && /* @__PURE__ */ jsxs86(
-          Button7,
+          Button8,
           {
             theme: "red",
             icon: Trash2,
@@ -12365,9 +12338,9 @@ var MediaGrid = ({
           }
         )
       ] }),
-      /* @__PURE__ */ jsxs86(XStack46, { gap: "$2", backgroundColor: "$background", padding: "$1", borderRadius: "$4", children: [
+      /* @__PURE__ */ jsxs86(XStack47, { gap: "$2", backgroundColor: "$background", padding: "$1", borderRadius: "$4", children: [
         /* @__PURE__ */ jsx101(
-          Button7,
+          Button8,
           {
             size: "$3",
             chromeless: currentViewMode !== "grid",
@@ -12377,7 +12350,7 @@ var MediaGrid = ({
           }
         ),
         /* @__PURE__ */ jsx101(
-          Button7,
+          Button8,
           {
             size: "$3",
             chromeless: currentViewMode !== "list",
@@ -12388,7 +12361,7 @@ var MediaGrid = ({
         )
       ] })
     ] }),
-    /* @__PURE__ */ jsx101(ScrollView6, { children: /* @__PURE__ */ jsxs86(XStack46, { flexWrap: "wrap", gap: "$4", children: [
+    /* @__PURE__ */ jsx101(ScrollView6, { children: /* @__PURE__ */ jsxs86(XStack47, { flexWrap: "wrap", gap: "$4", children: [
       items.map((item) => /* @__PURE__ */ jsx101(
         MediaItemCard,
         {
@@ -12399,7 +12372,7 @@ var MediaGrid = ({
         },
         item.id
       )),
-      items.length === 0 && !isLoading && /* @__PURE__ */ jsx101(YStack77, { f: 1, alignItems: "center", justifyContent: "center", padding: "$10", children: /* @__PURE__ */ jsx101(Text62, { color: "$color10", children: "No media found" }) })
+      items.length === 0 && !isLoading && /* @__PURE__ */ jsx101(YStack77, { f: 1, alignItems: "center", justifyContent: "center", padding: "$10", children: /* @__PURE__ */ jsx101(Text61, { color: "$color10", children: "No media found" }) })
     ] }) })
   ] });
 };
@@ -12411,7 +12384,7 @@ var MediaItemCard = ({
 }) => {
   if (viewMode === "list") {
     return /* @__PURE__ */ jsxs86(
-      XStack46,
+      XStack47,
       {
         width: "100%",
         backgroundColor: "$background",
@@ -12436,8 +12409,8 @@ var MediaItemCard = ({
             }
           ),
           /* @__PURE__ */ jsxs86(YStack77, { f: 1, children: [
-            /* @__PURE__ */ jsx101(Text62, { fontWeight: "bold", children: item.title }),
-            /* @__PURE__ */ jsxs86(Text62, { fontSize: "$2", color: "$color10", children: [
+            /* @__PURE__ */ jsx101(Text61, { fontWeight: "bold", children: item.title }),
+            /* @__PURE__ */ jsxs86(Text61, { fontSize: "$2", color: "$color10", children: [
               item.type,
               " \u2022 ",
               formatBytes(item.size)
@@ -12492,7 +12465,7 @@ var MediaItemCard = ({
             right: 0,
             backgroundColor: "rgba(0,0,0,0.5)",
             padding: "$2",
-            children: /* @__PURE__ */ jsx101(Text62, { color: "white", numberOfLines: 1, fontSize: "$2", children: item.title })
+            children: /* @__PURE__ */ jsx101(Text61, { color: "white", numberOfLines: 1, fontSize: "$2", children: item.title })
           }
         )
       ]
@@ -12510,8 +12483,8 @@ function formatBytes(bytes, decimals = 2) {
 }
 
 // src/organisms/AuthScreen/AuthScreen.tsx
-import { useState as useState18 } from "react";
-import { YStack as YStack78, XStack as XStack47, Text as Text63, Image as Image5 } from "tamagui";
+import { useState as useState19 } from "react";
+import { YStack as YStack78, XStack as XStack48, Text as Text62, Image as Image5 } from "tamagui";
 import { jsx as jsx102, jsxs as jsxs87 } from "react/jsx-runtime";
 var AuthScreen = ({
   logo,
@@ -12525,11 +12498,11 @@ var AuthScreen = ({
   defaultView = "login",
   error
 }) => {
-  const [view, setView] = useState18(defaultView);
-  const [email, setEmail] = useState18("");
-  const [password, setPassword] = useState18("");
-  const [confirmPassword, setConfirmPassword] = useState18("");
-  const [name, setName] = useState18("");
+  const [view, setView] = useState19(defaultView);
+  const [email, setEmail] = useState19("");
+  const [password, setPassword] = useState19("");
+  const [confirmPassword, setConfirmPassword] = useState19("");
+  const [name, setName] = useState19("");
   const handleSubmit = () => {
     if (view === "login" && onLogin) {
       onLogin({ email, password });
@@ -12542,10 +12515,10 @@ var AuthScreen = ({
   return /* @__PURE__ */ jsx102(YStack78, { f: 1, alignItems: "center", justifyContent: "center", padding: "$4", backgroundColor: "$background", children: /* @__PURE__ */ jsxs87(Card, { width: "100%", maxWidth: 400, padding: "$6", gap: "$4", elevation: "$2", children: [
     /* @__PURE__ */ jsxs87(YStack78, { alignItems: "center", gap: "$2", marginBottom: "$4", children: [
       typeof logo === "string" ? /* @__PURE__ */ jsx102(Image5, { source: { uri: logo }, width: 60, height: 60, borderRadius: "$2" }) : logo,
-      /* @__PURE__ */ jsx102(Text63, { fontSize: "$6", fontWeight: "bold", children: title || (view === "login" ? "Welcome Back" : "Create Account") }),
-      subtitle && /* @__PURE__ */ jsx102(Text63, { color: "$color10", textAlign: "center", children: subtitle })
+      /* @__PURE__ */ jsx102(Text62, { fontSize: "$6", fontWeight: "bold", children: title || (view === "login" ? "Welcome Back" : "Create Account") }),
+      subtitle && /* @__PURE__ */ jsx102(Text62, { color: "$color10", textAlign: "center", children: subtitle })
     ] }),
-    error && /* @__PURE__ */ jsx102(YStack78, { backgroundColor: "$red2", padding: "$2", borderRadius: "$2", children: /* @__PURE__ */ jsx102(Text63, { color: "$red10", children: error }) }),
+    error && /* @__PURE__ */ jsx102(YStack78, { backgroundColor: "$red2", padding: "$2", borderRadius: "$2", children: /* @__PURE__ */ jsx102(Text62, { color: "$red10", children: error }) }),
     /* @__PURE__ */ jsxs87(YStack78, { gap: "$3", children: [
       view === "register" && /* @__PURE__ */ jsx102(
         Input,
@@ -12583,7 +12556,7 @@ var AuthScreen = ({
         }
       ),
       view === "login" && onForgotPassword && /* @__PURE__ */ jsx102(
-        Text63,
+        Text62,
         {
           fontSize: "$2",
           color: "$blue10",
@@ -12605,12 +12578,12 @@ var AuthScreen = ({
       )
     ] }),
     socialProviders && socialProviders.length > 0 && view === "login" && /* @__PURE__ */ jsxs87(YStack78, { gap: "$3", marginTop: "$2", children: [
-      /* @__PURE__ */ jsxs87(XStack47, { alignItems: "center", gap: "$2", children: [
+      /* @__PURE__ */ jsxs87(XStack48, { alignItems: "center", gap: "$2", children: [
         /* @__PURE__ */ jsx102(Separator, {}),
-        /* @__PURE__ */ jsx102(Text63, { fontSize: "$2", color: "$color10", children: "Or continue with" }),
+        /* @__PURE__ */ jsx102(Text62, { fontSize: "$2", color: "$color10", children: "Or continue with" }),
         /* @__PURE__ */ jsx102(Separator, {})
       ] }),
-      /* @__PURE__ */ jsx102(XStack47, { gap: "$2", justifyContent: "center", children: socialProviders.map((provider) => /* @__PURE__ */ jsx102(
+      /* @__PURE__ */ jsx102(XStack48, { gap: "$2", justifyContent: "center", children: socialProviders.map((provider) => /* @__PURE__ */ jsx102(
         Button,
         {
           icon: provider.icon,
@@ -12621,11 +12594,11 @@ var AuthScreen = ({
         provider.name
       )) })
     ] }),
-    /* @__PURE__ */ jsx102(YStack78, { alignItems: "center", marginTop: "$4", children: view === "login" ? /* @__PURE__ */ jsxs87(Text63, { fontSize: "$2", color: "$color10", children: [
+    /* @__PURE__ */ jsx102(YStack78, { alignItems: "center", marginTop: "$4", children: view === "login" ? /* @__PURE__ */ jsxs87(Text62, { fontSize: "$2", color: "$color10", children: [
       "Don't have an account?",
       " ",
       /* @__PURE__ */ jsx102(
-        Text63,
+        Text62,
         {
           color: "$blue10",
           fontWeight: "bold",
@@ -12634,11 +12607,11 @@ var AuthScreen = ({
           children: "Sign Up"
         }
       )
-    ] }) : /* @__PURE__ */ jsxs87(Text63, { fontSize: "$2", color: "$color10", children: [
+    ] }) : /* @__PURE__ */ jsxs87(Text62, { fontSize: "$2", color: "$color10", children: [
       "Already have an account?",
       " ",
       /* @__PURE__ */ jsx102(
-        Text63,
+        Text62,
         {
           color: "$blue10",
           fontWeight: "bold",
@@ -12653,7 +12626,7 @@ var AuthScreen = ({
 
 // src/molecules/Field/Field.tsx
 import React79 from "react";
-import { styled as styled75, Text as Text64, XStack as XStack48, YStack as YStack79 } from "tamagui";
+import { styled as styled75, Text as Text63, XStack as XStack49, YStack as YStack79 } from "tamagui";
 import { jsx as jsx103, jsxs as jsxs88 } from "react/jsx-runtime";
 var FieldFrame = styled75(YStack79, {
   name: "Field",
@@ -12664,7 +12637,7 @@ var FieldControlFrame = styled75(YStack79, {
   name: "FieldControl",
   flex: 1
 });
-var FieldErrorFrame = styled75(Text64, {
+var FieldErrorFrame = styled75(Text63, {
   name: "FieldError",
   color: "$destructive",
   fontSize: "$2"
@@ -12710,7 +12683,7 @@ var FieldRoot = ({
         clonedInput
       );
       if (rightSlot) {
-        return /* @__PURE__ */ jsxs88(XStack48, { gap: "$2", alignItems: "center", children: [
+        return /* @__PURE__ */ jsxs88(XStack49, { gap: "$2", alignItems: "center", children: [
           finalControl,
           rightSlot
         ] }, `field-child-${index}`);
@@ -12729,10 +12702,10 @@ var Field = Object.assign(FieldRoot, {
 });
 
 // src/molecules/InputGroup/InputGroup.tsx
-import { Spinner as Spinner6, XStack as XStack49, styled as styled76 } from "tamagui";
+import { Spinner as Spinner6, XStack as XStack50, styled as styled76 } from "tamagui";
 import { cloneElement as cloneElement7, Children as Children5 } from "react";
 import { jsx as jsx104, jsxs as jsxs89 } from "react/jsx-runtime";
-var InputGroupFrame = styled76(XStack49, {
+var InputGroupFrame = styled76(XStack50, {
   name: "InputGroup",
   alignItems: "center",
   borderWidth: 1,
@@ -12792,12 +12765,12 @@ import { forwardRef as forwardRef14, useId as useId3 } from "react";
 import { YStack as YStack81 } from "tamagui";
 
 // src/molecules/NativeSelect/NativeSelect.styles.ts
-import { Label as TamaguiLabel2, styled as styled77, XStack as XStack50, YStack as YStack80 } from "tamagui";
+import { Label as TamaguiLabel2, styled as styled77, XStack as XStack51, YStack as YStack80 } from "tamagui";
 var SelectContainer = styled77(YStack80, {
   name: "SelectContainer",
   gap: "$2"
 });
-var SelectTrigger2 = styled77(XStack50, {
+var SelectTrigger2 = styled77(XStack51, {
   name: "SelectTrigger",
   alignItems: "center",
   justifyContent: "space-between",
@@ -13935,14 +13908,14 @@ var fonts = {
 };
 
 // src/organisms/AgentAnimationPanel/AgentAnimationPanel.tsx
-import { styled as styled78, YStack as YStack82, XStack as XStack51, ScrollView as ScrollView7 } from "tamagui";
+import { styled as styled78, YStack as YStack82, XStack as XStack52, ScrollView as ScrollView7 } from "tamagui";
 import { Activity as Activity4, AlertCircle as AlertCircle9, CheckCircle, Info } from "@tamagui/lucide-icons";
 import { jsx as jsx108, jsxs as jsxs91 } from "react/jsx-runtime";
 var EventList = styled78(YStack82, {
   gap: "$3",
   padding: "$2"
 });
-var EventItem = styled78(XStack51, {
+var EventItem = styled78(XStack52, {
   backgroundColor: "$background",
   padding: "$3",
   borderRadius: "$md",
@@ -13978,7 +13951,7 @@ var AgentAnimationPanel = ({
   events
 }) => {
   return /* @__PURE__ */ jsxs91(Card, { width: "100%", height: "100%", maxHeight: 600, children: [
-    /* @__PURE__ */ jsx108(CardHeader, { children: /* @__PURE__ */ jsxs91(XStack51, { justifyContent: "space-between", alignItems: "center", children: [
+    /* @__PURE__ */ jsx108(CardHeader, { children: /* @__PURE__ */ jsxs91(XStack52, { justifyContent: "space-between", alignItems: "center", children: [
       /* @__PURE__ */ jsx108(CardTitle, { children: agentName }),
       /* @__PURE__ */ jsx108(Badge, { variant: agentStatus === "error" ? "destructive" : "default", children: agentStatus.toUpperCase() })
     ] }) }),
@@ -14010,9 +13983,9 @@ var AgentAnimationModal = ({
 
 // src/atoms/StatusLight/StatusLight.tsx
 import React84 from "react";
-import { styled as styled79, XStack as XStack52, Circle as Circle8, Text as Text65 } from "tamagui";
+import { styled as styled79, XStack as XStack53, Circle as Circle7, Text as Text64 } from "tamagui";
 import { jsx as jsx110, jsxs as jsxs92 } from "react/jsx-runtime";
-var StatusLightFrame = styled79(XStack52, {
+var StatusLightFrame = styled79(XStack53, {
   name: "StatusLight",
   alignItems: "center",
   gap: "$2",
@@ -14034,7 +14007,7 @@ var StatusLightFrame = styled79(XStack52, {
     variant: "neutral"
   }
 });
-var StatusDot = styled79(Circle8, {
+var StatusDot = styled79(Circle7, {
   name: "StatusDot",
   size: 8,
   variants: {
@@ -14050,7 +14023,7 @@ var StatusDot = styled79(Circle8, {
     variant: "neutral"
   }
 });
-var StatusText2 = styled79(Text65, {
+var StatusText2 = styled79(Text64, {
   name: "StatusText",
   color: "$foreground",
   fontSize: "$3",
@@ -14068,23 +14041,23 @@ StatusLight.displayName = "StatusLight";
 
 // src/atoms/Meter/Meter.tsx
 import React85 from "react";
-import { styled as styled80, XStack as XStack53, YStack as YStack83, Text as Text66, View as View10 } from "tamagui";
+import { styled as styled80, XStack as XStack54, YStack as YStack83, Text as Text65, View as View10 } from "tamagui";
 import { jsx as jsx111, jsxs as jsxs93 } from "react/jsx-runtime";
 var MeterFrame = styled80(YStack83, {
   name: "Meter",
   width: "100%",
   gap: "$2"
 });
-var MeterHeader = styled80(XStack53, {
+var MeterHeader = styled80(XStack54, {
   justifyContent: "space-between",
   alignItems: "center"
 });
-var MeterLabel = styled80(Text66, {
+var MeterLabel = styled80(Text65, {
   fontSize: "$3",
   fontWeight: "600",
   color: "$foreground"
 });
-var MeterValueLabel = styled80(Text66, {
+var MeterValueLabel = styled80(Text65, {
   fontSize: "$3",
   color: "$mutedForeground"
 });
@@ -14246,6 +14219,7 @@ export {
   FormMessage,
   FormRoot,
   FunnelChart,
+  GeoMap,
   H1,
   H2,
   H3,
@@ -14269,7 +14243,10 @@ export {
   LeadText,
   LineChart,
   LocationStatus,
-  Maps,
+  Map2 as Map,
+  MapControls,
+  MapMarker,
+  MapPopup,
   MarimekkoChart,
   MediaGrid,
   Menubar,
@@ -14397,6 +14374,7 @@ export {
   fonts,
   useCollapsibleContext,
   useFormField,
+  useMap,
   usePopoverContext,
   useSheetCustomContext,
   useToast,
