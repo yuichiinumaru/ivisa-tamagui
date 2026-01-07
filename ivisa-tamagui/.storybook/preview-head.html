@@ -1,0 +1,11 @@
+<script>
+  (function() {
+    try {
+      localStorage.clear();
+      sessionStorage.clear();
+      console.log('Storybook Quota Guard: Local and Session storage cleared.');
+    } catch (e) {
+      console.error('Storybook Quota Guard: Failed to clear storage', e);
+    }
+  })();
+</script>

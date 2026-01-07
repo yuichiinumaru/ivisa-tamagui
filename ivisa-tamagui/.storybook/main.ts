@@ -12,59 +12,44 @@ const quotaGuardScript = `
   ;(function () {
     if (typeof window === 'undefined') return
 
-    const createMemoryStorage = (source) => {
-      const map = new Map()
-      if (source && typeof source.length === 'number') {
-        try {
-          for (let i = 0; i < source.length; i++) {
-            const key = source.key(i)
-            if (key != null) {
-              map.set(key, source.getItem(key))
-            }
-          }
-        } catch (error) {}
-      }
-      return {
-        get length() {
-          return map.size
-        },
-        key(index) {
-          return Array.from(map.keys())[index] ?? null
-        },
-        getItem(key) {
-          return map.has(key) ? map.get(key) : null
-        },
-        setItem(key, value) {
-          map.set(String(key), String(value))
-        },
-        removeItem(key) {
-          map.delete(key)
-        },
-        clear() {
-          map.clear()
-        },
-      }
-    }
-
-    const replaceStorage = (name) => {
+    const clearAll = async () => {
       try {
-        const fallback = createMemoryStorage(window[name])
-        Object.defineProperty(window, name, {
-          value: fallback,
-          configurable: true,
-        })
-        if (typeof console !== 'undefined' && console.warn) {
-          console.warn('[storybook] replaced ' + name + ' with in-memory storage to avoid quota errors')
+        localStorage.clear()
+        sessionStorage.clear()
+        
+        // Clear Cookies
+        document.cookie.split(";").forEach(function(c) { 
+          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+        });
+
+        // Clear IndexedDB
+        if (window.indexedDB && window.indexedDB.databases) {
+          const dbs = await window.indexedDB.databases()
+          dbs.forEach(db => {
+            if (db.name) window.indexedDB.deleteDatabase(db.name)
+          })
         }
+
+        // Clear Cache API
+        if (window.caches) {
+          const keys = await caches.keys()
+          await Promise.all(keys.map(key => caches.delete(key)))
+        }
+
+        if (window.serviceWorker) {
+          const registrations = await window.navigator.serviceWorker.getRegistrations()
+          for (let registration of registrations) {
+            await registration.unregister()
+          }
+        }
+
+        console.warn('[storybook] cleared all storage to avoid quota errors')
       } catch (error) {
-        try {
-          window[name] = createMemoryStorage()
-        } catch (_) {}
+        console.error('[storybook] failed to clear storage', error)
       }
     }
 
-    replaceStorage('localStorage')
-    replaceStorage('sessionStorage')
+    clearAll()
   })()
 </script>
 `
@@ -75,13 +60,26 @@ const config: StorybookConfig = {
     '../packages/ui/src/**/*.stories.@(ts|tsx)'
   ],
   addons: [
-    '@storybook/addon-docs',
-    '@storybook/addon-a11y',
-    // '@storybook/addon-vitest'
+    {
+      name: "@storybook/addon-essentials",
+      options: {
+        actions: false,
+        docs: false,
+      },
+    },
+    "@storybook/addon-a11y",
+    "@chromatic-com/storybook",
+    "@storybook/addon-interactions",
   ],
   framework: {
-    name: '@storybook/react-vite',
-    options: {}
+    name: "@storybook/react-vite",
+    options: {},
+  },
+  webpackFinal: async (config) => {
+    if (config.output) {
+      config.output.publicPath = "/";
+    }
+    return config;
   },
   managerHead: (head: string = '') => `${head}\n${quotaGuardScript}`,
   previewHead: (head: string = '') => `${head}\n${quotaGuardScript}`,

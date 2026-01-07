@@ -18,12 +18,15 @@ Module.prototype.require = function (id) {
 
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const config = {
-    stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+    stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
     addons: [
         '@storybook/addon-links',
         {
             name: '@storybook/addon-essentials',
-            options: {},
+            options: {
+                actions: false,
+                docs: false,
+            },
         },
         '@storybook/addon-interactions',
         '@storybook/addon-webpack5-compiler-swc',
@@ -32,10 +35,56 @@ const config = {
         name: '@storybook/react-webpack5',
         options: {},
     },
+    managerHead: (head) => `
+        ${head}
+        <script>
+          ;(function () {
+            if (typeof window === 'undefined') return
+            const clearAll = async () => {
+              try {
+                localStorage.clear()
+                sessionStorage.clear()
+                if (window.indexedDB && window.indexedDB.databases) {
+                  const dbs = await window.indexedDB.databases()
+                  dbs.forEach(db => { if (db.name) window.indexedDB.deleteDatabase(db.name) })
+                }
+                if (window.caches) {
+                  const keys = await caches.keys()
+                  await Promise.all(keys.map(key => caches.delete(key)))
+                }
+                console.warn('[storybook] cleared all storage')
+              } catch (e) {}
+            }
+            clearAll()
+          })()
+        </script>
+    `,
+    previewHead: (head) => `
+        ${head}
+        <script>
+          ;(function () {
+            if (typeof window === 'undefined') return
+            const clearAll = async () => {
+              try {
+                localStorage.clear()
+                sessionStorage.clear()
+                if (window.indexedDB && window.indexedDB.databases) {
+                  const dbs = await window.indexedDB.databases()
+                  dbs.forEach(db => { if (db.name) window.indexedDB.deleteDatabase(db.name) })
+                }
+                if (window.caches) {
+                  const keys = await caches.keys()
+                  await Promise.all(keys.map(key => caches.delete(key)))
+                }
+              } catch (e) {}
+            }
+            clearAll()
+          })()
+        </script>
+    `,
     docs: {
         autodocs: false,
     },
-    staticDirs: ['../public', '../src/assets'],
     webpackFinal: async (config) => {
         if (!config.resolve) config.resolve = {};
         if (!config.module) config.module = { rules: [] };
@@ -129,11 +178,10 @@ const config = {
             'victory-native': path.resolve(__dirname, '../src/mocks/victory-native.js'),
         };
 
-        // Fix for HMR 404 errors
-        config.output = {
-            ...config.output,
-            publicPath: '/',
-        };
+        // Fix for HMR 404 errors - using '/' but ensuring it doesn't double-slash
+        if (config.output) {
+            config.output.publicPath = '/';
+        }
 
         // ANTIGRAVITY FIX: Inject React to solve "ReferenceError: React is not defined" in Storybook stories
         config.plugins = config.plugins || [];
@@ -143,6 +191,11 @@ const config = {
                 React: 'react',
             })
         );
+
+        config.output = {
+            ...config.output,
+            publicPath: '',
+        };
 
         return config;
     },
