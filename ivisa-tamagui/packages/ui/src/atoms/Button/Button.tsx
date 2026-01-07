@@ -2,7 +2,7 @@ import React from 'react'
 import { Button as TamaguiButton, styled, GetProps, TamaguiElement, View, Text } from 'tamagui'
 import { Spinner } from '../Spinner'
 
-const StyledButton = styled(TamaguiButton, {
+const StyledButton = styled(View, {
   name: 'Button',
   flexDirection: 'row',
   alignItems: 'center',
@@ -150,9 +150,9 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>(
         asChild={asChild}
       >
         <View style={{ flexDirection: 'row', alignItems: 'center', opacity: loading ? 0 : 1, gap: 8 }}>
-            {leftIcon}
-            {React.Children.map(children, renderChildren)}
-            {rightIcon}
+          {leftIcon}
+          {React.Children.map(children, renderChildren)}
+          {rightIcon}
         </View>
         {loading && (
           <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>

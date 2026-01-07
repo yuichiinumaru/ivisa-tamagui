@@ -89,7 +89,28 @@ const InteractiveStory = ({
 }
 
 export const Padrao: Story = {
-  render: (args) => <InteractiveStory args={args}> </InteractiveStory>,
+  render: (args) => {
+    const [storyArgs, updateArgs] = useArgs()
+    const [key, setKey] = useState(0)
+    const shouldThrow = storyArgs.shouldThrow ?? args.shouldThrow
+
+    const handleReset = () => {
+      args.onReset?.()
+      setKey((prev) => prev + 1)
+      updateArgs({ shouldThrow: false })
+    }
+
+    return (
+      <YStack gap="$4" width={400} alignItems="center">
+        <ComponentErrorBoundary {...args} key={key} onReset={handleReset}>
+          <BuggyComponent shouldThrow={shouldThrow} />
+        </ComponentErrorBoundary>
+        <Button onPress={() => updateArgs({ shouldThrow: true })} disabled={shouldThrow}>
+          Disparar Erro
+        </Button>
+      </YStack>
+    )
+  },
   args: {
     componentName: 'DefaultStory',
     shouldThrow: false,
@@ -105,7 +126,28 @@ export const Padrao: Story = {
 }
 
 export const ComErroAndRecovery: Story = {
-  render: (args) => <InteractiveStory args={args}> </InteractiveStory>,
+  render: (args) => {
+    const [storyArgs, updateArgs] = useArgs()
+    const [key, setKey] = useState(0)
+    const shouldThrow = storyArgs.shouldThrow ?? args.shouldThrow
+
+    const handleReset = () => {
+      args.onReset?.()
+      setKey((prev) => prev + 1)
+      updateArgs({ shouldThrow: false })
+    }
+
+    return (
+      <YStack gap="$4" width={400} alignItems="center">
+        <ComponentErrorBoundary {...args} key={key} onReset={handleReset}>
+          <BuggyComponent shouldThrow={shouldThrow} />
+        </ComponentErrorBoundary>
+        <Button onPress={() => updateArgs({ shouldThrow: true })} disabled={shouldThrow}>
+          Disparar Erro
+        </Button>
+      </YStack>
+    )
+  },
   args: {
     componentName: 'RecoveryStory',
     shouldThrow: true,
@@ -130,7 +172,7 @@ export const StressTestNarrowContainer: Story = {
   ),
   args: {
     componentName: 'NarrowContainerStory',
-    onReset: () => {},
+    onReset: () => { },
   },
   parameters: {
     docs: {

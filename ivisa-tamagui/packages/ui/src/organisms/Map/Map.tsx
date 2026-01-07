@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useMemo, useState, useRef, useEffect, ReactNode } from 'react'
 import { YStack, useTheme, XStack, Button } from 'tamagui'
 import { Plus, Minus } from '@tamagui/lucide-icons'
-import MapLibreGL from '@maplibre/maplibre-react-native'
+import MapLibreGL from '../../mocks/maplibre-react-native'
 import { GeoFeature, GeoJSON } from '../Maps/Maps'
 import { Platform } from 'react-native'
 
@@ -51,9 +51,9 @@ export const Map = ({
   // MapLibreGL.setAccessToken(null);
 
   const onRegionDidChange = async (feature: any) => {
-     // Sync zoom state
-     // const z = await mapRef.current?.getZoom();
-     // if (z) setZoom(z);
+    // Sync zoom state
+    // const z = await mapRef.current?.getZoom();
+    // if (z) setZoom(z);
   }
 
   // Handle zooming programmatically
@@ -96,10 +96,10 @@ export const Map = ({
 
           {/* Render GeoJSON Data if provided */}
           {data && (
-             <MapLibreGL.ShapeSource id="mapSource" shape={data as any}>
-                <MapLibreGL.FillLayer id="mapFill" style={{ fillColor: '#3b82f6', fillOpacity: 0.5, fillOutlineColor: '#ffffff' }} />
-                <MapLibreGL.LineLayer id="mapLine" style={{ lineColor: '#ffffff', lineWidth: 1 }} />
-             </MapLibreGL.ShapeSource>
+            <MapLibreGL.ShapeSource id="mapSource" shape={data as any}>
+              <MapLibreGL.FillLayer id="mapFill" style={{ fillColor: '#3b82f6', fillOpacity: 0.5, fillOutlineColor: '#ffffff' }} />
+              <MapLibreGL.LineLayer id="mapLine" style={{ lineColor: '#ffffff', lineWidth: 1 }} />
+            </MapLibreGL.ShapeSource>
           )}
 
         </MapLibreGL.MapView>
@@ -135,7 +135,7 @@ export const MapControls = ({ showZoom = true }: { showZoom?: boolean }) => {
             icon={Minus}
             onPress={() => setZoom(zoom - 1)}
             borderRadius={0}
-           />
+          />
         </YStack>
       )}
     </YStack>
@@ -146,22 +146,22 @@ export const MapMarker = ({ longitude, latitude, children, id }: { longitude: nu
 
   return (
     <MapLibreGL.PointAnnotation
-        id={id}
-        coordinate={[longitude, latitude]}
+      id={id}
+      coordinate={[longitude, latitude]}
     >
-        {children || <YStack width={10} height={10} backgroundColor="$red10" borderRadius={10} />}
+      {children || <YStack width={10} height={10} backgroundColor="$red10" borderRadius={10} />}
     </MapLibreGL.PointAnnotation>
   )
 }
 
 export const MapPopup = ({ children }: { children: ReactNode }) => {
-    return (
-        <MapLibreGL.Callout>
-            <YStack padding="$2" backgroundColor="$background" borderRadius="$2" elevation="$2">
-                {children}
-            </YStack>
-        </MapLibreGL.Callout>
-    )
+  return (
+    <MapLibreGL.Callout>
+      <YStack padding="$2" backgroundColor="$background" borderRadius="$2" elevation="$2">
+        {children}
+      </YStack>
+    </MapLibreGL.Callout>
+  )
 }
 
 // Export a bundled object for clean API

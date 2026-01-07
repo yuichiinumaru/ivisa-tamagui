@@ -23,7 +23,10 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "@types/react": "18.2.55",
-    "@types/react-dom": "18.2.19"
+    "@types/react-dom": "18.2.19",
+    "@tamagui/**": "1.143.1",
+    "tamagui": "1.143.1",
+    "react-native-web": "0.19.13"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -31,11 +34,10 @@
     "@tamagui/config": "^1.143.1",
     "@tamagui/core": "^1.143.1",
     "@tamagui/portal": "^1.143.1",
-    "@tamagui/ui": "^1.93.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.66.1",
-    "react-native-web": "^0.21.2",
+    "react-native-web": "0.19.13",
     "tamagui": "^1.143.1",
     "zod": "^3.24.1"
   },
