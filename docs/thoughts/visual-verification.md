@@ -1,0 +1,1 @@
+Visual Verification Strategy

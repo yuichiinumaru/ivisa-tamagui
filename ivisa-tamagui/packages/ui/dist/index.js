@@ -154,6 +154,7 @@ __export(index_exports, {
   FormMessage: () => FormMessage,
   FormRoot: () => FormRoot,
   FunnelChart: () => FunnelChart,
+  GeoMap: () => GeoMap,
   H1: () => H1,
   H2: () => H2,
   H3: () => H3,
@@ -177,7 +178,10 @@ __export(index_exports, {
   LeadText: () => LeadText,
   LineChart: () => LineChart,
   LocationStatus: () => LocationStatus,
-  Maps: () => Maps,
+  Map: () => Map2,
+  MapControls: () => MapControls,
+  MapMarker: () => MapMarker,
+  MapPopup: () => MapPopup,
   MarimekkoChart: () => MarimekkoChart,
   MediaGrid: () => MediaGrid,
   Menubar: () => Menubar,
@@ -305,6 +309,7 @@ __export(index_exports, {
   fonts: () => fonts,
   useCollapsibleContext: () => useCollapsibleContext,
   useFormField: () => useFormField,
+  useMap: () => useMap,
   usePopoverContext: () => usePopoverContext,
   useSheetCustomContext: () => useSheetCustomContext,
   useToast: () => useToast,
@@ -1856,7 +1861,7 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
         children
       });
     }
-    function useContext16(consumerName, scope, options) {
+    function useContext17(consumerName, scope, options) {
       const Context = scope?.[scopeName]?.[index] || BaseContext, context = React14.useContext(Context);
       if (context) return context;
       if (defaultContext !== void 0) return defaultContext;
@@ -1864,7 +1869,7 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
       if (options?.fallback) return options?.warn !== false && console.warn(missingContextMessage), options.fallback;
       throw new Error(missingContextMessage);
     }
-    return [Provider, useContext16];
+    return [Provider, useContext17];
   }
   const createScope = () => {
     const scopeContexts = defaultContexts.map((defaultContext) => React14.createContext(defaultContext));
@@ -10584,156 +10589,129 @@ var DecompositionTree = ({
   ] });
 };
 
-// src/organisms/Maps/Maps.tsx
+// src/organisms/Map/Map.tsx
 var import_react70 = require("react");
 var import_tamagui83 = require("tamagui");
-var import_react_native_svg3 = require("react-native-svg");
 var import_lucide_icons45 = require("@tamagui/lucide-icons");
+var import_maplibre_react_native = __toESM(require("@maplibre/maplibre-react-native"));
 var import_jsx_runtime84 = require("react/jsx-runtime");
-var project = (lon, lat, width, height, bounds) => {
-  const [minLon, minLat, maxLon, maxLat] = bounds;
-  const xPct = (lon - minLon) / (maxLon - minLon);
-  const yPct = (lat - minLat) / (maxLat - minLat);
-  const x = xPct * width;
-  const y = height - yPct * height;
-  return [x, y];
-};
-var getBounds = (features) => {
-  let minLon = Infinity, minLat = Infinity, maxLon = -Infinity, maxLat = -Infinity;
-  const visit = (coords) => {
-    if (typeof coords[0] === "number") {
-      const [lon, lat] = coords;
-      minLon = Math.min(minLon, lon);
-      minLat = Math.min(minLat, lat);
-      maxLon = Math.max(maxLon, lon);
-      maxLat = Math.max(maxLat, lat);
-    } else {
-      coords.forEach(visit);
-    }
-  };
-  features.forEach((f) => visit(f.geometry.coordinates));
-  return [minLon, minLat, maxLon, maxLat];
-};
-var geoPath = (feature, width, height, bounds) => {
-  const { geometry } = feature;
-  const drawRing = (ring) => {
-    return ring.map((pt, i) => {
-      const [x, y] = project(pt[0], pt[1], width, height, bounds);
-      return `${i === 0 ? "M" : "L"} ${x} ${y}`;
-    }).join(" ") + "Z";
-  };
-  if (geometry.type === "Polygon") {
-    return geometry.coordinates.map(drawRing).join(" ");
-  } else if (geometry.type === "MultiPolygon") {
-    return geometry.coordinates.map((poly) => poly.map(drawRing).join(" ")).join(" ");
+var MapContext = (0, import_react70.createContext)(null);
+var useMap = () => {
+  const context = (0, import_react70.useContext)(MapContext);
+  if (!context) {
+    throw new Error("useMap must be used within a Map component");
   }
-  return "";
+  return context;
 };
-var Maps = ({
+var Map2 = ({
   data,
-  type = "choropleth",
-  valueKey = "value",
-  width = 600,
+  children,
+  width = "100%",
   height = 400,
-  color = "$primary",
-  isLoading = false,
-  error = null,
-  headerContent
+  initialZoom = 10,
+  styleURL = "https://demotiles.maplibre.org/style.json"
 }) => {
-  const theme = (0, import_tamagui83.useTheme)();
-  const themeColor = theme[color];
-  const { paths, circles } = (0, import_react70.useMemo)(() => {
-    if (!data || !data.features) return { paths: [], circles: [] };
-    const bounds = getBounds(data.features);
-    const values = data.features.map((f) => f.properties[valueKey]).filter((v) => typeof v === "number");
-    const maxVal = Math.max(...values) || 1;
-    const minVal = Math.min(...values) || 0;
-    const paths2 = data.features.map((f) => {
-      const d = geoPath(f, width, height, bounds);
-      let fill = theme.background?.get() || "#eee";
-      if (type === "choropleth") {
-        const val = f.properties[valueKey];
-        if (typeof val === "number") {
-          const intensity = (val - minVal) / (maxVal - minVal);
-          fill = `rgba(59, 130, 246, ${0.2 + 0.8 * intensity})`;
-        }
-      } else {
-        fill = "#e5e7eb";
-      }
-      return { d, fill, feature: f };
-    });
-    const circles2 = [];
-    if (type === "dotDensity") {
-      data.features.forEach((f) => {
-        const coords = f.geometry.type === "Polygon" ? f.geometry.coordinates[0] : f.geometry.coordinates[0][0];
-        let sumX = 0, sumY = 0, count = 0;
-        coords.forEach((pt) => {
-          sumX += pt[0];
-          sumY += pt[1];
-          count++;
-        });
-        const cx = sumX / count;
-        const cy = sumY / count;
-        const [x, y] = project(cx, cy, width, height, bounds);
-        const val = f.properties[valueKey];
-        if (val) {
-          circles2.push({
-            cx: x,
-            cy: y,
-            r: Math.sqrt(val) / 2,
-            // scale size
-            fill: theme.red9?.get() || "#ef4444"
-          });
-        }
-      });
-    }
-    return { paths: paths2, circles: circles2 };
-  }, [data, width, height, type, valueKey, theme]);
-  const renderContent = () => {
-    if (isLoading) {
-      return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(Skeleton, { height, width: "100%" });
-    }
-    if (error) {
-      return /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(import_tamagui83.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_lucide_icons45.AlertTriangle, { color: "$red10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_tamagui83.Text, { color: "$red10", children: "Ocorreu um erro ao carregar os dados." })
-      ] });
-    }
-    if (!data) {
-      return /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(import_tamagui83.YStack, { flex: 1, justifyContent: "center", alignItems: "center", gap: "$2", height, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_lucide_icons45.Map, { color: "$gray10" }),
-        /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_tamagui83.Text, { children: "N\xE3o h\xE1 dados para exibir." })
-      ] });
-    }
-    return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_react_native_svg3.Svg, { width, height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(import_react_native_svg3.G, { children: [
-      paths.map((p, i) => /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
-        import_react_native_svg3.Path,
-        {
-          d: p.d,
-          fill: p.fill,
-          stroke: theme.background?.get() || "white",
-          strokeWidth: 0.5
-        },
-        i
-      )),
-      circles.map((c, i) => /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
-        import_react_native_svg3.Circle,
-        {
-          cx: c.cx,
-          cy: c.cy,
-          r: c.r,
-          fill: c.fill,
-          opacity: 0.6
-        },
-        `c-${i}`
-      ))
-    ] }) });
+  const mapRef = (0, import_react70.useRef)(null);
+  const cameraRef = (0, import_react70.useRef)(null);
+  const [zoom, setZoom] = (0, import_react70.useState)(initialZoom);
+  const onRegionDidChange = async (feature) => {
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(import_tamagui83.YStack, { width: "100%", gap: "$4", paddingHorizontal: "$4", children: [
-    headerContent,
-    renderContent()
-  ] });
+  (0, import_react70.useEffect)(() => {
+    cameraRef.current?.zoomTo(zoom);
+  }, [zoom]);
+  return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(MapContext.Provider, { value: {
+    mapRef,
+    cameraRef,
+    zoom,
+    setZoom
+  }, children: /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(
+    import_tamagui83.YStack,
+    {
+      width,
+      height,
+      overflow: "hidden",
+      position: "relative",
+      borderRadius: "$4",
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(
+          import_maplibre_react_native.default.MapView,
+          {
+            ref: mapRef,
+            style: { flex: 1 },
+            styleURL,
+            onRegionDidChange,
+            logoEnabled: false,
+            attributionEnabled: false,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
+                import_maplibre_react_native.default.Camera,
+                {
+                  ref: cameraRef,
+                  defaultSettings: {
+                    zoomLevel: initialZoom,
+                    centerCoordinate: [-43.1729, -22.9068]
+                    // Rio default
+                  }
+                }
+              ),
+              children,
+              data && /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(import_maplibre_react_native.default.ShapeSource, { id: "mapSource", shape: data, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_maplibre_react_native.default.FillLayer, { id: "mapFill", style: { fillColor: "#3b82f6", fillOpacity: 0.5, fillOutlineColor: "#ffffff" } }),
+                /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_maplibre_react_native.default.LineLayer, { id: "mapLine", style: { lineColor: "#ffffff", lineWidth: 1 } })
+              ] })
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(MapControls, {})
+      ]
+    }
+  ) });
 };
+var MapControls = ({ showZoom = true }) => {
+  const { zoom, setZoom } = useMap();
+  return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_tamagui83.YStack, { position: "absolute", bottom: "$4", right: "$4", gap: "$2", children: showZoom && /* @__PURE__ */ (0, import_jsx_runtime84.jsxs)(import_tamagui83.YStack, { borderRadius: "$4", overflow: "hidden", elevation: "$2", backgroundColor: "$background", borderWidth: 1, borderColor: "$borderColor", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
+      import_tamagui83.Button,
+      {
+        size: "$3",
+        chromeless: true,
+        icon: import_lucide_icons45.Plus,
+        onPress: () => setZoom(zoom + 1),
+        borderRadius: 0,
+        borderBottomWidth: 1,
+        borderColor: "$borderColor"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
+      import_tamagui83.Button,
+      {
+        size: "$3",
+        chromeless: true,
+        icon: import_lucide_icons45.Minus,
+        onPress: () => setZoom(zoom - 1),
+        borderRadius: 0
+      }
+    )
+  ] }) });
+};
+var MapMarker = ({ longitude, latitude, children, id }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(
+    import_maplibre_react_native.default.PointAnnotation,
+    {
+      id,
+      coordinate: [longitude, latitude],
+      children: children || /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_tamagui83.YStack, { width: 10, height: 10, backgroundColor: "$red10", borderRadius: 10 })
+    }
+  );
+};
+var MapPopup = ({ children }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_maplibre_react_native.default.Callout, { children: /* @__PURE__ */ (0, import_jsx_runtime84.jsx)(import_tamagui83.YStack, { padding: "$2", backgroundColor: "$background", borderRadius: "$2", elevation: "$2", children }) });
+};
+var GeoMap = Object.assign(Map2, {
+  Marker: MapMarker,
+  Popup: MapPopup,
+  Controls: MapControls
+});
 
 // src/organisms/Timeline/Timeline.tsx
 var import_tamagui84 = require("tamagui");
@@ -11026,7 +11004,7 @@ var ScannerView = ({
 // src/organisms/SignaturePad/SignaturePad.tsx
 var import_react72 = require("react");
 var import_tamagui87 = require("tamagui");
-var import_react_native_svg4 = require("react-native-svg");
+var import_react_native_svg3 = require("react-native-svg");
 var import_lucide_icons48 = require("@tamagui/lucide-icons");
 var import_tamagui88 = require("tamagui");
 var import_jsx_runtime88 = require("react/jsx-runtime");
@@ -11125,9 +11103,9 @@ var SignaturePad = ({
         onMouseUp: handleEnd,
         onMouseLeave: handleEnd,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)(import_react_native_svg4.Svg, { height: "100%", width: "100%", viewBox: "0 0 500 200", style: { position: "absolute", top: 0, left: 0, zIndex: 10 }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime88.jsxs)(import_react_native_svg3.Svg, { height: "100%", width: "100%", viewBox: "0 0 500 200", style: { position: "absolute", top: 0, left: 0, zIndex: 10 }, children: [
             paths.map((d, i) => /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
-              import_react_native_svg4.Path,
+              import_react_native_svg3.Path,
               {
                 d,
                 stroke: strokeColor,
@@ -11139,7 +11117,7 @@ var SignaturePad = ({
               i
             )),
             currentPath.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime88.jsx)(
-              import_react_native_svg4.Path,
+              import_react_native_svg3.Path,
               {
                 d: pointsToPath(currentPath),
                 stroke: strokeColor,
@@ -11844,7 +11822,7 @@ var HeatmapChart = ({
 var import_tamagui97 = require("tamagui");
 var import_lucide_icons53 = require("@tamagui/lucide-icons");
 var import_react75 = require("react");
-var import_react_native_svg5 = __toESM(require("react-native-svg"));
+var import_react_native_svg4 = __toESM(require("react-native-svg"));
 var import_jsx_runtime97 = require("react/jsx-runtime");
 var layout = (nodes, container) => {
   if (nodes.length === 0) return [];
@@ -11939,9 +11917,9 @@ var TreemapChart = ({
         /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_tamagui97.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_react_native_svg5.default, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_react_native_svg5.G, { children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(import_react_native_svg4.default, { width: "100%", height, viewBox: `0 0 500 ${height}`, children: processedNodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(import_react_native_svg4.G, { children: [
       /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
-        import_react_native_svg5.Rect,
+        import_react_native_svg4.Rect,
         {
           x: node.rect?.x,
           y: node.rect?.y,
@@ -11953,7 +11931,7 @@ var TreemapChart = ({
         }
       ),
       node.rect && node.rect.w > 20 && node.rect.h > 15 && /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
-        import_react_native_svg5.Text,
+        import_react_native_svg4.Text,
         {
           x: (node.rect.x || 0) + (node.rect.w || 0) / 2,
           y: (node.rect.y || 0) + (node.rect.h || 0) / 2,
@@ -11976,7 +11954,7 @@ var TreemapChart = ({
 var import_tamagui98 = require("tamagui");
 var import_lucide_icons54 = require("@tamagui/lucide-icons");
 var import_react76 = require("react");
-var import_react_native_svg6 = __toESM(require("react-native-svg"));
+var import_react_native_svg5 = __toESM(require("react-native-svg"));
 var import_jsx_runtime98 = require("react/jsx-runtime");
 var computeLayout = (data, width, height) => {
   const { nodes: rawNodes, links: rawLinks } = data;
@@ -12087,7 +12065,7 @@ var SankeyDiagram = ({
       ] });
     }
     const { nodes, links } = layout2;
-    return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_react_native_svg6.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_react_native_svg5.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: [
       links.map((link, i) => {
         const x0 = link.sourceNode.x + 20;
         const x1 = link.targetNode.x;
@@ -12096,7 +12074,7 @@ var SankeyDiagram = ({
         const midX = (x0 + x1) / 2;
         const d = `M ${x0} ${y0} C ${midX} ${y0}, ${midX} ${y1}, ${x1} ${y1}`;
         return /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
-          import_react_native_svg6.Path,
+          import_react_native_svg5.Path,
           {
             d,
             stroke: primaryColor,
@@ -12107,9 +12085,9 @@ var SankeyDiagram = ({
           `link-${i}`
         );
       }),
-      nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_react_native_svg6.G, { children: [
+      nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime98.jsxs)(import_react_native_svg5.G, { children: [
         /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
-          import_react_native_svg6.Rect,
+          import_react_native_svg5.Rect,
           {
             x: node.x,
             y: node.y,
@@ -12120,7 +12098,7 @@ var SankeyDiagram = ({
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime98.jsx)(
-          import_react_native_svg6.Text,
+          import_react_native_svg5.Text,
           {
             x: node.x + 25,
             y: node.y + node.dy / 2,
@@ -12143,7 +12121,7 @@ var SankeyDiagram = ({
 var import_tamagui99 = require("tamagui");
 var import_lucide_icons55 = require("@tamagui/lucide-icons");
 var import_react77 = require("react");
-var import_react_native_svg7 = __toESM(require("react-native-svg"));
+var import_react_native_svg6 = __toESM(require("react-native-svg"));
 var import_jsx_runtime99 = require("react/jsx-runtime");
 var polarToCartesian = (centerX, centerY, radius, angleInRadians) => {
   return {
@@ -12282,9 +12260,9 @@ var ChordDiagram = ({
       ] });
     }
     const { groups, ribbons, cx, cy, outerRadius } = layout2;
-    return /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_react_native_svg7.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_react_native_svg7.G, { children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(import_react_native_svg6.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_react_native_svg6.G, { children: [
       ribbons.map((ribbon, i) => /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-        import_react_native_svg7.Path,
+        import_react_native_svg6.Path,
         {
           d: ribbon.d,
           fill: ribbon.color,
@@ -12295,9 +12273,9 @@ var ChordDiagram = ({
       )),
       groups.map((group, i) => {
         const labelPos = polarToCartesian(cx, cy, outerRadius + 20, group.midAngle);
-        return /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_react_native_svg7.G, { children: [
+        return /* @__PURE__ */ (0, import_jsx_runtime99.jsxs)(import_react_native_svg6.G, { children: [
           /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-            import_react_native_svg7.Path,
+            import_react_native_svg6.Path,
             {
               d: group.path,
               fill: group.color,
@@ -12305,7 +12283,7 @@ var ChordDiagram = ({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime99.jsx)(
-            import_react_native_svg7.Text,
+            import_react_native_svg6.Text,
             {
               x: labelPos.x,
               y: labelPos.y,
@@ -12330,7 +12308,7 @@ var ChordDiagram = ({
 var import_tamagui100 = require("tamagui");
 var import_lucide_icons56 = require("@tamagui/lucide-icons");
 var import_react78 = require("react");
-var import_react_native_svg8 = __toESM(require("react-native-svg"));
+var import_react_native_svg7 = __toESM(require("react-native-svg"));
 var import_jsx_runtime100 = require("react/jsx-runtime");
 var runSimulation = (nodes, links, width, height) => {
   const simNodes = nodes.map((n, i) => ({
@@ -12429,9 +12407,9 @@ var NetworkGraph = ({
         /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_tamagui100.Text, { children: "N\xE3o h\xE1 dados para exibir." })
       ] });
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_react_native_svg8.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_react_native_svg8.G, { children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(import_react_native_svg7.default, { width: "100%", height, viewBox: `0 0 ${width} ${height}`, children: /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_react_native_svg7.G, { children: [
       layout2.links.map((link, i) => /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-        import_react_native_svg8.Line,
+        import_react_native_svg7.Line,
         {
           x1: link.source.x,
           y1: link.source.y,
@@ -12442,9 +12420,9 @@ var NetworkGraph = ({
         },
         `link-${i}`
       )),
-      layout2.nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_react_native_svg8.G, { children: [
+      layout2.nodes.map((node, i) => /* @__PURE__ */ (0, import_jsx_runtime100.jsxs)(import_react_native_svg7.G, { children: [
         /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-          import_react_native_svg8.Circle,
+          import_react_native_svg7.Circle,
           {
             cx: node.x,
             cy: node.y,
@@ -12455,7 +12433,7 @@ var NetworkGraph = ({
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime100.jsx)(
-          import_react_native_svg8.Text,
+          import_react_native_svg7.Text,
           {
             x: node.x,
             y: node.y + 5,
@@ -14401,6 +14379,7 @@ Meter.displayName = "Meter";
   FormMessage,
   FormRoot,
   FunnelChart,
+  GeoMap,
   H1,
   H2,
   H3,
@@ -14424,7 +14403,10 @@ Meter.displayName = "Meter";
   LeadText,
   LineChart,
   LocationStatus,
-  Maps,
+  Map,
+  MapControls,
+  MapMarker,
+  MapPopup,
   MarimekkoChart,
   MediaGrid,
   Menubar,
@@ -14552,6 +14534,7 @@ Meter.displayName = "Meter";
   fonts,
   useCollapsibleContext,
   useFormField,
+  useMap,
   usePopoverContext,
   useSheetCustomContext,
   useToast,
