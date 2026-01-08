@@ -7,7 +7,8 @@ import {
   CollapsibleTrigger,
   useCollapsibleContext,
 } from './Collapsible'
-import { Badge, Button, Square, Text, XStack, YStack } from 'tamagui'
+import { Badge } from '../atoms/Badge'
+import { Button, Square, Text, XStack, YStack } from 'tamagui'
 import { ChevronsUpDown } from '@tamagui/lucide-icons'
 import React from 'react'
 import { userEvent, within } from '@storybook/test'

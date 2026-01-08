@@ -1,5 +1,5 @@
-import React from 'react'
-import { styled, Text, GetProps, TamaguiElement, Slot, XStack } from 'tamagui'
+import { styled, Text, GetProps, TamaguiElement, XStack } from 'tamagui'
+import { Slot } from '@tamagui/core'
 
 const StyledKbd = styled(XStack, {
   name: 'Kbd',
@@ -64,14 +64,14 @@ const KbdText = styled(Text, {
   fontFamily: '$body',
   color: '$color',
   variants: {
-      size: {
-        sm: { fontSize: 10, fontWeight: '400' },
-        default: { fontSize: 12, fontWeight: '500' },
-        lg: { fontSize: 14, fontWeight: '600' },
-      }
+    size: {
+      sm: { fontSize: 10, fontWeight: '400' },
+      default: { fontSize: 12, fontWeight: '500' },
+      lg: { fontSize: 14, fontWeight: '600' },
+    }
   },
   defaultVariants: {
-      size: 'default'
+    size: 'default'
   }
 })
 

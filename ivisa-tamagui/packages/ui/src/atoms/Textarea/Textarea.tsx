@@ -146,9 +146,6 @@ const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, 
     },
     ref
   ) => {
-    // Merge default style with user provided style
-    // We cast the literal object to allow 'resize' property which might not be in standard RN TextStyle
-    const defaultStyle = { resize: 'vertical' } as unknown as StyleProp<TextStyle>
     const id = React.useId()
 
     return (
@@ -181,7 +178,7 @@ const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, 
             size={size}
             invalid={invalid || undefined}
             aria-invalid={invalid}
-            style={[defaultStyle, style]}
+            style={style}
             disabled={loading || props.disabled}
             {...props}
           />

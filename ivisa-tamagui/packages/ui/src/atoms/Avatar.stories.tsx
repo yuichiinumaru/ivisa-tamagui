@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { expect } from '@storybook/test';
-import { YStack } from 'tamagui';
+import { YStack, XStack, Stack } from 'tamagui';
 
 import { Avatar } from './Avatar';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Átomos/Avatar',
-  component: Avatar,
+  component: Avatar as any,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -55,7 +55,7 @@ const meta: Meta<typeof Avatar> = {
     },
   },
   render: ({ imageUrl, fallbackText, accessibilityLabel, ...args }) => (
-    <Avatar {...args} accessibilityLabel={accessibilityLabel}>
+    <Avatar {...args}>
       <Avatar.Image src={imageUrl} accessibilityLabel={accessibilityLabel || fallbackText} />
       <Avatar.Fallback>{fallbackText}</Avatar.Fallback>
     </Avatar>
@@ -121,7 +121,7 @@ export const ComIndicadorDeStatus: Story = {
   },
   render: (args) => (
     <div style={{ position: 'relative', display: 'inline-block' }}>
-      <meta.render {...args} />
+      <Avatar {...args} />
       <Avatar.Indicator />
     </div>
   ),
@@ -157,8 +157,8 @@ export const EmContainerPequeno: Story = {
     size: '$16',
   },
   render: (args) => (
-    <YStack width={100} ai="center" jc="center" bg="$backgroundHover" p="$2" borderRadius="$4">
-      <meta.render {...args} />
+    <YStack width={100} alignItems="center" justifyContent="center" backgroundColor="$backgroundHover" padding="$2" borderRadius="$4">
+      <Avatar {...args} />
     </YStack>
   ),
   parameters: {
@@ -168,4 +168,24 @@ export const EmContainerPequeno: Story = {
       },
     },
   },
+};
+
+export const AvataresUsuarios: Story = {
+  name: 'Avatares de Usuários',
+  render: () => (
+    <XStack gap="$4" flexWrap="wrap">
+      <Avatar size="$12">
+        <Avatar.Image src="/avatars/avatar-1.png" />
+        <Avatar.Fallback>U1</Avatar.Fallback>
+      </Avatar>
+      <Avatar size="$12">
+        <Avatar.Image src="/avatars/avatar-2.png" />
+        <Avatar.Fallback>U2</Avatar.Fallback>
+      </Avatar>
+      <Avatar size="$12">
+        <Avatar.Image src="/avatars/avatar-3.png" />
+        <Avatar.Fallback>U3</Avatar.Fallback>
+      </Avatar>
+    </XStack>
+  ),
 };

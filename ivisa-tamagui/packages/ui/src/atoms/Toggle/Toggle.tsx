@@ -34,6 +34,12 @@ export interface ToggleProps extends Omit<GetProps<typeof ToggleFrame>, 'icon' |
   pressed?: boolean
 
   /**
+   * The initial pressed state of the toggle when in uncontrolled mode.
+   * @default false
+   */
+  defaultPressed?: boolean
+
+  /**
    * Callback function called when the pressed state of the toggle changes.
    */
   onPressedChange?: (pressed: boolean) => void
@@ -56,7 +62,11 @@ export interface ToggleProps extends Omit<GetProps<typeof ToggleFrame>, 'icon' |
 
 export const Toggle = React.forwardRef<React.ElementRef<typeof ToggleFrame>, ToggleProps>(
   (props, ref) => {
-    const { pressed, onPressedChange, onPress, leftIcon, rightIcon, ...rest } = props
+    const { pressed: pressedProp, onPressedChange, onPress, leftIcon, rightIcon, defaultPressed = false, ...rest } = props
+    const [isPressed, setIsPressed] = React.useState(defaultPressed)
+
+    // Handle both controlled and uncontrolled states
+    const pressed = pressedProp !== undefined ? pressedProp : isPressed
 
     return (
       <ToggleFrame
@@ -65,7 +75,11 @@ export const Toggle = React.forwardRef<React.ElementRef<typeof ToggleFrame>, Tog
         pressed={pressed}
         onPress={(e) => {
           onPress?.(e)
-          onPressedChange?.(!pressed)
+          const next = !pressed
+          if (pressedProp === undefined) {
+            setIsPressed(next)
+          }
+          onPressedChange?.(next)
         }}
         icon={leftIcon}
         iconAfter={rightIcon}

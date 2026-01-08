@@ -1,0 +1,2294 @@
+Killed process on port 6006
+Starting server...
+Found 612 stories.
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:13] "GET /iframe.html?id=introduction--docs&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:13] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:13] "GET /sb-preview/runtime.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:13] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:13] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /index.json HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /3773.403bef8f.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /5521.882a18b9.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /3926.cfc883ad.iframe.bundle.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /5675.a4bf1e2c.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /3681.30300fde.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /6305.6f24b486.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /organisms-DataTable-DataTable-stories.c31581a1.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /Introduction-mdx.6ed40482.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /sb-common-assets/nunito-sans-regular.woff2 HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /sb-common-assets/nunito-sans-bold.woff2 HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /1041.d6a8ca16.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /5231.3a70aac0.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:14] "GET /static/media/CeraPro-Bold.23dd9a3e.otf HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:15] "GET /iframe.html?id=%C3%A1tomos-alert--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:15] "GET /atoms-Alert-stories.82f75998.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:15] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:15] "GET /static/media/CeraPro-Medium.2bc02ae8.otf HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:16] "GET /iframe.html?id=%C3%A1tomos-alert--sucesso&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:17] "GET /iframe.html?id=%C3%A1tomos-alert--aviso&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:19] "GET /iframe.html?id=%C3%A1tomos-alert--destrutivo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:20] "GET /iframe.html?id=%C3%A1tomos-alert--texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:21] "GET /iframe.html?id=%C3%A1tomos-alert--restrito&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:22] "GET /iframe.html?id=%C3%A1tomos-alert--apenas-titulo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:23] "GET /iframe.html?id=%C3%A1tomos-proporcaodatela--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:23] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:23] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:23] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:23] "GET /atoms-AspectRatio-stories.1d53f226.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:23] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:25] "GET /iframe.html?id=%C3%A1tomos-proporcaodatela--com-estado-de-carregamento&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:25] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:26] "GET /iframe.html?id=%C3%A1tomos-proporcaodatela--polimorfico-com-card&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:26] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:26] "GET /static/media/CeraPro-Medium.2bc02ae8.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:26] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:27] "GET /iframe.html?id=%C3%A1tomos-proporcaodatela--com-foco-visivel&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:27] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:28] "GET /iframe.html?id=%C3%A1tomos-proporcaodatela--com-texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:29] "GET /iframe.html?id=%C3%A1tomos-proporcaodatela--em-container-pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:31] "GET /iframe.html?id=%C3%A1tomos-avatar--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:31] "GET /6574.aed9c89a.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:31] "GET /atoms-Avatar-stories.904fcb7a.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:31] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[FAIL] Átomos/Avatar - Padrão (Círculo):
+  - TestingLibraryElementError: Found multiple elements with the text of: Avatar de Usuário
+
+Here are the matching elements:
+
+Ignored nodes: comments, script, style
+<div
+  aria-label="Avatar de Usuário"
+  class="is_Avatar _dsp-flex _fb-auto _bxs-border-box _minHeight-t-size-10 _minWidth-t-size-10 _fs-0 _fd-column _ai-center _jc-center _pos-relative _ox-hidden _oy-hidden _w-t-size-10 _h-t-size-10 _maxWidth-t-size-10 _maxHeight-t-size-10 is_Avatar "
+  style="border-width: 0px; overflow: hidden; justify-content: center; align-items: center; position: relative; border-radius: 100000px; border-style: solid;"
+>
+  <div
+    animationduration="2s"
+    animationname="skeleton-pulse"
+    aria-hidden="true"
+    class="is_Skeleton _dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-column _backgroundColor-muted _btlr-t-radius-sm _btrr-t-radius-sm _bbrr-t-radius-sm _bblr-t-radius-sm _animationIterationCount-infinite _w-10037 _h-10037"
+    data-disable-theme="true"
+    data-testid="skeleton"
+  />
+  <div
+    class="_dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-absolute _minHeight-0px _minWidth-0px _fs-0 _fd-column _top-0px _left-0px _right-0px _bottom-0px _zIndex-1"
+  >
+    <div
+      aria-label="Avatar de Usuário"
+      class="css-175oi2r r-1mlwlqe r-1udh08x r-417010"
+      style="display: none; width: 100%; height: 100%;"
+    >
+      <div
+        class="css-175oi2r r-1niwhzg r-vvn4in r-u6sd8q r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw r-4gszlv"
+      />
+    </div>
+  </div>
+  <div
+    class="is_AvatarFallback _dsp-flex _fb-auto _bxs-border-box _minHeight-0px _minWidth-0px _fs-0 _fd-column _pos-absolute _top-0px _left-0px _right-0px _bottom-0px _zIndex-0 _ai-center _jc-center _w-10037 _h-10037 _btw-1px _brw-1px _borderBottomWidth-1px _borderLeftWidth-1px _btc-borderColor _brc-borderColor _borderBottomColor-borderColor _borderLeftColor-borderColor _backgroundColor-background _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid is_AvatarFallback "
+    style="background-color: rgb(240, 168, 239);"
+  >
+    <span
+      class="_dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color "
+    >
+      AV
+    </span>
+  </div>
+</div>
+
+Ignored nodes: comments, script, style
+<div
+  aria-label="Avatar de Usuário"
+  class="css-175oi2r r-1mlwlqe r-1udh08x r-417010"
+  style="display: none; width: 100%; height: 100%;"
+>
+  <div
+    class="css-175oi2r r-1niwhzg r-vvn4in r-u6sd8q r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw r-4gszlv"
+  />
+</div>
+
+(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).
+
+Ignored nodes: comments, script, style
+<div
+  id="storybook-root"
+>
+  <span
+    class="t_unmounted"
+    style="display: contents;"
+  >
+    <span
+      class=" "
+      style="display: contents;"
+    >
+      <span
+        class=" t_claro is_Theme"
+        style="color: var(--color); display: contents;"
+      >
+        <span
+          class=" is_Theme"
+          style="display: contents;"
+        >
+          <div
+            class="_dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minWidth-0px _fs-1 _fd-column _fg-1 _backgroundColor-background _minHeight-100vh "
+          >
+            <div
+              aria-label="Avatar de Usuário"
+              class="is_Avatar _dsp-flex _fb-auto _bxs-border-box _minHeight-t-size-10 _minWidth-t-size-10 _fs-0 _fd-column _ai-center _jc-center _pos-relative _ox-hidden _oy-hidden _w-t-size-10 _h-t-size-10 _maxWidth-t-size-10 _maxHeight-t-size-10 is_Avatar "
+              style="border-width: 0px; overflow: hidden; justify-content: center; align-items: center; position: relative; border-radius: 100000px; border-style: solid;"
+            >
+              <div
+                animationduration="2s"
+                animationname="skeleton-pulse"
+                aria-hidden="true"
+                class="is_Skeleton _dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-column _backgroundColor-muted _btlr-t-radius-sm _btrr-t-radius-sm _bbrr-t-radius-sm _bblr-t-radius-sm _animationIterationCount-infinite _w-10037 _h-10037"
+                data-disable-theme="true"
+                data-testid="skeleton"
+              />
+              <div
+                class="_dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-absolute _minHeight-0px _minWidth-0px _fs-0 _fd-column _top-0px _left-0px _right-0px _bottom-0px _zIndex-1"
+              >
+                <div
+                  aria-label="Avatar de Usuário"
+                  class="css-175oi2r r-1mlwlqe r-1udh08x r-417010"
+                  style="display: none; width: 100%; height: 100%;"
+                >
+                  <div
+                    class="css-175oi2r r-1niwhzg r-vvn4in r-u6sd8q r-1p0dtai r-1pi2tsx r-1d2f490 r-u8s1d r-zchlnj r-ipm5af r-13qz1uu r-1wyyakw r-4gszlv"
+                  />
+                </div>
+              </div>
+              <div
+                class="is_AvatarFallback _dsp-flex _fb-auto _bxs-border-box _minHeight-0px _minWidth-0px _fs-0 _fd-column _pos-absolute _top-0px _left-0px _right-0px _bottom-0px _zIndex-0 _ai-center _jc-center _w-10037 _h-10037 _btw-1px _brw-1px _borderBottomWidth-1px _borderLeftWidth-1px _btc-borderColor _brc-borderColor _borderBottomColor-borderColor _borderLeftColor-borderColor _backgroundColor-background _borderBottomStyle-solid _borderTopStyle-solid _borderLeftStyle-solid _borderRightStyle-solid is_AvatarFallback "
+                style="background-color: rgb(240, 168, 239);"
+              >
+                <span
+                  class="_dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color "
+                >
+                  AV
+                </span>
+              </div>
+            </div>
+          </div>
+        </span>
+        <div
+          style="display: contents;"
+        />
+      </span>
+    </span>
+  </span>
+</div>
+    at Object.getElementError (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1219819)
+    at getElementError (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1234348)
+    at getMultipleElementsFoundError (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1234448)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1235603
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1236655
+    at http://127.0.0.1:6006/atoms-Avatar-stories.904fcb7a.iframe.bundle.js:1:8067
+    at http://127.0.0.1:6006/sb-preview/runtime.js:5777:19
+    at step (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1837)
+    at http://127.0.0.1:6006/sb-preview/runtime.js:5776:29
+    at http://127.0.0.1:6006/sb-preview/runtime.js:5778:6
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:32] "GET /iframe.html?id=%C3%A1tomos-avatar--quadrado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:33] "GET /iframe.html?id=%C3%A1tomos-avatar--arredondado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:33] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:33] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:33] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:33] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:34] "GET /iframe.html?id=%C3%A1tomos-avatar--com-fallback-dinamico&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Átomos/Avatar - Com Fallback (Cor Dinâmica):
+  - Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+  - Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:36] "GET /iframe.html?id=%C3%A1tomos-avatar--com-indicador-de-status&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:36] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:37] "GET /iframe.html?id=%C3%A1tomos-avatar--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:38] "GET /iframe.html?id=%C3%A1tomos-avatar--com-texto-de-fallback-longo&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Átomos/Avatar - Com Texto de Fallback Longo:
+  - Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+  - Failed to load resource: net::ERR_NAME_NOT_RESOLVED
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:39] "GET /iframe.html?id=%C3%A1tomos-avatar--em-container-pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:40] "GET /iframe.html?id=%C3%A1tomos-avatargroup--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:40] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:41] "GET /atoms-AvatarGroup-stories.894640c0.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:41] "GET /4193.aed9c89a.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:42] "GET /iframe.html?id=%C3%A1tomos-avatargroup--com-mais-avatares&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:42] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:42] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:43] "GET /iframe.html?id=%C3%A1tomos-badge--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:43] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:43] "GET /atoms-Badge-stories.c70954f9.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:43] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:43] "GET /static/media/CeraPro-Bold.23dd9a3e.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:44] "GET /iframe.html?id=%C3%A1tomos-badge--secundario&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:44] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:44] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:44] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:44] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:45] "GET /iframe.html?id=%C3%A1tomos-badge--destrutivo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:47] "GET /iframe.html?id=%C3%A1tomos-badge--contorno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:48] "GET /iframe.html?id=%C3%A1tomos-badge--com-icones&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:48] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:49] "GET /iframe.html?id=%C3%A1tomos-badge--texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:50] "GET /iframe.html?id=%C3%A1tomos-badge--tamanho-pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:51] "GET /iframe.html?id=%C3%A1tomos-badge--tamanho-medio&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:53] "GET /iframe.html?id=%C3%A1tomos-badge--tamanho-grande&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:54] "GET /iframe.html?id=%C3%A1tomos-badge--como-link-com-icones&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:55] "GET /iframe.html?id=%C3%A1tomos-badge--largura-restrita&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:56] "GET /iframe.html?id=%C3%A1tomos-button--primario&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:56] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:56] "GET /atoms-Button-Button-stories.6e451870.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:56] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[FAIL] Átomos/Button - Primario:
+  - TestingLibraryElementError: Unable to find an accessible element with the role "button" and name `/Enviar/i`
+
+There are no accessible roles. But there might be some inaccessible roles. If you wish to access them, then set the `hidden` option to `true`. Learn more about this here: https://testing-library.com/docs/dom-testing-library/api-queries#byrole
+
+Ignored nodes: comments, script, style
+<div
+  id="storybook-root"
+>
+  <span
+    class="t_unmounted"
+    style="display: contents;"
+  >
+    <span
+      class=" "
+      style="display: contents;"
+    >
+      <span
+        class=" t_claro is_Theme"
+        style="color: var(--color); display: contents;"
+      >
+        <span
+          class=" is_Theme"
+          style="display: contents;"
+        >
+          <div
+            class="_dsp-flex _ai-stretch _fb-auto _bxs-border-box _pos-relative _minWidth-0px _fs-1 _fd-column _fg-1 _backgroundColor-background _minHeight-100vh "
+          >
+            <div
+              class="is_Button _backgroundColor-0hover-primaryHove114 _backgroundColor-0active-primary _o-0active-0--8 _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _jc-center _gap-t-space-sm _backgroundColor-primary _col-primaryFore1237460601 _h-t-size-md _pr-t-space-lg _pl-t-space-lg"
+              font-family="$body"
+            >
+              <div
+                class="_dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0"
+                style="flex-direction: row; align-items: center; opacity: 1; gap: 8px;"
+              >
+                <span
+                  class="_dsp-inline _bxs-border-box _ww-break-word _ws-pre-wrap _mt-0px _mr-0px _mb-0px _ml-0px _col-color "
+                >
+                  Enviar
+                </span>
+              </div>
+            </div>
+          </div>
+        </span>
+        <div
+          style="display: contents;"
+        />
+      </span>
+    </span>
+  </span>
+</div>
+    at Object.getElementError (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1219819)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1236199
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1235464
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1236655
+    at play (http://127.0.0.1:6006/atoms-Button-Button-stories.6e451870.iframe.bundle.js:1:17694)
+    at http://127.0.0.1:6006/sb-preview/runtime.js:6524:60
+    at StoryRender.runPhase (http://127.0.0.1:6006/sb-preview/runtime.js:6408:100)
+    at StoryRender.render (http://127.0.0.1:6006/sb-preview/runtime.js:6524:25)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:57] "GET /iframe.html?id=%C3%A1tomos-button--secundario&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:57] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:57] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:57] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:57] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:58] "GET /iframe.html?id=%C3%A1tomos-button--destrutivo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:14:58] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:00] "GET /iframe.html?id=%C3%A1tomos-button--contorno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:01] "GET /iframe.html?id=%C3%A1tomos-button--fantasma&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:01] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:02] "GET /iframe.html?id=%C3%A1tomos-button--com-icone&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:02] code 404, message File not found
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:02] "GET /fonts/CeraPro-Regular.otf HTTP/1.1" 404 -
+
+[FAIL] Átomos/Button - Com Icone:
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:03] "GET /iframe.html?id=%C3%A1tomos-button--pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:04] "GET /iframe.html?id=%C3%A1tomos-button--grande&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:06] "GET /iframe.html?id=%C3%A1tomos-button--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:07] "GET /iframe.html?id=%C3%A1tomos-button--com-texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:08] "GET /iframe.html?id=%C3%A1tomos-button--em-container-pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:09] "GET /iframe.html?id=%C3%A1tomos-button--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:10] "GET /iframe.html?id=%C3%A1tomos-checkbox--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:10] "GET /atoms-Checkbox-Checkbox-stories.69254e12.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:10] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:10] "GET /5425.c96186c9.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:10] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:10] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:11] "GET /iframe.html?id=%C3%A1tomos-checkbox--nao-controlado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:11] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:11] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:11] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:11] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:13] "GET /iframe.html?id=%C3%A1tomos-checkbox--indeterminado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:14] "GET /iframe.html?id=%C3%A1tomos-checkbox--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:14] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:14] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:15] "GET /iframe.html?id=%C3%A1tomos-checkbox--desativado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:15] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:15] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:16] "GET /iframe.html?id=%C3%A1tomos-checkbox--tamanhos&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:17] "GET /iframe.html?id=%C3%A1tomos-checkbox--texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:19] "GET /iframe.html?id=%C3%A1tomos-checkbox--container-pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:20] "GET /iframe.html?id=%C3%A1tomos-checkbox--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:21] "GET /iframe.html?id=%C3%A1tomos-ponto--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:21] "GET /atoms-Dot-Dot-stories.5d68b305.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:22] "GET /iframe.html?id=%C3%A1tomos-ponto--composicao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:23] "GET /iframe.html?id=%C3%A1tomos-ponto--acessibilidade&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:24] "GET /iframe.html?id=%C3%A1tomos-ponto--em-container&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:26] "GET /iframe.html?id=%C3%A1tomos-input--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:26] "GET /7819.e20aaa3c.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:26] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:26] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:26] "GET /atoms-Input-Input-stories.2084628a.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:26] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:27] "GET /iframe.html?id=%C3%A1tomos-input--filled&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:27] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:27] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:27] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:27] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:28] "GET /iframe.html?id=%C3%A1tomos-input--com-icone&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:29] "GET /iframe.html?id=%C3%A1tomos-input--com-botao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:30] "GET /iframe.html?id=%C3%A1tomos-input--composed-complete&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:30] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:30] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:32] "GET /iframe.html?id=%C3%A1tomos-input--sizes&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:33] "GET /iframe.html?id=%C3%A1tomos-input--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:33] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:34] "GET /iframe.html?id=%C3%A1tomos-input--composed-loading&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:34] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:35] "GET /iframe.html?id=%C3%A1tomos-input--texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:36] "GET /iframe.html?id=%C3%A1tomos-input--constraint-check&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:37] "GET /iframe.html?id=%C3%A1tomos-input--com-dica&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:39] "GET /iframe.html?id=%C3%A1tomos-input--password&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:40] "GET /iframe.html?id=%C3%A1tomos-input--sucesso&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:41] "GET /iframe.html?id=%C3%A1tomos-input--error&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:42] "GET /iframe.html?id=%C3%A1tomos-kbd--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:42] "GET /2679.aa236435.iframe.bundle.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jan/2026 20:15:42] "GET /atoms-Kbd-Kbd-stories.ca251a99.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:42] "GET /static/media/CeraPro-Medium.2bc02ae8.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:42] code 404, message File not found
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:42] "GET /fonts/CeraPro-Medium.otf HTTP/1.1" 404 -
+
+[FAIL] Átomos/Kbd - Padrao:
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:43] "GET /iframe.html?id=%C3%A1tomos-kbd--pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:43] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:15:43] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:43] code 404, message File not found
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:43] "GET /fonts/CeraPro-Regular.otf HTTP/1.1" 404 -
+
+[FAIL] Átomos/Kbd - Pequeno:
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:45] "GET /iframe.html?id=%C3%A1tomos-kbd--grande&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:45] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:45] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:45] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:45] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:45] "GET /static/media/CeraPro-Bold.23dd9a3e.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:45] code 404, message File not found
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:45] "GET /fonts/CeraPro-Bold.otf HTTP/1.1" 404 -
+
+[FAIL] Átomos/Kbd - Grande:
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:46] "GET /iframe.html?id=%C3%A1tomos-kbd--sutil&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:46] code 404, message File not found
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:46] "GET /fonts/CeraPro-Medium.otf HTTP/1.1" 404 -
+
+[FAIL] Átomos/Kbd - Sutil:
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:47] "GET /iframe.html?id=%C3%A1tomos-kbd--como-botao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:47] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[FAIL] Átomos/Kbd - Como Botao:
+  - Error: Minified React error #130; visit https://reactjs.org/docs/error-decoder.html?invariant=130&args[]=undefined&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Rg (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:115975)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:54642)
+    at Xi (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:73014)
+    at Yi (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:73170)
+    at Vk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:121347)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108578)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+  - Error rendering story 'átomos-kbd--como-botao':
+  - Error: Minified React error #130; visit https://reactjs.org/docs/error-decoder.html?invariant=130&args[]=undefined&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Rg (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:115975)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:54642)
+    at Xi (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:73014)
+    at Yi (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:73170)
+    at Vk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:121347)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108578)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:48] "GET /iframe.html?id=%C3%A1tomos-kbd--com-icone&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:48] code 404, message File not found
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:48] "GET /fonts/CeraPro-Medium.otf HTTP/1.1" 404 -
+
+[FAIL] Átomos/Kbd - Com Icone:
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:49] "GET /iframe.html?id=%C3%A1tomos-kbd--combinacao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:49] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:49] code 404, message File not found
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:49] "GET /fonts/CeraPro-Medium.otf HTTP/1.1" 404 -
+
+[FAIL] Átomos/Kbd - Combinacao:
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:51] "GET /iframe.html?id=%C3%A1tomos-kbd--texto-extenso&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:52] "GET /iframe.html?id=%C3%A1tomos-kbd--em-container-pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:53] "GET /iframe.html?id=%C3%A1tomos-label--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:53] "GET /2718.4c463a31.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:53] "GET /7819.e20aaa3c.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:53] "GET /atoms-Label-Label-stories.486d8f3b.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:53] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:54] "GET /iframe.html?id=%C3%A1tomos-label--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:54] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:55] "GET /iframe.html?id=%C3%A1tomos-label--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:55] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:56] "GET /iframe.html?id=%C3%A1tomos-label--obrigatorio&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:58] "GET /iframe.html?id=%C3%A1tomos-logo--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:58] "GET /atoms-Logo-Logo-stories.35192ed1.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:15:59] "GET /iframe.html?id=%C3%A1tomos-logo--simbolo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:00] "GET /iframe.html?id=%C3%A1tomos-logo--branco&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:00] "GET /2679.aa236435.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:01] "GET /iframe.html?id=%C3%A1tomos-logo--simbolo-branco&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:01] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:02] "GET /iframe.html?id=%C3%A1tomos-logo--em-container-pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:04] "GET /iframe.html?id=%C3%A1tomos-logo--como-link&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:04] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:04] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:16:04] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:04] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[FAIL] Átomos/Logo - Como Link (asChild):
+  - Error: Minified React error #130; visit https://reactjs.org/docs/error-decoder.html?invariant=130&args[]=undefined&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Rg (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:115975)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:54642)
+    at Xi (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:73014)
+    at Vk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:119668)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108578)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+  - Error rendering story 'átomos-logo--como-link':
+  - Error: Minified React error #130; visit https://reactjs.org/docs/error-decoder.html?invariant=130&args[]=undefined&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings.
+    at Rg (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:115975)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:54642)
+    at Xi (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:73014)
+    at Vk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:119668)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108578)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:05] "GET /iframe.html?id=%C3%A1tomos-meter--default&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:05] "GET /atoms-Meter-Meter-stories.68b4cd97.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:05] "GET /static/media/CeraPro-Bold.23dd9a3e.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:06] "GET /iframe.html?id=%C3%A1tomos-meter--variants&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:06] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:07] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:07] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:07] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:08] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[FAIL] Átomos/NavLink - Padrão:
+  - TypeError: undefined is not a spy or a call to a spy!
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1171316
+    at getSpy (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1171400)
+    at Proxy.<anonymous> (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1172703)
+    at Proxy.<anonymous> (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1161388)
+    at Proxy.methodWrapper (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:931604)
+    at play (http://127.0.0.1:6006/atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js:1:4942)
+    at async StoryRender.runPhase (http://127.0.0.1:6006/sb-preview/runtime.js:6408:94)
+    at async StoryRender.render (http://127.0.0.1:6006/sb-preview/runtime.js:6524:14)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:08] "GET /iframe.html?id=%C3%A1tomos-navlink--with-left-icon&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:08] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:10] "GET /iframe.html?id=%C3%A1tomos-navlink--with-right-icon&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:11] "GET /iframe.html?id=%C3%A1tomos-navlink--with-both-icons&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:12] "GET /iframe.html?id=%C3%A1tomos-navlink--texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:13] "GET /iframe.html?id=%C3%A1tomos-navlink--restrito-width&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:14] "GET /iframe.html?id=%C3%A1tomos-progress--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:14] "GET /atoms-Progress-Progress-stories.4e27b0cf.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:14] "GET /3358.2a15e2af.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:15] "GET /iframe.html?id=%C3%A1tomos-progress--com-valor&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:17] "GET /iframe.html?id=%C3%A1tomos-progress--com-rotulo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:17] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:18] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:18] "GET /iframe.html?id=%C3%A1tomos-progress--statuses&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:19] "GET /iframe.html?id=%C3%A1tomos-progress--tamanhos&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:20] "GET /iframe.html?id=%C3%A1tomos-progress--composto&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:21] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:21] "GET /iframe.html?id=%C3%A1tomos-%C3%A1rea-de-rolagem--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:21] "GET /atoms-ScrollArea-stories.d3238104.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:23] "GET /iframe.html?id=%C3%A1tomos-%C3%A1rea-de-rolagem--sutil&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:24] "GET /iframe.html?id=%C3%A1tomos-%C3%A1rea-de-rolagem--oculta&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:24] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:24] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:24] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:24] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:25] "GET /iframe.html?id=%C3%A1tomos-%C3%A1rea-de-rolagem--horizontal&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:25] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:25] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:25] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:25] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:26] "GET /iframe.html?id=%C3%A1tomos-separator--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:26] "GET /atoms-Separator-stories.bfa77f01.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:27] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:27] "GET /iframe.html?id=%C3%A1tomos-separator--restrito-width&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:27] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:28] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:28] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:28] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:28] "GET /iframe.html?id=%C3%A1tomos-skeleton--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:29] "GET /atoms-Skeleton-stories.835a48c8.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:29] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:30] "GET /iframe.html?id=%C3%A1tomos-skeleton--exemplo-de-composicao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:31] "GET /iframe.html?id=%C3%A1tomos-skeleton--teste-de-contencao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:32] "GET /iframe.html?id=%C3%A1tomos-slider--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:32] "GET /atoms-Slider-stories.1e2f81bb.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:33] "GET /iframe.html?id=%C3%A1tomos-slider--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:34] "GET /iframe.html?id=%C3%A1tomos-slider--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:36] "GET /iframe.html?id=%C3%A1tomos-slider--contido&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:37] "GET /iframe.html?id=%C3%A1tomos-spinner--primario&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:37] "GET /2143.6108d677.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:37] "GET /atoms-Spinner-Spinner-stories.d3406bdf.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:38] "GET /iframe.html?id=%C3%A1tomos-spinner--dentro-de-um-container&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:39] "GET /iframe.html?id=%C3%A1tomos-stack--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:39] "GET /atoms-Stack-stories.a126b3be.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:39] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:40] "GET /iframe.html?id=%C3%A1tomos-stack--horizontal&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:42] "GET /iframe.html?id=%C3%A1tomos-stack--vertical&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:42] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:43] "GET /iframe.html?id=%C3%A1tomos-stack--as-child&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:43] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:43] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:43] "GET /index.json HTTP/1.1" 304 -
+
+[FAIL] Átomos/Stack - Composição (asChild):
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-stack--as-child':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:44] "GET /iframe.html?id=%C3%A1tomos-stack--texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:45] "GET /iframe.html?id=%C3%A1tomos-stack--restrito-container&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:46] "GET /iframe.html?id=%C3%A1tomos-statuslight--default&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:46] "GET /atoms-StatusLight-StatusLight-stories.3239acda.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:47] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:47] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:47] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:47] "GET /iframe.html?id=%C3%A1tomos-statuslight--variants&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:47] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:47] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:47] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:48] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:48] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:49] "GET /iframe.html?id=%C3%A1tomos-statuslight--disabled&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:50] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:50] "GET /iframe.html?id=%C3%A1tomos-switch--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:50] "GET /8979.97cfac38.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:50] "GET /atoms-Switch-stories.d36fd7ae.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:50] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:51] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:51] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:51] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:51] "GET /iframe.html?id=%C3%A1tomos-switch--com-rotulo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:51] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:52] "GET /iframe.html?id=%C3%A1tomos-switch--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:53] "GET /iframe.html?id=%C3%A1tomos-switch--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:55] "GET /iframe.html?id=%C3%A1tomos-switch--texto-long-stress-test&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:56] "GET /iframe.html?id=%C3%A1tomos-switch--contido-stress-test&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:57] "GET /iframe.html?id=%C3%A1tomos-textarea--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:57] "GET /2679.aa236435.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:57] "GET /2718.4c463a31.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:57] "GET /atoms-Textarea-Textarea-stories.f3546e55.iframe.bundle.js HTTP/1.1" 200 -
+
+[FAIL] Átomos/Textarea - Padrao:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--padrao':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:58] "GET /iframe.html?id=%C3%A1tomos-textarea--filled&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Átomos/Textarea - Filled:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--filled':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:16:59] "GET /iframe.html?id=%C3%A1tomos-textarea--subtle&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Átomos/Textarea - Subtle:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--subtle':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:01] "GET /iframe.html?id=%C3%A1tomos-textarea--small&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Átomos/Textarea - Small:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--small':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:02] "GET /iframe.html?id=%C3%A1tomos-textarea--large&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:03] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[FAIL] Átomos/Textarea - Large:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--large':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:03] "GET /iframe.html?id=%C3%A1tomos-textarea--disabled&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Átomos/Textarea - Disabled:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--disabled':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:04] "GET /iframe.html?id=%C3%A1tomos-textarea--invalid&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Átomos/Textarea - Invalid:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--invalid':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:05] "GET /iframe.html?id=%C3%A1tomos-textarea--texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Átomos/Textarea - Texto Longo:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--texto-longo':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:07] "GET /iframe.html?id=%C3%A1tomos-textarea--restrito-container&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:07] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[FAIL] Átomos/Textarea - Restrito Container:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--restrito-container':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:08] "GET /iframe.html?id=%C3%A1tomos-textarea--carregando&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Átomos/Textarea - Carregando:
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - Error rendering story 'átomos-textarea--carregando':
+  - TypeError: Failed to set an indexed property [0] on 'CSSStyleDeclaration': Indexed property setter is not supported.
+    at sb (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:14762)
+    at Ej (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:86486)
+    at Sk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108895)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108639)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:09] "GET /iframe.html?id=%C3%A1tomos-toggle--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:09] "GET /atoms-Toggle-Toggle-stories.020f1758.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:09] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:09] "GET /8927.632b2a1b.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:09] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[FAIL] Átomos/Toggle - Padrão:
+  - AssertionError: expected "onPressedChange" to be called with arguments: [ false ]
+
+Received: 
+
+  1st onPressedChange call:
+
+  Array [
+-   false,
++   true,
+  ]
+
+  2nd onPressedChange call:
+
+  Array [
+-   false,
++   true,
+  ]
+
+
+Number of calls: 2
+
+    at Proxy.<anonymous> (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1173558)
+    at Proxy.<anonymous> (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:1161388)
+    at Proxy.methodWrapper (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:931604)
+    at play (http://127.0.0.1:6006/atoms-Toggle-Toggle-stories.020f1758.iframe.bundle.js:1:8787)
+    at async StoryRender.runPhase (http://127.0.0.1:6006/sb-preview/runtime.js:6408:94)
+    at async StoryRender.render (http://127.0.0.1:6006/sb-preview/runtime.js:6524:14)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:10] "GET /iframe.html?id=%C3%A1tomos-toggle--pressionado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:11] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:11] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:11] "GET /iframe.html?id=%C3%A1tomos-toggle--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:11] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:12] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:12] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:12] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:13] "GET /iframe.html?id=%C3%A1tomos-toggle--com-texto&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:13] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:13] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:13] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:13] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:13] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:14] "GET /iframe.html?id=%C3%A1tomos-toggle--com-icones&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:15] "GET /iframe.html?id=%C3%A1tomos-toggle--texto-long-stress&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:15] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:16] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:16] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:16] "GET /iframe.html?id=%C3%A1tomos-toggle--container-pequeno-stress&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:16] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:17] "GET /iframe.html?id=%C3%A1tomos-toggle--carregando-stress&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:19] "GET /iframe.html?id=%C3%A1tomos-typography--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:19] "GET /atoms-Typography-stories.ae5cf3fb.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:19] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:20] "GET /iframe.html?id=%C3%A1tomos-typography--texto-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:21] "GET /iframe.html?id=%C3%A1tomos-typography--restrito&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:22] "GET /iframe.html?id=%C3%A1tomos-typography--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:23] "GET /iframe.html?id=%C3%A1tomos-typography--com-icones&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:23] "GET /2679.aa236435.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:25] "GET /iframe.html?id=%C3%A1tomos-typography--as-child&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:26] "GET /iframe.html?id=%C3%A1tomos-typography--all&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:26] "GET /static/media/CeraPro-Medium.2bc02ae8.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:26] "GET /static/media/CeraPro-Light.e46c8e0b.otf HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:27] "GET /iframe.html?id=mol%C3%A9culas-accordion--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:27] "GET /molecules-Accordion-stories.a79f89f9.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:27] "GET /5853.d175e3f3.iframe.bundle.js HTTP/1.1" 200 -
+
+[FAIL] Moléculas/Accordion - Padrão:
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+  - Error rendering story 'moléculas-accordion--padrao':
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:28] "GET /iframe.html?id=mol%C3%A9culas-accordion--carregando&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Moléculas/Accordion - Carregando:
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+  - Error rendering story 'moléculas-accordion--carregando':
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:29] "GET /iframe.html?id=mol%C3%A9culas-accordion--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Moléculas/Accordion - Com Erro:
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+  - Error rendering story 'moléculas-accordion--com-erro':
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:31] "GET /iframe.html?id=mol%C3%A9culas-accordion--com-acoes&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Moléculas/Accordion - Com Ações:
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+  - Error rendering story 'moléculas-accordion--com-acoes':
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:32] "GET /iframe.html?id=mol%C3%A9culas-accordion--conteudo-complexo&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Moléculas/Accordion - Conteúdo Complexo:
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+  - Error rendering story 'moléculas-accordion--conteudo-complexo':
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:33] "GET /iframe.html?id=mol%C3%A9culas-accordion--constraint-check&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Moléculas/Accordion - Teste de Constraints:
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+  - Error rendering story 'moléculas-accordion--constraint-check':
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:34] "GET /iframe.html?id=mol%C3%A9culas-accordion--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Moléculas/Accordion - Desabilitado:
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+  - Error rendering story 'moléculas-accordion--desabilitado':
+  - TypeError: Cannot read properties of null (reading 'map')
+    at createInterpolationFromStringOutputRange (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:89902)
+    at createInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:90515)
+    at new AnimatedInterpolation (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:92605)
+    at AnimatedValue.interpolate (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:95650)
+    at update (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:170234)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:168094
+    at Object.useMemo (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:66938)
+    at exports.useMemo (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:610307)
+    at useAnimations (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:167739)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:277375
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:35] "GET /iframe.html?id=mol%C3%A9culas-alertdialog--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:35] "GET /3446.84d394de.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:35] "GET /8232.4690b554.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:35] "GET /molecules-AlertDialog-AlertDialog-stories.1aca9c43.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:36] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:36] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:37] "GET /iframe.html?id=mol%C3%A9culas-alertdialog--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:37] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:17:37] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:38] "GET /iframe.html?id=mol%C3%A9culas-alertdialog--error&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:39] "GET /iframe.html?id=mol%C3%A9culas-alertdialog--long-description&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:40] "GET /iframe.html?id=mol%C3%A9culas-alertdialog--custom-actions&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:40] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:17:40] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:40] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:40] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:40] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:41] "GET /iframe.html?id=mol%C3%A9culas-avatargroup--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:41] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:41] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:41] "GET /22.bf33782f.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:41] "GET /molecules-AvatarGroup-AvatarGroup-stories.2a63d77f.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:41] "GET /static/media/CeraPro-Bold.23dd9a3e.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:42] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:43] "GET /iframe.html?id=mol%C3%A9culas-avatargroup--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:43] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:44] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:44] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:44] "GET /iframe.html?id=mol%C3%A9culas-avatargroup--com-limite&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:45] "GET /iframe.html?id=mol%C3%A9culas-avatargroup--estado-de-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:47] "GET /iframe.html?id=mol%C3%A9culas-avatargroup--vazio&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:47] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:48] "GET /iframe.html?id=mol%C3%A9culas-avatargroup--dados-parciais&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:48] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:49] "GET /iframe.html?id=mol%C3%A9culas-badgecounter--padr%C3%A3o&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:49] "GET /molecules-BadgeCounter-BadgeCounter-stories.617a8d5f.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:50] "GET /iframe.html?id=mol%C3%A9culas-badgecounter--estouro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:52] "GET /iframe.html?id=mol%C3%A9culas-badgecounter--exibir-zero&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:53] "GET /iframe.html?id=mol%C3%A9culas-badgecounter--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:54] "GET /iframe.html?id=mol%C3%A9culas-badgecounter--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:55] "GET /iframe.html?id=mol%C3%A9culas-badgecounter--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:56] "GET /iframe.html?id=mol%C3%A9culas-badgecounter--em-container-estreito&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:58] "GET /iframe.html?id=mol%C3%A9culas-breadcrumb--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:58] "GET /molecules-Breadcrumb-Breadcrumb-stories.d41988c8.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:58] "GET /static/media/CeraPro-Medium.2bc02ae8.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:17:59] "GET /iframe.html?id=mol%C3%A9culas-breadcrumb--com-separador-customizado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:00] "GET /iframe.html?id=mol%C3%A9culas-breadcrumb--caminho-longo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:01] "GET /iframe.html?id=mol%C3%A9culas-breadcrumb--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:02] "GET /iframe.html?id=mol%C3%A9culas-breadcrumb--com-acao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:04] "GET /iframe.html?id=mol%C3%A9culas-breadcrumb--com-container-estreito&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:05] "GET /iframe.html?id=mol%C3%A9culas-grupo-de-bot%C3%B5es--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:05] "GET /molecules-ButtonGroup-ButtonGroup-stories.e9d63c30.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:06] "GET /iframe.html?id=mol%C3%A9culas-grupo-de-bot%C3%B5es--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:07] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:07] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:07] "GET /iframe.html?id=mol%C3%A9culas-grupo-de-bot%C3%B5es--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:07] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:07] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:08] "GET /iframe.html?id=mol%C3%A9culas-grupo-de-bot%C3%B5es--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:10] "GET /iframe.html?id=mol%C3%A9culas-grupo-de-bot%C3%B5es--com-slot-direito&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:10] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:10] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:10] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:10] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:11] "GET /iframe.html?id=mol%C3%A9culas-grupo-de-bot%C3%B5es--container-pequeno&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:11] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:18:11] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:11] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:11] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /iframe.html?id=mol%C3%A9culas-calendar--playground&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /2679.aa236435.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /2428.ec22540b.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /4486.2d2da45b.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /3446.84d394de.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /3773.403bef8f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /6465.287fb89a.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /4859.c7223641.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /4426.bb903612.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /1905.1ada66bd.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /7819.e20aaa3c.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /molecules-Calendar-Calendar-stories.fa7d4bb9.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:12] "GET /static/media/CeraPro-Bold.23dd9a3e.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:13] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:13] "GET /iframe.html?id=mol%C3%A9culas-calendar--no-date-selected&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:13] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:14] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:14] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:14] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:15] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:15] "GET /iframe.html?id=mol%C3%A9culas-calendar--with-min-and-max-dates&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:15] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:16] "GET /iframe.html?id=mol%C3%A9culas-calendar--carregando-state&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:17] "GET /iframe.html?id=mol%C3%A9culas-calendar--disabled-state&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:18] "GET /iframe.html?id=mol%C3%A9culas-calendar--erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:19] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:19] "GET /iframe.html?id=mol%C3%A9culas-calendar--narrow-container&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:19] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:21] "GET /iframe.html?id=mol%C3%A9culas-calendar--inside-a-date-picker&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:21] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:22] "GET /iframe.html?id=mol%C3%A9culas-card--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:22] "GET /molecules-Card-Card-stories.481cb1ec.iframe.bundle.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jan/2026 20:18:22] "GET /2718.4c463a31.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:23] "GET /iframe.html?id=mol%C3%A9culas-card--elevated&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:24] "GET /iframe.html?id=mol%C3%A9culas-card--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:26] "GET /iframe.html?id=mol%C3%A9culas-card--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:27] "GET /iframe.html?id=mol%C3%A9culas-card--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:28] "GET /iframe.html?id=mol%C3%A9culas-card--com-imagem-hero&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:29] "GET /iframe.html?id=mol%C3%A9culas-card--with-data-object&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:30] "GET /iframe.html?id=mol%C3%A9culas-card--partial-data&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:32] "GET /iframe.html?id=mol%C3%A9culas-card--restrito&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:33] "GET /iframe.html?id=mol%C3%A9culas-chartcontainer--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:33] "GET /845.aef9df9c.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:33] "GET /molecules-ChartContainer-ChartContainer-stories.b8ef9f56.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:33] "GET /static/media/CeraPro-Medium.2bc02ae8.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:34] "GET /iframe.html?id=mol%C3%A9culas-chartcontainer--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:35] "GET /iframe.html?id=mol%C3%A9culas-chartcontainer--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:36] "GET /iframe.html?id=mol%C3%A9culas-chartcontainer--com-acoes&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:38] "GET /iframe.html?id=mol%C3%A9culas-chartcontainer--teste-de-estresse&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:39] "GET /iframe.html?id=mol%C3%A9culas-collapsible--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:39] "GET /molecules-Collapsible-stories.a37482dc.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:39] "GET /5521.882a18b9.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:39] "GET /8148.d0da7fa2.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:40] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:40] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:40] "GET /iframe.html?id=mol%C3%A9culas-collapsible--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:40] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:40] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:41] "GET /iframe.html?id=mol%C3%A9culas-collapsible--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:42] "GET /iframe.html?id=mol%C3%A9culas-collapsible--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:44] "GET /iframe.html?id=mol%C3%A9culas-collapsible--com-acao-personalizada&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:44] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:44] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:44] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:44] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[FAIL] Moléculas/Collapsible - Com Ação Personalizada (Right Slot):
+  - TypeError: Cannot read properties of undefined (reading 'displayName')
+    at displayName (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:469040)
+    at parseReactElement2 (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:443564)
+    at formatPropValue (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:445245)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:450107
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:450817
+    at Array.forEach (<anonymous>)
+    at formatReactElementNode (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:449706)
+    at formatTreeNode (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:452768)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:454807
+    at reactElementToJsxString (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:454841)
+  - Error rendering story 'moléculas-collapsible--com-acao-personalizada':
+  - TypeError: Cannot read properties of undefined (reading 'displayName')
+    at displayName (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:469040)
+    at parseReactElement2 (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:443564)
+    at formatPropValue (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:445245)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:450107
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:450817
+    at Array.forEach (<anonymous>)
+    at formatReactElementNode (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:449706)
+    at formatTreeNode (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:452768)
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:454807
+    at reactElementToJsxString (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:454841)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:45] "GET /iframe.html?id=mol%C3%A9culas-collapsible--teste-de-estresse&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:45] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:45] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:45] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:45] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:46] "GET /iframe.html?id=mol%C3%A9culas-collapsible--composicao-animada&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:46] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:46] "GET /2679.aa236435.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:46] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:46] "GET /static/media/CeraPro-Bold.23dd9a3e.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:47] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:47] "GET /iframe.html?id=mol%C3%A9culas-componenterrorboundary--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:47] "GET /6546.632b2a1b.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:47] "GET /molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:48] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:49] "GET /iframe.html?id=mol%C3%A9culas-componenterrorboundary--com-erro-and-recovery&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Moléculas/ComponentErrorBoundary - Com Erro And Recovery:
+  - Error: O componente falhou intencionalmente para o story!
+    at BuggyComponent (http://127.0.0.1:6006/molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js:1:34615)
+    at Nh (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:60703)
+    at Vk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:119297)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108578)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - [2026-01-07T23:18:49.153Z] [RecoveryStory] render failure -> Error: O componente falhou intencionalmente para o story!
+
+    at BuggyComponent (http://127.0.0.1:6006/molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js:1:34578)
+    at ErrorBoundary (http://127.0.0.1:6006/molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js:1:26379)
+    at div
+    at div
+    at span
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:381870
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:224676
+    at span
+    at span
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:381870
+    at ThemeProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:197751)
+    at Context.Provider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:296252)
+    at span
+    at UnmountedClassName (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:199783)
+    at TamaguiProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:198453)
+    at esm_TamaguiProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:213901)
+    at TamaguiProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:615305)
+    at unboundStoryFn (http://127.0.0.1:6006/sb-preview/runtime.js:5503:109)
+    at ErrorBoundary (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:512656)
+    at WithCallback (http://127.0.0.1:6006/3372.a53e22f3.iframe.bundle.js:1:566)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:50] "GET /iframe.html?id=mol%C3%A9culas-componenterrorboundary--stress-test-narrow-container&viewMode=story HTTP/1.1" 200 -
+
+[FAIL] Moléculas/ComponentErrorBoundary - Stress Test Narrow Container:
+  - Error: O componente falhou intencionalmente para o story!
+    at BuggyComponent (http://127.0.0.1:6006/molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js:1:34615)
+    at Nh (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:60703)
+    at Vk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:119297)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108578)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - [2026-01-07T23:18:50.346Z] [NarrowContainerStory] render failure -> Error: O componente falhou intencionalmente para o story!
+
+    at BuggyComponent (http://127.0.0.1:6006/molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js:1:34578)
+    at ErrorBoundary (http://127.0.0.1:6006/molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js:1:26379)
+    at div
+    at div
+    at span
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:381870
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:224676
+    at span
+    at span
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:381870
+    at ThemeProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:197751)
+    at Context.Provider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:296252)
+    at span
+    at UnmountedClassName (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:199783)
+    at TamaguiProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:198453)
+    at esm_TamaguiProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:213901)
+    at TamaguiProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:615305)
+    at unboundStoryFn (http://127.0.0.1:6006/sb-preview/runtime.js:5503:109)
+    at ErrorBoundary (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:512656)
+    at WithCallback (http://127.0.0.1:6006/3372.a53e22f3.iframe.bundle.js:1:566)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:51] "GET /iframe.html?id=mol%C3%A9culas-componenterrorboundary--with-custom-fallback&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:51] code 404, message File not found
+127.0.0.1 - - [07/Jan/2026 20:18:51] "GET /fonts/CeraPro-Regular.otf HTTP/1.1" 404 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:52] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:52] "GET /index.json HTTP/1.1" 304 -
+
+[FAIL] Moléculas/ComponentErrorBoundary - With Custom Fallback:
+  - Error: O componente falhou intencionalmente para o story!
+    at BuggyComponent (http://127.0.0.1:6006/molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js:1:34615)
+    at Nh (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:60703)
+    at Vk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:119297)
+    at Uk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108578)
+    at Tk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108509)
+    at Ik (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:108378)
+    at Nk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:105262)
+    at Gk (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:103820)
+    at J (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:130568)
+    at MessagePort.R (http://127.0.0.1:6006/3144.6a6f3d9e.iframe.bundle.js:2:131118)
+  - [2026-01-07T23:18:51.544Z] [CustomFallbackStory] render failure -> Error: O componente falhou intencionalmente para o story!
+
+    at BuggyComponent (http://127.0.0.1:6006/molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js:1:34578)
+    at ErrorBoundary (http://127.0.0.1:6006/molecules-ComponentErrorBoundary-stories.b65f6786.iframe.bundle.js:1:26379)
+    at div
+    at span
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:381870
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:224676
+    at span
+    at span
+    at http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:381870
+    at ThemeProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:197751)
+    at Context.Provider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:296252)
+    at span
+    at UnmountedClassName (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:199783)
+    at TamaguiProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:198453)
+    at esm_TamaguiProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:213901)
+    at TamaguiProvider (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:404:615305)
+    at unboundStoryFn (http://127.0.0.1:6006/sb-preview/runtime.js:5503:109)
+    at ErrorBoundary (http://127.0.0.1:6006/3166.6174445a.iframe.bundle.js:401:512656)
+    at WithCallback (http://127.0.0.1:6006/3372.a53e22f3.iframe.bundle.js:1:566)
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:52] "GET /iframe.html?id=mol%C3%A9culas-contextmenu--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:52] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:52] "GET /3773.403bef8f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:52] "GET /molecules-ContextMenu-ContextMenu-stories.8a4205d5.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:52] "GET /3926.cfc883ad.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:52] "GET /5675.a4bf1e2c.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:53] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:53] "GET /iframe.html?id=mol%C3%A9culas-contextmenu--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:54] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:55] "GET /iframe.html?id=mol%C3%A9culas-contextmenu--disabled&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:56] "GET /iframe.html?id=mol%C3%A9culas-contextmenu--error&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:57] "GET /iframe.html?id=mol%C3%A9culas-contextmenu--partial-data&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:58] "GET /iframe.html?id=mol%C3%A9culas-contextmenu--restrito-width&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:18:59] "GET /iframe.html?id=mol%C3%A9culas-contextmenu--with-checkbox&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /iframe.html?id=mol%C3%A9culas-datepicker--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /6465.287fb89a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /4859.c7223641.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /3446.84d394de.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /2428.ec22540b.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /4486.2d2da45b.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /7819.e20aaa3c.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /molecules-DatePicker-stories.c29cf6e2.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /1905.1ada66bd.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:01] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:02] "GET /iframe.html?id=mol%C3%A9culas-datepicker--filled&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:03] "GET /iframe.html?id=mol%C3%A9culas-datepicker--small&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:04] "GET /iframe.html?id=mol%C3%A9culas-datepicker--large&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:05] "GET /iframe.html?id=mol%C3%A9culas-datepicker--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:07] "GET /iframe.html?id=mol%C3%A9culas-datepicker--disabled&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:08] "GET /iframe.html?id=mol%C3%A9culas-datepicker--error&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:09] "GET /iframe.html?id=mol%C3%A9culas-datepicker--sucesso&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:10] "GET /iframe.html?id=mol%C3%A9culas-datepicker--no-date-selected&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:12] "GET /iframe.html?id=mol%C3%A9culas-datepicker--narrow-container&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:13] "GET /iframe.html?id=mol%C3%A9culas-dialog--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:13] "GET /4387.3697f9cc.iframe.bundle.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Jan/2026 20:19:13] "GET /8232.4690b554.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:13] "GET /molecules-Dialog-Dialog-stories.3bc0a587.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:14] "GET /iframe.html?id=mol%C3%A9culas-dialog--alerta&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:15] "GET /iframe.html?id=mol%C3%A9culas-dialog--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:16] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:16] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:16] "GET /iframe.html?id=mol%C3%A9culas-dialog--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:16] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:16] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:18] "GET /iframe.html?id=mol%C3%A9culas-dialog--com-truncamento&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:19] "GET /iframe.html?id=mol%C3%A9culas-dialog--com-acoes-customizadas&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:20] "GET /iframe.html?id=mol%C3%A9culas-drawer--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:20] "GET /molecules-Drawer-stories.43e72b21.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:20] "GET /2718.4c463a31.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:20] "GET /static/media/CeraPro-Medium.2bc02ae8.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:21] "GET /iframe.html?id=mol%C3%A9culas-drawer--carregando-state&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:21] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:21] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:21] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:21] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:21] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:19:21] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:21] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:23] "GET /iframe.html?id=mol%C3%A9culas-drawer--erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:23] "GET /2679.aa236435.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:23] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:23] "GET /static/media/CeraPro-Bold.23dd9a3e.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:24] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:24] "GET /iframe.html?id=mol%C3%A9culas-drawer--long-content&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:25] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:25] "GET /iframe.html?id=mol%C3%A9culas-drawer--no-footer&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:26] "GET /iframe.html?id=mol%C3%A9culas-dropdownmenu--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:26] "GET /5521.882a18b9.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:26] "GET /molecules-DropdownMenu-DropdownMenu-stories.af6fb9dc.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:26] "GET /1512.fb6931f3.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:28] "GET /iframe.html?id=mol%C3%A9culas-empty--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:28] "GET /molecules-Empty-Empty-stories.6c5687e6.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:29] "GET /iframe.html?id=mol%C3%A9culas-empty--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:30] "GET /iframe.html?id=mol%C3%A9culas-empty--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:31] "GET /iframe.html?id=mol%C3%A9culas-empty--apenas-titulo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:31] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:32] "GET /iframe.html?id=mol%C3%A9culas-empty--com-imagem&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:32] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:32] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:33] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:34] "GET /iframe.html?id=mol%C3%A9culas-empty--container-estreito&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:34] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:35] "GET /iframe.html?id=mol%C3%A9culas-field--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:35] "GET /molecules-Field-Field-stories.c67d69d7.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:36] "GET /iframe.html?id=mol%C3%A9culas-field--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:37] "GET /iframe.html?id=mol%C3%A9culas-field--disabled&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:39] "GET /iframe.html?id=mol%C3%A9culas-field--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:40] "GET /iframe.html?id=mol%C3%A9culas-field--with-right-slot&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:40] "GET /7819.e20aaa3c.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:40] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:41] "GET /iframe.html?id=mol%C3%A9culas-field--restrito-width&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:42] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:42] "GET /8129.2ce4466b.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:42] "GET /molecules-HorizontalBarGroup-HorizontalBarGroup-stories.4a68358e.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:43] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--with-left-slot&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:46] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--pressable&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:47] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:48] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--com-sucesso&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:49] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--com-aviso&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:51] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:52] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--disabled&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:53] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--partial-data&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:58] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--with-item-prop&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:58] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:58] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:19:59] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:19:59] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:00] "GET /iframe.html?id=mol%C3%A9culas-horizontalbargroup--restrito&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:00] "GET /static/media/CeraPro-Medium.2bc02ae8.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:01] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:01] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:01] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:01] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:01] "GET /iframe.html?id=mol%C3%A9culas-hovercard--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:01] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:01] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:01] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:02] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:02] "GET /molecules-HoverCard-HoverCard-stories.69369281.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:02] "GET /3446.84d394de.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:02] "GET /4486.2d2da45b.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:02] "GET /2428.ec22540b.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:02] "GET /3773.403bef8f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:03] "GET /iframe.html?id=mol%C3%A9culas-hovercard--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:04] "GET /2679.aa236435.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:20:04] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:04] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:08] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:08] "GET /iframe.html?id=mol%C3%A9culas-hovercard--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:09] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:10] "GET /iframe.html?id=mol%C3%A9culas-hovercard--com-acoes&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:11] "GET /iframe.html?id=mol%C3%A9culas-hovercard--dados-parciais&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:13] "GET /iframe.html?id=mol%C3%A9culas-hovercard--teste-de-estresse&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:19] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:25] "GET /iframe.html?id=mol%C3%A9culas-inputgroup--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:25] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:26] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:26] "GET /7819.e20aaa3c.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:20:26] "GET /molecules-InputGroup-InputGroup-stories.73a53fcf.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:26] "GET /static/media/CeraPro-Black.614576ad.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:28] "GET /iframe.html?id=mol%C3%A9culas-inputgroup--com-botao-de-texto&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:31] "GET /iframe.html?id=mol%C3%A9culas-inputgroup--desabilitado&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:39] "GET /iframe.html?id=mol%C3%A9culas-inputgroup--com-erro&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:43] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:43] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:20:43] "GET /iframe.html?id=mol%C3%A9culas-inputgroup--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:43] "GET /3331.5612abea.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:43] "GET /1976.f179a961.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:46] "GET /iframe.html?id=mol%C3%A9culas-inputgroup--teste-de-estresse&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:48] "GET /runtime~main.77bf2952.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:48] "GET /3166.6174445a.iframe.bundle.js HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:20:48] "GET /main.bdc31430.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:48] "GET /3144.6a6f3d9e.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:48] "GET /3372.a53e22f3.iframe.bundle.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:50] "GET /iframe.html?id=mol%C3%A9culas-item--padrao&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:50] "GET /molecules-Item-Item-stories.ad33dfe2.iframe.bundle.js HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:50] "GET /static/media/CeraPro-Medium.2bc02ae8.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:20:51] code 404, message File not found
+127.0.0.1 - - [07/Jan/2026 20:20:51] "GET /fonts/CeraPro-Regular.otf HTTP/1.1" 404 -
+
+[FAIL] Moléculas/Item - Padrão:
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:08] "GET /iframe.html?id=mol%C3%A9culas-item--com-subtitulo&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:09] "GET /atoms-NavLink-NavLink-stories.a1041e6f.iframe.bundle.js HTTP/1.1" 304 -
+
+[FAIL] Moléculas/Item - Com Subtítulo:
+  - Navigation failed: page.goto: Timeout 5000ms exceeded.
+Call log:
+[2m  - navigating to "http://127.0.0.1:6006/iframe.html?id=mol%C3%A9culas-item--com-subtitulo&viewMode=story", waiting until "networkidle"[22m
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:11] "GET /iframe.html?id=mol%C3%A9culas-item--apenas-texto&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:13] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:13] "GET /static/media/CeraPro-Regular.8f68a75d.otf HTTP/1.1" 304 -
+127.0.0.1 - - [07/Jan/2026 20:21:13] code 404, message File not found
+127.0.0.1 - - [07/Jan/2026 20:21:13] "GET /fonts/CeraPro-Regular.otf HTTP/1.1" 404 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:13] "GET /iframe.html?id=%C3%A1tomos-navlink--padrao&viewMode=story HTTP/1.1" 304 -
+
+[FAIL] Moléculas/Item - Apenas Texto:
+  - Error loading story index:
+  - TypeError: Failed to fetch
+    at ns.getStoryIndexFromServer (http://127.0.0.1:6006/sb-preview/runtime.js:6685:19)
+    at ns.initializeWithProjectAnnotations (http://127.0.0.1:6006/sb-preview/runtime.js:6671:26)
+    at ns.initialize (http://127.0.0.1:6006/sb-preview/runtime.js:6644:50)
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:18] "GET /iframe.html?id=mol%C3%A9culas-item--sem-valor&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:19] "GET /sb-preview/runtime.js HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:20] "GET /index.json HTTP/1.1" 304 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:21] "GET /iframe.html?id=mol%C3%A9culas-item--grupo-de-itens&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:21] code 404, message File not found
+127.0.0.1 - - [07/Jan/2026 20:21:21] "GET /fonts/CeraPro-Regular.otf HTTP/1.1" 404 -
+
+[FAIL] Moléculas/Item - Grupo de Itens:
+  - Failed to load resource: the server responded with a status of 404 (File not found)
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:22] "GET /iframe.html?id=mol%C3%A9culas-item--carregando&viewMode=story HTTP/1.1" 200 -
+
+[Server ERR]: 127.0.0.1 - - [07/Jan/2026 20:21:25] "GET /iframe.html?id=mol%C3%A9culas-item--com-erro&viewMode=story HTTP/1.1" 200 -
+

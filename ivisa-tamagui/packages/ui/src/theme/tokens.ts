@@ -200,6 +200,7 @@ const radiusScale = {
   lg: 12,
   xl: 24,
   full: 9999,
+  round: 9999,
   true: 8, // default (md)
 };
 

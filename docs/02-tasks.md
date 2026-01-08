@@ -38,6 +38,8 @@
 
 ## 🚀 Wave 6: The AI Backend (MCP)
 **Goal:** "The Component Foundry" - Serve components to Agents.
+References: docs/00-draft-mcp.md
+Use this repo as a base: https://github.com/21st-dev/magic-mcp
 
 - [ ] **MCP Server:** Python/FastAPI server to serve registry & docs. `PYTHON`
 - [ ] **Scaffolding Tool:** Agent tool to generate full page layouts. `MCP`

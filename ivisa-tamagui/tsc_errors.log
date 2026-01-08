@@ -1,0 +1,108 @@
+yarn run v1.22.22
+$ /home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/.bin/tsc --noEmit packages/ui/src/atoms/Logo/Logo.stories.tsx packages/ui/src/atoms/Avatar.stories.tsx
+node_modules/@tamagui/adapt/types/Adapt.d.ts(2,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/checkbox-headless/types/useCheckbox.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/checkbox/types/createCheckbox.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/dismissable/types/DismissableProps.d.ts(1,13): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/floating/types/useFloating.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/focus-scope/types/types.d.ts(2,13): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/group/types/Group.d.ts(3,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/image/types/Image.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/input/types/Input.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/portal/types/GorhomPortal.d.ts(2,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/radio-group/types/createRadioGroup.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/sheet/types/SheetScrollView.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/sheet/types/contexts.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/sheet/types/types.d.ts(6,13): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/sheet/types/useSheetController.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/sheet/types/useSheetProviderProps.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/stacks/types/NestingContext.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/text/types/wrapChildrenInText.d.ts(2,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/toggle-group/types/ToggleGroup.d.ts(4,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/web/types/_withStableStyle.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/web/types/createComponent.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/web/types/helpers/isTamaguiElement.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/web/types/types.d.ts(883,40): error TS2322: Type 'GenericFontKey' is not assignable to type 'string | number | bigint | boolean'.
+  Type 'symbol' is not assignable to type 'string | number | bigint | boolean'.
+node_modules/@tamagui/web/types/types.d.ts(885,36): error TS2322: Type 'GenericFontKey' is not assignable to type 'string | number | bigint | boolean'.
+  Type 'symbol' is not assignable to type 'string | number | bigint | boolean'.
+node_modules/@tamagui/web/types/types.d.ts(886,35): error TS2322: Type 'GenericFontKey' is not assignable to type 'string | number | bigint | boolean'.
+  Type 'symbol' is not assignable to type 'string | number | bigint | boolean'.
+node_modules/@tamagui/web/types/types.d.ts(887,43): error TS2322: Type 'GenericFontKey' is not assignable to type 'string | number | bigint | boolean'.
+  Type 'symbol' is not assignable to type 'string | number | bigint | boolean'.
+node_modules/@tamagui/web/types/types.d.ts(888,35): error TS2322: Type 'GenericFontKey' is not assignable to type 'string | number | bigint | boolean'.
+  Type 'symbol' is not assignable to type 'string | number | bigint | boolean'.
+node_modules/@tamagui/web/types/types.d.ts(889,39): error TS2322: Type 'GenericFontKey' is not assignable to type 'string | number | bigint | boolean'.
+  Type 'symbol' is not assignable to type 'string | number | bigint | boolean'.
+node_modules/@tamagui/web/types/views/Configuration.d.ts(1,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@tamagui/web/types/views/Theme.d.ts(2,8): error TS1259: Module '"/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/@types/node/module.d.ts(804,13): error TS2403: Subsequent variable declarations must have the same type.  Variable 'require' must be of type 'NodeRequire', but here has type 'Require'.
+node_modules/@types/react/index.d.ts(9,53): error TS2307: Cannot find module 'scheduler/tracing' or its corresponding type declarations.
+node_modules/react-native/src/types/globals.d.ts(10,1): error TS6200: Definitions of the following identifiers conflict with those in another file: EndingType, BlobPart, BufferSource, FormData, RequestInfo, XMLHttpRequestResponseType, AbortSignal, AbortController
+node_modules/react-native/src/types/globals.d.ts(166,7): error TS2403: Subsequent variable declarations must have the same type.  Variable 'Blob' must be of type '{ new (blobParts?: BlobPart[], options?: BlobPropertyBag): Blob; prototype: Blob; }', but here has type '{ new (blobParts?: (string | Blob)[], options?: BlobOptions): Blob; prototype: Blob; }'.
+node_modules/react-native/src/types/globals.d.ts(180,7): error TS2403: Subsequent variable declarations must have the same type.  Variable 'File' must be of type '{ new (fileBits: BlobPart[], fileName: string, options?: FilePropertyBag): File; prototype: File; }', but here has type '{ new (fileParts: BlobPart[], name: string, options?: FilePropertyBag): File; prototype: File; }'.
+node_modules/react-native/src/types/globals.d.ts(266,5): error TS2717: Subsequent property declarations must have the same type.  Property 'body' must be of type 'BodyInit', but here has type 'BodyInit_'.
+node_modules/react-native/src/types/globals.d.ts(275,5): error TS2717: Subsequent property declarations must have the same type.  Property 'signal' must be of type 'AbortSignal', but here has type 'AbortSignal'.
+node_modules/react-native/src/types/globals.d.ts(285,14): error TS2717: Subsequent property declarations must have the same type.  Property 'signal' must be of type 'AbortSignal', but here has type 'AbortSignal'.
+node_modules/react-native/src/types/globals.d.ts(289,7): error TS2403: Subsequent variable declarations must have the same type.  Variable 'Request' must be of type '{ new (input: RequestInfo | URL, init?: RequestInit): Request; prototype: Request; }', but here has type '{ new (input: string | Request, init?: RequestInit): Request; prototype: Request; }'.
+node_modules/react-native/src/types/globals.d.ts(313,7): error TS2403: Subsequent variable declarations must have the same type.  Variable 'Response' must be of type '{ new (body?: BodyInit, init?: ResponseInit): Response; prototype: Response; error(): Response; json(data: any, init?: ResponseInit): Response; redirect(url: string | URL, status?: number): Response; }', but here has type '{ new (body?: BodyInit_, init?: ResponseInit): Response; prototype: Response; error(): Response; json(data: any, init?: ResponseInit): Response; redirect: (url: string | URL, status?: number) => Response; }'.
+node_modules/react-native/src/types/globals.d.ts(398,5): error TS2717: Subsequent property declarations must have the same type.  Property 'abort' must be of type 'ProgressEvent<XMLHttpRequestEventTarget>', but here has type 'ProgressEvent<EventTarget>'.
+node_modules/react-native/src/types/globals.d.ts(399,5): error TS2717: Subsequent property declarations must have the same type.  Property 'error' must be of type 'ProgressEvent<XMLHttpRequestEventTarget>', but here has type 'ProgressEvent<EventTarget>'.
+node_modules/react-native/src/types/globals.d.ts(400,5): error TS2717: Subsequent property declarations must have the same type.  Property 'load' must be of type 'ProgressEvent<XMLHttpRequestEventTarget>', but here has type 'ProgressEvent<EventTarget>'.
+node_modules/react-native/src/types/globals.d.ts(401,5): error TS2717: Subsequent property declarations must have the same type.  Property 'loadend' must be of type 'ProgressEvent<XMLHttpRequestEventTarget>', but here has type 'ProgressEvent<EventTarget>'.
+node_modules/react-native/src/types/globals.d.ts(402,5): error TS2717: Subsequent property declarations must have the same type.  Property 'loadstart' must be of type 'ProgressEvent<XMLHttpRequestEventTarget>', but here has type 'ProgressEvent<EventTarget>'.
+node_modules/react-native/src/types/globals.d.ts(403,5): error TS2717: Subsequent property declarations must have the same type.  Property 'progress' must be of type 'ProgressEvent<XMLHttpRequestEventTarget>', but here has type 'ProgressEvent<EventTarget>'.
+node_modules/react-native/src/types/globals.d.ts(404,5): error TS2717: Subsequent property declarations must have the same type.  Property 'timeout' must be of type 'ProgressEvent<XMLHttpRequestEventTarget>', but here has type 'ProgressEvent<EventTarget>'.
+node_modules/react-native/src/types/globals.d.ts(471,7): error TS2403: Subsequent variable declarations must have the same type.  Variable 'URL' must be of type '{ new (url: string | URL, base?: string | URL): URL; prototype: URL; canParse(url: string | URL, base?: string | URL): boolean; createObjectURL(obj: Blob | MediaSource): string; parse(url: string | URL, base?: string | URL): URL; revokeObjectURL(url: string): void; }', but here has type '{ new (url: string | URL, base?: string | URL): URL; prototype: URL; createObjectURL(obj: Blob): string; revokeObjectURL(url: string): void; }'.
+node_modules/react-native/src/types/globals.d.ts(534,5): error TS2717: Subsequent property declarations must have the same type.  Property 'onopen' must be of type '(this: WebSocket, ev: Event) => any', but here has type '() => void'.
+node_modules/react-native/src/types/globals.d.ts(535,5): error TS2717: Subsequent property declarations must have the same type.  Property 'onmessage' must be of type '(this: WebSocket, ev: MessageEvent<any>) => any', but here has type '(event: WebSocketMessageEvent) => void'.
+node_modules/react-native/src/types/globals.d.ts(536,5): error TS2717: Subsequent property declarations must have the same type.  Property 'onerror' must be of type '(this: WebSocket, ev: Event) => any', but here has type '(event: WebSocketErrorEvent) => void'.
+node_modules/react-native/src/types/globals.d.ts(537,5): error TS2717: Subsequent property declarations must have the same type.  Property 'onclose' must be of type '(this: WebSocket, ev: CloseEvent) => any', but here has type '(event: WebSocketCloseEvent) => void'.
+node_modules/react-native/src/types/globals.d.ts(538,5): error TS2717: Subsequent property declarations must have the same type.  Property 'addEventListener' must be of type '{ <K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }', but here has type 'WebsocketEventListener'.
+node_modules/react-native/src/types/globals.d.ts(539,5): error TS2717: Subsequent property declarations must have the same type.  Property 'removeEventListener' must be of type '{ <K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }', but here has type 'WebsocketEventListener'.
+node_modules/react-native/src/types/globals.d.ts(542,7): error TS2403: Subsequent variable declarations must have the same type.  Variable 'WebSocket' must be of type '{ new (url: string | URL, protocols?: string | string[]): WebSocket; prototype: WebSocket; readonly CONNECTING: 0; readonly OPEN: 1; readonly CLOSING: 2; readonly CLOSED: 3; }', but here has type '{ new (uri: string, protocols?: string | string[], options?: { [optionName: string]: any; headers: { [headerName: string]: string; }; }): WebSocket; prototype: WebSocket; readonly CLOSED: number; readonly CLOSING: number; readonly CONNECTING: number; readonly OPEN: number; }'.
+node_modules/react-native/src/types/globals.d.ts(627,14): error TS2717: Subsequent property declarations must have the same type.  Property 'error' must be of type 'DOMException', but here has type 'Error'.
+node_modules/react-native/src/types/globals.d.ts(640,14): error TS2717: Subsequent property declarations must have the same type.  Property 'readyState' must be of type '0 | 2 | 1', but here has type 'number'.
+node_modules/typescript/lib/lib.dom.d.ts(23,1): error TS6200: Definitions of the following identifiers conflict with those in another file: EndingType, BlobPart, BufferSource, FormData, RequestInfo, XMLHttpRequestResponseType, AbortSignal, AbortController
+packages/ui/src/atoms/Avatar.stories.tsx(6,24): error TS6142: Module './Avatar' was resolved to '/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/packages/ui/src/atoms/Avatar.tsx', but '--jsx' is not set.
+packages/ui/src/atoms/Avatar.stories.tsx(58,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(59,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(60,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(123,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(124,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(125,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(160,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(160,25): error TS2322: Type '{ children: Element; width: number; ai: string; jc: string; bg: string; p: string; borderRadius: "$4"; }' is not assignable to type 'IntrinsicAttributes & Omit<RNTamaguiViewNonStyleProps, "elevation" | "fullscreen" | keyof StackStyleBase> & ... 5 more ... & RefAttributes<...>'.
+  Property 'ai' does not exist on type 'IntrinsicAttributes & Omit<RNTamaguiViewNonStyleProps, "elevation" | "fullscreen" | keyof StackStyleBase> & ... 5 more ... & RefAttributes<...>'.
+packages/ui/src/atoms/Avatar.stories.tsx(161,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(176,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(177,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(178,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(179,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(181,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(182,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(183,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(185,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(186,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Avatar.stories.tsx(187,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(3,22): error TS6142: Module './Logo' was resolved to '/home/suportesaude/YUICHI/ivisa-tamagui/ivisa-tamagui/packages/ui/src/atoms/Logo/Logo.tsx', but '--jsx' is not set.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(100,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(109,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(122,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(123,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(124,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(137,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(138,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(139,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(140,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(142,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(143,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(144,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(146,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(147,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(148,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(150,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(151,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+packages/ui/src/atoms/Logo/Logo.stories.tsx(152,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+error Command failed with exit code 2.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
