@@ -1,11 +1,14 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { userEvent, within } from '@storybook/test';
 import { expect } from '@storybook/test';
 import { YStack } from 'tamagui';
 
 import { Avatar } from './Avatar';
 
-const meta: Meta<typeof Avatar> = {
+const meta: Meta<React.ComponentProps<typeof Avatar>> = {
   title: 'Átomos/Avatar',
   component: Avatar,
   tags: ['autodocs'],
@@ -64,7 +67,7 @@ const meta: Meta<typeof Avatar> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<React.ComponentProps<typeof Avatar>>;
 
 export const Padrao: Story = {
   name: 'Padrão (Círculo)',

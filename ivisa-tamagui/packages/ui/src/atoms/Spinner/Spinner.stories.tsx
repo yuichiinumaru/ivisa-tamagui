@@ -1,9 +1,12 @@
+
+import type React from 'react';
 import { expect } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { within } from '@testing-library/react';
 import { Spinner } from './Spinner';
 
-const meta: Meta<typeof Spinner> = {
+const meta: Meta<React.ComponentProps<typeof Spinner>> = {
   title: 'Átomos/Spinner',
   component: Spinner,
   tags: ['autodocs'],
@@ -33,7 +36,7 @@ const meta: Meta<typeof Spinner> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Spinner>;
+type Story = StoryObj<React.ComponentProps<typeof Spinner>>;
 
 import { YStack } from 'tamagui';
 

@@ -54,3 +54,5 @@ export const KPIGrid = KPIGridFrame.styleable<KPIGridProps>((props, ref) => {
 })
 
 export default KPIGrid
+
+export type KPIGridFrameProps = React.ComponentProps<typeof KPIGridFrame>

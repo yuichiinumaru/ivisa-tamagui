@@ -1,11 +1,14 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+
 import { Badge } from './Badge';
 import { userEvent, within } from '@storybook/test';
 import { expect } from '@storybook/test';
 import { AlarmClock, Rocket } from '@tamagui/lucide-icons';
 import { View } from 'tamagui';
 
-const meta: Meta<typeof Badge> = {
+const meta: Meta<React.ComponentProps<typeof Badge>> = {
   title: 'Átomos/Badge',
   component: Badge,
   tags: ['autodocs'],
@@ -53,7 +56,7 @@ const meta: Meta<typeof Badge> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Badge>;
+type Story = StoryObj<React.ComponentProps<typeof Badge>>;
 
 export const Padrao: Story = {
   name: 'Padrão',

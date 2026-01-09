@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { YStack } from 'tamagui'
 import { NativeSelect } from './NativeSelect'
 
-const meta: Meta<typeof NativeSelect> = {
+
+const meta: Meta<React.ComponentProps<typeof NativeSelect>> = {
   title: 'Moléculas/NativeSelect',
   component: NativeSelect,
   tags: ['autodocs'],
@@ -38,7 +41,7 @@ const meta: Meta<typeof NativeSelect> = {
 }
 
 export default meta
-type Story = StoryObj<typeof NativeSelect>
+type Story = StoryObj<React.ComponentProps<typeof NativeSelect>>
 
 const defaultOptions = (
   <>

@@ -6,7 +6,7 @@ import { mockNavItems, mockSettingsItems, mockUserProfile } from '../../mocks/si
 import { Button } from '../../atoms/Button';
 
 // --- Storybook Metadata ---
-const meta: Meta<typeof Sidebar> = {
+const meta: Meta<React.ComponentProps<typeof Sidebar>> = {
   title: 'Organismos/Sidebar',
   component: Sidebar,
   parameters: {
@@ -47,7 +47,7 @@ A resilient and composable sidebar component built with Tamagui.
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<React.ComponentProps<typeof meta>>;
 
 // --- Mock Components for Stories ---
 
@@ -204,3 +204,7 @@ export const LayoutStressTest: Story = {
     ...GoldenPath.args,
   },
 };
+
+export type NavMenuProps = React.ComponentProps<typeof NavMenu>
+
+export type UserProfileProps = React.ComponentProps<typeof UserProfile>

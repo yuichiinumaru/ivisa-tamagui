@@ -44,3 +44,5 @@ export const Video = forwardRef<unknown, VideoProps>(({
         </Stack>
     )
 })
+
+export type ResizeModeProps = React.ComponentProps<typeof ResizeMode>

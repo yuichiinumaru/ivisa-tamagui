@@ -156,3 +156,9 @@ export function Table<T>({
     </TableContainer>
   )
 }
+
+export type TableSkeletonProps = React.ComponentProps<typeof TableSkeleton>
+
+export type TableErrorProps = React.ComponentProps<typeof TableError>
+
+export type TableEmptyProps = React.ComponentProps<typeof TableEmpty>

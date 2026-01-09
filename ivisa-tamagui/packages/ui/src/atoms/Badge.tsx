@@ -173,3 +173,5 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
 Badge.displayName = 'Badge';
 
 export { BadgeText };
+
+export type BadgeProps = React.ComponentProps<typeof Badge>

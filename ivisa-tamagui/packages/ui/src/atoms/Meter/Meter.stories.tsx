@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { Meter } from './Meter'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof Meter> = {
+const meta: Meta<React.ComponentProps<typeof Meter>> = {
   title: 'Átomos/Meter',
   component: Meter,
   tags: ['autodocs'],
@@ -13,7 +14,7 @@ const meta: Meta<typeof Meter> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Meter>
+type Story = StoryObj<React.ComponentProps<typeof Meter>>
 
 export const Default: Story = {
   args: {

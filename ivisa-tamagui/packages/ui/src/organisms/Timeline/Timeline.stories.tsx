@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Timeline } from './Timeline'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof Timeline> = {
+
+const meta: Meta<React.ComponentProps<typeof Timeline>> = {
   title: 'Organismos/Timeline',
   component: Timeline,
   parameters: {
@@ -18,7 +21,7 @@ const meta: Meta<typeof Timeline> = {
 
 export default meta
 
-type Story = StoryObj<typeof Timeline>
+type Story = StoryObj<React.ComponentProps<typeof Timeline>>
 
 const mockItems = [
   {

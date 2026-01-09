@@ -2,7 +2,7 @@ import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { NotificationFeed } from './NotificationFeed'
 
-const meta: Meta<typeof NotificationFeed> = {
+const meta: Meta<React.ComponentProps<typeof NotificationFeed>> = {
   title: 'Organismos/NotificationFeed',
   component: NotificationFeed,
   parameters: {
@@ -11,7 +11,7 @@ const meta: Meta<typeof NotificationFeed> = {
 }
 
 export default meta
-type Story = StoryObj<typeof NotificationFeed>
+type Story = StoryObj<React.ComponentProps<typeof NotificationFeed>>
 
 const notifications = [
   {

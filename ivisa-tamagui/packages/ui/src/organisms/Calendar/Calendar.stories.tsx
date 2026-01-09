@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Calendar } from './Calendar'
 
-const meta: Meta<typeof Calendar> = {
+
+const meta: Meta<React.ComponentProps<typeof Calendar>> = {
   title: 'Organismos/Calendar',
   component: Calendar,
   parameters: {
@@ -17,6 +20,6 @@ const meta: Meta<typeof Calendar> = {
 
 export default meta
 
-type Story = StoryObj<typeof Calendar>
+type Story = StoryObj<React.ComponentProps<typeof Calendar>>
 
 export const Padrao: Story = {}

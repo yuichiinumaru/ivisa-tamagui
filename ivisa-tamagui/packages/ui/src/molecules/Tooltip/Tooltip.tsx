@@ -86,3 +86,9 @@ export const Tooltip = React.forwardRef<unknown, TooltipProps>(({ children, cont
 })
 
 Tooltip.displayName = 'Tooltip'
+
+export type TooltipContentProps = React.ComponentProps<typeof TooltipContent>
+
+export type TooltipArrowProps = React.ComponentProps<typeof TooltipArrow>
+
+export type TooltipTriggerProps = React.ComponentProps<typeof TooltipTrigger>

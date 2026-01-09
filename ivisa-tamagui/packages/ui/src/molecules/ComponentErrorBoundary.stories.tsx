@@ -1,10 +1,13 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { useArgs } from '@storybook/preview-api'
 import React, { useState, ReactNode } from 'react'
 import { Button, Paragraph, Text, XStack, YStack } from 'tamagui'
 import { ComponentErrorBoundary } from './ComponentErrorBoundary'
 
-const meta: Meta<typeof ComponentErrorBoundary> = {
+
+const meta: Meta<React.ComponentProps<typeof ComponentErrorBoundary>> = {
   title: 'Moléculas/ComponentErrorBoundary',
   component: ComponentErrorBoundary,
   parameters: {
@@ -47,7 +50,7 @@ Impede que a aplicação inteira trave.
 
 export default meta
 
-type Story = StoryObj<typeof ComponentErrorBoundary>
+type Story = StoryObj<React.ComponentProps<typeof ComponentErrorBoundary>>
 
 const BuggyComponent = ({ shouldThrow }: { shouldThrow: boolean }) => {
   if (shouldThrow) {
@@ -217,3 +220,9 @@ export const WithCustomFallback: Story = {
     },
   },
 }
+
+export type BuggyComponentProps = React.ComponentProps<typeof BuggyComponent>
+
+export type InteractiveStoryProps = React.ComponentProps<typeof InteractiveStory>
+
+export type CustomFallbackProps = React.ComponentProps<typeof CustomFallback>

@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { Separator, SeparatorProps } from './Separator'
 import { YStack, XStack, Text } from 'tamagui'
 
-const meta: Meta<typeof Separator> = {
+const meta: Meta<React.ComponentProps<typeof Separator>> = {
   title: 'Átomos/Separator',
   component: Separator,
   tags: ['autodocs'],
@@ -16,7 +17,7 @@ const meta: Meta<typeof Separator> = {
 
 export default meta
 
-type Story = StoryObj<typeof Separator>
+type Story = StoryObj<React.ComponentProps<typeof Separator>>
 
 const renderDefault = (args: SeparatorProps) => {
   if (args.orientation === 'vertical') {

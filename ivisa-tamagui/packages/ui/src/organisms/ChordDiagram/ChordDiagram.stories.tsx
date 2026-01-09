@@ -11,7 +11,7 @@ const matrix = [
 ];
 const labels = ['Preto', 'Loiro', 'Castanho', 'Ruivo'];
 
-const meta: Meta<typeof ChordDiagram> = {
+const meta: Meta<React.ComponentProps<typeof ChordDiagram>> = {
   title: 'Organismos/Gráficos/ChordDiagram',
   component: ChordDiagram,
   args: {
@@ -25,7 +25,7 @@ const meta: Meta<typeof ChordDiagram> = {
 
 export default meta
 
-type Story = StoryObj<typeof ChordDiagram>
+type Story = StoryObj<React.ComponentProps<typeof ChordDiagram>>
 
 export const Padrao: Story = {}
 

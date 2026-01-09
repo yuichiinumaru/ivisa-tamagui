@@ -113,3 +113,5 @@ export const ColumnChart = BarChart
 // Backward compatibility
 export const Charts = BarChart
 export type ChartsProps = BarChartProps
+
+export type ColumnChartProps = React.ComponentProps<typeof ColumnChart>

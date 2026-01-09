@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Label, YStack } from 'tamagui'
 import { Button } from '../../atoms/Button'
 import { Input } from '../../atoms/Input'
 import {
+
   Dialog,
   DialogClose,
   DialogContent,
@@ -13,7 +16,7 @@ import {
   DialogTrigger,
 } from './Dialog'
 
-const meta: Meta<typeof DialogContent> = {
+const meta: Meta<React.ComponentProps<typeof DialogContent>> = {
   title: 'Moléculas/Dialog',
   component: DialogContent,
   parameters: {
@@ -34,7 +37,7 @@ const meta: Meta<typeof DialogContent> = {
 
 export default meta
 
-type Story = StoryObj<typeof DialogContent>
+type Story = StoryObj<React.ComponentProps<typeof DialogContent>>
 
 const DefaultContent = (
   <>
@@ -179,3 +182,5 @@ export const ComAcoesCustomizadas: Story = {
     </Dialog>
   ),
 }
+
+export type DefaultContentProps = React.ComponentProps<typeof DefaultContent>

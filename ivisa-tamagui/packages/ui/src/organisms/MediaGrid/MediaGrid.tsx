@@ -190,3 +190,7 @@ function formatBytes(bytes?: number, decimals = 2) {
 
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
+
+export type MediaGridProps = React.ComponentProps<typeof MediaGrid>
+
+export type MediaItemCardProps = React.ComponentProps<typeof MediaItemCard>

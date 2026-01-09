@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { RidgelinePlot } from './RidgelinePlot'
 
-const meta: Meta<typeof RidgelinePlot> = {
+
+const meta: Meta<React.ComponentProps<typeof RidgelinePlot>> = {
   title: 'Organismos/Gráficos/RidgelinePlot',
   component: RidgelinePlot,
   parameters: {
@@ -11,7 +14,7 @@ const meta: Meta<typeof RidgelinePlot> = {
 
 export default meta
 
-type Story = StoryObj<typeof RidgelinePlot>
+type Story = StoryObj<React.ComponentProps<typeof RidgelinePlot>>
 
 // Generate distribution data
 const generateDist = (mean: number, std: number) => {

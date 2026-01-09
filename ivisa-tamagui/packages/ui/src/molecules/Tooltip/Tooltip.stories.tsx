@@ -1,9 +1,12 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Tooltip } from './Tooltip'
 import { Button } from '../../atoms/Button'
 import { XStack, YStack, Text, Paragraph } from 'tamagui'
 
-const meta: Meta<typeof Tooltip> = {
+
+const meta: Meta<React.ComponentProps<typeof Tooltip>> = {
   title: 'Moléculas/Tooltip',
   component: Tooltip,
   parameters: {
@@ -32,7 +35,7 @@ const meta: Meta<typeof Tooltip> = {
 
 export default meta
 
-type Story = StoryObj<typeof Tooltip>
+type Story = StoryObj<React.ComponentProps<typeof Tooltip>>
 
 export const Padrao: Story = {
   args: {

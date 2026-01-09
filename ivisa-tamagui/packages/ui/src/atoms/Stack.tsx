@@ -71,3 +71,5 @@ const VStack = styled(TamaguiStack, {
 })
 
 export { Stack, HStack, VStack }
+
+export type StackProps = React.ComponentProps<typeof Stack>

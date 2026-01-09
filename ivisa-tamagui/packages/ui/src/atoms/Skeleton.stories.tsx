@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { YStack, XStack } from 'tamagui'
 import { Skeleton } from './Skeleton'
 
@@ -9,7 +10,7 @@ import { Skeleton } from './Skeleton'
  * antes que ele seja carregado, melhorando a experiência do usuário ao fornecer um feedback
  * de que a página está processando.
  */
-const meta: Meta<typeof Skeleton> = {
+const meta: Meta<React.ComponentProps<typeof Skeleton>> = {
   title: 'Átomos/Skeleton',
   component: Skeleton,
   tags: ['autodocs'],
@@ -44,7 +45,7 @@ const meta: Meta<typeof Skeleton> = {
 
 export default meta
 
-type Story = StoryObj<typeof Skeleton>
+type Story = StoryObj<React.ComponentProps<typeof Skeleton>>
 
 /**
  * ### Padrão

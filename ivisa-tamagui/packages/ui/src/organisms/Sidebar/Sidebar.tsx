@@ -247,3 +247,15 @@ export const Sidebar = (props: SidebarProps) => {
     </>
   );
 };
+
+export type SidebarProps = React.ComponentProps<typeof Sidebar>
+
+export type SidebarSkeletonProps = React.ComponentProps<typeof SidebarSkeleton>
+
+export type EmptyStateProps = React.ComponentProps<typeof EmptyState>
+
+export type ErrorStateProps = React.ComponentProps<typeof ErrorState>
+
+export type DesktopSidebarProps = React.ComponentProps<typeof DesktopSidebar>
+
+export type MobileSidebarProps = React.ComponentProps<typeof MobileSidebar>

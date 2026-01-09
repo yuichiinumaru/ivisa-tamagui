@@ -5,7 +5,7 @@ import { Button } from '../atoms/Button'
 import { YStack, H4, Paragraph } from 'tamagui'
 import { PenLine } from '@tamagui/lucide-icons'
 
-const meta: Meta<typeof Accordion> = {
+const meta: Meta<React.ComponentProps<typeof Accordion>> = {
     title: 'Moléculas/Accordion',
     component: Accordion,
     parameters: {
@@ -34,7 +34,7 @@ const meta: Meta<typeof Accordion> = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<React.ComponentProps<typeof meta>>
 
 const items = [
     {

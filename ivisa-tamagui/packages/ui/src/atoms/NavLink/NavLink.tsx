@@ -56,3 +56,5 @@ export const NavLink = NavLinkFrame.styleable<NavLinkProps>(
 )
 
 export default NavLink
+
+export type NavLinkFrameProps = React.ComponentProps<typeof NavLinkFrame>

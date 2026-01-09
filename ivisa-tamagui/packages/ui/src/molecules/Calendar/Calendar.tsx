@@ -241,3 +241,5 @@ export const Calendar = ({
     </CalendarContainer>
   )
 }
+
+export type SkeletonGridProps = React.ComponentProps<typeof SkeletonGrid>

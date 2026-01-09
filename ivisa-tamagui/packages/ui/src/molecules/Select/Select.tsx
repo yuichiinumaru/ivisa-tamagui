@@ -192,3 +192,11 @@ export {
   SelectViewport,
   SelectPortal,
 };
+
+export type SelectRootProps = React.ComponentProps<typeof SelectRoot>
+
+export type SelectContentProps = React.ComponentProps<typeof SelectContent>
+
+export type SelectItemIndicatorProps = React.ComponentProps<typeof SelectItemIndicator>
+
+export type SelectSheetProps = React.ComponentProps<typeof SelectSheet>

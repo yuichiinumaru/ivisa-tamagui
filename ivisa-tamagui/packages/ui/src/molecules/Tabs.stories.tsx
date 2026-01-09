@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs'
 import { Text, YStack, Button } from 'tamagui'
 
-const meta: Meta<typeof Tabs> = {
+
+const meta: Meta<React.ComponentProps<typeof Tabs>> = {
   title: 'Moléculas/Tabs',
   component: Tabs,
   tags: ['autodocs'],
@@ -32,7 +35,7 @@ Componente de abas para organizar conteúdo em diferentes visualizações. Supor
 
 export default meta
 
-type Story = StoryObj<typeof Tabs>
+type Story = StoryObj<React.ComponentProps<typeof Tabs>>
 
 const tabsData = [
   {

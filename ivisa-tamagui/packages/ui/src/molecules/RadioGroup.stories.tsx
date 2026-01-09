@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { RadioGroup } from './RadioGroup'
 
-const meta: Meta<typeof RadioGroup> = {
+
+const meta: Meta<React.ComponentProps<typeof RadioGroup>> = {
   title: 'Moléculas/RadioGroup',
   component: RadioGroup,
   parameters: {
@@ -34,7 +37,7 @@ const meta: Meta<typeof RadioGroup> = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<React.ComponentProps<typeof meta>>
 
 const OPTIONS = [
   { value: 'default', label: 'Padrão' },

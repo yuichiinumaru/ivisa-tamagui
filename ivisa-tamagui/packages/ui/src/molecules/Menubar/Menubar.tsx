@@ -410,3 +410,5 @@ export {
   MenubarSub,
   MenubarShortcut,
 }
+
+export type MenubarProps = React.ComponentProps<typeof Menubar>

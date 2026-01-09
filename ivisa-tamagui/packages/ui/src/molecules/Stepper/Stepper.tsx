@@ -116,3 +116,7 @@ export const Stepper = ({
     </StepperContextProvider>
   )
 }
+
+export type StepperProps = React.ComponentProps<typeof Stepper>
+
+export type StepperContentProps = React.ComponentProps<typeof StepperContent>

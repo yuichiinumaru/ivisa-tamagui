@@ -1,3 +1,5 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Button } from '../../atoms/Button'
 import { H4, Paragraph } from '../../atoms/Typography'
@@ -5,7 +7,8 @@ import { VStack } from '../../atoms/Stack'
 import { Sonner, toast } from './Sonner'
 import { Toast } from './Toast'
 
-const meta: Meta<typeof Sonner> = {
+
+const meta: Meta<React.ComponentProps<typeof Sonner>> = {
   title: 'Moléculas/Sonner',
   component: Sonner,
   tags: ['autodocs'],
@@ -34,7 +37,7 @@ const meta: Meta<typeof Sonner> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Sonner>
+type Story = StoryObj<React.ComponentProps<typeof Sonner>>
 
 export const Demonstracao: Story = {
   render: (args) => (

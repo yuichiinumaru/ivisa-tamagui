@@ -1,10 +1,13 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
 import { YStack } from 'tamagui'
 import { Autocomplete, AutocompleteOption } from './Autocomplete'
 import { mockOptions } from './mock'
 
-const meta: Meta<typeof Autocomplete> = {
+
+const meta: Meta<React.ComponentProps<typeof Autocomplete>> = {
   title: 'Organismos/Autocomplete',
   component: Autocomplete,
   tags: ['autodocs'],
@@ -26,7 +29,7 @@ const meta: Meta<typeof Autocomplete> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Autocomplete>
+type Story = StoryObj<React.ComponentProps<typeof Autocomplete>>
 
 const AutocompleteWithState = (args: Story['args']) => {
   const [value, setValue] = useState<AutocompleteOption | null>(null)
@@ -81,3 +84,5 @@ export const EstresseDeLayout: Story = {
   ],
   render: AutocompleteWithState,
 }
+
+export type AutocompleteWithStateProps = React.ComponentProps<typeof AutocompleteWithState>

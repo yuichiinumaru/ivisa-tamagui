@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { NavLink } from './NavLink'
 import { Home, ChevronRight } from '@tamagui/lucide-icons'
 import { userEvent, within } from '@storybook/test'
 import { expect } from '@storybook/test'
 
-const meta: Meta<typeof NavLink> = {
+const meta: Meta<React.ComponentProps<typeof NavLink>> = {
   title: 'Átomos/NavLink',
   component: NavLink,
   tags: ['autodocs'],
@@ -35,7 +36,7 @@ const meta: Meta<typeof NavLink> = {
 }
 
 export default meta
-type Story = StoryObj<typeof NavLink>
+type Story = StoryObj<React.ComponentProps<typeof NavLink>>
 
 export const Padrao: Story = {
   name: 'Padrão',

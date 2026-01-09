@@ -77,3 +77,9 @@ export const BarChart = ({
 // Aliases
 export const ColumnChart = BarChart
 export const Charts = BarChart
+
+export type BarChartProps = React.ComponentProps<typeof BarChart>
+
+export type ColumnChartProps = React.ComponentProps<typeof ColumnChart>
+
+export type ChartsProps = React.ComponentProps<typeof Charts>

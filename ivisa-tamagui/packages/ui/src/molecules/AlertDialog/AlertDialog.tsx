@@ -183,3 +183,5 @@ export {
   AlertDialogPortal,
   AlertDialogTrigger,
 }
+
+export type AlertDialogProps = React.ComponentProps<typeof AlertDialog>

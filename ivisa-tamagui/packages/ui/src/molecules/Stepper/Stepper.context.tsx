@@ -103,3 +103,7 @@ export const useStepper = () => {
 export const Stepper = ({ children }: { children: ReactNode }) => {
   return <YStack>{children}</YStack>
 }
+
+export type StepperContextProviderProps = React.ComponentProps<typeof StepperContextProvider>
+
+export type StepperProps = React.ComponentProps<typeof Stepper>

@@ -142,3 +142,5 @@ export const PieChart = ({
 
 // Aliases
 export const DonutChart = (props: PieChartProps) => <PieChart {...props} variant="donut" />
+
+export type DonutChartProps = React.ComponentProps<typeof DonutChart>

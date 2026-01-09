@@ -1,9 +1,12 @@
+
+import type React from 'react';
 import { Button } from '../../atoms/Button/Button';
 import { NavGroup } from './NavGroup';
 import { Settings } from '@tamagui/lucide-icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof NavGroup> = {
+
+const meta: Meta<React.ComponentProps<typeof NavGroup>> = {
   title: 'Moléculas/NavGroup',
   component: NavGroup,
   tags: ['autodocs'],
@@ -33,7 +36,7 @@ const meta: Meta<typeof NavGroup> = {
 
 export default meta;
 
-type Story = StoryObj<typeof NavGroup>;
+type Story = StoryObj<React.ComponentProps<typeof NavGroup>>;
 
 const defaultItems = [
   { label: 'Painel', href: '#' },

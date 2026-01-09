@@ -90,3 +90,5 @@ export const ChartContainer = ({
 }
 
 export default ChartContainer
+
+export type ChartContainerProps = React.ComponentProps<typeof ChartContainer>

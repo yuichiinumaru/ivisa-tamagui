@@ -7,7 +7,7 @@ import {
 } from './Resizable'
 import { YStack, Text } from 'tamagui'
 
-const meta: Meta<typeof ResizablePanelGroup> = {
+const meta: Meta<React.ComponentProps<typeof ResizablePanelGroup>> = {
   title: 'Moléculas/Redimensionável',
   component: ResizablePanelGroup,
   parameters: {
@@ -41,7 +41,7 @@ const meta: Meta<typeof ResizablePanelGroup> = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<React.ComponentProps<typeof meta>>
 
 const renderPanelContent = (text: string) => (
   <YStack flex={1} alignItems="center" justifyContent="center" padding="$4">

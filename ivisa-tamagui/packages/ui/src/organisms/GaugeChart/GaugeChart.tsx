@@ -125,3 +125,5 @@ export const GaugeChart = ({
 }
 
 export default GaugeChart
+
+export type GaugeChartSkeletonProps = React.ComponentProps<typeof GaugeChartSkeleton>

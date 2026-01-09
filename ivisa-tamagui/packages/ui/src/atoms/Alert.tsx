@@ -158,3 +158,5 @@ AlertRoot.displayName = 'Alert';
 export const Alert = AlertRoot as AlertComponent;
 Alert.Title = AlertTitleFrame;
 Alert.Description = AlertDescriptionFrame;
+
+export type AlertRootProps = React.ComponentProps<typeof AlertRoot>

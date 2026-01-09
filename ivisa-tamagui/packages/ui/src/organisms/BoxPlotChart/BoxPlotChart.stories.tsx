@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { BoxPlotChart } from './BoxPlotChart'
 import { boxPlotData } from './BoxPlotChart.mocks'
 
-const meta: Meta<typeof BoxPlotChart> = {
+
+const meta: Meta<React.ComponentProps<typeof BoxPlotChart>> = {
   title: 'Organismos/Gráficos/BoxPlotChart',
   component: BoxPlotChart,
   parameters: {
@@ -12,7 +15,7 @@ const meta: Meta<typeof BoxPlotChart> = {
 }
 
 export default meta
-type Story = StoryObj<typeof BoxPlotChart>
+type Story = StoryObj<React.ComponentProps<typeof BoxPlotChart>>
 
 export const Padrao: Story = {
   args: {

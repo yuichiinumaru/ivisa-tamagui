@@ -170,3 +170,11 @@ export const GeoMap = Object.assign(Map, {
   Popup: MapPopup,
   Controls: MapControls
 })
+
+export type MapControlsProps = React.ComponentProps<typeof MapControls>
+
+export type MapMarkerProps = React.ComponentProps<typeof MapMarker>
+
+export type MapPopupProps = React.ComponentProps<typeof MapPopup>
+
+export type GeoMapProps = React.ComponentProps<typeof GeoMap>

@@ -1,3 +1,5 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   Cloud,
@@ -18,6 +20,7 @@ import {
 import { Button, Text } from 'tamagui'
 
 import {
+
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -32,7 +35,7 @@ import {
   DropdownMenuTrigger,
 } from './DropdownMenu'
 
-const meta: Meta<typeof DropdownMenu> = {
+const meta: Meta<React.ComponentProps<typeof DropdownMenu>> = {
   title: 'Moléculas/DropdownMenu',
   component: DropdownMenu,
   parameters: {
@@ -56,7 +59,7 @@ Exibe um menu para o usuário, acionado por um botão.
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<React.ComponentProps<typeof meta>>
 
 export const Padrao: Story = {
   render: () => (

@@ -1,9 +1,12 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Button } from '../../atoms/Button'
 import { AlertDialog } from './AlertDialog'
 import { Check, X } from '@tamagui/lucide-icons'
 
-const meta: Meta<typeof AlertDialog> = {
+
+const meta: Meta<React.ComponentProps<typeof AlertDialog>> = {
   title: 'Moléculas/AlertDialog',
   component: AlertDialog,
   tags: ['autodocs'],
@@ -31,7 +34,7 @@ const meta: Meta<typeof AlertDialog> = {
 }
 
 export default meta
-type Story = StoryObj<typeof AlertDialog>
+type Story = StoryObj<React.ComponentProps<typeof AlertDialog>>
 
 const defaultArgs = {
   trigger: <Button variant="outline">Abrir Diálogo</Button>,

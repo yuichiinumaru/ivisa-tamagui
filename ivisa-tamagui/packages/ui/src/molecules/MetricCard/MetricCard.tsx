@@ -113,3 +113,5 @@ const MetricCardComponent = MetricCardFrame.styleable<MetricCardProps>(
 
 export const MetricCard = MetricCardComponent
 export type { MetricCardProps }
+
+export type MetricCardProps = React.ComponentProps<typeof MetricCard>

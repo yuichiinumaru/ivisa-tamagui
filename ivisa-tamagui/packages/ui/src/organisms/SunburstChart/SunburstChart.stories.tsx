@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { SunburstChart, SunburstData } from './SunburstChart'
 
-const meta: Meta<typeof SunburstChart> = {
+
+const meta: Meta<React.ComponentProps<typeof SunburstChart>> = {
   title: 'Organismos/Gráficos/SunburstChart',
   component: SunburstChart,
   parameters: {
@@ -11,7 +14,7 @@ const meta: Meta<typeof SunburstChart> = {
 
 export default meta
 
-type Story = StoryObj<typeof SunburstChart>
+type Story = StoryObj<React.ComponentProps<typeof SunburstChart>>
 
 const sampleData: SunburstData = {
   name: 'Root',

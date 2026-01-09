@@ -113,3 +113,5 @@ export const RankingChart = ({
 };
 
 export default RankingChart;
+
+export type RankingChartContentProps = React.ComponentProps<typeof RankingChartContent>

@@ -214,3 +214,5 @@ export const DashboardShell = DashboardShellFrame.styleable<DashboardShellProps>
 )
 
 export default DashboardShell
+
+export type DashboardShellFrameProps = React.ComponentProps<typeof DashboardShellFrame>

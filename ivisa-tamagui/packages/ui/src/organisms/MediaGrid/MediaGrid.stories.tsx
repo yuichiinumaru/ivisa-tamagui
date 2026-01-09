@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MediaGrid } from './MediaGrid';
 import { MediaItem } from './MediaGrid.props';
 
-const meta: Meta<typeof MediaGrid> = {
+
+const meta: Meta<React.ComponentProps<typeof MediaGrid>> = {
   title: 'Organismos/MediaGrid',
   component: MediaGrid,
   tags: ['autodocs'],
@@ -14,7 +17,7 @@ const meta: Meta<typeof MediaGrid> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof MediaGrid>;
+type Story = StoryObj<React.ComponentProps<typeof MediaGrid>>;
 
 const mockItems: MediaItem[] = Array.from({ length: 10 }).map((_, i) => ({
   id: String(i),

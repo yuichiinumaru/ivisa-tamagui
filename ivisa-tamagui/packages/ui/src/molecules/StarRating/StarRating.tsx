@@ -135,3 +135,5 @@ const StarRatingComponent = forwardRef<TamaguiElement, StarRatingProps>(
 StarRatingComponent.displayName = 'StarRating'
 
 export const StarRating = withStaticProperties(StarRatingComponent, {})
+
+export type StarRatingComponentProps = React.ComponentProps<typeof StarRatingComponent>

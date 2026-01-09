@@ -112,3 +112,5 @@ function withErrorBoundary<P extends object>(
 }
 
 export { ErrorBoundary as ComponentErrorBoundary, withErrorBoundary }
+
+export type ComponentWithErrorBoundaryProps = React.ComponentProps<typeof ComponentWithErrorBoundary>

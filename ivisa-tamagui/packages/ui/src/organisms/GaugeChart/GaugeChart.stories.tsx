@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { GaugeChart } from './GaugeChart'
 import { Text } from 'tamagui'
 
-const meta: Meta<typeof GaugeChart> = {
+
+const meta: Meta<React.ComponentProps<typeof GaugeChart>> = {
   title: 'Organismos/Gráficos/GaugeChart',
   component: GaugeChart,
   argTypes: {
@@ -17,7 +20,7 @@ const meta: Meta<typeof GaugeChart> = {
 }
 
 export default meta
-type Story = StoryObj<typeof GaugeChart>
+type Story = StoryObj<React.ComponentProps<typeof GaugeChart>>
 
 export const Padrao: Story = {
   args: {

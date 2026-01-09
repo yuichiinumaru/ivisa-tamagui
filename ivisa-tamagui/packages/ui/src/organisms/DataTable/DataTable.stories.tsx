@@ -1,4 +1,6 @@
 
+
+import type React from 'react';
 import {
   DataTable,
   DataTableProps,
@@ -8,13 +10,14 @@ import { createColumnHelper } from '@tanstack/react-table'
 import { MoreHorizontal } from '@tamagui/lucide-icons'
 import { Button } from '../../atoms/Button'
 import {
+
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '../../molecules/DropdownMenu'
 
-const meta: Meta<typeof DataTable> = {
+const meta: Meta<React.ComponentProps<typeof DataTable>> = {
   title: 'Organismos/DataTable',
   component: DataTable,
   parameters: {
@@ -23,7 +26,7 @@ const meta: Meta<typeof DataTable> = {
 }
 
 export default meta
-type Story = StoryObj<typeof DataTable>
+type Story = StoryObj<React.ComponentProps<typeof DataTable>>
 
 type Person = {
   id: string

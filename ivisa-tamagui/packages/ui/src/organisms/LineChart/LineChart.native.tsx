@@ -79,3 +79,7 @@ export const LineChart = ({
 
 // Alias
 export const TimeSeriesChart = LineChart
+
+export type LineChartProps = React.ComponentProps<typeof LineChart>
+
+export type TimeSeriesChartProps = React.ComponentProps<typeof TimeSeriesChart>

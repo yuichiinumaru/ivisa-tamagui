@@ -10,7 +10,7 @@ import {
 import { YStack, Text } from 'tamagui'
 import { Button } from '../atoms/Button'
 
-const meta: Meta<typeof NavigationMenu> = {
+const meta: Meta<React.ComponentProps<typeof NavigationMenu>> = {
   title: 'Moléculas/NavigationMenu',
   component: NavigationMenu,
   parameters: {
@@ -32,7 +32,7 @@ const meta: Meta<typeof NavigationMenu> = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<React.ComponentProps<typeof meta>>
 
 export const Padrao: Story = {
   args: {

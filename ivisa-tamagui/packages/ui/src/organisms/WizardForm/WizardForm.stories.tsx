@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { WizardForm } from './WizardForm'
 import { z } from 'zod'
 
-const meta: Meta<typeof WizardForm> = {
+const meta: Meta<React.ComponentProps<typeof WizardForm>> = {
   title: 'Organismos/WizardForm',
   component: WizardForm,
   parameters: {
@@ -12,7 +12,7 @@ const meta: Meta<typeof WizardForm> = {
 }
 
 export default meta
-type Story = StoryObj<typeof WizardForm>
+type Story = StoryObj<React.ComponentProps<typeof WizardForm>>
 
 const schemaStep1 = z.object({
   firstName: z.string().min(1, 'Primeiro nome é obrigatório'),

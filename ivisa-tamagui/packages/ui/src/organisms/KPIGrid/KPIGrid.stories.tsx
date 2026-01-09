@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { KPIGrid } from './KPIGrid'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof KPIGrid> = {
+
+const meta: Meta<React.ComponentProps<typeof KPIGrid>> = {
   title: 'Organismos/KPIGrid',
   component: KPIGrid,
   tags: ['autodocs'],
@@ -20,7 +23,7 @@ const meta: Meta<typeof KPIGrid> = {
 }
 
 export default meta
-type Story = StoryObj<typeof KPIGrid>
+type Story = StoryObj<React.ComponentProps<typeof KPIGrid>>
 
 const mockData = [
   { metric: { title: 'Receita Total', value: 'R$ 45.231,89', trend: 'up' as const } },

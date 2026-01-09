@@ -1,10 +1,13 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { StarRating } from './StarRating'
 import { YStack, Text, XStack } from 'tamagui'
 import { useState } from 'react'
 import { Heart } from '@tamagui/lucide-icons'
 
-const meta: Meta<typeof StarRating> = {
+
+const meta: Meta<React.ComponentProps<typeof StarRating>> = {
   title: 'Moléculas/StarRating',
   component: StarRating,
   tags: ['autodocs'],
@@ -31,7 +34,7 @@ const meta: Meta<typeof StarRating> = {
 
 export default meta
 
-type Story = StoryObj<typeof StarRating>
+type Story = StoryObj<React.ComponentProps<typeof StarRating>>
 
 export const Padrao: Story = {
   name: 'Padrão',

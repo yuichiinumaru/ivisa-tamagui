@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { ImageAnnotator } from './ImageAnnotator'
 
-const meta: Meta<typeof ImageAnnotator> = {
+
+const meta: Meta<React.ComponentProps<typeof ImageAnnotator>> = {
   title: 'Organismos/ImageAnnotator',
   component: ImageAnnotator,
   tags: ['autodocs'],
@@ -12,7 +15,7 @@ const meta: Meta<typeof ImageAnnotator> = {
 }
 
 export default meta
-type Story = StoryObj<typeof ImageAnnotator>
+type Story = StoryObj<React.ComponentProps<typeof ImageAnnotator>>
 
 export const Padrao: Story = {}
 

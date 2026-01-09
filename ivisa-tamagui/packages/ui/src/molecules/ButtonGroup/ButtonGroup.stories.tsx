@@ -1,10 +1,13 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { ButtonGroup } from './ButtonGroup'
 import { Button } from '../../atoms/Button'
 import { YStack } from 'tamagui'
 import { Heart } from '@tamagui/lucide-icons'
 
-const meta: Meta<typeof ButtonGroup> = {
+
+const meta: Meta<React.ComponentProps<typeof ButtonGroup>> = {
   title: 'Moléculas/Grupo de Botões',
   component: ButtonGroup,
   tags: ['autodocs'],
@@ -39,7 +42,7 @@ const meta: Meta<typeof ButtonGroup> = {
 }
 
 export default meta
-type Story = StoryObj<typeof ButtonGroup>
+type Story = StoryObj<React.ComponentProps<typeof ButtonGroup>>
 
 const renderButtons = (args) => (
   <ButtonGroup {...args}>

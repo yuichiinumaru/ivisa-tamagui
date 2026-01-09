@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { LocationStatus } from './LocationStatus'
 
-const meta: Meta<typeof LocationStatus> = {
+
+const meta: Meta<React.ComponentProps<typeof LocationStatus>> = {
   title: 'Organismos/LocationStatus',
   component: LocationStatus,
   tags: ['autodocs'],
@@ -14,7 +17,7 @@ const meta: Meta<typeof LocationStatus> = {
 }
 
 export default meta
-type Story = StoryObj<typeof LocationStatus>
+type Story = StoryObj<React.ComponentProps<typeof LocationStatus>>
 
 export const HighAccuracy: Story = {
   args: {

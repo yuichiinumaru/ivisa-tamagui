@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { userEvent, within } from '@storybook/test'
 import { Search } from '@tamagui/lucide-icons'
 import { YStack, Text } from 'tamagui'
 import { Input } from './Input'
 
-const meta: Meta<typeof Input> = {
+const meta: Meta<React.ComponentProps<typeof Input>> = {
   title: 'Átomos/Input',
   component: Input,
   tags: ['autodocs'],
@@ -32,7 +33,7 @@ const meta: Meta<typeof Input> = {
 
 export default meta
 
-type Story = StoryObj<typeof Input>
+type Story = StoryObj<React.ComponentProps<typeof Input>>
 
 export const Padrao: Story = {
   args: {

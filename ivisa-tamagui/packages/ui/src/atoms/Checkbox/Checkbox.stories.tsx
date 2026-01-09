@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { userEvent, within, expect } from '@storybook/test'
 import { Checkbox } from './Checkbox'
 import { YStack, XStack } from 'tamagui'
 import { Spinner } from '../Spinner'
 
-const meta: Meta<typeof Checkbox> = {
+const meta: Meta<React.ComponentProps<typeof Checkbox>> = {
   title: 'Átomos/Checkbox',
   component: Checkbox,
   tags: ['autodocs'],
@@ -58,7 +59,7 @@ const meta: Meta<typeof Checkbox> = {
 
 export default meta
 
-type Story = StoryObj<typeof Checkbox>
+type Story = StoryObj<React.ComponentProps<typeof Checkbox>>
 
 export const Padrao: Story = {
   name: "Padrão",

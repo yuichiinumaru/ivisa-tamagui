@@ -1,3 +1,4 @@
+import React from 'react'
 import { Text, View, XStack, YStack, styled } from 'tamagui'
 
 // --- Constants ---
@@ -70,3 +71,19 @@ export const HeaderActionsContainer = styled(XStack, {
   paddingBottom: '$3',
   justifyContent: 'flex-end',
 })
+
+export type TableContainerProps = React.ComponentProps<typeof TableContainer>
+
+export type TableHeaderProps = React.ComponentProps<typeof TableHeader>
+
+export type TableRowProps = React.ComponentProps<typeof TableRow>
+
+export type TableHeadTextProps = React.ComponentProps<typeof TableHeadText>
+
+export type TableCellTextProps = React.ComponentProps<typeof TableCellText>
+
+export type TableCellFrameProps = React.ComponentProps<typeof TableCellFrame>
+
+export type NoResultsCellProps = React.ComponentProps<typeof NoResultsCell>
+
+export type HeaderActionsContainerProps = React.ComponentProps<typeof HeaderActionsContainer>

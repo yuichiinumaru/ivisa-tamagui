@@ -1,11 +1,14 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { Label, Stack, Text } from 'tamagui';
 
 import { Switch } from './Switch';
 
+
 // # 1. Meta Configuration
-const meta: Meta<typeof Switch> = {
+const meta: Meta<React.ComponentProps<typeof Switch>> = {
   title: 'Átomos/Switch',
   component: Switch,
   tags: ['autodocs'],
@@ -44,7 +47,7 @@ const meta: Meta<typeof Switch> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Switch>;
+type Story = StoryObj<React.ComponentProps<typeof Switch>>;
 
 // # 2. Stories
 export const Padrao: Story = {

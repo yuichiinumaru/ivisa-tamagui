@@ -4,7 +4,7 @@ import { YStack, Text } from 'tamagui'
 
 import { OTPInput } from './OTPInput'
 
-const meta: Meta<typeof OTPInput> = {
+const meta: Meta<React.ComponentProps<typeof OTPInput>> = {
   title: 'Moléculas/OTPInput',
   component: OTPInput,
   tags: ['autodocs'],
@@ -32,7 +32,7 @@ const meta: Meta<typeof OTPInput> = {
 
 export default meta
 
-type Story = StoryObj<typeof OTPInput>
+type Story = StoryObj<React.ComponentProps<typeof OTPInput>>
 
 export const Padrao: Story = {
   render: args => {

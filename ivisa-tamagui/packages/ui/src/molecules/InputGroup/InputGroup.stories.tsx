@@ -1,3 +1,5 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { InputGroup } from './InputGroup'
 import { Input } from '../../atoms/Input'
@@ -5,7 +7,8 @@ import { Button } from '../../atoms/Button'
 import { Search } from '@tamagui/lucide-icons'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof InputGroup> = {
+
+const meta: Meta<React.ComponentProps<typeof InputGroup>> = {
   title: 'Moléculas/InputGroup',
   component: InputGroup,
   tags: ['autodocs'],
@@ -37,7 +40,7 @@ const meta: Meta<typeof InputGroup> = {
 }
 
 export default meta
-type Story = StoryObj<typeof InputGroup>
+type Story = StoryObj<React.ComponentProps<typeof InputGroup>>
 
 export const Padrao: Story = {
   args: {

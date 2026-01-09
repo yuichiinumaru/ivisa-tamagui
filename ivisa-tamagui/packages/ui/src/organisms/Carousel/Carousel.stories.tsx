@@ -1,3 +1,5 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Card, CardFooter, CardHeader } from '../../molecules/Card'
 import {
@@ -10,9 +12,10 @@ import {
 import { CAROUSEL_MOCK_DATA, CarouselCardData } from '../../mocks/carousel'
 import { Image, Paragraph, Text, View, YStack } from 'tamagui'
 
+
 // --- Storybook Setup ---------------------------------------------------------
 
-const meta: Meta<typeof Carousel> = {
+const meta: Meta<React.ComponentProps<typeof Carousel>> = {
   title: 'Organismos/Carousel',
   component: Carousel,
   tags: ['autodocs'],
@@ -29,7 +32,7 @@ const meta: Meta<typeof Carousel> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Carousel>
+type Story = StoryObj<React.ComponentProps<typeof Carousel>>
 
 // --- Helper Components -------------------------------------------------------
 
@@ -157,3 +160,5 @@ export const Vertical: Story = {
     </View>
   ),
 }
+
+export type CarouselCardProps = React.ComponentProps<typeof CarouselCard>

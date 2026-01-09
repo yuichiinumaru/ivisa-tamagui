@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Maps, GeoJSON } from './Maps'
 
-const meta: Meta<typeof Maps> = {
+
+const meta: Meta<React.ComponentProps<typeof Maps>> = {
   title: 'Organismos/Gráficos/Maps',
   component: Maps,
   parameters: {
@@ -11,7 +14,7 @@ const meta: Meta<typeof Maps> = {
 
 export default meta
 
-type Story = StoryObj<typeof Maps>
+type Story = StoryObj<React.ComponentProps<typeof Maps>>
 
 // Simple Box Polygon
 const sampleData: GeoJSON = {

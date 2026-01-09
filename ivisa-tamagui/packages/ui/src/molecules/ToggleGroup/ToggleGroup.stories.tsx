@@ -1,9 +1,12 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { ToggleGroup } from './ToggleGroup'
 import { Text, YStack } from 'tamagui'
 import { AlignCenter, AlignLeft, AlignRight } from '@tamagui/lucide-icons'
 
-const meta: Meta<typeof ToggleGroup> = {
+
+const meta: Meta<React.ComponentProps<typeof ToggleGroup>> = {
   title: 'Moléculas/ToggleGroup',
   component: ToggleGroup,
   parameters: {
@@ -28,7 +31,7 @@ const meta: Meta<typeof ToggleGroup> = {
 
 export default meta
 
-type Story = StoryObj<typeof ToggleGroup>
+type Story = StoryObj<React.ComponentProps<typeof ToggleGroup>>
 
 const renderToggleGroup = (args) => (
   <ToggleGroup {...args}>

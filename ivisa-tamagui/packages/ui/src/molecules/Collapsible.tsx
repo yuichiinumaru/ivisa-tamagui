@@ -124,3 +124,11 @@ export const Collapsible = React.forwardRef<
     )
   }
 )
+
+export type CollapsibleRootProps = React.ComponentProps<typeof CollapsibleRoot>
+
+export type CollapsibleTriggerProps = React.ComponentProps<typeof CollapsibleTrigger>
+
+export type CollapsibleContentProps = React.ComponentProps<typeof CollapsibleContent>
+
+export type CollapsibleProps = React.ComponentProps<typeof Collapsible>

@@ -4,6 +4,7 @@
     "module": "esnext",
     "lib": ["dom", "es2017"],
     "jsx": "react-jsx",
+    "jsxImportSource": "tamagui",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -14,6 +15,7 @@
     "noEmit": true,
     "isolatedModules": true,
     "baseUrl": ".",
+    "types": ["tamagui", "jest", "@testing-library/jest-dom"],
     "paths": {
       "@ivisa/ui": ["packages/ui/src/index.ts"],
       "@ivisa/forms": ["packages/forms/src/index.ts"],

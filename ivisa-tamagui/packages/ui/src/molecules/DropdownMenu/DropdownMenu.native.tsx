@@ -146,3 +146,33 @@ export const DropdownMenuRadioItem = ({ children, ...props }: any) => {
         </Button>
     )
 }
+
+export type DropdownMenuProps = React.ComponentProps<typeof DropdownMenu>
+
+export type DropdownMenuTriggerProps = React.ComponentProps<typeof DropdownMenuTrigger>
+
+export type DropdownMenuGroupProps = React.ComponentProps<typeof DropdownMenuGroup>
+
+export type DropdownMenuPortalProps = React.ComponentProps<typeof DropdownMenuPortal>
+
+export type DropdownMenuSubProps = React.ComponentProps<typeof DropdownMenuSub>
+
+export type DropdownMenuRadioGroupProps = React.ComponentProps<typeof DropdownMenuRadioGroup>
+
+export type DropdownMenuContentProps = React.ComponentProps<typeof DropdownMenuContent>
+
+export type DropdownMenuItemProps = React.ComponentProps<typeof DropdownMenuItem>
+
+export type DropdownMenuLabelProps = React.ComponentProps<typeof DropdownMenuLabel>
+
+export type DropdownMenuSeparatorProps = React.ComponentProps<typeof DropdownMenuSeparator>
+
+export type DropdownMenuShortcutProps = React.ComponentProps<typeof DropdownMenuShortcut>
+
+export type DropdownMenuSubTriggerProps = React.ComponentProps<typeof DropdownMenuSubTrigger>
+
+export type DropdownMenuSubContentProps = React.ComponentProps<typeof DropdownMenuSubContent>
+
+export type DropdownMenuCheckboxItemProps = React.ComponentProps<typeof DropdownMenuCheckboxItem>
+
+export type DropdownMenuRadioItemProps = React.ComponentProps<typeof DropdownMenuRadioItem>

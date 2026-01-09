@@ -118,3 +118,5 @@ const RadialChartContent = ({
 
 export { RadialChartContent }
 export type { RadialChartContentProps }
+
+export type RadialChartContentProps = React.ComponentProps<typeof RadialChartContent>

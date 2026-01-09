@@ -219,3 +219,9 @@ export {
 }
 
 export type { SheetProps, SheetContentProps, SheetFooterProps }
+
+export type SheetComponentProps = React.ComponentProps<typeof SheetComponent>
+
+export type SheetContentProps = React.ComponentProps<typeof SheetContent>
+
+export type SheetFooterComponentProps = React.ComponentProps<typeof SheetFooterComponent>

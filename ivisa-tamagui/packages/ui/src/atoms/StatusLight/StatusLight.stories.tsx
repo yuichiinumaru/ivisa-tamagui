@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { StatusLight } from './StatusLight'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof StatusLight> = {
+const meta: Meta<React.ComponentProps<typeof StatusLight>> = {
   title: 'Átomos/StatusLight',
   component: StatusLight,
   parameters: {
@@ -12,7 +13,7 @@ const meta: Meta<typeof StatusLight> = {
 }
 
 export default meta
-type Story = StoryObj<typeof StatusLight>
+type Story = StoryObj<React.ComponentProps<typeof StatusLight>>
 
 export const Default: Story = {
   args: {

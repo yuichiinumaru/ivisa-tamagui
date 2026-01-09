@@ -1,3 +1,4 @@
+import React from 'react'
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { GetProps, styled, YStack, XStack } from 'tamagui'
 import { Skeleton } from '../atoms/Skeleton'
@@ -175,3 +176,5 @@ export {
   NavigationMenuViewport,
   IndicatorArrow,
 }
+
+export type NavigationMenuComponentProps = React.ComponentProps<typeof NavigationMenuComponent>

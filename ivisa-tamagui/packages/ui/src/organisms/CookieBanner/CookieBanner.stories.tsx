@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { CookieBanner } from './CookieBanner'
 
-const meta: Meta<typeof CookieBanner> = {
+
+const meta: Meta<React.ComponentProps<typeof CookieBanner>> = {
   title: 'Organismos/CookieBanner',
   component: CookieBanner,
   parameters: {
@@ -17,7 +20,7 @@ const meta: Meta<typeof CookieBanner> = {
 
 export default meta
 
-type Story = StoryObj<typeof CookieBanner>
+type Story = StoryObj<React.ComponentProps<typeof CookieBanner>>
 
 export const Padrao: Story = {
   args: {

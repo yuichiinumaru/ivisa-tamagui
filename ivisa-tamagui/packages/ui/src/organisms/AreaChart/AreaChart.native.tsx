@@ -105,3 +105,5 @@ export const AreaChart = ({
     </YStack>
   )
 }
+
+export type AreaChartProps = React.ComponentProps<typeof AreaChart>

@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import { Meta, StoryObj } from '@storybook/react'
 import { RichText } from './RichText'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof RichText> = {
+
+const meta: Meta<React.ComponentProps<typeof RichText>> = {
   title: 'Organismos/RichText',
   component: RichText,
   tags: ['autodocs'],
@@ -47,7 +50,7 @@ Editor de texto rico baseado em Tiptap. Ideal para entradas de texto longo com f
 
 export default meta
 
-type Story = StoryObj<typeof RichText>
+type Story = StoryObj<React.ComponentProps<typeof RichText>>
 
 export const Padrao: Story = {
   name: 'Padrão',

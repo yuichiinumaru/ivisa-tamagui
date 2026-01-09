@@ -236,3 +236,9 @@ export {
   CommandShortcut,
   CommandSeparator,
 }
+
+export type CommandDialogProps = React.ComponentProps<typeof CommandDialog>
+
+export type CommandSkeletonProps = React.ComponentProps<typeof CommandSkeleton>
+
+export type CommandErrorProps = React.ComponentProps<typeof CommandError>

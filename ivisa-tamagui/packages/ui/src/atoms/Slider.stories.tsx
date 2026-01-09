@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { userEvent, within } from '@storybook/test'
 import { expect } from '@storybook/test'
 import { Slider } from './Slider'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof Slider> = {
+const meta: Meta<React.ComponentProps<typeof Slider>> = {
   title: 'Átomos/Slider',
   component: Slider,
   tags: ['autodocs'],
@@ -43,7 +44,7 @@ const meta: Meta<typeof Slider> = {
 
 export default meta
 
-type Story = StoryObj<typeof Slider>
+type Story = StoryObj<React.ComponentProps<typeof Slider>>
 
 export const Padrao: Story = {
   name: 'Padrão',

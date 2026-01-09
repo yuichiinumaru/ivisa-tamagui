@@ -159,3 +159,7 @@ export const Avatar = Object.assign(AvatarRoot, {
   Fallback: AvatarFallbackText,
   Indicator: AvatarIndicatorFrame,
 })
+
+export type AvatarFallbackProps = React.ComponentProps<typeof AvatarFallback>
+
+export type AvatarFallbackTextProps = React.ComponentProps<typeof AvatarFallbackText>

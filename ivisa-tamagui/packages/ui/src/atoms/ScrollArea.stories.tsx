@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, within } from '@storybook/test'
 import { Text, YStack } from 'tamagui'
 import { ScrollArea } from './ScrollArea'
+
 
 const renderItems = (count: number, prefix: string) => (
   <>
@@ -15,7 +18,7 @@ const renderItems = (count: number, prefix: string) => (
   </>
 )
 
-const meta: Meta<typeof ScrollArea> = {
+const meta: Meta<React.ComponentProps<typeof ScrollArea>> = {
   title: 'Átomos/Área de Rolagem',
   component: ScrollArea,
   tags: ['autodocs'],
@@ -62,7 +65,7 @@ const meta: Meta<typeof ScrollArea> = {
 
 export default meta
 
-type Story = StoryObj<typeof ScrollArea>
+type Story = StoryObj<React.ComponentProps<typeof ScrollArea>>
 
 export const Padrao: Story = {
   name: 'Padrão (Vertical)',

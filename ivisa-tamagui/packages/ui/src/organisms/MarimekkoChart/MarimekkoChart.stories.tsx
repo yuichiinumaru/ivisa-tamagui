@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { MarimekkoChart } from './MarimekkoChart'
 
-const meta: Meta<typeof MarimekkoChart> = {
+
+const meta: Meta<React.ComponentProps<typeof MarimekkoChart>> = {
   title: 'Organismos/Gráficos/MarimekkoChart',
   component: MarimekkoChart,
   parameters: {
@@ -11,7 +14,7 @@ const meta: Meta<typeof MarimekkoChart> = {
 
 export default meta
 
-type Story = StoryObj<typeof MarimekkoChart>
+type Story = StoryObj<React.ComponentProps<typeof MarimekkoChart>>
 
 const sampleData = [
   { segment: 'Segment 1', marketShare: 40, growth: 10 },

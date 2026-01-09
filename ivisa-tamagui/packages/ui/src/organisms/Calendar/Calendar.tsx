@@ -22,3 +22,5 @@ export const Calendar = () => {
     </Card>
   )
 }
+
+export type CalendarProps = React.ComponentProps<typeof Calendar>

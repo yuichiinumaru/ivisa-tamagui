@@ -165,3 +165,5 @@ export const AuthScreen = ({
     </YStack>
   );
 };
+
+export type AuthScreenProps = React.ComponentProps<typeof AuthScreen>

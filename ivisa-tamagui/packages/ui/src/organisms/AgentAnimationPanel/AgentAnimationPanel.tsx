@@ -97,3 +97,5 @@ export const AgentAnimationPanel: React.FC<AgentAnimationPanelProps> = ({
     </Card>
   )
 }
+
+export type StatusIconProps = React.ComponentProps<typeof StatusIcon>

@@ -1,10 +1,13 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Empty } from './Empty'
 import { Button } from '../../atoms/Button'
 import { Ban, WifiOff } from '@tamagui/lucide-icons'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof Empty> = {
+
+const meta: Meta<React.ComponentProps<typeof Empty>> = {
   title: 'Moléculas/Empty',
   component: Empty,
   tags: ['autodocs'],
@@ -52,7 +55,7 @@ const meta: Meta<typeof Empty> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Empty>
+type Story = StoryObj<React.ComponentProps<typeof Empty>>
 
 export const Padrao: Story = {
   name: 'Padrão',

@@ -59,3 +59,5 @@ export const ButtonGroup = ({
     </ButtonGroupFrame>
   )
 }
+
+export type ButtonGroupProps = React.ComponentProps<typeof ButtonGroup>

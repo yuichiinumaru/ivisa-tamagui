@@ -104,3 +104,7 @@ const ItemComponent = ({ item, rightSlot, isLoading, ...props }: ItemProps) => {
 }
 
 export const Item = ItemComponent
+
+export type ItemProps = React.ComponentProps<typeof Item>
+
+export type ItemComponentProps = React.ComponentProps<typeof ItemComponent>

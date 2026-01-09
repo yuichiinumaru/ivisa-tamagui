@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { PDFPreview } from './PDFPreview'
 
-const meta: Meta<typeof PDFPreview> = {
+
+const meta: Meta<React.ComponentProps<typeof PDFPreview>> = {
   title: 'Organismos/PDFPreview',
   component: PDFPreview,
   tags: ['autodocs'],
@@ -13,7 +16,7 @@ const meta: Meta<typeof PDFPreview> = {
 }
 
 export default meta
-type Story = StoryObj<typeof PDFPreview>
+type Story = StoryObj<React.ComponentProps<typeof PDFPreview>>
 
 export const Padrao: Story = {}
 

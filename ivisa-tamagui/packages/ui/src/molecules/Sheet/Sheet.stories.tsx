@@ -1,3 +1,5 @@
+
+import type React from 'react';
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import {
@@ -14,7 +16,8 @@ import { Input } from '../../atoms/Input'
 import { Label } from '../../atoms/Label'
 import { YStack, XStack } from 'tamagui'
 
-const meta: Meta<typeof Sheet> = {
+
+const meta: Meta<React.ComponentProps<typeof Sheet>> = {
   title: 'Moléculas/Sheet',
   component: Sheet,
   parameters: {
@@ -44,7 +47,7 @@ Sheets são painéis deslizantes (geralmente laterais ou inferiores) usados para
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<React.ComponentProps<typeof meta>>
 
 const SheetStoryContent = () => (
   <>
@@ -189,3 +192,5 @@ export const AcoesCustomizadas: Story = {
     )
   },
 }
+
+export type SheetStoryContentProps = React.ComponentProps<typeof SheetStoryContent>

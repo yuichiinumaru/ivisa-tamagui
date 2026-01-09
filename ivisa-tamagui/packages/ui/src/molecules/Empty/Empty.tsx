@@ -136,3 +136,7 @@ export const Empty = ({
     </EmptyFrame>
   )
 }
+
+export type EmptyProps = React.ComponentProps<typeof Empty>
+
+export type EmptySkeletonProps = React.ComponentProps<typeof EmptySkeleton>

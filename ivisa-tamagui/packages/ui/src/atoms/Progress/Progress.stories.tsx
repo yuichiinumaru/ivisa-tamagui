@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { Progress, ProgressProps } from './Progress'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof Progress> = {
+const meta: Meta<React.ComponentProps<typeof Progress>> = {
   title: 'Átomos/Progress',
   component: Progress,
   tags: ['autodocs'],
@@ -47,7 +48,7 @@ const meta: Meta<typeof Progress> = {
 
 export default meta
 
-type Story = StoryObj<typeof Progress>
+type Story = StoryObj<React.ComponentProps<typeof Progress>>
 
 export const Padrao: Story = {}
 

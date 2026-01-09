@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { YStack } from 'tamagui'
 import { Input } from '../Input'
 import { Label } from './Label'
 
-const meta: Meta<typeof Label> = {
+const meta: Meta<React.ComponentProps<typeof Label>> = {
   title: 'Átomos/Label',
   component: Label,
   tags: ['autodocs'],
@@ -46,7 +47,7 @@ const meta: Meta<typeof Label> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Label>
+type Story = StoryObj<React.ComponentProps<typeof Label>>
 
 export const Padrao: Story = {
   name: 'Padrão',

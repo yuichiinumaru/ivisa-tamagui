@@ -368,3 +368,7 @@ const ContextMenuComponent = ({
 ContextMenuComponent.displayName = 'ContextMenu'
 
 export const ContextMenu = ContextMenuComponent
+
+export type ContextMenuProps = React.ComponentProps<typeof ContextMenu>
+
+export type ContextMenuComponentProps = React.ComponentProps<typeof ContextMenuComponent>

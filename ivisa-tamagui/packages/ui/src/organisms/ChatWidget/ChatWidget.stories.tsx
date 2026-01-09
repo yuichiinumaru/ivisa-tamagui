@@ -1,7 +1,10 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { ChatWidget, Message } from './ChatWidget'
 
-const meta: Meta<typeof ChatWidget> = {
+
+const meta: Meta<React.ComponentProps<typeof ChatWidget>> = {
   title: 'Organismos/ChatWidget',
   component: ChatWidget,
   parameters: {
@@ -15,7 +18,7 @@ const meta: Meta<typeof ChatWidget> = {
 
 export default meta
 
-type Story = StoryObj<typeof ChatWidget>
+type Story = StoryObj<React.ComponentProps<typeof ChatWidget>>
 
 const mockMessages: Message[] = [
     { id: '1', role: 'assistant', content: 'Olá! Como posso ajudar você hoje?', timestamp: new Date(Date.now() - 100000) },

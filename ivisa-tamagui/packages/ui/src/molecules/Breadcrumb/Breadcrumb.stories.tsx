@@ -24,7 +24,7 @@ const meta: Meta<BreadcrumbProps> = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<React.ComponentProps<typeof meta>>
 
 const itemsPadrao = [
   { label: 'Início', href: '#' },

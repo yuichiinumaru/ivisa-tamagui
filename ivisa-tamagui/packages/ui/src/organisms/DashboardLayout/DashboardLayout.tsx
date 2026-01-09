@@ -66,3 +66,5 @@ export const DashboardLayout = ({
 DashboardLayout.Header = DashboardHeader
 DashboardLayout.Sidebar = DashboardSidebar
 DashboardLayout.Main = DashboardMain
+
+export type DashboardLayoutProps = React.ComponentProps<typeof DashboardLayout>

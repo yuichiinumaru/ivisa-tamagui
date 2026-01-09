@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Table, TableColumn } from './Table'
 import { TableFooter, TableRow, TableCell } from './Table.parts'
 import { YStack, Text } from 'tamagui'
 import { Badge } from '../../atoms/Badge'
+
 
 // =================================================================================================
 // MOCKS
@@ -58,7 +61,7 @@ const columns: TableColumn<Invoice>[] = [
 // META
 // =================================================================================================
 
-const meta: Meta<typeof Table> = {
+const meta: Meta<React.ComponentProps<typeof Table>> = {
   title: 'Moléculas/Table',
   component: Table,
   tags: ['autodocs'],
@@ -72,7 +75,7 @@ const meta: Meta<typeof Table> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Table>
+type Story = StoryObj<React.ComponentProps<typeof Table>>
 
 // =================================================================================================
 // STORIES

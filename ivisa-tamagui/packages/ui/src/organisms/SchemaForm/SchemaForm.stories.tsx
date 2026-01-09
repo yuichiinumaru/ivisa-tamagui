@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { SchemaForm } from './SchemaForm'
 import { FieldSchema } from './types'
 
-const meta: Meta<typeof SchemaForm> = {
+
+const meta: Meta<React.ComponentProps<typeof SchemaForm>> = {
   title: 'Organismos/SchemaForm',
   component: SchemaForm,
   tags: ['autodocs'],
@@ -12,7 +15,7 @@ const meta: Meta<typeof SchemaForm> = {
 }
 
 export default meta
-type Story = StoryObj<typeof SchemaForm>
+type Story = StoryObj<React.ComponentProps<typeof SchemaForm>>
 
 const schema: FieldSchema<any>[] = [
   {

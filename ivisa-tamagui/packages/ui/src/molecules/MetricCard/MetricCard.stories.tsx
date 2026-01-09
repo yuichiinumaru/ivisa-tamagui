@@ -1,10 +1,13 @@
 
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { YStack } from 'tamagui'
 import { Button } from '../../atoms/Button'
 import { MetricCard } from './MetricCard'
 
-const meta: Meta<typeof MetricCard> = {
+
+const meta: Meta<React.ComponentProps<typeof MetricCard>> = {
   title: 'Moléculas/MetricCard',
   component: MetricCard,
   tags: ['autodocs'],
@@ -37,7 +40,7 @@ const meta: Meta<typeof MetricCard> = {
 }
 
 export default meta
-type Story = StoryObj<typeof MetricCard>
+type Story = StoryObj<React.ComponentProps<typeof MetricCard>>
 
 export const Playground: Story = {
   name: 'Brinquedo',

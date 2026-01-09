@@ -1,10 +1,13 @@
+
+import type React from 'react';
 import { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
 import { YStack } from 'tamagui'
 
 import { DatePicker, DatePickerProps } from './DatePicker'
 
-const meta: Meta<typeof DatePicker> = {
+
+const meta: Meta<React.ComponentProps<typeof DatePicker>> = {
   title: 'Moléculas/DatePicker',
   component: DatePicker,
   argTypes: {
@@ -49,7 +52,7 @@ const meta: Meta<typeof DatePicker> = {
 
 export default meta
 
-type Story = StoryObj<typeof DatePicker>
+type Story = StoryObj<React.ComponentProps<typeof DatePicker>>
 
 const DatePickerWithState = (props: DatePickerProps) => {
   const [date, setDate] = useState<Date | undefined>(new Date())
@@ -128,3 +131,5 @@ export const NarrowContainer: Story = {
     ),
   ],
 }
+
+export type DatePickerWithStateProps = React.ComponentProps<typeof DatePickerWithState>

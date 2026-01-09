@@ -1,10 +1,11 @@
 import { expect, userEvent, within } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { AspectRatio } from './AspectRatio'
 import { H4, Image, Paragraph, YStack } from 'tamagui'
 import { Card } from '../molecules/Card'
 
-const meta: Meta<typeof AspectRatio> = {
+const meta: Meta<React.ComponentProps<typeof AspectRatio>> = {
   title: 'Átomos/ProporcaoDaTela',
   component: AspectRatio,
   tags: ['autodocs'],
@@ -46,7 +47,7 @@ const meta: Meta<typeof AspectRatio> = {
 
 export default meta
 
-type Story = StoryObj<typeof AspectRatio>
+type Story = StoryObj<React.ComponentProps<typeof AspectRatio>>
 
 export const Padrao: Story = {
   args: {

@@ -151,3 +151,13 @@ export {
   DialogFooter,
   DialogContentComposite as DialogContent,
 }
+
+export type DialogProps = React.ComponentProps<typeof Dialog>
+
+export type DialogTriggerProps = React.ComponentProps<typeof DialogTrigger>
+
+export type DialogPortalProps = React.ComponentProps<typeof DialogPortal>
+
+export type DialogCloseProps = React.ComponentProps<typeof DialogClose>
+
+export type DialogContentCompositeProps = React.ComponentProps<typeof DialogContentComposite>

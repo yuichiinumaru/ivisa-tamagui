@@ -1,9 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import type React from 'react'
 import { userEvent, within } from '@storybook/test'
 
 import { Textarea } from './Textarea'
 
-const meta: Meta<typeof Textarea> = {
+const meta: Meta<React.ComponentProps<typeof Textarea>> = {
   title: 'Átomos/Textarea',
   component: Textarea,
   tags: ['autodocs'],
@@ -36,7 +37,7 @@ const meta: Meta<typeof Textarea> = {
 
 export default meta
 
-type Story = StoryObj<typeof Textarea>
+type Story = StoryObj<React.ComponentProps<typeof Textarea>>
 
 export const Padrao: Story = {
   args: {

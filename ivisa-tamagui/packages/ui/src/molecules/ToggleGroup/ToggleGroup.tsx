@@ -131,3 +131,7 @@ export const ToggleGroup = withStaticProperties(ToggleGroupRoot, {
 })
 
 export type { ToggleGroupProps }
+
+export type ToggleGroupProps = React.ComponentProps<typeof ToggleGroup>
+
+export type ToggleGroupRootProps = React.ComponentProps<typeof ToggleGroupRoot>

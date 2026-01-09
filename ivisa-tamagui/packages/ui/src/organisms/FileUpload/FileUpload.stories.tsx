@@ -1,8 +1,11 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { FileUpload } from './FileUpload'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof FileUpload> = {
+
+const meta: Meta<React.ComponentProps<typeof FileUpload>> = {
   title: 'Organismos/FileUpload',
   component: FileUpload,
   parameters: {
@@ -27,7 +30,7 @@ const meta: Meta<typeof FileUpload> = {
 
 export default meta
 
-type Story = StoryObj<typeof FileUpload>
+type Story = StoryObj<React.ComponentProps<typeof FileUpload>>
 
 export const GoldenPath: Story = {
   name: 'Padrão (Golden Path)',

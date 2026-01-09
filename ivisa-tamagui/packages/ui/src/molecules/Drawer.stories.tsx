@@ -1,3 +1,5 @@
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Drawer } from './Drawer'
 import { Button } from '../atoms/Button'
@@ -5,7 +7,8 @@ import { YStack, Text, Paragraph } from 'tamagui'
 import { Input } from '../atoms/Input'
 import { Label } from '../atoms/Label'
 
-const meta: Meta<typeof Drawer> = {
+
+const meta: Meta<React.ComponentProps<typeof Drawer>> = {
   title: 'Moléculas/Drawer',
   component: Drawer,
   parameters: {
@@ -40,7 +43,7 @@ const meta: Meta<typeof Drawer> = {
 
 export default meta
 
-type Story = StoryObj<typeof Drawer>
+type Story = StoryObj<React.ComponentProps<typeof Drawer>>
 
 export const Padrao: Story = {
   args: {

@@ -4,7 +4,7 @@ import { GeoMap } from './Map'
 import { YStack, Text, Circle } from 'tamagui'
 import { MapPin } from '@tamagui/lucide-icons'
 
-const meta: Meta<typeof GeoMap> = {
+const meta: Meta<React.ComponentProps<typeof GeoMap>> = {
   title: 'Organismos/Map',
   component: GeoMap,
   parameters: {
@@ -13,7 +13,7 @@ const meta: Meta<typeof GeoMap> = {
 }
 
 export default meta
-type Story = StoryObj<typeof GeoMap>
+type Story = StoryObj<React.ComponentProps<typeof GeoMap>>
 
 export const Default: Story = {
   args: {

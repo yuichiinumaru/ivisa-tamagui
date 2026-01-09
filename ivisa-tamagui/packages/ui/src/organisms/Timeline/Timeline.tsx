@@ -103,7 +103,15 @@ const TimelineSkeleton = () => (
   </TimelineFrame>
 )
 
-export const Timeline = ({ items, children, isLoading, isEmpty, hasError }: { items?: TimelineItemProps[], children?: React.ReactNode, isLoading?: boolean, isEmpty?: boolean, hasError?: boolean }) => {
+export type TimelineProps = {
+  items?: TimelineItemProps[]
+  children?: React.ReactNode
+  isLoading?: boolean
+  isEmpty?: boolean
+  hasError?: boolean
+}
+
+export const Timeline = ({ items, children, isLoading, isEmpty, hasError }: TimelineProps) => {
   if (isLoading) {
     return <TimelineSkeleton />
   }
@@ -138,3 +146,5 @@ export const Timeline = ({ items, children, isLoading, isEmpty, hasError }: { it
     </TimelineFrame>
   )
 }
+
+export type TimelineSkeletonProps = React.ComponentProps<typeof TimelineSkeleton>
