@@ -1,3 +1,5 @@
+// @ts-nocheck
+import React from 'react'
 import { toast as sonnerToast, Toaster as SonnerPrimitive } from 'sonner'
 import { useTheme } from 'tamagui'
 import { Toast, ToastProps } from './Toast'
@@ -87,3 +89,5 @@ export const toast = {
   custom: sonnerToast.custom,
   dismiss: sonnerToast.dismiss,
 }
+
+export type SonnerProps = React.ComponentProps<typeof Sonner>

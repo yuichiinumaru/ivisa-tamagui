@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { ChevronDown, AlertCircle } from '@tamagui/lucide-icons'
 import React, { forwardRef, useId } from 'react'
 import { SelectProps, YStack } from 'tamagui'

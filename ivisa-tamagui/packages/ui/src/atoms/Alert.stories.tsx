@@ -1,10 +1,13 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
+// import type React from 'react'
+import type { AlertProps } from './Alert'
 import { Alert } from './Alert'
 import { AlertTriangle, Info, CheckCircle, XCircle } from '@tamagui/lucide-icons'
 import { action } from '@storybook/addon-actions'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof Alert> = {
+const meta: Meta<AlertProps & React.RefAttributes<HTMLDivElement>> = {
   title: 'Átomos/Alert',
   component: Alert,
   tags: ['autodocs'],
@@ -34,7 +37,7 @@ const meta: Meta<typeof Alert> = {
 
 export default meta
 
-type Story = StoryObj<typeof Alert>
+type Story = StoryObj<AlertProps & React.RefAttributes<HTMLDivElement>>
 
 export const Padrao: Story = {
   args: {

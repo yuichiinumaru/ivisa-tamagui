@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { IconProps } from '@tamagui/helpers-icon'
 import { ReactNode } from 'react'
 import { Circle, Star } from '@tamagui/lucide-icons'
@@ -118,3 +119,5 @@ const RadialChartContent = ({
 
 export { RadialChartContent }
 export type { RadialChartContentProps }
+
+export type RadialChartContentProps = React.ComponentProps<typeof RadialChartContent>

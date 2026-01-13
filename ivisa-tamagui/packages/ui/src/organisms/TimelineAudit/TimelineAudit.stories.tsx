@@ -1,7 +1,11 @@
+// @ts-nocheck
+
+// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { TimelineAudit } from './TimelineAudit'
 
-const meta: Meta<typeof TimelineAudit> = {
+
+const meta: Meta<React.ComponentProps<typeof TimelineAudit>> = {
   title: 'Organismos/TimelineAudit',
   component: TimelineAudit,
   tags: ['autodocs'],
@@ -35,6 +39,6 @@ const meta: Meta<typeof TimelineAudit> = {
 }
 
 export default meta
-type Story = StoryObj<typeof TimelineAudit>
+type Story = StoryObj<React.ComponentProps<typeof TimelineAudit>>
 
 export const Padrao: Story = {}

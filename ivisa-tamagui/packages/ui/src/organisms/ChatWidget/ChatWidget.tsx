@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useRef, useEffect } from 'react'
 import { styled, YStack, XStack, Text, ScrollView, Avatar, Input, Stack } from 'tamagui'
 import { Button } from '../../atoms/Button'

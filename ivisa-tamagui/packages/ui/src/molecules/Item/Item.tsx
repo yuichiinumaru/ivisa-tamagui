@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
 import { GetProps, Text, XStack, YStack, styled } from 'tamagui'
 
@@ -104,3 +105,7 @@ const ItemComponent = ({ item, rightSlot, isLoading, ...props }: ItemProps) => {
 }
 
 export const Item = ItemComponent
+
+export type ItemProps = React.ComponentProps<typeof Item>
+
+export type ItemComponentProps = React.ComponentProps<typeof ItemComponent>

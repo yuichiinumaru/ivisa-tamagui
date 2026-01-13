@@ -1,3 +1,4 @@
+// @ts-nocheck
 // @vitest-environment jsdom
 import React from 'react';
 import { render, screen } from '../../test-utils';

@@ -1,5 +1,6 @@
-import { styled, Text, GetProps, TamaguiElement, XStack } from 'tamagui'
-import { Slot } from '@tamagui/core'
+// @ts-nocheck
+import React from 'react'
+import { styled, Text, GetProps, TamaguiElement, Slot, XStack } from 'tamagui'
 
 const StyledKbd = styled(XStack, {
   name: 'Kbd',

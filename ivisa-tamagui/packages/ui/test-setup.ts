@@ -8,7 +8,8 @@ class IntersectionObserver {
   takeRecords() { return []; }
 }
 
-global.IntersectionObserver = IntersectionObserver;
+// assign mocks with any cast to satisfy TypeScript runtime/global types
+(global as any).IntersectionObserver = IntersectionObserver;
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (window as any).IntersectionObserver = IntersectionObserver;

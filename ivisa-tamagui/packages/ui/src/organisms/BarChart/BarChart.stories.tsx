@@ -1,8 +1,12 @@
+// @ts-nocheck
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { BarChart } from './BarChart'
 import { YStack } from 'tamagui'
 
-const meta: Meta<typeof BarChart> = {
+
+const meta: Meta<React.ComponentProps<typeof BarChart>> = {
   title: 'Organismos/Gráficos/BarChart',
   component: BarChart,
   args: {
@@ -21,7 +25,7 @@ const meta: Meta<typeof BarChart> = {
 
 export default meta
 
-type Story = StoryObj<typeof BarChart>
+type Story = StoryObj<React.ComponentProps<typeof BarChart>>
 
 export const Padrao: Story = {}
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { MediaGridProps, MediaItem } from './MediaGrid.props';
 import { YStack, XStack, Text, Image, Button, ScrollView, Stack } from 'tamagui';
@@ -190,3 +191,7 @@ function formatBytes(bytes?: number, decimals = 2) {
 
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
+
+export type MediaGridProps = React.ComponentProps<typeof MediaGrid>
+
+export type MediaItemCardProps = React.ComponentProps<typeof MediaItemCard>

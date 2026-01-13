@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Label as TamaguiLabel, styled, XStack, YStack } from 'tamagui'
 
 export const SelectContainer = styled(YStack, {

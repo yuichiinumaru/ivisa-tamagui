@@ -1,8 +1,12 @@
+// @ts-nocheck
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { DashboardLayout } from './DashboardLayout'
 import { Text, YStack, H3 } from 'tamagui'
 
-const meta: Meta<typeof DashboardLayout> = {
+
+const meta: Meta<React.ComponentProps<typeof DashboardLayout>> = {
   title: 'Organismos/DashboardLayout',
   component: DashboardLayout,
   parameters: {
@@ -18,7 +22,7 @@ const meta: Meta<typeof DashboardLayout> = {
 
 export default meta
 
-type Story = StoryObj<typeof DashboardLayout>
+type Story = StoryObj<React.ComponentProps<typeof DashboardLayout>>
 
 export const Padrao: Story = {
   render: () => (

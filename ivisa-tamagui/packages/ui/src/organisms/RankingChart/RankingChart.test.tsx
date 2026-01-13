@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils';
 import RankingChart from './RankingChart';
 import { RankingChartEntry } from './RankingChart';

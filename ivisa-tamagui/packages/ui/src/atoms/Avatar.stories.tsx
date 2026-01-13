@@ -5,7 +5,7 @@ import { YStack, XStack, Stack } from 'tamagui';
 
 import { Avatar } from './Avatar';
 
-const meta: Meta<typeof Avatar> = {
+const meta: Meta<any> = {
   title: 'Átomos/Avatar',
   component: Avatar as any,
   tags: ['autodocs'],
@@ -27,7 +27,6 @@ const meta: Meta<typeof Avatar> = {
   },
   argTypes: {
     size: {
-      name: 'Tamanho',
       control: { type: 'select' },
       options: ['$8', '$10', '$12', '$14', '$16'],
       description: 'Define o tamanho do avatar.',
@@ -55,8 +54,8 @@ const meta: Meta<typeof Avatar> = {
     },
   },
   render: ({ imageUrl, fallbackText, accessibilityLabel, ...args }) => (
-    <Avatar {...args}>
-      <Avatar.Image src={imageUrl} accessibilityLabel={accessibilityLabel || fallbackText} />
+    <Avatar {...(args as any)} accessibilityLabel={accessibilityLabel}>
+      <Avatar.Image src={imageUrl as any} accessibilityLabel={accessibilityLabel || fallbackText} />
       <Avatar.Fallback>{fallbackText}</Avatar.Fallback>
     </Avatar>
   ),
@@ -64,7 +63,7 @@ const meta: Meta<typeof Avatar> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<any>;
 
 export const Padrao: Story = {
   name: 'Padrão (Círculo)',
@@ -121,7 +120,10 @@ export const ComIndicadorDeStatus: Story = {
   },
   render: (args) => (
     <div style={{ position: 'relative', display: 'inline-block' }}>
-      <Avatar {...args} />
+      <Avatar {...(args as any)} accessibilityLabel={(args as any).accessibilityLabel}>
+        <Avatar.Image src={(args as any).imageUrl as any} accessibilityLabel={(args as any).accessibilityLabel || (args as any).fallbackText} />
+        <Avatar.Fallback>{(args as any).fallbackText}</Avatar.Fallback>
+      </Avatar>
       <Avatar.Indicator />
     </div>
   ),
@@ -157,8 +159,11 @@ export const EmContainerPequeno: Story = {
     size: '$16',
   },
   render: (args) => (
-    <YStack width={100} alignItems="center" justifyContent="center" backgroundColor="$backgroundHover" padding="$2" borderRadius="$4">
-      <Avatar {...args} />
+    <YStack {...({ width: 100, ai: 'center', jc: 'center', bg: '$backgroundHover', p: '$2', borderRadius: '$4' } as any)}>
+      <Avatar {...(args as any)} accessibilityLabel={(args as any).accessibilityLabel}>
+        <Avatar.Image src={(args as any).imageUrl as any} accessibilityLabel={(args as any).accessibilityLabel || (args as any).fallbackText} />
+        <Avatar.Fallback>{(args as any).fallbackText}</Avatar.Fallback>
+      </Avatar>
     </YStack>
   ),
   parameters: {

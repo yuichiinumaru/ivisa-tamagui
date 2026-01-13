@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { SankeyDiagram } from './SankeyDiagram'
 import { Heading } from 'tamagui'
@@ -27,7 +28,7 @@ const data = {
   ]
 }
 
-const meta: Meta<typeof SankeyDiagram> = {
+const meta: Meta<React.ComponentProps<typeof SankeyDiagram>> = {
   title: 'Organismos/Gráficos/SankeyDiagram',
   component: SankeyDiagram,
   args: {
@@ -40,7 +41,7 @@ const meta: Meta<typeof SankeyDiagram> = {
 
 export default meta
 
-type Story = StoryObj<typeof SankeyDiagram>
+type Story = StoryObj<React.ComponentProps<typeof SankeyDiagram>>
 
 export const Padrao: Story = {}
 

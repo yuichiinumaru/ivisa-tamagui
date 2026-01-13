@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   Menubar,
@@ -14,7 +15,7 @@ import {
 import React from 'react'
 import { Button } from '../../atoms/Button'
 
-const meta: Meta<typeof Menubar> = {
+const meta: Meta<React.ComponentProps<typeof Menubar>> = {
   title: 'Moléculas/Menubar',
   component: Menubar,
   parameters: {
@@ -24,7 +25,7 @@ const meta: Meta<typeof Menubar> = {
 
 export default meta
 
-type Story = StoryObj<typeof Menubar>
+type Story = StoryObj<React.ComponentProps<typeof Menubar>>
 
 export const Padrao: Story = {
   render: (args) => (

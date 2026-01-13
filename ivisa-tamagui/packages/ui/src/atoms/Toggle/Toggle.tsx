@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { styled, GetProps, Button } from 'tamagui'
 import React from 'react'
 

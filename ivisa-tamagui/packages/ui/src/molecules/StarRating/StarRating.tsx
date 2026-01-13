@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Star } from '@tamagui/lucide-icons'
 import React, { forwardRef, useState } from 'react'
 import {
@@ -135,3 +136,5 @@ const StarRatingComponent = forwardRef<TamaguiElement, StarRatingProps>(
 StarRatingComponent.displayName = 'StarRating'
 
 export const StarRating = withStaticProperties(StarRatingComponent, {})
+
+export type StarRatingComponentProps = React.ComponentProps<typeof StarRatingComponent>

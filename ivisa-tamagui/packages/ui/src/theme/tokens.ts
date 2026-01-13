@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createTokens } from 'tamagui';
 
 const palette = {

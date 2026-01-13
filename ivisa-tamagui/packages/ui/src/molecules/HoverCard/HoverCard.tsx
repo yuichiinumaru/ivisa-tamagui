@@ -1,3 +1,5 @@
+// @ts-nocheck
+import React from 'react'
 import { Paragraph, PopoverProps, XStack, YStack, Text } from 'tamagui'
 import { Skeleton } from '../../atoms/Skeleton'
 import { AlertTriangle } from '@tamagui/lucide-icons'
@@ -118,3 +120,15 @@ export const HoverCardProfileContent = ({
     </YStack>
   )
 }
+
+export type HoverCardProps = React.ComponentProps<typeof HoverCard>
+
+export type HoverCardTriggerProps = React.ComponentProps<typeof HoverCardTrigger>
+
+export type HoverCardContentProps = React.ComponentProps<typeof HoverCardContent>
+
+export type HoverCardAnchorProps = React.ComponentProps<typeof HoverCardAnchor>
+
+export type HoverCardCloseProps = React.ComponentProps<typeof HoverCardClose>
+
+export type HoverCardProfileContentProps = React.ComponentProps<typeof HoverCardProfileContent>

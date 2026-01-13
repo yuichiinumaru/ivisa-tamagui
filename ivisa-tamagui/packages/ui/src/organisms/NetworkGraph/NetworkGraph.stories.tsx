@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { NetworkGraph } from './NetworkGraph'
 import { Heading } from 'tamagui'
@@ -20,7 +21,7 @@ const data = {
   ]
 }
 
-const meta: Meta<typeof NetworkGraph> = {
+const meta: Meta<React.ComponentProps<typeof NetworkGraph>> = {
   title: 'Organismos/NetworkGraph',
   component: NetworkGraph,
   args: {
@@ -33,7 +34,7 @@ const meta: Meta<typeof NetworkGraph> = {
 
 export default meta
 
-type Story = StoryObj<typeof NetworkGraph>
+type Story = StoryObj<React.ComponentProps<typeof NetworkGraph>>
 
 export const Padrao: Story = {}
 

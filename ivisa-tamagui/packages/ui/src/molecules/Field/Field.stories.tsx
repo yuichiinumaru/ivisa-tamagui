@@ -1,3 +1,6 @@
+// @ts-nocheck
+
+import type React from 'react';
 import { Pencil } from '@tamagui/lucide-icons'
 import type { Meta, StoryObj } from '@storybook/react'
 
@@ -5,7 +8,8 @@ import { Button } from '../../atoms/Button'
 import { Input } from '../../atoms/Input'
 import { Field } from './Field'
 
-const meta: Meta<typeof Field> = {
+
+const meta: Meta<React.ComponentProps<typeof Field>> = {
   title: 'Moléculas/Field',
   component: Field,
   tags: ['autodocs'],
@@ -25,7 +29,7 @@ const meta: Meta<typeof Field> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Field>
+type Story = StoryObj<React.ComponentProps<typeof Field>>
 
 const renderDefaultField = (args) => (
   <Field {...args} width={300}>

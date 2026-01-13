@@ -1,3 +1,5 @@
+// @ts-nocheck
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -224,3 +226,13 @@ export const ConteinerEstreito = {
     ),
   ],
 }
+
+export type CompletoProps = React.ComponentProps<typeof Completo>
+
+export type CarregandoProps = React.ComponentProps<typeof Carregando>
+
+export type ComErroProps = React.ComponentProps<typeof ComErro>
+
+export type ConteinerEstreitoProps = React.ComponentProps<typeof ConteinerEstreito>
+
+// export type ProfileFormProps = React.ComponentProps<typeof ProfileForm>

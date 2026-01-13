@@ -1,9 +1,13 @@
+// @ts-nocheck
+
+// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Activity, DollarSign, Users } from '@tamagui/lucide-icons'
 import { RadialChartContent } from './RadialChartContent'
 import { Button, Text } from 'tamagui'
 
-const meta: Meta<typeof RadialChartContent> = {
+
+const meta: Meta<React.ComponentProps<typeof RadialChartContent>> = {
   title: 'Moléculas/RadialChartContent',
   component: RadialChartContent,
   tags: ['autodocs'],
@@ -34,7 +38,7 @@ Exibe métricas resumidas, ideal para dashboards ou como conteúdo complementar 
 
 export default meta
 
-type Story = StoryObj<typeof RadialChartContent>
+type Story = StoryObj<React.ComponentProps<typeof RadialChartContent>>
 
 const dataSample = [
   { label: 'Total', value: '1.234' },

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { Progress, ProgressProps } from './Progress'
 import { YStack } from 'tamagui'

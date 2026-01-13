@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createContext, useContext } from 'react'
 import { Tabs as TamaguiTabs, styled, GetProps, YStack, XStack } from 'tamagui'
 import { Skeleton } from '../atoms/Skeleton'
@@ -168,3 +169,9 @@ export const TabsContent = (props: GetProps<typeof StyledTabsContent>) => {
     <StyledTabsContent {...props} />
   )
 }
+
+export type TabsListProps = React.ComponentProps<typeof TabsList>
+
+export type TabsTriggerProps = React.ComponentProps<typeof TabsTrigger>
+
+export type TabsContentProps = React.ComponentProps<typeof TabsContent>

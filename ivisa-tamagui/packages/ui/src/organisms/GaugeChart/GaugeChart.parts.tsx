@@ -1,3 +1,5 @@
+// @ts-nocheck
+import React from 'react'
 import { styled, YStack, Text } from 'tamagui'
 
 export const GaugeChartFrame = styled(YStack, {
@@ -28,3 +30,9 @@ export const GaugeChartValueText = styled(Text, {
   left: '50%',
   transform: [{ translateX: -50 }, { translateY: -50 }],
 })
+
+export type GaugeChartFrameProps = React.ComponentProps<typeof GaugeChartFrame>
+
+export type GaugeChartTitleProps = React.ComponentProps<typeof GaugeChartTitle>
+
+export type GaugeChartValueTextProps = React.ComponentProps<typeof GaugeChartValueText>

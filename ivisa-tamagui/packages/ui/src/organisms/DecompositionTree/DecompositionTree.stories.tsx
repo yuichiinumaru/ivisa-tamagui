@@ -1,7 +1,11 @@
+// @ts-nocheck
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { DecompositionTree, TreeNode } from './DecompositionTree'
 
-const meta: Meta<typeof DecompositionTree> = {
+
+const meta: Meta<React.ComponentProps<typeof DecompositionTree>> = {
   title: 'Organismos/Gráficos/DecompositionTree',
   component: DecompositionTree,
   parameters: {
@@ -11,7 +15,7 @@ const meta: Meta<typeof DecompositionTree> = {
 
 export default meta
 
-type Story = StoryObj<typeof DecompositionTree>
+type Story = StoryObj<React.ComponentProps<typeof DecompositionTree>>
 
 const sampleData: TreeNode = {
   id: 'root',

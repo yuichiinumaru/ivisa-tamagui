@@ -1,7 +1,11 @@
+// @ts-nocheck
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { AgentAnimationPanel } from './AgentAnimationPanel'
 
-const meta: Meta<typeof AgentAnimationPanel> = {
+
+const meta: Meta<React.ComponentProps<typeof AgentAnimationPanel>> = {
   title: 'Organismos/AgentAnimationPanel',
   component: AgentAnimationPanel,
   parameters: {
@@ -10,7 +14,7 @@ const meta: Meta<typeof AgentAnimationPanel> = {
 }
 
 export default meta
-type Story = StoryObj<typeof AgentAnimationPanel>
+type Story = StoryObj<React.ComponentProps<typeof AgentAnimationPanel>>
 
 const events = [
   {

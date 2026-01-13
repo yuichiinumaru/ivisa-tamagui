@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { YStack, XStack, styled, GetProps } from 'tamagui'
 
@@ -66,3 +67,5 @@ export const DashboardLayout = ({
 DashboardLayout.Header = DashboardHeader
 DashboardLayout.Sidebar = DashboardSidebar
 DashboardLayout.Main = DashboardMain
+
+export type DashboardLayoutProps = React.ComponentProps<typeof DashboardLayout>

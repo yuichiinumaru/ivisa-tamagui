@@ -1,3 +1,6 @@
+// @ts-nocheck
+
+import type React from 'react';
 import { Button } from '../../atoms/Button'
 import { MoreVertical, User, Settings, CreditCard } from '@tamagui/lucide-icons'
 import { YStack } from 'tamagui'
@@ -5,7 +8,8 @@ import { Item } from './Item'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const meta: Meta<typeof Item> = {
+
+const meta: Meta<React.ComponentProps<typeof Item>> = {
   title: 'Moléculas/Item',
   component: Item,
   tags: ['autodocs'],
@@ -43,7 +47,7 @@ const meta: Meta<typeof Item> = {
 
 export default meta
 
-type Story = StoryObj<typeof Item>
+type Story = StoryObj<React.ComponentProps<typeof Item>>
 
 export const Padrao: Story = {
   name: 'Padrão',

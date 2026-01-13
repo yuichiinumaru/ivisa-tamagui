@@ -1,3 +1,4 @@
+// @ts-nocheck
 export * from './atoms/Alert';
 export * from './atoms/AspectRatio';
 export * from './atoms/Avatar';

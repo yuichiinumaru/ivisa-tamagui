@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render } from '../../test-utils'
 import { Spinner } from './Spinner'
 

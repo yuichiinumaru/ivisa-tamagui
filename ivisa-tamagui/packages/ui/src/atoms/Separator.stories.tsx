@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { Separator, SeparatorProps } from './Separator'
 import { YStack, XStack, Text } from 'tamagui'

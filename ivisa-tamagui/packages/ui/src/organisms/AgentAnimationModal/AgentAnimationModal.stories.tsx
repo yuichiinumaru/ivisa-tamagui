@@ -1,9 +1,13 @@
+// @ts-nocheck
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { AgentAnimationModal } from './AgentAnimationModal'
 import { Button } from '../../atoms/Button'
 import { useArgs } from '@storybook/preview-api'
 
-const meta: Meta<typeof AgentAnimationModal> = {
+
+const meta: Meta<React.ComponentProps<typeof AgentAnimationModal>> = {
   title: 'Organismos/AgentAnimationModal',
   component: AgentAnimationModal,
   parameters: {
@@ -12,7 +16,7 @@ const meta: Meta<typeof AgentAnimationModal> = {
 }
 
 export default meta
-type Story = StoryObj<typeof AgentAnimationModal>
+type Story = StoryObj<React.ComponentProps<typeof AgentAnimationModal>>
 
 const events = [
   {
@@ -57,3 +61,5 @@ export const Default: Story = {
     )
   },
 }
+
+export type RenderProps = React.ComponentProps<typeof Render>

@@ -1,7 +1,11 @@
+// @ts-nocheck
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { LineChart } from './LineChart'
 
-const meta: Meta<typeof LineChart> = {
+
+const meta: Meta<React.ComponentProps<typeof LineChart>> = {
   title: 'Organismos/Gráficos/LineChart',
   component: LineChart,
   argTypes: {
@@ -12,7 +16,7 @@ const meta: Meta<typeof LineChart> = {
 }
 
 export default meta
-type Story = StoryObj<typeof LineChart>
+type Story = StoryObj<React.ComponentProps<typeof LineChart>>
 
 const timeData = [
   { date: '2023-01', value: 100 },

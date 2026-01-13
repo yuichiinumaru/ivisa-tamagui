@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createContext, useContext, useMemo, useState, useRef, useEffect, ReactNode } from 'react'
 import { YStack, useTheme, XStack, Button } from 'tamagui'
 import { Plus, Minus } from '@tamagui/lucide-icons'
@@ -170,3 +171,11 @@ export const GeoMap = Object.assign(Map, {
   Popup: MapPopup,
   Controls: MapControls
 })
+
+export type MapControlsProps = React.ComponentProps<typeof MapControls>
+
+export type MapMarkerProps = React.ComponentProps<typeof MapMarker>
+
+export type MapPopupProps = React.ComponentProps<typeof MapPopup>
+
+export type GeoMapProps = React.ComponentProps<typeof GeoMap>

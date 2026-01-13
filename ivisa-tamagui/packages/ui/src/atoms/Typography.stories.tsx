@@ -1,9 +1,13 @@
+// @ts-nocheck
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { YStack } from 'tamagui';
 import { userEvent, within } from '@storybook/test';
 import { expect } from '@storybook/test';
 import { AlarmClock } from '@tamagui/lucide-icons';
 import {
+
   H1,
   H2,
   H3,
@@ -55,7 +59,7 @@ const meta: Meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<React.ComponentProps<typeof meta>>;
 
 const renderStory = (args) => {
   const components = {

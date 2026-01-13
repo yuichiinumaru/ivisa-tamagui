@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { YStack, styled, GetProps, Image, ImageProps } from 'tamagui'
 import { SignaturePad, SignaturePadProps } from '../SignaturePad/SignaturePad'

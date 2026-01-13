@@ -1,8 +1,12 @@
+// @ts-nocheck
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { AnimatedSegmentedControl } from './AnimatedSegmentedControl'
 import { useState } from 'react'
 
-const meta: Meta<typeof AnimatedSegmentedControl> = {
+
+const meta: Meta<React.ComponentProps<typeof AnimatedSegmentedControl>> = {
   title: 'Organismos/AnimatedSegmentedControl',
   component: AnimatedSegmentedControl,
   parameters: {
@@ -16,7 +20,7 @@ const meta: Meta<typeof AnimatedSegmentedControl> = {
 
 export default meta
 
-type Story = StoryObj<typeof AnimatedSegmentedControl>
+type Story = StoryObj<React.ComponentProps<typeof AnimatedSegmentedControl>>
 
 const items = [
     { value: 'all', label: 'Todos' },

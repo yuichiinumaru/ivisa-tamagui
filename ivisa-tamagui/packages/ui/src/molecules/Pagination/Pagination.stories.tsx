@@ -1,8 +1,12 @@
+// @ts-nocheck
+
+// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
 import { YStack } from 'tamagui'
 
 import { Pagination, PaginationProps } from './Pagination'
+
 
 const meta: Meta<PaginationProps> = {
   title: 'Moléculas/Paginação',
@@ -38,7 +42,7 @@ const meta: Meta<PaginationProps> = {
 
 export default meta
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<React.ComponentProps<typeof meta>>
 
 export const Padrao: Story = {
   name: 'Padrão',

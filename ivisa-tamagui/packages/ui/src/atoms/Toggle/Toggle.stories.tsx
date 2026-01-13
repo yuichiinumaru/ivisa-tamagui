@@ -5,7 +5,7 @@ import { userEvent, within, fn } from '@storybook/test';
 import { expect } from '@storybook/test';
 import { Stack } from 'tamagui';
 
-const meta: Meta<typeof Toggle> = {
+const meta: Meta<React.ComponentProps<typeof Toggle>> = {
   title: 'Átomos/Toggle',
   component: Toggle,
   tags: ['autodocs'],

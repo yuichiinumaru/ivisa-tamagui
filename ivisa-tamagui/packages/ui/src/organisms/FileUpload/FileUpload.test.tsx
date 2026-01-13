@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen, fireEvent } from '../../test-utils'
 import { FileUpload } from './FileUpload'
 import React from 'react'

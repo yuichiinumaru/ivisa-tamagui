@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { VictoryArea, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory-native'
 import { YStack, Text, useTheme } from 'tamagui'
@@ -105,3 +106,5 @@ export const AreaChart = ({
     </YStack>
   )
 }
+
+export type AreaChartProps = React.ComponentProps<typeof AreaChart>

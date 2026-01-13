@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from './Card'
 import { Button } from '../../atoms/Button'

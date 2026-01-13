@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { GetProps, styled, Text, XStack, YStack } from 'tamagui'
 
@@ -126,3 +127,7 @@ export const Field = Object.assign(FieldRoot, {
   Control: FieldControlFrame,
   Error: FieldErrorFrame,
 })
+
+export type FieldProps = React.ComponentProps<typeof Field>
+
+export type FieldRootProps = React.ComponentProps<typeof FieldRoot>

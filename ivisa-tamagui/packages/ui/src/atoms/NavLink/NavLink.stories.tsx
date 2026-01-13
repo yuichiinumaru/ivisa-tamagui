@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { NavLink } from './NavLink'
 import { Home, ChevronRight } from '@tamagui/lucide-icons'

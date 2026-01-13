@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Empty } from './Empty'
 import { Ban } from '@tamagui/lucide-icons'

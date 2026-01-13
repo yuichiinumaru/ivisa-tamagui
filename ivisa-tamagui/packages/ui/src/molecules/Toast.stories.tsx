@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Button } from '../atoms/Button'
@@ -198,3 +199,9 @@ export const CarregandoState: Story = {
     },
   },
 }
+
+export type ToastDemoProps = React.ComponentProps<typeof ToastDemo>
+
+export type ConstrainedToastDemoProps = React.ComponentProps<typeof ConstrainedToastDemo>
+
+export type PartialDataToastDemoProps = React.ComponentProps<typeof PartialDataToastDemo>

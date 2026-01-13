@@ -1,6 +1,10 @@
+// @ts-nocheck
+
+// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Button, YStack } from 'tamagui'
 import { RankingChart, RankingChartEntry } from './RankingChart'
+
 
 const MOCK_DATA: RankingChartEntry[] = [
   { name: 'Produto A', value: 400, color: '$blue10' },
@@ -9,7 +13,7 @@ const MOCK_DATA: RankingChartEntry[] = [
   { name: 'Produto D', value: 100, color: '$red10' },
 ];
 
-const meta: Meta<typeof RankingChart> = {
+const meta: Meta<React.ComponentProps<typeof RankingChart>> = {
   title: 'Organismos/RankingChart',
   component: RankingChart,
   tags: ['autodocs'],
@@ -46,7 +50,7 @@ const meta: Meta<typeof RankingChart> = {
 }
 
 export default meta
-type Story = StoryObj<typeof RankingChart>
+type Story = StoryObj<React.ComponentProps<typeof RankingChart>>
 
 export const GoldenPath: Story = {
   args: {

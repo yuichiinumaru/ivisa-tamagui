@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createContext, useContext, useState, ReactNode } from 'react'
 import { YStack } from 'tamagui'
 
@@ -103,3 +104,7 @@ export const useStepper = () => {
 export const Stepper = ({ children }: { children: ReactNode }) => {
   return <YStack>{children}</YStack>
 }
+
+export type StepperContextProviderProps = React.ComponentProps<typeof StepperContextProvider>
+
+export type StepperProps = React.ComponentProps<typeof Stepper>

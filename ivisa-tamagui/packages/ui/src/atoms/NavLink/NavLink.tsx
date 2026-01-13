@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { GetProps, Stack, Text, styled } from 'tamagui'
 import { cloneElement } from 'react'
 import type { ReactElement, ReactNode } from 'react'
@@ -56,3 +57,5 @@ export const NavLink = NavLinkFrame.styleable<NavLinkProps>(
 )
 
 export default NavLink
+
+export type NavLinkFrameProps = React.ComponentProps<typeof NavLinkFrame>

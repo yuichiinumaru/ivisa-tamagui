@@ -1,4 +1,7 @@
+// @ts-nocheck
 
+
+import type React from 'react';
 import { MoreVertical } from '@tamagui/lucide-icons'
 import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
@@ -7,7 +10,8 @@ import { Avatar } from '../../atoms/Avatar'
 import { Button } from '../../atoms/Button'
 import { HorizontalBarGroup } from './HorizontalBarGroup'
 
-const meta: Meta<typeof HorizontalBarGroup> = {
+
+const meta: Meta<React.ComponentProps<typeof HorizontalBarGroup>> = {
   title: 'Moléculas/HorizontalBarGroup',
   component: HorizontalBarGroup,
   tags: ['autodocs'],
@@ -66,7 +70,7 @@ const meta: Meta<typeof HorizontalBarGroup> = {
 
 export default meta
 
-type Story = StoryObj<typeof HorizontalBarGroup>
+type Story = StoryObj<React.ComponentProps<typeof HorizontalBarGroup>>
 
 const defaultArgs = {
   title: 'Título Principal do Item',

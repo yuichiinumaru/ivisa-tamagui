@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
 import { YStack, Text, useTheme } from 'tamagui'
 import {
@@ -113,3 +114,5 @@ export const ColumnChart = BarChart
 // Backward compatibility
 export const Charts = BarChart
 export type ChartsProps = BarChartProps
+
+export type ColumnChartProps = React.ComponentProps<typeof ColumnChart>

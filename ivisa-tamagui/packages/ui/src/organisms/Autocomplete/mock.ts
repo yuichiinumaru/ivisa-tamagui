@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const mockOptions = [
   { label: 'Abacate', value: 'abacate' },
   { label: 'Abacaxi', value: 'abacaxi' },

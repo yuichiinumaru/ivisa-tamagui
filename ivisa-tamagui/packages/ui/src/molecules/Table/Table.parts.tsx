@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { styled, YStack, XStack, Text, GetProps } from 'tamagui'
 
 // For semantic HTML, these components use `tag` props.

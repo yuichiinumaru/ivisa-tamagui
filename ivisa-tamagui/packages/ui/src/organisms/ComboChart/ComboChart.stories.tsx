@@ -1,8 +1,12 @@
+// @ts-nocheck
+
+import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { ComboChart } from './ComboChart'
 import { VictoryBar, VictoryLine } from 'victory'
 
-const meta: Meta<typeof ComboChart> = {
+
+const meta: Meta<React.ComponentProps<typeof ComboChart>> = {
   title: 'Organismos/Gráficos/ComboChart',
   component: ComboChart,
   argTypes: {
@@ -12,7 +16,7 @@ const meta: Meta<typeof ComboChart> = {
 }
 
 export default meta
-type Story = StoryObj<typeof ComboChart>
+type Story = StoryObj<React.ComponentProps<typeof ComboChart>>
 
 const dataBar = [
   { x: 'A', y: 10 },
