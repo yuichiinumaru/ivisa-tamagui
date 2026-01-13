@@ -5,6 +5,8 @@ import { Spinner } from '../Spinner'
 
 const StyledButton = styled(View, {
   name: 'Button',
+  tag: 'button',
+  role: 'button',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',

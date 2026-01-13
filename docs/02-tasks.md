@@ -10,9 +10,10 @@
 ## 🌊 Wave 3: Organism Expansion (Product)
 **Goal:** High-fidelity components for real apps.
 
-- [ ] **Timeline:** Fix SVG transform errors. `JULES`
-- [ ] **Form:** Fix z-index clipping of internal popovers. `JULES`
-- [x] **AgentAnimations:** Create `AgentAnimationPanel` and `AgentAnimationModal` for visualizing agent events. `JULES`
+- [x] **Timeline:** Fix SVG transform errors. `JULES`
+- [x] **Form:** Fix z-index clipping of internal popovers. `JULES`
+- [x] **WaterfallChart:** Create missing stories. `JULES`
+- [x] **Map:** Fix native mock ref error. `JULES`
 
 ---
 
@@ -36,17 +37,44 @@
 
 ---
 
-## 🚀 Wave 6: The AI Backend (MCP)
-**Goal:** "The Component Foundry" - Serve components to Agents.
+## 🚀 Wave 6: The AI Backend & MCP Integration (The Component Foundry)
+**Goal:** Create a robust Model Context Protocol (MCP) server that acts as an intelligent librarian for the Design System.
+**Reference:** `docs/06-component-foundry-plan.md`
 
-- [ ] **MCP Server:** Python/FastAPI server to serve registry & docs. `PYTHON`
-- [ ] **Scaffolding Tool:** Agent tool to generate full page layouts. `MCP`
+### 🛠️ 6a – Component Registry Extraction (The Harvester)
+**Context:** Extract metadata (props, types, examples) into a machine-readable format.
+- [x] **Design Schema Definition:** Define JSON Schema for `registry.json`. `BACKEND`
+- [x] **AST Extraction Script:** Node.js script (ts-morph) to parse `packages/ui`. `NODE`
+- [x] **Storybook Scraper:** Extract "Gold Standard" usage examples from stories. `NODE`
+- [x] **Registry Build Pipeline:** `npm run build:registry` CI integration. `CI`
+
+### 🧠 6b – MCP Server Implementation (The Brain)
+**Context:** Serve the registry via MCP protocol using `fastapi-mcp`.
+- [x] **Server Initialization:** Initialize `ivisa-mcp-server` (Python/FastAPI). `PYTHON`
+- [ ] **Resource - Design Tokens:** `ivisa://tokens/all` (Colors, Spacing). `MCP`
+- [x] **Tool - Component Search:** `search_components` (Fuzzy search). `MCP`
+- [x] **Tool - Component Retrieval:** `get_component_source` (Code + Imports). `MCP`
+- [ ] **Tool - Icon Retrieval:** `search_icons` (Lucide/Phosphor). `MCP`
+
+### ⚡ 6c – Advanced Agent Capabilities (The Logic)
+**Context:** Intelligent scaffolding and validation.
+- [ ] **Template Scaffolding:** `scaffold_page` tool with standard layouts. `MCP`
+- [ ] **Validation Logic:** `validate_usage` tool for anti-pattern detection. `MCP`
+- [ ] **Context Awareness:** `ivisa://context/rules` resource for guidelines. `MCP`
+
+### 🚢 6d – Infrastructure & Connectivity
+**Context:** Deployment and IDE integration.
+- [ ] **Dockerization:** Dockerfile for FastAPI server with registry mount. `DEVOPS`
+- [ ] **MCP Proxy Setup:** Configure `mcp-proxy` for SSE support. `DEVOPS`
+- [ ] **Authentication Layer:** Basic API Key auth. `SECURITY`
+- [ ] **IDE Configuration Guide:** Write `docs/AI_AGENT_SETUP.md`. `DOC`
 
 ---
 
 ## 💎 Wave 7: Storybook Perfection (Carbon Copy)
 **Goal:** Elevate Storybook to World-Class status inspired by IBM Carbon.
 
+- [x] **Component Inventory:** Full verification blitz (Batches 1-8). `JULES`
 - [ ] **Skeleton Audit:** Ensure every data-fetching component has a Skeleton story. `JULES`
 - [ ] **Charts Skeleton:** Implement placeholder visuals for charts. `JULES`
 - [ ] **Breadcrumb:** Implement "Collapse to Dropdown" behavior. `JULES`

@@ -63,11 +63,8 @@ const AccordionContentFrame = styled(TamaguiAccordion.Content, {
     name: 'AccordionContent',
     overflow: 'hidden',
     paddingBottom: '$4',
-    animation: 'quick',
     opacity: 1,
     minHeight: 0,
-    enterStyle: { opacity: 0, height: 0 },
-    exitStyle: { opacity: 0, height: 0 },
 })
 
 type CustomAccordionItemProps = {
@@ -82,7 +79,8 @@ const AccordionItem = React.forwardRef<React.ElementRef<typeof AccordionItemFram
         if (React.isValidElement(child)) {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const type = child.type as any
-            // Safe check for displayName
+
+            // Safe check for AccordionContent
             if (type && type.displayName === 'AccordionContent') {
                 return React.cloneElement(child as React.ReactElement<AccordionContentProps>, { isLoading })
             }
@@ -107,7 +105,11 @@ const AccordionTrigger = React.forwardRef<React.ElementRef<typeof AccordionTrigg
                 <Paragraph flex={1} fontWeight="500" fontSize="$3" ellipse>
                     {children}
                 </Paragraph>
-                <Square animation="quick" rotate="0deg" $group-trigger-expanded={{ rotate: '180deg' }}>
+                {/* Fixed animation property to avoid interpolation errors on web */}
+                <Square
+                    rotate="0deg"
+                    $group-trigger-expanded={{ rotate: '180deg' }}
+                >
                     <ChevronDown size={16} />
                 </Square>
             </AccordionTriggerFrame>

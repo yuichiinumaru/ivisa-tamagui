@@ -1,11 +1,11 @@
 // @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
-import { Stack, Text } from 'tamagui'
+import { YStack, Text } from 'tamagui'
 import { Logo } from './Logo'
 
 const meta: Meta<typeof Logo> = {
   title: 'Átomos/Logo',
-  component: Logo,
+  component: Logo as any,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -54,7 +54,6 @@ type Story = StoryObj<typeof Logo>
 
 export const Padrao: Story = {
   name: 'Padrão',
-  name: 'Padrão',
   args: {
     variant: 'full',
     color: 'primary',
@@ -99,7 +98,7 @@ export const EmContainerPequeno: Story = {
   name: 'Em Container Pequeno',
   decorators: [
     (Story) => (
-      <Stack
+      <YStack
         width={120}
         padding="$3"
         borderRadius="$4"
@@ -109,7 +108,7 @@ export const EmContainerPequeno: Story = {
         justifyContent="center"
       >
         <Story />
-      </Stack>
+      </YStack>
     ),
   ],
   args: {
@@ -131,4 +130,28 @@ export const ComoLink: Story = {
     variant: 'full',
     color: 'primary',
   },
+}
+
+export const LogosOficiais: Story = {
+  name: 'Logos Oficiais PCRJ',
+  render: () => (
+    <YStack gap="$4" padding="$4">
+      <YStack gap="$2">
+        <Text fontWeight="bold">Horizontal - Brasão Gradiente</Text>
+        <img src="/logos/Logo_PCRJ_Horizontal_BrasaoGradiente.svg" alt="PCRJ Horizontal Gradiente" style={{ height: 60 }} />
+      </YStack>
+      <YStack gap="$2">
+        <Text fontWeight="bold">Horizontal - Azul</Text>
+        <img src="/logos/Logo_PCRJ_Horizontal_UmaCor-Azul.svg" alt="PCRJ Horizontal Azul" style={{ height: 60 }} />
+      </YStack>
+      <YStack gap="$2" backgroundColor="$slate900" padding="$2" borderRadius="$2">
+        <Text fontWeight="bold" color="white">Horizontal - Branco</Text>
+        <img src="/logos/Logo_PCRJ_Horizontal_UmaCor-Branco.svg" alt="PCRJ Horizontal Branco" style={{ height: 60 }} />
+      </YStack>
+      <YStack gap="$2">
+        <Text fontWeight="bold">Vertical - Brasão Gradiente</Text>
+        <img src="/logos/Logo_PCRJ_Vertical_BrasaoGradiente.svg" alt="PCRJ Vertical Gradiente" style={{ height: 100 }} />
+      </YStack>
+    </YStack>
+  ),
 }

@@ -2,7 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { NavLink } from './NavLink'
 import { Home, ChevronRight } from '@tamagui/lucide-icons'
-import { userEvent, within } from '@storybook/test'
+import { fn, userEvent, within } from '@storybook/test'
 import { expect } from '@storybook/test'
 
 const meta: Meta<typeof NavLink> = {

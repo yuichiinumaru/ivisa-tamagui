@@ -61,23 +61,48 @@ export type AvatarImageProps = GetProps<typeof TamaguiAvatar.Image> & {
 }
 
 const AvatarImageComponent = React.forwardRef<HTMLImageElement, AvatarImageProps>(
-  ({ accessibilityLabel, src, ...props }, ref) => {
+  ({ accessibilityLabel, src, onLoad, onError, style, ...props }, ref) => {
     const [isLoading, setIsLoading] = useState(true)
+    const imageRef = React.useRef<HTMLImageElement>(null)
+
+    React.useEffect(() => {
+      if (imageRef.current?.complete) {
+        setIsLoading(false)
+      }
+    }, [src])
+
+    const handleLoad = (e: any) => {
+      setIsLoading(false)
+      onLoad?.(e)
+    }
+
+    const handleError = (e: any) => {
+      setIsLoading(false)
+      onError?.(e)
+    }
 
     return (
-      <>
-        {isLoading && <Skeleton circular width="100%" height="100%" />}
-        <TamaguiAvatar.Image
-          ref={ref}
-          src={src}
-          {...props}
-          accessibilityLabel={accessibilityLabel}
-          onLoad={() => setIsLoading(false)}
-          onError={() => setIsLoading(false)}
-          data-testid="avatar-image"
-          style={{ display: isLoading ? 'none' : 'flex', width: '100%', height: '100%' }}
-        />
-      </>
+      <TamaguiAvatar.Image
+        ref={(node) => {
+          // @ts-ignore
+          imageRef.current = node
+          if (typeof ref === 'function') ref(node)
+          else if (ref) (ref as any).current = node
+        }}
+        src={src}
+        {...props}
+        accessibilityLabel={accessibilityLabel}
+        onLoad={handleLoad}
+        onError={handleError}
+        data-testid="avatar-image"
+        style={{
+          ...style,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: isLoading ? 0 : 1,
+        }}
+      />
     )
   }
 )
@@ -114,6 +139,7 @@ export type AvatarProps = GetProps<typeof AvatarFrame> & {
   accessibilityLabel?: string
   src?: string
   fallback?: React.ReactNode
+  children?: React.ReactNode
 }
 
 export const AvatarFallback = AvatarFallbackView
@@ -124,17 +150,17 @@ const AvatarRoot = React.forwardRef<HTMLSpanElement, AvatarProps>(
   ({ src, fallback, accessibilityLabel, children, ...props }, ref) => {
     // If children are provided, render them (Composition mode)
     if (children) {
-        return (
-            <AvatarFrame ref={ref} {...props} aria-label={accessibilityLabel}>
-                {children}
-            </AvatarFrame>
-        )
+      return (
+        <AvatarFrame ref={ref} {...props} aria-label={accessibilityLabel}>
+          {children}
+        </AvatarFrame>
+      )
     }
 
     // Otherwise use Facade mode (src + fallback props)
     return (
       <AvatarFrame ref={ref} {...props} aria-label={accessibilityLabel}>
-        <AvatarImageComponent src={src} accessibilityLabel={accessibilityLabel} />
+        <AvatarImageComponent src={src} />
         <AvatarFallbackView>
           {typeof fallback === 'string' ? <Text>{fallback}</Text> : fallback}
         </AvatarFallbackView>

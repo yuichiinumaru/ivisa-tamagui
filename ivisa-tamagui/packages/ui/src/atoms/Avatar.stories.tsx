@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { expect } from '@storybook/test';
-import { YStack } from 'tamagui';
+import { YStack, XStack, Stack } from 'tamagui';
 
 import { Avatar } from './Avatar';
 
 const meta: Meta<any> = {
   title: 'Átomos/Avatar',
-  component: Avatar,
+  component: Avatar as any,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -173,4 +173,24 @@ export const EmContainerPequeno: Story = {
       },
     },
   },
+};
+
+export const AvataresUsuarios: Story = {
+  name: 'Avatares de Usuários',
+  render: () => (
+    <XStack gap="$4" flexWrap="wrap">
+      <Avatar size="$12">
+        <Avatar.Image src="/avatars/avatar-1.png" />
+        <Avatar.Fallback>U1</Avatar.Fallback>
+      </Avatar>
+      <Avatar size="$12">
+        <Avatar.Image src="/avatars/avatar-2.png" />
+        <Avatar.Fallback>U2</Avatar.Fallback>
+      </Avatar>
+      <Avatar size="$12">
+        <Avatar.Image src="/avatars/avatar-3.png" />
+        <Avatar.Fallback>U3</Avatar.Fallback>
+      </Avatar>
+    </XStack>
+  ),
 };
