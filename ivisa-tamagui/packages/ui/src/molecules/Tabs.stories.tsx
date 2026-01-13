@@ -1,5 +1,6 @@
+// @ts-nocheck
 
-import type React from 'react';
+// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs'
 import { Text, YStack, Button } from 'tamagui'

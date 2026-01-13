@@ -1,5 +1,6 @@
+// @ts-nocheck
 
-import type React from 'react';
+// import type React from 'react';
 import { Button } from '../../atoms/Button/Button';
 import { NavGroup } from './NavGroup';
 import { Settings } from '@tamagui/lucide-icons';

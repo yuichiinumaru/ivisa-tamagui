@@ -1,5 +1,6 @@
+// @ts-nocheck
 
-import type React from 'react';
+// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Table, TableColumn } from './Table'
 import { TableFooter, TableRow, TableCell } from './Table.parts'

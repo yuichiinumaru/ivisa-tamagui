@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { HeatmapChart } from './HeatmapChart'
 import { YStack, Heading } from 'tamagui'

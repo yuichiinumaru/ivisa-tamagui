@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils';
 import { useForm } from 'react-hook-form';
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from './Form';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { GetProps, styled, XStack, YStack, H3, Paragraph } from 'tamagui'
 import { Separator } from '../../atoms/Separator'

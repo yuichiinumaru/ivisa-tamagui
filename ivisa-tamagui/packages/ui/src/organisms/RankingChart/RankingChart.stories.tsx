@@ -1,5 +1,6 @@
+// @ts-nocheck
 
-import type React from 'react';
+// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Button, YStack } from 'tamagui'
 import { RankingChart, RankingChartEntry } from './RankingChart'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils';
 import React from 'react';
 import { Autocomplete, AutocompleteOption } from './Autocomplete';

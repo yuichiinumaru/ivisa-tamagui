@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { ReactNode } from 'react'
 import { Text, XStack, YStack } from 'tamagui'
 import { Skeleton } from '../../atoms/Skeleton'

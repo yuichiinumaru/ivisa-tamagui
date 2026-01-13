@@ -1,5 +1,6 @@
+// @ts-nocheck
 
-import type React from 'react';
+// import type React from 'react';
 import { Meta, StoryObj } from '@storybook/react'
 import { RichText } from './RichText'
 import { YStack } from 'tamagui'

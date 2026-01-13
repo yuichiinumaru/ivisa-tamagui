@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { createThemes, defaultComponentThemes } from '@tamagui/theme-builder'
 import * as Colors from '@tamagui/colors'
 

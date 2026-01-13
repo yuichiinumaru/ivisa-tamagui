@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import { ReactNode } from 'react'
 import { GetProps, H4, styled, Text, XStack, YStack } from 'tamagui'

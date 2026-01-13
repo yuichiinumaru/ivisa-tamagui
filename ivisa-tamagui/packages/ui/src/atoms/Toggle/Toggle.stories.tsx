@@ -1,10 +1,7 @@
-
-import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Toggle, ToggleProps } from './Toggle';
 import { Bold, Italic, Loader } from '@tamagui/lucide-icons';
 import { userEvent, within, fn } from '@storybook/test';
-
 import { expect } from '@storybook/test';
 import { Stack } from 'tamagui';
 
@@ -55,7 +52,7 @@ const meta: Meta<React.ComponentProps<typeof Toggle>> = {
 
 export default meta;
 
-type Story = StoryObj<React.ComponentProps<typeof Toggle>>;
+type Story = StoryObj<typeof Toggle>;
 
 export const Padrao: Story = {
   name: 'Padrão',

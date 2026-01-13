@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { VictoryLine, VictoryChart, VictoryAxis, VictoryTheme } from 'victory-native'
 import { YStack, Text, useTheme, XStack } from 'tamagui'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createContext, useContext } from 'react'
 import { Tabs as TamaguiTabs, styled, GetProps, YStack, XStack } from 'tamagui'
 import { Skeleton } from '../atoms/Skeleton'

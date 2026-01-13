@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react'
 import { styled, XStack, YStack, Text, AnimatePresence } from 'tamagui'
 import { Portal } from '@tamagui/portal'

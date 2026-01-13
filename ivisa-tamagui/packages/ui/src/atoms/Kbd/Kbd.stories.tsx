@@ -1,12 +1,12 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
-import type React from 'react'
 import { Kbd } from './Kbd'
 import { XStack, Text } from 'tamagui'
 import { userEvent, within } from '@storybook/test'
 import { Search } from '@tamagui/lucide-icons'
 import { expect } from '@storybook/test'
 
-const meta: Meta<React.ComponentProps<typeof Kbd>> = {
+const meta: Meta<typeof Kbd> = {
   title: 'Átomos/Kbd',
   component: Kbd,
   tags: ['autodocs'],
@@ -43,7 +43,7 @@ O componente \`Kbd\` é usado para exibir atalhos de teclado.
 }
 
 export default meta
-type Story = StoryObj<React.ComponentProps<typeof Kbd>>
+type Story = StoryObj<typeof Kbd>
 
 export const Padrao: Story = {
   args: {

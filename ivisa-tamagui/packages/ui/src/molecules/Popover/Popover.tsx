@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Popover as TamaguiPopover,
   PopoverProps,

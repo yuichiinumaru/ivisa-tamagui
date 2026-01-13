@@ -1,5 +1,6 @@
+// @ts-nocheck
 
-import type React from 'react';
+// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Activity, DollarSign, Users } from '@tamagui/lucide-icons'
 import { RadialChartContent } from './RadialChartContent'

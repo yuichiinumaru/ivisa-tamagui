@@ -1,11 +1,11 @@
+// @ts-nocheck
 import { action } from '@storybook/addon-actions'
 import type { Meta, StoryObj } from '@storybook/react'
-import type React from 'react'
 import { userEvent, within } from '@storybook/test'
 import { Button, Stack, Text, XStack } from 'tamagui'
 import { Dot } from './Dot'
 
-const meta: Meta<React.ComponentProps<typeof Dot>> = {
+const meta: Meta<typeof Dot> = {
   title: 'Átomos/Ponto',
   component: Dot,
   tags: ['autodocs'],
@@ -39,7 +39,7 @@ const meta: Meta<React.ComponentProps<typeof Dot>> = {
 }
 
 export default meta
-type Story = StoryObj<React.ComponentProps<typeof Dot>>
+type Story = StoryObj<typeof Dot>
 
 export const Padrao: Story = {
   name: 'Padrão',

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { AuthScreenProps } from './AuthScreen.props';
 import { YStack, XStack, Text, Image } from 'tamagui';

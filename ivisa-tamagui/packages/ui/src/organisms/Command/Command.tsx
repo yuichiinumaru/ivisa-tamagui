@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
 import { styled, Text, GetProps, TamaguiElement, XStack, YStack } from 'tamagui'

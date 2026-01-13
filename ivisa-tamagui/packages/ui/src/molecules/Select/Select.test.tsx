@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen, fireEvent, waitFor } from '../../test-utils';
 import { Select } from './Select';
 

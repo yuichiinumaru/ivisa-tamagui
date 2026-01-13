@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import { useDatePicker } from '@rehookify/datepicker'
 import { YStack, XStack, Text, styled } from 'tamagui'

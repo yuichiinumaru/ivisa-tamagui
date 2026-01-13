@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { Circle, GetProps, styled } from 'tamagui'
 

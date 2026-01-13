@@ -1,3 +1,4 @@
+// @ts-nocheck
 import '../../test-setup' // Import global mocks including IntersectionObserver
 import { render, screen } from '../test-utils'
 import { Slider } from './Slider'

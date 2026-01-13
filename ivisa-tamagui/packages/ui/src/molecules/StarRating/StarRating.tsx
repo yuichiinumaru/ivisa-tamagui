@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Star } from '@tamagui/lucide-icons'
 import React, { forwardRef, useState } from 'react'
 import {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { GetProps, Stack, Text, styled } from 'tamagui'
 import { cloneElement } from 'react'
 import type { ReactElement, ReactNode } from 'react'

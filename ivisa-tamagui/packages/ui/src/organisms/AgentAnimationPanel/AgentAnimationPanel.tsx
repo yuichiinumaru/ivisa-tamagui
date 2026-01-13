@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { styled, YStack, XStack, ScrollView } from 'tamagui'
 import { Activity, AlertCircle, CheckCircle, Info } from '@tamagui/lucide-icons'

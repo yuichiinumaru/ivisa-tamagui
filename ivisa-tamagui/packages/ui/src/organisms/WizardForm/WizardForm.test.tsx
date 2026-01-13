@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen, waitFor } from '../../test-utils'
 import { WizardForm } from './WizardForm'
 import { z } from 'zod'

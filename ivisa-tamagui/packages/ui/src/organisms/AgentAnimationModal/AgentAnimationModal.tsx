@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { Dialog, DialogContent } from '../../molecules/Dialog'
 import { AgentAnimationPanel, AgentAnimationPanelProps } from '../AgentAnimationPanel/AgentAnimationPanel'

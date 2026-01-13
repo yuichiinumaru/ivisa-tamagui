@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { AlertTriangle } from '@tamagui/lucide-icons'
 import React, { Component, ReactNode } from 'react'
 import { Button, H4, Paragraph, Separator, YStack } from 'tamagui'

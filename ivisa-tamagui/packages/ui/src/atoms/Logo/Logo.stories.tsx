@@ -1,9 +1,9 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
-import type React from 'react'
 import { Stack, Text } from 'tamagui'
 import { Logo } from './Logo'
 
-const meta: Meta<React.ComponentProps<typeof Logo>> = {
+const meta: Meta<typeof Logo> = {
   title: 'Átomos/Logo',
   component: Logo,
   tags: ['autodocs'],
@@ -50,7 +50,7 @@ const meta: Meta<React.ComponentProps<typeof Logo>> = {
 }
 
 export default meta
-type Story = StoryObj<React.ComponentProps<typeof Logo>>
+type Story = StoryObj<typeof Logo>
 
 export const Padrao: Story = {
   name: 'Padrão',

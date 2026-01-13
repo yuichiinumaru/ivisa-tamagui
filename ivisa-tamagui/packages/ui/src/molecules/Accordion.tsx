@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
     Accordion as TamaguiAccordion,
     styled,

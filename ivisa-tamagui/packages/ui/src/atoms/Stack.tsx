@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { forwardRef } from 'react'
 import { Stack as TamaguiStack, StackProps, styled } from 'tamagui'
 

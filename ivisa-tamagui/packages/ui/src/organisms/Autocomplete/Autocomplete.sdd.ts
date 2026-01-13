@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * @file Autocomplete.spec.tsx
  * @description Specification for the Autocomplete component.

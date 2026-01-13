@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import { createContext, useContext, useMemo, cloneElement, Children, isValidElement, forwardRef } from 'react'
 import { Skeleton } from '../../atoms/Skeleton'

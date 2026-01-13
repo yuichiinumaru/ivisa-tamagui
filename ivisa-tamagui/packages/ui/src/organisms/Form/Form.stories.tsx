@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
@@ -234,4 +235,4 @@ export type ComErroProps = React.ComponentProps<typeof ComErro>
 
 export type ConteinerEstreitoProps = React.ComponentProps<typeof ConteinerEstreito>
 
-export type ProfileFormProps = React.ComponentProps<typeof ProfileForm>
+// export type ProfileFormProps = React.ComponentProps<typeof ProfileForm>

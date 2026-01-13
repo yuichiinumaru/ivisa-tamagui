@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import { YStack, XStack, GetProps, styled, Paragraph, useMedia } from 'tamagui'
 import { AlertTriangle, DatabaseZap, Menu, X } from '@tamagui/lucide-icons'

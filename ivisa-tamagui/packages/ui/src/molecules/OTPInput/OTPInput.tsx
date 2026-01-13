@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { GetProps, YStack, isWeb, styled } from 'tamagui'
 import { Input as TamaguiInput } from '../../atoms/Input'

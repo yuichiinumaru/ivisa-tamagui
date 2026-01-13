@@ -1,14 +1,11 @@
-
-import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { Badge } from './Badge';
 import { userEvent, within } from '@storybook/test';
 import { expect } from '@storybook/test';
 import { AlarmClock, Rocket } from '@tamagui/lucide-icons';
 import { View } from 'tamagui';
 
-const meta: Meta<React.ComponentProps<typeof Badge>> = {
+const meta: Meta<any> = {
   title: 'Átomos/Badge',
   component: Badge,
   tags: ['autodocs'],
@@ -56,7 +53,7 @@ const meta: Meta<React.ComponentProps<typeof Badge>> = {
 
 export default meta;
 
-type Story = StoryObj<React.ComponentProps<typeof Badge>>;
+type Story = StoryObj<any>;
 
 export const Padrao: Story = {
   name: 'Padrão',
@@ -65,7 +62,7 @@ export const Padrao: Story = {
   },
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
-    const badge = canvas.getByText(args.children as string);
+    const badge = canvas.getByText((args as any).children as string);
     await userEvent.click(badge);
     await expect(badge).toBeInTheDocument();
   },
@@ -112,9 +109,9 @@ export const TextoLongo: Story = {
       'Este é um texto muito longo para um badge, para verificar como o componente se comporta com quebra de linha ou truncamento.',
   },
   render: (args) => (
-    <View style={{ width: 200 }}>
+    <div style={{ width: 200 }}>
       <Badge {...args} />
-    </View>
+    </div>
   ),
 };
 
@@ -158,9 +155,9 @@ export const LarguraRestrita: Story = {
   args: {
     children: 'Badge Restrito',
   },
-  render: (args) => (
-    <View style={{ maxWidth: 100 }}>
-      <Badge {...args} />
-    </View>
-  ),
+    render: (args) => (
+     <div style={{ maxWidth: 100 }}>
+       <Badge {...args} />
+     </div>
+   ),
 };

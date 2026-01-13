@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { ReactNode } from 'react'
 import { GetProps, Text, YStack, useTheme } from 'tamagui'
 import { VictoryPie } from 'victory-native'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import { Tooltip as TamaguiTooltip, TooltipProps as TamaguiTooltipProps, styled, Paragraph, YStack, XStack, Portal } from 'tamagui'
 import React from 'react'

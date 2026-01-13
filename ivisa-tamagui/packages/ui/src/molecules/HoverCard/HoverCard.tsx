@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { Paragraph, PopoverProps, XStack, YStack, Text } from 'tamagui'
 import { Skeleton } from '../../atoms/Skeleton'

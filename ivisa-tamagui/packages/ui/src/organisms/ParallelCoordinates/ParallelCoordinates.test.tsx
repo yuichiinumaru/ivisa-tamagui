@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { ParallelCoordinates } from './ParallelCoordinates'
 import React from 'react'

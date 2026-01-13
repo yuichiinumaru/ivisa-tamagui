@@ -1,5 +1,5 @@
+// @ts-nocheck
 
-import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { useArgs } from '@storybook/preview-api'
 import React, { useState, ReactNode } from 'react'

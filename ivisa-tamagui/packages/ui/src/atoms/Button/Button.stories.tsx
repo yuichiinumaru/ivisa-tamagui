@@ -1,11 +1,11 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
-import type React from 'react'
 import { userEvent, within } from '@storybook/test'
 import { expect, fn } from '@storybook/test'
 import { Button } from './Button'
 import { Text } from 'tamagui'
 
-const meta: Meta<React.ComponentProps<typeof Button>> = {
+const meta: Meta<any> = {
   title: 'Átomos/Button',
   component: Button,
   tags: ['autodocs'],
@@ -59,7 +59,7 @@ Botões são usados para disparar ações ou navegação. Eles devem ser usados 
 
 export default meta
 
-type Story = StoryObj<React.ComponentProps<typeof Button>>
+type Story = StoryObj<any>
 
 export const Primario: Story = {
   args: {

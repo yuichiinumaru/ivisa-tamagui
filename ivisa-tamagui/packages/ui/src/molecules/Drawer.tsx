@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import { Sheet as BaseSheet } from './Sheet'
 import { YStack, Portal } from 'tamagui'

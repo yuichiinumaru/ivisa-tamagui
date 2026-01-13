@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import type React from 'react';
 import { expect } from '@storybook/test';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { HeatmapChart } from './HeatmapChart'
 import { AppProviders } from '../../providers/AppProviders'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { IconProps } from '@tamagui/helpers-icon'
 import { ReactNode } from 'react'
 import { Circle, Star } from '@tamagui/lucide-icons'

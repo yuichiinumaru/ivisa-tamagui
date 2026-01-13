@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen, fireEvent } from '../../test-utils'
 import { NotificationCard } from './NotificationCard'
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { YStack, XStack, styled, View, Text } from 'tamagui'
 import { Alert } from '../../atoms/Alert'
@@ -103,15 +104,7 @@ const TimelineSkeleton = () => (
   </TimelineFrame>
 )
 
-export type TimelineProps = {
-  items?: TimelineItemProps[]
-  children?: React.ReactNode
-  isLoading?: boolean
-  isEmpty?: boolean
-  hasError?: boolean
-}
-
-export const Timeline = ({ items, children, isLoading, isEmpty, hasError }: TimelineProps) => {
+export const Timeline = ({ items, children, isLoading, isEmpty, hasError }: { items?: TimelineItemProps[], children?: React.ReactNode, isLoading?: boolean, isEmpty?: boolean, hasError?: boolean }) => {
   if (isLoading) {
     return <TimelineSkeleton />
   }

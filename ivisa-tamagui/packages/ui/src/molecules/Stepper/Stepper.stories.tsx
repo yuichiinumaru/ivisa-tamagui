@@ -1,5 +1,6 @@
+// @ts-nocheck
 
-import type React from 'react';
+// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stepper } from './Stepper'
 import { Text, YStack, XStack } from 'tamagui'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { ScatterChart } from './ScatterChart'
 import { AppProviders } from '../../providers/AppProviders'

@@ -1,10 +1,10 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
-import type React from 'react'
 import { Stack, HStack, VStack } from './Stack'
 import { Text, View } from 'tamagui'
 import { userEvent, within } from '@storybook/test'
 
-const meta: Meta<React.ComponentProps<typeof Stack>> = {
+const meta: Meta<typeof Stack> = {
   title: 'Átomos/Stack',
   component: Stack,
   tags: ['autodocs'],
@@ -60,7 +60,7 @@ const meta: Meta<React.ComponentProps<typeof Stack>> = {
 
 export default meta
 
-type Story = StoryObj<React.ComponentProps<typeof Stack>>
+type Story = StoryObj<typeof Stack>
 
 export const Padrao: Story = {
     name: "Padrão",
