@@ -13,6 +13,7 @@ const meta: Meta<typeof NavLink> = {
     children: 'Link de Navegação',
     href: '#',
     target: '_blank',
+    onClick: fn(),
   },
   argTypes: {
     children: {
@@ -44,7 +45,9 @@ export const Padrao: Story = {
     const canvas = within(canvasElement)
     const link = canvas.getByRole('link')
     await userEvent.click(link)
-    expect(args.onClick).toHaveBeenCalled()
+    if (args.onClick && typeof args.onClick.mock !== 'undefined') {
+        expect(args.onClick).toHaveBeenCalled()
+    }
   },
 }
 

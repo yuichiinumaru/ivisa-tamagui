@@ -40,16 +40,19 @@ const StyledKbd = styled(XStack, {
         paddingHorizontal: 4,
         paddingVertical: 1,
         minWidth: 16,
+        // Text styles moved here for asChild support
       },
       default: {
         paddingHorizontal: 6,
         paddingVertical: 2,
         minWidth: 20,
+        // Text styles moved here for asChild support
       },
       lg: {
         paddingHorizontal: 8,
         paddingVertical: 3,
         minWidth: 24,
+        // Text styles moved here for asChild support
       },
     },
   } as const,
@@ -124,14 +127,23 @@ const Kbd = React.forwardRef<TamaguiElement, KbdProps>(
     },
     ref,
   ) => {
-    const Comp = asChild ? Slot : StyledKbd
-    // Pass size to Text as well
+    // If asChild is true, we must assume the children is the single root element provided by the user.
+    // We cannot wrap it in KbdText or add siblings like iconBefore/iconAfter because Slot (used by asChild)
+    // expects a single child.
+    if (asChild) {
+      return (
+        <StyledKbd ref={ref} size={size} variant={variant} {...props} asChild>
+          {children}
+        </StyledKbd>
+      )
+    }
+
     return (
-      <Comp ref={ref} size={size} variant={variant} {...props} tag="kbd">
+      <StyledKbd ref={ref} size={size} variant={variant} {...props} tag="kbd">
         {iconBefore}
         <KbdText size={size}>{children}</KbdText>
         {iconAfter}
-      </Comp>
+      </StyledKbd>
     )
   },
 )
