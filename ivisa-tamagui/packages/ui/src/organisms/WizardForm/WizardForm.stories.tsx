@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { WizardForm } from './WizardForm'
@@ -71,3 +70,4 @@ export const WithLoading: Story = {
     isLoading: true,
   },
 }
+

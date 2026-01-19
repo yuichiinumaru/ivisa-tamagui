@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import {
   Menubar,
@@ -114,3 +113,4 @@ export const WithRightSlot: Story = {
     </Menubar>
   ),
 }
+

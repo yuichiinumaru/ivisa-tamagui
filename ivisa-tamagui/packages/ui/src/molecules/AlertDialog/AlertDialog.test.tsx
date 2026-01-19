@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogTitle } from './AlertDialog'
 
@@ -14,3 +13,4 @@ describe('AlertDialog', () => {
     expect(screen.getByText('Open')).toBeInTheDocument()
   })
 })
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useMemo } from 'react'
 import { YStack, Text, useTheme } from 'tamagui'
 import { VictoryChart, VictoryLine, VictoryAxis, VictoryGroup } from 'victory'
@@ -132,3 +131,4 @@ export const ParallelCoordinates = ({
     </YStack>
   )
 }
+

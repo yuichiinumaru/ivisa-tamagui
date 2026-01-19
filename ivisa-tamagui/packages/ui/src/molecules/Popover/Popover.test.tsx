@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen, fireEvent } from '../../test-utils'
 
 import {
@@ -39,3 +38,4 @@ describe('Popover', () => {
     // expect(popoverContent).not.toBeInTheDocument()
   })
 })
+

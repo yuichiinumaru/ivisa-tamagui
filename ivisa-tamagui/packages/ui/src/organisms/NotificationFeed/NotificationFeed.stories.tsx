@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { NotificationFeed } from './NotificationFeed'
@@ -67,3 +66,4 @@ export const LimitedHeight: Story = {
     onMarkAsRead: (id) => console.log('Mark read:', id),
   },
 }
+

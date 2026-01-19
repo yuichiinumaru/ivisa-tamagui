@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { XStack, styled, GetProps } from 'tamagui'
 import React from 'react'
 import { Skeleton } from '../../atoms/Skeleton'
@@ -62,3 +61,4 @@ export const ButtonGroup = ({
 }
 
 // exported above; avoid redeclaring ButtonGroupProps
+

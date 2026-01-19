@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render } from '../../test-utils'
 import { Avatar } from 'tamagui'
@@ -17,3 +16,4 @@ describe('Avatar Visibility', () => {
     // because Tamagui might stick classes or use CSS variables. 
     // However, checking the token existence is the primary regression test for the reported issue.
 })
+

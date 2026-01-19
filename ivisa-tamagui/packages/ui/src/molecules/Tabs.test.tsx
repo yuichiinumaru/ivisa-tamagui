@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen, fireEvent } from '../test-utils'
 import { Tabs } from './Tabs'
 import { Text } from 'tamagui'
@@ -20,3 +19,4 @@ describe('Tabs', () => {
     expect(screen.getByText('Content 2')).toBeInTheDocument()
   })
 })
+

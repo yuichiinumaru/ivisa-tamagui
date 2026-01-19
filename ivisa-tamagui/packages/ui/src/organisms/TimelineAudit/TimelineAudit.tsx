@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { YStack, XStack, styled, GetProps, Text, Circle } from 'tamagui'
 
@@ -129,3 +128,4 @@ export const TimelineAudit = ({ events, ...props }: TimelineAuditProps) => {
     </AuditContainer>
   )
 }
+

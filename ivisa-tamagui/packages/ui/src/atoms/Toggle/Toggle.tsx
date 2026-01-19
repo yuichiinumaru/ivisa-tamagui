@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { styled, GetProps, Button } from 'tamagui'
 import React from 'react'
 
@@ -90,3 +89,4 @@ export const Toggle = React.forwardRef<React.ElementRef<typeof ToggleFrame>, Tog
   },
 )
 Toggle.displayName = 'Toggle'
+

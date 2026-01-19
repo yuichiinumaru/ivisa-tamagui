@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { FC } from 'react'
 import { Svg, Path } from 'react-native-svg'
 import { Stack, StackProps, useTheme } from 'tamagui'
@@ -85,3 +84,4 @@ export const Logo: FC<LogoProps> = ({
 }
 
 export default Logo
+

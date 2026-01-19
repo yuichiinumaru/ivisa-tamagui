@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { RidgelinePlot } from './RidgelinePlot'
 import React from 'react'
@@ -47,3 +46,4 @@ describe('RidgelinePlot', () => {
     expect(screen.getByText('Não há dados para exibir.')).toBeInTheDocument()
   })
 })
+

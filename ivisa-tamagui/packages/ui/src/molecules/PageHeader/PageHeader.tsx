@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { GetProps, styled, XStack, YStack, H3, Paragraph } from 'tamagui'
 import { Separator } from '../../atoms/Separator'
@@ -61,3 +60,4 @@ export const PageHeader = React.forwardRef<React.ElementRef<typeof PageHeaderFra
 )
 
 PageHeader.displayName = 'PageHeader'
+

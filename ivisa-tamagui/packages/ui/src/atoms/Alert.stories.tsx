@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 // import type React from 'react'
 import type { AlertProps } from './Alert'
@@ -148,3 +147,4 @@ export const TextoLongo: Story = {
       </Alert>
     ),
   };
+

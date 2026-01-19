@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen, fireEvent } from '../test-utils'
 import { Drawer } from './Drawer'
 import { Button } from '../atoms/Button'
@@ -70,3 +69,4 @@ describe('Drawer', () => {
     expect(screen.getByText('Drawer Content')).toBeInTheDocument()
   })
 })
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import React from 'react';
 import { render, screen, fireEvent } from '../test-utils';
@@ -93,3 +92,4 @@ describe('Alert', () => {
     expect(screen.getByTestId('test-icon')).toBeInTheDocument();
   });
 });
+

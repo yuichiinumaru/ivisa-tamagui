@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { YStack, XStack, styled, View, Text } from 'tamagui'
 import { Alert } from '../../atoms/Alert'
@@ -141,3 +140,4 @@ export const Timeline = ({ items, children, isLoading, isEmpty, hasError }: { it
 }
 
 export type TimelineSkeletonProps = React.ComponentProps<typeof TimelineSkeleton>
+

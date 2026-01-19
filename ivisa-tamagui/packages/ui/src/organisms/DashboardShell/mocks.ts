@@ -1,4 +1,3 @@
-// @ts-nocheck
 export const mockSidebar = {
   items: [
     { id: '1', label: 'Início' },
@@ -34,3 +33,4 @@ export const mockContent = {
     { id: '2', description: 'Relatório de vendas de Maio foi gerado.' },
   ],
 }
+

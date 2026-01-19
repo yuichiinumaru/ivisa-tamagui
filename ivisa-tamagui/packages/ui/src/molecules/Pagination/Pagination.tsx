@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   ChevronLeft,
   ChevronRight,
@@ -328,3 +327,4 @@ export const Pagination: React.FC<PaginationProps> = ({
 }
 
 Pagination.displayName = 'Pagination'
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { HeatmapChart } from './HeatmapChart'
 import { YStack, Heading } from 'tamagui'
@@ -62,3 +61,4 @@ export const ComErro: Story = {
     error: new Error('Falha ao carregar dados'),
   },
 }
+

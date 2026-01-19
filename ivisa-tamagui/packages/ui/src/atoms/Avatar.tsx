@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from 'react'
 import { Avatar as TamaguiAvatar, styled, GetProps, Text } from 'tamagui'
 import { Skeleton } from './Skeleton'
@@ -190,3 +189,4 @@ export const Avatar = Object.assign(AvatarRoot, {
 export type AvatarFallbackProps = React.ComponentProps<typeof AvatarFallback>
 
 export type AvatarFallbackTextProps = React.ComponentProps<typeof AvatarFallbackText>
+

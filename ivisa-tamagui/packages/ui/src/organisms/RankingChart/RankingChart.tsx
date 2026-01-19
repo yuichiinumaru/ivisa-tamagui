@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Card } from '@tamagui/card';
 import { BarChart, Frown } from '@tamagui/lucide-icons';
 import React from 'react';
@@ -116,3 +115,4 @@ export const RankingChart = ({
 export default RankingChart;
 
 export type RankingChartContentProps = React.ComponentProps<typeof RankingChartContent>
+

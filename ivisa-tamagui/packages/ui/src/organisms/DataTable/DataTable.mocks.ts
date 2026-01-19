@@ -1,4 +1,3 @@
-// @ts-nocheck
 export type Pagamento = {
   id: string
   quantia: number
@@ -33,3 +32,4 @@ const criarPagamento = (): Pagamento => {
 }
 
 export const pagamentos = Array.from({ length: 50 }, criarPagamento)
+

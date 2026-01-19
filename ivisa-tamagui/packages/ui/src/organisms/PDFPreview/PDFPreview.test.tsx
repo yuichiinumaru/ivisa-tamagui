@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { PDFPreview } from './PDFPreview'
 import React from 'react'
@@ -23,3 +22,4 @@ describe('PDFPreview', () => {
     expect(iframe).toHaveAttribute('src', 'https://example.com/test.pdf#toolbar=0')
   })
 })
+

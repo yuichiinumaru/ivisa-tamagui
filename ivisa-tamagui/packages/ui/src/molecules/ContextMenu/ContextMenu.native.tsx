@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { YStack } from 'tamagui'
 
@@ -64,3 +63,4 @@ export type ContextMenuSubTriggerProps = React.ComponentProps<typeof ContextMenu
 export type ContextMenuRadioGroupProps = React.ComponentProps<typeof ContextMenuRadioGroup>
 
 export type ContextMenuPortalProps = React.ComponentProps<typeof ContextMenuPortal>
+

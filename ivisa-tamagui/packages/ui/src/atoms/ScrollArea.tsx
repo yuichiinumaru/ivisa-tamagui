@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { GetProps, ScrollView as TamaguiScrollView, styled, TamaguiElement } from 'tamagui'
 import { forwardRef } from 'react'
 
@@ -73,3 +72,4 @@ ScrollArea.displayName = 'ScrollArea'
 
 export { ScrollArea }
 export type ScrollAreaProps = GetProps<typeof ScrollAreaFrame>
+

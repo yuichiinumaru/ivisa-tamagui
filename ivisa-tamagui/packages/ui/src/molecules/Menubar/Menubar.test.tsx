@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem } from './Menubar'
 import React from 'react'
@@ -49,3 +48,4 @@ describe('Menubar', () => {
     expect(screen.getByText('File')).toBeInTheDocument()
   })
 })
+

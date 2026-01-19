@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render } from '../../test-utils'
 import { StarRating } from './StarRating'
 
@@ -13,3 +12,4 @@ describe('StarRating', () => {
     expect(getByTestId('star-5')).toBeDefined()
   })
 })
+

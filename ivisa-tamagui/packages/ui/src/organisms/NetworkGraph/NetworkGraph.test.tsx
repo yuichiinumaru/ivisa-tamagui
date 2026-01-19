@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { NetworkGraph } from './NetworkGraph'
 import { AppProviders } from '../../providers/AppProviders'
@@ -47,3 +46,4 @@ describe('NetworkGraph', () => {
     expect(screen.getByText('Não há dados para exibir.')).toBeInTheDocument()
   })
 })
+

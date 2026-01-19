@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { SankeyDiagram } from './SankeyDiagram'
 import { Heading } from 'tamagui'
@@ -56,3 +55,4 @@ export const EstadoVazio: Story = {
     data: { nodes: [], links: [] },
   },
 }
+

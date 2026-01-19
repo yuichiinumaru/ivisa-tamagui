@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, within } from '@storybook/test'
 import { Search } from '@tamagui/lucide-icons'
@@ -202,3 +201,4 @@ export const Error: Story = {
     </YStack>
   )
 }
+

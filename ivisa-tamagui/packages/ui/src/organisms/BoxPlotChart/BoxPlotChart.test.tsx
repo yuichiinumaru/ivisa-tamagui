@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { BoxPlotChart } from './BoxPlotChart'
 import { boxPlotData } from './BoxPlotChart.mocks'
@@ -34,3 +33,4 @@ describe('BoxPlotChart', () => {
     expect(screen.getByText('Não há dados para exibir.')).toBeInTheDocument()
   })
 })
+

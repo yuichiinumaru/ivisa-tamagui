@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render } from '../../test-utils'
 import { Sheet, SheetTrigger, SheetContent } from './Sheet'
 import { Button } from '../../atoms/Button/Button'
@@ -20,3 +19,4 @@ describe('Sheet', () => {
         )
     })
 })
+

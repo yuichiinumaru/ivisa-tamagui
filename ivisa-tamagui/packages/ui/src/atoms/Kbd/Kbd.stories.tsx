@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { Kbd } from './Kbd'
 import { XStack, Text } from 'tamagui'
@@ -145,3 +144,4 @@ export const EmContainerPequeno: Story = {
     },
   },
 }
+

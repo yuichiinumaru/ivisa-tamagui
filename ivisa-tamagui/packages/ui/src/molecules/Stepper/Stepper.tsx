@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { ReactNode } from 'react'
 import { Text, XStack, YStack } from 'tamagui'
 import { Skeleton } from '../../atoms/Skeleton'
@@ -121,3 +120,4 @@ export const Stepper = ({
 export type StepperProps = React.ComponentProps<typeof Stepper>
 
 export type StepperContentProps = React.ComponentProps<typeof StepperContent>
+

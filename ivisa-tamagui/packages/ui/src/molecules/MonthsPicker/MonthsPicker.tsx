@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { ChevronDown } from '@tamagui/lucide-icons'
 import React, { useMemo } from 'react'
 import { Adapt, styled } from 'tamagui'
@@ -93,3 +92,4 @@ export const MonthsPicker = ({
     </Select>
   )
 }
+

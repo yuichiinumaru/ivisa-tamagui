@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useMemo } from 'react'
 import { YStack, Text, useTheme } from 'tamagui'
 import { VictoryChart, VictoryArea, VictoryAxis } from 'victory'
@@ -146,3 +145,4 @@ export const RidgelinePlot = ({
     </YStack>
   )
 }
+

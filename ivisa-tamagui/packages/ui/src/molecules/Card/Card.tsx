@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { GetProps, styled, Text, XStack, YStack, Image } from 'tamagui'
 import React from 'react'
 import { Skeleton } from '../../atoms/Skeleton'
@@ -175,3 +174,4 @@ export const Card = React.forwardRef<any, CardProps>(({
 })
 
 Card.displayName = 'Card'
+

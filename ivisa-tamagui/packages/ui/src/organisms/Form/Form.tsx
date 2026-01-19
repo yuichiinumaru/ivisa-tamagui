@@ -1,4 +1,3 @@
-// @ts-nocheck
 import * as React from "react"
 import {
   Controller,
@@ -217,3 +216,4 @@ export {
   FormRoot,
   FormFooter,
 }
+

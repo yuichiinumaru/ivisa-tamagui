@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { DashboardLayout } from './DashboardLayout'
 import { Text } from 'tamagui'
@@ -19,3 +18,4 @@ describe('DashboardLayout', () => {
     expect(screen.getByText('Main Content')).toBeInTheDocument()
   })
 })
+

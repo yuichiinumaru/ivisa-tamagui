@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../test-utils'
 import { RadioGroup } from './RadioGroup'
 
@@ -38,3 +37,4 @@ describe('RadioGroup', () => {
     expect(screen.getByText(errorMessage)).toBeInTheDocument()
   })
 })
+

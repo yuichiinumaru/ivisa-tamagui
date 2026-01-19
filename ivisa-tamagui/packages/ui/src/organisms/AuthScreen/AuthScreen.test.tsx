@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { render, screen, waitFor, fireEvent } from '../../test-utils';
 import { AuthScreen } from './AuthScreen';
@@ -44,3 +43,4 @@ describe('AuthScreen', () => {
     });
   });
 });
+

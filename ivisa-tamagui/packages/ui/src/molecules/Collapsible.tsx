@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { ChevronDown } from '@tamagui/lucide-icons'
@@ -133,3 +132,4 @@ export type CollapsibleTriggerProps = React.ComponentProps<typeof CollapsibleTri
 export type CollapsibleContentProps = React.ComponentProps<typeof CollapsibleContent>
 
 export type CollapsibleProps = React.ComponentProps<typeof Collapsible>
+

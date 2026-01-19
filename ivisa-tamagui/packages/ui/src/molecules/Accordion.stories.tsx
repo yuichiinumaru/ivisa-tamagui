@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './Accordion'
@@ -205,3 +204,4 @@ export const Desabilitado: Story = {
         </YStack>
     ),
 }
+

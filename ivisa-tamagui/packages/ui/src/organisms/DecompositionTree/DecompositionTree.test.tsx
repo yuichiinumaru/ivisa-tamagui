@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { DecompositionTree } from './DecompositionTree'
 import React from 'react'
@@ -55,3 +54,4 @@ describe('DecompositionTree', () => {
     expect(screen.getByTestId('git-merge')).toBeInTheDocument()
   })
 })
+

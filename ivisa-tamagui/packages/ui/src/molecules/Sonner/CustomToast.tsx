@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { XStack, YStack } from '../../atoms/Stack';
 import { Text } from '../../atoms/Typography';
@@ -63,3 +62,4 @@ export const CustomToast = ({ title, description, type, action, loading }: Custo
     </XStack>
   );
 };
+

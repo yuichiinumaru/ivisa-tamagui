@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react'
 import { styled, XStack, YStack, Text, AnimatePresence } from 'tamagui'
 import { Portal } from '@tamagui/portal'
@@ -246,3 +245,4 @@ export type ToastTitleProps = React.ComponentProps<typeof ToastTitle>
 export type ToastDescriptionProps = React.ComponentProps<typeof ToastDescription>
 
 export type ToastItemProps = React.ComponentProps<typeof ToastItem>
+

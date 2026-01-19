@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { styled, YStack, XStack, Text, GetProps } from 'tamagui'
 
 // For semantic HTML, these components use `tag` props.
@@ -146,3 +145,4 @@ export type TableRowProps = GetProps<typeof TableRow>
 export type TableHeadProps = GetProps<typeof TableHead>
 export type TableCellProps = GetProps<typeof TableCell>
 export type TableCaptionProps = GetProps<typeof TableCaption>
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { styled, YStack, XStack, Text, Switch, Label } from 'tamagui'
 import { Button } from '../../atoms/Button'
@@ -156,3 +155,4 @@ export const CookieBanner = ({
     </>
   )
 }
+

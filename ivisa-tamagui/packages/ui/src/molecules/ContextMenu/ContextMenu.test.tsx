@@ -1,4 +1,3 @@
-// @ts-nocheck
 // @vitest-environment jsdom
 import React from 'react'
 import { render, screen } from '../../test-utils'
@@ -32,3 +31,4 @@ describe('ContextMenu', () => {
     expect(screen.getByText('Billing')).toBeInTheDocument()
   })
 })
+

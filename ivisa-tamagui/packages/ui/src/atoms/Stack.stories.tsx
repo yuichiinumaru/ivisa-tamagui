@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack, HStack, VStack } from './Stack'
 import { Text, View } from 'tamagui'
@@ -152,3 +151,4 @@ export const RestritoContainer: Story = {
         </VStack>
     )
 };
+

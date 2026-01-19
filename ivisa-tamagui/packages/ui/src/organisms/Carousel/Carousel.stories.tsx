@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -163,3 +162,4 @@ export const Vertical: Story = {
 }
 
 export type CarouselCardProps = React.ComponentProps<typeof CarouselCard>
+

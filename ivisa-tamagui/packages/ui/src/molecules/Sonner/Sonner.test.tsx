@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Sonner, toast } from './Sonner'
 import { Button } from '../../atoms/Button'
@@ -88,3 +87,4 @@ describe('Toast Component', () => {
       expect(handleDismiss).toHaveBeenCalledTimes(1)
     })
   })
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { ParallelCoordinates } from './ParallelCoordinates'
 import React from 'react'
@@ -55,3 +54,4 @@ describe('ParallelCoordinates', () => {
     expect(screen.getByText('Ocorreu um erro ao carregar os dados.')).toBeInTheDocument()
   })
 })
+

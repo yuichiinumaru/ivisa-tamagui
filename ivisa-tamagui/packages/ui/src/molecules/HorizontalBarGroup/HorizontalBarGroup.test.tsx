@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import { render, fireEvent } from '../../test-utils'
 import { HorizontalBarGroup } from './HorizontalBarGroup'
@@ -68,3 +67,4 @@ describe('HorizontalBarGroup', () => {
     expect(container.firstChild).toBeTruthy()
   })
 })
+

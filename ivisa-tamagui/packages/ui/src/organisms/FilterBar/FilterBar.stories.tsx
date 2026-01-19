@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { FilterBar } from './FilterBar'
@@ -68,3 +67,4 @@ export const WithInitialValues: Story = {
     onFilterChange: (values) => console.log('Filters changed:', values),
   },
 }
+

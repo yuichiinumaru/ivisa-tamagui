@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { GetProps, styled, XStack, Circle, Text } from 'tamagui'
 
@@ -65,3 +64,4 @@ export const StatusLight = React.forwardRef<React.ElementRef<typeof StatusLightF
 )
 
 StatusLight.displayName = 'StatusLight'
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen } from '../../test-utils'
 import { Meter } from './Meter'
@@ -14,3 +13,4 @@ describe('Meter', () => {
     expect(screen.getByText('75%')).toBeTruthy()
   })
 })
+

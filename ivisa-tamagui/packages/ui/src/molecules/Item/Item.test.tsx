@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Item } from './Item'
 import { User } from '@tamagui/lucide-icons'
@@ -47,3 +46,4 @@ describe('Item', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 })
+

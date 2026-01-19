@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render } from '../test-utils'
 import { DatePicker } from './DatePicker'
 
@@ -12,3 +11,4 @@ describe('DatePicker', () => {
         expect(getByPlaceholderText('Pick a date')).toBeInTheDocument()
     })
 })
+

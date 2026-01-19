@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { HeatmapChart } from './HeatmapChart'
 import { AppProviders } from '../../providers/AppProviders'
@@ -52,3 +51,4 @@ describe('HeatmapChart', () => {
     expect(screen.getByText('Ocorreu um erro ao carregar os dados.')).toBeInTheDocument()
   })
 })
+

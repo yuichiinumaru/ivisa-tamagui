@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { styled, YStack, XStack, ScrollView } from 'tamagui'
 import { Activity, AlertCircle, CheckCircle, Info } from '@tamagui/lucide-icons'
@@ -100,3 +99,4 @@ export const AgentAnimationPanel: React.FC<AgentAnimationPanelProps> = ({
 }
 
 export type StatusIconProps = React.ComponentProps<typeof StatusIcon>
+

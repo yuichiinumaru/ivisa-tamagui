@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { GeoMap } from './Map'
@@ -31,3 +30,4 @@ export const Default: Story = {
     </GeoMap>
   )
 }
+

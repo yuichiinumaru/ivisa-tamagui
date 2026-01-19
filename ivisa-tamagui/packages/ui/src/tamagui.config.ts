@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createTamagui, createFont } from 'tamagui';
 import { createAnimations } from '@tamagui/animations-react-native';
 import { tokens } from './theme/tokens';
@@ -179,3 +178,4 @@ declare module 'tamagui' {
 }
 
 export default config;
+

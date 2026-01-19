@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { BarChart } from './BarChart'
 import { AppProviders } from '../../providers/AppProviders'
@@ -88,3 +87,4 @@ describe('BarChart', () => {
     expect(screen.getByText('Test Header')).toBeInTheDocument()
   })
 })
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import {
   AlertDialog as TamaguiAlertDialog,
@@ -186,3 +185,4 @@ export {
 }
 
 // exported above; avoid redeclaring AlertDialogProps
+

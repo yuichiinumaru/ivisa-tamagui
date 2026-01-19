@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { styled, YStack, XStack, Text, ScrollView } from 'tamagui'
 import { Button } from '../../atoms/Button'
@@ -205,3 +204,4 @@ export const Scheduler = ({
     </YStack>
   )
 }
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { AvatarGroup } from './AvatarGroup'
 import React from 'react'
@@ -53,3 +52,4 @@ describe('AvatarGroup', () => {
     expect(avatarItem2).toHaveAttribute('data-haserror', 'true')
   })
 })
+

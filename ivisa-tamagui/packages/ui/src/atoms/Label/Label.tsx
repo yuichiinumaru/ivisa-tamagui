@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   GetProps,
   Label as TamaguiLabel,
@@ -67,3 +66,4 @@ export const Label = React.forwardRef<TamaguiElement, LabelProps>(
     )
   }
 )
+

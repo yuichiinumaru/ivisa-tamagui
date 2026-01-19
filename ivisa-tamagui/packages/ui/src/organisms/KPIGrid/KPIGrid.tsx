@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { GetProps, styled, XStack } from 'tamagui'
 import { MetricCard, MetricCardProps } from '../../molecules/MetricCard/MetricCard'
 import { ReactNode } from 'react'
@@ -57,3 +56,4 @@ export const KPIGrid = KPIGridFrame.styleable<KPIGridProps>((props, ref) => {
 export default KPIGrid
 
 export type KPIGridFrameProps = React.ComponentProps<typeof KPIGridFrame>
+

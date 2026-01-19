@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Toggle } from './Toggle'
 import { Bold, Italic } from '@tamagui/lucide-icons'
@@ -53,3 +52,4 @@ describe('Toggle', () => {
     expect(button).toHaveAttribute('aria-disabled', 'true')
   })
 })
+

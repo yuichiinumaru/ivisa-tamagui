@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render } from '@testing-library/react'
 import { Logo } from './Logo'
 import { TamaguiProvider } from 'tamagui'
@@ -25,3 +24,4 @@ describe('Logo', () => {
     expect(logoElement).toBeInTheDocument()
   })
 })
+

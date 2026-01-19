@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { cloneElement, forwardRef } from 'react';
 import { GetProps, styled, Text, View } from 'tamagui';
 import { Slot } from '@tamagui/core';
@@ -182,3 +181,4 @@ Badge.displayName = 'Badge';
 export { BadgeText };
 
 export type BadgeProps = React.ComponentProps<typeof Badge>
+

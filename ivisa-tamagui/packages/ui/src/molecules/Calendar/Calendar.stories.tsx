@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
@@ -169,3 +168,4 @@ export const InsideADatePicker: Story = {
       return <DatePicker date={date} onDateChange={setDate} />;
   },
 };
+

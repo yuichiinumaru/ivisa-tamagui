@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Circle, GetProps, styled } from 'tamagui'
 
@@ -53,3 +52,4 @@ export const Dot = DotFrame
 export default Dot
 
 export type DotFrameProps = React.ComponentProps<typeof DotFrame>
+

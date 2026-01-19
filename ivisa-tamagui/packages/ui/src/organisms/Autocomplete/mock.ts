@@ -1,4 +1,3 @@
-// @ts-nocheck
 export const mockOptions = [
   { label: 'Abacate', value: 'abacate' },
   { label: 'Abacaxi', value: 'abacaxi' },
@@ -30,3 +29,4 @@ export const mockOptions = [
   { label: 'Tangerina', value: 'tangerina' },
   { label: 'Uva', value: 'uva' },
 ];
+

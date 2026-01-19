@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../test-utils'
 import { Toast, ToastProvider, ToastViewport, ToastTitle } from './Toast'
 
@@ -15,3 +14,4 @@ describe('Toast', () => {
     expect(screen.getByText('Notification')).toBeInTheDocument()
   })
 })
+

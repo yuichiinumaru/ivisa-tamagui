@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   AlertCircle,
   AlertTriangle,
@@ -88,3 +87,4 @@ export const Toast = ({
     </XStack>
   )
 }
+

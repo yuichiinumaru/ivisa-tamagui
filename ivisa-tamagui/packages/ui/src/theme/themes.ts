@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createThemes, defaultComponentThemes } from '@tamagui/theme-builder'
 import * as Colors from '@tamagui/colors'
 
@@ -235,3 +234,4 @@ export const builtThemes = createThemes({
 
 export type Themes = typeof builtThemes
 export const themes = builtThemes
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 
 import { logComponentError } from './logging'
@@ -20,3 +19,4 @@ export function withErrorLogging<P, R>(
 
   return Wrapped
 }
+

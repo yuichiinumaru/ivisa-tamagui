@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { ComboChart } from './ComboChart'
 import { AppProviders } from '../../providers/AppProviders'
@@ -34,3 +33,4 @@ describe('ComboChart', () => {
     expect(screen.getByTestId('skeleton')).toBeInTheDocument()
   })
 })
+

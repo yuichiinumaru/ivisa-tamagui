@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
 import { YStack, Text, useTheme } from 'tamagui'
 import { VictoryChart, VictoryBar, VictoryAxis, VictoryContainer, VictoryLabel } from 'victory'
@@ -112,3 +111,4 @@ export const FunnelChart = ({
     </YStack>
   )
 }
+

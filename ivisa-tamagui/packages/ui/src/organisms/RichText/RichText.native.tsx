@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { RichTextEditor } from '@siposdani87/expo-rich-text-editor'
 import React from 'react'
 import { Stack, styled, StackProps } from 'tamagui'
@@ -29,3 +28,4 @@ export const RichText = ({ value, onChange, editable = true, ...props }: RichTex
         </EditorContainer>
     )
 }
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { X } from '@tamagui/lucide-icons'
 import React, { ReactNode } from 'react'
 import {
@@ -162,3 +161,4 @@ export type DialogPortalProps = React.ComponentProps<typeof DialogPortal>
 export type DialogCloseProps = React.ComponentProps<typeof DialogClose>
 
 export type DialogContentCompositeProps = React.ComponentProps<typeof DialogContentComposite>
+

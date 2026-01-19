@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { ButtonGroup, ButtonGroupItem } from './ButtonGroup'
 import { Button } from '../../atoms/Button'
@@ -19,3 +18,4 @@ describe('ButtonGroup', () => {
     expect(screen.getByText('Two')).toBeInTheDocument()
   })
 })
+

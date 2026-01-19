@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { ToggleGroup } from './ToggleGroup'
 
@@ -13,3 +12,4 @@ describe('ToggleGroup', () => {
     expect(screen.getByText('A')).toBeInTheDocument()
   })
 })
+

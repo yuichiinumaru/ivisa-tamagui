@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
 import { YStack, Text, useTheme } from 'tamagui'
 import { AlertTriangle, Share2 } from '@tamagui/lucide-icons'
@@ -212,3 +211,4 @@ export const NetworkGraph = ({
     </YStack>
   )
 }
+

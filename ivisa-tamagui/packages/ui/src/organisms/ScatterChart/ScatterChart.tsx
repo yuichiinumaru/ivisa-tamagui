@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { YStack, styled, Text, useTheme } from 'tamagui'
 import {
@@ -145,3 +144,4 @@ export const ScatterChart = ({
     </ScatterChartContainer>
   )
 }
+

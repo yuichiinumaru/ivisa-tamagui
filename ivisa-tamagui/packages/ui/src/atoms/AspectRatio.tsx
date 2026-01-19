@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { GetProps, Stack, styled, TamaguiElement } from 'tamagui'
 import React, { forwardRef } from 'react'
 import { Skeleton } from './Skeleton'
@@ -56,3 +55,4 @@ export const AspectRatio = forwardRef<TamaguiElement, AspectRatioProps>(
 )
 
 AspectRatio.displayName = 'AspectRatio'
+

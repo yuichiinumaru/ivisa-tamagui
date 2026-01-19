@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -180,3 +179,4 @@ export const Restrito: Story = {
 }
 
 export type PopoverContentWithHooksProps = React.ComponentProps<typeof PopoverContentWithHooks>
+

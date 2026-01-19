@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { OTPInput } from './OTPInput'
 import userEvent from '@testing-library/user-event'
@@ -34,3 +33,4 @@ describe('OTPInput', () => {
     expect(onComplete).toHaveBeenCalledWith('123')
   })
 })
+

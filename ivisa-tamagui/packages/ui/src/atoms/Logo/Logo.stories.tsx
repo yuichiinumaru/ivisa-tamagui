@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { YStack, Text } from 'tamagui'
 import { Logo } from './Logo'
@@ -155,3 +154,4 @@ export const LogosOficiais: Story = {
     </YStack>
   ),
 }
+

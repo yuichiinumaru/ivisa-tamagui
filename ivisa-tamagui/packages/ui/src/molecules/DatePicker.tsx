@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Calendar as CalendarIcon } from '@tamagui/lucide-icons'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
@@ -186,3 +185,4 @@ export const DatePicker = React.forwardRef<HTMLButtonElement, DatePickerProps>(
 )
 
 DatePicker.displayName = 'DatePicker'
+

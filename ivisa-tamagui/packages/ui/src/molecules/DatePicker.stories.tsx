@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import { Meta, StoryObj } from '@storybook/react'
@@ -134,3 +133,4 @@ export const NarrowContainer: Story = {
 }
 
 export type DatePickerWithStateProps = React.ComponentProps<typeof DatePickerWithState>
+

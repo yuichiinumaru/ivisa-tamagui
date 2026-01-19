@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, within } from '@storybook/test'
 import { expect, fn } from '@storybook/test'
@@ -165,3 +164,4 @@ export const Carregando: Story = {
     loading: true,
   },
 }
+

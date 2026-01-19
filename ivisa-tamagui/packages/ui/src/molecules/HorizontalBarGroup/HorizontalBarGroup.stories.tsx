@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 
 import type React from 'react';
@@ -254,3 +253,4 @@ export const Restrito: Story = {
     },
   },
 }
+

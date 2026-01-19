@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { ResizeMode, Video as ExpoVideo, VideoProps as ExpoVideoProps } from 'expo-av'
 import React, { forwardRef } from 'react'
 import { Stack, StackProps } from 'tamagui'
@@ -33,3 +32,4 @@ export const Video = forwardRef<ExpoVideo, VideoProps>(({
         </Stack>
     )
 })
+

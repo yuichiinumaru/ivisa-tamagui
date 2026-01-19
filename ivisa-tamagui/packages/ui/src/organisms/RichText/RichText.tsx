@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import {
@@ -172,3 +171,4 @@ export const RichText = withStaticProperties(RichTextFrame, {})
 export type RichTextToolbarProps = React.ComponentProps<typeof RichTextToolbar>
 
 export type RichTextFrameProps = React.ComponentProps<typeof RichTextFrame>
+

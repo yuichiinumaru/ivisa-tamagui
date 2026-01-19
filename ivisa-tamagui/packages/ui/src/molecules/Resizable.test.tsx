@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../test-utils'
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './Resizable'
 import { Text } from 'tamagui'
@@ -20,3 +19,4 @@ describe('Resizable', () => {
     expect(screen.getByText('Panel 2')).toBeInTheDocument()
   })
 })
+

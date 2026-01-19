@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { MetricCard } from './MetricCard'
@@ -62,3 +61,4 @@ describe('MetricCard', () => {
     expect(screen.getByLabelText('Aumento de +20.1%')).toBeTruthy()
   })
 })
+

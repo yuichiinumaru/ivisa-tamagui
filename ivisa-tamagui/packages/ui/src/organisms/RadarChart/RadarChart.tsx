@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
 import { YStack, Text, useTheme } from 'tamagui'
 import { VictoryChart, VictoryPolarAxis, VictoryArea, VictoryGroup, VictoryLabel, VictoryContainer } from 'victory'
@@ -128,3 +127,4 @@ export const RadarChart = ({
     </YStack>
   )
 }
+

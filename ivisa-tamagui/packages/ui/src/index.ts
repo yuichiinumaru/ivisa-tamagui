@@ -1,4 +1,3 @@
-// @ts-nocheck
 export * from './atoms/Alert';
 export * from './atoms/AspectRatio';
 export * from './atoms/Avatar';
@@ -58,6 +57,7 @@ export * from './organisms/DataTable';
 export * from './organisms/Carousel';
 export * from './organisms/Command';
 export * from './organisms/Sidebar';
+export * from './organisms/Navbar';
 export * from './organisms/BarChart';
 export * from './organisms/LineChart';
 export * from './organisms/PieChart';
@@ -108,3 +108,4 @@ export * from './organisms/AgentAnimationPanel/AgentAnimationPanel';
 export * from './organisms/AgentAnimationModal/AgentAnimationModal';
 export * from './atoms/StatusLight/StatusLight';
 export * from './atoms/Meter/Meter';
+

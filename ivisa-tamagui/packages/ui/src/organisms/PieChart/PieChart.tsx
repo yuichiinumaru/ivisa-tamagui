@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { YStack, styled, Text, useTheme } from 'tamagui'
 import { PieChart as RechartsPieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts'
@@ -145,3 +144,4 @@ export const PieChart = ({
 export const DonutChart = (props: PieChartProps) => <PieChart {...props} variant="donut" />
 
 export type DonutChartProps = React.ComponentProps<typeof DonutChart>
+

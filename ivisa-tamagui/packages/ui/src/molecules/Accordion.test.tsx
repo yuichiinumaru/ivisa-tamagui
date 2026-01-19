@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../test-utils'
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from './Accordion'
 import { Button } from '../atoms/Button'
@@ -73,3 +72,4 @@ describe('Accordion', () => {
     expect(screen.getByText('Ação')).toBeInTheDocument()
   })
 });
+

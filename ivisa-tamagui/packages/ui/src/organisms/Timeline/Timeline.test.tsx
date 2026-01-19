@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Timeline } from './Timeline'
 import React from 'react'
@@ -39,3 +38,4 @@ describe('Timeline', () => {
     expect(screen.getByText('Ocorreu um erro ao carregar os dados. Por favor, tente novamente.')).toBeInTheDocument()
   })
 })
+

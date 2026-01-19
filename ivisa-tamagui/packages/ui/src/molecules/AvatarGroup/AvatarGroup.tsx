@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Avatar, AvatarFallback, AvatarImage } from '../../atoms/Avatar'
 import { Skeleton } from '../../atoms/Skeleton'
 import React from 'react'
@@ -143,3 +142,4 @@ export const AvatarGroup = ({
     </AvatarGroupFrame>
   )
 }
+

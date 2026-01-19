@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import { ReactNode } from 'react'
 import { GetProps, H4, styled, Text, XStack, YStack } from 'tamagui'
@@ -116,3 +115,4 @@ export const MetricCard = MetricCardComponent
 export type { MetricCardProps }
 
 export type MetricCardProps = React.ComponentProps<typeof MetricCard>
+

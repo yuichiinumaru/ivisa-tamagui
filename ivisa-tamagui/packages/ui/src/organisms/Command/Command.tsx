@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
 import { styled, Text, GetProps, TamaguiElement, XStack, YStack } from 'tamagui'
@@ -243,3 +242,4 @@ export type CommandDialogProps = React.ComponentProps<typeof CommandDialog>
 export type CommandSkeletonProps = React.ComponentProps<typeof CommandSkeleton>
 
 export type CommandErrorProps = React.ComponentProps<typeof CommandError>
+

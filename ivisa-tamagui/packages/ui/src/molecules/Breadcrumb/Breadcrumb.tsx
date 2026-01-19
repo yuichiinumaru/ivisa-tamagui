@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
 import React from 'react'
 import { Anchor, GetProps, Text, XStack, styled } from 'tamagui'
@@ -148,3 +147,4 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 }
 
 Breadcrumb.displayName = 'Breadcrumb'
+

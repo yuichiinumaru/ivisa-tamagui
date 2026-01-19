@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { expect, userEvent, within } from '@storybook/test'
 import type { Meta, StoryObj } from '@storybook/react'
 import { AspectRatio } from './AspectRatio'
@@ -158,3 +157,4 @@ export const EmContainerPequeno: Story = {
     variant: 'square',
   },
 }
+

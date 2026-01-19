@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import { ReactNode } from 'react'
 import { GetProps, H5, Paragraph, styled, XStack, YStack } from 'tamagui'
@@ -133,3 +132,4 @@ const HorizontalBarGroup = HorizontalBarGroupFrame.styleable<HorizontalBarGroupP
 
 export { HorizontalBarGroup, HorizontalBarGroupFrame }
 export type { HorizontalBarGroupProps }
+

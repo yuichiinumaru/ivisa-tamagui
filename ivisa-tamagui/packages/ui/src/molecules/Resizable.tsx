@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   styled,
   YStack,
@@ -474,3 +473,4 @@ export type {
     ResizablePanelProps,
     ResizableHandleProps,
 }
+

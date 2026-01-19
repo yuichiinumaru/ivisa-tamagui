@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { AlertCircle, Inbox } from '@tamagui/lucide-icons'
 import React, { useMemo, useState, isValidElement } from 'react'
 import type { ColumnDef, ColumnFiltersState, SortingState } from '@tanstack/react-table'
@@ -246,3 +245,4 @@ export function DataTable<TData, TValue>({
     </YStack>
   )
 }
+

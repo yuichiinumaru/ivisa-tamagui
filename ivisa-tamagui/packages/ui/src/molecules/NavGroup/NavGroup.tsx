@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { NavLink } from '../../atoms/NavLink/NavLink';
 import { Skeleton } from '../../atoms/Skeleton';
 import React from 'react';
@@ -111,3 +110,4 @@ const NavGroup = NavGroupFrame.styleable<NavGroupProps>((props, ref) => {
 
 export { NavGroup };
 export type { NavGroupProps };
+

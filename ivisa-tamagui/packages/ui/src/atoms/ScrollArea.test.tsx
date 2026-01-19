@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../test-utils'
 import { ScrollArea } from './ScrollArea'
 
@@ -8,3 +7,4 @@ describe('ScrollArea', () => {
     expect(screen.getByTestId('content')).toBeInTheDocument()
   })
 })
+

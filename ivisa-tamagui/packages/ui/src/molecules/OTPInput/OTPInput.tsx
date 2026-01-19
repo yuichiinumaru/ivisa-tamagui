@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { GetProps, YStack, isWeb, styled } from 'tamagui'
 import { Input as TamaguiInput } from '../../atoms/Input'
@@ -324,3 +323,4 @@ const OTPInputImpl = React.forwardRef<ContainerRef, OTPInputProps>(
 OTPInputImpl.displayName = 'OTPInput'
 
 export const OTPInput = withErrorLogging<OTPInputProps, ContainerRef>('OTPInput', OTPInputImpl)
+

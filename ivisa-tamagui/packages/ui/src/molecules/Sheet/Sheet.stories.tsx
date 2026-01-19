@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import React, { useState } from 'react'
@@ -195,3 +194,4 @@ export const AcoesCustomizadas: Story = {
 }
 
 export type SheetStoryContentProps = React.ComponentProps<typeof SheetStoryContent>
+

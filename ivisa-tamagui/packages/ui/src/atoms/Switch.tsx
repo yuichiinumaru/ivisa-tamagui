@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { GetProps, Spinner, Switch as TamaguiSwitch, styled } from 'tamagui';
 
@@ -135,3 +134,4 @@ const SwitchComponent = React.forwardRef<
 SwitchComponent.displayName = 'Switch';
 
 export const Switch = SwitchComponent;
+

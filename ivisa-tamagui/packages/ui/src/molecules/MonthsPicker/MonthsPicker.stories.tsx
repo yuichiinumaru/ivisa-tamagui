@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -84,3 +83,4 @@ export const EmContainerPequeno: Story = {
 }
 
 export type DefaultRenderProps = React.ComponentProps<typeof DefaultRender>
+

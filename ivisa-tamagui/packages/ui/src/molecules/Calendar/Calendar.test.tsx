@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Calendar } from './Calendar'
 
@@ -30,3 +29,4 @@ describe('Calendar', () => {
     expect(container).toHaveAttribute('data-has-error', 'true')
   })
 })
+

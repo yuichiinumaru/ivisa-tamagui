@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react';
 import { userEvent, within } from '@storybook/test';
 import { Label, Stack, Text } from 'tamagui';
@@ -122,3 +121,4 @@ export const Contido_StressTest: Story = {
     </Stack>
   ),
 };
+

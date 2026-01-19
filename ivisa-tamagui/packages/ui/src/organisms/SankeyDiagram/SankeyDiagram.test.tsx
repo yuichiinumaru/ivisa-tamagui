@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { SankeyDiagram } from './SankeyDiagram'
 import { AppProviders } from '../../providers/AppProviders'
@@ -50,3 +49,4 @@ describe('SankeyDiagram', () => {
     expect(screen.getByText('Não há dados para exibir.')).toBeInTheDocument()
   })
 })
+

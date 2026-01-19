@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -25,3 +24,4 @@ export const NoChanges: Story = {
     newText: 'const a = 10;\nconsole.log(a);',
   },
 }
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -156,3 +155,4 @@ export const EmContainerEstreito: Story = {
     count: 5,
   },
 }
+

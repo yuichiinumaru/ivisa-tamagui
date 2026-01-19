@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -87,3 +86,4 @@ export const EstresseDeLayout: Story = {
 }
 
 export type AutocompleteWithStateProps = React.ComponentProps<typeof AutocompleteWithState>
+

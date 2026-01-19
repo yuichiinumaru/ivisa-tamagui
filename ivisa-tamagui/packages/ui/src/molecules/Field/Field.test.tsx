@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Field } from './Field'
 import { Input } from '../../atoms/Input'
@@ -33,3 +32,4 @@ describe('Field', () => {
     expect(input).toBeInTheDocument()
   })
 })
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 
 import type React from 'react';
@@ -110,3 +109,4 @@ export const ErrorState: Story = {
     error: new Error('Falha ao carregar dados'),
   },
 }
+

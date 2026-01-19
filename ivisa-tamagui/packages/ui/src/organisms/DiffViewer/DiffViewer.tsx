@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { YStack, XStack, styled, GetProps, Text, ScrollView } from 'tamagui'
 
@@ -148,3 +147,4 @@ export const DiffViewer = ({
     </DiffContainer>
   )
 }
+

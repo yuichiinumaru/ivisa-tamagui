@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { YStack, styled, GetProps } from 'tamagui'
 import './Skeleton.css'
 
@@ -36,3 +35,4 @@ export const Skeleton = SkeletonFrame.styleable(({ animationType, ...props }, re
 ))
 
 export type SkeletonProps = GetProps<typeof Skeleton>
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { FilterBar } from './FilterBar'
@@ -65,3 +64,4 @@ describe('FilterBar', () => {
 //     // We might need to mock Select or rely on integration tests for complex interactions
 //   })
 })
+

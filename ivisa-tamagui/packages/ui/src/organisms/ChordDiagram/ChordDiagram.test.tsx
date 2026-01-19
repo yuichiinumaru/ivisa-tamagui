@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { ChordDiagram } from './ChordDiagram'
 import { AppProviders } from '../../providers/AppProviders'
@@ -43,3 +42,4 @@ describe('ChordDiagram', () => {
     expect(screen.getByText('Não há dados para exibir.')).toBeInTheDocument()
   })
 })
+

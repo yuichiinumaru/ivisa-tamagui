@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { darkColors } from './tokens';
 
 export const escuroColors = {
@@ -39,3 +38,4 @@ export const escuroColors = {
   shadowColor: 'rgba(0, 0, 0, 0.4)',
   shadowColorHover: 'rgba(0, 0, 0, 0.6)',
 };
+

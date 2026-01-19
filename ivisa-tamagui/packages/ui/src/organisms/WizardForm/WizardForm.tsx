@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from 'react'
 import { useForm, FieldValues } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -137,3 +136,4 @@ export function WizardForm<T extends FieldValues>({
     </Form>
   )
 }
+

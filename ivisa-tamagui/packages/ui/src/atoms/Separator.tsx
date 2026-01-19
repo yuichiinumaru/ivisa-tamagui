@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Separator as TamaguiSeparator, styled, GetProps } from 'tamagui'
 
 const SeparatorFrame = styled(TamaguiSeparator, {
@@ -33,3 +32,4 @@ export const Separator = SeparatorFrame
  * Props for the Separator component.
  */
 export type SeparatorProps = GetProps<typeof SeparatorFrame>
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Video } from './Video'
 
@@ -34,3 +33,4 @@ describe('Video', () => {
     expect(stack).toBeInTheDocument()
   })
 })
+

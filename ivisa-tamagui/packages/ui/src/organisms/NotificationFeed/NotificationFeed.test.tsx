@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { NotificationFeed } from './NotificationFeed'
@@ -54,3 +53,4 @@ describe('NotificationFeed', () => {
     expect(handleMarkAsRead).toHaveBeenCalledWith('1')
   })
 })
+

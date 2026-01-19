@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Table } from './Table'
 
@@ -17,3 +16,4 @@ describe('Table', () => {
     expect(screen.getByText('Cell Data')).toBeInTheDocument()
   })
 })
+

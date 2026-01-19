@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import { render, screen, fireEvent } from '@testing-library/react'
 import { Collapsible } from './Collapsible'
@@ -53,3 +52,4 @@ describe('Collapsible', () => {
     expect(trigger).toHaveAttribute('aria-invalid', 'true')
   })
 })
+

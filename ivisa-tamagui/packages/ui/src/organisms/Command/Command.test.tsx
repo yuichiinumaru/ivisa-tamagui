@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Command, CommandInput, CommandList, CommandItem, CommandEmpty } from './Command'
 import React from 'react'
@@ -69,3 +68,4 @@ describe('Command', () => {
     // Just checking render is enough for "unit test" of wrapper
   })
 })
+

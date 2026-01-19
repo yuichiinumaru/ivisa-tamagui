@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { SpinnerProps as TamaguiSpinnerProps } from 'tamagui';
 import { GetProps, Spinner as TamaguiSpinner, styled } from 'tamagui';
 
@@ -20,3 +19,4 @@ export type SpinnerProps = GetProps<typeof StyledSpinner>;
 export const Spinner = ({ 'aria-label': ariaLabel = 'Carregando...', ...props }: SpinnerProps) => {
   return <StyledSpinnerAny aria-label={ariaLabel} {...props} />;
 };
+

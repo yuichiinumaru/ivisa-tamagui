@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useMemo } from 'react'
 import { YStack, Text, useTheme } from 'tamagui'
 import { Svg, Path, G, Text as SvgText } from 'react-native-svg'
@@ -221,3 +220,4 @@ export const SunburstChart = ({
     </YStack>
   )
 }
+

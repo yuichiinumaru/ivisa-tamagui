@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import {
   TextArea as TamaguiTextArea,
@@ -196,3 +195,4 @@ export const Textarea = withErrorLogging<TextareaProps, React.ElementRef<typeof 
   'Textarea',
   TextareaImpl
 )
+

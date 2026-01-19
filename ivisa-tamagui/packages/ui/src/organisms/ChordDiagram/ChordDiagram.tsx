@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
 import { YStack, Text, useTheme } from 'tamagui'
 import { AlertTriangle, Circle } from '@tamagui/lucide-icons'
@@ -241,3 +240,4 @@ export const ChordDiagram = ({
     </YStack>
   )
 }
+

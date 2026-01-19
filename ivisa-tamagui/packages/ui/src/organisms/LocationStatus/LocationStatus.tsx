@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { YStack, XStack, styled, GetProps, Text } from 'tamagui'
 import { MapPin, Navigation, Clock } from '@tamagui/lucide-icons'
@@ -119,3 +118,4 @@ export const LocationStatus = ({
     </LocationStatusFrame>
   )
 }
+

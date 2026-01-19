@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen, fireEvent } from '../../test-utils'
 import { AgentAnimationModal } from './AgentAnimationModal'
@@ -47,3 +46,4 @@ describe('AgentAnimationModal', () => {
     expect(onOpenChange).toHaveBeenCalledWith(false)
   })
 })
+

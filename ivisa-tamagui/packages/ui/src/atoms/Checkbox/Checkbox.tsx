@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Checkbox as TamaguiCheckbox, styled, GetProps, Label, XStack, SizeTokens, YStack, Text } from 'tamagui'
 import { withErrorLogging } from '../../utils/withErrorLogging'
@@ -199,3 +198,4 @@ export const Checkbox = withErrorLogging<CheckboxProps, React.ElementRef<typeof 
   'Checkbox',
   CheckboxImpl
 )
+

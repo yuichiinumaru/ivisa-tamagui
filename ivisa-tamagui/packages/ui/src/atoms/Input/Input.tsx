@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Eye, EyeOff } from '@tamagui/lucide-icons';
 import React, { useContext, useState } from 'react';
 import { Input as TamaguiInput, styled, GetProps, XStack, View, TamaguiElement, Text } from 'tamagui';
@@ -357,3 +356,4 @@ export const Input = Object.assign(InputMain, {
   Button: InputButton,
   Hint: InputHint,
 })
+

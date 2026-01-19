@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { PieChart } from './PieChart'
 import { AppProviders } from '../../providers/AppProviders'
@@ -71,3 +70,4 @@ describe('PieChart', () => {
     expect(screen.getByText('Test Title')).toBeInTheDocument()
   })
 })
+

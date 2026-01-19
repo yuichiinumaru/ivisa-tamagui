@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { YStack } from 'tamagui'
 import { Input } from '../Input'
@@ -112,3 +111,4 @@ export const Obrigatorio: Story = {
     </YStack>
   ),
 }
+

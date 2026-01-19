@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { DiffViewer } from './DiffViewer'
 import React from 'react'
@@ -20,3 +19,4 @@ describe('DiffViewer', () => {
     expect(screen.getByText('Line 2 Modified')).toBeInTheDocument() // New
   })
 })
+

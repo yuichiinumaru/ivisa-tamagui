@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { DataTable } from './DataTable'
 import { ColumnDef } from '@tanstack/react-table'
@@ -36,3 +35,4 @@ describe('DataTable', () => {
     expect(screen.getByText('Status')).toBeInTheDocument()
   })
 })
+

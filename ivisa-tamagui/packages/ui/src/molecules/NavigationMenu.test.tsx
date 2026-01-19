@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../test-utils'
 import {
   NavigationMenu,
@@ -24,3 +23,4 @@ describe('NavigationMenu', () => {
     expect(screen.getByText('Item 1')).toBeInTheDocument()
   })
 })
+

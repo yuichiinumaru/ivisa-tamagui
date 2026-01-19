@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Text } from 'tamagui'
 import { render, screen } from '../../test-utils'
@@ -68,3 +67,4 @@ describe('Carousel', () => {
     expect(screen.getByText('Failed to load items')).toBeInTheDocument()
   })
 })
+

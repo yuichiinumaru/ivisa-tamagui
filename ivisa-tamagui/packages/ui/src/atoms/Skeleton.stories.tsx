@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { YStack, XStack } from 'tamagui'
 import { Skeleton } from './Skeleton'
@@ -106,3 +105,4 @@ export const TesteDeContencao: Story = {
     </YStack>
   ),
 }
+

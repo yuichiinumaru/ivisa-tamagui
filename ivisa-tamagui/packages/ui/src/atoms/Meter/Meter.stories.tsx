@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { Meter } from './Meter'
 import { YStack } from 'tamagui'
@@ -39,3 +38,4 @@ export const Variants: Story = {
     </YStack>
   ),
 }
+

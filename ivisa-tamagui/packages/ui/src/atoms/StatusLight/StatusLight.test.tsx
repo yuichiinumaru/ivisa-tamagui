@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen } from '../../test-utils'
 import { StatusLight } from './StatusLight'
@@ -17,3 +16,4 @@ describe('StatusLight', () => {
     expect(screen.getByText('Rejected')).toBeTruthy()
   })
 })
+

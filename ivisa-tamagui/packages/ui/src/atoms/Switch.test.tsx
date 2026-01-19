@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../test-utils'
 import { Switch } from './Switch'
 
@@ -8,3 +7,4 @@ describe('Switch', () => {
     expect(screen.getByRole('switch')).toBeInTheDocument()
   })
 })
+

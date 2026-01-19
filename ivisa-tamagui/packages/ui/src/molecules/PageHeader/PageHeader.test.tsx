@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen, fireEvent } from '../../test-utils'
 import { PageHeader } from './PageHeader'
 import { Button } from '../../atoms/Button'
@@ -15,3 +14,4 @@ describe('PageHeader', () => {
         expect(screen.getByText('Action')).toBeInTheDocument()
     })
 })
+

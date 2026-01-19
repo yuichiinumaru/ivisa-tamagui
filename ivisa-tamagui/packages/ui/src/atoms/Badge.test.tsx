@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../test-utils'
 import { Badge } from './Badge'
 
@@ -8,3 +7,4 @@ describe('Badge', () => {
     expect(screen.getByText('New')).toBeInTheDocument()
   })
 })
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 // @vitest-environment jsdom
 import React from 'react'
 import { render, screen, waitFor } from '../../test-utils'
@@ -55,3 +54,4 @@ describe('Tooltip', () => {
   // })
 
 })
+

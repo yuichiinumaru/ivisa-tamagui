@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { GetProps, styled, XStack, YStack, Paragraph } from 'tamagui'
 import { Card } from '../Card'
@@ -101,3 +100,4 @@ export const NotificationCard = React.forwardRef<React.ElementRef<typeof Notific
 )
 
 NotificationCard.displayName = 'NotificationCard'
+

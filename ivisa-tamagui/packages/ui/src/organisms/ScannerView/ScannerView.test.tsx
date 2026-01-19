@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen, fireEvent, waitFor } from '../../test-utils'
 import { ScannerView } from './ScannerView'
 import React from 'react'
@@ -34,3 +33,4 @@ describe('ScannerView', () => {
     // Let's rely on finding by type if needed, or better, add accessibility label.
   })
 })
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 // @vitest-environment jsdom
 import { render, screen } from '@testing-library/react'
 import { Text } from 'tamagui'
@@ -53,3 +52,4 @@ describe('AppProviders', () => {
     errorSpy.mockRestore()
   })
 })
+

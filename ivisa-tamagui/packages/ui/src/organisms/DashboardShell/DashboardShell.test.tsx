@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen, fireEvent } from '../../test-utils'
 import { DashboardShell } from './DashboardShell'
@@ -115,3 +114,4 @@ describe('DashboardShell', () => {
     })
   })
 })
+

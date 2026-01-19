@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { TamaguiProvider, Text } from 'tamagui'
@@ -37,3 +36,4 @@ describe('Breadcrumb', () => {
     expect(screen.getByText('Ajuda')).toBeInTheDocument()
   })
 })
+

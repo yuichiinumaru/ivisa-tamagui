@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Ban } from '@tamagui/lucide-icons'
 import React from 'react'
 import { YStack, Text, GetProps, styled, Image, ImageProps } from 'tamagui'
@@ -153,3 +152,4 @@ const EmptyFrameAny: any = EmptyFrame
 export type EmptyProps = React.ComponentProps<typeof Empty>
 
 export type EmptySkeletonProps = React.ComponentProps<typeof EmptySkeleton>
+

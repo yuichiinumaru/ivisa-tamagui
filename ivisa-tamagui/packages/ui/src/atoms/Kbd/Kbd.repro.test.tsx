@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render } from '@testing-library/react'
 import { Kbd } from './Kbd'
@@ -25,3 +24,4 @@ describe('Kbd Repro', () => {
     )
   })
 })
+

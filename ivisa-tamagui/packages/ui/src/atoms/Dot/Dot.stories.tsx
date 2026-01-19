@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { action } from '@storybook/addon-actions'
 import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, within } from '@storybook/test'
@@ -143,3 +142,4 @@ export const EmContainer: Story = {
     },
   },
 }
+

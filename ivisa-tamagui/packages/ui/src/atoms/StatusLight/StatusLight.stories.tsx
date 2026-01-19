@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { StatusLight } from './StatusLight'
 import { YStack } from 'tamagui'
@@ -41,3 +40,4 @@ export const Disabled: Story = {
     variant: 'positive',
   },
 }
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme } from 'victory-native'
 import { YStack, Text, useTheme } from 'tamagui'
@@ -84,3 +83,4 @@ export type BarChartProps = React.ComponentProps<typeof BarChart>
 export type ColumnChartProps = React.ComponentProps<typeof ColumnChart>
 
 export type ChartsProps = React.ComponentProps<typeof Charts>
+

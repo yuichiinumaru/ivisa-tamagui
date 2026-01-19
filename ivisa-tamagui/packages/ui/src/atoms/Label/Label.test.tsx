@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Label } from './Label'
 
@@ -12,3 +11,4 @@ describe('Label', () => {
     expect(label).toHaveAttribute('for', 'test-id')
   })
 })
+

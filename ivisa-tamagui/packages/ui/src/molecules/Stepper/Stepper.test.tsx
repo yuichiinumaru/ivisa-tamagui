@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { fireEvent, render, screen } from '../../test-utils'
 import { Stepper } from './Stepper'
@@ -112,3 +111,4 @@ describe('Stepper', () => {
     expect(screen.getByText('Não há passos para exibir.')).toBeInTheDocument()
   })
 })
+

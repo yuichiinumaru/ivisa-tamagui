@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Paragraph, PopoverProps, XStack, YStack, Text } from 'tamagui'
 import { Skeleton } from '../../atoms/Skeleton'
@@ -132,3 +131,4 @@ export type HoverCardAnchorProps = React.ComponentProps<typeof HoverCardAnchor>
 export type HoverCardCloseProps = React.ComponentProps<typeof HoverCardClose>
 
 export type HoverCardProfileContentProps = React.ComponentProps<typeof HoverCardProfileContent>
+

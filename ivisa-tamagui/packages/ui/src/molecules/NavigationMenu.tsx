@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
 import { GetProps, styled, YStack, XStack } from 'tamagui'
@@ -179,3 +178,4 @@ export {
 }
 
 export type NavigationMenuComponentProps = React.ComponentProps<typeof NavigationMenuComponent>
+

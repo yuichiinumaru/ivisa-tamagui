@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { YStack, styled, GetProps, Text, Spinner } from 'tamagui'
 import { FileText } from '@tamagui/lucide-icons'
@@ -73,3 +72,4 @@ export const PDFPreview = ({
     </PDFContainer>
   )
 }
+

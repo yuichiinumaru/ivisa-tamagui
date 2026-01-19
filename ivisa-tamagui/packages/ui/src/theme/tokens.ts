@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createTokens } from 'tamagui';
 
 const palette = {
@@ -381,3 +380,4 @@ export const colorTokens = {
   light: lightColors,
   dark: darkColors,
 };
+

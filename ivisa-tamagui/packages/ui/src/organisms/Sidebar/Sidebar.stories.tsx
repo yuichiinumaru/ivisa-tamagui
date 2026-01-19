@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Sidebar } from './Sidebar';
@@ -209,3 +208,4 @@ export const LayoutStressTest: Story = {
 export type NavMenuProps = React.ComponentProps<typeof NavMenu>
 
 export type UserProfileProps = React.ComponentProps<typeof UserProfile>
+

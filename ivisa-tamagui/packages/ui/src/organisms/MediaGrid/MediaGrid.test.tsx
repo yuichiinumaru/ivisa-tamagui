@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { render, screen, fireEvent } from '../../test-utils';
 import { MediaGrid } from './MediaGrid';
@@ -33,3 +32,4 @@ describe('MediaGrid', () => {
       expect(onUpload).toHaveBeenCalled();
   });
 });
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from 'react'
 import { Sheet as BaseSheet } from './Sheet'
 import { YStack, Portal } from 'tamagui'
@@ -154,3 +153,4 @@ export type DrawerDescriptionProps = React.ComponentProps<typeof DrawerDescripti
 export type DrawerCloseProps = React.ComponentProps<typeof DrawerClose>
 
 export type DrawerComponentProps = React.ComponentProps<typeof DrawerComponent>
+

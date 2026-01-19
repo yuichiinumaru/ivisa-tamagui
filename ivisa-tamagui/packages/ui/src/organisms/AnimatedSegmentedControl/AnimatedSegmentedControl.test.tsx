@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen, fireEvent } from '../../test-utils'
 import { AnimatedSegmentedControl } from './AnimatedSegmentedControl'
 
@@ -24,3 +23,4 @@ describe('AnimatedSegmentedControl', () => {
         expect(onChange).toHaveBeenCalledWith('tab2')
     })
 })
+

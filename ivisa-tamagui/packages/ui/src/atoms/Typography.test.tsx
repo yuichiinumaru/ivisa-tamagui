@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../test-utils'
 import { Heading, TypographyText, MutedText, LeadText, Blockquote } from './Typography'
 
@@ -29,3 +28,4 @@ describe('Typography primitives', () => {
     expect(container).toMatchSnapshot()
   })
 })
+

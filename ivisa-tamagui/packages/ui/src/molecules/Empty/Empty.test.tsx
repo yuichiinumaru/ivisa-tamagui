@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Empty } from './Empty'
 import { Ban } from '@tamagui/lucide-icons'
@@ -31,3 +30,4 @@ describe('Empty', () => {
     expect(screen.getByTestId('empty-icon-frame')).toHaveAttribute('data-has-error', 'true')
   })
 })
+

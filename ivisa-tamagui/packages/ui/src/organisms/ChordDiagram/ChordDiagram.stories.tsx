@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { ChordDiagram } from './ChordDiagram'
 import { Heading } from 'tamagui'
@@ -41,3 +40,4 @@ export const EstadoVazio: Story = {
     matrix: [],
   },
 }
+

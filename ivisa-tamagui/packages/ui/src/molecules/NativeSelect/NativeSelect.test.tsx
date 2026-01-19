@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { NativeSelect } from './NativeSelect'
 
@@ -26,3 +25,4 @@ describe('NativeSelect', () => {
     expect(screen.getByRole('combobox')).toBeDisabled()
   })
 })
+

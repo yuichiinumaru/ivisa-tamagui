@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -185,3 +184,4 @@ export const ComAcoesCustomizadas: Story = {
 }
 
 export type DefaultContentProps = React.ComponentProps<typeof DefaultContent>
+

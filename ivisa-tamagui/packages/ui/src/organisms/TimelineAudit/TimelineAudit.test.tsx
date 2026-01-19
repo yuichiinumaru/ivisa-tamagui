@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { TimelineAudit } from './TimelineAudit'
 import React from 'react'
@@ -29,3 +28,4 @@ describe('TimelineAudit', () => {
     expect(screen.getByText((content) => content.includes('- old') && content.includes('+ new'))).toBeInTheDocument()
   })
 })
+

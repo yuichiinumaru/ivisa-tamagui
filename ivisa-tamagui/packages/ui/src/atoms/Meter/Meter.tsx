@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { GetProps, styled, XStack, YStack, Text, View } from 'tamagui'
 
@@ -77,3 +76,4 @@ export const Meter = React.forwardRef<React.ElementRef<typeof MeterFrame>, Meter
 )
 
 Meter.displayName = 'Meter'
+

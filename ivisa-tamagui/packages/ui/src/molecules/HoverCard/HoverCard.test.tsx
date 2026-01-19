@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import {
   HoverCard,
@@ -45,3 +44,4 @@ describe('HoverCard', () => {
     expect(await screen.findByText(mockUser.name)).toBeInTheDocument()
   })
 })
+

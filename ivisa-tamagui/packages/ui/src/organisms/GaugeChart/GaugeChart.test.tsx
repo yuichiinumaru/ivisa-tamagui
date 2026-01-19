@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { GaugeChart } from './GaugeChart'
@@ -28,3 +27,4 @@ describe('GaugeChart', () => {
     expect(screen.getByText('Sem dados para exibir.')).toBeTruthy()
   })
 })
+

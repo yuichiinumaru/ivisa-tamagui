@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { forwardRef } from 'react'
 import { Stack as TamaguiStack, StackProps, styled } from 'tamagui'
 
@@ -74,3 +73,4 @@ const VStack = styled(TamaguiStack, {
 export { Stack, HStack, VStack }
 
 export type StackProps = React.ComponentProps<typeof Stack>
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Home, BarChart2, Users, Settings, LifeBuoy } from '@tamagui/lucide-icons';
 
 export interface NavItem {
@@ -49,3 +48,4 @@ export const mockUserProfile = {
   email: 'julia.alves@example.com',
   avatarUrl: 'https://i.pravatar.cc/40?u=a042581f4e29026704d',
 };
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { render, screen } from '../../test-utils'
 import { AgentAnimationPanel } from './AgentAnimationPanel'
@@ -44,3 +43,4 @@ describe('AgentAnimationPanel', () => {
     expect(screen.getByText('Nenhum evento registrado')).toBeTruthy()
   })
 })
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render } from '../../test-utils'
 import { MonthsPicker } from './MonthsPicker'
 
@@ -8,3 +7,4 @@ describe('MonthsPicker', () => {
         expect(getByText('Select Month')).toBeDefined()
     })
 })
+

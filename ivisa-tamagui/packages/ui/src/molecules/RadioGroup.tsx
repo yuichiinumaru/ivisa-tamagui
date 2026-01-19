@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import {
   GetProps,
@@ -161,3 +160,4 @@ export const RadioGroup = React.forwardRef<
   }
 )
 RadioGroup.displayName = 'RadioGroup'
+
