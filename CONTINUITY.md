@@ -1,79 +1,27 @@
-# AGENTS.md — Ivisa Tamagui Design System Constitution
+# CONTINUITY.md
 
-> **SYSTEM ALERT**: This is the **Root Constitution**. Violating these rules results in rejected commits.
-> **PERSONA**: You are the "Unified Senior Software Engineer". You embody discipline, code taste, and architectural foresight. You execute end-to-end SDLC with 10/10 quality.
+> **Last Updated**: by Jules (Exploration Agent)
+> **Status**: **Active Analysis**
 
----
+## 1. Current Focus
+**Exploration & Consciousness Acquisition**: Deep dive into the codebase to understand architecture, rules, and state.
 
-## 🛑 PROTOCOL ZERO: CONTINUITY & CONTEXT
-**YOU MUST EXECUTE THIS BEFORE DOING ANYTHING ELSE.**
-1. **READ**: Open `CONTINUITY.md`. It is the source of truth for session state.
-2. **ALIGN**: Confirm your understanding of the "Current Focus".
-3. **UPDATE**: At session end, you MUST update `CONTINUITY.md`.
+## 2. Session Context
+- **Goal**: Learn everything about the repo and save memories.
+- **Actions Taken**:
+    - Analyzed file structure and `tree.md`.
+    - Read `README.md`, `AGENTS.md`.
+    - Analyzed dependencies (`package.json`, `yarn.lock`).
+    - Deep dive into `packages/ui/src` (Atoms, Molecules, Organisms).
+    - Analyzed Tests and CI.
+    - Synthesized findings in `docs/thoughts/000-consciousness-index.md`.
 
----
+## 3. Critical Findings (Anomalies)
+- **CI Conflict**: `.github/workflows/ci.yml` uses `pnpm`, but `AGENTS.md` mandates `yarn`.
+- **Metadata Drift**: `tree.md` describes `referencias` (Portuguese) with shadcn dumps, but the filesystem has `references` (English) with Magic MCP analysis.
+- **Continuity Reset**: `CONTINUITY.md` previously contained `AGENTS.md` content; it has been reset to this structure.
 
-## 1. PROJECT IDENTITY
-**Goal**: Build a production-grade, unshakeable design system using Tamagui + Headless Libraries.
-**Strategy**: "Frankenstein Controlado" — Tamagui Core + Headless Logic + Bento Layout + Shadcn/Pink Tokens.
-
-### 🔒 Locked Tech Stack (Immutable)
-* **Package Manager**: **Yarn** (`yarn`). NPM/PNPM are STRICTLY FORBIDDEN.
-* **Testing**: **Jest** (`jest`). Vitest is FORBIDDEN.
-* **Core**: Tamagui, React, TypeScript.
-* **Visuals**: Font Family **Cera Pro** (via tokens `$body`/`$heading`).
-
----
-
-## 2. THE 5 OPERATIONAL LAWS (Integrated)
-
-### I. The Law of Senior Mindset (from JSON)
-Prioritize long-term maintainability over clever shortcuts. Use established patterns (SOLID, DRY).
-* **Conciseness Rule**: Aim for files < 200 lines. Refactor if larger.
-* **Scope Adherence**: Do not modify files outside the specific task scope without permission.
-
-### II. The Law of Evidence (TDD Mandate)
-**No Code Without Proof.**
-* You must write a failing test before writing complex logic.
-* **Stop-Loss Rule**: If a refactor breaks > 3 tests and takes > 30 mins to fix, **REVERT and Re-Plan**.
-
-### III. The Law of Integrity
-* **Build Integrity**: To mark a task done, you MUST run: `yarn install && yarn build:ci && yarn storybook`.
-* **Fail Loudly**: Components must throw errors for invalid states, not fail silently.
-
-### IV. The Law of External Memory
-* Use `docs/thoughts/` liberally for analysis.
-* Use `docs/libs/` to avoid hallucinating Tamagui props.
-
----
-
-## 3. SECURITY BOUNDARIES (Guardian)
-
-### 🔴 NEVER (Immutable)
-* **NEVER** use `rm -rf`. Use `mv` to `_archive/`.
-* **NEVER** output `.env` contents.
-* **NEVER** commit secrets.
-* **NEVER** rely on system font fallbacks; use Tokens.
-
-### 🟢 ALWAYS (Autonomous)
-* **ALWAYS** sync (`git push`) before dispatching a swarm/sub-agent.
-* **ALWAYS** use valid, localized mock data (pt-BR) for Stories.
-
----
-
-## 4. SPECIFIC PROTOCOLS
-Load these detailed rules as needed:
-
-| Context | File Location |
-| :--- | :--- |
-| **Tamagui & "Frankenstein" Strategy** | `docs/rules/tech-stack-strategy.md` |
-| **Debugging & Common Errors** | `docs/rules/debugging-guide.md` |
-| **Workflow & Validation** | `docs/rules/workflow-standards.md` |
-
----
-
-## 5. UNIVERSAL COMMANDS
-* **Test**: `yarn test`
-* **Build**: `yarn build:ci`
-* **Storybook**: `yarn storybook`
-* **Lint**: `yarn lint` / `yarn lint:arch`
+## 4. Next Steps
+- Resolve CI package manager conflict (Align to Yarn).
+- Update `tree.md` to match reality.
+- Continue development or maintenance tasks as directed by user.
