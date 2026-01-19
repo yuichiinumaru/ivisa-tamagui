@@ -1,4 +1,3 @@
-// @ts-nocheck
 export * from './atoms/Alert';
 export * from './atoms/AspectRatio';
 export * from './atoms/Avatar';
@@ -96,6 +95,9 @@ export * from './organisms/MediaGrid/MediaGrid';
 export * from './organisms/MediaGrid/MediaGrid.props';
 export * from './organisms/AuthScreen/AuthScreen';
 export * from './organisms/AuthScreen/AuthScreen.props';
+export * from './organisms/ChatPanel';
+export * from './organisms/CodeBlock';
+export * from './organisms/TaskBoard';
 export * from './molecules/Field';
 export * from './molecules/InputGroup';
 export * from './molecules/NativeSelect';
