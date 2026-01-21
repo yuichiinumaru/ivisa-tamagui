@@ -118,9 +118,6 @@ export const GoldenPath: Story = {
   name: 'Golden Path (Default)',
   args: {
     variant: 'collapsible',
-    header: renderHeader(false),
-    footer: renderFooter(false),
-    children: renderSidebarContent(false),
     isCollapsed: false,
     isLoading: false,
     isEmpty: false,
@@ -128,7 +125,16 @@ export const GoldenPath: Story = {
   },
   render: (args) => (
     <YStack height={600} flexDirection="row">
-      <Sidebar {...args} header={renderHeader(args.isCollapsed)} footer={renderFooter(args.isCollapsed)} children={renderSidebarContent(args.isCollapsed)} />
+      {
+        (() => {
+          const content = args.isEmpty || args.error ? null : renderSidebarContent(args.isCollapsed)
+          return (
+            <Sidebar {...args} header={renderHeader(args.isCollapsed)} footer={args.isEmpty || args.error ? undefined : renderFooter(args.isCollapsed)}>
+              {content}
+            </Sidebar>
+          )
+        })()
+      }
       <YStack flex={1} padding="$4">
         <Text>Conteúdo Principal da Aplicação</Text>
       </YStack>

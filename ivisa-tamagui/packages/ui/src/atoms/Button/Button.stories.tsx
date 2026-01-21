@@ -112,8 +112,8 @@ export const ComIcone: Story = {
   args: {
     ...Primario.args,
     children: 'Salvar',
-    leftIcon: <Text>✅</Text>,
   },
+  render: (args) => <Button {...args} leftIcon={<Text>✅</Text>} />,
 }
 
 export const Pequeno: Story = {

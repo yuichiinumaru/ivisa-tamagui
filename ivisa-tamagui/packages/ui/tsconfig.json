@@ -4,6 +4,10 @@
     "rootDir": "src",
     "outDir": "dist",
     "baseUrl": ".",
+    "types": [
+      "jest",
+      "@testing-library/jest-dom"
+    ],
     "paths": {
       "@ivisa/ui": [
         "src/index.ts"
