@@ -41,3 +41,4 @@ export const EstadoVazio: Story = {
     matrix: [],
   },
 }
+

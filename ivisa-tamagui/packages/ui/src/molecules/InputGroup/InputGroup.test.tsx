@@ -29,3 +29,4 @@ describe('InputGroup', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 });
+

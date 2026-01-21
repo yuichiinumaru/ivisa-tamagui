@@ -13,3 +13,4 @@ describe('StarRating', () => {
     expect(getByTestId('star-5')).toBeDefined()
   })
 })
+

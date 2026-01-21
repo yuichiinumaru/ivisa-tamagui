@@ -29,3 +29,4 @@ describe('TimelineAudit', () => {
     expect(screen.getByText((content) => content.includes('- old') && content.includes('+ new'))).toBeInTheDocument()
   })
 })
+

@@ -42,3 +42,4 @@ describe('RankingChart', () => {
     expect(screen.getByText('Test')).toBeInTheDocument();
   });
 });
+

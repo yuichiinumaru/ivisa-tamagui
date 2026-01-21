@@ -88,3 +88,4 @@ describe('Toast Component', () => {
       expect(handleDismiss).toHaveBeenCalledTimes(1)
     })
   })
+

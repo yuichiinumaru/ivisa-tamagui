@@ -69,3 +69,4 @@ describe('Command', () => {
     // Just checking render is enough for "unit test" of wrapper
   })
 })
+

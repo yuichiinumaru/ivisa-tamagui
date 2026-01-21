@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import React, { useState } from 'react'

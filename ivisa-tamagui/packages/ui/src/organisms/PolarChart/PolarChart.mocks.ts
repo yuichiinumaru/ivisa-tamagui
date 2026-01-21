@@ -6,3 +6,4 @@ export const polarData = [
   { x: 'Abr', y: 30 },
   { x: 'Mai', y: 20 },
 ]
+

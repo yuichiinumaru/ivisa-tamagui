@@ -55,3 +55,4 @@ describe('Maps', () => {
     expect(screen.getByText('Não há dados para exibir.')).toBeInTheDocument()
   })
 })
+

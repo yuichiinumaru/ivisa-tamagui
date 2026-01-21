@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -64,3 +63,4 @@ export const Erro: Story = {
     error: new Error('Failed to load data'),
   },
 }
+

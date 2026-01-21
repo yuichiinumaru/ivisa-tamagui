@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -175,3 +174,4 @@ export const NoFooter: Story = {
 }
 
 // Composition story removed as Drawer component structure enforces specific layout
+

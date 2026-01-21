@@ -53,3 +53,4 @@ describe('Collapsible', () => {
     expect(trigger).toHaveAttribute('aria-invalid', 'true')
   })
 })
+

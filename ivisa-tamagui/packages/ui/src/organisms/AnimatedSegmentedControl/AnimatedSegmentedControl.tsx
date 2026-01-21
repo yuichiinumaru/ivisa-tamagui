@@ -91,3 +91,4 @@ export const AnimatedSegmentedControl = ({
         </Container>
     )
 }
+

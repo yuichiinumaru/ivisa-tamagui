@@ -34,3 +34,4 @@ describe('ScannerView', () => {
     // Let's rely on finding by type if needed, or better, add accessibility label.
   })
 })
+

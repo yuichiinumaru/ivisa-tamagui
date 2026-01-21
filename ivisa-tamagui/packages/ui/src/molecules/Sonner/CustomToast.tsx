@@ -63,3 +63,4 @@ export const CustomToast = ({ title, description, type, action, loading }: Custo
     </XStack>
   );
 };
+

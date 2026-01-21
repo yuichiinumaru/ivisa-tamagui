@@ -26,3 +26,4 @@ describe('NativeSelect', () => {
     expect(screen.getByRole('combobox')).toBeDisabled()
   })
 })
+

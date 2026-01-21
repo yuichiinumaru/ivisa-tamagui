@@ -20,3 +20,4 @@ export type SpinnerProps = GetProps<typeof StyledSpinner>;
 export const Spinner = ({ 'aria-label': ariaLabel = 'Carregando...', ...props }: SpinnerProps) => {
   return <StyledSpinnerAny aria-label={ariaLabel} {...props} />;
 };
+

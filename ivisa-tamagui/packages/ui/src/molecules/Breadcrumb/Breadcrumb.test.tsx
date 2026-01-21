@@ -37,3 +37,4 @@ describe('Breadcrumb', () => {
     expect(screen.getByText('Ajuda')).toBeInTheDocument()
   })
 })
+

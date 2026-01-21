@@ -8,3 +8,4 @@ describe('MonthsPicker', () => {
         expect(getByText('Select Month')).toBeDefined()
     })
 })
+

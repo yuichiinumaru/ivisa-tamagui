@@ -146,3 +146,4 @@ export type TableRowProps = GetProps<typeof TableRow>
 export type TableHeadProps = GetProps<typeof TableHead>
 export type TableCellProps = GetProps<typeof TableCell>
 export type TableCaptionProps = GetProps<typeof TableCaption>
+

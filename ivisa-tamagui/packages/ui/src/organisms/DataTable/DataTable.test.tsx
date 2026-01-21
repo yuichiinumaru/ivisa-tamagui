@@ -36,3 +36,4 @@ describe('DataTable', () => {
     expect(screen.getByText('Status')).toBeInTheDocument()
   })
 })
+

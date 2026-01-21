@@ -53,3 +53,4 @@ describe('Toggle', () => {
     expect(button).toHaveAttribute('aria-disabled', 'true')
   })
 })
+

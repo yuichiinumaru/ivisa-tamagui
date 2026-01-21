@@ -12,3 +12,4 @@ describe('Label', () => {
     expect(label).toHaveAttribute('for', 'test-id')
   })
 })
+

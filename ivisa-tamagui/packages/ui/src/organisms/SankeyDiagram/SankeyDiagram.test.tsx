@@ -50,3 +50,4 @@ describe('SankeyDiagram', () => {
     expect(screen.getByText('Não há dados para exibir.')).toBeInTheDocument()
   })
 })
+

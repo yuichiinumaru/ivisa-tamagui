@@ -21,3 +21,4 @@ export const AgentAnimationModal: React.FC<AgentAnimationModalProps> = ({
     </Dialog>
   )
 }
+

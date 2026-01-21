@@ -47,3 +47,4 @@ describe('Kbd', () => {
     expect(kbd).toBeInTheDocument()
   })
 })
+

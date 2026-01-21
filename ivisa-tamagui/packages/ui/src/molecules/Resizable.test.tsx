@@ -20,3 +20,4 @@ describe('Resizable', () => {
     expect(screen.getByText('Panel 2')).toBeInTheDocument()
   })
 })
+

@@ -9,3 +9,4 @@ describe('Booking Calendar', () => {
     expect(screen.getByText('Select Date')).toBeInTheDocument()
   })
 })
+

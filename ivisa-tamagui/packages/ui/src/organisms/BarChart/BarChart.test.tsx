@@ -88,3 +88,4 @@ describe('BarChart', () => {
     expect(screen.getByText('Test Header')).toBeInTheDocument()
   })
 })
+

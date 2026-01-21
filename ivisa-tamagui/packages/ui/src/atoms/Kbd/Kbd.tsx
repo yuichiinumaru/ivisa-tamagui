@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { styled, Text, GetProps, TamaguiElement, Slot, XStack } from 'tamagui'
 
@@ -140,3 +139,4 @@ Kbd.displayName = 'Kbd'
 
 export { Kbd }
 export default Kbd
+

@@ -40,3 +40,4 @@ describe('Button', () => {
       expect(asFragment()).toMatchSnapshot()
   })
 })
+

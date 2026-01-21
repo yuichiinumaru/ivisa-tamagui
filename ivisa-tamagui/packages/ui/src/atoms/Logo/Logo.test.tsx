@@ -25,3 +25,4 @@ describe('Logo', () => {
     expect(logoElement).toBeInTheDocument()
   })
 })
+

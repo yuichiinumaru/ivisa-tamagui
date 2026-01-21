@@ -30,3 +30,4 @@ describe('SignaturePad', () => {
   // Basic interaction test (mocking drawing is hard in JSDOM without pointer events support)
   // We trust the component logic for now and verify props wiring.
 })
+
