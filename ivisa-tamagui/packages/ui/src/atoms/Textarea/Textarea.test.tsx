@@ -25,3 +25,4 @@ describe('Textarea', () => {
     // expect(textarea.style.resize).toBe('none')
   })
 })
+

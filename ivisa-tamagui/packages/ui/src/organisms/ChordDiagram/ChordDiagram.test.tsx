@@ -43,3 +43,4 @@ describe('ChordDiagram', () => {
     expect(screen.getByText('Não há dados para exibir.')).toBeInTheDocument()
   })
 })
+

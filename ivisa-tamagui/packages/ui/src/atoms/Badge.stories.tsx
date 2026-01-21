@@ -96,10 +96,10 @@ export const ComIcones: Story = {
   name: 'Com Ícones',
   args: {
     children: 'Disponível',
-    leftIcon: <AlarmClock />,
-    rightIcon: <Rocket />,
   },
-  render: (args) => <Badge {...args} />,
+  render: (args) => (
+    <Badge {...args} leftIcon={<AlarmClock />} rightIcon={<Rocket />} />
+  ),
 };
 
 export const TextoLongo: Story = {
@@ -142,12 +142,13 @@ export const TamanhoGrande: Story = {
 export const ComoLinkComIcones: Story = {
     name: 'Como Link com Ícones',
     args: {
-        asChild: true,
-        children: <a href="https://tamagui.dev">Link</a>,
-        leftIcon: <Rocket />,
         variant: 'secondary',
     },
-    render: (args) => <Badge {...args} />,
+    render: (args) => (
+      <Badge {...args} asChild leftIcon={<Rocket />}>
+        <a href="https://tamagui.dev">Link</a>
+      </Badge>
+    ),
 };
 
 export const LarguraRestrita: Story = {

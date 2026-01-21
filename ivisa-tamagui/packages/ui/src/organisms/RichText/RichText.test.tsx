@@ -78,3 +78,4 @@ describe('RichText', () => {
         expect(screen.getByRole('textbox')).toBeInTheDocument();
     });
 });
+

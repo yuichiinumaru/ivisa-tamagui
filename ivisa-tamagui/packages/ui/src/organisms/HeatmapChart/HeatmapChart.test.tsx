@@ -52,3 +52,4 @@ describe('HeatmapChart', () => {
     expect(screen.getByText('Ocorreu um erro ao carregar os dados.')).toBeInTheDocument()
   })
 })
+

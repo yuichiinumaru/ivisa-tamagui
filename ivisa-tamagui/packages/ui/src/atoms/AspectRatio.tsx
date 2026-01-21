@@ -56,3 +56,4 @@ export const AspectRatio = forwardRef<TamaguiElement, AspectRatioProps>(
 )
 
 AspectRatio.displayName = 'AspectRatio'
+

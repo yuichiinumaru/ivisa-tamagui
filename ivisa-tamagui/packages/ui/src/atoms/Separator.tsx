@@ -33,3 +33,4 @@ export const Separator = SeparatorFrame
  * Props for the Separator component.
  */
 export type SeparatorProps = GetProps<typeof SeparatorFrame>
+

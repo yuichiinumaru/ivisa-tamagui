@@ -13,3 +13,4 @@ describe('ToggleGroup', () => {
     expect(screen.getByText('A')).toBeInTheDocument()
   })
 })
+

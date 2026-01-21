@@ -8,3 +8,4 @@ describe('Switch', () => {
     expect(screen.getByRole('switch')).toBeInTheDocument()
   })
 })
+

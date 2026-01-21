@@ -8,3 +8,4 @@ describe('ScrollArea', () => {
     expect(screen.getByTestId('content')).toBeInTheDocument()
   })
 })
+

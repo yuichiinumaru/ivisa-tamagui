@@ -114,3 +114,4 @@ export const WithRightSlot: Story = {
     </Menubar>
   ),
 }
+

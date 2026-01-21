@@ -93,3 +93,4 @@ describe('Alert', () => {
     expect(screen.getByTestId('test-icon')).toBeInTheDocument();
   });
 });
+

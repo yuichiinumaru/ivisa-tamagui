@@ -68,3 +68,4 @@ describe('Carousel', () => {
     expect(screen.getByText('Failed to load items')).toBeInTheDocument()
   })
 })
+

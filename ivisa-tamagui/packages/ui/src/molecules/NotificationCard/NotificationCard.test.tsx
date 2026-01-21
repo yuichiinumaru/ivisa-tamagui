@@ -26,3 +26,4 @@ describe('NotificationCard', () => {
         expect(onDismiss).toHaveBeenCalled()
     })
 })
+

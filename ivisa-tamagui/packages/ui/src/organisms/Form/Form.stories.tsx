@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
@@ -171,7 +170,24 @@ const ProfileForm = ({ isLoading, error, onSubmit, footer }: ProfileFormProps) =
 
 // --- Stories ---
 const Template: StoryObj<ProfileFormProps> = {
-  render: (args) => <ProfileForm {...args} />,
+  render: (args) => (
+    <ProfileForm
+      {...args}
+      footer={
+        args.isLoading ? (
+          <FormFooter>
+            <Button variant="outline" disabled>Cancelar</Button>
+            <Button disabled>Salvando...</Button>
+          </FormFooter>
+        ) : (
+          <FormFooter>
+            <Button variant="outline">Cancelar</Button>
+            <Button>Salvar Perfil</Button>
+          </FormFooter>
+        )
+      }
+    />
+  ),
 }
 
 export const Completo = {
@@ -182,12 +198,6 @@ export const Completo = {
     onSubmit: (values: ProfileFormValues) => {
       alert(JSON.stringify(values, null, 2))
     },
-    footer: (
-      <FormFooter>
-        <Button variant="outline">Cancelar</Button>
-        <Button>Salvar Perfil</Button>
-      </FormFooter>
-    ),
   },
 }
 
@@ -196,12 +206,6 @@ export const Carregando = {
   args: {
     ...Completo.args,
     isLoading: true,
-    footer: (
-      <FormFooter>
-        <Button variant="outline" disabled>Cancelar</Button>
-        <Button disabled>Salvando...</Button>
-      </FormFooter>
-    ),
   },
 }
 

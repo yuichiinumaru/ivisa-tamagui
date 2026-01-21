@@ -25,3 +25,4 @@ describe('SchemaForm', () => {
     expect(handleSubmit).not.toHaveBeenCalled()
   })
 })
+

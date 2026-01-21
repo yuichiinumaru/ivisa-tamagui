@@ -10,3 +10,4 @@ describe('Spinner', () => {
     expect(container.firstChild).toBeInTheDocument()
   })
 })
+

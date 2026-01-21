@@ -246,3 +246,4 @@ export function DataTable<TData, TValue>({
     </YStack>
   )
 }
+

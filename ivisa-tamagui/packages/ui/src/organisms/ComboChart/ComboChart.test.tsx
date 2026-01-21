@@ -34,3 +34,4 @@ describe('ComboChart', () => {
     expect(screen.getByTestId('skeleton')).toBeInTheDocument()
   })
 })
+

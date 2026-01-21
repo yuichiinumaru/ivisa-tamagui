@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
@@ -129,19 +128,16 @@ export const ComIcones: Story = {
   args: {
     children: 'Texto com ícones',
     variant: 'p',
-    leftIcon: <AlarmClock />,
-    rightIcon: <AlarmClock />,
   },
-  render: renderStory,
+  render: (args) => renderStory({ ...args, leftIcon: <AlarmClock />, rightIcon: <AlarmClock /> }),
 };
 
 export const AsChild: Story = {
   args: {
-    children: <a href="#">Este é um link renderizado como filho.</a>,
     variant: 'p',
     asChild: true,
   },
-  render: renderStory,
+  render: (args) => renderStory({ ...args, children: <a href="#">Este é um link renderizado como filho.</a> }),
 };
 
 export const All: Story = {
@@ -168,3 +164,4 @@ export const All: Story = {
     </>
   ),
 };
+

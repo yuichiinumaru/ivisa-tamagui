@@ -5,3 +5,4 @@ export const fonts = {
   CeraProMedium: null,
   CeraProBlack: null,
 }
+

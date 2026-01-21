@@ -143,3 +143,4 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
 export type AccordionProps = GetProps<typeof Accordion>
 export type AccordionTriggerFrameProps = GetProps<typeof AccordionTriggerFrame>
 export type AccordionContentFrameProps = GetProps<typeof AccordionContentFrame>
+

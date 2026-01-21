@@ -17,3 +17,4 @@ describe('Avatar', () => {
     expect(screen.getByText('CN')).toBeInTheDocument()
   })
 })
+

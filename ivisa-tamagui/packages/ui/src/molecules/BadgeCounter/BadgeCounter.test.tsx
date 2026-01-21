@@ -42,3 +42,4 @@ describe('BadgeCounter', () => {
     expect(screen.getByText('0')).toBeInTheDocument()
   })
 })
+

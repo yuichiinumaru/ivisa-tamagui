@@ -62,3 +62,4 @@ describe('MetricCard', () => {
     expect(screen.getByLabelText('Aumento de +20.1%')).toBeTruthy()
   })
 })
+

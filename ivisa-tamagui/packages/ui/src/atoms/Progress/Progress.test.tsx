@@ -60,3 +60,4 @@ describe('Progress', () => {
     expect(screen.getByText('0%')).toBeInTheDocument()
   })
 })
+

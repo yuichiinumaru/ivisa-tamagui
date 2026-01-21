@@ -31,3 +31,4 @@ describe('Empty', () => {
     expect(screen.getByTestId('empty-icon-frame')).toHaveAttribute('data-has-error', 'true')
   })
 })
+

@@ -328,3 +328,4 @@ export const Pagination: React.FC<PaginationProps> = ({
 }
 
 Pagination.displayName = 'Pagination'
+
