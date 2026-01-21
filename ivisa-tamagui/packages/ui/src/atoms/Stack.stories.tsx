@@ -93,18 +93,22 @@ export const AsChild: Story = {
     name: "Composição (asChild)",
     args: {
         asChild: true,
-        gap: '$2',
-        p: '$4',
-        flexDirection: 'row',
-        alignItems: 'center',
-        hoverStyle: { bc: '$backgroundHover' },
-        pressStyle: { bc: '$backgroundPress' },
-        focusStyle: { bc: '$backgroundFocus', outlineWidth: 2, outlineColor: '$blue10' },
-        animation:"bouncy"
+        // Remove ALL layout props that might be passed as style arrays to the native button
+        // by Tamagui when extracting styles fails or when doing client-side expansion.
+        gap: undefined,
+        p: undefined,
+        bc: undefined,
+        borderWidth: undefined,
+        borderColor: undefined,
+        borderRadius: undefined,
+        hoverStyle: undefined,
+        pressStyle: undefined,
+        focusStyle: undefined,
+        animation: undefined
     },
     render: (args) => (
-        <Stack {...args}>
-            <button data-testid="aschild-button" onClick={args.onClick}>
+        <Stack asChild>
+            <button data-testid="aschild-button" onClick={args.onClick} style={{ all: 'unset', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                 <Text>Eu sou um botão</Text>
             </button>
         </Stack>

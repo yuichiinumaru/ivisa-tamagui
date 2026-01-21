@@ -44,19 +44,34 @@ async function runAudit() {
       return [];
   }
   const storiesData = JSON.parse(fs.readFileSync(storiesJsonPath, 'utf8'));
-  const stories = Object.values(storiesData.entries);
+  let stories = Object.values(storiesData.entries);
 
-  console.log(`Found ${stories.length} stories.`);
+  // Filter stories if args provided
+  const filterArgs = process.argv.slice(2);
+  if (filterArgs.length > 0) {
+      const keywords = filterArgs[0].toLowerCase().split(' ');
+      stories = stories.filter(story => {
+          const fullText = (story.id + story.title + story.name).toLowerCase();
+          return keywords.some(k => fullText.includes(k));
+      });
+      console.log(`Filtering for keywords: ${keywords.join(', ')}`);
+  }
+
+  console.log(`Found ${stories.length} stories to check.`);
 
   const errors = [];
 
   for (const story of stories) {
+    console.log(`Checking ${story.id}...`);
     const storyUrl = `${BASE_URL}/iframe.html?id=${story.id}&viewMode=story`;
 
     const storyErrors = [];
     const consoleHandler = msg => {
       if (msg.type() === 'error') {
-        storyErrors.push(msg.text());
+        // Filter out known harmless errors if needed, or specific noise
+        if (!msg.text().includes('favicon.ico')) {
+             storyErrors.push(msg.text());
+        }
       }
     };
     const errorHandler = exception => {
