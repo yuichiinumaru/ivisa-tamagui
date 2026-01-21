@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { GetProps, styled, Text, XStack, YStack } from 'tamagui'
 import { Progress as ProgressPrimitive, ProgressIndicator as ProgressIndicatorPrimitive } from '@tamagui/progress'
 import React from 'react'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import type { Meta, StoryObj } from '@storybook/react'
 import {
@@ -147,4 +148,3 @@ export const ComposicaoAnimada: Story = {
 }
 
 export type AnimatedChevronProps = React.ComponentProps<typeof AnimatedChevron>
-

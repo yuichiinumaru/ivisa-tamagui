@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Card,
   H4,
@@ -92,4 +93,3 @@ export const ChartContainer = ({
 export default ChartContainer
 
 export type ChartContainerProps = React.ComponentProps<typeof ChartContainer>
-

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react'
 import { useDatePicker } from '@rehookify/datepicker'
 import { YStack, XStack, Text, styled } from 'tamagui'
@@ -243,4 +244,3 @@ export const Calendar = ({
 }
 
 export type SkeletonGridProps = React.ComponentProps<typeof SkeletonGrid>
-

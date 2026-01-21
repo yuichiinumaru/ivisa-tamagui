@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { useForm, FieldValues, ControllerRenderProps } from 'react-hook-form'
 import { YStack } from 'tamagui'

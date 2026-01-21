@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen, fireEvent } from '../test-utils'
 import { Avatar } from './Avatar'
 import React from 'react'

@@ -62,4 +62,3 @@ export const Default: Story = {
 }
 
 export type RenderProps = React.ComponentProps<typeof Render>
-

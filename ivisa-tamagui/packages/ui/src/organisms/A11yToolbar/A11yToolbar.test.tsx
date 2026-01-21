@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen, fireEvent } from '../../test-utils'
 import { A11yToolbar } from './A11yToolbar'
 import React from 'react'

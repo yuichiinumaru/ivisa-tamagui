@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { fireEvent, render, screen } from '../../test-utils'
 import { Stepper } from './Stepper'

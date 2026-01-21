@@ -83,4 +83,3 @@ export const EmContainerPequeno: Story = {
 }
 
 export type DefaultRenderProps = React.ComponentProps<typeof DefaultRender>
-

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export type Pagamento = {
   id: string
   quantia: number

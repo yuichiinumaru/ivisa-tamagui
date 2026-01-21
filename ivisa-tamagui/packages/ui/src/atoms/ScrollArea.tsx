@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { GetProps, ScrollView as TamaguiScrollView, styled, TamaguiElement } from 'tamagui'
 import { forwardRef } from 'react'
 

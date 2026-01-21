@@ -131,4 +131,3 @@ export type HoverCardAnchorProps = React.ComponentProps<typeof HoverCardAnchor>
 export type HoverCardCloseProps = React.ComponentProps<typeof HoverCardClose>
 
 export type HoverCardProfileContentProps = React.ComponentProps<typeof HoverCardProfileContent>
-

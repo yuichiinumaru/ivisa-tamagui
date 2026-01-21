@@ -178,4 +178,3 @@ export {
 }
 
 export type NavigationMenuComponentProps = React.ComponentProps<typeof NavigationMenuComponent>
-

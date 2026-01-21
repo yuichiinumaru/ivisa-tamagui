@@ -133,4 +133,3 @@ export const NarrowContainer: Story = {
 }
 
 export type DatePickerWithStateProps = React.ComponentProps<typeof DatePickerWithState>
-

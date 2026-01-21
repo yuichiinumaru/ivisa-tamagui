@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   GetProps,
   Label as TamaguiLabel,

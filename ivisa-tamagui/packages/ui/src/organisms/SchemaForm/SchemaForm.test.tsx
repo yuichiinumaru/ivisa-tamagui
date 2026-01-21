@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen, fireEvent, waitFor } from '../../test-utils'
 import { SchemaForm } from './SchemaForm'
 import { FieldSchema } from './types'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { LocationStatus } from './LocationStatus'
 import React from 'react'

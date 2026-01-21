@@ -184,4 +184,3 @@ export const ComAcoesCustomizadas: Story = {
 }
 
 export type DefaultContentProps = React.ComponentProps<typeof DefaultContent>
-

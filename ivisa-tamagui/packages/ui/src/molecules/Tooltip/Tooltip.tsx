@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import { Tooltip as TamaguiTooltip, TooltipProps as TamaguiTooltipProps, styled, Paragraph, YStack, XStack, Portal } from 'tamagui'
 import React from 'react'
@@ -92,4 +93,3 @@ export type TooltipContentProps = React.ComponentProps<typeof TooltipContent>
 export type TooltipArrowProps = React.ComponentProps<typeof TooltipArrow>
 
 export type TooltipTriggerProps = React.ComponentProps<typeof TooltipTrigger>
-

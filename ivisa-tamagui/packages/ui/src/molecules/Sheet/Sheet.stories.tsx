@@ -194,4 +194,3 @@ export const AcoesCustomizadas: Story = {
 }
 
 export type SheetStoryContentProps = React.ComponentProps<typeof SheetStoryContent>
-

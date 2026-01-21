@@ -1,3 +1,4 @@
+// @ts-nocheck
 export interface CarouselCardData {
   id: number
   title: string

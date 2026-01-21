@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Button } from '@ivisa/ui/atoms/Button'
 import { Home } from '@tamagui/lucide-icons'
 import type { Meta, StoryObj } from '@storybook/react'

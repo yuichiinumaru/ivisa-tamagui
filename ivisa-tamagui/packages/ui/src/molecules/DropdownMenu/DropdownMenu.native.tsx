@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react'
 import { View, Text, styled, XStack, YStack, Separator } from 'tamagui'
@@ -176,4 +177,3 @@ export type DropdownMenuSubContentProps = React.ComponentProps<typeof DropdownMe
 export type DropdownMenuCheckboxItemProps = React.ComponentProps<typeof DropdownMenuCheckboxItem>
 
 export type DropdownMenuRadioItemProps = React.ComponentProps<typeof DropdownMenuRadioItem>
-

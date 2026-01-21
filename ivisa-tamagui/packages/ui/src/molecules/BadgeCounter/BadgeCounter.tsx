@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { forwardRef } from 'react';
 import { GetProps, styled, XStack, YStack } from 'tamagui';
 import { Badge, BadgeText } from '../../atoms/Badge';

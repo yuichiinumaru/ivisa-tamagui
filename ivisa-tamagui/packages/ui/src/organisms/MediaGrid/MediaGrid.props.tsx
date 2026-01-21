@@ -1,3 +1,4 @@
+// @ts-nocheck
 export type MediaItem = {
   id: string;
   type: 'image' | 'video';

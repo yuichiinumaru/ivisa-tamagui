@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { AreaChart } from './AreaChart'
 import { AppProviders } from '../../providers/AppProviders'

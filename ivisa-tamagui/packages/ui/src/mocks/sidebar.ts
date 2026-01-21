@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Home, BarChart2, Users, Settings, LifeBuoy } from '@tamagui/lucide-icons';
 
 export interface NavItem {

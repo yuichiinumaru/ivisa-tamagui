@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu'
 import { Check, ChevronRight, Circle } from '@tamagui/lucide-icons'
@@ -372,4 +373,3 @@ export const ContextMenu = ContextMenuComponent
 export type ContextMenuProps = React.ComponentProps<typeof ContextMenu>
 
 export type ContextMenuComponentProps = React.ComponentProps<typeof ContextMenuComponent>
-

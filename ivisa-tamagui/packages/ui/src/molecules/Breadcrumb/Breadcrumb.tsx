@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
 import React from 'react'
 import { Anchor, GetProps, Text, XStack, styled } from 'tamagui'

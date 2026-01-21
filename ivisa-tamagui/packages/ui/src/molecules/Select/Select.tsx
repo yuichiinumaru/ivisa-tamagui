@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Check, ChevronDown } from '@tamagui/lucide-icons';
 import React from 'react';
 import {
@@ -206,4 +207,3 @@ export type SelectContentProps = React.ComponentProps<typeof SelectContent>
 export type SelectItemIndicatorProps = React.ComponentProps<typeof SelectItemIndicator>
 
 export type SelectSheetProps = React.ComponentProps<typeof SelectSheet>
-

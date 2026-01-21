@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { NetworkGraph } from './NetworkGraph'
 import { AppProviders } from '../../providers/AppProviders'

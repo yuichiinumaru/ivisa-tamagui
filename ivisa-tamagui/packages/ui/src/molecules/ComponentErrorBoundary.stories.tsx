@@ -228,4 +228,3 @@ export type BuggyComponentProps = React.ComponentProps<typeof BuggyComponent>
 export type InteractiveStoryProps = React.ComponentProps<typeof InteractiveStory>
 
 export type CustomFallbackProps = React.ComponentProps<typeof CustomFallback>
-

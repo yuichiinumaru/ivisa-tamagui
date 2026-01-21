@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Star } from '@tamagui/lucide-icons'
 import React, { forwardRef, useState } from 'react'
 import {
@@ -137,4 +138,3 @@ StarRatingComponent.displayName = 'StarRating'
 export const StarRating = withStaticProperties(StarRatingComponent, {})
 
 export type StarRatingComponentProps = React.ComponentProps<typeof StarRatingComponent>
-

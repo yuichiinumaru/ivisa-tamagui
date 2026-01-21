@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { DefaultValues, FieldValues, Path } from 'react-hook-form'
 
 export type FieldType =

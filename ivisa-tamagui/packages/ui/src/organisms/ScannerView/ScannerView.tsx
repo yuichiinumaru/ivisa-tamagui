@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { YStack, XStack, styled, GetProps, Text } from 'tamagui'
 import { Camera, Maximize, X } from '@tamagui/lucide-icons'

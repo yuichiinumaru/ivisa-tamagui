@@ -86,4 +86,3 @@ export const EstresseDeLayout: Story = {
 }
 
 export type AutocompleteWithStateProps = React.ComponentProps<typeof AutocompleteWithState>
-

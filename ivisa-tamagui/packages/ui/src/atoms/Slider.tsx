@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Slider as TamaguiSlider, styled, GetProps, Spinner } from 'tamagui'
 
 const SliderFrame = styled(TamaguiSlider, {

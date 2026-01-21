@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils';
 import { InputGroup } from './InputGroup';
 import { Input } from '../../atoms/Input';

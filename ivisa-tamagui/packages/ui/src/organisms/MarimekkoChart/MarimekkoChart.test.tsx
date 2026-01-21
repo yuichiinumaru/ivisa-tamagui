@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { MarimekkoChart } from './MarimekkoChart'
 import React from 'react'

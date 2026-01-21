@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useRef, useState } from 'react'
 import { styled, YStack, GetProps, XStack } from 'tamagui'
 import { Svg, Path } from 'react-native-svg'

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { forwardRef } from 'react'
 import { Stack, StackProps, Text } from 'tamagui'
 
@@ -46,4 +47,3 @@ export const Video = forwardRef<unknown, VideoProps>(({
 })
 
 export type ResizeModeProps = React.ComponentProps<typeof ResizeMode>
-

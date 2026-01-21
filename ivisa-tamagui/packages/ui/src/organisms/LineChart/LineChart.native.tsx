@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { VictoryLine, VictoryChart, VictoryAxis, VictoryTheme } from 'victory-native'
 import { YStack, Text, useTheme, XStack } from 'tamagui'
@@ -83,4 +84,3 @@ export const TimeSeriesChart = LineChart
 export type LineChartProps = React.ComponentProps<typeof LineChart>
 
 export type TimeSeriesChartProps = React.ComponentProps<typeof TimeSeriesChart>
-

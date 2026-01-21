@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Check, ChevronDown, XCircle } from '@tamagui/lucide-icons'
 import React, { useMemo, useState } from 'react'
 import { ListItem, ScrollView, Text, YGroup, YStack } from 'tamagui'

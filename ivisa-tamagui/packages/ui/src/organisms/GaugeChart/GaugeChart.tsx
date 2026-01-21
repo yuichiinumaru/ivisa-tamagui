@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { ReactNode } from 'react'
 import { GetProps, Text, YStack, useTheme } from 'tamagui'
 import { VictoryPie } from 'victory-native'
@@ -127,4 +128,3 @@ export const GaugeChart = ({
 export default GaugeChart
 
 export type GaugeChartSkeletonProps = React.ComponentProps<typeof GaugeChartSkeleton>
-

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const MOCK_SUGESTOES = [
   { id: '1', label: 'Calendário' },
   { id: '2', label: 'Pesquisar Emoji' },

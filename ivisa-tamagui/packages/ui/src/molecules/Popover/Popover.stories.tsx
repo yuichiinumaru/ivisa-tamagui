@@ -179,4 +179,3 @@ export const Restrito: Story = {
 }
 
 export type PopoverContentWithHooksProps = React.ComponentProps<typeof PopoverContentWithHooks>
-

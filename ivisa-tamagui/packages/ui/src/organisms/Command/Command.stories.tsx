@@ -173,4 +173,3 @@ export const Dialogo = () => {
 }
 
 export type DialogoProps = React.ComponentProps<typeof Dialogo>
-

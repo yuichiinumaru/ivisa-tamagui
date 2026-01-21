@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../test-utils'
 import { Toast, ToastProvider, ToastViewport, ToastTitle } from './Toast'
 

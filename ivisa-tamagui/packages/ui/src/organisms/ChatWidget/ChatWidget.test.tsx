@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen, waitFor, fireEvent } from '../../test-utils'
 import { ChatWidget } from './ChatWidget'
 

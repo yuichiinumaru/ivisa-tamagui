@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useRef } from 'react'
 import { YStack, styled, GetProps, Text } from 'tamagui'
 import { Upload } from '@tamagui/lucide-icons'

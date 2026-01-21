@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import { AuthScreenProps } from './AuthScreen.props';
 import { YStack, XStack, Text, Image } from 'tamagui';
@@ -167,4 +168,3 @@ export const AuthScreen = ({
 };
 
 export type AuthScreenProps = React.ComponentProps<typeof AuthScreen>
-

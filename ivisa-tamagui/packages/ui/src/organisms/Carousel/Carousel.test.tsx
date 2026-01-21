@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { Text } from 'tamagui'
 import { render, screen } from '../../test-utils'

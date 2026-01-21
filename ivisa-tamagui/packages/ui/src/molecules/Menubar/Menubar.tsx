@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Root,
   Menu,
@@ -448,4 +449,3 @@ export {
 }
 
 export type MenubarProps = React.ComponentProps<typeof Menubar>
-

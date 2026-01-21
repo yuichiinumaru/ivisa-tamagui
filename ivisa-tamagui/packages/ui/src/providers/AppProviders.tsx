@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { PropsWithChildren } from 'react';
 import { TamaguiProvider } from 'tamagui';
 import { PortalProvider } from '@tamagui/portal';

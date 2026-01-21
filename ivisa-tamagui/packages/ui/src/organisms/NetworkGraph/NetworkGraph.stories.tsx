@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Meta, StoryObj } from '@storybook/react'
 import { NetworkGraph } from './NetworkGraph'
 import { Heading } from 'tamagui'

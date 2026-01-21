@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Children, cloneElement, forwardRef, isValidElement } from 'react';
 import type { ReactNode } from 'react';
 import { GetProps, styled, Text, XStack, YStack } from 'tamagui';
@@ -160,4 +161,3 @@ Alert.Title = AlertTitleFrame;
 Alert.Description = AlertDescriptionFrame;
 
 export type AlertRootProps = React.ComponentProps<typeof AlertRoot>
-

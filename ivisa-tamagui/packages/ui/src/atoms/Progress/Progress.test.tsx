@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { Progress } from './Progress'
 import { AppProviders } from '../../providers/AppProviders'

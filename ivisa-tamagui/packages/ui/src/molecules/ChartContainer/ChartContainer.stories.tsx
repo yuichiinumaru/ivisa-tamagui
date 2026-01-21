@@ -39,6 +39,7 @@ const meta: Meta<React.ComponentProps<typeof ChartContainer>> = {
   args: {
     title: 'Desempenho de Vendas',
     description: 'Dados dos últimos 6 meses.',
+    children: <Text>O conteúdo do gráfico seria renderizado aqui.</Text>,
   },
   parameters: {
     docs: {
@@ -73,12 +74,9 @@ export const ComErro: Story = {
 
 export const ComAcoes: Story = {
   name: 'Com Ações',
-  args: {},
-  render: (args) => (
-    <ChartContainer {...args} rightSlot={<Button icon={BarChart}>Filtrar</Button>}>
-      <Text>O conteúdo do gráfico seria renderizado aqui.</Text>
-    </ChartContainer>
-  ),
+  args: {
+    rightSlot: <Button icon={BarChart}>Filtrar</Button>,
+  },
 }
 
 export const TesteDeEstresse: Story = {
@@ -90,15 +88,14 @@ export const TesteDeEstresse: Story = {
   },
   render: (args) => (
     <div style={{ width: '350px', border: '1px solid red', padding: '10px' }}>
-      <ChartContainer {...args} rightSlot={<Button>Ação</Button>}>
-        <Text>Conteúdo do gráfico.</Text>
-      </ChartContainer>
+      <ChartContainer {...args} />
     </div>
   ),
   args: {
     title: 'Título do Gráfico Extremamente Longo Que Deveria Quebrar a Linha ou Ser Cortado',
     description: 'Esta é uma descrição muito longa para testar como o componente se comporta com um texto que ocupa múltiplas linhas e pode estourar o container.',
-    // children and rightSlot provided via render
+    rightSlot: <Button>Ação</Button>,
+    children: <Text>Conteúdo do gráfico.</Text>,
   },
 }
 

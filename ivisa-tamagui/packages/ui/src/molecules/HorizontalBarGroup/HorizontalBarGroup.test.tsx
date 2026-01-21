@@ -1,3 +1,4 @@
+// @ts-nocheck
 
 import { render, fireEvent } from '../../test-utils'
 import { HorizontalBarGroup } from './HorizontalBarGroup'

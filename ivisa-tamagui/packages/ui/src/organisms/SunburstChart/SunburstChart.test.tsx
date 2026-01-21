@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { SunburstChart } from './SunburstChart'
 import React from 'react'

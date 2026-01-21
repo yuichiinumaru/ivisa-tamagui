@@ -35,4 +35,3 @@ export type GaugeChartFrameProps = React.ComponentProps<typeof GaugeChartFrame>
 export type GaugeChartTitleProps = React.ComponentProps<typeof GaugeChartTitle>
 
 export type GaugeChartValueTextProps = React.ComponentProps<typeof GaugeChartValueText>
-

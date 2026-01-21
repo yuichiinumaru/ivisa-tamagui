@@ -87,4 +87,3 @@ export type TableCellFrameProps = React.ComponentProps<typeof TableCellFrame>
 export type NoResultsCellProps = React.ComponentProps<typeof NoResultsCell>
 
 export type HeaderActionsContainerProps = React.ComponentProps<typeof HeaderActionsContainer>
-

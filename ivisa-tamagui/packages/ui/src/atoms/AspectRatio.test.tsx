@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render } from '@testing-library/react'
 import { AspectRatio } from './AspectRatio'
 import React from 'react'

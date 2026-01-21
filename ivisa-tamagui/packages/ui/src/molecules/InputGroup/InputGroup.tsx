@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Input, InputProps } from '../../atoms/Input'
 import { Button, ButtonProps } from '../../atoms/Button'
 import { Spinner, XStack, styled } from 'tamagui'

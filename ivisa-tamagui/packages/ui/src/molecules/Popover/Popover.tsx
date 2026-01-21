@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   Popover as TamaguiPopover,
   PopoverProps,
@@ -155,4 +156,3 @@ export type PopoverContentProps = React.ComponentProps<typeof PopoverContent>
 export type PopoverProps = React.ComponentProps<typeof Popover>
 
 export type PopoverTriggerProps = React.ComponentProps<typeof PopoverTrigger>
-

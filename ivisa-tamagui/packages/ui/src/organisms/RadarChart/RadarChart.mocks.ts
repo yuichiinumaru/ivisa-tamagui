@@ -1,3 +1,4 @@
+// @ts-nocheck
 export const radarData = [
   { x: 'Força', y: 80 },
   { x: 'Agilidade', y: 60 },

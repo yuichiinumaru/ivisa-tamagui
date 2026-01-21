@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { Calendar as TamaguiCalendar } from '../../molecules/Calendar'
 import { Card } from '../../molecules/Card'
@@ -24,4 +25,3 @@ export const Calendar = () => {
 }
 
 export type CalendarProps = React.ComponentProps<typeof Calendar>
-

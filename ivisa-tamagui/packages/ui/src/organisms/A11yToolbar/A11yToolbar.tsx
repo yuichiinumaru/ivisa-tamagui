@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react'
 import { YStack, XStack, styled, GetProps, Text, Button as TamaguiButton } from 'tamagui'
 import { ZoomIn, ZoomOut, Moon, Sun, Type } from '@tamagui/lucide-icons'

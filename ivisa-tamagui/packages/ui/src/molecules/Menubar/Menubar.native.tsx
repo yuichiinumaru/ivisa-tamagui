@@ -63,4 +63,3 @@ export type MenubarSubProps = React.ComponentProps<typeof MenubarSub>
 export type MenubarShortcutProps = React.ComponentProps<typeof MenubarShortcut>
 
 export type StubComponentProps = React.ComponentProps<typeof StubComponent>
-
