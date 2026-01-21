@@ -73,3 +73,4 @@ ScrollArea.displayName = 'ScrollArea'
 
 export { ScrollArea }
 export type ScrollAreaProps = GetProps<typeof ScrollAreaFrame>
+

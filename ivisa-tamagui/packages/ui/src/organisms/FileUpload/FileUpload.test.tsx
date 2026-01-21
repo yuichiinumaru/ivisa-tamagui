@@ -47,3 +47,4 @@ describe('FileUpload', () => {
     expect(screen.getByText(errorMessage)).toBeInTheDocument()
   })
 })
+

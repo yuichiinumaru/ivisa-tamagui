@@ -25,3 +25,4 @@ describe('A11yToolbar', () => {
     expect(onToggleTheme).toHaveBeenCalled()
   })
 })
+

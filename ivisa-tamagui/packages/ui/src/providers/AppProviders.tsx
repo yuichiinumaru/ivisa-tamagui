@@ -22,3 +22,4 @@ export const AppProviders = ({ theme = 'claro', children }: AppProvidersProps) =
     </PortalProvider>
   </TamaguiProvider>
 );
+

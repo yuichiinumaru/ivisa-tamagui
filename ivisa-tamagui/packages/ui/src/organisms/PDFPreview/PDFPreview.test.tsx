@@ -23,3 +23,4 @@ describe('PDFPreview', () => {
     expect(iframe).toHaveAttribute('src', 'https://example.com/test.pdf#toolbar=0')
   })
 })
+

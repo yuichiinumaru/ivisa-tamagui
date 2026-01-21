@@ -20,3 +20,4 @@ describe('Tabs', () => {
     expect(screen.getByText('Content 2')).toBeInTheDocument()
   })
 })
+

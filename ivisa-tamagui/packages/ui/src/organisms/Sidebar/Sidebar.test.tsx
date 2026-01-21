@@ -112,3 +112,4 @@ describe('Sidebar', () => {
     expect(newRights.length).toBeGreaterThan(0);
   });
 });
+

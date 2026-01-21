@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -42,3 +41,4 @@ export default meta
 type Story = StoryObj<React.ComponentProps<typeof TimelineAudit>>
 
 export const Padrao: Story = {}
+

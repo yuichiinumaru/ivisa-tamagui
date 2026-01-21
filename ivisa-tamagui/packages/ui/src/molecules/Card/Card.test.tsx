@@ -69,3 +69,4 @@ describe('Card', () => {
     expect(screen.getByText('Action 2')).toBeInTheDocument()
   })
 })
+

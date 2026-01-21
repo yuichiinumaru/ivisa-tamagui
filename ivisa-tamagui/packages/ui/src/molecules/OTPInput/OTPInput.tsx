@@ -324,3 +324,4 @@ const OTPInputImpl = React.forwardRef<ContainerRef, OTPInputProps>(
 OTPInputImpl.displayName = 'OTPInput'
 
 export const OTPInput = withErrorLogging<OTPInputProps, ContainerRef>('OTPInput', OTPInputImpl)
+

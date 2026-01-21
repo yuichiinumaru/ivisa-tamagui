@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import type React from 'react';
 import { Button } from '../../atoms/Button'
@@ -192,3 +191,4 @@ export const DadosParciais: Story = {
     },
   },
 }
+

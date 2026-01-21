@@ -8,3 +8,4 @@ describe('Separator', () => {
     expect(container.firstChild).toBeInTheDocument()
   })
 })
+

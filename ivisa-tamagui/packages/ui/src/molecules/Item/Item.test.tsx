@@ -47,3 +47,4 @@ describe('Item', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 })
+

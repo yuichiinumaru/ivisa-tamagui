@@ -19,3 +19,4 @@ describe('DashboardLayout', () => {
     expect(screen.getByText('Main Content')).toBeInTheDocument()
   })
 })
+

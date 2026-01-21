@@ -78,3 +78,4 @@ export const AvatarGroup = ({ max = 3, children, ...props }: AvatarGroupProps) =
     </AvatarGroupFrameAny>
   );
 };
+

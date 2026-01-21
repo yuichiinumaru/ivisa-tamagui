@@ -14,3 +14,4 @@ describe('Meter', () => {
     expect(screen.getByText('75%')).toBeTruthy()
   })
 })
+

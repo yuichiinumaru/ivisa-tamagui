@@ -22,3 +22,4 @@ export interface MediaGridProps {
   onViewModeChange?: (mode: 'grid' | 'list') => void;
   acceptedTypes?: string[];
 }
+

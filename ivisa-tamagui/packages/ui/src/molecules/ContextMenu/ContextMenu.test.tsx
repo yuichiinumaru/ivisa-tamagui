@@ -32,3 +32,4 @@ describe('ContextMenu', () => {
     expect(screen.getByText('Billing')).toBeInTheDocument()
   })
 })
+

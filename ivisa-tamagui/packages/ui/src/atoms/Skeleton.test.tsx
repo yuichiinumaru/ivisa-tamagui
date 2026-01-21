@@ -8,3 +8,4 @@ describe('Skeleton', () => {
     expect(container.firstChild).toBeInTheDocument()
   })
 })
+

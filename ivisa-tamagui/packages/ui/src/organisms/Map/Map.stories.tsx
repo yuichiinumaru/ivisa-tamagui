@@ -31,3 +31,4 @@ export const Default: Story = {
     </GeoMap>
   )
 }
+

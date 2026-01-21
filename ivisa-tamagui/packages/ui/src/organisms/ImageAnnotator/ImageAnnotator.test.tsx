@@ -20,3 +20,4 @@ describe('ImageAnnotator', () => {
     expect(onSave).toHaveBeenCalled()
   })
 })
+

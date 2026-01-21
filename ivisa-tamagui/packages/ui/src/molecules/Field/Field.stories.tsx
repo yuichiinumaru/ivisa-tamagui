@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import type React from 'react';
 import { Pencil } from '@tamagui/lucide-icons'
@@ -118,3 +117,4 @@ export const RestritoWidth: Story = {
     </Field>
   ),
 }
+

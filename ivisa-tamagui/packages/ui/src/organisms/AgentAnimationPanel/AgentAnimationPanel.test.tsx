@@ -44,3 +44,4 @@ describe('AgentAnimationPanel', () => {
     expect(screen.getByText('Nenhum evento registrado')).toBeTruthy()
   })
 })
+

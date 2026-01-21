@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import { Button } from '../../atoms/Button/Button';
@@ -106,3 +105,4 @@ export const EmContainer: Story = {
     ),
   ],
 };
+

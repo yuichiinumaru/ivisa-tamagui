@@ -141,3 +141,4 @@ describe('Checkbox', () => {
     expect(svgIcon).toBeInTheDocument();
   });
 });
+

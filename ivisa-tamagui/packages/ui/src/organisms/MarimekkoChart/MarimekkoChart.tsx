@@ -146,3 +146,4 @@ export const MarimekkoChart = ({
     </YStack>
   )
 }
+

@@ -153,3 +153,4 @@ export const Progress = Object.assign(ProgressComponent, {
   Label: ProgressLabel,
   Root: ProgressFrame, // Exposed as Root to match Compound pattern expectation (should be the Frame)
 })
+

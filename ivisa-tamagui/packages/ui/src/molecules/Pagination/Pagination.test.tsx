@@ -29,3 +29,4 @@ describe('Pagination', () => {
     expect(handleChange).toHaveBeenCalledWith(4)
   })
 })
+

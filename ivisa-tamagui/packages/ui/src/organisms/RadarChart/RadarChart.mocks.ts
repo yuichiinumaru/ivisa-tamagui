@@ -23,3 +23,4 @@ export const radarDataMulti = [
     { x: 'Sorte', y: 70 },
   ],
 ]
+

@@ -68,3 +68,4 @@ describe('HorizontalBarGroup', () => {
     expect(container.firstChild).toBeTruthy()
   })
 })
+
