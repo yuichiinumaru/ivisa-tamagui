@@ -20,3 +20,4 @@ export function withErrorLogging<P, R>(
 
   return Wrapped
 }
+

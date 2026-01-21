@@ -54,3 +54,4 @@ describe('NotificationFeed', () => {
     expect(handleMarkAsRead).toHaveBeenCalledWith('1')
   })
 })
+

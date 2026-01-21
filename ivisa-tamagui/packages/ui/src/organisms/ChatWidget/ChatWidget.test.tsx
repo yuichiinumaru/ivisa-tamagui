@@ -34,3 +34,4 @@ describe('ChatWidget', () => {
       expect(screen.getByText('Digitando...')).toBeInTheDocument()
   })
 })
+

@@ -164,3 +164,4 @@ export const LineChart = ({
 // Backward compatibility alias
 export const TimeSeriesChart = LineChart
 export type TimeSeriesChartProps = LineChartProps
+

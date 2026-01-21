@@ -9,3 +9,4 @@ describe('Slider', () => {
     expect(screen.getByRole('slider')).toBeInTheDocument()
   })
 })
+

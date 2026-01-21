@@ -56,3 +56,4 @@ export const EstadoVazio: Story = {
     data: { nodes: [], links: [] },
   },
 }
+

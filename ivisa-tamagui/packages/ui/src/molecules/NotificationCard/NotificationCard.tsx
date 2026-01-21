@@ -101,3 +101,4 @@ export const NotificationCard = React.forwardRef<React.ElementRef<typeof Notific
 )
 
 NotificationCard.displayName = 'NotificationCard'
+

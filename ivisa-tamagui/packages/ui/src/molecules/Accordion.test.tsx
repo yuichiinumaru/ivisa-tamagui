@@ -73,3 +73,4 @@ describe('Accordion', () => {
     expect(screen.getByText('Ação')).toBeInTheDocument()
   })
 });
+

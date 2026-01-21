@@ -196,3 +196,4 @@ export const Textarea = withErrorLogging<TextareaProps, React.ElementRef<typeof 
   'Textarea',
   TextareaImpl
 )
+

@@ -133,3 +133,4 @@ const HorizontalBarGroup = HorizontalBarGroupFrame.styleable<HorizontalBarGroupP
 
 export { HorizontalBarGroup, HorizontalBarGroupFrame }
 export type { HorizontalBarGroupProps }
+

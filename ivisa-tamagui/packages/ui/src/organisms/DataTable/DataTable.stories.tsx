@@ -110,3 +110,4 @@ export const ErrorState: Story = {
     error: new Error('Falha ao carregar dados'),
   },
 }
+

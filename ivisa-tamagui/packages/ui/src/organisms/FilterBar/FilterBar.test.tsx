@@ -65,3 +65,4 @@ describe('FilterBar', () => {
 //     // We might need to mock Select or rely on integration tests for complex interactions
 //   })
 })
+

@@ -61,3 +61,4 @@ export const RestritoWidth: Story = {
     orientation: 'horizontal',
   },
 }
+

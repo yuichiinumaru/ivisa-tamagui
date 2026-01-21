@@ -62,3 +62,4 @@ export const ComErro: Story = {
     error: new Error('Falha ao carregar dados'),
   },
 }
+

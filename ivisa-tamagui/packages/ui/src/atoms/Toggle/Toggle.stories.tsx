@@ -58,7 +58,6 @@ export const Padrao: Story = {
   name: 'Padrão',
   args: {
     'aria-label': 'Alternar negrito',
-    children: <Bold />,
   },
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
@@ -72,6 +71,7 @@ export const Padrao: Story = {
     // @ts-ignore
     await expect(args.onPressedChange).toHaveBeenCalledWith(false);
   },
+  render: (args) => <Toggle {...args}><Bold /></Toggle>,
   parameters: {
     docs: {
       description: {
@@ -145,7 +145,6 @@ export const ComIcones: Story = {
   name: 'Com Ícones (Esquerda/Direita)',
   args: {
     children: 'Itálico',
-    leftIcon: <Italic />,
     'aria-label': 'Alternar itálico',
   },
   parameters: {
@@ -158,6 +157,7 @@ export const ComIcones: Story = {
       },
     },
   },
+  render: (args) => <Toggle {...args} leftIcon={<Italic />}>{args.children}</Toggle>,
 };
 
 // --- Stress Tests ---
@@ -200,7 +200,6 @@ export const Carregando_Stress: Story = {
   name: '[Stress] Carregando',
   args: {
     disabled: true,
-    children: <Loader />,
     'aria-label': 'Carregando',
   },
   parameters: {
@@ -215,4 +214,5 @@ export const Carregando_Stress: Story = {
       },
     },
   },
+  render: (args) => <Toggle {...args}><Loader /></Toggle>,
 };

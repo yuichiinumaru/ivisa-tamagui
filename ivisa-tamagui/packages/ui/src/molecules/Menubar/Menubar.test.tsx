@@ -49,3 +49,4 @@ describe('Menubar', () => {
     expect(screen.getByText('File')).toBeInTheDocument()
   })
 })
+

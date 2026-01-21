@@ -49,3 +49,4 @@ export const mockUserProfile = {
   email: 'julia.alves@example.com',
   avatarUrl: 'https://i.pravatar.cc/40?u=a042581f4e29026704d',
 };
+

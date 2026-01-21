@@ -8,3 +8,4 @@ describe('Badge', () => {
     expect(screen.getByText('New')).toBeInTheDocument()
   })
 })
+

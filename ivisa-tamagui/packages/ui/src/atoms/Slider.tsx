@@ -92,3 +92,4 @@ export type SliderProps = GetProps<typeof SliderFrame> & {
      */
     loading?: boolean;
 }
+

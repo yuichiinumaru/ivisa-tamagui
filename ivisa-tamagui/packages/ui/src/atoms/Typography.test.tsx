@@ -29,3 +29,4 @@ describe('Typography primitives', () => {
     expect(container).toMatchSnapshot()
   })
 })
+

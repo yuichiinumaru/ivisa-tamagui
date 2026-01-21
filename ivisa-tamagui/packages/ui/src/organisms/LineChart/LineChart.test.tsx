@@ -93,3 +93,4 @@ describe('LineChart', () => {
     expect(screen.getByText('Test Title')).toBeInTheDocument()
   })
 })
+

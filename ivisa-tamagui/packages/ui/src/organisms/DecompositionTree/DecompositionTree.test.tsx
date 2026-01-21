@@ -55,3 +55,4 @@ describe('DecompositionTree', () => {
     expect(screen.getByTestId('git-merge')).toBeInTheDocument()
   })
 })
+

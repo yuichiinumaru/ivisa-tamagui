@@ -112,3 +112,4 @@ export const FilterBar = ({ filters, onFilterChange, initialValues = {} }: Filte
     </YStack>
   )
 }
+

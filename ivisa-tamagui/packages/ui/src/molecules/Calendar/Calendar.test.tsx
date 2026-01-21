@@ -30,3 +30,4 @@ describe('Calendar', () => {
     expect(container).toHaveAttribute('data-has-error', 'true')
   })
 })
+

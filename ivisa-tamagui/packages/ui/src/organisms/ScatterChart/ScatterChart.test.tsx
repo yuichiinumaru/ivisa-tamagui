@@ -32,3 +32,4 @@ describe('ScatterChart', () => {
     expect(screen.getByTestId('skeleton')).toBeInTheDocument()
   })
 })
+

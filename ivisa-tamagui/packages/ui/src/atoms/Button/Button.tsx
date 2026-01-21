@@ -72,6 +72,23 @@ const StyledButton = styled(View, {
         },
       },
     },
+    circular: {
+      true: {
+        borderRadius: '$round',
+        width: '$lg',
+        height: '$lg',
+        padding: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+    },
+    chromeless: {
+      true: {
+        backgroundColor: 'transparent',
+        borderWidth: 0,
+        padding: 0,
+      },
+    },
     size: {
       sm: {
         height: '$sm',
@@ -128,6 +145,10 @@ export interface ButtonProps extends Omit<StyledButtonProps, 'variant' | 'size'>
    * @default false
    */
   asChild?: boolean
+  /** Se true, renderiza botão circular (quadrado com largura/altura iguais). */
+  circular?: boolean
+  /** Se true, botão sem estilo de fundo/borda (útil como ícone acionador). */
+  chromeless?: boolean
 }
 
 // Helper to wrap text strings in Text component
@@ -140,7 +161,7 @@ const renderChildren = (child: React.ReactNode): React.ReactNode => {
 
 const Button = React.forwardRef<TamaguiElement, ButtonProps>(
   (
-    { variant = 'default', size = 'default', children, leftIcon, rightIcon, loading, asChild, ...props },
+    { variant = 'default', size = 'default', children, leftIcon, rightIcon, loading, asChild, circular, chromeless, ...props },
     ref
   ) => {
     return (
@@ -148,6 +169,8 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>(
         ref={ref}
         variant={variant}
         size={size}
+        circular={!!circular}
+        chromeless={!!chromeless}
         disabled={loading || props.disabled}
         {...props}
         asChild={asChild}
@@ -170,3 +193,4 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>(
 Button.displayName = 'Button'
 
 export { Button }
+

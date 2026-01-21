@@ -30,3 +30,4 @@ describe('LocationStatus', () => {
     expect(screen.getByText('Permissão negada')).toBeInTheDocument()
   })
 })
+

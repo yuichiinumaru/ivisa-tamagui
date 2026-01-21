@@ -12,3 +12,4 @@ describe('DatePicker', () => {
         expect(getByPlaceholderText('Pick a date')).toBeInTheDocument()
     })
 })
+

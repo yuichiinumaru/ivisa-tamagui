@@ -29,3 +29,4 @@ export interface AuthScreenProps {
   defaultView?: 'login' | 'register';
   error?: string;
 }
+

@@ -47,3 +47,4 @@ describe('AgentAnimationModal', () => {
     expect(onOpenChange).toHaveBeenCalledWith(false)
   })
 })
+

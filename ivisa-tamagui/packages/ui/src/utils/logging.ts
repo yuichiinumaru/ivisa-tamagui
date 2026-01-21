@@ -13,3 +13,4 @@ export function logComponentWarning(componentName: string, message: string) {
   const timestamp = new Date().toISOString()
   console.warn(`[${timestamp}] [${componentName}] warning -> ${message}`)
 }
+

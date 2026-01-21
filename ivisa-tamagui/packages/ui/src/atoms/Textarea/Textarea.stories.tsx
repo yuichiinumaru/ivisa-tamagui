@@ -124,3 +124,4 @@ export const Carregando: Story = {
     loading: true,
   },
 }
+
