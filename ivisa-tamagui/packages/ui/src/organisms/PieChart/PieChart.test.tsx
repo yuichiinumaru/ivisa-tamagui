@@ -71,3 +71,4 @@ describe('PieChart', () => {
     expect(screen.getByText('Test Title')).toBeInTheDocument()
   })
 })
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 // import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react'
@@ -60,8 +59,12 @@ export const Padrão: Story = {
   name: 'Padrão',
   args: {
     count: 5,
-    children: <Button icon={Bell} circular size="$md" />,
   },
+  render: (args) => (
+    <BadgeCounter {...args}>
+      <Button icon={Bell} circular size="$md" />
+    </BadgeCounter>
+  ),
 }
 
 export const Estouro: Story = {
@@ -69,8 +72,12 @@ export const Estouro: Story = {
   args: {
     count: 100,
     max: 99,
-    children: <Button icon={Bell} circular size="$md" />,
   },
+  render: (args) => (
+    <BadgeCounter {...args}>
+      <Button icon={Bell} circular size="$md" />
+    </BadgeCounter>
+  ),
 }
 
 export const ExibirZero: Story = {
@@ -78,16 +85,24 @@ export const ExibirZero: Story = {
   args: {
     count: 0,
     showZero: true,
-    children: <Button icon={Bell} circular size="$md" />,
   },
+  render: (args) => (
+    <BadgeCounter {...args}>
+      <Button icon={Bell} circular size="$md" />
+    </BadgeCounter>
+  ),
 }
 
 export const Carregando: Story = {
   name: 'Carregando',
   args: {
     isLoading: true,
-    children: <Button icon={Bell} circular size="$md" />,
   },
+  render: (args) => (
+    <BadgeCounter {...args}>
+      <Button icon={Bell} circular size="$md" />
+    </BadgeCounter>
+  ),
 }
 
 export const ComErro: Story = {
@@ -95,8 +110,12 @@ export const ComErro: Story = {
   args: {
     count: 5,
     hasError: true,
-    children: <Button icon={Bell} circular size="$md" />,
   },
+  render: (args) => (
+    <BadgeCounter {...args}>
+      <Button icon={Bell} circular size="$md" />
+    </BadgeCounter>
+  ),
 }
 
 export const Desabilitado: Story = {
@@ -104,8 +123,12 @@ export const Desabilitado: Story = {
   args: {
     count: 5,
     disabled: true,
-    children: <Button icon={Bell} circular size="$md" />,
   },
+  render: (args) => (
+    <BadgeCounter {...args}>
+      <Button icon={Bell} circular size="$md" />
+    </BadgeCounter>
+  ),
 }
 
 export const EmContainerEstreito: Story = {
@@ -120,6 +143,11 @@ export const EmContainerEstreito: Story = {
   args: {
     count: 12345,
     max: 9999,
-    children: <Button icon={Bell} circular size="$md" />,
   },
+  render: (args) => (
+    <BadgeCounter {...args}>
+      <Button icon={Bell} circular size="$md" />
+    </BadgeCounter>
+  ),
 }
+

@@ -33,3 +33,4 @@ const criarPagamento = (): Pagamento => {
 }
 
 export const pagamentos = Array.from({ length: 50 }, criarPagamento)
+

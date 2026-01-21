@@ -15,3 +15,4 @@ describe('Toast', () => {
     expect(screen.getByText('Notification')).toBeInTheDocument()
   })
 })
+

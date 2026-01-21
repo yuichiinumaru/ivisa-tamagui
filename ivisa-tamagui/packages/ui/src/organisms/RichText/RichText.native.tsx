@@ -29,3 +29,4 @@ export const RichText = ({ value, onChange, editable = true, ...props }: RichTex
         </EditorContainer>
     )
 }
+

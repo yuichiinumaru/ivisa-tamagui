@@ -34,3 +34,4 @@ export const mockContent = {
     { id: '2', description: 'Relatório de vendas de Maio foi gerado.' },
   ],
 }
+

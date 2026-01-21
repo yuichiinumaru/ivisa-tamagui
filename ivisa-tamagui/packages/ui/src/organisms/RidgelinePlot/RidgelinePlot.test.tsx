@@ -47,3 +47,4 @@ describe('RidgelinePlot', () => {
     expect(screen.getByText('Não há dados para exibir.')).toBeInTheDocument()
   })
 })
+

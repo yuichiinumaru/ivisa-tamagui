@@ -45,3 +45,4 @@ describe('HoverCard', () => {
     expect(await screen.findByText(mockUser.name)).toBeInTheDocument()
   })
 })
+

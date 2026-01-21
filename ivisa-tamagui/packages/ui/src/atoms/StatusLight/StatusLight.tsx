@@ -65,3 +65,4 @@ export const StatusLight = React.forwardRef<React.ElementRef<typeof StatusLightF
 )
 
 StatusLight.displayName = 'StatusLight'
+

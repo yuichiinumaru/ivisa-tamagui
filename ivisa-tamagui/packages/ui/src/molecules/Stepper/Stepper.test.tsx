@@ -112,3 +112,4 @@ describe('Stepper', () => {
     expect(screen.getByText('Não há passos para exibir.')).toBeInTheDocument()
   })
 })
+

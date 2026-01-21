@@ -24,3 +24,4 @@ describe('AnimatedSegmentedControl', () => {
         expect(onChange).toHaveBeenCalledWith('tab2')
     })
 })
+

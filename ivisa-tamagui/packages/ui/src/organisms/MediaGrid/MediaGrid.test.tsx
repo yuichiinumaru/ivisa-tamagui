@@ -33,3 +33,4 @@ describe('MediaGrid', () => {
       expect(onUpload).toHaveBeenCalled();
   });
 });
+

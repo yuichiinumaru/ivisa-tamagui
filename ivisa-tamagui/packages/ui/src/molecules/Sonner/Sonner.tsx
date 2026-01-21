@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { toast as sonnerToast, Toaster as SonnerPrimitive } from 'sonner'
 import { useTheme } from 'tamagui'

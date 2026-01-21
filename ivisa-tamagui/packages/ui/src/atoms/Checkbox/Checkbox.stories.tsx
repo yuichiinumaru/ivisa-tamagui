@@ -213,3 +213,4 @@ export const Carregando: Story = {
     </XStack>
   ),
 }
+

@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import type { Meta, StoryObj } from '@storybook/react'
 import { useArgs } from '@storybook/preview-api'
@@ -208,9 +207,12 @@ const CustomFallback = () => (
 export const WithCustomFallback: Story = {
   args: {
     componentName: 'CustomFallbackStory',
-    fallback: <CustomFallback />,
-    children: <BuggyComponent shouldThrow={true} />,
   },
+  render: (args) => (
+    <ComponentErrorBoundary {...args} fallback={<CustomFallback />}>
+      <BuggyComponent shouldThrow={true} />
+    </ComponentErrorBoundary>
+  ),
   parameters: {
     docs: {
       description: {

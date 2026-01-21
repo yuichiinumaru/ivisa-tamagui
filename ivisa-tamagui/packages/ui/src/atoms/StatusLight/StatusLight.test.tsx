@@ -17,3 +17,4 @@ describe('StatusLight', () => {
     expect(screen.getByText('Rejected')).toBeTruthy()
   })
 })
+

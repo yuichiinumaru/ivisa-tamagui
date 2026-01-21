@@ -114,3 +114,4 @@ export const BadgeCounter = forwardRef<HTMLDivElement, BadgeCounterProps>(
 );
 
 BadgeCounter.displayName = 'BadgeCounter';
+

@@ -28,3 +28,4 @@ describe('GaugeChart', () => {
     expect(screen.getByText('Sem dados para exibir.')).toBeTruthy()
   })
 })
+

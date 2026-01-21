@@ -9,13 +9,9 @@ import {
 } from 'tamagui'
 import { Sheet as TamaguiSheet, SheetProps as TamaguiSheetProps, useSheet } from '@tamagui/sheet'
 import React, { createContext, useContext, forwardRef } from 'react'
-import { Skeleton as SkeletonOriginal } from '../../atoms/Skeleton'
+import { Skeleton } from '../../atoms/Skeleton'
 import { Button } from '../../atoms/Button'
-import { HStack as HStackOriginal, VStack as VStackOriginal } from '../../atoms/Stack'
-
-const Skeleton = SkeletonOriginal as any
-const HStack = HStackOriginal as any
-const VStack = VStackOriginal as any
+import { HStack, VStack } from '../../atoms/Stack'
 
 // 1. CONTEXT for state propagation
 // =================================================================================================
@@ -46,7 +42,13 @@ const SheetComponent = ({ isLoading = false, hasError = false, children, ...prop
 
 // 3. STYLED SUB-COMPONENTS
 // =================================================================================================
-const SheetOverlay = styled(TamaguiSheet.Overlay as any, {
+// Wrap the upstream Overlay in a forwardRef so refs passed by Tamagui/styled
+// land on a real DOM node and avoid the "Function components cannot be given refs" warning.
+const RawOverlay = React.forwardRef<any, any>((props, ref) => {
+  return <TamaguiSheet.Overlay {...props} ref={ref} />
+})
+
+const SheetOverlay = styled(RawOverlay as any, {
   backgroundColor: '$black',
   opacity: 0.5,
   enterStyle: { opacity: 0 },
@@ -77,7 +79,7 @@ const SheetContentFrame = styled(TamaguiSheet.Frame as any, {
   } as const,
 } as any) as any
 
-type SheetContentProps = GetProps<typeof SheetContentFrame>
+type InternalSheetContentProps = GetProps<typeof SheetContentFrame>
 
 const SheetContent = forwardRef<React.ElementRef<typeof SheetContentFrame>, any>(
   ({ children, ...props }: any, ref) => {
@@ -121,16 +123,16 @@ const SheetContent = forwardRef<React.ElementRef<typeof SheetContentFrame>, any>
 )
 SheetContent.displayName = 'SheetContent'
 
-const SheetHeader = styled(VStackOriginal as any, {
+const SheetHeader = styled(VStack as any, {
   gap: '$2',
   marginBottom: '$4',
 } as any) as any
 
-type SheetFooterProps = GetProps<typeof HStackOriginal> & {
+type SheetFooterProps = GetProps<typeof HStack> & {
   actions?: React.ReactNode
 }
 
-const SheetFooterComponent = forwardRef<React.ElementRef<typeof HStackOriginal>, SheetFooterProps>(
+const SheetFooterComponent = forwardRef<React.ElementRef<typeof HStack>, SheetFooterProps>(
   ({ children, actions, ...props }, ref) => {
     return (
       <HStack ref={ref} {...props}>
@@ -171,7 +173,7 @@ const SheetClose = SheetCloseFrame.styleable((props: any, ref: any) => {
   )
 })
 
-const SheetTriggerFrame = styled(VStackOriginal as any, {}) as any
+const SheetTriggerFrame = styled(VStack as any, {}) as any
 
 const SheetTrigger = SheetTriggerFrame.styleable((props: any, ref: any) => {
   const context = useSheet()

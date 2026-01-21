@@ -35,3 +35,4 @@ export interface SchemaFormProps<T extends FieldValues> {
   submitText?: string
   isLoading?: boolean
 }
+

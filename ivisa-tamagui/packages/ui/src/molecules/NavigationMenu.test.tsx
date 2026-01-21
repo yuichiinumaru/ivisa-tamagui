@@ -24,3 +24,4 @@ describe('NavigationMenu', () => {
     expect(screen.getByText('Item 1')).toBeInTheDocument()
   })
 })
+

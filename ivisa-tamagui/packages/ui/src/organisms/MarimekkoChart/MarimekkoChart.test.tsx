@@ -51,3 +51,4 @@ describe('MarimekkoChart', () => {
     expect(screen.getByText('Ocorreu um erro ao carregar os dados.')).toBeInTheDocument()
   })
 })
+

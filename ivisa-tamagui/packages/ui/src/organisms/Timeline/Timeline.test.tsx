@@ -39,3 +39,4 @@ describe('Timeline', () => {
     expect(screen.getByText('Ocorreu um erro ao carregar os dados. Por favor, tente novamente.')).toBeInTheDocument()
   })
 })
+

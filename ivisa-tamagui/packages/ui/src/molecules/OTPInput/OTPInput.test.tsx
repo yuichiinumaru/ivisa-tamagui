@@ -34,3 +34,4 @@ describe('OTPInput', () => {
     expect(onComplete).toHaveBeenCalledWith('123')
   })
 })
+

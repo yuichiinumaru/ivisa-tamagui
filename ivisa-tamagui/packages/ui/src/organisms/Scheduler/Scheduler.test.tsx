@@ -40,3 +40,4 @@ describe('Scheduler', () => {
       expect(screen.getByRole('button', { name: /Semana/i })).toBeInTheDocument()
   })
 })
+

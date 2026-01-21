@@ -155,3 +155,4 @@ export const LogosOficiais: Story = {
     </YStack>
   ),
 }
+

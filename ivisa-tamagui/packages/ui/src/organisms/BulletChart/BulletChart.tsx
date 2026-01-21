@@ -139,3 +139,4 @@ export const BulletChart = ({
     </YStack>
   )
 }
+

@@ -61,3 +61,4 @@ describe('GeoMap', () => {
     expect(getAllByTestId('icon-minus')[0]).toBeInTheDocument()
   })
 })
+

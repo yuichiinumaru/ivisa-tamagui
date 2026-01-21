@@ -53,3 +53,4 @@ describe('AvatarGroup', () => {
     expect(avatarItem2).toHaveAttribute('data-haserror', 'true')
   })
 })
+

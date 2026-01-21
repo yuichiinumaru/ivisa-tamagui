@@ -50,3 +50,4 @@ describe('AreaChart', () => {
     expect(screen.getByTestId('skeleton')).toBeInTheDocument()
   })
 })
+

@@ -135,3 +135,4 @@ const SwitchComponent = React.forwardRef<
 SwitchComponent.displayName = 'Switch';
 
 export const Switch = SwitchComponent;
+

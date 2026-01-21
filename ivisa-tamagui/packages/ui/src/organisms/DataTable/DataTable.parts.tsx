@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Text, View, XStack, YStack, styled } from 'tamagui'
 

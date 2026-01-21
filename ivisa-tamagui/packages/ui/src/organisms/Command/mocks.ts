@@ -10,3 +10,4 @@ export const MOCK_CONFIGURACOES = [
   { id: '5', label: 'Faturamento', shortcut: '⌘B' },
   { id: '6', label: 'Configurações', shortcut: '⌘S' },
 ]
+

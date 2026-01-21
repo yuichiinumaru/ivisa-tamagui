@@ -20,3 +20,4 @@ describe('DiffViewer', () => {
     expect(screen.getByText('Line 2 Modified')).toBeInTheDocument() // New
   })
 })
+

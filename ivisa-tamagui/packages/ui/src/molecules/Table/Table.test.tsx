@@ -17,3 +17,4 @@ describe('Table', () => {
     expect(screen.getByText('Cell Data')).toBeInTheDocument()
   })
 })
+
