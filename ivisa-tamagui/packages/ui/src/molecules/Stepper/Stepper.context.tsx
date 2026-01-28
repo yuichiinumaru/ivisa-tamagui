@@ -15,7 +15,7 @@ type ActionsRenderProp = (
   isDisabled: boolean,
 ) => ReactNode
 
-interface StepperContextProps {
+export interface StepperContextProps {
   steps: Step[]
   isLoading: boolean
   hasError: boolean
@@ -105,6 +105,4 @@ export const Stepper = ({ children }: { children: ReactNode }) => {
   return <YStack>{children}</YStack>
 }
 
-export type StepperContextProviderProps = React.ComponentProps<typeof StepperContextProvider>
-
-export type StepperProps = React.ComponentProps<typeof Stepper>
+// Removed trailing alias exports to avoid duplicate-type declarations

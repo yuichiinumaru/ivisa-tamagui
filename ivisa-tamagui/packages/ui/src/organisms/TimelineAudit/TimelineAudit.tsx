@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React from 'react'
 import { YStack, XStack, styled, GetProps, Text, Circle } from 'tamagui'
 

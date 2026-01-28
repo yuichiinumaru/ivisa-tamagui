@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React from 'react'
 import { YStack, XStack, Text } from 'tamagui'
 import { Button } from '../../atoms/Button'

@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React from 'react'
 import { GetProps, styled, XStack, Circle, Text } from 'tamagui'
 

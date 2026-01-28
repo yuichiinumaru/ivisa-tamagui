@@ -1,6 +1,5 @@
-// @ts-nocheck
 import React, { useState } from 'react';
-import { AnimatePresence, ScrollView as ScrollViewOriginal, Separator, Text as TextOriginal, YStack as YStackOriginal, styled } from 'tamagui';
+import { AnimatePresence, ScrollView as ScrollViewOriginal, Separator, Text as TextOriginal, YStack as YStackOriginal, styled, GetProps } from 'tamagui';
 import { Button as ButtonOriginal } from '../../atoms/Button';
 import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MenuSquare as MenuSquareIcon, AlertCircle as AlertCircleIcon, Inbox as InboxIcon } from '@tamagui/lucide-icons';
 import { Sheet } from '../../molecules/Sheet'; // Sheet is already 'any' from previous fix
@@ -77,17 +76,11 @@ const SidebarSkeleton = () => (
     <Skeleton height="$10" />
   </YStack>
 );
-// auto-added alias to silence Tamagui prop checks
-const SidebarFooterAny: any = SidebarFooter
-
-// auto-added alias to silence Tamagui prop checks
-const SidebarContentAny: any = SidebarContent
-
-// auto-added alias to silence Tamagui prop checks
-const SidebarHeaderAny: any = SidebarHeader
-
-// auto-added alias to silence Tamagui prop checks
-const SidebarContainerAny: any = SidebarContainer
+// derive explicit prop types from styled components
+type SidebarContainerProps = GetProps<typeof SidebarContainer>
+type SidebarHeaderProps = GetProps<typeof SidebarHeader>
+type SidebarContentProps = GetProps<typeof SidebarContent>
+type SidebarFooterProps = GetProps<typeof SidebarFooter>
 
 
 const EmptyState = ({ message }: { message: string }) => (
@@ -111,7 +104,7 @@ const ErrorState = ({ message }: { message: string }) => (
 
 // --- Main Component ---
 
-interface SidebarOwnProps {
+export interface SidebarOwnProps {
   children?: React.ReactNode;
   header?: React.ReactNode;
   footer?: React.ReactNode;
@@ -151,23 +144,29 @@ const DesktopSidebar = ({
   const isCollapsible = variant === 'collapsible';
 
   if (isLoading) {
-    return <SidebarContainerAny collapsed={isCollapsible && isCollapsed}><SidebarSkeleton /></SidebarContainerAny>;
+    return (
+      <SidebarContainer collapsed={isCollapsible && isCollapsed}>
+        <SidebarSkeleton />
+      </SidebarContainer>
+    );
+  }
+
+  const floatingProps: Pick<SidebarContainerProps, 'position' | 'height' | 'zIndex'> = {
+    position: 'absolute',
+    height: '100%',
+    zIndex: 10,
   }
 
   return (
-    <SidebarContainerAny
+    <SidebarContainer
       collapsible={isCollapsible}
       collapsed={isCollapsible && isCollapsed}
-      {...(variant === 'floating' && {
-        position: 'absolute',
-        height: '100%',
-        zIndex: 10,
-      })}
+      {...(variant === 'floating' ? floatingProps : undefined)}
     >
-      {header && <SidebarHeaderAny>{header}</SidebarHeaderAny>}
+      {header && <SidebarHeader>{header}</SidebarHeader>}
       <Separator />
 
-      <SidebarContentAny>
+      <SidebarContent>
         {error ? (
           <ErrorState message={error} />
         ) : isEmpty ? (
@@ -177,12 +176,12 @@ const DesktopSidebar = ({
             <YStack gap="$2">{children}</YStack>
           </ScrollView>
         )}
-      </SidebarContentAny>
+      </SidebarContent>
 
       {footer && (
         <>
           <Separator />
-          <SidebarFooterAny>{footer}</SidebarFooterAny>
+          <SidebarFooter>{footer}</SidebarFooter>
         </>
       )}
 
@@ -199,7 +198,7 @@ const DesktopSidebar = ({
           {isCollapsed ? <ChevronRight size="$1.5" /> : <ChevronLeft size="$1.5" />}
         </Button>
       )}
-    </SidebarContainerAny>
+    </SidebarContainer>
   );
 };
 
@@ -218,12 +217,12 @@ const MobileSidebar = ({ children, header, footer, isLoading, isEmpty, emptyMess
     }
     return (
       <>
-        {header && <SidebarHeaderAny>{header}</SidebarHeaderAny>}
+        {header && <SidebarHeader>{header}</SidebarHeader>}
         <ScrollView>
           <YStack gap="$2">{children}</YStack>
         </ScrollView>
         <YStack flex={1} />
-        {footer && <SidebarFooterAny>{footer}</SidebarFooterAny>}
+        {footer && <SidebarFooter>{footer}</SidebarFooter>}
       </>
     );
   };
@@ -260,15 +259,3 @@ export const Sidebar = (props: SidebarOwnProps) => {
     </>
   );
 };
-
-export type SidebarProps = React.ComponentProps<typeof Sidebar>
-
-export type SidebarSkeletonProps = React.ComponentProps<typeof SidebarSkeleton>
-
-export type EmptyStateProps = React.ComponentProps<typeof EmptyState>
-
-export type ErrorStateProps = React.ComponentProps<typeof ErrorState>
-
-export type DesktopSidebarProps = React.ComponentProps<typeof DesktopSidebar>
-
-export type MobileSidebarProps = React.ComponentProps<typeof MobileSidebar>

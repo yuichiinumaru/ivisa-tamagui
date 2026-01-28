@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React from 'react'
 import { render, screen, fireEvent } from '../../test-utils'
 import { AgentAnimationModal } from './AgentAnimationModal'

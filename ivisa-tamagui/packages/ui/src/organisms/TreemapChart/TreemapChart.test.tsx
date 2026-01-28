@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '@testing-library/react'
 import { TreemapChart } from './TreemapChart'
 import { AppProviders } from '../../providers/AppProviders'

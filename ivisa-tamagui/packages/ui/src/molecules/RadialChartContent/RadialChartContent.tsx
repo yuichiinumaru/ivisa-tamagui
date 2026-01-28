@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { IconProps } from '@tamagui/helpers-icon'
 import { ReactNode } from 'react'
 import { Circle, Star } from '@tamagui/lucide-icons'
@@ -46,7 +46,7 @@ type DataPoint = {
   icon?: React.ComponentType<IconProps>
 }
 
-type RadialChartContentProps = {
+export type RadialChartContentProps = {
   title: string
   subtitle?: string
   icon?: ReactNode
@@ -120,4 +120,4 @@ const RadialChartContent = ({
 export { RadialChartContent }
 export type { RadialChartContentProps }
 
-export type RadialChartContentProps = React.ComponentProps<typeof RadialChartContent>
+// `RadialChartContentProps` is defined and exported above.

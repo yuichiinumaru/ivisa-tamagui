@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { GetProps, styled, XStack } from 'tamagui'
 import { MetricCard, MetricCardProps } from '../../molecules/MetricCard/MetricCard'
 import { ReactNode } from 'react'

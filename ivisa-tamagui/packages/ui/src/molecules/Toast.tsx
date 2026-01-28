@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react'
 import { styled, XStack, YStack, Text, AnimatePresence } from 'tamagui'
 import { Portal } from '@tamagui/portal'
@@ -235,14 +235,4 @@ export const ToastViewport = ToastViewportFrame
 export const ToastTitle = ToastTitleComponent
 export const ToastDescription = ToastDescriptionComponent
 
-export type ToastProviderProps = React.ComponentProps<typeof ToastProvider>
-
-export type ToastProps = React.ComponentProps<typeof Toast>
-
-export type ToastViewportProps = React.ComponentProps<typeof ToastViewport>
-
-export type ToastTitleProps = React.ComponentProps<typeof ToastTitle>
-
-export type ToastDescriptionProps = React.ComponentProps<typeof ToastDescription>
-
-export type ToastItemProps = React.ComponentProps<typeof ToastItem>
+// Removed trailing React.ComponentProps alias exports to avoid duplicate-type declarations

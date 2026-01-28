@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React from 'react'
 import { Checkbox as TamaguiCheckbox, styled, GetProps, Label, XStack, SizeTokens, YStack, Text } from 'tamagui'
 import { withErrorLogging } from '../../utils/withErrorLogging'

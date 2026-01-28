@@ -1,4 +1,3 @@
-// @ts-nocheck
 export const mockSidebar = {
   items: [
     { id: '1', label: 'Início' },

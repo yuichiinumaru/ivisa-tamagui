@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
-import { Navbar } from './Navbar';
-import { YStack, Text, Button } from 'tamagui';
-import { mockUserProfile } from '../../mocks/sidebar';
-import { Logo } from '../../atoms/Logo/Logo';
+import type { Meta, StoryObj } from '@storybook/react'
+import React from 'react'
+import { Navbar } from './Navbar'
+import { YStack, Text } from 'tamagui'
+import { Button } from '../../atoms/Button'
+import { mockUserProfile } from '../../mocks/sidebar'
+import { Logo } from '../../atoms/Logo/Logo'
 
 const meta: Meta<React.ComponentProps<typeof Navbar>> = {
   title: 'Organismos/Navbar',
@@ -12,15 +13,16 @@ const meta: Meta<React.ComponentProps<typeof Navbar>> = {
     layout: 'fullscreen',
     docs: {
       description: {
-        component: 'Navbar padrão da aplicação: logo, area central configurável e usuário.',
+        component: 'Navbar padrão da aplicação: logo, área central configurável e usuário.',
       },
     },
   },
   tags: ['autodocs'],
-};
+}
 
-export default meta;
-type Story = StoryObj<React.ComponentProps<typeof meta>>;
+export default meta
+
+type Story = StoryObj<React.ComponentProps<typeof Navbar>>
 
 export const GoldenPath: Story = {
   name: 'Navbar Padrão',
@@ -45,5 +47,5 @@ export const GoldenPath: Story = {
       />
     </div>
   ),
-};
+}
 

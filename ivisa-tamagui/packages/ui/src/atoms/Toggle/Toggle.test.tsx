@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { render, screen } from '../../test-utils'
 import { Toggle } from './Toggle'
 import { Bold, Italic } from '@tamagui/lucide-icons'
