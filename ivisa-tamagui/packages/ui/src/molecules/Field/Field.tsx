@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { GetProps, styled, Text, XStack, YStack } from 'tamagui'
 
@@ -28,7 +27,7 @@ const FieldErrorFrame = styled(Text, {
 
 // --- Main Component (The "Puppeteer") ---
 
-type FieldRootProps = GetProps<typeof FieldFrame> & {
+export type FieldRootProps = GetProps<typeof FieldFrame> & {
   /**
    * When true, displays a skeleton loader instead of the field's content.
    * @default false
@@ -129,5 +128,3 @@ export const Field = Object.assign(FieldRoot, {
 })
 
 export type FieldProps = React.ComponentProps<typeof Field>
-
-export type FieldRootProps = React.ComponentProps<typeof FieldRoot>

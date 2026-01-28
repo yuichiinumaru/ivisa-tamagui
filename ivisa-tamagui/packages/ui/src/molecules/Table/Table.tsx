@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React, { ReactNode } from 'react'
 import {
   Table as TableContainer,

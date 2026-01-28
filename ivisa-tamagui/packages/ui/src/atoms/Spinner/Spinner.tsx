@@ -1,4 +1,3 @@
-// @ts-nocheck
 import type { SpinnerProps as TamaguiSpinnerProps } from 'tamagui';
 import { GetProps, Spinner as TamaguiSpinner, styled } from 'tamagui';
 

@@ -1,4 +1,4 @@
-// @ts-nocheck
+// removed // @ts-nocheck to enable type checking
 
 import { createContext, useContext, useMemo, cloneElement, Children, isValidElement, forwardRef } from 'react'
 import { Skeleton } from '../../atoms/Skeleton'
@@ -96,7 +96,7 @@ const ToggleGroupFrame = styled(TamaguiToggleGroup, {
   } as const,
 })
 
-type ToggleGroupProps = GetProps<typeof ToggleGroupFrame> & {
+export type ToggleGroupProps = GetProps<typeof ToggleGroupFrame> & {
   disabled?: boolean
   error?: boolean
   loading?: boolean
@@ -130,9 +130,4 @@ const ToggleGroupRoot = forwardRef<TamaguiElement, ToggleGroupProps>((props, ref
 export const ToggleGroup = withStaticProperties(ToggleGroupRoot, {
   Item: ToggleGroupItem,
 })
-
-export type { ToggleGroupProps }
-
-export type ToggleGroupProps = React.ComponentProps<typeof ToggleGroup>
-
 export type ToggleGroupRootProps = React.ComponentProps<typeof ToggleGroupRoot>

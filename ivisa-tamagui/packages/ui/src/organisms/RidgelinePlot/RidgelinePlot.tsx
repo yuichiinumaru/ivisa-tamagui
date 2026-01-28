@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React, { useMemo } from 'react'
 import { YStack, Text, useTheme } from 'tamagui'
 import { VictoryChart, VictoryArea, VictoryAxis } from 'victory'

@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { render, screen } from '../test-utils'
 import { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './Resizable'
 import { Text } from 'tamagui'

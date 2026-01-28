@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useMemo } from 'react'
 import { YStack, Text, useTheme } from 'tamagui'
 import { Svg, Path, G, Circle } from 'react-native-svg'

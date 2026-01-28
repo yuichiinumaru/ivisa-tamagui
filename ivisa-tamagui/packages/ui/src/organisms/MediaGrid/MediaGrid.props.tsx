@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 export type MediaItem = {
   id: string;
   type: 'image' | 'video';

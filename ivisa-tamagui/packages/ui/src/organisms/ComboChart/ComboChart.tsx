@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React from 'react'
 import { YStack, styled, Text, useTheme } from 'tamagui'
 import {

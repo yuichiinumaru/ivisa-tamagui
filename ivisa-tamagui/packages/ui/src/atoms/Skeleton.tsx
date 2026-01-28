@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { YStack, styled, GetProps } from 'tamagui'
 import './Skeleton.css'
 

@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React from 'react'
 import { render as rtlRender, screen } from '@testing-library/react'
 import { TamaguiProvider } from 'tamagui'

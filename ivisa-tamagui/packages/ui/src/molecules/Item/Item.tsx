@@ -74,7 +74,7 @@ type ItemData = {
   value?: string
 }
 
-type ItemProps = GetProps<typeof ItemFrame> & {
+export type ItemProps = GetProps<typeof ItemFrame> & {
   item?: ItemData
   rightSlot?: ReactNode
   isLoading?: boolean
@@ -106,6 +106,5 @@ const ItemComponent = ({ item, rightSlot, isLoading, ...props }: ItemProps) => {
 
 export const Item = ItemComponent
 
-export type ItemProps = React.ComponentProps<typeof Item>
-
-export type ItemComponentProps = React.ComponentProps<typeof ItemComponent>
+// `ItemProps` is defined and exported above.
+// Removed trailing alias export to avoid duplicate-type declarations

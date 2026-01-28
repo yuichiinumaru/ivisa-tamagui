@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React from 'react'
 import * as ContextMenuPrimitive from '@radix-ui/react-context-menu'
 import { Check, ChevronRight, Circle } from '@tamagui/lucide-icons'
@@ -244,7 +244,7 @@ export interface ContextMenuItemDef {
   value?: string
 }
 
-interface ContextMenuProps extends React.ComponentProps<typeof ContextMenuPrimitive.Root> {
+export interface ContextMenuProps extends React.ComponentProps<typeof ContextMenuPrimitive.Root> {
   children: React.ReactElement
   items: ContextMenuItemDef[]
   isLoading?: boolean
@@ -370,6 +370,5 @@ ContextMenuComponent.displayName = 'ContextMenu'
 
 export const ContextMenu = ContextMenuComponent
 
-export type ContextMenuProps = React.ComponentProps<typeof ContextMenu>
-
+// `ContextMenuProps` is defined and exported above.
 export type ContextMenuComponentProps = React.ComponentProps<typeof ContextMenuComponent>

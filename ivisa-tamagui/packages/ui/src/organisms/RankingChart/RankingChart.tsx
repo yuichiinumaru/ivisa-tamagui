@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import { Card } from '@tamagui/card';
 import { BarChart, Frown } from '@tamagui/lucide-icons';
 import React from 'react';

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { cloneElement, forwardRef } from 'react';
 import { GetProps, styled, Text, View } from 'tamagui';
 import { Slot } from '@tamagui/core';
@@ -125,7 +124,7 @@ const BadgeText = styled(Text, {
 const BadgeTextAny: any = BadgeText
 
 
-type BadgeProps = GetProps<typeof BadgeFrame> & {
+export type BadgeProps = GetProps<typeof BadgeFrame> & {
   /**
    * Se a Badge deve ser renderizada como um filho do elemento anterior.
    */
@@ -181,4 +180,4 @@ Badge.displayName = 'Badge';
 
 export { BadgeText };
 
-export type BadgeProps = React.ComponentProps<typeof Badge>
+// keep `BadgeProps` exported from its definition above

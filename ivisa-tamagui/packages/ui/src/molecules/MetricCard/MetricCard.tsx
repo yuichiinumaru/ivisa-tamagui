@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 
 import { ReactNode } from 'react'
 import { GetProps, H4, styled, Text, XStack, YStack } from 'tamagui'
@@ -35,7 +35,7 @@ const MetricCardContent = styled(YStack, {
   gap: '$1',
 })
 
-type MetricCardProps = GetProps<typeof MetricCardFrame> & {
+export type MetricCardProps = GetProps<typeof MetricCardFrame> & {
   metric: Metric
   isLoading?: boolean
   hasError?: boolean
@@ -115,4 +115,4 @@ const MetricCardComponent = MetricCardFrame.styleable<MetricCardProps>(
 export const MetricCard = MetricCardComponent
 export type { MetricCardProps }
 
-export type MetricCardProps = React.ComponentProps<typeof MetricCard>
+// `MetricCardProps` is defined and exported above.

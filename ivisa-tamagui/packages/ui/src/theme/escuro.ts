@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck to enable type checking
 import { darkColors } from './tokens';
 
 export const escuroColors = {

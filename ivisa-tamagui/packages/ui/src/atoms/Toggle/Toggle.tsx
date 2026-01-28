@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { styled, GetProps, Button } from 'tamagui'
 import React from 'react'
 

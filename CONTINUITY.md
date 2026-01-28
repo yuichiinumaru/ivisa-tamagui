@@ -77,3 +77,23 @@ Load these detailed rules as needed:
 * **Build**: `yarn build:ci`
 * **Storybook**: `yarn storybook`
 * **Lint**: `yarn lint` / `yarn lint:arch`
+
+---
+
+## Session Update (2026-01-27)
+
+- **Goal desta sessão:** Aplicar paleta de cores (tokens) e resolver erros do Storybook/ Tamage/duplicidade de instâncias Tamagui.
+- **Ações realizadas:**
+	- Atualizei `packages/ui/src/theme/tokens.ts` para alinhar com a paleta fornecida (in-place, conforme solicitado).
+	- Ajustei `packages/ui/.storybook/main.cjs` para forçar resolução única dos pacotes `tamagui` no workspace (aliases + `resolve.modules`).
+	- Rodei `yarn install` no workspace e executei `yarn --cwd packages/ui build-storybook`.
+- **Resultado:** Storybook build concluído com sucesso — saída em `packages/ui/storybook-static`. Durante o build o `tamagui-loader` reportou alguns avisos e parsing warnings, mas o preview foi construido.
+- **Problemas encontrados:** Tentativas iniciais de `yarn add tamagui` em `packages/ui` falharam por timeout de rede; solução aplicada: `yarn install` no root (workspace) supriu dependências.
+- **Próximos passos recomendados:**
+	1. Revisar warnings do `tamagui-loader` (erros de parsing em alguns arquivos TypeScript) e corrigir declarações duplicadas de tipos (ex.: `ChartContainerProps`) para reduzir ruído e evitar falhas em ambientes mais restritos.
+	2. Rodar `yarn build:ci` e `yarn storybook` em CI/local para validar artefatos finais.
+	3. Se desejar, removo aliases experimentais após testar em CI e documentar a alteração em `docs/rules/`.
+
+---
+
+Atualizado por: agente automático (alterações no repositório feitas em sessão interativa)

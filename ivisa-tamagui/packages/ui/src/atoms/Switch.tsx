@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { GetProps, Spinner, Switch as TamaguiSwitch, styled } from 'tamagui';
 

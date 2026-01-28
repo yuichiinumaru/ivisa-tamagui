@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { GetProps, styled, XStack, YStack, Paragraph } from 'tamagui'
 import { Card } from '../Card'
