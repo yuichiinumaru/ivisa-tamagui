@@ -71,6 +71,19 @@ const StyledButton = styled(View, {
           opacity: 0.8,
         },
       },
+      quiet: {
+        backgroundColor: 'transparent',
+        color: '$mutedForeground',
+        hoverStyle: {
+          color: '$foreground',
+          backgroundColor: 'transparent',
+        },
+        pressStyle: {
+          opacity: 0.7,
+        },
+        padding: 0,
+        height: 'auto',
+      },
     },
     circular: {
       true: {
@@ -101,6 +114,11 @@ const StyledButton = styled(View, {
       lg: {
         height: '$lg',
         px: '$xl',
+      },
+      xl: {
+        height: '$xl',
+        px: '$2xl',
+        fontSize: '$lg',
       },
     },
   } as const,
@@ -193,4 +211,3 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>(
 Button.displayName = 'Button'
 
 export { Button }
-
