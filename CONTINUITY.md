@@ -25,3 +25,8 @@
 - Resolve CI package manager conflict (Align to Yarn).
 - Update `tree.md` to match reality.
 - Continue development or maintenance tasks as directed by user.
+
+## 5. Integration Status (2026-01-30)
+- **State**: Integrated.
+- **Baseline**: The current branch is the new De Facto Main.
+- **Next Actions**: Monitor CI for green build.
