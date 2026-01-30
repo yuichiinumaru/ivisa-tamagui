@@ -51,6 +51,32 @@ const inputVariants = {
         borderColor: '$ring',
         borderWidth: 1,
       }
+    },
+    quiet: {
+      borderWidth: 0,
+      borderBottomWidth: 1,
+      borderColor: '$borderColor',
+      backgroundColor: 'transparent',
+      borderRadius: 0,
+      focusStyle: {
+        borderColor: '$ring',
+        borderBottomWidth: 2,
+      },
+      focusWithinStyle: {
+        borderColor: '$ring',
+        borderBottomWidth: 2,
+      }
+    },
+    ghost: {
+      borderWidth: 0,
+      borderColor: 'transparent',
+      backgroundColor: 'transparent',
+      focusStyle: {
+        backgroundColor: '$muted',
+      },
+      focusWithinStyle: {
+        backgroundColor: '$muted',
+      }
     }
   },
   size: {
@@ -65,6 +91,11 @@ const inputVariants = {
     lg: {
       height: '$12',
       px: '$4',
+    },
+    xl: {
+      height: '$14',
+      px: '$5',
+      fontSize: '$lg',
     }
   },
   state: {
@@ -92,7 +123,8 @@ const StyledInput = styled(TamaguiInput, {
     size: {
       sm: { ...inputVariants.size.sm, fontSize: '$2' },
       default: { ...inputVariants.size.default, fontSize: '$3' },
-      lg: { ...inputVariants.size.lg, fontSize: '$4' }
+      lg: { ...inputVariants.size.lg, fontSize: '$4' },
+      xl: { ...inputVariants.size.xl, fontSize: '$5' }
     }
   } as const,
 
@@ -174,7 +206,8 @@ const UnframedInputStyled = styled(TamaguiInput, {
     size: {
       sm: { fontSize: '$2' },
       default: { fontSize: '$3' },
-      lg: { fontSize: '$4' }
+      lg: { fontSize: '$4' },
+      xl: { fontSize: '$5' }
     }
   } as const
 })
@@ -217,12 +250,12 @@ export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
    * The visual style of the input.
    * @default 'default'
    */
-  variant?: 'default' | 'filled'
+  variant?: 'default' | 'filled' | 'quiet' | 'ghost'
   /**
    * The size of the input.
    * @default 'default'
    */
-  size?: 'sm' | 'default' | 'lg'
+  size?: 'sm' | 'default' | 'lg' | 'xl'
   /**
  * If true, the input will be in a loading state.
  * @default false
@@ -357,4 +390,3 @@ export const Input = Object.assign(InputMain, {
   Button: InputButton,
   Hint: InputHint,
 })
-
