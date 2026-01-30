@@ -1,56 +1,55 @@
-
-import type React from 'react';
-import type { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { BarChart } from './BarChart'
-import { YStack } from 'tamagui'
 
-
-const meta: Meta<React.ComponentProps<typeof BarChart>> = {
-  title: 'Organismos/Gráficos/BarChart',
+const meta: Meta<typeof BarChart> = {
+  title: 'Organismos/BarChart',
   component: BarChart,
-  args: {
-    data: [
-      { mes: 'Jan', valor: 180 },
-      { mes: 'Fev', valor: 250 },
-      { mes: 'Mar', valor: 120 },
-      { mes: 'Abr', valor: 350 },
-      { mes: 'Mai', valor: 200 },
-    ],
-    xKey: 'mes',
-    yKey: 'valor',
-    height: 300,
+  argTypes: {
+    height: { control: 'number' },
+    color: { control: 'color' },
   },
 }
 
 export default meta
 
-type Story = StoryObj<React.ComponentProps<typeof BarChart>>
+type Story = StoryObj<typeof BarChart>
 
-export const Padrao: Story = {}
+const data = [
+  { name: 'Jan', value: 400 },
+  { name: 'Feb', value: 300 },
+  { name: 'Mar', value: 200 },
+  { name: 'Apr', value: 278 },
+  { name: 'May', value: 189 },
+]
 
-export const Carregando: Story = {
+export const Default: Story = {
+  args: {
+    data,
+    xKey: 'name',
+    yKey: 'value',
+    height: 300,
+  },
+}
+
+export const Loading: Story = {
   args: {
     isLoading: true,
+    height: 300,
   },
 }
 
-export const EstadoVazio: Story = {
+export const Empty: Story = {
   args: {
     data: [],
+    xKey: 'name',
+    yKey: 'value',
+    height: 300,
   },
 }
 
-export const ComErro: Story = {
+export const ErrorState: Story = {
   args: {
-    error: new Error('Falha ao carregar dados'),
+    error: new Error('Failed to fetch'),
+    height: 300,
   },
 }
-
-export const EstresseDeLayout: Story = {
-  render: (args) => (
-    <YStack width={300} height={400} borderColor="$borderColor" borderWidth={1} padding="$2">
-      <BarChart {...args} />
-    </YStack>
-  ),
-}
-

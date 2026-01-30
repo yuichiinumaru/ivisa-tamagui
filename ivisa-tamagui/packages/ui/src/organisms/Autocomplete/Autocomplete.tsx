@@ -60,12 +60,17 @@ export const Autocomplete = ({
     )
   }
 
+  // ID for accessibility association
+  const listboxId = React.useId()
+
   return (
     <Popover open={open} onOpenChange={setOpen} placement="bottom-start">
       <PopoverTrigger asChild>
         <Button
           role="combobox"
           aria-expanded={open}
+          aria-controls={listboxId}
+          aria-haspopup="listbox"
           justifyContent="space-between"
           width="100%"
           iconAfter={ChevronDown}
@@ -78,7 +83,12 @@ export const Autocomplete = ({
       </PopoverTrigger>
       <PopoverContent padding={0} width="100%" minWidth={200}>
         <YStack padding="$2" borderBottomWidth={1} borderBottomColor="$borderColor">
-          <Input placeholder="Buscar..." value={search} onChangeText={setSearch} />
+          <Input
+            placeholder="Buscar..."
+            value={search}
+            onChangeText={setSearch}
+            autoFocus
+          />
         </YStack>
         <ScrollView maxHeight={200} keyboardShouldPersistTaps="handled">
           {filteredOptions.length === 0 ? (
@@ -86,7 +96,7 @@ export const Autocomplete = ({
               <Text color="$color11">{emptyMessage}</Text>
             </YStack>
           ) : (
-            <YGroup>
+            <YGroup id={listboxId} role="listbox">
               {filteredOptions.map((option) => (
                 <YGroup.Item key={option.value}>
                   <ListItem
@@ -94,6 +104,8 @@ export const Autocomplete = ({
                     pressTheme
                     onPress={() => handleSelect(option)}
                     icon={value?.value === option.value ? Check : undefined}
+                    role="option"
+                    aria-selected={value?.value === option.value}
                   >
                     <Text>{option.label}</Text>
                   </ListItem>
@@ -106,4 +118,3 @@ export const Autocomplete = ({
     </Popover>
   )
 }
-

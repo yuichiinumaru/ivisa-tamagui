@@ -12,11 +12,11 @@ const meta: Meta<typeof Input> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['default', 'filled'],
+      options: ['default', 'filled', 'quiet', 'ghost'],
     },
     size: {
       control: { type: 'select' },
-      options: ['sm', 'default', 'lg'],
+      options: ['sm', 'default', 'lg', 'xl'],
     },
     disabled: {
       control: { type: 'boolean' },
@@ -35,7 +35,7 @@ export default meta
 
 type Story = StoryObj<typeof Input>
 
-export const Padrao: Story = {
+export const Default: Story = {
   args: {
     placeholder: 'Digite algo...',
   },
@@ -53,7 +53,21 @@ export const Filled: Story = {
   },
 }
 
-export const ComIcone: Story = {
+export const Quiet: Story = {
+  args: {
+    variant: 'quiet',
+    placeholder: 'Input quiet...',
+  },
+}
+
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+    placeholder: 'Input ghost...',
+  },
+}
+
+export const WithIcon: Story = {
   render: () => (
     <YStack gap="$4" width={300}>
       <Text>Input com Ícone à Esquerda</Text>
@@ -75,7 +89,7 @@ export const ComIcone: Story = {
   ),
 }
 
-export const ComBotao: Story = {
+export const WithButton: Story = {
   render: () => (
     <YStack gap="$4" width={300}>
       <Text>Input com Botão</Text>
@@ -112,6 +126,7 @@ export const Sizes: Story = {
       <Input size="sm" placeholder="Pequeno" />
       <Input size="default" placeholder="Padrão" />
       <Input size="lg" placeholder="Grande" />
+      <Input size="xl" placeholder="Extra Grande" />
 
       <Text marginTop="$4">Tamanhos Compostos (herdam do Frame)</Text>
       <Input size="sm">
@@ -126,7 +141,7 @@ export const Sizes: Story = {
   ),
 }
 
-export const Carregando: Story = {
+export const Loading: Story = {
   args: {
     loading: true,
     placeholder: 'Carregando...',
@@ -151,7 +166,7 @@ export const ComposedLoading: Story = {
 }
 
 
-export const TextoLongo: Story = {
+export const LongText: Story = {
   args: {
     defaultValue: 'Este é um texto muito longo para testar o comportamento do input com strings que excedem seu tamanho horizontal para garantir que o overflow ou o scroll funcionem como esperado.',
   },
@@ -170,7 +185,7 @@ export const ConstraintCheck: Story = {
   )
 }
 
-export const ComDica: Story = {
+export const WithHint: Story = {
   render: () => (
     <YStack gap="$4" width={300}>
       <Text>Input com Dica</Text>
@@ -187,14 +202,14 @@ export const Password: Story = {
   },
 }
 
-export const Sucesso: Story = {
+export const Success: Story = {
   args: {
     state: 'success',
     defaultValue: 'contato@ivisa.com',
   },
 }
 
-export const Error: Story = {
+export const ErrorState: Story = {
   render: () => (
     <YStack gap="$4" width={300}>
       <Input state="error" defaultValue="email-invalido" />
@@ -203,3 +218,27 @@ export const Error: Story = {
   )
 }
 
+export const DarkBackground: Story = {
+  render: () => (
+    <YStack padding="$4" backgroundColor="#1A1A1A" gap="$4" width={300}>
+        <Text color="white">Dark Mode Check</Text>
+        <Input theme="dark" placeholder="Dark input..." />
+        <Input theme="dark" variant="filled" placeholder="Dark filled..." />
+        <Input theme="dark" variant="quiet" placeholder="Dark quiet..." />
+    </YStack>
+  )
+}
+
+export const Mobile: Story = {
+    parameters: {
+        viewport: {
+            defaultViewport: 'mobile1'
+        }
+    },
+    render: () => (
+        <YStack gap="$4" padding="$4">
+            <Input placeholder="Mobile Input" size="lg" />
+            <Input placeholder="Another Input" size="lg" />
+        </YStack>
+    )
+}

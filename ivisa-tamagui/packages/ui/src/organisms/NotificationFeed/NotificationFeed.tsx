@@ -3,6 +3,7 @@ import React from 'react'
 import { YStack, XStack, Text } from 'tamagui'
 import { Button } from '../../atoms/Button'
 import { ScrollArea } from '../../atoms/ScrollArea'
+import { Skeleton } from '../../atoms/Skeleton'
 import { Bell } from '@tamagui/lucide-icons'
 
 export interface Notification {
@@ -19,6 +20,7 @@ export interface NotificationFeedProps {
   onMarkAllAsRead?: () => void
   emptyMessage?: string
   maxHeight?: number | string
+  isLoading?: boolean
 }
 
 export function NotificationFeed({
@@ -27,7 +29,37 @@ export function NotificationFeed({
   onMarkAllAsRead,
   emptyMessage = 'Nenhuma notificação',
   maxHeight = 400,
+  isLoading = false,
 }: NotificationFeedProps) {
+
+  if (isLoading) {
+    return (
+      <YStack
+        borderWidth={1}
+        borderColor="$borderColor"
+        borderRadius="$4"
+        backgroundColor="$background"
+        overflow="hidden"
+      >
+        <XStack padding="$3" borderBottomWidth={1} borderBottomColor="$borderColor" justifyContent="space-between" alignItems="center">
+            <Skeleton width={100} height={20} />
+            <Skeleton width={120} height={24} />
+        </XStack>
+        <YStack padding="$3" gap="$3">
+            {[1, 2, 3].map((i) => (
+                <XStack key={i} gap="$3">
+                    <Skeleton width={8} height={8} borderRadius={4} marginTop={6} />
+                    <YStack flex={1} gap="$2">
+                        <Skeleton width="60%" height={16} />
+                        <Skeleton width="90%" height={14} />
+                        <Skeleton width="30%" height={12} />
+                    </YStack>
+                </XStack>
+            ))}
+        </YStack>
+      </YStack>
+    )
+  }
 
   if (!notifications || notifications.length === 0) {
     return (
@@ -100,4 +132,3 @@ export function NotificationFeed({
     </YStack>
   )
 }
-
