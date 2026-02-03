@@ -6,42 +6,41 @@ import { Button } from '../../atoms/Button'
 import { mockUserProfile } from '../../mocks/sidebar'
 import { Logo } from '../../atoms/Logo/Logo'
 
-const meta: Meta<React.ComponentProps<typeof Navbar>> = {
+// Aliases para evitar conflitos de tipos do Tamagui
+const YStackAny = YStack as any
+const TextAny = Text as any
+const ButtonAny = Button as any
+const LogoAny = Logo as any
+const NavbarAny = Navbar as any
+
+const meta: Meta<typeof Navbar> = {
   title: 'Organismos/Navbar',
   component: Navbar,
   parameters: {
     layout: 'fullscreen',
-    docs: {
-      description: {
-        component: 'Navbar padrão da aplicação: logo, área central configurável e usuário.',
-      },
-    },
   },
   tags: ['autodocs'],
 }
 
 export default meta
-
-type Story = StoryObj<React.ComponentProps<typeof Navbar>>
+type Story = StoryObj<typeof Navbar>
 
 export const GoldenPath: Story = {
   name: 'Navbar Padrão',
-  // Avoid serializing complex React nodes into args (Storybook warns about circular structures).
-  args: {},
   render: () => (
     <div style={{ height: 80 }}>
-      <Navbar
-        logo={<Logo variant="full" />}
+      <NavbarAny
+        logo={<LogoAny variant="full" />}
         center={(
-          <YStack flexDirection="row" gap="$2">
-            <Button chromeless>Dashboard</Button>
-            <Button chromeless>Análises</Button>
-          </YStack>
+          <YStackAny flexDirection="row" gap="$2">
+            <ButtonAny chromeless>Dashboard</ButtonAny>
+            <ButtonAny chromeless>Análises</ButtonAny>
+          </YStackAny>
         )}
         actions={(
-          <YStack>
-            <Text>Notificações</Text>
-          </YStack>
+          <YStackAny>
+            <TextAny>Notificações</TextAny>
+          </YStackAny>
         )}
         user={mockUserProfile}
       />
@@ -49,3 +48,46 @@ export const GoldenPath: Story = {
   ),
 }
 
+export const LoggedOut: Story = {
+  name: 'Navbar – Logged Out',
+  render: () => (
+    <div style={{ height: 80 }}>
+      <NavbarAny
+        logo={<LogoAny variant="full" />}
+        center={(
+          <YStackAny flexDirection="row" gap="$2">
+            <ButtonAny chromeless>Login</ButtonAny>
+            <ButtonAny chromeless>Criar conta</ButtonAny>
+          </YStackAny>
+        )}
+      />
+    </div>
+  ),
+}
+
+export const Fixed: Story = {
+  name: 'Navbar – Fixed',
+  render: () => (
+    <div style={{ height: 300 }}>
+      <NavbarAny
+        fixed
+        logo={<LogoAny variant="full" />}
+        center={(
+          <YStackAny flexDirection="row" gap="$2">
+            <ButtonAny chromeless>Dashboard</ButtonAny>
+            <ButtonAny chromeless>Análises</ButtonAny>
+          </YStackAny>
+        )}
+        actions={(
+          <YStackAny>
+            <TextAny>Notificações</TextAny>
+          </YStackAny>
+        )}
+        user={mockUserProfile}
+      />
+      <div style={{ padding: 16 }}>
+        <p>Conteúdo da página rolável aqui.</p>
+      </div>
+    </div>
+  ),
+}

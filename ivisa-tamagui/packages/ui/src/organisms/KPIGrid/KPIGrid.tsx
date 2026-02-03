@@ -1,7 +1,7 @@
 import { GetProps, styled, XStack } from 'tamagui'
 import { MetricCard, MetricCardProps } from '../../molecules/MetricCard/MetricCard'
 import { ReactNode } from 'react'
-import { Alert } from '../../atoms/Alert'
+import { Alert } from '../../atoms/Alert/Alert'
 import { Empty } from '../../molecules/Empty/Empty'
 import { Skeleton } from '../../atoms/Skeleton'
 

@@ -97,3 +97,29 @@ Load these detailed rules as needed:
 ---
 
 Atualizado por: agente automático (alterações no repositório feitas em sessão interativa)
+
+	---
+
+	## Session Update (2026-02-02)
+
+	- **Ações realizadas nesta sessão:**
+		- Atualizei `packages/ui/src/organisms/Navbar/Navbar.tsx` para usar `YStackProps` e `XStackProps` em vez de `Partial<GetProps<...>>` e ajustei atributos de acessibilidade para o elemento `YStack`.
+		- Corrigi `packages/ui/src/organisms/Sidebar/Sidebar.tsx` para passar `collapsible` e `collapsed` explicitamente como booleanos e mantive o controle interno/externo de `isCollapsed` conforme solicitado.
+		- Atualizei `packages/ui/src/organisms/Sidebar/Sidebar.stories.tsx` para usar `Meta<SidebarOwnProps>` e `StoryObj<SidebarOwnProps>`, além de tipar os mocks `NavMenu` e `UserProfile` para evitar `implicit any`.
+
+	- **Arquivos modificados:**
+		- [packages/ui/src/organisms/Navbar/Navbar.tsx](packages/ui/src/organisms/Navbar/Navbar.tsx)
+		- [packages/ui/src/organisms/Sidebar/Sidebar.tsx](packages/ui/src/organisms/Sidebar/Sidebar.tsx)
+		- [packages/ui/src/organisms/Sidebar/Sidebar.stories.tsx](packages/ui/src/organisms/Sidebar/Sidebar.stories.tsx)
+		- [packages/ui/src/atoms/Button/Button.tsx](packages/ui/src/atoms/Button/Button.tsx)
+		- [packages/ui/src/atoms/Button/Button.stories.tsx](packages/ui/src/atoms/Button/Button.stories.tsx)
+
+	- **Estado:** alterações aplicadas localmente; recomenda-se rodar `yarn --cwd ivisa-tamagui/packages/ui tsc --noEmit` e `yarn --cwd ivisa-tamagui/packages/ui storybook` para validar tipagem e preview.
+
+	- **Notas adicionais:**
+		- Removi `@ts-nocheck` do Story de `Button` e exportei `ButtonProps` para permitir que o Storybook tipado gere automaticamente as args.
+		- Separei cor de texto para o `Text` interno do botão para evitar conflitos de index signature quando o `StyledButton` é baseado em `View`.
+
+	---
+
+	Atualizado por: agente automático (sessão interativa)

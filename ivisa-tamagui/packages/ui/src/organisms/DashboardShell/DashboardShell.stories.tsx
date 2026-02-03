@@ -6,7 +6,7 @@ import { DashboardShell } from './DashboardShell'
 import { mockHeader, mockSidebar, mockContent } from './mocks'
 import { Button } from '../../atoms/Button'
 import { H2, H3, MutedText } from '../../atoms/Typography'
-import { Avatar } from '../../atoms/Avatar'
+import { Avatar } from '../../atoms/Avatar/Avatar'
 
 
 const meta: Meta<React.ComponentProps<typeof DashboardShell>> = {

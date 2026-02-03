@@ -145,7 +145,12 @@ const DesktopSidebar = ({
 
   if (isLoading) {
     return (
-      <SidebarContainer collapsed={isCollapsible && isCollapsed}>
+      <SidebarContainer
+        collapsible={isCollapsible}
+        collapsed={isCollapsible && isCollapsed}
+        role="navigation"
+        aria-label="Menu lateral"
+      >
         <SidebarSkeleton />
       </SidebarContainer>
     );
@@ -162,6 +167,8 @@ const DesktopSidebar = ({
       collapsible={isCollapsible}
       collapsed={isCollapsible && isCollapsed}
       {...(variant === 'floating' ? floatingProps : undefined)}
+      role="navigation"
+      aria-label="Menu lateral"
     >
       {header && <SidebarHeader>{header}</SidebarHeader>}
       <Separator />
@@ -194,6 +201,8 @@ const DesktopSidebar = ({
           top={20}
           right={-15}
           zIndex={20}
+          aria-label={isCollapsed ? 'Expandir sidebar' : 'Recolher sidebar'}
+          aria-expanded={!isCollapsed}
         >
           {isCollapsed ? <ChevronRight size="$1.5" /> : <ChevronLeft size="$1.5" />}
         </Button>

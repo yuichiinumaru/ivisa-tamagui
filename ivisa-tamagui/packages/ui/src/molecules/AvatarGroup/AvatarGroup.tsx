@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Avatar, AvatarFallback, AvatarImage } from '../../atoms/Avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '../../atoms/Avatar/Avatar'
 import { Skeleton } from '../../atoms/Skeleton'
 import React from 'react'
 import { GetProps, SizeTokens, Text, XStack, styled } from 'tamagui'

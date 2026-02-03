@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '../test-utils';
+import { render, screen, fireEvent } from '../../test-utils';
 import { Alert } from './Alert';
 import { Star } from '@tamagui/lucide-icons';
 

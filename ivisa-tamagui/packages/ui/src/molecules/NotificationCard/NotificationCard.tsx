@@ -2,7 +2,7 @@ import React from 'react'
 import { GetProps, styled, XStack, YStack, Paragraph } from 'tamagui'
 import { Card } from '../Card'
 import { Bell, X } from '@tamagui/lucide-icons'
-import { Avatar } from '../../atoms/Avatar'
+import { Avatar } from '../../atoms/Avatar/Avatar'
 import { Button } from '../../atoms/Button'
 
 const NotificationCardFrame = styled(Card, {

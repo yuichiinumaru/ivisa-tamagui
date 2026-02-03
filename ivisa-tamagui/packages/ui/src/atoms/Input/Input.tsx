@@ -22,6 +22,7 @@ const useInputContext = () => {
 const inputVariants = {
   variant: {
     default: {
+
       borderWidth: 1,
       borderColor: '$borderColor',
       backgroundColor: '$background',
@@ -36,7 +37,7 @@ const inputVariants = {
         outlineColor: '$ring',
         outlineStyle: 'solid',
         outlineWidth: 2,
-      }
+      },
     },
     filled: {
       borderWidth: 1,
@@ -49,8 +50,8 @@ const inputVariants = {
       focusWithinStyle: {
         borderColor: '$ring',
         borderWidth: 1,
-      }
-    }
+      },
+    },
   },
   size: {
     sm: {
@@ -64,7 +65,7 @@ const inputVariants = {
     lg: {
       height: '$12',
       px: '$4',
-    }
+    },
   },
   state: {
     error: {
@@ -74,8 +75,8 @@ const inputVariants = {
     success: {
       borderColor: '$green10',
       borderWidth: 2,
-    }
-  }
+    },
+  },
 } as const;
 
 // --- Styled Components ---
@@ -91,15 +92,15 @@ const StyledInput = styled(TamaguiInput, {
     size: {
       sm: { ...inputVariants.size.sm, fontSize: '$2' },
       default: { ...inputVariants.size.default, fontSize: '$3' },
-      lg: { ...inputVariants.size.lg, fontSize: '$4' }
-    }
+      lg: { ...inputVariants.size.lg, fontSize: '$4' },
+    },
   } as const,
 
   defaultVariants: {
     variant: 'default',
-    size: 'default'
-  }
-})
+    size: 'default',
+  },
+});
 
 const InputFrame = styled(XStack, {
   name: 'InputFrame',
@@ -115,15 +116,15 @@ const InputFrame = styled(XStack, {
       true: {
         opacity: 0.7,
         pointerEvents: 'none',
-      }
-    }
+      },
+    },
   } as const,
 
   defaultVariants: {
     variant: 'default',
-    size: 'default'
-  }
-})
+    size: 'default',
+  },
+});
 
 const SimpleInputFrame = styled(XStack, {
   name: 'SimpleInputFrame',
@@ -139,15 +140,15 @@ const SimpleInputFrame = styled(XStack, {
       true: {
         opacity: 0.7,
         pointerEvents: 'none',
-      }
-    }
+      },
+    },
   } as const,
 
   defaultVariants: {
     variant: 'default',
-    size: 'default'
-  }
-})
+    size: 'default',
+  },
+});
 
 const UnframedInputStyled = styled(TamaguiInput, {
   name: 'InputField',
@@ -173,19 +174,34 @@ const UnframedInputStyled = styled(TamaguiInput, {
     size: {
       sm: { fontSize: '$2' },
       default: { fontSize: '$3' },
-      lg: { fontSize: '$4' }
-    }
-  } as const
-})
+      lg: { fontSize: '$4' },
+    },
+  } as const,
+});
+
+// --- Types derivados dos styled (padrão Sidebar) ---
+
+type StyledInputProps = GetProps<typeof StyledInput>;
+type InputFrameProps = GetProps<typeof InputFrame>;
+type SimpleInputFrameProps = GetProps<typeof SimpleInputFrame>;
+type UnframedInputBaseProps = GetProps<typeof UnframedInputStyled>;
+
+// remove as props do TextInput das props base de estilo
+type UnframedInputStyleProps = Omit<UnframedInputBaseProps, keyof TextInputProps>;
+
+// props finais do Field: estilo + TextInputProps
+export type UnframedInputProps = UnframedInputStyleProps & TextInputProps;
 
 // --- Components ---
 
-const InputField = React.forwardRef<TamaguiElement, GetProps<typeof UnframedInputStyled>>((props, ref) => {
-  const context = useInputContext()
-  const size = props.size || context?.size || 'default'
-  return <UnframedInputStyledAny ref={ref} size={size} {...props} />
-})
-InputField.displayName = 'Input.Field'
+const InputField = React.forwardRef<TextInput, UnframedInputProps>(
+  (props, ref) => {
+    const context = useInputContext();
+    const size = (props.size || context?.size || 'default') as 'sm' | 'default' | 'lg';
+    return <UnframedInputStyled ref={ref} size={size} {...props} />;
+  }
+);
+InputField.displayName = 'Input.Field';
 
 const InputIcon = styled(View, {
   name: 'InputIcon',
@@ -193,49 +209,68 @@ const InputIcon = styled(View, {
   alignItems: 'center',
   height: '100%',
   paddingHorizontal: '$2',
-})
+});
 
-const InputButton = styled(Button, {
+const StyledInputButton = styled(Button, {
   name: 'InputButton',
   borderRadius: 0,
   height: '100%',
   borderWidth: 0,
-})
+});
+
+const InputButton = React.forwardRef<TamaguiElement, any>((props, ref) => {
+  const { children, ...rest } = props as any;
+  const content =
+    typeof children === 'string' || typeof children === 'number' ? (
+      <Text>{children}</Text>
+    ) : (
+      children
+    );
+
+  return (
+    <StyledInputButton ref={ref as any} {...(rest as any)}>
+      {content}
+    </StyledInputButton>
+  );
+});
+InputButton.displayName = 'Input.Button';
 
 const InputHint = styled(Text, {
   name: 'InputHint',
   fontSize: '$2',
   color: '$mutedForeground',
   marginTop: '$2',
-})
+});
 
-type StyledInputProps = GetProps<typeof StyledInput>
-
-export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size'> {
+export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size' | 'loading' | 'state' | 'type'> {
   /**
    * The visual style of the input.
    * @default 'default'
    */
-  variant?: 'default' | 'filled'
+  variant?: 'default' | 'filled';
   /**
    * The size of the input.
    * @default 'default'
    */
-  size?: 'sm' | 'default' | 'lg'
+  size?: 'sm' | 'default' | 'lg';
   /**
- * If true, the input will be in a loading state.
- * @default false
- */
-  loading?: boolean
+   * If true, the input will be in a loading state.
+   * @default false
+   */
+  loading?: boolean;
   /**
    * The validation state of the input.
    * @default undefined
    */
-  state?: 'error' | 'success'
+  state?: 'error' | 'success';
+  /**
+   * The input type for web/native distinction.
+   */
+  type?: 'text' | 'password';
   /**
    * @deprecated Passing children to Input is deprecated. Use <Input.Box> for composite layouts.
    */
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 /**
@@ -246,106 +281,86 @@ const InputBox = React.forwardRef<TamaguiElement, InputProps & { children: React
   ({ variant = 'default', size = 'default', loading = false, state, children, ...props }, ref) => {
     return (
       <InputContext.Provider value={{ size, loading }}>
-        <InputFrameAny ref={ref} variant={variant} size={size} loading={loading} state={state} {...props}>
+        <InputFrame
+          ref={ref}
+          variant={variant}
+          size={size}
+          loading={loading}
+          state={state}
+          {...(props as InputFrameProps)}
+        >
           {children}
           {loading && (
-            <InputIconAny>
+            <InputIcon>
               <Spinner />
-            </InputIconAny>
+            </InputIcon>
           )}
-        </InputFrameAny>
+        </InputFrame>
       </InputContext.Provider>
-    )
+    );
   }
-)
-InputBox.displayName = 'Input.Box'
-
+);
+InputBox.displayName = 'Input.Box';
 
 const InputMain = React.forwardRef<TamaguiElement, InputProps>(
   ({ variant = 'default', size = 'default', loading = false, state, children, ...props }, ref) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-// auto-added alias to silence Tamagui prop checks
-const InputHintAny: any = InputHint
-
-// auto-added alias to silence Tamagui prop checks
-const InputButtonAny: any = InputButton
-
-// auto-added alias to silence Tamagui prop checks
-const InputIconAny: any = InputIcon
-
-// auto-added alias to silence Tamagui prop checks
-const UnframedInputStyledAny: any = UnframedInputStyled
-
-// auto-added alias to silence Tamagui prop checks
-const SimpleInputFrameAny: any = SimpleInputFrame
-
-// auto-added alias to silence Tamagui prop checks
-const InputFrameAny: any = InputFrame
-
-// auto-added alias to silence Tamagui prop checks
-const StyledInputAny: any = StyledInput
-
     const isPassword = props.type === 'password';
 
-    // 🛡️ Necromancer Guard: Zero Ambiguity
     if (children) {
-      if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
-        console.warn("Input: Passing 'children' to <Input /> is deprecated. Use <Input.Box> for composite inputs.")
-      }
-      // Legacy support (Transition Phase)
       return (
         <InputBox ref={ref} variant={variant} size={size} loading={loading} state={state} {...props}>
           {children}
         </InputBox>
-      )
+      );
     }
 
     const { value, defaultValue, ...restProps } = props;
 
     return (
-      <SimpleInputFrameAny
+      <SimpleInputFrame
         ref={ref}
         variant={variant}
         size={size}
         loading={loading}
         state={state}
       >
-        <StyledInputAny
+        <StyledInput
           flex={1}
           variant={variant}
           size={size}
           disabled={loading}
           value={value}
           defaultValue={value !== undefined ? undefined : defaultValue}
-          {...restProps}
+          {...(restProps as StyledInputProps)}
           type={isPassword && isPasswordVisible ? 'text' : props.type}
         />
         {loading && (
-          <InputIconAny>
+          <InputIcon>
             <Spinner />
-          </InputIconAny>
+          </InputIcon>
         )}
         {isPassword && (
-          <InputIconAny>
+          <InputIcon>
             <Button
-              icon={isPasswordVisible ? EyeOff : Eye}
+              leftIcon={isPasswordVisible ? <EyeOff /> : <Eye />}
               onPress={() => setIsPasswordVisible(!isPasswordVisible)}
               chromeless
-              size="$2"
-              p={0}
-              w={30}
-              h="100%"
-              bg="transparent"
-              hoverStyle={{ bg: 'transparent' }}
-              pressStyle={{ bg: 'transparent', opacity: 0.5 }}
+              size="sm"
+              padding={0}
+              width={30}
+              height="100%"
+              backgroundColor="transparent"
+              hoverStyle={{ backgroundColor: 'transparent' }}
+              pressStyle={{ backgroundColor: 'transparent', opacity: 0.5 }}
             />
-          </InputIconAny>
+          </InputIcon>
         )}
-      </SimpleInputFrameAny>
+      </SimpleInputFrame>
     );
   }
-)
-InputMain.displayName = 'Input'
+);
+InputMain.displayName = 'Input';
 
 // --- Export ---
 
@@ -355,5 +370,6 @@ export const Input = Object.assign(InputMain, {
   Icon: InputIcon,
   Button: InputButton,
   Hint: InputHint,
-})
+});
+
 

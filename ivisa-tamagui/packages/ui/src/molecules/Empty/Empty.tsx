@@ -82,6 +82,18 @@ const EmptySkeleton = () => (
   </EmptyFrameAny>
 )
 
+// auto-added alias to silence Tamagui prop checks
+const EmptyDescriptionAny: any = EmptyDescription
+
+// auto-added alias to silence Tamagui prop checks
+const EmptyTitleAny: any = EmptyTitle
+
+// auto-added alias to silence Tamagui prop checks
+const EmptyIconFrameAny: any = EmptyIconFrame
+
+// auto-added alias to silence Tamagui prop checks
+const EmptyFrameAny: any = EmptyFrame
+
 export const Empty = ({
   icon,
   image,
@@ -118,18 +130,6 @@ export const Empty = ({
     ) : (
       <Ban size={32} color={hasError ? '$red10' : '$gray10'} />
     );
-// auto-added alias to silence Tamagui prop checks
-const EmptyDescriptionAny: any = EmptyDescription
-
-// auto-added alias to silence Tamagui prop checks
-const EmptyTitleAny: any = EmptyTitle
-
-// auto-added alias to silence Tamagui prop checks
-const EmptyIconFrameAny: any = EmptyIconFrame
-
-// auto-added alias to silence Tamagui prop checks
-const EmptyFrameAny: any = EmptyFrame
-
 
     content = (
       <EmptyIconFrameAny hasError={hasError} data-testid="empty-icon-frame" data-has-error={hasError}>

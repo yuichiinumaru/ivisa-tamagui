@@ -1,193 +1,128 @@
 import React from 'react'
-import { Button as TamaguiButton, styled, GetProps, TamaguiElement, View, Text } from 'tamagui'
+import { styled, TamaguiElement, View, Text, XStack } from 'tamagui'
 import { Spinner } from '../Spinner'
 
-const StyledButton = styled(View, {
-  name: 'Button',
-  tag: 'button',
-  role: 'button',
-  flexDirection: 'row',
+// Base de estilos separada da tipagem para reduzir inferências do Tamagui
+const buttonStyles: Record<string, any> = {
+  name: 'ButtonFrame',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: '$sm',
-  // Force Cera Pro via body token
-  fontFamily: '$body',
+  gap: '$2',
+  cursor: 'pointer',
+  position: 'relative',
   variants: {
     variant: {
-      default: {
-        backgroundColor: '$primary',
-        color: '$primaryForeground',
-        hoverStyle: {
-          backgroundColor: '$primaryHover',
-        },
-        pressStyle: {
-          backgroundColor: '$primary',
-          opacity: 0.8,
-        },
-      },
-      secondary: {
-        backgroundColor: '$secondary',
-        color: '$secondaryForeground',
-        hoverStyle: {
-          backgroundColor: '$secondaryHover',
-        },
-        pressStyle: {
-          backgroundColor: '$secondary',
-          opacity: 0.8,
-        },
-      },
-      destructive: {
-        backgroundColor: '$destructive',
-        color: '$destructiveForeground',
-        hoverStyle: {
-          opacity: 0.9,
-        },
-        pressStyle: {
-          opacity: 0.8,
-        },
-      },
-      outline: {
-        backgroundColor: 'transparent',
-        borderWidth: 1,
-        borderColor: '$borderColor',
-        color: '$foreground',
-        hoverStyle: {
-          backgroundColor: '$muted',
-        },
-        pressStyle: {
-          backgroundColor: '$muted',
-          opacity: 0.8,
-        },
-      },
-      ghost: {
-        backgroundColor: 'transparent',
-        color: '$foreground',
-        hoverStyle: {
-          backgroundColor: '$muted',
-        },
-        pressStyle: {
-          backgroundColor: '$muted',
-          opacity: 0.8,
-        },
-      },
-    },
-    circular: {
-      true: {
-        borderRadius: '$round',
-        width: '$lg',
-        height: '$lg',
-        padding: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-    },
-    chromeless: {
-      true: {
-        backgroundColor: 'transparent',
-        borderWidth: 0,
-        padding: 0,
-      },
+      default: { backgroundColor: '$primary' },
+      secondary: { backgroundColor: '$secondary' },
+      destructive: { backgroundColor: '$destructive' },
+      outline: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '$borderColor' },
+      ghost: { backgroundColor: 'transparent' },
     },
     size: {
-      sm: {
-        height: '$sm',
-        px: '$md',
-      },
-      default: {
-        height: '$md',
-        px: '$lg',
-      },
-      lg: {
-        height: '$lg',
-        px: '$xl',
-      },
+      sm: { height: 32, px: '$3' },
+      default: { height: 44, px: '$4' },
+      lg: { height: 56, px: '$5' },
     },
-  } as const,
+    circular: { true: { borderRadius: 1000, aspectRatio: 1, px: 0 } },
+    chromeless: { true: { backgroundColor: 'transparent', borderWidth: 0, px: 0 } },
+  },
   defaultVariants: {
     variant: 'default',
     size: 'default',
   },
-})
+}
 
-type StyledButtonProps = GetProps<typeof StyledButton>
+const StyledButtonFrame = styled(XStack as any, buttonStyles as any)
 
-export interface ButtonProps extends Omit<StyledButtonProps, 'variant' | 'size'> {
-  /**
-   * Define o estilo visual do botão.
-   * @default 'default'
-   */
-  variant?: StyledButtonProps['variant']
-  /**
-   * Define o tamanho do botão.
-   * @default 'default'
-   */
-  size?: StyledButtonProps['size']
-  /**
-   * O conteúdo a ser exibido dentro do botão.
-   */
+const TEXT_COLORS: Record<string, string> = {
+  default: '$primaryForeground',
+  secondary: '$secondaryForeground',
+  destructive: '$destructiveForeground',
+  outline: '$foreground',
+  ghost: '$foreground',
+}
+
+export interface ButtonProps {
+  variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost'
+  size?: 'sm' | 'default' | 'lg'
   children?: React.ReactNode
-  /**
-   * Um ícone a ser exibido à esquerda do texto do botão.
-   */
   leftIcon?: React.ReactNode
-  /**
-   * Um ícone a ser exibido à direita do texto do botão.
-   */
   rightIcon?: React.ReactNode
-  /**
-   * Se `true`, exibe um spinner de carregamento e desativa o botão.
-   * @default false
-   */
   loading?: boolean
-  /**
-   * Se `true`, permite que o botão assuma as propriedades de seu filho direto.
-   * @default false
-   */
-  asChild?: boolean
-  /** Se true, renderiza botão circular (quadrado com largura/altura iguais). */
   circular?: boolean
-  /** Se true, botão sem estilo de fundo/borda (útil como ícone acionador). */
   chromeless?: boolean
+  disabled?: boolean
+  onPress?: any
+  id?: string
+  [key: string]: any
 }
 
-// Helper to wrap text strings in Text component
-const renderChildren = (child: React.ReactNode): React.ReactNode => {
-  if (typeof child === 'string' || typeof child === 'number') {
-    return <Text>{child}</Text>
-  }
-  return child
-}
+const Button = React.forwardRef<TamaguiElement, ButtonProps>((props, ref) => {
+  const {
+    variant = 'default',
+    size = 'default',
+    children,
+    leftIcon,
+    rightIcon,
+    loading,
+    circular,
+    chromeless,
+    disabled,
+    onPress,
+    ...rest
+  } = props
 
-const Button = React.forwardRef<TamaguiElement, ButtonProps>(
-  (
-    { variant = 'default', size = 'default', children, leftIcon, rightIcon, loading, asChild, circular, chromeless, ...props },
-    ref
-  ) => {
-    return (
-      <StyledButton
-        ref={ref}
-        variant={variant}
-        size={size}
-        circular={!!circular}
-        chromeless={!!chromeless}
-        disabled={loading || props.disabled}
-        {...props}
-        asChild={asChild}
+  const textColor = TEXT_COLORS[variant] || '$foreground'
+  const isDisabled = Boolean(disabled) || Boolean(loading)
+
+  return (
+    <StyledButtonFrame
+      ref={ref}
+      variant={variant}
+      size={size}
+      circular={circular}
+      chromeless={chromeless}
+      disabled={isDisabled}
+      onPress={onPress}
+      opacity={isDisabled ? 0.5 : 1}
+      {...(rest as any)}
+    >
+      <XStack
+        ai="center"
+        jc="center"
+        gap="$2"
+        opacity={loading ? 0 : 1}
+        {...({} as any)}
       >
-        <View style={{ flexDirection: 'row', alignItems: 'center', opacity: loading ? 0 : 1, gap: 8 }}>
-          {leftIcon}
-          {React.Children.map(children, renderChildren)}
-          {rightIcon}
-        </View>
-        {loading && (
-          <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, alignItems: 'center', justifyContent: 'center' }}>
-            <Spinner color="$current" size="small" />
-          </View>
+        {leftIcon && <View>{leftIcon}</View>}
+
+        {typeof children === 'string' || typeof children === 'number' ? (
+          <Text
+            {...({} as any)}
+            color={textColor as any}
+            fontWeight="600"
+            fontSize={size === 'sm' ? 14 : 16}
+          >
+            {String(children)}
+          </Text>
+        ) : (
+          children
         )}
-      </StyledButton>
-    )
-  }
-)
+
+        {rightIcon && <View>{rightIcon}</View>}
+      </XStack>
+
+      {loading && (
+        <View
+          position="absolute"
+          {...({ ai: 'center', jc: 'center', top: 0, left: 0, right: 0, bottom: 0 } as any)}
+        >
+          <Spinner {...({ size: 'small' } as any)} />
+        </View>
+      )}
+    </StyledButtonFrame>
+  )
+})
 
 Button.displayName = 'Button'
 

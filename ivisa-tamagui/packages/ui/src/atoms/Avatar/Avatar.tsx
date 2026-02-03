@@ -1,7 +1,7 @@
 // Removed ts-nocheck
 import React, { useState } from 'react'
 import { Avatar as TamaguiAvatar, styled, GetProps, Text } from 'tamagui'
-import { Skeleton } from './Skeleton'
+import { Skeleton } from '../Skeleton'
 
 // --- Funções de Utilitário ---
 
@@ -138,7 +138,11 @@ export type AvatarProps = GetProps<typeof AvatarFrame> & {
    */
   accessibilityLabel?: string
   src?: string
+  // compat: aceitarmos props antigos vindos de stories/tests
+  imageUrl?: string
   fallback?: React.ReactNode
+  // compat fallbackText coming from some stories
+  fallbackText?: string
   children?: React.ReactNode
 }
 
@@ -147,7 +151,11 @@ export const AvatarImage = AvatarImageComponent
 export { AvatarFrame }
 
 const AvatarRoot = React.forwardRef<HTMLSpanElement, AvatarProps>(
-  ({ src, fallback, accessibilityLabel, children, ...props }, ref) => {
+  ({ src, imageUrl, fallback, fallbackText, accessibilityLabel, children, ...props }, ref) => {
+    // Normalize old prop names to current ones and avoid forwarding unknown props
+    const finalSrc = src ?? imageUrl
+    const finalFallback = fallback ?? (fallbackText ? <Text>{fallbackText}</Text> : undefined)
+
     // If children are provided, render them (Composition mode)
     if (children) {
       return (
@@ -159,11 +167,10 @@ const AvatarRoot = React.forwardRef<HTMLSpanElement, AvatarProps>(
 
     // Otherwise use Facade mode (src + fallback props)
     return (
-      <AvatarFrame ref={ref} {...props} aria-label={accessibilityLabel}>
-        <AvatarImageComponent src={src} />
-        <AvatarFallbackView>
-          {typeof fallback === 'string' ? <Text>{fallback}</Text> : fallback}
-        </AvatarFallbackView>
+      // IMPORTANT: do not spread unknown props that may flow from stories/tests
+      <AvatarFrame ref={ref} aria-label={accessibilityLabel}>
+        <AvatarImageComponent src={finalSrc} />
+        {finalFallback ? finalFallback : <AvatarFallbackView>{typeof fallback === 'string' ? <Text>{fallback}</Text> : fallback}</AvatarFallbackView>}
       </AvatarFrame>
     )
   }

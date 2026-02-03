@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Sidebar } from './Sidebar';
+import type { SidebarOwnProps } from './Sidebar';
 import { YStack, Text, Avatar } from 'tamagui';
 import { mockNavItems, mockSettingsItems, mockUserProfile } from '../../mocks/sidebar';
 import { Button } from '../../atoms/Button';
 
 // --- Storybook Metadata ---
-const meta: Meta<React.ComponentProps<typeof Sidebar>> = {
+const meta: Meta<SidebarOwnProps> = {
   title: 'Organismos/Sidebar',
   component: Sidebar,
   parameters: {
@@ -47,11 +48,11 @@ A resilient and composable sidebar component built with Tamagui.
 
 export default meta;
 
-type Story = StoryObj<React.ComponentProps<typeof meta>>;
+type Story = StoryObj<SidebarOwnProps>;
 
 // --- Mock Components for Stories ---
 
-const NavMenu = ({ items, collapsed }) => (
+const NavMenu = ({ items, collapsed }: { items: any[]; collapsed?: boolean }) => (
   <YStack gap="$2">
     {items.map((item) => (
       <Button
@@ -68,7 +69,7 @@ const NavMenu = ({ items, collapsed }) => (
   </YStack>
 );
 
-const UserProfile = ({ user, collapsed }) => (
+const UserProfile = ({ user, collapsed }: { user: any; collapsed?: boolean }) => (
   <YStack
     flexDirection={collapsed ? 'column' : 'row'}
     alignItems="center"
@@ -140,6 +141,16 @@ export const GoldenPath: Story = {
       </YStack>
     </YStack>
   ),
+};
+
+export const Collapsed: Story = {
+  name: 'Collapsible – Collapsed',
+  args: {
+    ...GoldenPath.args,
+    variant: 'collapsible',
+    isCollapsed: true,
+  },
+  render: GoldenPath.render,
 };
 
 export const Carregando: Story = {

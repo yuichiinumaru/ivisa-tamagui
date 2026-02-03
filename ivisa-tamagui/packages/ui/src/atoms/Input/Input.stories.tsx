@@ -1,9 +1,9 @@
-// Removed @ts-nocheck
-import type { Meta, StoryObj } from '@storybook/react'
-import { userEvent, within } from '@storybook/test'
-import { Search } from '@tamagui/lucide-icons'
-import { YStack, Text } from 'tamagui'
-import { Input } from './Input'
+import React, { useState, KeyboardEvent } from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within } from '@storybook/test';
+import { Search } from '@tamagui/lucide-icons';
+import { YStack, Text } from 'tamagui';
+import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {
   title: 'Átomos/Input',
@@ -59,7 +59,7 @@ export const ComIcone: Story = {
       <Text>Input com Ícone à Esquerda</Text>
       <Input>
         <Input.Icon>
-          <Search size="$1" />
+          <Search size={16} />
         </Input.Icon>
         <Input.Field placeholder="Buscar..." />
       </Input>
@@ -68,7 +68,7 @@ export const ComIcone: Story = {
       <Input>
         <Input.Field placeholder="Buscar..." />
         <Input.Icon>
-          <Search size="$1" />
+          <Search size={16} />
         </Input.Icon>
       </Input>
     </YStack>
@@ -95,10 +95,10 @@ export const ComposedComplete: Story = {
       <Text>Ícone + Campo + Botão</Text>
       <Input>
         <Input.Icon>
-          <Search size="$1" />
+          <Search size={16} />
         </Input.Icon>
         <Input.Field placeholder="Buscar..." />
-        <Input.Button themeInverse>
+        <Input.Button variant="secondary">
           Ir
         </Input.Button>
       </Input>
@@ -139,7 +139,7 @@ export const ComposedLoading: Story = {
       <Text>Input Composto em Carregamento</Text>
       <Input loading>
         <Input.Icon>
-          <Search size="$1" />
+          <Search size={16} />
         </Input.Icon>
         <Input.Field placeholder="Buscando..." />
         <Input.Button>
@@ -201,5 +201,75 @@ export const Error: Story = {
       <Input.Hint>O e-mail inserido é inválido.</Input.Hint>
     </YStack>
   )
+}
+
+export const InputGPTDefault: Story = {
+  name: 'InputGPT/Default',
+  render: () => {
+    const Example = () => {
+      const [value, setValue] = useState('')
+      const handleSend = () => {
+        // placeholder send action; in real app this would call API
+        // eslint-disable-next-line no-console
+        console.log('send:', value)
+        setValue('')
+      }
+      const handleChangeText = (v: string) => {
+        setValue(v)
+      }
+      return (
+        <YStack width={600} gap="$3">
+          <Input>
+            <Input.Field
+              placeholder="Converse com o assistente..."
+              value={value}
+              onChangeText={handleChangeText}
+            />
+            <Input.Button onPress={handleSend}>Enviar</Input.Button>
+          </Input>
+        </YStack>
+      )
+    }
+    return <Example />
+  },
+}
+
+export const InputGPTMultiline: Story = {
+  name: 'InputGPT/Multiline',
+  render: () => {
+    const Example = () => {
+      const [value, setValue] = useState('')
+      const handleSend = () => {
+        // eslint-disable-next-line no-console
+        console.log('send multiline:', value)
+        setValue('')
+      }
+      const onKeyDown = (e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault()
+          handleSend()
+        }
+      }
+      const handleChangeText = (v: string) => {
+        setValue(v)
+      }
+
+      return (
+        <YStack width={600} gap="$3">
+          <Input>
+            <Input.Field
+              placeholder="Escreva sua mensagem... (Enter enviar, Shift+Enter nova linha)"
+              value={value}
+              onChangeText={handleChangeText}
+              multiline
+              onKeyDown={onKeyDown}
+            />
+            <Input.Button onPress={handleSend}>Enviar</Input.Button>
+          </Input>
+        </YStack>
+      )
+    }
+    return <Example />
+  },
 }
 

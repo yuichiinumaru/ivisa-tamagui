@@ -1,7 +1,7 @@
 import React from 'react'
-import { XStack, YStack, Text, GetProps } from 'tamagui'
+import { XStack, YStack, Text, XStackProps, YStackProps } from 'tamagui'
 import { Logo } from '../../atoms/Logo/Logo'
-import { Avatar } from '../../atoms/Avatar'
+import { Avatar } from '../../atoms/Avatar/Avatar'
 import { Button } from '../../atoms/Button'
 
 export interface UserProfile {
@@ -18,15 +18,15 @@ export interface NavbarProps {
   fixed?: boolean
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ logo, center, actions, user, fixed = true }) => {
-  const headerProps: Partial<GetProps<typeof YStack>> = {
+export const Navbar: React.FC<NavbarProps> = ({ logo, center, actions, user, fixed = false }) => {
+    // Usamos 'as any' apenas para position devido a conflito de versão do Tamagui
+  const headerProps: YStackProps = {
     tag: 'header',
     width: '100%',
-    position: fixed ? 'fixed' : 'relative',
+    position: (fixed ? 'fixed' : 'relative') as any,
     top: fixed ? 0 : undefined,
     left: fixed ? 0 : undefined,
-    right: fixed ? 0 : undefined,
-    zIndex: 100,
+    zIndex: fixed ? 1000 : undefined,
     backgroundColor: '$background',
     borderBottomWidth: 1,
     borderColor: '$borderColor',
@@ -34,11 +34,9 @@ export const Navbar: React.FC<NavbarProps> = ({ logo, center, actions, user, fix
     px: '$4',
     alignItems: 'center',
     justifyContent: 'center',
-    role: 'navigation',
-    'aria-label': 'Barra de navegação principal',
   }
 
-  const containerProps: Partial<GetProps<typeof XStack>> = {
+  const containerProps: XStackProps = {
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -47,24 +45,27 @@ export const Navbar: React.FC<NavbarProps> = ({ logo, center, actions, user, fix
     gap: '$4',
   }
 
-  const leftProps: Partial<GetProps<typeof XStack>> = { alignItems: 'center', gap: '$3' }
-  const centerProps: Partial<GetProps<typeof XStack>> = { flex: 1, alignItems: 'center', justifyContent: 'center', 'aria-live': 'polite' }
-  const rightProps: Partial<GetProps<typeof XStack>> = { alignItems: 'center', gap: '$3' }
-  const userProps: Partial<GetProps<typeof XStack>> = { alignItems: 'center', gap: '$3' }
-  const nameTextProps: Partial<GetProps<typeof Text>> = { fontWeight: '600', fontSize: '$3' }
-  const roleTextProps: Partial<GetProps<typeof Text>> = { fontSize: '$2', color: '$gray11' }
-  const buttonProps: Partial<GetProps<typeof Button>> = { chromeless: true }
+  const leftProps: XStackProps = { alignItems: 'center', gap: '$3' }
+  const centerProps: XStackProps = { flex: 1, alignItems: 'center', justifyContent: 'center' }
+  const rightProps: XStackProps = { alignItems: 'center', gap: '$3' }
+  const userProps: XStackProps = { alignItems: 'center', gap: '$3' }
+  const nameTextProps = { fontWeight: '600' as const, fontSize: '$3' as const }
+  const roleTextProps = { fontSize: '$2' as const, color: '$gray11' as const }
 
   return (
-    // local casts to `any` keep Tamagui runtime behavior but avoid index-signature typing noise
     <YStack {...headerProps}>
       <XStack {...containerProps}>
-        <XStack {...leftProps}>{logo ?? <Logo variant="symbol" />}</XStack>
+        <XStack {...leftProps}>
+          {logo ?? <Logo variant="symbol" />}
+        </XStack>
 
-        <XStack {...centerProps}>{center}</XStack>
+        <XStack {...centerProps}>
+          {center}
+        </XStack>
 
         <XStack {...rightProps}>
           {actions}
+          
           {user ? (
             <XStack {...userProps}>
               <Avatar src={user.avatarUrl} />
@@ -74,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({ logo, center, actions, user, fix
               </YStack>
             </XStack>
           ) : (
-            <Button {...buttonProps}>Entrar</Button>
+            <Button chromeless>Entrar</Button>
           )}
         </XStack>
       </XStack>
@@ -82,5 +83,5 @@ export const Navbar: React.FC<NavbarProps> = ({ logo, center, actions, user, fix
   )
 }
 
-export default Navbar
+Navbar.displayName = 'Navbar'
 
