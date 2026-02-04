@@ -1,39 +1,64 @@
 import React from 'react'
-import { styled, TamaguiElement, View, Text, XStack } from 'tamagui'
+import { GestureResponderEvent } from 'react-native'
+import { styled, TamaguiElement, View, Text, XStack, GetProps, FontSizeTokens } from 'tamagui'
 import { Spinner } from '../Spinner'
 
-// Base de estilos separada da tipagem para reduzir inferências do Tamagui
-const buttonStyles: Record<string, any> = {
-  name: 'ButtonFrame',
+// 1. STYLED COMPONENT (FRAME)
+
+const StyledButtonFrame = styled(XStack, {
+  name: 'Button',
   alignItems: 'center',
   justifyContent: 'center',
   gap: '$2',
   cursor: 'pointer',
   position: 'relative',
+  pressStyle: { opacity: 0.8 },
+
   variants: {
     variant: {
       default: { backgroundColor: '$primary' },
       secondary: { backgroundColor: '$secondary' },
       destructive: { backgroundColor: '$destructive' },
-      outline: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '$borderColor' },
+      outline: { 
+        backgroundColor: 'transparent', 
+        borderWidth: 1, 
+        borderColor: '$borderColor' 
+      },
       ghost: { backgroundColor: 'transparent' },
     },
     size: {
-      sm: { height: 32, px: '$3' },
-      default: { height: 44, px: '$4' },
-      lg: { height: 56, px: '$5' },
+      sm: { height: 32, paddingHorizontal: '$3' },
+      default: { height: 44, paddingHorizontal: '$4' },
+      lg: { height: 56, paddingHorizontal: '$5' },
     },
-    circular: { true: { borderRadius: 1000, aspectRatio: 1, px: 0 } },
-    chromeless: { true: { backgroundColor: 'transparent', borderWidth: 0, px: 0 } },
+    circular: { 
+      true: { borderRadius: 1000, aspectRatio: 1, paddingHorizontal: 0 } 
+    },
+    chromeless: { 
+      true: { backgroundColor: 'transparent', borderWidth: 0, paddingHorizontal: 0 } 
+    },
+    disabled: {
+      true: { opacity: 0.5, pointerEvents: 'none' }
+    }
   },
+  
   defaultVariants: {
     variant: 'default',
     size: 'default',
   },
+})
+
+// 2. TYPES
+
+export type ButtonProps = GetProps<typeof StyledButtonFrame> & {
+  children?: React.ReactNode
+  leftIcon?: React.ReactNode
+  rightIcon?: React.ReactNode
+  loading?: boolean
+  onPress?: (event: GestureResponderEvent) => void 
 }
 
-const StyledButtonFrame = styled(XStack as any, buttonStyles as any)
-
+// Mapeamento de cores de texto tipado com tokens do sistema
 const TEXT_COLORS: Record<string, string> = {
   default: '$primaryForeground',
   secondary: '$secondaryForeground',
@@ -42,21 +67,7 @@ const TEXT_COLORS: Record<string, string> = {
   ghost: '$foreground',
 }
 
-export interface ButtonProps {
-  variant?: 'default' | 'secondary' | 'destructive' | 'outline' | 'ghost'
-  size?: 'sm' | 'default' | 'lg'
-  children?: React.ReactNode
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
-  loading?: boolean
-  circular?: boolean
-  chromeless?: boolean
-  disabled?: boolean
-  onPress?: any
-  id?: string
-  [key: string]: any
-}
-
+// 3. MAIN COMPONENT
 const Button = React.forwardRef<TamaguiElement, ButtonProps>((props, ref) => {
   const {
     variant = 'default',
@@ -65,45 +76,38 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>((props, ref) => {
     leftIcon,
     rightIcon,
     loading,
-    circular,
-    chromeless,
     disabled,
-    onPress,
     ...rest
   } = props
-
+  
   const textColor = TEXT_COLORS[variant] || '$foreground'
-  const isDisabled = Boolean(disabled) || Boolean(loading)
+  const fontSize: FontSizeTokens = size === 'sm' ? '$3' : '$4'
+  const isDisabled = disabled || loading
 
   return (
     <StyledButtonFrame
       ref={ref}
       variant={variant}
       size={size}
-      circular={circular}
-      chromeless={chromeless}
       disabled={isDisabled}
-      onPress={onPress}
-      opacity={isDisabled ? 0.5 : 1}
-      {...(rest as any)}
+      {...rest}
     >
-      <XStack
-        ai="center"
-        jc="center"
-        gap="$2"
+      {/* Conteúdo do botão - Oculto durante o loading mas mantém o espaço ocupado */}
+      <XStack 
+        alignItems="center" 
+        justifyContent="center" 
+        gap="$2" 
         opacity={loading ? 0 : 1}
-        {...({} as any)}
       >
         {leftIcon && <View>{leftIcon}</View>}
 
         {typeof children === 'string' || typeof children === 'number' ? (
           <Text
-            {...({} as any)}
-            color={textColor as any}
+            color={textColor}
             fontWeight="600"
-            fontSize={size === 'sm' ? 14 : 16}
+            fontSize={fontSize}
           >
-            {String(children)}
+            {children}
           </Text>
         ) : (
           children
@@ -112,12 +116,18 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>((props, ref) => {
         {rightIcon && <View>{rightIcon}</View>}
       </XStack>
 
+      {/* Spinner centralizado via Absolute Layout */}
       {loading && (
         <View
           position="absolute"
-          {...({ ai: 'center', jc: 'center', top: 0, left: 0, right: 0, bottom: 0 } as any)}
+          alignItems="center"
+          justifyContent="center"
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
         >
-          <Spinner {...({ size: 'small' } as any)} />
+          <Spinner size="small" />
         </View>
       )}
     </StyledButtonFrame>
@@ -127,4 +137,3 @@ const Button = React.forwardRef<TamaguiElement, ButtonProps>((props, ref) => {
 Button.displayName = 'Button'
 
 export { Button }
-

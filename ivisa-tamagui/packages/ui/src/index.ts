@@ -22,6 +22,7 @@ export * from './atoms/Kbd';
 export * from './molecules/Card';
 export * from './molecules/Collapsible';
 export * from './molecules/Dialog';
+export * from './molecules/InputGroup';
 export * from './molecules/Drawer';
 export * from './molecules/DropdownMenu';
 export * from './molecules/Popover';

@@ -3,20 +3,18 @@ import { createAnimations } from '@tamagui/animations-react-native';
 import { tokens } from './theme/tokens';
 import { themes as baseThemesRaw } from './theme/themes';
 
-const baseThemes = baseThemesRaw as any;
-
-// Map the generated themes to the names used in the application and Storybook
-// baseThemes contains claro, escuro, prefrio plus all component/variant sub-themes
+// 1. CORREÇÃO DOS THEMES: 
+// Em vez de 'any', usamos o tipo do próprio objeto para manter a segurança.
+// Criamos um novo objeto mapeando as chaves desejadas sem perder a tipagem.
 const themes = {
-  ...baseThemes,
-  claro: baseThemes.light,
-  escuro: baseThemes.dark,
+  ...baseThemesRaw,
+  claro: baseThemesRaw.light,
+  escuro: baseThemesRaw.dark,
 };
 
-
-// Import the Tamagui fonts and create a font configuration
-// We can use the default fonts for now
-// Cera Pro Font Configuration (IVISA Brand)
+// 2. FONT CONFIGURATION
+// Removidos aliases manuais como '$3' dentro do objeto, pois o Tamagui 
+// resolve isso automaticamente através dos tokens.
 const ceraProFont = createFont({
   family: 'Cera Pro',
   size: {
@@ -29,7 +27,6 @@ const ceraProFont = createFont({
     7: 32,
     8: 48,
     9: 64,
-    // Named tokens to match `size` prop usage
     xs: 12,
     sm: 14,
     md: 16,
@@ -39,10 +36,8 @@ const ceraProFont = createFont({
     '3xl': 32,
     '4xl': 48,
     '5xl': 64,
-    // Aliases for safety
     default: 16,
     true: 16,
-    '$3': 16,
   },
   lineHeight: {
     1: 16,
@@ -56,13 +51,13 @@ const ceraProFont = createFont({
     9: 80,
   },
   weight: {
-    4: '400', // Regular
-    5: '500', // Medium
-    9: '900', // Black
+    4: '400',
+    5: '500',
+    9: '900',
   },
   letterSpacing: {
     4: 0,
-    7: -0.5, // Tighter for large titles
+    7: -0.5,
     9: -1,
   },
   face: {
@@ -71,8 +66,6 @@ const ceraProFont = createFont({
     900: { normal: 'CeraPro-Black' },
   },
 });
-
-
 
 const animations = createAnimations({
   bouncy: {
@@ -100,27 +93,18 @@ const animations = createAnimations({
   },
 });
 
-// This is the main configuration object for Tamagui
+// 3. CONFIGURAÇÃO PRINCIPAL
+// Removido o 'as const' do shorthands pois o createTamagui já espera esse formato
 const config = createTamagui({
-  // Animations
   animations,
-
-  // Fonts
   fonts: {
     heading: ceraProFont,
     body: ceraProFont,
     brandHeading: ceraProFont,
     brandBody: ceraProFont,
   },
-
-  // Tokens
   tokens,
-
-  // Themes
   themes,
-
-  // Media queries
-  // These are the default media queries, useful for responsive design
   media: {
     xs: { maxWidth: 660 },
     sm: { maxWidth: 800 },
@@ -137,9 +121,6 @@ const config = createTamagui({
     hoverNone: { hover: 'none' },
     pointerCoarse: { pointer: 'coarse' },
   },
-
-  // Shorthands
-  // These are CSS-like shorthands for common style properties
   shorthands: {
     ac: 'alignContent',
     ai: 'alignItems',
@@ -167,15 +148,14 @@ const config = createTamagui({
     px: 'paddingHorizontal',
     py: 'paddingVertical',
     w: 'width',
-  } as const,
+  },
 });
 
-// This is necessary for TypeScript to understand the Tamagui configuration
+// 4. TIPAGEM GLOBAL (CRUCIAL)
+// Aqui é onde o TypeScript "aprende" seu design system.
 type Conf = typeof config;
 declare module 'tamagui' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   interface TamaguiCustomConfig extends Conf { }
 }
 
 export default config;
-

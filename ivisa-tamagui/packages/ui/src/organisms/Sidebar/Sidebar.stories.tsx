@@ -78,7 +78,7 @@ const UserProfile = ({ user, collapsed }: { user: any; collapsed?: boolean }) =>
   >
     <Avatar circular size="$3">
       <Avatar.Image src={user.avatarUrl} />
-      <Avatar.Fallback bc="$gray5" />
+      <Avatar.Fallback backgroundColor="$gray5" />
     </Avatar>
     {!collapsed && (
       <YStack flex={1}>
@@ -209,7 +209,7 @@ export const LayoutStressTest: Story = {
       borderColor="$borderColor"
       flexDirection="row"
       overflow="hidden"
-      mx="auto"
+      marginHorizontal="auto"
     >
       <Sidebar {...args} header={renderHeader(args.isCollapsed)} footer={renderFooter(args.isCollapsed)} children={renderSidebarContent(args.isCollapsed)} />
       <YStack flex={1} padding="$4">

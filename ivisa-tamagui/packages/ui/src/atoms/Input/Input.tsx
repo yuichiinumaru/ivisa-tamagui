@@ -1,239 +1,93 @@
 import { Eye, EyeOff } from '@tamagui/lucide-icons';
 import React, { useContext, useState } from 'react';
-import { Input as TamaguiInput, styled, GetProps, XStack, View, TamaguiElement, Text } from 'tamagui';
+import { 
+  Input as TamaguiInput, 
+  styled, 
+  GetProps, 
+  XStack,
+  YStack,
+  View, 
+  TamaguiElement, 
+  Text,
+  Spinner,
+  TextInput
+} from 'tamagui';
 import { Button } from '../Button';
-import { Spinner } from '../Spinner';
 
-// --- Types & Context ---
-
+// --- Contexto ---
 type InputContextValue = {
-  size: InputProps['size'];
+  size: 'sm' | 'default' | 'lg';
   loading?: boolean;
 }
-
 const InputContext = React.createContext<InputContextValue | null>(null);
 
-const useInputContext = () => {
-  return useContext(InputContext);
-}
-
-// --- Variants Definition ---
-
+// --- Variantes de Estilo ---
 const inputVariants = {
   variant: {
     default: {
-
       borderWidth: 1,
       borderColor: '$borderColor',
       backgroundColor: '$background',
-      focusStyle: {
-        borderColor: '$ring',
-        outlineColor: '$ring',
-        outlineStyle: 'solid',
-        outlineWidth: 2,
-      },
-      focusWithinStyle: {
-        borderColor: '$ring',
-        outlineColor: '$ring',
-        outlineStyle: 'solid',
-        outlineWidth: 2,
-      },
+      focusStyle: { borderColor: '$ring', outlineColor: '$ring', outlineWidth: 2, outlineStyle: 'solid' },
     },
     filled: {
-      borderWidth: 1,
-      borderColor: 'transparent',
+      borderWidth: 0,
       backgroundColor: '$muted',
-      focusStyle: {
-        borderColor: '$ring',
-        borderWidth: 1,
-      },
-      focusWithinStyle: {
-        borderColor: '$ring',
-        borderWidth: 1,
-      },
+      focusStyle: { backgroundColor: '$background', borderColor: '$ring', borderWidth: 1 },
     },
   },
   size: {
-    sm: {
-      height: '$8',
-      px: '$3',
-    },
-    default: {
-      height: '$10',
-      px: '$3',
-    },
-    lg: {
-      height: '$12',
-      px: '$4',
-    },
-  },
-  state: {
-    error: {
-      borderColor: '$red10',
-      borderWidth: 2,
-    },
-    success: {
-      borderColor: '$green10',
-      borderWidth: 2,
-    },
+    sm: { height: '$8', px: '$2' },
+    default: { height: '$10', px: '$3' },
+    lg: { height: '$12', px: '$4' },
   },
 } as const;
 
 // --- Styled Components ---
-
-const StyledInput = styled(TamaguiInput, {
-  name: 'Input',
-  color: '$foreground',
-  placeholderTextColor: '$mutedForeground',
-  fontFamily: '$body',
-
-  variants: {
-    variant: inputVariants.variant,
-    size: {
-      sm: { ...inputVariants.size.sm, fontSize: '$2' },
-      default: { ...inputVariants.size.default, fontSize: '$3' },
-      lg: { ...inputVariants.size.lg, fontSize: '$4' },
-    },
-  } as const,
-
-  defaultVariants: {
-    variant: 'default',
-    size: 'default',
-  },
-});
 
 const InputFrame = styled(XStack, {
   name: 'InputFrame',
   alignItems: 'center',
   borderRadius: '$md',
   overflow: 'hidden',
-
   variants: {
-    variant: inputVariants.variant,
-    size: inputVariants.size,
-    state: inputVariants.state,
-    loading: {
-      true: {
-        opacity: 0.7,
-        pointerEvents: 'none',
-      },
+    ...inputVariants,
+    state: {
+      error: { borderColor: '$red10', borderWidth: 2 },
+      success: { borderColor: '$green10', borderWidth: 2 },
     },
+    loading: {
+      true: { opacity: 0.7, pointerEvents: 'none' }
+    }
   } as const,
-
-  defaultVariants: {
-    variant: 'default',
-    size: 'default',
-  },
+  defaultVariants: { variant: 'default', size: 'default' },
 });
 
-const SimpleInputFrame = styled(XStack, {
-  name: 'SimpleInputFrame',
-  alignItems: 'center',
-  borderRadius: '$md',
-  overflow: 'hidden',
-
-  variants: {
-    variant: inputVariants.variant,
-    size: inputVariants.size,
-    state: inputVariants.state,
-    loading: {
-      true: {
-        opacity: 0.7,
-        pointerEvents: 'none',
-      },
-    },
-  } as const,
-
-  defaultVariants: {
-    variant: 'default',
-    size: 'default',
-  },
-});
-
-const UnframedInputStyled = styled(TamaguiInput, {
+const UnframedInput = styled(TamaguiInput, {
   name: 'InputField',
   flex: 1,
   backgroundColor: 'transparent',
   borderWidth: 0,
   outlineWidth: 0,
   color: '$foreground',
-  placeholderTextColor: '$mutedForeground',
-  fontFamily: '$body',
   height: '100%',
-  paddingHorizontal: 0,
-  hoverStyle: {
-    borderColor: 'transparent',
-    borderWidth: 0,
-  },
-  focusStyle: {
-    borderColor: 'transparent',
-    borderWidth: 0,
-    outlineWidth: 0,
-  },
-  variants: {
-    size: {
-      sm: { fontSize: '$2' },
-      default: { fontSize: '$3' },
-      lg: { fontSize: '$4' },
-    },
-  } as const,
+  focusStyle: { borderWidth: 0, outlineWidth: 0 },
 });
 
-// --- Types derivados dos styled (padrão Sidebar) ---
+// --- Sub-componentes ---
 
-type StyledInputProps = GetProps<typeof StyledInput>;
-type InputFrameProps = GetProps<typeof InputFrame>;
-type SimpleInputFrameProps = GetProps<typeof SimpleInputFrame>;
-type UnframedInputBaseProps = GetProps<typeof UnframedInputStyled>;
-
-// remove as props do TextInput das props base de estilo
-type UnframedInputStyleProps = Omit<UnframedInputBaseProps, keyof TextInputProps>;
-
-// props finais do Field: estilo + TextInputProps
-export type UnframedInputProps = UnframedInputStyleProps & TextInputProps;
-
-// --- Components ---
-
-const InputField = React.forwardRef<TextInput, UnframedInputProps>(
-  (props, ref) => {
-    const context = useInputContext();
-    const size = (props.size || context?.size || 'default') as 'sm' | 'default' | 'lg';
-    return <UnframedInputStyled ref={ref} size={size} {...props} />;
-  }
-);
-InputField.displayName = 'Input.Field';
+const InputField = React.forwardRef<TextInput, GetProps<typeof UnframedInput>>((props, ref) => {
+  const context = useContext(InputContext);
+  const size = props.size || context?.size || 'default';
+  return <UnframedInput ref={ref} size={size as any} {...props} />;
+});
 
 const InputIcon = styled(View, {
   name: 'InputIcon',
   justifyContent: 'center',
   alignItems: 'center',
-  height: '100%',
-  paddingHorizontal: '$2',
+  px: '$2',
 });
-
-const StyledInputButton = styled(Button, {
-  name: 'InputButton',
-  borderRadius: 0,
-  height: '100%',
-  borderWidth: 0,
-});
-
-const InputButton = React.forwardRef<TamaguiElement, any>((props, ref) => {
-  const { children, ...rest } = props as any;
-  const content =
-    typeof children === 'string' || typeof children === 'number' ? (
-      <Text>{children}</Text>
-    ) : (
-      children
-    );
-
-  return (
-    <StyledInputButton ref={ref as any} {...(rest as any)}>
-      {content}
-    </StyledInputButton>
-  );
-});
-InputButton.displayName = 'Input.Button';
 
 const InputHint = styled(Text, {
   name: 'InputHint',
@@ -242,134 +96,61 @@ const InputHint = styled(Text, {
   marginTop: '$2',
 });
 
-export interface InputProps extends Omit<StyledInputProps, 'variant' | 'size' | 'loading' | 'state' | 'type'> {
-  /**
-   * The visual style of the input.
-   * @default 'default'
-   */
-  variant?: 'default' | 'filled';
-  /**
-   * The size of the input.
-   * @default 'default'
-   */
-  size?: 'sm' | 'default' | 'lg';
-  /**
-   * If true, the input will be in a loading state.
-   * @default false
-   */
+// --- Componente Principal ---
+
+export type InputProps = GetProps<typeof InputFrame> & {
   loading?: boolean;
-  /**
-   * The validation state of the input.
-   * @default undefined
-   */
-  state?: 'error' | 'success';
-  /**
-   * The input type for web/native distinction.
-   */
   type?: 'text' | 'password';
-  /**
-   * @deprecated Passing children to Input is deprecated. Use <Input.Box> for composite layouts.
-   */
   children?: React.ReactNode;
 }
 
-/**
- * Input.Box (formerly implicit <Input>)
- * Explicit container for composite inputs.
- */
-const InputBox = React.forwardRef<TamaguiElement, InputProps & { children: React.ReactNode }>(
-  ({ variant = 'default', size = 'default', loading = false, state, children, ...props }, ref) => {
+const InputMain = React.forwardRef<TamaguiElement, InputProps>(
+  ({ children, loading, type, variant, size = 'default', state, ...props }, ref) => {
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const isPassword = type === 'password';
+
     return (
       <InputContext.Provider value={{ size, loading }}>
-        <InputFrame
-          ref={ref}
-          variant={variant}
-          size={size}
-          loading={loading}
-          state={state}
-          {...(props as InputFrameProps)}
-        >
-          {children}
-          {loading && (
-            <InputIcon>
-              <Spinner />
-            </InputIcon>
-          )}
-        </InputFrame>
+        <YStack width="100%">
+          <InputFrame 
+            ref={ref} 
+            variant={variant} 
+            size={size} 
+            loading={loading} 
+            state={state}
+          >
+            {children ? (
+              children
+            ) : (
+              <>
+                <InputField 
+                  {...props} 
+                  secureTextEntry={isPassword && !isPasswordVisible}
+                />
+                {isPassword && (
+                  <InputIcon>
+                    <Button
+                      chromeless
+                      size="sm"
+                      icon={isPasswordVisible ? EyeOff : Eye}
+                      onPress={() => setIsPasswordVisible(!isPasswordVisible)}
+                    />
+                  </InputIcon>
+                )}
+              </>
+            )}
+            {loading && <InputIcon><Spinner /></InputIcon>}
+          </InputFrame>
+        </YStack>
       </InputContext.Provider>
     );
   }
 );
-InputBox.displayName = 'Input.Box';
-
-const InputMain = React.forwardRef<TamaguiElement, InputProps>(
-  ({ variant = 'default', size = 'default', loading = false, state, children, ...props }, ref) => {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    const isPassword = props.type === 'password';
-
-    if (children) {
-      return (
-        <InputBox ref={ref} variant={variant} size={size} loading={loading} state={state} {...props}>
-          {children}
-        </InputBox>
-      );
-    }
-
-    const { value, defaultValue, ...restProps } = props;
-
-    return (
-      <SimpleInputFrame
-        ref={ref}
-        variant={variant}
-        size={size}
-        loading={loading}
-        state={state}
-      >
-        <StyledInput
-          flex={1}
-          variant={variant}
-          size={size}
-          disabled={loading}
-          value={value}
-          defaultValue={value !== undefined ? undefined : defaultValue}
-          {...(restProps as StyledInputProps)}
-          type={isPassword && isPasswordVisible ? 'text' : props.type}
-        />
-        {loading && (
-          <InputIcon>
-            <Spinner />
-          </InputIcon>
-        )}
-        {isPassword && (
-          <InputIcon>
-            <Button
-              leftIcon={isPasswordVisible ? <EyeOff /> : <Eye />}
-              onPress={() => setIsPasswordVisible(!isPasswordVisible)}
-              chromeless
-              size="sm"
-              padding={0}
-              width={30}
-              height="100%"
-              backgroundColor="transparent"
-              hoverStyle={{ backgroundColor: 'transparent' }}
-              pressStyle={{ backgroundColor: 'transparent', opacity: 0.5 }}
-            />
-          </InputIcon>
-        )}
-      </SimpleInputFrame>
-    );
-  }
-);
-InputMain.displayName = 'Input';
-
-// --- Export ---
 
 export const Input = Object.assign(InputMain, {
-  Box: InputBox,
+  Frame: InputFrame,
   Field: InputField,
   Icon: InputIcon,
-  Button: InputButton,
   Hint: InputHint,
+  Button: Button,
 });
-
-

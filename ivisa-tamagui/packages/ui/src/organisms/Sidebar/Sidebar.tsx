@@ -1,21 +1,9 @@
 import React, { useState } from 'react';
-import { AnimatePresence, ScrollView as ScrollViewOriginal, Separator, Text as TextOriginal, YStack as YStackOriginal, styled, GetProps } from 'tamagui';
-import { Button as ButtonOriginal } from '../../atoms/Button';
-import { ChevronLeft as ChevronLeftIcon, ChevronRight as ChevronRightIcon, MenuSquare as MenuSquareIcon, AlertCircle as AlertCircleIcon, Inbox as InboxIcon } from '@tamagui/lucide-icons';
-import { Sheet } from '../../molecules/Sheet'; // Sheet is already 'any' from previous fix
-import { Skeleton as SkeletonOriginal } from '../../atoms/Skeleton';
-
-const Button = ButtonOriginal
-const YStack = YStackOriginal
-const ScrollView = ScrollViewOriginal
-const Text = TextOriginal
-const Skeleton = SkeletonOriginal
-
-const ChevronLeft = ChevronLeftIcon
-const ChevronRight = ChevronRightIcon
-const MenuSquare = MenuSquareIcon
-const AlertCircle = AlertCircleIcon
-const Inbox = InboxIcon
+import { ScrollView, Separator, Text, YStack, styled, GetProps } from 'tamagui';
+import { ChevronLeft, ChevronRight, MenuSquare, AlertCircle, Inbox } from '@tamagui/lucide-icons';
+import { Button } from '../../atoms/Button';
+import { Sheet } from '../../molecules/Sheet';
+import { Skeleton } from '../../atoms/Skeleton';
 
 // --- Styled Components ---
 
@@ -28,12 +16,11 @@ const SidebarContainer = styled(YStack, {
   gap: '$4',
   width: '100%',
   backgroundColor: '$background',
-
-  // Collapsible variant styles
+  
   variants: {
     collapsible: {
-      true: {
-        animation: 'bouncy',
+      true: { 
+        animation: 'bouncy' 
       },
     },
     collapsed: {
@@ -42,63 +29,45 @@ const SidebarContainer = styled(YStack, {
         paddingHorizontal: '$2',
         alignItems: 'center',
       },
-      false: {
-        width: 280,
+      false: { 
+        width: 280 
       },
     },
-  } as const,
-} as const);
+  },
+});
 
-const SidebarHeader = styled(YStack, {
-  name: 'SidebarHeader',
-} as const);
+const SidebarHeader = styled(YStack, { name: 'SidebarHeader' });
+const SidebarContent = styled(YStack, { name: 'SidebarContent', flex: 1 });
+const SidebarFooter = styled(YStack, { name: 'SidebarFooter' });
 
-const SidebarContent = styled(YStack, {
-  name: 'SidebarContent',
-  f: 1,
-} as const);
-
-const SidebarFooter = styled(YStack, {
-  name: 'SidebarFooter',
-} as const);
+type SidebarContainerProps = GetProps<typeof SidebarContainer>;
 
 // --- Data Lifecycle Components ---
 
 const SidebarSkeleton = () => (
   <YStack gap="$4" padding="$4" width="100%">
-    <Skeleton height="$10" />
+    <Skeleton height={40} />
     <YStack gap="$3">
-      <Skeleton height="$8" />
-      <Skeleton height="$8" />
-      <Skeleton height="$8" />
+      <Skeleton height={32} />
+      <Skeleton height={32} />
+      <Skeleton height={32} />
     </YStack>
     <YStack flex={1} />
-    <Skeleton height="$10" />
+    <Skeleton height={40} />
   </YStack>
 );
-// derive explicit prop types from styled components
-type SidebarContainerProps = GetProps<typeof SidebarContainer>
-type SidebarHeaderProps = GetProps<typeof SidebarHeader>
-type SidebarContentProps = GetProps<typeof SidebarContent>
-type SidebarFooterProps = GetProps<typeof SidebarFooter>
-
 
 const EmptyState = ({ message }: { message: string }) => (
   <YStack flex={1} justifyContent="center" alignItems="center" gap="$2">
-    <Inbox size="$2" color="$gray10" />
-    <Text color="$gray11" fontSize="$3">
-      {message}
-    </Text>
+    <Inbox size={24} color="$gray10" />
+    <Text color="$gray11" fontSize="$3">{message}</Text>
   </YStack>
 );
 
 const ErrorState = ({ message }: { message: string }) => (
   <YStack flex={1} justifyContent="center" alignItems="center" gap="$2">
-    <AlertCircle size="$2" color="$red10" />
-    <Text color="$red10" fontSize="$3" textAlign="center">
-      {message}
-    </Text>
-    {/* In a real app, this might have a retry button */}
+    <AlertCircle size={24} color="$red10" />
+    <Text color="$red10" fontSize="$3" textAlign="center">{message}</Text>
   </YStack>
 );
 
@@ -130,45 +99,32 @@ const DesktopSidebar = ({
   error,
 }: SidebarOwnProps) => {
   const [isCollapsedInternal, setIsCollapsedInternal] = useState(false);
-  const isControlled = isCollapsedProp !== undefined;
-  const isCollapsed = isControlled ? isCollapsedProp : isCollapsedInternal;
+  const isCollapsed = isCollapsedProp ?? isCollapsedInternal;
 
   const toggleSidebar = () => {
-    if (isControlled) {
-      onCollapsedChange?.(!isCollapsed);
+    if (onCollapsedChange) {
+      onCollapsedChange(!isCollapsed);
     } else {
       setIsCollapsedInternal(!isCollapsedInternal);
     }
   };
 
-  const isCollapsible = variant === 'collapsible';
-
+  // Princípio do Clean Code: Retorno antecipado (Fail Fast/Early Return)
   if (isLoading) {
     return (
-      <SidebarContainer
-        collapsible={isCollapsible}
-        collapsed={isCollapsible && isCollapsed}
-        role="navigation"
-        aria-label="Menu lateral"
-      >
+      <SidebarContainer collapsible={variant === 'collapsible'} collapsed={isCollapsed}>
         <SidebarSkeleton />
       </SidebarContainer>
     );
   }
 
-  const floatingProps: Pick<SidebarContainerProps, 'position' | 'height' | 'zIndex'> = {
-    position: 'absolute',
-    height: '100%',
-    zIndex: 10,
-  }
-
   return (
     <SidebarContainer
-      collapsible={isCollapsible}
-      collapsed={isCollapsible && isCollapsed}
-      {...(variant === 'floating' ? floatingProps : undefined)}
-      role="navigation"
-      aria-label="Menu lateral"
+      collapsible={variant === 'collapsible'}
+      collapsed={isCollapsed}
+      position={variant === 'floating' ? 'absolute' : 'relative'}
+      height={variant === 'floating' ? '100%' : undefined}
+      zIndex={variant === 'floating' ? 10 : undefined}
     >
       {header && <SidebarHeader>{header}</SidebarHeader>}
       <Separator />
@@ -192,7 +148,7 @@ const DesktopSidebar = ({
         </>
       )}
 
-      {isCollapsible && (
+      {variant === 'collapsible' && (
         <Button
           onPress={toggleSidebar}
           circular
@@ -201,70 +157,57 @@ const DesktopSidebar = ({
           top={20}
           right={-15}
           zIndex={20}
-          aria-label={isCollapsed ? 'Expandir sidebar' : 'Recolher sidebar'}
-          aria-expanded={!isCollapsed}
         >
-          {isCollapsed ? <ChevronRight size="$1.5" /> : <ChevronLeft size="$1.5" />}
+          {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </Button>
       )}
     </SidebarContainer>
   );
 };
 
-const MobileSidebar = ({ children, header, footer, isLoading, isEmpty, emptyMessage = 'Sem conteúdo', error }: SidebarOwnProps) => {
+const MobileSidebar = ({ 
+  children, 
+  header, 
+  footer, 
+  isLoading, 
+  isEmpty, 
+  emptyMessage, 
+  error 
+}: SidebarOwnProps) => {
   const [open, setOpen] = useState(false);
-
-  const renderContent = () => {
-    if (isLoading) {
-      return <SidebarSkeleton />;
-    }
-    if (error) {
-      return <ErrorState message={error} />;
-    }
-    if (isEmpty) {
-      return <EmptyState message={emptyMessage} />;
-    }
-    return (
-      <>
-        {header && <SidebarHeader>{header}</SidebarHeader>}
-        <ScrollView>
-          <YStack gap="$2">{children}</YStack>
-        </ScrollView>
-        <YStack flex={1} />
-        {footer && <SidebarFooter>{footer}</SidebarFooter>}
-      </>
-    );
-  };
 
   return (
     <Sheet open={open} onOpenChange={setOpen} modal snapPoints={[90]}>
-      <Sheet.Trigger asChild>
+      <Sheet.Trigger>
         <Button circular>
-          <MenuSquare size="$1.5" />
+          <MenuSquare size={24} />
         </Button>
       </Sheet.Trigger>
-      {/* <Sheet.Overlay /> */}
-      <Sheet.Content alignItems="flex-start" justifyContent="flex-start">
-        <YStack gap="$4" paddingTop="$6" paddingHorizontal="$4" flex={1} height="100%" width={300} backgroundColor="$background">
-          {renderContent()}
-          <Button onPress={() => setOpen(false)} chromeless>
-            Fechar
-          </Button>
+      <Sheet.Content>
+        <YStack gap="$4" padding="$4" flex={1} backgroundColor="$background">
+          {isLoading ? <SidebarSkeleton /> : (
+            <>
+              {header && <SidebarHeader>{header}</SidebarHeader>}
+              <ScrollView>
+                <YStack gap="$2">{children}</YStack>
+              </ScrollView>
+              {footer && <SidebarFooter>{footer}</SidebarFooter>}
+            </>
+          )}
+          <Button onPress={() => setOpen(false)} chromeless>Fechar</Button>
         </YStack>
       </Sheet.Content>
     </Sheet>
   );
 };
 
-export const Sidebar = (props: SidebarOwnProps) => {
-  return (
-    <>
-      <YStack display="none" $sm={{ display: 'flex' }}>
-        <MobileSidebar {...props} />
-      </YStack>
-      <YStack display="flex" $sm={{ display: 'none' }}>
-        <DesktopSidebar {...props} />
-      </YStack>
-    </>
-  );
-};
+export const Sidebar = (props: SidebarOwnProps) => (
+  <>
+    <YStack $gtSm={{ display: 'none' }}>
+      <MobileSidebar {...props} />
+    </YStack>
+    <YStack $sm={{ display: 'none' }}>
+      <DesktopSidebar {...props} />
+    </YStack>
+  </>
+);

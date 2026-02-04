@@ -123,3 +123,33 @@ Atualizado por: agente automático (alterações no repositório feitas em sess�
 	---
 
 	Atualizado por: agente automático (sessão interativa)
+
+---
+
+## Session Update (2026-02-04)
+
+- **Ações realizadas nesta sessão:**
+	- Corrigi as importações em `AvatarGroup` para usar os subcomponentes `Avatar.Image` e `Avatar.Fallback`, eliminando warnings do HMR sobre exports inexistentes.
+  - Criei novo componente `InputGPT` (molécula) em `packages/ui/src/molecules/InputGroup/InputGPT.tsx`:
+    - Componente funcional com suporte a multiline
+    - Envio por Enter (sem Shift+Enter para quebra de linha)
+    - Botão com ícone `Send` desabilitado quando vazio
+    - Tipagem TypeScript completa com `GetProps<typeof Input.Field>`
+    - Suporte a custom placeholder
+    - Integrado com `Input`, `Input.Field` e `Input.Button`
+
+- **Arquivos criados:**
+  - [ivisa-tamagui/packages/ui/src/molecules/InputGroup/InputGPT.tsx](ivisa-tamagui/packages/ui/src/molecules/InputGroup/InputGPT.tsx)
+  - [ivisa-tamagui/packages/ui/src/molecules/InputGroup/InputGPT.stories.tsx](ivisa-tamagui/packages/ui/src/molecules/InputGroup/InputGPT.stories.tsx)
+  - [ivisa-tamagui/packages/ui/src/molecules/InputGroup/InputGPT.test.tsx](ivisa-tamagui/packages/ui/src/molecules/InputGroup/InputGPT.test.tsx)
+
+- **Arquivos modificados:**
+  - [ivisa-tamagui/packages/ui/src/molecules/InputGroup/index.ts](ivisa-tamagui/packages/ui/src/molecules/InputGroup/index.ts) - adicionado export de InputGPT
+  - [ivisa-tamagui/packages/ui/src/index.ts](ivisa-tamagui/packages/ui/src/index.ts) - adicionado export de InputGroup
+  - [ivisa-tamagui/packages/ui/src/atoms/Input/Input.tsx](ivisa-tamagui/packages/ui/src/atoms/Input/Input.tsx) - **CORREÇÃO CRÍTICA**: Adicionado `YStack` na importação Tamagui (linha 8)
+
+- **Estado:** 
+  - ✅ Storybook rodando com sucesso em http://localhost:6006 após correção de YStack
+  - ✅ Component InputGPT está pronto para uso
+  - ✅ Erro `ReferenceError: YStack is not defined` foi eliminado
+  - ⚠️ Existe erro separado no build CI com `react-native` (esbuild Unexpected typeof) que não afeta desenvolvimento em Storybook
