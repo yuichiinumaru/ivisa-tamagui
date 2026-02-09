@@ -1,37 +1,36 @@
-
-// import type React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Label, YStack } from 'tamagui';
 import {
-
   Select,
+  SelectItem,
+  SelectItemIndicator,
+  SelectItemText,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectGroup,
-  SelectItem,
-  SelectItemText,
-  SelectItemIndicator,
   SelectSheet,
 } from './Select';
+import { SelectTriggerProps } from './Select';
 
-const meta: Meta<React.ComponentProps<typeof Select>> = {
+const meta: Meta<SelectTriggerProps> = {
   title: 'Moléculas/Select',
-  component: Select,
+  component: SelectTrigger, 
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: 'Um componente de seleção que permite aos usuários escolher um valor de uma lista.',
-      },
-    },
   },
   tags: ['autodocs'],
+  argTypes: {
+    isLoading: { control: 'boolean' },
+    isError: { control: 'boolean' },
+    disabled: { control: 'boolean' },
+    error: { control: 'text' },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<React.ComponentProps<typeof meta>>;
+type Story = StoryObj<SelectTriggerProps>;
 
 const frutas = [
   { value: 'apple', label: 'Maçã' },
@@ -41,7 +40,7 @@ const frutas = [
   { value: 'pineapple', label: 'Abacaxi' },
 ];
 
-const renderSelect = (args: any) => (
+const RenderSelect = (args: SelectTriggerProps) => (
   <Select>
     <SelectTrigger {...args}>
       <SelectValue placeholder="Selecione uma fruta..." />
@@ -52,8 +51,12 @@ const renderSelect = (args: any) => (
     <SelectContent>
       <SelectGroup>
         <Label>Frutas</Label>
-        {frutas.map((fruta) => (
-          <SelectItem value={fruta.value} key={fruta.value}>
+        {frutas.map((fruta, i) => (
+          <SelectItem 
+            value={fruta.value} 
+            key={fruta.value} 
+            index={i} 
+          >
             <SelectItemText>{fruta.label}</SelectItemText>
             <SelectItemIndicator />
           </SelectItem>
@@ -65,51 +68,42 @@ const renderSelect = (args: any) => (
 
 export const Padrao: Story = {
   name: 'Padrão',
-  render: () => (
+  render: (args) => (
     <YStack width={200} gap="$2">
       <Label>Fruta Favorita</Label>
-      {renderSelect({})}
+      <RenderSelect {...args} />
     </YStack>
   ),
+  args: {
+    disabled: false,
+    isLoading: false,
+    isError: false,
+  },
 };
 
 export const ComErro: Story = {
   name: 'Com Erro',
-  render: () => (
+  render: (args) => (
     <YStack width={200} gap="$2">
       <Label>Fruta Favorita</Label>
-      {renderSelect({ hasError: true })}
+      <RenderSelect {...args} />
     </YStack>
   ),
-};
-
-export const Desabilitado: Story = {
-  name: 'Desabilitado',
-  render: () => (
-    <YStack width={200} gap="$2">
-      <Label>Fruta Favorita</Label>
-      {renderSelect({ disabled: true })}
-    </YStack>
-  ),
-};
-
-export const EmContainerEstreito: Story = {
-  name: 'Em Container Estreito',
-  render: () => (
-    <YStack width={120} gap="$2">
-      <Label>Fruta Favorita</Label>
-      {renderSelect({})}
-    </YStack>
-  ),
+  args: {
+    isError: true,
+    error: 'Campo obrigatório',
+  },
 };
 
 export const Carregando: Story = {
   name: 'Carregando',
-  render: () => (
+  render: (args) => (
     <YStack width={200} gap="$2">
       <Label>Fruta Favorita</Label>
-      {renderSelect({ isLoading: true })}
+      <RenderSelect {...args} />
     </YStack>
   ),
+  args: {
+    isLoading: true,
+  },
 };
-

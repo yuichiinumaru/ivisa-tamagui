@@ -41,7 +41,7 @@ const meta: Meta<React.ComponentProps<typeof Card>> = {
 
 export default meta
 
-type Story = StoryObj<React.ComponentProps<typeof meta>>
+type Story = StoryObj<React.ComponentProps<typeof Card>>
 
 // Base story using composition
 export const Padrao: Story = {
@@ -153,7 +153,7 @@ export const PartialData: Story = {
 
 export const Restrito: Story = {
     render: (args) => (
-        <YStack width={280} ai="center">
+        <YStack width={280} alignItems="center">
              <Card {...args}>
                 <CardHeader>
                     <CardTitle>Título do Card Que é Muito Longo e Deveria Quebrar a Linha</CardTitle>

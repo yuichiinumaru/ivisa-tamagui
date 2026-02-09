@@ -31,9 +31,9 @@ const NavigationMenuList = styled(NavigationMenuPrimitive.List, {
   name: 'NavigationMenuList',
   display: 'flex',
   gap: '$2',
-  m: 0,
-  px: '$1',
-  py: '$1',
+  margin: 0,
+  paddingHorizontal: '$1',
+  paddingVertical: '$1',
   borderRadius: '$lg',
   backgroundColor: '$background',
   borderWidth: 1,
@@ -176,4 +176,4 @@ export {
   NavigationMenuViewport,
   IndicatorArrow,
 }
-// Removed trailing alias export to avoid duplicate-type declarations
+

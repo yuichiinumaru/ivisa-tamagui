@@ -1,41 +1,16 @@
-
-// import type React from 'react';
 import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetFooter,
-  SheetTitle,
-  SheetDescription,
-  SheetProps,
-} from './Sheet'
+import { YStack, XStack, Text } from 'tamagui'
+import { Sheet } from './Sheet'
 import { Button } from '../../atoms/Button'
 import { Input } from '../../atoms/Input'
 import { Label } from '../../atoms/Label'
-import { YStack, XStack } from 'tamagui'
 
-
-const meta: Meta<React.ComponentProps<typeof Sheet>> = {
+const meta: Meta<typeof Sheet> = {
   title: 'Moléculas/Sheet',
   component: Sheet,
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component: `
-### Uso
-Sheets são painéis deslizantes (geralmente laterais ou inferiores) usados para edição de detalhes, menus de navegação ou fluxos secundários.
-
-### Variantes
-- **Padrão**: Com cabeçalho, conteúdo e rodapé.
-- **Loading**: Exibe esqueleto no conteúdo.
-- **Erro**: Indica erro visual.
-- **Scrollable**: Gerencia conteúdo longo com rolagem interna.
-`,
-      },
-    },
   },
   tags: ['autodocs'],
   argTypes: {
@@ -47,16 +22,19 @@ Sheets são painéis deslizantes (geralmente laterais ou inferiores) usados para
 
 export default meta
 
-type Story = StoryObj<React.ComponentProps<typeof meta>>
+type Story = StoryObj<typeof Sheet>
 
-const SheetStoryContent = () => (
+/**
+ * Componente auxiliar para manter o conteúdo da Story DRY (Don't Repeat Yourself)
+ */
+const ProfileForm = () => (
   <>
-    <SheetHeader>
-      <SheetTitle>Editar Perfil</SheetTitle>
-      <SheetDescription>
+    <Sheet.Header>
+      <Sheet.Title>Editar Perfil</Sheet.Title>
+      <Sheet.Description>
         Faça alterações no seu perfil aqui. Clique em salvar quando terminar.
-      </SheetDescription>
-    </SheetHeader>
+      </Sheet.Description>
+    </Sheet.Header>
     <YStack gap="$4" py="$4">
       <YStack gap="$1">
         <Label htmlFor="name">Nome</Label>
@@ -70,25 +48,32 @@ const SheetStoryContent = () => (
   </>
 )
 
-const renderSheet = (args: SheetProps) => {
+/**
+ * Função de renderização base que gerencia o estado interno da Story
+ */
+const SheetTemplate = (args: any) => {
   const [open, setOpen] = useState(args.open ?? false)
 
   return (
     <>
-      <Button variant="outline" onPress={() => setOpen(true)}>
-        Abrir Sheet
-      </Button>
-      <Sheet open={open} onOpenChange={setOpen} {...args}>
-        <SheetContent>
-          <SheetStoryContent />
-          <SheetFooter
-            actions={
-              <Button onPress={() => setOpen(false)} variant="primary">
-                Salvar alterações
-              </Button>
-            }
-          />
-        </SheetContent>
+      <Button onPress={() => setOpen(true)}>Abrir Painel</Button>
+      
+      <Sheet 
+        {...args} 
+        open={open} 
+        onOpenChange={setOpen}
+        snapPoints={[80]} 
+        modal
+      >
+        <Sheet.Overlay />
+        <Sheet.Content>
+          <ProfileForm />
+          <Sheet.Footer>
+            <Button onPress={() => setOpen(false)} theme="active">
+              Salvar alterações
+            </Button>
+          </Sheet.Footer>
+        </Sheet.Content>
       </Sheet>
     </>
   )
@@ -96,11 +81,10 @@ const renderSheet = (args: SheetProps) => {
 
 export const Padrao: Story = {
   args: {
-    open: false,
     isLoading: false,
     hasError: false,
   },
-  render: renderSheet,
+  render: (args) => <SheetTemplate {...args} />,
 }
 
 export const Carregando: Story = {
@@ -108,89 +92,45 @@ export const Carregando: Story = {
     ...Padrao.args,
     isLoading: true,
   },
-  render: renderSheet,
-}
-
-export const ComErro: Story = {
-  args: {
-    ...Padrao.args,
-    hasError: true,
-  },
-  render: renderSheet,
+  render: (args) => <SheetTemplate {...args} />,
 }
 
 export const ConteudoLongo: Story = {
-  args: {
-    ...Padrao.args,
-  },
   render: (args) => {
-    const [open, setOpen] = useState(args.open ?? false)
+    const [open, setOpen] = useState(false)
     return (
       <>
         <Button variant="outline" onPress={() => setOpen(true)}>
-          Abrir Sheet com Conteúdo Longo
+          Ver Termos de Uso
         </Button>
-        <Sheet open={open} onOpenChange={setOpen} {...args}>
-          <SheetContent>
-            <SheetHeader>
-              <SheetTitle>Termos de Serviço</SheetTitle>
-              <SheetDescription>
-                Por favor, leia os termos e condições cuidadosamente.
-              </SheetDescription>
-            </SheetHeader>
-            <YStack gap="$2" py="$4" height={300} overflow="scroll">
-              {[...Array(20)].map((_, i) => (
-                <p key={i}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget
-                  fermentum aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc eget nisl.
-                </p>
-              ))}
-            </YStack>
-            <SheetFooter
-              actions={
-                <Button onPress={() => setOpen(false)} variant="primary">
-                  Aceitar
-                </Button>
-              }
-            />
-          </SheetContent>
+        <Sheet {...args} open={open} onOpenChange={setOpen} snapPoints={[90]}>
+          <Sheet.Overlay />
+          <Sheet.Content>
+            <Sheet.Header>
+              <Sheet.Title>Termos de Serviço</Sheet.Title>
+              <Sheet.Description>Leia atentamente antes de prosseguir.</Sheet.Description>
+            </Sheet.Header>
+            
+            <Sheet.ScrollView>
+              <YStack gap="$2" py="$4">
+                {Array.from({ length: 15 }).map((_, i) => (
+                  <Text key={i} color="$gray11">
+                    Este é um exemplo de conteúdo longo para testar a rolagem dentro do componente.
+                    O Código Limpo nos ensina que a interface deve ser intuitiva.
+                  </Text>
+                ))}
+              </YStack>
+            </Sheet.ScrollView>
+
+            <Sheet.Footer>
+              <XStack gap="$2" justifyContent="flex-end">
+                <Button onPress={() => setOpen(false)} chromeless>Cancelar</Button>
+                <Button onPress={() => setOpen(false)}>Aceitar Termos</Button>
+              </XStack>
+            </Sheet.Footer>
+          </Sheet.Content>
         </Sheet>
       </>
     )
-  },
+  }
 }
-
-export const AcoesCustomizadas: Story = {
-  args: {
-    ...Padrao.args,
-  },
-  render: (args) => {
-    const [open, setOpen] = useState(args.open ?? false)
-    return (
-      <>
-        <Button variant="outline" onPress={() => setOpen(true)}>
-          Abrir com Ações Customizadas
-        </Button>
-        <Sheet open={open} onOpenChange={setOpen} {...args}>
-          <SheetContent>
-            <SheetStoryContent />
-            <SheetFooter
-              actions={
-                <XStack gap="$2">
-                  <Button onPress={() => setOpen(false)} variant="secondary">
-                    Cancelar
-                  </Button>
-                  <Button onPress={() => setOpen(false)} variant="primary">
-                    Confirmar
-                  </Button>
-                </XStack>
-              }
-            />
-          </SheetContent>
-        </Sheet>
-      </>
-    )
-  },
-}
-
-export type SheetStoryContentProps = React.ComponentProps<typeof SheetStoryContent>

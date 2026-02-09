@@ -30,6 +30,7 @@ export * from './molecules/HoverCard';
 export * from './molecules/RadioGroup';
 export * from './molecules/Resizable';
 export * from './molecules/Select';
+export * from './molecules/SearchBar';
 export * from './molecules/Sheet';
 export * from './molecules/StarRating';
 export * from './molecules/Toast';

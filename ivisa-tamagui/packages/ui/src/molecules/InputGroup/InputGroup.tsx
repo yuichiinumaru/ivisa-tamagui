@@ -20,10 +20,6 @@ export type InputGroupProps = GetProps<typeof InputGroupFrame> & {
   isLoading?: boolean;
 };
 
-/**
- * InputGroup: Uma molécula que serve de container para inputs e botões 
- * sem bordas internas.
- */
 export const InputGroup = ({
   children,
   isLoading,

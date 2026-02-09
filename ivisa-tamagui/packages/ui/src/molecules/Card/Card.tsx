@@ -9,7 +9,7 @@ const CardFrame = styled(YStack, {
   borderWidth: 1,
   borderColor: '$borderColor',
   borderRadius: '$lg',
-  p: '$lg',
+  padding: '$lg',
   gap: '$4',
   variants: {
     variant: {
@@ -71,7 +71,7 @@ export const CardFooter = styled(XStack, {
   name: 'CardFooter',
   borderTopWidth: 1,
   borderTopColor: '$borderColor',
-  pt: '$4',
+  paddingTop: '$4',
   gap: '$3',
   justifyContent: 'flex-end',
   alignItems: 'center',
@@ -135,17 +135,17 @@ export const Card = React.forwardRef<any, CardProps>(({
               accessibilityLabel="Hero image"
             />
         )}
-        <YStack p="$lg" gap="$4">
+        <YStack padding="$lg" gap="$4">
             <CardHeader>
               <CardTitle>{data.title}</CardTitle>
               {data.description && <CardDescription>{data.description}</CardDescription>}
             </CardHeader>
             <CardContent>
               {isLoading ? (
-                <YStack gap="$2" f={1} p="$1">
-                  <Skeleton h="$4" w="75%" />
-                  <Skeleton h="$2.5" w="100%" />
-                  <Skeleton h="$2.5" w="90%" />
+                <YStack gap="$2" flex={1} padding="$1">
+                  <Skeleton height="$4" width="75%" />
+                  <Skeleton height="$2.5" width="100%" />
+                  <Skeleton height="$2.5" width="90%" />
                 </YStack>
               ) : (
                 data.content
@@ -161,10 +161,10 @@ export const Card = React.forwardRef<any, CardProps>(({
   return (
     <CardFrame {...cardProps}>
       {isLoading ? (
-        <YStack gap="$2" f={1} p="$1">
-          <Skeleton h="$4" w="75%" />
-          <Skeleton h="$2.5" w="100%" />
-          <Skeleton h="$2.5" w="90%" />
+        <YStack gap="$2" flex={1} padding="$1">
+          <Skeleton height="$4" width="75%" />
+          <Skeleton height="$2.5" width="100%" />
+          <Skeleton height="$2.5" width="90%" />
         </YStack>
       ) : (
         children

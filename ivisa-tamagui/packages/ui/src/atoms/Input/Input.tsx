@@ -1,92 +1,55 @@
 import { Eye, EyeOff } from '@tamagui/lucide-icons';
-import React, { useContext, useState } from 'react';
-import { 
-  Input as TamaguiInput, 
-  styled, 
-  GetProps, 
-  XStack,
-  YStack,
-  View, 
-  TamaguiElement, 
-  Text,
-  Spinner,
-  TextInput
-} from 'tamagui';
+import React, { useState } from 'react';
+import { Input as TamaguiInput, styled, GetProps, XStack, YStack, View, Text, Spinner, createStyledContext,} from 'tamagui';
 import { Button } from '../Button';
 
-// --- Contexto ---
-type InputContextValue = {
-  size: 'sm' | 'default' | 'lg';
-  loading?: boolean;
-}
-const InputContext = React.createContext<InputContextValue | null>(null);
-
-// --- Variantes de Estilo ---
-const inputVariants = {
-  variant: {
-    default: {
-      borderWidth: 1,
-      borderColor: '$borderColor',
-      backgroundColor: '$background',
-      focusStyle: { borderColor: '$ring', outlineColor: '$ring', outlineWidth: 2, outlineStyle: 'solid' },
-    },
-    filled: {
-      borderWidth: 0,
-      backgroundColor: '$muted',
-      focusStyle: { backgroundColor: '$background', borderColor: '$ring', borderWidth: 1 },
-    },
-  },
-  size: {
-    sm: { height: '$8', px: '$2' },
-    default: { height: '$10', px: '$3' },
-    lg: { height: '$12', px: '$4' },
-  },
-} as const;
-
-// --- Styled Components ---
+export const InputContext = createStyledContext({
+  size: '$default',
+});
 
 const InputFrame = styled(XStack, {
   name: 'InputFrame',
+  context: InputContext,
   alignItems: 'center',
   borderRadius: '$md',
   overflow: 'hidden',
+  backgroundColor: '$background',
+  borderWidth: 1,
+  borderColor: '$borderColor',
+  
   variants: {
-    ...inputVariants,
-    state: {
-      error: { borderColor: '$red10', borderWidth: 2 },
-      success: { borderColor: '$green10', borderWidth: 2 },
+    variant: {
+      default: { backgroundColor: '$background' },
+      filled: { backgroundColor: '$backgroundStrong', borderWidth: 0 },
     },
-    loading: {
-      true: { opacity: 0.7, pointerEvents: 'none' }
+    size: {
+      sm: { height: '$8', paddingHorizontal: '$2' },
+      default: { height: '$10', paddingHorizontal: '$3' },
+      lg: { height: '$12', paddingHorizontal: '$4' },
+    },    
+    state: {
+      error: { borderColor: '$destructive', borderWidth: 1 },
+      success: { borderColor: '$green10', borderWidth: 1 },
     }
-  } as const,
+  },
   defaultVariants: { variant: 'default', size: 'default' },
 });
 
-const UnframedInput = styled(TamaguiInput, {
+const InputField = styled(TamaguiInput, {
   name: 'InputField',
+  context: InputContext,
   flex: 1,
   backgroundColor: 'transparent',
   borderWidth: 0,
-  outlineWidth: 0,
   color: '$foreground',
-  height: '100%',
   focusStyle: { borderWidth: 0, outlineWidth: 0 },
-});
-
-// --- Sub-componentes ---
-
-const InputField = React.forwardRef<TextInput, GetProps<typeof UnframedInput>>((props, ref) => {
-  const context = useContext(InputContext);
-  const size = props.size || context?.size || 'default';
-  return <UnframedInput ref={ref} size={size as any} {...props} />;
 });
 
 const InputIcon = styled(View, {
   name: 'InputIcon',
   justifyContent: 'center',
   alignItems: 'center',
-  px: '$2',
+  paddingHorizontal: '$2',
 });
 
 const InputHint = styled(Text, {
@@ -96,53 +59,47 @@ const InputHint = styled(Text, {
   marginTop: '$2',
 });
 
-// --- Componente Principal ---
-
-export type InputProps = GetProps<typeof InputFrame> & {
+export interface InputProps extends GetProps<typeof InputFrame> {
   loading?: boolean;
   type?: 'text' | 'password';
-  children?: React.ReactNode;
+  placeholder?: string;
+  defaultValue?: string; 
+  value?: string;        
+  onChangeText?: (text: string) => void; 
 }
 
-const InputMain = React.forwardRef<TamaguiElement, InputProps>(
-  ({ children, loading, type, variant, size = 'default', state, ...props }, ref) => {
+const InputMain = InputFrame.styleable<InputProps>(
+  ({ children, loading, type, variant, size, state, placeholder, defaultValue, value, onChangeText, ...props }, ref) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    const isPassword = type === 'password';
-
+    
     return (
-      <InputContext.Provider value={{ size, loading }}>
-        <YStack width="100%">
-          <InputFrame 
-            ref={ref} 
-            variant={variant} 
-            size={size} 
-            loading={loading} 
-            state={state}
-          >
-            {children ? (
-              children
-            ) : (
-              <>
-                <InputField 
-                  {...props} 
-                  secureTextEntry={isPassword && !isPasswordVisible}
-                />
-                {isPassword && (
-                  <InputIcon>
-                    <Button
-                      chromeless
-                      size="sm"
-                      icon={isPasswordVisible ? EyeOff : Eye}
-                      onPress={() => setIsPasswordVisible(!isPasswordVisible)}
-                    />
-                  </InputIcon>
-                )}
-              </>
-            )}
-            {loading && <InputIcon><Spinner /></InputIcon>}
-          </InputFrame>
-        </YStack>
-      </InputContext.Provider>
+      <YStack width="100%">
+        <InputFrame ref={ref} variant={variant} size={size} state={state} {...props}>
+          {children || (
+            <InputField 
+              placeholder={placeholder}
+              defaultValue={defaultValue}
+              value={value}
+              onChangeText={onChangeText}
+              secureTextEntry={type === 'password' && !isPasswordVisible} 
+            />
+          )}
+          
+          {type === 'password' && (
+            <InputIcon>
+              <Button 
+                variant="ghost"
+                size="sm" 
+                circular
+                leftIcon={isPasswordVisible ? <EyeOff size={16} /> : <Eye size={16} />} 
+                onPress={() => setIsPasswordVisible(!isPasswordVisible)} 
+              />
+            </InputIcon>
+          )}
+          
+          {loading && <Spinner marginHorizontal="$2" />}
+        </InputFrame>
+      </YStack>
     );
   }
 );

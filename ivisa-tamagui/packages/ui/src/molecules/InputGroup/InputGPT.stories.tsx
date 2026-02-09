@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { InputGPT } from './InputGPT'
 
 const meta: Meta<typeof InputGPT> = {
-  title: 'Molecules/InputGPT',
+  title: 'Moléculas/InputGPT',
   component: InputGPT,
   parameters: {
     layout: 'centered',

@@ -1,80 +1,83 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
-import { Sidebar } from './Sidebar';
-import type { SidebarOwnProps } from './Sidebar';
-import { YStack, Text, Avatar } from 'tamagui';
-import { mockNavItems, mockSettingsItems, mockUserProfile } from '../../mocks/sidebar';
+import React, { useState, useEffect } from 'react';
+import { Sidebar, SidebarProps } from './Sidebar';
+import { YStack, Text, Avatar, XStack } from 'tamagui';
 import { Button } from '../../atoms/Button';
+import { Home, MessageSquare, Globe, Settings, LogOut } from '@tamagui/lucide-icons';
 
-// --- Storybook Metadata ---
-const meta: Meta<SidebarOwnProps> = {
+// Interface para garantir tipagem dos itens de menu
+interface NavItemData {
+  label: string;
+  icon: React.ElementType;
+  onPress?: () => void;
+}
+
+const mockNavItems: NavItemData[] = [
+  { label: 'Dashboard', icon: Home },
+  { label: 'Mensagens', icon: MessageSquare },
+  { label: 'Explorar', icon: Globe },
+];
+
+const mockSettingsItems: NavItemData[] = [
+  { label: 'Configurações', icon: Settings },
+  { label: 'Sair', icon: LogOut },
+];
+
+const mockUserProfile = {
+  name: 'Chica da Silva',
+  email: 'chica.silva@ivisa.gov.br',
+  avatarUrl: 'https://i.pravatar.cc/150?u=adriana',
+};
+
+const meta: Meta<SidebarProps> = {
   title: 'Organismos/Sidebar',
   component: Sidebar,
   parameters: {
     layout: 'fullscreen',
-    docs: {
-      description: {
-        component: `
-### Sidebar Organism
-A resilient and composable sidebar component built with Tamagui.
-- **Responsive:** Acts as a Sheet on mobile and a collapsible panel on desktop.
-- **Stateful:** Handles loading, empty, and error states gracefully.
-- **Composable:** Provides \`header\` and \`footer\` slots for custom content.
-- **Accessible:** Uses semantic tags for better screen reader support.
-`,
-      },
-    },
   },
+  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: 'select',
       options: ['collapsible', 'fixed', 'floating'],
     },
-    isCollapsed: {
-      control: 'boolean',
-    },
-    isLoading: {
-      control: 'boolean',
-    },
-    isEmpty: {
-      control: 'boolean',
-    },
-    error: {
-      control: 'text',
-    },
+    isCollapsed: { control: 'boolean' },
+    isLoading: { control: 'boolean' },
+    isEmpty: { control: 'boolean' },
+    error: { control: 'text' },
   },
-  tags: ['autodocs'],
 };
 
 export default meta;
+type Story = StoryObj<SidebarProps>;
 
-type Story = StoryObj<SidebarOwnProps>;
+// --- Componentes Auxiliares da Story ---
 
-// --- Mock Components for Stories ---
-
-const NavMenu = ({ items, collapsed }: { items: any[]; collapsed?: boolean }) => (
+const NavMenu = ({ items, collapsed }: { items: NavItemData[]; collapsed?: boolean }) => (
   <YStack gap="$2">
     {items.map((item) => (
       <Button
         key={item.label}
-        icon={item.icon ? <item.icon size="$1" /> : undefined}
         chromeless
-        size="default"
-        justifyContent="flex-start"
-        onPress={item.onPress}
+        justifyContent={collapsed ? "center" : "flex-start"}
+        paddingHorizontal={collapsed ? 0 : "$3"}
       >
-        {!collapsed && <Text>{item.label}</Text>}
+        <XStack gap="$3" alignItems="center">
+          <item.icon size={18} color="$gray11" />
+          {!collapsed && <Text color="$gray12" fontWeight="500">{item.label}</Text>}
+        </XStack>
       </Button>
     ))}
   </YStack>
 );
 
-const UserProfile = ({ user, collapsed }: { user: any; collapsed?: boolean }) => (
-  <YStack
-    flexDirection={collapsed ? 'column' : 'row'}
+const UserProfileSection = ({ user, collapsed }: { user: typeof mockUserProfile; collapsed?: boolean }) => (
+  <XStack
     alignItems="center"
     gap="$3"
     paddingVertical="$2"
+    paddingHorizontal={collapsed ? 0 : "$2"}
+    justifyContent={collapsed ? "center" : "flex-start"}
   >
     <Avatar circular size="$3">
       <Avatar.Image src={user.avatarUrl} />
@@ -82,35 +85,15 @@ const UserProfile = ({ user, collapsed }: { user: any; collapsed?: boolean }) =>
     </Avatar>
     {!collapsed && (
       <YStack flex={1}>
-        <Text fontWeight="bold" fontSize="$3">
+        <Text fontWeight="bold" fontSize="$3" color="$color" numberOfLines={1}>
           {user.name}
         </Text>
-        <Text fontSize="$2" color="$gray11" numberOfLines={1}>
+        <Text fontSize="$1" color="$gray11" numberOfLines={1}>
           {user.email}
         </Text>
       </YStack>
     )}
-  </YStack>
-);
-
-const renderSidebarContent = (isCollapsed = false) => (
-  <>
-    <NavMenu items={mockNavItems} collapsed={isCollapsed} />
-    <YStack flex={1} />
-    <NavMenu items={mockSettingsItems} collapsed={isCollapsed} />
-  </>
-);
-
-const renderHeader = (isCollapsed = false) => (
-  <YStack>
-    <Text fontSize="$5" fontWeight="bold" textAlign={isCollapsed ? 'center' : 'left'}>
-      {isCollapsed ? 'ACME' : 'ACME Corp'}
-    </Text>
-  </YStack>
-);
-
-const renderFooter = (isCollapsed = false) => (
-  <UserProfile user={mockUserProfile} collapsed={isCollapsed} />
+  </XStack>
 );
 
 // --- Stories ---
@@ -122,106 +105,56 @@ export const GoldenPath: Story = {
     isCollapsed: false,
     isLoading: false,
     isEmpty: false,
-    error: '',
   },
-  render: (args) => (
-    <YStack height={600} flexDirection="row">
-      {
-        (() => {
-          const content = args.isEmpty || args.error ? null : renderSidebarContent(args.isCollapsed)
-          return (
-            <Sidebar {...args} header={renderHeader(args.isCollapsed)} footer={args.isEmpty || args.error ? undefined : renderFooter(args.isCollapsed)}>
-              {content}
-            </Sidebar>
-          )
-        })()
-      }
-      <YStack flex={1} padding="$4">
-        <Text>Conteúdo Principal da Aplicação</Text>
-      </YStack>
-    </YStack>
-  ),
-};
+  render: (args) => {
+    const [collapsed, setCollapsed] = useState(args.isCollapsed);
 
-export const Collapsed: Story = {
-  name: 'Collapsible – Collapsed',
-  args: {
-    ...GoldenPath.args,
-    variant: 'collapsible',
-    isCollapsed: true,
+    useEffect(() => {
+      setCollapsed(args.isCollapsed);
+    }, [args.isCollapsed]);
+
+    return (
+      <XStack height={600} backgroundColor="$background">
+        <Sidebar 
+          {...args} 
+          isCollapsed={collapsed}
+          onCollapsedChange={setCollapsed}
+          header={
+            <YStack paddingVertical="$2" alignItems={collapsed ? 'center' : 'flex-start'}>
+              <Text fontSize="$5" fontWeight="900" color="$blue10">
+                {collapsed ? 'IV' : 'IVISA'}
+              </Text>
+            </YStack>
+          } 
+          footer={<UserProfileSection user={mockUserProfile} collapsed={collapsed} />}
+        >
+          <NavMenu items={mockNavItems} collapsed={collapsed} />
+          <YStack flex={1} minHeight={20} />
+          <NavMenu items={mockSettingsItems} collapsed={collapsed} />
+        </Sidebar>
+        
+        <YStack flex={1} padding="$4" backgroundColor="$gray1" justifyContent="center" alignItems="center">
+          <Text color="$gray8">Conteúdo Principal da Aplicação</Text>
+        </YStack>
+      </XStack>
+    );
   },
-  render: GoldenPath.render,
 };
 
 export const Carregando: Story = {
-  args: {
-    ...GoldenPath.args,
-    isLoading: true,
-  },
+  name: 'Estado: Carregando',
+  args: { ...GoldenPath.args, isLoading: true },
   render: GoldenPath.render,
 };
 
 export const Empty: Story = {
-  name: 'Zero Data (Empty State)',
-  args: {
-    ...GoldenPath.args,
-    isEmpty: true,
-    emptyMessage: 'Nenhum item de navegação encontrado.',
-    children: null, // No children when empty
-  },
+  name: 'Estado: Vazio',
+  args: { ...GoldenPath.args, isEmpty: true, emptyMessage: 'Nenhum item encontrado.' },
   render: GoldenPath.render,
 };
 
-export const Error: Story = {
-  name: 'Error State',
-  args: {
-    ...GoldenPath.args,
-    error: 'Falha ao carregar a navegação. Por favor, tente novamente mais tarde.',
-    children: null, // No children on error
-  },
+export const Erro: Story = {
+  name: 'Estado: Erro',
+  args: { ...GoldenPath.args, error: 'Erro ao carregar menu lateral.' },
   render: GoldenPath.render,
 };
-
-export const Floating: Story = {
-  name: 'Floating Variant',
-  args: {
-    ...GoldenPath.args,
-    variant: 'floating',
-  },
-  render: (args) => (
-    <YStack height={600} flexDirection="row" position="relative">
-      <Sidebar {...args} header={renderHeader(args.isCollapsed)} footer={renderFooter(args.isCollapsed)} children={renderSidebarContent(args.isCollapsed)} />
-      <YStack flex={1} padding="$4" backgroundColor="$background">
-        <Text>Conteúdo Principal da Aplicação</Text>
-        <Text>O sidebar flutua sobre este conteúdo.</Text>
-      </YStack>
-    </YStack>
-  ),
-};
-
-export const LayoutStressTest: Story = {
-  name: 'Layout Stress (Narrow Container)',
-  render: (args) => (
-    <YStack
-      width={400}
-      height={700}
-      borderWidth={1}
-      borderColor="$borderColor"
-      flexDirection="row"
-      overflow="hidden"
-      marginHorizontal="auto"
-    >
-      <Sidebar {...args} header={renderHeader(args.isCollapsed)} footer={renderFooter(args.isCollapsed)} children={renderSidebarContent(args.isCollapsed)} />
-      <YStack flex={1} padding="$4">
-        <Text>Conteúdo Principal</Text>
-      </YStack>
-    </YStack>
-  ),
-  args: {
-    ...GoldenPath.args,
-  },
-};
-
-export type NavMenuProps = React.ComponentProps<typeof NavMenu>
-
-export type UserProfileProps = React.ComponentProps<typeof UserProfile>

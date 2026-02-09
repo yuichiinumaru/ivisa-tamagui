@@ -16,9 +16,6 @@ const NavGroupFrame = styled(YStack, {
   padding: '$2',
   borderRadius: '$4',
 });
-// auto-added alias to silence Tamagui prop checks
-const NavGroupFrameAny: any = NavGroupFrame
-
 
 const NavGroupHeader = styled(XStack, {
   name: 'NavGroupHeader',
@@ -26,9 +23,6 @@ const NavGroupHeader = styled(XStack, {
   alignItems: 'center',
   paddingHorizontal: '$3',
 });
-// auto-added alias to silence Tamagui prop checks
-const NavGroupHeaderAny: any = NavGroupHeader
-
 
 const NavGroupTitle = styled(Paragraph, {
   name: 'NavGroupTitle',
@@ -36,18 +30,15 @@ const NavGroupTitle = styled(Paragraph, {
   color: '$color',
   fontSize: '$3',
 });
-// auto-added alias to silence Tamagui prop checks
-const NavGroupTitleAny: any = NavGroupTitle
 
-
-type NavGroupProps = GetProps<typeof NavGroupFrame> & {
+export interface NavGroupProps extends GetProps<typeof NavGroupFrame> {
   items: Array<{ label: string; href: string }>;
   title?: string;
   isLoading?: boolean;
   hasError?: boolean;
   isDisabled?: boolean;
   rightSlot?: React.ReactNode;
-};
+}
 
 const NavGroup = NavGroupFrame.styleable<NavGroupProps>((props, ref) => {
   const {
@@ -87,27 +78,26 @@ const NavGroup = NavGroupFrame.styleable<NavGroupProps>((props, ref) => {
   };
 
   return (
-    <NavGroupFrameAny
+    <NavGroupFrame
       ref={ref}
       borderWidth={hasError ? 1 : 0}
       borderColor={hasError ? '$red10' : '$borderColor'}
       opacity={isDisabled ? 0.5 : 1}
       {...rest}
+
       role="navigation"
       aria-label={title}
     >
       {(title || rightSlot) && (
-        <NavGroupHeaderAny>
-          {title && <NavGroupTitleAny>{title}</NavGroupTitleAny>}
+        <NavGroupHeader>
+          {title && <NavGroupTitle>{title}</NavGroupTitle>}
           {rightSlot}
-        </NavGroupHeaderAny>
+        </NavGroupHeader>
       )}
       <Separator />
       <YStack gap="$2">{renderContent()}</YStack>
-    </NavGroupFrameAny>
+    </NavGroupFrame>
   );
 });
 
 export { NavGroup };
-export type { NavGroupProps };
-

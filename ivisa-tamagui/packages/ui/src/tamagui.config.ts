@@ -4,8 +4,6 @@ import { tokens } from './theme/tokens';
 import { themes as baseThemesRaw } from './theme/themes';
 
 // 1. CORREÇÃO DOS THEMES: 
-// Em vez de 'any', usamos o tipo do próprio objeto para manter a segurança.
-// Criamos um novo objeto mapeando as chaves desejadas sem perder a tipagem.
 const themes = {
   ...baseThemesRaw,
   claro: baseThemesRaw.light,
@@ -13,8 +11,6 @@ const themes = {
 };
 
 // 2. FONT CONFIGURATION
-// Removidos aliases manuais como '$3' dentro do objeto, pois o Tamagui 
-// resolve isso automaticamente através dos tokens.
 const ceraProFont = createFont({
   family: 'Cera Pro',
   size: {
@@ -94,7 +90,6 @@ const animations = createAnimations({
 });
 
 // 3. CONFIGURAÇÃO PRINCIPAL
-// Removido o 'as const' do shorthands pois o createTamagui já espera esse formato
 const config = createTamagui({
   animations,
   fonts: {
