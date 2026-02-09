@@ -1,42 +1,25 @@
-
-// import type React from 'react';
+import React from 'react';
 import { Button } from '../../atoms/Button/Button';
 import { NavGroup } from './NavGroup';
 import { Settings } from '@tamagui/lucide-icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import { YStack } from 'tamagui';
 
-
-const meta: Meta<React.ComponentProps<typeof NavGroup>> = {
+const meta: Meta<typeof NavGroup> = {
   title: 'Moléculas/NavGroup',
   component: NavGroup,
   tags: ['autodocs'],
   argTypes: {
-    title: {
-      control: 'text',
-      description: 'Título do grupo de navegação.',
-    },
-    isLoading: {
-      control: 'boolean',
-      description: 'Mostra o estado de carregamento com esqueletos.',
-    },
-    hasError: {
-      control: 'boolean',
-      description: 'Mostra o estado de erro.',
-    },
-    isDisabled: {
-      control: 'boolean',
-      description: 'Desabilita o grupo de navegação.',
-    },
-    rightSlot: {
-      control: 'object',
-      description: 'Permite adicionar conteúdo à direita do título.',
-    },
+    title: { control: 'text' },
+    isLoading: { control: 'boolean' },
+    hasError: { control: 'boolean' },
+    isDisabled: { control: 'boolean' },
   },
 };
 
 export default meta;
 
-type Story = StoryObj<React.ComponentProps<typeof NavGroup>>;
+type Story = StoryObj<typeof NavGroup>;
 
 const defaultItems = [
   { label: 'Painel', href: '#' },
@@ -46,37 +29,9 @@ const defaultItems = [
 ];
 
 export const Padrao: Story = {
-  name: 'Padrão',
   args: {
     items: defaultItems,
     title: 'Navegação',
-  },
-};
-
-export const Carregando: Story = {
-  name: 'Carregando',
-  args: {
-    items: [],
-    title: 'Navegação',
-    isLoading: true,
-  },
-};
-
-export const ComErro: Story = {
-  name: 'Com Erro',
-  args: {
-    items: [],
-    title: 'Navegação',
-    hasError: true,
-  },
-};
-
-export const Desabilitado: Story = {
-  name: 'Desabilitado',
-  args: {
-    items: defaultItems,
-    title: 'Navegação',
-    isDisabled: true,
   },
 };
 
@@ -85,8 +40,10 @@ export const ComAcoes: Story = {
   args: {
     items: defaultItems,
     title: 'Navegação',
-    rightSlot: (
-      <Button variant="icon" icon={<Settings size="$1" />} />
+    rightSlot: (      
+      <Button backgroundColor="transparent" borderWidth={0} circular size="sm">
+        <Settings size={16} />
+      </Button>
     ),
   },
 };
@@ -95,14 +52,11 @@ export const EmContainer: Story = {
   name: 'Em Container',
   args: {
     items: defaultItems,
-    title: 'Navegação em um contêiner muito, muito, muito comprido',
+    title: 'Navegação em um contêiner restrito',
   },
-  decorators: [
-    (Story) => (
-      <div style={{ maxWidth: '320px', border: '1px solid #ccc', padding: '1rem', borderRadius: '8px' }}>
-        <Story />
-      </div>
-    ),
-  ],
+  render: (args) => (
+    <YStack maxWidth={320} borderWidth={1} borderColor="$borderColor" padding="$4" borderRadius="$4">
+      <NavGroup {...args} />
+    </YStack>
+  ),
 };
-

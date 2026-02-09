@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React, { ReactNode } from 'react'
 import { Text, XStack, YStack } from 'tamagui'
 import { Skeleton } from '../../atoms/Skeleton'
@@ -21,7 +21,7 @@ type ActionsRenderProp = (
   isDisabled: boolean,
 ) => ReactNode
 
-interface StepperProps {
+export interface StepperProps {
   steps: Step[]
   isLoading?: boolean
   hasError?: boolean
@@ -118,6 +118,6 @@ export const Stepper = ({
   )
 }
 
-export type StepperProps = React.ComponentProps<typeof Stepper>
+// `StepperProps` exported above at definition to avoid duplicate declaration
 
 export type StepperContentProps = React.ComponentProps<typeof StepperContent>

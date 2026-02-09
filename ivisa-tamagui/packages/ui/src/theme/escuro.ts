@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { darkColors } from './tokens';
 
 export const escuroColors = {

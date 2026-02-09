@@ -31,9 +31,9 @@ const NavigationMenuList = styled(NavigationMenuPrimitive.List, {
   name: 'NavigationMenuList',
   display: 'flex',
   gap: '$2',
-  m: 0,
-  px: '$1',
-  py: '$1',
+  margin: 0,
+  paddingHorizontal: '$1',
+  paddingVertical: '$1',
   borderRadius: '$lg',
   backgroundColor: '$background',
   borderWidth: 1,
@@ -134,7 +134,7 @@ const NavigationMenuViewport = styled(NavigationMenuPrimitive.Viewport, {
   overflow: 'hidden',
 })
 
-type NavigationMenuProps = GetProps<typeof NavigationMenu> & {
+export type NavigationMenuProps = GetProps<typeof NavigationMenu> & {
   isLoading?: boolean
   rightSlot?: React.ReactNode
 }
@@ -177,4 +177,3 @@ export {
   IndicatorArrow,
 }
 
-export type NavigationMenuComponentProps = React.ComponentProps<typeof NavigationMenuComponent>

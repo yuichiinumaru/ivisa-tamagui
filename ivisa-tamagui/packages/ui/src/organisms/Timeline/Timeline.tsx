@@ -1,7 +1,7 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React from 'react'
 import { YStack, XStack, styled, View, Text } from 'tamagui'
-import { Alert } from '../../atoms/Alert'
+import { Alert } from '../../atoms/Alert/Alert'
 import { Empty } from '../../molecules/Empty'
 import { Skeleton } from '../../atoms/Skeleton'
 

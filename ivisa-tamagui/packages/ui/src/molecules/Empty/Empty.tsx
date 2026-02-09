@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { Ban } from '@tamagui/lucide-icons'
 import React from 'react'
 import { YStack, Text, GetProps, styled, Image, ImageProps } from 'tamagui'
@@ -60,7 +60,7 @@ const EmptyDescription = styled(Text, {
   },
 })
 
-type EmptyProps = GetProps<typeof EmptyFrame> & {
+export type EmptyProps = GetProps<typeof EmptyFrame> & {
   icon?: React.ReactElement
   image?: string
   imageProps?: ImageProps
@@ -81,6 +81,18 @@ const EmptySkeleton = () => (
     <Skeleton width={100} height={40} marginTop="$2" />
   </EmptyFrameAny>
 )
+
+// auto-added alias to silence Tamagui prop checks
+const EmptyDescriptionAny: any = EmptyDescription
+
+// auto-added alias to silence Tamagui prop checks
+const EmptyTitleAny: any = EmptyTitle
+
+// auto-added alias to silence Tamagui prop checks
+const EmptyIconFrameAny: any = EmptyIconFrame
+
+// auto-added alias to silence Tamagui prop checks
+const EmptyFrameAny: any = EmptyFrame
 
 export const Empty = ({
   icon,
@@ -118,18 +130,6 @@ export const Empty = ({
     ) : (
       <Ban size={32} color={hasError ? '$red10' : '$gray10'} />
     );
-// auto-added alias to silence Tamagui prop checks
-const EmptyDescriptionAny: any = EmptyDescription
-
-// auto-added alias to silence Tamagui prop checks
-const EmptyTitleAny: any = EmptyTitle
-
-// auto-added alias to silence Tamagui prop checks
-const EmptyIconFrameAny: any = EmptyIconFrame
-
-// auto-added alias to silence Tamagui prop checks
-const EmptyFrameAny: any = EmptyFrame
-
 
     content = (
       <EmptyIconFrameAny hasError={hasError} data-testid="empty-icon-frame" data-has-error={hasError}>
@@ -150,6 +150,5 @@ const EmptyFrameAny: any = EmptyFrame
   )
 }
 
-export type EmptyProps = React.ComponentProps<typeof Empty>
-
-export type EmptySkeletonProps = React.ComponentProps<typeof EmptySkeleton>
+// `EmptyProps` is defined and exported above.
+// Removed trailing alias export to avoid duplicate-type declarations

@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { render, screen, fireEvent } from '@testing-library/react'
 import { Collapsible } from './Collapsible'
 import React from 'react'

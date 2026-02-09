@@ -1,31 +1,68 @@
 import "./fonts.css"
 import React from "react"
-import { Preview } from "@storybook/react"
+import type { Preview } from "@storybook/react"
 import { TamaguiProvider, Theme, YStack } from "tamagui"
 import config from "../src/tamagui.config"
 
-const allThemes = Object.keys(config.themes).filter(theme =>
-  ['claro', 'escuro'].includes(theme)
+/**
+ * 1. EXTRAÇÃO DE TIPOS
+ */
+type ConfThemes = keyof typeof config.themes;
+interface TamaguiVariable {
+  get: () => string | number;
+}
+
+const allThemes: ConfThemes[] = (Object.keys(config.themes) as ConfThemes[]).filter(
+  (theme): theme is ConfThemes => ['claro', 'escuro'].includes(theme)
 )
 
 const preview: Preview = {
   decorators: [
     (Story, context) => {
-      const theme = context.globals.theme || "claro"
+      const themeName = (context.globals.theme as ConfThemes) || "claro"
 
-      // Sync body background/color for Portals and out-of-bounds content
+      // 2. SINCRONIZAÇÃO DO BODY
       React.useEffect(() => {
-        const bg = theme === 'escuro' ? '#09090b' : '#ffffff'
-        const color = theme === 'escuro' ? '#fafafa' : '#000000'
+        const themeObj = config.themes[themeName]
+                
+        const extractColor = (prop: unknown, fallback: string): string => {
+          if (prop && typeof prop === 'object' && 'get' in prop) {            
+            const variable = prop as TamaguiVariable;
+            if (typeof variable.get === 'function') {
+              return String(variable.get());
+            }
+          }
+          return fallback;
+        };
+
+        const isDark = themeName === 'escuro';
+        const bg = extractColor(themeObj?.background, isDark ? '#09090b' : '#ffffff');
+        const color = extractColor(themeObj?.color, isDark ? '#fafafa' : '#000000');
+            
         document.body.style.backgroundColor = bg
         document.body.style.color = color
-      }, [theme])
+      }, [themeName])
+
+      // 3. HANDLER DE TOUCH
+      React.useEffect(() => {
+        const isTouchDevice = 
+          typeof window !== 'undefined' && 
+          ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+
+        if (isTouchDevice) return
+
+        const preventSpuriousTouch = (e: TouchEvent) => {
+          e.stopPropagation()
+        }
+
+        window.addEventListener('touchend', preventSpuriousTouch, { capture: true })
+        return () => window.removeEventListener('touchend', preventSpuriousTouch, { capture: true })
+      }, [])
 
       return (
-        <TamaguiProvider key={theme} config={config} defaultTheme={theme}>
-          <Theme name={theme}>
-            {/* @ts-ignore */}
-            <YStack f={1} backgroundColor="$background" minHeight="100vh">
+        <TamaguiProvider config={config} defaultTheme={themeName}>
+          <Theme name={themeName}>
+            <YStack flex={1} backgroundColor="$background" minHeight="100vh">
               <Story />
             </YStack>
           </Theme>
@@ -35,7 +72,7 @@ const preview: Preview = {
   ],
 
   initialGlobals: {
-    theme: allThemes[0] ?? "claro",
+    theme: allThemes[0] || "claro",
   },
 
   globalTypes: {
@@ -47,7 +84,7 @@ const preview: Preview = {
         icon: "paintbrush",
         items: allThemes.map(t => ({
           value: t,
-          title: t[0].toUpperCase() + t.slice(1),
+          title: t.charAt(0).toUpperCase() + t.slice(1),
         })),
       }
     },

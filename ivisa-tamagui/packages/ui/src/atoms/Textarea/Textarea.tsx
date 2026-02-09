@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React from 'react'
 import {
   TextArea as TamaguiTextArea,
@@ -131,8 +131,10 @@ export interface TextareaProps
  *
  * A multi-line input field based on Tamagui TextArea.
  * Supports variants, error states, and strict typing.
+ *
+ * @component
  */
-const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, TextareaProps>(
+const TextareaImpl = React.forwardRef<any, TextareaProps>(
   (
     {
       variant = 'default',
@@ -192,8 +194,18 @@ const TextareaImpl = React.forwardRef<React.ElementRef<typeof TamaguiTextArea>, 
 
 TextareaImpl.displayName = 'Textarea'
 
+// Export the inner implementation for react-docgen to parse reliably
+export { TextareaImpl as TextareaComponent }
+
 export const Textarea = withErrorLogging<TextareaProps, React.ElementRef<typeof TamaguiTextArea>>(
   'Textarea',
   TextareaImpl
 )
+
+/**
+ * Docs-only wrapper to help react-docgen parse props reliably.
+ * This is a thin pass-through used only by doc generators.
+ */
+export const TextareaDocs = (props: TextareaProps) => <TextareaImpl {...props} />
+TextareaDocs.displayName = 'TextareaDocs'
 

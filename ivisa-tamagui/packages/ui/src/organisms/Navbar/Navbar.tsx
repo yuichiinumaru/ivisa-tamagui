@@ -1,86 +1,94 @@
 import React from 'react'
-import { XStack, YStack, Text, GetProps } from 'tamagui'
+import { XStack, YStack, Text } from 'tamagui'
 import { Logo } from '../../atoms/Logo/Logo'
-import { Avatar } from '../../atoms/Avatar'
+import { Avatar } from '../../atoms/Avatar/Avatar'
 import { Button } from '../../atoms/Button'
 
 export interface UserProfile {
   name?: string
   role?: string
   avatarUrl?: string
+  status?: string
 }
 
 export interface NavbarProps {
   logo?: React.ReactNode
-  center?: React.ReactNode
+  center?: React.ReactNode 
   actions?: React.ReactNode
   user?: UserProfile
   fixed?: boolean
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ logo, center, actions, user, fixed = true }) => {
-  const headerProps: Partial<GetProps<typeof YStack>> = {
-    tag: 'header',
-    width: '100%',
-    position: fixed ? 'fixed' : 'relative',
-    top: fixed ? 0 : undefined,
-    left: fixed ? 0 : undefined,
-    right: fixed ? 0 : undefined,
-    zIndex: 100,
-    backgroundColor: '$background',
-    borderBottomWidth: 1,
-    borderColor: '$borderColor',
-    py: '$2',
-    px: '$4',
-    alignItems: 'center',
-    justifyContent: 'center',
-    role: 'navigation',
-    'aria-label': 'Barra de navegação principal',
-  }
-
-  const containerProps: Partial<GetProps<typeof XStack>> = {
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    maxWidth: 1400,
-    mx: 'auto',
-    gap: '$4',
-  }
-
-  const leftProps: Partial<GetProps<typeof XStack>> = { alignItems: 'center', gap: '$3' }
-  const centerProps: Partial<GetProps<typeof XStack>> = { flex: 1, alignItems: 'center', justifyContent: 'center', 'aria-live': 'polite' }
-  const rightProps: Partial<GetProps<typeof XStack>> = { alignItems: 'center', gap: '$3' }
-  const userProps: Partial<GetProps<typeof XStack>> = { alignItems: 'center', gap: '$3' }
-  const nameTextProps: Partial<GetProps<typeof Text>> = { fontWeight: '600', fontSize: '$3' }
-  const roleTextProps: Partial<GetProps<typeof Text>> = { fontSize: '$2', color: '$gray11' }
-  const buttonProps: Partial<GetProps<typeof Button>> = { chromeless: true }
-
+export const Navbar: React.FC<NavbarProps> = ({ 
+  logo, 
+  center, 
+  actions, 
+  user, 
+  fixed = false 
+}) => {
   return (
-    // local casts to `any` keep Tamagui runtime behavior but avoid index-signature typing noise
-    <YStack {...headerProps}>
-      <XStack {...containerProps}>
-        <XStack {...leftProps}>{logo ?? <Logo variant="symbol" />}</XStack>
-
-        <XStack {...centerProps}>{center}</XStack>
-
-        <XStack {...rightProps}>
-          {actions}
-          {user ? (
-            <XStack {...userProps}>
-              <Avatar src={user.avatarUrl} />
-              <YStack>
-                <Text {...nameTextProps}>{user.name}</Text>
-                <Text {...roleTextProps}>{user.role}</Text>
+    <YStack
+      tag="header"
+      width="100%"
+      position={fixed ? 'fixed' : 'relative'}
+      top={0}
+      left={0}
+      zIndex={1000}
+      backgroundColor="$background"
+      borderBottomWidth={1}
+      borderColor="$borderColor"
+      paddingVertical="$2"
+      paddingHorizontal="$4"
+      alignItems="center"
+    >
+      <XStack
+        width="100%"
+        alignItems="center"
+        justifyContent="space-between"
+        maxWidth={1440}
+        gap="$4"
+      >
+        {/* ESQUERDA: Logo e Identidade */}
+        <XStack alignItems="center" gap="$3" minWidth={200}>
+          {logo ?? (
+            <XStack alignItems="center" gap="$2">              
+              <Logo variant="symbol" />
+              <YStack $sm={{ display: 'none' }}>
+                <Text fontWeight="800" fontSize="$4" lineHeight={18} color="$blue10">
+                  IVISA
+                </Text>
+                <Text fontSize="$1" color="$gray10" fontWeight="600">
+                  VERSÃO 1.0.0
+                </Text>
               </YStack>
             </XStack>
-          ) : (
-            <Button {...buttonProps}>Entrar</Button>
           )}
+        </XStack>
+
+        {/* CENTRO: Slot flexível (Onde injetamos o SearchBar via Story) */}
+        <XStack flex={1} justifyContent="center" alignItems="center">
+          {center}
+        </XStack>
+
+        {/* DIREITA: Perfil e Ações */}
+        <XStack alignItems="center" gap="$3" minWidth={200} justifyContent="flex-end">
+          {actions}
+
+          {user ? (
+            <XStack alignItems="center" gap="$3">
+              <YStack alignItems="flex-end" $sm={{ display: 'none' }}>
+                <Text fontWeight="700" fontSize="$3" color="$color">
+                  {user.name}
+                </Text>
+                <Text fontSize="$1" color="$green10" fontWeight="800">
+                  {user.status ?? 'ONLINE'}
+                </Text>
+              </YStack>
+              <Avatar src={user.avatarUrl} size="$3" />
+            </XStack>
+          ) : null}
         </XStack>
       </XStack>
     </YStack>
   )
 }
-
-export default Navbar
-

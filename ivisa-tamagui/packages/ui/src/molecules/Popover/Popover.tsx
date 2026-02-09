@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Popover as TamaguiPopover,
   PopoverProps,
@@ -151,8 +150,5 @@ export {
   PopoverClose,
   usePopoverContext,
 }
-export type PopoverContentProps = React.ComponentProps<typeof PopoverContent>
 
-export type PopoverProps = React.ComponentProps<typeof Popover>
-
-export type PopoverTriggerProps = React.ComponentProps<typeof PopoverTrigger>
+// Removed trailing React.ComponentProps alias exports to reduce duplicate-type declarations

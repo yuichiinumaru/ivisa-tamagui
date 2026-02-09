@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
 import { YStack, Text, useTheme } from 'tamagui'
 import { VictoryChart, VictoryPolarAxis, VictoryBar, VictoryContainer, VictoryTheme } from 'victory'

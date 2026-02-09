@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen, fireEvent } from '../../test-utils'
 import { SignaturePad } from './SignaturePad'
 import React from 'react'

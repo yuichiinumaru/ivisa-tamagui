@@ -1,11 +1,10 @@
-// @ts-nocheck
 import React, { useState } from 'react'
 import { YStack, XStack, GetProps, styled, Paragraph, useMedia } from 'tamagui'
 import { AlertTriangle, DatabaseZap, Menu, X } from '@tamagui/lucide-icons'
 
 import { Skeleton } from '../../atoms/Skeleton'
 import { Button } from '../../atoms/Button'
-import { Alert } from '../../atoms/Alert'
+import { Alert } from '../../atoms/Alert/Alert'
 import { H4 } from '../../atoms/Typography'
 
 export const DashboardShellFrame = styled(YStack, {

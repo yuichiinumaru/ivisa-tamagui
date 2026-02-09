@@ -6,7 +6,7 @@ import { MoreVertical } from '@tamagui/lucide-icons'
 import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { YStack } from 'tamagui'
-import { Avatar } from '../../atoms/Avatar'
+import { Avatar } from '../../atoms/Avatar/Avatar'
 import { Button } from '../../atoms/Button'
 import { HorizontalBarGroup } from './HorizontalBarGroup'
 

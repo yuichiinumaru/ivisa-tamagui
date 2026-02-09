@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   Root,
   Menu,
@@ -351,7 +350,7 @@ const MenubarSub = Sub
 const MenubarRadioGroup = RadioGroup
 const MenubarRoot = MenubarFrame
 
-type MenubarProps = GetProps<typeof MenubarFrame> & {
+export type MenubarProps = GetProps<typeof MenubarFrame> & {
   isLoading?: boolean
   hasError?: boolean
   isDisabled?: boolean
@@ -447,5 +446,4 @@ export {
   MenubarSub,
   MenubarShortcut,
 }
-
-export type MenubarProps = React.ComponentProps<typeof Menubar>
+// `MenubarProps` is defined and exported above.

@@ -1,9 +1,9 @@
-// @ts-nocheck
-import type { Meta, StoryObj } from '@storybook/react'
-import { userEvent, within } from '@storybook/test'
-import { Search } from '@tamagui/lucide-icons'
-import { YStack, Text } from 'tamagui'
-import { Input } from './Input'
+import React, { useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within } from '@storybook/test';
+import { Search } from '@tamagui/lucide-icons';
+import { YStack, Text } from 'tamagui';
+import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {
   title: 'Átomos/Input',
@@ -54,21 +54,21 @@ export const Filled: Story = {
 }
 
 export const ComIcone: Story = {
-  render: () => (
+  render: (args) => (
     <YStack gap="$4" width={300}>
       <Text>Input com Ícone à Esquerda</Text>
-      <Input>
+      <Input {...args}>
         <Input.Icon>
-          <Search size="$1" />
+          <Search size={16} />
         </Input.Icon>
         <Input.Field placeholder="Buscar..." />
       </Input>
 
       <Text>Input com Ícone à Direita</Text>
-      <Input>
+      <Input {...args}>
         <Input.Field placeholder="Buscar..." />
         <Input.Icon>
-          <Search size="$1" />
+          <Search size={16} />
         </Input.Icon>
       </Input>
     </YStack>
@@ -76,10 +76,10 @@ export const ComIcone: Story = {
 }
 
 export const ComBotao: Story = {
-  render: () => (
+  render: (args) => (
     <YStack gap="$4" width={300}>
       <Text>Input com Botão</Text>
-      <Input>
+      <Input {...args}>
         <Input.Field placeholder="Endereço de e-mail" />
         <Input.Button>
           Inscrever-se
@@ -90,15 +90,15 @@ export const ComBotao: Story = {
 }
 
 export const ComposedComplete: Story = {
-  render: () => (
+  render: (args) => (
     <YStack gap="$4" width={300}>
       <Text>Ícone + Campo + Botão</Text>
-      <Input>
+      <Input {...args}>
         <Input.Icon>
-          <Search size="$1" />
+          <Search size={16} />
         </Input.Icon>
         <Input.Field placeholder="Buscar..." />
-        <Input.Button themeInverse>
+        <Input.Button variant="secondary">
           Ir
         </Input.Button>
       </Input>
@@ -113,7 +113,7 @@ export const Sizes: Story = {
       <Input size="default" placeholder="Padrão" />
       <Input size="lg" placeholder="Grande" />
 
-      <Text marginTop="$4">Tamanhos Compostos (herdam do Frame)</Text>
+      <Text marginTop="$4" fontWeight="bold">Tamanhos Compostos</Text>
       <Input size="sm">
          <Input.Icon><Search size={12} /></Input.Icon>
          <Input.Field placeholder="Pequeno Composto" />
@@ -139,7 +139,7 @@ export const ComposedLoading: Story = {
       <Text>Input Composto em Carregamento</Text>
       <Input loading>
         <Input.Icon>
-          <Search size="$1" />
+          <Search size={16} />
         </Input.Icon>
         <Input.Field placeholder="Buscando..." />
         <Input.Button>
@@ -150,17 +150,16 @@ export const ComposedLoading: Story = {
   )
 }
 
-
 export const TextoLongo: Story = {
   args: {
-    defaultValue: 'Este é um texto muito longo para testar o comportamento do input com strings que excedem seu tamanho horizontal para garantir que o overflow ou o scroll funcionem como esperado.',
+    defaultValue: 'Este é um texto muito longo para testar o comportamento do input com strings que excedem seu tamanho horizontal.',
   },
 }
 
 export const ConstraintCheck: Story = {
   render: () => (
     <YStack gap="$4" width={150}>
-      <Text>Input em um contêiner pequeno</Text>
+      <Text>Input em contêiner pequeno</Text>
       <Input placeholder="Placeholder..." />
       <Input>
         <Input.Field placeholder="Composto..." />
@@ -194,12 +193,72 @@ export const Sucesso: Story = {
   },
 }
 
-export const Error: Story = {
+export const ErrorState: Story = {
+  name: 'Erro',
   render: () => (
     <YStack gap="$4" width={300}>
       <Input state="error" defaultValue="email-invalido" />
-      <Input.Hint>O e-mail inserido é inválido.</Input.Hint>
+      <Input.Hint color="$destructive">O e-mail inserido é inválido.</Input.Hint>
     </YStack>
   )
 }
 
+export const InputGPTDefault: Story = {
+  name: 'InputGPT/Default',
+  render: () => {
+    const Example = () => {
+      const [value, setValue] = useState('')
+      const handleSend = () => {
+        if (!value.trim()) return
+        console.log('send:', value)
+        setValue('')
+      }
+      return (
+        <YStack width={600} gap="$3">
+          <Input>
+            <Input.Field
+              placeholder="Converse com o assistente... (Enter envia)"
+              value={value}
+              onChangeText={setValue}
+              onSubmitEditing={handleSend}
+              returnKeyType="send" 
+            />
+            <Input.Button onPress={handleSend}>Enviar</Input.Button>
+          </Input>
+        </YStack>
+      )
+    }
+    return <Example />
+  },
+}
+
+export const InputGPTMultiline: Story = {
+  name: 'InputGPT/Multiline',
+  render: () => {
+    const Example = () => {
+      const [value, setValue] = useState('')
+      
+      const handleSend = () => {
+        if (!value.trim()) return
+        console.log('send multiline:', value)
+        setValue('')
+      }
+
+      return (
+        <YStack width={600} gap="$3">
+          <Input>
+            <Input.Field
+              placeholder="Escreva sua mensagem multiline..."
+              value={value}
+              onChangeText={setValue}
+              multiline
+              numberOfLines={3}
+            />
+            <Input.Button onPress={handleSend}>Enviar</Input.Button>
+          </Input>
+        </YStack>
+      )
+    }
+    return <Example />
+  },
+}

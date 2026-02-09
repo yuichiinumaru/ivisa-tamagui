@@ -1,3 +1,3 @@
-// @ts-nocheck
+// Removed ts-nocheck
 export * from './Sonner'
 

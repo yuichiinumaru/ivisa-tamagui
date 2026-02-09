@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React, { forwardRef } from 'react'
 import { Stack, StackProps, Text } from 'tamagui'
 

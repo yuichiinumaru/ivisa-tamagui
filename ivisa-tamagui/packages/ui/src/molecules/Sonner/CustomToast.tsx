@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React from 'react';
 import { XStack, YStack } from '../../atoms/Stack';
 import { Text } from '../../atoms/Typography';

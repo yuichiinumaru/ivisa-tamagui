@@ -89,10 +89,11 @@ const config = {
     if (!config.resolve) config.resolve = {};
     if (!config.module) config.module = { rules: [] };
 
-    // Fix for module resolution in monorepo
+    // Fix for module resolution in monorepo — prefer workspace node_modules first
+    const workspaceNodeModules = path.resolve(__dirname, '../../node_modules');
     config.resolve.modules = [
+      workspaceNodeModules,
       ...(config.resolve.modules || []),
-      path.resolve(__dirname, '../../node_modules'),
       'node_modules',
     ];
 
@@ -134,6 +135,21 @@ const config = {
       './tamagui.config': tamaguiConfigPath,
       'tamagui.config': tamaguiConfigPath,
       '@tamagui/config': tamaguiConfigPath,
+
+        // Force all Tamagui packages to resolve to the workspace node_modules
+        // This prevents duplicate Tamagui instances at runtime which break
+        // theme/animations detection in Storybook.
+        // We use the `workspaceNodeModules` computed above so aliases remain
+        // correct regardless of where the workspace lives on disk.
+        'tamagui': (function(){ try { return require.resolve('tamagui', { paths: [workspaceNodeModules] }) } catch(e){ return path.resolve(workspaceNodeModules, 'tamagui') } })(),
+        '@tamagui/core': (function(){ try { return require.resolve('@tamagui/core', { paths: [workspaceNodeModules] }) } catch(e){ return path.resolve(workspaceNodeModules, '@tamagui', 'core') } })(),
+        '@tamagui/web': (function(){ try { return require.resolve('@tamagui/web', { paths: [workspaceNodeModules] }) } catch(e){ return path.resolve(workspaceNodeModules, '@tamagui', 'web') } })(),
+        '@tamagui/animations-react-native': (function(){ try { return require.resolve('@tamagui/animations-react-native', { paths: [workspaceNodeModules] }) } catch(e){ return path.resolve(workspaceNodeModules, '@tamagui', 'animations-react-native') } })(),
+        '@tamagui/sheet': (function(){ try { return require.resolve('@tamagui/sheet', { paths: [workspaceNodeModules] }) } catch(e){ return path.resolve(workspaceNodeModules, '@tamagui', 'sheet') } })(),
+        '@tamagui/portal': (function(){ try { return require.resolve('@tamagui/portal', { paths: [workspaceNodeModules] }) } catch(e){ return path.resolve(workspaceNodeModules, '@tamagui', 'portal') } })(),
+        '@tamagui/lucide-icons': (function(){ try { return require.resolve('@tamagui/lucide-icons', { paths: [workspaceNodeModules] }) } catch(e){ return path.resolve(workspaceNodeModules, '@tamagui', 'lucide-icons') } })(),
+        '@tamagui/theme-builder': (function(){ try { return require.resolve('@tamagui/theme-builder', { paths: [workspaceNodeModules] }) } catch(e){ return path.resolve(workspaceNodeModules, '@tamagui', 'theme-builder') } })(),
+        '@tamagui/adapt': (function(){ try { return require.resolve('@tamagui/adapt', { paths: [workspaceNodeModules] }) } catch(e){ return path.resolve(workspaceNodeModules, '@tamagui', 'adapt') } })(),
 
       // Optimization: Alias @ivisa/ui to source
       '@ivisa/ui': path.resolve(__dirname, '../src'),

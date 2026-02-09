@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Avatar, AvatarFallback, AvatarImage } from '../../atoms/Avatar'
+import { Avatar } from '../../atoms/Avatar/Avatar'
 import { Skeleton } from '../../atoms/Skeleton'
 import React from 'react'
 import { GetProps, SizeTokens, Text, XStack, styled } from 'tamagui'
@@ -116,10 +116,10 @@ export const AvatarGroup = ({
           data-haserror={hasError}
         >
           <Avatar size={size}>
-            <AvatarImage alt={item.alt ?? item.fallback} src={item.src} />
-            <AvatarFallback>
+            <Avatar.Image alt={item.alt ?? item.fallback} src={item.src} />
+            <Avatar.Fallback>
               <Text>{item.fallback}</Text>
-            </AvatarFallback>
+            </Avatar.Fallback>
           </Avatar>
         </AvatarGroupItemFrame>
       ))}
@@ -132,11 +132,11 @@ export const AvatarGroup = ({
           data-haserror={hasError}
         >
           <Avatar size={size}>
-            <AvatarFallback>
+            <Avatar.Fallback>
               <Text size="$4" fontWeight="bold">
                 +{remainingCount}
               </Text>
-            </AvatarFallback>
+            </Avatar.Fallback>
           </Avatar>
         </AvatarGroupItemFrame>
       )}

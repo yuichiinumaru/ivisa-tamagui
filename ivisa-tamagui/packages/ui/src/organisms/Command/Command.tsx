@@ -1,4 +1,4 @@
-// @ts-nocheck
+// removed // @ts-nocheck to enable type checking
 import React from 'react'
 import { Command as CommandPrimitive } from 'cmdk'
 import { styled, Text, GetProps, TamaguiElement, XStack, YStack } from 'tamagui'
@@ -31,7 +31,7 @@ Command.displayName = CommandPrimitive.displayName
 
 // Command Dialog
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface CommandDialogProps extends React.ComponentPropsWithoutRef<typeof Dialog> { }
+export interface CommandDialogProps extends React.ComponentPropsWithoutRef<typeof Dialog> { }
 
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => {
   return (
@@ -237,8 +237,6 @@ export {
   CommandShortcut,
   CommandSeparator,
 }
-
-export type CommandDialogProps = React.ComponentProps<typeof CommandDialog>
 
 export type CommandSkeletonProps = React.ComponentProps<typeof CommandSkeleton>
 

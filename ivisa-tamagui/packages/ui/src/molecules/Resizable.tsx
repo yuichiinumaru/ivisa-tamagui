@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import {
   styled,
   YStack,
