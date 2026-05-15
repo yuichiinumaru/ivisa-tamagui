@@ -1,8 +1,11 @@
 // @ts-nocheck
 import { Skeleton } from '../../atoms/Skeleton'
-import React from 'react'
+import React, { useState } from 'react'
 import { Anchor, GetProps, Text, XStack, styled } from 'tamagui'
 import { Button } from '../../atoms/Button'
+import { MoreHorizontal } from '@tamagui/lucide-icons'
+import { Popover, PopoverContent, PopoverTrigger } from '../Popover'
+import { ListItem, YGroup } from 'tamagui'
 
 const BreadcrumbRoot = styled(XStack, {
   name: 'BreadcrumbRoot',
@@ -83,6 +86,9 @@ export interface BreadcrumbProps {
   ariaLabel?: string
   isLoading?: boolean
   rightSlot?: React.ReactNode
+  maxItems?: number
+  itemsBeforeCollapse?: number
+  itemsAfterCollapse?: number
 }
 
 export const Breadcrumb: React.FC<BreadcrumbProps> = ({
@@ -91,7 +97,12 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
   ariaLabel = 'Navegação',
   isLoading = false,
   rightSlot = null,
+  maxItems = 4,
+  itemsBeforeCollapse = 1,
+  itemsAfterCollapse = 2,
 }) => {
+  const [open, setOpen] = useState(false)
+
   if (isLoading) {
     return (
       <BreadcrumbRoot data-testid="breadcrumb-skeleton">
@@ -108,38 +119,90 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
     return null
   }
 
+  const shouldCollapse = items.length > maxItems
+
+  let visibleItems = items
+  let collapsedItems: BreadcrumbItem[] = []
+
+  if (shouldCollapse) {
+    const start = items.slice(0, itemsBeforeCollapse)
+    const end = items.slice(items.length - itemsAfterCollapse)
+    collapsedItems = items.slice(itemsBeforeCollapse, items.length - itemsAfterCollapse)
+    visibleItems = [...start, { label: '...', href: '#' } as BreadcrumbItem, ...end]
+  }
+
+  const renderItem = (item: BreadcrumbItem, index: number, isCollapsedTrigger = false) => {
+    const isLast = index === visibleItems.length - 1
+    const linkRel = item.rel ?? (item.target === '_blank' ? 'noreferrer noopener' : undefined)
+
+    if (isCollapsedTrigger) {
+      return (
+        <BreadcrumbItemWrapper key="collapsed-trigger">
+          <Popover open={open} onOpenChange={setOpen} placement="bottom-start">
+            <PopoverTrigger asChild>
+              <Button size="$sm" icon={MoreHorizontal} circular />
+            </PopoverTrigger>
+            <PopoverContent padding={0} minWidth={150}>
+              <YGroup>
+                {collapsedItems.map((cItem, cIndex) => (
+                  <YGroup.Item key={`collapsed-${cIndex}`}>
+                    <ListItem
+                      hoverTheme
+                      pressTheme
+                      onPress={cItem.onPress}
+                      // Use href if available by wrapping in Anchor or similar if ListItem supports it,
+                      // but for simplicity here treating as pressable
+                    >
+                      <Text>{cItem.label}</Text>
+                    </ListItem>
+                  </YGroup.Item>
+                ))}
+              </YGroup>
+            </PopoverContent>
+          </Popover>
+          <BreadcrumbSeparator aria-hidden={true}>{separator}</BreadcrumbSeparator>
+        </BreadcrumbItemWrapper>
+      )
+    }
+
+    return (
+      <BreadcrumbItemWrapper key={`${item.label}-${index}`} role="listitem">
+        {isLast ? (
+          <BreadcrumbCurrent aria-current="page">{item.label}</BreadcrumbCurrent>
+        ) : item.href ? (
+          <BreadcrumbLink
+            href={item.href}
+            target={item.target}
+            rel={linkRel}
+            onPress={item.onPress}
+          >
+            {item.label}
+          </BreadcrumbLink>
+        ) : (
+          <BreadcrumbButton onPress={item.onPress}>
+            <BreadcrumbButtonLabel>{item.label}</BreadcrumbButtonLabel>
+          </BreadcrumbButton>
+        )}
+
+        {!isLast && (
+          <BreadcrumbSeparator aria-hidden={true}>{separator}</BreadcrumbSeparator>
+        )}
+      </BreadcrumbItemWrapper>
+    )
+  }
+
   return (
     <BreadcrumbRoot role="navigation" aria-label={ariaLabel}>
       <BreadcrumbList role="list">
-        {items.map((item, index) => {
-          const isLast = index === items.length - 1
-          const linkRel = item.rel ?? (item.target === '_blank' ? 'noreferrer noopener' : undefined)
-
-          return (
-            <BreadcrumbItemWrapper key={`${item.label}-${index}`} role="listitem">
-              {isLast ? (
-                <BreadcrumbCurrent aria-current="page">{item.label}</BreadcrumbCurrent>
-              ) : item.href ? (
-                <BreadcrumbLink
-                  href={item.href}
-                  target={item.target}
-                  rel={linkRel}
-                  onPress={item.onPress}
-                >
-                  {item.label}
-                </BreadcrumbLink>
-              ) : (
-                <BreadcrumbButton onPress={item.onPress}>
-                  <BreadcrumbButtonLabel>{item.label}</BreadcrumbButtonLabel>
-                </BreadcrumbButton>
-              )}
-
-              {!isLast && (
-                <BreadcrumbSeparator aria-hidden={true}>{separator}</BreadcrumbSeparator>
-              )}
-            </BreadcrumbItemWrapper>
-          )
-        })}
+        {shouldCollapse ? (
+          <>
+            {items.slice(0, itemsBeforeCollapse).map((item, i) => renderItem(item, i))}
+            {renderItem({ label: '...' }, 1, true)}
+            {items.slice(items.length - itemsAfterCollapse).map((item, i) => renderItem(item, i + itemsBeforeCollapse + 1))}
+          </>
+        ) : (
+          items.map((item, index) => renderItem(item, index))
+        )}
       </BreadcrumbList>
 
       {rightSlot && <XStack>{rightSlot}</XStack>}
@@ -148,4 +211,3 @@ export const Breadcrumb: React.FC<BreadcrumbProps> = ({
 }
 
 Breadcrumb.displayName = 'Breadcrumb'
-

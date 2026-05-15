@@ -5,7 +5,7 @@ import { expect, fn } from '@storybook/test'
 import { Button } from './Button'
 import { Text } from 'tamagui'
 
-const meta: Meta<any> = {
+const meta: Meta<typeof Button> = {
   title: 'Átomos/Button',
   component: Button,
   tags: ['autodocs'],
@@ -29,11 +29,11 @@ Botões são usados para disparar ações ou navegação. Eles devem ser usados 
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['default', 'secondary', 'destructive', 'outline', 'ghost'],
+      options: ['default', 'secondary', 'destructive', 'outline', 'ghost', 'quiet'],
     },
     size: {
       control: { type: 'select' },
-      options: ['sm', 'default', 'lg'],
+      options: ['sm', 'default', 'lg', 'xl'],
     },
     children: {
       control: { type: 'text' },
@@ -59,9 +59,9 @@ Botões são usados para disparar ações ou navegação. Eles devem ser usados 
 
 export default meta
 
-type Story = StoryObj<any>
+type Story = StoryObj<typeof Button>
 
-export const Primario: Story = {
+export const Default: Story = {
   args: {
     children: 'Enviar',
     variant: 'default',
@@ -79,73 +79,87 @@ export const Primario: Story = {
   },
 }
 
-export const Secundario: Story = {
+export const Secondary: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
     children: 'Cancelar',
     variant: 'secondary',
   },
 }
 
-export const Destrutivo: Story = {
+export const Destructive: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
     children: 'Excluir',
     variant: 'destructive',
   },
 }
 
-export const Contorno: Story = {
+export const Outline: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
     variant: 'outline',
   },
 }
 
-export const Fantasma: Story = {
+export const Ghost: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
     variant: 'ghost',
   },
 }
 
-export const ComIcone: Story = {
+export const Quiet: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
+    variant: 'quiet',
+  },
+}
+
+export const WithIcon: Story = {
+  args: {
+    ...Default.args,
     children: 'Salvar',
   },
   render: (args) => <Button {...args} leftIcon={<Text>✅</Text>} />,
 }
 
-export const Pequeno: Story = {
+export const Small: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
     size: 'sm',
   },
 }
 
-export const Grande: Story = {
+export const Large: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
     size: 'lg',
   },
 }
 
-export const Desabilitado: Story = {
+export const ExtraLarge: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
+    size: 'xl',
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    ...Default.args,
     disabled: true,
   },
 }
 
-export const ComTextoLongo: Story = {
+export const LongText: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
     children: 'Este é um texto excessivamente longo para um botão para testar o comportamento de quebra de linha e truncamento.',
   },
 }
 
-export const EmContainerPequeno: Story = {
+export const SmallContainer: Story = {
   decorators: [
     (Story) => (
       <div style={{ maxWidth: '150px', border: '1px solid #ccc', padding: '10px' }}>
@@ -154,15 +168,14 @@ export const EmContainerPequeno: Story = {
     ),
   ],
   args: {
-    ...Primario.args,
+    ...Default.args,
     children: 'Botão Pressionado',
   },
 }
 
-export const Carregando: Story = {
+export const Loading: Story = {
   args: {
-    ...Primario.args,
+    ...Default.args,
     loading: true,
   },
 }
-

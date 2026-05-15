@@ -1,95 +1,47 @@
 // @ts-nocheck
-import { Button } from '@ivisa/ui/atoms/Button'
-import { Home } from '@tamagui/lucide-icons'
-import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { YStack } from 'tamagui'
-import { Breadcrumb, BreadcrumbProps } from './Breadcrumb'
+import { Meta, StoryObj } from '@storybook/react'
+import { Breadcrumb } from './Breadcrumb'
 
-const meta: Meta<BreadcrumbProps> = {
+const meta: Meta<typeof Breadcrumb> = {
   title: 'Moléculas/Breadcrumb',
   component: Breadcrumb,
-  tags: ['autodocs'],
-  args: {
-    ariaLabel: 'Navegação',
-  },
-  parameters: {
-    docs: {
-      description: {
-        component:
-          'O Breadcrumb é um componente de navegação que ajuda os usuários a entenderem sua localização atual em uma hierarquia de páginas ou seções.',
-      },
-    },
+  argTypes: {
+    maxItems: { control: 'number' },
   },
 }
 
 export default meta
 
-type Story = StoryObj<React.ComponentProps<typeof meta>>
+type Story = StoryObj<typeof Breadcrumb>
 
-const itemsPadrao = [
-  { label: 'Início', href: '#' },
-  { label: 'Projetos', href: '#' },
-  { label: 'Sistema de Design', href: '#' },
-  { label: 'Documentos' },
+const items = [
+  { label: 'Home', href: '/' },
+  { label: 'Products', href: '/products' },
+  { label: 'Electronics', href: '/products/electronics' },
+  { label: 'Laptops', href: '/products/electronics/laptops' },
+  { label: 'Gaming', href: '/products/electronics/laptops/gaming' },
+  { label: 'Alienware', href: '/products/electronics/laptops/gaming/alienware' },
 ]
 
-export const Padrao: Story = {
-  name: 'Padrão',
+export const Default: Story = {
   args: {
-    items: itemsPadrao,
+    items: items.slice(0, 3),
   },
 }
 
-export const ComSeparadorCustomizado: Story = {
-  name: 'Com Separador Customizado',
+export const Collapsed: Story = {
   args: {
-    items: itemsPadrao,
-    separator: '>',
+    items: items,
+    maxItems: 4,
   },
 }
 
-export const CaminhoLongo: Story = {
-  name: 'Caminho Longo',
+export const CustomCollapse: Story = {
   args: {
-    items: [
-      { label: 'Início', href: '#' },
-      { label: 'Plataforma', href: '#' },
-      { label: 'Componentes', href: '#' },
-      { label: 'Navegação', href: '#' },
-      { label: 'Breadcrumb', href: '#' },
-      { label: 'Especificações' },
-    ],
-    separator: '•',
+    items: items,
+    maxItems: 3,
+    itemsBeforeCollapse: 2,
+    itemsAfterCollapse: 1,
   },
 }
-
-export const Carregando: Story = {
-  name: 'Carregando',
-  args: {
-    isLoading: true,
-  },
-}
-
-export const ComAcao: Story = {
-  name: 'Com Ação',
-  args: {
-    items: itemsPadrao,
-    rightSlot: <Button icon={<Home size="$1" />}>Ação</Button>,
-  },
-}
-
-export const ComContainerEstreito: Story = {
-  name: 'Com Container Estreito',
-  args: {
-    items: CaminhoLongo.args?.items,
-  },
-  decorators: [
-    (Story) => (
-      <YStack width={300} borderwidth={1} borderColor="$borderColor" p="$2" borderRadius="$2">
-        <Story />
-      </YStack>
-    ),
-  ],
-}
-

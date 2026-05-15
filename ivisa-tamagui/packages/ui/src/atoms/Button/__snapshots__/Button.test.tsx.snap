@@ -15,11 +15,9 @@ exports[`Button matches snapshot 1`] = `
         style="color: var(--color); display: contents;"
       >
         <button
-          class="is_Button "
-          data-disable-theme="true"
+          class="is_Button _backgroundColor-0hover-primaryHove114 _backgroundColor-0active-primary _o-0active-0--8 _dsp-flex _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0 _fd-row _ai-center _jc-center _gap-t-space-sm _backgroundColor-primary _col-primaryFore1237460601 _h-t-size-md _pr-t-space-lg _pl-t-space-lg"
+          font-family="$body"
           role="button"
-          style="display: flex; flex-basis: auto; box-sizing: border-box; position: relative; min-height: 0px; min-width: 0px; flex-shrink: 0; padding-right: var(--t-space-lg); padding-left: var(--t-space-lg); height: var(--t-size-md); border-top-left-radius: var(--t-radius-true); border-top-right-radius: var(--t-radius-true); border-bottom-right-radius: var(--t-radius-true); border-bottom-left-radius: var(--t-radius-true); justify-content: center; align-items: center; flex-wrap: nowrap; flex-direction: row; cursor: pointer; background-color: var(--primary); border-top-color: transparent; border-right-color: transparent; border-bottom-color: transparent; border-left-color: transparent; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; outline-color: rgba(0, 0, 0, 0); border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; opacity: 1; gap: var(--t-space-sm); color: var(--primaryForeground);"
-          tabindex="0"
         >
           <div
             class="_dsp-flex _ai-stretch _fd-column _fb-auto _bxs-border-box _pos-relative _minHeight-0px _minWidth-0px _fs-0"

@@ -53,3 +53,77 @@
 - **Architecture Compliance:**
   - `Breadcrumb`, `DatePicker`, `HoverCard`, `MonthsPicker`, `OTPInput`, `Pagination`, `Toast`, `DropdownMenu`: Updated to import Atoms/Molecules from local packages instead of `tamagui`.
   - `AuthScreen`, `FilterBar`, `Form`: Fixed imports to use local Atoms (Input, Button, Select, Label).
+
+# v1.0.0 - Integration (2026-01-30)
+
+## Summary
+Consolidated "Maintenance Wave" fixes into the main branch. This release establishes a new stability baseline.
+
+## Changes
+- **CI**: Switched from `pnpm` to `yarn` in GitHub Actions to align with `AGENTS.md` and lockfile reality.
+- **Security**: Updated `scan:security` to report but not fail on low-severity vulnerabilities (Exit Code 14 bypass).
+- **Maintenance**: Removed broken submodule `references/magic-mcp`.
+- **Documentation**: Added System Knowledge Graph, Branch Integration Plan, and comprehensive file maps.
+
+# v1.1.0 - Wave 7 & 8 Improvements (2026-01-30)
+
+## Summary
+Implemented critical tasks from Wave 7 (Storybook Perfection) and Wave 8 (Professionalization), including new atoms, molecules, and component enhancements.
+
+## New Features
+- **ComboButton**: New molecule combining a main action with a dropdown menu.
+- **Coachmark**: New atom for onboarding/feature discovery overlays.
+- **Dropzone**: New atom for file upload with visual drag-and-drop states.
+- **ComponentStatus**: Documentation atom for component stability badges.
+
+## Enhancements
+- **Breadcrumb**: Added responsive collapsing logic ( prop) and updated stories.
+- **BarChart**: Implemented  Skeleton state.
+- **Button**: Added  variant and  size. Updated stories to standardized taxonomy.
+- **Input**: Added  and  variants,  size. Standardized stories.
+- **NotificationFeed**: Added  Skeleton state.
+
+## Documentation
+- Refactored  and  stories to use standardized English naming (e.g., , ) for better discoverability.
+
+# v1.1.0 - Wave 7 & 8 Improvements (2026-01-30)
+
+## Summary
+Implemented critical tasks from Wave 7 (Storybook Perfection) and Wave 8 (Professionalization), including new atoms, molecules, and component enhancements.
+
+## New Features
+- **ComboButton**: New molecule combining a main action with a dropdown menu.
+- **Coachmark**: New atom for onboarding/feature discovery overlays.
+- **Dropzone**: New atom for file upload with visual drag-and-drop states.
+- **ComponentStatus**: Documentation atom for component stability badges.
+
+## Enhancements
+- **Breadcrumb**: Added responsive collapsing logic (`maxItems` prop) and updated stories.
+- **BarChart**: Implemented `isLoading` Skeleton state.
+- **Button**: Added `quiet` variant and `xl` size. Updated stories to standardized taxonomy.
+- **Input**: Added `quiet` and `ghost` variants, `xl` size. Standardized stories.
+- **NotificationFeed**: Added `isLoading` Skeleton state.
+
+## Documentation
+- Refactored `Button` and `Input` stories to use standardized English naming (e.g., `Default`, `Secondary`) for better discoverability.
+
+# v1.1.0 - Wave 7 & 8 Improvements (2026-01-30)
+
+## Summary
+Implemented critical tasks from Wave 7 (Storybook Perfection) and Wave 8 (Professionalization), including new atoms, molecules, and component enhancements.
+
+## New Features
+- **ComboButton**: New molecule combining a main action with a dropdown menu.
+- **Coachmark**: New atom for onboarding/feature discovery overlays.
+- **Dropzone**: New atom for file upload with visual drag-and-drop states.
+- **ComponentStatus**: Documentation atom for component stability badges.
+
+## Enhancements
+- **Breadcrumb**: Added responsive collapsing logic (`maxItems` prop) and updated stories.
+- **BarChart**: Implemented `isLoading` Skeleton state.
+- **Button**: Added `quiet` variant and `xl` size. Updated stories to standardized taxonomy.
+- **Input**: Added `quiet` and `ghost` variants, `xl` size. Standardized stories.
+- **NotificationFeed**: Added `isLoading` Skeleton state.
+
+## Documentation
+- Refactored `Button` and `Input` stories to use standardized English naming (e.g., `Default`, `Secondary`) for better discoverability.
