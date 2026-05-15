@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from 'react'
 import { XStack, YStack, Text, Adapt } from 'tamagui'
 import { Input } from '../../atoms/Input'

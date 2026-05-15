@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Button as TamaguiButton, styled, GetProps, TamaguiElement, View, Text } from 'tamagui'
 import { Spinner } from '../Spinner'

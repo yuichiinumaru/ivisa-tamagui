@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { Ban } from '@tamagui/lucide-icons'
 import React from 'react'
 import { YStack, Text, GetProps, styled, Image, ImageProps } from 'tamagui'
@@ -60,7 +60,7 @@ const EmptyDescription = styled(Text, {
   },
 })
 
-type EmptyProps = GetProps<typeof EmptyFrame> & {
+export type EmptyProps = GetProps<typeof EmptyFrame> & {
   icon?: React.ReactElement
   image?: string
   imageProps?: ImageProps
@@ -150,6 +150,5 @@ const EmptyFrameAny: any = EmptyFrame
   )
 }
 
-export type EmptyProps = React.ComponentProps<typeof Empty>
-
-export type EmptySkeletonProps = React.ComponentProps<typeof EmptySkeleton>
+// `EmptyProps` is defined and exported above.
+// Removed trailing alias export to avoid duplicate-type declarations

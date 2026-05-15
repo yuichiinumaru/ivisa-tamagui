@@ -134,7 +134,7 @@ const NavigationMenuViewport = styled(NavigationMenuPrimitive.Viewport, {
   overflow: 'hidden',
 })
 
-type NavigationMenuProps = GetProps<typeof NavigationMenu> & {
+export type NavigationMenuProps = GetProps<typeof NavigationMenu> & {
   isLoading?: boolean
   rightSlot?: React.ReactNode
 }
@@ -176,5 +176,4 @@ export {
   NavigationMenuViewport,
   IndicatorArrow,
 }
-
-export type NavigationMenuComponentProps = React.ComponentProps<typeof NavigationMenuComponent>
+// Removed trailing alias export to avoid duplicate-type declarations

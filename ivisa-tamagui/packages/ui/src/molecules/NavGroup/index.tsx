@@ -1,3 +1,3 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 export * from './NavGroup'
 

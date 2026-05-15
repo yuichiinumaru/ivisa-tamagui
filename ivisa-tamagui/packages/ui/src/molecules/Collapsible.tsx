@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { ChevronDown } from '@tamagui/lucide-icons'
 import React, { useContext, useState } from 'react'
@@ -126,10 +124,4 @@ export const Collapsible = React.forwardRef<
   }
 )
 
-export type CollapsibleRootProps = React.ComponentProps<typeof CollapsibleRoot>
-
-export type CollapsibleTriggerProps = React.ComponentProps<typeof CollapsibleTrigger>
-
-export type CollapsibleContentProps = React.ComponentProps<typeof CollapsibleContent>
-
-export type CollapsibleProps = React.ComponentProps<typeof Collapsible>
+// Removed trailing React.ComponentProps alias exports to avoid duplicate-type declarations

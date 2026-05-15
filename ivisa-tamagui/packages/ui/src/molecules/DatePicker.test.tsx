@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import { render } from '../test-utils'
 import { DatePicker } from './DatePicker'
 

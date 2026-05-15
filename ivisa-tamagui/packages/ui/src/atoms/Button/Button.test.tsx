@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import { render, screen } from '../../test-utils'
 import { Button } from './Button'
 

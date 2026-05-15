@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 
 import { fireEvent, render } from '../../test-utils';
 import { Input } from './Input';

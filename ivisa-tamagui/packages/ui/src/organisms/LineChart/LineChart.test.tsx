@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { render, screen } from '@testing-library/react'
 import { LineChart } from './LineChart'
 import { AppProviders } from '../../providers/AppProviders'

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { styled, H1 as TamaguiH1, H2 as TamaguiH2, H3 as TamaguiH3, H4 as TamaguiH4, H5 as TamaguiH5, H6 as TamaguiH6, Text as TamaguiText, withStaticProperties } from 'tamagui';
 import { Skeleton } from './Skeleton';
@@ -210,30 +209,4 @@ export const Blockquote = styled(Text, {
 const BlockquoteAny: any = Blockquote
 
 
-export type TypographyProps = React.ComponentProps<typeof Typography>
-
-export type H1Props = React.ComponentProps<typeof H1>
-
-export type H2Props = React.ComponentProps<typeof H2>
-
-export type H3Props = React.ComponentProps<typeof H3>
-
-export type H4Props = React.ComponentProps<typeof H4>
-
-export type H5Props = React.ComponentProps<typeof H5>
-
-export type H6Props = React.ComponentProps<typeof H6>
-
-export type TextProps = React.ComponentProps<typeof Text>
-
-export type ParagraphProps = React.ComponentProps<typeof Paragraph>
-
-export type HeadingProps = React.ComponentProps<typeof Heading>
-
-export type TypographyTextProps = React.ComponentProps<typeof TypographyText>
-
-export type MutedTextProps = React.ComponentProps<typeof MutedText>
-
-export type LeadTextProps = React.ComponentProps<typeof LeadText>
-
-export type BlockquoteProps = React.ComponentProps<typeof Blockquote>
+// Removed trailing React.ComponentProps alias exports to reduce duplicate-type declarations

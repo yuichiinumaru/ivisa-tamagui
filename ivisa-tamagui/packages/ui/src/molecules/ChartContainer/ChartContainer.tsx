@@ -30,7 +30,7 @@ const ChartContainerFrame = styled(Card, {
   },
 })
 
-type ChartContainerProps = GetProps<typeof ChartContainerFrame> & {
+export type ChartContainerProps = GetProps<typeof ChartContainerFrame> & {
   title: string
   description?: string
   isLoading?: boolean
@@ -91,5 +91,3 @@ export const ChartContainer = ({
 }
 
 export default ChartContainer
-
-export type ChartContainerProps = React.ComponentProps<typeof ChartContainer>

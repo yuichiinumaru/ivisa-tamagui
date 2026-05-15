@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import { Calendar as CalendarIcon } from '@tamagui/lucide-icons'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'

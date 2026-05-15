@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck to enable type checking
 import { createThemes, defaultComponentThemes } from '@tamagui/theme-builder'
 import * as Colors from '@tamagui/colors'
 

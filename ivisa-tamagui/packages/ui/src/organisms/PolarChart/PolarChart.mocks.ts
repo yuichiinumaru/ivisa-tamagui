@@ -1,4 +1,3 @@
-// @ts-nocheck
 export const polarData = [
   { x: 'Jan', y: 10 },
   { x: 'Fev', y: 25 },
