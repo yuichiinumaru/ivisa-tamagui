@@ -38,5 +38,14 @@ describe('Navbar', () => {
     expect(getByText('Júlia')).toBeTruthy();
     expect(getByText('Admin')).toBeTruthy();
   });
+
+  it('renders status when role is not provided', () => {
+    const { getByText } = render(
+      <Navbar user={{ name: 'Chica da Silva', status: 'ONLINE', avatarUrl: '' }} />
+    );
+
+    expect(getByText('ONLINE')).toBeTruthy();
+  });
+
 });
 
