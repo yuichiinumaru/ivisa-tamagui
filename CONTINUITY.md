@@ -97,3 +97,29 @@ Load these detailed rules as needed:
 ---
 
 Atualizado por: agente automático (alterações no repositório feitas em sessão interativa)
+
+---
+
+## Session Update (2026-05-15)
+
+- **Goal desta sessão:** Resolver os conflitos funcionais do PR aberto `Spyg1rl:feat/navbar-fixed-stories` (#271) sem regredir a implementação estabilizada de `main`.
+- **Current Focus:** Navbar do design system (`packages/ui/src/organisms/Navbar`) e stories de Storybook para estados padrão, deslogado e fixo com scroll.
+- **Open Questions:** O ambiente local não consegue fazer `git fetch`/`curl` contra GitHub por bloqueio de proxy (`CONNECT tunnel failed, response 403`), então a resolução foi feita a partir do checkout local e da inspeção pública do PR via navegador. Ainda é necessário alguém com acesso remoto sincronizar a branch do PR, se o fluxo exigir atualização direta no fork.
+- **Ações realizadas:**
+  - Mantive a implementação tipada da `Navbar` já presente em `main`.
+  - Adicionei compatibilidade com `user.status` como fallback de exibição quando `user.role` não é informado.
+  - Reestruturei `Navbar.stories.tsx` com stories `GoldenPath`, `LoggedOut` e `Fixed`, usando mocks pt-BR e render functions para evitar serialização de JSX nos args.
+  - Adicionei teste Jest cobrindo o fallback `status`.
+  - Registrei a decisão em `docs/thoughts/010-merge-navbar-fixed-stories.md`.
+- **Validação executada:**
+  - `cd ivisa-tamagui && YARN_IGNORE_PATH=1 yarn install --frozen-lockfile` ✅
+  - `cd ivisa-tamagui && YARN_IGNORE_PATH=1 yarn test Navbar --runInBand` ✅
+  - `cd ivisa-tamagui && YARN_IGNORE_PATH=1 yarn typecheck` ❌ falha em erros pré-existentes distribuídos no pacote (`Input`, `Avatar`, `Badge`, charts, config Tamagui etc.).
+  - `cd ivisa-tamagui && YARN_IGNORE_PATH=1 yarn build:ci` ❌ falha antes do Storybook em `react-native/index.js` (`import typeof`) durante `tsup`.
+  - `cd ivisa-tamagui && timeout 20s env YARN_IGNORE_PATH=1 yarn storybook` ⚠️ inicializa o servidor e compila até ~10%, mas foi encerrado por timeout por ser processo persistente.
+- **Próximos passos recomendados:**
+  1. Rodar a sincronização remota da branch `Spyg1rl:feat/navbar-fixed-stories` em ambiente com acesso GitHub habilitado.
+  2. Corrigir a configuração de build para aliasar/bloquear `react-native` em `tsup` ou garantir resolução para `react-native-web`.
+  3. Quebrar o débito atual de TypeScript em tarefas menores antes de exigir `yarn typecheck` como gate obrigatório.
+
+Atualizado por: agente automático (merge funcional do PR #271)

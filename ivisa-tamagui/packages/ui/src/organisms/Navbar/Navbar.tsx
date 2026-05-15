@@ -7,6 +7,7 @@ import { Button } from '../../atoms/Button'
 export interface UserProfile {
   name?: string
   role?: string
+  status?: string
   avatarUrl?: string
 }
 
@@ -70,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ logo, center, actions, user, fix
               <Avatar src={user.avatarUrl} />
               <YStack>
                 <Text {...nameTextProps}>{user.name}</Text>
-                <Text {...roleTextProps}>{user.role}</Text>
+                <Text {...roleTextProps}>{user.role ?? user.status}</Text>
               </YStack>
             </XStack>
           ) : (
