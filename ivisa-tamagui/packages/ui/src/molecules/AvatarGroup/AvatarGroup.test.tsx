@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen } from '../../test-utils'
 import { AvatarGroup } from './AvatarGroup'
 import React from 'react'

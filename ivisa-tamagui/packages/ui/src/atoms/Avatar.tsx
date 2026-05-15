@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React, { useState } from 'react'
 import { Avatar as TamaguiAvatar, styled, GetProps, Text } from 'tamagui'
 import { Skeleton } from './Skeleton'

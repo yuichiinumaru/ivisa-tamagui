@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import * as React from 'react'
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { styled, View, Text } from 'tamagui'

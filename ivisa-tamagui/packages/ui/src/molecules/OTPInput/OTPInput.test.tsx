@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { render, screen } from '../../test-utils'
 import { OTPInput } from './OTPInput'
 import userEvent from '@testing-library/user-event'

@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React from 'react'
 import { Calendar as TamaguiCalendar } from '../../molecules/Calendar'
 import { Card } from '../../molecules/Card'
@@ -24,4 +24,4 @@ export const Calendar = () => {
   )
 }
 
-export type CalendarProps = React.ComponentProps<typeof Calendar>
+// Removed trailing React.ComponentProps alias export to avoid duplicate-type declarations

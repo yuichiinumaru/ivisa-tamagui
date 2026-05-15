@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { VictoryPie, VictoryTheme } from 'victory-native'
 import { YStack, Text, useTheme } from 'tamagui'
@@ -67,9 +66,4 @@ export const PieChart = ({
   )
 }
 
-// Alias
 export const DonutChart = (props: PieChartProps) => <PieChart {...props} variant="donut" />
-
-export type PieChartProps = React.ComponentProps<typeof PieChart>
-
-export type DonutChartProps = React.ComponentProps<typeof DonutChart>

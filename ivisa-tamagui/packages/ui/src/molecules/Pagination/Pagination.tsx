@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import {
   ChevronLeft,
   ChevronRight,

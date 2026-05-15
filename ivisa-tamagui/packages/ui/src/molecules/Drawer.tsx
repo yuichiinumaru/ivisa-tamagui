@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState } from 'react'
 import { Sheet as BaseSheet } from './Sheet'
 import { YStack, Portal } from 'tamagui'
@@ -133,24 +132,4 @@ export const DrawerTitle = BaseSheet.Title
 export const DrawerDescription = BaseSheet.Description
 export const DrawerClose = BaseSheet.Close
 
-export type DrawerPortalProps = React.ComponentProps<typeof DrawerPortal>
-
-export type DrawerOverlayProps = React.ComponentProps<typeof DrawerOverlay>
-
-export type DrawerHandleProps = React.ComponentProps<typeof DrawerHandle>
-
-export type DrawerFrameProps = React.ComponentProps<typeof DrawerFrame>
-
-export type DrawerContentProps = React.ComponentProps<typeof DrawerContent>
-
-export type DrawerHeaderProps = React.ComponentProps<typeof DrawerHeader>
-
-export type DrawerFooterProps = React.ComponentProps<typeof DrawerFooter>
-
-export type DrawerTitleProps = React.ComponentProps<typeof DrawerTitle>
-
-export type DrawerDescriptionProps = React.ComponentProps<typeof DrawerDescription>
-
-export type DrawerCloseProps = React.ComponentProps<typeof DrawerClose>
-
-export type DrawerComponentProps = React.ComponentProps<typeof DrawerComponent>
+// Removed trailing React.ComponentProps alias exports to avoid duplicate-type declarations

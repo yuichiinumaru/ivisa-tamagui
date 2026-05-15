@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createTokens } from 'tamagui';
 
 const palette = {
@@ -19,12 +18,13 @@ const palette = {
   violet500: '#8B5CF6',
   violet600: '#7C3AED',
   violet700: '#6D28D9',
-  green500: '#22C55E',
-  green600: '#16A34A',
-  green700: '#15803D',
-  amber500: '#F59E0B',
-  amber600: '#D97706',
-  amber700: '#B45309',
+  green500: '#5E8D5F',
+  green600: '#4E7A4F',
+  green700: '#3E633F',
+  amber500: '#ECBB44',
+  amber600: '#D1A63A',
+  amber700: '#B48A2F',
+  redLight: '#DA8F96',
   red500: '#EF4444',
   red600: '#DC2626',
   red700: '#B91C1C',
@@ -37,6 +37,10 @@ const palette = {
   rioLightGray: '#ECEDED',
   rioGradientStart: '#2A688F',
   rioGradientEnd: '#42B9EB',
+  rioTertiary: '#C6EAF9',
+  yellow: '#ECBB44',
+  yellowLight: '#F5DDA1',
+  greenLight: '#AEC6AF',
 
   // IVISA Brand Palette (Legacy/Mapped)
   // Primary (Rio Deep Blue based)
@@ -247,7 +251,7 @@ export const tokens = createTokens({
     color12: palette.black,
 
     // Fix missing tokens
-    red10: palette.red700,
+    red10: palette.redLight,
     outlineColor: palette.rioDeepBlue,
     mutedForeground: palette.slate500, // Zinc 500 equivalent
   },
@@ -281,11 +285,13 @@ export const lightColors = {
   primaryPress: palette.rioGradientEnd,
   primaryFocus: palette.rioGradientStart,
   primaryForeground: palette.white,
-  secondary: palette.rioLightGray,
-  secondaryHover: palette.slate200,
-  secondaryPress: palette.slate200,
-  secondaryFocus: palette.slate300,
-  secondaryForeground: palette.rioDeepBlue,
+  secondary: palette.rioGradientEnd,
+  secondaryHover: palette.rioGradientStart,
+  secondaryPress: palette.rioGradientStart,
+  secondaryFocus: palette.rioGradientStart,
+  secondaryForeground: palette.white,
+  tertiary: palette.rioTertiary,
+  tertiaryForeground: palette.rioDeepBlue,
   accent: '#EEF2FF',
   accentHover: '#E0E7FF',
   accentPress: '#C7D2FE',
@@ -341,11 +347,13 @@ export const darkColors = {
   primaryPress: palette.rioGradientStart,
   primaryFocus: palette.rioGradientStart,
   primaryForeground: palette.slate900,
-  secondary: palette.slate800,
-  secondaryHover: palette.slate700,
-  secondaryPress: palette.slate700,
-  secondaryFocus: palette.slate600,
+  secondary: palette.rioGradientEnd,
+  secondaryHover: palette.rioGradientStart,
+  secondaryPress: palette.rioGradientStart,
+  secondaryFocus: palette.rioGradientStart,
   secondaryForeground: palette.slate100,
+  tertiary: palette.rioTertiary,
+  tertiaryForeground: palette.slate100,
   accent: '#1E1B4B',
   accentHover: '#312E81',
   accentPress: '#3730A3',

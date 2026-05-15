@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render, screen, fireEvent, waitFor } from '../../test-utils'
 import { ScannerView } from './ScannerView'
 import React from 'react'

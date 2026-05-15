@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed ts-nocheck
 import React, { createContext, useContext } from 'react'
 import { Tabs as TamaguiTabs, styled, GetProps, YStack, XStack } from 'tamagui'
 import { Skeleton } from '../atoms/Skeleton'
@@ -170,8 +170,4 @@ export const TabsContent = (props: GetProps<typeof StyledTabsContent>) => {
   )
 }
 
-export type TabsListProps = React.ComponentProps<typeof TabsList>
-
-export type TabsTriggerProps = React.ComponentProps<typeof TabsTrigger>
-
-export type TabsContentProps = React.ComponentProps<typeof TabsContent>
+// Removed trailing React.ComponentProps alias exports to reduce duplicate-type declarations

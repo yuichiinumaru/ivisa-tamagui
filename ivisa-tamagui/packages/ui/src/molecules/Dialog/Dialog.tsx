@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { X } from '@tamagui/lucide-icons'
 import React, { ReactNode } from 'react'
 import {
@@ -106,7 +106,7 @@ export const DialogPortal = TamaguiDialog.Portal
 export const DialogClose = TamaguiDialog.Close
 
 // Define Props for the composite component
-interface DialogContentCompositeProps extends TamaguiDialogContentProps {
+export interface DialogContentCompositeProps extends TamaguiDialogContentProps {
   isLoading?: boolean
   hasError?: boolean
 }
@@ -153,12 +153,6 @@ export {
   DialogContentComposite as DialogContent,
 }
 
-export type DialogProps = React.ComponentProps<typeof Dialog>
+// Removed trailing React.ComponentProps alias exports to avoid duplicate-type declarations
 
-export type DialogTriggerProps = React.ComponentProps<typeof DialogTrigger>
-
-export type DialogPortalProps = React.ComponentProps<typeof DialogPortal>
-
-export type DialogCloseProps = React.ComponentProps<typeof DialogClose>
-
-export type DialogContentCompositeProps = React.ComponentProps<typeof DialogContentComposite>
+// DialogContentCompositeProps is defined above and exported there.

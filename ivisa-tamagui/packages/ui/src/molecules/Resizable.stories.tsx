@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
 import {

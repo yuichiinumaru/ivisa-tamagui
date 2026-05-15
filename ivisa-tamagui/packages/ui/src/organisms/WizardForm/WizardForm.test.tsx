@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import { render, screen, waitFor } from '../../test-utils'
 import { WizardForm } from './WizardForm'
 import { z } from 'zod'

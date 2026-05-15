@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { render } from '../test-utils'
 import { Separator } from './Separator'
 

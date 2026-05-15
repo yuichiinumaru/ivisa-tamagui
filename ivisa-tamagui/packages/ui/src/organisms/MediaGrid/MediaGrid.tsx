@@ -1,4 +1,4 @@
-// @ts-nocheck
+// Removed @ts-nocheck — enabling type checking
 import React, { useState } from 'react';
 import { MediaGridProps, MediaItem } from './MediaGrid.props';
 import { YStack, XStack, Text, Image, Button, ScrollView, Stack } from 'tamagui';
